@@ -23,18 +23,7 @@
 </head>
 <body class="base">
 <div class="container">      
-<div class="header"></div>
-<div class="menu_bar">
-<ul>
-
-<li><a href="https://www.americanhistoryusa.com/">HOME</a></li>
-<li><a href="index.html">CAMPAIGN TRAIL</a></li>
-<li><a href="https://www.americanhistoryusa.com/survive-advance/">SURVIVE</a></li>
-<li><a href="https://www.americanhistoryusa.com/trivia/">TRIVIA</a></li>
-<li><a href="https://www.americanhistoryusa.com/contact-us/">CONTACT US</a></li>
-
-</ul>
-</div>
+<center><img src="" id="header" width=1080></img></center>
 <div class="menu_bar_login">
 
 </div>
@@ -62,7 +51,7 @@
 
 <div id="game_window">
 <div class="game_header">
-<h2>THE CAMPAIGN TRAIL</h2>
+<h2>NEW CAMPAIGN TRAIL</h2>
 </div>
 <div class="below_header" id="below_header">
 <div class="inner_window_front" id="inner_window_1">
@@ -79,41 +68,8 @@
 
 </div>
 </div>
-<h3>Campaign Trail results and averages by election:</h3>    
-<ul class="summary_election_year_list">
-
-<li><span class="summary_standard_election_url"><a target="_blank" href="election/2016/index.html">2016</a></span></li>
-
-<li><span class="summary_standard_election_url"><a target="_blank" href="election/2016a/index.html">2016a</a></span></li>
-
-<li><span class="summary_standard_election_url"><a target="_blank" href="election/2012/index.html">2012</a></span></li>
-
-<li><span class="summary_standard_election_url"><a target="_blank" href="election/2000/index.html">2000</a></span></li>
-
-<li><span class="summary_standard_election_url"><a target="_blank" href="election/1988/index.html">1988</a></span></li>
-
-<li><span class="summary_standard_election_url"><a target="_blank" href="election/1976/index.html">1976</a></span></li>
-
-<li><span class="summary_standard_election_url"><a target="_blank" href="election/1968/index.html">1968</a></span></li>
-
-<li><span class="summary_standard_election_url"><a target="_blank" href="election/1960/index.html">1960</a></span></li>
-
-<li><span class="summary_standard_election_url"><a target="_blank" href="election/1948/index.html">1948</a></span></li>
-
-<li><span class="summary_standard_election_url"><a target="_blank" href="election/1916/index.html">1916</a></span></li>
-
-<li><span class="summary_standard_election_url"><a target="_blank" href="election/1896/index.html">1896</a></span></li>
-
-<li><span class="summary_standard_election_url"><a target="_blank" href="election/1860/index.html">1860</a></span></li>
-
-<li><span class="summary_standard_election_url"><a target="_blank" href="election/1844/index.html">1844</a></span></li>
-
-</ul>
-
 <div class="footer">
-All content &copy; 2012-2021.<br>
-For informational purposes only. All rights reserved.<br>
-Nothing on this site should be construed as financial, investment, health, or legal advice.<br>
+<a href="http://www.americanhistoryusa.com">Original site</a> created by Dan Bryan &copy; 2012-2021 
 </div>
  
 </div> 
@@ -121,6 +77,15 @@ Nothing on this site should be construed as financial, investment, health, or le
 
 <script src="../../ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="../static/js/raphael.js"></script>
+<script>
+	// Banner Stuff
+	banner = $('#header')[0];
+    banner.src = "../static/images/banner_"+Math.floor((Math.random() * 4) + 1)+".png"
+    banner.width = 1000
+    document.body.background = "../static/images/mlk.jpg"
+    $("#game_window")[0].style.backgroundColor = "#ff6b6b"
+    $(".container")[0].style.backgroundColor = "#930301"
+</script>
 <script>
 
 
