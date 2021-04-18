@@ -50,6 +50,21 @@ function divideElectoralVotesProp(e, t) {
         }
     }
 
+    function findFromPK(array, pk) {
+    	a = 0
+    	for (i in array) {
+    		if (array[i].pk == pk) {
+    			a = i
+    			break
+    		}
+    	}
+    	return a;
+    }
+
+    function election_HTML(id, cand, running_mate) {
+    	return campaignTrail_temp.election_json[findFromPK(campaignTrail_temp.election_json, id)].fields.year+"_"+campaignTrail_temp.candidate_json[findFromPK(campaignTrail_temp.candidate_json, cand)].fields.last_name+"_"+campaignTrail_temp.candidate_json[findFromPK(campaignTrail_temp.candidate_json, running_mate)].fields.last_name+".html"
+    }
+
     function s(t, i, l) {
         for (var o = "", r = 0; r < e.difficulty_level_json.length; r++) "Normal" == e.difficulty_level_json[r].fields.name ? o += "<option value=" + e.difficulty_level_json[r].pk + " selected>" + e.difficulty_level_json[r].fields.name + "</option>" : o += "<option value=" + e.difficulty_level_json[r].pk + ">" + e.difficulty_level_json[r].fields.name + "</option>";
         var d = '        <div class="game_header">        <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div class="inner_window_w_desc" id="inner_window_4">            <div id="game_options">            <form name="game_type_selection">            <p><h3>How would you like the electoral votes to be allocated?</h3>            <select name="game_type_id" id="game_type_id">                <option value=1>Default (Winner-Take-All)</option>                <option value=2>Proportional</option>            </select>            </p>            </form>            </div>            <div class="description_window_small"                 id="opponent_selection_description_window">            </div>            <div id="difficulty_level">            <form name="difficulty_level_selection">            <p><h3>Please choose your difficulty level:</h3>            <select name="difficulty_level_id" id="difficulty_level_id">' + o + '</select>            </p>            </form>            </div>        <p id="opponent_selection_id_button_p">        <button class="person_button" id="opponent_selection_id_button">Continue</button>        </p>        </div>';
@@ -74,33 +89,14 @@ function divideElectoralVotesProp(e, t) {
                     break
                 } e.difficulty_level_multiplier = e.difficulty_level_json[d].fields.multiplier,
                 function(t, i, a, l, o) {
-                    var r = csrfToken();
-                    $.ajax({
-                        type: "POST",
-                        url: "/campaign-trail/begin-current-game/",
-                        beforeSend: function(e) {
-                            e.setRequestHeader("X-CSRFToken", r)
-                        },
-                        data: {
-                            election_id: t.toString(),
-                            candidate_id: i,
-                            opponents_list: l.toString(),
-                            running_mate_id: a.toString(),
-                            difficulty_level_id: o.toString()
-                        },
-                        dataType: "text",
-                        success: function(t) {
-                            $("#game_window").html(t), e.question_number = 0, e.questions_json = campaignTrail_temp.questions_json, e.answers_json = campaignTrail_temp.answers_json, e.states_json = campaignTrail_temp.states_json, e.issues_json = campaignTrail_temp.issues_json, e.state_issue_score_json = campaignTrail_temp.state_issue_score_json, e.candidate_issue_score_json = campaignTrail_temp.candidate_issue_score_json, e.running_mate_issue_score_json = campaignTrail_temp.running_mate_issue_score_json, e.candidate_state_multiplier_json = campaignTrail_temp.candidate_state_multiplier_json, e.answer_score_global_json = campaignTrail_temp.answer_score_global_json, e.answer_score_issue_json = campaignTrail_temp.answer_score_issue_json, e.answer_score_state_json = campaignTrail_temp.answer_score_state_json, e.answer_feedback_json = campaignTrail_temp.answer_feedback_json, e.candidate_image_url = campaignTrail_temp.candidate_image_url, e.running_mate_image_url = campaignTrail_temp.running_mate_image_url, e.candidate_last_name = campaignTrail_temp.candidate_last_name, e.running_mate_last_name = campaignTrail_temp.running_mate_last_name, e.running_mate_state_id = campaignTrail_temp.running_mate_state_id, e.player_answers = campaignTrail_temp.player_answers, e.player_visits = campaignTrail_temp.player_visits, e.answer_feedback_flg = campaignTrail_temp.answer_feedback_flg, e.election_id = Number(e.election_id), e.candidate_id = Number(e.candidate_id), e.running_mate_id = Number(e.running_mate_id), e.difficulty_level_id = Number(e.difficulty_level_id), e.game_start_logging_id = Number(campaignTrail_temp.game_start_logging_id), $("#view_electoral_map").click(function() {
-                                var e = A(return_type = 2);
-                                _(e)
-                            }), $("#answer_select_button").click(function() {
-                                var t = $("input:radio[name=game_answers]:checked").val();
-                                null == t ? C(e.election_id) : n(t)
-                            })
-                        },
-                        error: function(e) {
-                            s(t, i, a)
-                        }
+                	aaa = election_HTML(t, i, a)
+                	aaa = "../static/questionset/"+aaa
+                	$("#game_window").load(aaa), e.question_number = 0, e.questions_json = campaignTrail_temp.questions_json, e.answers_json = campaignTrail_temp.answers_json, e.states_json = campaignTrail_temp.states_json, e.issues_json = campaignTrail_temp.issues_json, e.state_issue_score_json = campaignTrail_temp.state_issue_score_json, e.candidate_issue_score_json = campaignTrail_temp.candidate_issue_score_json, e.running_mate_issue_score_json = campaignTrail_temp.running_mate_issue_score_json, e.candidate_state_multiplier_json = campaignTrail_temp.candidate_state_multiplier_json, e.answer_score_global_json = campaignTrail_temp.answer_score_global_json, e.answer_score_issue_json = campaignTrail_temp.answer_score_issue_json, e.answer_score_state_json = campaignTrail_temp.answer_score_state_json, e.answer_feedback_json = campaignTrail_temp.answer_feedback_json, e.candidate_image_url = campaignTrail_temp.candidate_image_url, e.running_mate_image_url = campaignTrail_temp.running_mate_image_url, e.candidate_last_name = campaignTrail_temp.candidate_last_name, e.running_mate_last_name = campaignTrail_temp.running_mate_last_name, e.running_mate_state_id = campaignTrail_temp.running_mate_state_id, e.player_answers = campaignTrail_temp.player_answers, e.player_visits = campaignTrail_temp.player_visits, e.answer_feedback_flg = campaignTrail_temp.answer_feedback_flg, e.election_id = Number(e.election_id), e.candidate_id = Number(e.candidate_id), e.running_mate_id = Number(e.running_mate_id), e.difficulty_level_id = Number(e.difficulty_level_id), e.game_start_logging_id = Number(campaignTrail_temp.game_start_logging_id), $("#view_electoral_map").click(function() {
+                            var e = A(return_type = 2);
+                        	_(e)
+                        }), $("#answer_select_button").click(function() {
+                        var t = $("input:radio[name=game_answers]:checked").val();
+                    	null == t ? C(e.election_id) : n(t)
                     })
                 }(t, i, l, o, c)
         })
