@@ -62,7 +62,11 @@ function divideElectoralVotesProp(e, t) {
     }
 
     function election_HTML(id, cand, running_mate) {
-    	return campaignTrail_temp.election_json[findFromPK(campaignTrail_temp.election_json, id)].fields.year+"_"+campaignTrail_temp.candidate_json[findFromPK(campaignTrail_temp.candidate_json, cand)].fields.last_name+"_"+campaignTrail_temp.candidate_json[findFromPK(campaignTrail_temp.candidate_json, running_mate)].fields.last_name+".html"
+    	if (id != 16) {
+    		return campaignTrail_temp.election_json[findFromPK(campaignTrail_temp.election_json, id)].fields.year+"_"+campaignTrail_temp.candidate_json[findFromPK(campaignTrail_temp.candidate_json, cand)].fields.last_name+"_"+campaignTrail_temp.candidate_json[findFromPK(campaignTrail_temp.candidate_json, running_mate)].fields.last_name+".html"
+    	} else {
+    		return campaignTrail_temp.election_json[findFromPK(campaignTrail_temp.election_json, id)].fields.year+"a_"+campaignTrail_temp.candidate_json[findFromPK(campaignTrail_temp.candidate_json, cand)].fields.last_name+"_"+campaignTrail_temp.candidate_json[findFromPK(campaignTrail_temp.candidate_json, running_mate)].fields.last_name+".html"
+    	}
     }
 
     function s(t, i, l) {
