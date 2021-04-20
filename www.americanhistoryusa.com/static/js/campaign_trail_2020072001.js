@@ -106,7 +106,7 @@ function divideElectoralVotesProp(e, t) {
                         var t = $("input:radio[name=game_answers]:checked").val();
                     	null == t ? C(e.election_id) : n(t)
                     })
-                    if ($("#answer_select_button") != null) {
+                    if ($("#answer_select_button")[0] != null) {
                     	clearInterval(important_code)
                     }}, 1000);
                     console.log("e")
