@@ -105,10 +105,10 @@ function divideElectoralVotesProp(e, t) {
                 	$("#answer_select_button").click(function() {
                         var t = $("input:radio[name=game_answers]:checked").val();
                     	null == t ? C(e.election_id) : n(t)
-                    }
+                    })
                     if ($("#answer_select_button") != null) {
                     	clearInterval(important_code)
-                    })}, 1000);
+                    }}, 1000);
                     console.log("e")
                 }(t, i, l, o, c)
         })
