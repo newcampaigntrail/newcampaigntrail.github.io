@@ -68,10 +68,25 @@
 </div>
 </div>
 <div class="footer">
+<button id="modLoadReveal" onclick="if(document.getElementById('modloaddiv').style.display != 'none'){document.getElementById('modloaddiv').style.display = 'none'}else{document.getElementById('modloaddiv').style.display = 'block'}">
+	Mod Loader
+</button><br><br>
+<div id="modloaddiv" style="display:none">
+	<select name="mod" id="modSelect" onchange="modSelectChange()">
+    <option value="other">Other</option>
+	</select>
+	<div id="customMenu"><br>
+	<b>Code Set 1:</b><br>
+	<textarea id="codeset1" width=400 height=300></textarea><br>
+	<b>Code Set 2:</b><br>
+	<textarea id="codeset2" width=400 height=300></textarea><br>
+	</div>
+	<br><br><button id="submitMod">Submit</button>
+</div><br><br>
 <a href="http://www.americanhistoryusa.com">Original site</a> created by Dan Bryan &copy; 2012-2021 
 </div>
- 
-</div> 
+</div>
+<div id="temp_mod_div"></div>
 </body>
 
 <script src="../../ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
