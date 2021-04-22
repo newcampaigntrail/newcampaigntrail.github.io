@@ -14,30 +14,23 @@ function csrfToken() {
 }
 
 modded = false
-var important_code = []
 
 function loadMod(code1, code2) {
     i = 0
-    kill_i = 0
-    if (i==0){
+    kill = 0
+	var important_code = setInterval(function() {
+		if (i==0){
     		eval(code1)
     	}
-	important_code = (setInterval(function() {
-		
 
-		if ($("#answer_select_button")[0] != null && i > kill_i) {
+		if ($("#answer_select_button")[0] != null && i < kill) {
 			eval(code2)
-    		kill_i = i
+    		clearInterval(important_code)
+    		kill = i
 		}
 
 		i += 1
-	}, 1000));
-}
-
-function killIntervals() {
-	for (i in important_code){
-		window.clearInterval(important_code[i])
-	}
+	}, 1000);
 }
 
 function modSelectChange() {
