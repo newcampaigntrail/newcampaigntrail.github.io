@@ -19,11 +19,11 @@ function loadMod(code1, code2) {
     i = 0
 	var important_code = setInterval(function() {
 		if (i==0){
-    		Function(code1)
+    		eval(code1)
     	}
 
 		if ($("#answer_select_button")[0] != null) {
-			Function(code2)
+			eval(code2)
     		clearInterval(important_code)
 		}
 
