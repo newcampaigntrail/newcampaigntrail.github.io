@@ -18,15 +18,16 @@ var important_code = []
 
 function loadMod(code1, code2) {
     i = 0
+    kill_i = 0
     if (i==0){
     		eval(code1)
     	}
-	important_code.push(setInterval(function() {
+	important_code = (setInterval(function() {
 		
 
-		if ($("#answer_select_button")[0] != null) {
+		if ($("#answer_select_button")[0] != null && i > kill_i) {
 			eval(code2)
-    		killIntervals()	
+    		kill_i = i
 		}
 
 		i += 1
