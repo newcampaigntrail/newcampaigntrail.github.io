@@ -14,6 +14,7 @@ function csrfToken() {
 }
 
 modded = false
+var importan_code = []
 
 function loadMod(code1, code2) {
     i = 0
