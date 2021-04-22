@@ -14,14 +14,15 @@ function csrfToken() {
 }
 
 modded = false
-var importan_code = []
+var important_code = []
 
 function loadMod(code1, code2) {
     i = 0
-	var important_code = setInterval(function() {
-		if (i==0){
+    if (i==0){
     		eval(code1)
     	}
+	important_code.push(setInterval(function() {
+		
 
 		if ($("#answer_select_button")[0] != null) {
 			eval(code2)
@@ -29,14 +30,13 @@ function loadMod(code1, code2) {
 		}
 
 		i += 1
-	}, 1000);
+	}, 1000));
 }
 
 function killIntervals() {
-	var interval_id = window.setInterval("", 9999); // Get a reference to the last
-                                                // interval +1
-	for (var i = 1; i < interval_id; i++)
-        window.clearInterval(i);
+	for (i in important_code){
+		window.clearInterval(important_code[i])
+	}
 }
 
 function modSelectChange() {
