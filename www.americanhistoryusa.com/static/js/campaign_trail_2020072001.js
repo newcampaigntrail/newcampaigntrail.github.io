@@ -1090,6 +1090,301 @@ function divideElectoralVotesProp(e, t) {
     }), $("#skip_to_final").click(function(t) {
         e.final_state_results = A(1), d()
     })
+}();>                <button class="final_menu_button" id="recommended_reading_button" disabled="disabled">                    Further Reading                </button>                <button class="final_menu_button" id="play_again_button">                    Play Again!                </button>            </div>';
+        $("#game_window").html(i), $("#overall_results_button").click(function() {
+            p()
+        }), $("#final_election_map_button").click(function() {
+            h()
+        }), $("#state_results_button").click(function() {
+            g()
+        }), $("#overall_details_button").click(function() {
+            b()
+        }), $("#play_again_button").click(function() {
+            y()
+        })
+    }
+
+    function y() {
+        var t = S(e.election_id);
+        $("#game_window").append('        <div class="overlay" id="new_game_overlay"></div>        <div class="overlay_window" id="new_game_window">            <div class="overlay_window_content" id="election_night_content">            <h3>Advisor Feedback</h3>            <img src="' + e.election_json[t].fields.advisor_url + '" width="208" height="128"/><p>            Are you sure you want to begin a new game?            </p></div>            <div class="overlay_buttons" id="new_game_buttons">            <button id="new_game_button">Yes</button><br>            <button id="cancel_button">No</button>            </div>        </div>'), $("#new_game_button").click(function() {
+            window.location.href = window.location.href
+        }), $("#cancel_button").click(function() {
+            $("#new_game_overlay").remove(), $("#new_game_window").remove()
+        })
+    }
+
+    function k(e) {
+        for (var t = "", i = 0; i < e.length; i++) t += '<option value="' + e[i].state + '">' + e[i].name + "</option>";
+        return t
+    }
+
+    function T(t) {
+        for (var i = "        <h4>Results - This Game</h4>        <table>\t    <tr><th>Candidate</th><th>Popular Votes</th>\t    <th>Popular Vote %</th><th>Electoral Votes</th></tr>", a = 0; a < e.final_state_results.length; a++)
+            if (e.final_state_results[a].state == t)
+                for (var s = 0; s < e.final_state_results[a].result.length; s++) {
+                    var n = E(e.final_state_results[a].result[s].candidate);
+                    i += "                    <tr><td>" + (e.candidate_json[n].fields.first_name + " " + e.candidate_json[n].fields.last_name) + "</td><td>" + M(e.final_state_results[a].result[s].votes) + "</td><td>" + (100 * e.final_state_results[a].result[s].percent).toFixed(2) + "</td><td>" + e.final_state_results[a].result[s].electoral_votes + "</td></tr>"
+                }
+        return i += "</table>"
+    }
+
+    function A(t) {
+        var i = [];
+        i.push(e.candidate_id);
+        for (var a = 0; a < e.opponents_list.length; a++) i.push(e.opponents_list[a]);
+        var s = [];
+        for (a = 0; a < i.length; a++) {
+            for (var n = [], l = 0, o = 0, _ = 0, r = 0; r < e.player_answers.length; r++)
+                for (var d = 0; d < e.answer_score_global_json.length; d++)
+                    if (e.answer_score_global_json[d].fields.answer == e.player_answers[r] && e.answer_score_global_json[d].fields.candidate == e.candidate_id && e.answer_score_global_json[d].fields.affected_candidate == i[a]) {
+                        n.push(e.answer_score_global_json[d].fields.global_multiplier);
+                        break
+                    } for (r = 0; r < n.length; r++) l += n[r];
+            if (o = i[a] == e.candidate_id && l < -.4 ? .6 : 1 + l, i[a] == e.candidate_id) var c = o * (1 + F() * e.global_parameter_json[0].fields.global_variance) * e.difficulty_level_multiplier;
+            else c = o * (1 + F() * e.global_parameter_json[0].fields.global_variance);
+            _ = 1 == isNaN(c) ? 1 : c, s.push({
+                candidate: i[a],
+                global_multiplier: _
+            })
+        }
+        var u = [];
+        for (a = 0; a < i.length; a++) {
+            var v = [];
+            for (r = 0; r < e.candidate_issue_score_json.length && (e.candidate_issue_score_json[r].fields.candidate != i[a] || (v.push({
+                    issue: e.candidate_issue_score_json[r].fields.issue,
+                    issue_score: e.candidate_issue_score_json[r].fields.issue_score
+                }), v.length != e.issues_json.length)); r++);
+            u.push({
+                candidate_id: i[a],
+                issue_scores: v
+            })
+        }
+        var f = [];
+        for (a = 0; a < i.length; a++) {
+            var m = [];
+            for (r = 0; r < e.candidate_state_multiplier_json.length; r++)
+                if (e.candidate_state_multiplier_json[r].fields.candidate == i[a]) {
+                    var p = e.candidate_state_multiplier_json[r].fields.state_multiplier * s[a].global_multiplier * (1 + F() * e.global_parameter_json[0].fields.global_variance);
+                    if (m.push({
+                            state: e.candidate_state_multiplier_json[r].fields.state,
+                            state_multiplier: p
+                        }), m.length == e.states_json.length) break;
+                    P(m, "state")
+                } f.push({
+                candidate_id: i[a],
+                state_multipliers: m
+            })
+        }
+        for (a = 0; a < u[0].issue_scores.length; a++) {
+            var h = -1;
+            for (r = 0; r < e.running_mate_issue_score_json.length; r++)
+                if (e.running_mate_issue_score_json[r].fields.issue == u[0].issue_scores[a].issue) {
+                    h = r;
+                    break
+                } var g = 0,
+                b = 0;
+            for (r = 0; r < e.player_answers.length; r++)
+                for (d = 0; d < e.answer_score_issue_json.length; d++) e.answer_score_issue_json[d].fields.issue == u[0].issue_scores[a].issue && e.answer_score_issue_json[d].fields.answer == e.player_answers[r] && (g += e.answer_score_issue_json[d].fields.issue_score * e.answer_score_issue_json[d].fields.issue_importance, b += e.answer_score_issue_json[d].fields.issue_importance);
+            u[0].issue_scores[a].issue_score = (u[0].issue_scores[a].issue_score * e.global_parameter_json[0].fields.candidate_issue_weight + e.running_mate_issue_score_json[h].fields.issue_score * e.global_parameter_json[0].fields.running_mate_issue_weight + g) / (e.global_parameter_json[0].fields.candidate_issue_weight + e.global_parameter_json[0].fields.running_mate_issue_weight + b)
+        }
+        for (a = 0; a < i.length; a++)
+            for (r = 0; r < f[a].state_multipliers.length; r++) {
+                var w = 0;
+                for (d = 0; d < e.player_answers.length; d++)
+                    for (var j = 0; j < e.answer_score_state_json.length; j++) e.answer_score_state_json[j].fields.state == f[a].state_multipliers[r].state && e.answer_score_state_json[j].fields.answer == e.player_answers[d] && e.answer_score_state_json[j].fields.candidate == e.candidate_id && e.answer_score_state_json[j].fields.affected_candidate == i[a] && (w += e.answer_score_state_json[j].fields.state_multiplier);
+                if (0 == a) {
+                    e.running_mate_state_id == f[a].state_multipliers[r].state && (w += .004 * f[a].state_multipliers[r].state_multiplier);
+                    for (d = 0; d < e.player_visits.length; d++) e.player_visits[d] == f[a].state_multipliers[r].state && (w += .005 * Math.max(.1, f[a].state_multipliers[r].state_multiplier))
+                }
+                f[a].state_multipliers[r].state_multiplier += w
+            }
+        var y = [];
+        for (a = 0; a < f[0].state_multipliers.length; a++) {
+            var k = [];
+            for (r = 0; r < i.length; r++) {
+                var $ = 0;
+                for (d = 0; d < u[r].issue_scores.length; d++) {
+                    var T = 0,
+                        A = 1;
+                    for (j = 0; j < e.state_issue_score_json.length; j++)
+                        if (e.state_issue_score_json[j].fields.state == f[0].state_multipliers[a].state && e.state_issue_score_json[j].fields.issue == u[0].issue_scores[d].issue) {
+                            T = e.state_issue_score_json[j].fields.state_issue_score, A = e.state_issue_score_json[j].fields.weight;
+                            break
+                        } var S = u[r].issue_scores[d].issue_score * Math.abs(u[r].issue_scores[d].issue_score),
+                        E = T * Math.abs(T);
+                    $ += e.global_parameter_json[0].fields.vote_variable - Math.abs((S - E) * A)
+                }
+                for (d = 0; d < f[r].state_multipliers.length; d++)
+                    if (f[r].state_multipliers[d].state == f[0].state_multipliers[a].state) var C = d;
+                $ *= f[r].state_multipliers[C].state_multiplier, $ = Math.max($, 0), k.push({
+                    candidate: i[r],
+                    result: $
+                })
+            }
+            y.push({
+                state: f[0].state_multipliers[a].state,
+                result: k
+            })
+        }
+        for (a = 0; a < y.length; a++)
+            for (r = 0; r < e.states_json.length; r++)
+                if (y[a].state == e.states_json[r].pk) {
+                    y[a].abbr = e.states_json[r].fields.abbr;
+                    break
+                } for (a = 0; a < y.length; a++) {
+            var M = 0;
+            for (r = 0; r < e.states_json.length; r++)
+                if (e.states_json[r].pk == y[a].state) {
+                    M = Math.floor(e.states_json[r].fields.popular_votes * (.95 + .1 * Math.random()));
+                    break
+                } var x = 0;
+            for (r = 0; r < y[a].result.length; r++) x += y[a].result[r].result;
+            for (r = 0; r < y[a].result.length; r++) {
+                var N = y[a].result[r].result / x;
+                y[a].result[r].percent = N, y[a].result[r].votes = Math.floor(N * M)
+            }
+        }
+        for (a = 0; a < y.length; a++) {
+            var I = R(y[a].state),
+                O = 0;
+            if (P(y[a].result, "percent"), y[a].result.reverse(), O = e.states_json[I].fields.electoral_votes, "1" == e.game_type_id)
+                if (1 == e.states_json[I].fields.winner_take_all_flg)
+                    for (r = 0; r < y[a].result.length; r++) y[a].result[r].electoral_votes = 0 == r ? O : 0;
+                else {
+                    O = e.states_json[I].fields.electoral_votes;
+                    var H = 0;
+                    for (r = 0; r < y[a].result.length; r++) H += y[a].result[r].votes;
+                    var L = Math.ceil(y[a].result[0].votes / H * O * 1.25),
+                        D = O - L;
+                    for (r = 0; r < y[a].result.length; r++) y[a].result[r].electoral_votes = 0 == r ? L : 1 == r ? D : 0
+                } if ("2" == e.game_type_id) {
+                var V = [];
+                for (r = 0; r < y[a].result.length; r++) V.push(y[a].result[r].percent);
+                var q = divideElectoralVotesProp(V, O);
+                for (r = 0; r < y[a].result.length; r++) y[a].result[r].electoral_votes = q[r]
+            }
+        }
+        if (1 == t) return y;
+        if (2 == t) {
+            for (a = 0; a < y.length; a++) {
+                for (r = 0; r < y[a].result.length; r++) {
+                    var G = 1 + F() * e.global_parameter_json[0].fields.global_variance;
+                    y[a].result[r].result *= G
+                }
+                for (M = 0, r = 0; r < e.states_json.length; r++)
+                    if (e.states_json[r].pk == y[a].state) {
+                        M = Math.floor(e.states_json[r].fields.popular_votes * (.95 + .1 * Math.random()));
+                        break
+                    } for (x = 0, r = 0; r < y[a].result.length; r++) x += y[a].result[r].result;
+                for (r = 0; r < y[a].result.length; r++) {
+                    N = y[a].result[r].result / x;
+                    y[a].result[r].percent = N, y[a].result[r].votes = Math.floor(N * M)
+                }
+            }
+            return y
+        }
+    }
+
+    function S(t) {
+        for (var i = -1, a = 0; a < e.election_json.length; a++)
+            if (e.election_json[a].pk == t) {
+                i = a;
+                break
+            } return i
+    }
+
+    function E(t) {
+        for (var i = -1, a = 0; a < e.candidate_json.length; a++)
+            if (e.candidate_json[a].pk == t) {
+                i = a;
+                break
+            } return i
+    }
+
+    function R(t) {
+        for (var i = -1, a = 0; a < e.states_json.length; a++)
+            if (e.states_json[a].pk == t) {
+                i = a;
+                break
+            } return i
+    }
+
+    function C(t) {
+        var i = S(t),
+            a = '    <div class="overlay" id="feedback_overlay"></div>    <div class="overlay_window" id="feedback_window">        <div class="overlay_window_content" id="feedback_content">        <h3>Advisor Feedback</h3>        <img src="' + e.election_json[i].fields.advisor_url + '" width="208" height="128"/>        <p>Please select an answer before continuing!</p>        </div>        <div id="visit_buttons">        <button id="ok_button">OK</button><br>        </div>    </div>';
+        $("#game_window").append(a), $("#ok_button").click(function() {
+            $("#feedback_overlay").remove(), $("#feedback_window").remove()
+        })
+    }
+
+    function F() {
+        var e, t, i;
+        do {
+            i = (e = 2 * Math.random() - 1) * e + (t = 2 * Math.random() - 1) * t
+        } while (i >= 1 || 0 == i);
+        return e * Math.sqrt(-2 * Math.log(i) / i)
+    }
+
+    function P(e, t) {
+        return e.sort(function(e, i) {
+            var a = e[t],
+                s = i[t];
+            return a < s ? -1 : a > s ? 1 : 0
+        })
+    }
+
+    function M(e) {
+        var t = e.toString().split(".");
+        return t[0] = t[0].replace(/\B(?=(\d{3})+(?!\d))/g, ","), t.join(".")
+    }
+    $("#game_start").click(function(a) {
+        a.preventDefault(),
+            function() {
+                for (var a = "", n = 0; n < e.temp_election_list.length; n++) 0 == e.temp_election_list[n].is_premium ? a += "<option value=" + e.temp_election_list[n].id + ">" + e.temp_election_list[n].display_year + "</option>" : 1 == e.show_premium ? a += "<option value=" + e.temp_election_list[n].id + ">" + e.temp_election_list[n].display_year + "</option>" : a += "<option value=" + e.temp_election_list[n].id + " disabled>" + e.temp_election_list[n].display_year + "</option>";
+                var l = '<div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div class="inner_window_w_desc" id="inner_window_2">            <div id="election_year_form">            <form name="election_year">            <p>                <h3>Please select the election you will run in:</h3>    \t\t    <select name="election_id" id="election_id">' + a + '</select>            </p>            </form>            <div class="election_description_window" id="election_description_window">                <div id="election_image">                    <img src="' + e.election_json[0].fields.image_url + '" width="300" height="160"/>                </div>                <div id="election_summary">' + e.election_json[0].fields.summary + '</div>            </div>        </div>        <p><button id="election_id_button">Continue</button></p>';
+                $("#game_window").html(l), $("#election_id").change(function() {
+                    for (var t = -1, i = 0; i < e.election_json.length; i++)
+                        if (e.election_json[i].pk == election_id.value) {
+                            t = i;
+                            break
+                        } $("#election_description_window").html('<div id="election_image">            <img src="' + e.election_json[t].fields.image_url + '" width="300" height="160"/>            </div>            <div id="election_summary">' + e.election_json[t].fields.summary + "</div>")
+                }), $("#election_id_button").click(function(a) {
+                    a.preventDefault(),
+                        function(a) {
+                            for (var n = "", l = 0; l < e.candidate_json.length; l++) e.candidate_json[l].fields.election == a && 1 == e.candidate_json[l].fields.is_active && (n += "<option value=" + e.candidate_json[l].pk + ">" + e.candidate_json[l].fields.first_name + " " + e.candidate_json[l].fields.last_name + "</option>");
+                            var o = '<div class="game_header">        <h2>NEW CAMPAIGN TRAIL</h2>    </div>    <div class="inner_window_w_desc" id="inner_window_3">        <div id="candidate_form">        <form name="candidate">            <p>            <h3>Please select your candidate:</h3>            <select name="candidate_id" id="candidate_id">' + n + '</select>            </p>        </form>        </div>        <div class="person_description_window" id="candidate_description_window">        </div>        <p>            <button class="person_button" id="candidate_id_button">Continue</button>        </p>    </div>';
+                            $("#game_window").html(o), $("#candidate_id").ready(function() {
+                                t()
+                            }), $("#candidate_id").change(function() {
+                                t()
+                            }), $("#candidate_id_button").click(function(t) {
+                                t.preventDefault(),
+                                    function(t, a) {
+                                        for (var n = "", l = 0; l < e.running_mate_json.length; l++)
+                                            if (e.running_mate_json[l].fields.candidate == a) {
+                                                var o = e.running_mate_json[l].fields.running_mate,
+                                                    _ = -1;
+                                                for (j = 0; j < e.candidate_json.length; j++)
+                                                    if (o == e.candidate_json[j].pk) {
+                                                        _ = j;
+                                                        break
+                                                    } n += "<option value=" + e.candidate_json[_].pk + ">" + e.candidate_json[_].fields.first_name + " " + e.candidate_json[_].fields.last_name + "</option>"
+                                            } var r = '        <div class="game_header">        <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div class="inner_window_w_desc" id="inner_window_4">            <div id="running_mate_form">            <form name="running mate">            <p><h3>Please select your running mate:</h3>            <select name="running_mate_id" id="running_mate_id">' + n + '</select>            </p>            </form>            </div>            <div class="person_description_window" id="running_mate_description_window">            </div>        <p><button class="person_button" id="running_mate_id_button">Continue</button>        </p>        </div>';
+                                        $("#game_window").html(r), $("#running_mate_id").ready(function() {
+                                            i()
+                                        }), $("#running_mate_id").change(function() {
+                                            i()
+                                        }), $("#running_mate_id_button").click(function(e) {
+                                            e.preventDefault(), s(t, a, running_mate_id.value)
+                                        })
+                                    }(a, candidate_id.value)
+                            })
+                        }(election_id.value)
+                })
+            }()
+    }), $("#skip_to_final").click(function(t) {
+        e.final_state_results = A(1), d()
+    })
 }();legislation without losing support from progressives such as Roosevelt. Many Republicans also favor an aggressive stance against Germany, while others believe Hughes should finesse the issue.</p>\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 1, \"image_url\": \"../static/images/charles-evans-hughes-1916.jpg\", \"electoral_victory_message\": \"<h3>Congratulations! You have won the 1916 election.</h3><p>After the tumultuous 1912, the natural supremacy of the Republican Party has reasserted itself. The next steps are up to you -- perhaps you can lead the repeal of the Adamson Act, or replace it with something more measured and comprehensive. In regards to Europe, best of luck in whatever may occur over the next four years. Finally, Wilson plans to resign before your March 4th inauguration, so that you might assume the office now.</p>\", \"electoral_loss_message\": \"<h3>Sorry, you have lost the 1916 election.</h3><p>Ultimately, the popularity of Woodrow Wilson was just a little much to overcome.</p><p>It appears that Wilson's agenda will remain in effect domestically. In world affairs, it remains to be seen how the situation in Europe will finally resolve itself. As to your own prospects, it is unclear what your next steps will be. The Supreme Court seat you once enjoyed has now been lost for the foreseeable future.</p>\", \"no_electoral_majority_message\": \"<h3>No candidate has captured an Electoral College majority.</h3><p>Elections for Congress have also resulted in an even split among members, and it is extremely unclear who might ultimately win this election. Best of luck in what is sure to be a contentious process.</p>\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 144, \"fields\": {\"first_name\": \"Allan\", \"last_name\": \"Benson/Other\", \"election\": 14, \"party\": \"Socialist\", \"state\": \"Michigan\", \"priority\": 3, \"description\": \"'\", \"color_hex\": \"#00C100\", \"secondary_color_hex\": \"#A1FFA1\", \"is_active\": 0, \"image_url\": \"'\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 145, \"fields\": {\"first_name\": \"James\", \"last_name\": \"Hanly\", \"election\": 14, \"party\": \"Prohibition\", \"state\": \"Indiana\", \"priority\": 4, \"description\": \"'\", \"color_hex\": \"#FFFF00\", \"secondary_color_hex\": \"#FFFFC0\", \"is_active\": 0, \"image_url\": \"'\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 146, \"fields\": {\"first_name\": \"Thomas R.\", \"last_name\": \"Marshall\", \"election\": 14, \"party\": \"Democrat\", \"state\": \"Indiana\", \"priority\": 5, \"description\": \"'\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"../static/images/thomas-r-marshall-1916.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Thomas R. Marshall has served as Wilson's Vice President since 1913, but the two have had icy relations. However, keeping Marshall on the ticket would preserve party unity and avoid a distracting storyline during the campaign. Marshall was previously the Governor of Indiana and is popular in that state. Politically, he is more moderate than Wilson has been.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 147, \"fields\": {\"first_name\": \"Newton\", \"last_name\": \"Baker\", \"election\": 14, \"party\": \"Democrat\", \"state\": \"Ohio\", \"priority\": 6, \"description\": \"'\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"../static/images/newton-baker-1916.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Newton Baker has served as Secretary of War since the early part of 1916. Some advisors are encouraging Wilson to replace Marshall with Baker. The two have a much better working relationship, and Baker was formerly the mayor of Cleveland, Ohio. His nomination may help in Ohio, but it would also create headlines and arouse some Marshall supporters.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 148, \"fields\": {\"first_name\": \"Charles W.\", \"last_name\": \"Fairbanks\", \"election\": 14, \"party\": \"Republican\", \"state\": \"Indiana\", \"priority\": 7, \"description\": \"'\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"../static/images/charles-w-fairbanks-1916.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Charles W. Fairbanks has served as a Senator from Indiana, and as Vice President under Teddy Roosevelt. He was seeking the top of the ticket this year, but has agreed to serve as Vice President a second time. Fairbanks supported William Howard Taft during the split in 1912, and would balance the ticket in a more conservative direction.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 149, \"fields\": {\"first_name\": \"Elmer\", \"last_name\": \"Burkett\", \"election\": 14, \"party\": \"Republican\", \"state\": \"Nebraska\", \"priority\": 8, \"description\": \"'\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"../static/images/elmer-burkett-1916.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Besides Fairbanks, Elmer Burkett is the only candidate for Vice President with significant support, and Hughes could attempt to elevate him. Burkett has served as Representative and Senator from Nebraska, striking a moderate course on many of the labor and economic issues of the day. His region is more in favor of peace, vis a vis Europe, as well. Nationally, he is less well-known than Fairbanks.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 150, \"fields\": {\"first_name\": \"George\", \"last_name\": \"Kirkpatrick\", \"election\": 14, \"party\": \"Socialist\", \"state\": \"Ohio\", \"priority\": 9, \"description\": \"'\", \"color_hex\": \"#00C100\", \"secondary_color_hex\": \"#A1FFA1\", \"is_active\": 0, \"image_url\": \"'\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 151, \"fields\": {\"first_name\": \"Ira\", \"last_name\": \"Lendrith\", \"election\": 14, \"party\": \"Prohibition\", \"state\": \"Indiana\", \"priority\": 10, \"description\": \"'\", \"color_hex\": \"#FFFF00\", \"secondary_color_hex\": \"#FFFFC0\", \"is_active\": 0, \"image_url\": \"'\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 152, \"fields\": {\"first_name\": \"George\", \"last_name\": \"Bush\", \"election\": 15, \"party\": \"Republican\", \"state\": \"Texas\", \"priority\": 1, \"description\": \"<p>George Bush has served as Vice President for eight years, and also as a UN Ambassador, Director of the RNC, and Director of the CIA. He is hoping to succeed the popular Reagan, but fights the impression that he is <em>too</em> dependent on his former boss. He must prove he has the independence, ideological rigor, and strength to serve as President, all while finding some way to reduce the popularity of his opponent. Bush appears to be trailing badly as the campaign begins.</p>\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 1, \"image_url\": \"../static/images/george-bush-1988.jpg\", \"electoral_victory_message\": \"<h3>Congratulations! You have won the 1988 election.</h3><p>In spite of a hard-fought challenge from Michael Dukakis, you have held on to succeed Ronald Reagan.</p><p>Whatever you did, it must have worked. Observers were leaving your campaign for dead just a few months ago. On the political front, you can continue the policies of Reagan or turn in a more moderate direction. Internationally, you can hopefully oversee a period of relaxed tension with the Soviet Union.</p>\", \"electoral_loss_message\": \"<h3>Sorry. You have lost the 1988 election.</h3><p>Perhaps it was always a long-shot -- the American people just seemed ready to move on from Reagan.</p><p>Time will tell if Dukakis governs as a moderate, a liberal, or a technocrat. A lot can happen in four years, but the early gossip is that Bob Dole has the inside track for the 1992 nomination. Your next steps are unclear.</p>\", \"no_electoral_majority_message\": \"<h3>Sorry. You have lost the 1988 election.</h3><p>Although the Electoral College was tied, the Democrats have won a solid majority in the House, and will elevate Michael Dukakis to the Presidency.</p><p>Time will tell if Dukakis governs as a moderate, a liberal, or a technocrat. A lot can happen in four years, but the early gossip is that Bob Dole has the inside track for the 1992 nomination. Your next steps are unclear.</p>\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 153, \"fields\": {\"first_name\": \"Michael\", \"last_name\": \"Dukakis\", \"election\": 15, \"party\": \"Democrat\", \"state\": \"Massachusetts\", \"priority\": 2, \"description\": \"<p>Michael Dukakis has been elected three times as Governor of Massachusetts. His chances this year seem to be good, if he can press the case for his own ability and challenge the readiness of Bush. Dukakis has won the nomination without aligning himself firmly with a specific wing of the party. His national reputation is positive, but inchoate. He will be expected to define himself more clearly, and may need to explain some older votes and decisions as they become known.</p>\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 1, \"image_url\": \"../static/images/michael-dukakis-1988.jpg\", \"electoral_victory_message\": \"<h3>Congratulations! You have won the 1988 election.</h3><p>In spite of a hard-fought challenge from George Bush, you have held on to succeed Ronald Reagan.</p><p>You were always the favorite to win, but a lot could have gone wrong. On the political front, you can work a Democratic House to overturn the worst excesses of Reagan. Internationally, you can hopefully oversee a period of relaxed tension with the Soviet Union.</p>\", \"electoral_loss_message\": \"<h3>Sorry. You have lost the 1988 election.</h3><p>In spite of you being the favorite, things just never seemed to click once the real campaigning began.</p><p>Time will tell if Bush governs as a moderate, or a staunch conservative. Many Democrats feel that this election was yours to lose, and it seems unlikely that you will be welcome to run again in four years. Your term as Governor, however, runs through 1991.</p>\", \"no_electoral_majority_message\": \"<h3>Congratulations! You have won the 1988 election.</h3><p>Although the Electoral College was tied, the Democrats have won a solid majority in the House, and will elevate Michael Dukakis to the Presidency.</p><p>On the political front, you can work a Democratic House to overturn the worst excesses of Reagan. Internationally, you can hopefully oversee a period of relaxed tension with the Soviet Union.</p>\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 154, \"fields\": {\"first_name\": \"Ron\", \"last_name\": \"Paul\", \"election\": 15, \"party\": \"Libertarian\", \"state\": \"Texas\", \"priority\": 3, \"description\": \"'\", \"color_hex\": \"#FFFF00\", \"secondary_color_hex\": \"#FFFFC0\", \"is_active\": 0, \"image_url\": \"'\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 155, \"fields\": {\"first_name\": \"Lenora\", \"last_name\": \"Fulani/Other\", \"election\": 15, \"party\": \"Independent\", \"state\": \"Pennsylvania\", \"priority\": 4, \"description\": \"'\", \"color_hex\": \"#00C100\", \"secondary_color_hex\": \"#A1FFA1\", \"is_active\": 0, \"image_url\": \"'\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 156, \"fields\": {\"first_name\": \"Dan\", \"last_name\": \"Quayle\", \"election\": 15, \"party\": \"Republican\", \"state\": \"Indiana\", \"priority\": 5, \"description\": \"'\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"../static/images/dan-quayle-1988.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Dan Quayle has served as a Senator from Indiana for the past seven years. He would be an unexpected choice, and the first baby boomer to run on a national ticket. He does not have a long record of achievement at the highest stage, but he could have some appeal to social conservatives, Midwesterners, and younger voters. There is some skepticism about his intellect, and his campaigning and debating ability.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 157, \"fields\": {\"first_name\": \"Bob\", \"last_name\": \"Dole\", \"election\": 15, \"party\": \"Republican\", \"state\": \"Kansas\", \"priority\": 6, \"description\": \"'\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"../static/images/bob-dole-1988.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Bob Dole was Bush's primary rival for the Republican nomination. He has served as a Senator from Kansas since 1969. He is the preferred choice of many in the party, and has a loyal following on Capitol Hill. Many believe he would help immensely in the farm states. On the other hand, Dole served as Gerald Ford's running mate in 1976, and made some over-the-top attacks on Jimmy Carter which served as a distraction. He and Bush also have lukewarm feelings for each other.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 158, \"fields\": {\"first_name\": \"Jack\", \"last_name\": \"Kemp\", \"election\": 15, \"party\": \"Republican\", \"state\": \"New York\", \"priority\": 7, \"description\": \"'\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"../static/images/jack-kemp-1988.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Jack Kemp is a Congressman from New York who has served since the early 1970s. Before that, he was a well-known professional football quarterback. He was one of the main architects and proponents of Reagan's supply-side tax cuts, and is known to be a staunch fiscal conservative. This could cut both ways in a general election. He would be a good choice for most Republicans, and is consistently mentioned as a possible running-mate.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 159, \"fields\": {\"first_name\": \"Lloyd\", \"last_name\": \"Bentsen\", \"election\": 15, \"party\": \"Democrat\", \"state\": \"Texas\", \"priority\": 8, \"description\": \"'\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"../static/images/lloyd-bentsen-1988.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Lloyd Bentsen has served as a Senator from Texas since 1971. In his first Senatorial election, he defeated George Bush. He is viewed as a moderate Democrat, particularly on economic issues. Texas could be a competitive state in the fall, and Bentsen's presence would help there. He is also very experienced on the national political stage. No Democrat has ever lost Texas and gone on to win a Presidential election.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 160, \"fields\": {\"first_name\": \"John\", \"last_name\": \"Glenn\", \"election\": 15, \"party\": \"Democrat\", \"state\": \"Ohio\", \"priority\": 9, \"description\": \"'\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"../static/images/john-glenn-1988.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>John Glenn is a Senator from Ohio, whose name has been in the mix for President or Vice President for several years. He originally gained fame as an astronaut in the 1960s, and has fostered a reputation as a moderate Democrat, with a particular interest in science and education. Needless to say, he comes from a crucial state in any national election.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 161, \"fields\": {\"first_name\": \"Al\", \"last_name\": \"Gore\", \"election\": 15, \"party\": \"Democrat\", \"state\": \"Tennessee\", \"priority\": 10, \"description\": \"'\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"../static/images/al-gore-1988.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Al Gore has served as a Senator from Tennessee for three years, and like Bush, is the son of a Senator. He has combined a concern for science and technology with a somewhat conservative record on social issues such as gun control, abortion, and gay rights. He did fairly well in the 1988 nomination battle, finishing third to Dukakis and Jesse Jackson. He is also a baby boomer and could help appeal to younger voters.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 162, \"fields\": {\"first_name\": \"Jesse\", \"last_name\": \"Jackson\", \"election\": 15, \"party\": \"Democrat\", \"state\": \"Illinois\", \"priority\": 11, \"description\": \"'\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"../static/images/jesse-jackson-1988.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Jesse Jackson was Dukakis's most successful challenger for the Democratic nomination. He has consistently pushed liberal positions, and would be the first African-American to appear on a major party ticket. In the environment of 1988, his race could be an asset and a liability. Many of supporters feel that his success in the primaries should warrant his selection as the running mate, and passing him up could dampen enthusiasm among black and liberal voters.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 163, \"fields\": {\"first_name\": \"Andre\", \"last_name\": \"Marrou\", \"election\": 15, \"party\": \"Libertarian\", \"state\": \"Alaska\", \"priority\": 12, \"description\": \"'\", \"color_hex\": \"#FFFF00\", \"secondary_color_hex\": \"#FFFFC0\", \"is_active\": 0, \"image_url\": \"'\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 164, \"fields\": {\"first_name\": \"Other\", \"last_name\": \"Other\", \"election\": 15, \"party\": \"Independent\", \"state\": \"Pennsylvania\", \"priority\": 13, \"description\": \"'\", \"color_hex\": \"#00C100\", \"secondary_color_hex\": \"#A1FFA1\", \"is_active\": 0, \"image_url\": \"'\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 165, \"fields\": {\"first_name\": \"Hillary\", \"last_name\": \"Clinton\", \"election\": 16, \"party\": \"Democrat\", \"state\": \"New York\", \"priority\": 1, \"description\": \"<p>As expected, Hillary Clinton has carried her party's nomination, and now faces an unexpected opponent in Donald Trump. She was traditionally known as a mainstream Democrat, but tacked significantly to the left during the primary campaign. Clinton enters the general election in a strong position, but she'll be under relentless attack on a number of fronts. Can she make the case that she is truly in touch with the American people -- or that Trump would be an even worse option?</p>\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 1, \"image_url\": \"../static/images/hillary-clinton-2016.jpg\", \"electoral_victory_message\": \"<h3>Congratulations! You have won the 2016 election.</h3><p>In spite of a hard-fought challenge from Donald Trump, you have become the first woman elected to serve as President.</p><p>On the political front, it is unclear how much of your agenda you will be able to push forward with the current Congress. Hopefully your victory has helped Democrats further down the ballot. Start packing and prepare to move back into the White House!</p>\", \"electoral_loss_message\": \"<h3>Sorry! You have lost the 2016 election.</h3><p>Many of your supporters are despondent that you have faltered to the likes of Donald Trump. Many in the left wing of the party are furious that you pushed their candidate aside, only to lose. Time will tell how Trump operates as President. As for you, a long and sometimes ambiguous political career seems to be coming to its end.</p>\", \"no_electoral_majority_message\": \"<h3>Sorry! You have lost the 2016 election.</h3><p>No candidate secured a majority in the Electoral College. However, the Republicans won a majority in Congress and will elevate Trump to the Presidency. Time will tell how things go in that regard. As for you, a long and sometimes ambiguous political career seems to be coming to its end.</p>\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 166, \"fields\": {\"first_name\": \"Donald\", \"last_name\": \"Trump\", \"election\": 16, \"party\": \"Republican\", \"state\": \"New York\", \"priority\": 2, \"description\": \"<p>Donald Trump has shocked the political establishment by winning the Republican nomination in a divisive contest. He has taken a hard line on immigration and tax cuts, along with unorthodox positions on many other issues. He must unite his own party while finding some way to peel off potential Clinton voters -- or to blunt their enthusiasm for Clinton enough that they stay home. Will he continue the strategy of relentless attack that served him so well in the primary season?</p>\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 1, \"image_url\": \"../static/images/donald-trump-2016.jpg\", \"electoral_victory_message\": \"<h3>Congratulations! You have won the 2016 election.</h3><p>In spite of a hard-fought challenge from Hillary Clinton, you have shocked the world with your election victory.</p><p>On the political front, you have the bully pulpit in your favor, but both parties in Congress are likely to oppose your next moves, albeit for different reasons. Can you build a working coalition?</p>\", \"electoral_loss_message\": \"<h3>Sorry! You have lost the 2016 election.</h3><p>Many of your supporters are despondent that you have faltered to the likes of Hillary Clinton. Republicans in general believe this was a very winnable election, and are enraged that you came in to blow it. As for your next moves, will you recede quietly from the public spotlight? Or will you do anything you can to case doubt on the legitimacy of the results?</p>\", \"no_electoral_majority_message\": \"<h3>Wow! You have pulled out 2016 election.</h3><p>No candidate secured a majority in the Electoral College. However, the Republicans won a majority in Congress and will elevate you to the Presidency. Time will tell how things go in that regard. Any mutual affection between you and Congress is predicted to be short-lived, but you've pulled off a number of surprises to get this far.</p>\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 167, \"fields\": {\"first_name\": \"Gary\", \"last_name\": \"Johnson\", \"election\": 16, \"party\": \"Libertarian\", \"state\": \"New Mexico\", \"priority\": 3, \"description\": \"'\", \"color_hex\": \"#FFFF00\", \"secondary_color_hex\": \"#FFFFC0\", \"is_active\": 0, \"image_url\": \"'\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 168, \"fields\": {\"first_name\": \"Jill\", \"last_name\": \"Stein\", \"election\": 16, \"party\": \"Green\", \"state\": \"Massachusetts\", \"priority\": 4, \"description\": \"'\", \"color_hex\": \"#00C100\", \"secondary_color_hex\": \"#A1FFA1\", \"is_active\": 0, \"image_url\": \"'\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 169, \"fields\": {\"first_name\": \"Cory\", \"last_name\": \"Booker\", \"election\": 16, \"party\": \"Democrat\", \"state\": \"New Jersey\", \"priority\": 5, \"description\": \"'\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"../static/images/cory-booker-2016.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Cory Booker is a Senator from New Jersey and was also the Mayor of Newark for several years. Politically, he is a mainstream Democrat, relatively similar to Barack Obama. He is also relatively youthful, with somewhat of a national profile. Turning out the black vote, and preventing even a handful of defectors to Trump, will be essential to a Clinton victory. However, Booker inspires limited enthusiasm amongst Sanders supporters.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 170, \"fields\": {\"first_name\": \"Julian\", \"last_name\": \"Castro\", \"election\": 16, \"party\": \"Democrat\", \"state\": \"Texas\", \"priority\": 6, \"description\": \"'\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"../static/images/julian-castro-2016.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Julian Castro is the current Secretary of Housing and Urban Development, under the Obama Administration. He is one of the Democratic Party's highest profile Hispanic politicians, and is a fresh face on the national scene. On the other hand, he is somewhat light on experience, and many argue that Trump's presence will ensure Democratic dominance of the Hispanic vote, regardless of Castro's selection.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 171, \"fields\": {\"first_name\": \"Elizabeth\", \"last_name\": \"Warren\", \"election\": 16, \"party\": \"Democrat\", \"state\": \"Massachusetts\", \"priority\": 7, \"description\": \"'\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"../static/images/elizabeth-warren-2016.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Elizabeth Warren is a Senator from Massachusetts and an icon to progressive Democrats. Selecting her could be a good way to appeal to supporters of Bernie Sanders, but she will expect Clinton to adhere to progressive stances throughout the campaign, as a condition of joining the ticket. Some observers think that having two women on the ticket may be a bit much, and also point out that Warren's home state is safely Democratic.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 172, \"fields\": {\"first_name\": \"Sherrod\", \"last_name\": \"Brown\", \"election\": 16, \"party\": \"Democrat\", \"state\": \"Ohio\", \"priority\": 8, \"description\": \"'\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"../static/images/sherrod-brown-2016.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Sherrod Brown is a Senator from Ohio with a long history in that crucial state. He has generally been on the liberal end of the Democratic spectrum, but could help Clinton compete in the Midwest. Brown is reluctant to serve as a running mate this year. Clinton will need to give assurances that her change of position on trade issues, like the Trans-Pacific Partnership, is a permanent change, and was not one of political expediency.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 173, \"fields\": {\"first_name\": \"Scott\", \"last_name\": \"Brown\", \"election\": 16, \"party\": \"Republican\", \"state\": \"New Hampshire\", \"priority\": 9, \"description\": \"'\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"../static/images/scott-brown-2016.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Scott Brown gained national attention for his upset of Martha Coakley in the 2010 Massachusetts Senate race. He was voted out in 2012, and has had trouble gaining political traction in his (admittedly liberal) region, in spite of taking relatively moderate views. Brown has blue-collar bona fides and could help Trump reinforce his anti-establishment image. Geographically, he may provide some measure of help in winning New Hampshire.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 174, \"fields\": {\"first_name\": \"Ben\", \"last_name\": \"Carson\", \"election\": 16, \"party\": \"Republican\", \"state\": \"Michigan\", \"priority\": 10, \"description\": \"'\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"../static/images/ben-carson-2016.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Ben Carson was a candidate for President in 2016, with a long history within the evangelical community. He has never served in political office, a fact which may be an asset in this election. Carson was one of the Trump's first opponents to publicly endorse him, and he consistently polled relatively high in the black community during the primary season. However, he has also made a number of bizarre statements and may be vulnerable to a sustained attack campaign.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 175, \"fields\": {\"first_name\": \"Chris\", \"last_name\": \"Christie\", \"election\": 16, \"party\": \"Republican\", \"state\": \"New Jersey\", \"priority\": 11, \"description\": \"'\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"../static/images/chris-christie-2016.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Chris Christie is the current Governor of New Jersey, and was Trump's first opponent to endorse him, after making his own bid for the Republican nomination. Christie once enjoyed significant bipartisan support in New Jersey, but that has plummeted. His selection would double-down on Trump's image as an unorthodox, East Coast-influenced Republican. This may or may not be helpful.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 176, \"fields\": {\"first_name\": \"Ted\", \"last_name\": \"Cruz\", \"election\": 16, \"party\": \"Republican\", \"state\": \"Texas\", \"priority\": 12, \"description\": \"'\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"../static/images/ted-cruz-2016.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Ted Cruz was Trump's main rival for the Republican nomination. He is a Senator from Texas who has consistently taken conservative and evangelical positions during his political career. He will only serve as a running mate if Trump makes assurances about his position on the health care issue, federal spending, abortion, and other social issues. He has made it clear that he will withdraw from the ticket if Trump appears to deviate from his promises.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 177, \"fields\": {\"first_name\": \"James\", \"last_name\": \"Gray\", \"election\": 16, \"party\": \"Libertarian\", \"state\": \"New Mexico\", \"priority\": 13, \"description\": \"'\", \"color_hex\": \"#FFFF00\", \"secondary_color_hex\": \"#FFFFC0\", \"is_active\": 0, \"image_url\": \"'\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 178, \"fields\": {\"first_name\": \"Cheri\", \"last_name\": \"Honkala\", \"election\": 16, \"party\": \"Green\", \"state\": \"Massachusetts\", \"priority\": 14, \"description\": \"'\", \"color_hex\": \"#00C100\", \"secondary_color_hex\": \"#A1FFA1\", \"is_active\": 0, \"image_url\": \"'\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 200, \"fields\": {\"first_name\": \"Donald\", \"last_name\": \"Trump\", \"election\": 20, \"party\": \"Republican\", \"state\": \"New York\", \"priority\": 1, \"description\": \"<p>Donald Trump has shocked the political establishment by winning the Republican nomination in a divisive contest. He has taken a hard line on immigration and tax cuts, along with unorthodox positions on many other issues. He must unite his own party while finding some way to peel off potential Clinton voters -- or to blunt their enthusiasm for Clinton enough that they stay home. Will he continue the strategy of relentless attack that served him so well in the primary season?</p>\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 1, \"image_url\": \"../static/images/donald-trump-2016.jpg\", \"electoral_victory_message\": \"<h3>Congratulations! You have won the 2016 election.</h3><p>In spite of a hard-fought challenge from Hillary Clinton, you have shocked the world with your election victory.</p><p>On the political front, you have the bully pulpit in your favor, but support in Congress in uncertain. Will you govern as a more traditional conservative, or will you make a break from orthodoxy?</p>\", \"electoral_loss_message\": \"<h3>Sorry! You have lost the 2016 election.</h3><p>Many of your supporters are despondent that you have faltered to the likes of Hillary Clinton. Republicans in general believe this was a very winnable election, and are enraged that you came in to blow it. Luckily, there are any number of ways for you to take advantage of your newfound exposure. One rumor even has you founding a television station to profit from the aggrieved sensibilities of your followers. The future is in your hands.</p>\", \"no_electoral_majority_message\": \"<h3>Wow! You have pulled out 2016 election.</h3><p>No candidate secured a majority in the Electoral College. However, the Republicans won a majority in Congress and will elevate you to the Presidency. Time will tell how things go in that regard. Any mutual affection between you and Congress is predicted to be short-lived, but you've pulled off a number of surprises to get this far.</p>\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 201, \"fields\": {\"first_name\": \"Hillary\", \"last_name\": \"Clinton\", \"election\": 20, \"party\": \"Democrat\", \"state\": \"New York\", \"priority\": 2, \"description\": \"<p>As expected, Hillary Clinton has carried her party's nomination, and now faces an unexpected opponent in Donald Trump. She was traditionally known as a mainstream Democrat, but tacked significantly to the left during the primary campaign. Clinton enters the general election in a strong position, but she'll be under relentless attack on a number of fronts. Can she make the case that she truly in touch with the American people -- or that Trump would be an even worse option?</p>\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 1, \"image_url\": \"../static/images/hillary-clinton-2016.jpg\", \"electoral_victory_message\": \"<h3>Congratulations! You have won the 2016 election.</h3><p>In spite of a hard-fought challenge from Donald Trump, you have become the first woman elected to serve as President.</p><p>On the political front, it is unclear how much of your agenda you will be able to push forward with the current Congress. Hopefully your victory has helped Democrats further down the ballot. Start packing and prepare to move back into the White House!</p>\", \"electoral_loss_message\": \"<h3>Sorry! You have lost the 2016 election.</h3><p>Many of your supporters are despondent that you have faltered to the likes of Donald Trump. Many in the left wing of the party are furious that you pushed their candidate aside, only to lose. Time will tell how Trump operates as President. As for you, a long and sometimes ambiguous political career seems to be coming to its end.</p>\", \"no_electoral_majority_message\": \"<h3>Sorry! You have lost the 2016 election.</h3><p>No candidate secured a majority in the Electoral College. However, the Republicans won a majority in Congress and will elevate Trump to the Presidency. Time will tell how things go in that regard. As for you, a long and sometimes ambiguous political career seems to be coming to its end.</p>\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 202, \"fields\": {\"first_name\": \"Gary\", \"last_name\": \"Johnson/Others\", \"election\": 20, \"party\": \"Libertarian\", \"state\": \"New Mexico\", \"priority\": 3, \"description\": \"'\", \"color_hex\": \"#FFFF00\", \"secondary_color_hex\": \"#FFFFC0\", \"is_active\": 0, \"image_url\": \"'\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 203, \"fields\": {\"first_name\": \"Jill\", \"last_name\": \"Stein\", \"election\": 20, \"party\": \"Green\", \"state\": \"Massachusetts\", \"priority\": 4, \"description\": \"'\", \"color_hex\": \"#00C100\", \"secondary_color_hex\": \"#A1FFA1\", \"is_active\": 0, \"image_url\": \"'\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 204, \"fields\": {\"first_name\": \"Mike\", \"last_name\": \"Pence\", \"election\": 20, \"party\": \"Republican\", \"state\": \"Indiana\", \"priority\": 5, \"description\": \"'\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"../static/images/mike-pence-2016.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Mike Pence is a former Congressman and the current Governor of Indiana. He is a popular figure among social conservatives and would help assuage concern about Trump among party insiders. He would add executive experience to the ticket and make few mistakes on the campaign trail, but he could also undercut Trump's outsider credentials.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 205, \"fields\": {\"first_name\": \"Chris\", \"last_name\": \"Christie\", \"election\": 20, \"party\": \"Republican\", \"state\": \"New Jersey\", \"priority\": 6, \"description\": \"'\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"../static/images/chris-christie-2016.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Chris Christie is the current Governor of New Jersey, and was Trump's first opponent to endorse him, after making his own bid for the Republican nomination. Christie once enjoyed significant bipartisan support in New Jersey, but that has plummeted. His selection would double-down on Trump's image as an unorthodox, East Coast-influenced Republican. This may or may not be helpful.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 208, \"fields\": {\"first_name\": \"Sarah\", \"last_name\": \"Palin\", \"election\": 20, \"party\": \"Republican\", \"state\": \"Alaska\", \"priority\": 7, \"description\": \"'\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"../static/images/sarah-palin-2016.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Sarah Palin is the former Governor of Alaska and ill-fated running mate on John McCain's 2008 ticket. Many people believe that she alienated some moderate support and may have cost McCain the election. On the other hand, she endorsed your candidacy relatively early and is still something of a folk hero on the right. In any case, she would certainly help you grab an even greater share of the headlines this fall.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 206, \"fields\": {\"first_name\": \"Ben\", \"last_name\": \"Carson\", \"election\": 20, \"party\": \"Republican\", \"state\": \"Michigan\", \"priority\": 7, \"description\": \"'\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"../static/images/ben-carson-2016.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Ben Carson was a candidate for President in 2016, with a long history within the evangelical community. He has never served in political office, a fact which may be an asset in this election. Carson was one of the Trump's first opponents to publicly endorse him, and he consistently polled relatively high in the black community during the primary season. However, he has also made a number of bizarre statements and may be vulnerable to a sustained attack campaign.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 207, \"fields\": {\"first_name\": \"Jeff\", \"last_name\": \"Sessions\", \"election\": 20, \"party\": \"Republican\", \"state\": \"Alabama\", \"priority\": 8, \"description\": \"'\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"../static/images/jeff-sessions-2016.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Jeff Sessions, a Senator from Alabama, was the first major Republican politician to endorse your candidacy. He could help shore up some potentially shaky support on the right of the Republican party. Conversely, Alabama is not competitive, and sustained attacks on Hillary Clinton may be all that is needed to keep that wing in line.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 209, \"fields\": {\"first_name\": \"Tim\", \"last_name\": \"Kaine\", \"election\": 20, \"party\": \"Democrat\", \"state\": \"Virginia\", \"priority\": 9, \"description\": \"'\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"../static/images/tim-kaine-2016.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Tim Kaine has served as a Governor and Senator from Virginia, and shares similar political views to Hillary Clinton. He is fluent in both Spanish and English.</p><p>A lot of people see Kaine as a safe, experienced pick. He has little to offer to the wing of the party that supported Bernie Sanders during the nomination fight.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 210, \"fields\": {\"first_name\": \"Bernie\", \"last_name\": \"Sanders\", \"election\": 20, \"party\": \"Democrat\", \"state\": \"Vermont\", \"priority\": 10, \"description\": \"'\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"../static/images/bernie-sanders-2016.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Bernie Sanders was your main opponent in the nomination battle. There's no pretending that the two of you have a warm relationship, but he does have fierce support from many of your potential voters. On the other hand, if you want to make the case that you're a moderate alternative to Trump's extremism, having Bernie on the ticket will not help on that front.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 211, \"fields\": {\"first_name\": \"Cory\", \"last_name\": \"Booker\", \"election\": 20, \"party\": \"Democrat\", \"state\": \"New Jersey\", \"priority\": 11, \"description\": \"'\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"../static/images/cory-booker-2016.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Cory Booker is a Senator from New Jersey and was also the Mayor of Newark for several years. Politically, he is a mainstream Democrat, relatively similar to Barack Obama. He is also relatively youthful, with somewhat of a national profile. Turning out the black vote, and preventing even a handful of defectors to Trump, will be essential to a Clinton victory. However, Booker inspires limited enthusiasm amongst Sanders supporters.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 212, \"fields\": {\"first_name\": \"Elizabeth\", \"last_name\": \"Warren\", \"election\": 20, \"party\": \"Democrat\", \"state\": \"Massachusetts\", \"priority\": 12, \"description\": \"'\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"../static/images/elizabeth-warren-2016.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Elizabeth Warren is a Senator from Massachusetts and an icon to progressive Democrats. Selecting her could be a good way to appeal to supporters of Bernie Sanders, but she will expect Clinton to adhere to progressive stances throughout the campaign, as a condition of joining the ticket. Some observers think that having two women on the ticket may be a bit much, and also point out that Warren's home state is safely Democratic.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 213, \"fields\": {\"first_name\": \"Sherrod\", \"last_name\": \"Brown\", \"election\": 20, \"party\": \"Democrat\", \"state\": \"Ohio\", \"priority\": 13, \"description\": \"'\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"../static/images/sherrod-brown-2016.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Sherrod Brown is a Senator from Ohio with a long history in that crucial state. He has generally been on the liberal end of the Democratic spectrum, but could help Clinton compete in the Midwest. Brown is reluctant to serve as a running mate this year. Clinton will need to give assurances that her change of position on trade issues, like the Trans-Pacific Partnership, is a permanent change, and was not one of political expediency.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 214, \"fields\": {\"first_name\": \"William\", \"last_name\": \"Weld\", \"election\": 20, \"party\": \"Libertarian\", \"state\": \"Massachusetts\", \"priority\": 14, \"description\": \"'\", \"color_hex\": \"#FFFF00\", \"secondary_color_hex\": \"#FFFFC0\", \"is_active\": 0, \"image_url\": \"'\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 215, \"fields\": {\"first_name\": \"Ajamu\", \"last_name\": \"Baraka\", \"election\": 20, \"party\": \"Green\", \"state\": \"Washington DC\", \"priority\": 15, \"description\": \"'\", \"color_hex\": \"#00C100\", \"secondary_color_hex\": \"#A1FFA1\", \"is_active\": 0, \"image_url\": \"'\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 0.0}}]");
                 		aaa = election_HTML(t, i, a)
 	                	aaa = "../static/questionset/"+aaa
@@ -1514,496 +1809,4 @@ function divideElectoralVotesProp(e, t) {
                 $("#game_window").append(t), e.historical_overall = campaignTrail_temp.historical_overall, e.percentile = campaignTrail_temp.percentile, e.game_results_url = campaignTrail_temp.game_results_url, p()
             },
             error: function(t) {
-                e.historical_overall = "None", e.percentile = "None", e.game_results_url = "None", p()
-            }
-        })
-    }
-
-    function p() {
-        var t = S(e.election_id),
-            i = E(e.candidate_id),
-            a = e.election_json[t].fields.winning_electoral_vote_number;
-        if (e.final_overall_results[0].candidate == e.candidate_id && e.final_overall_results[0].electoral_votes >= a) {
-            var s = e.candidate_json[i].fields.electoral_victory_message;
-            e.final_outcome = "win"
-        } else if (e.final_overall_results[0].candidate != e.candidate_id && e.final_overall_results[0].electoral_votes >= a) {
-            s = e.candidate_json[i].fields.electoral_loss_message;
-            e.final_outcome = "loss"
-        } else if (e.final_overall_results[0].electoral_votes < a) {
-            s = e.candidate_json[i].fields.no_electoral_majority_message;
-            e.final_outcome = "tie"
-        }
-        var n = E(e.final_overall_results[0].candidate);
-        if (e.final_overall_results[0].electoral_votes >= a) var l = e.candidate_json[n].fields.image_url;
-        else l = e.election_json[t].fields.no_electoral_majority_image;
-        for (var o = 0, _ = 0; _ < e.final_overall_results.length; _++) o += e.final_overall_results[_].popular_votes;
-        var r = "";
-        for (_ = 0; _ < e.final_overall_results.length; _++) {
-            i = E(e.final_overall_results[_].candidate);
-            var d = e.candidate_json[i].fields.color_hex;
-            r += '            <tr><td style="text-align: left;">            <span style="background-color: ' + d + "; color: " + d + ';">----</span> ' + (f = e.candidate_json[i].fields.first_name + " " + e.candidate_json[i].fields.last_name) + "</td><td> " + e.final_overall_results[_].electoral_votes + " </td><td> " + M(e.final_overall_results[_].popular_votes) + " </td><td> " + (e.final_overall_results[_].popular_votes / o * 100).toFixed(1) + "% </td></tr>"
-        }
-        if ("None" != e.game_results_url) var c = '<h4>Final Results: <a target="_blank" href="' + e.game_results_url + '">Game Link</a> (use link to view this result on its own page)</h4>';
-        else c = "(Sorry. No URL available for these results. Something went wrong when saving data.)";
-        var u = '        <div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div id="main_content_area">            <div id="results_container">                <img class="person_image" src="' + l + '"/>            <div id="final_results_description">' + s + '</div>            <div id="final_results_share">                Share your results: <img id="fb_share_button" src="/static/images/quiz-share-facebook.png" style="cursor: pointer;"/>            </div>            <div id="overall_vote_statistics">' + c + '<table class="final_results_table">            <tr><th>Candidate</th><th>Electoral Votes</th>            <th>Popular Votes</th><th>Popular Vote %</th></tr>' + r + '</table>            </div>        </div>        </div>        <div id="map_footer">            <button class="final_menu_button" id="overall_results_button" disabled="disabled">                Final Election Results            </button>            <button class="final_menu_button" id="final_election_map_button">                Election Map            </button>            <button class="final_menu_button" id="state_results_button">                Results by State            </button>            <button class="final_menu_button" id="overall_details_button">                Overall Results Details            </button>            <button class="final_menu_button" id="recommended_reading_button">                Further Reading            </button>            <button class="final_menu_button" id="play_again_button">                Play Again!            </button>        </div>';
-        $("#game_window").html(u);
-        t = S(e.election_id), i = E(e.candidate_id);
-        var v = e.election_json[t].fields.year,
-            f = e.candidate_json[i].fields.first_name + " " + e.candidate_json[i].fields.last_name,
-            m = e.candidate_json[i].fields.description;
-        if (m = m.replace("</p><p>", " ").replace("<p>", "").replace("</p>", "").replace("<em>", "").replace("</em>", ""), "win" == e.final_outcome) var p = "I won the " + v + " election as " + f + ". How would you do?";
-        else if ("loss" == e.final_outcome) p = "I lost the " + v + " election as " + f + ". How would you do?";
-        else if ("tie" == e.final_outcome) p = "I deadlocked the " + v + " Electoral College as " + f + ". How would you do?";
-        $("#fb_share_button").click(function() {
-            FB.ui({
-                display: "popup",
-                method: "feed",
-                link: "https://www.americanhistoryusa.com" + e.game_results_url,
-                picture: "https://www.americanhistoryusa.com" + e.candidate_image_url,
-                name: p,
-                description: "Click to see the Electoral College map from my game, and then try it yourself!"
-            }, function(e) {})
-        }), $("#final_election_map_button").click(function() {
-            h()
-        }), $("#state_results_button").click(function() {
-            g()
-        }), $("#overall_details_button").click(function() {
-            b()
-        }), $("#recommended_reading_button").click(function() {
-            w()
-        }), $("#play_again_button").click(function() {
-            y()
-        })
-    }
-
-    function h() {
-        for (var t = f(500), i = u(), a = "", s = 0; s < i.length; s++) {
-            for (var n = 0; n < e.final_overall_results.length; n++)
-                if (e.final_overall_results[n].candidate == i[s].candidate) var l = e.final_overall_results[n].electoral_votes;
-            a += '            <li><span style="color:' + i[s].color + "; background-color: " + i[s].color + '">--</span> ' + i[s].last_name + ":  " + l + "</li>"
-        }
-        var o = S(e.election_id),
-            _ = '        <div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div id="main_content_area">            <div id="map_container"></div>            <div id="menu_container">                <div id="overall_result_container">                    <div id="overall_result">                        <h3>ELECTORAL VOTES</h3>                        <ul>' + a + "</ul><p>" + e.election_json[o].fields.winning_electoral_vote_number + ' to win</p>                    </div>                </div>                <div id="state_result_container">                    <div id="state_result">                    <h3>STATE RESULTS</h3>                    <p>Click on a state to view final results.</p>                    </div>                </div>            </div>        </div>        <div id="map_footer">            <button class="final_menu_button" id="overall_results_button">                Final Election Results            </button>            <button class="final_menu_button" id="final_election_map_button" disabled="disabled">                Election Map            </button>            <button class="final_menu_button" id="state_results_button">                Results by State            </button>            <button class="final_menu_button" id="overall_details_button">                Overall Results Details            </button>            <button class="final_menu_button" id="recommended_reading_button">                Further Reading            </button>            <button class="final_menu_button" id="play_again_button">                Play Again!            </button>        </div>';
-        $("#game_window").html(_), $("#map_container").usmap(t), $("#overall_results_button").click(function() {
-            p()
-        }), $("#state_results_button").click(function() {
-            g()
-        }), $("#overall_details_button").click(function() {
-            b()
-        }), $("#recommended_reading_button").click(function() {
-            w()
-        }), $("#play_again_button").click(function() {
-            y()
-        })
-    }
-
-    function g() {
-        for (var t = [], i = [], a = [], s = 0; s < e.final_state_results.length; s++) {
-            var n = R(e.final_state_results[s].state);
-            t.push({
-                state: e.states_json[n].pk,
-                name: e.states_json[n].fields.name
-            }), i.push({
-                state: e.states_json[n].pk,
-                name: e.states_json[n].fields.name,
-                electoral_votes: e.states_json[n].fields.electoral_votes
-            }), a.push({
-                state: e.states_json[n].pk,
-                name: e.states_json[n].fields.name,
-                pct_margin: e.final_state_results[s].result[0].percent - e.final_state_results[s].result[1].percent
-            })
-        }
-        P(t, "name"), P(i, "electoral_votes"), i.reverse(), P(a, "pct_margin");
-        var l = [],
-            o = [];
-        for (s = 0; s < e.final_overall_results.length; s++) {
-            for (var _ = e.final_overall_results[s].candidate, r = E(_), d = [], c = [], u = 0; u < e.final_state_results.length; u++) {
-                if (e.final_state_results[u].result[0].candidate == _) {
-                    var v = e.final_state_results[u].result[0].percent - e.final_state_results[u].result[1].percent;
-                    n = R(e.final_state_results[u].state);
-                    d.push({
-                        state: e.final_state_results[u].state,
-                        name: e.states_json[n].fields.name,
-                        pct_margin: v
-                    })
-                }
-                for (var f = 0; f < e.final_state_results[u].result.length; f++)
-                    if (e.final_state_results[u].result[f].candidate == _) {
-                        n = R(e.final_state_results[u].state);
-                        c.push({
-                            state: e.final_state_results[u].state,
-                            name: e.states_json[n].fields.name,
-                            vote_pct: e.final_state_results[u].result[f].percent
-                        })
-                    }
-            }
-            P(d, "pct_margin"), l.push({
-                candidate: _,
-                last_name: e.candidate_json[r].fields.last_name,
-                values: d
-            }), P(c, "vote_pct"), c.reverse(), o.push({
-                candidate: _,
-                last_name: e.candidate_json[r].fields.last_name,
-                values: c
-            })
-        }
-        var m = "";
-        for (s = 0; s < l.length; s++) l[s].values.length > 0 && (m += '<option value="' + (10 + s) + '">Closest ' + l[s].last_name + " Wins</option>");
-        var g = "";
-        for (s = 0; s < o.length; s++) g += '<option value="' + (20 + s) + '">Highest ' + o[s].last_name + " %</option>";
-        var j = '    <div class="game_header">    \t<h2>NEW CAMPAIGN TRAIL</h2>\t</div>\t<div id="main_content_area">\t<div id="results_container">\t\t<h3 class="title_h3">Election Results and Data by State</h3>\t\t<div id="drop_down_area_state">\t\t\t<div id="sort_tab_area">\t\t\t<p>View states by:\t\t\t<select id="sort_tab">\t\t\t<option value="1">Alphabetical</option>\t\t\t<option value="2">Most Electoral Votes</option>\t\t\t<option value="3">Closest States</option>' + m + g + '</select>\t\t\t</p>\t\t\t</div>\t\t\t<div id="state_tab_area">\t\t\t<p>Select a state:\t\t\t<select id="state_tab">' + k(t) + '</select>\t\t\t</p>\t\t\t</div>\t\t</div>\t\t<div id="state_result_data_summary">' + T(t[0].state) + '</div>\t</div>\t<div id="results_container_description">\t</div>\t</div>\t<div id="map_footer">\t\t<button class="final_menu_button" id="overall_results_button">Final Election Results</button>\t\t<button class="final_menu_button" id="final_election_map_button">Election Map</button>\t\t<button class="final_menu_button" id="state_results_button" disabled="disabled">Results by State</button>\t\t<button class="final_menu_button" id="overall_details_button">Overall Results Details</button>\t\t<button class="final_menu_button" id="recommended_reading_button">Further Reading</button>\t\t<button class="final_menu_button" id="play_again_button">Play Again!</button>\t</div>';
-        $("#game_window").html(j), $("#sort_tab").change(function() {
-            if (1 == sort_tab.value) var e = k(t);
-            else if (2 == sort_tab.value) e = k(i);
-            else if (3 == sort_tab.value) e = k(a);
-            else if (sort_tab.value >= 10 && sort_tab.value <= 19) {
-                var s = sort_tab.value - 10;
-                e = k(l[s].values)
-            } else s = sort_tab.value - 20, e = k(o[s].values);
-            $("#state_tab").html(e);
-            var n = T(state_tab.value);
-            $("#state_result_data_summary").html(n)
-        }), $("#state_tab").change(function() {
-            var e = T(state_tab.value);
-            $("#state_result_data_summary").html(e)
-        }), $("#overall_results_button").click(function() {
-            p()
-        }), $("#final_election_map_button").click(function() {
-            h()
-        }), $("#overall_details_button").click(function() {
-            b()
-        }), $("#recommended_reading_button").click(function() {
-            w()
-        }), $("#play_again_button").click(function() {
-            y()
-        })
-    }
-
-    function b() {
-        S(e.election_id);
-        for (var t = 0, i = 0; i < e.final_overall_results.length; i++) t += e.final_overall_results[i].popular_votes;
-        var a = "";
-        for (i = 0; i < e.final_overall_results.length; i++) {
-            var s = E(e.final_overall_results[i].candidate),
-                n = e.candidate_json[s].fields.color_hex;
-            a += '            <tr><td style="text-align: left;">            <span style="background-color: ' + n + "; color: " + n + ';">----</span> ' + (e.candidate_json[s].fields.first_name + " " + e.candidate_json[s].fields.last_name) + "</td><td> " + e.final_overall_results[i].electoral_votes + " </td><td> " + M(e.final_overall_results[i].popular_votes) + " </td><td> " + (e.final_overall_results[i].popular_votes / t * 100).toFixed(1) + "% </td></tr>"
-        }
-        if ("None" != e.percentile) var l = "<p>You have done better than approximately <strong>" + e.percentile + "%</strong> of the games that have been played with your candidate and difficulty level.</p>";
-        else l = "";
-        if ("None" != e.historical_overall) {
-            var o = "";
-            for (i = 0; i < e.historical_overall.length; i++) o += '<tr><td style="text-align: left;">                <span style="background-color: ' + e.historical_overall[i].color_hex + "; color: " + e.historical_overall[i].color_hex + ';">----</span>' + e.historical_overall[i].name + "</td><td>" + e.historical_overall[i].winning_pct.toFixed(2) + "</td><td>" + e.historical_overall[i].electoral_votes_avg.toFixed(1) + "</td><td>" + M(e.historical_overall[i].popular_votes_avg) + "</td><td>" + e.historical_overall[i].popular_vote_pct_avg.toFixed(2) + "</td><td>" + e.historical_overall[i].electoral_votes_min + " - " + e.historical_overall[i].electoral_votes_max + "</td><td>" + M(e.historical_overall[i].popular_votes_min) + " - " + M(e.historical_overall[i].popular_votes_max) + "</td></tr>";
-            var _ = '<div id="overall_stat_details">            <h4>Historical Results - Your Candidate and Difficulty Level</h4>            <table>            <tr><th>Candidate</th>                <th>Win %</th>                <th>EV Avg.</th>                <th>PV Avg.</th>                <th>PV % Avg.</th>                <th>EV Range</th>                <th>PV Range</th>            </tr>' + o + "</table>            </div>"
-        } else o = "", _ = "";
-        var r = '    <div class="game_header">\t<h2>NEW CAMPAIGN TRAIL</h2>\t</div>\t<div id="main_content_area">\t<div id="overall_details_container">\t\t<h3>Overall Election Details</h3>\t\t<div id="overall_election_details">\t\t<h4>Results - This Game</h4>\t\t<table>\t\t<tr><th>Candidate</th>\t\t<th>Electoral Votes</th>\t\t<th>Popular Votes</th>\t\t<th>Popular Vote %</th>\t\t</tr>' + a + "</table>" + l + "</div>" + _ + '</div>\t</div>\t<div id="map_footer">\t\t<button class="final_menu_button" id="overall_results_button">Final Election Results</button>\t\t<button class="final_menu_button" id="final_election_map_button">Election Map</button>\t\t<button class="final_menu_button" id="state_results_button">Results by State</button>\t\t<button class="final_menu_button" id="overall_details_button" disabled="disabled">Overall Results Details</button>\t\t<button class="final_menu_button" id="recommended_reading_button">Further Reading</button>\t\t<button class="final_menu_button" id="play_again_button">Play Again!</button>\t</div>';
-        $("#game_window").html(r), $("#overall_results_button").click(function() {
-            p()
-        }), $("#final_election_map_button").click(function() {
-            h()
-        }), $("#state_results_button").click(function() {
-            g()
-        }), $("#recommended_reading_button").click(function() {
-            w()
-        }), $("#play_again_button").click(function() {
-            y()
-        })
-    }
-
-    function w() {
-        var t = S(e.election_id),
-            i = '        <div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div id="main_content_area_reading">            <h3 class="results_tab_header">Recommended Reading</h3>        <p>Are you interested in exploring the ' + e.election_json[t].fields.year + ' election further?         This page contains some recommended reading to get you up to speed.</p>        <div id="recommended_reading_box">' + e.election_json[t].fields.recommended_reading + '</div>        </div>        <div id="map_footer">                <button class="final_menu_button" id="overall_results_button">                    Final Election Results                </button>                <button class="final_menu_button" id="final_election_map_button">                    Election Map                </button>                <button class="final_menu_button" id="state_results_button">                    Results by State                </button>                <button class="final_menu_button" id="overall_details_button">                    Overall Results Details                </button>                <button class="final_menu_button" id="recommended_reading_button" disabled="disabled">                    Further Reading                </button>                <button class="final_menu_button" id="play_again_button">                    Play Again!                </button>            </div>';
-        $("#game_window").html(i), $("#overall_results_button").click(function() {
-            p()
-        }), $("#final_election_map_button").click(function() {
-            h()
-        }), $("#state_results_button").click(function() {
-            g()
-        }), $("#overall_details_button").click(function() {
-            b()
-        }), $("#play_again_button").click(function() {
-            y()
-        })
-    }
-
-    function y() {
-        var t = S(e.election_id);
-        $("#game_window").append('        <div class="overlay" id="new_game_overlay"></div>        <div class="overlay_window" id="new_game_window">            <div class="overlay_window_content" id="election_night_content">            <h3>Advisor Feedback</h3>            <img src="' + e.election_json[t].fields.advisor_url + '" width="208" height="128"/><p>            Are you sure you want to begin a new game?            </p></div>            <div class="overlay_buttons" id="new_game_buttons">            <button id="new_game_button">Yes</button><br>            <button id="cancel_button">No</button>            </div>        </div>'), $("#new_game_button").click(function() {
-            window.location.href = window.location.href
-        }), $("#cancel_button").click(function() {
-            $("#new_game_overlay").remove(), $("#new_game_window").remove()
-        })
-    }
-
-    function k(e) {
-        for (var t = "", i = 0; i < e.length; i++) t += '<option value="' + e[i].state + '">' + e[i].name + "</option>";
-        return t
-    }
-
-    function T(t) {
-        for (var i = "        <h4>Results - This Game</h4>        <table>\t    <tr><th>Candidate</th><th>Popular Votes</th>\t    <th>Popular Vote %</th><th>Electoral Votes</th></tr>", a = 0; a < e.final_state_results.length; a++)
-            if (e.final_state_results[a].state == t)
-                for (var s = 0; s < e.final_state_results[a].result.length; s++) {
-                    var n = E(e.final_state_results[a].result[s].candidate);
-                    i += "                    <tr><td>" + (e.candidate_json[n].fields.first_name + " " + e.candidate_json[n].fields.last_name) + "</td><td>" + M(e.final_state_results[a].result[s].votes) + "</td><td>" + (100 * e.final_state_results[a].result[s].percent).toFixed(2) + "</td><td>" + e.final_state_results[a].result[s].electoral_votes + "</td></tr>"
-                }
-        return i += "</table>"
-    }
-
-    function A(t) {
-        var i = [];
-        i.push(e.candidate_id);
-        for (var a = 0; a < e.opponents_list.length; a++) i.push(e.opponents_list[a]);
-        var s = [];
-        for (a = 0; a < i.length; a++) {
-            for (var n = [], l = 0, o = 0, _ = 0, r = 0; r < e.player_answers.length; r++)
-                for (var d = 0; d < e.answer_score_global_json.length; d++)
-                    if (e.answer_score_global_json[d].fields.answer == e.player_answers[r] && e.answer_score_global_json[d].fields.candidate == e.candidate_id && e.answer_score_global_json[d].fields.affected_candidate == i[a]) {
-                        n.push(e.answer_score_global_json[d].fields.global_multiplier);
-                        break
-                    } for (r = 0; r < n.length; r++) l += n[r];
-            if (o = i[a] == e.candidate_id && l < -.4 ? .6 : 1 + l, i[a] == e.candidate_id) var c = o * (1 + F() * e.global_parameter_json[0].fields.global_variance) * e.difficulty_level_multiplier;
-            else c = o * (1 + F() * e.global_parameter_json[0].fields.global_variance);
-            _ = 1 == isNaN(c) ? 1 : c, s.push({
-                candidate: i[a],
-                global_multiplier: _
-            })
-        }
-        var u = [];
-        for (a = 0; a < i.length; a++) {
-            var v = [];
-            for (r = 0; r < e.candidate_issue_score_json.length && (e.candidate_issue_score_json[r].fields.candidate != i[a] || (v.push({
-                    issue: e.candidate_issue_score_json[r].fields.issue,
-                    issue_score: e.candidate_issue_score_json[r].fields.issue_score
-                }), v.length != e.issues_json.length)); r++);
-            u.push({
-                candidate_id: i[a],
-                issue_scores: v
-            })
-        }
-        var f = [];
-        for (a = 0; a < i.length; a++) {
-            var m = [];
-            for (r = 0; r < e.candidate_state_multiplier_json.length; r++)
-                if (e.candidate_state_multiplier_json[r].fields.candidate == i[a]) {
-                    var p = e.candidate_state_multiplier_json[r].fields.state_multiplier * s[a].global_multiplier * (1 + F() * e.global_parameter_json[0].fields.global_variance);
-                    if (m.push({
-                            state: e.candidate_state_multiplier_json[r].fields.state,
-                            state_multiplier: p
-                        }), m.length == e.states_json.length) break;
-                    P(m, "state")
-                } f.push({
-                candidate_id: i[a],
-                state_multipliers: m
-            })
-        }
-        for (a = 0; a < u[0].issue_scores.length; a++) {
-            var h = -1;
-            for (r = 0; r < e.running_mate_issue_score_json.length; r++)
-                if (e.running_mate_issue_score_json[r].fields.issue == u[0].issue_scores[a].issue) {
-                    h = r;
-                    break
-                } var g = 0,
-                b = 0;
-            for (r = 0; r < e.player_answers.length; r++)
-                for (d = 0; d < e.answer_score_issue_json.length; d++) e.answer_score_issue_json[d].fields.issue == u[0].issue_scores[a].issue && e.answer_score_issue_json[d].fields.answer == e.player_answers[r] && (g += e.answer_score_issue_json[d].fields.issue_score * e.answer_score_issue_json[d].fields.issue_importance, b += e.answer_score_issue_json[d].fields.issue_importance);
-            u[0].issue_scores[a].issue_score = (u[0].issue_scores[a].issue_score * e.global_parameter_json[0].fields.candidate_issue_weight + e.running_mate_issue_score_json[h].fields.issue_score * e.global_parameter_json[0].fields.running_mate_issue_weight + g) / (e.global_parameter_json[0].fields.candidate_issue_weight + e.global_parameter_json[0].fields.running_mate_issue_weight + b)
-        }
-        for (a = 0; a < i.length; a++)
-            for (r = 0; r < f[a].state_multipliers.length; r++) {
-                var w = 0;
-                for (d = 0; d < e.player_answers.length; d++)
-                    for (var j = 0; j < e.answer_score_state_json.length; j++) e.answer_score_state_json[j].fields.state == f[a].state_multipliers[r].state && e.answer_score_state_json[j].fields.answer == e.player_answers[d] && e.answer_score_state_json[j].fields.candidate == e.candidate_id && e.answer_score_state_json[j].fields.affected_candidate == i[a] && (w += e.answer_score_state_json[j].fields.state_multiplier);
-                if (0 == a) {
-                    e.running_mate_state_id == f[a].state_multipliers[r].state && (w += .004 * f[a].state_multipliers[r].state_multiplier);
-                    for (d = 0; d < e.player_visits.length; d++) e.player_visits[d] == f[a].state_multipliers[r].state && (w += .005 * Math.max(.1, f[a].state_multipliers[r].state_multiplier))
-                }
-                f[a].state_multipliers[r].state_multiplier += w
-            }
-        var y = [];
-        for (a = 0; a < f[0].state_multipliers.length; a++) {
-            var k = [];
-            for (r = 0; r < i.length; r++) {
-                var $ = 0;
-                for (d = 0; d < u[r].issue_scores.length; d++) {
-                    var T = 0,
-                        A = 1;
-                    for (j = 0; j < e.state_issue_score_json.length; j++)
-                        if (e.state_issue_score_json[j].fields.state == f[0].state_multipliers[a].state && e.state_issue_score_json[j].fields.issue == u[0].issue_scores[d].issue) {
-                            T = e.state_issue_score_json[j].fields.state_issue_score, A = e.state_issue_score_json[j].fields.weight;
-                            break
-                        } var S = u[r].issue_scores[d].issue_score * Math.abs(u[r].issue_scores[d].issue_score),
-                        E = T * Math.abs(T);
-                    $ += e.global_parameter_json[0].fields.vote_variable - Math.abs((S - E) * A)
-                }
-                for (d = 0; d < f[r].state_multipliers.length; d++)
-                    if (f[r].state_multipliers[d].state == f[0].state_multipliers[a].state) var C = d;
-                $ *= f[r].state_multipliers[C].state_multiplier, $ = Math.max($, 0), k.push({
-                    candidate: i[r],
-                    result: $
-                })
-            }
-            y.push({
-                state: f[0].state_multipliers[a].state,
-                result: k
-            })
-        }
-        for (a = 0; a < y.length; a++)
-            for (r = 0; r < e.states_json.length; r++)
-                if (y[a].state == e.states_json[r].pk) {
-                    y[a].abbr = e.states_json[r].fields.abbr;
-                    break
-                } for (a = 0; a < y.length; a++) {
-            var M = 0;
-            for (r = 0; r < e.states_json.length; r++)
-                if (e.states_json[r].pk == y[a].state) {
-                    M = Math.floor(e.states_json[r].fields.popular_votes * (.95 + .1 * Math.random()));
-                    break
-                } var x = 0;
-            for (r = 0; r < y[a].result.length; r++) x += y[a].result[r].result;
-            for (r = 0; r < y[a].result.length; r++) {
-                var N = y[a].result[r].result / x;
-                y[a].result[r].percent = N, y[a].result[r].votes = Math.floor(N * M)
-            }
-        }
-        for (a = 0; a < y.length; a++) {
-            var I = R(y[a].state),
-                O = 0;
-            if (P(y[a].result, "percent"), y[a].result.reverse(), O = e.states_json[I].fields.electoral_votes, "1" == e.game_type_id)
-                if (1 == e.states_json[I].fields.winner_take_all_flg)
-                    for (r = 0; r < y[a].result.length; r++) y[a].result[r].electoral_votes = 0 == r ? O : 0;
-                else {
-                    O = e.states_json[I].fields.electoral_votes;
-                    var H = 0;
-                    for (r = 0; r < y[a].result.length; r++) H += y[a].result[r].votes;
-                    var L = Math.ceil(y[a].result[0].votes / H * O * 1.25),
-                        D = O - L;
-                    for (r = 0; r < y[a].result.length; r++) y[a].result[r].electoral_votes = 0 == r ? L : 1 == r ? D : 0
-                } if ("2" == e.game_type_id) {
-                var V = [];
-                for (r = 0; r < y[a].result.length; r++) V.push(y[a].result[r].percent);
-                var q = divideElectoralVotesProp(V, O);
-                for (r = 0; r < y[a].result.length; r++) y[a].result[r].electoral_votes = q[r]
-            }
-        }
-        if (1 == t) return y;
-        if (2 == t) {
-            for (a = 0; a < y.length; a++) {
-                for (r = 0; r < y[a].result.length; r++) {
-                    var G = 1 + F() * e.global_parameter_json[0].fields.global_variance;
-                    y[a].result[r].result *= G
-                }
-                for (M = 0, r = 0; r < e.states_json.length; r++)
-                    if (e.states_json[r].pk == y[a].state) {
-                        M = Math.floor(e.states_json[r].fields.popular_votes * (.95 + .1 * Math.random()));
-                        break
-                    } for (x = 0, r = 0; r < y[a].result.length; r++) x += y[a].result[r].result;
-                for (r = 0; r < y[a].result.length; r++) {
-                    N = y[a].result[r].result / x;
-                    y[a].result[r].percent = N, y[a].result[r].votes = Math.floor(N * M)
-                }
-            }
-            return y
-        }
-    }
-
-    function S(t) {
-        for (var i = -1, a = 0; a < e.election_json.length; a++)
-            if (e.election_json[a].pk == t) {
-                i = a;
-                break
-            } return i
-    }
-
-    function E(t) {
-        for (var i = -1, a = 0; a < e.candidate_json.length; a++)
-            if (e.candidate_json[a].pk == t) {
-                i = a;
-                break
-            } return i
-    }
-
-    function R(t) {
-        for (var i = -1, a = 0; a < e.states_json.length; a++)
-            if (e.states_json[a].pk == t) {
-                i = a;
-                break
-            } return i
-    }
-
-    function C(t) {
-        var i = S(t),
-            a = '    <div class="overlay" id="feedback_overlay"></div>    <div class="overlay_window" id="feedback_window">        <div class="overlay_window_content" id="feedback_content">        <h3>Advisor Feedback</h3>        <img src="' + e.election_json[i].fields.advisor_url + '" width="208" height="128"/>        <p>Please select an answer before continuing!</p>        </div>        <div id="visit_buttons">        <button id="ok_button">OK</button><br>        </div>    </div>';
-        $("#game_window").append(a), $("#ok_button").click(function() {
-            $("#feedback_overlay").remove(), $("#feedback_window").remove()
-        })
-    }
-
-    function F() {
-        var e, t, i;
-        do {
-            i = (e = 2 * Math.random() - 1) * e + (t = 2 * Math.random() - 1) * t
-        } while (i >= 1 || 0 == i);
-        return e * Math.sqrt(-2 * Math.log(i) / i)
-    }
-
-    function P(e, t) {
-        return e.sort(function(e, i) {
-            var a = e[t],
-                s = i[t];
-            return a < s ? -1 : a > s ? 1 : 0
-        })
-    }
-
-    function M(e) {
-        var t = e.toString().split(".");
-        return t[0] = t[0].replace(/\B(?=(\d{3})+(?!\d))/g, ","), t.join(".")
-    }
-    $("#game_start").click(function(a) {
-        a.preventDefault(),
-            function() {
-                for (var a = "", n = 0; n < e.temp_election_list.length; n++) 0 == e.temp_election_list[n].is_premium ? a += "<option value=" + e.temp_election_list[n].id + ">" + e.temp_election_list[n].display_year + "</option>" : 1 == e.show_premium ? a += "<option value=" + e.temp_election_list[n].id + ">" + e.temp_election_list[n].display_year + "</option>" : a += "<option value=" + e.temp_election_list[n].id + " disabled>" + e.temp_election_list[n].display_year + "</option>";
-                var l = '<div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div class="inner_window_w_desc" id="inner_window_2">            <div id="election_year_form">            <form name="election_year">            <p>                <h3>Please select the election you will run in:</h3>    \t\t    <select name="election_id" id="election_id">' + a + '</select>            </p>            </form>            <div class="election_description_window" id="election_description_window">                <div id="election_image">                    <img src="' + e.election_json[0].fields.image_url + '" width="300" height="160"/>                </div>                <div id="election_summary">' + e.election_json[0].fields.summary + '</div>            </div>        </div>        <p><button id="election_id_button">Continue</button></p>';
-                $("#game_window").html(l), $("#election_id").change(function() {
-                    for (var t = -1, i = 0; i < e.election_json.length; i++)
-                        if (e.election_json[i].pk == election_id.value) {
-                            t = i;
-                            break
-                        } $("#election_description_window").html('<div id="election_image">            <img src="' + e.election_json[t].fields.image_url + '" width="300" height="160"/>            </div>            <div id="election_summary">' + e.election_json[t].fields.summary + "</div>")
-                }), $("#election_id_button").click(function(a) {
-                    a.preventDefault(),
-                        function(a) {
-                            for (var n = "", l = 0; l < e.candidate_json.length; l++) e.candidate_json[l].fields.election == a && 1 == e.candidate_json[l].fields.is_active && (n += "<option value=" + e.candidate_json[l].pk + ">" + e.candidate_json[l].fields.first_name + " " + e.candidate_json[l].fields.last_name + "</option>");
-                            var o = '<div class="game_header">        <h2>NEW CAMPAIGN TRAIL</h2>    </div>    <div class="inner_window_w_desc" id="inner_window_3">        <div id="candidate_form">        <form name="candidate">            <p>            <h3>Please select your candidate:</h3>            <select name="candidate_id" id="candidate_id">' + n + '</select>            </p>        </form>        </div>        <div class="person_description_window" id="candidate_description_window">        </div>        <p>            <button class="person_button" id="candidate_id_button">Continue</button>        </p>    </div>';
-                            $("#game_window").html(o), $("#candidate_id").ready(function() {
-                                t()
-                            }), $("#candidate_id").change(function() {
-                                t()
-                            }), $("#candidate_id_button").click(function(t) {
-                                t.preventDefault(),
-                                    function(t, a) {
-                                        for (var n = "", l = 0; l < e.running_mate_json.length; l++)
-                                            if (e.running_mate_json[l].fields.candidate == a) {
-                                                var o = e.running_mate_json[l].fields.running_mate,
-                                                    _ = -1;
-                                                for (j = 0; j < e.candidate_json.length; j++)
-                                                    if (o == e.candidate_json[j].pk) {
-                                                        _ = j;
-                                                        break
-                                                    } n += "<option value=" + e.candidate_json[_].pk + ">" + e.candidate_json[_].fields.first_name + " " + e.candidate_json[_].fields.last_name + "</option>"
-                                            } var r = '        <div class="game_header">        <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div class="inner_window_w_desc" id="inner_window_4">            <div id="running_mate_form">            <form name="running mate">            <p><h3>Please select your running mate:</h3>            <select name="running_mate_id" id="running_mate_id">' + n + '</select>            </p>            </form>            </div>            <div class="person_description_window" id="running_mate_description_window">            </div>        <p><button class="person_button" id="running_mate_id_button">Continue</button>        </p>        </div>';
-                                        $("#game_window").html(r), $("#running_mate_id").ready(function() {
-                                            i()
-                                        }), $("#running_mate_id").change(function() {
-                                            i()
-                                        }), $("#running_mate_id_button").click(function(e) {
-                                            e.preventDefault(), s(t, a, running_mate_id.value)
-                                        })
-                                    }(a, candidate_id.value)
-                            })
-                        }(election_id.value)
-                })
-            }()
-    }), $("#skip_to_final").click(function(t) {
-        e.final_state_results = A(1), d()
-    })
-}();
+                e.historical_overall = "No
