@@ -25,11 +25,18 @@ function loadMod(code1, code2) {
 
 		if ($("#answer_select_button")[0] != null) {
 			eval(code2)
-    		clearInterval(important_code)
+    		killIntervals()	
 		}
 
 		i += 1
 	}, 1000);
+}
+
+function killIntervals() {
+	var interval_id = window.setInterval("", 9999); // Get a reference to the last
+                                                // interval +1
+	for (var i = 1; i < interval_id; i++)
+        window.clearInterval(i);
 }
 
 function modSelectChange() {
