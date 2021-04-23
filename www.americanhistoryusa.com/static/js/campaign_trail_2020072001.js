@@ -18,18 +18,16 @@ modded = false
 function loadMod(code1, code2) {
     i = 0
     kill = 0
+    eval(code1)
 	var important_code = setInterval(function() {
-		if (i==0){
-    		eval(code1)
-    	}
 
-		if ($("#answer_select_button")[0] != null && i < kill) {
+		if ($("#answer_select_button")[0] != null && i < kill+5) {
 			eval(code2)
-    		clearInterval(important_code)
-    		kill = i
+			if (kill == 0)
+    			kill = i
 		}
 
-		i += 1
+		i = i + 1
 	}, 1000);
 }
 
