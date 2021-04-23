@@ -16,6 +16,7 @@ function csrfToken() {
 modded = false
 i = 0
 moddercheckeror = false
+code2 = []
 
 function loadMod(code1, code2) {
     kill = 0
