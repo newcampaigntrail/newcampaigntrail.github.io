@@ -14,21 +14,25 @@ function csrfToken() {
 }
 
 modded = false
+i = 0
+moddercheckeror = false
 
 function loadMod(code1, code2) {
-    i = 0
     kill = 0
     eval(code1)
-	var important_code = setInterval(function() {
+    if (moddercheckeror == false) {
+    	moddercheckeror = true
+		var important_code = setInterval(function() {
+			if ($("#answer_select_button")[0] != null && i > kill-5) {
+				eval(code2)
+				console.log("things are happening")
+				if (kill == 0)
+    				kill = i
+			}
 
-		if ($("#answer_select_button")[0] != null && i < kill+5) {
-			eval(code2)
-			if (kill == 0)
-    			kill = i
-		}
-
-		i = i + 1
-	}, 1000);
+			i = i + 1
+		}, 1000);
+	}
 }
 
 function modSelectChange() {
@@ -47,11 +51,10 @@ $("#submitMod").click(function() {
 		client.open('GET', "../static/mods/"+$("#modSelect")[0].value+"_init.html");
 		console.log("../static/mods/"+$("#modSelect")[0].value+"_init.html")
 		client.onreadystatechange = function() {
-			console.log(client.responseText);
 			var clientb = new XMLHttpRequest();
 			clientb.open('GET', "../static/mods/"+$("#modSelect")[0].value+".html");
 			clientb.onreadystatechange = function() {
-				console.log(clientb.responseText);
+				console.log("eeee")
 				loadMod(client.responseText,clientb.responseText)
 			}
 			clientb.send();
