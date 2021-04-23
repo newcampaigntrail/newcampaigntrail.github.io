@@ -23,7 +23,7 @@ function loadMod(code1, code2) {
     if (moddercheckeror == false) {
     	moddercheckeror = true
 		var important_code = setInterval(function() {
-			if ($("#answer_select_button")[0] != null && i > kill-5) {
+			if ($("#answer_select_button")[0] != null) {
 				eval(code2)
 				console.log("things are happening")
 				if (kill == 0)
