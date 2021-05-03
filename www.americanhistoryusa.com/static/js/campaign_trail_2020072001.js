@@ -14,26 +14,24 @@
 	}
 
 	modded = false
-	i = 0
+	i = 1
 	moddercheckeror = false
 	code222 = []
+	kill = false
 
 	function loadMod(code1, code2) {
-	    kill = 0
-	    eval(code1)
-	    if (i == 0) {
-	    	code222 = code2
-	    }
+	    kill = false
 	    if (moddercheckeror == false) {
+	    	eval(code1)
 	    	moddercheckeror = true
 			var important_code = setInterval(function() {
-				if ($("#answer_select_button")[0] != null) {
-					eval(code222)
-					if (kill == 0)
-	    				kill = i
+				if ($("#answer_select_button")[0] != null  && kill == false) {
+					eval(code2)
+					console.log(code2)
+					if (kill == false)
+	    				kill = true
 				}
-
-				i = i + 1
+				i += 1
 			}, 1000);
 		}
 	}
@@ -45,6 +43,8 @@
 			$("#customMenu")[0].style.display = "none"
 		}
 	}
+	
+	diff_mod = false
 
 	$("#submitMod").click(function() {
 		if ($("#modSelect")[0].value == "other") {
@@ -52,17 +52,11 @@
 		} else {
 			var client = new XMLHttpRequest();
 			client.open('GET', "../static/mods/"+$("#modSelect")[0].value+"_init.html");
-			console.log("../static/mods/"+$("#modSelect")[0].value+"_init.html")
 			client.onreadystatechange = function() {
-				var clientb = new XMLHttpRequest();
-				clientb.open('GET', "../static/mods/"+$("#modSelect")[0].value+".html");
-				clientb.onreadystatechange = function() {
-					console.log("eeee")
-					loadMod(client.responseText,clientb.responseText)
-				}
-				clientb.send();
+				eval(client.responseText)
 			}
 			client.send();
+			diff_mod = true
 		}
 		$("#modloaddiv")[0].style.display = 'none'
 		$("#modLoadReveal")[0].style.display = 'none'
@@ -191,6 +185,14 @@
 		    	                    var t = $("input:radio[name=game_answers]:checked").val();
 		    	                	null == t ? C(e.election_id) : n(t)
 		        	            })
+		        	            if (diff_mod) {
+		        	            	var client = new XMLHttpRequest();
+									client.open('GET', "../static/mods/"+$("#modSelect")[0].value+".html");
+									client.onreadystatechange = function() {
+										eval(client.responseText)
+									}
+									client.send();
+								}
 		            	        if ($("#answer_select_button")[0] != null) {
 		                	    	clearInterval(important_code)
 	                    		}
