@@ -68,6 +68,31 @@
 </div>
 </div>
 <div class="footer">
+<button id="modLoadReveal" onclick="if(document.getElementById('modloaddiv').style.display != 'none'){document.getElementById('modloaddiv').style.display = 'none'}else{document.getElementById('modloaddiv').style.display = 'block'}">
+	Alt History Mod Loader
+</button><br><br>
+<div id="modloaddiv" style="display:none">
+	<select name="mod" id="modSelect" onchange="modSelectChange()">
+    <option value="other">Other</option>
+    <option value="1844b_PolkDallas">1844b (Polk/Dallas)</option>
+    <option value="1896_BryanWatson">1896 (Bryan/Watson)</option>
+    <option value="1964_RockefellerScranton">1964 (Rockefeller/Scranton)</option>
+    <option value="1976_CarterWallace">1976 (Carter/Wallace)</option>
+    <option value="1996b_ClintonGore">1996b (Clinton/Gore)</option>
+    <option value="1996b_DoleKemp">1996b (Dole/Kemp)</option>
+    <option value="2000_GoreShaheen">2000 (Gore/Shaheen)</option>
+    <option value="2016_TrumpJones">2016 (Trump/Jones)</option>
+    <option value="2016_ClintonManchin">2016 (Clinton/Manchin)</option>
+    <option value="2016_ClintonMcCaskill">2016 (Clinton/McCaskill)</option>
+	</select>
+	<div id="customMenu"><br>
+	<b>Code Set 1:</b><br>
+	<textarea id="codeset1" width=400 height=300></textarea><br>
+	<b>Code Set 2:</b><br>
+	<textarea id="codeset2" width=400 height=300></textarea><br>
+	</div>
+	<br><br><button id="submitMod">Submit</button>
+</div><br><br>
 	<button id="modLoadReveal" onclick="if(document.getElementById('modloaddiv').style.display != 'none'){document.getElementById('modloaddiv').style.display = 'none'}else{document.getElementById('modloaddiv').style.display = 'block'}">
 	Mod Loader
 </button><br><br>
@@ -133,31 +158,6 @@
 	<br><br><button id="submitMod">Submit</button>
 	<br>
         <br>
-	<button id="modLoadReveal" onclick="if(document.getElementById('modloaddiv').style.display != 'none'){document.getElementById('modloaddiv').style.display = 'none'}else{document.getElementById('modloaddiv').style.display = 'block'}">
-	Alt History Mod Loader
-</button><br><br>
-<div id="modloaddiv" style="display:none">
-	<select name="mod" id="modSelect" onchange="modSelectChange()">
-    <option value="other">Other</option>
-    <option value="1844b_PolkDallas">1844b (Polk/Dallas)</option>
-    <option value="1896_BryanWatson">1896 (Bryan/Watson)</option>
-    <option value="1964_RockefellerScranton">1964 (Rockefeller/Scranton)</option>
-    <option value="1976_CarterWallace">1976 (Carter/Wallace)</option>
-    <option value="1996b_ClintonGore">1996b (Clinton/Gore)</option>
-    <option value="1996b_DoleKemp">1996b (Dole/Kemp)</option>
-    <option value="2000_GoreShaheen">2000 (Gore/Shaheen)</option>
-    <option value="2016_TrumpJones">2016 (Trump/Jones)</option>
-    <option value="2016_ClintonManchin">2016 (Clinton/Manchin)</option>
-    <option value="2016_ClintonMcCaskill">2016 (Clinton/McCaskill)</option>
-	</select>
-	<div id="customMenu"><br>
-	<b>Code Set 1:</b><br>
-	<textarea id="codeset1" width=400 height=300></textarea><br>
-	<b>Code Set 2:</b><br>
-	<textarea id="codeset2" width=400 height=300></textarea><br>
-	</div>
-	<br><br><button id="submitMod">Submit</button>
-</div><br><br>
 <a href="http://www.americanhistoryusa.com" style="color:#FF6B6B">Original site</a> created by Dan Bryan &copy; 2012-2021
 <br> 
 Source code hosted on <a href="https://github.com/newcampaigntrail/newcampaigntrail" style="color:#FF6B6B">GitHub</a>
