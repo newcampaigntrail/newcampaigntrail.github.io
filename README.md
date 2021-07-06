@@ -9,3 +9,6 @@ Plan out all the information (questions, candidates, etc.) in detail and then fo
 
 ## What do the numbers inside the game's code mean?
 - pk: Identifier for the game to reference an object
+
+## How do I credit myself in the mod window?
+Paste the following into your Code 1 block: `campaignTrail_temp.credits = '';` with your username being placed inside of the quotation marks. 
