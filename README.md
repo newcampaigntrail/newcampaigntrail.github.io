@@ -12,3 +12,10 @@ Plan out all the information (questions, candidates, etc.) in detail and then fo
 
 ## How do I credit myself in the mod window?
 Paste the following into your Code 1 block: `campaignTrail_temp.credits = '';` with your username being placed inside of the quotation marks. 
+
+## How do issue_scores work?
+Issues are handled by various jsons in the Code 2 block. In temp_issues_json issues are split up by stances which range from 1-7 (most opposed to least opposed). When representing these in decimal scores, they range from -1.0 to 1.0. The closer to -1.0 you are, the closer you are to stance 1. 
+- Each state's score can be defined in state_issue_score_json
+- Each answer's score can be defined in answer_issue_score_json
+- Each candidate's score can be defined in candidate_issue_score_json
+- Each running mate's score can be defined in running_mate_issue_score_json
