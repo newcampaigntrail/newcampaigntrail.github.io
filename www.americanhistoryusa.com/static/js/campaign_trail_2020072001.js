@@ -36,6 +36,15 @@
 		}
 	}
 
+	function endingPicker(out, totv, aa, quickstat) {
+		//out = "win", "loss", or "tie" for your candidate
+		//totv = total votes in entire election
+		//aa = all final overall results data
+		//quickstat = relevant data on candidate performance (format: your candidate's electoral vote count, your candidate's popular vote share, your candidate's raw vote total)
+
+		return "<font id='monologue' face='Comic Sans MS'>* heya<br>* is anyone there?<br>* well... just calling to ask.<br>* you really like to challenge yourself, huh...?<br>*well... good job.<br>* just promise not to brag about it, okay?<br>* ... guess i should say something else, too.<br><button onclick='nextPage()'>Next Page</button></font>"
+	}
+
 	function modSelectChange() {
 		if ($("#modSelect")[0].value == "other") {
 			$("#customMenu")[0].style.display = "block"
@@ -627,6 +636,21 @@
 	        else l = e.election_json[t].fields.no_electoral_majority_image;
 	        for (var o = 0, _ = 0; _ < e.final_overall_results.length; _++) o += e.final_overall_results[_].popular_votes;
 	        var r = "";
+
+	    	if (campaignTrail_temp.multiple_endings) {
+
+	    		n = 0
+	    		for (i = 0; i < e.final_overall_results.length; i++) {
+	    			if (e.final_overall_results[i].candidate == e.candidate_id){
+	    				n = i;
+	    				break
+	    			}
+	    		}
+	    		quickstats = [e.final_overall_results[n].electoral_votes, e.final_overall_results[n].popular_votes / o * 100, e.final_overall_results[n].popular_votes] //format: electoral vote count, popular vote proportion, popular vote vote count
+	        	s = endingPicker(e.final_outcome = "tie", o, e.final_overall_results, quickstats)
+	        
+	        }
+
 	        for (_ = 0; _ < e.final_overall_results.length; _++) {
 	            i = E(e.final_overall_results[_].candidate);
 	            var d = e.candidate_json[i].fields.color_hex;
@@ -1096,3 +1120,12 @@
 	        e.final_state_results = A(1), d()
 	    })
 	}();
+	//you're just a dirty modder, aren't you?
+	//well, feel free to keep looking through at this, but it would be much cooler if you could actually find where this is in context.
+	//bonus points if you can tell me (decstar) what this is referencing
+	function nextPage() {
+		document.getElementById("monologue").innerHTML = "<audio autoplay='true' src='https://ia800103.us.archive.org/2/items/sansost/21%20Dogsong.mp3' style='display:none;'></audio>* it's been a while, huh?<br>* ...<br>* i'll be honest.<br>* i have no idea what happened for you to get here.<br>* this is actually some sort of error-handling message.<br>* so, if you're getting this ending...<br>* tell whoever made the mod, okay?<br>* they might fix it, or if it's a novel situation...<br>* they might even add another ending to the game.<br>* chances are, though...<br><button onclick='nextPage2()'>Next Page</button>"
+	}
+	function nextPage2() {
+		document.getElementById("monologue").innerHTML = "* you're just a dirty modder, aren't you?<br>* yeah, get outta here."
+	}
