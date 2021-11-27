@@ -608,6 +608,10 @@
 	        })
 	    }
 
+	    function endingPicker(ev, pvp, pvc) {
+	    	
+	    }
+
 	    function p() {
 	        var t = S(e.election_id),
 	            i = E(e.candidate_id),
@@ -627,6 +631,9 @@
 	        else l = e.election_json[t].fields.no_electoral_majority_image;
 	        for (var o = 0, _ = 0; _ < e.final_overall_results.length; _++) o += e.final_overall_results[_].popular_votes;
 	        var r = "";
+	    	if (campaignTrail_temp.multiple_endings) {
+	        	s = endingPicker(e.final_overall_results[0].electoral_votes, e.final_overall_results[_].popular_votes / o * 100, e.final_overall_results[_].popular_votes)
+	        }
 	        for (_ = 0; _ < e.final_overall_results.length; _++) {
 	            i = E(e.final_overall_results[_].candidate);
 	            var d = e.candidate_json[i].fields.color_hex;
