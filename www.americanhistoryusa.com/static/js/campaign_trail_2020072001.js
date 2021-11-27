@@ -609,7 +609,7 @@
 	    }
 
 	    function endingPicker(ev, pvp, pvc) {
-	    	
+
 	    }
 
 	    function p() {
@@ -632,7 +632,7 @@
 	        for (var o = 0, _ = 0; _ < e.final_overall_results.length; _++) o += e.final_overall_results[_].popular_votes;
 	        var r = "";
 	    	if (campaignTrail_temp.multiple_endings) {
-	        	s = endingPicker(e.final_overall_results[0].electoral_votes, e.final_overall_results[_].popular_votes / o * 100, e.final_overall_results[_].popular_votes)
+	        	s = endingPicker(e.final_overall_results[0].electoral_votes, e.final_overall_results[0].popular_votes / o * 100, e.final_overall_results[0].popular_votes)
 	        }
 	        for (_ = 0; _ < e.final_overall_results.length; _++) {
 	            i = E(e.final_overall_results[_].candidate);
