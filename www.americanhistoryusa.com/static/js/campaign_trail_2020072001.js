@@ -36,6 +36,10 @@
 		}
 	}
 
+	function endingPicker(ev, pvp, pvc) {
+
+	}
+
 	function modSelectChange() {
 		if ($("#modSelect")[0].value == "other") {
 			$("#customMenu")[0].style.display = "block"
@@ -606,10 +610,6 @@
 	                e.historical_overall = "None", e.percentile = "None", e.game_results_url = "None", p()
 	            }
 	        })
-	    }
-
-	    function endingPicker(ev, pvp, pvc) {
-
 	    }
 
 	    function p() {
