@@ -86,6 +86,8 @@
 					}
 				}
 				client2.send();
+			} catch {
+				console.log("what")
 			}
 		}
 		$("#modloaddiv")[0].style.display = 'none'
