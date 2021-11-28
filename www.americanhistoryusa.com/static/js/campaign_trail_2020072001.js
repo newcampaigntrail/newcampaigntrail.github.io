@@ -80,8 +80,10 @@
 				var client2 = new XMLHttpRequest();
 				client2.open('GET', "../static/mods/"+$("#modSelect")[0].value+"_ending.html");
 				client2.onreadystatechange = function() {
-					campaignTrail_temp.multiple_endings = true
 					important_info = client2.responseText
+					if (important_info.indexOf("<html>") == -1) {
+						campaignTrail_temp.multiple_endings = true
+					}
 				}
 				client2.send();
 			}
