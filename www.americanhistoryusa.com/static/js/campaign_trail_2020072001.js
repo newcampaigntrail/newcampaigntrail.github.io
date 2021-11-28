@@ -37,14 +37,15 @@
 		}
 	}
 
-	function endingPicker(out, totv, aa, quickstat) {
+	function endingPicker(out, totv, aa, quickstats) {
 		//out = "win", "loss", or "tie" for your candidate
 		//totv = total votes in entire election
 		//aa = all final overall results data
 		//quickstat = relevant data on candidate performance (format: your candidate's electoral vote count, your candidate's popular vote share, your candidate's raw vote total)
-		
+
 		if (important_info != "") {
-			eval(important_info)
+			a = new Function("out", "totv", "aa", "quickstats", important_info)(out, totv, aa, quickstats)
+			return a
 		} else {
 			return "<font id='monologue' face='Comic Sans MS'>* heya<br>* is anyone there?<br>* well... just calling to ask.<br>* you really like to challenge yourself, huh...?<br>*well... good job.<br>* just promise not to brag about it, okay?<br>* ... guess i should say something else, too.<br><button onclick='nextPage()'>Next Page</button></font>"
 		}
