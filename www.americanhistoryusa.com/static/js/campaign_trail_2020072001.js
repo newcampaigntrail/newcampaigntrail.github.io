@@ -81,9 +81,6 @@
 				client2.open('GET', "../static/mods/"+$("#modSelect")[0].value+"_ending.html");
 				client2.onreadystatechange = function() {
 					important_info = client2.responseText
-					if (important_info.indexOf("<html>") == -1) {
-						campaignTrail_temp.multiple_endings = true
-					}
 				}
 				client2.send();
 			} catch {
@@ -659,6 +656,10 @@
 	        else l = e.election_json[t].fields.no_electoral_majority_image;
 	        for (var o = 0, _ = 0; _ < e.final_overall_results.length; _++) o += e.final_overall_results[_].popular_votes;
 	        var r = "";
+
+	    	if (important_info.indexOf("<html>") == -1 && important_info != "") {
+				campaignTrail_temp.multiple_endings = true
+			}
 
 	    	if (campaignTrail_temp.multiple_endings) {
 
