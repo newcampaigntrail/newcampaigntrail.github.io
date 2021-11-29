@@ -675,7 +675,10 @@
 	    			}
 	    		}
 	    		quickstats = [e.final_overall_results[n].electoral_votes, e.final_overall_results[n].popular_votes / o * 100, e.final_overall_results[n].popular_votes] //format: electoral vote count, popular vote proportion, popular vote vote count
-	        	s = endingPicker(e.final_outcome, o, e.final_overall_results, quickstats)
+	        	a = endingPicker(e.final_outcome, o, e.final_overall_results, quickstats)
+	        	if (a != false) {
+	        		s = a
+	        	}
 	        
 	        }
 
