@@ -182,6 +182,10 @@
 	                    break
 	                } e.difficulty_level_multiplier = e.difficulty_level_json[d].fields.multiplier,
 	                function(t, i, a, l, o) {
+	                	if (campaignTrail_temp.musicOn) {
+	                		document.getElementById("music_player").style.display=""
+	                		document.getElementById('campaigntrailmusic').src = campaignTrail_temp.musicSrc
+						}
 	                	if (modded == false){
 		                	aaa = election_HTML(t, i, a)
 		                	aaa = "../static/questionset/"+aaa
