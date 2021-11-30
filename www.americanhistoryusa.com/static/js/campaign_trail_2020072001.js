@@ -813,6 +813,18 @@ function exportResults() {
 	        
 	        }
 
+	        if (campaignTrail_temp.iamapoopybuttfaceandhavenolife) {
+	        	setInterval(function(){
+	        		try {
+	        			document.getElementsByClassName("person_image")[0].style.aspectRatio=1.3
+	        			document.getElementsByClassName("person_image")[0].style.filter="hue-rotate(180deg)"
+	        		} catch {
+	        			console.log("you are *such* a sussy baka")
+	        		}
+	        	}, 100);
+	        }
+	        rrrrr = "<br><b>Difficulty Multiplier:</b> "+campaignTrail_temp.difficulty_level_multiplier.toFixed(1)+"<br>"
+
 	        for (_ = 0; _ < e.final_overall_results.length; _++) {
 	            i = E(e.final_overall_results[_].candidate);
 	            var d = e.candidate_json[i].fields.color_hex;
@@ -820,7 +832,7 @@ function exportResults() {
 	        }
 	        if ("None" != e.game_results_url) var c = '<h4>Final Results: <a target="_blank" href="' + e.game_results_url + '">Game Link</a> (use link to view this result on its own page)</h4>';
 	        else c = "";
-	        var u = '        <div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div id="main_content_area">            <div id="results_container">                <img class="person_image" src="' + l + '"/>            <div id="final_results_description">' + s + '</div>             <div id="overall_vote_statistics">' + c + '<table class="final_results_table">     <br>       <tr><th>Candidate</th><th>Electoral Votes</th>            <th>Popular Votes</th><th>Popular Vote %</th></tr>' + r + '</table>            </div>        </div>        </div>        <div id="map_footer">            <button class="final_menu_button" id="overall_results_button" disabled="disabled">                Final Election Results            </button>            <button class="final_menu_button" id="final_election_map_button">                Election Map            </button>            <button class="final_menu_button" id="state_results_button">                Results by State            </button>            <button class="final_menu_button" id="overall_details_button">                Overall Results Details            </button>              <button class="final_menu_button" id="play_again_button">                Play Again!            </button>        </div>';
+	        var u = '        <div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div id="main_content_area">            <div id="results_container">                <img class="person_image" src="' + l + '"/>'+rrrrr+'            <div id="final_results_description">' + s + '</div>             <div id="overall_vote_statistics">' + c + '<table class="final_results_table">     <br>       <tr><th>Candidate</th><th>Electoral Votes</th>            <th>Popular Votes</th><th>Popular Vote %</th></tr>' + r + '</table>            </div>        </div>        </div>        <div id="map_footer">            <button class="final_menu_button" id="overall_results_button" disabled="disabled">                Final Election Results            </button>            <button class="final_menu_button" id="final_election_map_button">                Election Map            </button>            <button class="final_menu_button" id="state_results_button">                Results by State            </button>            <button class="final_menu_button" id="overall_details_button">                Overall Results Details            </button>              <button class="final_menu_button" id="play_again_button">                Play Again!            </button>        </div>';
 	        $("#game_window").html(u);
 	        t = S(e.election_id), i = E(e.candidate_id);
 	        var v = e.election_json[t].fields.year,
