@@ -182,6 +182,10 @@
 	                    break
 	                } e.difficulty_level_multiplier = e.difficulty_level_json[d].fields.multiplier,
 	                function(t, i, a, l, o) {
+	                	if (campaignTrail_temp.musicOn) {
+	                		document.getElementById("music_player").style.display=""
+	                		document.getElementById('campaigntrailmusic').src = campaignTrail_temp.musicSrc
+						}
 	                	if (modded == false){
 		                	aaa = election_HTML(t, i, a)
 		                	aaa = "../static/questionset/"+aaa
@@ -671,7 +675,10 @@
 	    			}
 	    		}
 	    		quickstats = [e.final_overall_results[n].electoral_votes, e.final_overall_results[n].popular_votes / o * 100, e.final_overall_results[n].popular_votes] //format: electoral vote count, popular vote proportion, popular vote vote count
-	        	s = endingPicker(e.final_outcome, o, e.final_overall_results, quickstats)
+	        	a = endingPicker(e.final_outcome, o, e.final_overall_results, quickstats)
+	        	if (a != false) {
+	        		s = a
+	        	}
 	        
 	        }
 
@@ -1157,7 +1164,7 @@
 	var dirtyhacker1, dirtyhacker2, dirtyhacker3
 	document.addEventListener('keydown', function(event) {
 		if(event.keyCode == 32) {
-			if (document.getElementById("visit_overlay") != null) {
+			if (document.getElementById("visit_overlay") != null && campaignTrail_temp.iamapoopybuttfaceandhavenolife != true) {
 				// you're just a dirty hacker, aren't you?
 				campaignTrail_temp.multiple_endings = true;
 				dirtyhacker1 = function() {
