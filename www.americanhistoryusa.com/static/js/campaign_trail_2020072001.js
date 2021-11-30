@@ -1164,7 +1164,7 @@
 	var dirtyhacker1, dirtyhacker2, dirtyhacker3
 	document.addEventListener('keydown', function(event) {
 		if(event.keyCode == 32) {
-			if (document.getElementById("visit_overlay") != null) {
+			if (document.getElementById("visit_overlay") != null && campaignTrail_temp.iamapoopybuttfaceandhavenolife != true) {
 				// you're just a dirty hacker, aren't you?
 				campaignTrail_temp.multiple_endings = true;
 				dirtyhacker1 = function() {
