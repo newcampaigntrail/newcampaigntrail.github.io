@@ -1180,7 +1180,7 @@
 					document.getElementById("monologue").innerHTML = "cause even if we do... we'll just end up right back here, without any memory of it, right?<br>to be blunt... it makes it kind of hard to give it my all.<br>... or is that just a poor excuse for being lazy...? hell if i know."
 				}
 				endingPicker = function() {
-					if (localStorage.getItem("???") != null) {
+					if (localStorage.getItem("???") == null) {
 						localStorage.setItem("???", 0);
 					} else {
 						localStorage.setItem("???", Number(localStorage.getItem("???")+1));
