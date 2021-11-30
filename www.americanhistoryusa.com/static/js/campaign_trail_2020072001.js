@@ -13,6 +13,41 @@
 	    }("csrftoken")
 	}
 
+	slrr = ""
+	rrr = ""
+
+	function switchPV() {
+		// switchingEst, rrr, _, pvswitcher
+		swE = document.getElementById("switchingEst")
+		if (swE.innerHTML == rrr) {
+			swE.innerHTML = slrr
+			pvswitcher.innerText = "Switch to Popular Vote Estimate"
+		} else {
+			swE.innerHTML = rrr
+			pvswitcher.innerText = "Switch to State Estimate"
+		}
+	}
+
+	function containsObject(obj, list) {
+	    var i;
+	    for (i = 0; i < list.length; i++) {
+	        if (list[i] === obj) {
+	            return true;
+	        }
+	    }
+
+    	return false;
+	}
+
+	function copy(mainObject) {
+		let objectCopy = {}; // objectCopy will store a copy of the mainObject
+		let key;
+		for (key in mainObject) {
+		    objectCopy[key] = mainObject[key]; // copies each property to the objectCopy object
+		}
+		return objectCopy;
+	}
+
 	modded = false
 	i = 1
 	moddercheckeror = false
@@ -294,7 +329,9 @@ function exportResults() {
 
 	    function l() {
 	        var t = A(2);
-	        if (e.question_number++, e.question_number == e.global_parameter_json[0].fields.question_count) e.final_state_results = A(1), d();
+	        if (e.question_number++, e.question_number == e.global_parameter_json[0].fields.question_count) {
+	        	e.final_state_results = A(1), d();
+	        }
 	        else if (e.question_number % 2 == 0) {
 	            var i = S(e.election_id);
 	            1 == e.election_json[i].fields.has_visits ? function(e) {
@@ -345,6 +382,64 @@ function exportResults() {
 	            })
 	        }
 	        var c = function(i, a) {
+	        	total_v = 0
+	        	for (var s = 0; s < e.states_json.length; s++) {
+	    			for (var n = [], l = 0; l < t.length; l++)
+	                	if (t[l].abbr == e.states_json[s].fields.abbr)
+							for (var o = 0; o < t[l].result.length; o++) n.push({
+	                    		candidate: t[l].result[o].candidate,
+		                		percent: t[l].result[o].percent
+			                });
+					P(n, "percent"), n.reverse();
+					var _ = "";
+					for (l = 0; l < n.length; l++) {
+	                	var r = "",
+	                    d = Math.floor(100 * n[l].percent)/100
+	                    nef = 0
+	                    for (o = 0; o < e.candidate_json.length; o++)
+	                    	if (e.candidate_json[o].pk == n[l].candidate) {
+								r = e.candidate_json[o].fields.last_name;
+	                           	nef = o
+	                            break
+							}
+						popv = campaignTrail_temp.states_json[s].fields.popular_votes*d
+						if (e.candidate_json[nef].popvs == null) {
+							e.candidate_json[nef].popvs = popv
+						} else {
+							e.candidate_json[nef].popvs += popv
+						}
+	                }
+	                total_v += campaignTrail_temp.states_json[s].fields.popular_votes
+	            }
+	            	nnnn = []
+	            	w = []
+	            	vv = ""
+	                for (o = 0; o < e.candidate_json.length; o++) {
+	                    if (containsObject(e.candidate_json[o].pk,e.opponents_list) || e.candidate_json[o].pk == e.candidate_id) {
+							e.candidate_json[o].pvp = e.candidate_json[o].popvs / total_v
+							nnnn.push(copy(e.candidate_json[o]))
+							w.push(e.candidate_json[o].pvp)
+							e.candidate_json[o].popvs = 0
+						}
+					}
+
+					w.sort((a, b) => b-a)
+					nn2 = []
+					for (vvvv in w) {
+						for (vvvvv in nnnn) {
+							if (w[vvvv] == nnnn[vvvvv].pvp) {
+								nn2.push(nnnn[vvvvv])
+							}
+						}
+					}
+
+					for (zzz = 0; zzz < nn2.length; zzz++) {
+						vv += nn2[zzz].fields.last_name+" - "+(nn2[zzz].pvp*100).toFixed(1)+"%<br>"
+					}
+
+					rrr = vv
+					console.log(rrr)
+
 	                for (var s = 0; s < e.states_json.length; s++)
 	                    if (e.states_json[s].fields.abbr == a.name) {
 	                        for (var n = [], l = 0; l < t.length; l++)
@@ -364,7 +459,8 @@ function exportResults() {
 	                                    break
 	                                } _ += "<li>" + r + " -- " + d + "</li>"
 	                        }
-	                        var c = "<h3>ESTIMATED SUPPORT</h3>                    <ul>" + _ + "</ul>                    <p><em>All estimates are approximate.</em></p>";
+	                        slrr = _
+	                        var c = "<h3>ESTIMATED SUPPORT</h3>                    <ul id='switchingEst'>" + _ + "</ul>                    <button id='pvswitcher' onclick='switchPV()'>Switch to Popular Vote Estimate</button>";
 	                        $("#overall_result").html(c);
 	                        var u = "";
 	                        for (l = 0; l < e.state_issue_score_json.length; l++)
