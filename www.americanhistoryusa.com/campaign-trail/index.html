@@ -413,26 +413,31 @@ function benefitCheck(objectid){
  
     console.log(effects)
     mods = ""
-        for (_ = 0; _ < effects.length; _++) {
+    for (_ = 0; _ < effects.length; _++) {
         if (effects[_][0] == "global") {
-            affected = findCandidate(effects[_][1].fields.affected_candidate)
+            affected = findCandidate(effects[_][1].fields.candidate)
+            affected1 = findCandidate(effects[_][1].fields.affected_candidate)
             name = affected[1]
+            name2 = affected1[1]
             multiplier = effects[_][1].fields.global_multiplier.toString()
-            mods += "\nGlobal: Affects "+name+" by "+multiplier
+            mods += "<br><em>Global:</em> Affects "+name2+" for "+name+" by "+multiplier
         }
         if (effects[_][0] == "issue") {
             affected = findIssue(effects[_][1].fields.issue)
             name = affected[1]
             multiplier = effects[_][1].fields.issue_score.toString()
-            mods += "\nIssue: Affects "+name+" by "+multiplier
+            multiplier1 = effects[_][1].fields.issue_importance.toString()
+            mods += "<br><em>Issue:</em> Affects "+name+" by "+multiplier+" with a importance of "+multiplier1
         }
         if (effects[_][0] == "state") {
             affected = findState(effects[_][1].fields.state)
             candidatething = findCandidate(effects[_][1].fields.affected_candidate)
+            candidatething2 = findCandidate(effects[_][1].fields.candidate)
             name1 = affected[1]
-            name2 = candidatething[1]
+            test5 = candidatething[1]
+            test6 = candidatething2[1]
             multiplier = effects[_][1].fields.state_multiplier.toString()
-            mods += "\nState: Affects "+candidatething+" in "+name1+" by "+multiplier
+            mods += "<br><em>State:</em> Affects "+test5+" for "+test6+" in "+name1+" by "+multiplier
         }
     }
     return '<font size="2"><b>Answer: </b>'+findAnswer(answerid)[1]+"'<br>"+mods+"</font><br><br>"
