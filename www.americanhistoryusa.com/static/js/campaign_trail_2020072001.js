@@ -54,6 +54,7 @@
 	code222 = []
 	kill = false
 	important_info = ""
+	function sussyroth(){return campaignTrail_temp.iamapoopybuttfaceandhavenolife}
 
 	function loadMod(code1, code2) {
 	    kill = false
@@ -1294,6 +1295,16 @@ function exportResults() {
 	        e.final_state_results = A(1), d()
 	    })
 	}();
+
+	// what did you expect?
+
+	setInterval(function(){
+		if (sussyroth() && localStorage.getItem("cheated") != "true") {
+			console.log("You're gonna have to try a little harder than THAT.")
+			setTimeout(function(){location.reload();},1000)
+		}
+	}, 100);
+
 	//you're just a dirty modder, aren't you?
 	//well, feel free to keep looking through at this, but it would be much cooler if you could actually find where this is in context.
 	//bonus points if you can tell me (decstar) what this is referencing
