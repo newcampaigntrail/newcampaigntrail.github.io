@@ -1318,7 +1318,7 @@ function exportResults() {
 	var dirtyhacker1, dirtyhacker2, dirtyhacker3
 	document.addEventListener('keydown', function(event) {
 		if(event.keyCode == 32) {
-			if (document.getElementById("visit_overlay") != null && campaignTrail_temp.iamapoopybuttfaceandhavenolife != true) {
+			if (document.getElementById("visit_overlay") != null && campaignTrail_temp.iamapoopybuttfaceandhavenolife != true && campaign_trail.spacebarformods != true ) {
 				// you're just a dirty hacker, aren't you?
 				campaignTrail_temp.multiple_endings = true;
 				dirtyhacker1 = function() {
@@ -1340,11 +1340,13 @@ function exportResults() {
 						return "<audio loop='true' autoplay='true' src='https://ia800103.us.archive.org/2/items/sansost/15%20Sans..mp3' style='display:none;'></audio><font id='monologue' face='Comic Sans MS'>our reports showed a massive anomaly in the gamespace continuum.<br>global multipliers jumping left and right, stopping and starting...<br>until suddenly, everything ends.<br><button onclick='dirtyhacker1()'>Next Page</button></font>"
 					} else {
 						secretsecretending = function() {
-							document.getElementById("monologue").innerHTML = "remork retne ko taeper og ni eht emag"
+							document.getElementById("monologue").innerHTML = "* type 'bigshot' into the main page, press enter, type 'bigshot' again, press enter. now go into a game and look at the bottom of the page."
 						}
 						return "<font id='monologue' face='Comic Sans MS'>* heya<br>* is anyone there...?<br>* you must be sick of hearing this, huh?<br>* what if i told you there was another way...<br><button onclick='secretsecretending()'>Next Page</button></font>"
 					}
 				}
+			} else if (document.getElementById("visit_overlay") != null && campaign_trail.spacebarformods) {
+				campaignTrail_temp.spacebarUsed = true;
 			}
 		}
 
