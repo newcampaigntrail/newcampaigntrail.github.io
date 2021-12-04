@@ -1,0 +1,89 @@
+//2016 ending code Clinton and Rubio
+orderID = [aa[0].candidate, aa[1].candidate, aa[2].candidate, aa[3].candidate];
+var playerEV = quickstats[0];
+var playerID = 0;
+var opposite = 0;
+vptoptwo = false;
+var playerout = false;
+var oppositeout = false;
+if (aa[0].electoral_votes >= 270) {
+    return false;
+} else {
+    for (let i = 0; i <= 3; i++) {
+        if (playerEV == aa[i].electoral_votes) {
+            playerID = aa[i].candidate;
+            break;
+        }
+    }
+    if (playerID == 200) {
+        opposite = 202;
+    } else if (playerID == 202) {
+        opposite = 200;
+    } else if (playerID == 201) {
+        opposite = 203;
+    } else if (playerID == 203) {
+        opposite = 201;
+    } else {
+        return "something broke at opposite chooser.";
+    }
+    if (orderID[3] == opposite) {
+        oppositeout = true;
+    }
+    if (orderID[3] == playerID) {
+        playerout = true;
+    }
+    if (orderID[2] !== playerID) {
+        vptoptwo = true;
+    }
+
+    if (playerID == 200) {
+        if (playerout == true) {
+            return"<h3>“Sorry, you’ve lost the 2016 election.”</h3><p>The election is going to the house of representatives, and the house only votes on the top three candidates, so you and your running mate will be left out. It seems Donald Trump will be the next president, as the house will split what little left-wing votes it has between Clinton and Sanders, giving it to Trump.<p><p>Your career in politics and the presidency is most certainly not over, as you still have your senate seat, and are popular. In addition, due to the strange situation of this election, you are more poised than anyone else to run again in 4 years with less opposition than most. In any case, you can at least concede defeat knowing you prevented Clinton or Sanders from becoming president. Compared to those two, Trump doesn’t seem so bad..."; 
+        } else if (oppositeout == true) {
+            if (vptoptwo == true) {
+                return "<h3>“Congratulations! You’re on track to win the 2016 election.”</h3><p>The election is going to the house of representatives, and the house only votes on the top three candidates, so your right-wing opponent Donald Trump will be left out. This means virtually all Republicans will vote for you, and it’s likely no strong defence will be mounted by the democrats to prevent that.<p><p>In addition, you made the top two as well, and that means your running mate will get selected by the Republican senate to join you in governance.<p><p> You’ll hopefully be able to repeal Obamacare and replace it with something the free market likes more, as well as enact more tax cuts. If all goes well, you could be the fourth president in a row to be re-elected. Let’s hope nothing bad happens during the house of representatives process, or you just might become Andrew Jackson 2.0.";
+            } else {
+                return"<h3>“Congratulations! You’re on track to win the 2016 election.”</h3><p>The election is going to the house of representatives, and the house only votes on the top three candidates, so your right-wing opponent Donald Trump will be left out. This means virtually all Republicans will vote for you, and it’s likely no strong defence will be mounted by the democrats to prevent that.<p><p> Unfortunately, you didn’t make the top three, as Clinton and Sanders were above you, so your running mate will not be joining you in the white house. Hopefully, the votes in the senate do not come down to 50/50 splits.<p><p> You’ll hopefully be able to repeal Obamacare and replace it with something the free market likes more, as well as enact more tax cuts. If all goes well, you could be the fourth president in a row to be re-elected. Let’s hope nothing bad happens during the house of representatives process, or you just might become Andrew Jackson 2.0.";
+            }
+        } else {
+            if (vptoptwo == true) {
+                if (orderID[3] == 203) {
+                    return"<h3>“Sorry, you’re on track to lose the 2016 election.”</h3><p>The election is going to the house of representatives. you have made the top three, but so has Trump. On one hand, if all Republicans congregate around you, you might be able to pull off a victory. However, Trump’s influence on the house and political landscape is undeniable, and he just might siphon enough votes away to give it to Clinton.<p><p>In a bizarre twist, however, since you placed in the top two, your running mate will ascend to the vice presidency, without you!p><p>Your career in politics and the presidency is most certainly not over, as you still have your senate seat, and are popular. In addition, due to the strange situation of this election, you are more poised than anyone else to run again in 4 years with less opposition than most. Republicans will immediately start attacking Trump for “spoiling” the election, but with two left-wing candidates in the race as well, it’s nearly impossible to conclusively determine who caused what.";
+                } else {
+                    return "<h3>“Sorry, you’re on track to lose the 2016 election.”</h3><p>The election is going to the house of representatives. you have made the top three, but so has Trump. On one hand, if all Republicans congregate around you, you might be able to pull off a victory. However, Trump’s influence on the house and political landscape is undeniable, and he just might siphon enough votes away to give it to Sanders. He will face his own opposition in the house vote, possibly not receiving some moderate democrat votes, so who knows at this point.<p><p>In a bizarre twist, however, since you placed in the top two, your running mate will ascend to the vice presidency, without you!<p><p>Your career in politics and the presidency is most certainly not over, as you still have your senate seat, and are popular. In addition, due to the strange situation of this election, you are more poised than anyone else to run again in 4 years with less opposition than most. Republicans will immediately start attacking Trump for “spoiling” the election, but with two left-wing candidates in the race as well, it’s nearly impossible to conclusively determine who caused what.";
+                }
+            } else 
+            if (orderID[3] == 203) {
+                return "<h3>“Sorry, you’re on track to lose the 2016 election.”</h3><p>The election is going to the house of representatives. You have made the top three, but so has Trump. On one hand, if all Republicans congregate around you, you might be able to pull off a victory. However, Trump’s influence on the house and political landscape is undeniable, and he just might siphon enough votes away to give it to Clinton. <p><p>Your career in politics and the presidency is most certainly not over, as you still have your senate seat, and are popular. In addition, due to the strange situation of this election, you are more poised than anyone else to run again in 4 years with less opposition than most. Republicans will immediately start attacking Trump for “spoiling” the election, but with two left-wing candidates in the race as well, it’s nearly impossible to conclusively determine who caused what.";
+            } else {
+                return "<h3>“Sorry, you’re on track to lose the 2016 election.”</h3><p>The election is going to the house of representatives. You have made the top three, but so has Trump. On one hand, if all Republicans congregate around you, you might be able to pull off a victory. However, Trump’s influence on the house and political landscape is undeniable, and he just might siphon enough votes away to give it to Sanders. He will face his own opposition in the house vote, possibly not receiving some moderate democrat votes, so who knows at this point.<p><p>Your career in politics and the presidency is most certainly not over, as you still have your senate seat, and are popular. In addition, due to the strange situation of this election, you are more poised than anyone else to run again in 4 years with less opposition than most. Republicans will immediately start attacking Trump for “spoiling” the election, but with two left-wing candidates in the race as well, it’s nearly impossible to conclusively determine who caused what.";
+            }
+        }
+    }
+        else if (playerID == 201) {
+        if (playerout == true) {
+            return"<h3>“Sorry, you won’t be the next president.”</h3><p>The election is going to the house of representatives, and the house only votes on the top three candidates, so you and your running mate will be left out. It seems Bernie has a real shot at being the next president, as the house will most likely split what right-wing vote it has been Trump and Rubio. Although, Republicans still might be able to pull together enough support to elevate Rubio.<p><p> If Sanders does get chosen, let’s hope he can expand upon Obamacare, raise the minimum wage, and keep good relations with congress. He will certainly have his work cut out for him. As for you, it seems your long and often controversial political career will come to an end.";
+        } else if (oppositeout == true) {
+            if (vptoptwo == true) {
+                return "<h3>“Congratulations! You’re on track to win the 2016 election and become the first female president.”</h3><p>The election is going to the house of representatives, and the house only votes on the top three candidates, so your left-wing opponent Bernie will be left out. This means virtually all Democrats will vote for you, and the Republican vote very well might be split between Rubio and Trump.<p><p>Unfortunately, the Republican senate is very unlikely to let your running mate through, so you might be saddled with a right-wing vice president until 2020. Maybe if you chose a more moderate running mate, they’ll receive it more favourably.<p><p> You’ll hopefully be able to use your years in government to forge a bipartisan few years in Congress until a hopefully favourable midterm happens. Get ready to move back into the white house, Madame President!";
+            } else {
+                return  "<h3>“Congratulations! You’re on track to win the 2016 election and become the first female president.”</h3><p>The election is going to the house of representatives, and the house only votes on the top three candidates, so your left-wing opponent Bernie will be left out. This means virtually all Democrats will vote for you, and the Republican vote very well might be split between Rubio and Trump.<p><p>Unfortunately, you didn’t make the top 2, so you’re going to be saddled with a right-wing vice president until 2020.<p><p> You’ll hopefully be able to use your years in government to forge a bipartisan few years in Congress until a hopefully favourable midterm happens. Get ready to move back into the white house, Madame President!";
+            }
+        } else {
+            if (vptoptwo == true) {
+                if (orderID[3] == 202) {
+                    return "<h3>“Sorry, you’re on track to lose the 2016 election.”</h3><p>The election is going to the house of representatives. you have made the top three, but so has Sanders. The house is already not favourable to you, and with a second left-wing candidate available, it’s all but confirmed you’ll not be elevated, and Rubio will. Your running mate will also similarly be passed over for Rubio’s mate.<p><p> Let’s hope Rubio and a republican congress can expand on Obama’s economy and prevent more terrorist attacks. As for you, it seems your long and often controversial political career will come to an end.";
+                } else {
+                    return "<h3>“Sorry, you’re on track to lose the 2016 election.”</h3><p>The election is going to the house of representatives. you have made the top three, but so has Sanders. The house is already not favourable to you, and with a second left-wing candidate available, it’s looking grim. Your only respite is the fact that many house Republicans might be wary of Donald Trump, but that wariness is unlikely to matter enough to give you the votes you need. Your running mate is also in a similar position, but the odds are more in their favour.<p><p> Regardless, if Trump gets elevated to the presidency, let’s hope he can do many of the things you yourself wanted to do, like renegotiate or ending the TPP, and work on infrastructure improvements. As for you, it seems your long and often controversial political career will come to an end.";
+                }
+            } else 
+            if (orderID[3] == 202) {
+                return "<h3>“Sorry, you’re on track to lose the 2016 election.”</h3><p>The election is going to the house of representatives. you have made the top three, but so has Sanders. The house is already not favourable to you, and with a second left-wing candidate available, it’s all but confirmed you’ll not be elevated, and Rubio will. Your running mate is out of contention, also, as you didn’t make the top two.<p><p> Let’s hope Rubio and a Republican congress can expand on Obama’s economy and prevent more terrorist attacks. As for you, it seems your long and often controversial political career will come to an end.";
+            } else {
+                return "<h3>“Sorry, you’re on track to lose the 2016 election.”</h3><p>The election is going to the house of representatives. you have made the top three, but so has Sanders. The house is already not favourable to you, and with a second left-wing candidate available, it’s looking grim. Your only respite is the fact that many house Republicans might be wary of Donald Trump, but that wariness is unlikely to matter enough to give you the votes you need. Your running mate is fully out of contention, due to you missing the top two.<p><p> Regardless, if Trump gets elevated to the presidency, let’s hope he can do many of the things you yourself wanted to do, like renegotiate or end the TPP, and work on infrastructure improvements. As for you, it seems your long and often controversial political career will come to an end.";
+            }
+        }
+    } else {
+        return "the codes do not match Clinton or Rubio";
+    }
+}
