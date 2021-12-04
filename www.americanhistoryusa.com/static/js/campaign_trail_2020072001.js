@@ -826,9 +826,9 @@ function exportResults() {
 	        		}
 	        	}, 100);
 	        }
-	        
+
 	        aaaaaaaa = 0
-	        if (starting_mult - encrypted != campaignTrail_temp) {
+	        if (Number((starting_mult - encrypted).toFixed(2)) != campaignTrail_temp.difficulty_level_multiplier.toFixed(2)) {
 	        	aaaaaaaa = "Cheated difficulty"
 	        } else {
 	        	aaaaaaaa = campaignTrail_temp.difficulty_level_multiplier.toFixed(1)
