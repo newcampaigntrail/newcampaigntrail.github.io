@@ -15,6 +15,8 @@
 
 	slrr = ""
 	rrr = ""
+	starting_mult = 0
+	encrypted = Math.round(Math.random()*100)
 
 	function switchPV() {
 		// switchingEst, rrr, _, pvswitcher
@@ -248,7 +250,7 @@ function exportResults() {
 	                if (e.difficulty_level_json[r].pk == $("select[name=difficulty_level_id]").val()) {
 	                    d = r;
 	                    break
-	                } e.difficulty_level_multiplier = e.difficulty_level_json[d].fields.multiplier,
+	                } e.difficulty_level_multiplier = e.difficulty_level_json[d].fields.multiplier, starting_mult = encrypted + e.difficulty_level_json[d].fields.multiplier,
 	                function(t, i, a, l, o) {
 	                	if (campaignTrail_temp.musicOn) {
 	                		document.getElementById("music_player").style.display=""
@@ -824,7 +826,15 @@ function exportResults() {
 	        		}
 	        	}, 100);
 	        }
-	        rrrrr = "<br><b>Difficulty Multiplier:</b> "+campaignTrail_temp.difficulty_level_multiplier.toFixed(1)+"<br>"
+	        
+	        aaaaaaaa = 0
+	        if (starting_mult - encrypted != campaignTrail_temp) {
+	        	aaaaaaaa = "Cheated difficulty"
+	        } else {
+	        	aaaaaaaa = campaignTrail_temp.difficulty_level_multiplier.toFixed(1)
+	        }
+
+	        rrrrr = "<div id='difficulty_mult'><br><b>Difficulty Multiplier:</b> "+aaaaaaaa+"</div><br>"
 
 	        for (_ = 0; _ < e.final_overall_results.length; _++) {
 	            i = E(e.final_overall_results[_].candidate);
@@ -835,6 +845,14 @@ function exportResults() {
 	        else c = "";
 	        var u = '        <div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div id="main_content_area">            <div id="results_container">                <img class="person_image" src="' + l + '"/>            <div id="final_results_description">' + s + '</div>'+rrrrr+'             <div id="overall_vote_statistics">' + c + '<table class="final_results_table">     <br>       <tr><th>Candidate</th><th>Electoral Votes</th>            <th>Popular Votes</th><th>Popular Vote %</th></tr>' + r + '</table>            </div>        </div>        </div>        <div id="map_footer">            <button class="final_menu_button" id="overall_results_button" disabled="disabled">                Final Election Results            </button>            <button class="final_menu_button" id="final_election_map_button">                Election Map            </button>            <button class="final_menu_button" id="state_results_button">                Results by State            </button>            <button class="final_menu_button" id="overall_details_button">                Overall Results Details            </button>              <button class="final_menu_button" id="play_again_button">                Play Again!            </button>        </div>';
 	        $("#game_window").html(u);
+	        prev = document.getElementById("difficulty_mult").innerHTML
+			setInterval(function(){
+			    if (document.getElementById("difficulty_mult") != null) {
+			        if (document.getElementById("difficulty_mult").innerHTML != prev) {
+			            location.reload()
+			        }
+			    }
+			},100)
 	        t = S(e.election_id), i = E(e.candidate_id);
 	        var v = e.election_json[t].fields.year,
 	            f = e.candidate_json[i].fields.first_name + " " + e.candidate_json[i].fields.last_name,
