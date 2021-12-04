@@ -846,10 +846,12 @@ function exportResults() {
 	        var u = '        <div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div id="main_content_area">            <div id="results_container">                <img class="person_image" src="' + l + '"/>            <div id="final_results_description">' + s + '</div>'+rrrrr+'             <div id="overall_vote_statistics">' + c + '<table class="final_results_table">     <br>       <tr><th>Candidate</th><th>Electoral Votes</th>            <th>Popular Votes</th><th>Popular Vote %</th></tr>' + r + '</table>            </div>        </div>        </div>        <div id="map_footer">            <button class="final_menu_button" id="overall_results_button" disabled="disabled">                Final Election Results            </button>            <button class="final_menu_button" id="final_election_map_button">                Election Map            </button>            <button class="final_menu_button" id="state_results_button">                Results by State            </button>            <button class="final_menu_button" id="overall_details_button">                Overall Results Details            </button>              <button class="final_menu_button" id="play_again_button">                Play Again!            </button>        </div>';
 	        $("#game_window").html(u);
 	        prev = document.getElementById("difficulty_mult").innerHTML
-			setInterval(function(){
+			vvvv = setInterval(function(){
 			    if (document.getElementById("difficulty_mult") != null) {
 			        if (document.getElementById("difficulty_mult").innerHTML != prev) {
-			            location.reload()
+			        	location.reload()
+			        	clearInterval(vvvv)
+			        	document.body.innerHTML=""
 			        }
 			    }
 			},100)
