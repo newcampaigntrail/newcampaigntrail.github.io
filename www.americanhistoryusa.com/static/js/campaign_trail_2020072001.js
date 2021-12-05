@@ -17,6 +17,8 @@
 	rrr = ""
 	starting_mult = 0
 	encrypted = Math.round(Math.random()*100)
+	t = ""
+	nnn = ""
 
 	function switchPV() {
 		// switchingEst, rrr, _, pvswitcher
@@ -28,6 +30,13 @@
 			swE.innerHTML = rrr
 			pvswitcher.innerText = "Switch to State Estimate"
 		}
+		document.getElementById("ev_est").style.display = ""
+	}
+
+	function evest() {
+		document.getElementById("ev_est").style.display = "none"
+		swE = document.getElementById("switchingEst")
+		swE.innerHTML = nnn
 	}
 
 	function containsObject(obj, list) {
@@ -386,13 +395,36 @@ function exportResults() {
 	        }
 	        var c = function(i, a) {
 	        	total_v = 0
+	        	cand_evs = []
 	        	for (var s = 0; s < e.states_json.length; s++) {
 	    			for (var n = [], l = 0; l < t.length; l++)
-	                	if (t[l].abbr == e.states_json[s].fields.abbr)
-							for (var o = 0; o < t[l].result.length; o++) n.push({
+	                	if (t[l].abbr == e.states_json[s].fields.abbr) {
+	                		npp = []
+							for (var o = 0; o < t[l].result.length; o++) {n.push({
 	                    		candidate: t[l].result[o].candidate,
 		                		percent: t[l].result[o].percent
 			                });
+							npp.push(t[l].result[o].percent)}
+							m = 0
+							for (var lneff = 0; lneff < npp.length; lneff++) {
+								if (Math.max(...npp) == npp[lneff]) {
+									m = lneff
+									break
+								}
+							}
+							nef = 0
+	    	                for (o = 0; o < e.candidate_json.length; o++)
+	                    		if (e.candidate_json[o].pk == n[m].candidate) {
+		                           	nef = o
+		                            break
+								}
+							if (e.candidate_json[nef].evvs == null) {
+								e.candidate_json[nef].evvs = e.states_json[s].fields.electoral_votes
+							} else {
+								e.candidate_json[nef].evvs += e.states_json[s].fields.electoral_votes
+							}
+							
+						}
 					P(n, "percent"), n.reverse();
 					var _ = "";
 					for (l = 0; l < n.length; l++) {
@@ -422,26 +454,38 @@ function exportResults() {
 							e.candidate_json[o].pvp = e.candidate_json[o].popvs / total_v
 							nnnn.push(copy(e.candidate_json[o]))
 							w.push(e.candidate_json[o].pvp)
+							cand_evs.push(e.candidate_json[o].evvs)
 							e.candidate_json[o].popvs = 0
+							e.candidate_json[o].evvs = 0
 						}
 					}
 
 					w.sort((a, b) => b-a)
 					nn2 = []
+					nn3 = []
 					for (vvvv in w) {
 						for (vvvvv in nnnn) {
 							if (w[vvvv] == nnnn[vvvvv].pvp) {
 								nn2.push(nnnn[vvvvv])
+								if (cand_evs[vvvvv] != null)
+									nn3.push(cand_evs[vvvvv])
+								else
+									nn3.push(0)
 							}
 						}
 					}
 
+					nnn = ""
+
 					for (zzz = 0; zzz < nn2.length; zzz++) {
-						vv += nn2[zzz].fields.last_name+" - "+(nn2[zzz].pvp*100).toFixed(1)+"%<br>"
+						vv += "<b>"+nn2[zzz].fields.last_name+"</b> - "+(nn2[zzz].pvp*100).toFixed(1)+"%<br>"
+						if (nn3[zzz] > 0) {
+							nnn += "<b>"+nn2[zzz].fields.last_name+"</b> - "+nn3[zzz]+"<br>"
+						}
 					}
 
 					rrr = vv
-					console.log(rrr)
+					evestt = 0
 
 	                for (var s = 0; s < e.states_json.length; s++)
 	                    if (e.states_json[s].fields.abbr == a.name) {
@@ -460,10 +504,10 @@ function exportResults() {
 	                                if (e.candidate_json[o].pk == n[l].candidate) {
 	                                    r = e.candidate_json[o].fields.last_name;
 	                                    break
-	                                } _ += "<li>" + r + " -- " + d + "</li>"
+	                                } _ += "<b>" + r + "</b> - " + d + "<br>"
 	                        }
 	                        slrr = _
-	                        var c = "<h3>ESTIMATED SUPPORT</h3>                    <ul id='switchingEst'>" + _ + "</ul>                    <button id='pvswitcher' onclick='switchPV()'>Switch to Popular Vote Estimate</button>";
+	                        var c = "<h3>ESTIMATED SUPPORT</h3>                    <ul id='switchingEst'>" + _ + "</ul>                    <button id='pvswitcher' onclick='switchPV()'>Switch to Popular Vote Estimate</button><button onclick='evest()' id='ev_est'>Electoral Vote Estimate</button>";
 	                        $("#overall_result").html(c);
 	                        var u = "";
 	                        for (l = 0; l < e.state_issue_score_json.length; l++)
