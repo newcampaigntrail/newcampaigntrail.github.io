@@ -5,10 +5,10 @@
 <script>
 for (i in campaignTrail_temp.election_json) {
     if (campaignTrail_temp.election_json[i].pk == campaignTrail_temp.election_id) {
-        year = campaignTrail_temp.election_json[i].fields.year
+        year = campaignTrail_temp.temp_election_list[i].display_year
     }
 }
-if (year == 2016) {
+if (year == "2016") {
     campaignTrail_temp.multiple_endings = true;
 
     function endingPicker(out, totv, aa, quickstats) {
