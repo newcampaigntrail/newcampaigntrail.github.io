@@ -612,6 +612,19 @@ function exportResults() {
 	                ! function t(i, a) {
 	                    var s = [0, 0];
 	                    for (var n = 0; n < e.final_overall_results.length; n++) e.final_overall_results[n].electoral_votes > s[0] && (s[0] = e.final_overall_results[n].electoral_votes);
+	                	total_votes = 0
+	                	for (iterator = 0; iterator < e.final_overall_results.length; iterator++) {
+	                		total_votes += e.final_overall_results[iterator].popular_votes
+	                	}
+	                	pop_vs = []
+	                	for (iterator = 0; iterator < e.final_overall_results.length; iterator++) {
+	                		if (e.final_overall_results[iterator].popular_votes/total_votes > 0)
+	                			pop_vs.push(e.final_overall_results[iterator].popular_votes/total_votes)
+	                		else {
+	                			pop_vs.push(0)
+	                		}
+	                	}
+	                	console.log(pop_vs)
 	                    var a = v(i);
 	                    var l = S(e.election_id);
 	                    var o = e.election_json[l].fields.winning_electoral_vote_number;
@@ -619,14 +632,17 @@ function exportResults() {
 	                    var r = "";
 	                    for (var n = 0; n < _.length; n++) {
 	                        for (var d = 0; d < e.final_overall_results.length; d++)
-	                            if (e.final_overall_results[d].candidate == _[n].candidate) var c = e.final_overall_results[d].electoral_votes;
-	                        r += '            <li><span style="color:' + _[n].color + "; background-color: " + _[n].color + '">--</span> ' + _[n].last_name + ":  " + c + "</li>"
+	                            if (e.final_overall_results[d].candidate == _[n].candidate) { 
+	                            	var c = e.final_overall_results[d].electoral_votes;
+	                            	var popvthing = (pop_vs[d]*100).toFixed(1)
+	                            }
+	                        r += '            <span style="color:' + _[n].color + "; background-color: " + _[n].color + '">--</span> <b>' + _[n].last_name + "</b> -  " + c + " / " + popvthing  + "%<br>"
 	                    }
 	                    var p = f(i);
 	                    var h = Math.floor(i / 480 * 100);
 	                    var g = $("#state_result_container").html();
 	                    $("#game_window").html("");
-	                    $("#game_window").html('        <div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div id="main_content_area">            <div id="map_container"></div>            <div id="menu_container">                <div id="overall_result_container">                    <div id="overall_result">                        <h3>ELECTORAL VOTES</h3>                        <ul>' + r + "</ul>                        <p>" + h + "% complete</br>" + o + ' to win</p>                    </div>                </div>                <div id="state_result_container">' + g + '</div>            </div>        </div>        <div id="map_footer">        <button id="final_result_button">Go to Final Results</button>        </div>');
+	                    $("#game_window").html('        <div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div id="main_content_area">            <div id="map_container"></div>            <div id="menu_container">                <div id="overall_result_container">                    <div id="overall_result">                        <h3>ELECTION TALLY</h3>                        <ul>' + r + "</ul>                        <p>" + h + "% complete</br>" + o + ' to win</p>                    </div>                </div>                <div id="state_result_container">' + g + '</div>            </div>        </div>        <div id="map_footer">        <button id="final_result_button">Go to Final Results</button>        </div>');
 	                    $("#map_container").usmap(p);
 	                    $("#final_result_button").click(function() {
 	                        clearTimeout(results_timeout), $("#map_footer").html("<i>Processing Results, wait one moment...</i>");
@@ -646,7 +662,7 @@ function exportResults() {
 	                            v(500);
 	                            m()
 	                        })
-	                    } else i >= 480 || a >= e.states_json.length ? (h = 100, $("#overall_result").html("            <h3>ELECTORAL VOTES</h3>            <ul>" + r + "</ul>            <p>" + h + "% complete</br>" + o + " to win</p>")) : results_timeout = setTimeout(function() {
+	                    } else i >= 480 || a >= e.states_json.length ? (h = 100, $("#overall_result").html("            <h3>ELECTION TALLY</h3>            <ul>" + r + "</ul>            <p>" + h + "% complete</br>" + o + " to win</p>")) : results_timeout = setTimeout(function() {
 	                        t(i, a)
 	                    }, 2e3);
 	                    i += 10
