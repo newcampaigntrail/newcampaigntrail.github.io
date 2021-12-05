@@ -405,16 +405,16 @@ function exportResults() {
 		                		percent: t[l].result[o].percent
 			                });
 							npp.push(t[l].result[o].percent)}
-							m = 0
+							mvv = 0
 							for (var lneff = 0; lneff < npp.length; lneff++) {
 								if (Math.max(...npp) == npp[lneff]) {
-									m = lneff
+									mvv = lneff
 									break
 								}
 							}
 							nef = 0
 	    	                for (o = 0; o < e.candidate_json.length; o++)
-	                    		if (e.candidate_json[o].pk == n[m].candidate) {
+	                    		if (e.candidate_json[o].pk == n[mvv].candidate) {
 		                           	nef = o
 		                            break
 								}
