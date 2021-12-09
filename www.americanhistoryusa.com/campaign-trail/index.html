@@ -461,11 +461,91 @@ function benefitCheck(objectid){
 <script src="../../ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="../static/js/raphael.js"></script>
 <script>
+
+  function uwuifier(a) {
+    b = a.split(" I ")
+    if (b.length > 0) {
+        for (i in b) {
+            if (i < b.length - 1) {
+                b[i] += " I-I "
+            }
+        }
+    }
+    a = b.join("")
+    b = a.split("l")
+    if (b.length > 0) {
+        for (i in b) {
+            if (i < b.length - 1) {
+                b[i] += "w"
+            }
+        }
+    }
+    a = b.join("")
+    b = a.split("r")
+    if (b.length > 0) {
+        for (i in b) {
+            if (i < b.length - 1) {
+                b[i] += "w"
+            }
+        }
+    }
+    a = b.join("")
+    b = a.split(" t")
+    if (b.length > 0) {
+        for (i in b) {
+            if (i < b.length - 1) {
+                if (b[Number(i)+1][0] != '-')
+                  b[i] += " t-t"
+                else
+                  b[i] += " t"
+            }
+        }
+    }
+    a = b.join("")
+    b = a.split("ow")
+    if (b.length > 0) {
+        for (i in b) {
+            if (i < b.length - 1) {
+                b[i] += "uw"
+            }
+        }
+    }
+    a = b.join("")
+    return a
+}
+
   // Banner Stuff
   banner = $('#header')[0];
-    banner.src = "../static/images/banner_"+Math.floor((Math.random() * 21) + 1)+".png"
+    num = Math.floor((Math.random() * 22) + 1)
+    //num = 22
+    banner.src = "../static/images/banner_"+num+".png"
     banner.width = 1000
-    document.body.background = "../static/images/mlk.jpg"
+    if (num != 22)
+      document.body.background = "../static/images/mlk.jpg"
+    else {
+      document.body.background = "https://upload.wikimedia.org/wikipedia/commons/6/6b/1984-Big-Brother.jpg"
+      document.body.style.fontFamily="Comic Sans MS"
+      document.getElementsByClassName("game_header")[0].children[0].innerHTML="haha I said gorg wlave laugh!!11!"
+      vvv = document.getElementById("inner_window_1")
+      vvv.children[0].innerText = uwuifier(vvv.children[0].innerText)
+      vvv.children[1].innerText = uwuifier(vvv.children[1].innerText)
+      document.getElementById("game_start").children[0].innerText = uwuifier(document.getElementById("game_start").innerText)
+      setInterval(function(){
+        es = document.getElementById("election_summary")
+        if (es != null && es.children[0].innerHTML != uwuifier(es.children[0].innerHTML)) {
+          for (i in es.children) {
+            es.children[i].innerHTML = uwuifier(es.children[i].innerHTML)
+          }
+        }
+        ps = document.getElementById("candidate_summary")
+        if (ps != null && ps.children[0].children[0].innerHTML != uwuifier(ps.children[0].children[0].innerHTML)) {
+          for (v = 0; v < ps.children[0].children.length; v++) {
+            ps.children[0].children[v].innerHTML = uwuifier(ps.children[0].children[v].innerHTML)
+          }
+          ps.children[1].innerText = uwuifier(ps.children[1].innerText)
+        }
+      },100)
+    }
     $("#game_window")[0].style.backgroundColor = "#ff6b6b"
     $(".container")[0].style.backgroundColor = "#930301"
 </script>
