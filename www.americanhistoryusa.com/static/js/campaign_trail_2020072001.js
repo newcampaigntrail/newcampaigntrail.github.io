@@ -1,4 +1,104 @@
+
+
+function gradient(interval, min, max) {
+	if (interval < min) {
+		return min
+	} else if (interval > max) {
+		return max
+	} else {
+		return interval
+	}
+}
+
+// Converts a #ffffff hex string into an [r,g,b] array
+var h2r = function(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? [
+        parseInt(result[1], 16),
+        parseInt(result[2], 16),
+        parseInt(result[3], 16)
+    ] : null;
+};
+
+// Inverse of the above
+var r2h = function(rgb) {
+    return "#" + ((1 << 24) + (rgb[0] << 16) + (rgb[1] << 8) + rgb[2]).toString(16).slice(1);
+};
+
+// Interpolates two [r,g,b] colors and returns an [r,g,b] of the result
+// Taken from the awesome ROT.js roguelike dev library at
+// https://github.com/ondras/rot.js
+var _interpolateColor = function(color1, color2, factor) {
+  if (arguments.length < 3) { factor = 0.5; }
+  var result = color1.slice();
+  for (var i=0;i<3;i++) {
+    result[i] = Math.round(result[i] + factor*(color2[i]-color1[i]));
+  }
+  return result;
+};
+
+var rgb2hsl = function(color) {
+  var r = color[0]/255;
+  var g = color[1]/255;
+  var b = color[2]/255;
+
+  var max = Math.max(r, g, b), min = Math.min(r, g, b);
+  var h, s, l = (max + min) / 2;
+
+  if (max == min) {
+    h = s = 0; // achromatic
+  } else {
+    var d = max - min;
+    s = (l > 0.5 ? d / (2 - max - min) : d / (max + min));
+    switch(max) {
+      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+      case g: h = (b - r) / d + 2; break;
+      case b: h = (r - g) / d + 4; break;
+    }
+    h /= 6;
+  }
+
+  return [h, s, l];
+};
+
+var hsl2rgb = function(color) {
+  var l = color[2];
+
+  if (color[1] == 0) {
+    l = Math.round(l*255);
+    return [l, l, l];
+  } else {
+    function hue2rgb(p, q, t) {
+      if (t < 0) t += 1;
+      if (t > 1) t -= 1;
+      if (t < 1/6) return p + (q - p) * 6 * t;
+      if (t < 1/2) return q;
+      if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+      return p;
+    }
+
+    var s = color[1];
+    var q = (l < 0.5 ? l * (1 + s) : l + s - l * s);
+    var p = 2 * l - q;
+    var r = hue2rgb(p, q, color[0] + 1/3);
+    var g = hue2rgb(p, q, color[0]);
+    var b = hue2rgb(p, q, color[0] - 1/3);
+    return [Math.round(r*255), Math.round(g*255), Math.round(b*255)];
+  }
+};
+
+var _interpolateHSL = function(color1, color2, factor) {
+  if (arguments.length < 3) { factor = 0.5; }
+  var hsl1 = rgb2hsl(color1);
+  var hsl2 = rgb2hsl(color2);
+  for (var i=0;i<3;i++) {
+    hsl1[i] += factor*(hsl2[i]-hsl1[i]);
+  }
+  return hsl2rgb(hsl1);
+};
+
 	function csrfToken() {
+
 	    return function(e) {
 	        var t = null;
 	        if (document.cookie && "" != document.cookie)
@@ -354,7 +454,7 @@ function exportResults() {
 	        } else o(t)
 	    }
 
-	    function o(t) {
+	    function o(t, e=campaignTrail_temp) {
 	        for (var i = [], a = 0; a < e.answers_json.length && (e.answers_json[a].fields.question != e.questions_json[e.question_number].pk || (i.push({
 	                key: a,
 	                order: Math.random()
@@ -385,13 +485,14 @@ function exportResults() {
 	            var r = 0;
 	            for (_ = 0; _ < t[s].result.length; _++) t[s].result[_].candidate != n && t[s].result[_].percent > r && (r = t[s].result[_].percent);
 	            var d = l - r;
-	            for (_ = 0; _ < e.candidate_json.length; _++) e.candidate_json[_].pk == n && (a[t[s].abbr] = d > .1 ? {
-	                fill: e.candidate_json[_].fields.color_hex
-	            } : d > .051 ? {
+	            for (_ = 0; _ < e.candidate_json.length; _++) e.candidate_json[_].pk == n && (a[t[s].abbr] = {
+	                //fill: e.candidate_json[_].fields.color_hex
+	                fill: r2h(_interpolateColor(h2r("#C9C9C9"),h2r(e.candidate_json[_].fields.color_hex), gradient(5*d, 0, 1)))
+	            })/*: d > .051 ? {
 	                fill: e.candidate_json[_].fields.secondary_color_hex
 	            } : {
-	                fill: "#C9C9C9"
-	            })
+	                fill: "#C9C9C9" //alternate: FFFFFF
+	            })*/
 	        }
 	        var c = function(i, a) {
 	        	total_v = 0
@@ -591,6 +692,10 @@ function exportResults() {
 	                $("#election_night_overlay").remove(), $("#election_night_window").remove()
 	            }), $("#final_result_button").click(function() {
 	                clearTimeout(results_timeout), $("#map_footer").html("<i>Processing Results, wait one moment...</i>");
+	                //HELPFUL CODE HERE
+	                //campaignTrail_temp.question_number = 0
+	                //ee = A(return_type=2)
+	            	//o(ee)
 	                v(500);
 	                m()
 	            })
@@ -624,7 +729,6 @@ function exportResults() {
 	                			pop_vs.push(0)
 	                		}
 	                	}
-	                	console.log(pop_vs)
 	                    var a = v(i);
 	                    var l = S(e.election_id);
 	                    var o = e.election_json[l].fields.winning_electoral_vote_number;
