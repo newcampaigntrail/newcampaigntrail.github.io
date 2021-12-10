@@ -1,3 +1,11 @@
+// why have I done this to myself, I hate both the Reddit and the Discord for forcing me to add this - MAKE UP YOUR FUCKING MINDS
+if (window.localStorage.getItem("margin_form") == "#C9C9C9") {
+	campaignTrail_temp.margin_format = "#C9C9C9"
+} else {
+	campaignTrail_temp.margin_format = "#FFFFFF"
+}
+
+
 function gradient(interval, min, max) {
 	if (interval < min) {
 		return min
@@ -472,9 +480,18 @@ function exportResults() {
 	    }
 
 	    function _(e) {
-	        $("#game_window").html('        <div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div id="main_content_area">            <div id="map_container"></div>            <div id="menu_container">                <div id="overall_result_container">                    <div id="overall_result">                        <h3>ESTIMATED SUPPORT</h3>                        <p>Click on a state to view more info.</p>                    </div>                </div>                <div id="state_result_container">                    <div id="state_info">                        <h3>STATE SUMMARY</h3>                        <p>Click/hover on a state to view more info.</p>                        <p>Precise results will be available on election night.</p>                    </div>                </div>            </div>        </div>        <div id="map_footer">        <button id="resume_questions_button">Back to the game</button>        </div>');
+	        $("#game_window").html('        <div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div id="main_content_area">            <div id="map_container"></div>            <div id="menu_container">                <div id="overall_result_container">                    <div id="overall_result">                        <h3>ESTIMATED SUPPORT</h3>                        <p>Click on a state to view more info.</p>                    </div>                </div>                <div id="state_result_container">                    <div id="state_info">                        <h3>STATE SUMMARY</h3>                        <p>Click/hover on a state to view more info.</p>                        <p>Precise results will be available on election night.</p>                    </div>                </div>            </div>        </div>        <div id="map_footer">        <button id="resume_questions_button">Back to the game</button><button id="margin_switcher">Switch margin colouring gradient</button>        </div>');
 	        var t = r(e, 0);
 	        $("#map_container").usmap(t), $("#resume_questions_button").click(function() {
+	            o(e)
+	        })
+	        $("#margin_switcher").click(function() {
+	        	if (campaignTrail_temp.margin_format == "#C9C9C9") {
+	        		campaignTrail_temp.margin_format = "#FFFFFF"
+	        	} else {
+	        		campaignTrail_temp.margin_format = "#C9C9C9"
+	        	}
+	        	window.localStorage.setItem("margin_form", campaignTrail_temp.margin_format)
 	            o(e)
 	        })
 	    }
@@ -487,7 +504,7 @@ function exportResults() {
 	            var d = l - r;
 	            for (_ = 0; _ < e.candidate_json.length; _++) e.candidate_json[_].pk == n && (a[t[s].abbr] = {
 	                //fill: e.candidate_json[_].fields.color_hex
-	                fill: r2h(_interpolateColor(h2r("#C9C9C9"),h2r(e.candidate_json[_].fields.color_hex), gradient(5*d, 0, 1)))
+	                fill: r2h(_interpolateColor(h2r(campaignTrail_temp.margin_format),h2r(e.candidate_json[_].fields.color_hex), gradient(Math.log((d+1))*4.5, 0, 1)))
 	            })/*: d > .051 ? {
 	                fill: e.candidate_json[_].fields.secondary_color_hex
 	            } : {
