@@ -487,11 +487,11 @@ function exportResults() {
 	            var d = l - r;
 	            for (_ = 0; _ < e.candidate_json.length; _++) e.candidate_json[_].pk == n && (a[t[s].abbr] = {
 	                //fill: e.candidate_json[_].fields.color_hex
-	                fill: r2h(_interpolateColor(h2r("#FFFFFF"),h2r(e.candidate_json[_].fields.color_hex), gradient(5*d, 0, 1)))
+	                fill: r2h(_interpolateColor(h2r("#C9C9C9"),h2r(e.candidate_json[_].fields.color_hex), gradient(5*d, 0, 1)))
 	            })/*: d > .051 ? {
 	                fill: e.candidate_json[_].fields.secondary_color_hex
 	            } : {
-	                fill: "#C9C9C9" //alternate: FFFFFF
+	                fill: "#C9C9C9" //alternate: #FFFFFF
 	            })*/
 	        }
 	        var c = function(i, a) {
