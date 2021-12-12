@@ -570,6 +570,14 @@ nct_stuff.themes = {
     coloring_container: "#401600",
     coloring_title: "#361200",
     text_col: "white"
+  },
+  "wildwest": {
+    name: "Wild West",
+    background: "../static/images/background_wildwest.jpg",
+    banner: "../static/images/banner_wildwest.png",
+    coloring_window: "#ffe8b5",
+    coloring_container: "#b8ad95",
+    coloring_title: "#422200",
   }
 }
 
@@ -635,6 +643,7 @@ function themePicked() {
     }
     setInterval(function(){
 sussywussy = nct_stuff.themes[nct_stuff.selectedTheme]
+document.getElementsByClassName("game_header")[0].style.backgroundColor = sussywussy.coloring_title
 if (document.getElementById("inner_window_2") != null) {
     document.getElementById("inner_window_2").style.backgroundColor = sussywussy.coloring_window
 } else if (document.getElementById("inner_window_3") != null) {
