@@ -299,7 +299,11 @@
   <textarea id="codeset3" width=400 height=300></textarea><br>
   </div>
   <br><br><button id="submitMod">Submit</button>
-</div><br><br>
+</div>
+<div id="theme_picker">
+  
+</div>
+<br><br>
 <a href="http://www.americanhistoryusa.com" style="color:#FF6B6B">Original site</a> created by Dan Bryan &copy; 2012-2021
 <br> 
 Source code hosted on <a href="https://github.com/newcampaigntrail/newcampaigntrail" style="color:#FF6B6B">GitHub</a>
@@ -514,15 +518,91 @@ function benefitCheck(objectid){
     return a
 }
 
+num = Math.floor((Math.random() * 22) + 1)
+nct_stuff = {}
+nct_stuff.themes = {
+  "nct": {
+    name: "New Campaign Trail",
+    background: "../static/images/mlk.jpg",
+    banner: "../static/images/banner_"+num+".png",
+    coloring_window: "#ff6b6b",
+    coloring_container: "#930301",
+    coloring_title: ""
+  },
+  "ogtheme": {
+    name: "Classic",
+    background: "",
+    banner: "../static/images/banner_classic.png",
+    coloring_window: "",
+    coloring_container: "",
+    coloring_title: ""
+  },
+  "patriot": {
+    name: "Patriot",
+    background: "../static/images/flag_background.jpg",
+    banner: "../static/images/banner_patriot.jpg",
+    coloring_window: "#002e94",
+    coloring_container: "#00184d",
+    coloring_title: "#000c26"
+  },
+  "amongus": {
+    name: "Amogus",
+    background: "../static/images/background_amogus.jpg",
+    banner: "../static/images/banner_amogus.jpg",
+    coloring_window: "#b3b3b3",
+    coloring_container: "#858585",
+    coloring_title: "#000000"
+  },
+  "space": {
+    name: "Space",
+    background: "../static/images/background_space.jpg",
+    banner: "../static/images/banner_space.png",
+    coloring_window: "#b3b3b3",
+    coloring_container: "#000000",
+    coloring_title: "#000000",
+    text_col: "white"
+  },
+  "civilwar": {
+    name: "Civil War",
+    background: "../static/images/background_civilwar.jpg",
+    banner: "../static/images/banner_civilwar.png",
+    coloring_window: "#ffb38c",
+    coloring_container: "#401600",
+    coloring_title: "#361200",
+    text_col: "white"
+  }
+}
+
+nct_stuff.selectedTheme = ""
+theme = window.localStorage.getItem("theme")
+if (theme == null) {
+  nct_stuff.selectedTheme = "nct"
+} else {
+  nct_stuff.selectedTheme = theme
+}
+
+document.getElementById("theme_picker").innerHTML = "<select id='themePicker' onchange='themePicked()'></select>"
+document.getElementById("themePicker").innerHTML += "<option value='"+nct_stuff.selectedTheme+"'>"+nct_stuff.themes[nct_stuff.selectedTheme].name+"</option>"
+for (i in nct_stuff.themes) {
+    if (i != nct_stuff.selectedTheme)
+      document.getElementById("themePicker").innerHTML += "<option value='"+i+"'>"+nct_stuff.themes[i].name+"</option>"
+}
+function themePicked() {
+  sel = document.getElementById("themePicker").value
+  window.localStorage.setItem("theme", sel)
+  location.reload()
+}
   // Banner Stuff
   banner = $('#header')[0];
-    num = Math.floor((Math.random() * 22) + 1)
     //num = 22
-    banner.src = "../static/images/banner_"+num+".png"
+    banner.src = nct_stuff.themes[nct_stuff.selectedTheme].banner
     banner.width = 1000
+    if (theme == "amongus") {
+      banner.height= 248
+    }
     if (num != 22)
-      document.body.background = "../static/images/mlk.jpg"
-    else {
+      document.body.background = nct_stuff.themes[nct_stuff.selectedTheme].background
+    else if (nct_stuff.selectedTheme == "nct") {
       document.body.background = "https://upload.wikimedia.org/wikipedia/commons/6/6b/1984-Big-Brother.jpg"
       document.body.style.fontFamily="Comic Sans MS"
       document.getElementsByClassName("game_header")[0].children[0].innerHTML="haha I said gorg wlave laugh!!11!"
@@ -546,8 +626,25 @@ function benefitCheck(objectid){
         }
       },100)
     }
-    $("#game_window")[0].style.backgroundColor = "#ff6b6b"
-    $(".container")[0].style.backgroundColor = "#930301"
+    $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window
+    $(".container")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_container
+    document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+    if (nct_stuff.themes[nct_stuff.selectedTheme].text_col != null) {
+      $(".container")[0].style.color = nct_stuff.themes[nct_stuff.selectedTheme].text_col
+      $("#game_window")[0].style.color = "black"
+    }
+    setInterval(function(){
+sussywussy = nct_stuff.themes[nct_stuff.selectedTheme]
+if (document.getElementById("inner_window_2") != null) {
+    document.getElementById("inner_window_2").style.backgroundColor = sussywussy.coloring_window
+} else if (document.getElementById("inner_window_3") != null) {
+    document.getElementById("inner_window_3").style.backgroundColor = sussywussy.coloring_window
+} if (document.getElementById("inner_window_4") != null) {
+    document.getElementById("inner_window_4").style.backgroundColor = sussywussy.coloring_window
+} if (document.getElementById("inner_window_5") != null) {
+    document.getElementById("inner_window_5").style.backgroundColor = sussywussy.coloring_window
+}
+},100)
 </script>
 <script>
 
