@@ -578,6 +578,7 @@ nct_stuff.themes = {
     coloring_window: "#ffe8b5",
     coloring_container: "#b8ad95",
     coloring_title: "#422200",
+    music: "../static/audio/wildwest.mp3"
   }
 }
 
@@ -640,6 +641,11 @@ function themePicked() {
     if (nct_stuff.themes[nct_stuff.selectedTheme].text_col != null) {
       $(".container")[0].style.color = nct_stuff.themes[nct_stuff.selectedTheme].text_col
       $("#game_window")[0].style.color = "black"
+    }
+    if (nct_stuff.themes[nct_stuff.selectedTheme].music != null) {
+      document.getElementById("music_player").style.display=""
+      document.getElementById('campaigntrailmusic').src = nct_stuff.themes[nct_stuff.selectedTheme].music
+      document.getElementById('campaigntrailmusic').autoplay = "true"
     }
     setInterval(function(){
 sussywussy = nct_stuff.themes[nct_stuff.selectedTheme]
