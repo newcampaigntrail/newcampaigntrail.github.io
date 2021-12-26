@@ -112,9 +112,6 @@
     <option value="1936B_LongGarner">1936b (Long/Garner)</option>
     <option value="1936B_LongRoosevelt">1936b (Long/Roosevelt)</option>
     <option value="1936B_LongWallace">1936b (Long/Wallace)</option>
-    <option value="1936B_LandonKnox">1936b (Landon/Knox)</option>
-    <option value="1936B_LandonMcNary">1936b (Landon/McNary)</option>
-    <option value="1936B_LandonBridges">1936b (Landon/Bridges)</option>
     <option value="1940_RooseveltWallace">1940 (Roosevelt/Wallace)</option>
     <option value="1940_WillkieMcNary">1940 (Willkie/McNary)</option>
     <option value="1944_RooseveltTruman">1944 (Roosevelt/Truman)</option>
@@ -153,10 +150,6 @@
     <option value="1964d_WallaceYorty">1964d (Wallace/Yorty)</option>
     <option value="1964d_McCarthyMcGovern">1964d (McCarthy/McGovern)</option>
     <option value="1964d_McCarthyReuther">1964d (McCarthy/Reuther)</option>
-    <option value="1964TNO_JohnsonMuskie">1964 TNO (Johnson/Muskie)</option>
-    <option value="1964TNO_JohnsonGore">1964 TNO (Johnson/Gore)</option>
-    <option value="1964TNO_JohnsonKennedy">1964 TNO (Johnson/Kennedy)</option>
-    <option value="1964TNO_JohnsonHumphrey">1964 TNO (Johnson/Humphrey)</option>
     <option value="1968_WallaceFeedback">1968 (WallaceFeedback)</option>
     <option value="1968_HumphreyFeedback">1968 (HumphreyFeedback)</option>
     <option value="1968b_NixonRockefeller">1968b (Nixon/Rockefeller)</option>
@@ -166,6 +159,7 @@
     <option value="1968c_KennedySymington">1968c (Kennedy/Symington)</option>
     <option value="1968c_KennedyProxmire">1968c (Kennedy/Proxmire)</option>
     <option value="1968c_KennedyYarborough">1968c (Kennedy/Yarborough)</option>
+    <option value="1972_McGovernEagleton">1972 (McGovern/Eagleton)</option>
     <option value="1972_McGovernEagleton">1972 (McGovern/Eagleton)</option>
     <option value="1972_McGovernFarenthold">1972 (McGovern/Farenthold)</option>
     <option value="1972_McGovernChisholm">1972 (McGovern/Chisholm)</option>
@@ -323,7 +317,8 @@
 <br> 
 Source code hosted on <a href="https://github.com/newcampaigntrail/newcampaigntrail" style="color:#FF6B6B">GitHub</a>
 <br> 
-Join our <a href="https://discord.gg/CfS6yTtjZj" style="color:#FF6B6B">Discord Server here!</a>
+Join our <a href="https://discord.gg/CfS6yTtjZj" style="color:#FF6B6B">Discord Server here!</a><br>
+Christmas soundtrack taken from <a href="https://www.freemusicpublicdomain.com/royalty-free-christmas-music/" style="color:#FF6B6B">here</a>
 </div>
 </div>
 <div id="1796_init" style="display:none"></div>
@@ -626,6 +621,8 @@ nct_stuff.themes = {
   }
 }
 
+nct_stuff.christmas = true
+
 nct_stuff.selectedTheme = ""
 theme = window.localStorage.getItem("theme")
 if (theme == null) {
@@ -634,17 +631,24 @@ if (theme == null) {
   nct_stuff.selectedTheme = theme
 }
 
+if (nct_stuff.christmas != true) {
+
 document.getElementById("theme_picker").innerHTML = "<select id='themePicker' onchange='themePicked()'></select>"
 document.getElementById("themePicker").innerHTML += "<option value='"+nct_stuff.selectedTheme+"'>"+nct_stuff.themes[nct_stuff.selectedTheme].name+"</option>"
 for (i in nct_stuff.themes) {
     if (i != nct_stuff.selectedTheme)
       document.getElementById("themePicker").innerHTML += "<option value='"+i+"'>"+nct_stuff.themes[i].name+"</option>"
 }
+
+} else {
+  document.getElementById("theme_picker").style.display='none'
+}
 function themePicked() {
   sel = document.getElementById("themePicker").value
   window.localStorage.setItem("theme", sel)
   location.reload()
 }
+if (nct_stuff.christmas != true) {
   // Banner Stuff
   banner = $('#header')[0];
     //num = 22
@@ -701,6 +705,60 @@ if (document.getElementById("inner_window_2") != null) {
     document.getElementById("inner_window_5").style.backgroundColor = sussywussy.coloring_window
 }
 },100)
+  } else {
+    susnum = Math.floor((Math.random() * 7) + 1)
+    nct_stuff.quotes = ["Now with extra bells!", "Minecraft is better", "Statement by Donald J. Trump, 45th President of the United States of America", "Merry Christmas!", "We lost the War on Christmas", "If I hear 'All I Want For Christmas Is You' one more time...", "Now with an updated mod loader! (just kidding)", "Feels like a good time for a fireside chat", "[Insert Undertale Reference]", "Make it rein, deer", "It's cold outside, no kind of atmosphere!", "2012 is the best scenario!", "Shopping for a New Deal", "Now with 10% more sarcastic comments", "<button onclick='alert(\"bepis\")'>Click for bepis</button>", "Don't stop me now! <font size='1'>no seriously please don't</font>", "If Reagan didn't get his Christmas present, what makes you think you will?", "she/they #BLM #ACAB", "The Industrial Revolution and its consequences have been a disaster for the human race", "Patriot | 80 years old | Unvaxxed | In ICU with COVID 😔", "<b>NEWER CAMPAIGN TRAIL</b> when?", "How are you today?", "[christmas-related message]", "WHY BE WITH YOUR [[Family]] DURING [[Christmas]] LIFE WHEN YOU CAN BE A [[BIG SHOT!!!]]"]
+    quotnum = Math.floor((Math.random() * nct_stuff.quotes.length))
+    quote = nct_stuff.quotes[quotnum]
+    nct_stuff.themes = {
+      "christmas": {
+        name: "jesus christ is my ",
+        background: "../static/images/background_christmas.jpg",
+        banner: "../static/images/banner_christmas_"+susnum+".png",
+        coloring_window: "#8D3A3D",
+        coloring_container: "#871d0d",
+        coloring_title: "#194260",
+        music: "../static/audio/christmas.mp3"
+      }
+    }
+    nct_stuff.selectedTheme="christmas"
+    // Banner Stuff
+    banner = $('#header')[0];
+    //num = 22
+    banner.src = nct_stuff.themes[nct_stuff.selectedTheme].banner
+    correctbannerpar = document.getElementsByClassName("game_header")[0]
+    correctbannerpar.innerHTML+="<font id='wittyquote' size='4' color='white'><em>"+quote+"</em></font>"
+    corrr = correctbannerpar.innerHTML
+    banner.width = 1000
+    document.body.background = nct_stuff.themes[nct_stuff.selectedTheme].background
+    $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window
+    $(".container")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_container
+    document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+    if (nct_stuff.themes[nct_stuff.selectedTheme].text_col != null) {
+      $(".container")[0].style.color = nct_stuff.themes[nct_stuff.selectedTheme].text_col
+      $("#game_window")[0].style.color = "black"
+    }
+    if (nct_stuff.themes[nct_stuff.selectedTheme].music != null) {
+      document.getElementById("music_player").style.display=""
+      document.getElementById('campaigntrailmusic').src = nct_stuff.themes[nct_stuff.selectedTheme].music
+      document.getElementById('campaigntrailmusic').autoplay = "true"
+    }
+    setInterval(function(){
+      document.getElementsByClassName("game_header")[0].innerHTML=corrr
+          document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+
+sussywussy = nct_stuff.themes[nct_stuff.selectedTheme]
+if (document.getElementById("inner_window_2") != null) {
+    document.getElementById("inner_window_2").style.backgroundColor = sussywussy.coloring_window
+} else if (document.getElementById("inner_window_3") != null) {
+    document.getElementById("inner_window_3").style.backgroundColor = sussywussy.coloring_window
+} if (document.getElementById("inner_window_4") != null) {
+    document.getElementById("inner_window_4").style.backgroundColor = sussywussy.coloring_window
+} if (document.getElementById("inner_window_5") != null) {
+    document.getElementById("inner_window_5").style.backgroundColor = sussywussy.coloring_window
+}
+},100)
+  }
 </script>
 <script>
 
