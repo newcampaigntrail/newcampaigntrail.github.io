@@ -3,7 +3,187 @@
 
 
 <script>
- 
+ used=false
+for (i in campaignTrail_temp.election_json) 
+{
+    if (campaignTrail_temp.election_json[i].pk == campaignTrail_temp.election_id) 
+    {
+        year = campaignTrail_temp.temp_election_list[i].display_year
+    }
+}
+if (year == "2000") {
+    campaignTrail_temp.multiple_endings = true;
+    function endingPicker(out, totv, aa, quickstats) {
+//Bush ID=77, Gore ID=78 Nader ID=79
+orderID = [aa[0].candidate, aa[1].candidate, aa[2].candidate];
+playerlost = true;
+playerID = 0;
+playerEV = quickstats[0];
+popvotemessage = "";
+lostmarginmessage = "";
+extramessagemargin = "";
+titlemessage = "";
+goreFL = 0;
+bushFL = 0;
+popwon = true;
+bushWinFL = true;
+situationFL = 0;
+fLmargin = campaignTrail_temp.final_state_results[8].result[0].percent - campaignTrail_temp.final_state_results[8].result[1].percent;
+
+if (aa[0].electoral_votes < 270) {
+    return false;
+}
+if (aa[1].popular_votes > aa[0].popular_votes) {
+    popwon = false;
+}
+PlayerID=campaignTrail_temp.candidate_id
+if (playerEV > 270) {
+    playerlost = false;
+}
+
+if (campaignTrail_temp.final_state_results[8].result[0].candidate == 78) {
+    //gore wins FL
+    goreFL = campaignTrail_temp.final_state_results[8].result[0].votes;
+    bushFL = campaignTrail_temp.final_state_results[8].result[1].votes;
+} //bush wins FL
+else {
+    goreFL = campaignTrail_temp.final_state_results[8].result[1].votes;
+    bushFL = campaignTrail_temp.final_state_results[8].result[0].votes;
+}
+if (goreFL == bushFL) {
+    return "How the fuck did Florida tie are you fucking kidding me";
+}
+if (fLmargin < 0.005) {
+    if (aa[0].electoral_votes <= 294) {
+        return "<h3>“Too close to call!”</h3><p>The state of Florida has a margin of victory under half a percent, and with the election hinging on its result, the recounts in the state are going to decide it. Every court option and legal procedure will be investigated by you and your opponent, so be ready for the long haul. Let’s hope this delay in fundamental democracy doesn't result in the unpreparedness of any critical governmental agencies. That would be truly terrible!<p><p>";
+    }
+}
+if ((playerID==77) && (playerEV==538))
+{
+return"<h3>“GOD FUCKING DAMNIT GORE”</h3><p>Those words rang out from the president's office, despite the door being shut. In the room, were President Bill Clinton and Vice President Al Gore.'I BROUGHT THE ECONOMY BACK FROM A TERRIBLE STATE RUN BY INCOMPETENT REPUBLICANS. I WON DURING THE MID-TERMS AND GAVE YOU A FREE TICKET TO THE PRESIDENCY. AND WHAT DO YOU DO? YOU LET THE SON OF THE GUY WHO I BEAT BECOME PRESIDENT! 538 VOTES TO 0!' Those were the words of a less than happy Bill Clinton. Gore responded 'I-I don't know what happened, I-I thought I ran a good campaign b-but...' Clinton interrupted, saying 'You know exactly what happened Gore. For some reason, you did a tank photo op like Dukakis, which is already bad enough. BUT THEN you accidentally fired the tank, I have no clue how, those things are hard to fire, and you hit a group of spectators. Killing 5. Your court date is in a month so you better start prepping a defence team.' 'co-' 'If you’re asking me for a pardon, you can shove it. Then in your speech to the nation about it, you claimed the ghost of William Mckinley had fired the tank by controlling your body. You then spent 50 thousand dollars of taxpayer money on hiring an exorcist to try and remove him. That’s why you lost, Al."
+}
+if ((playerID==78) && (playerEV==538))
+{
+if (used != true) {setInterval(function(){
+    used = true
+    imgg = document.getElementsByClassName("person_image")[0]
+    if (imgg != null) {
+        imgg.src = "https://i.imgur.com/lmtBoXt.png"
+    }
+},100)}
+
+return "<audio loop='false' autoplay='true' src='https://ia601408.us.archive.org/28/items/ytmp3free.cc_al-gore-celebrating-youtubemp3free.org/ytmp3free.cc_al-gore-celebrating-youtubemp3free.org.mp3' style='display:none;'></audio>"  
+}
+if (playerID == 77) {
+    //Bush
+    if (playerlost == true) 
+    {
+        titlemessage = " Sorry, you've lost the 2000 election";
+        extramessagemargin ="You still have many options for your political career as of now. You are still popular in your party and Texas, so there is no doubt you can still influence the next candidate. Perhaps it will be you, or your brother. Maybe the American public will get sick of the Bush family and choose someone else entirely. Whatever the case, let’s hope the Republicans can recover as the Democrats did 8 years ago.";
+        if (playerEV >= 260) 
+        {
+            lostmarginmessage =" Despite your best efforts, Al Gore will succeed Clinton in the presidency. Many Republicans are disappointed with your loss, seeing the Monica Lewinsky scandal, among others a real opening for them to return to the White House. The closeness of the election will likely inspire Gore to be a bit more moderate and bipartisan in his decision-making. With the close Senate, it will certainly be needed.";
+        } else if (playerEV >= 240) 
+        {
+            lostmarginmessage =" Despite your best efforts, Al Gore will succeed Clinton in the presidency. Many Republicans are disappointed with your loss, seeing the Monica Lewinsky scandal, among others a real opening for them to return to the White House. Gore flipping the House and Senate will give him some breathing room, but with the slim margins, he will have his work cut out for him.";
+        } else 
+        {
+            lostmarginmessage =" Despite your best efforts, Al Gore will succeed Clinton in the presidency. Many Republicans are disappointed with your loss, seeing the Monica Lewinsky scandal, among others a real opening for them to return to the White House. Many are shocked at the margin you lost by, seeing the Lewinsky scandal as giving a lot of socially conservative states the impetus to vote for you. Many it really IS just the economy that matters.";
+        }
+        if (popwon == false) 
+        {
+            popvotemessage =" For the first time since 1888, the loser of the popular vote has won the election! This has many Republicans enraged, especially due to the fact this is the 3rd Democrat in a row winning with less than 50% of the popular vote. Maybe a run in 4 years IS in the books for you...";
+        }
+    } else {
+        titlemessage = "Congratulations! You won the 2000 election";
+        extramessagemargin ="What will happen next is up to you, although most people have some expectations. Tax cuts will certainly be going into effect, and some bills related to gay marriage or LGBTQ+ people in the military will as well. Just keep an eye out for 2004, and don't make the same mistakes as your dad.";
+        if (playerEV >= 310) 
+        {
+            lostmarginmessage ="Well done! You've prevented another term of Democrats and succeeded your father as the next Republican president. Your impressive margin allows the Senate and House to stay in Republican hands, with a Republican president for the first time since Dwight Eisenhower!";
+        } 
+        else if (playerEV >= 290) 
+        {
+            lostmarginmessage ="Well done! You've prevented another term of Democrats and succeeded your father as the next Republican president. You've managed to flip a few seats in the house and Senate, but it's best you act quickly on your promises or the midterms could take that all away.";
+        } 
+        else 
+        {
+            lostmarginmessage ="Well done! You've prevented another term of Democrats and succeeded your father as the next Republican president. You barely won, however, so let’s hope your bipartisanship and compassionate conservativism resonate with many Americans.";
+        }
+        if (popwon == false) 
+        {
+            popvotemessage = 'For the first time since 1888, the loser of the popular vote has won the election! This has many Democrats are very angry, especially at Ralph Nader for "spoiling" the election.';
+        }
+    }
+} 
+else if (playerID == 78) 
+{
+    //Gore
+    if (playerlost == true) {
+        titlemessage = "Sorry, you've lost the 2000 election";
+        extramessagemargin ="It's up to you what you want to do next. A run in 4 years isn't totally out of the question, but after your decades in politics, you might be burnt out. In any case, let’s hope Bush can continue the economic prosperity and tone down the foreign policy intervention, such as in Somalia. Anything more like that would be a disaster...";
+        if (playerEV >= 266) {
+            lostmarginmessage ="It just seems all the little things affecting your campaign were too much to handle. Maybe you should have emphasized your relation to Clinton more. Maybe you should have moved politically left to catch some votes from Nader. Maybe you should have moved politically RIGHT to appeal to the south. Whatever it is, George Bush will be the next president. At least with the close margin, Bush's bipartisanship will have to be on full display.";
+        } else if (playerEV >= 250) {
+            lostmarginmessage ="It just seems all the little things affecting your campaign were too much to handle. Maybe you should have emphasized your relation to Clinton more. Maybe you should have moved politically left to catch some votes from Nader. Maybe you should have moved politically RIGHT to appeal to the south. Whatever it is, George Bush will be the next president. As it has since 94, the House and Senate will be Republican hands firmly, as they made some small gains.";
+        } else {
+            lostmarginmessage ="It just seems all the little things affecting your campaign were too much to handle. Maybe you should have emphasized your relation to Clinton more. Maybe you should have moved politically left to catch some votes from Nader. Maybe you should have moved politically RIGHT to appeal to the south. Whatever it is, George Bush will be the next president. Bush won by a larger than expected amount, and as such, the Senate and House will favour him heavily. I guess his bipartisanship won't be needed for the next two years...";
+        }
+        if (popwon == false) 
+        {
+            popvotemessage = "For the first time in over a century, the loser of the popular vote has won the election! Your fellow Democrats are already having flashbacks of 1888, and are blaming Ralph Nader for it.";
+        }
+    } else {
+        titlemessage = "Congratulations! You won the 2000 election";
+        extramessagemargin ="You'll no doubt be continuing the economic policies of Clinton, but with your own, Al Gore twist. The environment, healthcare for all, and technology will be your 3 goals of the next term, and if you are successful as Clinton in your achievements, 2004 will be a cakewalk.";
+        if (playerEV >= 330) {
+            lostmarginmessage ="Despite another challenge being thrown at you, you've cast aside George Bush and flipped the script on the Republicans, allowing Democrats to win their own 3 presidential elections in a row. Another commanding win for the Democrats as well, and with this, you have flipped both chambers back. Who cares about 1994, anyways?";
+        } else if (playerEV >= 308) {
+            lostmarginmessage ="Despite another challenge being thrown at you, you've cast aside George Bush and flipped the script on the Republicans, allowing Democrats to win their own 3 presidential elections in a row. The house and Senate have tightened up in your favour, but you will still have to appeal to moderate Democrats to pass legislation.";
+        } else 
+        {
+            lostmarginmessage ="Despite another challenge being thrown at you, you've cast aside George Bush and flipped the script on the Republicans, allowing Democrats to win their own 3 presidential elections in a row. Unfortunately, your win was nowhere near as big as Clinton's, so the chambers are in the Republicans favour for now.";
+        }
+        if (popwon == false) 
+        {
+            popvotemessage ="Interestingly enough, you've lost the popular vote despite winning overall, for the first time since 1888. Republicans aren't too happy about losing 3 elections in a row to someone who won less than 50% of the popular vote.";
+        }
+    }
+} //Nader
+else 
+{
+  if ((quickstats[0] < 3) && (quickstats[1] >= 5)) 
+  {
+     return "<h3>”As expected, you've lost the 2000 election.”</h3><p>Congratulations! You received 5% of the popular vote! You will enable the Green Party to run a vigorous campaign in 2004 and present a true choice to the American people. You’ve run a great campaign these last few months, and you should have no problem getting renominated in 4 years.<p><p>But for now, sit back and relax, you’ve earned it. Who knows? Maybe next election you’ll even win a state or two."
+  } 
+  else if ((quickstats[0] > 2) && (quickstats[0]<4)) 
+  {
+     return "<h3>”Congratulations! You’ve won D.C.!”</h3><p>What a campaign! You’ve managed to surpass expectations and net yourself some electoral votes! You should have no trouble gaining federal matching funds next election, and you can take solace in the fact that the people of D.C. chose the only capable man this election.<p><p>Democrats are sure to be miffed, especially so if they lost, but you couldn’t care less at this moment. Good luck in 2004!"
+  } 
+  else if ((quickstats[0] > 3) && (quickstats[0]<269)) 
+  {
+  return "<h3>”Holy Cow! You won a state!”</h3><p>Everyone thought it impossible, but you’ve pulled it off! You’re the first third-party candidate in over 30 years to win a state, and both you and your supporters are ecstatic. Federal matching funds in 2004 are all but guaranteed, and you’ve established the green party as a force to be reckoned with.<p><p>Let’s hope you’re more than just a flash in the pan and can run a similar campaign in 2004. The Green party may even find itself in the White House someday - and it’s all thanks to you."
+  }
+  else if (quickstats[0] == 538) 
+  {
+     return "<h3>”The Senate will now vote on H.R. 5411, the National Defense Authorization Act for Fiscal Year 2001.”</h3><p> Those were the words of the clerk in the US Senate. They went through each Senator by state, asking for a voice vote from each of them. After all, was said and done, the tally was 81-19 in favour of the motion. the clerk said 'The motion passes. The bill will now be presented to the president for signing.' He stood up and turned around, only to see president Ralph Nader standing 2 inches behind him, which causes the Clerk to stumble back. 'Oh, h-hello there President Nader. I was just going to pres-' He gets interrupted by the loudest yell he had ever heard, when president Nader bellowed at him:<p><p>VETOED!!!!!!!!!!!!!!!!!!!!!<p><p> president Nader then had his 74th veto overridden that congress just 5 minutes later."
+  } 
+  else if (quickstats[0] > 269) 
+  {
+     return "<h3>”Good lord! You’ve won the 2000 election!”</h3><p>Everyone thought it impossible, that at best you would get 5%, but you’ve proved everybody wrong! This is the biggest political upset in American history, beating out Truman over 50 years ago. An impromptu party has been arranged at the Green Party headquarters in DC, your answering machine is clogged with congratulatory calls from your supporters, and every news station in the country has been clamouring to get to you for an interview<p><p>What you've achieved tonight is a stellar victory that will be studied for the rest of American history. From Nader’s Raiders to the White House in 30 years, let’s hope your surprise victory has also netted the Green Party some senate seats, or you’ll have to compromise big in the coming years, considering your stiff opposition from both parties. This definitely wasn’t supposed to happen - Good luck!"
+  } 
+  else if (quickstats[2] < 100) 
+  {
+  	return '<h3>"It is Over"</h3><p>The results are coming in, and the phone is ringing. You reach slowly into your drawer and pull out something you never thought you would use. The TV announcer drawls, "The biggest loser of tonight is Ralph Nader! Nader appears to have only received ' + quickstats[2] + ' votes nationwide." You pull the gun to your head, and slowly press on the trigger... and then there was nothing.</p><p>A noise suddenly grabs your attention, but your vision is still fuzzy.</p><p>"Ralph, cmon!"</p><p>The voice seems strained. Your vision suddenly clears. You are in a white room. As your eyes trail sluggishly around the room, you notice something strange. There are a series of glass pods lining the sides of the room. In each pod, there is a person inside each, with every person having some form of cap on their head.</p><p>"Get out of the simulator, Ralph! We have some shopping to do," and then finally, you remembered.</p>'
+  } 
+  else 
+  {
+     return "<h3>”As expected, you've lost the 2000 election.”</h3><p>This was hardly a surprise, considering the stranglehold that the two-party system holds on American politics. To make matters worse, you didn’t even get 5% of the popular vote, so the Green Party will have to do without federal matching funds. <p><p>Still, you’ve run a decent campaign, and your campaign has tried the best it could. You have a chance to cross that 5% threshold in the next election at least, considering you’ve been a perennial candidate for 8 years now. Good luck in 2004!"
+  }
+}
+return "<h3>" + titlemessage + "</h3><p>" + lostmarginmessage + "<p>" + "<p>" + extramessagemargin
+}
+}
+
 
 
 campaignTrail_temp.questions_json = JSON.parse("[{\"model\": \"campaign_trail.question\", \"pk\": 371, \"fields\": {\"priority\": 1, \"description\": \"What is your overall strategy for the 2000 campaign?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 368, \"fields\": {\"priority\": 1, \"description\": \"What key points will you emphasize as you accept your party's nomination for President of the United States?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 346, \"fields\": {\"priority\": 2, \"description\": \"What is your vision for the foreign policy of this country?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 349, \"fields\": {\"priority\": 2, \"description\": \"Did you support Bill Clinton's actions leading to the bombing of Serbia?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 351, \"fields\": {\"priority\": 2, \"description\": \"What are your thoughts on the USS Cole bombing, which has killed 17 American sailors. How should we prevent such incidents of terrorism in the future?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 348, \"fields\": {\"priority\": 2, \"description\": \"Do you believe that Elian Gonzalez should have been returned to Cuba?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 345, \"fields\": {\"priority\": 2, \"description\": \"Which of the following best describes your position on Social Security?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 343, \"fields\": {\"priority\": 2, \"description\": \"Which of the following best describes your position on the $200 billion surplus that is projected for this year?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 344, \"fields\": {\"priority\": 2, \"description\": \"Which of the following best describes your position on education?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 347, \"fields\": {\"priority\": 2, \"description\": \"Do you have any thoughts on the Bill Clinton scandal that you would like to share?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 350, \"fields\": {\"priority\": 2, \"description\": \"Do you have any plans to change American tax policy?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 355, \"fields\": {\"priority\": 3, \"description\": \"The Kyoto Protocol would commit the United States (along with many other countries) to reduce greenhouse gas emissions. Would you support this plan as President?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 361, \"fields\": {\"priority\": 3, \"description\": \"Should low-income parents be able to use federal vouchers to send their children to private schools?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 356, \"fields\": {\"priority\": 3, \"description\": \"What is your position on American trade policy? How do you feel about the World Trade Organization or NAFTA?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 365, \"fields\": {\"priority\": 3, \"description\": \"What do you think of proposals to build a sophisticated missile defense system in Eastern Europe?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 354, \"fields\": {\"priority\": 3, \"description\": \"Do you have any plans to help America's seniors better pay for vital prescription drugs?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 378, \"fields\": {\"priority\": 3, \"description\": \"Another day, another rally on the campaign trail. What do you prefer to talk about today?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 358, \"fields\": {\"priority\": 3, \"description\": \"Do you have any plans to address or change immigration policy if elected President?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 379, \"fields\": {\"priority\": 3, \"description\": \"Another day, another rally on the campaign trail. What do you prefer to talk about today?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 363, \"fields\": {\"priority\": 3, \"description\": \"What do you think of Bill Clinton's recent action to tap the Strategic Petroleum Reserve to reduce the costs of home heating, particularly in the northeast?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 360, \"fields\": {\"priority\": 3, \"description\": \"Do you believe it is appropriate for Hillary Clinton to run for Senate in the state of New York -- a state where she has never lived?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 352, \"fields\": {\"priority\": 3, \"description\": \"In Texas, a man named James Byrd was brutally murdered in what many call a hate crime. What is your opinion of federal hate crime legislation?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 364, \"fields\": {\"priority\": 3, \"description\": \"Do you think that new regulations from Bill Clinton have unfairly hurt coal-producing states?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 386, \"fields\": {\"priority\": -2, \"description\": \"It is November 2nd, only five days before the voting. News has just broken that George Bush was arrested for drunken driving in 1976. What is your response?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 383, \"fields\": {\"priority\": -1, \"description\": \"Where will you make the final stop(s) of your campaign before the voting begins?\", \"likelihood\": 1.0}}]");
