@@ -15,7 +15,7 @@ if (year == "2000") {
     campaignTrail_temp.multiple_endings = true;
     function endingPicker(out, totv, aa, quickstats) {
 //Bush ID=77, Gore ID=78 Nader ID=79
-orderID = [aa[0].candidate, aa[1].candidate];
+orderID = [aa[0].candidate, aa[1].candidate,aa[2].candidate];
 playerlost = true;
 playerID = 0;
 playerEV = quickstats[0];
@@ -38,9 +38,13 @@ if (aa[1].popular_votes > aa[0].popular_votes) {
 }
 if (playerEV == aa[0].electoral_votes) {
     playerID = orderID[0];
-} else {
+} else if (playerEV==aa[1].electoral_votes) {
     playerID = orderID[1];
 }
+else
+{
+playerID=orderID[2];
+} 
 if (playerEV > 270) {
     playerlost = false;
 }
@@ -57,10 +61,7 @@ else {
 if (goreFL == bushFL) {
     return "How the fuck did Florida tie are you fucking kidding me";
 }
-if (fLmargin < 0.005) {
-    if (aa[0].electoral_votes <= 294) {
-        return "<h3>“Too close to call!”</h3><p>The state of Florida has a margin of victory under half a percent, and with the election hinging on its result, the recounts in the state are going to decide it. Every court option and legal procedure will be investigated by you and your opponent, so be ready for the long haul. Let’s hope this delay in fundamental democracy doesn't result in the unpreparedness of any critical governmental agencies. That would be truly terrible!<p><p>";
-    }
+
 }
 if ((playerID==77) && (playerEV==538))
 {
@@ -80,6 +81,10 @@ return "<audio loop='false' autoplay='true' src='https://ia601408.us.archive.org
 }
 if (playerID == 77) 
 {
+ if (fLmargin < 0.005) {
+    if (aa[0].electoral_votes <= 294) {
+        return "<h3>“Too close to call!”</h3><p>The state of Florida has a margin of victory under half a percent, and with the election hinging on its result, the recounts in the state are going to decide it. Every court option and legal procedure will be investigated by you and Gore, so be ready for the long haul. Let’s hope this delay in fundamental democracy doesn't result in the unpreparedness of any critical governmental agencies. That would be truly terrible!<p><p>";
+    }
     //Bush
     if (playerlost == true) 
     {
@@ -123,6 +128,10 @@ if (playerID == 77)
 } 
 else if (playerID == 78) 
 {
+ if (fLmargin < 0.005) {
+    if (aa[0].electoral_votes <= 294) {
+        return "<h3>“Too close to call!”</h3><p>The state of Florida has a margin of victory under half a percent, and with the election hinging on its result, the recounts in the state are going to decide it. Every court option and legal procedure will be investigated by you and Bush, so be ready for the long haul. Let’s hope this delay in fundamental democracy doesn't result in the unpreparedness of any critical governmental agencies. That would be truly terrible!<p><p>";
+    }
     //Gore
     if (playerlost == true) {
         titlemessage = "Sorry, you've lost the 2000 election";
