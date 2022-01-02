@@ -17,7 +17,7 @@ if (year == "2000") {
 //Bush ID=77, Gore ID=78 Nader ID=79
 orderID = [aa[0].candidate, aa[1].candidate, aa[2].candidate];
 playerlost = true;
-playerID = 0;
+PlayerID=campaignTrail_temp.candidate_id
 playerEV = quickstats[0];
 popvotemessage = "";
 lostmarginmessage = "";
@@ -30,17 +30,19 @@ bushWinFL = true;
 situationFL = 0;
 fLmargin = campaignTrail_temp.final_state_results[8].result[0].percent - campaignTrail_temp.final_state_results[8].result[1].percent;
 
-if (aa[0].electoral_votes < 270) {
-    return false;
+if (aa[0].electoral_votes < 270) 
+{
+  if(playerID!=79)
+  {
+   return false;
+  }
 }
 if (aa[1].popular_votes > aa[0].popular_votes) {
     popwon = false;
 }
-PlayerID=campaignTrail_temp.candidate_id
 if (playerEV > 270) {
     playerlost = false;
 }
-
 if (campaignTrail_temp.final_state_results[8].result[0].candidate == 78) {
     //gore wins FL
     goreFL = campaignTrail_temp.final_state_results[8].result[0].votes;
