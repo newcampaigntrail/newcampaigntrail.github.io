@@ -634,20 +634,72 @@ if (theme == null) {
   nct_stuff.selectedTheme = theme
 }
 if (nct_stuff.christmas != true) {
-document.getElementById("theme_picker").innerHTML = "<select id='themePicker' onchange='themePicked()'></select>"
-document.getElementById("themePicker").innerHTML += "<option value='"+nct_stuff.selectedTheme+"'>"+nct_stuff.themes[nct_stuff.selectedTheme].name+"</option>"
-for (i in nct_stuff.themes) {
-    if (i != nct_stuff.selectedTheme)
-      document.getElementById("themePicker").innerHTML += "<option value='"+i+"'>"+nct_stuff.themes[i].name+"</option>"
+  susnum = Math.floor((Math.random() * 7) + 1)
+    nct_stuff.quotes = ["Now with extra bells!", "Minecraft is better", "Statement by Donald J. Trump, 45th President of the United States of America", "Merry Christmas!", "We lost the War on Christmas", "If I hear 'All I Want For Christmas Is You' one more time...", "Now with an updated mod loader! (just kidding)", "Feels like a good time for a fireside chat", "[Insert Undertale Reference]", "Make it rein, deer", "It's cold outside, no kind of atmosphere!", "2012 is the best scenario!", "Shopping for a New Deal", "Now with 10% more sarcastic comments", "<button onclick='alert(\"bepis\")'>Click for bepis</button>", "Don't stop me now! <font size='1'>no seriously please don't</font>", "If Reagan didn't get his Christmas present, what makes you think you will?", "she/they #BLM #ACAB", "The Industrial Revolution and its consequences have been a disaster for the human race", "Patriot | 80 years old | Unvaxxed | In ICU with COVID 😔", "<b>NEWER CAMPAIGN TRAIL</b> when?", "How are you today?", "[christmas-related message]", "WHY BE WITH YOUR [[Family]] DURING [[Christmas]] LIFE WHEN YOU CAN BE A [[BIG SHOT!!!]]"]
+    quotnum = Math.floor((Math.random() * nct_stuff.quotes.length))
+    quote = nct_stuff.quotes[quotnum]
+  // Banner Stuff
+  banner = $('#header')[0];
+    //num = 22
+    banner.src = nct_stuff.themes[nct_stuff.selectedTheme].banner
+    correctbannerpar = document.getElementsByClassName("game_header")[0]
+    correctbannerpar.innerHTML+="<font id='wittyquote' size='4' color='white'><em>"+quote+"</em></font>"
+    corrr = correctbannerpar.innerHTML
+    banner.width = 1000
+    if (num != 22)
+      document.body.background = nct_stuff.themes[nct_stuff.selectedTheme].background
+    else if (nct_stuff.selectedTheme == "nct") {
+      document.body.background = "https://upload.wikimedia.org/wikipedia/commons/6/6b/1984-Big-Brother.jpg"
+      document.body.style.fontFamily="Comic Sans MS"
+      document.getElementsByClassName("game_header")[0].children[0].innerHTML="haha I said gorg wlave laugh!!11!"
+      vvv = document.getElementById("inner_window_1")
+      vvv.children[0].innerText = uwuifier(vvv.children[0].innerText)
+      vvv.children[1].innerText = uwuifier(vvv.children[1].innerText)
+      document.getElementById("game_start").children[0].innerText = uwuifier(document.getElementById("game_start").innerText)
+      setInterval(function(){
+        es = document.getElementById("election_summary")
+        if (es != null && es.children[0].innerHTML != uwuifier(es.children[0].innerHTML)) {
+          for (i in es.children) {
+            es.children[i].innerHTML = uwuifier(es.children[i].innerHTML)
+          }
+        }
+        ps = document.getElementById("candidate_summary")
+        if (ps != null && ps.children[0].children[0].innerHTML != uwuifier(ps.children[0].children[0].innerHTML)) {
+          for (v = 0; v < ps.children[0].children.length; v++) {
+            ps.children[0].children[v].innerHTML = uwuifier(ps.children[0].children[v].innerHTML)
+          }
+          ps.children[1].innerText = uwuifier(ps.children[1].innerText)
+        }
+      },100)
+    }
+    $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window
+    $(".container")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_container
+    document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+    if (nct_stuff.themes[nct_stuff.selectedTheme].text_col != null) {
+      $(".container")[0].style.color = nct_stuff.themes[nct_stuff.selectedTheme].text_col
+      $("#game_window")[0].style.color = "black"
+    }
+    if (nct_stuff.themes[nct_stuff.selectedTheme].music != null) {
+      document.getElementById("music_player").style.display=""
+      document.getElementById('campaigntrailmusic').src = nct_stuff.themes[nct_stuff.selectedTheme].music
+      document.getElementById('campaigntrailmusic').autoplay = "true"
+    }
+    setInterval(function(){
+document.getElementsByClassName("game_header")[0].innerHTML=corrr
+          document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+
+sussywussy = nct_stuff.themes[nct_stuff.selectedTheme]
+if (document.getElementById("inner_window_2") != null) {
+    document.getElementById("inner_window_2").style.backgroundColor = sussywussy.coloring_window
+} else if (document.getElementById("inner_window_3") != null) {
+    document.getElementById("inner_window_3").style.backgroundColor = sussywussy.coloring_window
+} if (document.getElementById("inner_window_4") != null) {
+    document.getElementById("inner_window_4").style.backgroundColor = sussywussy.coloring_window
+} if (document.getElementById("inner_window_5") != null) {
+    document.getElementById("inner_window_5").style.backgroundColor = sussywussy.coloring_window
 }
-} else {
-  document.getElementById("theme_picker").style.display='none'
-}
-function themePicked() {
-  sel = document.getElementById("themePicker").value
-  window.localStorage.setItem("theme", sel)
-  location.reload()
-}
+},100)
+  }
 if (nct_stuff.christmas != true) {
   // Banner Stuff
   banner = $('#header')[0];
