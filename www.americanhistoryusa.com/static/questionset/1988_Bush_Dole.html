@@ -1,5 +1,143 @@
 
 <div class="game_header">    <h2>NEW CAMPAIGN TRAIL</h2>    </div>    <div class="inner_window_question">        <div class="inner_inner_window">        <h3>What message will you <em>most</em> emphasize as you accept the Republican Party nomination?</h3>            <div id="question_form">                <form name="question"><input type="radio" name="game_answers" class="game_answers"             id="game_answers[0]" value="4366"/>		    <label for="game_answers[0]">I will move the nation forward to a new era, with continued employment growth and concern for the well-being of our citizens -- a kinder, gentler era.</label><br><input type="radio" name="game_answers" class="game_answers"             id="game_answers[1]" value="4368"/>		    <label for="game_answers[1]">If we're going to talk about “competence” in government, which party has cut inflation, unemployment, and interest rates by over half during the 1980s?</label><br><input type="radio" name="game_answers" class="game_answers"             id="game_answers[2]" value="4367"/>		    <label for="game_answers[2]">I stand for the continuation of Ronald Reagan's policies and legacy. Let us allow an ascendant conservatism to guide us into the future.</label><br><input type="radio" name="game_answers" class="game_answers"             id="game_answers[3]" value="4369"/>		    <label for="game_answers[3]">We need to take the attack to the Democrats after the convention they put on, and specifically challenge Dukakis on defense, economics, and social issues.</label><br></form>            </div>        </div>        <p><button id="answer_select_button" class="answer_select_button">CONTINUE</button>        <button id="view_electoral_map">Latest Polls/Electoral Map</button></p>    </div>    <img id="candidate_pic" src="../static/images/george-bush-1988.jpg">    <img id="running_mate_pic" src="../static/images/bob-dole-1988.jpg">    <div class="inner_window_sign_display">        <div id="progress_bar">	    <h3>Question 1 of 25</h3>        </div>    <div id="campaign_sign">	<p>Bush</p>	<p>Dole</p>    </div>    </div>
+used = false;
+for (i in campaignTrail_temp.election_json) {
+    {
+        if (campaignTrail_temp.election_json[i].pk == campaignTrail_temp.election_id) {
+            year = campaignTrail_temp.temp_election_list[i].display_year;
+        }
+    }
+}
+if (year == "1988") {
+    campaignTrail_temp.multiple_endings = true;
+    function endingPicker(out, totv, aa, quickstats) {
+    //Bush ID=152, Dukakis ID=153
+    orderID = [aa[0].candidate, aa[1].candidate];
+    playerlost = true;
+    playerID = 0;
+    playerEV = quickstats[0];
+    popvotemessage = "";
+    marginmessage = "";
+    extramessage = "";
+    titlemessage = "";
+    popwon = true;
+
+    if (aa[0].electoral_votes < 270) {
+        return false;
+    }
+    if (aa[1].popular_votes > aa[0].popular_votes) {
+        popwon = false;
+    }
+    if (playerEV == aa[0].electoral_votes) {
+        playerID = orderID[0];
+    } else {
+        playerID = orderID[1];
+    }
+    if (playerEV > 270) {
+        playerlost = false;
+    }
+    if (playerID == 152 && playerEV == 538) {
+        if (used != true) {
+            setInterval(function () {
+                used = true;
+                imgg = document.getElementsByClassName("person_image")[0];
+                if (imgg != null) {
+                    imgg.src = "https://i.imgur.com/KVeVC8p.png";
+                }
+            }, 100);
+        }
+        return "<h3>“”</h3><p><p><p>";
+    }
+    if (playerID == 153 && playerEV == 538) {
+        if (used != true) {
+            setInterval(function () {
+                used = true;
+                imgg = document.getElementsByClassName("person_image")[0];
+                if (imgg != null) {
+                    imgg.src = "https://arc-anglerfish-arc2-prod-bostonglobe.s3.amazonaws.com/public/T2VVI5A5VUI6JACWQGLYDV5I6U.jpg";
+                }
+            }, 100);
+        }
+        return "<h3>“TANK YOU VERY MUCH”</h3><p><p><p>";
+    }
+    if (playerID == 152) {
+        //Bush
+        if (playerlost == true) {
+            titlemessage = " Sorry, you've lost the 1988 election";
+            extramessage =
+                "After a long and storied career serving the US government, it seems retirement is in store for you. It's unlikely you will get renominated if you try, anyways. Bob Dole will most likely be the next nominee for the presidency. Your son Jeb looks to be interested in politics, perhaps HE could be president one day.";
+            if (playerEV >= 260) {
+                marginmessage =
+                    "Despite the popularity of Reagan, it seems the American public was ready to move on to a more left-wing president. Dukakis will likely overturn much of the excessive tax cuts of Reagan, and expand social security. Conservativism still has a market, however,  in the American population, as it was a fairly close election. Unfortunately, it was likely your lack of independence from Reagan that caused it. Perhaps a more assertive candidate could run in 4 years?";
+            } else if (playerEV >= 240) {
+                marginmessage =
+                    "Despite the popularity of Reagan, it seems the American public was ready to move on to a more left-wing president. Dukakis will overturn much of the excessive tax cuts of Reagan, and expand social security. You, Let’s unfortunately, were not able to capitalize on the many political mistakes of Dukakis's career, and Republicans are disappointed that they couldn't keep the White House.";
+            } else {
+                marginmessage =
+                    "Despite the popularity of Reagan, it seems the American public was ready to move on to a more left-wing president. Dukakis will overturn much of the excessive tax cuts of Reagan, and expand social security. Many are shocked you lost by such a large margin and are calling into question if you were even fit for the vice presidency in the first place, or just road the wave of Reagan popularity  .";
+            }
+            if (popwon == false) {
+                popvotemessage = "Exactly 100 years after the previous instance of this, the popular vote loser has won the election!. Republicans aren't happy at all, and you can be sure they’re already thinking about 1992.";
+            }
+        } else {
+            titlemessage = "Congratulations! You won the 1988 election";
+            extramessage =
+                "While most people are expecting a third term of Reagan, you know you didn't get elected solely on that idea. Your economic policy won't change for the most part, but you might be able to cool tensions a bit with the USSR, as that was one of the worries Americans had with Reagan. If all goes well, then you can be re-elected, and be the first president-vice president duo to be elected to 2 full terms each.";
+            if (playerEV >= 310) {
+                marginmessage =
+                    "Congratulations! Despite a challenge from the left in Dukakis, you have held on to win the 1988 election. Not since 1928 have the Republicans won three in a row. Let’s hope you don't turn out like that ill-fated president, Herbert Hoover. Your margin is certainly impressive, as many thought it would be a closer election due to 2 terms of Republicans.";
+            } else if (playerEV >= 290) {
+                marginmessage =
+                    "Congratulations! Despite a challenge from the left in Dukakis, you have held on to win the 1988 election. Not since 1928 have the Republicans won three in a row. Let’s hope you don't turn out like that ill-fated president, Herbert Hoover. You didn't do as well as Reagan, however, you still have won by a decent margin, so let’s hope you can work with the Democrats to engineer some bipartisanship legislature.";
+            } else {
+                marginmessage =
+                    "Congratulations! Despite a challenge from the left in Dukakis, you have held on to win the 1988 election. Not since 1928 have the Republicans won three in a row. Let’s hope you don't turn out like that ill-fated president, Herbert Hoover. The election was quite close, as many predicted, so let’s  hope the good economy and suffering the USSR can carry you through to the midterms.";
+            }
+            if (popwon == false) {
+                popvotemessage = "For the first time since 1888, the loser of the popular vote has won the election! This has many Democrats are very angry, and they are lamenting the Bayh-Celler amendment not passing.";
+            }
+        }
+    } else if (playerID == 153) {
+        //Dukakis
+        if (playerlost == true) {
+            titlemessage = "Sorry, you've lost the 1988 election";
+            extramessage =
+                "You are still governor of Massachusetts, and your term expires in 91. it's up to you whether or not you seek a 4th term, but ultimately federal politics seems no longer the choice for you. Let’s hope the more moderate Bush can end the cold war once and for all, and keep America prosperous.";
+            if (playerEV >= 266) {
+                marginmessage =
+                    "It seems the right-wing political machine was too much for you. The constant barrage of attacks and a strong economy have propelled Bush to the white house. Likely due to the moderate opinions of Bush, and the close election will force him to govern across party lines.";
+            } else if (playerEV >= 250) {
+                marginmessage =
+                    "It seems the right-wing political machine was too much for you. The constant barrage of attacks and a strong economy have propelled Bush to the white house. Many are shocked at Bush's comeback, seeing as you were the favourite early on. Reagan's popularity was just too much for you to deal with.";
+            } else {
+                marginmessage =
+                    "It seems the right-wing political machine was too much for you. The constant barrage of attacks and a strong economy have propelled Bush to the white house. Many are shocked at your massive loss, as you weren't even favoured to lose in the first place. Most people think you should have stuck up for yourself more, and not ignore the attacks Bush made.";
+            }
+            if (popwon == false) {
+                extramessage = "You are still governor of Massachusetts, and your term expires in 91. Perhaps due to you winning the popular vote, a run in 4 years is in the cards.";
+            }
+        } else {
+            titlemessage = "Congratulations! You won the 1988 election";
+            extramessage =
+                "The tax cuts for the rich will certainly be scaled back under your administration, as well as you will reduce military spending. With all this new money, perhaps social security can be expanded. Just watch the deficit, and you could get re-elected if you follow through with your competent persona.";
+            if (playerEV >= 330) {
+                marginmessage =
+                    "Congratulations governor! Despite a vicious attack campaign from the Republicans, you've been elected president. And what a win it is! The house and Senate are solidly in your hands, so you should have little trouble passing your legislation";
+            } else if (playerEV >= 308) {
+                marginmessage =
+                    "Congratulations governor! Despite a vicious attack campaign from the Republicans, you've been elected president. Democrats are still reeling a bit from the Reagan Revolution, so the win isn't as big as you'd like, but a win is a win after 8 years of Reagan, no?";
+            } else {
+                marginmessage =
+                    "Congratulations governor! Despite a vicious attack campaign from the Republicans, you've been elected president. Conservativism still has its place in the mind of the public, as seen with this win, so be prepared to face constant adversaries in the chambers of Congress.";
+            }
+            if (popwon == false) {
+                popvotemessage = "You best be cautious, however, as the popular vote was won by Bush instead of you. So act quick or the midterms with be swift and brutal.";
+            }
+        }
+    }
+return "<h3>" + titlemessage + "</h3><p>" + marginmessage + "<p>" + "<p>" + extramessage;
+}
+}
 
 
 <script>
