@@ -634,21 +634,6 @@ if (theme == null) {
   nct_stuff.selectedTheme = theme
 }
 if (nct_stuff.christmas != true) {
-document.getElementById("theme_picker").innerHTML = "<select id='themePicker' onchange='themePicked()'></select>"
-document.getElementById("themePicker").innerHTML += "<option value='"+nct_stuff.selectedTheme+"'>"+nct_stuff.themes[nct_stuff.selectedTheme].name+"</option>"
-for (i in nct_stuff.themes) {
-    if (i != nct_stuff.selectedTheme)
-      document.getElementById("themePicker").innerHTML += "<option value='"+i+"'>"+nct_stuff.themes[i].name+"</option>"
-}
-
-} else {
-  document.getElementById("theme_picker").style.display='none'
-}
-function themePicked() {
-  sel = document.getElementById("themePicker").value
-  window.localStorage.setItem("theme", sel)
-  location.reload()
-}
   susnum = Math.floor((Math.random() * 7) + 1)
     nct_stuff.quotes = ["Now with extra bells!", "Minecraft is better", "Statement by Donald J. Trump, 45th President of the United States of America", "Merry Christmas!", "We lost the War on Christmas", "If I hear 'All I Want For Christmas Is You' one more time...", "Now with an updated mod loader! (just kidding)", "Feels like a good time for a fireside chat", "[Insert Undertale Reference]", "Make it rein, deer", "It's cold outside, no kind of atmosphere!", "2012 is the best scenario!", "Shopping for a New Deal", "Now with 10% more sarcastic comments", "<button onclick='alert(\"bepis\")'>Click for bepis</button>", "Don't stop me now! <font size='1'>no seriously please don't</font>", "If Reagan didn't get his Christmas present, what makes you think you will?", "she/they #BLM #ACAB", "The Industrial Revolution and its consequences have been a disaster for the human race", "Patriot | 80 years old | Unvaxxed | In ICU with COVID 😔", "<b>NEWER CAMPAIGN TRAIL</b> when?", "How are you today?", "[christmas-related message]", "WHY BE WITH YOUR [[Family]] DURING [[Christmas]] LIFE WHEN YOU CAN BE A [[BIG SHOT!!!]]"]
     quotnum = Math.floor((Math.random() * nct_stuff.quotes.length))
