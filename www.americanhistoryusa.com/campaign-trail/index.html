@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
-
 <!-- Mirrored from www.americanhistoryusa.com/campaign-trail/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Apr 2021 08:05:58 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
 <title>The New Campaign Trail</title>
 <link rel="stylesheet" href="../static/amusa_main_2016032801.css" type="text/css" media="screen" />
 <link rel="shortcut icon" href="../static/34starcircle-2.png" />
-
 <link rel="canonical" href="index.html" />
 <meta name="description" content="Can you win a Presidential election? Step into the shoes of Barack Obama, Jimmy Carter, Abraham Lincoln, or others." />
 <meta property="og:title" content="The Campaign Trail - A Presidential Election Game" />
@@ -24,12 +22,9 @@
 <div class="container">      
 <center><img src="" id="header" width=1080></img></center>
 <div class="menu_bar_login">
-
 </div>
-
 <div class="content_box">
 <div class="content_single">
-
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -38,7 +33,6 @@
       version    : 'v2.2'
     });
   };
-
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
      if (d.getElementById(id)) {return;}
@@ -47,7 +41,6 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
-
 <div id="game_window">
 <div class="game_header">
 <h2>NEW CAMPAIGN TRAIL</h2>
@@ -64,7 +57,6 @@
 <input type="hidden" name="csrfmiddlewaretoken" value="PyPgwNNP0EYz79q5p9ofDOO4TSmZuEnFtfoF4j1VZNbyTf37JcsZ9rTLD9suabqu">
 <span class="campaign_trail_start_emphasis"><button id="game_start"><strong>Click here to begin!</strong></button></span>
 </div>
-
 </div>
 </div>
 <div class="footer">
@@ -81,6 +73,9 @@
     <option value="1796_Jefferson">1796 (Jefferson)</option>
     <option value="1796_Adams">1796 (Adams)</option>
     <option value="1844b_PolkDallas">1844b (Polk/Dallas)</option>
+    <option value="1848b_ClayFillmore">1848b (Clay/Fillmore)</option>
+    <option value="1848b_ClayLawrence">1848b (Clay/Lawrence)</option>
+    <option value="1848b_ClayEwing">1848b (Clay/Ewing)</option>
     <option value="1884_Cleveland">1884 (Cleveland)</option>
     <option value="1884_Blaine">1884 (Blaine)</option>
     <option value="1892_ClevelandStevenson">1892 (Cleveland/Stevenson)</option>
@@ -159,6 +154,10 @@
     <option value="1964d_WallaceYorty">1964d (Wallace/Yorty)</option>
     <option value="1964d_McCarthyMcGovern">1964d (McCarthy/McGovern)</option>
     <option value="1964d_McCarthyReuther">1964d (McCarthy/Reuther)</option>
+    <option value="1964TNO_JohnsonMuskie">1964 TNO (Johnson/Muskie)</option>
+    <option value="1964TNO_JohnsonGore">1964 TNO (Johnson/Gore)</option>
+    <option value="1964TNO_JohnsonKennedy">1964 TNO (Johnson/Kennedy)</option>
+    <option value="1964TNO_JohnsonHumphrey">1964 TNO (Johnson/Humphrey)</option>
     <option value="1968_WallaceFeedback">1968 (WallaceFeedback)</option>
     <option value="1968_HumphreyFeedback">1968 (HumphreyFeedback)</option>
     <option value="1968b_NixonRockefeller">1968b (Nixon/Rockefeller)</option>
@@ -284,6 +283,11 @@
     <option value="2016FourWay_SandersGabbard">2016FourWay (Sanders/Gabbard)</option>
     <option value="2016FourWay_SandersEllison">2016FourWay (Sanders/Ellison)</option>
     <option value="2016FourWay_SandersJealous">2016FourWay (Sanders/Jealous)</option>
+    <option value="2016b_SandersKlobuchar">2016b (Sanders/Klobuchar)</option>
+    <option value="2016b_SandersWarren">2016b (Sanders/Warren)</option>
+    <option value="2016b_SandersBaldwin">2016b (Sanders/Baldwin)</option>
+    <option value="2016b_SandersTurner">2016b (Sanders/Turner)</option>
+    <option value="2016b_SandersSewell">2016b (Sanders/Sewell)</option>
     <option value="2016_ClintonManchin">2016 (Clinton/Manchin)</option>
     <option value="2016_ClintonMcCaskill">2016 (Clinton/McCaskill)</option>
     <option value="2016_ClintonCastro">2016 (Clinton/Castro)</option>
@@ -478,11 +482,9 @@ function benefitCheck(objectid){
 </div>
 <div id='dialogue' title='Benefit Check'></div>
 </body>
-
 <script src="../../ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="../static/js/raphael.js"></script>
 <script>
-
   function uwuifier(a) {
     b = a.split(" I ")
     if (b.length > 0) {
@@ -534,8 +536,7 @@ function benefitCheck(objectid){
     a = b.join("")
     return a
 }
-
-num = Math.floor((Math.random() * 26) + 1)
+num = Math.floor((Math.random() * 27) + 1)
 bgnum = Math.floor((Math.random() * 4) + 1)
 modernnum = Math.floor((Math.random() * 1) + 1)
 nct_stuff = {}
@@ -627,9 +628,7 @@ nct_stuff.themes = {
     music: "../static/audio/wildwest.mp3"
   }
 }
-
 nct_stuff.christmas = false
-
 nct_stuff.selectedTheme = ""
 theme = window.localStorage.getItem("theme")
 if (theme == null) {
@@ -643,6 +642,7 @@ if (nct_stuff.christmas != true) {
   stassenyear=["1944","1948","1952","1964","1968","1980","1984","1988","1992"]                      
 nct_stuff.quotes=["Harold Stassen for President in "+stassenyear[stassennum]+"!"]
   quotnum = Math.floor((Math.random() * nct_stuff.quotes.length))
+
     quote = nct_stuff.quotes[quotnum]
   // Banner Stuff
   banner = $('#header')[0];
@@ -806,7 +806,6 @@ nct_stuff.quotes=["Harold Stassen for President in "+stassenyear[stassennum]+"!"
     setInterval(function(){
       document.getElementsByClassName("game_header")[0].innerHTML=corrr
           document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
-
 sussywussy = nct_stuff.themes[nct_stuff.selectedTheme]
 if (document.getElementById("inner_window_2") != null) {
     document.getElementById("inner_window_2").style.backgroundColor = sussywussy.coloring_window
@@ -821,7 +820,6 @@ if (document.getElementById("inner_window_2") != null) {
   }
 </script>
 <script>
-
 function loadJSON(path,varr)
 {
     var xhr = new XMLHttpRequest();
@@ -838,33 +836,27 @@ function loadJSON(path,varr)
     xhr.open("GET", path, true);
     xhr.send();
 }
-
 var campaignTrail_temp = {};
-
 campaignTrail_temp.election_json = {}
 campaignTrail_temp.candidate_json = {}
-
 loadJSON("../static/json/election.json", "campaignTrail_temp.election_json")
 loadJSON("../static/json/candidate.json", "campaignTrail_temp.candidate_json")
 loadJSON("../static/json/running_mate.json", "campaignTrail_temp.running_mate_json")
 loadJSON("../static/json/opponents.json", "campaignTrail_temp.opponents_default_json")
 loadJSON("../static/json/opponents.json", "campaignTrail_temp.opponents_weighted_json")
 loadJSON("../static/json/election_list.json", "campaignTrail_temp.temp_election_list")
-
 campaignTrail_temp.difficulty_level_json = JSON.parse("[{\"model\": \"campaign_trail.difficulty_level\", \"pk\": 1, \"fields\": {\"name\": \"Cakewalk\", \"multiplier\": 1.33}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 2, \"fields\": {\"name\": \"Very Easy\", \"multiplier\": 1.2}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 3, \"fields\": {\"name\": \"Easy\", \"multiplier\": 1.1}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 4, \"fields\": {\"name\": \"Normal\", \"multiplier\": 0.97}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 5, \"fields\": {\"name\": \"Hard\", \"multiplier\": 0.95}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 6, \"fields\": {\"name\": \"Impossible\", \"multiplier\": 0.9}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 7, \"fields\": {\"name\": \"Unthinkable\", \"multiplier\": 0.83}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 8, \"fields\": {\"name\": \"Blowout\", \"multiplier\": 0.75}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 9, \"fields\": {\"name\": \"Disaster\", \"multiplier\": 0.68}}]");
 campaignTrail_temp.global_parameter_json = JSON.parse("[{\"model\": \"campaign_trail.global_parameter\", \"pk\": 1, \"fields\": {\"vote_variable\": 1.125, \"max_swing\": 0.12, \"start_point\": 0.94, \"candidate_issue_weight\": 10.0, \"running_mate_issue_weight\": 3.0, \"issue_stance_1_max\": -0.71, \"issue_stance_2_max\": -0.3, \"issue_stance_3_max\": -0.125, \"issue_stance_4_max\": 0.125, \"issue_stance_5_max\": 0.3, \"issue_stance_6_max\": 0.71, \"global_variance\": 0.01, \"state_variance\": 0.005, \"question_count\": 25, \"default_map_color_hex\": \"#C9C9C9\", \"no_state_map_color_hex\": \"#999999\"}}]");
 campaignTrail_temp.candidate_dropout_json = JSON.parse("[{\"model\": \"campaign_trail.candidate_dropout\", \"pk\": 1, \"fields\": {\"candidate\": 36, \"affected_candidate\": 18, \"probability\": 1.0}}]");
 campaignTrail_temp.show_premium = true;
 campaignTrail_temp.premier_ab_test_version = -1;
 campaignTrail_temp.credits = 'Dan Bryan';
-
 </script>
 <script src="../static/js/campaign_trail_2020072001.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
   <script src="https://malsup.github.io/jquery.blockUI.js" type="text/javascript"></script>
-
 <script type="text/javascript">
 (function() {
 var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
@@ -873,8 +865,6 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po
 })();
 </script>
 </html>
-
-
 <!-- 
 Removed by request of Snoo:
     <option value="1984_ReaganBush">1984 (Reagan/Bush)</option>
