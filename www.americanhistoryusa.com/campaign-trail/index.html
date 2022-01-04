@@ -637,6 +637,21 @@ if (theme == null) {
   nct_stuff.selectedTheme = theme
 }
 if (nct_stuff.christmas != true) {
+document.getElementById("theme_picker").innerHTML = "<select id='themePicker' onchange='themePicked()'></select>"
+document.getElementById("themePicker").innerHTML += "<option value='"+nct_stuff.selectedTheme+"'>"+nct_stuff.themes[nct_stuff.selectedTheme].name+"</option>"
+for (i in nct_stuff.themes) {
+    if (i != nct_stuff.selectedTheme)
+      document.getElementById("themePicker").innerHTML += "<option value='"+i+"'>"+nct_stuff.themes[i].name+"</option>"
+}
+
+} else {
+  document.getElementById("theme_picker").style.display='none'
+}
+function themePicked() {
+  sel = document.getElementById("themePicker").value
+  window.localStorage.setItem("theme", sel)
+  location.reload()
+}
   susnum = Math.floor((Math.random() * 7) + 1)
   stassennum=Math.floor((Math.random()*8))
   stassenyear=["1944","1948","1952","1964","1968","1980","1984","1988","1992"]                      
