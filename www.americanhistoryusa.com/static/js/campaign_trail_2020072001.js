@@ -248,7 +248,18 @@ function exportResults() {
 	diff_mod = false
 
 	$("#submitMod").click(function() {
-		if ($("#modSelect")[0].value == "other") {
+		if (importfile!="") {
+			try
+			{
+      alert("It worked pog")			
+			}
+			catch
+			{
+				console.log("what")			
+			}
+	
+			}
+		else if ($("#modSelect")[0].value == "other") {
 			important_info = $("#codeset3")[0].value;
 			if (important_info != "") {
 				campaignTrail_temp.multiple_endings = true
