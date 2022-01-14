@@ -236,8 +236,6 @@ function exportResults() {
         results_state.push(campaignTrail_temp.final_state_results[i])
     }
     results = {
-        player_name: campaignTrail_temp.candidate_last_name,
-        election_id: campaignTrail_temp.election_id,
         player_candidate: campaignTrail_temp.candidate_id,
         player_answers: campaignTrail_temp.player_answers,
         player_visits: campaignTrail_temp.player_visits,
