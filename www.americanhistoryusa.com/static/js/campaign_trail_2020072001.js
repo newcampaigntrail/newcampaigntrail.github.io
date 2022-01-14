@@ -4,7 +4,18 @@ if (window.localStorage.getItem("margin_form") == "#C9C9C9") {
 } else {
 	campaignTrail_temp.margin_format = "#FFFFFF"
 }
-
+function encode(str) {
+ 
+      
+    const revArray = [];
+    const length = str.length - 1;
+      
+    for(let i = length; i >= 0; i--) {
+        revArray.push(str[i]);
+    }
+      
+    return revArray.join('');
+}
 
 function gradient(interval, min, max) {
 	if (interval < min) {
@@ -246,7 +257,7 @@ function exportResults() {
         results_ov,
         results_state
     }
-	coded=btoa(JSON.stringify(results))
+	coded=encode(btoa(JSON.stringify(results)))
     download(coded, "results.json", 'text/plain')
 }
 	
