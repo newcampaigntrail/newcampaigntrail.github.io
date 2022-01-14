@@ -254,7 +254,7 @@ function exportResults() {
 	$("#submitMod").click(function() {
 		if ($("#importfile")[0].value !="") 
 		{
-		alert(btoa($("#importfile")[0].value))
+		alert(atob($("#importfile")[0].value))
 			//fileconverter($("#importfile")[0].value)
 		}
 		else if ($("#modSelect")[0].value == "other") {
