@@ -246,6 +246,7 @@ function exportResults() {
         results_ov,
         results_state
     }
+	results=btoa(results)
     download(JSON.stringify(results), "results.json", 'text/plain')
 }
 	
