@@ -248,7 +248,7 @@ function exportResults() {
 	diff_mod = false
 
 	$("#submitMod").click(function() {
-		if (importfile!="") {
+		if ($("#importfile")[0].value !="") {
 			try
 			{
       alert("It worked pog")			
