@@ -15,6 +15,10 @@ function gradient(interval, min, max) {
 		return interval
 	}
 }
+function fileconverter(input)
+{
+
+}
 
 ////https://codepen.io/njmcode/pen/axoyD/
 
@@ -248,17 +252,11 @@ function exportResults() {
 	diff_mod = false
 
 	$("#submitMod").click(function() {
-		if ($("#importfile")[0].value !="") {
-			try
-			{
-      alert("It worked pog")			
-			}
-			catch
-			{
-				console.log("what")			
-			}
-	
-			}
+		if ($("#importfile")[0].value !="") 
+		{
+		alert(btoa($("#importfile")[0].value))
+			//fileconverter($("#importfile")[0].value)
+		}
 		else if ($("#modSelect")[0].value == "other") {
 			important_info = $("#codeset3")[0].value;
 			if (important_info != "") {
