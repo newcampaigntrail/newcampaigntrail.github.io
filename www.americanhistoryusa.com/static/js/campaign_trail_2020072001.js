@@ -486,8 +486,13 @@ d()
 	        } else o(t)
 		if ($("#importfile")[0].value !="")
 		{ 
+		console.log("if succeeded")	
 		console.log($("#importfile")[0].value)	
 		importgame($("#importfile")[0].value)
+		}
+		else
+		{
+		console.log("if failed")
 		}	
 	    }
 		
