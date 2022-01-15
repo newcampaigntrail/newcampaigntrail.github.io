@@ -258,9 +258,7 @@ function exportResults() {
 		{
 		importedtext=$("#importfile")[0].value
 		importedtext=encode(importedtext)
-		importedtext=decodeURIComponent(importedtext)
-		fileconverter(importedtext)	
-			
+		importedtext=decodeURIComponent(importedtext)			
 		}
 		else if ($("#modSelect")[0].value == "other") {
 			important_info = $("#codeset3")[0].value;
