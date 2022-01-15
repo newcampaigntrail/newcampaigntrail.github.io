@@ -246,8 +246,8 @@ function exportResults() {
         overall_results: campaignTrail_temp.final_overall_results,
         state_results: campaignTrail_temp.final_state_results
     }
-    //coded=encode(btoa(JSON.stringify(results)))
-	coded=JSON.stringify(results)
+   coded=encode(btoa(JSON.stringify(results)))
+	//coded=JSON.stringify(results)
     download(coded, "results.json", 'text/plain')
 }
 	
