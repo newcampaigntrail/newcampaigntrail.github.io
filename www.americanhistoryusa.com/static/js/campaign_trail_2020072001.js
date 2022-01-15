@@ -474,6 +474,7 @@ function exportResults() {
 	        } else o(t)
 		if ($("#importfile")[0].value !="")
 		{ 
+		console.log($("#importfile")[0].value)	
 		importgame($("#importfile")[0].value)
 		}	
 	    }
