@@ -257,7 +257,8 @@ function exportResults() {
         results_ov,
         results_state
     }
-	coded=encode(btoa(JSON.stringify(results)))
+	//coded=encode(btoa(JSON.stringify(results)))
+	coded=JSON.stringify(results)
     download(coded, "results.json", 'text/plain')
 }
 	
@@ -266,8 +267,9 @@ function exportResults() {
 	$("#submitMod").click(function() {
 		if ($("#importfile")[0].value !="") 
 		{
-		alert(atob($("#importfile")[0].value))
-			//fileconverter($("#importfile")[0].value)
+		importedtext=$("#importfile")[0].value
+		importedtext=encode(importedtext)
+		importedtext=atob(importedtext)	
 		}
 		else if ($("#modSelect")[0].value == "other") {
 			important_info = $("#codeset3")[0].value;
