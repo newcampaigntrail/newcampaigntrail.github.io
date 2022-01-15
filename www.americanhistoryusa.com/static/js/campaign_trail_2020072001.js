@@ -258,7 +258,7 @@ function exportResults() {
 		{
 		importedtext=$("#importfile")[0].value
 		importedtext=encode(importedtext)
-		importedtext=atob(importedtext)
+		importedtext=decodeURIComponent(importedtext)
 		fileconverter(importedtext)	
 			
 		}
