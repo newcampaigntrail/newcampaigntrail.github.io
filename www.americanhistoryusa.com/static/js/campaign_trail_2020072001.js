@@ -479,6 +479,7 @@ function exportResults() {
 	    }
 function importgame(code)
 {
+A(1)
 campaigntrail = JSON.parse(code)
 e.election_id=campaigntrail.election_id
 e.candidate_id=campaigntrail.player_candidate
