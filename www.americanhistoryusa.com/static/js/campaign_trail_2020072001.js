@@ -267,9 +267,10 @@ function exportResults() {
 	$("#submitMod").click(function() {
 		if ($("#importfile")[0].value !="") 
 		{
-		importedtext=$("#importfile")[0].value
-		importedtext=encode(importedtext)
-		importedtext=atob(importedtext)	
+		//importedtext=$("#importfile")[0].value
+		//importedtext=encode(importedtext)
+		//importedtext=atob(importedtext)
+			alert("It worked pog")
 		}
 		else if ($("#modSelect")[0].value == "other") {
 			important_info = $("#codeset3")[0].value;
