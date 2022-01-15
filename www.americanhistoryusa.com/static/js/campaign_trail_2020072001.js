@@ -26,10 +26,7 @@ function gradient(interval, min, max) {
 		return interval
 	}
 }
-function fileconverter(input)
-{
 
-}
 
 ////https://codepen.io/njmcode/pen/axoyD/
 
@@ -240,24 +237,16 @@ function download(content, fileName, contentType) {
     a.download = fileName;
     a.click();
 }
-
 function exportResults() {
-    results_ov = []
-    for (i in campaignTrail_temp.final_overall_results) {
-        results_ov.push(campaignTrail_temp.final_overall_results[i])
-    }
-    results_state = []
-    for (i in campaignTrail_temp.final_state_results) {
-        results_state.push(campaignTrail_temp.final_state_results[i])
-    }
     results = {
+        election_id: campaignTrail_temp.election_id,
         player_candidate: campaignTrail_temp.candidate_id,
         player_answers: campaignTrail_temp.player_answers,
         player_visits: campaignTrail_temp.player_visits,
-        results_ov,
-        results_state
+        overall_results: campaignTrail_temp.final_overall_results,
+        state_results: campaignTrail_temp.final_state_results
     }
-	//coded=encode(btoa(JSON.stringify(results)))
+    //coded=encode(btoa(JSON.stringify(results)))
 	coded=JSON.stringify(results)
     download(coded, "results.json", 'text/plain')
 }
@@ -267,10 +256,11 @@ function exportResults() {
 	$("#submitMod").click(function() {
 		if ($("#importfile")[0].value !="") 
 		{
-		//importedtext=$("#importfile")[0].value
-		//importedtext=encode(importedtext)
-		//importedtext=atob(importedtext)
-			alert("It worked pog")
+		importedtext=$("#importfile")[0].value
+		importedtext=encode(importedtext)
+		importedtext=atob(importedtext)
+		fileconverter(importedtext)	
+			
 		}
 		else if ($("#modSelect")[0].value == "other") {
 			important_info = $("#codeset3")[0].value;
@@ -372,7 +362,8 @@ function exportResults() {
 	        for (var o = "", r = 0; r < e.difficulty_level_json.length; r++) "Normal" == e.difficulty_level_json[r].fields.name ? o += "<option value=" + e.difficulty_level_json[r].pk + " selected>" + e.difficulty_level_json[r].fields.name + "</option>" : o += "<option value=" + e.difficulty_level_json[r].pk + ">" + e.difficulty_level_json[r].fields.name + "</option>";
 	        var d = '        <div class="game_header">        <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div class="inner_window_w_desc" id="inner_window_4">            <div id="game_options">            <form name="game_type_selection">            <p><h3>How would you like the electoral votes to be allocated?</h3>            <select name="game_type_id" id="game_type_id">                <option value=1>Default (Winner-Take-All)</option>                <option value=2>Proportional</option>            </select>            </p>            </form>            </div>            <div class="description_window_small"                 id="opponent_selection_description_window">            </div>            <div id="difficulty_level">            <form name="difficulty_level_selection">            <p><h3>Please choose your difficulty level:</h3>            <select name="difficulty_level_id" id="difficulty_level_id">' + o + '</select>            </p>            </form>            </div>        <p id="opponent_selection_id_button_p">        <button class="person_button" id="opponent_selection_id_button">Continue</button>        </p>        </div>';
 	        $("#game_window").html(d), $("#game_type_id").ready(function() {
-	            a($("select[name=game_type_id]").val())
+	            a($("select[name=game_type_id]").va
+		     )
 	        }), $("#game_type_id").change(function() {
 	            a($("select[name=game_type_id]").val())
 	        }), $("#opponent_selection_id_button").click(function() {
@@ -483,7 +474,22 @@ function exportResults() {
 	                $("#map_container").usmap(t)
 	            }(t) : o(t)
 	        } else o(t)
+		if ($("#importfile")[0].value !="")
+		{ 
+		importgame($("#importfile")[0].value)
+		}	
 	    }
+function importgame(code)
+{
+campaigntrail = JSON.parse(code)
+e.election_id=campaigntrail.election_id
+e.candidate_id=campaigntrail.player_candidate
+e.player_answers=campaigntrail.player_answers
+e.player_visits=campaigntrail.player_visits
+e.final_overall_results=campaigntrail.overall_results
+e.final_state_results=campaigntrail.state_results
+d()
+}		
 
 	    function o(t, e=campaignTrail_temp) {
 	        for (var i = [], a = 0; a < e.answers_json.length && (e.answers_json[a].fields.question != e.questions_json[e.question_number].pk || (i.push({
