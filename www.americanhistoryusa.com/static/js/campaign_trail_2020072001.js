@@ -27,21 +27,17 @@ function gradient(interval, min, max) {
 	}
 }
 
-function previewFile() {
-  const content = document.querySelector('.content');
-  const [file] = document.querySelector('input[type=file]').files;
-  const reader = new FileReader();
+function loadFileAsText(){
+  var fileToLoad = document.getElementById("fileToLoad").files[0];
 
-  reader.addEventListener("load", () => {
-    // this will then display a text file
-    content.innerText = reader.result;
-  }, false);
+  var fileReader = new FileReader();
+  fileReader.onload = function(fileLoadedEvent){
+      var textFromFileLoaded = fileLoadedEvent.target.result;
+      document.getElementById("inputTextToSave").value = textFromFileLoaded;
+  };
 
-  if (file) {
-    reader.readAsText(file);
-  }
+  fileReader.readAsText(fileToLoad, "UTF-8");
 }
-
 ////https://codepen.io/njmcode/pen/axoyD/
 
 // Converts a #ffffff hex string into an [r,g,b] array
