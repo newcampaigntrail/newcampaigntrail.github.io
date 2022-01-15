@@ -458,6 +458,18 @@ function exportResults() {
 	            0 == i && l()
 	        } else l()
 	    }
+function importgame(code)
+{
+A(1)
+campaigntrail = JSON.parse(code)
+e.election_id=campaigntrail.election_id
+e.candidate_id=campaigntrail.player_candidate
+e.player_answers=campaigntrail.player_answers
+e.player_visits=campaigntrail.player_visits
+e.final_overall_results=campaigntrail.overall_results
+e.final_state_results=campaigntrail.state_results
+d()
+}		
 
 	    function l() {
 	        var t = A(2);
@@ -478,18 +490,7 @@ function exportResults() {
 		importgame($("#importfile")[0].value)
 		}	
 	    }
-function importgame(code)
-{
-A(1)
-campaigntrail = JSON.parse(code)
-e.election_id=campaigntrail.election_id
-e.candidate_id=campaigntrail.player_candidate
-e.player_answers=campaigntrail.player_answers
-e.player_visits=campaigntrail.player_visits
-e.final_overall_results=campaigntrail.overall_results
-e.final_state_results=campaigntrail.state_results
-d()
-}		
+		
 
 	    function o(t, e=campaignTrail_temp) {
 	        for (var i = [], a = 0; a < e.answers_json.length && (e.answers_json[a].fields.question != e.questions_json[e.question_number].pk || (i.push({
