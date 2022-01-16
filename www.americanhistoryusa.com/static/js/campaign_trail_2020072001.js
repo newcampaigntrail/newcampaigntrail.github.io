@@ -26,18 +26,6 @@ function gradient(interval, min, max) {
 		return interval
 	}
 }
-
-function loadFileAsText(){
-  var  = document.getElementById("importfile").files[0];
-
-  var fileReader = new FileReader();
-  fileReader.onload = function(fileLoadedEvent){
-  var textFromFileLoaded = fileLoadedEvent.target.result;
-   document.getElementById("inputTextToSave").value = textFromFileLoaded;
-  };
-
-  fileReader.readAsText(fileToLoad, "UTF-8");
-}
 ////https://codepen.io/njmcode/pen/axoyD/
 
 // Converts a #ffffff hex string into an [r,g,b] array
