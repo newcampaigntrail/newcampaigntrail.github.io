@@ -259,10 +259,10 @@ const [file] = document.querySelector('input[type=file]').files;
 const reader = new FileReader();
 
 reader.onload = function(fle) {
-importedtext=$("#importfile")[0].value
+    importedtext=fle.target.result
 		importedtext=encode(importedtext)
 		importedtext=decodeURIComponent(importedtext)
-	campaigntrail_temp.dagakowaru=importedtext
+	campaignTrail_temp.dagakotowaru=importedtext
  }
 reader.readAsText(file);			
 		}
