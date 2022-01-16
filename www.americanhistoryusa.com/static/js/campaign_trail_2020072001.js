@@ -261,7 +261,7 @@ const reader = new FileReader();
 reader.onload = function(fle) {
     importedtext=fle.target.result
 		importedtext=encode(importedtext)
-		importedtext=decodeURIComponent(importedtext)
+		importedtext=atob(importedtext)
 	campaignTrail_temp.dagakotowaru=importedtext
  }
 reader.readAsText(file);			
