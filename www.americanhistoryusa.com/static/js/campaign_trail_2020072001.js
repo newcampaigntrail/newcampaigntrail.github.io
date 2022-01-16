@@ -236,7 +236,7 @@ function download(content, fileName, contentType) {
     a.click();
 }
 function exportResults() {
-if(localStorage.getItem("cheated") == "true")
+if(localStorage.getItem("cheated") == true)
 {
 results = {
         election_id: campaignTrail_temp.election_id,
