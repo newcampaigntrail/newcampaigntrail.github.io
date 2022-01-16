@@ -266,9 +266,17 @@ function exportResults() {
 	$("#submitMod").click(function() {
 		if ($("#importfile")[0].value !="") 
 		{
-		importedtext=$("#importfile")[0].value
+const content = document.querySelector('.content');
+const [file] = document.querySelector('input[type=file]').files;
+const reader = new FileReader();
+
+reader.onload = function(fle) {
+importedtext=$("#importfile")[0].value
 		importedtext=encode(importedtext)
-		importedtext=decodeURIComponent(importedtext)			
+		importedtext=decodeURIComponent(importedtext)
+	campaigntrail_temp.dagakowaru=importedtext
+ }
+reader.readAsText(file);			
 		}
 		else if ($("#modSelect")[0].value == "other") {
 			important_info = $("#codeset3")[0].value;
@@ -496,9 +504,7 @@ d()
 	        } else o(t)
 		if ($("#importfile")[0].value !="")
 		{ 
-		console.log("if succeeded")	
-		console.log($("#importfile")[0].value)	
-		importgame($("#importfile")[0].value)
+		importgame(e.dagakotowaru)		
 		}
 		else
 		{
