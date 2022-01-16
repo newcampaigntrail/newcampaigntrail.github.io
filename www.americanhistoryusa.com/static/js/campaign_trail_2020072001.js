@@ -266,7 +266,8 @@ reader.onload = function(fle) {
  }
 reader.readAsText(file);			
 		}
-		else if ($("#modSelect")[0].value == "other") {
+		 if ($("#modSelect")[0].value == "other") 
+		 {
 			important_info = $("#codeset3")[0].value;
 			if (important_info != "") {
 				campaignTrail_temp.multiple_endings = true
