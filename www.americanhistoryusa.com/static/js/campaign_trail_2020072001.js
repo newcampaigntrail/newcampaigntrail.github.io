@@ -236,7 +236,7 @@ function download(content, fileName, contentType) {
     a.click();
 }
 function exportResults() {
-if(cheated)
+if(campaignTrail_temp.spacebarformods==true)
 {
 results = {
         election_id: campaignTrail_temp.election_id,
