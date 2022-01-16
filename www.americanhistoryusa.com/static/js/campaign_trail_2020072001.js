@@ -476,7 +476,8 @@ e.player_answers=campaigntrail.player_answers
 e.player_visits=campaigntrail.player_visits
 e.final_overall_results=campaigntrail.overall_results
 e.final_state_results=campaigntrail.state_results
-e.difficulty_level_multiplier=campaigntrail.difficulty_multiplier	
+e.difficulty_level_multiplier=campaigntrail.difficulty_multiplier
+console.log("the A variable is"+aaaaaaaa)	
 d()
 }		
 
