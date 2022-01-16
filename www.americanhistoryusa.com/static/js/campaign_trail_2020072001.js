@@ -250,9 +250,7 @@ results = {
 }	   
 else
 {
-	
-}	
-	results = {
+results = {
         election_id: campaignTrail_temp.election_id,
         player_candidate: campaignTrail_temp.candidate_id,
         player_answers: campaignTrail_temp.player_answers,
@@ -260,7 +258,9 @@ else
         overall_results: campaignTrail_temp.final_overall_results,
         state_results: campaignTrail_temp.final_state_results,
         difficulty_multiplier: campaignTrail_temp.difficulty_level_multiplier   
-    }
+    }	
+}	
+	
    coded=encode(btoa(JSON.stringify(results)))
 	//coded=JSON.stringify(results)
     download(coded, "results.json", 'text/plain')
