@@ -242,7 +242,8 @@ function exportResults() {
         player_answers: campaignTrail_temp.player_answers,
         player_visits: campaignTrail_temp.player_visits,
         overall_results: campaignTrail_temp.final_overall_results,
-        state_results: campaignTrail_temp.final_state_results
+        state_results: campaignTrail_temp.final_state_results,
+        difficulty_multiplier: aaaaaaaa   
     }
    coded=encode(btoa(JSON.stringify(results)))
 	//coded=JSON.stringify(results)
@@ -475,6 +476,7 @@ e.player_answers=campaigntrail.player_answers
 e.player_visits=campaigntrail.player_visits
 e.final_overall_results=campaigntrail.overall_results
 e.final_state_results=campaigntrail.state_results
+e.difficulty_level_multiplier=campaigntrail.cheating	
 d()
 }		
 
