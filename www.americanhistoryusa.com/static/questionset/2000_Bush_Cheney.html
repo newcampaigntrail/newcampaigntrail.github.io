@@ -24,12 +24,11 @@ lostmarginmessage = "";
 extramessagemargin = "";
 titlemessage = "";
 goreFL = 0;
-bushFL = 0;
+bushFL = 0;        
 popwon = true;
-bushWinFL = true;
+FLwinner=0;
 situationFL = 0;
-fLmargin = campaignTrail_temp.final_state_results[8].result[0].percent - campaignTrail_temp.final_state_results[8].result[1].percent;
-
+fLmargin = campaignTrail_temp.final_state_results[8].result[0].percent - campaignTrail_temp.final_state_results[8].result[1].percent;        
 if (aa[0].electoral_votes < 270) 
 {
   if(playerID!=79)
@@ -45,20 +44,29 @@ if (playerEV > 270) {
 }
 if (campaignTrail_temp.final_state_results[8].result[0].candidate == 78) {
     //gore wins FL
+FLwinner=78
     goreFL = campaignTrail_temp.final_state_results[8].result[0].votes;
     bushFL = campaignTrail_temp.final_state_results[8].result[1].votes;
 } //bush wins FL
 else {
+    FLwinner=77
     goreFL = campaignTrail_temp.final_state_results[8].result[1].votes;
     bushFL = campaignTrail_temp.final_state_results[8].result[0].votes;
 }
-if (goreFL == bushFL) {
+if (goreFL == bushFL) 
+{
     return "How the fuck did Florida tie are you fucking kidding me";
 }
-if (fLmargin < 0.005) {
-    if (aa[0].electoral_votes <= 294) {
-        return "<h3>“Too close to call!”</h3><p>The state of Florida has a margin of victory under half a percent, and with the election hinging on its result, the recounts in the state are going to decide it. Every court option and legal procedure will be investigated by you and your opponent, so be ready for the long haul. Let’s hope this delay in fundamental democracy doesn't result in the unpreparedness of any critical governmental agencies. That would be truly terrible!<p><p>";
-    }
+        
+if (fLmargin < 0.005) 
+{
+ if(aa[0].electoral_votes>294)
+ {
+  if(FLwinner==OrderID[0])
+  {
+ return "<h3>“Too close to call!”</h3><p>The state of Florida has a margin of victory under half a percent, and with the election hinging on its result, the recounts in the state are going to decide it. Every court option and legal procedure will be investigated by you and your opponent, so be ready for the long haul. Let’s hope this delay in fundamental democracy doesn't result in the unpreparedness of any critical governmental agencies. That would be truly terrible!<p><p>";
+  }  
+ }   
 }
 if ((playerID==77) && (playerEV==538))
 {
