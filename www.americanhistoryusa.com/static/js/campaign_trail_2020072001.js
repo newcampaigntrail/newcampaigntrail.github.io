@@ -259,7 +259,7 @@ results = {
         overall_results: campaignTrail_temp.final_overall_results,
         state_results: campaignTrail_temp.final_state_results,
         difficulty_multiplier: 696969,
-	starting_multi: starting_multi
+	starting_mult: starting_mult
     }	
 }	
 	
