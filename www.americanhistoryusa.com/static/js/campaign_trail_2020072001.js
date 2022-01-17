@@ -496,7 +496,6 @@ e.player_visits=campaigntrail.player_visits
 e.final_overall_results=campaigntrail.overall_results
 e.final_state_results=campaigntrail.state_results
 e.difficulty_level_multiplier=campaigntrail.difficulty_multiplier
-starting_mult=campaigntrail.starting_mult	
 d()
 }		
 
