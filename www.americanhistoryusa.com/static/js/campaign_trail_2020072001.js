@@ -245,7 +245,8 @@ results = {
         player_visits: campaignTrail_temp.player_visits,
         overall_results: campaignTrail_temp.final_overall_results,
         state_results: campaignTrail_temp.final_state_results,
-        difficulty_multiplier: campaignTrail_temp.difficulty_level_multiplier   
+        difficulty_multiplier: campaignTrail_temp.difficulty_level_multiplier,
+	starting_mult: starting_mult
     }	   
 }	   
 else
@@ -257,7 +258,8 @@ results = {
         player_visits: campaignTrail_temp.player_visits,
         overall_results: campaignTrail_temp.final_overall_results,
         state_results: campaignTrail_temp.final_state_results,
-        difficulty_multiplier: "cheated"   
+        difficulty_multiplier: 696969,
+	starting_multi: starting_multi
     }	
 }	
 	
@@ -492,7 +494,8 @@ e.player_answers=campaigntrail.player_answers
 e.player_visits=campaigntrail.player_visits
 e.final_overall_results=campaigntrail.overall_results
 e.final_state_results=campaigntrail.state_results
-e.difficulty_level_multiplier=campaigntrail.difficulty_multiplier	
+e.difficulty_level_multiplier=campaigntrail.difficulty_multiplier
+e.starting_mult=campaigntrail.starting_mult	
 d()
 }		
 
