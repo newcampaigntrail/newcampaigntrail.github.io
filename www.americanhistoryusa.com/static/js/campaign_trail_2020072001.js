@@ -236,7 +236,7 @@ function download(content, fileName, contentType) {
     a.click();
 }
 function exportResults() {
-if(campaignTrail_temp.iamapoopybuttfaceandhavenolife !=true && dirtyhacker3 != null)
+if(campaignTrail_temp.iamapoopybuttfaceandhavenolife !=true && dirtyhacker3 == null)
 {
 results = {
         election_id: campaignTrail_temp.election_id,
