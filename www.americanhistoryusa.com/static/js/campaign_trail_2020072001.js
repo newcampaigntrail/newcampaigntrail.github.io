@@ -460,7 +460,7 @@ reader.readAsText(file);
 	                    		}						
 if (buttonthingclicked==false)
 {				
-$("#answer_select_button").click
+$("#view_electoral_map").click
 $("#resume_questions_button").click
 buttonthingclicked=true	
 }
