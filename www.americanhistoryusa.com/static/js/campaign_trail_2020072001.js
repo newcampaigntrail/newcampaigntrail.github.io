@@ -457,15 +457,17 @@ reader.readAsText(file);
 								}
 		            	        if ($("#answer_select_button")[0] != null) {
 		                	    	clearInterval(important_code)
-	                    		}
-	                    	}, 1000);
-	                	}
+	                    		}						
 if (buttonthingclicked==false)
 {				
 $("#answer_select_button").click
 $("#resume_questions_button").click
 buttonthingclicked=true	
-}	
+}
+						
+	                    	}, 1000);
+	                	}
+	
 	                    console.log("e")
 	                }(t, i, l, o, c)
 	        })
