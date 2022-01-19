@@ -461,9 +461,7 @@ reader.readAsText(file);
 	                    	}, 1000);
 				if (buttonthingclicked==false)
 					{	
-				 var e = A(return_type = 2);
-			                    	_(e)
-						o(e)
+				
                                    buttonthingclicked=false
 					}	
 	                	}
