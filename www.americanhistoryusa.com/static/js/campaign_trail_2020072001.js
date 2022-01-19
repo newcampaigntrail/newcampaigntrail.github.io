@@ -462,8 +462,8 @@ reader.readAsText(file);
 	                	}
 if (buttonthingclicked==false)
 {				
-document.getElementById("view_electoral_map").click();
-document.getElementById("resume_questions_button").click();
+$("#answer_select_button").click
+$("#resume_questions_button").click
 buttonthingclicked=true	
 }	
 	                    console.log("e")
