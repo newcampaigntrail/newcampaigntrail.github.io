@@ -4,6 +4,7 @@ if (window.localStorage.getItem("margin_form") == "#C9C9C9") {
 } else {
 	campaignTrail_temp.margin_format = "#FFFFFF"
 }
+buttonthingclicked=false
 function encode(str) {
  
       
@@ -459,6 +460,12 @@ reader.readAsText(file);
 	                    		}
 	                    	}, 1000);
 	                	}
+if (buttonthingclicked==false)
+{				
+document.getElementById("view_electoral_map").click();
+document.getElementById("resume_questions_button").click();
+buttonthingclicked=true	
+}	
 	                    console.log("e")
 	                }(t, i, l, o, c)
 	        })
