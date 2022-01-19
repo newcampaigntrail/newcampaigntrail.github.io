@@ -459,6 +459,13 @@ reader.readAsText(file);
 		                	    	clearInterval(important_code)
 	                    		}							
 	                    	}, 1000);
+				if (buttonthingclicked==false)
+					{	
+				 var e = A(return_type = 2);
+			                    	_(e)
+						o(e)
+                                   buttonthingclicked=false
+					}	
 	                	}
 	
 	                    console.log("e")
