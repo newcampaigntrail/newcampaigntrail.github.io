@@ -457,14 +457,7 @@ reader.readAsText(file);
 								}
 		            	        if ($("#answer_select_button")[0] != null) {
 		                	    	clearInterval(important_code)
-	                    		}						
-if (buttonthingclicked==false)
-{				
-$("#answer_select_button").click(function())
-$("#resume_questions_button").click(function())
-buttonthingclicked=true	
-}
-						
+	                    		}							
 	                    	}, 1000);
 	                	}
 	
