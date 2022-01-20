@@ -461,8 +461,7 @@ reader.readAsText(file);
 	                    	}, 1000);
 				if (buttonthingclicked==false)
 					{	
-				document.getElementById("view_electoral_map").click();
-				document.getElementById("resume_questions_button").click();		
+				
                                    buttonthingclicked=true
 					}	
 	                	}
