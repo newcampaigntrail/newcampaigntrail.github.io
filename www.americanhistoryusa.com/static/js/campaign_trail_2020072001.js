@@ -364,10 +364,14 @@ reader.readAsText(file);
 	    	return a;
 	    }
 
+	    ree = {}
+	    window.onload = function() {
+	    	ree = campaignTrail_temp
+			}
+
 	    function election_HTML(id, cand, running_mate) {
 	    	if (id != 16) {
-	    		if (modded){
-	    			ree = campaignTrail_temp
+	    		if (modded) {
 	    			yearbit = ree.election_json[findFromPK(ree.election_json, id)].fields.year
 	    			lastnamebit = ree.candidate_json[findFromPK(ree.candidate_json, campaignTrail_temp.candidate_id)].fields.last_name
 	    			veeplastname = ree.candidate_json[findFromPK(ree.candidate_json, campaignTrail_temp.running_mate_id)].fields.last_name
