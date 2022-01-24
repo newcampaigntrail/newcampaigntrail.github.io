@@ -366,7 +366,7 @@ reader.readAsText(file);
 
 	    ree = {}
 	    window.onload = function() {
-	    	ree = campaignTrail_temp
+	    	ree = copy(campaignTrail_temp)
 			}
 
 	    function election_HTML(id, cand, running_mate) {
