@@ -27,9 +27,18 @@ goreFL = 0;
 bushFL = 0;
 popwon = true;
 bushWinFL = true;
-situationFL = 0;
+FLsit=false;
+isBush=false;
+bushwon=false;
+if(aa[0].candidate==77)
+{
+bushwon==true
+}    
 fLmargin = campaignTrail_temp.final_state_results[8].result[0].percent - campaignTrail_temp.final_state_results[8].result[1].percent;
-
+if (playerID==77)
+{
+ isBush==true   
+}    
 if (aa[0].electoral_votes < 270) 
 {
   if(playerID!=79)
@@ -55,11 +64,21 @@ else {
 if (goreFL == bushFL) {
     return "How the fuck did Florida tie are you fucking kidding me";
 }
-if (fLmargin < 0.005) {
-    if (aa[0].electoral_votes <= 294) {
-        return "<h3>“Too close to call!”</h3><p>The state of Florida has a margin of victory under half a percent, and with the election hinging on its result, the recounts in the state are going to decide it. Every court option and legal procedure will be investigated by you and your opponent, so be ready for the long haul. Let’s hope this delay in fundamental democracy doesn't result in the unpreparedness of any critical governmental agencies. That would be truly terrible!<p><p>";
+if (fLmargin < 0.005) 
+{
+    if (aa[0].electoral_votes <= 294) 
+    {
+    if (bushwonFL==bushwon)
+    {
+     FLsit=true   
+    } 
+        
     }
 }
+if (FLsit==true)
+{
+return "<h3>“Too close to call!”</h3><p>The state of Florida has a margin of victory under half a percent, and with the election hinging on its result, the recounts in the state are going to decide it. Every court option and legal procedure will be investigated by you and your opponent, so be ready for the long haul. Let’s hope this delay in fundamental democracy doesn't result in the unpreparedness of any critical governmental agencies. That would be truly terrible!<p><p>";    
+}    
 if ((playerID==77) && (playerEV==538))
 {
 return"<h3>“GOD FUCKING DAMNIT GORE”</h3><p>Those words rang out from the president's office, despite the door being shut. In the room, were President Bill Clinton and Vice President Al Gore.'I BROUGHT THE ECONOMY BACK FROM A TERRIBLE STATE RUN BY INCOMPETENT REPUBLICANS. I WON DURING THE MID-TERMS AND GAVE YOU A FREE TICKET TO THE PRESIDENCY. AND WHAT DO YOU DO? YOU LET THE SON OF THE GUY WHO I BEAT BECOME PRESIDENT! 538 VOTES TO 0!' Those were the words of a less than happy Bill Clinton. Gore responded 'I-I don't know what happened, I-I thought I ran a good campaign b-but...' Clinton interrupted, saying 'You know exactly what happened Gore. For some reason, you did a tank photo op like Dukakis, which is already bad enough. BUT THEN you accidentally fired the tank, I have no clue how, those things are hard to fire, and you hit a group of spectators. Killing 5. Your court date is in a month so you better start prepping a defence team.' 'co-' 'If you’re asking me for a pardon, you can shove it. Then in your speech to the nation about it, you claimed the ghost of William Mckinley had fired the tank by controlling your body. You then spent 50 thousand dollars of taxpayer money on hiring an exorcist to try and remove him. That’s why you lost, Al."
