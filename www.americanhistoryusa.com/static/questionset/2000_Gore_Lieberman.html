@@ -26,7 +26,7 @@ titlemessage = "";
 goreFL = 0;
 bushFL = 0;
 popwon = true;
-bushWinFL = true;
+bushwinFL = true;
 FLsit=false;
 isBush=false;
 bushwon=false;
@@ -54,6 +54,7 @@ if (playerEV >= 270) {
 }
 if (campaignTrail_temp.final_state_results[8].result[0].candidate == 78) {
     //gore wins FL
+    bushwinFL=false
     goreFL = campaignTrail_temp.final_state_results[8].result[0].votes;
     bushFL = campaignTrail_temp.final_state_results[8].result[1].votes;
 } //bush wins FL
@@ -68,7 +69,7 @@ if (fLmargin < 0.005)
 {
     if (aa[0].electoral_votes <= 294) 
     {
-    if (bushwonFL==bushwon)
+    if (bushwinFL==bushwon)
     {
      FLsit=true   
     } 
