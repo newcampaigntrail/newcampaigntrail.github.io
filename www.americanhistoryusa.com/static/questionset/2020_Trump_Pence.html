@@ -9,7 +9,7 @@ used=false
 //biden ID=300, Trump ID=301
 orderID = [aa[0].candidate, aa[1].candidate];
 playerlost = true;
-playerID = 0;
+playerID = campaignTrail_temp.candidate_id;
 playerEV = quickstats[0];
 popvotemessage="";
 extramessagemargin="";
@@ -43,11 +43,6 @@ if (out == "tie") {
 if (aa[1].popular_votes>aa[0].popular_votes)
 {
 popwon=false;  
-}
-if (playerEV == aa[0].electoral_votes) {
-    playerID = orderID[0];
-} else {
-    playerID = orderID[1];
 }
 if (playerEV>=270) 
 {
