@@ -365,9 +365,9 @@ reader.readAsText(file);
 	    }
 
 	    ree = {}
-	    window.onload = function() {
+	    $(window).load(function(){
 	    	ree = copy(campaignTrail_temp)
-			}
+			})
 
 	    function election_HTML(id, cand, running_mate) {
 	    	if (id != 16) {
