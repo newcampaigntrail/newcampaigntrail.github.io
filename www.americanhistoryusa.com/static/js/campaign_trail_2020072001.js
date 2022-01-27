@@ -364,6 +364,12 @@ reader.readAsText(file);
 	    	return a;
 	    }
 
+	    ree = {}
+	    console.log(campaignTrail_temp)
+	    window.setTimeout(function(){
+	    	ree = copy(campaignTrail_temp)
+			}, 600)
+
 	    function election_HTML(id, cand, running_mate) {
 	    	if (id != 16) {
 	    		if (modded) {
