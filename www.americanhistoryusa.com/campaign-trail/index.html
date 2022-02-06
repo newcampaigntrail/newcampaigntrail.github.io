@@ -89,6 +89,7 @@
     <option value="1908_TaftSherman">1908 (Taft/Sherman)</option>
     <option value="1908_TaftSheldon">1908 (Taft/Sheldon)</option>
     <option value="1908_BryanKern">1908 (Bryan/Kern)</option>
+    <option value="1924_CoolidgeDawes">1924 (Coolidge/Dawes)</option>
     <option value="1932_RooseveltGarner">1932 (Roosevelt/Garner)</option>
     <option value="1932_RooseveltMcAdoo">1932 (Roosevelt/McAdoo)</option>
     <option value="1932_RooseveltCermak">1932 (Roosevelt/Cermak)</option>
@@ -209,7 +210,7 @@
     <option value="1992_ClintonGraham">1992 (Clinton/Graham)</option>
     <option value="1992_ClintonCuomo">1992 (Clinton/Cuomo)</option>
     <option value="1992_ClintonPelosi">1992 (Clinton/Pelosi)</option>
-    <option value="1992_BushQualye">1992 (Bush/Qualye)</option>
+    <option value="1992_BushQualye">1992 (Bush/Quayle)</option>
     <option value="1992_BushBuchunan">1992 (Bush/Buchunan)</option>
     <option value="1992_BushPerot">1992 (Bush/Perot)</option>
     <option value="1992_PerotStockdale">1992 (Perot/Stockdale)</option>
@@ -222,6 +223,15 @@
     <option value="1996_ClintonGore">1996 (Clinton/Gore)</option>
     <option value="1996_ClintonBradley">1996 (Clinton/Bradley)</option>
     <option value="1996_ClintonBreaux">1996 (Clinton/Breaux)</option>
+    <option value="1996_DoleKemp">1996 (Dole/Kemp)</option>
+    <option value="1996_DoleMcCain">1996 (Dole/McCain)</option>
+    <option value="1996_DoleCheney">1996 (Dole/Cheney)</option>
+    <option value="1996_DoleWeld">1996 (Dole/Weld)</option>
+    <option value="1996_DoleBuchanan">1996 (Dole/Buchanan)</option>
+    <option value="1996_PerotChoate">1996 (Perot/Choate)</option>
+    <option value="1996_PerotTrump">1996 (Perot/Trump)</option>
+    <option value="1996_PerotBuchanan">1996 (Perot/Buchanan)</option>
+    <option value="1996_PerotNader">1996 (Perot/Nader)</option>
     <option value="1998Minnesota_VenturaSchunk">1998Minnesota (Ventura/Schunk)</option>
     <option value="1998Minnesota_VenturaBarkley">1998Minnesota (Ventura/Barkley)</option>
     <option value="2000_GoreShaheen">2000 (Gore/Shaheen)</option>
@@ -287,6 +297,9 @@
     <option value="2016b_SandersBaldwin">2016b (Sanders/Baldwin)</option>
     <option value="2016b_SandersTurner">2016b (Sanders/Turner)</option>
     <option value="2016b_SandersSewell">2016b (Sanders/Sewell)</option>
+    <option value="2016c_BidenClinton">2016c (Biden/Clinton)</option>
+    <option value="2016c_BidenBooker">2016c (Biden/Booker)</option>
+    <option value="2016c_BidenWarren">2016c (Biden/Warren)</option>
     <option value="2016_ClintonManchin">2016 (Clinton/Manchin)</option>
     <option value="2016_ClintonMcCaskill">2016 (Clinton/McCaskill)</option>
     <option value="2016_ClintonCastro">2016 (Clinton/Castro)</option>
@@ -298,6 +311,7 @@
     <option value="2020a_BidenWhitmer">2020a (Biden/Whitmer)</option>
     <option value="2020a_TrumpPence">2020a (Trump/Pence)</option>
     <option value="2020b_ClintonKaine">2020b (Clinton/Kaine)</option>
+    <option value="2021_YoungkinSears">2021 VA (Youngkin/Sears)</option>
     
   </select>
   <div id="customMenu"><br>
@@ -320,9 +334,9 @@
 <span class="campaign_trail_start_emphasis"><button id="game_start"><strong>Button</strong></button></span>    
 </div>
 <br><br>
-<a href="http://www.americanhistoryusa.com" style="color:#FF6B6B">Original site</a> created by Dan Bryan &copy; 2012-2021
+<a href="http://www.americanhistoryusa.com" style="color:#FF6B6B">Original site</a> created by Dan Bryan &copy; 2012-2022
 <br> 
-Source code hosted on <a href="https://github.com/Danxv33/Danxv33.github.io" style="color:#FF6B6B">GitHub</a>
+To report bugs and view the source code, please visit our <a href="https://github.com/newcampaigntrail/newcampaigntrail" style="color:#FF6B6B">GitHub</a>
 <br> 
 Join our <a href="https://discord.gg/CfS6yTtjZj" style="color:#FF6B6B">Discord Server here!</a><br>
 </div>
@@ -888,6 +902,13 @@ loadJSON("../static/json/running_mate.json", "campaignTrail_temp.running_mate_js
 loadJSON("../static/json/opponents.json", "campaignTrail_temp.opponents_default_json")
 loadJSON("../static/json/opponents.json", "campaignTrail_temp.opponents_weighted_json")
 loadJSON("../static/json/election_list.json", "campaignTrail_temp.temp_election_list")
+ree = {}
+loadJSON("../static/json/election.json", "ree.election_json")
+loadJSON("../static/json/candidate.json", "ree.candidate_json")
+loadJSON("../static/json/running_mate.json", "ree.running_mate_json")
+loadJSON("../static/json/opponents.json", "ree.opponents_default_json")
+loadJSON("../static/json/opponents.json", "ree.opponents_weighted_json")
+loadJSON("../static/json/election_list.json", "ree.temp_election_list")
 campaignTrail_temp.difficulty_level_json = JSON.parse("[{\"model\": \"campaign_trail.difficulty_level\", \"pk\": 1, \"fields\": {\"name\": \"Cakewalk\", \"multiplier\": 1.33}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 2, \"fields\": {\"name\": \"Very Easy\", \"multiplier\": 1.2}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 3, \"fields\": {\"name\": \"Easy\", \"multiplier\": 1.1}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 4, \"fields\": {\"name\": \"Normal\", \"multiplier\": 0.97}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 5, \"fields\": {\"name\": \"Hard\", \"multiplier\": 0.95}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 6, \"fields\": {\"name\": \"Impossible\", \"multiplier\": 0.9}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 7, \"fields\": {\"name\": \"Unthinkable\", \"multiplier\": 0.83}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 8, \"fields\": {\"name\": \"Blowout\", \"multiplier\": 0.75}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 9, \"fields\": {\"name\": \"Disaster\", \"multiplier\": 0.68}}]");
 campaignTrail_temp.global_parameter_json = JSON.parse("[{\"model\": \"campaign_trail.global_parameter\", \"pk\": 1, \"fields\": {\"vote_variable\": 1.125, \"max_swing\": 0.12, \"start_point\": 0.94, \"candidate_issue_weight\": 10.0, \"running_mate_issue_weight\": 3.0, \"issue_stance_1_max\": -0.71, \"issue_stance_2_max\": -0.3, \"issue_stance_3_max\": -0.125, \"issue_stance_4_max\": 0.125, \"issue_stance_5_max\": 0.3, \"issue_stance_6_max\": 0.71, \"global_variance\": 0.01, \"state_variance\": 0.005, \"question_count\": 25, \"default_map_color_hex\": \"#C9C9C9\", \"no_state_map_color_hex\": \"#999999\"}}]");
 campaignTrail_temp.candidate_dropout_json = JSON.parse("[{\"model\": \"campaign_trail.candidate_dropout\", \"pk\": 1, \"fields\": {\"candidate\": 36, \"affected_candidate\": 18, \"probability\": 1.0}}]");
