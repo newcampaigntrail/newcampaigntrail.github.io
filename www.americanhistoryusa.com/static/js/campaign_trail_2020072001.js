@@ -196,6 +196,7 @@ var _interpolateHSL = function(color1, color2, factor) {
 	    	moddercheckeror = true
 			var important_code = setInterval(function() {
 				if ($("#answer_select_button")[0] != null  && kill == false) {
+					console.log("answerbutton pressed")
 					eval(code2)
 					console.log(code2)
 					if (kill == false)
