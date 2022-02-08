@@ -522,10 +522,6 @@ d()
 		if ($("#importfile")[0].value !="")
 		{ 
 		importgame(e.dagakotowaru)		
-		}
-		else
-		{
-		console.log("if failed")
 		}	
 	    }
 		
