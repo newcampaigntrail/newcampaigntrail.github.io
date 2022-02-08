@@ -4,10 +4,10 @@ if (window.localStorage.getItem("margin_form") == "#C9C9C9") {
 } else {
 	campaignTrail_temp.margin_format = "#FFFFFF"
 }
-if ($("#answer_select_button")[0] != null) 
+$("#answer_select_button").click(function() 
 {	
 console.log("answerbutton pressed")
-}	
+})	
 function encode(str) {
  
       
