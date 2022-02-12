@@ -5,8 +5,8 @@ if (window.localStorage.getItem("margin_form") == "#C9C9C9") {
 	campaignTrail_temp.margin_format = "#FFFFFF"
 }
 function answerClick()
-{
-console.log($("#codeset4")[0].value)	
+code4=$("#codeset4")[0].value	
+console.log(code4[0])
 }
 function encode(str) {
  
