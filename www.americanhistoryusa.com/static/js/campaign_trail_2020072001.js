@@ -451,6 +451,7 @@ reader.readAsText(file);
 			                    	_(e)
 			                    })
 		    	            	$("#answer_select_button").click(function() {
+						console.log("answerbutton pressed")
 		    	                    var t = $("input:radio[name=game_answers]:checked").val();
 		    	                	null == t ? C(e.election_id) : n(t)
 		        	            })
