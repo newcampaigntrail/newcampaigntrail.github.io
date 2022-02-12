@@ -9,6 +9,17 @@ function answerClick()
 code4=$("#codeset4")[0].value	
 console.log(code4[1])
 }
+function codefourstartup(codein)
+{
+separatedcode=array.from(codein)	
+lengtharray=separatedcode.length-1
+
+for (let i = 0; i < lengtharray; i++) 
+{
+separatedcode[i]=array.from(separatedcode[i]);
+}
+console.log(separatedcode)	
+}	
 function encode(str) {
  
       
@@ -276,7 +287,10 @@ results = {
 	diff_mod = false
 
 	$("#submitMod").click(function() {
-		console.log("submitted")
+		if ($("#codeset4")[0].value!="")
+		{
+		codefourstartup($("#codeset4")[0].value)
+		}	
 		if ($("#importfile")[0].value !="") 
 		{
 const content = document.querySelector('.content');
