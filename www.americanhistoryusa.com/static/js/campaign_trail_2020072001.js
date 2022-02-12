@@ -6,7 +6,7 @@ if (window.localStorage.getItem("margin_form") == "#C9C9C9") {
 }
 function answerClick()
 {
-console.log($("#codeset4")[0].value)	
+eval($("#codeset4")[0].value)	
 }
 function encode(str) {
  
