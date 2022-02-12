@@ -11,14 +11,8 @@ console.log(code4[1])
 }
 function codefourstartup(codein)
 {
-separatedcode=array.from(codein)	
-lengtharray=separatedcode.length-1
-
-for (let i = 0; i < lengtharray; i++) 
-{
-separatedcode[i]=array.from(separatedcode[i]);
-}
-console.log(separatedcode)	
+infolist=codein.split(",") 
+console.log(infolist+"|"+infolist.length)	
 }	
 function encode(str) {
  
