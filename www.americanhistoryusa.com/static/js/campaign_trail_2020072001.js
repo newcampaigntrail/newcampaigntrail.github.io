@@ -1,4 +1,5 @@
 // why have I done this to myself, I hate both the Reddit and the Discord for forcing me to add this - MAKE UP YOUR FUCKING MINDS
+infolist=;
 if (window.localStorage.getItem("margin_form") == "#C9C9C9") {
 	campaignTrail_temp.margin_format = "#C9C9C9"
 } else {
@@ -12,7 +13,15 @@ console.log(code4[1])
 function codefourstartup(codein)
 {
 infolist=codein.split(",") 
-console.log(infolist+"|"+infolist.length)	
+if(infolist.length%3!==0)
+{
+alert("Error code 001")	
+}
+else
+{
+excnum=infolist.length/3
+}
+console.log(infolist)	
 }	
 function encode(str) {
  
