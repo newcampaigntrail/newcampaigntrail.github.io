@@ -276,6 +276,7 @@ results = {
 	diff_mod = false
 
 	$("#submitMod").click(function() {
+		console.log("submitted")
 		if ($("#importfile")[0].value !="") 
 		{
 const content = document.querySelector('.content');
