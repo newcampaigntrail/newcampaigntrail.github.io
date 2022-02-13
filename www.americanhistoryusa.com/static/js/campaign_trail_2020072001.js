@@ -1,5 +1,5 @@
 // why have I done this to myself, I hate both the Reddit and the Discord for forcing me to add this - MAKE UP YOUR FUCKING MINDS
-infolist=;
+infolist;
 if (window.localStorage.getItem("margin_form") == "#C9C9C9") {
 	campaignTrail_temp.margin_format = "#C9C9C9"
 } else {
