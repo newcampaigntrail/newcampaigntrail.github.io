@@ -1,26 +1,34 @@
 // why have I done this to myself, I hate both the Reddit and the Discord for forcing me to add this - MAKE UP YOUR FUCKING MINDS
 let infolist;
+let curex=0;
+let exdone=false;
 if (window.localStorage.getItem("margin_form") == "#C9C9C9") {
 	campaignTrail_temp.margin_format = "#C9C9C9"
 } else {
 	campaignTrail_temp.margin_format = "#FFFFFF"
 }
-function answerClick()
-{
-console.log(campaignTrail_temp.player_answers)	
+function answerClick() {
+    if (exdone == false) {
+        if (infolist[3 * curex] == campaignTrail_temp.question_number) {
+
+            if (infolist[3 * curex + 1] == campaignTrail_temp.player_answers(campaignTrail_temp.question_number)) {
+                eval(3 * curex + 2)
+                curex += 1
+                if (3 * curex > infolist.length) {
+                    exdone = true
+                }
+            }
+        }
+    }
 }
-function codefourstartup(codein)
-{
-infolist=codein.split(",") 
-if(infolist.length%3!==0)
-{
-alert("Error code 001")	
-}
-else
-{
-excnum=infolist.length/3
-}
-console.log(infolist)	
+function codefourstartup(codein) {
+    infolist = codein.split(",")
+    if (infolist.length % 3 !== 0) {
+        alert("Error code 001")
+    } else {
+        excnum = infolist.length / 3
+    }
+    console.log(infolist)
 }	
 function encode(str) {
  
