@@ -348,6 +348,7 @@ Join our <a href="https://discord.gg/CfS6yTtjZj" style="color:#FF6B6B">Discord S
 <script type="text/javascript">
   counter = 0
   truecounter = 0
+  BSColour="white";
   document.addEventListener('keydown', function(event) {
     if(event.keyCode == 66 && counter == 0) {
       counter += 1;
@@ -486,7 +487,7 @@ function benefitCheck(objectid){
 </script>
 <br>
 <div id="cheatmode" style="display:none">
-  <font size="5" color = "white"><b>   Game Difficulty: </b></font><input onchange="difficultyChanger()" type="range" style="width:400px" min="0" max="10000" value="1100" class="slider" id="difficultySlider" /><font size="2" color = "white" id="difficultyMod">Current Difficulty Multiplier: 0</font>
+  <font size="5" color = BSColour ><b>   Game Difficulty: </b></font><input onchange="difficultyChanger()" type="range" style="width:400px" min="0" max="10000" value="1100" class="slider" id="difficultySlider" /><font size="2" color = "white" id="difficultyMod">Current Difficulty Multiplier: 0</font>
   <br><br>
   <button onclick="benefitChecker()"><font size="5"><b>Get Benefit Check</b></font></button> <br><br>
   <font size="5"color = "white"><b>Skip to question: </b></font><input id="skiptoquestion"><button onclick="a=function(){campaignTrail_temp.question_number = Number(document.getElementById('skiptoquestion').value);document.getElementById('sfxMeme').play()}()">Skip</button>
@@ -696,6 +697,14 @@ for (i in nct_stuff.themes) {
 }
 function themePicked() {
   sel = document.getElementById("themePicker").value
+  if(sel=="ogtheme")
+  {
+  BSColour="black"  
+  }
+  else
+  {  
+  BSColour="white"
+  }  
   window.localStorage.setItem("theme", sel)
   location.reload()
 }
