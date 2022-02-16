@@ -11,7 +11,7 @@ function answerClick() {
     if (exdone == false) {
         if (infolist[3 * curex] == campaignTrail_temp.question_number) {
 
-            if (infolist[3 * curex + 1] == campaignTrail_temp.player_answers[campaignTrail_temp.question_number]) {
+            if (infolist[3 * curex + 1] == document.querySelector('input[name="game_answers"]:checked').value) {
                 eval(infolist[3 * curex + 2])
                 curex += 1
                 if (3 * curex > infolist.length) {
