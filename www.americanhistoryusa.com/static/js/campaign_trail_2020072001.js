@@ -22,7 +22,7 @@ function answerClick() {
     }
 }
 function codefourstartup(codein) {
-    infolist = codein.split(",")
+    infolist = codein.split("|")
     if (infolist.length % 3 !== 0) {
         alert("Error code 001")
     } else {
