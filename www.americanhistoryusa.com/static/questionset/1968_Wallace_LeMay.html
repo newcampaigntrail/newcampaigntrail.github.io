@@ -33,6 +33,22 @@ function videoDone() {
 	establishDialogueBox()
 	runDialogue("* Ha^^ ha^^ ha^^ ha^^^^^^...<^^^^^^^^^^^^^^^^^^* Did you REALLY think it was OVER!?!?<^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^* I mean, we haven't even shown you what happens when Wallace wins every state yet...^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
 }
+function getState(id) {
+        for (z in campaignTrail_temp.states_json) {
+            if (campaignTrail_temp.states_json[z].pk == id) {
+                return campaignTrail_temp.states_json[z].fields.name
+            }
+        }
+    }
+    currsmall = 100
+    currstate = ""
+    for (i in campaignTrail_temp.final_state_results) {
+        margin = campaignTrail_temp.final_state_results[i].result[0].percent - campaignTrail_temp.final_state_results[i].result[1].percent
+        if (margin < currsmall && campaignTrail_temp.final_state_results[i].result[0].candidate == 24) {
+            currsmall = margin
+            currstate = campaignTrail_temp.final_state_results[i].state
+        }
+    }	
 function endingPicker(out, totv, aa, quickstats) {
 used = false
 for (i in campaignTrail_temp.election_json) {
@@ -54,23 +70,6 @@ if (year == "1968") {
     titlemessage = "Sorry, you lost the 1968 election.";
     popwon = true;
     margin = 0
-
-    function getState(id) {
-        for (z in campaignTrail_temp.states_json) {
-            if (campaignTrail_temp.states_json[z].pk == id) {
-                return campaignTrail_temp.states_json[z].fields.name
-            }
-        }
-    }
-    currsmall = 100
-    currstate = ""
-    for (i in campaignTrail_temp.final_state_results) {
-        margin = campaignTrail_temp.final_state_results[i].result[0].percent - campaignTrail_temp.final_state_results[i].result[1].percent
-        if (margin < currsmall && campaignTrail_temp.final_state_results[i].result[0].candidate == 24) {
-            currsmall = margin
-            currstate = campaignTrail_temp.final_state_results[i].state
-        }
-    }
     closeststate = getState(currstate)
 
     if (playerID == 23 && playerEV == 538) {
@@ -166,6 +165,7 @@ if (year == "1968") {
 }
 marginmessage += popvotemessage
 return "<h3>" + titlemessage + "</h3><p>" + marginmessage + "<p>" + "<p>" + extramessage;
+	
 
 }
 campaignTrail_temp.questions_json = JSON.parse("[{\"model\": \"campaign_trail.question\", \"pk\": 334, \"fields\": {\"priority\": 0, \"description\": \"What will be the overall message of your campaign?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 256, \"fields\": {\"priority\": 1, \"description\": \"Are you satisfied with the progress of desegregation in this country since the passage of the Civil Rights Act of 1964?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 338, \"fields\": {\"priority\": 1, \"description\": \"What is more important to you -- competing with Nixon in the border states (to help Humphrey) or winning over Humphrey voters in the northern cities (to help Nixon)?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 254, \"fields\": {\"priority\": 1, \"description\": \"What is your opinion of Lyndon Johnson's new Medicare program?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 253, \"fields\": {\"priority\": 1, \"description\": \"If elected, what will you do to get the student and Negro riots in this country under control?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 252, \"fields\": {\"priority\": 1, \"description\": \"What is your overall position on the Vietnam War?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 255, \"fields\": {\"priority\": 1, \"description\": \"Are you satisfied with this nation's economic performance over the previous five years?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 281, \"fields\": {\"priority\": 2, \"description\": \"What is causing the massive increase of crime in America? How will you reverse the trend?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 287, \"fields\": {\"priority\": 2, \"description\": \"How would you prevent campus incidents like the takeover of Columbia University that occurred this past spring?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 262, \"fields\": {\"priority\": 2, \"description\": \"Do you believe that the newly implemented federal welfare programs will be effective?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 265, \"fields\": {\"priority\": 2, \"description\": \"Should Lyndon Johnson have been able to prevent the Tet Offensive?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 270, \"fields\": {\"priority\": 2, \"description\": \"Are you concerned with some of the activist stances that Earl Warren has taken in his time with the Supreme Court?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 259, \"fields\": {\"priority\": 2, \"description\": \"With all of the new programs that have implemented over the past five years, do you still believe there is room for the federal government to expand its responsibilities?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 260, \"fields\": {\"priority\": 2, \"description\": \"What do you think about the efforts of the AFL-CIO and other large unions? Do they have a positive effect on America?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 286, \"fields\": {\"priority\": 2, \"description\": \"Can we all agree that the Black Panthers are a menace to the security of the United States?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 291, \"fields\": {\"priority\": 2, \"description\": \"Do you believe that President Johnson overstepped his bounds in negotiating the Kennedy Round of trade agreements? Do you support the liberalization of international trade under the GATT?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 337, \"fields\": {\"priority\": 2, \"description\": \"Will you try to compete with Johnson and Humphrey's machine in Texas?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 261, \"fields\": {\"priority\": 2, \"description\": \"What is your opinion of the military draft that is currently in place?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 290, \"fields\": {\"priority\": 2, \"description\": \"The unemployment rate is currently under 4%, in spite of the chaos that prevails in our nation. What will you do as president to keep unemployment low?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 273, \"fields\": {\"priority\": 2, \"description\": \"Would you appoint federal judges who support the decision <em>Engel v. Vitale</em> outlawing mandatory school prayer?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 280, \"fields\": {\"priority\": 2, \"description\": \"What is your opinion of the Immigration and Nationality Act of 1965? Is it a good idea to liberalize our immigration policy and to outlaw national origin quotas?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 257, \"fields\": {\"priority\": 2, \"description\": \"Would you be willing to call an unconditional bombing halt of North Vietnam in the hopes of restarting peace negotiations?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 284, \"fields\": {\"priority\": 2, \"description\": \"What is your position on expanding the Clean Air Act of 1963? Do you believe that stricter enforcement against pollutants is necessary, or does the current law suffice?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 340, \"fields\": {\"priority\": -1, \"description\": \"If there is no majority in the electoral college, what are your goals at the bargaining table?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 333, \"fields\": {\"priority\": -1, \"description\": \"On the weekend before the election, Lyndon Johnson's peace negotiations have collapsed with the North Vietnamese. Even worse, there are rumors that a Nixon operative has sabotaged the negotiations. Nixon swears to you on his honor that he is innocent. Will you make this an issue over the last two days of the campaign?\", \"likelihood\": 1.0}}]");
