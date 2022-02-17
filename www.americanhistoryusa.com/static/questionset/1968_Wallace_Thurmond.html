@@ -33,6 +33,22 @@ function videoDone() {
 	establishDialogueBox()
 	runDialogue("* Ha^^ ha^^ ha^^ ha^^^^^^...<^^^^^^^^^^^^^^^^^^* Did you REALLY think it was OVER!?!?<^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^* I mean, we haven't even shown you what happens when Wallace wins every state yet...^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
 }
+function getState(id) {
+        for (z in campaignTrail_temp.states_json) {
+            if (campaignTrail_temp.states_json[z].pk == id) {
+                return campaignTrail_temp.states_json[z].fields.name
+            }
+        }
+    }
+    currsmall = 100
+    currstate = ""
+    for (i in campaignTrail_temp.final_state_results) {
+        margin = campaignTrail_temp.final_state_results[i].result[0].percent - campaignTrail_temp.final_state_results[i].result[1].percent
+        if (margin < currsmall && campaignTrail_temp.final_state_results[i].result[0].candidate == 24) {
+            currsmall = margin
+            currstate = campaignTrail_temp.final_state_results[i].state
+        }
+    }	
 function endingPicker(out, totv, aa, quickstats) {
 used = false
 for (i in campaignTrail_temp.election_json) {
@@ -54,23 +70,6 @@ if (year == "1968") {
     titlemessage = "Sorry, you lost the 1968 election.";
     popwon = true;
     margin = 0
-
-    function getState(id) {
-        for (z in campaignTrail_temp.states_json) {
-            if (campaignTrail_temp.states_json[z].pk == id) {
-                return campaignTrail_temp.states_json[z].fields.name
-            }
-        }
-    }
-    currsmall = 100
-    currstate = ""
-    for (i in campaignTrail_temp.final_state_results) {
-        margin = campaignTrail_temp.final_state_results[i].result[0].percent - campaignTrail_temp.final_state_results[i].result[1].percent
-        if (margin < currsmall && campaignTrail_temp.final_state_results[i].result[0].candidate == 24) {
-            currsmall = margin
-            currstate = campaignTrail_temp.final_state_results[i].state
-        }
-    }
     closeststate = getState(currstate)
 
     if (playerID == 23 && playerEV == 538) {
