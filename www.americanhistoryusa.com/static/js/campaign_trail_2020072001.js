@@ -1537,7 +1537,7 @@ d()
 	        var t = e.toString().split(".");
 	        return t[0] = t[0].replace(/\B(?=(\d{3})+(?!\d))/g, ","), t.join(".")
 	    }
-	whomade(electnum)
+	function whomade(electnum)
 		{
 		if(e.temp_election_list[electnum].year==1964)
 		{
