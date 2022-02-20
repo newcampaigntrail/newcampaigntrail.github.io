@@ -1539,7 +1539,7 @@ d()
 	    }
 	function whomade(electnum)
 		{
-		if(e.temp_election_list[electnum].year==1964)
+		if(e.temp_election_list[electnum].display_year==1964)
 		{
 		return "T3CHOX"
 		}
