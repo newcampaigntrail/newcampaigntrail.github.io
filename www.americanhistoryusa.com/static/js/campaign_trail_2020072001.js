@@ -1536,19 +1536,21 @@ d()
 	    function M(e) {
 	        var t = e.toString().split(".");
 	        return t[0] = t[0].replace(/\B(?=(\d{3})+(?!\d))/g, ","), t.join(".")
-	    }	
+	    }			
 	    $("#game_start").click(function(a) {
 	        a.preventDefault(),
 	            function() {
-	                for (var a = "", n = 0; n < e.temp_election_list.length; n++) 0 == e.temp_election_list[n].is_premium ? a += "<option value=" + e.temp_election_list[n].id + ">" + e.temp_election_list[n].display_year + "</option>" : 1 == e.show_premium ? a += "<option value=" + e.temp_election_list[n].id + ">" + e.temp_election_list[n].display_year + "</option>" : a += "<option value=" + e.temp_election_list[n].id + " disabled>" + e.temp_election_list[n].display_year + "</option>";
-	                var l = '<div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div class="inner_window_w_desc" id="inner_window_2">            <div id="election_year_form">            <form name="election_year">            <p>                <h3>Please select the election you will run in:</h3>    \t\t    <select name="election_id" id="election_id">' + a + '</select>            </p>            </form>            <div class="election_description_window" id="election_description_window">                <div id="election_image">                    <img src="' + e.election_json[0].fields.image_url + '" width="300" height="160"/>                </div>                <div id="election_summary">' + e.election_json[0].fields.summary + '</div>            </div>        </div>        <p><button id="election_id_button">Continue</button></p> <p>This scenario was made by ' + if(e.temp_election_list[electnum].display_year==1964)
+	                for (var a = "", n = 0; n < e.temp_election_list.length; n++)
+		 if(e.temp_election_list[electnum].display_year==1964)
 		{
-		"tex"
+		maker="tex"
 		}
 		else
 		{
-		"Dan Bryan"
-		} + '.</p>';
+		maker="Dan Bryan"
+		}
+				0 == e.temp_election_list[n].is_premium ? a += "<option value=" + e.temp_election_list[n].id + ">" + e.temp_election_list[n].display_year + "</option>" : 1 == e.show_premium ? a += "<option value=" + e.temp_election_list[n].id + ">" + e.temp_election_list[n].display_year + "</option>" : a += "<option value=" + e.temp_election_list[n].id + " disabled>" + e.temp_election_list[n].display_year + "</option>";
+	                var l = '<div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div class="inner_window_w_desc" id="inner_window_2">            <div id="election_year_form">            <form name="election_year">            <p>                <h3>Please select the election you will run in:</h3>    \t\t    <select name="election_id" id="election_id">' + a + '</select>            </p>            </form>            <div class="election_description_window" id="election_description_window">                <div id="election_image">                    <img src="' + e.election_json[0].fields.image_url + '" width="300" height="160"/>                </div>                <div id="election_summary">' + e.election_json[0].fields.summary + '</div>            </div>        </div>        <p><button id="election_id_button">Continue</button></p> <p>This scenario was made by ' + maker + '.</p>';
 	                $("#game_window").html(l), $("#election_id").change(function() {
 	                    for (var t = -1, i = 0; i < e.election_json.length; i++)
 	                        if (e.election_json[i].pk == election_id.value) {
@@ -1649,4 +1651,3 @@ d()
 		}
 
 	});
-
