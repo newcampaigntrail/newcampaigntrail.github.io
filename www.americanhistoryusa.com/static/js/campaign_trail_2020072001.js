@@ -1554,7 +1554,7 @@ function divideElectoralVotesProp(e, t) {
         a.preventDefault(),
             function() {
                 for (var a = "", n = 0; n < e.temp_election_list.length; n++)
-                    if (e.temp_election_list[electnum].display_year == 1964) {
+                    if (e.temp_election_list[n].display_year == 1964) {
                         maker = "tex"
                     }
                 else {
