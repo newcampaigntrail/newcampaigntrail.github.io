@@ -1536,18 +1536,7 @@ d()
 	    function M(e) {
 	        var t = e.toString().split(".");
 	        return t[0] = t[0].replace(/\B(?=(\d{3})+(?!\d))/g, ","), t.join(".")
-	    }
-	function whomade(electnum)
-		{
-		if(e.temp_election_list[electnum].display_year==1964)
-		{
-		return "T3CHOX"
-		}
-		else
-		{
-		return "Dan Bryan"
-		}	
-		}	
+	    }	
 	    $("#game_start").click(function(a) {
 	        a.preventDefault(),
 	            function() {
