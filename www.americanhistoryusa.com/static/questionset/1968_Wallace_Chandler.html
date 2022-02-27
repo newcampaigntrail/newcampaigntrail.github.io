@@ -3,7 +3,6 @@
 
 
 <script>
-campaignTrail_temp.multiple_endings=true
 
 function establishDialogueBox() {
 	document.getElementById("game_window").innerHTML = "<div id='dialogueBox' style='width:95%; height:33%; background-color:black;border-style:solid;border-width:5px;border-color:white;padding:20px;'><font id='dialogueText' color='white' size='5'></font></div>"
@@ -60,6 +59,7 @@ for (i in campaignTrail_temp.election_json) {
 }
 if (year == "1968") {
     // Nixon=23,Humphrey=24,Wallace=25
+campaignTrail_temp.multiple_endings=true	
     orderID = [aa[0].candidate, aa[1].candidate, aa[2].candidate];
     playerID = campaignTrail_temp.candidate_id;
     playerEV = quickstats[0]
