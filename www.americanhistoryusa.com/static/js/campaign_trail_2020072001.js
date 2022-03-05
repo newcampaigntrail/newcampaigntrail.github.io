@@ -1287,7 +1287,49 @@ function divideElectoralVotesProp(e, t) {
             for (i = 0; i < e.historical_overall.length; i++) o += '<tr><td style="text-align: left;">                <span style="background-color: ' + e.historical_overall[i].color_hex + "; color: " + e.historical_overall[i].color_hex + ';">----</span>' + e.historical_overall[i].name + "</td><td>" + e.historical_overall[i].winning_pct.toFixed(2) + "</td><td>" + e.historical_overall[i].electoral_votes_avg.toFixed(1) + "</td><td>" + M(e.historical_overall[i].popular_votes_avg) + "</td><td>" + e.historical_overall[i].popular_vote_pct_avg.toFixed(2) + "</td><td>" + e.historical_overall[i].electoral_votes_min + " - " + e.historical_overall[i].electoral_votes_max + "</td><td>" + M(e.historical_overall[i].popular_votes_min) + " - " + M(e.historical_overall[i].popular_votes_max) + "</td></tr>";
             var _ = '<div id="overall_stat_details">            <h4>Historical Results - Your Candidate and Difficulty Level</h4>            <table>            <tr><th>Candidate</th>                <th>Win %</th>                <th>EV Avg.</th>                <th>PV Avg.</th>                <th>PV % Avg.</th>                <th>EV Range</th>                <th>PV Range</th>            </tr>' + o + "</table>            </div>"
         } else o = "", _ = "";
-        var r = '    <div class="game_header">\t<h2>NEW CAMPAIGN TRAIL</h2>\t</div>\t<div id="main_content_area">\t<div id="overall_details_container">\t\t<h3>Overall Election Details</h3>\t\t<div id="overall_election_details">\t\t<h4>Results - This Game</h4>\t\t<table>\t\t<tr><th>Candidate</th>\t\t<th>Electoral Votes</th>\t\t<th>Popular Votes</th>\t\t<th>Popular Vote %</th>\t\t</tr>' + a + "</table>" + l + "<br><br><button class='final_menu_button' onclick='exportResults()'>Export Results</button></div>" + _ + '</div>\t</div>\t<div id="map_footer">\t\t<button class="final_menu_button" id="overall_results_button">Final Election Results</button>\t\t<button class="final_menu_button" id="final_election_map_button">Election Map</button>\t\t<button class="final_menu_button" id="state_results_button">Results by State</button>\t\t<button class="final_menu_button" id="overall_details_button" disabled="disabled">Overall Results Details</button>\t\t<button class="final_menu_button" id="play_again_button">Play Again!</button>\t</div>';
+var r = '    
+<div class="game_header">\t
+  <h2>NEW CAMPAIGN TRAIL
+  </h2>\t
+</div>\t
+<div id="main_content_area">\t
+  <div id="overall_details_container">\t\t
+    <h3>Overall Election Details
+    </h3>\t\t
+    <div id="overall_election_details">\t\t
+      <h4>Results - This Game
+      </h4>\t\t
+      <table>\t\t
+        <tr>
+          <th>Candidate
+          </th>\t\t
+          <th>Electoral Votes
+          </th>\t\t
+          <th>Popular Votes
+          </th>\t\t
+          <th>Popular Vote %
+          </th>\t\t
+        </tr>' + a + "
+      </table>" + l + "
+      <br>
+      <br>
+      <button class='final_menu_button' onclick='exportResults()'>Export Results
+      </button>
+    </div>" + _ + '
+  </div>\t
+</div>\t
+<div id="map_footer">\t\t
+  <button class="final_menu_button" id="overall_results_button">Final Election Results
+  </button>\t\t
+  <button class="final_menu_button" id="final_election_map_button">Election Map
+  </button>\t\t
+  <button class="final_menu_button" id="state_results_button">Results by State
+  </button>\t\t
+  <button class="final_menu_button" id="overall_details_button" disabled="disabled">Overall Results Details
+  </button>\t\t
+  <button class="final_menu_button" id="play_again_button">Play Again!
+  </button>\t
+</div>';
         $("#game_window").html(r), $("#overall_results_button").click(function() {
             p()
         }), $("#final_election_map_button").click(function() {
