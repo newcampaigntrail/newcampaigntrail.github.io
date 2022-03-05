@@ -1549,64 +1549,57 @@ function divideElectoralVotesProp(e, t) {
     function M(e) {
         var t = e.toString().split(".");
         return t[0] = t[0].replace(/\B(?=(\d{3})+(?!\d))/g, ","), t.join(".")
-    }
-    $("#game_start").click(function(a) {
-        a.preventDefault(),
-            function() {
-                for (var a = "", n = 0; n < e.temp_election_list.length; n++)0 == e.temp_election_list[n].is_premium ? a += "<option value=" + e.temp_election_list[n].id + ">" + e.temp_election_list[n].display_year + "</option>" : 1 == e.show_premium ? a += "<option value=" + e.temp_election_list[n].id + ">" + e.temp_election_list[n].display_year + "</option>" : a += "<option value=" + e.temp_election_list[n].id + " disabled>" + e.temp_election_list[n].display_year + "</option>";
-                    if (e.temp_election_list[n].display_year == 1964) {
-                        maker = "tex"
-                    }
-                else {
-                    maker = "Dan Bryan"
-                }
-                var l = '<div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div class="inner_window_w_desc" id="inner_window_2">            <div id="election_year_form">            <form name="election_year">            <p>                <h3>Please select the election you will run in:</h3>    \t\t    <select name="election_id" id="election_id">' + a + '</select>            </p>            </form>            <div class="election_description_window" id="election_description_window">                <div id="election_image">                    <img src="' + e.election_json[0].fields.image_url + '" width="300" height="160"/>                </div>                <div id="election_summary">' + e.election_json[0].fields.summary + '</div>            </div>        </div>        <p><button id="election_id_button">Continue</button></p> <p>This scenario was made by ' + maker + '.</p>';
-                $("#game_window").html(l), $("#election_id").change(function() {
-                    for (var t = -1, i = 0; i < e.election_json.length; i++)
-                        if (e.election_json[i].pk == election_id.value) {
-                            t = i;
-                            break
-                        } $("#election_description_window").html('<div id="election_image">            <img src="' + e.election_json[t].fields.image_url + '" width="300" height="160"/>            </div>            <div id="election_summary">' + e.election_json[t].fields.summary + "</div>")
-                }), $("#election_id_button").click(function(a) {
-                    a.preventDefault(),
-                        function(a) {
-                            for (var n = "", l = 0; l < e.candidate_json.length; l++) e.candidate_json[l].fields.election == a && 1 == e.candidate_json[l].fields.is_active && (n += "<option value=" + e.candidate_json[l].pk + ">" + e.candidate_json[l].fields.first_name + " " + e.candidate_json[l].fields.last_name + "</option>");
-                            var o = '<div class="game_header">        <h2>NEW CAMPAIGN TRAIL</h2>    </div>    <div class="inner_window_w_desc" id="inner_window_3">        <div id="candidate_form">        <form name="candidate">            <p>            <h3>Please select your candidate:</h3>            <select name="candidate_id" id="candidate_id">' + n + '</select>            </p>        </form>        </div>        <div class="person_description_window" id="candidate_description_window">        </div>        <p>            <button class="person_button" id="candidate_id_button">Continue</button>        </p>    </div>';
-                            $("#game_window").html(o), $("#candidate_id").ready(function() {
-                                t()
-                            }), $("#candidate_id").change(function() {
-                                t()
-                            }), $("#candidate_id_button").click(function(t) {
-                                t.preventDefault(),
-                                    function(t, a) {
-                                        for (var n = "", l = 0; l < e.running_mate_json.length; l++)
-                                            if (e.running_mate_json[l].fields.candidate == a) {
-                                                var o = e.running_mate_json[l].fields.running_mate,
-                                                    _ = -1;
-                                                for (j = 0; j < e.candidate_json.length; j++)
-                                                    if (o == e.candidate_json[j].pk) {
-                                                        _ = j;
-                                                        break
-                                                    } n += "<option value=" + e.candidate_json[_].pk + ">" + e.candidate_json[_].fields.first_name + " " + e.candidate_json[_].fields.last_name + "</option>"
-                                            } var r = '        <div class="game_header">        <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div class="inner_window_w_desc" id="inner_window_4">            <div id="running_mate_form">            <form name="running mate">            <p><h3>Please select your running mate:</h3>            <select name="running_mate_id" id="running_mate_id">' + n + '</select>            </p>            </form>            </div>            <div class="person_description_window" id="running_mate_description_window">            </div>        <p><button class="person_button" id="running_mate_id_button">Continue</button>        </p>        </div>';
-                                        $("#game_window").html(r), $("#running_mate_id").ready(function() {
-                                            i()
-                                        }), $("#running_mate_id").change(function() {
-                                            i()
-                                        }), $("#running_mate_id_button").click(function(e) {
-                                            e.preventDefault(), s(t, a, running_mate_id.value)
-                                        })
-                                    }(a, candidate_id.value)
-                            })
-                        }(election_id.value)
-                })
-            }()
-    }), $("#skip_to_final").click(function(t) {
-        e.final_state_results = A(1), d()
-    })
-}();
+    }	    $("#game_start").click(function(a) {
+	        a.preventDefault(),
+	            function() {
+	                for (var a = "", n = 0; n < e.temp_election_list.length; n++) 0 == e.temp_election_list[n].is_premium ? a += "<option value=" + e.temp_election_list[n].id + ">" + e.temp_election_list[n].display_year + "</option>" : 1 == e.show_premium ? a += "<option value=" + e.temp_election_list[n].id + ">" + e.temp_election_list[n].display_year + "</option>" : a += "<option value=" + e.temp_election_list[n].id + " disabled>" + e.temp_election_list[n].display_year + "</option>";
+	                var l = '<div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div class="inner_window_w_desc" id="inner_window_2">            <div id="election_year_form">            <form name="election_year">            <p>                <h3>Please select the election you will run in:</h3>    \t\t    <select name="election_id" id="election_id">' + a + '</select>            </p>            </form>            <div class="election_description_window" id="election_description_window">                <div id="election_image">                    <img src="' + e.election_json[0].fields.image_url + '" width="300" height="160"/>                </div>                <div id="election_summary">' + e.election_json[0].fields.summary + '</div>            </div>        </div>        <p><button id="election_id_button">Continue</button></p> <p>This scenario was made by ' + e.credits + '.</p>';
+	                $("#game_window").html(l), $("#election_id").change(function() {
+	                    for (var t = -1, i = 0; i < e.election_json.length; i++)
+	                        if (e.election_json[i].pk == election_id.value) {
+	                            t = i;
+	                            break
+	                        } $("#election_description_window").html('<div id="election_image">            <img src="' + e.election_json[t].fields.image_url + '" width="300" height="160"/>            </div>            <div id="election_summary">' + e.election_json[t].fields.summary + "</div>")
+	                }), $("#election_id_button").click(function(a) {
+	                    a.preventDefault(),
+	                        function(a) {
+	                            for (var n = "", l = 0; l < e.candidate_json.length; l++) e.candidate_json[l].fields.election == a && 1 == e.candidate_json[l].fields.is_active && (n += "<option value=" + e.candidate_json[l].pk + ">" + e.candidate_json[l].fields.first_name + " " + e.candidate_json[l].fields.last_name + "</option>");
+	                            var o = '<div class="game_header">        <h2>NEW CAMPAIGN TRAIL</h2>    </div>    <div class="inner_window_w_desc" id="inner_window_3">        <div id="candidate_form">        <form name="candidate">            <p>            <h3>Please select your candidate:</h3>            <select name="candidate_id" id="candidate_id">' + n + '</select>            </p>        </form>        </div>        <div class="person_description_window" id="candidate_description_window">        </div>        <p>            <button class="person_button" id="candidate_id_button">Continue</button>        </p>    </div>';
+	                            $("#game_window").html(o), $("#candidate_id").ready(function() {
+	                                t()
+	                            }), $("#candidate_id").change(function() {
+	                                t()
+	                            }), $("#candidate_id_button").click(function(t) {
+	                                t.preventDefault(),
+	                                    function(t, a) {
+	                                        for (var n = "", l = 0; l < e.running_mate_json.length; l++)
+	                                            if (e.running_mate_json[l].fields.candidate == a) {
+	                                                var o = e.running_mate_json[l].fields.running_mate,
+	                                                    _ = -1;
+	                                                for (j = 0; j < e.candidate_json.length; j++)
+	                                                    if (o == e .candidate_json[j].pk) {
+	                                                        _ = j;
+	                                                        break
+	                                                    } n += "<option value=" + e.candidate_json[_].pk + ">" + e.candidate_json[_].fields.first_name + " " + e.candidate_json[_].fields.last_name + "</option>"
+	                                            } var r = '        <div class="game_header">        <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div class="inner_window_w_desc" id="inner_window_4">            <div id="running_mate_form">            <form name="running mate">            <p><h3>Please select your running mate:</h3>            <select name="running_mate_id" id="running_mate_id">' + n + '</select>            </p>            </form>            </div>            <div class="person_description_window" id="running_mate_description_window">            </div>        <p><button class="person_button" id="running_mate_id_button">Continue</button>        </p>        </div>';
+	                                        $("#game_window").html(r), $("#running_mate_id").ready(function() {
+	                                            i()
+	                                        }), $("#running_mate_id").change(function() {
+	                                            i()
+	                                        }), $("#running_mate_id_button").click(function(e) {
+	                                            e.preventDefault(), s(t, a, running_mate_id.value)
+	                                        })
+	                                    }(a, candidate_id.value)
+	                            })
+	                        }(election_id.value)
+	                })
+	            }()
+	    }), $("#skip_to_final").click(function(t) {
+	        e.final_state_results = A(1), d()
+	    })
+	}();
 
-// what did you expect?
+	// what did you expect?
 
 setInterval(function() {
     if (sussyroth() && localStorage.getItem("cheated") != "true") {
