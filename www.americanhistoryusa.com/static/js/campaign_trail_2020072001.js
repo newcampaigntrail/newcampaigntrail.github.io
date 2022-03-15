@@ -743,7 +743,7 @@ function divideElectoralVotesProp(e, t) {
                                         else if (e.state_issue_score_json[l].fields.state_issue_score <= e.global_parameter_json[0].fields.issue_stance_6_max) v = e.issues_json[o].fields.stance_6;
                                         else if (e.state_issue_score_json[l].fields.state_issue_score > e.global_parameter_json[0].fields.issue_stance_6_max) v = e.issues_json[o].fields.stance_7;
                                         u += "<li>" + e.issues_json[o].fields.name + " -- " + v + "</li>"
-	                                    } var f = "                    <h3>STATE SUMMARY</h3>                    <p>" + e.states_json[s].fields.name + "</p>                    <ul>" + u + "</ul>                    <p>Electoral Votes: " + e.states_json[s].fields.electoral_votes + "</p>"+<p>Popular Votes: " + e.states_json[s].fields.popular_votes + "</p>";
+	                                    } var f = "                    <h3>STATE SUMMARY</h3>                    <p>" + e.states_json[s].fields.name + "</p>                    <ul>" + u + "</ul>                    <p>Electoral Votes: " + e.states_json[s].fields.electoral_votes + "</p>"+"Popular Votes: " + e.states_json[s].fields.popular_votes + "</p>";
                         $("#state_info").html(f);
                         break
                     }
