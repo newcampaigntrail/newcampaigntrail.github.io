@@ -333,7 +333,7 @@
   <br><br><button title="When first starting a mod, immediately after loading, click the 'Latest Polls/Electoral map' button, and then click the 'Back to the game' button. This will load the proper first question." id="submitMod">Submit</button>
 </div>
 <div id="theme_picker">
-<span class="campaign_trail_start_emphasis"><button id="game_start"><strong>Button</strong></button></span>    
+<span class="campaign_trail_start_emphasis"><button id="game_start" onclick="creatorChange()"><strong>Button</strong></button></span>    
 </div>
 <br><br>
 <a href="http://www.americanhistoryusa.com" style="color:#FF6B6B">Original site</a> created by Dan Bryan &copy; 2012-2022
@@ -916,14 +916,7 @@ campaignTrail_temp.global_parameter_json = JSON.parse("[{\"model\": \"campaign_t
 campaignTrail_temp.candidate_dropout_json = JSON.parse("[{\"model\": \"campaign_trail.candidate_dropout\", \"pk\": 1, \"fields\": {\"candidate\": 36, \"affected_candidate\": 18, \"probability\": 1.0}}]");
 campaignTrail_temp.show_premium = true;
 campaignTrail_temp.premier_ab_test_version = -1;
-if(document.getElementById("election_id").value==69)
-{
-campaignTrail_temp.credits = "T3CHOX";  
-}
-else
-{
-campaignTrail_temp.credits = "Dan Bryan";  
-}  
+campaignTrail_temp.credits="Dan Bryan"; 
   
 </script>
 <script src="../static/js/campaign_trail_2020072001.js"></script>
