@@ -9,7 +9,7 @@ if (window.localStorage.getItem("margin_form") == "#C9C9C9") {
 }
 function creatorChange()
 {
-alert("executed")	
+alert(document.getElementById("election_id").value+"|"+campaignTrail_temp.credits)	
 if(document.getElementById("election_id").value==69)
 {
 campaignTrail_temp.credits="T3CHOX"   
