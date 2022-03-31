@@ -13,7 +13,7 @@ element=document.getElementById("creatorPara")
 	
 if(document.getElementById("election_id").value==69)
 {
-element.innerHTML="This scenario was made by T3CHOX"
+element.innerHTML="This scenario was made by tex"
 }
 else
 {
