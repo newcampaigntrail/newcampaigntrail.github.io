@@ -12,6 +12,10 @@ if(document.getElementById("election_id").value==69)
 {
 element.innerHTML="This scenario was made by tex"
 }
+else
+{
+element.innerHTML="This scenario was made by Dan Bryan"
+}	
 function encode(str) {
  
       
