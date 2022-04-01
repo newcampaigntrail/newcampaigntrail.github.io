@@ -15,6 +15,7 @@ element.innerHTML="This scenario was made by tex"
 else
 {
 element.innerHTML="This scenario was made by Dan Bryan"
+}
 }	
 function encode(str) {
  
