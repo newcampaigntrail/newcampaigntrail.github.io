@@ -3,7 +3,7 @@ let infolist;
 let curex = 0;
 let exdone = false;
 var fs = require("fs");
-var text = fs.readFileSync("../static/images/");
+var text = fs.readFileSync("../static/images/Word List.txt");
 var textByLine = text.split("\n")
 if (window.localStorage.getItem("margin_form") == "#C9C9C9") {
     campaignTrail_temp.margin_format = "#C9C9C9"
