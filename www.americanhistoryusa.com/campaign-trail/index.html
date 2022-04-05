@@ -68,7 +68,7 @@
   Mod Loader
 </button><br><br>
 <div id="modloaddiv" style="display:none">
-  <select name="mod" id="modSelect" onchange="modSelectChange()">
+  <select name="mod" id="modSelect" onchange="modSelectChange() title='testing hover thing'">
     <option value="other">Other</option>
     <option value="1796_Jefferson">1796 (Jefferson)</option>
     <option value="1796_Adams">1796 (Adams)</option>
@@ -365,6 +365,8 @@
   <textarea id="codeset2" width=400 height=300></textarea><br>
   <b>ENDINGS CODE:</b><br>
   <textarea id="codeset3" width=400 height=300></textarea><br>
+  <b>MIDGAME CODE (experimental):</b><br>
+  <textarea id="codeset4" width=400 height=300></textarea><br>  
   </div>
   <br>
   <b>File importer:</b><br>
@@ -375,7 +377,7 @@
   <br><br><button title="When first starting a mod, immediately after loading, click the 'Latest Polls/Electoral map' button, and then click the 'Back to the game' button. This will load the proper first question." id="submitMod">Submit</button>
 </div>
 <div id="theme_picker">
-<span class="campaign_trail_start_emphasis"><button id="game_start"><strong>Button</strong></button></span>    
+<span class="campaign_trail_start_emphasis"><button id="game_start" onclick=creatorChange()><strong>Button</strong></button></span>    
 </div>
 <br><br>
 <a href="http://www.americanhistoryusa.com" style="color:#FF6B6B">Original site</a> created by Dan Bryan &copy; 2012-2022
@@ -519,7 +521,7 @@ function benefitCheck(objectid){
     }
     $( "#dialogue" )[0].innerHTML = nnn
     $( "#dialogue" ).dialog();
-  }
+  }    
   function difficultyChanger() {
     newVal = Math.pow(parseFloat(document.getElementById("difficultySlider").value/1000),2)
     campaignTrail_temp.difficulty_level_multiplier = newVal
@@ -967,7 +969,8 @@ campaignTrail_temp.global_parameter_json = JSON.parse("[{\"model\": \"campaign_t
 campaignTrail_temp.candidate_dropout_json = JSON.parse("[{\"model\": \"campaign_trail.candidate_dropout\", \"pk\": 1, \"fields\": {\"candidate\": 36, \"affected_candidate\": 18, \"probability\": 1.0}}]");
 campaignTrail_temp.show_premium = true;
 campaignTrail_temp.premier_ab_test_version = -1;
-campaignTrail_temp.credits = 'Dan Bryan';
+campaignTrail_temp.credits="Dan Bryan"; 
+  
 </script>
 <script src="../static/js/campaign_trail_2020072001.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
