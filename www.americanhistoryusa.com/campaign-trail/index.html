@@ -604,6 +604,11 @@ function benefitCheck(objectid){
     a = b.join("")
     return a
 }
+function choose(choices) {
+  var index = Math.floor(Math.random() * choices.length);
+  return choices[index];
+}
+
 num = Math.floor((Math.random() * 49) + 1)
 bgnum = Math.floor((Math.random() * 4) + 1)
 modernnum = Math.floor((Math.random() * 1) + 1)
@@ -611,6 +616,10 @@ bernienum = Math.floor((Math.random() * 2) + 1)
 reagannum = Math.floor((Math.random() * 3) + 1)  
 astronum = Math.floor((Math.random() * 3) + 1)  
 breakingbadnum = Math.floor((Math.random() * 2) + 1)  
+omorichoices = ["https://cdn.discordapp.com/attachments/818130397706846242/979975422706057216/omoribanner1.png", "https://cdn.discordapp.com/attachments/818130397706846242/979980497902010398/omor2.png"]
+omorichoice = choose(omorichoices)
+auschoices = ["https://cdn.discordapp.com/attachments/818130397706846242/979995935402754138/aus_ban_1.png", "https://cdn.discordapp.com/attachments/818130397706846242/979997719441571850/aus_ban_2.png"]
+auschoice = choose(auschoices)
 
 utnum = Math.floor((Math.random() * 2) + 1)  
 nct_stuff = {}
@@ -750,7 +759,23 @@ nct_stuff.themes = {
     coloring_window: "#093009",
     coloring_container: "#1F6032",
     coloring_title: "#369457"
-  } 
+  },
+    "Omori": {
+    name: "Oyasumi",
+    background: "https://wallpapercave.com/wp/wp8392690.jpg",
+    banner: omorichoice,
+    coloring_window: "#0b68a5",
+    coloring_container: "#0b27a5",
+    coloring_title: "#0060c6"
+  },
+    "australia": {
+    name: "Down Under",
+    background: "https://www.joseflebovicgallery.com/pictures/CL179-103_12.JPG?v=1492666961",
+    banner: auschoice,
+    coloring_window: "#fcfc49",
+    coloring_container: "#13821a",
+    coloring_title: "#026b1e"
+  }
 }
 nct_stuff.christmas = false
 nct_stuff.selectedTheme = ""
