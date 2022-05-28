@@ -1,24 +1,32 @@
-// why have I done this to myself, I hate both the Reddit and the Discord for forcing me to add this - MAKE UP YOUR FUCKING MINDS
-let wordlist=["dare", "repeat", "orange", "gratis", "merciful", "shy", "woebegone", "dreary", "careful", "prick", "shut", "fertile", "axiomatic", "supply", "quartz", "naive", "desk", "friends", "cabbage", "marvelous", "flag", "concerned", "hair", "permit", "head", "chew", "fail", "previous", "fetch", "warn", "animal", "plate", "thankful", "certain", "x-ray", "advertisement", "dance", "soak", "lighten", "wicked", "rabid", "waiting", "quiver", "superficial", "uncle", "famous", "excite", "berserk", "cheese", "snobbish", "prevent", "wonder", "sophisticated", "fearless", "current", "women", "abundant", "half", "pet", "scrape", "lewd", "van", "nimble", "yarn", "symptomatic", "tricky", "morning", "ink", "zonked", "typical", "jittery", "fuel", "behavior", "snakes", "plot", "faulty", "addition", "vacuous", "knowledgeable", "lumpy", "ugly", "fragile", "label", "smooth", "mine", "press", "reign", "playground", "charge", "arch", "pen", "twist", "trucks", "coil", "faithful", "credit", "guiltless", "wiry", "stupendous", "imagine", "rhetorical", "creature", "groan", "clip", "defective", "minute", "spectacular", "close", "crow", "overconfident", "consist", "breakable", "futuristic", "rain", "house", "approval", "wrench", "mean", "carpenter", "incandescent", "rainy", "disturbed", "macabre", "acoustics", "existence", "bounce", "worry", "spotted", "idea", "sloppy", "fish", "annoy", "alluring", "trousers", "solid", "flash", "caring", "impolite", "safe", "agreeable", "exotic", "land", "instinctive", "thing", "swanky", "flagrant", "overflow", "utopian", "grateful", "harmony", "air", "deserted", "sable", "humorous", "hunt", "glow", "birthday", "year", "baseball", "unhealthy", "mint", "spell", "grip", "employ", "measly", "card", "position", "woman", "abnormal", "tender", "few", "earsplitting", "toy", "rot", "love", "obtainable", "picture", "copy", "surround", "scarce", "same", "divide", "null", "partner", "hysterical", "abusive", "wreck", "instruct", "chivalrous", "lonely", "join", "queue", "boot", "tart", "oil", "unlock", "burn", "rapid", "attack", "luxuriant", "art", "delay", "double", "march", "war", "earth", "name", "excellent", "puzzled", "motion", "wrap", "prose", "cultured", "cent", "striped", "elderly", "fall", "fascinated", "permissible", "pipe", "jelly", "fixed", "electric", "educated", "argument", "receipt", "appear", "hill", "branch", "uppity", "pollution", "summer", "design", "admire", "acceptable", "hushed", "vegetable", "abrupt", "apologise", "death", "adjoining", "lock", "honorable", "acoustic", "slip", "narrow", "hideous", "vein", "push", "profit", "grain", "stick", "yoke", "silky", "icicle", "overrated", "yell", "attractive", "venomous", "elbow", "organic", "steam", "payment", "harbor", "knotty", "loose", "board", "unwieldy", "bucket", "flat", "snatch", "chalk", "satisfying", "devilish", "agonizing", "bite-sized", "hug", "edge", "happen", "wave", "fumbling", "conscious", "purpose", "discover", "call", "listen", "trust", "profuse", "warlike", "dry", "throne", "man", "toe", "furniture", "stamp", "flame", "desire", "needless", "unnatural", "level", "abounding", "pleasant", "memory", "glamorous", "maddening", "boast", "night", "change", "light", "number", "road", "plane", "owe", "cars", "apathetic", "kittens", "boat", "wholesale", "impress", "abrasive", "used", "childlike", "lively", "throat", "loaf", "cable", "switch", "invite", "near", "agreement", "share", "tangy", "develop", "friendly", "statement", "assorted", "accidental", "scribble", "relation", "seal", "color", "error", "tenuous", "faint", "meaty", "callous", "hobbies", "disapprove", "deserve", "cheat", "coat", "alleged", "paint", "intelligent", "shirt", "elated", "tank", "popcorn", "kneel", "duck", "sheep", "peep", "nine", "vagabond", "page", "cap", "basket", "history", "fog", "fit", "wild", "cynical", "window", "volleyball", "support", "oranges", "frequent", "account", "excuse", "breezy", "cross", "vulgar", "brown", "crib", "polite", "hover", "moon", "work", "cough", "six", "ducks", "unused", "rotten", "vanish", "mass", "gainful", "impossible", "wiggly", "billowy", "miscreant", "disagree", "gun", "wilderness", "deafening", "skinny", "trip", "lazy", "late", "uneven", "ocean", "property", "loud", "recess", "hellish", "building", "glue", "destruction", "ruddy", "cheap", "analyze", "defiant", "belligerent", "fireman", "secretary", "cowardly", "pathetic", "reproduce", "hole", "fix", "quirky", "respect", "large", "flippant", "plantation", "bouncy", "jeans", "week", "ask", "endurable", "unknown", "spiteful", "embarrass", "alcoholic", "racial", "title", "brick", "bore", "friction", "trees", "terrible", "kindly", "chubby", "therapeutic", "two", "linen", "knot", "observant", "sign", "weak", "cool", "control", "hang", "long", "limit", "tease", "dull", "grandiose", "peck", "delicate", "month", "spark", "tested", "flap", "tiger", "homeless", "annoying", "boorish", "big", "kaput", "representative", "start", "defeated", "arithmetic", "bikes", "size", "periodic", "soap", "next", "arrogant", "thank", "upset", "good", "empty", "scintillating", "dinosaurs", "rightful", "search", "fabulous", "chess", "colorful", "horrible", "live", "queen", "paddle", "pear", "blink", "various", "right", "capable", "peaceful", "grin", "rigid", "possible", "happy", "carve", "expansion", "super", "animated", "special", "fade", "shelter", "tearful", "train", "grade", "wistful", "choke", "ladybug", "carry", "grape", "political", "lamentable", "cloth", "violet", "supreme", "thin", "last", "glistening", "interfere", "announce", "impartial", "soda", "aback", "space", "lie", "cellar", "bruise", "ruthless", "knee", "chop", "ethereal", "dog", "grab", "slap", "demonic", "zoo", "precede", "sleepy", "plain", "whirl", "left", "longing", "field", "detect", "confuse", "yam", "absurd", "teeny", "plan", "manage", "request", "common", "eight", "order", "pushy", "pocket", "visit", "false", "tumble", "cannon", "show", "toad", "unpack", "rate", "encourage", "cup", "hallowed", "hydrant", "hard", "command", "decorate", "puny", "poised", "yak", "horses", "clear", "cute", "lavish", "unwritten", "meeting", "rural", "graceful", "verse", "aftermath", "helpless", "condition", "lying", "quaint", "valuable", "puffy", "car", "trade", "toys", "base", "calculator", "spurious", "ancient", "egg", "spooky", "donkey", "achiever", "crowd", "obscene", "judicious", "shallow", "ajar", "temper", "load", "beginner", "food", "cushion", "square", "advice", "stale", "quickest", "word", "victorious", "slave", "truculent", "soggy", "hope", "paste", "flimsy", "cruel", "curvy", "joke", "faded", "inject", "gullible", "remarkable", "babies", "jog", "ignorant", "untidy", "curve", "thunder", "bless", "cart", "machine", "numerous", "fry", "bed", "accurate", "suspend", "simplistic", "detailed", "drunk", "entertaining", "screeching", "turkey", "soup", "gate", "dirt", "plucky", "acidic", "canvas", "encouraging", "illegal", "spotless", "odd", "refuse", "fly", "guide", "numberless", "multiply", "expert", "disgusted", "public", "sock", "invincible", "inconclusive", "condemned", "cow", "frightening", "second", "tire", "frightened", "unequal", "sparkle", "cobweb", "substantial", "cry", "material", "zipper", "tongue", "quarrelsome", "wrist", "hurt", "face", "distinct", "suffer", "married", "shop", "crazy", "high", "quack", "tight", "abandoned", "aspiring", "tired", "cub", "miss", "thumb", "rejoice", "blade", "drip", "wire", "lethal", "complain", "laughable", "spicy", "automatic", "meddle", "sharp", "thread", "learned", "glass", "aloof", "capricious", "telling", "waste", "purring", "whimsical", "fantastic", "grass", "abject", "oatmeal", "improve", "secret", "servant", "bump", "sigh", "wakeful", "great", "jumbled", "taste", "resolute", "feigned", "delightful", "welcome", "stuff", "identify", "wail", "courageous", "grey", "misty", "fancy", "precious", "driving", "discreet", "observation", "cluttered", "recondite", "crayon", "regret", "intend", "economic", "stir", "coal", "prickly", "awful", "finger", "borrow", "dislike", "brainy", "bait", "experience", "knife", "add", "pickle", "calculate", "brief", "mist", "ceaseless", "stop", "scandalous", "embarrassed", "launch", "immense", "dream", "flock", "gamy", "milky", "blushing", "locket", "bomb", "offer", "zippy", "violent", "enjoy", "pin", "treatment", "explode", "vigorous", "depressed", "holistic", "handle", "pack", "physical", "trick", "digestion", "skin", "structure", "obnoxious", "breathe", "language", "person", "closed", "baby", "blue", "authority", "books", "pencil", "toes", "dime", "passenger", "pop", "plough", "stiff", "onerous", "chickens", "acrid", "extra-small", "bizarre", "parallel", "ordinary", "scatter", "strap", "kick", "suck", "tendency", "decorous", "government", "preserve", "fold", "stretch", "spiritual", "health", "fire", "cumbersome", "pass", "gaudy", "contain", "point", "daily", "incompetent", "romantic", "voyage", "easy", "slow", "thinkable", "sail", "ill-fated", "vacation", "taboo", "handsome", "wren", "flowery", "exist", "bad", "dizzy", "nutritious", "marked", "smile", "extend", "discussion", "abiding", "tacit", "button", "zinc", "comparison", "bridge", "hall", "tan", "pleasure", "attend", "savory", "hammer", "spiders", "pretty", "unique", "rush", "pets", "stomach", "huge", "amuse", "need", "harm", "damaging", "collar", "practice", "deer", "clammy", "uninterested", "gaze", "marry", "woozy", "system", "rhythm", "strengthen", "men", "giants", "pancake", "quill", "box", "arm", "advise", "flesh", "garrulous", "different", "squirrel", "battle", "utter", "festive", "shoe", "scale", "low", "lace", "self", "consider", "scissors", "laugh", "tiresome", "poor", "feeble", "action", "mere", "innocent", "squeal", "ritzy", "afterthought", "unite", "present", "ambitious", "repair", "extra-large", "rely", "malicious", "invent", "arrive", "adaptable", "wine", "fine", "rake", "tooth", "windy", "engine", "premium", "classy", "gather", "free", "stingy", "parsimonious", "sprout", "sassy", "money", "wealthy", "sister", "depend", "steel", "scent", "lacking", "wanting", "irritate", "small", "room", "skillful", "skirt", "settle", "wary", "record", "puncture", "mountainous", "skip", "zoom", "enormous", "cycle", "three", "volatile", "nasty", "reflect"]
+function simpleAdventure(ans) {
+	return 1203;
+}
 
+function cyoAdventure(question) {
+	latestAnswer = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length-1]
+	console.log(question, latestAnswer)
+	for (i=0; i < campaignTrail_temp.questions_json.length; i++) {
+		console.log(question.pk, campaignTrail_temp.questions_json[i].pk)
+		if (campaignTrail_temp.questions_json[i].pk == question.pk) {
+			for (v=0; v < campaignTrail_temp.questions_json.length; v++) {
+				if (campaignTrail_temp.questions_json[v].pk == simpleAdventure(latestAnswer)) {
+					campaignTrail_temp.questions_json[campaignTrail_temp.question_number] = campaignTrail_temp.questions_json[v]
+					break
+				}
+				
+			}
+			console.log("e")
+			break
+		}
+	}
+} 
+
+// why have I done this to myself, I hate both the Reddit and the Discord for forcing me to add this - MAKE UP YOUR FUCKING MINDS
 if (window.localStorage.getItem("margin_form") == "#C9C9C9") {
 	campaignTrail_temp.margin_format = "#C9C9C9"
 } else {
 	campaignTrail_temp.margin_format = "#FFFFFF"
 }
-function creatorChange()
-{
-element=document.getElementById("creatorPara")
-	
-if(document.getElementById("election_id").value==69)
-{
-element.innerHTML="This scenario was made by tex"
-}
-else
-{
-element.innerHTML="This scenario was made by Dan Bryan"
-}
-}	
 function encode(str) {
  
       
@@ -519,7 +527,11 @@ d()
 
 	    function l() {
 	        var t = A(2);
-	        if (e.question_number++, e.question_number == e.global_parameter_json[0].fields.question_count) {
+	        if (campaignTrail_temp.cyoa) {
+					cyoAdventure(e.questions_json[e.question_number])
+	        }
+	        e.question_number++;
+	        if (e.question_number == e.global_parameter_json[0].fields.question_count) {
 	        	e.final_state_results = A(1), d();
 	        }
 	        else if (e.question_number % 2 == 0) {
@@ -533,10 +545,6 @@ d()
 		if ($("#importfile")[0].value !="")
 		{ 
 		importgame(e.dagakotowaru)		
-		}
-		else
-		{
-		console.log("if failed")
 		}	
 	    }
 		
@@ -1530,7 +1538,7 @@ d()
 	        a.preventDefault(),
 	            function() {
 	                for (var a = "", n = 0; n < e.temp_election_list.length; n++) 0 == e.temp_election_list[n].is_premium ? a += "<option value=" + e.temp_election_list[n].id + ">" + e.temp_election_list[n].display_year + "</option>" : 1 == e.show_premium ? a += "<option value=" + e.temp_election_list[n].id + ">" + e.temp_election_list[n].display_year + "</option>" : a += "<option value=" + e.temp_election_list[n].id + " disabled>" + e.temp_election_list[n].display_year + "</option>";
-	                var l = '<div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div class="inner_window_w_desc" id="inner_window_2">            <div id="election_year_form">            <form name="election_year">            <p>                <h3>Please select the election you will run in:</h3>    \t\t    <select name="election_id" id="election_id" onChange=creatorChange()>' + a + '</select>            </p>            </form>            <div class="election_description_window" id="election_description_window">                <div id="election_image">                    <img src="' + e.election_json[0].fields.image_url + '" width="300" height="160"/>                </div>                <div id="election_summary">' + e.election_json[0].fields.summary + '</div>            </div>        </div>        <p><button id="election_id_button">Continue</button></p> <p id="creatorPara">This scenario was made by ' + e.credits + '.</p>';
+	                var l = '<div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div class="inner_window_w_desc" id="inner_window_2">            <div id="election_year_form">            <form name="election_year">            <p>                <h3>Please select the election you will run in:</h3>    \t\t    <select name="election_id" id="election_id">' + a + '</select>            </p>            </form>            <div class="election_description_window" id="election_description_window">                <div id="election_image">                    <img src="' + e.election_json[0].fields.image_url + '" width="300" height="160"/>                </div>                <div id="election_summary">' + e.election_json[0].fields.summary + '</div>            </div>        </div>        <p><button id="election_id_button">Continue</button></p> <p>This scenario was made by ' + e.credits + '.</p>';
 	                $("#game_window").html(l), $("#election_id").change(function() {
 	                    for (var t = -1, i = 0; i < e.election_json.length; i++)
 	                        if (e.election_json[i].pk == election_id.value) {
