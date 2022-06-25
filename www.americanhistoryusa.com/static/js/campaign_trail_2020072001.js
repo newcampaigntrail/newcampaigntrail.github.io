@@ -1,7 +1,179 @@
 function simpleAdventure(ans) {
 	return 1203;
 }
-
+function electionyear(id)
+{
+switch(id)
+{
+	case 21:
+	return 2020
+		
+	case 20:
+	return 2016
+	
+	case 16:
+	return 2016
+	
+	case 3:
+	return 2012
+	
+	case 9:
+	return 2000
+	
+	case 15:
+	return 1988
+	
+	case 10:
+	return 1976
+	
+	case 4:
+	return 1968
+	
+	case 69:
+	return 1964
+	
+	case 11:
+	return 1960
+	
+	case 12:
+	return 1948
+	
+	case 14:
+	return 1916
+	
+	case 5:
+	return 1896
+	
+	case 8:
+	return 1860
+	
+	case 13:
+	return 1844		
+}
+}
+function histFunction()
+{
+if (modded==false)
+{	
+switch(campaignTrail_temp.election_id)
+{
+        case 21:
+        HistHexcolour=["#0000FF","#FF0000","#FFFF00","#00C100"];
+        HistName=["Joe Biden","Donald Trump","Jo Jorgensen","Howie Hawkins"];
+        HistEV=[306,232,0,0];
+        HistPV=["81,268,924","74,216,154","1,865,724","405,035"];
+        HistPVP=["51.3%","46.9%","1.2%","0.4%"];
+	break;
+		
+	case 20:
+	HistHexcolour=["#FF0000","#0000FF","#FFFF00","00C100"];
+        HistName=["Donald Trump","Hillary Clinton","Gary Johnson","Jill Stein"];
+        HistEV=[306,232,0,0];
+        HistPV=["62,984,828","65,853,514","4,489,341","405,035"];
+        HistPVP=["46.1%","48.2%","3.3%","1.1%"];
+	break;
+	case 16:
+	HistHexcolour=["#FF0000","#0000FF","#FFFF00","#00C100"];
+        HistName=["Donald Trump","Hillary Clinton","Gary Johnson","Jill Stein"];
+        HistEV=[306,232,0,0];
+        HistPV=["62,984,828","65,853,514","4,489,341","405,035"];
+        HistPVP=["46.1%","48.2%","3.3%","1.1%"];
+	break;
+		
+	case 3:
+	HistHexcolour=["#0000FF","#FF0000","#FFFF00","#00C100"];
+        HistName=["Barack Obama","Mitt Romney","Gary Johnson","Jill Stein"];
+        HistEV=[332,206,0,0];
+        HistPV=["65,915,795","60,933,504","1,275,971","469,627"];
+        HistPVP=["51.1%","47.2%","1.0%","0.4%"];
+	break;
+	
+	case 9:
+	HistHexcolour=["#FF0000","#0000FF","#00C100","#800080"];
+        HistName=["George W. Bush","Al Gore","Ralph Nader","Pat Buchanan"];
+        HistEV=[271,267,0,0];
+        HistPV=["50,456,002","50,999,897","2,882,955","448,895"];
+        HistPVP=["47.9%","48.4%","2.7%","0.4%"];
+	break;
+		
+	case 15:
+	HistHexcolour=["#FF0000","#0000FF","#FFFF00","#00C100"];
+        HistName=["George Bush","Michael Dukakis","Ron Paul","Lenora Fulani"];
+        HistEV=[426,112,0,0];
+        HistPV=["48,886,597","41,809,476","431,750","217,221"];
+        HistPVP=["53.4%","45.7%","0.5%","0.2%"];
+	break;	
+	case 10:
+	HistHexcolour=["#0000FF","#FF0000","#FFFFFF","#FFFF00"];
+        HistName=["Jimmy Carter","Gerald Ford","Eugene McCarthy","Roger MacBride"];
+        HistEV=[297,241,0,0];
+        HistPV=["40,831,881","39,148,634","744,763","172,557"];
+        HistPVP=["50.1","48.0","0.9%","0.2%"];
+	break;
+	case 4:
+	HistHexcolour=["#FF0000","#0000FF","#FFFF00","#FFFFFF"];
+        HistName=["Richard Nixon","Hubert Humphrey","George Wallace","Other"];
+        HistEV=[302,191,45,0];
+        HistPV=["31,783,783","31,271,839","9,901,118","243,259"];
+        HistPVP=["43.4%","42.7%","13.5%","0.3%"];	
+	break;
+	
+	case 69:
+	HistHexcolour=["#0000FF","#FF0000","#FFFF00","#DB261D"];
+        HistName=["Lyndon B. Johnson","Barry Goldwater","Unpledged electors","Eric Hass"];
+        HistEV=[486,52,0,0];
+        HistPV=["43,129,040","27,175,754","210,732","45,189"];
+        HistPVP=["61.1%","38.5%","0.3%",">0.1%"];	
+	break;
+	
+	case 11:
+	HistHexcolour=["#0000FF","#FF0000","#FFFF00","#FFFFFF"];
+        HistName=["John Kennedy","Richard Nixon","Harry Byrd","Unpledged elector"];
+        HistEV=[303,219,15,0];
+        HistPV=["34,220,984","34,108,157","Unknown","286,359"];
+        HistPVP=["49.7%","49.5%","Unknown","0.4%"];	
+	break;
+	case 12:
+	HistHexcolour=["#0000FF","#FF0000","#FFFF00","#00C100"];
+        HistName=["Harry Truman","Thomas Dewey","Strom Thurmond","Henry Wallace"];
+        HistEV=[303,189,39,0];
+        HistPV=["24,179,347","21,991,292","1,175,930","1,157,328"];
+        HistPVP=["49.6%","45.1%","2.4%","2.4%"];	
+	break;
+	case 14:
+	HistHexcolour=["#0000FF","#FF0000","#DB261D","FFC0CB"];
+        HistName=["Woodrow Wilson","Charles Evans Hughes","Allan Benson","James Hanly"];
+        HistEV=[277,254,0,0];
+        HistPV=["9,126,868","8,548,728","590,524","221,302"];
+        HistPVP=["49.2%","46.1%","3.2%","1.2%"];	
+	case 5:
+	return 1896
+	HistHexcolour=["#FF0000","#0000FF","#FFFF00","FFC0CB"];
+        HistName=["William McKinley","William Jennings Bryan","John Palmer","Joshua Levering"];
+        HistEV=[271,176,0,0];
+        HistPV=["7,111,607","6,509,052","134,645","131,312"];
+        HistPVP=["51.0%","46.7%","1.0%","0.9%"];	
+	case 8:
+	HistHexcolour=["#FF0000","#FFFF00","#00C100;","#0000FF"];
+        HistName=["Abraham Lincoln","John C. Breckinridge","John Bell","Stephen Douglas"];
+        HistEV=[180,72,39,12];
+        HistPV=["1,865,908","848,019","590,901","1,380,202"];
+        HistPVP=["39.8%","18.1%","12.6%","29.5%"];	
+	
+	case 13:
+	HistHexcolour=["#0000FF","#F0C862","#FFFF00;","#FFFFFF"];
+        HistName=["James K. Polk","Henry Clay","James Birney","N/A"];
+        HistEV=[170,105,0,0];
+        HistPV=["1,339,494","1,300,004","62,103","N/A"];
+        HistPVP=["49.5%","48.1%","2.3%","N/A"];
+}		
+}	
+}	
+let HistHexcolour=["#FFFFFF","#FFFFFF","#FFFFFF","#FFFFFF"];
+let HistName=["N/A","N/A","N/A","N/A"];
+let HistEV=[0,0,0,0];
+let HistPV=[0,0,0,0];
+let HistPVP=[0,0,0,0];
 function cyoAdventure(question) {
 	latestAnswer = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length-1]
 	console.log(question, latestAnswer)
@@ -20,7 +192,6 @@ function cyoAdventure(question) {
 		}
 	}
 } 
-
 // why have I done this to myself, I hate both the Reddit and the Discord for forcing me to add this - MAKE UP YOUR FUCKING MINDS
 if (window.localStorage.getItem("margin_form") == "#C9C9C9") {
 	campaignTrail_temp.margin_format = "#C9C9C9"
@@ -486,6 +657,7 @@ reader.readAsText(file);
 	                    	}, 1000);
 	                	}
 	                    console.log("e")
+			histFunction()
 	                }(t, i, l, o, c)
 	        })
 	    }
@@ -1271,8 +1443,8 @@ d()
 	            for (i = 0; i < e.historical_overall.length; i++) o += '<tr><td style="text-align: left;">                <span style="background-color: ' + e.historical_overall[i].color_hex + "; color: " + e.historical_overall[i].color_hex + ';">----</span>' + e.historical_overall[i].name + "</td><td>" + e.historical_overall[i].winning_pct.toFixed(2) + "</td><td>" + e.historical_overall[i].electoral_votes_avg.toFixed(1) + "</td><td>" + M(e.historical_overall[i].popular_votes_avg) + "</td><td>" + e.historical_overall[i].popular_vote_pct_avg.toFixed(2) + "</td><td>" + e.historical_overall[i].electoral_votes_min + " - " + e.historical_overall[i].electoral_votes_max + "</td><td>" + M(e.historical_overall[i].popular_votes_min) + " - " + M(e.historical_overall[i].popular_votes_max) + "</td></tr>";
 	            var _ = '<div id="overall_stat_details">            <h4>Historical Results - Your Candidate and Difficulty Level</h4>            <table>            <tr><th>Candidate</th>                <th>Win %</th>                <th>EV Avg.</th>                <th>PV Avg.</th>                <th>PV % Avg.</th>                <th>EV Range</th>                <th>PV Range</th>            </tr>' + o + "</table>            </div>"
 	        } else o = "", _ = "";
-	        var r = '    <div class="game_header">\t<h2>NEW CAMPAIGN TRAIL</h2>\t</div>\t<div id="main_content_area">\t<div id="overall_details_container">\t\t<h3>Overall Election Details</h3>\t\t<div id="overall_election_details">\t\t<h4>Results - This Game</h4>\t\t<table>\t\t<tr><th>Candidate</th>\t\t<th>Electoral Votes</th>\t\t<th>Popular Votes</th>\t\t<th>Popular Vote %</th>\t\t</tr>' + a + "</table>" + l + "<br><br><button class='final_menu_button' onclick='exportResults()'>Export Results</button></div>" + _ + '</div>\t</div>\t<div id="map_footer">\t\t<button class="final_menu_button" id="overall_results_button">Final Election Results</button>\t\t<button class="final_menu_button" id="final_election_map_button">Election Map</button>\t\t<button class="final_menu_button" id="state_results_button">Results by State</button>\t\t<button class="final_menu_button" id="overall_details_button" disabled="disabled">Overall Results Details</button>\t\t<button class="final_menu_button" id="play_again_button">Play Again!</button>\t</div>';
-	        $("#game_window").html(r), $("#overall_results_button").click(function() {
+                var r=    '<div class="game_header"><h2>NEW CAMPAIGN TRAIL</h2></div> <div id="main_content_area"> <div id="overall_details_container"> <h3>Overall Election Details</h3> <div id="overall_election_details"> <h4>Results - This Game</h4> <table> <tbody> <tr> <th>Candidate</th> <th>Electoral Votes</th> <th>Popular Votes</th> <th>Popular Vote %</th> </tr>'+ a +'</table>'+ l +'<br /> <br /> </div> <div id="overall_election_details"> <h4>Results - Historical</h4> <table> <tbody> <tr> <th>Candidate</th> <th>Electoral Votes</th> <th>Popular Votes</th> <th>Popular Vote %</th> </tr> <tr> <td style="text-align: left;"><span style="background-color:'+HistHexcolour[0]+'; color:'+HistHexcolour[0]+';">----</span>'+ HistName[0]+'</td> <td>'+HistEV[0]+'</td> <td>'+HistPV[0]+'</td> <td>'+HistPVP[0]+'</td> </tr> <tr> <td style="text-align: left;"><span style="background-color:'+ HistHexcolour[1] +'; color:'+ HistHexcolour[1]+';">----</span>'+HistName[1]+'</td> <td>'+HistEV[1]+'</td> <td>'+HistPV[1]+'</td> <td>'+HistPVP[1]+'</td> </tr> <tr> <td style="text-align: left;"><span style="background-color:'+HistHexcolour[2]+'; color:'+HistHexcolour[2]+';">----</span>'+HistName[2]+'</td> <td>'+HistEV[2]+'</td> <td>'+HistPV[2]+'</td> <td>'+HistPVP[2]+'</td> </tr> <tr> <td style="text-align: left;"><span style="background-color:'+HistHexcolour[3]+'; color:'+HistHexcolour[3]+';">----</span>'+HistName[3]+'</td> <td>'+HistEV[3]+'</td> <td>'+HistPV[3]+'</td> <td>'+HistPVP[3]+'</td> </tr> </tbody> </table> <br /> <br /> <button class="final_menu_button" onclick="exportResults()">Export Results</button></div></div><div id="map_footer"><button class="final_menu_button" id="overall_results_button">Final Election Results</button><button class="final_menu_button" id="final_election_map_button">Election Map</button><button class="final_menu_button" id="state_results_button">Results by State</button><button class="final_menu_button" id="overall_details_button" disabled="disabled">Overall Results Details</button><button class="final_menu_button" id="play_again_button">Play Again!</button></div> </div> </div> </div>'
+		    $("#game_window").html(r), $("#overall_results_button").click(function() {
 	            p()
 	        }), $("#final_election_map_button").click(function() {
 	            h()
