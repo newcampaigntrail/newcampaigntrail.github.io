@@ -583,8 +583,16 @@ function benefitCheck(objectid){
             multiplier = effects[_][1].fields.state_multiplier.toString()
             mods += "<br><em>State:</em> Affects "+test5+" for "+test6+" in "+name1+" by "+multiplier
         }
-    }
-    return '<font size="2"><b>Answer: </b>'+findAnswer(answerid)[1]+"'<br>"+mods+"</font><br><br>"
+  answerfeedback="";
+  for (let index = 0; index < campaignTrail_temp.answer_feedback_json.length-1; index++) 
+  {
+  if(answerid==campaignTrail_temp.answer_feedback_json[index].fields.answer)
+  {
+    answerfeedback="<b>"+campaignTrail_temp.answer_feedback_json[index].fields.answer_feedback +"</b>"
+    break;
+  }  
+  }
+    return '<font size="2"><b>Answer: </b>'+findAnswer(answerid)[1]+"'<br>"+"Feedback: "+ answerfeedback+"'<br>"+ mods +"</font><br><br>"
   }
   function benefitChecker() {
     questionlength = document.getElementById("question_form").children[0].children.length/3
