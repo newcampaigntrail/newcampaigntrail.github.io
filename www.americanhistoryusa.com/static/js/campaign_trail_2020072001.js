@@ -108,7 +108,7 @@ switch(campaignTrail_temp.election_id)
         HistName=["Jimmy Carter","Gerald Ford","Eugene McCarthy","Roger MacBride"];
         HistEV=[297,241,0,0];
         HistPV=["40,831,881","39,148,634","744,763","172,557"];
-        HistPVP=["50.1","48.0","0.9%","0.2%"];
+        HistPVP=["50.1%","48.0%","0.9%","0.2%"];
 	break;
 	case 4:
 	HistHexcolour=["#FF0000","#0000FF","#FFFF00","#FFFFFF"];
