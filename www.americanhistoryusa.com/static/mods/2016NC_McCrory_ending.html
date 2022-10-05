@@ -1,0 +1,100 @@
+mov = 0
+
+
+
+
+if (out == 'win') {
+
+
+   mov = quickstats[1] - (aa[1].popular_votes / totv * 100)
+
+
+   if (mov > 0) {
+
+
+       return "<h3>Congratulations! You have won the 2016 North Carolina Gubernatorial Election.</h3><p>Despite months of negative media coverage, you have been re-elected for a second term. As a bonus, Republicans have won down the ballot in the state! Your lieutenant governor will be returning with you to Washington DC under the new president, Donald Trump. Roy Cooper's old position as attorney general has been filled by Buck Newton, who is sure to make House Bill 2 a less pressing issue in the state. Pundits are declaring Election Night 2016 as an outright victory for conservatism in North Carolina."
+
+
+   } else {
+
+
+       return "<h3>Sorry, you have lost the 2016 North Carolina Gubernatorial Election.</h3><p>Your diehard supporters are stunned as you were on the brink of giving a victory speech before the late votes out of Durham county came in. It is even more disheartening considering that Donald Trump and Lieutenant Governor Forest were able to win their respective elections in the state. Perhaps the negative media coverage of your campaign was too much or perhaps Roy Cooper was a far more popular attorney general than you had believed. Either way your governorship of North Carolina is over in two months so make the best of it. Maybe you can try again in 2020 or even become a senator later down the road."
+
+   }
+
+
+} else if (out == 'loss') {
+
+
+   mov = (aa[0].popular_votes / totv * 100) - quickstats[1]
+
+
+   if (mov < 0) {
+
+
+       return "<h3>Congratulations! You have won the 2016 North Carolina Gubernatorial Election.</h3><p>Despite months of negative media coverage, you have been re-elected for a second term. As a bonus, Republicans have won down the ballot in the state! Your lieutenant governor will be returning with you to Washington DC under the new president, Donald Trump. Roy Cooper's old position as attorney general has been filled by Buck Newton, who is sure to make House Bill 2 a less pressing issue in the state. Pundits are declaring Election Night 2016 as an outright victory for conservatism in North Carolina."
+
+
+
+
+   } else {
+
+
+       return "<h3>Sorry, you have lost the 2016 North Carolina Gubernatorial Election.</h3><p>Your diehard supporters are stunned as you were on the brink of giving a victory speech before the late votes out of Durham county came in. It is even more disheartening considering that Donald Trump and Lieutenant Governor Forest were able to win their respective elections in the state. Perhaps the negative media coverage of your campaign was too much or perhaps Roy Cooper was a far more popular attorney general than you had believed. Either way your governorship of North Carolina is over in two months so make the best of it. Maybe you can try again in 2020 or even become a senator later down the road."
+
+
+   }
+
+
+} else {
+
+
+if (aa[0].popular_votes > aa[1].popular_votes) {
+
+
+   if (aa[0].candidate == campaignTrail_temp.candidate_id) {
+
+
+       return "<h3>Congratulations! You have won the 2016 North Carolina Gubernatorial Election.</h3><p>Despite months of negative media coverage, you have been re-elected for a second term. As a bonus, Republicans have won down the ballot in the state! Your lieutenant governor will be returning with you to Washington DC under the new president, Donald Trump. Roy Cooper's old position as attorney general has been filled by Buck Newton, who is sure to make House Bill 2 a less pressing issue in the state. Pundits are declaring Election Night 2016 as an outright victory for conservatism in North Carolina."
+
+
+
+
+   } else {
+
+
+       return "<h3>Sorry, you have lost the 2016 North Carolina Gubernatorial Election.</h3><p>Your diehard supporters are stunned as you were on the brink of giving a victory speech before the late votes out of Durham county came in. It is even more disheartening considering that Donald Trump and Lieutenant Governor Forest were able to win their respective elections in the state. Perhaps the negative media coverage of your campaign was too much or perhaps Roy Cooper was a far more popular attorney general than you had believed. Either way your governorship of North Carolina is over in two months so make the best of it. Maybe you can try again in 2020 or even become a senator later down the road."
+
+
+
+   }
+
+
+} else {
+
+
+   if (aa[0].candidate == campaignTrail_temp.candidate_id) {
+
+
+       return "<h3>Sorry, you have lost the 2016 North Carolina Gubernatorial Election.</h3><p>Your diehard supporters are stunned as you were on the brink of giving a victory speech before the late votes out of Durham county came in. It is even more disheartening considering that Donald Trump and Lieutenant Governor Forest were able to win their respective elections in the state. Perhaps the negative media coverage of your campaign was too much or perhaps Roy Cooper was a far more popular attorney general than you had believed. Either way your governorship of North Carolina is over in two months so make the best of it. Maybe you can try again in 2020 or even become a senator later down the road."
+
+
+   } else {
+
+
+       return "<h3>Congratulations! You have won the 2016 North Carolina Gubernatorial Election.</h3><p>Despite months of negative media coverage, you have been re-elected for a second term. As a bonus, Republicans have won down the ballot in the state! Your lieutenant governor will be returning with you to Washington DC under the new president, Donald Trump. Roy Cooper's old position as attorney general has been filled by Buck Newton, who is sure to make House Bill 2 a less pressing issue in the state. Pundits are declaring Election Night 2016 as an outright victory for conservatism in North Carolina."
+
+
+   }
+
+
+}
+
+
+}
+
+
+
+
+
+
