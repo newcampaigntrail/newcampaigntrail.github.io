@@ -901,12 +901,10 @@ function divideElectoralVotesProp(e, t) {
                 nnnn.push(copy(e.candidate_json[o]))
                 w.push(e.candidate_json[o].pvp)
                 cand_evs.push(e.candidate_json[o].evvs)
-                console.log(e.candidate_json[o].popvs)
                 e.candidate_json[o].popvs = 0
                 e.candidate_json[o].evvs = 0
             }
         }
-        console.log(w)
     
         w.sort((a, b) => b - a)
         nn2 = []
@@ -922,7 +920,6 @@ function divideElectoralVotesProp(e, t) {
                 }
             }
         }
-        console.log(nn2)
         return [nn2, n]
     }
 	function setStatePollText(s, t) {
@@ -1338,93 +1335,94 @@ function divideElectoralVotesProp(e, t) {
         if (important_info.indexOf("<html>") == -1 && important_info != "") {
             campaignTrail_temp.multiple_endings = true
         }
-
-        if (campaignTrail_temp.multiple_endings) {
-
-            n = 0
+        console.log("check 1")
+        n = 0
             for (i = 0; i < e.final_overall_results.length; i++) {
                 if (e.final_overall_results[i].candidate == e.candidate_id) {
                     n = i;
                     break
                 }
             }
-            quickstats = [e.final_overall_results[n].electoral_votes, e.final_overall_results[n].popular_votes / o * 100, e.final_overall_results[n].popular_votes] //format: electoral vote count, popular vote proportion, popular vote vote count
+        quickstats = [e.final_overall_results[n].electoral_votes, e.final_overall_results[n].popular_votes / o * 100, e.final_overall_results[n].popular_votes] //format: electoral vote count, popular vote proportion, popular vote vote count
 
-            if (!amongusonetwothree) {
 
-                among = [e.final_overall_results[0].electoral_votes, e.final_overall_results[0].popular_votes / o * 100, e.final_overall_results[0].popular_votes]
-                a = endingPicker(e.final_outcome, o, e.final_overall_results, quickstats)
-                legitRun = isLegitRun()
+        if (!amongusonetwothree) {
 
-                run = JSON.parse(localStorage.getItem('achievements'))
+            among = [e.final_overall_results[0].electoral_votes, e.final_overall_results[0].popular_votes / o * 100, e.final_overall_results[0].popular_votes]
+            a = endingPicker(e.final_outcome, o, e.final_overall_results, quickstats)
+            legitRun = isLegitRun()
 
-                if (legitRun) {
+            run = JSON.parse(localStorage.getItem('achievements'))
 
-                    // 306-232 counter
+            if (legitRun) {
 
-                    if (campaignTrail_temp.difficulty_level_multiplier <= 0.97 && (e.final_overall_results[n].electoral_votes == 306 || e.final_overall_results[n].electoral_votes == 232)) {
-                        if (e.election_id == 21 && !run.threeosix["2020"]) {
-                            swap306(2020)
-                        } else if (e.election_id == 20 && !run.threeosix["2016"]) {
-                            swap306(2016)
-                        } else if (e.election_id == 3 && !run.threeosix["2012"]) {
-                            swap306(2012)
-                        } else if (e.election_id == 9 && !run.threeosix["2000"]) {
-                            swap306(2000)
-                        } else if (e.election_id == 15 && !run.threeosix["1988"]) {
-                            swap306(1988)
-                        } else if (e.election_id == 10 && !run.threeosix["1976"]) {
-                            swap306(1976)
-                        } else if (e.election_id == 69 && !run.threeosix["1964"]) {
-                            swap306(1964)
-                        }
-                    }
+                // 306-232 counter
 
-                    // 2016a (:troll:) counter
-
-                    if (e.election_id == 16) {
-                        CAAS = localStorage.getItem('achievements');
-                        CAASS = JSON.parse(CAAS);
-                        count = Number(CAASS.tsatrolling) + 1
-                        CAASS.tsatrolling = count
-                        newAchg = JSON.stringify(CAASS)
-                        secg = MD5(newAchg)
-                        localStorage.setItem("achievements", newAchg)
-                        localStorage.setItem("ach4", secg)
-                    }
-
-                    // Destiny Arrives All the Same - Get a 306-232 electoral count in every possible official scenario.
-                    if (!run.achievements["destiny"] && run.threeosix["2020"] && run.threeosix["2016"] && run.threeosix["2012"] && run.threeosix["2000"] && run.threeosix["1988"] && run.threeosix["1976"] && run.threeosix["1964"]) {
-                        unlockAchievement(among, "destiny", "../static/achievementicons/destiny.png", "<b><font color='yellow'>Destiny Arrives All the Same</font></b>")
-                    } else
-                    // Dixie Defeats Dewey - Win as Truman by preventing a southern walkout. 
-                    if (!run.achievements["dixieDewey"] && e.candidate_last_name == "Truman" && e.election_id == 12 && campaignTrail_temp.difficulty_level_multiplier >= 0.97 && campaignTrail_temp.player_answers[2]==3809 && e.final_overall_results[n].electoral_votes > 269) {
-                        unlockAchievement(among, "dixieDewey", "../static/achievementicons/dixiedewey.png", "<b>Dixie Defeats Dewey</b>")
-                    } else
-                    // The Dark Brandon Rises - Achieve 406 electoral votes or higher with Joe Biden in the 2020 scenario.
-                    if (!run.achievements["ridingBiden"] && e.candidate_last_name == "Biden" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier >= 0.97 && e.final_overall_results[n].electoral_votes > 405) {
-                        unlockAchievement(among, "ridingBiden", "../static/achievementicons/darkbrandon.png", "<b>The Dark Brandon Rises</b>")
-                    } else
-                    // MAGA... Again - Achieve 322 electoral votes or higher with Donald Trump in the 2020 scenario.
-                    if (!run.achievements["magaa"] && e.candidate_last_name == "Trump" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier >= 0.97 && e.final_overall_results[n].electoral_votes > 321) {
-                        unlockAchievement(among, "magaa", "../static/achievementicons/magaa.png", "<b>MAGA... Again</b>")
-                    } else
-                    // Not My President! - Deadlock the election as Donald Trump in 2020.
-                    if (!run.achievements["nmpr"] && e.candidate_last_name == "Trump" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier >= 0.97 && e.final_overall_results[n].electoral_votes == 269) {
-                        unlockAchievement(among, "nmpr", "../static/achievementicons/nmpr.png", "<b>Not My President!</b>")
-                    } else
-                    // Civility Prevails...? - Get the real life ending to the 2020 scenario.
-                    if (!run.achievements["nomalarkey"] && e.candidate_last_name == "Biden" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier >= 0.97 && e.final_overall_results[n].electoral_votes == 306) {
-                        unlockAchievement(among, "nomalarkey", "../static/achievementicons/nomalarkey.png", "<b>Civility Prevails...? </b>")
-                    }
-
-                } else {
-                    // Still Alive - Enact the dream of the average r/tct user
-                    if (e.candidate_last_name == "Wallace" && e.election_id == 4 && e.final_overall_results[n].electoral_votes == 535 && !run.achievements["stillAlive"]) {
-                        unlockAchievement(among, "stillAlive", "../static/achievementicons/stillalive.png", "<b>Still Alive</b>")
+                if (campaignTrail_temp.difficulty_level_multiplier <= 0.97 && (e.final_overall_results[n].electoral_votes == 306 || e.final_overall_results[n].electoral_votes == 232)) {
+                    if (e.election_id == 21 && !run.threeosix["2020"]) {
+                        swap306(2020)
+                    } else if (e.election_id == 20 && !run.threeosix["2016"]) {
+                        swap306(2016)
+                    } else if (e.election_id == 3 && !run.threeosix["2012"]) {
+                        swap306(2012)
+                    } else if (e.election_id == 9 && !run.threeosix["2000"]) {
+                        swap306(2000)
+                    } else if (e.election_id == 15 && !run.threeosix["1988"]) {
+                        swap306(1988)
+                    } else if (e.election_id == 10 && !run.threeosix["1976"]) {
+                        swap306(1976)
+                    } else if (e.election_id == 69 && !run.threeosix["1964"]) {
+                        swap306(1964)
                     }
                 }
+
+                // 2016a (:troll:) counter
+
+                if (e.election_id == 16) {
+                    CAAS = localStorage.getItem('achievements');
+                    CAASS = JSON.parse(CAAS);
+                    count = Number(CAASS.tsatrolling) + 1
+                    CAASS.tsatrolling = count
+                    newAchg = JSON.stringify(CAASS)
+                    secg = MD5(newAchg)
+                    localStorage.setItem("achievements", newAchg)
+                    localStorage.setItem("ach4", secg)
+                }
+
+                // Destiny Arrives All the Same - Get a 306-232 electoral count in every possible official scenario.
+                if (!run.achievements["destiny"] && run.threeosix["2020"] && run.threeosix["2016"] && run.threeosix["2012"] && run.threeosix["2000"] && run.threeosix["1988"] && run.threeosix["1976"] && run.threeosix["1964"]) {
+                    unlockAchievement(among, "destiny", "../static/achievementicons/destiny.png", "<b><font color='yellow'>Destiny Arrives All the Same</font></b>")
+                } else
+                // Dixie Defeats Dewey - Win as Truman by preventing a southern walkout. 
+                if (!run.achievements["dixieDewey"] && e.candidate_last_name == "Truman" && e.election_id == 12 && campaignTrail_temp.difficulty_level_multiplier >= 0.97 && campaignTrail_temp.player_answers[2]==3809 && e.final_overall_results[n].electoral_votes > 269) {
+                    unlockAchievement(among, "dixieDewey", "../static/achievementicons/dixiedewey.png", "<b>Dixie Defeats Dewey</b>")
+                } else
+                // The Dark Brandon Rises - Achieve 406 electoral votes or higher with Joe Biden in the 2020 scenario.
+                if (!run.achievements["ridingBiden"] && e.candidate_last_name == "Biden" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier >= 0.97 && e.final_overall_results[n].electoral_votes > 405) {
+                    unlockAchievement(among, "ridingBiden", "../static/achievementicons/darkbrandon.png", "<b>The Dark Brandon Rises</b>")
+                } else
+                // MAGA... Again - Achieve 322 electoral votes or higher with Donald Trump in the 2020 scenario.
+                if (!run.achievements["magaa"] && e.candidate_last_name == "Trump" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier >= 0.97 && e.final_overall_results[n].electoral_votes > 321) {
+                    unlockAchievement(among, "magaa", "../static/achievementicons/magaa.png", "<b>MAGA... Again</b>")
+                } else
+                // Not My President! - Deadlock the election as Donald Trump in 2020.
+                if (!run.achievements["nmpr"] && e.candidate_last_name == "Trump" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier >= 0.97 && e.final_overall_results[n].electoral_votes == 269) {
+                    unlockAchievement(among, "nmpr", "../static/achievementicons/nmpr.png", "<b>Not My President!</b>")
+                } else
+                // Civility Prevails...? - Get the real life ending to the 2020 scenario.
+                if (!run.achievements["nomalarkey"] && e.candidate_last_name == "Biden" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier >= 0.97 && e.final_overall_results[n].electoral_votes == 306) {
+                    unlockAchievement(among, "nomalarkey", "../static/achievementicons/nomalarkey.png", "<b>Civility Prevails...? </b>")
+                }
+
+            } else {
+                // Still Alive - Enact the dream of the average r/tct user
+                if (e.candidate_last_name == "Wallace" && e.election_id == 4 && e.final_overall_results[n].electoral_votes == 535 && !run.achievements["stillAlive"]) {
+                    unlockAchievement(among, "stillAlive", "../static/achievementicons/stillalive.png", "<b>Still Alive</b>")
+                }
             }
+        }
+
+        if (campaignTrail_temp.multiple_endings) {
 
             if (a != false) {
                 s = a
