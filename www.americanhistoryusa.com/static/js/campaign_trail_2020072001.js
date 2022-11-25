@@ -1398,7 +1398,7 @@ function divideElectoralVotesProp(e, t) {
                         unlockAchievement(among, "destiny", "../static/achievementicons/destiny.png", "<b><font color='yellow'>Destiny Arrives All the Same</font></b>")
                     } else
                     // Dixie Defeats Dewey - Win as Truman by preventing a southern walkout. 
-                    if (!run.achievements["dixieDewey"] && e.candidate_last_name == "Truman" && e.election_id == 12 && campaignTrail_temp.difficulty_level_multiplier >= 0.97 && campaignTrail_temp.player_answers[2]==3809) {
+                    if (!run.achievements["dixieDewey"] && e.candidate_last_name == "Truman" && e.election_id == 12 && campaignTrail_temp.difficulty_level_multiplier >= 0.97 && campaignTrail_temp.player_answers[2]==3809 && e.final_overall_results[n].electoral_votes > 269) {
                         unlockAchievement(among, "dixieDewey", "../static/achievementicons/dixiedewey.png", "<b>Dixie Defeats Dewey</b>")
                     } else
                     // The Dark Brandon Rises - Achieve 406 electoral votes or higher with Joe Biden in the 2020 scenario.
