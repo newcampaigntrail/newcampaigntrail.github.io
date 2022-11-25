@@ -26,6 +26,14 @@ achList = {
     "stillAlive": [
         "Still Alive",
         "Enact the dream of the average r/tct user"
+    ],
+    "why": [
+        "Why?",
+        "Play 2016a."
+    ],
+    "what": [
+        "WHY?!?!?!?!",
+        "Play 2016a 100 times."
     ]
 }
 
@@ -1335,7 +1343,6 @@ function divideElectoralVotesProp(e, t) {
         if (important_info.indexOf("<html>") == -1 && important_info != "") {
             campaignTrail_temp.multiple_endings = true
         }
-        console.log("check 1")
         n = 0
             for (i = 0; i < e.final_overall_results.length; i++) {
                 if (e.final_overall_results[i].candidate == e.candidate_id) {
@@ -1389,29 +1396,45 @@ function divideElectoralVotesProp(e, t) {
                     localStorage.setItem("ach4", secg)
                 }
 
+                run = JSON.parse(localStorage.getItem('achievements'))
+
                 // Destiny Arrives All the Same - Get a 306-232 electoral count in every possible official scenario.
                 if (!run.achievements["destiny"] && run.threeosix["2020"] && run.threeosix["2016"] && run.threeosix["2012"] && run.threeosix["2000"] && run.threeosix["1988"] && run.threeosix["1976"] && run.threeosix["1964"]) {
                     unlockAchievement(among, "destiny", "../static/achievementicons/destiny.png", "<b><font color='yellow'>Destiny Arrives All the Same</font></b>")
                 } else
-                // Dixie Defeats Dewey - Win as Truman by preventing a southern walkout. 
-                if (!run.achievements["dixieDewey"] && e.candidate_last_name == "Truman" && e.election_id == 12 && campaignTrail_temp.difficulty_level_multiplier >= 0.97 && campaignTrail_temp.player_answers[2]==3809 && e.final_overall_results[n].electoral_votes > 269) {
-                    unlockAchievement(among, "dixieDewey", "../static/achievementicons/dixiedewey.png", "<b>Dixie Defeats Dewey</b>")
-                } else
                 // The Dark Brandon Rises - Achieve 406 electoral votes or higher with Joe Biden in the 2020 scenario.
-                if (!run.achievements["ridingBiden"] && e.candidate_last_name == "Biden" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier >= 0.97 && e.final_overall_results[n].electoral_votes > 405) {
+                if (!run.achievements["ridingBiden"] && e.candidate_last_name == "Biden" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 405) {
                     unlockAchievement(among, "ridingBiden", "../static/achievementicons/darkbrandon.png", "<b>The Dark Brandon Rises</b>")
                 } else
                 // MAGA... Again - Achieve 322 electoral votes or higher with Donald Trump in the 2020 scenario.
-                if (!run.achievements["magaa"] && e.candidate_last_name == "Trump" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier >= 0.97 && e.final_overall_results[n].electoral_votes > 321) {
+                if (!run.achievements["magaa"] && e.candidate_last_name == "Trump" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 321) {
                     unlockAchievement(among, "magaa", "../static/achievementicons/magaa.png", "<b>MAGA... Again</b>")
                 } else
                 // Not My President! - Deadlock the election as Donald Trump in 2020.
-                if (!run.achievements["nmpr"] && e.candidate_last_name == "Trump" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier >= 0.97 && e.final_overall_results[n].electoral_votes == 269) {
+                if (!run.achievements["nmpr"] && e.candidate_last_name == "Trump" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes == 269) {
                     unlockAchievement(among, "nmpr", "../static/achievementicons/nmpr.png", "<b>Not My President!</b>")
                 } else
                 // Civility Prevails...? - Get the real life ending to the 2020 scenario.
-                if (!run.achievements["nomalarkey"] && e.candidate_last_name == "Biden" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier >= 0.97 && e.final_overall_results[n].electoral_votes == 306) {
+                if (!run.achievements["nomalarkey"] && e.candidate_last_name == "Biden" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes == 306) {
                     unlockAchievement(among, "nomalarkey", "../static/achievementicons/nomalarkey.png", "<b>Civility Prevails...? </b>")
+                } else
+
+                // ### 2016a ###
+
+                // Why? - Play 2016a
+                if (!run.achievements["why"] && e.election_id == 16) {
+                    unlockAchievement(among, "why", "../static/achievementicons/why.png", "<b>Why? </b>")
+                } else
+                // Why? - Play 2016a
+                if (!run.achievements["what"] && e.election_id == 16 && run.tsatrolling > 99) {
+                    unlockAchievement(among, "what", "../static/achievementicons/limitBreak.png", "<b>WHY?!?!?!?!</b>")
+                } else
+
+                // ### 1948 ###
+
+                // Dixie Defeats Dewey - Win as Truman by preventing a southern walkout. 
+                if (!run.achievements["dixieDewey"] && e.candidate_last_name == "Truman" && e.election_id == 12 && campaignTrail_temp.difficulty_level_multiplier >= 0.97 && campaignTrail_temp.player_answers[2]==3809 && e.final_overall_results[n].electoral_votes > 269) {
+                    unlockAchievement(among, "dixieDewey", "../static/achievementicons/dixiedewey.png", "<b>Dixie Defeats Dewey</b>")
                 }
 
             } else {
@@ -1491,7 +1514,7 @@ function divideElectoralVotesProp(e, t) {
         }
 
         function isLegitRun() {
-            return campaignTrail_temp.iamapoopybuttfaceandhavenolife != true && dirtyhacker3 == null && campaignTrail_temp.difficulty_level_multiplier  <= 0.97
+            return campaignTrail_temp.iamapoopybuttfaceandhavenolife != true && dirtyhacker3 == null //&& campaignTrail_temp.difficulty_level_multiplier  <= 0.97
         }
 
         if (campaignTrail_temp.iamapoopybuttfaceandhavenolife) {
