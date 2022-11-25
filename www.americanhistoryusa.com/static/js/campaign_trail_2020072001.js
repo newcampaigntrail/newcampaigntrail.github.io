@@ -1493,7 +1493,7 @@ function divideElectoralVotesProp(e, t) {
         }
 
         function isLegitRun() {
-            return campaignTrail_temp.iamapoopybuttfaceandhavenolife != true && dirtyhacker3 == null && campaignTrail_temp.difficulty_multiplier <= 0.97
+            return campaignTrail_temp.iamapoopybuttfaceandhavenolife != true && dirtyhacker3 == null && campaignTrail_temp.difficulty_level_multiplier  <= 0.97
         }
 
         if (campaignTrail_temp.iamapoopybuttfaceandhavenolife) {
