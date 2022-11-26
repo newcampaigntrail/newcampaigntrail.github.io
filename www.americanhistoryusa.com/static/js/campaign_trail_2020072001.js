@@ -61,6 +61,13 @@ achList = {
         "Dixie Defeats Dewey",
         "Win as Truman by preventing a southern walkout. ",
         "</table><br><b><em>1948</em></b><br><table>"
+    ],
+    // Mods
+    //2008
+    "peoplesvictory": [
+        "The People's President",
+        "Win as Comrade McCain! (all difficulties allowed)",
+        "</table><br><h2>Mods</h2><br><b><em>2008</em></b><br><table>"
     ]
 }
 
@@ -1501,8 +1508,16 @@ function divideElectoralVotesProp(e, t) {
                 // ### 1948 ###
 
                 // Dixie Defeats Dewey - Win as Truman by preventing a southern walkout. 
-                if (!run.achievements["dixieDewey"] && e.candidate_last_name == "Truman" && e.election_id == 12 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && campaignTrail_temp.player_answers[2]==3809 && e.final_overall_results[n].electoral_votes > 269) {
-                    unlockAchievement(among, "dixieDewey", "../static/achievementicons/dixiedewey.png", "<b>Dixie Defeats Dewey</b>")
+                if (!run.achievements["dixieDewey"] && e.candidate_last_name == "Truman" && e.election_id == 12 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && campaignTrail_temp.player_answers[2]==3809 && e.final_outcome=="win") {
+                    unlockAchievement(among, "dixieDewey", "", "<b>Dixie Defeats Dewey</b>")
+                } else
+
+                // ###### MODS ######
+                // ### 2008 ###
+
+                // The People's President - Win as Comrade McCain!
+                if (!run.achievements["peoplesvictory"] && e.candidate_last_name == "McCain" && e.final_outcome=="win" && e.player_answers[8] == 52632 && e.election_id==20) {
+                    unlockAchievement(among, "peoplesvictory", "", "<b>The People's President</b>")
                 }
 
             } else {
@@ -1513,7 +1528,7 @@ function divideElectoralVotesProp(e, t) {
                 // NOW'S YOUR CHANCE TO BE A - [[Big Shot]]
                 if (!run.achievements["yourchance"] && campaignTrail_temp.iamapoopybuttfaceandhavenolife) {
                     unlockAchievement(among, "yourchance", "../static/achievementicons/yourChance.png", "<b>NOW'S YOUR CHANCE TO BE A</b>")
-                }
+                } 
             }
         }
 
