@@ -1,15 +1,22 @@
 achList = {
     "destiny": [
         "Destiny Arrives All the Same",
-        "Get a 306-232 electoral count in every possible official scenario."
+        "Get a 306-232 electoral count in every possible official scenario.",
+        "<b><em>Misc.</em></b><br><table>"
     ],
-    "dixieDewey": [
-        "Dixie Defeats Dewey",
-        "Win as Truman by preventing a southern walkout. "
+    "yourchance": [
+        "NOW'S YOUR CHANCE TO BE A",
+        "[[Big Shot]]"
     ],
+    "stillAlive": [
+        "Still Alive",
+        "Enact the dream of the average r/tct user"
+    ],
+    //2020
     "ridingBiden": [
         "The Dark Brandon Rises",
-        "Achieve 406 electoral votes or higher with Joe Biden in the 2020 scenario."
+        "Achieve 406 electoral votes or higher with Joe Biden in the 2020 scenario.",
+        "</table><br><b><em>2020</em></b><br><table>"
     ],
     "magaa": [
         "MAGA... Again",
@@ -23,17 +30,21 @@ achList = {
         "Civility Prevails...?",
         "Get the real life ending to the 2020 scenario."
     ],
-    "stillAlive": [
-        "Still Alive",
-        "Enact the dream of the average r/tct user"
-    ],
+    //2016a
     "why": [
         "Why?",
-        "Play 2016a."
+        "Play 2016a.",
+        "</table><br><b><em>2016a</em></b><br><table>"
     ],
     "what": [
         "WHY?!?!?!?!",
         "Play 2016a 100 times."
+    ],
+    //1948
+    "dixieDewey": [
+        "Dixie Defeats Dewey",
+        "Win as Truman by preventing a southern walkout. ",
+        "</table><br><b><em>1948</em></b><br><table>"
     ]
 }
 
@@ -65,8 +76,22 @@ function openAchievMenu() {
 
     _ = ""
     for (i in achList) {
-        achieved = run.achievements[i] ?? "false"
-        _ += "<b>"+achList[i][0]+"</b>: "+achList[i][1]+" - <b>Achieved?:</b> "+achieved+"<br>"
+        achieved = run.achievements[i] ?? false
+        src = "../static/achievementicons/"+i+".png"
+        if (achieved) {
+            imgHTM = "<img style='width:50px' src='"+src+"'></img>"
+        } else {
+            imgHTM = "<img style='width:50px;filter: grayscale(100%);' src='"+src+"'></img>"
+        }
+        subcategory = achList[i][2] ?? ""
+        achTable = `
+        <tr>
+            <th style="padding:3px;width:60px">`+imgHTM+`</th>
+            <th style="padding:3px;width:200px">`+achList[i][0]+`</th>
+            <th style="padding:3px">`+achList[i][1]+`</th>
+        </tr>
+        `
+        _ += subcategory+achTable
     }
 
     $("#below_header")[0].style.display="none"
@@ -77,12 +102,18 @@ function openAchievMenu() {
     gameWin.appendChild(achievementDiv)
 
 	$("#achBox").html(`
-        <div class="inner_window_front">
-        <b><h1>Achievements</h1></b>
-        `+_+`
+        <div class="inner_window_front" style="padding:0px"><b><h1>Achievements</h1></b></div>
+        <div class="inner_window_front" style="overflow:scroll;height:300px;"><center>
+        `+_+`</table></center>
         </div>
         <button id='backButton' style='position: absolute;left: 10px;bottom:10px;width:200px;height:50px;font-size:25px;text-align:center'><b>Back</b></button>
     `)
+    tablesList = document.getElementsByTagName("table")
+    for (tableI in tablesList) {
+        try{
+        tablesList[tableI].style.width="700px"
+        }catch{}
+    }
     document.getElementById("backButton").addEventListener("click",returnToMainPage)
 }
 
@@ -1402,6 +1433,9 @@ function divideElectoralVotesProp(e, t) {
                 if (!run.achievements["destiny"] && run.threeosix["2020"] && run.threeosix["2016"] && run.threeosix["2012"] && run.threeosix["2000"] && run.threeosix["1988"] && run.threeosix["1976"] && run.threeosix["1964"]) {
                     unlockAchievement(among, "destiny", "../static/achievementicons/destiny.png", "<b><font color='yellow'>Destiny Arrives All the Same</font></b>")
                 } else
+
+                // ## 2020 ##
+
                 // The Dark Brandon Rises - Achieve 406 electoral votes or higher with Joe Biden in the 2020 scenario.
                 if (!run.achievements["ridingBiden"] && e.candidate_last_name == "Biden" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 405) {
                     unlockAchievement(among, "ridingBiden", "../static/achievementicons/darkbrandon.png", "<b>The Dark Brandon Rises</b>")
@@ -1441,6 +1475,8 @@ function divideElectoralVotesProp(e, t) {
                 // Still Alive - Enact the dream of the average r/tct user
                 if (e.candidate_last_name == "Wallace" && e.election_id == 4 && e.final_overall_results[n].electoral_votes == 535 && !run.achievements["stillAlive"]) {
                     unlockAchievement(among, "stillAlive", "../static/achievementicons/stillalive.png", "<b>Still Alive</b>")
+                } else if (!run.achievements["yourchance"] && campaignTrail_temp.iamapoopybuttfaceandhavenolife) {
+                    unlockAchievement(among, "yourchance", "../static/achievementicons/yourChance.png", "<b>NOW'S YOUR CHANCE TO BE A</b>")
                 }
             }
         }
@@ -1468,6 +1504,7 @@ function divideElectoralVotesProp(e, t) {
             console.log("ACHIEVEMENT UNLOCKED: " + id)
 
             plays = ["../static/achievementicons/beep.mp3", "../static/achievementicons/beep2.mp3"]
+            image = "../static/achievementicons/"+id+".png"
 
             if (amongusonetwothree) {
                 return false
