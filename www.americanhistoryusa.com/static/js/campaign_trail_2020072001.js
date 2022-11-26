@@ -40,6 +40,10 @@ achList = {
         "The Flame Berns Bright",
         "Win 350 or more electoral votes as Hillary Clinton with running mate Bernie Sanders"
     ],
+    "moscow": [
+        "Moscow's Musketeers",
+        "Win the popular vote as Trump with Palin as your running mate."
+    ],
     //2016a
     "why": [
         "Why?",
@@ -1495,6 +1499,10 @@ function divideElectoralVotesProp(e, t) {
                 // The Flame Berns Bright - Win 350 or more electoral votes as Hillary Clinton with running mate Bernie Sanders
                 if (!run.achievements["thebern"] && e.candidate_last_name == "Clinton" && e.election_id == 20 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 350) {
                     unlockAchievement(among, "thebern", "", "<b>The Flame Berns Bright</b>")
+                } else
+                // Moscow's Musketeers - Win the popular vote as Trump with Palin as your running mate.
+                if (!run.achievements["moscow"] && e.candidate_last_name == "Trump" && e.election_id == 20 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && ((e.final_outcome == "win" && e.final_overall_results[0].popular_votes > e.final_overall_results[1].popular_votes)||(e.final_outcome=="loss" && e.final_overall_results[1].popular_votes > e.final_overall_results[0].popular_votes)) && e.running_mate_last_name == "Palin") {
+                    unlockAchievement(among, "moscow", "", "<b>Moscow's Musketeers</b>")
                 } else
 
                 // ### 2016a ###
