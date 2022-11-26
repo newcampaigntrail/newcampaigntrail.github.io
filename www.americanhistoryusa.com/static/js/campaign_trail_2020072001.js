@@ -36,6 +36,10 @@ achList = {
         "Win 2016 without Wisconsin, Michigan, or Pennsylvania.",
         "</table><br><b><em>2016</em></b><br><table>"
     ],
+    "thebern": [
+        "The Flame Berns Bright",
+        "Win 350 or more electoral votes as Hillary Clinton with running mate Bernie Sanders"
+    ],
     //2016a
     "why": [
         "Why?",
@@ -1470,6 +1474,10 @@ function divideElectoralVotesProp(e, t) {
                 // I'm Still Standing - Win 2016 without Wisconsin, Michigan, or Pennsylvania.
                 if (!run.achievements["whatbelt"] && e.candidate_last_name == "Trump" && e.election_id == 20 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.candidate_id == e.final_state_results[37].result[1].candidate && e.candidate_id == e.final_state_results[21].result[1].candidate && e.candidate_id == e.final_state_results[49].result[1].candidate && e.final_overall_results[n].electoral_votes > 269) {
                     unlockAchievement(among, "whatbelt", "", "<b>I'm Still Standing</b>")
+                } else
+                // The Flame Berns Bright - Win 350 or more electoral votes as Hillary Clinton with running mate Bernie Sanders
+                if (!run.achievements["thebern"] && e.candidate_last_name == "Clinton" && e.election_id == 20 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 350) {
+                    unlockAchievement(among, "thebern", "", "<b>The Flame Berns Bright</b>")
                 } else
 
                 // ### 2016a ###
