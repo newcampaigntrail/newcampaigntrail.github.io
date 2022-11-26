@@ -62,6 +62,10 @@ achList = {
         "As Nixon in 1968, win Georgia.",
         "</table><br><b><em>1968</em></b><br><table>"
     ],
+    "ratio": [
+        "Hubert Horatio'd",
+        "As Hubert Humphrey, win 430 or more electoral votes.",
+    ],
     //1948
     "dixieDewey": [
         "Dixie Defeats Dewey",
@@ -1515,6 +1519,10 @@ function divideElectoralVotesProp(e, t) {
                 // The Devil Went Down To Georgia - As Nixon in 1968, win Georgia.
                 if (!run.achievements["georgenixon"] && e.candidate_last_name == "Nixon" && e.election_id == 4 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && 23 == campaignTrail_temp.final_state_results[8].result[0].candidate) {
                     unlockAchievement(among, "georgenixon", "", "<b>The Devil Went Down To Georgia</b>")
+                } else
+                // Hubert Horatio'd - As Hubert Humphrey, win 430 or more electoral votes
+                if (!run.achievements["ratio"] && e.candidate_last_name == "Humphrey" && e.election_id == 4 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 430) {
+                    unlockAchievement(among, "ratio", "", "<b>Hubert Horatio'd</b>")
                 } else
 
                 // ### 1948 ###
