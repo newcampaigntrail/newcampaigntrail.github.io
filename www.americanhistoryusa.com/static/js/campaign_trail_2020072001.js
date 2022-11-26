@@ -40,6 +40,12 @@ achList = {
         "WHY?!?!?!?!",
         "Play 2016a 100 times."
     ],
+    //1968
+    "georgenixon": [
+        "The Devil Went Down To Georgia",
+        "As Nixon in 1968, win Georgia.",
+        "</table><br><b><em>1968</em></b><br><table>"
+    ],
     //1948
     "dixieDewey": [
         "Dixie Defeats Dewey",
@@ -1464,10 +1470,17 @@ function divideElectoralVotesProp(e, t) {
                     unlockAchievement(among, "what", "../static/achievementicons/limitBreak.png", "<b>WHY?!?!?!?!</b>")
                 } else
 
+                // ### 1968 ###
+
+                // The Devil Went Down To Georgia - As Nixon in 1968, win Georgia.
+                if (!run.achievements["georgenixon"] && e.candidate_last_name == "Nixon" && e.election_id == 4 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && 23 == campaignTrail_temp.final_state_results[8].result[0].candidate) {
+                    unlockAchievement(among, "georgenixon", "", "<b>The Devil Went Down To Georgia</b>")
+                } else
+
                 // ### 1948 ###
 
                 // Dixie Defeats Dewey - Win as Truman by preventing a southern walkout. 
-                if (!run.achievements["dixieDewey"] && e.candidate_last_name == "Truman" && e.election_id == 12 && campaignTrail_temp.difficulty_level_multiplier >= 0.97 && campaignTrail_temp.player_answers[2]==3809 && e.final_overall_results[n].electoral_votes > 269) {
+                if (!run.achievements["dixieDewey"] && e.candidate_last_name == "Truman" && e.election_id == 12 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && campaignTrail_temp.player_answers[2]==3809 && e.final_overall_results[n].electoral_votes > 269) {
                     unlockAchievement(among, "dixieDewey", "../static/achievementicons/dixiedewey.png", "<b>Dixie Defeats Dewey</b>")
                 }
 
@@ -1475,7 +1488,9 @@ function divideElectoralVotesProp(e, t) {
                 // Still Alive - Enact the dream of the average r/tct user
                 if (e.candidate_last_name == "Wallace" && e.election_id == 4 && e.final_overall_results[n].electoral_votes == 535 && !run.achievements["stillAlive"]) {
                     unlockAchievement(among, "stillAlive", "../static/achievementicons/stillalive.png", "<b>Still Alive</b>")
-                } else if (!run.achievements["yourchance"] && campaignTrail_temp.iamapoopybuttfaceandhavenolife) {
+                } else 
+                // NOW'S YOUR CHANCE TO BE A - [[Big Shot]]
+                if (!run.achievements["yourchance"] && campaignTrail_temp.iamapoopybuttfaceandhavenolife) {
                     unlockAchievement(among, "yourchance", "../static/achievementicons/yourChance.png", "<b>NOW'S YOUR CHANCE TO BE A</b>")
                 }
             }
