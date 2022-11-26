@@ -50,6 +50,12 @@ achList = {
         "WHY?!?!?!?!",
         "Play 2016a 100 times."
     ],
+    //2012
+    "realdebate": [
+        "A Real Debate",
+        "Win as Obama while fully commiting to the liberal tradition and suggesting Obamacare's expansion.",
+        "</table><br><b><em>2012</em></b><br><table>"
+    ],
     //1968
     "georgenixon": [
         "The Devil Went Down To Georgia",
@@ -1496,6 +1502,12 @@ function divideElectoralVotesProp(e, t) {
                 // Why? - Play 2016a
                 if (!run.achievements["what"] && e.election_id == 16 && run.tsatrolling > 99) {
                     unlockAchievement(among, "what", "../static/achievementicons/limitBreak.png", "<b>WHY?!?!?!?!</b>")
+                } else
+
+                // ### 2012 ###
+                // A Real Debate - Win as Obama while fully commiting to the liberal tradition and suggesting Obamacare's expansion.
+                if (!run.achievements["realdebate"] && e.election_id == 3 && campaignTrail_temp.player_answers[0]==729 && campaignTrail_temp.player_answers[1]==330 && containsObject(168,e.player_answers)  && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_outcome == "win") {
+                    unlockAchievement(among, "realdebate", "", "<b>A Real Debate</b>")
                 } else
 
                 // ### 1968 ###
