@@ -1497,7 +1497,7 @@ function divideElectoralVotesProp(e, t) {
                     unlockAchievement(among, "whatbelt", "", "<b>I'm Still Standing</b>")
                 } else
                 // The Flame Berns Bright - Win 350 or more electoral votes as Hillary Clinton with running mate Bernie Sanders
-                if (!run.achievements["thebern"] && e.candidate_last_name == "Clinton" && e.election_id == 20 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 350) {
+                if (!run.achievements["thebern"] && e.candidate_last_name == "Clinton" && e.election_id == 20 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 350 && e.running_mate_last_name == "Sanders") {
                     unlockAchievement(among, "thebern", "", "<b>The Flame Berns Bright</b>")
                 } else
                 // Moscow's Musketeers - Win the popular vote as Trump with Palin as your running mate.
