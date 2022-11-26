@@ -82,6 +82,12 @@ achList = {
         "The People's President",
         "Win as Comrade McCain! (all difficulties allowed)",
         "</table><br><h2>Mods</h2><br><b><em>2008</em></b><br><table>"
+    ],
+    //1876
+    "ATruceNotACompromise": [
+        "A Truce, Not A Compromise",
+        "Win the election as Hayes (or lose it as Tilden) by forming the Electoral Commission.",
+        "</table><br><h2>Mods</h2><br><b><em>1876</em></b><br><table>"
     ]
 }
 
@@ -1546,7 +1552,13 @@ function divideElectoralVotesProp(e, t) {
                 // The People's President - Win as Comrade McCain!
                 if (!run.achievements["peoplesvictory"] && e.candidate_last_name == "McCain" && e.final_outcome=="win" && e.player_answers[8] == 52632 && e.election_id==20) {
                     unlockAchievement(among, "peoplesvictory", "", "<b>The People's President</b>")
-                }
+                } else
+		// ### 1876 ####
+		    
+		// A Truce, Not A Compromise
+		if (!run.achievements["ATruceNotACompromise"] && ((e.candidate_last_name == "Hayes" && e.final_overall_results[n].electoral_votes == 185 && e.player_answers[24] == 8090) || (e.candidate_last_name == "Tilden" && e.final_overall_results[n].electoral_votes == 184 && e.player_answers[24] == 8088))  && e.election_id==20) {
+		    unlockAchievement(among, "ATruceNotACompromise", "", "<b>A Truce Not A Compromise</b>")
+		}	
 
             } else {
                 // Still Alive - Enact the dream of the average r/tct user
