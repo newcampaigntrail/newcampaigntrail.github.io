@@ -30,6 +30,12 @@ achList = {
         "Civility Prevails...?",
         "Get the real life ending to the 2020 scenario."
     ],
+    //2016
+    "whatbelt": [
+        "I'm Still Standing",
+        "Win 2016 without Wisconsin, Michigan, or Pennsylvania.",
+        "</table><br><b><em>2016</em></b><br><table>"
+    ],
     //2016a
     "why": [
         "Why?",
@@ -1457,6 +1463,13 @@ function divideElectoralVotesProp(e, t) {
                 // Civility Prevails...? - Get the real life ending to the 2020 scenario.
                 if (!run.achievements["nomalarkey"] && e.candidate_last_name == "Biden" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes == 306) {
                     unlockAchievement(among, "nomalarkey", "../static/achievementicons/nomalarkey.png", "<b>Civility Prevails...? </b>")
+                } else
+
+                // ### 2016 ###
+
+                // I'm Still Standing - Win 2016 without Wisconsin, Michigan, or Pennsylvania.
+                if (!run.achievements["whatbelt"] && e.candidate_last_name == "Trump" && e.election_id == 20 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.candidate_id == e.final_state_results[37].result[1].candidate && e.candidate_id == e.final_state_results[21].result[1].candidate && e.candidate_id == e.final_state_results[49].result[1].candidate && e.final_overall_results[n].electoral_votes > 269) {
+                    unlockAchievement(among, "whatbelt", "", "<b>I'm Still Standing</b>")
                 } else
 
                 // ### 2016a ###
