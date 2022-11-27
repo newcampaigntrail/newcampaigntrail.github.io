@@ -150,7 +150,7 @@ function openAchievMenu() {
         `+_+`</table></center>
         </div>
         <button id='backButton' style='position: absolute;left: 10px;bottom:10px;width:200px;height:50px;font-size:25px;text-align:center'><b>Back</b></button>
-        <h1 style="font-style:italic;font-size:12px;position:absolute;bottom:10px;right:95px;">For all achievements, unless otherwise stated, completing them must be done on normal or a harder difficulty</h1>        
+        <h1 style="font-style:italic;font-size:12px;position:absolute;bottom:10px;right:45px;">For all achievements, unless otherwise stated, completing them must be done on normal or a harder difficulty</h1>        
     `)
     tablesList = document.getElementsByTagName("table")
     for (tableI in tablesList) {
