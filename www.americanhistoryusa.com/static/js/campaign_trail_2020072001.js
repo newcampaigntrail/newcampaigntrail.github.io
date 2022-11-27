@@ -60,6 +60,12 @@ achList = {
         "Win as Obama while fully commiting to the liberal tradition and suggesting Obamacare's expansion.",
         "</table><br><b><em>2012</em></b><br><table>"
     ],
+    //1976
+    "georgia": [
+        "Radical Liberal Jimmy Carter",
+        "Win as Jimmy Carter with over 400 EVs while being firmly pro-choice and for universal healthcare.",
+        "</table><br><b><em>1976</em></b><br><table>"
+    ],
     //1968
     "georgenixon": [
         "The Devil Went Down To Georgia",
@@ -1520,6 +1526,12 @@ function divideElectoralVotesProp(e, t) {
                 // A Real Debate - Win as Obama while fully commiting to the liberal tradition and suggesting Obamacare's expansion.
                 if (!run.achievements["realdebate"] && e.election_id == 3 && campaignTrail_temp.player_answers[0]==729 && campaignTrail_temp.player_answers[1]==330 && containsObject(168,e.player_answers)  && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_outcome == "win") {
                     unlockAchievement(among, "realdebate", "", "<b>A Real Debate</b>")
+                } else
+
+                // ### 1976 ###
+                // Radical Liberal Jimmy Carter - Win as Jimmy Carter with over 400 EVs while being firmly pro-choice and for universal healthcare.
+                if (!run.achievements["georgia"] && e.election_id == 10 && containsObject(3610,e.player_answers) && containsObject(3647,e.player_answers)  && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 400) {
+                    unlockAchievement(among, "georgia", "", "<b>Radical Liberal Jimmy Carter</b>")
                 } else
 
                 // ### 1968 ###
