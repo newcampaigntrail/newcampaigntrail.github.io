@@ -60,6 +60,22 @@ achList = {
         "Win as Obama while fully commiting to the liberal tradition and suggesting Obamacare's expansion.",
         "</table><br><b><em>2012</em></b><br><table>"
     ],
+    "karmic": [
+        "Karmic Retribution",
+        "Losing everything except D.C. as Obama after ditching Biden."
+    ],
+    //2000
+        "florida2000": [
+        "Art imitates Life",
+        "Get the special ending for this election based on real life occurences.",
+        "</table><br><b><em>2000</em></b><br><table>"
+    ],
+    //1976
+    "georgia": [
+        "Radical Liberal Jimmy Carter",
+        "Win as Jimmy Carter with over 400 EVs while being firmly pro-choice and for universal healthcare.",
+        "</table><br><b><em>1976</em></b><br><table>"
+    ],
     //1968
     "georgenixon": [
         "The Devil Went Down To Georgia",
@@ -90,6 +106,60 @@ achList = {
         "</table><br><b><em>1876</em></b><br><table>"
     ]
 }
+
+function floridaclose()
+{
+orderID = campaignTrail_temp.final_overall_results[0].candidate, campaignTrail_temp.final_overall_results[1].candidate, campaignTrail_temp.final_overall_results[2].candidate;
+playerlost = true;
+playerID = campaignTrail_temp.candidate_id;
+playerEV = quickstats[0];
+goreFL = 0;
+bushFL = 0;
+bushwinFL = true;
+isBush=false;
+bushwon=false;
+if(campaignTrail_temp.final_overall_results[0].candidate==77)
+{
+bushwon==true
+}    
+fLmargin = campaignTrail_temp.final_state_results[8].result[0].percent - campaignTrail_temp.final_state_results[8].result[1].percent;
+if (playerID==77)
+{
+ isBush==true   
+}    
+if (campaignTrail_temp.final_overall_results[0].electoral_votes < 270) 
+{
+  if(playerID!=79)
+  {
+   return false;
+  }
+}
+if (playerEV >= 270) {
+    playerlost = false;
+}
+if (campaignTrail_temp.final_state_results[8].result[0].candidate == 78) {
+    //gore wins FL
+    bushwinFL=false
+    goreFL = campaignTrail_temp.final_state_results[8].result[0].votes;
+    bushFL = campaignTrail_temp.final_state_results[8].result[1].votes;
+} //bush wins FL
+else {
+    goreFL = campaignTrail_temp.final_state_results[8].result[1].votes;
+    bushFL = campaignTrail_temp.final_state_results[8].result[0].votes;
+}
+if (fLmargin < 0.005) 
+{
+    if (campaignTrail_temp.final_overall_results[0].electoral_votes <= 294 && campaignTrail_temp.final_overall_results[0].candidate==campaignTrail_temp.final_state_results[8].result[0].candidate) 
+    {
+    if (bushwinFL==bushwon)
+    {
+     return true  
+    }        
+    }
+}
+return false
+}
+
 
 // ~~Muffin~~ Achievement Button
 
@@ -150,6 +220,7 @@ function openAchievMenu() {
         `+_+`</table></center>
         </div>
         <button id='backButton' style='position: absolute;left: 10px;bottom:10px;width:200px;height:50px;font-size:25px;text-align:center'><b>Back</b></button>
+        <h1 style="font-style:italic;font-size:12px;position:absolute;bottom:10px;right:45px;">For all achievements, unless otherwise stated, completing them must be done on normal or a harder difficulty</h1>        
     `)
     tablesList = document.getElementsByTagName("table")
     for (tableI in tablesList) {
@@ -1526,6 +1597,20 @@ function divideElectoralVotesProp(e, t) {
                 // A Real Debate - Win as Obama while fully commiting to the liberal tradition and suggesting Obamacare's expansion.
                 if (!run.achievements["realdebate"] && e.election_id == 3 && campaignTrail_temp.player_answers[0]==729 && campaignTrail_temp.player_answers[1]==330 && containsObject(168,e.player_answers)  && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_outcome == "win") {
                     unlockAchievement(among, "realdebate", "", "<b>A Real Debate</b>")
+                } else
+                //Karmic Retribution - Losing everything except D.C. as Obama after ditching Biden.
+                if (!run.achievements["karmic"] && e.election_id == 3 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes <= 4 && e.running_mate_last_name=="Clinton") {
+                    unlockAchievement(among, "karmic", "", "<b>Karmic Retribution</b>")
+                } else
+                 // ### 2000 ###
+                // Art imitates Life - Get the special ending for this election based on real life occurances.
+                if (!run.achievements["florida2000"] && floridaclose() ) {
+                    unlockAchievement(among, "florida2000", "", "<b>Life imitates Art</b>")
+                } else
+                // ### 1976 ###
+                // Radical Liberal Jimmy Carter - Win as Jimmy Carter with over 400 EVs while being firmly pro-choice and for universal healthcare.
+                if (!run.achievements["georgia"] && e.election_id == 10 && containsObject(3610,e.player_answers) && containsObject(3647,e.player_answers)  && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 400) {
+                    unlockAchievement(among, "georgia", "", "<b>Radical Liberal Jimmy Carter</b>")
                 } else
 
                 // ### 1968 ###
