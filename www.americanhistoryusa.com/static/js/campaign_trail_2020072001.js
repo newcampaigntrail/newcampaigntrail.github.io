@@ -78,7 +78,7 @@ achList = {
     ],
     //1948
     "dixieDewey": [
-        "Dixie Defeats Dewey", // test
+        "Dixie Defeats Dewey",
         "Win as Truman by preventing a southern walkout. ",
         "</table><br><b><em>1948</em></b><br><table>"
     ],
