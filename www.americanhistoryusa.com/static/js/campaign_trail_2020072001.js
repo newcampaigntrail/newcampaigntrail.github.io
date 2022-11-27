@@ -66,7 +66,7 @@ achList = {
     ],
     //2000
         "florida2000": [
-        "Art imitates Life",
+        "Art Imitates Life",
         "Get the special ending for this election based on real life occurences.",
         "</table><br><b><em>2000</em></b><br><table>"
     ],
@@ -1602,11 +1602,13 @@ function divideElectoralVotesProp(e, t) {
                 if (!run.achievements["karmic"] && e.election_id == 3 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes <= 4 && e.running_mate_last_name=="Clinton") {
                     unlockAchievement(among, "karmic", "", "<b>Karmic Retribution</b>")
                 } else
+
                  // ### 2000 ###
-                // Art imitates Life - Get the special ending for this election based on real life occurances.
+                // Art Imitates Life - Get the special ending for this election based on real life occurances.
                 if (!run.achievements["florida2000"] && floridaclose() ) {
-                    unlockAchievement(among, "florida2000", "", "<b>Life imitates Art</b>")
+                    unlockAchievement(among, "florida2000", "", "<b>Art Imitates Life</b>")
                 } else
+
                 // ### 1976 ###
                 // Radical Liberal Jimmy Carter - Win as Jimmy Carter with over 400 EVs while being firmly pro-choice and for universal healthcare.
                 if (!run.achievements["georgia"] && e.election_id == 10 && containsObject(3610,e.player_answers) && containsObject(3647,e.player_answers)  && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 400) {
@@ -1638,12 +1640,12 @@ function divideElectoralVotesProp(e, t) {
                 if (!run.achievements["peoplesvictory"] && e.candidate_last_name == "McCain" && e.final_outcome=="win" && e.player_answers[8] == 52632 && e.election_id==20) {
                     unlockAchievement(among, "peoplesvictory", "", "<b>The People's President</b>")
                 } else
-		// ### 1876 ####
-		    
-		// A Truce, Not A Compromise
-		if (!run.achievements["ATruceNotACompromise"] && ((e.candidate_last_name == "Hayes" && e.final_overall_results[n].electoral_votes == 185 && e.player_answers[24] == 8090) || (e.candidate_last_name == "Tilden" && e.final_overall_results[n].electoral_votes == 184 && e.player_answers[24] == 8088))  && e.election_id==5) {
-		    unlockAchievement(among, "ATruceNotACompromise", "", "<b>A Truce, Not A Compromise</b>")
-		}	
+                // ### 1876 ####
+                    
+                // A Truce, Not A Compromise
+                if (!run.achievements["ATruceNotACompromise"] && ((e.candidate_last_name == "Hayes" && e.final_overall_results[n].electoral_votes == 185 && e.player_answers[24] == 8090) || (e.candidate_last_name == "Tilden" && e.final_overall_results[n].electoral_votes == 184 && e.player_answers[24] == 8088))  && e.election_id==5) {
+                    unlockAchievement(among, "ATruceNotACompromise", "", "<b>A Truce, Not A Compromise</b>")
+                }	
 
             } else {
                 // Still Alive - Enact the dream of the average r/tct user
