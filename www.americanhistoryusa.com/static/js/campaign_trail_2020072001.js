@@ -1616,7 +1616,7 @@ function divideElectoralVotesProp(e, t) {
                 // Hubert Horatio'd - As Hubert Humphrey, win 430 or more electoral votes
                 if (!run.achievements["ratio"] && e.candidate_last_name == "Humphrey" && e.election_id == 4 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 430) {
                     unlockAchievement(among, "ratio", "", "<b>Hubert Horatio'd</b>")
-                } else
+                } else // what I want to stay
 
                 // ### 1948 ###
 
