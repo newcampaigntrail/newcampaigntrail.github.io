@@ -68,7 +68,7 @@ achList = {
     ],
     //1968
     "georgenixon": [
-        "The Devil Went Down To Georgia",
+        "The Devil Went Down To Georgia", // he was looking for a soul to steal
         "As Nixon in 1968, win Georgia.",
         "</table><br><b><em>1968</em></b><br><table>"
     ],
