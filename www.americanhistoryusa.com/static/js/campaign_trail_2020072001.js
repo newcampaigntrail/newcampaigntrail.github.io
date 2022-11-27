@@ -60,6 +60,10 @@ achList = {
         "Win as Obama while fully commiting to the liberal tradition and suggesting Obamacare's expansion.",
         "</table><br><b><em>2012</em></b><br><table>"
     ],
+    "karmic": [
+        "Karmic Retribution",
+        "Losing everything except D.C. as Obama after ditching Biden."
+    ],
     //1976
     "georgia": [
         "Radical Liberal Jimmy Carter",
@@ -1527,6 +1531,10 @@ function divideElectoralVotesProp(e, t) {
                 // A Real Debate - Win as Obama while fully commiting to the liberal tradition and suggesting Obamacare's expansion.
                 if (!run.achievements["realdebate"] && e.election_id == 3 && campaignTrail_temp.player_answers[0]==729 && campaignTrail_temp.player_answers[1]==330 && containsObject(168,e.player_answers)  && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_outcome == "win") {
                     unlockAchievement(among, "realdebate", "", "<b>A Real Debate</b>")
+                } else
+                //Karmic Retribution - Losing everything except D.C. as Obama after ditching Biden.
+                if (!run.achievements["karmic"] && e.election_id == 3 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes <= 4 && e.running_mate_last_name=="Clinton") {
+                    unlockAchievement(among, "karmic", "", "<b>Karmic Retribution</b>")
                 } else
 
                 // ### 1976 ###
