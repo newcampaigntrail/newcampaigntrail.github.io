@@ -87,7 +87,7 @@ achList = {
     "ATruceNotACompromise": [
         "A Truce, Not A Compromise",
         "Win the election as Hayes (or lose it as Tilden) by forming the Electoral Commission.",
-        "</table><br><h2>Mods</h2><br><b><em>1876</em></b><br><table>"
+        "</table><br><b><em>1876</em></b><br><table>"
     ]
 }
 
