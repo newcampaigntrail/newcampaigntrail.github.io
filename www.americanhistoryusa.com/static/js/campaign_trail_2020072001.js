@@ -65,10 +65,14 @@ achList = {
         "Losing everything except D.C. as Obama after ditching Biden."
     ],
     //2000
-        "florida2000": [
+    "florida2000": [
         "Art Imitates Life",
         "Get the special ending for this election based on real life occurences.",
         "</table><br><b><em>2000</em></b><br><table>"
+    ],
+    "raiders": [
+        "Nader's Raiders",
+        "Win 5% of the popular vote as Ralph Rader (very easy mode allowed)."
     ],
     //1976
     "georgia": [
@@ -1607,6 +1611,10 @@ function divideElectoralVotesProp(e, t) {
                 // Art Imitates Life - Get the special ending for this election based on real life occurances.
                 if (!run.achievements["florida2000"] && floridaclose() ) {
                     unlockAchievement(among, "florida2000", "", "<b>Art Imitates Life</b>")
+                } else
+                // Naider's Raiders - Win 5% of the popular vote as Ralph Rader (very easy mode allowed).
+                if (!run.achievements["raiders"] && e.election_id == 9 && e.candidate_last_name == "Nader" && e.difficulty_level_multiplier <= 1.2 && e.final_overall_results[n].popular_votes >= 5330501) {
+                    unlockAchievement(among, "raiders", "", "<b>Naider's Raiders</b>")
                 } else
 
                 // ### 1976 ###
