@@ -1556,7 +1556,7 @@ function divideElectoralVotesProp(e, t) {
 		// ### 1876 ####
 		    
 		// A Truce, Not A Compromise
-		if (!run.achievements["ATruceNotACompromise"] && ((e.candidate_last_name == "Hayes" && e.final_overall_results[n].electoral_votes == 185 && e.player_answers[24] == 8090) || (e.candidate_last_name == "Tilden" && e.final_overall_results[n].electoral_votes == 184 && e.player_answers[24] == 8088))  && e.election_id==20) {
+		if (!run.achievements["ATruceNotACompromise"] && ((e.candidate_last_name == "Hayes" && e.final_overall_results[n].electoral_votes == 185 && e.player_answers[24] == 8090) || (e.candidate_last_name == "Tilden" && e.final_overall_results[n].electoral_votes == 184 && e.player_answers[24] == 8088))  && e.election_id==5) {
 		    unlockAchievement(among, "ATruceNotACompromise", "", "<b>A Truce Not A Compromise</b>")
 		}	
 
