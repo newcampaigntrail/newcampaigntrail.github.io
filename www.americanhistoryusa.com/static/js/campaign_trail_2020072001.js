@@ -1555,89 +1555,89 @@ function divideElectoralVotesProp(e, t) {
                 // ## 2020 ##
 
                 // The Dark Brandon Rises - Achieve 406 electoral votes or higher with Joe Biden in the 2020 scenario.
-                if (!run.achievements["ridingBiden"] && e.candidate_last_name == "Biden" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 405) {
+                if (!modded && !run.achievements["ridingBiden"] && e.candidate_last_name == "Biden" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 405) {
                     unlockAchievement(among, "ridingBiden", "../static/achievementicons/darkbrandon.png", "<b>The Dark Brandon Rises</b>")
                 } else
                 // MAGA... Again - Achieve 322 electoral votes or higher with Donald Trump in the 2020 scenario.
-                if (!run.achievements["magaa"] && e.candidate_last_name == "Trump" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 321) {
+                if (!modded && !run.achievements["magaa"] && e.candidate_last_name == "Trump" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 321) {
                     unlockAchievement(among, "magaa", "../static/achievementicons/magaa.png", "<b>MAGA... Again</b>")
                 } else
                 // Not My President! - Deadlock the election as Donald Trump in 2020.
-                if (!run.achievements["nmpr"] && e.candidate_last_name == "Trump" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes == 269) {
+                if (!modded && !run.achievements["nmpr"] && e.candidate_last_name == "Trump" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes == 269) {
                     unlockAchievement(among, "nmpr", "../static/achievementicons/nmpr.png", "<b>Not My President!</b>")
                 } else
                 // Civility Prevails...? - Get the real life ending to the 2020 scenario.
-                if (!run.achievements["nomalarkey"] && e.candidate_last_name == "Biden" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes == 306) {
+                if (!modded && !run.achievements["nomalarkey"] && e.candidate_last_name == "Biden" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes == 306) {
                     unlockAchievement(among, "nomalarkey", "../static/achievementicons/nomalarkey.png", "<b>Civility Prevails...? </b>")
                 } else
 
                 // ### 2016 ###
 
                 // I'm Still Standing - Win 2016 without Wisconsin, Michigan, or Pennsylvania.
-                if (!run.achievements["whatbelt"] && e.candidate_last_name == "Trump" && e.election_id == 20 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.candidate_id == e.final_state_results[37].result[1].candidate && e.candidate_id == e.final_state_results[21].result[1].candidate && e.candidate_id == e.final_state_results[49].result[1].candidate && e.final_overall_results[n].electoral_votes > 269) {
+                if (!modded && !run.achievements["whatbelt"] && e.candidate_last_name == "Trump" && e.election_id == 20 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.candidate_id == e.final_state_results[37].result[1].candidate && e.candidate_id == e.final_state_results[21].result[1].candidate && e.candidate_id == e.final_state_results[49].result[1].candidate && e.final_overall_results[n].electoral_votes > 269) {
                     unlockAchievement(among, "whatbelt", "", "<b>I'm Still Standing</b>")
                 } else
                 // The Flame Berns Bright - Win 350 or more electoral votes as Hillary Clinton with running mate Bernie Sanders
-                if (!run.achievements["thebern"] && e.candidate_last_name == "Clinton" && e.election_id == 20 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 350 && e.running_mate_last_name == "Sanders") {
+                if (!modded && !run.achievements["thebern"] && e.candidate_last_name == "Clinton" && e.election_id == 20 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 350 && e.running_mate_last_name == "Sanders") {
                     unlockAchievement(among, "thebern", "", "<b>The Flame Berns Bright</b>")
                 } else
                 // Moscow's Musketeers - Win the popular vote as Trump with Palin as your running mate.
-                if (!run.achievements["moscow"] && e.candidate_last_name == "Trump" && e.election_id == 20 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && ((e.final_outcome == "win" && e.final_overall_results[0].popular_votes > e.final_overall_results[1].popular_votes)||(e.final_outcome=="loss" && e.final_overall_results[1].popular_votes > e.final_overall_results[0].popular_votes)) && e.running_mate_last_name == "Palin") {
+                if (!modded && !run.achievements["moscow"] && e.candidate_last_name == "Trump" && e.election_id == 20 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && ((e.final_outcome == "win" && e.final_overall_results[0].popular_votes > e.final_overall_results[1].popular_votes)||(e.final_outcome=="loss" && e.final_overall_results[1].popular_votes > e.final_overall_results[0].popular_votes)) && e.running_mate_last_name == "Palin") {
                     unlockAchievement(among, "moscow", "", "<b>Moscow's Musketeers</b>")
                 } else
 
                 // ### 2016a ###
 
                 // Why? - Play 2016a
-                if (!run.achievements["why"] && e.election_id == 16) {
+                if (!modded && !run.achievements["why"] && e.election_id == 16) {
                     unlockAchievement(among, "why", "../static/achievementicons/why.png", "<b>Why? </b>")
                 } else
                 // Why? - Play 2016a
-                if (!run.achievements["what"] && e.election_id == 16 && run.tsatrolling > 99) {
+                if (!modded && !run.achievements["what"] && e.election_id == 16 && run.tsatrolling > 99) {
                     unlockAchievement(among, "what", "../static/achievementicons/limitBreak.png", "<b>WHY?!?!?!?!</b>")
                 } else
 
                 // ### 2012 ###
                 // A Real Debate - Win as Obama while fully commiting to the liberal tradition and suggesting Obamacare's expansion.
-                if (!run.achievements["realdebate"] && e.election_id == 3 && campaignTrail_temp.player_answers[0]==729 && campaignTrail_temp.player_answers[1]==330 && containsObject(168,e.player_answers)  && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_outcome == "win") {
+                if (!modded && !run.achievements["realdebate"] && e.election_id == 3 && campaignTrail_temp.player_answers[0]==729 && campaignTrail_temp.player_answers[1]==330 && containsObject(168,e.player_answers)  && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_outcome == "win") {
                     unlockAchievement(among, "realdebate", "", "<b>A Real Debate</b>")
                 } else
                 //Karmic Retribution - Losing everything except D.C. as Obama after ditching Biden.
-                if (!run.achievements["karmic"] && e.election_id == 3 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes <= 4 && e.running_mate_last_name=="Clinton") {
+                if (!modded && !run.achievements["karmic"] && e.election_id == 3 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes <= 4 && e.running_mate_last_name=="Clinton") {
                     unlockAchievement(among, "karmic", "", "<b>Karmic Retribution</b>")
                 } else
 
                  // ### 2000 ###
                 // Art Imitates Life - Get the special ending for this election based on real life occurances.
-                if (!run.achievements["florida2000"] && floridaclose() ) {
+                if (!modded && !run.achievements["florida2000"] && floridaclose() ) {
                     unlockAchievement(among, "florida2000", "", "<b>Art Imitates Life</b>")
                 } else
                 // Naider's Raiders - Win 5% of the popular vote as Ralph Rader (very easy mode allowed).
-                if (!run.achievements["raiders"] && e.election_id == 9 && e.candidate_last_name == "Nader" && e.difficulty_level_multiplier <= 1.3 && e.final_overall_results[n].popular_votes >= 5330501) {
+                if (!modded && !run.achievements["raiders"] && e.election_id == 9 && e.candidate_last_name == "Nader" && e.difficulty_level_multiplier <= 1.3 && e.final_overall_results[n].popular_votes >= 5330501) {
                     unlockAchievement(among, "raiders", "", "<b>Naider's Raiders</b>")
                 } else
 
                 // ### 1976 ###
                 // Radical Liberal Jimmy Carter - Win as Jimmy Carter with over 400 EVs while being firmly pro-choice and for universal healthcare.
-                if (!run.achievements["georgia"] && e.election_id == 10 && containsObject(3610,e.player_answers) && containsObject(3647,e.player_answers)  && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 400) {
+                if (!modded && !run.achievements["georgia"] && e.election_id == 10 && containsObject(3610,e.player_answers) && containsObject(3647,e.player_answers)  && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 400) {
                     unlockAchievement(among, "georgia", "", "<b>Radical Liberal Jimmy Carter</b>")
                 } else
 
                 // ### 1968 ###
 
                 // The Devil Went Down To Georgia - As Nixon in 1968, win Georgia.
-                if (!run.achievements["georgenixon"] && e.candidate_last_name == "Nixon" && e.election_id == 4 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && 23 == campaignTrail_temp.final_state_results[8].result[0].candidate) {
+                if (!modded && !run.achievements["georgenixon"] && e.candidate_last_name == "Nixon" && e.election_id == 4 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && 23 == campaignTrail_temp.final_state_results[8].result[0].candidate) {
                     unlockAchievement(among, "georgenixon", "", "<b>The Devil Went Down To Georgia</b>")
                 } else
                 // Hubert Horatio'd - As Hubert Humphrey, win 430 or more electoral votes
-                if (!run.achievements["ratio"] && e.candidate_last_name == "Humphrey" && e.election_id == 4 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 430) {
+                if (!modded && !run.achievements["ratio"] && e.candidate_last_name == "Humphrey" && e.election_id == 4 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 430) {
                     unlockAchievement(among, "ratio", "", "<b>Hubert Horatio'd</b>")
                 } else // what I want to stay
 
                 // ### 1948 ###
 
                 // Dixie Defeats Dewey - Win as Truman by preventing a southern walkout. 
-                if (!run.achievements["dixieDewey"] && e.candidate_last_name == "Truman" && e.election_id == 12 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && campaignTrail_temp.player_answers[2]==3809 && e.final_outcome=="win") {
+                if (!modded && !run.achievements["dixieDewey"] && e.candidate_last_name == "Truman" && e.election_id == 12 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && campaignTrail_temp.player_answers[2]==3809 && e.final_outcome=="win") {
                     unlockAchievement(among, "dixieDewey", "", "<b>Dixie Defeats Dewey</b>")
                 } else
 
@@ -1645,23 +1645,23 @@ function divideElectoralVotesProp(e, t) {
                 // ### 2008 ###
 
                 // The People's President - Win as Comrade McCain!
-                if (!run.achievements["peoplesvictory"] && e.candidate_last_name == "McCain" && e.final_outcome=="win" && e.player_answers[8] == 52632 && e.election_id==20) {
+                if (!modded && !run.achievements["peoplesvictory"] && e.candidate_last_name == "McCain" && e.final_outcome=="win" && e.player_answers[8] == 52632 && e.election_id==20) {
                     unlockAchievement(among, "peoplesvictory", "", "<b>The People's President</b>")
                 } else
                 // ### 1876 ####
                     
                 // A Truce, Not A Compromise
-                if (!run.achievements["ATruceNotACompromise"] && ((e.candidate_last_name == "Hayes" && e.final_overall_results[n].electoral_votes == 185 && e.player_answers[24] == 8090) || (e.candidate_last_name == "Tilden" && e.final_overall_results[n].electoral_votes == 184 && e.player_answers[24] == 8088))  && e.election_id==5) {
+                if (!modded && !run.achievements["ATruceNotACompromise"] && ((e.candidate_last_name == "Hayes" && e.final_overall_results[n].electoral_votes == 185 && e.player_answers[24] == 8090) || (e.candidate_last_name == "Tilden" && e.final_overall_results[n].electoral_votes == 184 && e.player_answers[24] == 8088))  && e.election_id==5) {
                     unlockAchievement(among, "ATruceNotACompromise", "", "<b>A Truce, Not A Compromise</b>")
                 }	
 
             } else {
                 // Still Alive - Enact the dream of the average r/tct user
-                if (e.candidate_last_name == "Wallace" && e.election_id == 4 && e.final_overall_results[n].electoral_votes == 535 && !run.achievements["stillAlive"]) {
+                if (!modded && e.candidate_last_name == "Wallace" && e.election_id == 4 && e.final_overall_results[n].electoral_votes == 535 && !run.achievements["stillAlive"]) {
                     unlockAchievement(among, "stillAlive", "../static/achievementicons/stillalive.png", "<b>Still Alive</b>")
                 } else 
                 // NOW'S YOUR CHANCE TO BE A - [[Big Shot]]
-                if (!run.achievements["yourchance"] && campaignTrail_temp.iamapoopybuttfaceandhavenolife) {
+                if (!modded && !run.achievements["yourchance"] && campaignTrail_temp.iamapoopybuttfaceandhavenolife) {
                     unlockAchievement(among, "yourchance", "../static/achievementicons/yourChance.png", "<b>NOW'S YOUR CHANCE TO BE A</b>")
                 } 
             }
