@@ -1613,7 +1613,7 @@ function divideElectoralVotesProp(e, t) {
                     unlockAchievement(among, "florida2000", "", "<b>Art Imitates Life</b>")
                 } else
                 // Naider's Raiders - Win 5% of the popular vote as Ralph Rader (very easy mode allowed).
-                if (!modded && !run.achievements["raiders"] && e.election_id == 9 && e.candidate_last_name == "Nader" && e.difficulty_level_multiplier <= 1.3 && e.final_overall_results[n].popular_votes >= 5300000) {
+                if (!modded && !run.achievements["raiders"] && e.election_id == 9 && e.candidate_last_name == "Nader" && e.difficulty_level_multiplier <= 1.33 && e.final_overall_results[n].popular_votes >= 5300000) {
                     unlockAchievement(among, "raiders", "", "<b>Naider's Raiders</b>")
                 } else
 
