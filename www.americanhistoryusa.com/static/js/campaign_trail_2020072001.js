@@ -74,6 +74,10 @@ achList = {
         "Nader's Raiders",
         "Win 5% of the popular vote as Ralph Rader (cakewalk mode allowed)."
     ],
+    "master": [
+        "I'm My Own Master Now",
+        "Win as Al Gore after saying that Clinton should've been impeached."
+    ],
     //1976
     "georgia": [
         "Radical Liberal Jimmy Carter",
@@ -1574,7 +1578,7 @@ function divideElectoralVotesProp(e, t) {
                 // ### 2016 ###
 
                 // I'm Still Standing - Win 2016 without Wisconsin, Michigan, or Pennsylvania.
-                if (!modded && !run.achievements["whatbelt"] && e.candidate_last_name == "Trump" && e.election_id == 20 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.candidate_id == e.final_state_results[37].result[1].candidate && e.candidate_id == e.final_state_results[21].result[1].candidate && e.candidate_id == e.final_state_results[49].result[1].candidate && e.final_overall_results[n].electoral_votes > 269) {
+                if (!modded && !run.achievements["whatbelt"] && e.election_id == 20 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.candidate_id == e.final_state_results[37].result[1].candidate && e.candidate_id == e.final_state_results[21].result[1].candidate && e.candidate_id == e.final_state_results[49].result[1].candidate && e.final_overall_results[n].electoral_votes > 269) {
                     unlockAchievement(among, "whatbelt", "", "<b>I'm Still Standing</b>")
                 } else
                 // The Flame Berns Bright - Win 350 or more electoral votes as Hillary Clinton with running mate Bernie Sanders
@@ -1615,6 +1619,10 @@ function divideElectoralVotesProp(e, t) {
                 // Naider's Raiders - Win 5% of the popular vote as Ralph Rader (very easy mode allowed).
                 if (!modded && !run.achievements["raiders"] && e.election_id == 9 && e.candidate_last_name == "Nader" && e.difficulty_level_multiplier <= 1.33 && e.final_overall_results[n].popular_votes >= 5300000) {
                     unlockAchievement(among, "raiders", "", "<b>Naider's Raiders</b>")
+                } else
+                // I'm My Own Master Now - Win as Al Gore after saying that Clinton should've been impeached.
+                if (!modded && !run.achievements["master"] && e.election_id == 9 && e.candidate_last_name == "Gore" && e.difficulty_level_multiplier <= 0.97 && e.final_outcome == "win" && containsObject(3326,e.player_answers)) {
+                    unlockAchievement(among, "master", "", "<b>I'm My Own Master Now</b>")
                 } else
 
                 // ### 1976 ###
