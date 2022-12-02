@@ -1,7 +1,7 @@
 achList = {
     "destiny": [
         "Destiny Arrives All the Same",
-        "Get a 306-232 electoral count in every possible official scenario.",
+        "Get a 306-232 electoral count in every possible official scenario. (1964, and 1976-2020, not including 2016a)",
         "<b><em>Misc.</em></b><br><table>"
     ],
     "yourchance": [
@@ -33,7 +33,7 @@ achList = {
     //2016
     "whatbelt": [
         "I'm Still Standing",
-        "Win 2016 without Wisconsin, Michigan, or Pennsylvania.",
+        "Win 2016 without Wisconsin, Michigan, or Pennsylvania as either candidate.",
         "</table><br><b><em>2016</em></b><br><table>"
     ],
     "thebern": [
@@ -67,12 +67,12 @@ achList = {
     //2000
     "florida2000": [
         "Art Imitates Life",
-        "Get the special ending for this election based on real life occurences.",
+        "Have Florida be under a 0.5% margin of victory. It must also be the deciding state in such a case that it flips.",
         "</table><br><b><em>2000</em></b><br><table>"
     ],
     "raiders": [
         "Nader's Raiders",
-        "Win 5% of the popular vote as Ralph Rader (cakewalk mode allowed)."
+        "Win 5% of the popular vote as Ralph Rader (All difficulties allowed)."
     ],
     "master": [
         "I'm My Own Master Now",
@@ -104,13 +104,13 @@ achList = {
     //2008
     "peoplesvictory": [
         "The People's President",
-        "Win as Comrade McCain! (all difficulties allowed)",
+        "Decry the folly of capitalism as John McCain, and still win.(All difficulties allowed)",
         "</table><br><h2>Mods</h2><br><b><em>2008</em></b><br><table>"
     ],
     //1876
     "ATruceNotACompromise": [
         "A Truce, Not A Compromise",
-        "Win the election as Hayes (or lose it as Tilden) by forming the Electoral Commission.",
+        "Have the final results be 185-184 in favour of Hayes, while agreeing to a possible compromise on the last question, mimicking real life events. (doing this as either candidate counts)",
         "</table><br><b><em>1876</em></b><br><table>"
     ]
 }
