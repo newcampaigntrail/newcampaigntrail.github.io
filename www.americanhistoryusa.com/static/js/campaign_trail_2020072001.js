@@ -651,6 +651,10 @@ function endingPicker(out, totv, aa, quickstats) {
     //aa = all final overall results data
     //quickstat = relevant data on candidate performance (format: your candidate's electoral vote count, your candidate's popular vote share, your candidate's raw vote total)
 
+    if (important_info.indexOf("Error code: 404") > -1) {
+        important_info = "return false"
+    }
+
     if (important_info != "") {
         a = new Function("out", "totv", "aa", "quickstats", important_info)(out, totv, aa, quickstats)
         return a
