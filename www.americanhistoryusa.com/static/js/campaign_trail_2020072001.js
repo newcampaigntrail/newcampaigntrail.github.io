@@ -82,6 +82,12 @@ achList = {
         "Death Swap",
         "Win as Al Gore while losing the popular vote."
     ],
+    //1988
+    "tanks": [
+        "Tanks and Taxes",
+        "Win as Dukakis despite riding the tank and pledging to raise taxes.",
+        "</table><br><b><em>1988</em></b><br><table>"
+    ],
     //1976
     "georgia": [
         "Radical Liberal Jimmy Carter",
