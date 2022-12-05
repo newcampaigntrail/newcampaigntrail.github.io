@@ -1,3 +1,12 @@
+window.setInterval(function(){campaignTrail_temp.candidate_json = campaignTrail_temp.candidate_json.filter(n => n)},200) // eye roll goes here -> modders are stupid
+
+var fileExists = function(url) {
+    var req = new XMLHttpRequest();
+    req.open('GET', url, false);
+    req.send();
+    return req.status === 200;
+};
+
 achList = {
     "destiny": [
         "Destiny Arrives All the Same",
@@ -125,59 +134,61 @@ achList = {
     ]
 }
 
-function floridaclose()
-{
-orderID = campaignTrail_temp.final_overall_results[0].candidate, campaignTrail_temp.final_overall_results[1].candidate, campaignTrail_temp.final_overall_results[2].candidate;
-playerlost = true;
-playerID = campaignTrail_temp.candidate_id;
-playerEV = quickstats[0];
-goreFL = 0;
-bushFL = 0;
-bushwinFL = true;
-isBush=false;
-bushwon=false;
-if(campaignTrail_temp.final_overall_results[0].candidate==77)
-{
-bushwon==true
-}    
-fLmargin = campaignTrail_temp.final_state_results[8].result[0].percent - campaignTrail_temp.final_state_results[8].result[1].percent;
-if (playerID==77)
-{
- isBush==true   
-}    
-if (campaignTrail_temp.final_overall_results[0].electoral_votes < 270) 
-{
-  if(playerID!=79)
-  {
-   return false;
-  }
-}
-if (playerEV >= 270) {
-    playerlost = false;
-}
-if (campaignTrail_temp.final_state_results[8].result[0].candidate == 78) {
-    //gore wins FL
-    bushwinFL=false
-    goreFL = campaignTrail_temp.final_state_results[8].result[0].votes;
-    bushFL = campaignTrail_temp.final_state_results[8].result[1].votes;
-} //bush wins FL
-else {
-    goreFL = campaignTrail_temp.final_state_results[8].result[1].votes;
-    bushFL = campaignTrail_temp.final_state_results[8].result[0].votes;
-}
-if (fLmargin < 0.005) 
-{
-    if (campaignTrail_temp.final_overall_results[0].electoral_votes <= 294 && campaignTrail_temp.final_overall_results[0].candidate==campaignTrail_temp.final_state_results[8].result[0].candidate) 
-    {
-    if (bushwinFL==bushwon)
-    {
-     return true  
-    }        
+if (campaignTrail_temp.election_id == 9) {
+    floridaclose = function() {
+        orderID = campaignTrail_temp.final_overall_results[0].candidate, campaignTrail_temp.final_overall_results[1].candidate, campaignTrail_temp.final_overall_results[2].candidate;
+        playerlost = true;
+        playerID = campaignTrail_temp.candidate_id;
+        playerEV = quickstats[0];
+        goreFL = 0;
+        bushFL = 0;
+        bushwinFL = true;
+        isBush=false;
+        bushwon=false;
+        if(campaignTrail_temp.final_overall_results[0].candidate==77)
+        {
+        bushwon==true
+        }    
+        fLmargin = campaignTrail_temp.final_state_results[8].result[0].percent - campaignTrail_temp.final_state_results[8].result[1].percent;
+        if (playerID==77)
+        {
+        isBush==true   
+        }    
+        if (campaignTrail_temp.final_overall_results[0].electoral_votes < 270) 
+        {
+        if(playerID!=79)
+        {
+        return false;
+        }
+        }
+        if (playerEV >= 270) {
+            playerlost = false;
+        }
+        if (campaignTrail_temp.final_state_results[8].result[0].candidate == 78) {
+            //gore wins FL
+            bushwinFL=false
+            goreFL = campaignTrail_temp.final_state_results[8].result[0].votes;
+            bushFL = campaignTrail_temp.final_state_results[8].result[1].votes;
+        } //bush wins FL
+        else {
+            goreFL = campaignTrail_temp.final_state_results[8].result[1].votes;
+            bushFL = campaignTrail_temp.final_state_results[8].result[0].votes;
+        }
+        if (fLmargin < 0.005) 
+        {
+            if (campaignTrail_temp.final_overall_results[0].electoral_votes <= 294 && campaignTrail_temp.final_overall_results[0].candidate==campaignTrail_temp.final_state_results[8].result[0].candidate) 
+            {
+            if (bushwinFL==bushwon)
+            {
+            return true  
+            }        
+            }
+        }
+        return false
     }
+} else {
+    floridaclose = function() {return false}
 }
-return false
-}
-
 
 // ~~Muffin~~ Achievement Button
 
@@ -741,15 +752,6 @@ $("#submitMod").click(function() {
         }
         client.send();
         diff_mod = true
-        try {
-            var client2 = new XMLHttpRequest();
-            client2.open('GET', "../static/mods/" + $("#modSelect")[0].value + "_ending.html");
-            client2.onreadystatechange = function() {
-                important_info = client2.responseText
-            }
-            client2.send();
-        } catch {
-        }
     }
     $("#modloaddiv")[0].style.display = 'none'
     $("#modLoadReveal")[0].style.display = 'none'
@@ -796,13 +798,7 @@ function divideElectoralVotesProp(e, t) {
     }
 
     function findFromPK(array, pk) {
-        a = 0
-        for (i in array) {
-            if (array[i].pk == pk) {
-                a = i
-                break
-            }
-        }
+        a = array.map(zzzz => zzzz.pk).indexOf(Number(pk))
         return a;
     }
 
@@ -811,12 +807,51 @@ function divideElectoralVotesProp(e, t) {
         ree = copy(campaignTrail_temp)
     }, 600)
 
+    function realityCheck(cand, running_mate, ree) { //checks if we are actually looking at a real candidate pairing
+        pairs = e.running_mate_json.map(f => f.fields).map(f => [f.candidate,f.running_mate])
+        pair = [cand, running_mate]
+        for (i in pairs) {
+            if(JSON.stringify(pairs[i]) == JSON.stringify(pair)) return true
+        }
+        return false
+    }
+
     function election_HTML(id, cand, running_mate) {
         if (id != 16) {
             if (modded) {
+                try {
                 yearbit = ree.election_json[findFromPK(ree.election_json, id)].fields.year
                 lastnamebit = ree.candidate_json[findFromPK(ree.candidate_json, campaignTrail_temp.candidate_id)].fields.last_name
                 veeplastname = ree.candidate_json[findFromPK(ree.candidate_json, campaignTrail_temp.running_mate_id)].fields.last_name
+                } catch {}
+                real = realityCheck(cand, running_mate, ree)
+
+                if (real) {
+                    console.log("real")
+                    return yearbit + "_" + lastnamebit + "_" + veeplastname + ".html"
+                }
+                // corrects pairing if haven't returned yet
+
+                // corrects cand
+                realCandidates = ree.candidate_json.filter(f=>f.fields.is_active>0).map(f=>f.pk)
+                currCandData = copy(e.candidate_json[e.candidate_json.map(f=>f.pk).indexOf(Number(cand))]) // gets current candidate json data
+
+                if (!realCandidates.includes(Number(cand))) {
+                    alert("Fuck you u/yupperdoo97")
+                    window.location.reload()
+                } else {
+                    fakeId = cand
+                }
+
+                // ensures correct running mate
+
+                correctPair = ree.running_mate_json[ree.running_mate_json.map(f=>f.fields.candidate).indexOf(Number(fakeId))]
+                correctRunningMate = correctPair.fields.running_mate
+                correctIndex = ree.candidate_json.map(f=>f.pk).indexOf(correctRunningMate)
+                oldRM = e.candidate_json[e.candidate_json.map(f=>f.pk).indexOf(Number(running_mate))]
+                veeplastname = ree.candidate_json[correctIndex].fields.last_name
+                e.candidate_json[correctIndex] = oldRM //sets to new RM (lmao this is such a fucking stupid solution)
+                
                 return yearbit + "_" + lastnamebit + "_" + veeplastname + ".html"
             } else {
                 return campaignTrail_temp.election_json[findFromPK(campaignTrail_temp.election_json, id)].fields.year + "_" + campaignTrail_temp.candidate_json[findFromPK(campaignTrail_temp.candidate_json, cand)].fields.last_name + "_" + campaignTrail_temp.candidate_json[findFromPK(campaignTrail_temp.candidate_json, running_mate)].fields.last_name + ".html"
@@ -881,7 +916,11 @@ function divideElectoralVotesProp(e, t) {
                     } else {
                         aaa = election_HTML(t, i, a)
                         aaa = "../static/questionset/" + aaa
-                        $("#game_window").load(aaa)
+                        try {
+                            $("#game_window").load(aaa)
+                        } catch {
+                            
+                        }
                         e.question_number = 0, e.questions_json = campaignTrail_temp.questions_json, e.answers_json = campaignTrail_temp.answers_json, e.states_json = campaignTrail_temp.states_json, e.issues_json = campaignTrail_temp.issues_json, e.state_issue_score_json = campaignTrail_temp.state_issue_score_json, e.candidate_issue_score_json = campaignTrail_temp.candidate_issue_score_json, e.running_mate_issue_score_json = campaignTrail_temp.running_mate_issue_score_json, e.candidate_state_multiplier_json = campaignTrail_temp.candidate_state_multiplier_json, e.answer_score_global_json = campaignTrail_temp.answer_score_global_json, e.answer_score_issue_json = campaignTrail_temp.answer_score_issue_json, e.answer_score_state_json = campaignTrail_temp.answer_score_state_json, e.answer_feedback_json = campaignTrail_temp.answer_feedback_json, e.candidate_image_url = campaignTrail_temp.candidate_image_url, e.running_mate_image_url = campaignTrail_temp.running_mate_image_url, e.candidate_last_name = campaignTrail_temp.candidate_last_name, e.running_mate_last_name = campaignTrail_temp.running_mate_last_name, e.running_mate_state_id = campaignTrail_temp.running_mate_state_id, e.player_answers = campaignTrail_temp.player_answers, e.player_visits = campaignTrail_temp.player_visits, e.answer_feedback_flg = campaignTrail_temp.answer_feedback_flg, e.election_id = Number(e.election_id), e.candidate_id = Number(e.candidate_id), e.running_mate_id = Number(e.running_mate_id), e.difficulty_level_id = Number(e.difficulty_level_id), e.game_start_logging_id = Number(campaignTrail_temp.game_start_logging_id)
                         var important_code = setInterval(function() {
                             $("#view_electoral_map").click(function() {
@@ -899,7 +938,7 @@ function divideElectoralVotesProp(e, t) {
                                 cand = e.candidate_json[e.candidate_json.map(a=>a.pk).indexOf(e.candidate_id)].fields.last_name
                                 run = e.candidate_json[e.candidate_json.map(a=>a.pk).indexOf(e.running_mate_id)].fields.last_name
                                 theorId = year+"_"+cand+run
-                                theorId = $("#modSelect")[0].value
+                                //theorId = $("#modSelect")[0].value
 
                                 var client = new XMLHttpRequest();
                                 client.open('GET', "../static/mods/" + theorId + ".html");
@@ -907,6 +946,18 @@ function divideElectoralVotesProp(e, t) {
                                     eval(client.responseText)
                                 }
                                 client.send();
+                                endingUrl = "../static/mods/" + theorId + "_ending.html"
+
+                                try {
+                                    if (fileExists(endingUrl))
+                                    var client2 = new XMLHttpRequest();
+                                    client2.open('GET', endingUrl);
+                                    client2.onreadystatechange = function() {
+                                        important_info = client2.responseText
+                                    }
+                                    client2.send();
+                                } catch {
+                                }
                             }
                             if ($("#answer_select_button")[0] != null) {
                                 clearInterval(important_code)
@@ -2420,3 +2471,14 @@ function safe_add(d, _) {
 function bit_rol(d, _) {
     return d << _ | d >>> 32 - _
 }
+
+fix1964= window.setInterval(function(){
+    try{
+    if (document.getElementById("election_id").value==69) {
+        windowT = document.getElementById("inner_window_2")
+        windowT.children[windowT.children.length-1].innerHTML= "This scenario was made by Tex."
+    } else if (document.getElementById("election_id").value>-1 && !modded) {
+        windowT.children[windowT.children.length-1].innerHTML= "This scenario was made by Dan Bryan."
+    }
+}catch{}
+},100)
