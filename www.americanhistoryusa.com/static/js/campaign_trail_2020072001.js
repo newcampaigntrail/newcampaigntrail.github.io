@@ -1704,13 +1704,13 @@ function divideElectoralVotesProp(e, t) {
 
                 // ### 1988 ###
                 // Tanks and Taxes - Win as Dukakis despite riding the tank and pledging to raise taxes.
-                if (!modded && !run.achievements["tanks"] && e.election_id == 10 && containsObject(4439,e.player_answers) && containsObject(4484,e.player_answers)  && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_outcome == "win") {
+                if (!modded && !run.achievements["tanks"] && e.election_id == 15 && containsObject(4439,e.player_answers) && containsObject(4484,e.player_answers)  && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_outcome == "win") {
                     unlockAchievement(among, "tanks", "", "<b>Tanks and Taxes</b>")
                 } else
 
                 // ### 1976 ###
                 // Radical Liberal Jimmy Carter - Win as Jimmy Carter with over 400 EVs while being firmly pro-choice and for universal healthcare.
-                if (!modded && !run.achievements["georgia"] && e.election_id == 15 && containsObject(3610,e.player_answers) && containsObject(3647,e.player_answers)  && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 400) {
+                if (!modded && !run.achievements["georgia"] && e.election_id == 10 && containsObject(3610,e.player_answers) && containsObject(3647,e.player_answers)  && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 400) {
                     unlockAchievement(among, "georgia", "", "<b>Radical Liberal Jimmy Carter</b>")
                 } else
 
