@@ -126,6 +126,12 @@ achList = {
         "Decry the folly of capitalism as John McCain, and still win.(All difficulties allowed)",
         "</table><br><h2>Mods</h2><br><b><em>2008</em></b><br><table>"
     ],
+    //1936c
+    "fixyourmod": [
+        "Fix Your Damn Mod",
+        "As Long in 1936c, die.",
+        "</table><br><b><em>1936c</em></b><br><table>"
+    ],
     //1876
     "ATruceNotACompromise": [
         "A Truce, Not A Compromise",
@@ -1738,6 +1744,12 @@ function divideElectoralVotesProp(e, t) {
                 // The People's President - Win as Comrade McCain!
                 if (!run.achievements["peoplesvictory"] && e.candidate_last_name == "McCain" && e.final_outcome=="win" && e.player_answers[8] == 52632 && e.election_id==20) {
                     unlockAchievement(among, "peoplesvictory", "", "<b>The People's President</b>")
+                } else
+
+                // ### 1936c ###
+                // Fix Your Damn Mod - As Long in 1936c, die
+                if (!run.achievements["fixyourmod"] && e.candidate_last_name == "Long" && e.final_outcome=="loss" && e.election_id==20) {
+                    unlockAchievement(among, "fixyourmod", "", "<b>Fix Your Damn Mod</b>")
                 } else
                 // ### 1876 ####
                     
