@@ -1021,7 +1021,6 @@ function divideElectoralVotesProp(e, t) {
     }
 
     function l() {
-        console.log("alive")
         var t = A(2);
         if (campaignTrail_temp.cyoa) {
             cyoAdventure(e.questions_json[e.question_number])
