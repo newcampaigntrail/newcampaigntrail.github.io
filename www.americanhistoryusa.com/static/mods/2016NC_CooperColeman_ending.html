@@ -1,0 +1,100 @@
+mov = 0
+
+
+
+
+if (out == 'win') {
+
+
+   mov = quickstats[1] - (aa[1].popular_votes / totv * 100)
+
+
+   if (mov > 0) {
+
+
+       return "<h3>Congratulations! You have won the 2016 North Carolina Gubernatorial Election.</h3><p>You have actually done it! After many months, the House Bill 2 drama should recede with the end of the McCrory govenance. McCrory is yet to offer a concession speech, promising instead to challenge the votes from Durham county. Unfortunately, Republicans performed pretty well down the ballot throughout the rest of the state. Dan Forest successfully defeated your runningmate in the Lieutenant Gubernatorial race, and your working relationship with him is sure to be tense over the next four years. In addition, Republicans still control the legislature and are already taking action to limit your power as governor. Good luck Governor Cooper, you are going to need it."
+
+
+   } else {
+
+
+       return "<h3>Sorry, you have lost the 2016 North Carolina Gubernatorial Election.</h3><p>You have had a long legacy in the state as a member of the North Carolina House of Representatives and four terms as the state's Attorney General. However, tonight, that legacy came to a close. McCrory delivers an impassioned victory speech to a roaring crowd as you begin to think about what to say as a concession. It seems that North Carolina has shifted to the right in recent years, as Republicans won a large majority of the elections that occurred throughout the state last night, including your former position as Attorney General. This loss is going to sting for a while."
+
+   }
+
+
+} else if (out == 'loss') {
+
+
+   mov = (aa[0].popular_votes / totv * 100) - quickstats[1]
+
+
+   if (mov < 0) {
+
+
+       return "<h3>Congratulations! You have won the 2016 North Carolina Gubernatorial Election.</h3><p>You have actually done it! After many months, the House Bill 2 drama should recede with the end of the McCrory govenance. McCrory is yet to offer a concession speech, promising instead to challenge the votes from Durham county. Unfortunately, Republicans performed pretty well down the ballot throughout the rest of the state. Dan Forest successfully defeated your runningmate in the Lieutenant Gubernatorial race, and your working relationship with him is sure to be tense over the next four years. In addition, Republicans still control the legislature and are already taking action to limit your power as governor. Good luck Governor Cooper, you are going to need it."
+
+
+
+
+   } else {
+
+
+       return "<h3>Sorry, you have lost the 2016 North Carolina Gubernatorial Election.</h3><p>You have had a long legacy in the state as a member of the North Carolina House of Representatives and four terms as the state's Attorney General. However, tonight, that legacy came to a close. McCrory delivers an impassioned victory speech to a roaring crowd as you begin to think about what to say as a concession. It seems that North Carolina has shifted to the right in recent years, as Republicans won a large majority of the elections that occurred throughout the state last night, including your former position as Attorney General. This loss is going to sting for a while.."
+
+
+   }
+
+
+} else {
+
+
+if (aa[0].popular_votes > aa[1].popular_votes) {
+
+
+   if (aa[0].candidate == campaignTrail_temp.candidate_id) {
+
+
+       return "<h3>Congratulations! You have won the 2016 North Carolina Gubernatorial Election.</h3><p>You have actually done it! After many months, the House Bill 2 drama should recede with the end of the McCrory govenance. McCrory is yet to offer a concession speech, promising instead to challenge the votes from Durham county. Unfortunately, Republicans performed pretty well down the ballot throughout the rest of the state. Dan Forest successfully defeated your runningmate in the Lieutenant Gubernatorial race, and your working relationship with him is sure to be tense over the next four years. In addition, Republicans still control the legislature and are already taking action to limit your power as governor. Good luck Governor Cooper, you are going to need it."
+
+
+
+
+   } else {
+
+
+       return "<h3>Sorry, you have lost the 2016 North Carolina Gubernatorial Election.</h3><p>You have had a long legacy in the state as a member of the North Carolina House of Representatives and four terms as the state's Attorney General. However, tonight, that legacy came to a close. McCrory delivers an impassioned victory speech to a roaring crowd as you begin to think about what to say as a concession. It seems that North Carolina has shifted to the right in recent years, as Republicans won a large majority of the elections that occurred throughout the state last night, including your former position as Attorney General. This loss is going to sting for a while.."
+
+
+
+   }
+
+
+} else {
+
+
+   if (aa[0].candidate == campaignTrail_temp.candidate_id) {
+
+
+       return "<h3>Sorry, you have lost the 2016 North Carolina Gubernatorial Election.</h3><p>Your diehard supporters are stunned as you were on the brink of giving a victory speech before the late votes out of Durham county came in. It is even more disheartening considering that Donald Trump and Lieutenant Governor Forest were able to win their respective elections in the state. Perhaps the negative media coverage of your campaign was too much or perhaps Roy Cooper was a far more popular attorney general than you had believed. Either way your governorship of North Carolina is over in two months so make the best of it. Maybe you can try again in 2020 or even become a senator later down the road."
+
+
+   } else {
+
+
+       return "<h3>Congratulations! You have won the 2016 North Carolina Gubernatorial Election.</h3><p>You have had a long legacy in the state as a member of the North Carolina House of Representatives and four terms as the state's Attorney General. However, tonight, that legacy came to a close. McCrory delivers an impassioned victory speech to a roaring crowd as you begin to think about what to say as a concession. It seems that North Carolina has shifted to the right in recent years, as Republicans won a large majority of the elections that occurred throughout the state last night, including your former position as Attorney General. This loss is going to sting for a while."
+
+
+   }
+
+
+}
+
+
+}
+
+
+
+
+
+

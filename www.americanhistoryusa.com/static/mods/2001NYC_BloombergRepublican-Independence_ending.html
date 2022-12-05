@@ -1,0 +1,30 @@
+mov = 0
+if (out == 'win') {
+    mov = quickstats[1] - (aa[1].popular_votes / totv * 100)
+    if (mov > 0) {
+        return "<h3>In a big upset, you have won the 2001 NYC mayoral election.</h3><p>Most pundits didn’t see it coming. Even after 9/11, it was expected that Democrats would bury you in this election.</p><p>Be prepared for a lot of work, as it will be your job to rebuild NYC after the 9/11 attacks. For now, celebrate and thank Mayor Giuliani for your victory.</p>"
+    } else {
+        return "<h3>Sorry! You have lost the 2001 New York City mayoral election.</h3><p>Considering all the circumstances of your campaign, including the fact that you were running as a republican, this was perhaps to be expected.</p><p>Your future from here is up to you. If you did well in this election, perhaps you can run for another office in NYC as the republican candidate, or you can return to the Democrats. Maybe you could try to return to your buisness career?</p>"
+    }
+} else if (out == 'loss') {
+    mov = (aa[0].popular_votes / totv * 100) - quickstats[1]
+    if (mov < 0) {
+        return "<h3>In a big upset, you have won the 2001 NYC mayoral election.</h3><p>Most pundits didn’t see it coming. Even after 9/11, it was expected that Democrats would bury you in this election.</p><p>Be prepared for a lot of work, as it will be your job to rebuild NYC after the 9/11 attacks. For now, celebrate and thank Mayor Giuliani for your victory.</p>"
+    } else {
+        return "<h3>Sorry! You have lost the 2001 New York City mayoral election.</h3><p>Considering all the circumstances of your campaign, including the fact that you were running as a republican, this was perhaps to be expected.</p><p>Your future from here is up to you. If you did well in this election, perhaps you can run for another office in NYC as the republican candidate, or you can return to the Democrats. Maybe you could try to return to your buisness career?</p>"
+    }
+} else {
+if (aa[0].popular_votes > aa[1].popular_votes) {
+    if (aa[0].candidate == campaignTrail_temp.candidate_id) {
+        return "<h3>In a big upset, you have won the 2001 NYC mayoral election.</h3><p>Most pundits didn’t see it coming. Even after 9/11, it was expected that Democrats would bury you in this election.</p><p>Be prepared for a lot of work, as it will be your job to rebuild NYC after the 9/11 attacks. For now, celebrate and thank Mayor Giuliani for your victory.</p>"
+    } else {
+        return "<h3>Sorry! You have lost the 2001 New York City mayoral election.</h3><p>Considering all the circumstances of your campaign, including the fact that you were running as a republican, this was perhaps to be expected.</p><p>Your future from here is up to you. If you did well in this election, perhaps you can run for another office in NYC as the republican candidate, or you can return to the Democrats. Maybe you could try to return to your buisness career?</p>"
+    }
+} else {
+    if (aa[0].candidate == campaignTrail_temp.candidate_id) {
+        return "<h3>Sorry! You have lost the 2001 New York City mayoral election.</h3><p>Considering all the circumstances of your campaign, including the fact that you were running as a republican, this was perhaps to be expected.</p><p>Your future from here is up to you. If you did well in this election, perhaps you can run for another office in NYC as the republican candidate, or you can return to the Democrats. Maybe you could try to return to your buisness career?</p>"
+    } else {
+        return "<h3>In a big upset, you have won the 2001 NYC mayoral election.</h3><p>Most pundits didn’t see it coming. Even after 9/11, it was expected that Democrats would bury you in this election.</p><p>Be prepared for a lot of work, as it will be your job to rebuild NYC after the 9/11 attacks. For now, celebrate and thank Mayor Giuliani for your victory.</p>"
+    }
+}
+}
