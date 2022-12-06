@@ -402,6 +402,7 @@ function histFunction() {
                 HistEV = [277, 254, 0, 0];
                 HistPV = ["9,126,868", "8,548,728", "590,524", "221,302"];
                 HistPVP = ["49.2%", "46.1%", "3.2%", "1.2%"];
+                break;			
             case 5:
                 return 1896
                 HistHexcolour = ["#FF0000", "#0000FF", "#FFFF00", "FFC0CB"];
@@ -409,19 +410,21 @@ function histFunction() {
                 HistEV = [271, 176, 0, 0];
                 HistPV = ["7,111,607", "6,509,052", "134,645", "131,312"];
                 HistPVP = ["51.0%", "46.7%", "1.0%", "0.9%"];
+                break;			
             case 8:
                 HistHexcolour = ["#FF0000", "#FFFF00", "#00C100;", "#0000FF"];
                 HistName = ["Abraham Lincoln", "John C. Breckinridge", "John Bell", "Stephen Douglas"];
                 HistEV = [180, 72, 39, 12];
                 HistPV = ["1,865,908", "848,019", "590,901", "1,380,202"];
                 HistPVP = ["39.8%", "18.1%", "12.6%", "29.5%"];
-
+                break;
             case 13:
                 HistHexcolour = ["#0000FF", "#F0C862", "#FFFF00;", "#FFFFFF"];
                 HistName = ["James K. Polk", "Henry Clay", "James Birney", "N/A"];
                 HistEV = [170, 105, 0, 0];
                 HistPV = ["1,339,494", "1,300,004", "62,103", "N/A"];
                 HistPVP = ["49.5%", "48.1%", "2.3%", "N/A"];
+                break;
         }
     }
 }
