@@ -30,7 +30,7 @@ var fileExists = function(url) {
     return req.status === 200;
 };
 
-lastUpdatedDate="2022-12-06"
+lastUpdatedDate="2022-12-08"
 
 
 achList = {
@@ -349,7 +349,7 @@ function openInfoMenu() {
     <div style='text-align:left'><p>-Achievements, for if you want to challenge yourself and memorialize unique results.</p>
     <div style='text-align:left'><p>-Ending codes, a functionality of scenarios that allows the end screen to be altered depending on different factors like electoral and popular vote.<pr /> 
     <pr /> 
-    <div style='text-align:left'><p>I could go on, but I think you get the point. We hope you enjoy playing it as much as we do. If you run into any issues, please either report them on the TNCT Github, or Discord server, both linked below.</p>
+    <div style='text-align:left'><p>I could go on, but I think you get the point. We hope you enjoy playing it as much as we do. If you run into any issues, please either report them on the TNCT Github, or Discord server, both linked below at the bottom of the screen.</p>
     <div style='text-align:left'><b>Credits:<pr />
     <div style='text-align:left'><b>- Dan Bryan (Original Site)</b>
     <div style='text-align:left'><b>- DecstarG (Lead Dev)</b>
@@ -361,7 +361,10 @@ function openInfoMenu() {
      <pr /> 
     <div style='text-align:left'><p>Most recent TNCT patch notes:<pr />
     <div style='text-align:left'><p>This section you are reading was added, as well as the mod loader was updated to be more modular (no pun intended). We are aware of a glitch that has many people unable to use some mods now.</p>
-    <div style='text-align:left'><p>To fix this error, please clear your cache. It should work after that is done.</div>`
+    <div style='text-align:left'><p>To fix this error, please clear your cache. It should work after that is done.</div>
+    <div style='text-align:left'><p>Addtionally, a primary's feature for TNCT mods have been added. it is quite complicated, so if you wish to make a mod with it, please join our Discord server for help.</div>`
+
+    
 	$("#infoBox").html(`
     <div class="inner_window_front" style="padding:0px"><b><h1>Welcome to The New Campaign Trail!</h1></b></div>
         <div class="inner_window_front" style="overflow:scroll;height:300px;"><center>
