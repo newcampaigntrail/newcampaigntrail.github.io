@@ -1706,7 +1706,7 @@ function divideElectoralVotesProp(e, t) {
                 }
             l.push(o[c])
         }
-
+        
         return e.final_overall_results = l, i
     }
 
