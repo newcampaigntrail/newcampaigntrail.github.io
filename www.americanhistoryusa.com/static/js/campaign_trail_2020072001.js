@@ -315,7 +315,7 @@ function openInfoMenu() {
     gameWin.appendChild(InfoDiv)
 
     textinfo=`
-    <div style='text-align:left'><b>Hello, and welcome to The New Campaign Trail! This is an update version of The Campaign Trail (hence the name). What does TNCT bring that TCT doesn't? A number of new features, not limited to:<br />
+    <div style='text-align:left'><b>Hello, and welcome to The New Campaign Trail! This is an updated version of The Campaign Trail (hence the name). What does TNCT bring that TCT doesn't? A number of new features, not limited to:<br />
     <pr /> 
     <div style='text-align:left'><p>-A mod loader/library, allowing many of the mods made by our fabulous community to be played/compiled</p>
     <div style='text-align:left'><p>-Faster processing times so you don't have to sit forever their while the game says <i>Processing Results, wait one moment...</i></p>
