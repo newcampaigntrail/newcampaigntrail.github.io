@@ -225,13 +225,14 @@ if (campaignTrail_temp.election_id == 9) {
 // ~~Muffin~~ Achievement Button
 
 function addAchButton() {
-	gameWin = document.getElementById("game_window")
+    document.getElementById("bottomBar").style.display=""
+	gameWin = document.getElementById("bottomBar")
 	achievementDiv = document.createElement("div");
 
-	stylesheetSet = `position: absolute;left: 10px;bottom:10px`
+	stylesheetSet = `position: absolute;left: 10px;top:5px;`
 
 	achievementDiv.innerHTML=`
-		<button id='achievMenuButton' style='width:200px;height:50px;font-size:25px;text-align:center'><b>Achievements</b></button>
+		<button id='achievMenuButton' style='width:200px;height:47px;font-size:150%;text-align:center'><b>Achievements</b></button>
 	`
 	achievementDiv.style = stylesheetSet
 
@@ -245,8 +246,9 @@ document.getElementById("achievMenuButton").addEventListener("click",openAchievM
 
 
 function openAchievMenu() {
+    document.getElementById("bottomBar").style.display="none"
 
-document.getElementById("last-updated-date").remove()
+    document.getElementById("last-updated-date").remove()
 	gameWin = document.getElementById("game_window")
     document.getElementById("achievMenuButton").remove()
     document.getElementById("infoMenuButton").remove()
@@ -299,18 +301,19 @@ document.getElementById("last-updated-date").remove()
 }
 
 function addInfoButton(){
-	gameWin = document.getElementById("game_window")
+    document.getElementById("bottomBar").style.display=""
+	gameWin = document.getElementById("bottomBar")
 	InfoDiv = document.createElement("div");
 
-	stylesheetSet = `position: absolute;right: 10px;bottom:35px`
+	stylesheetSet = `position: absolute;right: 10px;top:5px`
 
 	InfoDiv.innerHTML=`
-		<button id='infoMenuButton' style='width:250px;height:60px;font-size:15px;text-align:center'><b>Additional Information</b></button>
+		<button id='infoMenuButton' style='width:200px;height:25px;font-size:100%;text-align:center'><b>Additional Information</b></button>
 	`
 	InfoDiv.style = stylesheetSet
-    if (!document.getElementById("game_window").innerHTML.includes("Last updated")) 
+    if (!document.getElementById("bottomBar").innerHTML.includes("last-updated-date")) 
 {
-    document.getElementById("game_window").innerHTML+=`<style>.bottom-right-text:after { content: var(--bottom-right-text); font-style: italic; position: absolute; bottom: 10px; right: 10px; } </style><div id="last-updated-date" class="bottom-right-text" style="--bottom-right-text: 'Last updated:`+lastUpdatedDate+`"></div>`
+    document.getElementById("bottomBar").innerHTML+=`<style>.bottom-right-text:after { content: var(--bottom-right-text); font-style: italic; position: absolute; bottom: 10px; right: 10px; } </style><div id="last-updated-date" class="bottom-right-text" style="--bottom-right-text: 'Last updated:`+lastUpdatedDate+`"></div>`
 }
 	gameWin.appendChild(InfoDiv)
 
@@ -327,6 +330,7 @@ function addInfoButton(){
 
 
 function openInfoMenu() {
+    document.getElementById("bottomBar").style.display="none"
 	gameWin = document.getElementById("game_window")
     document.getElementById("infoMenuButton").remove()
     document.getElementById("achievMenuButton").remove()
@@ -357,7 +361,7 @@ function openInfoMenu() {
      <pr /> 
     <div style='text-align:left'><p>Most recent TNCT patch notes:<pr />
     <div style='text-align:left'><p>This section you are reading was added, as well as the mod loader was updated to be more modular (no pun intended). We are aware of a glitch that has many people unable to use some mods now.</p>
-    <div style='text-align:left'><p>To fix this error, please clear your cache. It should work after that is done.</>`
+    <div style='text-align:left'><p>To fix this error, please clear your cache. It should work after that is done.</div>`
 	$("#infoBox").html(`
     <div class="inner_window_front" style="padding:0px"><b><h1>Welcome to The New Campaign Trail!</h1></b></div>
         <div class="inner_window_front" style="overflow:scroll;height:300px;"><center>
@@ -365,13 +369,6 @@ function openInfoMenu() {
         </div>
         <button id='backButton' style='position: absolute;left: 10px;bottom:10px;width:200px;height:50px;font-size:25px;text-align:center'><b>Back</b></button>       
     `)
-    document.getElementById("game_window").style.background="#FF6666"
-    tablesList = document.getElementsByTagName("table")
-    for (tableI in tablesList) {
-        try{
-        tablesList[tableI].style.width="700px"
-        }catch{}
-    }
     document.getElementById("backButton").addEventListener("click",returnToMainPage)
 }
 
