@@ -30,6 +30,9 @@ var fileExists = function(url) {
     return req.status === 200;
 };
 
+lastUpdatedDate="2022-12-06"
+
+
 achList = {
     "destiny": [
         "Destiny Arrives All the Same",
@@ -233,15 +236,21 @@ function addAchButton() {
 	achievementDiv.style = stylesheetSet
 
 	gameWin.appendChild(achievementDiv)
-
 	document.getElementById("achievMenuButton").addEventListener("click",openAchievMenu)
 }
 
 addAchButton()
+addInfoButton()
+document.getElementById("achievMenuButton").addEventListener("click",openAchievMenu)
+
 
 function openAchievMenu() {
+
+document.getElementById("last-updated-date").remove()
 	gameWin = document.getElementById("game_window")
     document.getElementById("achievMenuButton").remove()
+    document.getElementById("infoMenuButton").remove()
+
 
     run = JSON.parse(localStorage.getItem('achievements'))
 
@@ -289,11 +298,117 @@ function openAchievMenu() {
     document.getElementById("backButton").addEventListener("click",returnToMainPage)
 }
 
+function addInfoButton(){
+	gameWin = document.getElementById("game_window")
+	InfoDiv = document.createElement("div");
+
+	stylesheetSet = `position: absolute;right: 10px;bottom:35px`
+
+	InfoDiv.innerHTML=`
+		<button id='infoMenuButton' style='width:250px;height:60px;font-size:15px;text-align:center'><b>Additional Information</b></button>
+	`
+	InfoDiv.style = stylesheetSet
+    if (!document.getElementById("game_window").innerHTML.includes("Last updated")) 
+{
+    document.getElementById("game_window").innerHTML+=`<style>.bottom-right-text:after { content: var(--bottom-right-text); font-style: italic; position: absolute; bottom: 10px; right: 10px; } </style><div id="last-updated-date" class="bottom-right-text" style="--bottom-right-text: 'Last updated:`+lastUpdatedDate+`"></div>`
+}
+	gameWin.appendChild(InfoDiv)
+
+	document.getElementById("infoMenuButton").addEventListener("click",openInfoMenu)
+    try
+    {
+     document.getElementById("infoBox").remove()
+    }
+    catch
+    {
+
+    }
+}
+
+
+function openInfoMenu() {
+	gameWin = document.getElementById("game_window")
+    document.getElementById("infoMenuButton").remove()
+    document.getElementById("achievMenuButton").remove()
+    $("#below_header")[0].style.display="none"
+
+    gameWin = document.getElementById("game_window")
+	InfoDiv = document.createElement("div");
+    InfoDiv.id = "infoBox"
+    gameWin.appendChild(InfoDiv)
+
+    textinfo=`
+    <div style='text-align:left'><b>Hello, and welcome to The New Campaign Trail! This is an updated version of The Campaign Trail (hence the name). What does TNCT bring that TCT doesn't? A number of new features, not limited to:<br />
+    <pr /> 
+    <div style='text-align:left'><p>-A mod loader/library, allowing many of the mods made by our fabulous community to be played/compiled</p>
+    <div style='text-align:left'><p>-Faster processing times so you don't have to sit forever their while the game says <i>Processing Results, wait one moment...</i></p>
+    <div style='text-align:left'><p>-Achievements, for if you want to challenge yourself and memorialize unique results.</p>
+    <div style='text-align:left'><p>-Ending codes, a functionality of scenarios that allows the end screen to be altered depending on different factors like electoral and popular vote.<pr /> 
+    <pr /> 
+    <div style='text-align:left'><p>I could go on, but I think you get the point. We hope you enjoy playing it as much as we do. If you run into any issues, please either report them on the TNCT Github, or Discord server, both linked below.</p>
+    <div style='text-align:left'><b>Credits:<pr />
+    <div style='text-align:left'><b>- Dan Bryan (Original Site)</b>
+    <div style='text-align:left'><b>- DecstarG (Lead Dev)</b>
+    <div style='text-align:left'><b>- Danxv33 (Assistant Dev)</b>
+    <div style='text-align:left'><b>- ItsAstronomical (Community Manager)</b>
+    <div style='text-align:left'><b>- T3CH0X (Dev)</b>
+    <div style='text-align:left'><b>- The Campaign Trail Discord</b>
+    <div style='text-align:left'><p>- /r/thecampaigntrail<pr />
+     <pr /> 
+    <div style='text-align:left'><p>Most recent TNCT patch notes:<pr />
+    <div style='text-align:left'><p>This section you are reading was added, as well as the mod loader was updated to be more modular (no pun intended). We are aware of a glitch that has many people unable to use some mods now.</p>
+    <div style='text-align:left'><p>To fix this error, please clear your cache. It should work after that is done.</>`
+	$("#infoBox").html(`
+    <div class="inner_window_front" style="padding:0px"><b><h1>Welcome to The New Campaign Trail!</h1></b></div>
+        <div class="inner_window_front" style="overflow:scroll;height:300px;"><center>
+        `+textinfo+`</table></center>
+        </div>
+        <button id='backButton' style='position: absolute;left: 10px;bottom:10px;width:200px;height:50px;font-size:25px;text-align:center'><b>Back</b></button>       
+    `)
+    document.getElementById("game_window").style.background="#FF6666"
+    tablesList = document.getElementsByTagName("table")
+    for (tableI in tablesList) {
+        try{
+        tablesList[tableI].style.width="700px"
+        }catch{}
+    }
+    document.getElementById("backButton").addEventListener("click",returnToMainPage)
+}
+
+
+
 function returnToMainPage() {
+    try
+    {
     document.getElementById("achBox").remove()
+    document.getElementById("infoBox").remove()
+    }
+    catch
+    {
+
+    }
+   
+
+
+
     $("#below_header")[0].style.display=""
     addAchButton()
+    addInfoButton()
+
+
+// Add an event listener to the "Achievements" button
+achButton = document.getElementById("achievMenuButton");
+achButton.addEventListener("click", openAchievMenu);
+
+// Add an event listener to the "Info" button
+infoButton = document.getElementById("infoMenuButton");
+infoButton.addEventListener("click", openInfoMenu);
+
 }
+
+
+
+
 
 // set up ach system
 amongusonetwothree = false
@@ -425,6 +540,7 @@ function histFunction() {
                 HistEV = [277, 254, 0, 0];
                 HistPV = ["9,126,868", "8,548,728", "590,524", "221,302"];
                 HistPVP = ["49.2%", "46.1%", "3.2%", "1.2%"];
+                break;			
             case 5:
                 return 1896
                 HistHexcolour = ["#FF0000", "#0000FF", "#FFFF00", "FFC0CB"];
@@ -432,19 +548,21 @@ function histFunction() {
                 HistEV = [271, 176, 0, 0];
                 HistPV = ["7,111,607", "6,509,052", "134,645", "131,312"];
                 HistPVP = ["51.0%", "46.7%", "1.0%", "0.9%"];
+                break;			
             case 8:
                 HistHexcolour = ["#FF0000", "#FFFF00", "#00C100;", "#0000FF"];
                 HistName = ["Abraham Lincoln", "John C. Breckinridge", "John Bell", "Stephen Douglas"];
                 HistEV = [180, 72, 39, 12];
                 HistPV = ["1,865,908", "848,019", "590,901", "1,380,202"];
                 HistPVP = ["39.8%", "18.1%", "12.6%", "29.5%"];
-
+                break;
             case 13:
                 HistHexcolour = ["#0000FF", "#F0C862", "#FFFF00;", "#FFFFFF"];
                 HistName = ["James K. Polk", "Henry Clay", "James Birney", "N/A"];
                 HistEV = [170, 105, 0, 0];
                 HistPV = ["1,339,494", "1,300,004", "62,103", "N/A"];
                 HistPVP = ["49.5%", "48.1%", "2.3%", "N/A"];
+                break;
         }
     }
 }
