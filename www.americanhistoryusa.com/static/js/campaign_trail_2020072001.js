@@ -223,8 +223,7 @@ document.getElementById("achievMenuButton").addEventListener("click",openAchievM
 
 function openAchievMenu() {
 
-document.getElementById("last-updated-date").outerHTML=`<div id="last-updated-date" class="bottom-right-text" style="--bottom-right-text: '"></div>`
-
+document.getElementById("last-updated-date").remove()
 	gameWin = document.getElementById("game_window")
     document.getElementById("achievMenuButton").remove()
     document.getElementById("infoMenuButton").remove()
@@ -286,8 +285,10 @@ function addInfoButton(){
 		<button id='infoMenuButton' style='width:250px;height:60px;font-size:15px;text-align:center'><b>Additional Information</b></button>
 	`
 	InfoDiv.style = stylesheetSet
+    if (!document.getElementById("game_window").innerHTML.includes("Last updated")) 
+{
     document.getElementById("game_window").innerHTML+=`<style>.bottom-right-text:after { content: var(--bottom-right-text); font-style: italic; position: absolute; bottom: 10px; right: 10px; } </style><div id="last-updated-date" class="bottom-right-text" style="--bottom-right-text: 'Last updated:`+lastUpdatedDate+`"></div>`
-
+}
 	gameWin.appendChild(InfoDiv)
 
 	document.getElementById("infoMenuButton").addEventListener("click",openInfoMenu)
@@ -314,7 +315,7 @@ function openInfoMenu() {
     gameWin.appendChild(InfoDiv)
 
     textinfo=`
-    <div style='text-align:left'><b>Hello, and welcome to The New Campaign Trail! This is an updated version of The Campaign Trail (hence the name). What does TNCT bring that TCT doesn't? A number of new features, not limited to:<br />
+    <div style='text-align:left'><b>Hello, and welcome to The New Campaign Trail! This is an update version of The Campaign Trail (hence the name). What does TNCT bring that TCT doesn't? A number of new features, not limited to:<br />
     <pr /> 
     <div style='text-align:left'><p>-A mod loader/library, allowing many of the mods made by our fabulous community to be played/compiled</p>
     <div style='text-align:left'><p>-Faster processing times so you don't have to sit forever their while the game says <i>Processing Results, wait one moment...</i></p>
@@ -363,11 +364,23 @@ function returnToMainPage() {
     {
 
     }
+   
+
+
 
     $("#below_header")[0].style.display=""
     addAchButton()
     addInfoButton()
-    themePicked()   
+
+
+// Add an event listener to the "Achievements" button
+achButton = document.getElementById("achievMenuButton");
+achButton.addEventListener("click", openAchievMenu);
+
+// Add an event listener to the "Info" button
+infoButton = document.getElementById("infoMenuButton");
+infoButton.addEventListener("click", openInfoMenu);
+
 }
 
 
