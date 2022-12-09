@@ -1,3 +1,4 @@
+## [https://newcampaigntrail.github.io/www.americanhistoryusa.com/campaign-trail/index.html](https://newcampaigntrail.github.io/www.americanhistoryusa.com/campaign-trail/index.html)
 ## What is this?
 This is an archive of the source code of the site for the American election simulator known as The Campaign Trail. In it, players simulate various contested elections throughout American history, making choices and answering questions in order to improve their chances at winning. The original site is rarely updated, so this backup has been made with features added for easier modding. 
 
