@@ -780,6 +780,7 @@ function sussyroth() {
     return campaignTrail_temp.iamapoopybuttfaceandhavenolife
 }
 
+/*
 function loadMod(code1, code2) {
     kill = false
     if (moddercheckeror == false) {
@@ -795,7 +796,7 @@ function loadMod(code1, code2) {
         }, 1000);
     }
 }
-
+*/
 
 
 function endingPicker(out, totv, aa, quickstats) {
@@ -885,7 +886,10 @@ $("#submitMod").click(function() {
         if (important_info != "") {
             campaignTrail_temp.multiple_endings = true
         }
-        loadMod($("#codeset1")[0].value, $("#codeset2")[0].value)
+        if (!moddercheckeror) {
+            eval($("#codeset1")[0].value)
+            moddercheckeror = true
+        }
     } else {
         var client = new XMLHttpRequest();
         client.open('GET', "../static/mods/" + $("#modSelect")[0].value + "_init.html");
@@ -1056,7 +1060,7 @@ function divideElectoralVotesProp(e, t) {
                                 clearInterval(important_code)
                             }
                         }, 1000);
-                    } else {
+                    } else if ($("#modSelect")[0].value != "other") {
                         aaa = election_HTML(t, i, a)
                         aaa = "../static/questionset/" + aaa
                         try {
@@ -1112,6 +1116,11 @@ function divideElectoralVotesProp(e, t) {
                                 clearInterval(important_code)
                             }
                         }, 1000);
+                    } else {
+                        // other block case
+                        eval($("#codeset2")[0].value)
+                        tempFuncO=function(e,i=campaignTrail_temp){for(var s=[],a=0;a<i.answers_json.length&&(i.answers_json[a].fields.question!=i.questions_json[i.question_number].pk||(s.push({key:a,order:Math.random()}),4!=s.length));a++);P(s,"order");for(var t="",a=0;a<s.length;a++)t+='<input type="radio" name="game_answers" class="game_answers"             id="game_answers['+a.toString()+']" value="'+i.answers_json[s[a].key].pk+'"/>\t\t    <label for="game_answers['+a.toString()+']">'+i.answers_json[s[a].key].fields.description+"</label><br>";var r='<div class="game_header">    <h2>NEW CAMPAIGN TRAIL</h2>    </div>    <div class="inner_window_question">        <div class="inner_inner_window">        <h3>'+i.questions_json[i.question_number].fields.description+'</h3>            <div id="question_form">                <form name="question">'+t+'</form>            </div>        </div>        <p><button id="answer_select_button" class="answer_select_button">CONTINUE</button>        <button id="view_electoral_map">Latest Polls/Electoral Map</button></p>    </div>    <img id="candidate_pic" src="'+i.candidate_image_url+'">    <img id="running_mate_pic" src="'+i.running_mate_image_url+'">    <div class="inner_window_sign_display">        <div id="progress_bar">\t    <h3>Question '+(i.question_number+1)+" of "+i.global_parameter_json[0].fields.question_count+'</h3>        </div>        <div id="campaign_sign">        <p>'+i.candidate_last_name+"</p>        <p>"+i.running_mate_last_name+"</p>        </div>    </div>";$("#game_window").html(r)};                                    
+                        tempFuncO(e)
                     }
                     histFunction()
                 }(t, i, l, o, c)
