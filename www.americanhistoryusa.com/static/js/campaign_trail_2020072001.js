@@ -1458,7 +1458,7 @@ function divideElectoralVotesProp(e, t) {
         nArray.sort((a, b) => b.value - a.value);
 
         // updates the total popular votes
-        total_v += campaignTrail_temp.states_json[s].fields.popular_votes;
+        //total_v += campaignTrail_temp.states_json[s].fields.popular_votes;
         }
         
         // Use Array.prototype.filter() method to filter e.candidate_json
@@ -1491,10 +1491,14 @@ function divideElectoralVotesProp(e, t) {
                 }
                 
                 candidate.popvs += candidateResult.votes
+                total_v += candidateResult.votes
             })
 
-            candidate.pvp = candidate.popvs / total_v
-            candidate.popvs = 0
+            
+          })
+          filteredCandidates.forEach(candidate => {
+              candidate.pvp = candidate.popvs / total_v
+              candidate.popvs = 0
           })
         
         // Use Array.prototype.sort() method to sort filteredCandidates in descending order of pvp
