@@ -179,12 +179,12 @@ if (campaignTrail_temp.election_id == 9) {
         bushwon=false;
         if(campaignTrail_temp.final_overall_results[0].candidate==77)
         {
-        bushwon==true
+        bushwon=true
         }    
         fLmargin = campaignTrail_temp.final_state_results[8].result[0].percent - campaignTrail_temp.final_state_results[8].result[1].percent;
         if (playerID==77)
         {
-        isBush==true   
+        isBush=true   
         }    
         if (campaignTrail_temp.final_overall_results[0].electoral_votes < 270) 
         {
