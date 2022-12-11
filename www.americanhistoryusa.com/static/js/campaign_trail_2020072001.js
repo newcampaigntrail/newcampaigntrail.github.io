@@ -166,7 +166,6 @@ achList = {
     ]
 }
 
-if (campaignTrail_temp.election_id == 9) {
     floridaclose = function() {
         orderID = campaignTrail_temp.final_overall_results[0].candidate, campaignTrail_temp.final_overall_results[1].candidate, campaignTrail_temp.final_overall_results[2].candidate;
         playerlost = true;
@@ -179,12 +178,12 @@ if (campaignTrail_temp.election_id == 9) {
         bushwon=false;
         if(campaignTrail_temp.final_overall_results[0].candidate==77)
         {
-        bushwon==true
+        bushwon=true
         }    
         fLmargin = campaignTrail_temp.final_state_results[8].result[0].percent - campaignTrail_temp.final_state_results[8].result[1].percent;
         if (playerID==77)
         {
-        isBush==true   
+        isBush=true   
         }    
         if (campaignTrail_temp.final_overall_results[0].electoral_votes < 270) 
         {
@@ -218,9 +217,6 @@ if (campaignTrail_temp.election_id == 9) {
         }
         return false
     }
-} else {
-    floridaclose = function() {return false}
-}
 
 // ~~Muffin~~ Achievement Button
 
@@ -2161,9 +2157,12 @@ function divideElectoralVotesProp(e, t) {
 
                  // ### 2000 ###
                 // Art Imitates Life - Get the special ending for this election based on real life occurances.
-                if (!modded && !run.achievements["florida2000"] && floridaclose() ) {
-                    unlockAchievement(among, "florida2000", "", "<b>Art Imitates Life</b>")
-                } else
+                if (campaignTrail_temp.election_id == 9) {
+                    if (!modded && !run.achievements["florida2000"] && floridaclose() ) {
+                        unlockAchievement(among, "florida2000", "", "<b>Art Imitates Life</b>")
+                    }
+                }
+                 else
                 // Naider's Raiders - Win 5% of the popular vote as Ralph Rader (very easy mode allowed).
                 if (!modded && !run.achievements["raiders"] && e.election_id == 9 && e.candidate_last_name == "Nader" && e.difficulty_level_multiplier <= 1.33 && e.final_overall_results[n].popular_votes >= 5300000) {
                     unlockAchievement(among, "raiders", "", "<b>Naider's Raiders</b>")
