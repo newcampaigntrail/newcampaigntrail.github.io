@@ -2120,7 +2120,7 @@ function divideElectoralVotesProp(e, t) {
                 // ## 2020 ##
 
                 // The Dark Brandon Rises - Achieve 406 electoral votes or higher with Joe Biden in the 2020 scenario.
-                if (!modded && !run.achievements["ridingBiden"] && e.candidate_last_name == "Biden" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 405) {
+                if (!modded&&  !run.achievements["ridingBiden"] && e.candidate_last_name == "Biden" && e.election_id == 21 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_overall_results[n].electoral_votes > 405) {
                     unlockAchievement(among, "ridingBiden", "../static/achievementicons/darkbrandon.png", "<b>The Dark Brandon Rises</b>")
                 } else
                 // MAGA... Again - Achieve 322 electoral votes or higher with Donald Trump in the 2020 scenario.
@@ -2173,13 +2173,6 @@ function divideElectoralVotesProp(e, t) {
                 } else
 
                  // ### 2000 ###
-                // Art Imitates Life - Get the special ending for this election based on real life occurances.
-                if (campaignTrail_temp.election_id == 9) {
-                    if (!modded && !run.achievements["florida2000"] && floridaclose() ) {
-                        unlockAchievement(among, "florida2000", "", "<b>Art Imitates Life</b>")
-                    }
-                }
-                 else
                 // Naider's Raiders - Win 5% of the popular vote as Ralph Rader (very easy mode allowed).
                 if (!modded && !run.achievements["raiders"] && e.election_id == 9 && e.candidate_last_name == "Nader" && e.difficulty_level_multiplier <= 1.33 && e.final_overall_results[n].popular_votes >= 5300000) {
                     unlockAchievement(among, "raiders", "", "<b>Naider's Raiders</b>")
@@ -2191,6 +2184,12 @@ function divideElectoralVotesProp(e, t) {
                 // Death Swap - Win as Al Gore while losing the popular vote.
                 if (!modded && !run.achievements["swap"] && e.election_id == 9 && e.candidate_last_name == "Gore" && e.difficulty_level_multiplier <= 0.97 && e.final_outcome == "win" && e.final_overall_results[0].popular_votes < e.final_overall_results[1].popular_votes) {
                     unlockAchievement(among, "swap", "", "<b>I'm My Own Master Now</b>")
+                } else
+                                // Art Imitates Life - Get the special ending for this election based on real life occurances.
+                if (campaignTrail_temp.election_id == 9) {
+                if (!modded && !run.achievements["florida2000"] && floridaclose() ) {
+                        unlockAchievement(among, "florida2000", "", "<b>Art Imitates Life</b>")
+                    }
                 } else
 
                 // ### 1988 ###
