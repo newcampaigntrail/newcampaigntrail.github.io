@@ -497,22 +497,160 @@ e.answers_json = [
     }
 ]
 
-campaignTrail_temp.candidate_image_url = 'https://cdn.discordapp.com/attachments/810034515334004766/1053526967376420904/worker_party.png';
-campaignTrail_temp.running_mate_image_url = 'https://cdn.discordapp.com/attachments/810034515334004766/1053526966885679164/kim_jong_un.png';
-campaignTrail_temp.candidate_last_name = 'Front';
-campaignTrail_temp.running_mate_last_name = 'Kim Jong-un';
+e.state_issue_score_json=[
+    {
+        "model":"campaign_trail.state_issue_score",
+        "pk":3000,
+        "fields": {
+            "state":1000,
+            "issue":100,
+            "state_issue_score": 1,
+            "weight":1
+        }
+    },
+    {
+        "model":"campaign_trail.state_issue_score",
+        "pk":3001,
+        "fields": {
+            "state":1001,
+            "issue":100,
+            "state_issue_score": 1,
+            "weight":1
+        }
+    },
+    {
+        "model":"campaign_trail.state_issue_score",
+        "pk":3002,
+        "fields": {
+            "state":1002,
+            "issue":100,
+            "state_issue_score": 1,
+            "weight":1
+        }
+    },
+    {
+        "model":"campaign_trail.state_issue_score",
+        "pk":3003,
+        "fields": {
+            "state":1003,
+            "issue":100,
+            "state_issue_score": 1,
+            "weight":1
+        }
+    }
+]
+
+e.issues_json = [
+    {
+        "model": "campaign_trail.issue",
+        "pk": 100,
+        "fields": {
+        "name": "Kim Jong-un",
+        "description": "'",
+        "stance_1": "Unambiguously Despises",
+        "stance_desc_1": "'",
+        "stance_2": "Hates",
+        "stance_desc_2": "'",
+        "stance_3": "Dislikes",
+        "stance_desc_3": "'",
+        "stance_4": "Apathetic",
+        "stance_desc_4": "'",
+        "stance_5": "Likes",
+        "stance_desc_5": "'",
+        "stance_6": "Loves",
+        "stance_desc_6": "'",
+        "stance_7": "Enthusiastically Adores",
+        "stance_desc_7": "'",
+        "election": 20
+        }
+    }
+]
+
+e.candidate_issue_score_json = [
+    {
+        "model": "campaign_trail.candidate_issue_score",
+        "pk": 1000,
+        "fields": {
+          "candidate": 200,
+          "issue": 100,
+          "issue_score": 1
+        }
+    },
+    {
+        "model": "campaign_trail.candidate_issue_score",
+        "pk": 1000,
+        "fields": {
+          "candidate": 201,
+          "issue": 100,
+          "issue_score": 0
+        }
+    }
+]
+e.running_mate_issue_score_json = [
+    {
+        "model": "campaign_trail.candidate_issue_score",
+        "pk": 1000,
+        "fields": {
+          "candidate": 202,
+          "issue": 100,
+          "issue_score": 1
+        }
+    }
+]
+
+e.candidate_image_url = 'https://cdn.discordapp.com/attachments/810034515334004766/1053526967376420904/worker_party.png';
+e.running_mate_image_url = 'https://cdn.discordapp.com/attachments/810034515334004766/1053526966885679164/kim_jong_un.png';
+e.candidate_last_name = 'Front';
+e.running_mate_last_name = 'Kim Jong-un';
+e.running_mate_state_id='1000'
 
 e.cyoa = true
 
+e.noCounter = 0
+
 cyoAdventure = function(a) {
     answer = e.player_answers[e.player_answers.length - 1]
+    
     if (answer == 5001) {
-        e.questions_json.push(e.questions_json[0])
-        e.question_number = 0
+        e.question_number = -1
+        e.noCounter += 1
     } else {
         e.candidate_state_multiplier_json = JSON.parse(secret_statemult_stash)
         e.question_number = 99
     }
+    switch(e.noCounter) {
+        case 5:
+            e.answer_feedback_json[1].fields.answer_feedback = "You know what? Fuck you, Kim. We can do this without you."
+            break
+        case 6:
+            e.running_mate_last_name = "Kim Yo Jong"
+            e.running_mate_image_url = "https://cdn.discordapp.com/attachments/810034515334004766/1053577476082782369/kim_yo_jong.png"
+            e.answer_feedback_json[1].fields.answer_feedback = "You too?!"
+            e.answer_feedback_json[0].fields.answer_feedback = "A truly glorious day for the Party! May the Revolution live on in your image, our new Glorious Leader!"
+            e.ending_flag = "yo"
+            break
+        case 7:
+            e.answer_feedback_json[1].fields.answer_feedback = "..."
+            break
+        case 8:
+            e.answer_feedback_json[1].fields.answer_feedback = "Sometimes you have to do things <em>yourself</em>."
+            break
+        case 9:
+            e.running_mate_image_url = "https://cdn.discordapp.com/attachments/810034515334004766/1053579302769270814/kim_il-sung.png"
+            e.running_mate_last_name = "<font color='#e58585'>Kim</font> <font color='#ffffff'>Il</font>-<font color='#85a6e5'>sung</font>"
+            e.election_json[0].fields.advisor_url = "https://cdn.discordapp.com/attachments/810034515334004766/1053579302769270814/kim_il-sung.png"
+            e.answer_feedback_json[0].fields.answer_feedback = "I resurrected myself so that True Korea might live on. And so, it will."
+            e.answers_json.pop() // remove no answer
+            e.answers_json[0].fields.description = "<font color='#a54d4d'><em>Yes!</em></font>"
+
+            document.getElementById("campaigntrailmusic").src="https://cdn.discordapp.com/attachments/810034515334004766/1053581309903114332/dripPotato.mp3"
+            document.getElementById("campaigntrailmusic").play() // play the funni music
+            e.noCounter += 1
+
+            e.ending_flag = "sung"
+
+            break
+    }    
 }
 
 e.answer_feedback_json = []
@@ -535,25 +673,38 @@ for (let _i = 0; _i < e.answers_json.length; _i++) {
 // I'm lazy and not making a dedicated ending code section
 e.multiple_endings= true
 endingPicker = function(out, totv, aa, quickstats) {
+    if (document.getElementById("campaigntrailmusic"))
+        document.getElementById("campaigntrailmusic").remove()
     if (out=="loss") {
         window.setInterval(function() {
             if (document.getElementsByClassName("person_image")[0]) {
-                document.getElementsByClassName("person_image")[0].src = "https://cdn.discordapp.com/attachments/810034515334004766/1053526966885679164/kim_jong_un.png"
+                document.getElementsByClassName("person_image")[0].src = e.running_mate_image_url
             }
         }, 100)
         return "<h2>Apologies</h2><p>A typographical error has led to your review panel showing unaffiliated candidates winning the election. This information is false and will be corrected as soon as possible.</p>"
     }
-    if (quickstats < 687) {
+    
+    if (quickstats[0] < 687) {
         return "<h2>Shock and Horror!</h2><p>Somehow, through some god forsaken ritual, an opposition candidate has won seats. This shouldn't be possible, and the entire DPRK is in uproar over how this could've been possible! Is this a False Korean deception? God knows, but one thing is for sure: this will <b>change the future</b>.</p>"
     }
-    if (!document.getElementById("audioNK")) {
+    if (e.ending_flag == "yo") {
+        songSrc = "https://ia801907.us.archive.org/16/items/North-Korean-Music-Compilation/%E5%84%BF%E7%AB%A5%E7%89%87%E9%9F%B3%E4%B9%90/CLD00404%20%E4%B8%80%E7%89%87%E4%B8%B9%E5%BF%83%E6%B0%B8%E4%B8%8D%E5%8F%98.mp3"
+        endingText = "<h2>A Glorious Turnabout</h2><p>Nobody expected Jong-un to be replaced this soon after his ascension... but the evidence of his suicide by gunshot to the back of the head is undeniable.</p><p>The world is in awe as True Korea not only unanimously acclaims you as its next leader, but as the first female Supreme Leader in the history of the DPRK takes the reins. Celebrate well, because now you must work to continue the legacy of Supreme Leaders past. Nuclear weapons and more must be built to turn our glorious nation into the vanguard against imperialism.</p><p>Americans tremble, Koreans cheer. Your future is clear.</p>"
+    } else if (e.ending_flag == "sung") {
+        endingText = "<h2>A Return To Tradition</h2><p>Some question how this happened. Some question why, but there is something that nobody can question:</p><p><b>I am back</b></p><p>My glorious revival will go alongside my glorious victory to cement me in the history books as the greatest leader in Korean... no... <b>world</b> history.</p><p>The revolution marches forth and I can now sieze my own path! The American imperialists are sure to be elimiated along with the fake Koreans. The future is my story, it is merely up to me to write it.</p>"
+        songSrc = "https://ia601907.us.archive.org/16/items/North-Korean-Music-Compilation/%E5%84%BF%E7%AB%A5%E7%89%87%E9%9F%B3%E4%B9%90/CLD00407%20%E6%B5%B7%E7%9B%97%E5%B2%9B%E7%9A%84%E6%9C%AB%E6%97%A5.mp3"
+    } else {
+        songSrc = "https://ia801907.us.archive.org/16/items/North-Korean-Music-Compilation/%E5%84%BF%E7%AB%A5%E7%89%87%E9%9F%B3%E4%B9%90/CLD00402%20%E7%BB%A7%E6%89%BF%E7%88%B1%E5%9B%BD%E6%84%8F%E6%97%A8.mp3"
+        endingText = "<h2>The People Rejoice</h2><p>The world is in awe of the might of North Korea as you effortlessly have swept the election. Despite fierce Western subversion, the people have once more stood firm and fought for our glorious nation!</p><p>Some call your victory inevitable, but you know that it was earned through blood, sweat, and tears. No leader of any nation has won such a victory as this, and you should be proud of what you have accomplished on this glorious and fateful day.</p><p>Nobody had any doubts before, but winning unanimously clearly shows the mass approval for the Kim Government. Celebrate this occasion with your family and close advisors, as you have to go straight back to the development of nuclear weapons. The glorious revolution continues well into the 21st century, and we are still on track to fight America off the Asian continent for good.</p><p>Godbless our glorious leader</p>"
+    }
+    if (!document.getElementById("audioNK") && songSrc) {
         audioTg = document.createElement("audio")
         audioTg.style = "display:none"
-        audioTg.src = "https://ia801907.us.archive.org/16/items/North-Korean-Music-Compilation/%E5%84%BF%E7%AB%A5%E7%89%87%E9%9F%B3%E4%B9%90/CLD00402%20%E7%BB%A7%E6%89%BF%E7%88%B1%E5%9B%BD%E6%84%8F%E6%97%A8.mp3"
+        audioTg.src = songSrc
         audioTg.id = "audioNK"
         audioTg.loop="true"
         document.body.appendChild(audioTg)
         document.getElementById("audioNK").play()
     }
-    return "<h2>The People Rejoice</h2><p>The world is in awe of the might of North Korea as you effortlessly have swept the election. Despite fierce Western subversion, the people have once more stood firm and fought for our glorious nation!</p><p>Some call your victory inevitable, but you know that it was earned through blood, sweat, and tears. No leader of any nation has won such a victory as this, and you should be proud of what you have accomplished on this glorious and fateful day.</p><p>Nobody had any doubts before, but winning unanimously clearly shows the mass approval for the Kim Government. Celebrate this occasion with your family and close advisors, as you have to go straight back to the development of nuclear weapons. The glorious revolution continues well into the 21st century, and we are still on track to fight America off the Asian continent for good.</p><p>Godbless our glorious leader</p>"
+    return endingText
 }
