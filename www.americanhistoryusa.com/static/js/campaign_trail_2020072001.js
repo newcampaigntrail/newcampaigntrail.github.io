@@ -146,11 +146,17 @@ achList = {
         "</table><br><b><em>1948</em></b><br><table>"
     ],
     // Mods
+    //2019NK
+    "trueKorea": [
+        "Potato P.R.I.D.E",
+        "Get the true ending to 2019NK.",
+        "</table><br><h2>Mods</h2><br><b><em>2019NK</em></b><br><table>"
+    ],
     //2008
     "peoplesvictory": [
         "The People's President",
         "Decry the folly of capitalism as John McCain, and still win.(All difficulties allowed)",
-        "</table><br><h2>Mods</h2><br><b><em>2008</em></b><br><table>"
+        "</table><br><b><em>2008</em></b><br><table>"
     ],
     //1936c
     "fixyourmod": [
@@ -2224,10 +2230,17 @@ function divideElectoralVotesProp(e, t) {
                 } else
 
                 // ###### MODS ######
-                // ### 2008 ###
 
+                // ### 2019NK ###
+                // Potato P.R.I.D.E - Get the true ending to 2019NK.
+                if (!run.achievements["trueKorea"] && e.running_mate_last_name
+                =="<font color='#e58585'>Kim</font> <font color='#ffffff'>Il</font>-<font color='#85a6e5'>sung</font>" && e.final_outcome=="win" && e.election_id==20) {
+                    unlockAchievement(among, "trueKorea", "", "<b>Potato P.R.I.D.E</b>")
+                } else
+
+                // ### 2008 ###
                 // The People's President - Win as Comrade McCain!
-                if (!run.achievements["peoplesvictory"] && e.candidate_last_name == "McCain" && e.final_outcome=="win" && e.player_answers[8] == 52632 && e.election_id==20) {
+                if (!run.achievements["peoplesvictory"] && e.candidate_last_name == "McCain"  && e.final_outcome=="win" && e.final_outcome=="win" && e.player_answers[8] == 52632 && e.election_id==20) {
                     unlockAchievement(among, "peoplesvictory", "", "<b>The People's President</b>")
                 } else
 
