@@ -368,7 +368,8 @@ function openInfoMenu() {
     <div style='text-align:left'><p>To fix this error, please clear your cache. It should work after that is done.</div>
     <div style='text-align:left'><p>Additionally, a primaries feature for TNCT mods have been added. It is quite complicated, so if you wish to make a mod with it, please join our Discord server for help.</div>
     <div style='text-align:left'><p>Further reading has been added. In order for it to work, follow this guide:</div>
-    <div style='text-align:left'><p>https://www.reddit.com/r/thecampaigntrail/comments/ziartb/further_reading_has_been_added/</div>`
+    <div style='text-align:left'><p>https://www.reddit.com/r/thecampaigntrail/comments/ziartb/further_reading_has_been_added/</div>
+    <div style='text-align:left'><b>Note: multiple achievements cannot be received at once.</b>`
     
 	$("#infoBox").html(`
     <div class="inner_window_front" style="padding:0px"><b><h1>Welcome to The New Campaign Trail!</h1></b></div>
