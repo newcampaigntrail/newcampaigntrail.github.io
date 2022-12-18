@@ -662,7 +662,7 @@ var rgb2hsl = function(color) {
     if (max == min) {
         h = s = 0; // achromatic
     } else {
-        var d = max - min;
+        let d = max - min;
         s = (l > 0.5 ? d / (2 - max - min) : d / (max + min));
         switch (max) {
             case r:
@@ -925,6 +925,115 @@ function divideElectoralVotesProp(e, t) {
 }! function() {
     var e = campaignTrail_temp;
 
+    function electionNight() {
+        ! function() {
+            for (var t = u(), i = "", a = 0; a < t.length; a++) i += '            <li><span style="color:' + t[a].color + "; background-color: " + t[a].color + '">--</span> ' + t[a].last_name + ":  0</li>";
+            var s = S(e.election_id),
+                n = e.election_json[s].fields.winning_electoral_vote_number;
+            $("#game_window").html('        <div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div id="main_content_area">            <div id="map_container"></div>            <div id="menu_container">                <div id="overall_result_container">                    <div id="overall_result">                        <h3>ELECTORAL VOTES</h3>                        <ul>' + i + "</ul>                        <p>0% complete</br>" + n + ' to win</p>                    </div>                </div>                <div id="state_result_container">                    <div id="state_result">                        <h3>STATE RESULTS</h3>                        <p>Click on a state to view detailed results (once returns for that state arrive).</p>                    </div>                </div>            </div>        </div>        <div id="map_footer">        <button id="final_result_button">Go to Final Results</button>        </div>        <div class="overlay" id="election_night_overlay"></div>        <div class="overlay_window" id="election_night_window">            <div class="overlay_window_content" id="election_night_content">            <h3>Advisor Feedback</h3>            <img src="' + e.election_json[s].fields.advisor_url + '" width="208" height="128"/>            <p>Election night has arrived. Settle in and wait for the returns, however                 long it may take. Best of luck!</p>            </div>            <div class="overlay_buttons" id="election_night_buttons">            <button id="ok_button">OK</button><br>            </div>        </div>');
+            var lTemp = function() {
+                for (var t = {}, i = 0; i < e.states_json.length; i++) t[e.states_json[i].fields.abbr] = {
+                    fill: "#C9C9C9"
+                };
+                return {
+                    stateStyles: {
+                        fill: "#EAFDFF"
+                    },
+                    stateHoverStyles: {
+                        fill: "#EAFDFF"
+                    },
+                    stateSpecificStyles: t,
+                    stateSpecificHoverStyles: t
+                }
+            }();
+            $("#map_container").usmap(lTemp), $("#ok_button").click(function() {
+                $("#election_night_overlay").remove(), $("#election_night_window").remove()
+            }), $("#final_result_button").click(function() {
+                clearTimeout(results_timeout), $("#map_footer").html("<i>Processing Results, wait one moment...</i>");
+                //HELPFUL CODE HERE
+                //campaignTrail_temp.question_number = 0
+                //ee = A(return_type=2)
+                //o(ee)
+                v(500);
+                m()
+            })
+        }();
+        e.final_overall_results = [];
+        for (var t = 0; t < e.final_state_results[0].result.length; t++) e.final_overall_results.push({
+            candidate: e.final_state_results[0].result[t].candidate,
+            electoral_votes: 0,
+            popular_votes: 0
+        });
+        ! function() {
+            for (var t = 0; t < e.final_state_results.length; t++) {
+                var i = R(e.final_state_results[t].state),
+                    a = c(e.final_state_results[t].result, e.states_json[i].fields.poll_closing_time);
+                e.final_state_results[t].result_time = a
+            }
+        }(), $("#ok_button").click(function() {
+            results_timeout = setTimeout(function() {
+                ! function t(i, a) {
+                    var s = [0, 0];
+                    for (var n = 0; n < e.final_overall_results.length; n++) e.final_overall_results[n].electoral_votes > s[0] && (s[0] = e.final_overall_results[n].electoral_votes);
+                    total_votes = 0
+                    for (iterator = 0; iterator < e.final_overall_results.length; iterator++) {
+                        total_votes += e.final_overall_results[iterator].popular_votes
+                    }
+                    pop_vs = []
+                    for (iterator = 0; iterator < e.final_overall_results.length; iterator++) {
+                        if (e.final_overall_results[iterator].popular_votes / total_votes > 0)
+                            pop_vs.push(e.final_overall_results[iterator].popular_votes / total_votes)
+                        else {
+                            pop_vs.push(0)
+                        }
+                    }
+                    var a = v(i);
+                    var l = S(e.election_id);
+                    var o = e.election_json[l].fields.winning_electoral_vote_number;
+                    var _ = u();
+                    var r = "";
+                    for (var n = 0; n < _.length; n++) {
+                        for (let d = 0; d < e.final_overall_results.length; d++)
+                            if (e.final_overall_results[d].candidate == _[n].candidate) {
+                                var c = e.final_overall_results[d].electoral_votes;
+                                var popvthing = (pop_vs[d] * 100).toFixed(1)
+                            }
+                        r += '            <span style="color:' + _[n].color + "; background-color: " + _[n].color + '">--</span> <b>' + _[n].last_name + "</b> -  " + c + " / " + popvthing + "%<br>"
+                    }
+                    var p = f(i);
+                    var h = Math.floor(i / 480 * 100);
+                    var g = $("#state_result_container").html();
+                    $("#game_window").html("");
+                    $("#game_window").html('        <div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div id="main_content_area">            <div id="map_container"></div>            <div id="menu_container">                <div id="overall_result_container">                    <div id="overall_result">                        <h3>ELECTION TALLY</h3>                        <ul>' + r + "</ul>                        <p>" + h + "% complete</br>" + o + ' to win</p>                    </div>                </div>                <div id="state_result_container">' + g + '</div>            </div>        </div>        <div id="map_footer">        <button id="final_result_button">Go to Final Results</button>        </div>');
+                    $("#map_container").usmap(p);
+                    $("#final_result_button").click(function() {
+                        clearTimeout(results_timeout), $("#map_footer").html("<i>Processing Results, wait one moment...</i>");
+                        v(500);
+                        m()
+                    });
+                    for (var n = 0; n < e.final_overall_results.length; n++) e.final_overall_results[n].electoral_votes > s[1] && (s[1] = e.final_overall_results[n].electoral_votes);
+                    if (s[0] < o && s[1] >= o) {
+                        if (e.final_overall_results[0].candidate == e.candidate_id) var b = "Congratulations! You won this year's election! Click OK to view the                     rest of the returns, or skip straight to the final results. We hope                     you have a nice victory speech prepared for your supporters.";
+                        else if (e.final_overall_results[0].candidate != e.candidate_id) var b = "Sorry. You have lost the election this time. Click OK to view the                     rest of the returns, or skip straight to the final results. We hope                     you have a nice concession speech prepared.";
+                        $("#game_window").append('            <div class="overlay" id="election_night_overlay"></div>            <div class="overlay_window" id="election_night_window">                <div class="overlay_window_content" id="election_night_content">                <h3>Advisor Feedback</h3>                <img src="' + e.election_json[l].fields.advisor_url + '" width="208" height="128"/><p>' + b + '</p></div>                <div class="overlay_buttons" id="winner_buttons">                <button id="ok_button">OK</button><br>                <button id="overlay_result_button">Go to Final Results</button>                </div>            </div>'), $("#ok_button").click(function() {
+                            $("#election_night_overlay").remove(), $("#election_night_window").remove(), results_timeout = setTimeout(function() {
+                                t(i, a)
+                            }, 2e3)
+                        }), $("#overlay_result_button").click(function() {
+                            $("#election_night_overlay").remove(), $("#election_night_window").remove(), clearTimeout(results_timeout), $("#map_footer").html("<i>Processing Results, wait one moment...</i>");
+                            v(500);
+                            m()
+                        })
+                    } else i >= 480 || a >= e.states_json.length ? (h = 100, $("#overall_result").html("            <h3>ELECTION TALLY</h3>            <ul>" + r + "</ul>            <p>" + h + "% complete</br>" + o + " to win</p>")) : results_timeout = setTimeout(function() {
+                        t(i, a)
+                    }, 2e3);
+                    i += 10
+                }(0, 0)
+            }, 2e3)
+        })
+    }
+
+
     function t() {
         for (var t = -1, i = 0; i < e.candidate_json.length; i++)
             if (e.candidate_json[i].pk == candidate_id.value) {
@@ -1022,7 +1131,7 @@ function divideElectoralVotesProp(e, t) {
 
     function s(t, i, l) {
         for (var o = "", r = 0; r < e.difficulty_level_json.length; r++) "Normal" == e.difficulty_level_json[r].fields.name ? o += "<option value=" + e.difficulty_level_json[r].pk + " selected>" + e.difficulty_level_json[r].fields.name + "</option>" : o += "<option value=" + e.difficulty_level_json[r].pk + ">" + e.difficulty_level_json[r].fields.name + "</option>";
-        var d = '        <div class="game_header">        <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div class="inner_window_w_desc" id="inner_window_4">            <div id="game_options">            <form name="game_type_selection">            <p><h3>How would you like the electoral votes to be allocated?</h3>            <select name="game_type_id" id="game_type_id">                <option value=1>Default (Winner-Take-All)</option>                <option value=2>Proportional</option>            </select>            </p>            </form>            </div>            <div class="description_window_small"                 id="opponent_selection_description_window">            </div>            <div id="difficulty_level">            <form name="difficulty_level_selection">            <p><h3>Please choose your difficulty level:</h3>            <select name="difficulty_level_id" id="difficulty_level_id">' + o + '</select>            </p>            </form>            </div>        <p id="opponent_selection_id_button_p">        <button class="person_button" id="opponent_selection_id_button">Continue</button>        </p>        </div>';
+        let d = '        <div class="game_header">        <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div class="inner_window_w_desc" id="inner_window_4">            <div id="game_options">            <form name="game_type_selection">            <p><h3>How would you like the electoral votes to be allocated?</h3>            <select name="game_type_id" id="game_type_id">                <option value=1>Default (Winner-Take-All)</option>                <option value=2>Proportional</option>            </select>            </p>            </form>            </div>            <div class="description_window_small"                 id="opponent_selection_description_window">            </div>            <div id="difficulty_level">            <form name="difficulty_level_selection">            <p><h3>Please choose your difficulty level:</h3>            <select name="difficulty_level_id" id="difficulty_level_id">' + o + '</select>            </p>            </form>            </div>        <p id="opponent_selection_id_button_p">        <button class="person_button" id="opponent_selection_id_button">Continue</button>        </p>        </div>';
         $("#game_window").html(d), $("#game_type_id").ready(function() {
             a($("select[name=game_type_id]").val())
 
@@ -1031,7 +1140,7 @@ function divideElectoralVotesProp(e, t) {
         }), $("#opponent_selection_id_button").click(function() {
             $("#opponent_selection_id_button").replaceWith("<em>One moment...</em>");
             for (var a = [], o = [], r = 0; r < e.candidate_dropout_json.length; r++) e.candidate_dropout_json[r].fields.candidate == i && a.push(e.candidate_dropout_json[r].fields.affected_candidate);
-            var d = -1;
+            let d = -1;
             for (r = 0; r < e.opponents_default_json.length; r++)
                 if (e.opponents_default_json[r].election == t) {
                     d = r;
@@ -1062,7 +1171,7 @@ function divideElectoralVotesProp(e, t) {
                         var important_code = setInterval(function() {
                             $("#view_electoral_map").click(function() {
                                 var e = A(return_type = 2);
-                                _(e)
+                                _(e);
                             })
                             $("#answer_select_button").click(function() {
                                 var t = $("input:radio[name=game_answers]:checked").val();
@@ -1115,7 +1224,7 @@ function divideElectoralVotesProp(e, t) {
                         var important_code = setInterval(function() {
                             $("#view_electoral_map").click(function() {
                                 var e = A(return_type = 2);
-                                _(e)
+                                _(e);
                             })
                             $("#answer_select_button").click(function() {
                                 var t = $("input:radio[name=game_answers]:checked").val();
@@ -1141,7 +1250,7 @@ function divideElectoralVotesProp(e, t) {
                         var important_code = setInterval(function() {
                             $("#view_electoral_map").click(function() {
                                 var e = A(return_type = 2);
-                                _(e)
+                                _(e);
                             })
                             $("#answer_select_button").click(function() {
                                 var t = $("input:radio[name=game_answers]:checked").val();
@@ -1159,6 +1268,26 @@ function divideElectoralVotesProp(e, t) {
 
     function nextQuestion() {
         var t = A(2);
+        let f = function() {
+            if (!$("#main_content_area")[0]) {
+                return false
+            }
+            var i = S(e.election_id);
+            if (((e.player_answers.length - 1) % 2 != 0 && 1 == e.election_json[i].fields.has_visits)) {
+                return false
+            }
+            if (e.question_number == e.global_parameter_json[0].fields.question_count) {
+                return false
+            }
+            $("#map_container").remove()
+            $("#main_content_area").html('<div id="map_container"></div>            <div id="menu_container">                <div id="overall_result_container">                    <div id="overall_result">                        <h3>ESTIMATED SUPPORT</h3>                        <p>Click on a state to view more info.</p>                    </div>                </div>                <div id="state_result_container">                    <div id="state_info">                        <h3>STATE SUMMARY</h3>                        <p>Click/hover on a state to view more info.</p>                        <p>Precise results will be available on election night.</p>                    </div>                </div>            </div>')
+            $("#main_content_area")[0].style.display=""
+            let rr = A(returnType = 2)
+            rFuncRes = r(rr, 0);
+            $("#map_container").usmap(rFuncRes)
+            $("#main_content_area")[0].style.display="none"
+        }
+        setTimeout(f, 0)
         if (e.cyoa) {
             cyoAdventure(e.questions_json[e.question_number])
         }
@@ -1186,14 +1315,20 @@ function divideElectoralVotesProp(e, t) {
         if (e.corQuestion) e.corQuestion = false   
         else e.question_number++;
 
+        if (e.player_answers.length < e.question_number) {
+            while (e.player_answers.length != e.question_number) {
+                e.player_answers.push(null)
+            }
+        }
+
         if (e.question_number == e.global_parameter_json[0].fields.question_count) {
             if (e.primary) {
                 e.final_state_results = A(1)
-                d()
+                electionNight()
                 v(500)
                 m() 
             } else {
-                e.final_state_results = A(1), d();
+                e.final_state_results = A(1), electionNight();
             }
         } else if (e.question_number % 2 == 0) {
             var i = S(e.election_id);
@@ -1241,7 +1376,7 @@ function divideElectoralVotesProp(e, t) {
         e.final_overall_results = campaigntrail.overall_results
         e.final_state_results = campaigntrail.state_results
         e.difficulty_level_multiplier = campaigntrail.difficulty_multiplier
-        d()
+        electionNight()
     }
 
     function primaryFunction(execute, breaks) {
@@ -1374,7 +1509,7 @@ function divideElectoralVotesProp(e, t) {
                     var r = "";
                     var o = ""
                     for (var n = 0; n < _.length; n++) {
-                        for (var d = 0; d < e.final_overall_results.length; d++)
+                        for (let d = 0; d < e.final_overall_results.length; d++)
                             if (e.final_overall_results[d].candidate == _[n].candidate) {
                                 var c = e.final_overall_results[d].electoral_votes;
                                 var popvthing = (pop_vs[d] * 100).toFixed(1)
@@ -1416,19 +1551,66 @@ function divideElectoralVotesProp(e, t) {
         P(i, "order");
         var s = "";
         for (a = 0; a < i.length; a++) s += '<input type="radio" name="game_answers" class="game_answers"             id="game_answers[' + a.toString() + ']" value="' + e.answers_json[i[a].key].pk + '"/>\t\t    <label for="game_answers[' + a.toString() + ']">' + e.answers_json[i[a].key].fields.description + "</label><br>";
-        var l = '<div class="game_header">    <h2>NEW CAMPAIGN TRAIL</h2>    </div>    <div class="inner_window_question">        <div class="inner_inner_window">        <h3>' + e.questions_json[e.question_number].fields.description + '</h3>            <div id="question_form">                <form name="question">' + s + '</form>            </div>        </div>        <p><button id="answer_select_button" class="answer_select_button">CONTINUE</button>        <button id="view_electoral_map">Latest Polls/Electoral Map</button></p>    </div>    <img id="candidate_pic" src="' + e.candidate_image_url + '">    <img id="running_mate_pic" src="' + e.running_mate_image_url + '">    <div class="inner_window_sign_display">        <div id="progress_bar">\t    <h3>Question ' + (e.question_number + 1) + " of " + e.global_parameter_json[0].fields.question_count + '</h3>        </div>        <div id="campaign_sign">        <p>' + e.candidate_last_name + "</p>        <p>" + e.running_mate_last_name + "</p>        </div>    </div>";
-        $("#game_window").html(l), $("#answer_select_button").click(function() {
-            var t = $("input:radio[name=game_answers]:checked").val();
-            null == t ? C(e.election_id) : n(t)
-        }), $("#view_electoral_map").click(function() {
+        var l = '<img id="candidate_pic" src="' + e.candidate_image_url + '">    <img id="running_mate_pic" src="' + e.running_mate_image_url + '">    <div class="inner_window_sign_display">        <div id="progress_bar">\t    <h3>Question ' + (e.question_number + 1) + " of " + e.global_parameter_json[0].fields.question_count + '</h3>        </div>        <div id="campaign_sign">        <p>' + e.candidate_last_name + "</p>        <p>" + e.running_mate_last_name + "</p>        </div>    </div>";
+        let game_winArr = Array.from($("#game_window")[0].children)
+        z = '<div class="inner_inner_window">        <h3>' + e.questions_json[e.question_number].fields.description + '</h3>            <div id="question_form">                <form name="question">' + s + '</form>            </div>        </div>        <p><button id="answer_select_button" class="answer_select_button">CONTINUE</button>        <button id="view_electoral_map">Latest Polls/Electoral Map</button></p>'
+        for (i in game_winArr) {
+            if (game_winArr[i].getAttribute("id") != "main_content_area" && game_winArr[i].getAttribute("class") != "game_header" ) {
+                game_winArr[i].remove()
+            }
+        }
+        let game_window = $("#game_window")[0]
+        if ($("#main_content_area")[0])
+        $("#main_content_area")[0].style.display="none"
+
+        let inner_window_question = document.createElement("div")
+        inner_window_question.setAttribute("class", "inner_window_question")
+        inner_window_question.innerHTML = z
+        game_window.appendChild(inner_window_question)
+
+        let ports = document.createElement("g")
+        ports.innerHTML = l
+        game_window.appendChild(ports)
+
+        //$("#game_window").html(l)
+
+        $("#view_electoral_map").click(function() {
             _(t)
+        })
+        
+        $("#answer_select_button").click(function() {
+            var nullN = $("input:radio[name=game_answers]:checked").val();
+            null == nullN ? C(e.election_id) : n(nullN)
+            
+
+            
         })
     }
 
     function _(e) {
-        $("#game_window").html('        <div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div id="main_content_area">            <div id="map_container"></div>            <div id="menu_container">                <div id="overall_result_container">                    <div id="overall_result">                        <h3>ESTIMATED SUPPORT</h3>                        <p>Click on a state to view more info.</p>                    </div>                </div>                <div id="state_result_container">                    <div id="state_info">                        <h3>STATE SUMMARY</h3>                        <p>Click/hover on a state to view more info.</p>                        <p>Precise results will be available on election night.</p>                    </div>                </div>            </div>        </div>        <div id="map_footer">        <button id="resume_questions_button">Back to the game</button><button id="margin_switcher">Switch margin colouring gradient</button>        </div>');
-        var t = r(e, 0);
-        $("#map_container").usmap(t), $("#resume_questions_button").click(function() {
+        //startTime = performance.now();
+        if ($("#main_content_area")[0]) {
+            let n = Array.from($("#game_window")[0].children)
+            for (i in n) {
+                if (n[i].getAttribute("id") != "main_content_area" && n[i].getAttribute("class") != "game_header" ) {
+                    n[i].remove()
+                }
+            }
+            let game_window = $("#game_window")[0]
+            let footer_html = '<button id="resume_questions_button">Back to the game</button><button id="margin_switcher">Switch margin colouring gradient</button>'
+            ftH = document.createElement("div")
+            ftH.id = "map_footer"
+            ftH.innerHTML = footer_html
+            game_window.appendChild(ftH)
+            $("#main_content_area")[0].style.display=""
+        } else {
+            $("#game_window").html('        <div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div id="main_content_area">            <div id="map_container"></div>            <div id="menu_container">                <div id="overall_result_container">                    <div id="overall_result">                        <h3>ESTIMATED SUPPORT</h3>                        <p>Click on a state to view more info.</p>                    </div>                </div>                <div id="state_result_container">                    <div id="state_info">                        <h3>STATE SUMMARY</h3>                        <p>Click/hover on a state to view more info.</p>                        <p>Precise results will be available on election night.</p>                    </div>                </div>            </div>        </div>        <div id="map_footer">        <button id="resume_questions_button">Back to the game</button><button id="margin_switcher">Switch margin colouring gradient</button>        </div>');
+            var t = r(e, 0);
+            $("#map_container").usmap(t)
+        }
+        //endTime = performance.now();
+        //console.log("Map loading took " + (endTime - startTime) + " milliseconds.");
+        $("#resume_questions_button").click(function() {
             o(e)
         })
         $("#margin_switcher").click(function() {
@@ -1632,21 +1814,22 @@ function divideElectoralVotesProp(e, t) {
 
     function r(t, i) {
         for (var a = {}, s = 0; s < t.length; s++) {
+            let item = t[s]
             // Find the result with the highest percent
-            var maxResult = t[s].result.reduce((max, r) => (r.percent > max.percent ? r : max));
-            var maxPercent = maxResult.percent;
-            var winner = maxResult.candidate;
+            const maxResult = Math.max(...item.result.map(r => r.percent));
+            const winner = item.result.find(r => r.percent === maxResult).candidate;
             // Find the second highest percent
-            var secondMaxPercent = t[s].result.reduce((secondMax, r) => (r.percent > secondMax && r.candidate != winner ? r.percent : secondMax), 0);
+            const secondMaxPercent = Math.max(...item.result.filter(r => r.percent !== maxResult).map(r => r.percent));
             // Calculate the margin of victory
-            var margin = maxPercent - secondMaxPercent;
+            const margin = maxResult - secondMaxPercent;
             // Find the candidate object that matches the winner
-            var candidate = e.candidate_json.find(c => c.pk == winner);
+            const candidate = e.candidate_json.find(c => c.pk === winner);
             // Add the result to the map
-            a[t[s].abbr] = {
-              fill: r2h(_interpolateColor(h2r(campaignTrail_temp.margin_format), h2r(candidate.fields.color_hex), gradient(Math.log((margin + 1)) * 4.5, 0, 1)))
+
+            a[item.abbr] = {
+              fill: candidate ? r2h(_interpolateColor(h2r(campaignTrail_temp.margin_format), h2r(candidate.fields.color_hex), gradient(Math.log((margin + 1)) * 4.5, 0, 1))) : null
             };
-          }
+          }   
 
         var c = function(i, a) {
                 res = getLatestRes(t)
@@ -1710,115 +1893,7 @@ function divideElectoralVotesProp(e, t) {
         };
         return v
     }
-
-    function d() {
-        ! function() {
-            for (var t = u(), i = "", a = 0; a < t.length; a++) i += '            <li><span style="color:' + t[a].color + "; background-color: " + t[a].color + '">--</span> ' + t[a].last_name + ":  0</li>";
-            var s = S(e.election_id),
-                n = e.election_json[s].fields.winning_electoral_vote_number;
-            $("#game_window").html('        <div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div id="main_content_area">            <div id="map_container"></div>            <div id="menu_container">                <div id="overall_result_container">                    <div id="overall_result">                        <h3>ELECTORAL VOTES</h3>                        <ul>' + i + "</ul>                        <p>0% complete</br>" + n + ' to win</p>                    </div>                </div>                <div id="state_result_container">                    <div id="state_result">                        <h3>STATE RESULTS</h3>                        <p>Click on a state to view detailed results (once returns for that state arrive).</p>                    </div>                </div>            </div>        </div>        <div id="map_footer">        <button id="final_result_button">Go to Final Results</button>        </div>        <div class="overlay" id="election_night_overlay"></div>        <div class="overlay_window" id="election_night_window">            <div class="overlay_window_content" id="election_night_content">            <h3>Advisor Feedback</h3>            <img src="' + e.election_json[s].fields.advisor_url + '" width="208" height="128"/>            <p>Election night has arrived. Settle in and wait for the returns, however                 long it may take. Best of luck!</p>            </div>            <div class="overlay_buttons" id="election_night_buttons">            <button id="ok_button">OK</button><br>            </div>        </div>');
-            var lTemp = function() {
-                for (var t = {}, i = 0; i < e.states_json.length; i++) t[e.states_json[i].fields.abbr] = {
-                    fill: "#C9C9C9"
-                };
-                return {
-                    stateStyles: {
-                        fill: "#EAFDFF"
-                    },
-                    stateHoverStyles: {
-                        fill: "#EAFDFF"
-                    },
-                    stateSpecificStyles: t,
-                    stateSpecificHoverStyles: t
-                }
-            }();
-            $("#map_container").usmap(lTemp), $("#ok_button").click(function() {
-                $("#election_night_overlay").remove(), $("#election_night_window").remove()
-            }), $("#final_result_button").click(function() {
-                clearTimeout(results_timeout), $("#map_footer").html("<i>Processing Results, wait one moment...</i>");
-                //HELPFUL CODE HERE
-                //campaignTrail_temp.question_number = 0
-                //ee = A(return_type=2)
-                //o(ee)
-                v(500);
-                m()
-            })
-        }();
-        e.final_overall_results = [];
-        for (var t = 0; t < e.final_state_results[0].result.length; t++) e.final_overall_results.push({
-            candidate: e.final_state_results[0].result[t].candidate,
-            electoral_votes: 0,
-            popular_votes: 0
-        });
-        ! function() {
-            for (var t = 0; t < e.final_state_results.length; t++) {
-                var i = R(e.final_state_results[t].state),
-                    a = c(e.final_state_results[t].result, e.states_json[i].fields.poll_closing_time);
-                e.final_state_results[t].result_time = a
-            }
-        }(), $("#ok_button").click(function() {
-            results_timeout = setTimeout(function() {
-                ! function t(i, a) {
-                    var s = [0, 0];
-                    for (var n = 0; n < e.final_overall_results.length; n++) e.final_overall_results[n].electoral_votes > s[0] && (s[0] = e.final_overall_results[n].electoral_votes);
-                    total_votes = 0
-                    for (iterator = 0; iterator < e.final_overall_results.length; iterator++) {
-                        total_votes += e.final_overall_results[iterator].popular_votes
-                    }
-                    pop_vs = []
-                    for (iterator = 0; iterator < e.final_overall_results.length; iterator++) {
-                        if (e.final_overall_results[iterator].popular_votes / total_votes > 0)
-                            pop_vs.push(e.final_overall_results[iterator].popular_votes / total_votes)
-                        else {
-                            pop_vs.push(0)
-                        }
-                    }
-                    var a = v(i);
-                    var l = S(e.election_id);
-                    var o = e.election_json[l].fields.winning_electoral_vote_number;
-                    var _ = u();
-                    var r = "";
-                    for (var n = 0; n < _.length; n++) {
-                        for (var d = 0; d < e.final_overall_results.length; d++)
-                            if (e.final_overall_results[d].candidate == _[n].candidate) {
-                                var c = e.final_overall_results[d].electoral_votes;
-                                var popvthing = (pop_vs[d] * 100).toFixed(1)
-                            }
-                        r += '            <span style="color:' + _[n].color + "; background-color: " + _[n].color + '">--</span> <b>' + _[n].last_name + "</b> -  " + c + " / " + popvthing + "%<br>"
-                    }
-                    var p = f(i);
-                    var h = Math.floor(i / 480 * 100);
-                    var g = $("#state_result_container").html();
-                    $("#game_window").html("");
-                    $("#game_window").html('        <div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div id="main_content_area">            <div id="map_container"></div>            <div id="menu_container">                <div id="overall_result_container">                    <div id="overall_result">                        <h3>ELECTION TALLY</h3>                        <ul>' + r + "</ul>                        <p>" + h + "% complete</br>" + o + ' to win</p>                    </div>                </div>                <div id="state_result_container">' + g + '</div>            </div>        </div>        <div id="map_footer">        <button id="final_result_button">Go to Final Results</button>        </div>');
-                    $("#map_container").usmap(p);
-                    $("#final_result_button").click(function() {
-                        clearTimeout(results_timeout), $("#map_footer").html("<i>Processing Results, wait one moment...</i>");
-                        v(500);
-                        m()
-                    });
-                    for (var n = 0; n < e.final_overall_results.length; n++) e.final_overall_results[n].electoral_votes > s[1] && (s[1] = e.final_overall_results[n].electoral_votes);
-                    if (s[0] < o && s[1] >= o) {
-                        if (e.final_overall_results[0].candidate == e.candidate_id) var b = "Congratulations! You won this year's election! Click OK to view the                     rest of the returns, or skip straight to the final results. We hope                     you have a nice victory speech prepared for your supporters.";
-                        else if (e.final_overall_results[0].candidate != e.candidate_id) var b = "Sorry. You have lost the election this time. Click OK to view the                     rest of the returns, or skip straight to the final results. We hope                     you have a nice concession speech prepared.";
-                        $("#game_window").append('            <div class="overlay" id="election_night_overlay"></div>            <div class="overlay_window" id="election_night_window">                <div class="overlay_window_content" id="election_night_content">                <h3>Advisor Feedback</h3>                <img src="' + e.election_json[l].fields.advisor_url + '" width="208" height="128"/><p>' + b + '</p></div>                <div class="overlay_buttons" id="winner_buttons">                <button id="ok_button">OK</button><br>                <button id="overlay_result_button">Go to Final Results</button>                </div>            </div>'), $("#ok_button").click(function() {
-                            $("#election_night_overlay").remove(), $("#election_night_window").remove(), results_timeout = setTimeout(function() {
-                                t(i, a)
-                            }, 2e3)
-                        }), $("#overlay_result_button").click(function() {
-                            $("#election_night_overlay").remove(), $("#election_night_window").remove(), clearTimeout(results_timeout), $("#map_footer").html("<i>Processing Results, wait one moment...</i>");
-                            v(500);
-                            m()
-                        })
-                    } else i >= 480 || a >= e.states_json.length ? (h = 100, $("#overall_result").html("            <h3>ELECTION TALLY</h3>            <ul>" + r + "</ul>            <p>" + h + "% complete</br>" + o + " to win</p>")) : results_timeout = setTimeout(function() {
-                        t(i, a)
-                    }, 2e3);
-                    i += 10
-                }(0, 0)
-            }, 2e3)
-        })
-    }
-
+    
     function c(e, t) {
         P(e, "votes"), e.reverse();
         var i = (e[0].votes - e[1].votes) / (e[0].votes + e[1].votes);
@@ -2008,7 +2083,7 @@ function divideElectoralVotesProp(e, t) {
                 winning_candidate_flg: 0 == r
             });
         _ = JSON.stringify(_);
-        var d = [];
+        let d = [];
         for (temp_visit_counter = {}, a = 0; a < e.player_visits.length; ++a) temp_visit_counter[e.player_visits[a]] || (temp_visit_counter[e.player_visits[a]] = 0), temp_visit_counter[e.player_visits[a]] += 1;
         for (a = 0; a < Object.keys(temp_visit_counter).length; a++) d.push({
             candidate_id: e.candidate_id,
@@ -2362,7 +2437,7 @@ function divideElectoralVotesProp(e, t) {
 
         for (_ = 0; _ < e.final_overall_results.length; _++) {
             i = E(e.final_overall_results[_].candidate);
-            var d = e.candidate_json[i].fields.color_hex;
+            let d = e.candidate_json[i].fields.color_hex;
             r += '            <tr><td style="text-align: left;">            <span style="background-color: ' + d + "; color: " + d + ';">----</span> ' + (f = e.candidate_json[i].fields.first_name + " " + e.candidate_json[i].fields.last_name) + "</td><td> " + e.final_overall_results[_].electoral_votes + " </td><td> " + M(e.final_overall_results[_].popular_votes) + " </td><td> " + (e.final_overall_results[_].popular_votes / o * 100).toFixed(1) + "% </td></tr>"
         }
         if ("None" != e.game_results_url) var c = '<h4>Final Results: <a target="_blank" href="' + e.game_results_url + '">Game Link</a> (use link to view this result on its own page)</h4>';
@@ -2605,37 +2680,54 @@ _ = '   <div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="ma
     }
 
     function A(t) {
-        var i = [];
-        i.push(e.candidate_id);
-        for (var a = 0; a < e.opponents_list.length; a++) i.push(e.opponents_list[a]);
-        var s = [];
-        for (a = 0; a < i.length; a++) {
-            for (var n = [], l = 0, o = 0, _ = 0, r = 0; r < e.player_answers.length; r++)
-                for (var d = 0; d < e.answer_score_global_json.length; d++)
-                    if (e.answer_score_global_json[d].fields.answer == e.player_answers[r] && e.answer_score_global_json[d].fields.candidate == e.candidate_id && e.answer_score_global_json[d].fields.affected_candidate == i[a]) {
-                        n.push(e.answer_score_global_json[d].fields.global_multiplier);
-                        break
-                    }
-            for (r = 0; r < n.length; r++) l += n[r];
-            if (o = i[a] == e.candidate_id && l < -.4 ? .6 : 1 + l, i[a] == e.candidate_id) var c = o * (1 + F() * e.global_parameter_json[0].fields.global_variance) * e.difficulty_level_multiplier;
-            else c = o * (1 + F() * e.global_parameter_json[0].fields.global_variance);
-            _ = 1 == isNaN(c) ? 1 : c, s.push({
-                candidate: i[a],
-                global_multiplier: _
-            })
-        }
-        var u = [];
-        for (a = 0; a < i.length; a++) {
-            var v = [];
-            for (r = 0; r < e.candidate_issue_score_json.length && (e.candidate_issue_score_json[r].fields.candidate != i[a] || (v.push({
-                    issue: e.candidate_issue_score_json[r].fields.issue,
-                    issue_score: e.candidate_issue_score_json[r].fields.issue_score
-                }), v.length != e.issues_json.length)); r++);
-            u.push({
-                candidate_id: i[a],
-                issue_scores: v
-            })
-        }
+        const i = [e.candidate_id, ...e.opponents_list];
+        let r;
+
+        const s = i.map((candidate) => {
+          const n = e.player_answers.reduce((acc, answer) => {
+            const score = e.answer_score_global_json.find(
+              (item) =>
+                item.fields.answer === answer &&
+                item.fields.candidate === e.candidate_id &&
+                item.fields.affected_candidate === candidate
+            );
+            if (score) {
+              acc.push(score.fields.global_multiplier);
+            }
+            return acc;
+          }, []);
+        
+          const l = n.reduce((acc, score) => acc + score, 0);
+          const o =
+            candidate === e.candidate_id && l < -0.4
+              ? 0.6
+              : 1 + l;
+          const c =
+            candidate === e.candidate_id
+              ? o * (1 + F() * e.global_parameter_json[0].fields.global_variance) * e.difficulty_level_multiplier
+              : o * (1 + F() * e.global_parameter_json[0].fields.global_variance);
+          const _ = isNaN(c) ? 1 : c;
+        
+          return {
+            candidate,
+            global_multiplier: _,
+          };
+        });
+        
+        const u = i.map((candidate) => {
+          const v = e.candidate_issue_score_json
+            .filter((item) => item.fields.candidate === candidate)
+            .map((item) => ({
+              issue: item.fields.issue,
+              issue_score: item.fields.issue_score,
+            }));
+        
+          return {
+            candidate_id: candidate,
+            issue_scores: v,
+          };
+        });
+        
         var f = [];
         for (a = 0; a < i.length; a++) {
             var m = [];
@@ -2890,7 +2982,7 @@ _ = '   <div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="ma
                 })
             }()
     }), $("#skip_to_final").click(function(t) {
-        e.final_state_results = A(1), d()
+        e.final_state_results = A(1), electionNight()
     })
 }();
 
