@@ -1268,26 +1268,7 @@ function divideElectoralVotesProp(e, t) {
 
     function nextQuestion() {
         var t = A(2);
-        let f = function() {
-            if (!$("#main_content_area")[0]) {
-                return false
-            }
-            var i = S(e.election_id);
-            if (((e.player_answers.length - 1) % 2 != 0 && 1 == e.election_json[i].fields.has_visits)) {
-                return false
-            }
-            if (e.question_number == e.global_parameter_json[0].fields.question_count) {
-                return false
-            }
-            $("#map_container").remove()
-            $("#main_content_area").html('<div id="map_container"></div>            <div id="menu_container">                <div id="overall_result_container">                    <div id="overall_result">                        <h3>ESTIMATED SUPPORT</h3>                        <p>Click on a state to view more info.</p>                    </div>                </div>                <div id="state_result_container">                    <div id="state_info">                        <h3>STATE SUMMARY</h3>                        <p>Click/hover on a state to view more info.</p>                        <p>Precise results will be available on election night.</p>                    </div>                </div>            </div>')
-            $("#main_content_area")[0].style.display=""
-            let rr = A(returnType = 2)
-            rFuncRes = r(rr, 0);
-            $("#map_container").usmap(rFuncRes)
-            $("#main_content_area")[0].style.display="none"
-        }
-        setTimeout(f, 0)
+
         if (e.cyoa) {
             cyoAdventure(e.questions_json[e.question_number])
         }
@@ -1312,6 +1293,31 @@ function divideElectoralVotesProp(e, t) {
                 return false
             }
         }
+
+        let f = function() { // preloads poll map
+            if (!$("#main_content_area")[0]) {
+                return false
+            }
+            var i = S(e.election_id);
+            if (((e.player_answers.length - 1) % 2 != 0 && 1 == e.election_json[i].fields.has_visits)) {
+                return false
+            }
+            if (e.question_number == e.global_parameter_json[0].fields.question_count) {
+                return false
+            }
+            if (e.primary_code && e.primary_code.map(f=>f.breakQ).includes(e.question_number)) {
+                return false
+            }
+            $("#map_container").remove()
+            $("#main_content_area").html('<div id="map_container"></div>            <div id="menu_container">                <div id="overall_result_container">                    <div id="overall_result">                        <h3>ESTIMATED SUPPORT</h3>                        <p>Click on a state to view more info.</p>                    </div>                </div>                <div id="state_result_container">                    <div id="state_info">                        <h3>STATE SUMMARY</h3>                        <p>Click/hover on a state to view more info.</p>                        <p>Precise results will be available on election night.</p>                    </div>                </div>            </div>')
+            $("#main_content_area")[0].style.display=""
+            let rr = A(returnType = 2)
+            rFuncRes = r(rr, 0);
+            $("#map_container").usmap(rFuncRes)
+            $("#main_content_area")[0].style.display="none"
+        }
+        setTimeout(f, 0) // starts new thread for poll map preloading
+
         if (e.corQuestion) e.corQuestion = false   
         else e.question_number++;
 
