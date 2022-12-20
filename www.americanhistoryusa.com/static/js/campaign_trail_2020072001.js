@@ -1302,6 +1302,7 @@ function divideElectoralVotesProp(e, t) {
             if (((e.player_answers.length - 1) % 2 != 0 && 1 == e.election_json[i].fields.has_visits)) {
                 return false
             }
+            let rr = null
             if (e.question_number == e.global_parameter_json[0].fields.question_count) {
                 return false
             }
@@ -1311,7 +1312,7 @@ function divideElectoralVotesProp(e, t) {
             $("#map_container").remove()
             $("#main_content_area").html('<div id="map_container"></div>            <div id="menu_container">                <div id="overall_result_container">                    <div id="overall_result">                        <h3>ESTIMATED SUPPORT</h3>                        <p>Click on a state to view more info.</p>                    </div>                </div>                <div id="state_result_container">                    <div id="state_info">                        <h3>STATE SUMMARY</h3>                        <p>Click/hover on a state to view more info.</p>                        <p>Precise results will be available on election night.</p>                    </div>                </div>            </div>')
             $("#main_content_area")[0].style.display=""
-            let rr = A(returnType = 2)
+            rr = rr == null ? A(returnType = 2) : rr
             rFuncRes = r(rr, 0);
             $("#map_container").usmap(rFuncRes)
             $("#main_content_area")[0].style.display="none"
@@ -1888,6 +1889,13 @@ function divideElectoralVotesProp(e, t) {
                     if (e.states_json[s].fields.abbr == a.name) {
                         var n = '                    <div class="overlay" id="visit_overlay"></div>    \t            <div class="overlay_window" id="visit_window">                    \t<div class="overlay_window_content" id="visit_content">                    \t<h3>Advisor Feedback</h3>                    \t<img src="' + e.election_json[u].fields.advisor_url + '" width="208" height="128"/>                    \t<p>You have chosen to visit ' + e.states_json[s].fields.name + ' -- is this correct?</p>                \t    </div>                    \t<div class="overlay_buttons" id="visit_buttons">                    \t<button id="confirm_visit_button">YES</button><br>                    \t<button id="no_visit_button">NO</button>                    \t</div>                \t</div>';
                         $("#game_window").append(n), $("#confirm_visit_button").click(function() {
+                            $("#map_container").remove()
+                            $("#main_content_area").html('<div id="map_container"></div>            <div id="menu_container">                <div id="overall_result_container">                    <div id="overall_result">                        <h3>ESTIMATED SUPPORT</h3>                        <p>Click on a state to view more info.</p>                    </div>                </div>                <div id="state_result_container">                    <div id="state_info">                        <h3>STATE SUMMARY</h3>                        <p>Click/hover on a state to view more info.</p>                        <p>Precise results will be available on election night.</p>                    </div>                </div>            </div>')
+                            $("#main_content_area")[0].style.display=""
+                            rr = A(returnType = 2)
+                            rFuncRes = r(rr, 0);
+                            $("#map_container").usmap(rFuncRes)
+                            $("#main_content_area")[0].style.display="none"
                             e.player_visits.push(e.states_json[s].pk), o(t)
                         }), $("#no_visit_button").click(function() {
                             $("#visit_overlay").remove(), $("#visit_window").remove()
