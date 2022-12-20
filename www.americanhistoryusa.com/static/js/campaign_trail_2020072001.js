@@ -20,6 +20,16 @@ function dHondtAllocation(votes, seats, thresh = 0.15) {
     return allocations
 }
 
+function specialFunction()
+{
+console.clear()
+
+for (let index = 0; index <= 3; index++) {
+console.log(benefitCheck(index))    
+}
+}
+
+
 var states = []
 var initIt=0
 window.setInterval(function(){campaignTrail_temp.candidate_json = campaignTrail_temp.candidate_json.filter(n => n)},200) // eye roll goes here -> modders are stupid
