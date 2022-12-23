@@ -1,0 +1,77 @@
+orderID = [aa[0].candidate, aa[1].candidate, aa[2].candidate];
+used=false
+        //out = "win", "loss", or "tie" for your candidate [24] == 8090
+        //totv = total votes in entire election
+        //aa = all final overall results data
+        //quickstats = relevant data on candidate performance (format: your candidate's electoral vote count, your candidate's popular vote share, your candidate's raw vote total)
+  if (quickstats[0] < 1) {
+        if (used != true) {
+            setInterval(function () {
+                used = true;
+                imgg = document.getElementsByClassName("person_image")[0];
+                if (imgg != null) {
+                    imgg.src = "https://i.imgur.com/ejc9OTI.jpg";
+                }
+            }, 100);
+        }
+         return "<h3>WHIGS WIN OUT, OLD KINDERHOOK TROUNCED!</h3><p>Nothing? Not a single electoral vote? How? You are pretty much doomed in the political landscape for failing this hard in such a winnable race. Might as well get packing before Harrison gets in and abolishes the presidency!</p>";
+  } else if (quickstats[0] >= 1 && quickstats[0]<148) {
+        if (used != true) {
+            setInterval(function () {
+                used = true;
+                imgg = document.getElementsByClassName("person_image")[0];
+                if (imgg != null) {
+                    imgg.src = "https://i.imgur.com/Xu3IxeI.jpg";
+                }
+            }, 100);
+        }
+         return "<h3>Sorry, you have lost the 1836 presidential election.</h3><p>Well, they did it. The Whigs' gambit worked. Harrison is officially the president. President Jackson is shocked that you lost such a winnable election, and tells you to not lose heart. Will you try again in four years, assuming Johnson doesn't have a go? Will you go back to New York politics? Only time will tell.</p>";
+  } else if (quickstats[0] >= 148 && quickstats[0]<151) {
+        if (used != true) {
+            setInterval(function () {
+                used = true;
+                imgg = document.getElementsByClassName("person_image")[0];
+                if (imgg != null) {
+                    imgg.src = "https://i.imgur.com/wCWf6TI.jpg";
+                }
+            }, 100);
+        }
+         return "<h3>MICHIGAN SAVES KINDERHOOK, WHIGS FURIOUS!</h3><p>The good news is that you’ve scraped by to a majority.</p><p>The bad news is that the election will now come down to the votes of to-be-state of Michigan; what some have feared. Henry Clay and the Whigs are about to tear congress apart if the Democrats even think about having your election certified. Whig supporters in Vermont are now rioting in the streets. It should not have came to this, but alas.</p>";
+  } else if (quickstats[0] >= 151 && quickstats[0]<171 && campaignTrail_temp.running_mate_last_name == "Johnson") {
+        if (used != true) {
+            setInterval(function () {
+                used = true;
+                imgg = document.getElementsByClassName("person_image")[0];
+                if (imgg != null) {
+                    imgg.src = "https://i.imgur.com/wCWf6TI.jpg";
+                }
+            }, 100);
+        }
+         return "<h3>Congratulations! You have won the 1836 Election!</h3><p>United the Democrats stood, divided the Whigs fell. Upon hearing the news, President Jackson invited you over for a celebratory dinner. Congress is firmly in Democrat hands, and you will surely be able to continue Jackson's legacy. Unfortunately, Johnson is not out of the woods yet, as the Virginia delegates voted against him over his slave affair. But the Senate is sure to vote him in, and you can bask in the glory of following your mentor's footsteps; just as John Adams did Washington.</p>";
+      } else if (quickstats[0] >= 151 && quickstats[0]<294) {
+        if (used != true) {
+            setInterval(function () {
+                used = true;
+                imgg = document.getElementsByClassName("person_image")[0];
+                if (imgg != null) {
+                    imgg.src = "https://i.imgur.com/wCWf6TI.jpg";
+                }
+            }, 100);
+        }
+         return "<h3>Congratulations! You have won the 1836 Election!</h3><p>United the Democrats stood, divided the Whigs fell. Upon hearing the news, President Jackson invited you over for a celebratory dinner. Congress is firmly in Democrat hands, and you will surely be able to continue Jackson's legacy. Bask in the glory of an election well won!</p>";
+  } else if (quickstats[0] >= 294) {
+        if (used != true) {
+            setInterval(function () {
+                used = true;
+                imgg = document.getElementsByClassName("person_image")[0];
+                if (imgg != null) {
+                    imgg.src = "https://i.imgur.com/EpDH3Wq.png";
+                }
+            }, 100);
+        }
+
+    return "<h3>Congratulations! You have won the 1836 Election!</h3><p>It's been so long </p><p> Since I last have seen my soul lost to this monster </p><p> To the Van behind the slaughter</p>"
+  } else {
+    return "<h3>Oops.</h3>Contact /u/ListMan38 and I’ll try to fix."
+  }
+
