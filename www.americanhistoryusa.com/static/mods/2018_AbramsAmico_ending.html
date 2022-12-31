@@ -1,0 +1,30 @@
+mov = 0
+if (out == 'win') {
+    mov = quickstats[1] - (aa[1].popular_votes / totv * 100)
+    if (mov > 0) {
+        return "<h3>Congratulations! You have won the 2018 Governor's election.</h3><p>After a hard campaign against Kemp, you were able to flip Georgia blue.</p><p>You’re already being talked up as a 2020 Vice-Presidential or even a Presidential candidate. For now though, be ready to move into the Governor's mansion and pursue your agenda for Georgia.</p>"
+    } else {
+        return "<h3>Sorry! You have lost the 2018 Governor's election.</h3><p>Despite your efforts, it seems like you couldn’t beat Kemp's advantage.</p><p>Kemp will continue to keep, and push for, conservative laws in place in Georgia. There are murmurs of you running for Senate in 2020 or for Governor again in 2022. For now though, you can focus on mobilizing Democrats in Georgia to flip the state in two years.</p>"
+    }
+} else if (out == 'loss') {
+    mov = (aa[0].popular_votes / totv * 100) - quickstats[1]
+    if (mov < 0) {
+        return "<h3>Congratulations! You have won the 2018 Governor's election.</h3><p>After a hard campaign against Kemp, you were able to flip Georgia blue.</p><p>You’re already being talked up as a 2020 Vice-Presidential or even a Presidential candidate. For now though, be ready to move into the Governor's mansion and pursue your agenda for Georgia.</p>"
+    } else {
+        return "<h3>Sorry! You have lost the 2018 Governor's election.</h3><p>Despite your efforts, it seems like you couldn’t beat Kemp's advantage.</p><p>Kemp will continue to keep, and push for, conservative laws in place in Georgia. There are murmurs of you running for Senate in 2020 or for Governor again in 2022. For now though, you can focus on mobilizing Democrats in Georgia to flip the state in two years.</p>"
+    }
+} else {
+if (aa[0].popular_votes > aa[1].popular_votes) {
+    if (aa[0].candidate == campaignTrail_temp.candidate_id) {
+        return "<h3>Congratulations! You have won the 2018 Governor's election.</h3><p>After a hard campaign against Kemp, you were able to flip Georgia blue.</p><p>You’re already being talked up as a 2020 Vice-Presidential or even a Presidential candidate. For now though, be ready to move into the Governor's mansion and pursue your agenda for Georgia.</p>"
+    } else {
+        return "<h3>Sorry! You have lost the 2018 Governor's election.</h3><p>Despite your efforts, it seems like you couldn’t beat Kemp's advantage.</p><p>Kemp will continue to keep, and push for, conservative laws in place in Georgia. There are murmurs of you running for Senate in 2020 or for Governor again in 2022. For now though, you can focus on mobilizing Democrats in Georgia to flip the state in two years.</p>"
+    }
+} else {
+    if (aa[0].candidate == campaignTrail_temp.candidate_id) {
+        return "<h3>Sorry! You have lost the 2018 Governor's election.</h3><p>Despite your efforts, it seems like you couldn’t beat Kemp's advantage.</p><p>Kemp will continue to keep, and push for, conservative laws in place in Georgia. There are murmurs of you running for Senate in 2020 or for Governor again in 2022. For now though, you can focus on mobilizing Democrats in Georgia to flip the state in two years.</p>"
+    } else {
+        return "<h3>Congratulations! You have won the 2018 Governor's election.</h3><p>After a hard campaign against Kemp, you were able to flip Georgia blue.</p><p>You’re already being talked up as a 2020 Vice-Presidential or even a Presidential candidate. For now though, be ready to move into the Governor's mansion and pursue your agenda for Georgia.</p>"
+    }
+}
+}
