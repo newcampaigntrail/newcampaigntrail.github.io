@@ -1,0 +1,30 @@
+mov = 0
+if (out == 'win') {
+    mov = quickstats[1] - (aa[1].popular_votes / totv * 100)
+    if (mov > 0) {
+        return "<h3>Congratulations! You have won the 2018 Governor's election.</h3><p>Despite a close election against Stacey Abrams, you have managed to keep Georgia red.</p><p>You’ll hopefully be able to work with the Republican state legislature to pass conservative laws on abortion and other issues. For now though, be ready to move into the Governor's mansion!</p>"
+    } else {
+        return "<h3>Sorry! You have lost the 2018 Governor's election.</h3><p>Considering your policies and the fact that it was a Midterm, it seems like you were just too controversial to get elected.</p><p>Expect Stacey Abrams to block conservative laws passed by the state legislature and enact what liberal policies she’s able to as Governor.</p>"
+    }
+} else if (out == 'loss') {
+    mov = (aa[0].popular_votes / totv * 100) - quickstats[1]
+    if (mov < 0) {
+        return "<h3>Congratulations! You have won the 2018 Governor's election.</h3><p>Despite a close election against Stacey Abrams, you have managed to keep Georgia red.</p><p>You’ll hopefully be able to work with the Republican state legislature to pass conservative laws on abortion and other issues. For now though, be ready to move into the Governor's mansion!</p>"
+    } else {
+        return "<h3>Sorry! You have lost the 2018 Governor's election.</h3><p>Considering your policies and the fact that it was a Midterm, it seems like you were just too controversial to get elected.</p><p>Expect Stacey Abrams to block conservative laws passed by the state legislature and enact what liberal policies she’s able to as Governor.</p>"
+    }
+} else {
+if (aa[0].popular_votes > aa[1].popular_votes) {
+    if (aa[0].candidate == campaignTrail_temp.candidate_id) {
+        return "<h3>Congratulations! You have won the 2018 Governor's election.</h3><p>Despite a close election against Stacey Abrams, you have managed to keep Georgia red.</p><p>You’ll hopefully be able to work with the Republican state legislature to pass conservative laws on abortion and other issues. For now though, be ready to move into the Governor's mansion!</p>"
+    } else {
+        return "<h3>Sorry! You have lost the 2018 Governor's election.</h3><p>Considering your policies and the fact that it was a Midterm, it seems like you were just too controversial to get elected.</p><p>Expect Stacey Abrams to block conservative laws passed by the state legislature and enact what liberal policies she’s able to as Governor.</p>"
+    }
+} else {
+    if (aa[0].candidate == campaignTrail_temp.candidate_id) {
+        return "<h3>Sorry! You have lost the 2018 Governor's election.</h3><p>Considering your policies and the fact that it was a Midterm, it seems like you were just too controversial to get elected.</p><p>Expect Stacey Abrams to block conservative laws passed by the state legislature and enact what liberal policies she’s able to as Governor.</p>"
+    } else {
+        return "<h3>Congratulations! You have won the 2018 Governor's election.</h3><p>Despite a close election against Stacey Abrams, you have managed to keep Georgia red.</p><p>You’ll hopefully be able to work with the Republican state legislature to pass conservative laws on abortion and other issues. For now though, be ready to move into the Governor's mansion!</p>"
+    }
+}
+}
