@@ -199,7 +199,7 @@
 
               
             endTime = performance.now();
-            console.log("Creating statesc took " + (endTime - startTime) + " milliseconds.");   
+            //console.log("Creating statesc took " + (endTime - startTime) + " milliseconds.");   
 
 
             this._onClickProxy = e.proxy(this, "_onClick");

@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<!-- Mirrored from www.americanhistoryusa.com/campaign-trail/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Apr 2021 08:05:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>The New Campaign Trail</title>
+<link rel="stylesheet" href="../static/amusa_main_2016032801.css" type="text/css" media="screen" />
+<link rel="shortcut icon" href="../static/34starcircle-2.png" />
+<link rel="canonical" href="index.html" />
+<meta name="description" content="Can you win a Presidential election? Step into the shoes of Barack Obama, Jimmy Carter, Abraham Lincoln, or others." />
+<meta property="og:title" content="The Campaign Trail - A Presidential Election Game" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="../static/images/presidential-election-collage-section.jpg" />
+<meta property="og:image:type" content="image/jpeg" /> 
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta property="og:url" content="index.html" />
+<meta property="og:description" content="Can you win a Presidential election? Step into the shoes of Barack Obama, Jimmy Carter, Abraham Lincoln, or others." />
+<meta property="og:site_name" content="American History USA" />
+</head>
+<body class="base">
+<div class="container">      
+<center><img src="" id="header" width=1080></img></center>
+<div class="menu_bar_login">
+</div>
+<div class="content_box">
+<div class="content_single">
+<div id="game_window">
+<div class="game_header">
+<h2>NEW CAMPAIGN TRAIL</h2>
+</div>
+<div class="below_header" id="below_header">
+
+<div class="inner_window_front" id="inner_window_1" style="padding:0px;">
+<h1 id="game_res_title">Game Results: </h1>
+</div>
+
+<div class="inner_window_front" id="display_window" style="height:350px">
+    
+</div>
+
+</div>
+</div>
+<div class="footer">
+<div id="music_player" style="display:none">
+  <button onclick="document.getElementById('campaigntrailmusic').play()">Play Soundtrack</button>     <button onClick="document.getElementById('campaigntrailmusic').pause()">Pause</button>
+  <audio id="campaigntrailmusic" loop="true" style="display:none" src="" autoplay="false"></audio>
+</div>
+<button id="modLoadReveal" onclick="if(document.getElementById('modloaddiv').style.display != 'none'){document.getElementById('modloaddiv').style.display = 'none'}else{document.getElementById('modloaddiv').style.display = 'block'}">
+  Mod Loader
+</button><br><br>
+<div id="modloaddiv" style="display:none">
+  <select name="mod" id="modSelect" onchange="modSelectChange()">
+    <option value="other">Other</option>
+    <option value="1796">1796</option>
+    <option value="1836">1836</option>
+    <option value="1836TX">1836TX</option>    
+    <option value="1844b">1844b-1844 with Tyler</option>
+    <option value="1848b">1848-Cass vs Clay</option>
+    <option value="1864" style="color:rgb(170, 38, 38);font-weight: bold;font-style: italic;background-color: rgb(255, 219, 219);padding:3px;">1864</option>
+    <option value="1876" style="color:rgb(0, 71, 112);font-style:oblique;font-weight: bold;">1876</option>
+    <option value="1880">1880</option>
+    <option value="1884">1884</option>
+    <option value="1892">1892</option>
+    <!--<option value="1896_BryanWatson">1896 (Bryan/Watson)</option> --> <!--This doesn't even seem to work???-->
+    <option value="1904">1904</option>
+    <option value="1908">1908</option>
+    <option value="1912">1912</option>
+    <option value="1912b">1912b-No Roosevelt</option>
+    <option value="1916b">1916b-Incumbent Roosevelt v Bryan</option>
+    <option value="1920b">1920b-1916b sequel, Incumbent Bryan v Wood</option>
+    <option value="1924">1924</option> <!--Whoever made this is on cocaine-->
+    <option value="1932">1932</option>
+    <option value="1932BI">1932 Biden</option>
+    <option value="1932b">1932b-Baker v Curtis</option>
+    <option value="1936">1936</option>
+    <option value="1936B">1936b-Long v Landon</option>
+    <option value="1936c">1936c-Long 3rd party</option>
+    <option value="1936cl" style="color:pink;font-family: Comic Sans MS;"><b><em>1936c Long</em></b></option> <!--The maker of this mod has a reserved seat in hell istfg-->
+    <option value="1940">1940</option>
+    <option value="1944">1944</option>
+    <option value="1952">1952</option>
+    <option value="1956">1956</option>
+    <option value="1960k">1960-Reuther VP</option>
+    <option value="1964b">1964b-Rockefeller wins REP nom</option>   
+    <option value="1964d">1964d-Goldwater v Wallace v McCarthy</option>
+    <option value="1964TNO" style="color:maroon;font-weight: bold;">1964 TNO</option>
+    <option value="1964Viva" style="color:goldenrod;font-style: italic;">1964VK</option>
+    <option value="1964n">1964 Nixon-Incumbent Nixon</option>
+    <option value="1968W">1968 Wallace Feedback</option>
+    <option value="1968Sand">1968 Colonel Sanders</option>
+    <option value="1968H">1968 Humphrey Feedback</option>
+    <option value="1968VP">1968 Humphrey VPs</option>
+    <option value="1968b">1968b-Nixon v Wallace v McCarthy</option>
+    <option value="1968c">1968 RFK</option>
+    <option value="1968TNO" style="color:maroon;font-weight: bold;">1968 TNO</option>
+    <option value="1968Viva" style="color:goldenrod;font-style: italic;">1968VK</option> 
+    <option value="1972" style="color:navy;font-weight:bolder;">1972</option>
+    <option value="1972_Ted">1972 Ted-Ted Kennedy VP option</option>
+    <option value="1972b">1972b-Nixon v Wallace</option>
+    <option value="1972c">1972c-Nixon v Mondale</option>
+    <option value="1972RFK">1972 RFK-RFK incumbent v Reagan</option>
+    <option value="1972Mc">1972 McGoverning-Nixon v McGovern v Wallace</option>
+    <option value="1972Bayh">1972 Nixon v Bayh</option>
+    <option value="1976Reagan">1976 Reagan-Reagan primary's Ford</option>
+    <!--<option value="1976_CarterWallace">1976 (Carter/Wallace)</option>
+    <option value="1976_FordRockefeller">1976 (Ford/Rockefeller)</option>
+    <option value="1976_FordReagan">1976 (Ford/Reagan)</option>--> <!--I'm not dealing with shitty VP mods, they take too long to fix-->
+    <option value="1976Italy">1976 Italy</option>
+    <option value="1976ItalyPSI">1976 Italy (PSI)</option>
+    <option value="1980">1980</option>
+    <option value="1980A">1980 Anderson</option>
+    <option value="1980b">1980b-Kennedy Primary's Carter</option>
+    <option value="1984Redux">1984</option>
+    <!--<option value="1988_DukakisNunn">1988 (Dukakis/Nunn)</option>
+    <option value="1988_BushEastwood">1988 (Bush/Eastwood)</option>--> <!--Again, VP mods-->
+    <option value="1988b">1988b-Bush v Jackson</option>
+    <option value="1988d">1988d-Bush v Dale Bumpers</option>
+    <option value="1992">1992</option>
+    <!--<option value="1992_BushPerot">1992 (Bush/Perot)</option>-->
+    <option value="1992P">1992 Perot</option>
+    <!--<option value="1992_PerotTrump">1992 (Perot/Trump)</option>-->
+    <option value="1992B">1992b-Incumbent Dukakis v Buchanan</option>
+    <option value="1996">1996</option>
+    <option value="1996b">1996b-1992b sequel-Gore v Dole</option>
+    <option value="1996c">1996c-Clinton v Gingrich</option>
+    <option value="1998Minnesota">1998 Minnesota Governor's race Ventura</option>
+    <!--<option value="2000_GoreShaheen">2000 (Gore/Shaheen)</option>
+    <option value="2000_GoreByrd">2000 (Gore/Byrd)</option>
+    <option value="2000_GoreNunn">2000 (Gore/Nunn)</option>
+    <option value="2000_GoreGephardt">2000 (Gore/Gephardt)</option>
+    <option value="2000_BushMcCain">2000 (Bush/McCain)</option>
+    <option value="2000_BushBush">2000 (Bush/Bush)</option>
+    <option value="2000_BushPataki">2000 (Bush/Pataki)</option>--> <!--I might make a 2000 VP mod collection for these at some point-->
+    <option value="2000b">2000b-1996b sequel-Gore v Buchanan</option>
+    <option value="2001NYC">2001 NYC mayoral race</option>
+    <option value="2004" style="color:rgb(0, 206, 189);font-weight:bolder;">2004</option>
+    <option value="2004b">2004b-Gore incumbent v McCain</option>
+    <option value="2008">2008</option>
+    <option value="2008b">2008b-Clinton v Giuliani</option>
+    <option value="2008c">2008c-Gore v McCain</option>
+    <option value="2008T">2008 Trump-Trump Dem v McCain</option>
+    <option value="2008d">2008 Breaking Bad</option>
+    <!--<option value="2012_RomneyTrump">2012 (Romney/Trump)</option>
+    <option value="2012_RomneyAyotte">2012 (Romney/Ayotte)</option>
+    <option value="2016_TrumpJones">2016 (Trump/Jones)</option>
+    <option value="2016_TrumpKirk">2016 (Trump/Kirk)</option>--> <!--Again with the VP mods-->
+    <option value="2016FourWay">2016 4Way (Clinton/Rubio)</option>
+    <option value="2016FourWay2">2016 4Way (Sanders/Trump)</option>
+    <option value="2016b">2016b-Trump v Sanders</option>
+    <option value="2016c">2016c-Trump v Biden</option>
+    <!--<option value="2016_ClintonManchin">2016 (Clinton/Manchin)</option>
+    <option value="2016_ClintonMcCaskill">2016 (Clinton/McCaskill)</option>
+    <option value="2016_ClintonCastro">2016 (Clinton/Castro)</option>
+    <option value="2016_ClintonTester">2016 (Clinton/Tester)</option>
+    <option value="2016_ClintonGore">2016 (Clinton/Gore)</option>--> <!--VP mod collection-->
+    <option value="2016ra">2016ra-Baker v Cuellar</option>
+    <option value="2016NC">2016 NC Gov</option>
+    <option value="2018">2018 GA Gov</option>
+    <option value="2018senate">2018 Senate</option>
+    <option value="2018TN">2018 TN Senate</option>
+    <option value="2019NK" style="color:maroon;font-weight: bold;">2019 North Korea</option>
+    <!--<option value="2020_BidenSanders">2020 (Biden/Sanders)</option>-->
+    <option value="2020a">2020a-2020</option>
+    <option value="2020b">2020b-Incumbent Clinton v Rubio</option>
+    <!--<option value="2020_TrumpBaker">2020 (Trump/Baker)</option>-->
+    <option value="2021">2021 VA Gov</option>
+    <option value="2022">2022 PA Sen</option>
+    <option value="2022PAGov">2022 PA Gov</option>
+    <!--<option value="2018house">2018 House Midterms (Alpha Ver 0.2)</option>--> <!--Lol T3 your unfinished mods don't belong here (despite the map alone making it better than half the mod loader)-->
+    
+  </select>
+  <div id="customMenu"><br>
+  <b>Code Set 1:</b><br>
+  <textarea id="codeset1" width=400 height=300></textarea><br>
+  <b>Code Set 2:</b><br>
+  <textarea id="codeset2" width=400 height=300></textarea><br>
+  <b>ENDINGS CODE:</b><br>
+  <textarea id="codeset3" width=400 height=300></textarea><br> <br>
+  </div>
+  <div id="fileimp"><br>
+  <b>File importer:</b><br>
+<form action="/action_page.php">
+<p>Upload your result JSON files to view previous games by clicking the button below:</p>  
+  <input type="file" id="importfile" name="importfile">    
+</form>  
+</div> 
+  <br>
+  <br><br><button title="When first starting a mod, immediately after loading, click the 'Latest Polls/Electoral map' button, and then click the 'Back to the game' button. This will load the proper first question." id="submitMod">Submit</button>
+</div><br>
+<div id="theme_picker">
+<span class="campaign_trail_start_emphasis"><button id="game_start" onclick=creatorChange()><strong>Button</strong></button></span>    
+</div>
+<br><br>
+<a href="http://www.americanhistoryusa.com" style="color:#FF6B6B">Original site</a> created by Dan Bryan &copy; 2012-2022
+<br> 
+To report bugs and view the source code, please visit our <a href="https://github.com/newcampaigntrail/newcampaigntrail.github.io" style="color:#FF6B6B">GitHub</a>
+<br> 
+Join our <a href="https://discord.gg/CfS6yTtjZj" style="color:#FF6B6B">Discord Server here!</a><br>
+</div>
+</div>
+<div id="1796_init" style="display:none"></div>
+<br>
+</div>
+<div id='dialogue' title='Benefit Check'></div>
+</body>
+<script src="../../ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="../static/js/raphael.js"></script>
+<script>
+  function uwuifier(a) {
+      b = a.split(" I ")
+      if (b.length > 0) {
+          for (i in b) {
+              if (i < b.length - 1) {
+                  b[i] += " I-I "
+              }
+          }
+      }
+      a = b.join("")
+      b = a.split("l")
+      if (b.length > 0) {
+          for (i in b) {
+              if (i < b.length - 1) {
+                  b[i] += "w"
+              }
+          }
+      }
+      a = b.join("")
+      b = a.split("r")
+      if (b.length > 0) {
+          for (i in b) {
+              if (i < b.length - 1) {
+                  b[i] += "w"
+              }
+          }
+      }
+      a = b.join("")
+      b = a.split(" t")
+      if (b.length > 0) {
+          for (i in b) {
+              if (i < b.length - 1) {
+                  if (b[Number(i) + 1][0] != '-')
+                      b[i] += " t-t"
+                  else
+                      b[i] += " t"
+              }
+          }
+      }
+      a = b.join("")
+      b = a.split("ow")
+      if (b.length > 0) {
+          for (i in b) {
+              if (i < b.length - 1) {
+                  b[i] += "uw"
+              }
+          }
+      }
+      a = b.join("")
+      return a
+  }
+
+  function choose(choices) {
+      var index = Math.floor(Math.random() * choices.length);
+      return choices[index];
+  }
+
+  num = Math.floor((Math.random() * 50) + 1)
+  bgnum = Math.floor((Math.random() * 4) + 1)
+  modernnum = Math.floor((Math.random() * 1) + 1)
+  bernienum = Math.floor((Math.random() * 3) + 1)
+  reagannum = Math.floor((Math.random() * 4) + 1)
+  astronum = Math.floor((Math.random() * 3) + 1)
+  breakingbadnum = Math.floor((Math.random() * 2) + 1)
+  omorichoices = ["https://cdn.discordapp.com/attachments/818130397706846242/979975422706057216/omoribanner1.png", "https://cdn.discordapp.com/attachments/818130397706846242/979980497902010398/omor2.png"]
+  omorichoice = choose(omorichoices)
+  auschoices = ["https://cdn.discordapp.com/attachments/818130397706846242/979995935402754138/aus_ban_1.png", "https://cdn.discordapp.com/attachments/818130397706846242/979997719441571850/aus_ban_2.png"]
+  auschoice = choose(auschoices)
+
+  utnum = Math.floor((Math.random() * 2) + 1)
+  nct_stuff = {}
+  nct_stuff.themes = {
+      "nct": {
+          name: "New Campaign Trail",
+          background: "../static/images/mlk.jpg",
+          banner: "../static/images/banner_" + num + ".png",
+          coloring_window: "#ff6b6b",
+          coloring_container: "#930301",
+          coloring_title: ""
+      },
+      "ogtheme": {
+          name: "Classic",
+          background: "",
+          banner: "../static/images/banner_classic.png",
+          coloring_window: "",
+          coloring_container: "",
+          coloring_title: ""
+      },
+      "dark": {
+          name: "Batman (Dark Theme)",
+          background: "../static/images/black.jpg",
+          banner: "../static/images/banner_dark.png",
+          coloring_window: "#b3b3b3",
+          coloring_container: "#000000",
+          coloring_title: "#000000",
+          text_col: "white"
+      },
+      "patriot": {
+          name: "Patriot",
+          background: "../static/images/flag_background.jpg",
+          banner: "../static/images/banner_patriot.jpg",
+          coloring_window: "#002e94",
+          coloring_container: "#00184d",
+          coloring_title: "#000c26"
+      },
+      "Modern": {
+          name: "Modern",
+          background: "../static/images/bg_" + bgnum + ".jpg",
+          banner: "../static/images/modern_" + modernnum + ".png",
+          coloring_window: "#8D3A3D",
+          coloring_container: "#4D2794",
+          coloring_title: "#194260"
+      },
+      "amongus": {
+          name: "Amogus",
+          background: "../static/images/background_amogus.jpg",
+          banner: "../static/images/banner_amogus.jpg",
+          coloring_window: "#b3b3b3",
+          coloring_container: "#858585",
+          coloring_title: "#000000",
+          music: "../static/audio/amogus.mp3"
+      },
+      "JEB!": {
+          name: "JEB!",
+          background: "../static/images/jebbushbg.png",
+          banner: "../static/images/banner_jeb!.png",
+          coloring_window: "#F5F5DC",
+          coloring_container: "#FFFF8F",
+          coloring_title: "#FDDA0D"
+      },
+      "space": {
+          name: "Space",
+          background: "../static/images/background_space.jpg",
+          banner: "../static/images/banner_space.png",
+          coloring_window: "#b3b3b3",
+          coloring_container: "#000000",
+          coloring_title: "#000000",
+          text_col: "white",
+          music: "../static/audio/space.mp3"
+      },
+      "civilwar": {
+          name: "Civil War",
+          background: "../static/images/background_civilwar.jpg",
+          banner: "../static/images/banner_civilwar.png",
+          coloring_window: "#ffb38c",
+          coloring_container: "#401600",
+          coloring_title: "#361200",
+          text_col: "white",
+          music: "../static/audio/civilwar.mp3"
+      },
+      "wildwest": {
+          name: "Wild West",
+          background: "../static/images/background_wildwest.png",
+          banner: "../static/images/banner_wildwest.png",
+          coloring_window: "#ffe8b5",
+          coloring_container: "#b8ad95",
+          coloring_title: "#422200",
+          music: "../static/audio/wildwest.mp3"
+      },
+      "Bernie": {
+          name: "Bernie Sanders",
+          background: "../static/images/berniebg.png",
+          banner: "../static/images/bernie_" + bernienum + ".png",
+          coloring_window: "#f65e5e",
+          coloring_container: "#ec3e3d",
+          coloring_title: "#b51314"
+      },
+      "Reagan": {
+          name: "Ronald Reagan",
+          background: "../static/images/reaganbg.png",
+          banner: "../static/images/reaganbanner_" + reagannum + ".png",
+          coloring_window: "#0C5679",
+          coloring_container: "#F28A0F",
+          coloring_title: "#E5340B"
+      },
+      "Gore": {
+          name: "Al Gore",
+          background: "../static/images/algorebg.png",
+          banner: "../static/images/gorebanner.png",
+          coloring_window: "#005b96",
+          coloring_container: "#6497b1",
+          coloring_title: "#011f4b"
+      },
+      "ASTRO": {
+          name: "Astro",
+          background: "../static/images/astrobg.png",
+          banner: "../static/images/astrobanner_" + astronum + ".png",
+          coloring_window: "#221c69",
+          coloring_container: "#431c76",
+          coloring_title: "#080942"
+      },
+      "UT": {
+          name: "Undertale",
+          background: "../static/images/utbg.png",
+          banner: "../static/images/utbanner_" + utnum + ".png",
+          coloring_window: "#000000",
+          coloring_container: "#000000",
+          coloring_title: "#000000",
+          text_col: "white"
+      },
+      "BreakingBad": {
+          name: "Breaking Bad",
+          background: "../static/images/breakingbadbg.png",
+          banner: "../static/images/breakingbad_" + breakingbadnum + ".png",
+          coloring_window: "#093009",
+          coloring_container: "#1F6032",
+          coloring_title: "#369457"
+      },
+      "Omori": {
+          name: "Oyasumi",
+          background: "https://wallpapercave.com/wp/wp8392690.jpg",
+          banner: omorichoice,
+          coloring_window: "#0b68a5",
+          coloring_container: "#0b27a5",
+          coloring_title: "#0060c6"
+      },
+      "australia": {
+          name: "Down Under",
+          background: "https://www.joseflebovicgallery.com/pictures/CL179-103_12.JPG?v=1492666961",
+          banner: auschoice,
+          coloring_window: "#fcfc49",
+          coloring_container: "#13821a",
+          coloring_title: "#026b1e"
+      },
+      "Morbius": {
+          name: "Morbius",
+          background: "../static/images/background_morbius.png",
+          banner: "../static/images/banner_morbius.png",
+          coloring_window: "#1C7D7D",
+          coloring_container: "#093F3A",
+          coloring_title: "#03141C"
+      },
+      "lgbtqpride": {
+          name: "Pride Month",
+          background: "https://images.foxtv.com/static.fox29.com/www.fox29.com/content/uploads/2019/07/1280/720/48163187801_2f5c8df352_o.jpg?ve=1&tl=1",
+          banner: "https://media.discordapp.net/attachments/818130397706846242/981446618937188372/pride.jpg",
+          coloring_window: "#380069",
+          coloring_container: "#5a00a8",
+          coloring_title: "#380069",
+          music: "https://cdn.discordapp.com/attachments/818130397706846242/981591347129618482/yt5s.com_-_Diana_Ross_-_Im_Coming_Out_128_kbps.mp3"
+      }
+  }
+
+  window.localStorage.setItem("christmas", 0)
+
+  if (!window.localStorage.getItem("christmas")) {
+      window.localStorage.setItem("christmas", 1)
+      nct_stuff.christmas = true
+  } else {
+      if (window.localStorage.getItem("christmas") == "1") {
+          nct_stuff.christmas = true
+      } else {
+          nct_stuff.christmas = false
+      }
+  }
+
+  /*
+  let christmasToggle = document.createElement("button")
+  if (nct_stuff.christmas) {
+      christmasToggle.innerHTML = "Disable Christmas"
+      christmasToggle.onclick = function() {
+          window.localStorage.setItem("christmas", 0)
+          window.location.reload()
+      }
+  } else {
+      christmasToggle.innerHTML = "Enable Christmas"
+      christmasToggle.onclick = function() {
+          window.localStorage.setItem("christmas", 1)
+          window.location.reload()
+      }
+  }
+  christmasToggle.style = `position:fixed;left:10px;bottom:10px`
+  christmasToggle.id = "christmasToggler"
+  document.body.appendChild(christmasToggle)
+  */
+
+  nct_stuff.selectedTheme = ""
+  theme = window.localStorage.getItem("theme")
+
+  /*
+  var theGrinch = window.setInterval(function() {
+    if (document.getElementById("inner_window_1")) {
+      return false;
+    }
+    let toggler = document.getElementById("christmasToggler")
+    toggler.remove()
+    window.clearInterval(theGrinch)
+  },100)
+  */
+
+  if (theme == null) {
+      nct_stuff.selectedTheme = "nct"
+  } else {
+      nct_stuff.selectedTheme = theme
+  }
+
+  if (nct_stuff.christmas != true) {
+      document.getElementById("theme_picker").innerHTML = "<select id='themePicker' onchange='themePicked()'></select>"
+      document.getElementById("themePicker").innerHTML += "<option value='" + nct_stuff.selectedTheme + "'>" + nct_stuff.themes[nct_stuff.selectedTheme].name + "</option>"
+      for (i in nct_stuff.themes) {
+          if (i != nct_stuff.selectedTheme)
+              document.getElementById("themePicker").innerHTML += "<option value='" + i + "'>" + nct_stuff.themes[i].name + "</option>"
+      }
+
+  } else {
+      document.getElementById("theme_picker").style.display = 'none'
+  }
+
+  function themePicked() {
+      sel = document.getElementById("themePicker").value
+      if (sel == "ogtheme") {
+          BSColour = "black"
+      } else {
+          BSColour = "white"
+      }
+      window.localStorage.setItem("theme", sel)
+      location.reload()
+  }
+  susnum = Math.floor((Math.random() * 8) + 1)
+  stassennum = Math.floor((Math.random() * 8) + 1)
+  stassenyear = ["1944", "1948", "1952", "1964", "1968", "1980", "1984", "1988", "1992"]
+  nct_stuff.quotes = ["Remember, if your campaign manager isn't yelling at you, you're playing this game wrong.","Ralph Nader won in 2000","The American people are tired of women - Bernie Sanders","So I can just write anything here and it appears on the website?","Vote for President Johnson on November 3rd. The stakes are too high for you to stay home.","Dewey Defeats Truman!","You are not immune to 306-232","Read my lips. No new taxes","I did not have sexual relations with that woman","You know that your future still lies ahead of you.","Obligatory Wallave mention","if you don’t vote for me, ‘you ain’t black!","Fool me once, shame on...shame on you. Fool me—you can't get fooled again","We won this election by a lot!","Created by Al Gore under the pseudonym Dan Bryan","Senator, you’re no Dan Bryan","Yes, I would support the death penalty in that instance, Mr.Shaw","Making a mod; need a moder and a coder","We stan Dan Bryan in this household!","Most Americans wonder if you hit your head the wrong way getting out of bed this morning.","When he’s a tariff man through and through😩😩😩","Are you an Egghead or Lemonhead?","DO NOT LOOK UP WHERE HUBERT HUMPHREY WAS BORN","50 unban, 60% rual", "Look being a moderator, is all about learning from mistakes...", "Now with 30% less damn commies <font size='1'>McCarthy Approved</font>","I’ve never seen a skinny person drink Diet Coke","Alright. Way to get that crowd fired up.","<font size='1'>This is a good, liberal answer that will motivate your base. As always, make sure you strike the right balance between appealing to moderates and getting your troops out.</font>","Harold Stassen for president "+stassenyear[stassennum]+"!","Minecraft is better", "Statement by Donald J. Trump, 45th President of the United States of America","Now with an updated mod loader! (yes, seriously)", "Feels like a good time for a fireside chat", "[Insert Undertale Reference]", "2012 is the best scenario!", "Shopping for a New Deal", "Now with 10% more sarcastic comments", "<button onclick='alert(\"bepis\")'>Click for bepis</button>", "Don't stop me now! <font size='1'>no seriously please don't</font>", "she/they #BLM #ACAB", "The Industrial Revolution and its consequences have been a disaster for the human race", "Patriot | 80 years old | Unvaxxed | In ICU with COVID 😔", "<b>NEWER CAMPAIGN TRAIL</b> when?", "I'm all alone... more or less", "Let me fly far away from here", "<audio src='https://ia601807.us.archive.org/32/items/lp_fly-me-to-the-moon_earl-grant/disc1/01.02.%20Fly%20Me%20To%20The%20Moon%20%28In%20Other%20Words%29.mp3' autoplay='true'></audio>", "I like Ike!", "Giraffes are heartless creatures", "\"People who are hungry and out of a job are the stuff of which dictatorships are made.\" - Franklin D. Roosevelt", "\"The only thing we have to fear is fear itself.\" - Franklin D. Roosevelt", "\"You are fake news.\" - Donald J. Trump", "\"What counts is not necessarily the size of the dog in the fight - it's the size of the fight in the dog.\" - Dwight D. Eisenhower", "If you don't stand for something, you will fall for anything.", "Tiocfaidh ár lá", "https://www.twitch.tv/itsastronomics", "Wow, a cow made of butter. My girls would love it. In fact, the first sentence Caroline ever said was \"I like Butter.\" - Ted Cruz", "The plan is to fan this spark into a flame but damn, it's getting dark"]
+  //nct_stuff.quotes = [`It's cold outside, no kind of atmosphere!`, `I'll be honest, I reused the Christmas code from last year.`, `Turles planted the Christmas Tree of Might!`, `"I am Champion Christmas" - Son Goku`, `Let me <em>flyyyy</em> far away from here`, `2019NK is just the start`, `Waiting for Sumner 68`, `"Cold of the winter, snow settles on my face" - Christmas Khamsin`, `Do you believe in gravity?`, `Who was the person who decided to makes quotes that overflow over the text width limit, y'know I specifically tried to avoid this when making the NCT quote section >:(`, `Denying Reagan his Christmas present since 1984`, `[insert unfunny community injoke here]`, `<button onclick='alert("Made mod.")'>Click here to make mod</button>`, `Merry Holidays.`, `Happy Christmas.`, `SONS OF LIBERTY - COMING OUT 2050`, `Florida has a date with the bottom of the ocean`, `Patch 1.02 - Removed Ohio`, `Enjoying our Charlie Cristmas`, `Ron Desanta - that's it, that's the quote.`]
+  quotnum = Math.floor((Math.random() * nct_stuff.quotes.length))
+  quote = nct_stuff.quotes[quotnum]
+      // Banner Stuff
+  banner = $('#header')[0];
+  //num = 22
+  banner.src = nct_stuff.themes[nct_stuff.selectedTheme].banner
+  correctbannerpar = document.getElementsByClassName("game_header")[0]
+  correctbannerpar.innerHTML += "<font id='wittyquote' size='4' color='white'><em>" + quote + "</em></font>"
+  corrr = correctbannerpar.innerHTML
+  banner.width = 1000
+  if (true)
+      document.body.background = nct_stuff.themes[nct_stuff.selectedTheme].background
+  else if (nct_stuff.selectedTheme == "nct") {
+      document.body.background = "https://upload.wikimedia.org/wikipedia/commons/6/6b/1984-Big-Brother.jpg"
+      document.body.style.fontFamily = "Comic Sans MS"
+      document.getElementsByClassName("game_header")[0].children[0].innerHTML = "haha I said gorg wlave laugh!!11!"
+      vvv = document.getElementById("inner_window_1")
+      vvv.children[0].innerText = uwuifier(vvv.children[0].innerText)
+      vvv.children[1].innerText = uwuifier(vvv.children[1].innerText)
+      document.getElementById("game_start").children[0].innerText = uwuifier(document.getElementById("game_start").innerText)
+      setInterval(function() {
+          es = document.getElementById("election_summary")
+          if (es != null && es.children[0].innerHTML != uwuifier(es.children[0].innerHTML)) {
+              for (i in es.children) {
+                  es.children[i].innerHTML = uwuifier(es.children[i].innerHTML)
+              }
+          }
+          ps = document.getElementById("candidate_summary")
+          if (ps != null && ps.children[0].children[0].innerHTML != uwuifier(ps.children[0].children[0].innerHTML)) {
+              for (v = 0; v < ps.children[0].children.length; v++) {
+                  ps.children[0].children[v].innerHTML = uwuifier(ps.children[0].children[v].innerHTML)
+              }
+              ps.children[1].innerText = uwuifier(ps.children[1].innerText)
+          }
+      }, 100)
+  }
+  $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window
+  $(".container")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_container
+  document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+  if (nct_stuff.themes[nct_stuff.selectedTheme].text_col != null) {
+      $(".container")[0].style.color = nct_stuff.themes[nct_stuff.selectedTheme].text_col
+      $("#game_window")[0].style.color = "black"
+  }
+  if (nct_stuff.themes[nct_stuff.selectedTheme].music != null) {
+      document.getElementById("music_player").style.display = ""
+      document.getElementById('campaigntrailmusic').src = nct_stuff.themes[nct_stuff.selectedTheme].music
+      document.getElementById('campaigntrailmusic').autoplay = "true"
+  }
+  setInterval(function() {
+      document.getElementsByClassName("game_header")[0].innerHTML = corrr
+      document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+
+      sussywussy = nct_stuff.themes[nct_stuff.selectedTheme]
+      if (document.getElementById("inner_window_2") != null) {
+          document.getElementById("inner_window_2").style.backgroundColor = sussywussy.coloring_window
+      } else if (document.getElementById("inner_window_3") != null) {
+          document.getElementById("inner_window_3").style.backgroundColor = sussywussy.coloring_window
+      }
+      if (document.getElementById("inner_window_4") != null) {
+          document.getElementById("inner_window_4").style.backgroundColor = sussywussy.coloring_window
+      }
+      if (document.getElementById("inner_window_5") != null) {
+          document.getElementById("inner_window_5").style.backgroundColor = sussywussy.coloring_window
+      }
+  }, 100)
+  if (nct_stuff.christmas != true) {
+      // Banner Stuff
+      banner = $('#header')[0];
+      //num = 22
+      banner.src = nct_stuff.themes[nct_stuff.selectedTheme].banner
+      banner.width = 1000
+      if (true)
+          document.body.background = nct_stuff.themes[nct_stuff.selectedTheme].background
+      else if (nct_stuff.selectedTheme == "nct") {
+          document.body.background = "https://upload.wikimedia.org/wikipedia/commons/6/6b/1984-Big-Brother.jpg"
+          document.body.style.fontFamily = "Comic Sans MS"
+          document.getElementsByClassName("game_header")[0].children[0].innerHTML = "haha I said gorg wlave laugh!!11!"
+          vvv = document.getElementById("inner_window_1")
+          vvv.children[0].innerText = uwuifier(vvv.children[0].innerText)
+          vvv.children[1].innerText = uwuifier(vvv.children[1].innerText)
+          document.getElementById("game_start").children[0].innerText = uwuifier(document.getElementById("game_start").innerText)
+          setInterval(function() {
+              es = document.getElementById("election_summary")
+              if (es != null && es.children[0].innerHTML != uwuifier(es.children[0].innerHTML)) {
+                  for (i in es.children) {
+                      es.children[i].innerHTML = uwuifier(es.children[i].innerHTML)
+                  }
+              }
+              ps = document.getElementById("candidate_summary")
+              if (ps != null && ps.children[0].children[0].innerHTML != uwuifier(ps.children[0].children[0].innerHTML)) {
+                  for (v = 0; v < ps.children[0].children.length; v++) {
+                      ps.children[0].children[v].innerHTML = uwuifier(ps.children[0].children[v].innerHTML)
+                  }
+                  ps.children[1].innerText = uwuifier(ps.children[1].innerText)
+              }
+          }, 100)
+      }
+      $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window
+      $(".container")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_container
+      document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+      if (nct_stuff.themes[nct_stuff.selectedTheme].text_col != null) {
+          $(".container")[0].style.color = nct_stuff.themes[nct_stuff.selectedTheme].text_col
+          $("#game_window")[0].style.color = "black"
+      }
+      if (nct_stuff.themes[nct_stuff.selectedTheme].music != null) {
+          document.getElementById("music_player").style.display = ""
+          document.getElementById('campaigntrailmusic').src = nct_stuff.themes[nct_stuff.selectedTheme].music
+          document.getElementById('campaigntrailmusic').autoplay = "true"
+      }
+      setInterval(function() {
+          sussywussy = nct_stuff.themes[nct_stuff.selectedTheme]
+          document.getElementsByClassName("game_header")[0].style.backgroundColor = sussywussy.coloring_title
+          if (document.getElementById("inner_window_2") != null) {
+              document.getElementById("inner_window_2").style.backgroundColor = sussywussy.coloring_window
+          } else if (document.getElementById("inner_window_3") != null) {
+              document.getElementById("inner_window_3").style.backgroundColor = sussywussy.coloring_window
+          }
+          if (document.getElementById("inner_window_4") != null) {
+              document.getElementById("inner_window_4").style.backgroundColor = sussywussy.coloring_window
+          }
+          if (document.getElementById("inner_window_5") != null) {
+              document.getElementById("inner_window_5").style.backgroundColor = sussywussy.coloring_window
+          }
+      }, 100)
+  } else {
+      nct_stuff.themes = {
+          "christmas": {
+              name: "jesus christ is my ",
+              background: "../static/images/background_christmas.jpg",
+              banner: "../static/images/banner_christmas_" + susnum + ".png",
+              coloring_window: "#8D3A3D",
+              coloring_container: "#871d0d",
+              coloring_title: "#194260",
+              music: "../static/audio/christmas.mp3"
+          }
+      }
+      nct_stuff.selectedTheme = "christmas"
+          // Banner Stuff
+      banner = $('#header')[0];
+      //num = 22
+      banner.src = nct_stuff.themes[nct_stuff.selectedTheme].banner
+      correctbannerpar = document.getElementsByClassName("game_header")[0]
+      corrr = correctbannerpar.innerHTML
+      banner.width = 1000
+      document.body.background = nct_stuff.themes[nct_stuff.selectedTheme].background
+      $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window
+      $(".container")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_container
+      document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+      if (nct_stuff.themes[nct_stuff.selectedTheme].text_col != null) {
+          $(".container")[0].style.color = nct_stuff.themes[nct_stuff.selectedTheme].text_col
+          $("#game_window")[0].style.color = "black"
+      }
+      if (nct_stuff.themes[nct_stuff.selectedTheme].music != null) {
+          document.getElementById("music_player").style.display = ""
+          document.getElementById('campaigntrailmusic').src = nct_stuff.themes[nct_stuff.selectedTheme].music
+          document.getElementById('campaigntrailmusic').autoplay = "true"
+      }
+      setInterval(function() {
+          document.getElementsByClassName("game_header")[0].innerHTML = corrr
+          document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+          sussywussy = nct_stuff.themes[nct_stuff.selectedTheme]
+          if (document.getElementById("inner_window_2") != null) {
+              document.getElementById("inner_window_2").style.backgroundColor = sussywussy.coloring_window
+          } else if (document.getElementById("inner_window_3") != null) {
+              document.getElementById("inner_window_3").style.backgroundColor = sussywussy.coloring_window
+          }
+          if (document.getElementById("inner_window_4") != null) {
+              document.getElementById("inner_window_4").style.backgroundColor = sussywussy.coloring_window
+          }
+          if (document.getElementById("inner_window_5") != null) {
+              document.getElementById("inner_window_5").style.backgroundColor = sussywussy.coloring_window
+          }
+      }, 100)
+  }
+</script>
+<script>
+
+function loadJSON(path,varr)
+{
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function()
+    {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                eval(varr+"=JSON.parse("+JSON.stringify(xhr.responseText.trim())+")");
+            } else {
+                return xhr;
+            }
+        }
+    };
+    xhr.open("GET", path, true);
+    xhr.send();
+}
+
+var campaignTrail_temp = {};
+campaignTrail_temp.election_json = {}
+campaignTrail_temp.candidate_json = {}
+loadJSON("../static/json/election.json", "campaignTrail_temp.election_json")
+loadJSON("../static/json/candidate.json", "campaignTrail_temp.candidate_json")
+loadJSON("../static/json/running_mate.json", "campaignTrail_temp.running_mate_json")
+loadJSON("../static/json/opponents.json", "campaignTrail_temp.opponents_default_json")
+loadJSON("../static/json/opponents.json", "campaignTrail_temp.opponents_weighted_json")
+loadJSON("../static/json/election_list.json", "campaignTrail_temp.temp_election_list")
+
+e=campaignTrail_temp
+e.game_id = null
+campT = {}
+
+
+    document.body.onload = ()=>{
+        try {
+            e.game_id = Number(location.hash.substring(1))
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                campT = JSON.parse(this.responseText)
+                document.getElementById("game_res_title").innerHTML="Game Results - Game "+e.game_id+":"
+                displayOverall()
+                addButtons(0)
+            }
+        };
+        xhttp.open("GET", "http://localhost:8080/game/"+e.game_id, true);
+            window.setTimeout(()=>{xhttp.send("")}, 200) // delayed so json loads
+        } catch {
+            console.error("Invalid game id given.")
+        }
+    }
+
+addButtons = (highlight) => {
+    changeMenuButtons = document.createElement("div")
+    changeMenuButtons.innerHTML="<button id='overallBtt'>Overall Results</button> <button id='mapSelButton'>Map</button> <button id='stateBreakdown'>State Breakdown</button> <button id='gameDetails'>Game Details</button>"
+    changeMenuButtons.style="position:absolute;bottom:15px;left: 0;right: 0;margin: 0 auto;width:400px;"
+    changeMenuButtons.children[highlight].disabled=true
+    document.getElementById("display_window").appendChild(changeMenuButtons)
+    
+    document.getElementById("overallBtt").addEventListener("click", () => {
+        displayOverall()
+        addButtons(0)
+    })
+    document.getElementById("mapSelButton").addEventListener("click", () => {
+        displayMap()
+        addButtons(1)
+    })
+    document.getElementById("stateBreakdown").addEventListener("click", () => {
+        displayStateBreakdown()
+        addButtons(2)
+    })
+    document.getElementById("gameDetails").addEventListener("click", () => {
+        displayDetails()
+        addButtons(3)
+    })
+}
+
+displayDetails = () => {
+    document.getElementById("display_window").innerHTML=`<div id="map_container" style="position:inherit;width:90%;height:300px;left:29px;">
+        <h2>Game Details</h2>
+        Completed `+campT.date+` @ Difficulty Multiplier `+JSON.parse(campT.campaign_trail_game).difficulty_level_id.toFixed(2)+`
+        <div id='visits' style='border-style:solid;background-color:lightgrey;width:200px;height:200px;overflow-y:scroll;position:absolute;right: 200px;bottom:15px;'><h4>Visits</h4></div>
+        <div id='answers' style='border-style:solid;background-color:lightgrey;width:200px;height:200px;overflow-y:scroll;position:absolute;bottom:15px;left:200px;'><h4>Answers</h4></div>
+    </div>`
+    let visits = document.getElementById("visits")
+    let visitData = JSON.parse(campT.campaign_trail_visit_counter)
+    let answerData = document.getElementById("answers")
+    let answers = JSON.parse(campT.campaign_trail_game_answer)
+
+    let states = JSON.parse(campT.states_json)
+
+    for (i in answers) {
+        answerData.innerHTML += (Number(i)+1)+": "+answers[i].answer_id+"<br>"
+    }
+    for (i in visitData) {
+        let relState = states[states.map(f=>f.pk).indexOf(visitData[i].state_id)].fields.name
+        visits.innerHTML += relState+": "+visitData[i].visit_count+" visits<br>"
+    }
+}
+
+displayOverall = () => {
+    let gameData = JSON.parse(campT.campaign_trail_game)
+    let election_name = e.temp_election_list[e.temp_election_list.map(f=>f.id).indexOf(gameData.election_id)].display_year
+    let candidate = e.candidate_json[e.candidate_json.map(f=>f.pk).indexOf(gameData.candidate_id)]
+    let cand_name = candidate.fields.first_name + " " + candidate.fields.last_name
+
+    document.getElementById("display_window").innerHTML='<div id="map_container" style="position:inherit;width:90%;height:300px;left:29px;"><h2>Game in '+election_name+' as '+cand_name+'</div>'
+    let results = JSON.parse(campT.campaign_trail_game_result)
+    
+    let curSel = results
+    let o = curSel.reduce((a,n) => a + n.popular_votes,0)
+    dataTable = document.createElement("table")
+    r = "<tr><th>Candidate</th><th>Popular Votes</th>\t    <th>Popular Vote %</th><th>Electoral Votes</th></tr>"
+    for (_ = 0; _ < curSel.length; _++) {
+        i = e.candidate_json.map(f=>f.pk).indexOf(curSel[_].candidate_id);
+        let d = e.candidate_json[i].fields.color_hex;
+        r += '            <tr><td style="text-align: left;">            <span style="background-color: ' + d + "; color: " + d + ';">----</span> ' + (f = e.candidate_json[i].fields.first_name + " " + e.candidate_json[i].fields.last_name) + "</td><td> " + (curSel[_].popular_votes / o * 100).toFixed(1) + "% </td><td> " + curSel[_].popular_votes + " </td><td> " + curSel[_].electoral_votes + " </td></tr>"
+    }
+    dataTable.innerHTML=r
+    dataTable.style=`position:absolute;top:125px;left: 0;right: 0;margin: 0 auto;width:600px;`
+    dataTable.id = "dataTable"
+    document.getElementById("display_window").appendChild(dataTable)
+
+}
+
+displayStateBreakdown = () => {
+    document.getElementById("display_window").innerHTML='<div id="map_container" style="position:inherit;width:90%;height:300px;left:29px;"><select id="stateSelect"></select></div>'
+    let states = JSON.parse(campT.states_json)
+    let stateSelector = document.getElementById("stateSelect")
+    for (i in states) {
+        stateSelector.innerHTML += "<option value='"+i+"'>"+states[i].fields.name+"</option>"
+    }
+
+    stateSelector.addEventListener("change", () => {
+        displayStateTable(stateSelector.value)
+    })
+
+    displayStateTable(0)
+
+}
+
+displayStateTable = (stateIndex) => {
+    if (document.getElementById("dataTable")) {
+        document.getElementById("dataTable").remove()
+    }
+    let results = JSON.parse(campT.campaign_trail_state_result)
+    let newRes = []
+    for (_i in results) {
+        let newResMap = newRes.map(f => f[0].state_id)
+        if (newResMap.includes(results[_i].state_id)) {
+            newRes[newRes.length - 1].push(results[_i])
+        } else {
+            newRes.push([results[_i]])
+        }
+    }
+    
+    let curSel = newRes[stateIndex]
+    let o = curSel.reduce((a,n) => a + n.popular_votes,0)
+    dataTable = document.createElement("table")
+    r = "<tr><th>Candidate</th><th>Popular Votes</th>\t    <th>Popular Vote %</th><th>Electoral Votes</th></tr>"
+    for (_ = 0; _ < curSel.length; _++) {
+        i = e.candidate_json.map(f=>f.pk).indexOf(curSel[_].candidate_id);
+        let d = e.candidate_json[i].fields.color_hex;
+        r += '            <tr><td style="text-align: left;">            <span style="background-color: ' + d + "; color: " + d + ';">----</span> ' + (f = e.candidate_json[i].fields.first_name + " " + e.candidate_json[i].fields.last_name) + "</td><td> " + (curSel[_].popular_votes / o * 100).toFixed(1) + "% </td><td> " + curSel[_].popular_votes + " </td><td> " + curSel[_].electoral_votes + " </td></tr>"
+    }
+    dataTable.innerHTML=r
+    dataTable.style=`position:absolute;top:125px;left: 0;right: 0;margin: 0 auto;width:600px;`
+    dataTable.id = "dataTable"
+    document.getElementById("display_window").appendChild(dataTable)
+}
+
+displayMap = () => {
+    document.getElementById("display_window").innerHTML='<div id="map_container" style="position:inherit;width:90%;height:300px;left:29px;"></div>'
+
+    let results = JSON.parse(campT.campaign_trail_state_result)
+    let newRes = []
+    for (_i in results) {
+        let newResMap = newRes.map(f => f[0].state_id)
+        if (newResMap.includes(results[_i].state_id)) {
+            newRes[newRes.length - 1].push(results[_i])
+        } else {
+            newRes.push([results[_i]])
+        }
+    }
+    let candidateMap = e.candidate_json.map(f => f.pk)
+    let states = JSON.parse(campT.states_json)
+    var lTemp = function() {
+        for (var t = {}, i = 0; i < states.length; i++) {
+            indexed = newRes[newRes.map(f => f[0].state_id).indexOf(states[i].pk)]
+            largestCandPk = indexed[0].candidate_id
+            largestCand = e.candidate_json[candidateMap.indexOf(largestCandPk)]
+            t[states[i].fields.abbr] = {
+                fill: largestCand.fields.color_hex
+            };
+        }
+        return {
+            stateStyles: {
+                fill: "#EAFDFF"
+            },
+            stateHoverStyles: {
+                fill: "#EAFDFF"
+            },
+            stateSpecificStyles: t,
+            stateSpecificHoverStyles: t,
+            click: function(_, shape) {
+                let states = JSON.parse(campT.states_json)
+                const stateAbbr = shape.name
+                const stateName = states[states.map(f=>f.fields.abbr).indexOf(stateAbbr)].fields.name
+                displayStateBreakdown()
+                const dataTab = document.getElementById("stateSelect")
+                let datTabChild = Array.from(dataTab.children)
+                for (i in datTabChild) {
+                    const name = datTabChild[i].innerHTML
+                    if (name == stateName) {
+                        dataTab.value = i
+                        displayStateTable(i)
+                        break;
+                    }
+                }
+                addButtons(2)
+            }
+        }
+    }();
+    $("#map_container").usmap(lTemp) // adds a touch of colour to the map
+    document.getElementsByTagName("svg")[0].setAttribute("viewBox", '-275 0 950 595') // fixes viewbox
+}
+
+var reloading = false
+
+// reloads if the # operator is changed
+window.setInterval(function() {
+    // Get the current URL
+    var currentURL = window.location.href;
+    var urlParts = currentURL.split('#');
+    var operator = urlParts[urlParts.length-1];
+
+    if (!e.game_id || reloading) {
+        return;
+    }
+
+    if (e.game_id.toString() != operator) {
+        reloading = true;
+        window.location.reload()
+    }
+},100)
+
+</script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+  <script src="https://malsup.github.io/jquery.blockUI.js" type="text/javascript"></script>
+  <script src="../static/js/us-map-1.0.1/jquery.usmap.js"></script>
+</html>

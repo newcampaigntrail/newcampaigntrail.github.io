@@ -610,6 +610,8 @@ function benefitCheck(objectid){
       }
   }
 
+  window.localStorage.setItem("christmas", 0)
+
   if (!window.localStorage.getItem("christmas")) {
       window.localStorage.setItem("christmas", 1)
       nct_stuff.christmas = true
@@ -620,6 +622,8 @@ function benefitCheck(objectid){
           nct_stuff.christmas = false
       }
   }
+
+  /*
 
   let christmasToggle = document.createElement("button")
   if (nct_stuff.christmas) {
@@ -638,10 +642,12 @@ function benefitCheck(objectid){
   christmasToggle.style = `position:fixed;left:10px;bottom:10px`
   christmasToggle.id = "christmasToggler"
   document.body.appendChild(christmasToggle)
+  */
 
   nct_stuff.selectedTheme = ""
   theme = window.localStorage.getItem("theme")
 
+  /**
   var theGrinch = window.setInterval(function() {
     if (document.getElementById("inner_window_1")) {
       return false;
@@ -650,6 +656,7 @@ function benefitCheck(objectid){
     toggler.remove()
     window.clearInterval(theGrinch)
   },100)
+  */
 
   if (theme == null) {
       nct_stuff.selectedTheme = "nct"
@@ -682,8 +689,8 @@ function benefitCheck(objectid){
   susnum = Math.floor((Math.random() * 8) + 1)
   stassennum = Math.floor((Math.random() * 8) + 1)
   stassenyear = ["1944", "1948", "1952", "1964", "1968", "1980", "1984", "1988", "1992"]
-      //nct_stuff.quotes = ["Remember, if your campaign manager isn't yelling at you, you're playing this game wrong.","Ralph Nader won in 2000","The American people are tired of women - Bernie Sanders","So I can just write anything here and it appears on the website?","Vote for President Johnson on November 3rd. The stakes are too high for you to stay home.","Dewey Defeats Truman!","You are not immune to 306-232","Read my lips. No new taxes","I did not have sexual relations with that woman","You know that your future still lies ahead of you.","Obligatory Wallave mention","if you don’t vote for me, ‘you ain’t black!","Fool me once, shame on...shame on you. Fool me—you can't get fooled again","We won this election by a lot!","Created by Al Gore under the pseudonym Dan Bryan","Senator, you’re no Dan Bryan","Yes, I would support the death penalty in that instance, Mr.Shaw","Making a mod; need a moder and a coder","We stan Dan Bryan in this household!","Most Americans wonder if you hit your head the wrong way getting out of bed this morning.","When he’s a tariff man through and through😩😩😩","Are you an Egghead or Lemonhead?","DO NOT LOOK UP WHERE HUBERT HUMPHREY WAS BORN","50 unban, 60% rual", "Look being a moderator, is all about learning from mistakes...", "Now with 30% less damn commies <font size='1'>McCarthy Approved</font>","I’ve never seen a skinny person drink Diet Coke","Alright. Way to get that crowd fired up.","<font size='1'>This is a good, liberal answer that will motivate your base. As always, make sure you strike the right balance between appealing to moderates and getting your troops out.</font>","Harold Stassen for president "+stassenyear[stassennum]+"!","Minecraft is better", "Statement by Donald J. Trump, 45th President of the United States of America","Now with an updated mod loader! (yes, seriously)", "Feels like a good time for a fireside chat", "[Insert Undertale Reference]", "2012 is the best scenario!", "Shopping for a New Deal", "Now with 10% more sarcastic comments", "<button onclick='alert(\"bepis\")'>Click for bepis</button>", "Don't stop me now! <font size='1'>no seriously please don't</font>", "she/they #BLM #ACAB", "The Industrial Revolution and its consequences have been a disaster for the human race", "Patriot | 80 years old | Unvaxxed | In ICU with COVID 😔", "<b>NEWER CAMPAIGN TRAIL</b> when?", "I'm all alone... more or less", "Let me fly far away from here", "<audio src='https://ia601807.us.archive.org/32/items/lp_fly-me-to-the-moon_earl-grant/disc1/01.02.%20Fly%20Me%20To%20The%20Moon%20%28In%20Other%20Words%29.mp3' autoplay='true'></audio>", "I like Ike!", "Giraffes are heartless creatures", "\"People who are hungry and out of a job are the stuff of which dictatorships are made.\" - Franklin D. Roosevelt", "\"The only thing we have to fear is fear itself.\" - Franklin D. Roosevelt", "\"You are fake news.\" - Donald J. Trump", "\"What counts is not necessarily the size of the dog in the fight - it's the size of the fight in the dog.\" - Dwight D. Eisenhower", "If you don't stand for something, you will fall for anything.", "Tiocfaidh ár lá", "https://www.twitch.tv/itsastronomics", "Wow, a cow made of butter. My girls would love it. In fact, the first sentence Caroline ever said was \"I like Butter.\" - Ted Cruz", "The plan is to fan this spark into a flame but damn, it's getting dark"]
-  nct_stuff.quotes = [`It's cold outside, no kind of atmosphere!`, `I'll be honest, I reused the Christmas code from last year.`, `Turles planted the Christmas Tree of Might!`, `"I am Champion Christmas" - Son Goku`, `Let me <em>flyyyy</em> far away from here`, `2019NK is just the start`, `Waiting for Sumner 68`, `"Cold of the winter, snow settles on my face" - Christmas Khamsin`, `Do you believe in gravity?`, `Who was the person who decided to makes quotes that overflow over the text width limit, y'know I specifically tried to avoid this when making the NCT quote section >:(`, `Denying Reagan his Christmas present since 1984`, `[insert unfunny community injoke here]`, `<button onclick='alert("Made mod.")'>Click here to make mod</button>`, `Merry Holidays.`, `Happy Christmas.`, `SONS OF LIBERTY - COMING OUT 2050`, `Florida has a date with the bottom of the ocean`, `Patch 1.02 - Removed Ohio`, `Enjoying our Charlie Cristmas`, `Ron Desanta - that's it, that's the quote.`]
+    nct_stuff.quotes = ["Remember, if your campaign manager isn't yelling at you, you're playing this game wrong.","Ralph Nader won in 2000","The American people are tired of women - Bernie Sanders","So I can just write anything here and it appears on the website?","Vote for President Johnson on November 3rd. The stakes are too high for you to stay home.","Dewey Defeats Truman!","You are not immune to 306-232","Read my lips. No new taxes","I did not have sexual relations with that woman","You know that your future still lies ahead of you.","Obligatory Wallave mention","if you don’t vote for me, ‘you ain’t black!","Fool me once, shame on...shame on you. Fool me—you can't get fooled again","We won this election by a lot!","Created by Al Gore under the pseudonym Dan Bryan","Senator, you’re no Dan Bryan","Yes, I would support the death penalty in that instance, Mr.Shaw","Making a mod; need a moder and a coder","We stan Dan Bryan in this household!","Most Americans wonder if you hit your head the wrong way getting out of bed this morning.","When he’s a tariff man through and through😩😩😩","Are you an Egghead or Lemonhead?","DO NOT LOOK UP WHERE HUBERT HUMPHREY WAS BORN","50 unban, 60% rual", "Look being a moderator, is all about learning from mistakes...", "Now with 30% less damn commies <font size='1'>McCarthy Approved</font>","I’ve never seen a skinny person drink Diet Coke","Alright. Way to get that crowd fired up.","<font size='1'>This is a good, liberal answer that will motivate your base. As always, make sure you strike the right balance between appealing to moderates and getting your troops out.</font>","Harold Stassen for president "+stassenyear[stassennum]+"!","Minecraft is better", "Statement by Donald J. Trump, 45th President of the United States of America","Now with an updated mod loader! (yes, seriously)", "Feels like a good time for a fireside chat", "[Insert Undertale Reference]", "2012 is the best scenario!", "Shopping for a New Deal", "Now with 10% more sarcastic comments", "<button onclick='alert(\"bepis\")'>Click for bepis</button>", "Don't stop me now! <font size='1'>no seriously please don't</font>", "she/they #BLM #ACAB", "The Industrial Revolution and its consequences have been a disaster for the human race", "Patriot | 80 years old | Unvaxxed | In ICU with COVID 😔", "<b>NEWER CAMPAIGN TRAIL</b> when?", "I'm all alone... more or less", "Let me fly far away from here", "<audio src='https://ia601807.us.archive.org/32/items/lp_fly-me-to-the-moon_earl-grant/disc1/01.02.%20Fly%20Me%20To%20The%20Moon%20%28In%20Other%20Words%29.mp3' autoplay='true'></audio>", "I like Ike!", "Giraffes are heartless creatures", "\"People who are hungry and out of a job are the stuff of which dictatorships are made.\" - Franklin D. Roosevelt", "\"The only thing we have to fear is fear itself.\" - Franklin D. Roosevelt", "\"You are fake news.\" - Donald J. Trump", "\"What counts is not necessarily the size of the dog in the fight - it's the size of the fight in the dog.\" - Dwight D. Eisenhower", "If you don't stand for something, you will fall for anything.", "Tiocfaidh ár lá", "https://www.twitch.tv/itsastronomics", "Wow, a cow made of butter. My girls would love it. In fact, the first sentence Caroline ever said was \"I like Butter.\" - Ted Cruz", "The plan is to fan this spark into a flame but damn, it's getting dark"]
+  //nct_stuff.quotes = [`It's cold outside, no kind of atmosphere!`, `I'll be honest, I reused the Christmas code from last year.`, `Turles planted the Christmas Tree of Might!`, `"I am Champion Christmas" - Son Goku`, `Let me <em>flyyyy</em> far away from here`, `2019NK is just the start`, `Waiting for Sumner 68`, `"Cold of the winter, snow settles on my face" - Christmas Khamsin`, `Do you believe in gravity?`, `Who was the person who decided to makes quotes that overflow over the text width limit, y'know I specifically tried to avoid this when making the NCT quote section >:(`, `Denying Reagan his Christmas present since 1984`, `[insert unfunny community injoke here]`, `<button onclick='alert("Made mod.")'>Click here to make mod</button>`, `Merry Holidays.`, `Happy Christmas.`, `SONS OF LIBERTY - COMING OUT 2050`, `Florida has a date with the bottom of the ocean`, `Patch 1.02 - Removed Ohio`, `Enjoying our Charlie Cristmas`, `Ron Desanta - that's it, that's the quote.`]
   quotnum = Math.floor((Math.random() * nct_stuff.quotes.length))
   quote = nct_stuff.quotes[quotnum]
       // Banner Stuff
@@ -900,7 +907,7 @@ campaignTrail_temp.premier_ab_test_version = -1;
 campaignTrail_temp.credits="Dan Bryan"; 
   
 </script>
-<script src="../static/js/campaign_trail_2020072001.js"></script>
+<script src="../static/js/campaign_trail.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
@@ -913,36 +920,3 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po
 })();
 </script>
 </html>
-<!-- 
-Removed by request of Snoo:
-    <option value="1984_ReaganBush">1984 (Reagan/Bush)</option>
-    <option value="1984_MondaleFerraro">1984 (Mondale/Ferraro)</option>
-    <option value="1984_MondaleFeinstein">1984 (Mondale/Feinstein)</option>
-    <option value="1984_MondaleCisneros">1984 (Mondale/Cisneros)</option>
-    <option value="1984_MondaleTomBradley">1984 (Mondale/TomBradley)</option>
-    <option value="1984_MondaleHart">1984 (Mondale/Hart)</option>
-    <option value="1984_MondaleBillBradley">1984 (Mondale/BillBradley)</option>
-    <option value="1984_MondaleGlenn">1984 (Mondale/Glenn)</option>
-    <option value="1984_MondaleBiden">1984 (Mondale/Biden)</option>
-    <option value="1984_MondaleClinton">1984 (Mondale/Clinton)</option>
-    <option value="1984_MondaleCuomo">1984 (Mondale/Cuomo)</option>
-    <option value="2020_TrumpPence">2020 (Trump/Pence)</option>
-    <option value="2020_TrumpHaley">2020 (Trump/Haley)</option>
-    <option value="2020_TrumpNoem">2020 (Trump/Noem)</option>
-    <option value="2020_BidenHarris">2020 (Biden/Harris)</option>
-    <option value="2020_BidenWarren">2020 (Biden/Warren)</option>
-    <option value="2020_BidenRice">2020 (Biden/Rice)</option>
-    <option value="2020_BidenWhitmer">2020 (Biden/Whitmer)</option>
-    <option value="2020_BidenBaldwin">2020 (Biden/Baldwin)</option>
-    <option value="2020_BidenDuckworth">2020 (Biden/Duckworth)</option>
-    <option value="2020_BidenGrisham">2020 (Biden/Grisham)</option>
-    <option value="2020_BidenDemings">2020 (Biden/Demings)</option>
-(insert literally 1984 joke here)
-!-->
- 
-<!--
-Removed by request of Yupperdoo97
-   <option value="1900_McKinleyRoosevelt">1900 (McKinley/Roosevelt)</option>
-   <option value="1900_BryanStevenson">1900 (Bryan/Stevenson)</option>
-(will be added back later after the mod is tweaked")
-!-->
