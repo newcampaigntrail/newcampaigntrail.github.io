@@ -2123,7 +2123,7 @@ function divideElectoralVotesProp(e, t) {
         e.historical_overall = "None", e.percentile = "None", e.game_results_url = "None", p()
         $.ajax({
             type: "POST",
-            url: "http://localhost:8080",
+            url: "https://2226-124-149-135-47.ngrok.io/",
             data: JSON.stringify({
                 campaign_trail_game: t,
                 campaign_trail_game_opponent: i,
