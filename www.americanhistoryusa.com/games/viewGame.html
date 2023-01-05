@@ -705,6 +705,7 @@ Join our <a href="https://discord.gg/CfS6yTtjZj" style="color:#FF6B6B">Discord S
       }, 100)
   }
 </script>
+<script src="../static/js/pako.js"></script>
 <script>
 
 function loadJSON(path,varr)
@@ -745,7 +746,14 @@ campT = {}
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                campT = JSON.parse(this.responseText)
+
+                var strData     = atob(this.responseText);
+                var charData    = strData.split('').map(function(x){return x.charCodeAt(0);});
+                var binData     = new Uint8Array(charData);
+                var data        = pako.inflate(binData);
+                var strData     = String.fromCharCode.apply(null, new Uint16Array(data));
+
+                campT = JSON.parse(strData)
                 document.getElementById("game_res_title").innerHTML="Game Results - Game "+e.game_id+":"
                 displayOverall()
                 addButtons(0)
