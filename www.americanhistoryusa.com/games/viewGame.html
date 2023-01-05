@@ -708,7 +708,7 @@ Join our <a href="https://discord.gg/CfS6yTtjZj" style="color:#FF6B6B">Discord S
 <script src="../static/js/pako.js"></script>
 <script>
 
-function loadJSON(path,varr)
+function loadJSON(path,varr,callback=null)
 {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function()
@@ -719,6 +719,7 @@ function loadJSON(path,varr)
             } else {
                 return xhr;
             }
+            callback ? callback() : null
         }
     };
     xhr.open("GET", path, true);
@@ -733,20 +734,26 @@ loadJSON("../static/json/candidate.json", "campaignTrail_temp.candidate_json")
 loadJSON("../static/json/running_mate.json", "campaignTrail_temp.running_mate_json")
 loadJSON("../static/json/opponents.json", "campaignTrail_temp.opponents_default_json")
 loadJSON("../static/json/opponents.json", "campaignTrail_temp.opponents_weighted_json")
-loadJSON("../static/json/election_list.json", "campaignTrail_temp.temp_election_list")
+loadJSON("../static/json/election_list.json", "campaignTrail_temp.temp_election_list", callback=()=>{
+    if (xhttp) {
+        xhttp.send("")
+        xhttpActivate = false
+    }
+})
 
 e=campaignTrail_temp
 e.game_id = null
 campT = {}
+var xhttp = null
+var xhttpActive = true
 
 
     document.body.onload = ()=>{
         try {
             e.game_id = Number(location.hash.substring(1))
-            var xhttp = new XMLHttpRequest();
+            xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-
                 var strData     = atob(this.responseText);
                 var charData    = strData.split('').map(function(x){return x.charCodeAt(0);});
                 var binData     = new Uint8Array(charData);
@@ -760,7 +767,7 @@ campT = {}
             }
         };
         xhttp.open("GET", "https://2226-124-149-135-47.ngrok.io/game/"+e.game_id, true);
-            window.setTimeout(()=>{xhttp.send("")}, 200) // delayed so json loads
+        xhttpActive ? xhttp.send("") : null
         } catch {
             console.error("Invalid game id given.")
         }
