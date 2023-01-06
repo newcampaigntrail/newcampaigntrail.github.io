@@ -370,7 +370,7 @@ function openInfoMenu() {
     <div style='text-align:left'><b>Hello, and welcome to The New Campaign Trail! This is an updated version of The Campaign Trail (hence the name). What does TNCT bring that TCT doesn't? A number of new features, not limited to:<br />
     <pr /> 
     <div style='text-align:left'><p>-A mod loader/library, allowing many of the mods made by our fabulous community to be played/compiled</p>
-    <div style='text-align:left'><p>-Faster processing times so you don't have to sit forever their while the game says <i>Processing Results, wait one moment...</i></p>
+    <div style='text-align:left'><p>-Faster processing times, so you don't have to sit there forever while the game says <i>Processing Results, wait one moment...</i></p>
     <div style='text-align:left'><p>-Achievements, for if you want to challenge yourself and memorialize unique results.</p>
     <div style='text-align:left'><p>-Ending codes, a functionality of scenarios that allows the end screen to be altered depending on different factors like electoral and popular vote.<pr /> 
     <pr /> 
@@ -384,7 +384,7 @@ function openInfoMenu() {
     <div style='text-align:left'><b>- The Campaign Trail Discord</b>
     <div style='text-align:left'><p>- /r/thecampaigntrail<pr />
     <div style='text-align:left'><p>Most recent TNCT patch notes:<pr />
-    <div style='text-align:left'><p>Happy new year!You can now share games through URLs, just like the old site. Additionally, a lot of small speed and performance fixes have been made.</p>`
+    <div style='text-align:left'><p>Happy new year! You can now share games through URLs, just like the old site. Additionally, a lot of small speed and performance fixes have been made.</p>`
     
 	$("#infoBox").html(`
     <div class="inner_window_front" style="padding:0px"><b><h1>Welcome to The New Campaign Trail!</h1></b></div>
