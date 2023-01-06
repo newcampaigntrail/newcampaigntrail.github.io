@@ -383,7 +383,6 @@ function openInfoMenu() {
     <div style='text-align:left'><b>- T3CH0X (Dev)</b>
     <div style='text-align:left'><b>- The Campaign Trail Discord</b>
     <div style='text-align:left'><p>- /r/thecampaigntrail<pr />
-     <pr /> 
     <div style='text-align:left'><p>Most recent TNCT patch notes:<pr />
     <div style='text-align:left'><p>Happy new year!You can now share games through URLs, just like the old site. Additionally, a lot of small speed and performance fixes have been made.</p>
     
