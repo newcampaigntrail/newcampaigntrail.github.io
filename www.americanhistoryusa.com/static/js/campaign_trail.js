@@ -46,7 +46,7 @@ var fileExists = function(url) {
 };
 
 lastUpdatedDate="2023-01-05"
-var RecReading
+var RecReading;
 
 achList = {
     "destiny": [
@@ -384,7 +384,7 @@ function openInfoMenu() {
     <div style='text-align:left'><b>- The Campaign Trail Discord</b>
     <div style='text-align:left'><p>- /r/thecampaigntrail<pr />
     <div style='text-align:left'><p>Most recent TNCT patch notes:<pr />
-    <div style='text-align:left'><p>Happy new year!You can now share games through URLs, just like the old site. Additionally, a lot of small speed and performance fixes have been made.</p>
+    <div style='text-align:left'><p>Happy new year!You can now share games through URLs, just like the old site. Additionally, a lot of small speed and performance fixes have been made.</p>`
     
 	$("#infoBox").html(`
     <div class="inner_window_front" style="padding:0px"><b><h1>Welcome to The New Campaign Trail!</h1></b></div>
