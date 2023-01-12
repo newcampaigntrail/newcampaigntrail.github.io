@@ -133,6 +133,15 @@ achList = {
         "Win as Dukakis despite riding the tank and pledging to raise taxes.",
         "</table><br><b><em>1988</em></b><br><table>"
     ],
+    "Kinder": [
+        "A Kinder, Gentler Landslide",
+        "Earn over 500 EVs as Bush in on normal.",
+    ],
+    "Rainbow": [
+        "The Rainbow Coalition",
+        "Win with running mate Jesse Jackson as Michael Dukakis.",
+    ]
+    ,
     //1976
     "georgia": [
         "Radical Liberal Jimmy Carter",
@@ -149,11 +158,27 @@ achList = {
         "Hubert Horatio'd",
         "As Hubert Humphrey, win 430 or more electoral votes.",
     ],
+    //1960
+    "BCitsHard": [
+        "Not Because It Is Easy, But Because It Is Hard",
+        "Win as John Kennedy on impossible.",
+        "</table><br><b><em>1960</em></b><br><table>"
+    ],
+    "Vice": [
+        "The Vice With No Vice",
+        "Win as Nixon/Goldwater.",
+    ],
     //1948
     "dixieDewey": [
         "Dixie Defeats Dewey",
-        "Win as Truman by preventing a southern walkout. ",
+        "Win as Truman by preventing a southern walkout.",
         "</table><br><b><em>1948</em></b><br><table>"
+    ],
+    //1896
+    "Commoner": [
+        "The Great Commoner",
+        "Win as Bryan with over 330 electoral votes.",
+        "</table><br><b><em>1896</em></b><br><table>"
     ],
     // Mods
     //2019NK
@@ -2310,6 +2335,15 @@ function divideElectoralVotesProp(e, t) {
                 if (!modded && !run.achievements["tanks"] && e.election_id == 15 && containsObject(4439,e.player_answers) && containsObject(4484,e.player_answers)  && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_outcome == "win") {
                     unlockAchievement(among, "tanks", "", "<b>Tanks and Taxes</b>")
                 } else
+                // The Rainbow Coalition-Win as Dukakis with Jackson as your running mate               
+                if (!modded && !run.achievements["Rainbow"] && e.election_id == 15 && campaignTrail_temp.running_mate_last_name=="Jackson" && campaignTrail_temp.final_outcome=="win" && campaignTrail_temp.difficulty_level_multiplier <= 0.97) {
+                    unlockAchievement(among, "Rainbow", "", "<b>A Rainbow Coalition</b>")
+                } else
+                //A kinder, Gentler Landslide - Win as Bush with over 500 EVs
+                if (!modded && !run.achievements["Kinder"] && e.election_id == 15 && campaignTrail_temp.candidate_last_name=="Bush" && campaignTrail_temp.final_outcome=="win" && campaignTrail_temp.final_overall_results[0].electoral_votes>500 && campaignTrail_temp.difficulty_level_multiplier <= 0.97) {
+                    unlockAchievement(among, "Kinder", "", "<b>A Kinder, Gentler Landslide</b>")
+                } else
+
 
                 // ### 1976 ###
                 // Radical Liberal Jimmy Carter - Win as Jimmy Carter with over 400 EVs while being firmly pro-choice and for universal healthcare.
@@ -2328,12 +2362,29 @@ function divideElectoralVotesProp(e, t) {
                     unlockAchievement(among, "ratio", "", "<b>Hubert Horatio'd</b>")
                 } else // what I want to stay
 
+                // ### 1960 ###
+
+                // Not Because It Is Easy, But Because It Is Hard: Win as JFK in 1960 on impossible.
+                if (!modded && !run.achievements["BCitsHard"] && e.candidate_last_name == "Kennedy" && e.election_id == 11 && campaignTrail_temp.difficulty_level_multiplier <= 0.9 && campaignTrail_temp.final_outcome=="win") {
+                    unlockAchievement(among, "BCitsHard", "", "<b>Not because it is easy, but because it is hard.</b>")   
+                } else      
+                 //The Vice With No Vice: Win as Nixon/Goldwater on normal in 1960
+                 if (!modded && !run.achievements["Vice"] && e.election_id == 11 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && campaignTrail_temp.final_outcome=="win" && campaignTrail_temp.running_mate_last_name=="Goldwater") {
+                    unlockAchievement(among, "Vice", "", "<b>The Vice With No Vice</b>")   
+                } else                   
                 // ### 1948 ###
 
                 // Dixie Defeats Dewey - Win as Truman by preventing a southern walkout. 
                 if (!modded && !run.achievements["dixieDewey"] && e.candidate_last_name == "Truman" && e.election_id == 12 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && campaignTrail_temp.player_answers[2]==3809 && e.final_outcome=="win") {
                     unlockAchievement(among, "dixieDewey", "", "<b>Dixie Defeats Dewey</b>")
                 } else
+                
+                // ### 1896 ###
+
+                // The Great Commoner - Win as William Jennings Bryan with over 500 EVs. 
+                if (!modded && !run.achievements["Commoner"] && e.candidate_last_name == "Bryan" && e.election_id == 5 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && campaignTrail_temp.final_overall_results[0].electoral_votes>330 && e.final_outcome=="win") {
+                    unlockAchievement(among, "Commoner", "", "<b>The Great Commoner</b>")
+                } else               
 
                 // ###### MODS ######
 
