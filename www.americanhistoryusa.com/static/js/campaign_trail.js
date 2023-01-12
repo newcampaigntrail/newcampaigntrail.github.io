@@ -2396,7 +2396,7 @@ function divideElectoralVotesProp(e, t) {
 
 		// ### 2024G ###
                 // You WILL win Oregon
-                if (!run.achievements["youwillwinoregon"] && e.candidate_last_name == "Carlson" && e.election_id == 20 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && 23 == campaignTrail_temp.final_state_results[36].result[0].candidate==200 && e.final_outcome =="lose") {
+                if (!run.achievements["youwillwinoregon"] && e.candidate_last_name == "Carlson" && e.election_id == 20 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && 200 == campaignTrail_temp.final_state_results[36].result[0].candidate && e.final_outcome =="lose") {
                     unlockAchievement(among, "youwillwinoregon", "", "You <b>WILL</b> win Oregon")
                 } else
 		
