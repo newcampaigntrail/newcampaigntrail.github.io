@@ -3162,7 +3162,7 @@ document.addEventListener('keydown', function(event) {
 
 
 // MD5 Library
-var MD5 = function(d) {
+function MD5(d) {
 	try{
     var r = M(V(Y(X(d), 8 * d.length)));
     return r.toLowerCase()
