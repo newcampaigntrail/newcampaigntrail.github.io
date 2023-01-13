@@ -2388,11 +2388,13 @@ function divideElectoralVotesProp(e, t) {
 
                 // ###### MODS ######
 
-		// ### 2024G ###
-                // You WILL win Oregon
+        		// ### 2024G ###
+                // You WILL win Oregon - Removed because that mod fucking sucks and deserves nothing
+                /*
                 if (!run.achievements["youwillwinoregon"] && e.candidate_last_name == "Carlson" && e.election_id == 20 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && 23 == campaignTrail_temp.final_state_results[36].result[0].candidate==200 && e.final_outcome =="lose") {
                     unlockAchievement(among, "youwillwinoregon", "", "You <b>WILL</b> win Oregon")
                 } else
+                */
 		
                 // ### 2019NK ###
                 // Potato P.R.I.D.E - Get the true ending to 2019NK.
