@@ -181,12 +181,6 @@ achList = {
         "</table><br><b><em>1896</em></b><br><table>"
     ],
     // Mods
-    //2024 (Upon a Cross of Globalism)
-    "youwillwinoregon": [
-        "You <b>WILL</b> win Oregon",
-        "As Tucker Carlson, win Oregon in 2024 (Upon a Cross of Globalism) while losing the election to Newsom.",
-        "</table><br><h2>Mods</h2><br><b><em>2024G</em></b><br><table>"
-    ],   
     //2019NK
     "trueKorea": [
         "Potato P.R.I.D.E",
