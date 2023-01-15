@@ -191,10 +191,11 @@ addButtons = (highlight) => {
 displayDetails = () => {
     document.getElementById("display_window").innerHTML=`<div id="map_container" style="position:inherit;width:90%;height:300px;left:29px;">
         <h2>Game Details</h2>
-        Completed `+campT.date+` @ Difficulty Multiplier `+JSON.parse(campT.campaign_trail_game).difficulty_level_id.toFixed(2)+`
+        Completed <test id='date'></test> @ Difficulty Multiplier `+JSON.parse(campT.campaign_trail_game).difficulty_level_id.toFixed(2)+`
         <div id='visits' style='border-style:solid;background-color:lightgrey;width:200px;height:200px;overflow-y:scroll;position:absolute;right: 200px;bottom:15px;'><h4>Visits</h4></div>
         <div id='answers' style='border-style:solid;background-color:lightgrey;width:200px;height:200px;overflow-y:scroll;position:absolute;bottom:15px;left:200px;'><h4>Answers</h4></div>
     </div>`
+    $("#date")[0].innerText = campT.date
     let visits = document.getElementById("visits")
     let visitData = JSON.parse(campT.campaign_trail_visit_counter)
     let answerData = document.getElementById("answers")
