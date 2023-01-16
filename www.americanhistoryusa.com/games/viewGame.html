@@ -204,11 +204,11 @@ displayDetails = () => {
     let states = JSON.parse(campT.states_json)
 
     for (i in answers) {
-        answerData.innerHTML += (Number(i)+1)+": "+answers[i].answer_id+"<br>"
+        answerData.innerHTML += (Number(i)+1)+": "+Number(answers[i].answer_id)+"<br>"
     }
     for (i in visitData) {
         let relState = states[states.map(f=>f.pk).indexOf(visitData[i].state_id)].fields.name
-        visits.innerHTML += relState+": "+visitData[i].visit_count+" visits<br>"
+        visits.innerHTML += relState+": "+Number(visitData[i].visit_count)+" visits<br>"
     }
 }
 
@@ -246,7 +246,8 @@ displayStateBreakdown = () => {
     let states = JSON.parse(campT.states_json)
     let stateSelector = document.getElementById("stateSelect")
     for (i in states) {
-        stateSelector.innerHTML += "<option value='"+i+"'>"+states[i].fields.name+"</option>"
+        stateSelector.innerHTML += "<option value='"+i+"'></option>"
+        stateSelector.children[stateSelector.children.length - 1].innerText = states[i].fields.name
     }
 
     stateSelector.addEventListener("change", () => {
