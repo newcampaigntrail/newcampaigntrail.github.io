@@ -2041,7 +2041,7 @@ function divideElectoralVotesProp(e, t) {
         });
         d = JSON.stringify(d);
         date = new Date()
-        date2 = (date.getDay() + 1)+"/"+(date.getMonth() + 1)+"/"+date.getFullYear()+" "+date.toString().match(/\(([A-Za-z\s].*)\)/)[1]
+        date2 = (date.getDate())+"/"+(date.getMonth() + 1)+"/"+date.getFullYear()+" "+date.toString().match(/\(([A-Za-z\s].*)\)/)[1]
         
         e.historical_overall = "None", e.percentile = "None", e.game_results_url = "None", p()
         $.ajax({
