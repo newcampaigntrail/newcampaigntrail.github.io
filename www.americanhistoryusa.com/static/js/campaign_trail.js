@@ -5,9 +5,6 @@ function removeIssueDuplicates(array) {
 
 AdvisorFeedbackArr=[1,0]
 
-
-
-
 function dHondtAllocation(votes, seats, thresh = 0.15) {
     let quotients = votes
     let allocations = []
@@ -206,58 +203,6 @@ achList = {
         "</table><br><b><em>1876</em></b><br><table>"
     ]
 }
-
-    floridaclose = function() {
-        orderID = campaignTrail_temp.final_overall_results[0].candidate, campaignTrail_temp.final_overall_results[1].candidate, campaignTrail_temp.final_overall_results[2].candidate;
-        playerlost = true;
-        playerID = campaignTrail_temp.candidate_id;
-        playerEV = quickstats[0];
-        goreFL = 0;
-        bushFL = 0;
-        bushwinFL = true;
-        isBush=false;
-        bushwon=false;
-        if(campaignTrail_temp.final_overall_results[0].candidate==77)
-        {
-        bushwon=true
-        }    
-        fLmargin = campaignTrail_temp.final_state_results[8].result[0].percent - campaignTrail_temp.final_state_results[8].result[1].percent;
-        if (playerID==77)
-        {
-        isBush=true   
-        }    
-        if (campaignTrail_temp.final_overall_results[0].electoral_votes < 270) 
-        {
-        if(playerID!=79)
-        {
-        return false;
-        }
-        }
-        if (playerEV >= 270) {
-            playerlost = false;
-        }
-        if (campaignTrail_temp.final_state_results[8].result[0].candidate == 78) {
-            //gore wins FL
-            bushwinFL=false
-            goreFL = campaignTrail_temp.final_state_results[8].result[0].votes;
-            bushFL = campaignTrail_temp.final_state_results[8].result[1].votes;
-        } //bush wins FL
-        else {
-            goreFL = campaignTrail_temp.final_state_results[8].result[1].votes;
-            bushFL = campaignTrail_temp.final_state_results[8].result[0].votes;
-        }
-        if (fLmargin < 0.005) 
-        {
-            if (campaignTrail_temp.final_overall_results[0].electoral_votes <= 294 && campaignTrail_temp.final_overall_results[0].candidate==campaignTrail_temp.final_state_results[8].result[0].candidate) 
-            {
-            if (bushwinFL==bushwon)
-            {
-            return true  
-            }        
-            }
-        }
-        return false
-    }
 
 // ~~Muffin~~ Achievement Button
 
@@ -2225,7 +2170,7 @@ function divideElectoralVotesProp(e, t) {
                 } else
                                 // Art Imitates Life - Get the special ending for this election based on real life occurances.
                 if (campaignTrail_temp.election_id == 9) {
-                if (!modded && !run.achievements["florida2000"] && floridaclose() ) {
+                if (!modded && !run.achievements["florida2000"] && e.final_state_results[8].result[0].percent - e.final_state_results[8].result[1].percent < 0.005 && e.final_overall_results[0].electoral_votes <= 294) {
                         unlockAchievement(among, "florida2000", "", "<b>Art Imitates Life</b>")
                     }
                 } else
