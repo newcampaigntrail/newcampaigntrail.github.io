@@ -2172,7 +2172,7 @@ function divideElectoralVotesProp(e, t) {
                 } else
                                 // Art Imitates Life - Get the special ending for this election based on real life occurances.
                 if (campaignTrail_temp.election_id == 9) {
-                if (!modded && !run.achievements["florida2000"] && e.final_state_results[8].result[0].percent - e.final_state_results[8].result[1].percent < 0.005 && e.final_overall_results[0].electoral_votes <= 294) {
+                if (!modded && !run.achievements["florida2000"] && e.final_state_results[8].result[0].percent - e.final_state_results[8].result[1].percent < 0.005 && e.final_overall_results[0].electoral_votes <= 294 && campaignTrail_temp.election_id==9) {
                         unlockAchievement(among, "florida2000", "", "<b>Art Imitates Life</b>")
                     }
                 } else
