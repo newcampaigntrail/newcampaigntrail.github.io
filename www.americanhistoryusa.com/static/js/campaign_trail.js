@@ -349,7 +349,9 @@ function openInfoMenu() {
     <div style='text-align:left'><b>- The Campaign Trail Discord</b>
     <div style='text-align:left'><p>- /r/thecampaigntrail<pr />
     <div style='text-align:left'><p>Most recent TNCT patch notes:<pr />
-    <div style='text-align:left'><p>Happy new year! You can now share games through URLs, just like the old site. Additionally, a lot of small speed and performance fixes have been made.</p>`
+    <div style='text-align:left'><p>Happy new year! You can now share games through URLs, just like the old site. Additionally, a lot of small speed and performance fixes have been made.</p>
+    <div style='text-align:left'><p>We also have a twitter account you can visit <a href="https://twitter.com/TNCampaignTrail">here</a>!</p>`
+
     
 	$("#infoBox").html(`
     <div class="inner_window_front" style="padding:0px"><b><h1>Welcome to The New Campaign Trail!</h1></b></div>
