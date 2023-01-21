@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<!-- Mirrored from www.americanhistoryusa.com/campaign-trail/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Apr 2021 08:05:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+<title>The New Campaign Trail</title>
+<link rel="stylesheet" href="../static/amusa_main_2016032801.css" type="text/css" media="screen" />
+<link rel="shortcut icon" href="../static/34starcircle-2.png" />
+<link rel="canonical" href="index.html" />
+<meta name="description" content="New Campaign Trail game results." />
+<meta property="og:title" content="The New Campaign Trail - A Revamped Presidential Election Game" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="../static/34starcircle-2.png" />
+<meta property="og:image:type" content="image/jpeg" /> 
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta property="og:url" content="index.html" />
+<meta property="og:description" content="New Campaign Trail game results." />
+<meta property="og:site_name" content="The New Campaign Trail" />
+</head>
+<body class="base">
+<div class="container">      
+<center><img src="" id="header" width=1080></img></center>
+<div class="menu_bar_login">
+</div>
+<div class="content_box">
+<div class="content_single">
+<div id="game_window">
+<div class="game_header">
+<h2>NEW CAMPAIGN TRAIL</h2>
+</div>
+<div class="below_header" id="below_header">
+
+<div class="inner_window_front" id="inner_window_1" style="padding:0px;">
+<h1 id="game_res_title">Game Results: </h1>
+</div>
+
+<div class="inner_window_front" id="display_window" style="height:350px">
+    
+</div>
+
+</div>
+</div>
+<div class="footer">
+<div id="music_player" style="display:none">
+  <button onclick="document.getElementById('campaigntrailmusic').play()">Play Soundtrack</button>     <button onClick="document.getElementById('campaigntrailmusic').pause()">Pause</button>
+  <audio id="campaigntrailmusic" loop="true" style="display:none" src="" autoplay="false"></audio>
+</div>
+<button id="modLoadReveal" onclick="if(document.getElementById('modloaddiv').style.display != 'none'){document.getElementById('modloaddiv').style.display = 'none'}else{document.getElementById('modloaddiv').style.display = 'block'}">
+  Mod Loader
+</button><br><br>
+<div id="modloaddiv" style="display:none">
+  <select name="mod" id="modSelect" onchange="modSelectChange()"></select>
+  <div id="customMenu"><br>
+  <b>Code Set 1:</b><br>
+  <textarea id="codeset1" width=400 height=300></textarea><br>
+  </div>
+  <br>
+  <button id="submitMod">Submit</button>
+</div><br>
+<div id="theme_picker">
+<span class="campaign_trail_start_emphasis"><button id="game_start" onclick=creatorChange()><strong>Button</strong></button></span>    
+</div>
+<br><br>
+<a href="http://www.americanhistoryusa.com" style="color:#FF6B6B">Original site</a> created by Dan Bryan &copy; 2012-<testf id="year">2022</testf>
+<br> 
+To report bugs and view the source code, please visit our <a href="https://github.com/newcampaigntrail/newcampaigntrail.github.io" style="color:#FF6B6B">GitHub</a>
+<br> 
+Join our <a href="https://discord.gg/CfS6yTtjZj" style="color:#FF6B6B">Discord Server here!</a><br>
+</div>
+</div>
+<div id="1796_init" style="display:none"></div>
+<br>
+</div>
+<div id='dialogue' title='Benefit Check'></div>
+</body>
+<script src="../static/js/lib/raphael.js"></script>
+
+<script src="../../ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="../static/js/viewGame.js"></script>
+<script src="../static/js/indexCode.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+  <script src="https://malsup.github.io/jquery.blockUI.js" type="text/javascript"></script>
+  <script src="../static/js/us-map-1.0.1/jquery.usmap.js"></script>
+<script src="../static/js/lib/pako.js"></script>
+<script>
+            $.ajax({
+            type: "GET",
+            url: "../static/mods/MODLOADERFILE.html",
+            dataType: "text",
+            success: function(t) {
+                document.getElementById("modSelect").innerHTML = t
+            },
+            error: function(t) {
+                console.log("Error loading mod loader - couldn't reach server.")
+            }
+        })
+
+function loadJSON(path,varr,callback=null)
+{
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function()
+    {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                eval(varr+"=JSON.parse("+JSON.stringify(xhr.responseText.trim())+")");
+            } else {
+                return xhr;
+            }
+            callback ? callback() : null
+        }
+    };
+    xhr.open("GET", path, true);
+    xhr.send();
+}
+
+var campaignTrail_temp = {};
+campaignTrail_temp.election_json = {}
+campaignTrail_temp.candidate_json = {}
+loadJSON("../static/json/election.json", "campaignTrail_temp.election_json")
+loadJSON("../static/json/candidate.json", "campaignTrail_temp.candidate_json")
+loadJSON("../static/json/running_mate.json", "campaignTrail_temp.running_mate_json")
+loadJSON("../static/json/opponents.json", "campaignTrail_temp.opponents_default_json")
+loadJSON("../static/json/opponents.json", "campaignTrail_temp.opponents_weighted_json")
+loadJSON("../static/json/election_list.json", "campaignTrail_temp.temp_election_list", callback=()=>{
+    if (xhttp) {
+        xhttp.send("")
+        xhttpActivate = false
+    }
+})
+
+e=campaignTrail_temp
+e.game_id = null
+campT = {}
+var xhttp = null
+var xhttpActive = true
+
+
+    document.body.onload = ()=>{
+        try {
+            e.game_id = Number(location.hash.substring(1))
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var strData     = atob(this.responseText);
+                var charData    = strData.split('').map(function(x){return x.charCodeAt(0);});
+                var binData     = new Uint8Array(charData);
+                var data        = pako.inflate(binData);
+                var strData     = String.fromCharCode.apply(null, new Uint16Array(data));
+
+                campT = JSON.parse(strData)
+                document.getElementById("game_res_title").innerHTML="Game Results - Game "+e.game_id+":"
+                displayOverall()
+                addButtons(0)
+            }
+        };
+        xhttp.open("GET", "https://a4ca-124-149-140-70.ngrok.io/game/"+e.game_id, true);
+        xhttpActive ? xhttp.send("") : null
+        } catch {
+            console.error("Invalid game id given.")
+        }
+    }
+
+addButtons = (highlight) => {
+    changeMenuButtons = document.createElement("div")
+    changeMenuButtons.innerHTML="<button id='overallBtt'>Overall Results</button> <button id='mapSelButton'>Map</button> <button id='stateBreakdown'>State Breakdown</button> <button id='gameDetails'>Game Details</button>"
+    changeMenuButtons.style="position:absolute;bottom:15px;left: 0;right: 0;margin: 0 auto;width:400px;"
+    changeMenuButtons.children[highlight].disabled=true
+    document.getElementById("display_window").appendChild(changeMenuButtons)
+    
+    document.getElementById("overallBtt").addEventListener("click", () => {
+        displayOverall()
+        addButtons(0)
+    })
+    document.getElementById("mapSelButton").addEventListener("click", () => {
+        displayMap()
+        addButtons(1)
+    })
+    document.getElementById("stateBreakdown").addEventListener("click", () => {
+        displayStateBreakdown()
+        addButtons(2)
+    })
+    document.getElementById("gameDetails").addEventListener("click", () => {
+        displayDetails()
+        addButtons(3)
+    })
+}
+
+displayDetails = () => {
+    document.getElementById("display_window").innerHTML=`<div id="map_container" style="position:inherit;width:90%;height:300px;left:29px;">
+        <h2>Game Details</h2>
+        Completed <test id='date'></test> @ Difficulty Multiplier `+JSON.parse(campT.campaign_trail_game).difficulty_level_id.toFixed(2)+`
+        <div id='visits' style='border-style:solid;background-color:lightgrey;width:200px;height:200px;overflow-y:scroll;position:absolute;right: 200px;bottom:15px;'><h4>Visits</h4></div>
+        <div id='answers' style='border-style:solid;background-color:lightgrey;width:200px;height:200px;overflow-y:scroll;position:absolute;bottom:15px;left:200px;'><h4>Answers</h4></div>
+    </div>`
+    $("#date")[0].innerText = campT.date
+    let visits = document.getElementById("visits")
+    let visitData = JSON.parse(campT.campaign_trail_visit_counter)
+    let answerData = document.getElementById("answers")
+    let answers = JSON.parse(campT.campaign_trail_game_answer)
+
+    let states = JSON.parse(campT.states_json)
+
+    for (i in answers) {
+        answerData.innerHTML += (Number(i)+1)+": "+Number(answers[i].answer_id)+"<br>"
+    }
+    for (i in visitData) {
+        let relState = states[states.map(f=>f.pk).indexOf(visitData[i].state_id)].fields.name
+        visits.innerHTML += relState+": "+Number(visitData[i].visit_count)+" visits<br>"
+    }
+}
+
+displayOverall = () => {
+    let gameData = JSON.parse(campT.campaign_trail_game)
+    let election_name = e.temp_election_list[e.temp_election_list.map(f=>f.id).indexOf(gameData.election_id)].display_year
+    let candidate = e.candidate_json[e.candidate_json.map(f=>f.pk).indexOf(gameData.candidate_id)]
+    let cand_name = candidate.fields.first_name + " " + candidate.fields.last_name
+
+    document.getElementById("display_window").innerHTML='<div id="map_container" style="position:inherit;width:90%;height:300px;left:29px;"><h2>Game in '+election_name+' as '+cand_name+'</div>'
+    let results = JSON.parse(campT.campaign_trail_game_result)
+    
+    let curSel = results
+    let o = curSel.reduce((a,n) => a + n.popular_votes,0)
+    dataTable = document.createElement("table")
+    r = "<tr><th>Candidate</th><th>Popular Votes</th>\t    <th>Popular Vote %</th><th>Electoral Votes</th></tr>"
+    for (_ = 0; _ < curSel.length; _++) {
+        i = e.candidate_json.map(f=>f.pk).indexOf(curSel[_].candidate_id);
+        if (i > -1) {
+            let d = e.candidate_json[i].fields.color_hex;
+            r += '<tr><td style="text-align: left;">            <span style="background-color: ' + d + "; color: " + d + ';">----</span> ' + (f = e.candidate_json[i].fields.first_name + " " + e.candidate_json[i].fields.last_name) + "</td><td> " + (curSel[_].popular_votes / o * 100).toFixed(1) + "% </td><td> " + curSel[_].popular_votes + " </td><td> " + curSel[_].electoral_votes + " </td></tr>"
+        } else {
+            r += '<tr><td style="text-align: left;">Unknown Candidate (try to load correct mod from mod loader and come back to this page)</td></tr>'
+        }
+    }
+    dataTable.innerHTML=r
+    dataTable.style=`position:absolute;top:125px;left: 0;right: 0;margin: 0 auto;width:600px;`
+    dataTable.id = "dataTable"
+    document.getElementById("display_window").appendChild(dataTable)
+
+}
+
+displayStateBreakdown = () => {
+    document.getElementById("display_window").innerHTML='<div id="map_container" style="position:inherit;width:90%;height:300px;left:29px;"><select id="stateSelect"></select></div>'
+    let states = JSON.parse(campT.states_json)
+    let stateSelector = document.getElementById("stateSelect")
+    for (i in states) {
+        stateSelector.innerHTML += "<option value='"+i+"'></option>"
+        stateSelector.children[stateSelector.children.length - 1].innerText = states[i].fields.name
+    }
+
+    stateSelector.addEventListener("change", () => {
+        displayStateTable(stateSelector.value)
+    })
+
+    displayStateTable(0)
+
+}
+
+displayStateTable = (stateIndex) => {
+    if (document.getElementById("dataTable")) {
+        document.getElementById("dataTable").remove()
+    }
+    let results = JSON.parse(campT.campaign_trail_state_result)
+    let newRes = []
+    for (_i in results) {
+        let newResMap = newRes.map(f => f[0].state_id)
+        if (newResMap.includes(results[_i].state_id)) {
+            newRes[newRes.length - 1].push(results[_i])
+        } else {
+            newRes.push([results[_i]])
+        }
+    }
+    
+    let curSel = newRes[stateIndex]
+    let o = curSel.reduce((a,n) => a + n.popular_votes,0)
+    dataTable = document.createElement("table")
+    r = "<tr><th>Candidate</th><th>Popular Votes</th>\t    <th>Popular Vote %</th><th>Electoral Votes</th></tr>"
+    for (_ = 0; _ < curSel.length; _++) {
+        i = e.candidate_json.map(f=>f.pk).indexOf(curSel[_].candidate_id);
+        let d = e.candidate_json[i].fields.color_hex;
+        r += '            <tr><td style="text-align: left;">            <span style="background-color: ' + d + "; color: " + d + ';">----</span> ' + (f = e.candidate_json[i].fields.first_name + " " + e.candidate_json[i].fields.last_name) + "</td><td> " + (curSel[_].popular_votes / o * 100).toFixed(1) + "% </td><td> " + curSel[_].popular_votes + " </td><td> " + curSel[_].electoral_votes + " </td></tr>"
+    }
+    dataTable.innerHTML=r
+    dataTable.style=`position:absolute;top:125px;left: 0;right: 0;margin: 0 auto;width:600px;`
+    dataTable.id = "dataTable"
+    document.getElementById("display_window").appendChild(dataTable)
+}
+
+displayMap = () => {
+    document.getElementById("display_window").innerHTML='<div id="map_container" style="position:inherit;width:90%;height:300px;left:29px;"></div>'
+
+    let results = JSON.parse(campT.campaign_trail_state_result)
+    let newRes = []
+    for (_i in results) {
+        let newResMap = newRes.map(f => f[0].state_id)
+        if (newResMap.includes(results[_i].state_id)) {
+            newRes[newRes.length - 1].push(results[_i])
+        } else {
+            newRes.push([results[_i]])
+        }
+    }
+    let candidateMap = e.candidate_json.map(f => f.pk)
+    let states = JSON.parse(campT.states_json)
+    var lTemp = function() {
+        for (var t = {}, i = 0; i < states.length; i++) {
+            indexed = newRes[newRes.map(f => f[0].state_id).indexOf(states[i].pk)]
+            largestCandPk = indexed[0].candidate_id
+            largestCand = e.candidate_json[candidateMap.indexOf(largestCandPk)]
+            t[states[i].fields.abbr] = {
+                fill: largestCand.fields.color_hex
+            };
+        }
+        return {
+            stateStyles: {
+                fill: "#EAFDFF"
+            },
+            stateHoverStyles: {
+                fill: "#EAFDFF"
+            },
+            stateSpecificStyles: t,
+            stateSpecificHoverStyles: t,
+            click: function(_, shape) {
+                let states = JSON.parse(campT.states_json)
+                const stateAbbr = shape.name
+                const stateName = states[states.map(f=>f.fields.abbr).indexOf(stateAbbr)].fields.name
+                displayStateBreakdown()
+                const dataTab = document.getElementById("stateSelect")
+                let datTabChild = Array.from(dataTab.children)
+                for (i in datTabChild) {
+                    const name = datTabChild[i].innerHTML
+                    if (name == stateName) {
+                        dataTab.value = i
+                        displayStateTable(i)
+                        break;
+                    }
+                }
+                addButtons(2)
+            }
+        }
+    }();
+    $("#map_container").usmap(lTemp) // adds a touch of colour to the map
+    document.getElementsByTagName("svg")[0].setAttribute("viewBox", '-275 0 950 595') // fixes viewbox
+}
+
+var reloading = false
+
+// reloads if the # operator is changed
+window.setInterval(function() {
+    // Get the current URL
+    var currentURL = window.location.href;
+    var urlParts = currentURL.split('#');
+    var operator = urlParts[urlParts.length-1];
+
+    if (!e.game_id || reloading) {
+        return;
+    }
+
+    if (e.game_id.toString() != operator) {
+        reloading = true;
+        window.location.reload()
+    }
+},100)
+
+const yearField = document.getElementById("year")
+  yearField.innerHTML = new Date().getFullYear()
+
+</script>
+  
+</html>

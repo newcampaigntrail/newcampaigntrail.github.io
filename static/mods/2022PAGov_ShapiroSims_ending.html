@@ -1,0 +1,43 @@
+used=false;
+    orderID = [aa[0].candidate, aa[1].candidate, aa[2].candidate];
+    playerID = campaignTrail_temp.candidate_id;
+    playerEV = quickstats[0]
+        //out = "win", "loss", or "tie" for your candidate
+        //totv = total votes in entire election
+        //aa = all final overall results data
+        if (quickstats[1]>=70) {
+            if (used != true) {
+                setInterval(function () {
+                    used = true;
+                    imgg = document.getElementsByClassName("person_image")[0];
+                    if (imgg != null) {
+                        imgg.src = "https://i.imgur.com/Un5GeL4.png";
+                    }
+                }, 100);
+            }
+    return "<h3>'Senator Bob Casey will resign his seat.'</h3><p>Due to health concerns, Bob Casey will resign early. Thankfully, you, Governor-elect Shapiro, get to appoint someone to that seat. Now, who to appoint is the question? Fetterman just got elected to the other Senate seat, so that's out of the question. Conor Lamb? He was your pick to replace you as Attorney General. Katie McGinty is also out of the question. Dwight Evans? Not interested. Matt Cartwright? Also not interested. Actually, all the House Democrats from Pennsylvania rode your coattails to victory.</p><p>Maybe Kenyatta or another one of those Senate primary candidates? But, as you look through your list, you notice one name that strikes you. 'Apollo Astronomical'. You lean over to Brian Sims and tell him you've made up your mind. Apollo Astronomical will be the next Senator from Pennsylvania.</p><p>Thank you for your work on Operation Bigshot. The timeline has been restored.</p><p>Congrats to /u/Elithefloridaman for correctly guessing the mod.</p>"
+    } else if (aa[1].popular_votes > aa[0].popular_votes) {
+        if (used != true) {
+            setInterval(function () {
+                used = true;
+                imgg = document.getElementsByClassName("person_image")[0];
+                if (imgg != null) {
+                    imgg.src = "https://i.imgur.com/YxdgghS.png";
+                }
+            }, 100);
+        }
+    return "<h3>Congratulations! You have won the 2022 Pennsylvania Gubernatorial election.</h3><p>Although this was the expected outcome, it's still a huge win for Pennsylvanian Democrats given the overall enviorment. Republicans are frustrasted that Mastriano possibly cost them a key Governor's seat, and for at least 4 years, a unified Republican government in Pennsylvania has been rejected. Republicans still hold narrow control of the State Legislature, but with fair redistricting giving a boost for the Democrats, they could perhaps take control of the Pennsylvania State Legislature some time this decade, maybe during a second term if you choose to run, which many are expecting.</p><p>While Republicans controlling the legislature means you won't get everything passed, you still have executive orders and other tools to get parts of your agenda done. Perhaps some moderate Republicans are looking to compromise, given their margins in the State House and Senate seem narrow. Regardless, get ready to move into the Governor's Mansion, and best of luck, Governor-elect Shapiro!</p>"
+} else if (aa[1].popular_votes < aa[0].popular_votes) {
+    if (used != true) {
+        setInterval(function () {
+            used = true;
+            imgg = document.getElementsByClassName("person_image")[0];
+            if (imgg != null) {
+                imgg.src = "https://i.imgur.com/S6fK2uM.png";
+            }
+        }, 100);
+    }
+    return "<h3>Sorry! You have lost the 2022 Pennsylvania Gubernatorial election.</h3><p>Given the enviorment favored Republicans, this isn't the biggest upset, but Mastriano's extreme stances made this the less likely possibility. Republicans now have unified control of Pennsylvania's government (save for the Supreme Court), and will act accordingly, passing a variety of conservative policies. You're still Attorney General for at least 2 years, (meaning you can sue the Legislature or Mastriano if they go too far), but past that, your political career seems to likely be over after this loss.</p><p>Many Democrats are worried that Mastriano will refuse to accept if Biden or any Democrat wins the Keystone State in 2024, along with Mastriano's early plans as Governor to search for 'election integrity'. As many of your supporters worried that Pennsylvania's democracy was at stake in this election, what now? Only time will tell.</p>"
+  } else {
+    return "<h3>Ayo?</h3>Something broke, probably. Contact Astronomical#3005 and I will try to fix it. Good job if you won."
+  }

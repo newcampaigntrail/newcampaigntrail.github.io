@@ -1,0 +1,10 @@
+e=campaignTrail_temp
+
+if (e.temp_election_list.length > 1) {
+console.log(e.temp_election_list)
+e.temp_election_list = e.temp_election_list.slice(14)
+console.log(e.temp_election_list)
+e.temp_election_list[0].display_year= "1844b"
+e.election_json = e.election_json.slice(18)
+e.candidate_json[e.candidate_json.map(a=>a.pk).indexOf(132)].fields.is_active=0
+}
