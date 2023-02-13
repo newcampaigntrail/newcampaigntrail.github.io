@@ -986,7 +986,7 @@ function divideElectoralVotesProp(e, t) {
                 currCandData = copy(e.candidate_json[e.candidate_json.map(f=>f.pk).indexOf(Number(cand))]) // gets current candidate json data
 
                 if (!realCandidates.includes(Number(cand))) {
-                    alert("Fuck you u/yupperdoo97")
+                    alert("Unfortunately, this part of the mod is currently broken, and is unplayable. Apologies.")
                     window.location.reload()
                 } else {
                     fakeId = cand
