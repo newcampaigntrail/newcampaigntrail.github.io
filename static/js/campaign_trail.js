@@ -176,6 +176,12 @@ achList = {
         "Win as Truman by preventing a southern walkout.",
         "</table><br><b><em>1948</em></b><br><table>"
     ],
+    //1916
+    "California": [
+        "Califor-Huh?",
+        "As Charles Evans Hughes, win the election without California.",
+        "</table><br><b><em>1916</em></b><br><table>"
+    ],
     //1896
     "Commoner": [
         "The Great Commoner",
@@ -204,8 +210,14 @@ achList = {
     //1876
     "ATruceNotACompromise": [
         "A Truce, Not A Compromise",
-        "Have the final results be 185-184 in favour of Hayes, while agreeing to a possible compromise on the last question, mimicking real life events. (doing this as either candidate counts)",
+        "Have the final results be 185-184 in favour of Hayes, while agreeing to a possible compromise on the last question, mimicking real life events. (Doing this as either candidate counts)",
         "</table><br><b><em>1876</em></b><br><table>"
+    ],
+    //1872
+    "AVictoryForAllPeople": [
+        "A Victory For All People",
+        "Die as Greeley and win on Normal. Sumner is required as your running mate.",
+        "</table><br><b><em>1872</em></b><br><table>"
     ]
 }
 
@@ -2235,7 +2247,12 @@ function divideElectoralVotesProp(e, t) {
                 if (!modded && !run.achievements["dixieDewey"] && e.candidate_last_name == "Truman" && e.election_id == 12 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && campaignTrail_temp.player_answers[2]==3809 && e.final_outcome=="win") {
                     unlockAchievement(among, "dixieDewey", "", "<b>Dixie Defeats Dewey</b>")
                 } else
-                
+                 // ### 1916 ###
+
+                // Califor-Huh? - As Charles Evans Hughes, win the election without California.. 
+                if (!modded && !run.achievements["California"] && e.candidate_last_name == "Hughes" && e.election_id == 14 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.candidate_id == e.final_state_results[3].result[1].candidate && e.final_outcome=="win") {
+                    unlockAchievement(among, "California", "", "<b>Califor-Huh?</b>")
+                } else
                 // ### 1896 ###
 
                 // The Great Commoner - Win as William Jennings Bryan with over 500 EVs. 
@@ -2271,6 +2288,13 @@ function divideElectoralVotesProp(e, t) {
                 if (!run.achievements["fixyourmod"] && e.candidate_last_name == "Long" && e.final_outcome=="loss" && e.election_id==20) {
                     unlockAchievement(among, "fixyourmod", "", "<b>Fix Your Damn Mod</b>")
                 } else
+		
+		// ### 1872 ###
+                // A Victory For All People - Die as Greeley, and win. Yes, on normal.
+                if (!run.achievements["AVictoryForAllPeople"] && e.candidate_last_name == "Greeley" && campaignTrail_temp.running_mate_last_name=="Sumner" && e.final_outcome=="win" && e.final_outcome=="win" && e.player_answers[34] == 8131 && e.election_id==20) {
+                    unlockAchievement(among, "AVictoryForAllPeople", "", "<b>A Victory For All People</b>")
+                } else
+		
                 // ### 1876 ####
                     
                 // A Truce, Not A Compromise
