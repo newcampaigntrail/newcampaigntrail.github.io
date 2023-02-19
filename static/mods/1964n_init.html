@@ -22,7 +22,27 @@ document.body.background = "https://i.imgur.com/2BIjIzx.png"
 
 
 campaignTrail_temp.musicOn = true
-campaignTrail_temp.musicSrc = "https://cdn.discordapp.com/attachments/930154545391210497/1032798989092925532/yt1s.com_-_Hello_Lyndon_1964_Ed_Ames.mp3"
+campaignTrail_temp.musicSrc = "https://cdn.discordapp.com/attachments/930154545391210497/1020857344562827314/NIXON_NOW.mp3"
+
+document.getElementById("music_player").innerHTML = "<button onclick='music_play()'>Play Soundtrack</button>     <button onclick='music_pause()'>Pause</button><br><div style='font-size:0.75em'><input type='radio' name='jukebox' value='song0' checked='' onchange='jukebox0()'>Nixon Now<input type='radio' name='jukebox' value='song1' onchange='jukebox1()'>Hello Lyndon</div><audio id='campaigntrailmusic' loop='true' style='display:none' src='' autoplay='false'></audio>"
+
+music_play = function() {
+    document.getElementById("campaigntrailmusic").play()
+}
+
+music_pause = function() {
+    document.getElementById("campaigntrailmusic").pause()
+}
+
+jukebox0 = function() {
+    campaignTrail_temp.musicSrc = "https://cdn.discordapp.com/attachments/930154545391210497/1020857344562827314/NIXON_NOW.mp3"
+    document.getElementById('campaigntrailmusic').src = campaignTrail_temp.musicSrc
+}
+jukebox1 = function() {
+    campaignTrail_temp.musicSrc = "https://cdn.discordapp.com/attachments/930154545391210497/1032798989092925532/yt1s.com_-_Hello_Lyndon_1964_Ed_Ames.mp3"
+    document.getElementById('campaigntrailmusic').src = campaignTrail_temp.musicSrc
+}
+
 
 
 HistHexcolour=["#FF5E5E","#5E8AFF","#FBFF5E","#B5B5B5"];
