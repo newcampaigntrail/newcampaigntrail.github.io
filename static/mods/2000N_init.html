@@ -1,0 +1,446 @@
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = ""
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = ""
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window
+$(".container")[0].style.backgroundColor = ""
+document.getElementById("header").src = "https://newcampaigntrail.github.io/static/images/banner_classic.png"
+//document.getElementById("header").src = "https://newcampaigntrail.github.io/static/images/banner_6.png"
+document.body.background = ""
+quotes = [
+    `"Conquer yourself rather than the world." - René Descartes`,
+    `"Dubito, ergo cogito, ergo sum." - René Descartes`,
+    `"The [beliefs] of a society form a determinate system with a life of [their] own." - Emile Durkheim`,
+    `"Being like everybody is the same as being nobody." - Rod Serling`,
+    `"An idea might [...] produce a harmful outcome, even in the absence of any intention to harm." - Nick Bostrom`,
+    `"Everything in life exacts a price, and you will have to decide whether the price is worth the prize." - Sam Nunn`,
+    `"The essence of a democracy is a free electorate." - Arlen Specter`
+]
+
+selQuote = quotes[Math.round(Math.random()*(quotes.length - 1))]
+corrr = `<h2>THE CAMPAIGN TRAIL</h2><font id="wittyquote" size="4" color="white"><em>` + selQuote + `</em></font>`
+$("#theme_picker")[0].style.display = "none"
+$("#bottomBar")[0].style.display = "none"
+
+e=campaignTrail_temp
+
+var changeGameDisp = (hide) => {
+  disp = "";
+  if (hide) {
+    disp = "none";
+  }
+  document.getElementsByClassName("inner_window_w_desc")[0].style.display = disp
+};
+
+e.creditsPage = () => {
+  credits_html = `
+    <h3>Coding</h3>
+    <p><font color='#65bc6d'>DecstarG#4326</font></p>
+    <h3>Writing</h3>
+    <p><font color='#b665bc'>Mocha#0096</font></p>
+    <p><font color='#d3cc3d'>DecstarG#4326</font><p>
+    <p><font color='#3dd1d3'>NeoK#7895</font></p>
+    <p><font color='#616993'>Rubix#4197</font></p>
+    <h3>Playtesting/Misc. Help</h3>
+    <p><em><b><font color='red'>Board667#8785</font></b></em></p>
+    <p>AngryGandhi#3704</p>
+    <p>Chapu#1656</p>
+    <p>pedrocheems#6531</p>
+    <p>Diamondy30901#0308</p>
+    <p>TomBoxXD#1642</p>
+    <h3>Music Credit</h3>
+    <p>Main ST: The Caretaker - Everywhere at the End of Time</p><br>
+    <p>We'll Meet Again - Vera Lynn (edit by SirMcSir)</p>
+    <p>My Time - Bo En (piano cover by Lattice)</p>
+    <p>Oceania's Anthem - Dominic Muldowney (cover by Noah & Clyde Music)</p>
+    <p>King Nothing - Metallica (guitar cover Julien Menard)</p>
+    <p>Your Reality - Dan Salvato (piano cover by Lattice)</p>
+    <p>An Ending - Toby Fox</p>
+    <p>Made In Heaven - Queen (piano cover by Fabrizio Spaggiari)</p>
+    <p>Requiem - Mozart</p>
+    <p>Hotel California - Eagles (music box cover by Beeano)</p>
+    <p>It's Just a Burning Memory - The Caretaker</p>
+    <p>Space Oddity - David Bowie (cover by Mike Masse and Jeff Hall)</p>
+    <p>Heartaches - Al Bowlly</p>
+    <p>Goodbye, My Beautiful - Russ Morgan</p><br><br>
+    <h1><font color='gold'>Final Note</font></h1>
+    <div style='width: 70%;text-overflow: ellipsis;text-align:center;display: block;margin-left: auto;margin-right: auto;'>
+    <p>Hi, this is Decstar. I just wanted to thank you for playing this mod.</p>
+    <p>This particular style of mod isn't necessarily the "norm" for TCT, but when I was developing the concept, I thought it would play well in the medium.</p>
+    <p>I hope you enjoy/did enjoy the mod.</p>
+    <p>To my fellow developers (who haven't seen this yet): thank you so much for your help with this, I think each of you have done a fantastic job. Thank you for putting up with my 4am schizo ideas for new endings.</p>
+    <p>And as always, remember that it's raining somewhere else.</p>
+    </div>
+  `
+  changeGameDisp(true);
+  var spacer = document.createElement("amongusspacerthisisntarealelement");
+  spacer.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+  document
+    .getElementsByClassName("inner_window_w_desc")[0]
+    .children[1].appendChild(spacer);
+    changeGameDisp(true);
+    var menuHeader = document.createElement("div");
+    menuHeader.classList.add("inner_window_front");
+    menuHeader.innerHTML = `<h1 style='font-family: "Times New Roman";'><font color='#0496f7'>Credits</font></h1>`;
+    menuHeader.id = "SOTUheader";
+    menuHeader.style = "height: 50px;background-color:#2d2d2d";
+    var newMenu = document.createElement("div");
+    newMenu.classList.add("inner_window_front");
+    newMenu.id = "SOTUmenu";
+    newMenu.style = `height:260px;background-color:#2d2d2d;color:white;overflow-y: scroll;`;
+
+    newMenu.innerHTML = credits_html;
+    let z = document.getElementById("game_window");
+    var backButton = document.createElement("button");
+    backButton.style =
+      "position: relative; bottom: -13px; left: -380px; width: 150px; height: 80px;font-size:40px;padding-top:5px;padding-left:8px";
+    backButton.id = "backSOTUBtn";
+    backButton.innerHTML = `<b>BACK</b>`;
+    backButton.onclick = function () {
+      document.getElementById("SOTUheader").remove();
+      document.getElementById("SOTUmenu").remove();
+      document.getElementById("backSOTUBtn").remove();
+      changeGameDisp(false);
+    };
+    z.appendChild(menuHeader);
+    z.appendChild(newMenu);
+    z.appendChild(backButton);
+
+}
+
+e.credits = "<button onclick='e.creditsPage()'>Credits</button>"
+
+e.election_json =   [
+    {
+        "model": "campaign_trail.election",
+        "pk": 20,
+        "fields": {
+            "year": 2000,
+            "summary": "<p><b style='color: red'>CONTENT WARNING: This mod explores themes of suicide, depression, and existentialism.</b></p><p>The Clinton presidency has been a middling success. Faced with respectable economic performance, and the collapse of the Soviet Union, the United States is poised as the sole superpower on the world stage. On the Democratic side, Sam Nunn is prepared to continue Clinton’s pragmatic policies in the United States. Arlen Specter, coming from the newly reascended liberal Republican faction, must make a case that the Republican party too can handle the country competently.</p><p>Regardless of who wins this election, it is likely that little will fundamentally change for the United States, with some declaring that the “End of History” is impending.</p>",
+            "image_url": "https://cdn.discordapp.com/attachments/810034515334004766/1068096422085414932/election_pic.png",
+            "winning_electoral_vote_number": 270,
+            "advisor_url": "https://cdn.discordapp.com/attachments/810034515334004766/1076290209966211082/election_advisors.png",
+            "recommended_reading": "Placeholder",
+            "has_visits": 1,
+            "no_electoral_majority_image": "https://upload.wikimedia.org/wikipedia/en/5/5b/The_Caretaker_-_Everywhere_at_the_End_of_Time_-_Stage_1_cover.jpg"
+        }
+    }
+]
+
+e.temp_election_list = [
+    {
+      "id": 20, 
+      "year": 2000, 
+      "is_premium": 0, 
+      "display_year": "2000N"
+    }
+]
+
+e.opponents_default_json = [
+    {
+        "election": 20,
+        "candidates": [
+          200,
+          201,
+          202
+        ]
+    }
+]
+
+e.opponents_weighted_json = [
+    {
+      "election": 20,
+      "candidates": [
+        200,
+        201,
+        202
+      ]
+    }
+]
+
+e.candidate_json = [
+    {
+      "model": "campaign_trail.candidate",
+      "pk": 200,
+      "fields": {
+        "first_name": "Arlen",
+        "last_name": "Specter",
+        "election": 20,
+        "party": "Republican",
+        "state": "Pennsylvania",
+        "priority": 1,
+        "description": `<p>Senator Arlen Specter is an interesting case. While he has been in the Senate for almost 20 years, he has only begun to skyrocket to national prominence in recent years. Invigorated by the moderate Republican gains in the North during the 1994 midterms Specter faced. Despite some speculating on his candidacy in 1996, the general consensus was that he would wait until 2000 to run, given the general popularity of Bill Clinton.</p><p>After winning the primary essentially unopposed, Specter is coming into the general election with the challenge of convincing voters that he can maintain and secure the relatively peaceful world environment of the Clinton years, while simultaneously providing a convincing case for his moderate brand of Republican politics.</p>`,
+        "color_hex": "#FF0000",
+        "secondary_color_hex": "#FF0000",
+        "is_active": 1,
+        "image_url": "https://cdn.discordapp.com/attachments/810034515334004766/1068099109216595968/candidate_specter.png",
+        "electoral_victory_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+        "electoral_loss_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+        "no_electoral_majority_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+        "description_as_running_mate": null,
+        "candidate_score": 1.0
+      }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 201,
+        "fields": {
+          "first_name": "Sam",
+          "last_name": "Nunn",
+          "election": 20,
+          "party": "Democratic",
+          "state": "Georgia",
+          "priority": 1,
+          "description": "<p>Senator Sam Nunn is a change of pace for the Democratic party. Only a few years back he would have been on the more conservative wing of the party, but now he finds himself at a new centre from President Clinton’s southward shift.</p><p>Much like his opponent, Nunn didn’t face much opposition from within his own party’s nomination, with early endorsements from both Gore and Clinton giving him a landslide edge over his main opponent, Senator John Kerry. Nunn’s nomination will solidify the ‘New Southern Strategy’ as some smug Republican insiders have dubbed it.</p><p>He must prove to the public that this moderation from the Democratic party is the right move, and convince the national audience that he is the natural successor to the peace of the past decade.</p>",
+          "color_hex": "#0000FF",
+          "secondary_color_hex": "#0000FF",
+          "is_active": 1,
+          "image_url": "https://cdn.discordapp.com/attachments/810034515334004766/1068099108990107728/candidate_nunn.png",
+          "electoral_victory_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+          "electoral_loss_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+          "no_electoral_majority_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+          "description_as_running_mate": null,
+          "candidate_score": 1.0
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 202,
+        "fields": {
+          "first_name": "Ralph",
+          "last_name": "Nader/Other",
+          "election": 20,
+          "party": "Other",
+          "state": "Nevada",
+          "priority": 1,
+          "description": "<p>will never be playable</p>",
+          "color_hex": "#00C100",
+          "secondary_color_hex": "#00C100",
+          "is_active": 0,
+          "image_url": "https://static.wikia.nocookie.net/platinumgames/images/4/46/Boris.png/revision/latest/scale-to-width-down/250?cb=20140506032514",
+          "electoral_victory_message": null,
+          "electoral_loss_message": null,
+          "no_electoral_majority_message": null,
+          "description_as_running_mate": null,
+          "candidate_score": 1.0
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 204,
+        "fields": {
+          "first_name": "Bill",
+          "last_name": "Weld",
+          "election": 20,
+          "party": "Republican",
+          "state": "Massachusetts",
+          "priority": 1,
+          "description": null,
+          "color_hex": "#e7ed74",
+          "secondary_color_hex": "#e7ed74",
+          "is_active": 0,
+          "image_url": "https://media.discordapp.net/attachments/810034515334004766/1074176463164686367/candidate_weld.png",
+          "electoral_victory_message": null,
+          "electoral_loss_message": null,
+          "no_electoral_majority_message": null,
+          "description_as_running_mate": "<p>Bill Weld is a figure from Massachusetts who is willing to be on your ticket. He is the governor, having been in office since the early 90s. He was an early backer of your campaign, having been more aligned with the party's moderate faction. Many of your advisors call him pretty boring, but they also said he should 100% be your running mate. So what can you really do?</p><p>Much like you, he checks all the boxes of the post-Clinton Republicans. He’s northern, centrist, and very, very normal.</p>",
+          "candidate_score": 1.0
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 205,
+        "fields": {
+          "first_name": "John",
+          "last_name": "Kasich",
+          "election": 20,
+          "party": "Republican",
+          "state": "Ohio",
+          "priority": 1,
+          "description": null,
+          "color_hex": "#e7ed74",
+          "secondary_color_hex": "#e7ed74",
+          "is_active": 0,
+          "image_url": "https://media.discordapp.net/attachments/810034515334004766/1074176463735111700/candidate_kasich.png",
+          "electoral_victory_message": null,
+          "electoral_loss_message": null,
+          "no_electoral_majority_message": null,
+          "description_as_running_mate": "<p>John Kasich is a figure from Ohio who is willing to be on your ticket. He is one of their representatives, having been in office since the early 80s. He was an early backer of your campaign, having been more aligned with the party's moderate faction. Many of your advisors call him pretty boring, but they also said he should 100% be your running mate. So what can you really do?</p><p>Much like you, he checks all the boxes of the post-Clinton Republicans. He’s boring, centrist, and very, very normal.</p>",
+          "candidate_score": 1.0
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 206,
+        "fields": {
+          "first_name": "Jim",
+          "last_name": "Jeffords",
+          "election": 20,
+          "party": "Republican",
+          "state": "Vermont",
+          "priority": 1,
+          "description": null,
+          "color_hex": "#e7ed74",
+          "secondary_color_hex": "#e7ed74",
+          "is_active": 0,
+          "image_url": "https://media.discordapp.net/attachments/810034515334004766/1074176463475056640/candidate_jeffries.png",
+          "electoral_victory_message": null,
+          "electoral_loss_message": null,
+          "no_electoral_majority_message": null,
+          "description_as_running_mate": "<p>Jim Jeffords is a figure from Vermont who is willing to be on your ticket. He is the junior senator, having been in office since the late 80s. He was an early backer of your campaign, having been more aligned with the party's moderate faction. Many of your advisors call him pretty boring, but they also said he should 100% be your running mate. So what can you really do?</p><p>Much like you, he checks all the boxes of the post-Clinton Republicans. He’s northern, centrist, and very, very normal.</p>",
+          "candidate_score": 1.0
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 207,
+        "fields": {
+          "first_name": "John",
+          "last_name": "Breaux",
+          "election": 20,
+          "party": "Democratic",
+          "state": "Louisiana",
+          "priority": 1,
+          "description": null,
+          "color_hex": "#e7ed74",
+          "secondary_color_hex": "#e7ed74",
+          "is_active": 0,
+          "image_url": "https://media.discordapp.net/attachments/810034515334004766/1078092651276013588/candidate_breux.png",
+          "electoral_victory_message": null,
+          "electoral_loss_message": null,
+          "no_electoral_majority_message": null,
+          "description_as_running_mate": "<p>John Breaux is a figure from Louisiana who is willing to be on your ticket. He is the senior senator, having been in office since the late 80s. He was an early backer of Clinton’s political realignment, and also endorsed you very early in the primary. He has been a centrist for most of his career. Many of your advisors call him pretty boring, but they also said that he should 100% be your running mate. So what can you really do?</p><p>Much like you, he checks all the boxes of the post-Clinton Democrats. He’s southern, centrist, and very, very normal.</p>",
+          "candidate_score": 1.0
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 208,
+        "fields": {
+          "first_name": "Joe",
+          "last_name": "Lieberman",
+          "election": 20,
+          "party": "Democratic",
+          "state": "Connecticut",
+          "priority": 1,
+          "description": null,
+          "color_hex": "#e7ed74",
+          "secondary_color_hex": "#e7ed74",
+          "is_active": 0,
+          "image_url": "https://media.discordapp.net/attachments/810034515334004766/1078092651519291443/candidate_lieberman.png",
+          "electoral_victory_message": null,
+          "electoral_loss_message": null,
+          "no_electoral_majority_message": null,
+          "description_as_running_mate": "<p>Joe Lieberman is a figure from Connecticut who is willing to be on your ticket. Having been in office since the late 80s, he was an early backer of Clinton’s political realignment, and also endorsed you very early in the primary, despite rumours of a potential Lieberman 2000 campaign. He has been a centrist for most of his career. Many of your advisors call him pretty boring, but they also said that he should 100% be your running mate. So what can you really do?</p><p>Much like you, he checks all the boxes of the post-Clinton Democrats. He’s boring, centrist, and very, very normal.</p>",
+          "candidate_score": 1.0
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 209,
+        "fields": {
+          "first_name": "Evan",
+          "last_name": "Bayh",
+          "election": 20,
+          "party": "Democratic",
+          "state": "Indiana",
+          "priority": 1,
+          "description": null,
+          "color_hex": "#e7ed74",
+          "secondary_color_hex": "#e7ed74",
+          "is_active": 0,
+          "image_url": "https://media.discordapp.net/attachments/810034515334004766/1078092651758354442/candidate_bayh.png",
+          "electoral_victory_message": null,
+          "electoral_loss_message": null,
+          "no_electoral_majority_message": null,
+          "description_as_running_mate": "<p>Evan Bayh is a figure from Indiana who is willing to be on your ticket. He is the junior senator, having been in office since the early 90s. He was an early backer of Clinton’s political realignment, and also endorsed you very early in the primary, despite rumors of a potential Lieberman 2000 campaign. He has been a centrist for most of his career. Many of your advisors call him pretty boring, but they also said that he should 100% be your running mate. So what can you really do?</p><p>Much like you, he checks all the boxes of the post-Clinton Democrats. He’s boring, centrist, and very, very normal.</p>",
+          "candidate_score": 1.0
+        }
+    }
+]
+
+e.running_mate_json = [
+  {
+    "model": "campaign_trail.running_mate",
+    "pk": 100,
+    "fields": {
+      "candidate": 200,
+      "running_mate": 204
+    }
+  },
+  {
+    "model": "campaign_trail.running_mate",
+    "pk": 101,
+    "fields": {
+      "candidate": 200,
+      "running_mate": 205
+    }
+  },
+  {
+    "model": "campaign_trail.running_mate",
+    "pk": 102,
+    "fields": {
+      "candidate": 200,
+      "running_mate": 206
+    }
+  },
+  {
+    "model": "campaign_trail.running_mate",
+    "pk": 103,
+    "fields": {
+      "candidate": 201,
+      "running_mate": 207
+    }
+  },
+  {
+    "model": "campaign_trail.running_mate",
+    "pk": 104,
+    "fields": {
+      "candidate": 201,
+      "running_mate": 208
+    }
+  },
+  {
+    "model": "campaign_trail.running_mate",
+    "pk": 105,
+    "fields": {
+      "candidate": 201,
+      "running_mate": 209
+    }
+  }
+]
+
+e.global_parameter_json = [
+    {
+      "model": "campaign_trail.global_parameter",
+      "pk": 1,
+      "fields": {
+        "vote_variable": 1.125,
+        "max_swing": 0.12,
+        "start_point": 0.94,
+        "candidate_issue_weight": 10,
+        "running_mate_issue_weight": 0,
+        "issue_stance_1_max": -0.71,
+        "issue_stance_2_max": -0.3,
+        "issue_stance_3_max": -0.125,
+        "issue_stance_4_max": 0.125,
+        "issue_stance_5_max": 0.3,
+        "issue_stance_6_max": 0.71,
+        "global_variance": 0.01,
+        "state_variance": 0.005,
+        "question_count": 25,
+        "default_map_color_hex": "#C9C9C9",
+        "no_state_map_color_hex": "#999999"
+      }
+    }
+]
+
+e.difficulty_level_json = [{"model":"campaign_trail.difficulty_level","pk":4,"fields":{"name":"Normal","multiplier":0.97}}]
+
+// disable cheats (yes, I know)
+
+disableCheats = () => {
+  Array.from($("#cheatmode")[0].children).forEach(f=>f.remove());
+}
+
+disableCheats();
+
