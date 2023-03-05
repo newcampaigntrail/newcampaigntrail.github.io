@@ -389,7 +389,7 @@ campaignTrail_temp.election_json = [{
   
   function changeFontColour() {
     if (document.getElementById('final_results_description') != null) {
-        document.getElementById('final_results_description').innerHTML = `<font color="white">` + document.getElementById("final_results_description").innerHTML
+        document.getElementById('final_results_description').style.color = "white"
     }
   }
   
@@ -410,22 +410,12 @@ campaignTrail_temp.election_json = [{
         musicMode()
         e.election_json[0].fields.summary = "<p>NIXON: And then there's this McGovern business. What the hell were those clowns thinking, putting that in Bremer's home?</p><p>HALDEMAN: We don't know for sure that they did it, sir.</p><p>NIXON: Like Hell we don't. (Sigh) We can't well have Humphrey or Muskie taking the nomination now, can we? (pauses) This is not good, Bob. We can't afford to have this backfire on us.</p><p>HALDEMAN: Agreed, sir. We'll handle it delicately.</p>"
         e.election_json[0].fields.image_url = "https://i.imgur.com/9ZqnkhX.png"
-  
-        function changeFontColour() {
-            if (document.getElementById('final_results_description') != null) {
-                document.getElementById('final_results_description').innerHTML = `<font color="white">` + document.getElementById("final_results_description").innerHTML
-            }
-        }
         setInterval(changeFontColour, 200)
   
     })
   })
   
-  function changeFontColour() {
-    if (document.getElementById('final_results_description') != null) {
-        document.getElementById('final_results_description').innerHTML = `<font color="white">` + document.getElementById("final_results_description").innerHTML
-    }
-  }
+
   
   next3 = function() {
     text = "The CPUSA fancies itself as the vanguard of the working class. They steadfastly believe that their primary task is to build a mass workers movement that will eventually overthrow capitalism. The New Left disagrees with this assessment. Rejecting the CPUSA's hierarchical structure and centralistic adherence to the party line, the New Left broadly favors a decentralized approach emphasizing direct action and social disruption. Viewing traditional left-wing organizations and organized labor with disdain and sometimes hostility, the mistrust is more than mutual.<br><br>In 1972 the New Left finds itself as the face of the American left. If Hall wants to somehow put together a successful coalition, he'll need to gain the support of student activists, anti-war protesters, Black Panthers, and other radicals.<br><br><br><button onclick='back3()'>Back</button>"
