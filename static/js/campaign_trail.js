@@ -1169,7 +1169,7 @@ function divideElectoralVotesProp(e, t) {
                 return false
             }
             var i = S(e.election_id);
-            if (((e.player_answers.length - 1) % 2 != 0 && 1 == e.election_json[i].fields.has_visits)) {
+            if (((e.question_number - 1) % 2 != 0 && 1 == e.election_json[i].fields.has_visits)) {
                 return false
             }
             if (e.question_number == e.global_parameter_json[0].fields.question_count) {
