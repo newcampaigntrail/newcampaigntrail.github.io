@@ -254,12 +254,22 @@ function benefitCheck(objectid){
 <!-- <script src="../../ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
 <script src="../static/js/lib/raphael.js"></script>
 <script>
+    var completeFunction = () => {
+        var normalText = Array.from(document.getElementsByTagName("option")).filter(f=>f.value=="2000N")[0]
+            var normals = ["2000N", "2000 Redux", "2000?", "2000 Normal", "Normalverse 2000", "H̸̹̹̤͇̯͕̥̱̖̤̰̪̀́E̸̡̥̟̘͍̱͔̞̗̠̳̖̟̜͆͑̏͐Ļ̴͍͉̲̺̟́̑̌͑͜P̷̡̠̥̯͇̞͙̳͌̒͠ͅ", "Don't think about 1993", "Normal", "2000N?", "2000"]
+            var normal_mode = 0
+            window.setInterval(() => {
+                normalText.innerHTML = normals[normal_mode]
+            normal_mode = (normal_mode + 1) % normals.length
+        }, 500)
+    }
             $.ajax({
             type: "GET",
             url: "../static/mods/MODLOADERFILE.html",
             dataType: "text",
             success: function(t) {
                 document.getElementById("modSelect").innerHTML = t
+                completeFunction()
             },
             error: function(t) {
                 console.log("Error loading mod loader - couldn't reach server.")
