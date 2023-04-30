@@ -1044,7 +1044,16 @@ function divideElectoralVotesProp(e, t) {
             for (r = 0; r < e.opponents_default_json[d].candidates.length; r++) {
                 e.opponents_default_json[d].candidates[r] != i && -1 == a.indexOf(e.opponents_default_json[d].candidates[r]) && o.push(e.opponents_default_json[d].candidates[r]);
             }
-            e.election_id = t, e.candidate_id = i, e.running_mate_id = l, e.opponents_list = o, e.game_type_id = $("select[name=game_type_id]").val(), e.difficulty_level_id = $("select[name=difficulty_level_id]").val();
+            // define ONLY if not already defined - necessary for code 1 base switching gimmicks
+            e.election_id = e.election_id ? e.election_id : t
+            e.candidate_id = e.candidate_id ? e.candidate_id : i
+            e.running_mate_id = e.running_mate_id ? e.running_mate_id : l
+
+            t = e.election_id
+            i = e.candidate_id
+            l = e.running_mate_id
+
+            e.opponents_list = o, e.game_type_id = $("select[name=game_type_id]").val(), e.difficulty_level_id = $("select[name=difficulty_level_id]").val();
             var c = $("select[name=difficulty_level_id]").val();
             for ($("select[name=game_type_id]").val(), d = -1, r = 0; r < e.difficulty_level_json.length; r++)
                 if (e.difficulty_level_json[r].pk == $("select[name=difficulty_level_id]").val()) {
@@ -2919,7 +2928,7 @@ _ = '   <div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="ma
         let candidate_id = document.getElementById("candidate_id")
         t.preventDefault(),
             function(t, a) {
-                e.candidate_id = a
+                e.candidate_id = Number(a)
                 for (var n = "", l = 0; l < e.running_mate_json.length; l++)
                     if (e.running_mate_json[l].fields.candidate == a) {
                         var o = e.running_mate_json[l].fields.running_mate,
