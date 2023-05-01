@@ -198,8 +198,14 @@ achList = {
     //2008
     "peoplesvictory": [
         "The People's President",
-        "Decry the folly of capitalism as John McCain, and still win.(All difficulties allowed)",
+        "Decry the folly of capitalism as John McCain, and still win. (All difficulties allowed)",
         "</table><br><b><em>2008</em></b><br><table>"
+    ],
+    //1984
+    "minnesotanice": [
+        "'Well, Minnesota Would've Been Nice'",
+        "As Ronald Reagan, win Minnesota.",
+        "</table><br><b><em>1984</em></b><br><table>"
     ],
     //1936c
     "fixyourmod": [
@@ -2292,13 +2298,19 @@ function divideElectoralVotesProp(e, t) {
                     unlockAchievement(among, "peoplesvictory", "", "<b>The People's President</b>")
                 } else
 
+                // ### 1984 ###
+                // 'Well, Minnesota would've been nice' - As Ronald Reagan, win Minnesota.
+                if (!run.achievements["minnesotanice"] && e.candidate_last_name == "Reagan"  && e.final_outcome=="win" && e.candidate_id == e.final_state_results[25].result[0].candidate) {
+                    unlockAchievement(among, "minnesotanice", "", "<b>'Well, Minnesota would've been nice'</b>")
+                } else
+
                 // ### 1936c ###
                 // Fix Your Damn Mod - As Long in 1936c, die
                 if (!run.achievements["fixyourmod"] && e.candidate_last_name == "Long" && e.final_outcome=="loss" && e.election_id==20) {
                     unlockAchievement(among, "fixyourmod", "", "<b>Fix Your Damn Mod</b>")
                 } else
 		
-		// ### 1872 ###
+		        // ### 1872 ###
                 // A Victory For All People - Die as Greeley, and win. Yes, on normal.
                 if (!run.achievements["AVictoryForAllPeople"] && e.candidate_last_name == "Greeley" && campaignTrail_temp.running_mate_last_name=="Sumner" && e.final_outcome=="win" && e.final_outcome=="win" && e.player_answers[34] == 8131 && e.election_id==20) {
                     unlockAchievement(among, "AVictoryForAllPeople", "", "<b>A Victory For All People</b>")
