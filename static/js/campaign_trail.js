@@ -2300,7 +2300,7 @@ function divideElectoralVotesProp(e, t) {
 
                 // ### 1984 ###
                 // 'Well, Minnesota would've been nice' - As Ronald Reagan, win Minnesota.
-                if (!run.achievements["minnesotanice"] && e.candidate_last_name == "Reagan"  && e.final_outcome=="win" && e.candidate_id == e.final_state_results[25].result[0].candidate) {
+                if (!run.achievements["minnesotanice"] && e.candidate_last_name == "Reagan"  && e.final_outcome=="win" && e.candidate_id == e.final_state_results[25].result[0].candidate && e.election_id==15) {
                     unlockAchievement(among, "minnesotanice", "", "<b>'Well, Minnesota would've been nice'</b>")
                 } else
 
