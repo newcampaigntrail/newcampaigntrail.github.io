@@ -211,7 +211,7 @@ achList = {
     "Wallaloha": [
         "'Wallaloha'",
         "As George Wallace, win Hawaii.",
-        "</table><br><b><em>1972</em></b><br><table>"
+        "</table><br><b><em>1972b</em></b><br><table>"
     ],
     //1936c
     "fixyourmod": [
