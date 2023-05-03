@@ -207,6 +207,12 @@ achList = {
         "As Ronald Reagan, win Minnesota.",
         "</table><br><b><em>1984</em></b><br><table>"
     ],
+    //1972b
+    "Wallaloha": [
+        "'Wallaloha'",
+        "As George Wallace, win Hawaii.",
+        "</table><br><b><em>1972</em></b><br><table>"
+    ],
     //1936c
     "fixyourmod": [
         "Fix Your Damn Mod",
@@ -2294,14 +2300,20 @@ function divideElectoralVotesProp(e, t) {
 
                 // ### 2008 ###
                 // The People's President - Win as Comrade McCain!
-                if (!run.achievements["peoplesvictory"] && e.candidate_last_name == "McCain"  && e.final_outcome=="win" && e.final_outcome=="win" && e.player_answers[8] == 52632 && e.election_id==20) {
+                if (!run.achievements["peoplesvictory"] && e.candidate_last_name == "McCain"  && e.final_outcome=="win" && e.player_answers[8] == 52632 && e.election_id==20) {
                     unlockAchievement(among, "peoplesvictory", "", "<b>The People's President</b>")
                 } else
 
                 // ### 1984 ###
                 // 'Well, Minnesota would've been nice' - As Ronald Reagan, win Minnesota.
-                if (!run.achievements["minnesotanice"] && e.candidate_last_name == "Reagan"  && e.final_outcome=="win" && e.candidate_id == e.final_state_results[25].result[1].candidate && e.election_id==15) {
+                if (!run.achievements["minnesotanice"] && e.candidate_last_name == "Reagan" && e.candidate_id == e.final_state_results[25].result[0].candidate && e.election_id==15 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 ) {
                     unlockAchievement(among, "minnesotanice", "", "<b>'Well, Minnesota would've been nice'</b>")
+                } else
+
+                 // ### 1972b ###
+                // 'Wallaloha' - As George Wallace, win Hawaii.
+                if (!run.achievements["Wallaloha"] && e.candidate_last_name == "Wallace" && e.candidate_id == e.final_state_results[9].result[0].candidate==23 && e.election_id==4 && campaignTrail_temp.difficulty_level_multiplier <= 0.97) {
+                    unlockAchievement(among, "Wallaloha", "", "<b>'Wallaloha'</b>")
                 } else
 
                 // ### 1936c ###
@@ -2312,7 +2324,7 @@ function divideElectoralVotesProp(e, t) {
 		
 		        // ### 1872 ###
                 // A Victory For All People - Die as Greeley, and win. Yes, on normal.
-                if (!run.achievements["AVictoryForAllPeople"] && e.candidate_last_name == "Greeley" && campaignTrail_temp.running_mate_last_name=="Sumner" && e.final_outcome=="win" && e.final_outcome=="win" && e.player_answers[34] == 8131 && e.election_id==20) {
+                if (!run.achievements["AVictoryForAllPeople"] && e.candidate_last_name == "Greeley" && campaignTrail_temp.running_mate_last_name=="Sumner" && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_outcome=="win" && e.player_answers[34] == 8131 && e.election_id==20) {
                     unlockAchievement(among, "AVictoryForAllPeople", "", "<b>A Victory For All People</b>")
                 } else
 		
