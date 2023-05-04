@@ -2312,7 +2312,7 @@ function divideElectoralVotesProp(e, t) {
 
                  // ### 1972b ###
                 // 'Wallaloha' - As George Wallace, win Hawaii.
-                if (!run.achievements["Wallaloha"] && e.candidate_last_name == "Wallace" && e.candidate_id == e.final_state_results[9].result[0].candidate && e.election_id==4 && campaignTrail_temp.difficulty_level_multiplier <= 0.97) {
+                if (!run.achievements["Wallaloha"] && e.candidate_last_name == "Wallace" && e.candidate_id == e.final_state_results[9].result[0].candidate && e.election_id==4 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.candidate_image_url="https://i.imgur.com/x7FALBW.png") {
                     unlockAchievement(among, "Wallaloha", "", "<b>'Wallaloha'</b>")
                 } else
 
