@@ -37,7 +37,7 @@ var fileExists = function(url) {
     return req.status === 200;
 };
 
-lastUpdatedDate="2023-01-18"
+lastUpdatedDate="2023-05-14"
 var RecReading;
 
 achList = {
@@ -378,8 +378,7 @@ function openInfoMenu() {
     <div style='text-align:left'><b>- The Campaign Trail Discord</b>
     <div style='text-align:left'><p>- /r/thecampaigntrail<pr />
     <div style='text-align:left'><p>Most recent TNCT patch notes:<pr />
-    <div style='text-align:left'><p>Happy new year! You can now share games through URLs, just like the old site. Additionally, a lot of small speed and performance fixes have been made.</p>
-    <div style='text-align:left'><p>We also have a twitter account you can visit <a href="https://twitter.com/TNCampaignTrail">here</a>!</p>`
+    <div style='text-align:left'><p>From now on, we will include our patch notes, and other important information <a href="https://blog.newcampaigntrail.com/">here</a>. It is a developer log for TNCT. Check it out, we have some info on the recent modmaker program, as well as what happened to achievments.</p>`
 
     
 	$("#infoBox").html(`
