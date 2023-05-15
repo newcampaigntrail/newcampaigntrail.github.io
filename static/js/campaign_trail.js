@@ -307,8 +307,8 @@ function openAchievMenu() {
         <div class="inner_window_front" style="overflow:scroll;height:300px;"><center>
         `+_+`</table></center>
         </div>
-        <button id='backButton' style='position: absolute;left: 10px;bottom:10px;width:200px;height:50px;font-size:25px;text-align:center'><b>Back</b></button>
-        <h1 style="font-style:italic;font-size:12px;position:absolute;bottom:10px;right:45px;">For all achievements, unless otherwise stated, completing them must be done on normal or a harder difficulty</h1>        
+        <button id='backButton' style='position: absolute;left: 1.5em;bottom:.5em;width:200px;height:50px;font-size:25px;text-align:center'><b>Back</b></button>
+        <h1 style="font-style:italic;font-size:12px;position:absolute;bottom:1.75em;right:6em;">For all achievements, unless otherwise stated, completing them must be done on normal or a harder difficulty</h1>
     `)
     tablesList = document.getElementsByTagName("table")
     for (tableI in tablesList) {
@@ -383,10 +383,10 @@ function openInfoMenu() {
     
 	$("#infoBox").html(`
     <div class="inner_window_front" style="padding:0px"><b><h1>Welcome to The New Campaign Trail!</h1></b></div>
-        <div class="inner_window_front" style="overflow:scroll;height:300px;"><center>
+        <div class="inner_window_front" style="padding:1em;overflow:scroll;height:300px;"><center>
         `+textinfo+`</table></center>
         </div>
-        <button id='backButton' style='position: absolute;left: 10px;bottom:10px;width:200px;height:50px;font-size:25px;text-align:center'><b>Back</b></button>       
+        <button id='backButton' style='position: absolute;left: 1.5em;bottom:.5em;width:200px;height:50px;font-size:25px;text-align:center'><b>Back</b></button>
     `)
     document.getElementById("backButton").addEventListener("click",returnToMainPage)
 }
