@@ -176,6 +176,10 @@ achList = {
         "Win as Truman by preventing a southern walkout.",
         "</table><br><b><em>1948</em></b><br><table>"
     ],
+    "Dewey": [
+        "All Over But The Shouting",
+        "Win the Popular Vote as Thomas Dewey.",
+    ],
     //1916
     "California": [
         "Califor-Huh?",
@@ -2266,6 +2270,11 @@ function divideElectoralVotesProp(e, t) {
                 // Dixie Defeats Dewey - Win as Truman by preventing a southern walkout. 
                 if (!modded && !run.achievements["dixieDewey"] && e.candidate_last_name == "Truman" && e.election_id == 12 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && campaignTrail_temp.player_answers[2]==3809 && e.final_outcome=="win") {
                     unlockAchievement(among, "dixieDewey", "", "<b>Dixie Defeats Dewey</b>")
+                } else
+
+                // All Over But The Shouting - Win the Popular Vote as Thomas Dewey. 
+                if (!modded && !run.achievements["Dewey"] && e.candidate_last_name == "Dewey" && e.election_id == 12 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && ((e.final_outcome == "win" && e.final_overall_results[0].popular_votes > e.final_overall_results[1].popular_votes)||(e.final_outcome=="loss" && e.final_overall_results[1].popular_votes > e.final_overall_results[0].popular_votes)) && e.final_outcome=="win") {
+                    unlockAchievement(among, "Dewey", "", "<b>All Over But The Shouting</b>")
                 } else
                  // ### 1916 ###
 
