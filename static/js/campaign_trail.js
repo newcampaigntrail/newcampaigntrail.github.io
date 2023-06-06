@@ -1039,7 +1039,7 @@ function divideElectoralVotesProp(e, t) {
 
     function s(t, i, l) {
         for (var o = "", r = 0; r < e.difficulty_level_json.length; r++) "Normal" == e.difficulty_level_json[r].fields.name ? o += "<option value=" + e.difficulty_level_json[r].pk + " selected>" + e.difficulty_level_json[r].fields.name + "</option>" : o += "<option value=" + e.difficulty_level_json[r].pk + ">" + e.difficulty_level_json[r].fields.name + "</option>";
-        let d = '        <div class="game_header">        <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div class="inner_window_w_desc" id="inner_window_4">            <div id="game_options">            <form name="game_type_selection">            <p><h3>How would you like the electoral votes to be allocated?</h3>            <select name="game_type_id" id="game_type_id">                <option value=1>Default (Winner-Take-All)</option>                <option value=2>Proportional</option>            </select>            </p>            </form>            </div>            <div class="description_window_small"                 id="opponent_selection_description_window">            </div>            <div id="difficulty_level">            <form name="difficulty_level_selection">            <p><h3>Please choose your difficulty level:</h3>            <select name="difficulty_level_id" id="difficulty_level_id">' + o + '</select>            </p>            </form>            </div>        <p id="opponent_selection_id_button_p"><button class="person_button" id="opponent_selection_id_back">Back</button> <button class="person_button" id="opponent_selection_id_button">Continue</button>        </p>        </div>';
+        let d = '        <div class="game_header">        <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div class="inner_window_w_desc" id="inner_window_4">            <div id="game_options">            <form name="game_type_selection">            <p><h3>How would you like the electoral votes to be allocated?</h3>            <select name="game_type_id" id="game_type_id">                <option value=1>Default (Winner-Take-All)</option>                <option value=2>Proportional</option>            </select>            </p>            </form>            </div>            <div class="description_window_small"                 id="opponent_selection_description_window">            </div>            <div id="difficulty_level">            <form name="difficulty_level_selection">            <p><h3>Please choose your difficulty level:</h3>            <select name="difficulty_level_id" id="difficulty_level_id">' + o + '</select>            </p>   <input type="checkbox" name="rng_toggle" id="rng_toggle">  Disable RNG       </form>            </div>        <p id="opponent_selection_id_button_p"><button class="person_button" id="opponent_selection_id_back">Back</button> <button class="person_button" id="opponent_selection_id_button">Continue</button>        </p>        </div>';
         $("#game_window").html(d), $("#game_type_id").ready(function() {
             a($("select[name=game_type_id]").val())
 
@@ -1070,6 +1070,7 @@ function divideElectoralVotesProp(e, t) {
 
             e.opponents_list = o, e.game_type_id = $("select[name=game_type_id]").val(), e.difficulty_level_id = $("select[name=difficulty_level_id]").val();
             var c = $("select[name=difficulty_level_id]").val();
+			var rng_toggle = $("input[name=rng_toggle]").prop("checked");
             for ($("select[name=game_type_id]").val(), d = -1, r = 0; r < e.difficulty_level_json.length; r++)
                 if (e.difficulty_level_json[r].pk == $("select[name=difficulty_level_id]").val()) {
                     d = r;
@@ -1183,6 +1184,10 @@ function divideElectoralVotesProp(e, t) {
                         }, 1000);
                     }
                     histFunction()
+					if (rng_toggle) {
+						e.global_parameter_json[0].fields.global_variance = 0;
+						e.global_parameter_json[0].fields.pop_variance = 0;
+					}
                 }(t, i, l, o, c)
         })
     }
@@ -2830,6 +2835,10 @@ _ = '   <div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="ma
             var M = 0;
             for (r = 0; r < e.states_json.length; r++)
                 if (e.states_json[r].pk == y[a].state) {
+					if (e.global_parameter_json[0].fields.pop_variance == 0) {
+						M = Math.floor(e.states_json[r].fields.popular_votes);
+						break
+					}
                     M = Math.floor(e.states_json[r].fields.popular_votes * (.95 + .1 * Math.random()));
                     break
                 }
@@ -2886,6 +2895,10 @@ _ = '   <div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="ma
                 }
                 for (M = 0, r = 0; r < e.states_json.length; r++)
                     if (e.states_json[r].pk == y[a].state) {
+						if (e.global_parameter_json[0].fields.pop_variance == 0) {
+							M = Math.floor(e.states_json[r].fields.popular_votes);
+							break
+						}
                         M = Math.floor(e.states_json[r].fields.popular_votes * (.95 + .1 * Math.random()));
                         break
                     }
