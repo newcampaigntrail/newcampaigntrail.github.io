@@ -238,192 +238,202 @@ achList = {
 }
 
 // ~~Muffin~~ Achievement Button
-
 function addAchButton() {
-    document.getElementById("bottomBar").style.display=""
-	gameWin = document.getElementById("bottomBar")
-	achievementDiv = document.createElement("div");
+    const bottomBar = document.getElementById("bottomBar");
+    bottomBar.style.display = "";
 
-	stylesheetSet = `position: absolute;left: 10px;top:5px;`
+    const gameWin = document.getElementById("bottomBar");
+    const achievementDiv = document.createElement("div");
 
-	achievementDiv.innerHTML=`
-		<button id='achievMenuButton' style='width:200px;height:47px;font-size:150%;text-align:center'><b>Achievements</b></button>
-	`
-	achievementDiv.style = stylesheetSet
+    const stylesheetSet = "position: absolute; left: 10px; top: 5px;";
 
-	gameWin.appendChild(achievementDiv)
-	document.getElementById("achievMenuButton").addEventListener("click",openAchievMenu)
+    achievementDiv.innerHTML = `
+      <button id='achievMenuButton' style='width:200px;height:47px;font-size:150%;text-align:center'><b>Achievements</b></button>
+    `;
+    achievementDiv.style = stylesheetSet;
+
+    gameWin.appendChild(achievementDiv);
+
+    const achievMenuButton = document.getElementById("achievMenuButton");
+    achievMenuButton.addEventListener("click", openAchievMenu);
 }
 
 addAchButton()
 addInfoButton()
 document.getElementById("achievMenuButton").addEventListener("click",openAchievMenu)
 
-
-
-
-
-
-
-
-
-
+// Opens the achievement menu
 function openAchievMenu() {
-    document.getElementById("bottomBar").style.display="none"
+    const bottomBar = document.getElementById("bottomBar");
+    bottomBar.style.display = "none";
 
-    document.getElementById("last-updated-date").remove()
-	gameWin = document.getElementById("game_window")
-    document.getElementById("achievMenuButton").remove()
-    document.getElementById("infoMenuButton").remove()
+    const lastUpdatedDate = document.getElementById("last-updated-date");
+    if (lastUpdatedDate) {
+        lastUpdatedDate.remove();
+    }
 
+    const gameWin = document.getElementById("game_window");
+    const achievMenuButton = document.getElementById("achievMenuButton");
+    const infoMenuButton = document.getElementById("infoMenuButton");
+    achievMenuButton.remove();
+    infoMenuButton.remove();
 
-    run = JSON.parse(localStorage.getItem('achievements'))
+    const run = JSON.parse(localStorage.getItem('achievements'));
+    let achievementHtml = '';
 
-    _ = ""
-    for (i in achList) {
-        achieved = run.achievements[i] ?? false
-        src = "../static/achievementicons/"+i+".png"
-        if (achieved) {
-            imgHTM = "<img style='width:50px' src='"+src+"'></img>"
-        } else {
-            imgHTM = "<img style='width:50px;filter: grayscale(100%);' src='"+src+"'></img>"
-        }
-        subcategory = achList[i][2] ?? ""
-        achTable = `
+    for (const i in achList) {
+        const achieved = run.achievements[i] || false;
+        const src = `../static/achievementicons/${i}.png`;
+        const imgStyle = achieved ? "width:50px;" : "width:50px;filter: grayscale(100%);";
+        const imgHTML = `<img style='${imgStyle}' src='${src}'></img>`;
+        const subcategory = achList[i][2] || "";
+        const achTable = `
         <tr>
-            <th style="padding:3px;width:60px">`+imgHTM+`</th>
-            <th style="padding:3px;width:200px">`+achList[i][0]+`</th>
-            <th style="padding:3px">`+achList[i][1]+`</th>
+          <th style="padding:3px;width:60px">${imgHTML}</th>
+          <th style="padding:3px;width:200px">${achList[i][0]}</th>
+          <th style="padding:3px">${achList[i][1]}</th>
         </tr>
-        `
-        _ += subcategory+achTable
+      `;
+        achievementHtml += subcategory + achTable;
     }
 
-    $("#below_header")[0].style.display="none"
+    const belowHeader = document.getElementById("below_header");
+    belowHeader.style.display = "none";
 
-    gameWin = document.getElementById("game_window")
-	achievementDiv = document.createElement("div");
-    achievementDiv.id = "achBox"
-    gameWin.appendChild(achievementDiv)
+    const achievementDiv = document.createElement("div");
+    achievementDiv.id = "achBox";
+    gameWin.appendChild(achievementDiv);
 
-	$("#achBox").html(`
-        <div class="inner_window_front" style="padding:0px"><b><h1>Achievements</h1></b></div>
-        <div class="inner_window_front" style="overflow:scroll;height:300px;"><center>
-        `+_+`</table></center>
-        </div>
-        <button id='backButton' style='position: absolute;left: 1.5em;bottom:.5em;width:200px;height:50px;font-size:25px;text-align:center'><b>Back</b></button>
-        <h1 style="font-style:italic;font-size:12px;position:absolute;bottom:1.75em;right:6em;">For all achievements, unless otherwise stated, completing them must be done on normal or a harder difficulty</h1>
-    `)
-    tablesList = document.getElementsByTagName("table")
-    for (tableI in tablesList) {
-        try{
-        tablesList[tableI].style.width="700px"
-        }catch{}
+    achievementDiv.innerHTML = `
+      <div class="inner_window_front" style="padding:0px"><b><h1>Achievements</h1></b></div>
+      <div class="inner_window_front" style="overflow:scroll;height:300px;"><center>
+      ${achievementHtml}</table></center>
+      </div>
+      <button id='backButton' style='position: absolute;left: 1.5em;bottom:.5em;width:200px;height:50px;font-size:25px;text-align:center'><b>Back</b></button>
+      <h1 style="font-style:italic;font-size:12px;position:absolute;bottom:1.75em;right:6em;">For all achievements, unless otherwise stated, completing them must be done on normal or a harder difficulty</h1>
+    `;
+
+    const tablesList = document.getElementsByTagName("table");
+    for (const table of tablesList) {
+        table.style.width = "700px";
     }
-    document.getElementById("backButton").addEventListener("click",returnToMainPage)
+
+    const backButton = document.getElementById("backButton");
+    backButton.addEventListener("click", returnToMainPage);
 }
 
-function addInfoButton(){
-    document.getElementById("bottomBar").style.display=""
-	gameWin = document.getElementById("bottomBar")
-	InfoDiv = document.createElement("div");
+// Creates the Additional Information button + last updated date
+function addInfoButton() {
+    const bottomBar = document.getElementById("bottomBar");
+    bottomBar.style.display = "";
 
-	stylesheetSet = `position: absolute;right: 10px;top:5px`
+    const gameWin = document.getElementById("bottomBar");
+    const infoDiv = document.createElement("div");
 
-	InfoDiv.innerHTML=`
-		<button id='infoMenuButton' style='width:200px;height:25px;font-size:100%;text-align:center'><b>Additional Information</b></button>
-	`
-	InfoDiv.style = stylesheetSet
-    if (!document.getElementById("bottomBar").innerHTML.includes("last-updated-date")) 
-{
-    document.getElementById("bottomBar").innerHTML+=`<style>.bottom-right-text:after { content: var(--bottom-right-text); font-style: italic; position: absolute; bottom: 10px; right: 10px; } </style><div id="last-updated-date" class="bottom-right-text" style="--bottom-right-text: 'Last updated:`+lastUpdatedDate+`"></div>`
-}
-	gameWin.appendChild(InfoDiv)
+    const stylesheetSet = "position: absolute; right: 10px; top: 5px;";
 
-	document.getElementById("infoMenuButton").addEventListener("click",openInfoMenu)
-    try
-    {
-     document.getElementById("infoBox").remove()
+    infoDiv.innerHTML = `
+      <button id='infoMenuButton' style='width:200px;height:25px;font-size:100%;text-align:center'><b>Additional Information</b></button>
+    `;
+    infoDiv.style = stylesheetSet;
+
+    if (!bottomBar.innerHTML.includes("last-updated-date")) {
+        bottomBar.innerHTML += `
+        <style>
+          .bottom-right-text:after {
+            content: var(--bottom-right-text);
+            font-style: italic;
+            position: absolute;
+            bottom: .8em;
+            right: 1em;
+          }
+        </style>
+        <div id="last-updated-date" class="bottom-right-text" style="--bottom-right-text: 'Last updated: ${lastUpdatedDate}'"></div>
+      `;
     }
-    catch
-    {
 
+    gameWin.appendChild(infoDiv);
+
+    const infoMenuButton = document.getElementById("infoMenuButton");
+    infoMenuButton.addEventListener("click", openInfoMenu);
+
+    const infoBox = document.getElementById("infoBox");
+    if (infoBox) {
+        infoBox.remove();
     }
 }
 
-
+// Opens the Additional Information menu
 function openInfoMenu() {
-    document.getElementById("bottomBar").style.display="none"
-	gameWin = document.getElementById("game_window")
-    document.getElementById("infoMenuButton").remove()
-    document.getElementById("achievMenuButton").remove()
-    $("#below_header")[0].style.display="none"
+    const bottomBar = document.getElementById("bottomBar");
+    bottomBar.style.display = "none";
 
-    gameWin = document.getElementById("game_window")
-	InfoDiv = document.createElement("div");
-    InfoDiv.id = "infoBox"
-    gameWin.appendChild(InfoDiv)
+    const gameWin = document.getElementById("game_window");
+    const infoMenuButton = document.getElementById("infoMenuButton");
+    const achievMenuButton = document.getElementById("achievMenuButton");
+    infoMenuButton.remove();
+    achievMenuButton.remove();
 
-    textinfo=`
-    <div style='text-align:left'><b>Hello, and welcome to The New Campaign Trail! This is an updated version of The Campaign Trail (hence the name). What does TNCT bring that TCT doesn't? A number of new features, not limited to:<br />
-    <pr /> 
-    <div style='text-align:left'><p>-A mod loader/library, allowing many of the mods made by our fabulous community to be played/compiled</p>
-    <div style='text-align:left'><p>-Faster processing times, so you don't have to sit there forever while the game says <i>Processing Results, wait one moment...</i></p>
-    <div style='text-align:left'><p>-Achievements, for if you want to challenge yourself and memorialize unique results.</p>
-    <div style='text-align:left'><p>-Ending codes, a functionality of scenarios that allows the end screen to be altered depending on different factors like electoral and popular vote.<pr /> 
-    <pr /> 
-    <div style='text-align:left'><p>I could go on, but I think you get the point. We hope you enjoy playing it as much as we do. If you run into any issues, please either report them on the TNCT Github, or Discord server, both linked below at the bottom of the screen.</p>
-    <div style='text-align:left'><b>Credits:<pr />
-    <div style='text-align:left'><b>- Dan Bryan (Original Site)</b>
-    <div style='text-align:left'><b>- DecstarG (Lead Dev)</b>
-    <div style='text-align:left'><b>- Danxv33 (Assistant Dev)</b>
-    <div style='text-align:left'><b>- ItsAstronomical (Community Manager)</b>
-    <div style='text-align:left'><b>- T3CH0X (Dev)</b>
-    <div style='text-align:left'><b>- The Campaign Trail Discord</b>
-    <div style='text-align:left'><p>- /r/thecampaigntrail<pr />
-    <div style='text-align:left'><p>Most recent TNCT patch notes:<pr />
-    <div style='text-align:left'><p>From now on, we will include our patch notes, and other important information <a href="https://blog.newcampaigntrail.com/">here</a>. It is a developer log for TNCT. Check it out, we have some info on the recent modmaker program, as well as what happened to achievments.</p>`
+    const belowHeader = $("#below_header")[0];
+    belowHeader.style.display = "none";
 
-    
-	$("#infoBox").html(`
-    <div class="inner_window_front" style="padding:0px"><b><h1>Welcome to The New Campaign Trail!</h1></b></div>
-        <div class="inner_window_front" style="padding:1em;overflow:scroll;height:300px;"><center>
-        `+textinfo+`</table></center>
-        </div>
-        <button id='backButton' style='position: absolute;left: 1.5em;bottom:.5em;width:200px;height:50px;font-size:25px;text-align:center'><b>Back</b></button>
-    `)
-    document.getElementById("backButton").addEventListener("click",returnToMainPage)
+    const infoDiv = document.createElement("div");
+    infoDiv.id = "infoBox";
+    gameWin.appendChild(infoDiv);
+
+    const textInfo = `
+      <div style='text-align:left'><b>Hello, and welcome to The New Campaign Trail! This is an updated version of The Campaign Trail (hence the name). What does TNCT bring that TCT doesn't? A number of new features, not limited to:<br />
+      <pr />
+      <div style='text-align:left'><p>-A mod loader/library, allowing many of the mods made by our fabulous community to be played/compiled</p>
+      <div style='text-align:left'><p>-Faster processing times, so you don't have to sit there forever while the game says <i>Processing Results, wait one moment...</i></p>
+      <div style='text-align:left'><p>-Achievements, for if you want to challenge yourself and memorialize unique results.</p>
+      <div style='text-align:left'><p>-Ending codes, a functionality of scenarios that allows the end screen to be altered depending on different factors like electoral and popular vote.<pr />
+      <pr />
+      <div style='text-align:left'><p>I could go on, but I think you get the point. We hope you enjoy playing it as much as we do. If you run into any issues, please either report them on the TNCT Github, or Discord server, both linked below at the bottom of the screen.</p>
+      <div style='text-align:left'><b>Credits:<pr />
+      <div style='text-align:left'><b>- Dan Bryan (Original Site)</b>
+      <div style='text-align:left'><b>- DecstarG (Lead Dev)</b>
+      <div style='text-align:left'><b>- Danxv33 (Assistant Dev)</b>
+      <div style='text-align:left'><b>- ItsAstronomical (Community Manager)</b>
+      <div style='text-align:left'><b>- T3CH0X (Dev)</b>
+      <div style='text-align:left'><b>- The Campaign Trail Discord</b>
+      <div style='text-align:left'><p>- /r/thecampaigntrail<pr />
+      <div style='text-align:left'><p>Most recent TNCT patch notes:<pr />
+      <div style='text-align:left'><p>From now on, we will include our patch notes, and other important information <a href="https://blog.newcampaigntrail.com/">here</a>. It is a developer log for TNCT. Check it out, we have some info on the recent modmaker program, as well as what happened to achievements.</p>`;
+
+    const infoBox = document.getElementById("infoBox");
+    infoBox.innerHTML = `
+      <div class="inner_window_front" style="padding:0"><b><h1>Welcome to The New Campaign Trail!</h1></b></div>
+      <div class="inner_window_front" style="padding:1em;overflow:scroll;height:300px;"><center>
+      ${textInfo}</table></center>
+      </div>
+      <button id='backButton' style='position: absolute;left: 1.5em;bottom:.5em;width:200px;height:50px;font-size:25px;text-align:center'><b>Back</b></button>
+    `;
+
+    const backButton = document.getElementById("backButton");
+    backButton.addEventListener("click", returnToMainPage);
 }
 
-
-
+// This function, when called, returns the user to the main page
 function returnToMainPage() {
-    try
-    {
-    document.getElementById("achBox").remove()
-    document.getElementById("infoBox").remove()
-    }
-    catch
-    {
+    const achBox = document.getElementById("achBox");
+    const infoBox = document.getElementById("infoBox");
 
-    }
-   
+    try {
+        achBox.remove();
+        infoBox.remove();
+    } catch (e) { }
 
+    document.getElementById("below_header").style.display = "";
+    addAchButton();
+    addInfoButton();
+    
+    // Adds event listeners to the achievement and info buttons
+    const achButton = document.getElementById("achievMenuButton");
+    achButton.addEventListener("click", openAchievMenu);
 
-
-    $("#below_header")[0].style.display=""
-    addAchButton()
-    addInfoButton()
-
-
-// Add an event listener to the "Achievements" button
-achButton = document.getElementById("achievMenuButton");
-achButton.addEventListener("click", openAchievMenu);
-
-// Add an event listener to the "Info" button
-infoButton = document.getElementById("infoMenuButton");
-infoButton.addEventListener("click", openInfoMenu);
-
+    const infoButton = document.getElementById("infoMenuButton");
+    infoButton.addEventListener("click", openInfoMenu);
 }
 
 
@@ -471,112 +481,105 @@ function simpleAdventure(ans) {
 function histFunction() {
     if (modded == false) {
         switch (campaignTrail_temp.election_id) {
-            case 21:
+            case 21: // 2020
                 HistHexcolour = ["#0000FF", "#FF0000", "#FFFF00", "#00C100"];
                 HistName = ["Joe Biden", "Donald Trump", "Jo Jorgensen", "Howie Hawkins"];
                 HistEV = [306, 232, 0, 0];
                 HistPV = ["81,268,924", "74,216,154", "1,865,724", "405,035"];
                 HistPVP = ["51.3%", "46.9%", "1.2%", "0.4%"];
                 break;
-
-            case 20:
+            case 20: // 2016
                 HistHexcolour = ["#FF0000", "#0000FF", "#FFFF00", "00C100"];
                 HistName = ["Donald Trump", "Hillary Clinton", "Gary Johnson", "Jill Stein"];
                 HistEV = [306, 232, 0, 0];
                 HistPV = ["62,984,828", "65,853,514", "4,489,341", "405,035"];
                 HistPVP = ["46.1%", "48.2%", "3.3%", "1.1%"];
                 break;
-            case 16:
+            case 16: // 2016a
                 HistHexcolour = ["#FF0000", "#0000FF", "#FFFF00", "#00C100"];
                 HistName = ["Donald Trump", "Hillary Clinton", "Gary Johnson", "Jill Stein"];
                 HistEV = [306, 232, 0, 0];
                 HistPV = ["62,984,828", "65,853,514", "4,489,341", "405,035"];
                 HistPVP = ["46.1%", "48.2%", "3.3%", "1.1%"];
                 break;
-
-            case 3:
+            case 3: // 2012
                 HistHexcolour = ["#0000FF", "#FF0000", "#FFFF00", "#00C100"];
                 HistName = ["Barack Obama", "Mitt Romney", "Gary Johnson", "Jill Stein"];
                 HistEV = [332, 206, 0, 0];
                 HistPV = ["65,915,795", "60,933,504", "1,275,971", "469,627"];
                 HistPVP = ["51.1%", "47.2%", "1.0%", "0.4%"];
                 break;
-
-            case 9:
+            case 9: // 2000
                 HistHexcolour = ["#FF0000", "#0000FF", "#00C100", "#800080"];
                 HistName = ["George W. Bush", "Al Gore", "Ralph Nader", "Pat Buchanan"];
                 HistEV = [271, 267, 0, 0];
                 HistPV = ["50,456,002", "50,999,897", "2,882,955", "448,895"];
                 HistPVP = ["47.9%", "48.4%", "2.7%", "0.4%"];
                 break;
-
-            case 15:
+            case 15: // 1988
                 HistHexcolour = ["#FF0000", "#0000FF", "#FFFF00", "#00C100"];
                 HistName = ["George Bush", "Michael Dukakis", "Ron Paul", "Lenora Fulani"];
                 HistEV = [426, 112, 0, 0];
                 HistPV = ["48,886,597", "41,809,476", "431,750", "217,221"];
                 HistPVP = ["53.4%", "45.7%", "0.5%", "0.2%"];
                 break;
-            case 10:
+            case 10: // 1976
                 HistHexcolour = ["#0000FF", "#FF0000", "#FFFFFF", "#FFFF00"];
                 HistName = ["Jimmy Carter", "Gerald Ford", "Eugene McCarthy", "Roger MacBride"];
                 HistEV = [297, 241, 0, 0];
                 HistPV = ["40,831,881", "39,148,634", "744,763", "172,557"];
                 HistPVP = ["50.1", "48.0", "0.9%", "0.2%"];
                 break;
-            case 4:
+            case 4: // 1968
                 HistHexcolour = ["#FF0000", "#0000FF", "#FFFF00", "#FFFFFF"];
                 HistName = ["Richard Nixon", "Hubert Humphrey", "George Wallace", "Other"];
                 HistEV = [302, 191, 45, 0];
                 HistPV = ["31,783,783", "31,271,839", "9,901,118", "243,259"];
                 HistPVP = ["43.4%", "42.7%", "13.5%", "0.3%"];
                 break;
-
-            case 69:
+            case 69: // 1964
                 HistHexcolour = ["#0000FF", "#FF0000", "#FFFF00", "#DB261D"];
                 HistName = ["Lyndon B. Johnson", "Barry Goldwater", "Unpledged electors", "Eric Hass"];
                 HistEV = [486, 52, 0, 0];
                 HistPV = ["43,129,040", "27,175,754", "210,732", "45,189"];
                 HistPVP = ["61.1%", "38.5%", "0.3%", ">0.1%"];
                 break;
-
-            case 11:
+            case 11: // 1960
                 HistHexcolour = ["#0000FF", "#FF0000", "#FFFF00", "#FFFFFF"];
                 HistName = ["John Kennedy", "Richard Nixon", "Harry Byrd", "Unpledged elector"];
                 HistEV = [303, 219, 15, 0];
                 HistPV = ["34,220,984", "34,108,157", "Unknown", "286,359"];
                 HistPVP = ["49.7%", "49.5%", "Unknown", "0.4%"];
                 break;
-            case 12:
+            case 12: // 1948
                 HistHexcolour = ["#0000FF", "#FF0000", "#FFFF00", "#00C100"];
                 HistName = ["Harry Truman", "Thomas Dewey", "Strom Thurmond", "Henry Wallace"];
                 HistEV = [303, 189, 39, 0];
                 HistPV = ["24,179,347", "21,991,292", "1,175,930", "1,157,328"];
                 HistPVP = ["49.6%", "45.1%", "2.4%", "2.4%"];
                 break;
-            case 14:
+            case 14: // 1916
                 HistHexcolour = ["#0000FF", "#FF0000", "#DB261D", "FFC0CB"];
                 HistName = ["Woodrow Wilson", "Charles Evans Hughes", "Allan Benson", "James Hanly"];
                 HistEV = [277, 254, 0, 0];
                 HistPV = ["9,126,868", "8,548,728", "590,524", "221,302"];
                 HistPVP = ["49.2%", "46.1%", "3.2%", "1.2%"];
-                break;			
-            case 5:
-                return 1896
+                break;
+            case 5: // 1896
                 HistHexcolour = ["#FF0000", "#0000FF", "#FFFF00", "FFC0CB"];
                 HistName = ["William McKinley", "William Jennings Bryan", "John Palmer", "Joshua Levering"];
                 HistEV = [271, 176, 0, 0];
                 HistPV = ["7,111,607", "6,509,052", "134,645", "131,312"];
                 HistPVP = ["51.0%", "46.7%", "1.0%", "0.9%"];
-                break;			
-            case 8:
+                break;
+            case 8: // 1860
                 HistHexcolour = ["#FF0000", "#FFFF00", "#00C100;", "#0000FF"];
                 HistName = ["Abraham Lincoln", "John C. Breckinridge", "John Bell", "Stephen Douglas"];
                 HistEV = [180, 72, 39, 12];
                 HistPV = ["1,865,908", "848,019", "590,901", "1,380,202"];
                 HistPVP = ["39.8%", "18.1%", "12.6%", "29.5%"];
                 break;
-            case 13:
+            case 13: // 1844
                 HistHexcolour = ["#0000FF", "#F0C862", "#FFFF00;", "#FFFFFF"];
                 HistName = ["James K. Polk", "Henry Clay", "James Birney", "N/A"];
                 HistEV = [170, 105, 0, 0];
