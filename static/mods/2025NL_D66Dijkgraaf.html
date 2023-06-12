@@ -801,36 +801,6 @@
         return construct(0);
       }
 
-
-      function changechart(){
-        resultobserver.disconnect();
-        if (document.getElementById("overall_vote_statistics")!=null) {
-            overallthing=document.getElementById("overall_vote_statistics").innerHTML;
-            overallthing.toString()
-            overallthing=overallthing.replace("Electoral Votes","Seats")
-            overallthing=overallthing.replace("Candidate","Party List")
-            document.getElementById("overall_vote_statistics").innerHTML=overallthing
-        }
-        else if (document.getElementById("state_result_data_summary")!=null) {
-            overallthing=document.getElementById("state_result_data_summary").innerHTML;
-            overallthing.toString()
-            overallthing=overallthing.replace("Electoral Votes","Seats")
-            overallthing=overallthing.replace("Candidate","Party List")
-            document.getElementById("state_result_data_summary").innerHTML=overallthing
-        }
-        else if (document.getElementById("overall_details_container")!=null) {
-            overallthing=document.getElementById("overall_details_container").innerHTML;
-            overallthing.toString()
-            overallthing=overallthing.replace("Electoral Votes","Seats")
-            overallthing=overallthing.replace("Candidate","Party List")
-            document.getElementById("overall_details_container").innerHTML=overallthing
-        }
-        resultobserver.observe(document.documentElement, { childList: true, subtree: true });
-    }
-
-    var resultobserver = new MutationObserver(changechart);
-    resultobserver.observe(document.documentElement, { childList: true, subtree: true });
-
     //chart stuff here, setup in cyoa function required
 
     function Chartbuilder(type){
