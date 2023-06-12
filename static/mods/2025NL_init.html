@@ -113,7 +113,7 @@ function updateCandidateForm() {
   }
   formobserver.observe(document.documentElement, { childList: true, subtree: true });
 }
-if(!sumobserver){
+if(!formobserver){
   var formobserver = new MutationObserver(updateCandidateForm);
   formobserver.observe(document.documentElement, { childList: true, subtree: true });
 }
@@ -127,7 +127,7 @@ function updateRunningMateForm() {
   }
   runformobserver.observe(document.documentElement, { childList: true, subtree: true });
 }
-if(!sumobserver){
+if(!runformobserver){
 var runformobserver = new MutationObserver(updateRunningMateForm);
 runformobserver.observe(document.documentElement, { childList: true, subtree: true });
 }
@@ -157,7 +157,7 @@ function updateHeader() {
     gameHeader.setAttribute("id", "modifiedHeader");
   }
 }
-if(!sumobserver){
+if(!headerobserver){
 var headerobserver = new MutationObserver(updateHeader);
 headerobserver.observe(document.documentElement, { childList: true, subtree: true });
 }
