@@ -37,7 +37,7 @@ var fileExists = function(url) {
     return req.status === 200;
 };
 
-lastUpdatedDate="2023-05-14"
+lastUpdatedDate="2023-06-19"
 var RecReading;
 
 achList = {
@@ -382,28 +382,36 @@ function openInfoMenu() {
     gameWin.appendChild(infoDiv);
 
     const textInfo = `
-      <div style='text-align:left'><b>Hello, and welcome to The New Campaign Trail! This is an updated version of The Campaign Trail (hence the name). What does TNCT bring that TCT doesn't? A number of new features, not limited to:<br />
-      <pr />
-      <div style='text-align:left'><p>-A mod loader/library, allowing many of the mods made by our fabulous community to be played/compiled</p>
-      <div style='text-align:left'><p>-Faster processing times, so you don't have to sit there forever while the game says <i>Processing Results, wait one moment...</i></p>
-      <div style='text-align:left'><p>-Achievements, for if you want to challenge yourself and memorialize unique results.</p>
-      <div style='text-align:left'><p>-Ending codes, a functionality of scenarios that allows the end screen to be altered depending on different factors like electoral and popular vote.<pr />
-      <pr />
-      <div style='text-align:left'><p>I could go on, but I think you get the point. We hope you enjoy playing it as much as we do. If you run into any issues, please either report them on the TNCT Github, or Discord server, both linked below at the bottom of the screen.</p>
-      <div style='text-align:left'><b>Credits:<pr />
-      <div style='text-align:left'><b>- Dan Bryan (Original Site)</b>
-      <div style='text-align:left'><b>- DecstarG (Lead Dev)</b>
-      <div style='text-align:left'><b>- Danxv33 (Assistant Dev)</b>
-      <div style='text-align:left'><b>- ItsAstronomical (Community Manager)</b>
-      <div style='text-align:left'><b>- T3CH0X (Dev)</b>
-      <div style='text-align:left'><b>- The Campaign Trail Discord</b>
-      <div style='text-align:left'><p>- /r/thecampaigntrail<pr />
-      <div style='text-align:left'><p>Most recent TNCT patch notes:<pr />
-      <div style='text-align:left'><p>From now on, we will include our patch notes, and other important information <a href="https://blog.newcampaigntrail.com/">here</a>. It is a developer log for TNCT. Check it out, we have some info on the recent modmaker program, as well as what happened to achievements.</p>`;
-
+    <div style="text-align:left">
+      <b>Hello, and welcome to the New Campaign Trail! This is an updated version of The Campaign Trail (hence the name). What does TNCT bring that TCT doesn't? A number of new features, not limited to:</b><br /><br />
+    
+      <p>- A mod loader/library, allowing many of the mods made by our fabulous community to be played/compiled</p>
+      <p>- Faster processing times, so you don't have to sit there forever while the game says <i>Processing Results, wait one moment...</i></p>
+      <p>- Achievements, for if you want to challenge yourself and memorialize unique results.</p>
+      <p>- Ending codes, a functionality of scenarios that allows the end screen to be altered depending on different factors like electoral and popular vote.</p>
+    
+      <p>I could go on, but I think you get the point. We hope you enjoy playing it as much as we do. If you run into any issues, please either report them on the TNCT Github, or Discord server, both linked below at the bottom of the screen.</p>
+    
+      <h3>Credits:</h3>
+      <ul>
+        <li>Dan Bryan (Original Site)</li>
+        <li>DecstarG (Lead Dev)</li>
+        <li>Danxv33 (Assistant Dev)</li>
+        <li>ItsAstronomical (Community Manager)</li>
+        <li>T3CH0X (Dev)</li>
+        <li><a href="https://discord.gg/thecampaigntrail" target="_blank">The Campaign Trail Discord</a></li>
+        <li><a href="https://reddit.com/r/thecampaigntrail/" target="_blank">r/thecampaigntrail</a></li>
+      </ul>
+    
+      <h3>Recent patch notes:</h3>
+      <p>Numerous [[BIG SHOT]] improvements have been implemented. You can now get into [[BIG SHOT]] <b>via the shortcut "bs [enter]".</b> This will only apply <b>if you have already unlocked it.</b></p>
+      <p>From now on, we will include our patch notes, and other important information <a href="https://blog.newcampaigntrail.com/">here</a>. It is a developer log for TNCT. Check it out, we have some info on the recent modmaker program, as well as what happened to achievements.</p>
+    </div>
+    `;
+    
     const infoBox = document.getElementById("infoBox");
     infoBox.innerHTML = `
-      <div class="inner_window_front" style="padding:0"><b><h1>Welcome to The New Campaign Trail!</h1></b></div>
+      <div class="inner_window_front" style="padding:0"><b><h1>Welcome to the New Campaign Trail!</h1></b></div>
       <div class="inner_window_front" style="padding:1em;overflow:scroll;height:300px;"><center>
       ${textInfo}</table></center>
       </div>
