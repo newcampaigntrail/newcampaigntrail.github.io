@@ -700,7 +700,7 @@ kill = false
 important_info = ""
 
 function sussyroth() {
-    return campaignTrail_temp.iamapoopybuttfaceandhavenolife
+    return campaignTrail_temp.bigshot_mode
 }
 
 /*
@@ -759,7 +759,7 @@ function download(content, fileName, contentType) {
 }
 
 function exportResults() {
-    if (campaignTrail_temp.iamapoopybuttfaceandhavenolife != true && dirtyhacker3 == null) {
+    if (campaignTrail_temp.bigshot_mode != true && dirtyhacker3 == null) {
         results = {
             election_id: campaignTrail_temp.election_id,
             player_candidate: campaignTrail_temp.candidate_id,
@@ -1084,7 +1084,7 @@ function divideElectoralVotesProp(e, t) {
                         document.getElementById("music_player").style.display = ""
                         document.getElementById('campaigntrailmusic').src = campaignTrail_temp.musicSrc
                     }
-                    if (campaignTrail_temp.iamapoopybuttfaceandhavenolife) {
+                    if (campaignTrail_temp.bigshot_mode) {
                         document.getElementById('cheatmode').style.display = ""
                         let slider = document.getElementById("difficultyMod");
                         if (slider) {
@@ -2358,7 +2358,7 @@ function divideElectoralVotesProp(e, t) {
                     unlockAchievement(among, "stillAlive", "../static/achievementicons/stillalive.png", "<b>Still Alive</b>")
                 } else 
                 // NOW'S YOUR CHANCE TO BE A - [[Big Shot]]
-                if (!modded && !run.achievements["yourchance"] && campaignTrail_temp.iamapoopybuttfaceandhavenolife) {
+                if (!modded && !run.achievements["yourchance"] && campaignTrail_temp.bigshot_mode) {
                     unlockAchievement(among, "yourchance", "../static/achievementicons/yourChance.png", "<b>NOW'S YOUR CHANCE TO BE A</b>")
                 } 
             }
@@ -2434,27 +2434,19 @@ function divideElectoralVotesProp(e, t) {
         }
 
         function isLegitRun() {
-            return campaignTrail_temp.iamapoopybuttfaceandhavenolife != true && dirtyhacker3 == null //&& campaignTrail_temp.difficulty_level_multiplier  <= 0.97
+            return campaignTrail_temp.bigshot_mode != true && dirtyhacker3 == null //&& campaignTrail_temp.difficulty_level_multiplier  <= 0.97
         }
 
-        if (campaignTrail_temp.iamapoopybuttfaceandhavenolife) {
-            setInterval(function() {
-                try {
-                    document.getElementsByClassName("person_image")[0].style.aspectRatio = 1.3
-                    document.getElementsByClassName("person_image")[0].style.filter = "hue-rotate(180deg)"
-                } catch {
-                }
-            }, 100);
-        }
-
-        aaaaaaaa = 0
+        let diff_mult_string = 0;
         if (Number((starting_mult - encrypted).toFixed(2)) != campaignTrail_temp.difficulty_level_multiplier.toFixed(2)) {
-            aaaaaaaa = "Cheated difficulty"
+            diff_mult_string = campaignTrail_temp.difficulty_level_multiplier.toFixed(1) + "; <em>Cheated difficulty</em>";
+        } else if (campaignTrail_temp.bigshot_mode) {
+            diff_mult_string = campaignTrail_temp.difficulty_level_multiplier.toFixed(1) + "; <em>[[BIG SHOT]] enabled</em>";
         } else {
-            aaaaaaaa = campaignTrail_temp.difficulty_level_multiplier.toFixed(1)
+            diff_mult_string = campaignTrail_temp.difficulty_level_multiplier.toFixed(1)
         }
 
-        rrrrr = "<div id='difficulty_mult'><br><b>Difficulty Multiplier:</b> " + aaaaaaaa + "</div><br>"
+        let difficulty_string = `<div id='difficulty_mult'><br><b>Difficulty Multiplier:</b> ${diff_mult_string}</div><br>`
 
         for (_ = 0; _ < e.final_overall_results.length; _++) {
             i = E(e.final_overall_results[_].candidate);
@@ -2464,9 +2456,9 @@ function divideElectoralVotesProp(e, t) {
         if ("None" != e.game_results_url) var c = '<h4>Final Results: <a target="_blank" href="' + e.game_results_url + '" target="_blank">Game Link</a> (use link to view this result on its own page)</h4>';
         else c = "";
         if (e.primary) {
-          var u='<div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="main_content_area"> <div id="results_container"> <img class="person_image" src="' + l + '"/> <div id="final_results_description">' + s + '</div> ' + rrrrr + ' <div id="overall_vote_statistics">' + c + ' <table class="final_results_table"> <br> <tr><th>Candidate</th><th>Delegates</th> <th>Popular Votes</th><th>Popular Vote %</th></tr>' + r + ' </table> </div> </div> </div> <div id="map_footer"> <button class="final_menu_button" id="overall_results_button" disabled="disabled"> Final Election Results </button> <button class="final_menu_button" id="final_election_map_button"> Election Map </button> <button class="final_menu_button" id="state_results_button"> Results by State </button> <button class="final_menu_button" id="overall_details_button"> Overall Results Details </button> <button class="final_menu_button" id="recommended_reading_button"> Further Reading </button> <button class="final_menu_button" id="play_again_button"> Play Again! </button>  </div>'
+          var u='<div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="main_content_area"> <div id="results_container"> <img class="person_image" src="' + l + '"/> <div id="final_results_description">' + s + '</div> ' + difficulty_string + ' <div id="overall_vote_statistics">' + c + ' <table class="final_results_table"> <br> <tr><th>Candidate</th><th>Delegates</th> <th>Popular Votes</th><th>Popular Vote %</th></tr>' + r + ' </table> </div> </div> </div> <div id="map_footer"> <button class="final_menu_button" id="overall_results_button" disabled="disabled"> Final Election Results </button> <button class="final_menu_button" id="final_election_map_button"> Election Map </button> <button class="final_menu_button" id="state_results_button"> Results by State </button> <button class="final_menu_button" id="overall_details_button"> Overall Results Details </button> <button class="final_menu_button" id="recommended_reading_button"> Further Reading </button> <button class="final_menu_button" id="play_again_button"> Play Again! </button>  </div>'
         } else {
-          var u='<div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="main_content_area"> <div id="results_container"> <img class="person_image" src="' + l + '"/> <div id="final_results_description">' + s + '</div> ' + rrrrr + ' <div id="overall_vote_statistics">' + c + ' <table class="final_results_table"> <br> <tr><th>Candidate</th><th>Electoral Votes</th> <th>Popular Votes</th><th>Popular Vote %</th></tr>' + r + ' </table> </div> </div> </div> <div id="map_footer"> <button class="final_menu_button" id="overall_results_button" disabled="disabled"> Final Election Results </button> <button class="final_menu_button" id="final_election_map_button"> Election Map </button> <button class="final_menu_button" id="state_results_button"> Results by State </button> <button class="final_menu_button" id="overall_details_button"> Overall Results Details </button> <button class="final_menu_button" id="recommended_reading_button"> Further Reading </button> <button class="final_menu_button" id="play_again_button"> Play Again! </button>  </div>'
+          var u='<div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="main_content_area"> <div id="results_container"> <img class="person_image" src="' + l + '"/> <div id="final_results_description">' + s + '</div> ' + difficulty_string + ' <div id="overall_vote_statistics">' + c + ' <table class="final_results_table"> <br> <tr><th>Candidate</th><th>Electoral Votes</th> <th>Popular Votes</th><th>Popular Vote %</th></tr>' + r + ' </table> </div> </div> </div> <div id="map_footer"> <button class="final_menu_button" id="overall_results_button" disabled="disabled"> Final Election Results </button> <button class="final_menu_button" id="final_election_map_button"> Election Map </button> <button class="final_menu_button" id="state_results_button"> Results by State </button> <button class="final_menu_button" id="overall_details_button"> Overall Results Details </button> <button class="final_menu_button" id="recommended_reading_button"> Further Reading </button> <button class="final_menu_button" id="play_again_button"> Play Again! </button>  </div>'
         }
             $("#game_window").html(u);
         prev = document.getElementById("difficulty_mult").innerHTML
@@ -3057,7 +3049,7 @@ function nextPage2() {
 var dirtyhacker1, dirtyhacker2, dirtyhacker3
 document.addEventListener('keydown', function(event) {
     if (event.keyCode == 32) {
-        if (document.getElementById("visit_overlay") != null && campaignTrail_temp.iamapoopybuttfaceandhavenolife != true && campaignTrail_temp.spacebarformods != true) {
+        if (document.getElementById("visit_overlay") != null && campaignTrail_temp.bigshot_mode != true && campaignTrail_temp.spacebarformods != true) {
             // you're just a dirty hacker, aren't you?
             campaignTrail_temp.multiple_endings = true;
             dirtyhacker1 = function() {

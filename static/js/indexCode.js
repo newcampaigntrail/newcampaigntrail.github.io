@@ -10,7 +10,7 @@ let alt_counter = 0;
 let initial = false;
 
 document.addEventListener('keydown', function(event) {
-    if (campaignTrail_temp.iamapoopybuttfaceandhavenolife) {
+    if (campaignTrail_temp.bigshot_mode) {
         return;
     }
     if (event.keyCode === keyCodes[counter]) {
@@ -26,7 +26,7 @@ document.addEventListener('keydown', function(event) {
                 return;
             } else {
                 a = initial ? `DON'T WORRY! FOR OUR [No Time Back Guaranttee]\nTHIS IS [One Cheat Code] YOU WILL [Regret] FOR THE REST OF YOUR REDDIT POST!` : `[Heaven], are you WATCHING?`;
-                campaignTrail_temp.iamapoopybuttfaceandhavenolife = true;
+                campaignTrail_temp.bigshot_mode = true;
                 alert(a);
                 return;
             }
@@ -38,7 +38,7 @@ document.addEventListener('keydown', function(event) {
         alt_counter += 1;
         if (alt_counter === altCodes.length) {
             a = `ARE YOU GETTING ALL THIS [Mike]!? I'M FINALLY\nI'M FINALLY GONNA BE A BIG SHOT!!!`;
-            campaignTrail_temp.iamapoopybuttfaceandhavenolife = true;
+            campaignTrail_temp.bigshot_mode = true;
             alert(a);
         }
         return;
