@@ -1086,6 +1086,7 @@ function divideElectoralVotesProp(e, t) {
                     }
                     if (campaignTrail_temp.iamapoopybuttfaceandhavenolife) {
                         document.getElementById('cheatmode').style.display = ""
+                        document.getElementById("difficultyMod").innerText = `Multiplier: ${campaignTrail_temp.difficulty_level_multiplier.toFixed(2)}`;
                     }
                     if (modded == false) {
                         aaa = election_HTML(t, i, a)

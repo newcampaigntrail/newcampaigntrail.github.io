@@ -1,3 +1,238 @@
+const yearField = document.getElementById("year")
+yearField.innerHTML = new Date().getFullYear()
+
+// INITIAL BIGSHOT
+
+counter = 0
+truecounter = 0
+BSColour = "white";
+document.addEventListener('keydown', function(event) {
+    if (event.keyCode == 66 && counter == 0) {
+        counter += 1;
+    } else if (event.keyCode == 73 && counter == 1) {
+        counter += 1;
+    } else if (event.keyCode == 71 && counter == 2) {
+        counter += 1;
+    } else if (event.keyCode == 83 && counter == 3) {
+        counter += 1;
+    } else if (event.keyCode == 72 && counter == 4) {
+        counter += 1;
+    } else if (event.keyCode == 79 && counter == 5) {
+        counter += 1;
+    } else if (event.keyCode == 84 && counter == 6) {
+        counter += 1;
+    } else if (event.keyCode == 13 && counter == 7 && truecounter == 0 && localStorage.getItem("cheated") != "true") {
+        a = "LOOKING FOR [Irresistible Cheat Codes] THAT WILL [Blow Your Mind!?]\nWELL [Shut Your Mouth] BECAUSE YOU ARE [A Redditor!]\nTRY A LITTLE [Friday Night Work Out]...\nTHEN I'LL SHOW YOU MY\nTHEN I'LL SHOW YOU MY\n1 LEFT."
+        counter = 0;
+        truecounter += 1;
+        alert(a)
+    } else if (event.keyCode == 13 && counter == 7 && truecounter == 1) {
+        campaignTrail_temp.iamapoopybuttfaceandhavenolife = true;
+        localStorage.setItem("cheated", true);
+        alert("DON'T WORRY! FOR OUR [No Time Back Guaranttee]\nTHIS IS [One Cheat Code] YOU WILL [Regret] FOR THE REST OF YOUR REDDIT POST!")
+        truecounter = 7;
+    } else if (event.keyCode == 13 && counter == 7 && truecounter == 0 && localStorage.getItem("cheated") == "true") {
+        campaignTrail_temp.iamapoopybuttfaceandhavenolife = true;
+        truecounter = 7
+        alert("[Heaven], are you WATCHING?")
+    } else if (truecounter <= 2) {
+        counter = 0;
+        truecounter = 0;
+    }
+});
+
+function findCandidate(pk) {
+    for (i in campaignTrail_temp.candidate_json) {
+        if (campaignTrail_temp.candidate_json[i].pk == pk) {
+            return [i, campaignTrail_temp.candidate_json[i].fields.first_name + " " + campaignTrail_temp.candidate_json[i].fields.last_name]
+        }
+    }
+}
+
+function findAnswer(pk) {
+    for (i in campaignTrail_temp.answers_json) {
+        if (campaignTrail_temp.answers_json[i].pk == pk) {
+            return [i, campaignTrail_temp.answers_json[i].fields.description]
+        }
+    }
+}
+
+function findIssue(pk) {
+    for (i in campaignTrail_temp.issues_json) {
+        if (campaignTrail_temp.issues_json[i].pk == pk) {
+            return [i, campaignTrail_temp.issues_json[i].fields.name]
+        }
+    }
+}
+
+function findState(pk) {
+    for (i in campaignTrail_temp.states_json) {
+        if (campaignTrail_temp.states_json[i].pk == pk) {
+            return [i, campaignTrail_temp.states_json[i].fields.name]
+        }
+    }
+}
+
+function benefitCheck(objectid) {
+    object = document.getElementById("question_form").children[0].children[(objectid * 3)]
+    answerid = object.value
+    effects = []
+    i = 0
+    for (i in campaignTrail_temp.answer_score_global_json) {
+        if (campaignTrail_temp.answer_score_global_json[i].fields.answer == answerid) {
+            effects.push(["global", campaignTrail_temp.answer_score_global_json[i]])
+        }
+    }
+    i = 0
+    for (i in campaignTrail_temp.answer_score_state_json) {
+        if (campaignTrail_temp.answer_score_state_json[i].fields.answer == answerid) {
+            effects.push(["state", campaignTrail_temp.answer_score_state_json[i]])
+        }
+    }
+    i = 0
+    for (i in campaignTrail_temp.answer_score_issue_json) {
+        if (campaignTrail_temp.answer_score_issue_json[i].fields.answer == answerid) {
+            effects.push(["issue", campaignTrail_temp.answer_score_issue_json[i]])
+        }
+    }
+    i = 0
+
+    console.log(effects)
+    mods = ""
+    for (_ = 0; _ < effects.length; _++) {
+        if (effects[_][0] == "global") {
+            affected = findCandidate(effects[_][1].fields.candidate)
+            affected1 = findCandidate(effects[_][1].fields.affected_candidate)
+            name = affected[1]
+            name2 = affected1[1]
+            multiplier = effects[_][1].fields.global_multiplier.toString()
+            mods += "<br><em>Global:</em> Affects " + name2 + " for " + name + " by " + multiplier
+        }
+        if (effects[_][0] == "issue") {
+            affected = findIssue(effects[_][1].fields.issue)
+            name = affected[1]
+            multiplier = effects[_][1].fields.issue_score.toString()
+            multiplier1 = effects[_][1].fields.issue_importance.toString()
+            mods += "<br><em>Issue:</em> Affects " + name + " by " + multiplier + " with a importance of " + multiplier1
+        }
+        if (effects[_][0] == "state") {
+            affected = findState(effects[_][1].fields.state)
+            candidatething = findCandidate(effects[_][1].fields.affected_candidate)
+            candidatething2 = findCandidate(effects[_][1].fields.candidate)
+            name1 = affected[1]
+            test5 = candidatething[1]
+            test6 = candidatething2[1]
+            multiplier = effects[_][1].fields.state_multiplier.toString()
+            mods += "<br><em>State:</em> Affects " + test5 + " for " + test6 + " in " + name1 + " by " + multiplier
+        }
+    }
+    answerfeedback = "";
+    for (let index = 0; index < campaignTrail_temp.answer_feedback_json.length - 1; index++) {
+        if (answerid == campaignTrail_temp.answer_feedback_json[index].fields.answer) {
+            answerfeedback = "<b>" + campaignTrail_temp.answer_feedback_json[index].fields.answer_feedback + "</b>"
+            break;
+        }
+    }
+    return '<font size="2"><b>Answer: </b>' + findAnswer(answerid)[1] + "'<br>" + "Feedback: " + answerfeedback + "'<br>" + mods + "</font><br><br>"
+}
+
+function benefitChecker() {
+    questionlength = document.getElementById("question_form").children[0].children.length / 3
+    nnn = ""
+    for (v = 0; v < questionlength; v++) {
+        n = benefitCheck(v)
+        nnn += n
+    }
+    $("#dialogue")[0].innerHTML = nnn
+    $("#dialogue").dialog();
+}
+
+function difficultyChanger() {
+    newVal = Math.pow(parseFloat(document.getElementById("difficultySlider").value / 1000), 2)
+    campaignTrail_temp.difficulty_level_multiplier = newVal
+    document.getElementById("difficultyMod").innerText = `Multiplier: ${newVal.toFixed(2)}`
+}
+
+document.head = document.head || document.getElementsByTagName('head')[0];
+
+function changeFavicon(src) {
+    var link = document.createElement('link'),
+        oldLink = document.getElementById('dynamic-favicon');
+    link.id = 'dynamic-favicon';
+    link.rel = 'shortcut icon';
+    link.href = src;
+    if (oldLink) {
+        document.head.removeChild(oldLink);
+    }
+    document.head.appendChild(link);
+}
+
+changeFavicon("/static/34starcircle-2.png")
+
+$(document).ready(function() {
+    var originalOptions = null;
+
+    $('.tagCheckbox').on('change', filterEntries);
+
+    loadEntries();
+
+    function loadEntries() {
+        $.ajax({
+            type: "GET",
+            url: "../static/mods/MODLOADERFILE.html",
+            dataType: "text",
+            success: function(response) {
+                $("#modSelect").html(response);
+                //clone so we don't reduce the list of mods every time a tag is selected
+                originalOptions = $("#modSelect option").clone();
+                filterEntries();
+            },
+            error: function() {
+                console.log("Error loading mod loader - couldn't reach server.");
+            }
+        });
+    }
+
+    function filterEntries() {
+        var selectedTags = [];
+
+        // Get all selected tags
+        $('.tagCheckbox:checked').each(function() {
+            selectedTags.push($(this).val());
+        });
+
+        var filteredOptions = originalOptions.filter(function() {
+            var entryTags = $(this).data('tags');
+
+            if (selectedTags.length === 0) {
+                // Show all if no tags are selected
+                return true;
+            }
+
+            //return mods that are tagged and have all checked tags
+            return entryTags && (containsAllTags(entryTags, selectedTags));
+        });
+
+        var $modSelect = $('#modSelect');
+        $modSelect.empty().append(filteredOptions);
+
+        $modSelect.val($modSelect.find('option:first').val());
+    }
+
+    function containsAllTags(entryTags, selectedTags) {
+        var entryTagArray = entryTags.split(' ');
+
+        for (var i = 0; i < selectedTags.length; i++) {
+            if (!entryTagArray.includes(selectedTags[i])) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+});
+
+
 function uwuifier(a) {
     b = a.split(" I ")
     if (b.length > 0) {
@@ -229,15 +464,6 @@ nct_stuff.themes = {
         coloring_window: "#1C7D7D",
         coloring_container: "#093F3A",
         coloring_title: "#03141C"
-    },
-    "lgbtqpride": {
-        name: "Pride Month",
-        background: "https://images.foxtv.com/static.fox29.com/www.fox29.com/content/uploads/2019/07/1280/720/48163187801_2f5c8df352_o.jpg?ve=1&tl=1",
-        banner: "https://media.discordapp.net/attachments/818130397706846242/981446618937188372/pride.jpg",
-        coloring_window: "#380069",
-        coloring_container: "#5a00a8",
-        coloring_title: "#380069",
-        music: "https://cdn.discordapp.com/attachments/818130397706846242/981591347129618482/yt5s.com_-_Diana_Ross_-_Im_Coming_Out_128_kbps.mp3"
     }
 }
 
@@ -255,6 +481,7 @@ if (!window.localStorage.getItem("christmas")) {
 }
 
 /*
+
 let christmasToggle = document.createElement("button")
 if (nct_stuff.christmas) {
     christmasToggle.innerHTML = "Disable Christmas"
@@ -277,7 +504,7 @@ document.body.appendChild(christmasToggle)
 nct_stuff.selectedTheme = ""
 theme = window.localStorage.getItem("theme")
 
-/*
+/**
 var theGrinch = window.setInterval(function() {
   if (document.getElementById("inner_window_1")) {
     return false;
@@ -319,9 +546,9 @@ function themePicked() {
 susnum = Math.floor((Math.random() * 8) + 1)
 stassennum = Math.floor((Math.random() * 8) + 1)
 stassenyear = ["1944", "1948", "1952", "1964", "1968", "1980", "1984", "1988", "1992"]
-  nct_stuff.quotes=[`"All men are created equal" - Thomas Jefferson`,`"All the Way with LBJ!"`,`"Those who make peaceful revolution impossible, make violent revolution inevitable" - John Kennedy`,`"I'm Gerald Ford, and you're not."`,`"Fool me once, shame on  -  shame on you. Fool me  -  you can't get fooled again." - George W. Bush`,`"It's the economy stupid!"`,`"You shall not crucify mankind upon a cross of gold." - William Jennings Bryan`,`"Politics have no relations to morals." - Machiavelli`,`"I am not going to exploit, for political purposes, my opponent's youth and inexperience." - Ronald Reagan`,`"There are weapons of mass destruction in Iraq." - George W. Bush`,`"That was really uncalled for, Senator." - Dan Quayle`,`"My failures have been error in judgement, not intent." - Ulysses S. Grant`,`"When the president does it, that means it is not illegal" - Richard Nixon`,`"Leave nothing for tomorrow which can be done today" - Abraham Lincoln`, `"Extremism, in the defense of liberty, is no vice." - Barry Goldwater`,`"My fellow Americans, I'm pleased to tell you today that I've signed legislation that will outlaw Russia forever. We begin bombing in five minutes." - Ronald Reagan`,`"Injustice anywhere, is a threat to justice everywhere." - Martin Luther King`,`"The Dream shall never die!" - Ted Kennedy`,`“I have binders full of women!” - Mitt Romney`,`“Who am I? Why am I here?” - James Stockdale`, `"Read My Lips: No New Taxes." - George HW. Bush`, `"Thomas Jefferson lives." - John Adams`,`"Tippecanoe and Tyler Too!"`,`"There is no Soviet domination of eastern Europe!" - Gerald Ford`,`"Change based on principle is progress. Constant change without principle becomes chaos." - Dwight Eisenhower`,`"Freedom is never more than one generation away from extinction."" - Ronald Reagan`,` "Ladies and gentlemen, I don't know whether you fully understand that I have just been shot," - Theodore Roosevelt`,`"DEWEY DEFEATS TRUMAN"`,`"Hell no, we won't go!"`,'"Hey, hey, LBJ, how many kids did you kill today?"',`"Vote for the Crook: It’s Important!`,`"Every man a king, but no one wears a crown!"`,`"Keep cool with Coolidge!"`,`"Don't swap horses in the middle of the stream."`,`"Mr. Gorbachev, tear down this wall!" - Ronald Reagan`,`"Pokémon Go to the Polls!" - Hillary Clinton`,`"The only thing we have to fear is fear itself."-Franklin Roosevelt`,`“Only those who have the courage to fail greatly achieve greatly.” - Robert Kennedy`,`"Amnesty, acid, and abortion."`,`"In your heart, you know he's right!"`,`"Give me liberty, or give me death!" - Patrick Henry`,`"Vote for Taft now, you can vote for Bryan anytime!"`,`"Vote for the crook. It's important."`,`"Blaine, Blaine, James G. Blaine, The Continental Liar from the State of Maine!"`,`"I like Ike!"`,`"A house divided can not stand."-Abraham Lincoln`,`"Ask not what your country can do for you- ask what you can do for your country." - John Kennedy`,`"Give me six hours to chop down a tree and I will spend four sharpening the axe" - Abraham Lincoln`]
-  //nct_stuff.quotes = ["Remember, if your campaign manager isn't yelling at you, you're playing this game wrong.","Ralph Nader won in 2000","The American people are tired of women - Bernie Sanders","So I can just write anything here and it appears on the website?","Vote for President Johnson on November 3rd. The stakes are too high for you to stay home.","Dewey Defeats Truman!","You are not immune to 306-232","Read my lips. No new taxes","I did not have sexual relations with that woman","You know that your future still lies ahead of you.","Obligatory Wallave mention","if you don’t vote for me, ‘you ain’t black!","Fool me once, shame on...shame on you. Fool me—you can't get fooled again","We won this election by a lot!","Created by Al Gore under the pseudonym Dan Bryan","Senator, you’re no Dan Bryan","Yes, I would support the death penalty in that instance, Mr.Shaw","Making a mod; need a moder and a coder","We stan Dan Bryan in this household!","Most Americans wonder if you hit your head the wrong way getting out of bed this morning.","When he’s a tariff man through and through😩😩😩","Are you an Egghead or Lemonhead?","DO NOT LOOK UP WHERE HUBERT HUMPHREY WAS BORN","50 unban, 60% rual", "Look being a moderator, is all about learning from mistakes...", "Now with 30% less damn commies <font size='1'>McCarthy Approved</font>","I’ve never seen a skinny person drink Diet Coke","Alright. Way to get that crowd fired up.","<font size='1'>This is a good, liberal answer that will motivate your base. As always, make sure you strike the right balance between appealing to moderates and getting your troops out.</font>","Harold Stassen for president "+stassenyear[stassennum]+"!","Minecraft is better", "Statement by Donald J. Trump, 45th President of the United States of America","Now with an updated mod loader! (yes, seriously)", "Feels like a good time for a fireside chat", "[Insert Undertale Reference]", "2012 is the best scenario!", "Shopping for a New Deal", "Now with 10% more sarcastic comments", "<button onclick='alert(\"bepis\")'>Click for bepis</button>", "Don't stop me now! <font size='1'>no seriously please don't</font>", "she/they #BLM #ACAB", "The Industrial Revolution and its consequences have been a disaster for the human race", "Patriot | 80 years old | Unvaxxed | In ICU with COVID 😔", "<b>NEWER CAMPAIGN TRAIL</b> when?", "I'm all alone... more or less", "Let me fly far away from here", "<audio src='https://ia601807.us.archive.org/32/items/lp_fly-me-to-the-moon_earl-grant/disc1/01.02.%20Fly%20Me%20To%20The%20Moon%20%28In%20Other%20Words%29.mp3' autoplay='true'></audio>", "I like Ike!", "Giraffes are heartless creatures", "\"People who are hungry and out of a job are the stuff of which dictatorships are made.\" - Franklin D. Roosevelt", "\"The only thing we have to fear is fear itself.\" - Franklin D. Roosevelt", "\"You are fake news.\" - Donald J. Trump", "\"What counts is not necessarily the size of the dog in the fight - it's the size of the fight in the dog.\" - Dwight D. Eisenhower", "If you don't stand for something, you will fall for anything.", "Tiocfaidh ár lá", "https://www.twitch.tv/itsastronomics", "Wow, a cow made of butter. My girls would love it. In fact, the first sentence Caroline ever said was \"I like Butter.\" - Ted Cruz", "The plan is to fan this spark into a flame but damn, it's getting dark"]
-  //nct_stuff.quotes = [`It's cold outside, no kind of atmosphere!`, `I'll be honest, I reused the Christmas code from last year.`, `Turles planted the Christmas Tree of Might!`, `"I am Champion Christmas" - Son Goku`, `Let me <em>flyyyy</em> far away from here`, `2019NK is just the start`, `Waiting for Sumner 68`, `"Cold of the winter, snow settles on my face" - Christmas Khamsin`, `Do you believe in gravity?`, `Who was the person who decided to makes quotes that overflow over the text width limit, y'know I specifically tried to avoid this when making the NCT quote section >:(`, `Denying Reagan his Christmas present since 1984`, `[insert unfunny community injoke here]`, `<button onclick='alert("Made mod.")'>Click here to make mod</button>`, `Merry Holidays.`, `Happy Christmas.`, `SONS OF LIBERTY - COMING OUT 2050`, `Florida has a date with the bottom of the ocean`, `Patch 1.02 - Removed Ohio`, `Enjoying our Charlie Cristmas`, `Ron Desanta - that's it, that's the quote.`]
+nct_stuff.quotes = [`"All men are created equal" - Thomas Jefferson`, `"All the Way with LBJ!"`, `"Those who make peaceful revolution impossible, make violent revolution inevitable" - John Kennedy`, `"I'm Gerald Ford, and you're not."`, `"Fool me once, shame on  -  shame on you. Fool me  -  you can't get fooled again." - George W. Bush`, `"It's the economy stupid!"`, `"You shall not crucify mankind upon a cross of gold." - William Jennings Bryan`, `"Politics have no relations to morals." - Machiavelli`, `"I am not going to exploit, for political purposes, my opponent's youth and inexperience." - Ronald Reagan`, `"There are weapons of mass destruction in Iraq." - George W. Bush`, `"That was really uncalled for, Senator." - Dan Quayle`, `"My failures have been error in judgement, not intent." - Ulysses S. Grant`, `"When the president does it, that means it is not illegal" - Richard Nixon`, `"Leave nothing for tomorrow which can be done today" - Abraham Lincoln`, `"Extremism, in the defense of liberty, is no vice." - Barry Goldwater`, `"My fellow Americans, I'm pleased to tell you today that I've signed legislation that will outlaw Russia forever. We begin bombing in five minutes." - Ronald Reagan`, `"Injustice anywhere, is a threat to justice everywhere." - Martin Luther King`, `"The Dream shall never die!" - Ted Kennedy`, `"I have binders full of women!" - Mitt Romney`, `"Who am I? Why am I here?" - James Stockdale`, `"Read My Lips: No New Taxes." - George HW. Bush`, `"Thomas Jefferson lives." - John Adams`, `"Tippecanoe and Tyler Too!"`, `"There is no Soviet domination of eastern Europe!" - Gerald Ford`, `"Change based on principle is progress. Constant change without principle becomes chaos." - Dwight Eisenhower`, `"Freedom is never more than one generation away from extinction."" - Ronald Reagan`, ` "Ladies and gentlemen, I don't know whether you fully understand that I have just been shot," - Theodore Roosevelt`, `"DEWEY DEFEATS TRUMAN"`, `"Hell no, we won't go!"`, '"Hey, hey, LBJ, how many kids did you kill today?"', `"Vote for the Crook: It’s Important!`, `"Every man a king, but no one wears a crown!"`, `"Keep cool with Coolidge!"`, `"Don't swap horses in the middle of the stream."`, `"Mr. Gorbachev, tear down this wall!" - Ronald Reagan`, `"Pokémon Go to the Polls!" - Hillary Clinton`, `"The only thing we have to fear is fear itself." - Franklin Roosevelt`, `"Only those who have the courage to fail greatly achieve greatly." - Robert Kennedy`, `"Amnesty, acid, and abortion."`, `"In your heart, you know he's right!"`, `"Give me liberty, or give me death!" - Patrick Henry`, `"Vote for Taft now, you can vote for Bryan anytime!"`, `"Vote for the crook. It's important."`, `"Blaine, Blaine, James G. Blaine, The Continental Liar from the State of Maine!"`, `"I like Ike!"`, `"A house divided can not stand." - Abraham Lincoln`, `"Ask not what your country can do for you- ask what you can do for your country." - John Kennedy`, `"Give me six hours to chop down a tree and I will spend four sharpening the axe" - Abraham Lincoln`]
+    //nct_stuff.quotes = ["Remember, if your campaign manager isn't yelling at you, you're playing this game wrong.","Ralph Nader won in 2000","The American people are tired of women - Bernie Sanders","So I can just write anything here and it appears on the website?","Vote for President Johnson on November 3rd. The stakes are too high for you to stay home.","Dewey Defeats Truman!","You are not immune to 306-232","Read my lips. No new taxes","I did not have sexual relations with that woman","You know that your future still lies ahead of you.","Obligatory Wallave mention","if you don’t vote for me, ‘you ain’t black!","Fool me once, shame on...shame on you. Fool me—you can't get fooled again","We won this election by a lot!","Created by Al Gore under the pseudonym Dan Bryan","Senator, you’re no Dan Bryan","Yes, I would support the death penalty in that instance, Mr.Shaw","Making a mod; need a moder and a coder","We stan Dan Bryan in this household!","Most Americans wonder if you hit your head the wrong way getting out of bed this morning.","When he’s a tariff man through and through😩😩😩","Are you an Egghead or Lemonhead?","DO NOT LOOK UP WHERE HUBERT HUMPHREY WAS BORN","50 unban, 60% rual", "Look being a moderator, is all about learning from mistakes...", "Now with 30% less damn commies <font size='1'>McCarthy Approved</font>","I’ve never seen a skinny person drink Diet Coke","Alright. Way to get that crowd fired up.","<font size='1'>This is a good, liberal answer that will motivate your base. As always, make sure you strike the right balance between appealing to moderates and getting your troops out.</font>","Harold Stassen for president "+stassenyear[stassennum]+"!","Minecraft is better", "Statement by Donald J. Trump, 45th President of the United States of America","Now with an updated mod loader! (yes, seriously)", "Feels like a good time for a fireside chat", "[Insert Undertale Reference]", "2012 is the best scenario!", "Shopping for a New Deal", "Now with 10% more sarcastic comments", "<button onclick='alert(\"bepis\")'>Click for bepis</button>", "Don't stop me now! <font size='1'>no seriously please don't</font>", "she/they #BLM #ACAB", "The Industrial Revolution and its consequences have been a disaster for the human race", "Patriot | 80 years old | Unvaxxed | In ICU with COVID 😔", "<b>NEWER CAMPAIGN TRAIL</b> when?", "I'm all alone... more or less", "Let me fly far away from here", "<audio src='https://ia601807.us.archive.org/32/items/lp_fly-me-to-the-moon_earl-grant/disc1/01.02.%20Fly%20Me%20To%20The%20Moon%20%28In%20Other%20Words%29.mp3' autoplay='true'></audio>", "I like Ike!", "Giraffes are heartless creatures", "\"People who are hungry and out of a job are the stuff of which dictatorships are made.\" - Franklin D. Roosevelt", "\"The only thing we have to fear is fear itself.\" - Franklin D. Roosevelt", "\"You are fake news.\" - Donald J. Trump", "\"What counts is not necessarily the size of the dog in the fight - it's the size of the fight in the dog.\" - Dwight D. Eisenhower", "If you don't stand for something, you will fall for anything.", "Tiocfaidh ár lá", "https://www.twitch.tv/itsastronomics", "Wow, a cow made of butter. My girls would love it. In fact, the first sentence Caroline ever said was \"I like Butter.\" - Ted Cruz", "The plan is to fan this spark into a flame but damn, it's getting dark"]
+    //nct_stuff.quotes = [`It's cold outside, no kind of atmosphere!`, `I'll be honest, I reused the Christmas code from last year.`, `Turles planted the Christmas Tree of Might!`, `"I am Champion Christmas" - Son Goku`, `Let me <em>flyyyy</em> far away from here`, `2019NK is just the start`, `Waiting for Sumner 68`, `"Cold of the winter, snow settles on my face" - Christmas Khamsin`, `Do you believe in gravity?`, `Who was the person who decided to makes quotes that overflow over the text width limit, y'know I specifically tried to avoid this when making the NCT quote section >:(`, `Denying Reagan his Christmas present since 1984`, `[insert unfunny community injoke here]`, `<button onclick='alert("Made mod.")'>Click here to make mod</button>`, `Merry Holidays.`, `Happy Christmas.`, `SONS OF LIBERTY - COMING OUT 2050`, `Florida has a date with the bottom of the ocean`, `Patch 1.02 - Removed Ohio`, `Enjoying our Charlie Cristmas`, `Ron Desanta - that's it, that's the quote.`]
 quotnum = Math.floor((Math.random() * nct_stuff.quotes.length))
 quote = nct_stuff.quotes[quotnum]
     // Banner Stuff
@@ -496,3 +723,75 @@ if (nct_stuff.christmas != true) {
         }
     }, 100)
 }
+
+function loadJSON(path, varr) {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                eval(varr + "=JSON.parse(" + JSON.stringify(xhr.responseText.trim()) + ")");
+            } else {
+                return xhr;
+            }
+        }
+    };
+    xhr.open("GET", path, true);
+    xhr.send();
+}
+var campaignTrail_temp = {};
+campaignTrail_temp.election_json = {}
+campaignTrail_temp.candidate_json = {}
+loadJSON("../static/json/election.json", "campaignTrail_temp.election_json")
+loadJSON("../static/json/candidate.json", "campaignTrail_temp.candidate_json")
+loadJSON("../static/json/running_mate.json", "campaignTrail_temp.running_mate_json")
+loadJSON("../static/json/opponents.json", "campaignTrail_temp.opponents_default_json")
+loadJSON("../static/json/opponents.json", "campaignTrail_temp.opponents_weighted_json")
+loadJSON("../static/json/election_list.json", "campaignTrail_temp.temp_election_list")
+ree = {}
+loadJSON("../static/json/election.json", "ree.election_json")
+loadJSON("../static/json/candidate.json", "ree.candidate_json")
+loadJSON("../static/json/running_mate.json", "ree.running_mate_json")
+loadJSON("../static/json/opponents.json", "ree.opponents_default_json")
+loadJSON("../static/json/opponents.json", "ree.opponents_weighted_json")
+loadJSON("../static/json/election_list.json", "ree.temp_election_list")
+campaignTrail_temp.difficulty_level_json = JSON.parse("[{\"model\": \"campaign_trail.difficulty_level\", \"pk\": 1, \"fields\": {\"name\": \"Cakewalk\", \"multiplier\": 1.33}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 2, \"fields\": {\"name\": \"Very Easy\", \"multiplier\": 1.2}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 3, \"fields\": {\"name\": \"Easy\", \"multiplier\": 1.1}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 4, \"fields\": {\"name\": \"Normal\", \"multiplier\": 0.97}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 5, \"fields\": {\"name\": \"Hard\", \"multiplier\": 0.95}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 6, \"fields\": {\"name\": \"Impossible\", \"multiplier\": 0.9}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 7, \"fields\": {\"name\": \"Unthinkable\", \"multiplier\": 0.83}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 8, \"fields\": {\"name\": \"Blowout\", \"multiplier\": 0.75}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 9, \"fields\": {\"name\": \"Disaster\", \"multiplier\": 0.68}}]");
+campaignTrail_temp.global_parameter_json = JSON.parse("[{\"model\": \"campaign_trail.global_parameter\", \"pk\": 1, \"fields\": {\"vote_variable\": 1.125, \"max_swing\": 0.12, \"start_point\": 0.94, \"candidate_issue_weight\": 10.0, \"running_mate_issue_weight\": 3.0, \"issue_stance_1_max\": -0.71, \"issue_stance_2_max\": -0.3, \"issue_stance_3_max\": -0.125, \"issue_stance_4_max\": 0.125, \"issue_stance_5_max\": 0.3, \"issue_stance_6_max\": 0.71, \"global_variance\": 0.01, \"state_variance\": 0.005, \"question_count\": 25, \"default_map_color_hex\": \"#C9C9C9\", \"no_state_map_color_hex\": \"#999999\"}}]");
+campaignTrail_temp.candidate_dropout_json = JSON.parse("[{\"model\": \"campaign_trail.candidate_dropout\", \"pk\": 1, \"fields\": {\"candidate\": 36, \"affected_candidate\": 18, \"probability\": 1.0}}]");
+campaignTrail_temp.show_premium = true;
+campaignTrail_temp.premier_ab_test_version = -1;
+campaignTrail_temp.credits = "Dan Bryan";
+
+
+// BIGSHOT MENU
+
+const cheatMenu = document.querySelector('.cheat_menu');
+const minimizeBtn = document.querySelector('#minimizeBtn');
+
+minimizeBtn.addEventListener('click', () => {
+  cheatMenu.classList.toggle('minimized');
+});
+
+$("#bigshotSkipBtn").click(() => {
+    campaignTrail_temp.question_number = Number(document.getElementById('skiptoquestion').value);
+
+    let sfx = $('#sfxMeme')[0];
+    sfx.volume=0.2;
+    sfx.play();
+});
+
+duplicate_globals = {}
+
+$("#disableRNG").change((a) => {
+    let checkbox = a.target;
+    let checked = checkbox.checked;
+    
+    if (!checked) {
+        duplicate_globals = JSON.parse(JSON.stringify(campaignTrail_temp.global_parameter_json[0]));
+        campaignTrail_temp.global_parameter_json[0].fields.global_variance = 0;
+        campaignTrail_temp.global_parameter_json[0].fields.state_variance = 0;
+        campaignTrail_temp.global_parameter_json[0].fields.max_swing = 0;
+    } else {
+        campaignTrail_temp.global_parameter_json[0] = JSON.parse(JSON.stringify(duplicate_globals));
+    }
+    console.log(campaignTrail_temp.global_parameter_json[0]);
+})
