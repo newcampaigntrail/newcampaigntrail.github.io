@@ -3,43 +3,50 @@ yearField.innerHTML = new Date().getFullYear()
 
 // INITIAL BIGSHOT
 
-counter = 0
-truecounter = 0
-BSColour = "white";
+const keyCodes = [66, 73, 71, 83, 72, 79, 84, 13];
+const altCodes = [66, 83, 13]; // shortcut
+let counter = 0;
+let alt_counter = 0;
+let initial = false;
+
 document.addEventListener('keydown', function(event) {
-    if (event.keyCode == 66 && counter == 0) {
+    if (campaignTrail_temp.iamapoopybuttfaceandhavenolife) {
+        return;
+    }
+    if (event.keyCode === keyCodes[counter]) {
         counter += 1;
-    } else if (event.keyCode == 73 && counter == 1) {
-        counter += 1;
-    } else if (event.keyCode == 71 && counter == 2) {
-        counter += 1;
-    } else if (event.keyCode == 83 && counter == 3) {
-        counter += 1;
-    } else if (event.keyCode == 72 && counter == 4) {
-        counter += 1;
-    } else if (event.keyCode == 79 && counter == 5) {
-        counter += 1;
-    } else if (event.keyCode == 84 && counter == 6) {
-        counter += 1;
-    } else if (event.keyCode == 13 && counter == 7 && truecounter == 0 && localStorage.getItem("cheated") != "true") {
-        a = "LOOKING FOR [Irresistible Cheat Codes] THAT WILL [Blow Your Mind!?]\nWELL [Shut Your Mouth] BECAUSE YOU ARE [A Redditor!]\nTRY A LITTLE [Friday Night Work Out]...\nTHEN I'LL SHOW YOU MY\nTHEN I'LL SHOW YOU MY\n1 LEFT."
+
+        if (counter === keyCodes.length) {
+            if (localStorage.getItem("cheated") !== "true") {
+                const a = "LOOKING FOR [Irresistible Cheat Codes] THAT WILL [Blow Your Mind!?]\nWELL [Shut Your Mouth] BECAUSE YOU ARE [A Redditor!]\nTRY A LITTLE [Friday Night Work Out]...\nTHEN I'LL SHOW YOU MY\nTHEN I'LL SHOW YOU MY\n1 LEFT.";
+                counter = 0;
+                localStorage.setItem("cheated", true);
+                alert(a);
+                initial = true;
+                return;
+            } else {
+                a = initial ? `DON'T WORRY! FOR OUR [No Time Back Guaranttee]\nTHIS IS [One Cheat Code] YOU WILL [Regret] FOR THE REST OF YOUR REDDIT POST!` : `[Heaven], are you WATCHING?`;
+                campaignTrail_temp.iamapoopybuttfaceandhavenolife = true;
+                alert(a);
+                return;
+            }
+        }
+    } else {
         counter = 0;
-        truecounter += 1;
-        alert(a)
-    } else if (event.keyCode == 13 && counter == 7 && truecounter == 1) {
-        campaignTrail_temp.iamapoopybuttfaceandhavenolife = true;
-        localStorage.setItem("cheated", true);
-        alert("DON'T WORRY! FOR OUR [No Time Back Guaranttee]\nTHIS IS [One Cheat Code] YOU WILL [Regret] FOR THE REST OF YOUR REDDIT POST!")
-        truecounter = 7;
-    } else if (event.keyCode == 13 && counter == 7 && truecounter == 0 && localStorage.getItem("cheated") == "true") {
-        campaignTrail_temp.iamapoopybuttfaceandhavenolife = true;
-        truecounter = 7
-        alert("[Heaven], are you WATCHING?")
-    } else if (truecounter <= 2) {
-        counter = 0;
-        truecounter = 0;
+    }
+    if (event.keyCode == altCodes[alt_counter] && localStorage.getItem("cheated") == "true") {
+        alt_counter += 1;
+        if (alt_counter === altCodes.length) {
+            a = `ARE YOU GETTING ALL THIS [Mike]!? I'M FINALLY\nI'M FINALLY GONNA BE A BIG SHOT!!!`;
+            campaignTrail_temp.iamapoopybuttfaceandhavenolife = true;
+            alert(a);
+        }
+        return;
+    } else {
+        alt_counter = 0;
     }
 });
+
 
 function findCandidate(pk) {
     for (i in campaignTrail_temp.candidate_json) {
@@ -553,11 +560,6 @@ if (nct_stuff.christmas != true) {
 
 function themePicked() {
     sel = document.getElementById("themePicker").value
-    if (sel == "ogtheme") {
-        BSColour = "black"
-    } else {
-        BSColour = "white"
-    }
     window.localStorage.setItem("theme", sel)
     location.reload()
 }
@@ -786,14 +788,14 @@ const cheatMenu = document.querySelector('.cheat_menu');
 const minimizeBtn = document.querySelector('#minimizeBtn');
 
 minimizeBtn.addEventListener('click', () => {
-  cheatMenu.classList.toggle('minimized');
+    cheatMenu.classList.toggle('minimized');
 });
 
 $("#bigshotSkipBtn").click(() => {
     campaignTrail_temp.question_number = Number(document.getElementById('skiptoquestion').value);
 
     let sfx = $('#sfxMeme')[0];
-    sfx.volume=0.2;
+    sfx.volume = 0.2;
     sfx.play();
 });
 
@@ -802,7 +804,7 @@ duplicate_globals = {}
 $("#disableRNG").change((a) => {
     let checkbox = a.target;
     let checked = checkbox.checked;
-    
+
     if (!checked) {
         duplicate_globals = JSON.parse(JSON.stringify(campaignTrail_temp.global_parameter_json[0]));
         campaignTrail_temp.global_parameter_json[0].fields.global_variance = 0;
