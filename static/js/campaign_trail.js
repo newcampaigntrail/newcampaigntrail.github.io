@@ -306,7 +306,7 @@ function openAchievMenu() {
 
     achievementDiv.innerHTML = `
       <div class="inner_window_front" style="padding:0px"><b><h1>Achievements</h1></b></div>
-      <div class="inner_window_front" style="overflow:scroll;height:300px;"><center>
+      <div class="inner_window_front" style="overflow-y:scroll;height:300px;"><center>
       ${achievementHtml}</table></center>
       </div>
       <button id='backButton' style='position: absolute;left: 1.5em;bottom:.5em;width:200px;height:50px;font-size:25px;text-align:center'><b>Back</b></button>
@@ -412,7 +412,7 @@ function openInfoMenu() {
     const infoBox = document.getElementById("infoBox");
     infoBox.innerHTML = `
       <div class="inner_window_front" style="padding:0"><b><h1>Welcome to the New Campaign Trail!</h1></b></div>
-      <div class="inner_window_front" style="padding:1em;overflow:scroll;height:300px;"><center>
+      <div class="inner_window_front" style="padding:1em;overflow-y:scroll;height:300px;"><center>
       ${textInfo}</table></center>
       </div>
       <button id='backButton' style='position: absolute;left: 1.5em;bottom:.5em;width:200px;height:50px;font-size:25px;text-align:center'><b>Back</b></button>
