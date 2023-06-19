@@ -793,5 +793,4 @@ $("#disableRNG").change((a) => {
     } else {
         campaignTrail_temp.global_parameter_json[0] = JSON.parse(JSON.stringify(duplicate_globals));
     }
-    console.log(campaignTrail_temp.global_parameter_json[0]);
 })
