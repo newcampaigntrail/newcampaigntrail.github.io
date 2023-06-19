@@ -438,9 +438,11 @@ e.difficulty_level_json = [{"model":"campaign_trail.difficulty_level","pk":4,"fi
 
 // disable cheats (yes, I know)
 
+const cheatMenu = document.querySelector('.cheat_menu');
+cheatMenu.classList.toggle('cheat_menu');
+
 disableCheats = () => {
   Array.from($("#cheatmode")[0].children).forEach(f=>f.remove());
 }
 
 disableCheats();
-
