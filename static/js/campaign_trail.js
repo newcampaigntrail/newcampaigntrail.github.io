@@ -404,7 +404,7 @@ function openInfoMenu() {
       </ul>
     
       <h3>Recent patch notes:</h3>
-      <p>Numerous [[BIG SHOT]] improvements have been implemented. You can now get into [[BIG SHOT]] <b>via the shortcut "bs [enter]".</b> This will only apply <b>if you have already unlocked it.</b></p>
+      <p>Numerous [[BIG SHOT]] improvements have been implemented. You can now get into [[BIG SHOT]] <b>via the shortcut <code style='font-size:120%;background-color:#cccccc'>bs[enter]</code>.</b> This will only apply <b>if you have already unlocked it.</b></p>
       <p>From now on, we will include our patch notes, and other important information <a href="https://blog.newcampaigntrail.com/">here</a>. It is a developer log for TNCT. Check it out, we have some info on the recent modmaker program, as well as what happened to achievements.</p>
     </div>
     `;
