@@ -1088,7 +1088,9 @@ function divideElectoralVotesProp(e, t) {
                         document.getElementById('cheatmode').style.display = ""
                         let slider = document.getElementById("difficultyMod");
                         if (slider) {
-                            slider.innerText = `Multiplier: ${campaignTrail_temp.difficulty_level_multiplier.toFixed(2)}`;
+                            slider.innerHTML = `Multiplier: <span contenteditable="true" id='difficulty_mult_bigshot'>${campaignTrail_temp.difficulty_level_multiplier.toFixed(2)}</span>`;
+                            updateSliderValue(campaignTrail_temp.difficulty_level_multiplier.toFixed(2));
+                            document.getElementById('difficulty_mult_bigshot').addEventListener('input', manuallyAdjustedSlider);                        
                         }
                     }
                     if (modded == false) {

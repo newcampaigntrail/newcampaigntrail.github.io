@@ -148,9 +148,27 @@ function benefitChecker() {
 }
 
 function difficultyChanger() {
-    newVal = Math.pow(parseFloat(document.getElementById("difficultySlider").value / 1000), 2)
-    campaignTrail_temp.difficulty_level_multiplier = newVal
-    document.getElementById("difficultyMod").innerText = `Multiplier: ${newVal.toFixed(2)}`
+    var sliderValue = parseFloat(document.getElementById("difficultySlider").value);
+    sliderValue = isNaN(sliderValue) == NaN ? 0.97 : sliderValue;
+    var newVal = Math.pow(sliderValue / 1000, 2);
+    campaignTrail_temp.difficulty_level_multiplier = newVal;
+    document.getElementById("difficultyMod").innerHTML = `Multiplier: <span contenteditable="true" id='difficulty_mult_bigshot'>${newVal.toFixed(2)}</span>`;
+    updateSliderValue(newVal);
+    document.getElementById('difficulty_mult_bigshot').addEventListener('input', manuallyAdjustedSlider);
+}
+
+function manuallyAdjustedSlider() {
+    var multiplier = parseFloat(document.getElementById("difficulty_mult_bigshot").innerText);
+    multiplier = isNaN(multiplier) ? 0.97 : multiplier;
+    console.log(multiplier)
+    var sliderValue = Math.sqrt(multiplier) * 1000;
+    document.getElementById("difficultySlider").value = sliderValue;
+    campaignTrail_temp.difficulty_level_multiplier = multiplier;
+}
+
+function updateSliderValue(newVal) {
+    var sliderValue = Math.sqrt(newVal) * 1000;
+    document.getElementById("difficultySlider").value = sliderValue;
 }
 
 document.head = document.head || document.getElementsByTagName('head')[0];
