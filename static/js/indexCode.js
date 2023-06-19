@@ -795,7 +795,7 @@ $("#bigshotSkipBtn").click(() => {
     campaignTrail_temp.question_number = Number(document.getElementById('skiptoquestion').value);
 
     let sfx = $('#sfxMeme')[0];
-    sfx.volume = 0.2;
+    sfx.volume = 0.1;
     sfx.play();
 });
 

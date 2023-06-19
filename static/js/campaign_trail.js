@@ -837,6 +837,13 @@ function divideElectoralVotesProp(e, t) {
     var e = campaignTrail_temp;
 
     function electionNight() {
+        if (e.bigshot_mode) { // minimise the bigshot window once election night starts
+            const cheatMenu = document.querySelector('.cheat_menu');
+            if (cheatMenu) {
+                cheatMenu.classList.add('minimized');
+            }
+        }        
+
         ! function() {
             for (var t = u(), i = "", a = 0; a < t.length; a++) i += '            <li><span style="color:' + t[a].color + "; background-color: " + t[a].color + '">--</span> ' + t[a].last_name + ":  0</li>";
             var s = S(e.election_id),
@@ -861,10 +868,6 @@ function divideElectoralVotesProp(e, t) {
                 $("#election_night_overlay").remove(), $("#election_night_window").remove()
             }), $("#final_result_button").click(function() {
                 clearTimeout(results_timeout), $("#map_footer").html("<i>Processing Results, wait one moment...</i>");
-                //HELPFUL CODE HERE
-                //campaignTrail_temp.question_number = 0
-                //ee = A(return_type=2)
-                //o(ee)
                 v(500);
                 m()
             })
@@ -2440,7 +2443,7 @@ function divideElectoralVotesProp(e, t) {
         let diff_mult_string = 0;
         if (Number((starting_mult - encrypted).toFixed(2)) != campaignTrail_temp.difficulty_level_multiplier.toFixed(2)) {
             diff_mult_string = campaignTrail_temp.difficulty_level_multiplier.toFixed(1) + "; <em>Cheated difficulty</em>";
-        } else if (campaignTrail_temp.bigshot_mode) {
+        } else if (e.bigshot_mode) {
             diff_mult_string = campaignTrail_temp.difficulty_level_multiplier.toFixed(1) + "; <em>[[BIG SHOT]] enabled</em>";
         } else {
             diff_mult_string = campaignTrail_temp.difficulty_level_multiplier.toFixed(1)
