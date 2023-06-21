@@ -2,7 +2,7 @@
 // exists then we just load that mod automatically.
 // This makes it easier to link mods and to fast reload!
 
-// We set delay of 500ms because the mod population code needs to execute first
+// We set delay of 250ms because the mod population code needs to execute first
 // Kind of janky but it works consistently
 setTimeout(() => {
     const urlParams = new URL(window.location.toLocaleString()).searchParams;
