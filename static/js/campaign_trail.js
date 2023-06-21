@@ -1027,7 +1027,7 @@ function divideElectoralVotesProp(e, t) {
                 currCandData = copy(e.candidate_json[e.candidate_json.map(f=>f.pk).indexOf(Number(cand))]) // gets current candidate json data
 
                 if (!realCandidates.includes(Number(cand))) {
-                    alert("Unfortunately, this part of the mod is currently broken, and is unplayable. Apologies.")
+                    alert(`Error Loading Code 2: Cannot find candidate with PK ${Number(cand)}! Please make sure your candidate PKs are consistent between Code 1 and Code 2.`)
                     window.location.reload()
                 } else {
                     fakeId = cand
