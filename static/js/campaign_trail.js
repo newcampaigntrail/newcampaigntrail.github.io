@@ -751,8 +751,10 @@ function endingPicker(out, totv, aa, quickstats) {
 function modSelectChange() {
     if ($("#modSelect")[0].value == "other") {
         $("#customMenu")[0].style.display = "block"
+        $("#copyLink")[0].style.display = "none"
     } else {
         $("#customMenu")[0].style.display = "none"
+        $("#copyLink")[0].style.display = "block"
     }
 }
 

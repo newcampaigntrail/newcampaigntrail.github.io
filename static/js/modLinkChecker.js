@@ -29,3 +29,9 @@ setTimeout(() => {
         document.getElementById("submitMod").click();
 }
 }, 250);
+
+function copyLinkToMod() {
+    const modSelector = document.getElementById("modSelect");
+    const urlNoParams = window.location.href.split('?')[0];
+    navigator.clipboard.writeText(urlNoParams + "?mod=" + modSelector.value);
+}
