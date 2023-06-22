@@ -217,11 +217,11 @@ $(document).ready(function() {
                         campaignTrail_temp.hotload = hotload;
                         $("#submitMod").click();
                     } catch {
-                        
+
                     }
                     window.localStorage.removeItem("hotload") // this should be done whether or not there is an error.
-                }              
-            
+                }
+
                 //clone so we don't reduce the list of mods every time a tag is selected
                 originalOptions = $("#modSelect option").clone();
                 filterEntries();
@@ -343,6 +343,7 @@ auschoice = choose(auschoices)
 
 utnum = Math.floor((Math.random() * 2) + 1)
 nct_stuff = {}
+nct_stuff.dynamicOverride = false;
 nct_stuff.themes = {
     "nct": {
         name: "New Campaign Trail",
@@ -519,46 +520,16 @@ if (!window.localStorage.getItem("christmas")) {
     }
 }
 
-/*
-
-let christmasToggle = document.createElement("button")
-if (nct_stuff.christmas) {
-    christmasToggle.innerHTML = "Disable Christmas"
-    christmasToggle.onclick = function() {
-        window.localStorage.setItem("christmas", 0)
-        window.location.reload()
-    }
-} else {
-    christmasToggle.innerHTML = "Enable Christmas"
-    christmasToggle.onclick = function() {
-        window.localStorage.setItem("christmas", 1)
-        window.location.reload()
-    }
-}
-christmasToggle.style = `position:fixed;left:10px;bottom:10px`
-christmasToggle.id = "christmasToggler"
-document.body.appendChild(christmasToggle)
-*/
-
 nct_stuff.selectedTheme = ""
 theme = window.localStorage.getItem("theme")
-
-/**
-var theGrinch = window.setInterval(function() {
-  if (document.getElementById("inner_window_1")) {
-    return false;
-  }
-  let toggler = document.getElementById("christmasToggler")
-  toggler.remove()
-  window.clearInterval(theGrinch)
-},100)
-*/
 
 if (theme == null) {
     nct_stuff.selectedTheme = "nct"
 } else {
     nct_stuff.selectedTheme = theme
 }
+
+//christmasSetup();
 
 if (nct_stuff.christmas != true) {
     document.getElementById("theme_picker").innerHTML = "<select id='themePicker' onchange='themePicked()'></select>"
@@ -598,92 +569,151 @@ var gameWindow = $("#game_window")[0];
 var container = $(".container")[0];
 var campaignTrailMusic = document.getElementById('campaigntrailmusic');
 var selectedTheme = nct_stuff.themes[nct_stuff.selectedTheme];
+// Create a style element
+var dynamicStyle = document.createElement('style');
+document.head.appendChild(dynamicStyle);
 
 // Update banner and styling
 function updateBannerAndStyling() {
-  header.src = selectedTheme.banner;
-  header.width = 1000;
-  document.body.background = selectedTheme.background;
-  gameWindow.style.backgroundColor = selectedTheme.coloring_window;
-  container.style.backgroundColor = selectedTheme.coloring_container;
-  gameHeader.style.backgroundColor = selectedTheme.coloring_title;
-  
-  if (selectedTheme.text_col != null) {
-    container.style.color = selectedTheme.text_col;
-    gameWindow.style.color = "black";
-  }
+    header.src = selectedTheme.banner;
+    header.width = 1000;
+    document.body.background = selectedTheme.background;
+    gameWindow.style.backgroundColor = selectedTheme.coloring_window;
+    container.style.backgroundColor = selectedTheme.coloring_container;
+    gameHeader.style.backgroundColor = selectedTheme.coloring_title;
+
+    if (selectedTheme.text_col != null) {
+        container.style.color = selectedTheme.text_col;
+        gameWindow.style.color = "black";
+    }
 }
 
 // Update inner windows styling
 function updateInnerWindowsStyling() {
-  var innerWindow2 = document.getElementById("inner_window_2");
-  var innerWindow3 = document.getElementById("inner_window_3");
-  var innerWindow4 = document.getElementById("inner_window_4");
-  var innerWindow5 = document.getElementById("inner_window_5");
+    var innerWindow2 = document.getElementById("inner_window_2");
+    var innerWindow3 = document.getElementById("inner_window_3");
+    var innerWindow4 = document.getElementById("inner_window_4");
+    var innerWindow5 = document.getElementById("inner_window_5");
 
-  if (innerWindow2 != null) {
-    innerWindow2.style.backgroundColor = selectedTheme.coloring_window;
-  } else if (innerWindow3 != null) {
-    innerWindow3.style.backgroundColor = selectedTheme.coloring_window;
-  }
-  
-  if (innerWindow4 != null) {
-    innerWindow4.style.backgroundColor = selectedTheme.coloring_window;
-  }
-  
-  if (innerWindow5 != null) {
-    innerWindow5.style.backgroundColor = selectedTheme.coloring_window;
-  }
+    if (innerWindow2 != null) {
+        innerWindow2.style.backgroundColor = selectedTheme.coloring_window;
+    } else if (innerWindow3 != null) {
+        innerWindow3.style.backgroundColor = selectedTheme.coloring_window;
+    }
+
+    if (innerWindow4 != null) {
+        innerWindow4.style.backgroundColor = selectedTheme.coloring_window;
+    }
+
+    if (innerWindow5 != null) {
+        innerWindow5.style.backgroundColor = selectedTheme.coloring_window;
+    }
 }
 
 // Update game header content and styling
 function updateGameHeaderContentAndStyling() {
-  gameHeader.innerHTML = corrr;
-  gameHeader.style.backgroundColor = selectedTheme.coloring_title;
-  updateInnerWindowsStyling();
+    let gameHeader = $(".game_header")[0];
+    if (gameHeader.innerHTML != corrr) {
+        gameHeader.innerHTML = corrr;
+    }
+    gameHeader.style.backgroundColor = selectedTheme.coloring_title;
+    updateInnerWindowsStyling();
+}
+
+// Update CSS rules in the style element
+function updateDynamicStyle() {
+    if (nct_stuff.dynamicOverride) {
+        return;
+    }
+    let dynaStyle = `
+    #header {
+      src: ${selectedTheme.banner};
+      width: 1000px;
+    }
+    body {
+      background: ${selectedTheme.background};
+    }
+    #game_window {
+      background-color: ${selectedTheme.coloring_window};
+      color: black;
+    }
+    .container {
+      background-color: ${selectedTheme.coloring_container};
+      color: ${selectedTheme.text_col || "inherit"};
+    }
+    .game_header {
+      background-color: ${selectedTheme.coloring_title};
+    }
+    #inner_window_2 {
+        background-color: ${selectedTheme.coloring_window};
+      }
+      #inner_window_3 {
+        background-color: ${selectedTheme.coloring_window};
+      }
+      #inner_window_4 {
+        background-color: ${selectedTheme.coloring_window};
+      }
+      #inner_window_5 {
+        background-color: ${selectedTheme.coloring_window};
+      }  
+  `;
+  if (dynamicStyle.innerHTML != dynaStyle) {
+    dynamicStyle.innerHTML = dynaStyle;
+  }
 }
 
 // Update banner, styling, and game header on interval
 setInterval(function() {
-  updateGameHeaderContentAndStyling();
+    let gameHeader = $(".game_header")[0];
+    if (gameHeader.innerHTML != corrr) {
+        gameHeader.innerHTML = corrr;
+    }
+    gameHeader.style.backgroundColor = selectedTheme.coloring_title;
+    updateDynamicStyle();
+
+    //updateGameHeaderContentAndStyling();
 }, 100);
 
+
 if (nct_stuff.christmas != true) {
-  // Update banner and styling
-  updateBannerAndStyling();
+    // Update banner and styling
+    updateBannerAndStyling();
 
-  // Play music if available
-  if (selectedTheme.music != null) {
-    document.getElementById("music_player").style.display = "";
-    campaignTrailMusic.src = selectedTheme.music;
-    campaignTrailMusic.autoplay = true;
-  }
-} else {
-  nct_stuff.themes = {
-    "christmas": {
-      name: "jesus christ",
-      background: "../static/images/background_christmas.jpg",
-      banner: "../static/images/banner_christmas_" + susnum + ".png",
-      coloring_window: "#8D3A3D",
-      coloring_container: "#871d0d",
-      coloring_title: "#194260",
-      music: "../static/audio/christmas.mp3"
+    // Play music if available
+    if (selectedTheme.music != null) {
+        document.getElementById("music_player").style.display = "";
+        campaignTrailMusic.src = selectedTheme.music;
+        campaignTrailMusic.autoplay = true;
     }
-  };
-  nct_stuff.selectedTheme = "christmas";
+} else {
+    nct_stuff.themes = {
+        "christmas": {
+            name: "jesus christ",
+            background: "../static/images/background_christmas.jpg",
+            banner: "../static/images/banner_christmas_" + susnum + ".png",
+            coloring_window: "#8D3A3D",
+            coloring_container: "#871d0d",
+            coloring_title: "#194260",
+            music: "../static/audio/christmas.mp3"
+        }
+    };
+    nct_stuff.selectedTheme = "christmas"
+    selectedTheme = nct_stuff.themes.christmas;
 
-  // Update banner and styling
-  updateBannerAndStyling();
+    // Update banner and styling
+    //updateBannerAndStyling();
 
-  // Update game header content and styling
-  updateGameHeaderContentAndStyling();
+    // Update game header content and styling
+    //updateGameHeaderContentAndStyling();
 
-  // Play music if available
-  if (selectedTheme.music != null) {
-    document.getElementById("music_player").style.display = "";
-    campaignTrailMusic.src = selectedTheme.music;
-    campaignTrailMusic.autoplay = true;
-  }
+    updateDynamicStyle();
+
+    // Play music if available
+    if (selectedTheme.music != null) {
+        document.getElementById("music_player").style.display = "";
+        campaignTrailMusic.src = selectedTheme.music;
+        campaignTrailMusic.autoplay = true;
+    }
 }
 
 function loadJSON(path, varr, callback = () => {}) {
