@@ -993,11 +993,6 @@ function divideElectoralVotesProp(e, t) {
         return a;
     }
 
-    ree = {}
-    window.setTimeout(function() {
-        ree = copy(campaignTrail_temp)
-    }, 600)
-
     function realityCheck(cand, running_mate, ree) { //checks if we are actually looking at a real candidate pairing
         pairs = e.running_mate_json.map(f => f.fields).map(f => [f.candidate,f.running_mate])
         pair = [cand, running_mate]
@@ -1010,6 +1005,7 @@ function divideElectoralVotesProp(e, t) {
     function election_HTML(id, cand, running_mate) {
         if (id != 16) {
             if (modded) {
+                console.log("hi")
                 try {
                 yearbit = ree.election_json[findFromPK(ree.election_json, id)].fields.year
                 lastnamebit = ree.candidate_json[findFromPK(ree.candidate_json, campaignTrail_temp.candidate_id)].fields.last_name
@@ -1122,7 +1118,7 @@ function divideElectoralVotesProp(e, t) {
                                 clearInterval(important_code)
                             }
                         }, 1000);
-                    } else if ($("#modSelect")[0].value != "other") {
+                    } else if ($("#modSelect")[0].value != "other" || e.hotload) {
                         aaa = election_HTML(t, i, a)
                         aaa = "../static/questionset/" + aaa
                         try {
@@ -2690,6 +2686,13 @@ _ = '   <div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="ma
     function y() {
         var t = S(e.election_id);
         $("#game_window").append('        <div class="overlay" id="new_game_overlay"></div>        <div class="overlay_window" id="new_game_window">            <div class="overlay_window_content" id="election_night_content">            <h3>Advisor Feedback</h3>            <img src="' + e.election_json[t].fields.advisor_url + '" width="208" height="128"/><p>            Are you sure you want to begin a new game?            </p></div>            <div class="overlay_buttons" id="new_game_buttons">            <button id="new_game_button">Yes</button><br>            <button id="cancel_button">No</button>            </div>        </div>'), $("#new_game_button").click(function() {
+            if (modded) {
+                let hotload = e.hotload ? e.hotload : $("#modSelect")[0].value;
+                if (hotload != "other") {
+                    window.localStorage.setItem("hotload", hotload);
+
+                }
+            }
             window.location.href = window.location.href
         }), $("#cancel_button").click(function() {
             $("#new_game_overlay").remove(), $("#new_game_window").remove()

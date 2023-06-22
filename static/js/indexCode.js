@@ -208,6 +208,20 @@ $(document).ready(function() {
             dataType: "text",
             success: function(response) {
                 $("#modSelect").html(response);
+
+                // hot load
+                let hotload = window.localStorage.getItem("hotload");
+                if (hotload) {
+                    try {
+                        $("#modSelect")[0].value = hotload;
+                        campaignTrail_temp.hotload = hotload;
+                        $("#submitMod").click();
+                    } catch {
+                        
+                    }
+                    window.localStorage.removeItem("hotload") // this should be done whether or not there is an error.
+                }              
+            
                 //clone so we don't reduce the list of mods every time a tag is selected
                 originalOptions = $("#modSelect option").clone();
                 filterEntries();
@@ -694,12 +708,13 @@ if (nct_stuff.christmas != true) {
     }, 100)
 }
 
-function loadJSON(path, varr) {
+function loadJSON(path, varr, callback = () => {}) {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 eval(varr + "=JSON.parse(" + JSON.stringify(xhr.responseText.trim()) + ")");
+                callback()
             } else {
                 return xhr;
             }
@@ -708,22 +723,36 @@ function loadJSON(path, varr) {
     xhr.open("GET", path, true);
     xhr.send();
 }
+
+strCopy = (toCopy) => {
+    let copy = JSON.parse(JSON.stringify(toCopy));
+    return copy;
+}
+
 var campaignTrail_temp = {};
+ree = {}
+
 campaignTrail_temp.election_json = {}
 campaignTrail_temp.candidate_json = {}
-loadJSON("../static/json/election.json", "campaignTrail_temp.election_json")
-loadJSON("../static/json/candidate.json", "campaignTrail_temp.candidate_json")
-loadJSON("../static/json/running_mate.json", "campaignTrail_temp.running_mate_json")
-loadJSON("../static/json/opponents.json", "campaignTrail_temp.opponents_default_json")
-loadJSON("../static/json/opponents.json", "campaignTrail_temp.opponents_weighted_json")
-loadJSON("../static/json/election_list.json", "campaignTrail_temp.temp_election_list")
-ree = {}
-loadJSON("../static/json/election.json", "ree.election_json")
-loadJSON("../static/json/candidate.json", "ree.candidate_json")
-loadJSON("../static/json/running_mate.json", "ree.running_mate_json")
-loadJSON("../static/json/opponents.json", "ree.opponents_default_json")
-loadJSON("../static/json/opponents.json", "ree.opponents_weighted_json")
-loadJSON("../static/json/election_list.json", "ree.temp_election_list")
+loadJSON("../static/json/election.json", "campaignTrail_temp.election_json", () => {
+    ree.election_json = strCopy(campaignTrail_temp.election_json);
+})
+loadJSON("../static/json/candidate.json", "campaignTrail_temp.candidate_json", () => {
+    ree.candidate_json = strCopy(campaignTrail_temp.candidate_json);
+})
+loadJSON("../static/json/running_mate.json", "campaignTrail_temp.running_mate_json", () => {
+    ree.running_mate_json = strCopy(campaignTrail_temp.running_mate_json);
+})
+loadJSON("../static/json/opponents.json", "campaignTrail_temp.opponents_default_json", () => {
+    ree.opponents_default_json = strCopy(campaignTrail_temp.opponents_default_json);
+})
+loadJSON("../static/json/opponents.json", "campaignTrail_temp.opponents_weighted_json", () => {
+    ree.opponents_weighted_json = strCopy(campaignTrail_temp.opponents_weighted_json);
+})
+loadJSON("../static/json/election_list.json", "campaignTrail_temp.temp_election_list", () => {
+    ree.temp_election_list = strCopy(campaignTrail_temp.temp_election_list);
+})
+
 campaignTrail_temp.difficulty_level_json = JSON.parse("[{\"model\": \"campaign_trail.difficulty_level\", \"pk\": 1, \"fields\": {\"name\": \"Cakewalk\", \"multiplier\": 1.33}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 2, \"fields\": {\"name\": \"Very Easy\", \"multiplier\": 1.2}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 3, \"fields\": {\"name\": \"Easy\", \"multiplier\": 1.1}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 4, \"fields\": {\"name\": \"Normal\", \"multiplier\": 0.97}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 5, \"fields\": {\"name\": \"Hard\", \"multiplier\": 0.95}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 6, \"fields\": {\"name\": \"Impossible\", \"multiplier\": 0.9}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 7, \"fields\": {\"name\": \"Unthinkable\", \"multiplier\": 0.83}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 8, \"fields\": {\"name\": \"Blowout\", \"multiplier\": 0.75}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 9, \"fields\": {\"name\": \"Disaster\", \"multiplier\": 0.68}}]");
 campaignTrail_temp.global_parameter_json = JSON.parse("[{\"model\": \"campaign_trail.global_parameter\", \"pk\": 1, \"fields\": {\"vote_variable\": 1.125, \"max_swing\": 0.12, \"start_point\": 0.94, \"candidate_issue_weight\": 10.0, \"running_mate_issue_weight\": 3.0, \"issue_stance_1_max\": -0.71, \"issue_stance_2_max\": -0.3, \"issue_stance_3_max\": -0.125, \"issue_stance_4_max\": 0.125, \"issue_stance_5_max\": 0.3, \"issue_stance_6_max\": 0.71, \"global_variance\": 0.01, \"state_variance\": 0.005, \"question_count\": 25, \"default_map_color_hex\": \"#C9C9C9\", \"no_state_map_color_hex\": \"#999999\"}}]");
 campaignTrail_temp.candidate_dropout_json = JSON.parse("[{\"model\": \"campaign_trail.candidate_dropout\", \"pk\": 1, \"fields\": {\"candidate\": 36, \"affected_candidate\": 18, \"probability\": 1.0}}]");

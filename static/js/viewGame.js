@@ -25,4 +25,3 @@ document.getElementById("submitMod").addEventListener("click", function() {
     $("#modLoadReveal")[0].style.display = 'none'
     modded = true
 })
-
