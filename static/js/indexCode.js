@@ -585,127 +585,105 @@ nct_stuff.quotes = [`"All men are created equal" - Thomas Jefferson`, `"All the 
     //nct_stuff.quotes = [`It's cold outside, no kind of atmosphere!`, `I'll be honest, I reused the Christmas code from last year.`, `Turles planted the Christmas Tree of Might!`, `"I am Champion Christmas" - Son Goku`, `Let me <em>flyyyy</em> far away from here`, `2019NK is just the start`, `Waiting for Sumner 68`, `"Cold of the winter, snow settles on my face" - Christmas Khamsin`, `Do you believe in gravity?`, `Who was the person who decided to makes quotes that overflow over the text width limit, y'know I specifically tried to avoid this when making the NCT quote section >:(`, `Denying Reagan his Christmas present since 1984`, `[insert unfunny community injoke here]`, `<button onclick='alert("Made mod.")'>Click here to make mod</button>`, `Merry Holidays.`, `Happy Christmas.`, `SONS OF LIBERTY - COMING OUT 2050`, `Florida has a date with the bottom of the ocean`, `Patch 1.02 - Removed Ohio`, `Enjoying our Charlie Cristmas`, `Ron Desanta - that's it, that's the quote.`]
 quotnum = Math.floor((Math.random() * nct_stuff.quotes.length))
 quote = nct_stuff.quotes[quotnum]
-    // Banner Stuff
-banner = $('#header')[0];
-//num = 22
-banner.src = nct_stuff.themes[nct_stuff.selectedTheme].banner
-correctbannerpar = document.getElementsByClassName("game_header")[0]
+
+
+// Caching frequently accessed elements and values
+let correctbannerpar = document.getElementsByClassName("game_header")[0]
 correctbannerpar.innerHTML += "<font id='wittyquote' size='4' color='white'><em>" + quote + "</em></font>"
 corrr = correctbannerpar.innerHTML
-banner.width = 1000
-document.body.background = nct_stuff.themes[nct_stuff.selectedTheme].background
-$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window
-$(".container")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_container
-document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
-if (nct_stuff.themes[nct_stuff.selectedTheme].text_col != null) {
-    $(".container")[0].style.color = nct_stuff.themes[nct_stuff.selectedTheme].text_col
-    $("#game_window")[0].style.color = "black"
-}
-if (nct_stuff.themes[nct_stuff.selectedTheme].music != null) {
-    document.getElementById("music_player").style.display = ""
-    document.getElementById('campaigntrailmusic').src = nct_stuff.themes[nct_stuff.selectedTheme].music
-    document.getElementById('campaigntrailmusic').autoplay = "true"
-}
-setInterval(function() {
-    document.getElementsByClassName("game_header")[0].innerHTML = corrr
-    document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+var corrr = correctbannerpar.innerHTML
+var header = $('#header')[0];
+var gameHeader = document.getElementsByClassName("game_header")[0];
+var gameWindow = $("#game_window")[0];
+var container = $(".container")[0];
+var campaignTrailMusic = document.getElementById('campaigntrailmusic');
+var selectedTheme = nct_stuff.themes[nct_stuff.selectedTheme];
 
-    sussywussy = nct_stuff.themes[nct_stuff.selectedTheme]
-    if (document.getElementById("inner_window_2") != null) {
-        document.getElementById("inner_window_2").style.backgroundColor = sussywussy.coloring_window
-    } else if (document.getElementById("inner_window_3") != null) {
-        document.getElementById("inner_window_3").style.backgroundColor = sussywussy.coloring_window
-    }
-    if (document.getElementById("inner_window_4") != null) {
-        document.getElementById("inner_window_4").style.backgroundColor = sussywussy.coloring_window
-    }
-    if (document.getElementById("inner_window_5") != null) {
-        document.getElementById("inner_window_5").style.backgroundColor = sussywussy.coloring_window
-    }
-}, 100)
+// Update banner and styling
+function updateBannerAndStyling() {
+  header.src = selectedTheme.banner;
+  header.width = 1000;
+  document.body.background = selectedTheme.background;
+  gameWindow.style.backgroundColor = selectedTheme.coloring_window;
+  container.style.backgroundColor = selectedTheme.coloring_container;
+  gameHeader.style.backgroundColor = selectedTheme.coloring_title;
+  
+  if (selectedTheme.text_col != null) {
+    container.style.color = selectedTheme.text_col;
+    gameWindow.style.color = "black";
+  }
+}
+
+// Update inner windows styling
+function updateInnerWindowsStyling() {
+  var innerWindow2 = document.getElementById("inner_window_2");
+  var innerWindow3 = document.getElementById("inner_window_3");
+  var innerWindow4 = document.getElementById("inner_window_4");
+  var innerWindow5 = document.getElementById("inner_window_5");
+
+  if (innerWindow2 != null) {
+    innerWindow2.style.backgroundColor = selectedTheme.coloring_window;
+  } else if (innerWindow3 != null) {
+    innerWindow3.style.backgroundColor = selectedTheme.coloring_window;
+  }
+  
+  if (innerWindow4 != null) {
+    innerWindow4.style.backgroundColor = selectedTheme.coloring_window;
+  }
+  
+  if (innerWindow5 != null) {
+    innerWindow5.style.backgroundColor = selectedTheme.coloring_window;
+  }
+}
+
+// Update game header content and styling
+function updateGameHeaderContentAndStyling() {
+  gameHeader.innerHTML = corrr;
+  gameHeader.style.backgroundColor = selectedTheme.coloring_title;
+  updateInnerWindowsStyling();
+}
+
+// Update banner, styling, and game header on interval
+setInterval(function() {
+  updateGameHeaderContentAndStyling();
+}, 100);
+
 if (nct_stuff.christmas != true) {
-    // Banner Stuff
-    banner = $('#header')[0];
-    //num = 22
-    banner.src = nct_stuff.themes[nct_stuff.selectedTheme].banner
-    banner.width = 1000
-    document.body.background = nct_stuff.themes[nct_stuff.selectedTheme].background
-    $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window
-    $(".container")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_container
-    document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
-    if (nct_stuff.themes[nct_stuff.selectedTheme].text_col != null) {
-        $(".container")[0].style.color = nct_stuff.themes[nct_stuff.selectedTheme].text_col
-        $("#game_window")[0].style.color = "black"
-    }
-    if (nct_stuff.themes[nct_stuff.selectedTheme].music != null) {
-        document.getElementById("music_player").style.display = ""
-        document.getElementById('campaigntrailmusic').src = nct_stuff.themes[nct_stuff.selectedTheme].music
-        document.getElementById('campaigntrailmusic').autoplay = "true"
-    }
-    setInterval(function() {
-        sussywussy = nct_stuff.themes[nct_stuff.selectedTheme]
-        document.getElementsByClassName("game_header")[0].style.backgroundColor = sussywussy.coloring_title
-        if (document.getElementById("inner_window_2") != null) {
-            document.getElementById("inner_window_2").style.backgroundColor = sussywussy.coloring_window
-        } else if (document.getElementById("inner_window_3") != null) {
-            document.getElementById("inner_window_3").style.backgroundColor = sussywussy.coloring_window
-        }
-        if (document.getElementById("inner_window_4") != null) {
-            document.getElementById("inner_window_4").style.backgroundColor = sussywussy.coloring_window
-        }
-        if (document.getElementById("inner_window_5") != null) {
-            document.getElementById("inner_window_5").style.backgroundColor = sussywussy.coloring_window
-        }
-    }, 100)
+  // Update banner and styling
+  updateBannerAndStyling();
+
+  // Play music if available
+  if (selectedTheme.music != null) {
+    document.getElementById("music_player").style.display = "";
+    campaignTrailMusic.src = selectedTheme.music;
+    campaignTrailMusic.autoplay = true;
+  }
 } else {
-    nct_stuff.themes = {
-        "christmas": {
-            name: "jesus christ",
-            background: "../static/images/background_christmas.jpg",
-            banner: "../static/images/banner_christmas_" + susnum + ".png",
-            coloring_window: "#8D3A3D",
-            coloring_container: "#871d0d",
-            coloring_title: "#194260",
-            music: "../static/audio/christmas.mp3"
-        }
+  nct_stuff.themes = {
+    "christmas": {
+      name: "jesus christ",
+      background: "../static/images/background_christmas.jpg",
+      banner: "../static/images/banner_christmas_" + susnum + ".png",
+      coloring_window: "#8D3A3D",
+      coloring_container: "#871d0d",
+      coloring_title: "#194260",
+      music: "../static/audio/christmas.mp3"
     }
-    nct_stuff.selectedTheme = "christmas"
-        // Banner Stuff
-    banner = $('#header')[0];
-    //num = 22
-    banner.src = nct_stuff.themes[nct_stuff.selectedTheme].banner
-    correctbannerpar = document.getElementsByClassName("game_header")[0]
-    corrr = correctbannerpar.innerHTML
-    banner.width = 1000
-    document.body.background = nct_stuff.themes[nct_stuff.selectedTheme].background
-    $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window
-    $(".container")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_container
-    document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
-    if (nct_stuff.themes[nct_stuff.selectedTheme].text_col != null) {
-        $(".container")[0].style.color = nct_stuff.themes[nct_stuff.selectedTheme].text_col
-        $("#game_window")[0].style.color = "black"
-    }
-    if (nct_stuff.themes[nct_stuff.selectedTheme].music != null) {
-        document.getElementById("music_player").style.display = ""
-        document.getElementById('campaigntrailmusic').src = nct_stuff.themes[nct_stuff.selectedTheme].music
-        document.getElementById('campaigntrailmusic').autoplay = "true"
-    }
-    setInterval(function() {
-        document.getElementsByClassName("game_header")[0].innerHTML = corrr
-        document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
-        sussywussy = nct_stuff.themes[nct_stuff.selectedTheme]
-        if (document.getElementById("inner_window_2") != null) {
-            document.getElementById("inner_window_2").style.backgroundColor = sussywussy.coloring_window
-        } else if (document.getElementById("inner_window_3") != null) {
-            document.getElementById("inner_window_3").style.backgroundColor = sussywussy.coloring_window
-        }
-        if (document.getElementById("inner_window_4") != null) {
-            document.getElementById("inner_window_4").style.backgroundColor = sussywussy.coloring_window
-        }
-        if (document.getElementById("inner_window_5") != null) {
-            document.getElementById("inner_window_5").style.backgroundColor = sussywussy.coloring_window
-        }
-    }, 100)
+  };
+  nct_stuff.selectedTheme = "christmas";
+
+  // Update banner and styling
+  updateBannerAndStyling();
+
+  // Update game header content and styling
+  updateGameHeaderContentAndStyling();
+
+  // Play music if available
+  if (selectedTheme.music != null) {
+    document.getElementById("music_player").style.display = "";
+    campaignTrailMusic.src = selectedTheme.music;
+    campaignTrailMusic.autoplay = true;
+  }
 }
 
 function loadJSON(path, varr, callback = () => {}) {

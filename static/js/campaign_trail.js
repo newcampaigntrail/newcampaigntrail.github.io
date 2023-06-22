@@ -1005,7 +1005,6 @@ function divideElectoralVotesProp(e, t) {
     function election_HTML(id, cand, running_mate) {
         if (id != 16) {
             if (modded) {
-                console.log("hi")
                 try {
                 yearbit = ree.election_json[findFromPK(ree.election_json, id)].fields.year
                 lastnamebit = ree.candidate_json[findFromPK(ree.candidate_json, campaignTrail_temp.candidate_id)].fields.last_name
