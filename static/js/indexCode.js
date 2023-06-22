@@ -504,6 +504,14 @@ nct_stuff.themes = {
         coloring_window: "#1C7D7D",
         coloring_container: "#093F3A",
         coloring_title: "#03141C"
+    },
+    "custom": {
+        name: "Custom",
+        background: "",
+        banner: "",
+        coloring_window: "",
+        coloring_container: "",
+        coloring_title: ""
     }
 }
 
@@ -528,6 +536,10 @@ if (theme == null) {
 } else {
     nct_stuff.selectedTheme = theme
 }
+
+var selectedTheme = nct_stuff.themes[nct_stuff.selectedTheme];
+
+// christmas :nerd:
 
 //christmasSetup();
 
@@ -568,7 +580,6 @@ var gameHeader = document.getElementsByClassName("game_header")[0];
 var gameWindow = $("#game_window")[0];
 var container = $(".container")[0];
 var campaignTrailMusic = document.getElementById('campaigntrailmusic');
-var selectedTheme = nct_stuff.themes[nct_stuff.selectedTheme];
 // Create a style element
 var dynamicStyle = document.createElement('style');
 document.head.appendChild(dynamicStyle);
@@ -768,60 +779,13 @@ campaignTrail_temp.show_premium = true;
 campaignTrail_temp.premier_ab_test_version = -1;
 campaignTrail_temp.credits = "Dan Bryan";
 
+// CUSTOM THEME MANAGER
 
-// BIGSHOT MENU
+if (nct_stuff.selectedTheme == "custom") {
+    let themePicker = $("#theme_picker")[0];
 
-const cheatMenu = document.querySelector('.cheat_menu');
-const minimizeBtn = document.querySelector('#minimizeBtn');
-
-minimizeBtn.addEventListener('click', () => {
-    cheatMenu.classList.toggle('minimized');
-});
-
-$("#bigshotSkipBtn").click((e) => {
-    e.preventDefault();
-
-    let question_count = campaignTrail_temp.global_parameter_json[0].fields.question_count;
-    let requested_question = Number(document.getElementById('skiptoquestion').value);
-
-    // error handling in case the user is stupid
-    if (requested_question > question_count - 1) {
-        let a = confirm("You are trying to go over the question limit. This will likely break unless the mod maker specifically made questions for this (possibly for CYOA). Are you sure?");
-        if (!a) return
-    }
-    if (requested_question < 0) {
-        let a = confirm("You are trying to go below question 1. This will almost certainly break. Are you sure?");
-        if (!a) return
-    }
-
-    campaignTrail_temp.question_number = requested_question;
-
-    let sfx = $('#sfxMeme')[0];
-    sfx.volume = 0.1;
-    sfx.play();
-});
-
-duplicate_globals = {}
-
-$("#disableRNG").change((a) => {
-    a.preventDefault();
-
-    let checkbox = a.target;
-    let checked = checkbox.checked;
-
-    if (!checked) {
-        duplicate_globals = JSON.parse(JSON.stringify(campaignTrail_temp.global_parameter_json[0]));
-        campaignTrail_temp.global_parameter_json[0].fields.global_variance = 0;
-        campaignTrail_temp.global_parameter_json[0].fields.state_variance = 0;
-        campaignTrail_temp.global_parameter_json[0].fields.max_swing = 0;
-    } else {
-        campaignTrail_temp.global_parameter_json[0] = JSON.parse(JSON.stringify(duplicate_globals));
-    }
-})
-
-$("#skiptoquestion").keydown((e) => {
-    if (e.key === 'Enter') {
-        e.preventDefault();
-        $("#bigshotSkipBtn").click();
-    }
-});
+    let theme_man_button = document.createElement("p");
+    theme_man_button.innerHTML = "<button><b>Prometheus' Menu</b></button>"
+    
+    console.log(themePicker.appendChild(theme_man_button))
+}
