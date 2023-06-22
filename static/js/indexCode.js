@@ -579,32 +579,7 @@ correctbannerpar = document.getElementsByClassName("game_header")[0]
 correctbannerpar.innerHTML += "<font id='wittyquote' size='4' color='white'><em>" + quote + "</em></font>"
 corrr = correctbannerpar.innerHTML
 banner.width = 1000
-if (true)
-    document.body.background = nct_stuff.themes[nct_stuff.selectedTheme].background
-else if (nct_stuff.selectedTheme == "nct") {
-    document.body.background = "https://upload.wikimedia.org/wikipedia/commons/6/6b/1984-Big-Brother.jpg"
-    document.body.style.fontFamily = "Comic Sans MS"
-    document.getElementsByClassName("game_header")[0].children[0].innerHTML = "haha I said gorg wlave laugh!!11!"
-    vvv = document.getElementById("inner_window_1")
-    vvv.children[0].innerText = uwuifier(vvv.children[0].innerText)
-    vvv.children[1].innerText = uwuifier(vvv.children[1].innerText)
-    document.getElementById("game_start").children[0].innerText = uwuifier(document.getElementById("game_start").innerText)
-    setInterval(function() {
-        es = document.getElementById("election_summary")
-        if (es != null && es.children[0].innerHTML != uwuifier(es.children[0].innerHTML)) {
-            for (i in es.children) {
-                es.children[i].innerHTML = uwuifier(es.children[i].innerHTML)
-            }
-        }
-        ps = document.getElementById("candidate_summary")
-        if (ps != null && ps.children[0].children[0].innerHTML != uwuifier(ps.children[0].children[0].innerHTML)) {
-            for (v = 0; v < ps.children[0].children.length; v++) {
-                ps.children[0].children[v].innerHTML = uwuifier(ps.children[0].children[v].innerHTML)
-            }
-            ps.children[1].innerText = uwuifier(ps.children[1].innerText)
-        }
-    }, 100)
-}
+document.body.background = nct_stuff.themes[nct_stuff.selectedTheme].background
 $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window
 $(".container")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_container
 document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
@@ -640,32 +615,7 @@ if (nct_stuff.christmas != true) {
     //num = 22
     banner.src = nct_stuff.themes[nct_stuff.selectedTheme].banner
     banner.width = 1000
-    if (true)
-        document.body.background = nct_stuff.themes[nct_stuff.selectedTheme].background
-    else if (nct_stuff.selectedTheme == "nct") {
-        document.body.background = "https://upload.wikimedia.org/wikipedia/commons/6/6b/1984-Big-Brother.jpg"
-        document.body.style.fontFamily = "Comic Sans MS"
-        document.getElementsByClassName("game_header")[0].children[0].innerHTML = "haha I said gorg wlave laugh!!11!"
-        vvv = document.getElementById("inner_window_1")
-        vvv.children[0].innerText = uwuifier(vvv.children[0].innerText)
-        vvv.children[1].innerText = uwuifier(vvv.children[1].innerText)
-        document.getElementById("game_start").children[0].innerText = uwuifier(document.getElementById("game_start").innerText)
-        setInterval(function() {
-            es = document.getElementById("election_summary")
-            if (es != null && es.children[0].innerHTML != uwuifier(es.children[0].innerHTML)) {
-                for (i in es.children) {
-                    es.children[i].innerHTML = uwuifier(es.children[i].innerHTML)
-                }
-            }
-            ps = document.getElementById("candidate_summary")
-            if (ps != null && ps.children[0].children[0].innerHTML != uwuifier(ps.children[0].children[0].innerHTML)) {
-                for (v = 0; v < ps.children[0].children.length; v++) {
-                    ps.children[0].children[v].innerHTML = uwuifier(ps.children[0].children[v].innerHTML)
-                }
-                ps.children[1].innerText = uwuifier(ps.children[1].innerText)
-            }
-        }, 100)
-    }
+    document.body.background = nct_stuff.themes[nct_stuff.selectedTheme].background
     $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window
     $(".container")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_container
     document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
@@ -696,7 +646,7 @@ if (nct_stuff.christmas != true) {
 } else {
     nct_stuff.themes = {
         "christmas": {
-            name: "jesus christ is my ",
+            name: "jesus christ",
             background: "../static/images/background_christmas.jpg",
             banner: "../static/images/banner_christmas_" + susnum + ".png",
             coloring_window: "#8D3A3D",
