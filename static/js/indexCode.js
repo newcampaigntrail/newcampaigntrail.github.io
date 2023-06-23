@@ -647,6 +647,7 @@ function updateDynamicStyle() {
     #game_window {
       background-color: ${selectedTheme.coloring_window};
       color: black;
+      background-image: ${selectedTheme.window_url ? "url(" + selectedTheme.window_url + ")" : $("#game_window")[0].style.backgroundImage};
     }
     .container {
       background-color: ${selectedTheme.coloring_container};
@@ -675,6 +676,14 @@ function updateDynamicStyle() {
 
 // Update banner, styling, and game header on interval
 setInterval(function() {
+    if (JSON.stringify(nct_stuff.custom_override) != JSON.stringify(selectedTheme) && !nct_stuff.dynamicOverride && nct_stuff.custom_override) {
+        nct_stuff.themes[nct_stuff.selectedTheme] = strCopy(nct_stuff.custom_override);
+        selectedTheme = nct_stuff.themes[nct_stuff.selectedTheme];
+        $("#game_window")[0].style.backgroundImage = "";
+        updateBannerAndStyling()
+    } else if (!nct_stuff.custom_override && nct_stuff.selectedTheme == "custom" && modded && selectedTheme.window_url) {
+        selectedTheme.window_url = null;
+    }
     let gameHeader = $(".game_header")[0];
     if (gameHeader.innerHTML != corrr) {
         gameHeader.innerHTML = corrr;
@@ -781,11 +790,137 @@ campaignTrail_temp.credits = "Dan Bryan";
 
 // CUSTOM THEME MANAGER
 
+open_first_gate = (e) => { // gate of opening
+    e.preventDefault();
+    let menu_area = $("#bonus_menu_area")[0];
+    menu_area.style.display = "block";
+
+    /*
+        name: "Custom",
+        background: "",
+        banner: "",
+        coloring_window: "",
+        coloring_container: "",
+        coloring_title: ""
+    */
+
+    let th = window.localStorage.getItem("custom_theme");
+
+    menu_area.innerHTML = `
+    <div class='prometh'>
+    <h3>Custom Theme Menu</h3>
+    <p>Background Image URL: <input id='background_url' placeholder='Link directly to the image.' /></p>
+    <p>Banner Image URL (suggested dimensions: 1000x303): <input id='banner_url' placeholder='Link directly to the image.' /></p>
+    <p>Window Image URL (<b>OPTIONAL</b>, WILL LOOK BAD IF YOU DON'T KNOW WHAT YOU'RE DOING): <input id='window_url' placeholder='Link directly to the image.' /></p>
+    <p>Window Colouring: <input id='window_colour' type='color' /></p>
+    <p>Container Colouring: <input id='cont_colour' type='color' /></p>
+    <p>Title Colouring: <input id='title_colour' type='color' /></p>
+    <p>Text Colouring: <input id='text_colour' type='color' /></p>
+    <p>Override Mod Themes? (experimental): <input id='mod_override' type='checkbox' /></p>
+
+    <button id='prometh_save'>Save</button>
+    </div>
+    `
+
+    if (th) {
+        let theme = JSON.parse(th);
+        $("#background_url").val(theme.background);
+        $("#banner_url").val(theme.banner);
+        $("#window_url").val(theme.window_url)
+        $("#window_colour").val(theme.coloring_window);
+        $("#cont_colour").val(theme.coloring_container);
+        $("#title_colour").val(theme.coloring_title);
+        $("#text_colour").val(theme.text_col);
+        $("#mod_override")[0].checked = theme.mod_override;
+    }
+
+    $("#prometheus_button").off("click").click(open_fifth_gate);
+    
+    $("#prometh_save").click(() => {
+        let theme = {
+            name: "Custom",
+            background: $("#background_url").val(),
+            banner: $("#banner_url").val(),
+            coloring_window: $("#window_colour").val(),
+            coloring_container: $("#cont_colour").val(),
+            coloring_title: $("#title_colour").val(),
+            text_col: $("#text_colour").val(),
+            mod_override: $("#mod_override")[0].checked,
+            window_url: $("#window_url").val()
+        }
+        nct_stuff.themes[nct_stuff.selectedTheme] = theme;
+        selectedTheme = theme;
+        updateBannerAndStyling();
+        if (theme.mod_override) {
+            updateDynamicStyle();
+            nct_stuff.custom_override = JSON.parse(JSON.stringify(theme));
+        } else {
+            nct_stuff.custom_override = null;
+        }
+
+        window.localStorage.setItem("custom_theme", JSON.stringify(theme));
+    })
+}
+
+open_fifth_gate = (e) => { // gate of closing
+    e.preventDefault();
+    let menu_area = $("#bonus_menu_area")[0];
+    menu_area.style.display = "none";
+
+    // close menu
+    let m_children = Array.from(menu_area.children);
+    m_children.forEach(f=>f.remove());
+
+    $("#prometheus_button").off("click").click(open_first_gate);
+}
+
+
 if (nct_stuff.selectedTheme == "custom") {
     let themePicker = $("#theme_picker")[0];
 
     let theme_man_button = document.createElement("p");
-    theme_man_button.innerHTML = "<button><b>Prometheus' Menu</b></button>"
+    theme_man_button.innerHTML = "<button id='prometheus_button'><b>Prometheus' Menu</b></button>";
     
-    console.log(themePicker.appendChild(theme_man_button))
+    themePicker.appendChild(theme_man_button);
+
+    var prometheusStyle = document.createElement('style');
+    prometheusStyle.innerHTML = `
+    #bonus_menu_area {
+        position: relative;
+        width: 500px;
+        height: 200px;
+        display: none;
+        text-align: right;
+        left: 45%;
+    }
+    
+    .prometh {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #595959;
+        border: 3px solid black;
+        color: white;
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        padding: 10px;
+    }
+    `
+    document.head.appendChild(prometheusStyle);
+
+    $("#prometheus_button").click(open_first_gate);
+
+    let th = window.localStorage.getItem("custom_theme");
+    if (th) {
+        let theme = JSON.parse(th);
+        nct_stuff.themes[nct_stuff.selectedTheme] = theme;
+        selectedTheme = theme;
+        updateBannerAndStyling();
+        if (theme.mod_override) {
+            updateDynamicStyle();
+            nct_stuff.custom_override = JSON.parse(JSON.stringify(theme));
+        }
+    }
 }
