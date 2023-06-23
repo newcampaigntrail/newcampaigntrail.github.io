@@ -668,6 +668,18 @@ function updateDynamicStyle() {
       #inner_window_5 {
         background-color: ${selectedTheme.coloring_window};
       }  
+    #main_content_area {
+        color: ${selectedTheme.text_col || "inherit"};
+    }
+    #main_content_area_reading {
+        color: ${selectedTheme.text_col || "inherit"};
+    }
+    #main_content_area table {
+        color: black;
+    }
+    #menu_container {
+        color: black;
+    }
   `;
   if (dynamicStyle.innerHTML != dynaStyle) {
     dynamicStyle.innerHTML = dynaStyle;
