@@ -87,6 +87,14 @@ e.multiple_endings = true;
   if (!e.initDC) {
     e.initDC = true
 
+    loadScript('https://code.highcharts.com/highcharts.js', function() {
+          loadScript('https://code.highcharts.com/modules/item-series.js', function() {
+            loadScript('https://code.highcharts.com/modules/accessibility.js', function() {
+            });
+          });
+        });
+
+
     //give states their seats
     for (var i = 0; i < 15; i++) {
         e.states_json[i].fields.electoral_votes = seats[i];
@@ -345,66 +353,196 @@ cyoAdventure = function (a) {
 }
 
 //css stuff here
-let observerRunning = false;
-let changeChartRunning = false;
-let mcaHeightRunning = false;
 
-function handleMutations() {
-    if (observerRunning) return;
-    observerRunning = true;
-    singleObserver.disconnect();
+//chart stuff here, setup in cyoa function required
+function Chartbuilder(type) {
 
-    // addScrollbar
-    const overallResult = document.getElementById('overall_result');
-    if (overallResult) {
-        overallResult.style.overflow = 'auto';
-        const buttons = document.querySelectorAll('#view_electoral_map, #answer_select_button, #ok_button, #final_election_map_button');
-        const handleClick = () => {
-            overallResult.style.overflow = 'auto';
-        };
-        buttons.forEach(button => button.addEventListener('click', handleClick));
-    }
+    const chartButton = document.getElementById("chart_button");
+    chartButton.disabled = true;
 
-    // changechart
-    if (!changeChartRunning) {
-        changeChartRunning = true;
-        const elementIDs = ["overall_vote_statistics", "state_result_data_summary", "overall_details_container"];
-        for(let id of elementIDs) {
-            let element = document.getElementById(id);
-            if (element) {
-                let overallthing = element.innerHTML;
-                overallthing = overallthing.replace("Electoral Votes","Seats");
-                overallthing = overallthing.replace("Candidate","Party");
-                element.innerHTML = overallthing;
+   if (type==="seats"){
+
+        var myChart = Highcharts.chart('myChart', {
+        chart: {
+          type: 'item',
+          backgroundColor:'rgba(255, 255, 255, 0.8)',
+        },
+        title: {
+          text: 'German Federal Election 2021',
+          margin: 60
+        },
+
+        legend: {
+          labelFormat: '{name} <span style="opacity: 0.4">{y}</span>'
+        },
+        series: [
+          {
+            name: 'Representatives',
+            keys: ['name', 'y', 'color', 'label'],
+            data: [
+              ['Socialist Alliance for Germany', (e.final_overall_results.find((r) => r.candidate === 77)).electoral_votes, e.candidate_json[0].fields.color_hex, 'SAVD'],
+              ['All-German Peoples\' Party', (e.final_overall_results.find((r) => r.candidate === 78)).electoral_votes, e.candidate_json[1].fields.color_hex, 'GVP'],
+              ['Free Democratic Party', (e.final_overall_results.find((r) => r.candidate === 303)).electoral_votes, e.candidate_json[3].fields.color_hex, 'FDP'],
+              ['Zentrum', (e.final_overall_results.find((r) => r.candidate === 79)).electoral_votes, e.candidate_json[2].fields.color_hex, 'ZENTRUM'],
+              ['League of Displaced and Deprived', (e.final_overall_results.find((r) => r.candidate === 304)).electoral_votes, e.candidate_json[4].fields.color_hex, 'BHE']
+            ],
+            dataLabels: {
+              enabled: true,
+              format: '{point.label}',
+              style: {
+                textOutline: '3px contrast'
+              }
+            },
+            center: ['50%', '90%'], // Adjusted center position
+            size: '210%', // Adjusted size
+            startAngle: -95,
+            endAngle: 95
+          }
+        ],
+        responsive: {
+          rules: [
+            {
+              condition: {
+                maxWidth: 600
+              },
+              chartOptions: {
+                series: [
+                  {
+                    dataLabels: {
+                      distance: -30
+                    }
+                  }
+                ]
+              }
             }
+          ]
         }
-        changeChartRunning = false;
-    }
+      });
+      document.querySelector('.highcharts-legend.highcharts-no-tooltip').remove();
+      }
 
-    // mcaHeight
-    if (!mcaHeightRunning) {
-        mcaHeightRunning = true;
-        let results_container = document.getElementById("results_container");
-        let chart = document.getElementById("myChart");
-        if (results_container) {
-            if (!chart){
-                results_container.style.height = "98%";
-                results_container.style.overflow = "scroll";
-            } else {
-                let mca = document.getElementById("main_content_area");
-                mca.style.height = "80%";
+      var div = document.getElementById('chartcontainer');
+      div.style.border = 'medium double';
+      div.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+      div.style.borderColor = '#c9c9c9';
+
+      var element = document.querySelector('.highcharts-background');
+      if (element) { // Check if element exists before trying to remove it
+          element.remove();
+      }
+
+      const container = document.getElementById('chartcontainer');
+      container.style.background ='rgba(255, 255, 255, 0.9)';
+};
+
+var buttonAdded = false
+function addMyButton(){
+
+    if(document.getElementById("map_footer")&&e.initDC){
+
+        if (!buttonAdded) {
+            buttonAdded=true;
+            const buttonrow = document.getElementById("map_footer");
+            const chartButton = document.createElement("button");
+            chartButton.textContent = "Election Charts";
+            chartButton.id = "chart_button";
+            chartButton.class = "final_menu_button"
+            chartButton.addEventListener("click", function() {
+              charting(0);
+            });
+            buttonrow.insertBefore(chartButton, buttonrow.children[buttonrow.children.length - 1]);
+        }
+        else {
+            const chartButton = document.getElementById("chart_button");
+            if(!chartButton){
+                // reconnect the observer
+                buttonAdded=false;
             }
-        }
-        mcaHeightRunning = false;
-    }
 
-    singleObserver.observe(document.documentElement, { childList: true, subtree: true });
-    observerRunning = false;
+
+          }
+    }
 }
 
-let singleObserver = new MutationObserver(handleMutations);
-singleObserver.observe(document.documentElement, { childList: true, subtree: true });
+function executeWithRetry(fn, ...args) {
+  const maxRetries = 20;
+  const delayMs = 100;
+
+  for (let retry = 0; retry < maxRetries; retry++) {
+    try {
+      fn(...args);
+      return;
+    } catch (err) {
+      console.log(err);
+      if (retry < maxRetries - 1) {
+        setTimeout(() => {}, delayMs);
+      }
+    }
+  }
+}
 
 
+function charting(chartIndex=0){
+
+    $("#game_window").html('<div class="game_header">\t<h2>NEW CAMPAIGN TRAIL</h2>\t</div>\t<div id="main_content_area">\t<div id="results_container"><br>  <div id="title_container"><button id="backButton">Back</button><h3 class="campaign-title">Election Charts:</h3><button id="nextButton">Next</button></div><br><div id="chartcontainer"><figure class="highcharts-figure"><div id="myChart"></div></figure></div></div></div><div id="map_footer">\t\t<button class="final_menu_button" id="overall_results_button">Final Election Results</button>\t\t<button class="final_menu_button" id="final_election_map_button">Election Map</button>\t\t<button class="final_menu_button" id="state_results_button">Results by State</button>\t\t<button class="final_menu_button" id="overall_details_button">Overall Results Details</button>\t\t<button class="final_menu_button" id="recommended_reading_button">Further Reading</button>\t\t<button class="final_menu_button" id="play_again_button">Play Again!</button>\t</div>');
+
+    var container = document.getElementById("title_container");
+    var backButton = document.getElementById("backButton");
+    var nextButton = document.getElementById("nextButton");
+
+    container.style.display = "flex";
+    container.style.alignItems = "center";
+    container.style.justifyContent = "center";
+
+    backButton.style.marginRight = "10px";
+    nextButton.style.marginLeft = "10px";
+
+    if (chartIndex === 0){
+        backButton.style.display = 'none';
+    }
+    if (chartIndex === charts.length-1){
+        nextButton.style.display = 'none';
+    }
+
+     $("#map_footer").css({
+      position: "relative",
+      zIndex: "9999"
+    });
 
 
+        $("#overall_results_button").click(function() {
+        p()
+    }), $("#final_election_map_button").click(function() {
+        h()
+    }), $("#state_results_button").click(function() {
+        g()
+    }), $("#overall_details_button").click(function() {
+        b()
+    }), $("#recommended_reading_button").click(function() {
+        w()
+    }), $("#play_again_button").click(function() {
+        y()
+    }),$("#backButton").click(function() {
+        charting(chartIndex-1)
+    }),addMyButton
+    $("#nextButton").click(function() {
+        charting(chartIndex+1)
+    })
+
+    setTimeout(function() {
+        executeWithRetry(Chartbuilder, charts[chartIndex]);
+  }, 100);
+};
+
+function loadScript(url, callback) {
+  var script = document.createElement('script');
+  script.src = url;
+  script.onload = callback;
+
+  document.head.appendChild(script);
+}
+
+var charts = ["seats"]
+
+const buttonobserver = new MutationObserver(addMyButton);
+buttonobserver.observe(document.documentElement, { childList: true, subtree: true });
