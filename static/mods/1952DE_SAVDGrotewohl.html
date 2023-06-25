@@ -403,7 +403,8 @@ var resultobserver = new MutationObserver(changechart);
 resultobserver.observe(document.documentElement, { childList: true, subtree: true });
 
 function mcaHeight() {
-  mcaObserver.disconnect();
+    resultobserver.disconnect();
+    mcaObserver.disconnect();
   var mca = document.getElementById("main_content_area");
   var map = document.getElementById("map_container")
   if (mca) {
@@ -412,7 +413,8 @@ function mcaHeight() {
      mca.style.height = "76%";
     }
   }
-  mcaObserver.observe(document.documentElement, { childList: true, subtree: true });
+    mcaObserver.observe(document.documentElement, { childList: true, subtree: true });
+    resultobserver.observe(document.documentElement, { childList: true, subtree: true });
 }
 
 const mcaObserver = new MutationObserver(mcaHeight);
