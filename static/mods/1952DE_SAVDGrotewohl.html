@@ -367,6 +367,65 @@ function addScrollbar() {
   };
   buttons.forEach(button => button.addEventListener('click', handleClick));
 }
+let changeChartRunning = false;
+let mcaHeightRunning = false;
+
+function changechart() {
+    if (changeChartRunning) return;
+    changeChartRunning = true;
+
+    resultobserver.disconnect();
+
+    if (document.getElementById("overall_vote_statistics")!=null) {
+        let overallthing=document.getElementById("overall_vote_statistics").innerHTML;
+        overallthing=overallthing.replace("Electoral Votes","Seats");
+        overallthing=overallthing.replace("Candidate","Party");
+        document.getElementById("overall_vote_statistics").innerHTML=overallthing;
+    }
+    else if (document.getElementById("state_result_data_summary")!=null) {
+        let overallthing=document.getElementById("state_result_data_summary").innerHTML;
+        overallthing=overallthing.replace("Electoral Votes","Seats");
+        overallthing=overallthing.replace("Candidate","Party");
+        document.getElementById("state_result_data_summary").innerHTML=overallthing;
+    }
+    else if (document.getElementById("overall_details_container")!=null) {
+        let overallthing=document.getElementById("overall_details_container").innerHTML;
+        overallthing=overallthing.replace("Electoral Votes","Seats");
+        overallthing=overallthing.replace("Candidate","Party");
+        document.getElementById("overall_details_container").innerHTML=overallthing;
+    }
+
+    resultobserver.observe(document.documentElement, { childList: true, subtree: true });
+
+    changeChartRunning = false;
+}
+
+let resultobserver = new MutationObserver(changechart);
+resultobserver.observe(document.documentElement, { childList: true, subtree: true });
+
+function mcaHeight() {
+    if (mcaHeightRunning) return;
+    mcaHeightRunning = true;
+
+    let results_container = document.getElementById("results_container");
+    let chart = document.getElementById("myChart");
+
+    if (results_container) {
+        if (!chart){
+            results_container.style.height = "98%";
+            results_container.style.overflow = "scroll";
+        }
+        else {
+            let mca = document.getElementById("main_content_area");
+            mca.style.height = "80%";
+        }
+    }
+
+    mcaHeightRunning = false;
+}
+
+let mcaObserver = new MutationObserver(mcaHeight);
+mcaObserver.observe(document.documentElement, { childList: true, subtree: true });
 
 //chart stuff here, setup in cyoa function required
 function Chartbuilder(type) {
