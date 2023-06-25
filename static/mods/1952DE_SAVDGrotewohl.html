@@ -367,6 +367,9 @@ function addScrollbar() {
   };
   buttons.forEach(button => button.addEventListener('click', handleClick));
 }
+const observer = new MutationObserver(addScrollbar);
+observer.observe(document.documentElement, { childList: true, subtree: true });
+
 let changeChartRunning = false;
 let mcaHeightRunning = false;
 
