@@ -353,6 +353,99 @@ cyoAdventure = function (a) {
 }
 
 //css stuff here
+let observerRunning = false;
+let changeChartRunning = false;
+let mcaHeightRunning = false;
+let processedNodes = new Set();
+
+// Throttle function
+const throttle = (func, delay) => {
+    let lastFunc;
+    let lastRan;
+    return function() {
+        const context = this;
+        const args = arguments;
+        if (!lastRan) {
+            func.apply(context, args);
+            lastRan = Date.now();
+        } else {
+            clearTimeout(lastFunc);
+            lastFunc = setTimeout(function() {
+                if ((Date.now() - lastRan) >= delay) {
+                    func.apply(context, args);
+                    lastRan = Date.now();
+                }
+            }, delay - (Date.now() - lastRan));
+        }
+    };
+};
+
+async function handleMutations(mutationsList, observer) {
+    if (observerRunning) return;
+    observerRunning = true;
+
+    // stop observing
+    observer.disconnect();
+
+    // addScrollbar
+    const overallResult = document.getElementById('overall_result');
+    if (overallResult && !processedNodes.has(overallResult)) {
+        overallResult.style.overflow = 'auto';
+        const buttons = document.querySelectorAll('#view_electoral_map, #answer_select_button, #ok_button, #final_election_map_button');
+        const handleClick = () => {
+            overallResult.style.overflow = 'auto';
+        };
+        buttons.forEach(button => button.addEventListener('click', handleClick));
+        processedNodes.add(overallResult);
+    }
+
+    // changechart
+    if (!changeChartRunning) {
+        changeChartRunning = true;
+        const elementIDs = ["overall_vote_statistics", "state_result_data_summary", "overall_details_container"];
+        for(let id of elementIDs) {
+            let element = document.getElementById(id);
+            if (element && !processedNodes.has(element)) {
+                let overallthing = element.innerHTML;
+                overallthing = overallthing.replace("Electoral Votes","Seats");
+                overallthing = overallthing.replace("Candidate","Party");
+                element.innerHTML = overallthing;
+                processedNodes.add(element);
+            }
+        }
+        changeChartRunning = false;
+    }
+
+    // mcaHeight
+    if (!mcaHeightRunning) {
+        mcaHeightRunning = true;
+        let results_container = document.getElementById("results_container");
+        let chart = document.getElementById("myChart");
+        if (results_container && !processedNodes.has(results_container)) {
+            if (!chart){
+                results_container.style.height = "98%";
+                results_container.style.overflow = "scroll";
+            } else {
+                let mca = document.getElementById("main_content_area");
+                if (mca) {
+                    mca.style.height = "80%";
+                }
+            }
+            processedNodes.add(results_container);
+        }
+        mcaHeightRunning = false;
+    }
+
+    // Resume observing
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+    observerRunning = false;
+}
+
+// Throttled mutation handler
+let throttledHandleMutations = throttle(handleMutations, 200);
+
+let singleObserver = new MutationObserver(throttledHandleMutations);
+singleObserver.observe(document.documentElement, { childList: true, subtree: true });
 
 //chart stuff here, setup in cyoa function required
 function Chartbuilder(type) {
