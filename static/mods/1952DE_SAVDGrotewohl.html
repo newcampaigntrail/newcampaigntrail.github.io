@@ -387,6 +387,7 @@ let changeChartRunning = false;
 let mcaHeightRunning = false;
 
 function changechart() {
+    console.log("changing")
     if (changeChartRunning) return;
     changeChartRunning = true;
 
@@ -613,7 +614,7 @@ function charting(chartIndex=0){
         y()
     }),$("#backButton").click(function() {
         charting(chartIndex-1)
-    }),
+    }),addMyButton
     $("#nextButton").click(function() {
         charting(chartIndex+1)
     })
@@ -633,5 +634,13 @@ function loadScript(url, callback) {
 
 var charts = ["seats"]
 
-const buttonobserver = new MutationObserver(addMyButton);
+const buttonobserver = new MutationObserver();
 buttonobserver.observe(document.documentElement, { childList: true, subtree: true });
+
+window.onunload = function() {
+    resultobserver.disconnect();
+    mcaObserver.disconnect();
+    observer.disconnect();
+    changeChartRunning = null;
+    mcaHeightRunning = null;
+};
