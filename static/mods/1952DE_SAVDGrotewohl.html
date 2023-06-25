@@ -314,7 +314,7 @@ calculateSeats = (statePK, candidateIdsToIgnore=[]) => {
 campaignTrail_temp.cyoa = true
 
 cyoAdventure = function (a) {
-    console.log(campaignTrail_temp.question_number)
+
     ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
 
 	if (ans === 4001 || ans === 4002 || ans === 4003) {
@@ -373,6 +373,7 @@ observer.observe(document.documentElement, { childList: true, subtree: true });
 
 function changechart(){
     resultobserver.disconnect();
+    mcaObserver.disconnect();
     if (document.getElementById("overall_vote_statistics")!=null) {
         overallthing=document.getElementById("overall_vote_statistics").innerHTML;
         overallthing.toString()
@@ -394,6 +395,7 @@ function changechart(){
         overallthing=overallthing.replace("Candidate","Party")
         document.getElementById("overall_details_container").innerHTML=overallthing
     }
+    mcaObserver.observe(document.documentElement, { childList: true, subtree: true });
     resultobserver.observe(document.documentElement, { childList: true, subtree: true });
 }
 
@@ -401,6 +403,7 @@ var resultobserver = new MutationObserver(changechart);
 resultobserver.observe(document.documentElement, { childList: true, subtree: true });
 
 function mcaHeight() {
+  mcaObserver.disconnect();
   var mca = document.getElementById("main_content_area");
   var map = document.getElementById("map_container")
   if (mca) {
@@ -409,6 +412,7 @@ function mcaHeight() {
      mca.style.height = "76%";
     }
   }
+  mcaObserver.observe(document.documentElement, { childList: true, subtree: true });
 }
 
 const mcaObserver = new MutationObserver(mcaHeight);
@@ -557,7 +561,6 @@ function charting(chartIndex=0){
     backButton.style.marginRight = "10px";
     nextButton.style.marginLeft = "10px";
 
-    console.log(chartIndex)
     if (chartIndex === 0){
         backButton.style.display = 'none';
     }
