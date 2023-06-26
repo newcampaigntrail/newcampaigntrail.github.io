@@ -444,7 +444,7 @@ async function handleMutations(mutationsList, observer) {
 // Throttled mutation handler
 let throttledHandleMutations = throttle(handleMutations, 200);
 
-let singleObserver = new MutationObserver(throttledHandleMutations);
+let singleObserver = new MutationObserver(handleMutations);
 singleObserver.observe(document.documentElement, { childList: true, subtree: true });
 
 //chart stuff here, setup in cyoa function required
