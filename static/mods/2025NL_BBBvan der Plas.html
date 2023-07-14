@@ -19,6 +19,7 @@
     { party: 512, leaderName: 'someone', image: 'https://cdn.discordapp.com/attachments/1085931527537434785/1091715913855811654/image.png' },
     { party: 117, leaderName: 'Van der Staaij', image: 'https://cdn.discordapp.com/attachments/1085931527537434785/1095361187417440438/image.png' }
   ];
+  e = campaignTrail_temp;
 
   campaignTrail_temp.questions_json = JSON.parse("[{\"model\": \"campaign_trail.question\", \"pk\": 4000, \"fields\": {\"priority\": 1, \"description\": \"Let's wind back two years: the provincial elections have been concluded just now, with the BBB having achieved a landslide victory, winning the largest plurality in every province. What will be the BBB's strategy in the provincial governments?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 4001, \"fields\": {\"priority\": 1, \"description\": \"What will be the BBB's strategy this year?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 4002, \"fields\": {\"priority\": 1, \"description\": \"Is it your aim to become the Netherlands' first female prime minister?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 4003, \"fields\": {\"priority\": 1, \"description\": \"Should the Netherlands continue to support Ukraine in its struggle against the Russian invader with weapons?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 4004, \"fields\": {\"priority\": 1, \"description\": \"Did the Dutch government do well to make official apologies for the practice of slavery?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 4005, \"fields\": {\"priority\": 1, \"description\": \"Is it true that your party is mostly funded by big agricultural firms?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 4006, \"fields\": {\"priority\": 1, \"description\": \"What do you have to say to sceptics who believe that the BBB will soon collapse as yet one more of the Fortuyn-style populist protest parties that have arisen periodically in the Netherlands in the post-World War II era?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 4007, \"fields\": {\"priority\": 1, \"description\": \"Is there anyone the BBB will absolutely not form a cabinet with?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 4008, \"fields\": {\"priority\": 1, \"description\": \"Should the Groningen Gas Field, the European Union's largest gas reserve, restart production?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 4009, \"fields\": {\"priority\": 1, \"description\": \"Will you be bringing up the current state of Schiphol Airport?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 4010, \"fields\": {\"priority\": 1, \"description\": \"How will you address the EU during this campaign?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 4011, \"fields\": {\"priority\": 1, \"description\": \"Over the past few years, the prices of housing had reached a high point, causing many young people to be unable to find their own home. These prices have cooled down modestly, but with the increase of interest rates many can still not buy their own home. How will you deal with this?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 4012, \"fields\": {\"priority\": 1, \"description\": \"During the schoolyear 2023-2024 the 'basisbeurs', the government-financed study allowance has been reintroduced in replacement of the loan system. How will you address this?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 4013, \"fields\": {\"priority\": 1, \"description\": \"Should the Netherlands increase its investment in the military?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 4014, \"fields\": {\"priority\": 1, \"description\": \"Will you attack the cabinet on the relatively large deficit in government finances incurred during their term?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 4015, \"fields\": {\"priority\": 1, \"description\": \"In 2023, the Rutte cabinet announced export restrictions would be imposed on chip equipment manufacturer ASML against China, following intensive lobbying by the United States. Will you be talking about this?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 4016, \"fields\": {\"priority\": 1, \"description\": \"Does the BBB support the Completed Life Act, legalizing assisted suicide for elderly people who have decided that their life has been completed?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 4017, \"fields\": {\"priority\": 1, \"description\": \"In recent years, the drugs mafia has become increasingly brazen, with the hits on witness lawyer Derk Wiersum and investigative journalist Peter R. De Vries as a low point. What will the BBB do about this?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 4018, \"fields\": {\"priority\": 1, \"description\": \"How will you deal with the hardening of public discourse during the past few years?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 4019, \"fields\": {\"priority\": 1, \"description\": \"What will you say about the National Climate Plan to act against climate change?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 4020, \"fields\": {\"priority\": 1, \"description\": \"Should the Netherlands continue its plans to build new nuclear power plants?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 4021, \"fields\": {\"priority\": 1, \"description\": \"Should the livestock count in the Netherlands be halved?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 4022, \"fields\": {\"priority\": 1, \"description\": \"Will you attend the RTL debate?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 4023, \"fields\": {\"priority\": 1, \"description\": \"As the campaign comes to a close, what theme will you be hammering on?\", \"likelihood\": 1.0}}, {\"model\": \"campaign_trail.question\", \"pk\": 4024, \"fields\": {\"priority\": 1, \"description\": \"How will you spend the day before election day?\", \"likelihood\": 1.0}}]");
   campaignTrail_temp.answers_json = JSON.parse("[{\"model\": \"campaign_trail.answer\", \"pk\": 5000, \"fields\": {\"question\": 4000, \"description\": \"In the Netherlands poldering is part of the profession. We will negotiate with the other parties to enter into the provincial government at any cost to see our pragmatic but firm farmer's standpoints back in policy instead of sitting at the sideline yelling at those who are constructive.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5001, \"fields\": {\"question\": 4000, \"description\": \"The voter has granted us tremendous responsibility, and it would be a betrayal if we did not accept it by refusing any compromise. However, the other parties must know that there are some red lines if they are to govern with us: the nitrogen deadline must be deferred to 2035 and no expropriation may take place.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5002, \"fields\": {\"question\": 4000, \"description\": \"We have won these elections, and the other parties must hear us well: we will not tolerate any impediment of the farmer in the name of nitrogen or anything else!\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5003, \"fields\": {\"question\": 4001, \"description\": \"Despite our victory in 2023, the cabinet still passed the Nitrogen Act with the help of PvdA and GroenLinks in the senate. We will be campaigning on the signal to The Hague that was blatantly ignored by Rutte and his elitist companions!\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5004, \"fields\": {\"question\": 4001, \"description\": \"2023 has revealed our potential to be this country's largest party, which means we would be forming a cabinet. If we are to grow into that role, we can no longer just campaign on the single issue that is Nitrogen legislation, so let us showcase our wider program for voters to latch onto.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5005, \"fields\": {\"question\": 4001, \"description\": \"If this new 'LinksOm' coalition becomes the largest, those leftist Randstad wokies will undo all the progress we achieved on the Provincial level in the past two years. We must do everything we can to stop that from happening.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5006, \"fields\": {\"question\": 4001, \"description\": \"Our polling is sluggish right now because we now have to share our base with Pieter Omtzigt. We could have our buddies at the Farmers Defense Force harass him and his allies, in the hopes of causing him to burn out again so that he stops looking like a potent option.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5007, \"fields\": {\"question\": 4002, \"description\": \"In the past, it has not been my ambition. However, I was touched by the outpouring of support and faith I was given in the Provincial elections. If the voter puts their faith in the BBB and me in March, then I will, of course, humbly accept that responsibility.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5008, \"fields\": {\"question\": 4002, \"description\": \"I am not the one who says 'I want to be prime minister'. I will of course lead the party in the 2e Kamer, but if the voters give us their trust and the BBB gets the initiative in cabinet formation, we will have better people than me to fill that job.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5009, \"fields\": {\"question\": 4003, \"description\": \"Sorry, I did not hear you there… Let me tell you about my plans to aid Dutch farmers in their struggle against the nitrogen tyranny of The Hague.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5010, \"fields\": {\"question\": 4003, \"description\": \"We support the cause of democracy in Ukraine, and we support delivering weapons as well, provided it does not detract from the readiness of our own military.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5011, \"fields\": {\"question\": 4003, \"description\": \"We unconditionally support Ukraine and with the BBB in the government we will absolutely send as many weapons as possible until they have defeated Putin.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5012, \"fields\": {\"question\": 4003, \"description\": \"Our weapons deliveries are currently only prolonging the suffering there. Since Ukraine's liberation of Melitopol, the war has essentially frozen, with Ukraine unable to push into Crimea or Donbass and Russia unable to push Ukraine deeper into their country. Now they are only shelling each other, causing civilian suffering. Instead of enabling this, we should be pushing for a return to peace on our continent.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5013, \"fields\": {\"question\": 4004, \"description\": \"Yes, that was the right thing to do.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5014, \"fields\": {\"question\": 4004, \"description\": \"The people in the Netherlands who are alive today were not enslaved, so there was no one to apologize to anymore. Nevertheless we do support proper awareness about the role of the Netherlands' dark past, and we will not retract the apology for this reason or anything along those lines.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5015, \"fields\": {\"question\": 4004, \"description\": \"A terrible mistake. We are already seeing leftist litigation clubs 'representing the enslaved' suing the government for reparations for the 'inherited suffering' of their great grandfather.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5016, \"fields\": {\"question\": 4005, \"description\": \"This must be the single most tiring question that continues resurfacing! I have invited people time and time again to look at our bookkeeping and see that it is not true for themselves, but of course no one goes through that effort because 'BBB is not funded by Big Agriculture' is not a catchy headline.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5017, \"fields\": {\"question\": 4005, \"description\": \"It is possible some larger firms may at times have donated to us, but we are primarily a movement for the regular joe, the farmers who just want to do the job they love.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5018, \"fields\": {\"question\": 4005, \"description\": \"If the BBB is what worries you, best look at the VVD. That party is practically an extension of (Dutch employer's organization) VNO-NCW!\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5019, \"fields\": {\"question\": 4006, \"description\": \"We are still here are we not? Unlike Forum, we did not go down the deep end nor did we explode into a multitude of smaller parties after our victory in the provinces.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5020, \"fields\": {\"question\": 4006, \"description\": \"We have put a lot of work in the selection of the best possible people on our list, and it has paid off because we remained fairly stable despite our substantial victory two years back, that went beyond even our internal expectations.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5021, \"fields\": {\"question\": 4006, \"description\": \"Everyone treats us as if we are some PVV-clone, but in reality we are not even rightwing. Any comparison with these older parties is faulty!\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5022, \"fields\": {\"question\": 4007, \"description\": \"The BBB is open to cooperating with anyone, but this is contingent on sufficient concessions by the other parties. If the current Nitrogen Act is non-negotiable to some, then we will not form a cabinet with them.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5023, \"fields\": {\"question\": 4007, \"description\": \"Although we are open to working with anyone, I want to be clear about one thing: we will not under any condition enter a Rutte V cabinet. A large part of the problems that our country is dealing with right now have arisen under his watch. It is high time someone else takes over instead.\", \"controversial\": true}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5024, \"fields\": {\"question\": 4007, \"description\": \"We will not work with LinksOm or the Animal party. These treehuggers have been out to get this country's farmers from the very beginning and we will not stand for it.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5025, \"fields\": {\"question\": 4007, \"description\": \"We are not going to form a coalition with either the PVV or FvD. Their odious, frankly racist agenda cannot be unified with BBB values. I would like to point out that we allied with DENK in the provincials.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5026, \"fields\": {\"question\": 4008, \"description\": \"It is madness that we are sitting on western Europe's largest gas reserve, yet we refuse to produce gas from it even while the energy prices have still not dropped back to the level before the Russian invasion of Ukraine. Of course production should be restarted.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5027, \"fields\": {\"question\": 4008, \"description\": \"Although we do believe that the Groningen Gas Fields should be reopened for the purpose of suppressing energy poverty, it must be paired with immediate and effective compensation for the people living in Groningen! It's insane that there are still people waiting for compensation 5 years down the line.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5028, \"fields\": {\"question\": 4008, \"description\": \"No, safety should come first and even today, after the gas production has ceased, the region is still being affected by earthquakes. On the contrary, we should finally make work of the compensation scheme. Some people have still not received the compensation they were promised by the Rutte cabinet.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5029, \"fields\": {\"question\": 4009, \"description\": \"Yes, this is another topic where the coalition made a mess of things. It's insane that the airport still has capacity problems five years after Covid-19. These failures are causing international airlines and passengers to look for alternatives like Brussels or Düsseldorff, leaving our country less connected to the world, which is also bad for business.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5030, \"fields\": {\"question\": 4009, \"description\": \"The coalition has failed Schiphol time and time again. The airport has no choice but to continue making do with what they have. Under the BBB, Lelystad Airport would be swiftly opened so as to relieve the pressure on Schiphol.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5031, \"fields\": {\"question\": 4009, \"description\": \"The coalition has failed Schiphol time and time again. It is time to substantially increase the wages of baggage carriers and safety personnel.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5032, \"fields\": {\"question\": 4009, \"description\": \"We should not be bringing this up, Schiphol is a large emitter of nitrogen and as long as they are having capacity problems they cannot reasonably expand their flight repertoire. Farmers can then buy nitrogen emission rights more cheaply.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5033, \"fields\": {\"question\": 4010, \"description\": \"Southern Europe has been spending our tax money like candy through EU common crisis funds in the past few years. That the Rutte cabinet allowed these crisis funds to be created is a failure on his part, probably motivated by the fact that he is looking for a job in Brussels after he is done in The Hague. The BBB would fight to get us an exemption to contributing to such plans!\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5034, \"fields\": {\"question\": 4010, \"description\": \"We should ditch the Euro! Over the past four years, our country has constantly been the victim: because countries like Italy have put themselves into such a debt burden, the ECB could not raise interest rates as quickly as was required without triggering their bankruptcy, causing massive inflation in the Netherlands. If we return to the Guilder, or a shared currency with just the northern countries in the EU, the DNB can once again enact the monetary policy we need as a country.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5035, \"fields\": {\"question\": 4010, \"description\": \"It is Europe that imposed those onerous nitrogen regulations on our country. The BBB in government would go to Brussels and acquire something custom-tailored for the Netherlands instead of these poor regulations designed for Finland that are being imposed on us now! If need be, we will veto everything from here on out until our country is relieved from this awful burden.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5036, \"fields\": {\"question\": 4010, \"description\": \"Let's not address the EU, our focus is on internal matters.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5037, \"fields\": {\"question\": 4011, \"description\": \"The BBB stands for reduced immigration, in doing so, we take away one pressure factor. Further, we must build many more houses, and we will not touch the current cabinet's plans for this. Lastly, we want to implement an obligation of self-occupancy on all new housing that is being built to prevent speculation by people like prince Bernhard.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5038, \"fields\": {\"question\": 4011, \"description\": \"We need to BBB: build, build, build! The cabinet has tried to do so but is running short of the goals it itself set. When the judge comes with another frivolous ruling on a lawsuit brought on by some nature organization halting all new construction or voiding farmer's licenses, we will simply ignore it. We'll just pay the fine, it's a crisis right now.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5039, \"fields\": {\"question\": 4011, \"description\": \"The reason the housing market is so hot right now is because of speculation by private actors, both by large scale housing corporations and private persons securing their pensions. The solution is strict regulation: large increases on transfer taxes and the imposition of self-occupancy obligations on most transferred properties.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5040, \"fields\": {\"question\": 4012, \"description\": \"This has been an excellent development. Everyone should be allowed to study, not just those who have wealthy parents. And it is not healthy to build up so much debt so young already.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5041, \"fields\": {\"question\": 4012, \"description\": \"This is not good policy, why should the farmer who himself never followed such a study be forced to pay for the higher education of someone else? The loan system was fairer in this regard.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5042, \"fields\": {\"question\": 4012, \"description\": \"While we support this reintroduction, we want to put the so-called 'unfortunate generation' on the agenda: those who fell exactly in between the old basisbeurs and the new one and who have built up substantial debts studying, only to now have to compete for housing and other matters with others who got that money for free. The paltry compensation of €1000 of debt being erased (or in vouchers, if they opted out of borrowing in the loan system) is wholly insufficient.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5043, \"fields\": {\"question\": 4013, \"description\": \"Yes! We fortunately just barely fulfilled the NATO-norm of 2% of gross domestic product in the fiscal year 2024-2025, due to the events in Ukraine finally waking the coalition up. However, these events show that we cannot take our freedom just for granted, and we must ensure that our military is adequately prepared for any scenario.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5044, \"fields\": {\"question\": 4013, \"description\": \"Not only that, but we should be reinstating the currently suspended system of conscription. The war in Ukraine has shown that our security situation has fundamentally changed, and doing so would help a great deal with personnel shortages.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5045, \"fields\": {\"question\": 4013, \"description\": \"We will not be addressing this as we have nothing to win by doing so: the war in Ukraine has led the cabinet to increase military spending to fulfill NATO norms, so we have nothing to criticize them on in this field.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5046, \"fields\": {\"question\": 4013, \"description\": \"We should be reducing our military spending instead. We are safely embedded in NATO and we could be using this money for more productive purposes.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5047, \"fields\": {\"question\": 4014, \"description\": \"Of course! The cabinet has rightfully been wagging their finger at countries like Italy for their extremely high debt practices, but if this current deficit is kept up we will soon exceed the agreed-upon maximum of 60% of the national GDP. Our single year deficit spending already exceeded those norms in the fiscal years 2023-2024 and 2020-2021. How can we expect the rest of Europe to follow the rules if we ourselves don't even do it?!\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5048, \"fields\": {\"question\": 4014, \"description\": \"The previous Rutte cabinets have been very fiscally conservative which left a lot of fiscal room which the Rutte IV cabinet understandably made use of during covid and to resolve the various crises in the last term. There is not a lot of room to attack them here, frankly.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5049, \"fields\": {\"question\": 4015, \"description\": \"This was a substantial lapse of judgement! What is the benefit to us in this whole affair? One of our strongest companies lost a huge market here and will now likely face Chinese competition because the US must play a rerun of the cold war.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5050, \"fields\": {\"question\": 4015, \"description\": \"Let's not muddy the waters here. ASML has so many orders with the current lingering chip shortage that this has not affected their turnover at all.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5051, \"fields\": {\"question\": 4016, \"description\": \"We do support it, but let's stay hush on it. Some of our voters came from the Christian parties and we don't want to scare them away by pressing controversial medical-ethical issues.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5052, \"fields\": {\"question\": 4016, \"description\": \"Yes. This is a very practical solution to the economic issues that are arising dus to our aging population.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5053, \"fields\": {\"question\": 4016, \"description\": \"No, we don't. People contemplating suicide should be helped, not directly handed the proverbial noose.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5054, \"fields\": {\"question\": 4016, \"description\": \"Being allowed to determine your own fate is an important right, and choosing your demise on your own terms is part of that. Of course it should be subject to strict medical oversight; we do not support the D66 stance that healthy people should have access to it.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5055, \"fields\": {\"question\": 4017, \"description\": \"We must act far more harshly against the drug trade. If you are picked up for possession you're back on the streets three months later. We need minimum sentencing, no suspended sentencing and in the most serious cases reinstate the death penalty for violent drug barons like Ridouan Taghi.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5056, \"fields\": {\"question\": 4017, \"description\": \"Our policy on soft drugs is breeding the next generation of criminals. The contradiction of decriminalizing the sale of weed in the coffeeshop but criminalizing large scale production ensures that there is a safe and profitable gateway to criminal enterprise. We should legalize but regulate the entire process.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5057, \"fields\": {\"question\": 4017, \"description\": \"Our policy on soft drugs is breeding the next generation of criminals. The contradiction of decriminalizing the sale of weed in the coffeeshop but criminalizing large scale production ensures that there is a safe and profitable gateway to criminal enterprise. We should recriminalize all drug use again.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5058, \"fields\": {\"question\": 4017, \"description\": \"With Rotterdam, Europe's largest port, it's unfortunately inevitable that there will be a sizable drug mafia in the Netherlands. We should stop using key witnesses to avoid baiting them into violent behavior of this sort.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5059, \"fields\": {\"question\": 4018, \"description\": \"Public discourse has been hardened by polarization as a result of the policies of the Rutte cabinets which only looked at the desires of the Randstad, while the countryside was being left behind. We will make the unheard citizen heard, which will take away the impulse to threaten politicians.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5060, \"fields\": {\"question\": 4018, \"description\": \"This is purely the result of leftwing extremists. I myself have to contend with threats every day these days, and people like Geert Wilders cannot even hold an electoral event because the security costs are too great. We need to be harder on the longhaired work-averse scum that causes this.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5061, \"fields\": {\"question\": 4018, \"description\": \"These terminally online who spend their days sending hate mail to their hated politicians simply feel untouchable. I will keep reporting threats to the police and when we enter the government we will be looking at regulations to make it easier to identify social media users so they won't get away with it simply because investigating it is overly onerous.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5062, \"fields\": {\"question\": 4019, \"description\": \"It needs to be substantially reduced in scope to become both more feasible to put into action and in line with public opinion on climate action.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5063, \"fields\": {\"question\": 4019, \"description\": \"Nothing much, we have seen a tremendous greening process in the past few years, and a majority of our energy is now generated sustainably.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5064, \"fields\": {\"question\": 4019, \"description\": \"Climate change is not human-induced, therefore there shouldn't be a climate plan at all.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5065, \"fields\": {\"question\": 4020, \"description\": \"Absolutely! This is a safe and sustainable form of energy, and unlike solar and wind, they do not rely on sunshine or windiness to produce energy, which tends to be at its weakest in the evening when the most energy is used. The reduced volatility also places less stress on the energy network.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5066, \"fields\": {\"question\": 4020, \"description\": \"The Netherlands are prone to flooding and we have seen what happened with Fukushima. We don't want to scare off our farmer's international customers with fears of irradiated dairy and meat.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5067, \"fields\": {\"question\": 4021, \"description\": \"Of course not! This will only lead to the production being moved to other countries with more lax rules which will then be less sustainable. Instead the government should be driving innovation to minimize these emissions.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5068, \"fields\": {\"question\": 4021, \"description\": \"Yes, that would be the wisest course of action.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5069, \"fields\": {\"question\": 4022, \"description\": \"Yes, and we will primarily be training on the discussions with the voters. If we handle that well, we can use my relatable nature to supercharge turnout for us come election day.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5070, \"fields\": {\"question\": 4022, \"description\": \"Yes. I will primarily focus on attacking Rutte on his record as prime minister.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5071, \"fields\": {\"question\": 4022, \"description\": \"Yes. We will not be baited into digging into Rutte and will instead highlight our alternative policies and achievements following the provincial elections.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5072, \"fields\": {\"question\": 4022, \"description\": \"No, we have nothing to do there, groveling between other proletarians to criticize the supreme leader.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5073, \"fields\": {\"question\": 4023, \"description\": \"Nitrogen is the main theme of the BBB, so it's only fitting that we would also complete the campaign in that fashion. We will be discussing how we will pull Critical Deposition Values out of the law so that farmers can farm and houses may be built and how we will recalibrate which regions are marked as Natura 2000 reserves.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5074, \"fields\": {\"question\": 4023, \"description\": \"We are the constructive voice of the forgotten Dutchmen and -women. When we enter The Hague victoriously after the election, we look to effectuate genuine change to help keep the countryside liveable.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5075, \"fields\": {\"question\": 4023, \"description\": \"Our country cannot afford another four more years of breakdown policies by Mark Rutte. We need to vote him out, now, and the BBB will do this.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5076, \"fields\": {\"question\": 4024, \"description\": \"We will be doing a tractor tour throughout the northeastern Netherlands, starting in Friesland and passing through Groningen, Drenthe, Overijssel and Gelderland. These are our strongest areas and we can really convince as many sympathizers as possible to really run up our numbers in these regions.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5077, \"fields\": {\"question\": 4024, \"description\": \"We will be flyering in a bunch of middle-sized towns in the Randstad provinces of Noord and Zuid Holland and Utrecht. Last time we unexpectedly won these in the provincials without really focusing on them, and there might be some untouched potential voters there.\"}}, {\"model\": \"campaign_trail.answer\", \"pk\": 5078, \"fields\": {\"question\": 4024, \"description\": \"Our focus will be on the southern provinces: Zeeland, Noord-Brabant and Limburg. These provinces gave us some decisive victories in 2023, albeit not quite with the margins of the likes of Overijssel and Drenthe. I am sure there are still some swing voters to be convinced in this region.\"}}]");
@@ -73,65 +74,6 @@
   campaignTrail_temp.player_visits = [];
   campaignTrail_temp.answer_feedback_flg = 1;
   campaignTrail_temp.game_start_logging_id = '3664822';
-
-  function changechart(){
-      if (document.getElementById("overall_vote_statistics")!=null) {
-      overallthing=document.getElementById("overall_vote_statistics").innerHTML;
-      overallthing.toString()
-      overallthing=overallthing.replace("Candidate","Party List")
-      document.getElementById("overall_vote_statistics").innerHTML=overallthing
-      }
-    }
-    window.setInterval(changechart,200)
-    
-    function changecharttwo(){
-      if (document.getElementById("overall_vote_statistics")!=null) {
-      overallthing=document.getElementById("overall_vote_statistics").innerHTML;
-      overallthing.toString()
-      overallthing=overallthing.replace("Electoral Votes","Allocated Seats")
-      document.getElementById("overall_vote_statistics").innerHTML=overallthing
-      }
-    }
-    window.setInterval(changecharttwo,200)
-    
-    function changechartthree(){
-      if (document.getElementById("overall_election_details")!=null) {
-      overallthing=document.getElementById("overall_election_details").innerHTML;
-      overallthing.toString()
-      overallthing=overallthing.replace("Candidate","Party List")
-      document.getElementById("overall_election_details").innerHTML=overallthing
-      }
-    }
-    
-    window.setInterval(changechartthree,200)
-    
-    function changechartfour(){
-      if (document.getElementById("overall_election_details")!=null) {
-      overallthing=document.getElementById("overall_election_details").innerHTML;
-      overallthing.toString()
-      overallthing=overallthing.replace("Electoral Votes","Allocated Seats")
-      document.getElementById("overall_election_details").innerHTML=overallthing
-      }
-    }
-    window.setInterval(changechartfour,200)
-
-  function addScrollbar() {
-    const overallResult = document.getElementById('overall_result');
-    if (!overallResult) {
-      return;
-    }
-
-    overallResult.style.overflow = 'auto';
-
-    const buttons = document.querySelectorAll('#view_electoral_map, #answer_select_button, #ok_button, #final_election_map_button');
-    const handleClick = () => {
-      overallResult.style.overflow = 'auto';
-    };
-    buttons.forEach(button => button.addEventListener('click', handleClick));
-  }
-
-  const observer = new MutationObserver(addScrollbar);
-  observer.observe(document.documentElement, { childList: true, subtree: true });
     
     function dHondtAllocationWithFewerBugs(votes, seats, thresh = 0.0067) {
       let quotients = votes.splice()
@@ -306,7 +248,11 @@
                     negotiationsDone = true;
                     console.log(selectedCoalition);
                     console.log(negotiationsDone);
-                    p();
+                    var totalPV = e.final_overall_results.reduce((sum, party) => sum + party.popular_votes, 0);
+                    var n = e.final_overall_results.findIndex((r) => r.candidate === e.candidate_id);
+                    var quickstats =  [e.final_overall_results[n].electoral_votes, e.final_overall_results[n].popular_votes / totalPV * 100, e.final_overall_results[n].popular_votes];
+                    endingPicker(e.final_outcome, totalPV, e.final_overall_results, quickstats);
+                    endingConstructor();
                   } else {
                     alert("No coalition selected");
                   }
@@ -409,17 +355,17 @@
 
   function findLeader(coalition){
 
-    let highestTotalSeats = 0;
-    let partyWithHighestSeats = null;
+    let highestTotalVote = 0;
+    let partyWithHighestVotes = null;
 
     coalition.parties.forEach( party =>{
-          let partySeats = e.final_overall_results[e.final_overall_results.map(f=>f.candidate).indexOf(party)].electoral_votes;
-          if (partySeats > highestTotalSeats) {
-            highestTotalSeats = partySeats;
-            partyWithHighestSeats = party;
+          let partyVotes = e.final_overall_results[e.final_overall_results.map(f=>f.candidate).indexOf(party)].popular_votes;
+          if (partyVotes > highestTotalVote) {
+            highestTotalVote = partyVotes;
+            partyWithHighestVotes = party;
           }
     });
-    return (partyLeaders.find((p) => p.party === partyWithHighestSeats))
+    return (partyLeaders.find((p) => p.party === partyWithHighestVotes))
   }
 
     // constructs endings based on header and pages
@@ -889,7 +835,6 @@
     }
     return construct(0);
   }
-
 
 //chart stuff here, setup in cyoa function required
 
@@ -1842,7 +1787,19 @@ buttonobserver.observe(document.documentElement, { childList: true, subtree: tru
 
 function charting(chartIndex=0){
 
-    $("#game_window").html('<div class="game_header">\t<h2>NEW CAMPAIGN TRAIL</h2>\t</div>\t<div id="main_content_area">\t<div id="results_container"><br>  <div id="title_container"><button id="backButton">Back</button><h3 class="campaign-title">Election Charts:</h3><button id="nextButton">Next</button></div><br><div id="chartcontainer"><figure class="highcharts-figure"><div id="myChart"></div></figure></div></div></div><div class="buttons"><button id="1998">1998</button><button id="2002">2002</button><button id="2003">2003</button><button id="2006">2006</button><button id="2010">2010</button><button id="2012">2012</button><button id="2017">2017</button><button id="2021">2021</button><button id="2025" class="active">2025</button></div><div id="container"></div><div id="map_footer">\t\t<button class="final_menu_button" id="overall_results_button">Final Election Results</button>\t\t<button class="final_menu_button" id="final_election_map_button">Election Map</button>\t\t<button class="final_menu_button" id="state_results_button">Results by State</button>\t\t<button class="final_menu_button" id="overall_details_button">Overall Results Details</button>\t\t<button class="final_menu_button" id="recommended_reading_button">Further Reading</button>\t\t<button class="final_menu_button" id="play_again_button">Play Again!</button>\t</div>');
+  // Select the element to keep
+  let mapFooter = $('#map_footer');
+
+  // Temporarily detach the element from DOM (it preserves bound events and data)
+  mapFooter.detach();
+
+  // Cache the current content of #game_window
+  let cachedContent = $('#game_window').html();
+
+    $("#game_window").html('<div class="game_header">\t<h2>NEW CAMPAIGN TRAIL</h2>\t</div>\t<div id="main_content_area">\t<div id="results_container"><br>  <div id="title_container"><button id="backButton">Back</button><h3 class="campaign-title">Election Charts:</h3><button id="nextButton">Next</button></div><br><div id="chartcontainer"><figure class="highcharts-figure"><div id="myChart"></div></figure></div></div></div><div class="buttons"><button id="1998">1998</button><button id="2002">2002</button><button id="2003">2003</button><button id="2006">2006</button><button id="2010">2010</button><button id="2012">2012</button><button id="2017">2017</button><button id="2021">2021</button><button id="2025" class="active">2025</button></div><div id="container"></div>');
+
+    $("#game_window").append(mapFooter);
+    $('#map_footer button').prop('disabled', false);
 
     var container = document.getElementById("title_container");
     var backButton = document.getElementById("backButton");
@@ -1855,7 +1812,6 @@ function charting(chartIndex=0){
     backButton.style.marginRight = "10px";
     nextButton.style.marginLeft = "10px";
 
-    console.log(chartIndex)
     if (chartIndex === 0){
         backButton.style.display = 'none';
     }
@@ -1867,21 +1823,7 @@ function charting(chartIndex=0){
       position: "relative",
       zIndex: "9999"
     });
-
-
-        $("#overall_results_button").click(function() {
-        p()
-    }), $("#final_election_map_button").click(function() {
-        h()
-    }), $("#state_results_button").click(function() {
-        g()
-    }), $("#overall_details_button").click(function() {
-        b()
-    }), $("#recommended_reading_button").click(function() {
-        w()
-    }), $("#play_again_button").click(function() {
-        y()
-    }),$("#backButton").click(function() {
+    $("#backButton").click(function() {
         charting(chartIndex-1)
     }),
     $("#nextButton").click(function() {
@@ -1891,6 +1833,31 @@ function charting(chartIndex=0){
     setTimeout(function() {
         executeWithRetry(Chartbuilder, charts[chartIndex]);
   }, 100);
+    // Add an event listener to all buttons in #map_footer, excluding #chart_button
+    $('#map_footer button:not(#chart_button)').on('click', function() {
+        // Check if #chartcontainer exists in the current #game_window
+        if ($('#game_window #chartcontainer').length > 0) {
+            // If it does, restore the cached content
+            let mapFooter = $('#map_footer');
+            mapFooter.detach();
+            $('#game_window').html(cachedContent);
+            $("#game_window").append(mapFooter);
+
+            // Enable all buttons
+            $('#map_footer button').prop('disabled', false);
+
+            // Check the id of the clicked button
+            if (this.id === 'overall_results_button') {
+                resetPage = true;
+                e.page=0;
+                endingPicker();
+                endingConstructor();
+
+            }
+        $(this).prop('disabled', true);
+        }
+    });
+
 };
 
 function loadScript(url, callback) {
@@ -1916,10 +1883,78 @@ function mcaHeight() {
 
 var charts = ["voteshare", "seats"]
 
+let observerRunning = false;
+let changeChartRunning = false;
+let mcaHeightRunning = false;
+let processedNodes = new Set();
+
+async function handleMutations(mutationsList, observer) {
+    if (observerRunning) return;
+    observerRunning = true;
+
+    // stop observing
+    observer.disconnect();
+
+    // addScrollbar
+    const overallResult = document.getElementById('overall_result');
+    if (overallResult && !processedNodes.has(overallResult)) {
+        overallResult.style.overflow = 'auto';
+        const buttons = document.querySelectorAll('#view_electoral_map, #answer_select_button, #ok_button, #final_election_map_button');
+        const handleClick = () => {
+            overallResult.style.overflow = 'auto';
+        };
+        buttons.forEach(button => button.addEventListener('click', handleClick));
+        processedNodes.add(overallResult);
+    }
+
+    // changechart
+    if (!changeChartRunning) {
+        changeChartRunning = true;
+        const elementIDs = ["overall_vote_statistics", "state_result_data_summary", "overall_details_container"];
+        for(let id of elementIDs) {
+            let element = document.getElementById(id);
+            if (element && !processedNodes.has(element)) {
+                let overallthing = element.innerHTML;
+                overallthing = overallthing.replace("Electoral Votes","Allocated Seats");
+                overallthing = overallthing.replace("Candidate","Party List");
+                element.innerHTML = overallthing;
+                processedNodes.add(element);
+            }
+        }
+        changeChartRunning = false;
+    }
+ // mcaHeight
+    if (!mcaHeightRunning) {
+        mcaHeightRunning = true;
+        let results_container = document.getElementById("results_container");
+        let chart = document.getElementById("myChart");
+        if (results_container && !processedNodes.has(results_container)) {
+            if (!chart){
+                results_container.style.height = "98%";
+                results_container.style.overflow = "scroll";
+            } else {
+                let mca = document.getElementById("main_content_area");
+                if (mca) {
+                    mca.style.height = "80%";
+                }
+            }
+            processedNodes.add(results_container);
+        }
+        mcaHeightRunning = false;
+    }
+
+    // Resume observing
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+    observerRunning = false;
+}
+
+let singleObserver = new MutationObserver(handleMutations);
+singleObserver.observe(document.documentElement, { childList: true, subtree: true });
+
 /*
 * Mod Title: 2025 Netherlands
 * Mod Author: Thomahawk2k
-* Mod Version: v1.1
+* Mod Version: v1.1a
 * Mod Description: A mod for the browser game 'The Campaign Trail' or more specifically 'The New Campaign Trail' that transposes the game to a fictionalized election year 2025 in the Netherlands.
 * 
 * Coding License: GNU Lesser General Public License (LGPL) 3.0
