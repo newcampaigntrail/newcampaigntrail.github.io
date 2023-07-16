@@ -91,19 +91,8 @@ function replaceFurtherReading() { //I don't understand why it doesn't recognize
 }
 window.setInterval(replaceFurtherReading,200)
 
-function removeCandidateSummary() {
-try {
-  const candidateSummary = document.querySelector("#candidate_summary");
-  if (candidateSummary) {
-    const ulList = candidateSummary.querySelector("ul");
-    if (ulList) {
-      candidateSummary.removeChild(ulList);
-    }
-  }
-} catch {}
-}
-window.setInterval(removeCandidateSummary,200)
-
+var element = document.getElementById('my-invisible-element');
+if(!element){
 function updateCandidateForm() {
   formobserver.disconnect();
   const heading = document.querySelector("#candidate_form form h3");
@@ -157,10 +146,16 @@ function updateHeader() {
     gameHeader.setAttribute("id", "modifiedHeader");
   }
 }
-if(!headerobserver){
+
 var headerobserver = new MutationObserver(updateHeader);
 headerobserver.observe(document.documentElement, { childList: true, subtree: true });
+
+var invisibleElement = document.createElement('div');
+invisibleElement.style.display = 'none';
+invisibleElement.id = 'my-invisible-element';
+document.body.appendChild(invisibleElement);
 }
+
 /*
 * Mod Title: 2025 Netherlands
 * Mod Author: Thomahawk2k
