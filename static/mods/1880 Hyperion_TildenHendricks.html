@@ -396,7 +396,7 @@ campaignTrail_temp.questions_json = [
         "pk": 1067,
         "fields": {
             "priority": -6,
-            "description": "Senator James Blaine of Maine is a very unhappy man. His attempts to secure the Republican nomination have been thwarted twice in a row, leaving his generally pro-reform Half-Breed faction diminished and demoralized. Blaine has a nasty feud both personal and political with Conkling, and securing his support could do wonders to split the Republican vote. Will you seek his endorsement?",
+            "description": "Senator James Blaine of Maine is a very unhappy man. His attempts to secure the Republican nomination have been thwarted twice in a row, leaving his faction diminished and demoralized. Blaine has a nasty feud both personal and political with Conkling, and securing his support could do wonders to split the Republican vote. Will you seek his endorsement?",
             "likelihood": 1
         }
     },
@@ -566,7 +566,7 @@ campaignTrail_temp.answers_json = [
         "pk": 5153,
         "fields": {
             "question": 1045,
-            "description": "Vice President Hendricks has the political know-how to counter the attacks of his fellow Midwesterner, and him doing so will allow me to focus on my fellow New Yorker."
+            "description": "Vice President Hendricks has the political know-how to counter the attacks of his fellow Westerner, and him doing so will allow me to focus on my fellow Easterner."
         }
     },
     {
@@ -766,7 +766,7 @@ campaignTrail_temp.answers_json = [
         "pk": 5214,
         "fields": {
             "question": 1063,
-            "description": "The Reconstruction program was rotted through with corruption. Even President Grant himself described as a the Louisiana elections as a 'gigantic fraud' during his tenure. I was elected on a promise of reform, and I have made the federal government an inhospitable place for deceit and graft."
+            "description": "The Reconstruction program was rotted through with corruption. Even President Grant himself described the Louisiana elections as fraudulent during his tenure. I was elected on a promise of reform, and I have made the executive branch an inhospitable place for deceit and graft."
         }
     },
     {
@@ -1740,7 +1740,7 @@ campaignTrail_temp.states_json = [
         "fields": {
             "name": "Wyoming",
             "abbr": "WY",
-            "electoral_votes": 3,
+            "electoral_votes": 0,
             "popular_votes": 0,
             "poll_closing_time": 180,
             "winner_take_all_flg": 1,
@@ -8711,7 +8711,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 5223,
             "candidate": 200,
-            "answer_feedback": "Can you prove it, Mr. President? If so, you may want to do so quickly, because Southern Democrats are unhappy. Quite unhappy. You try to push back on the Hiscock letter as a forgery, to little avail. As tempers rise and Southerners begin to obstruct legislation, It becomes clear that a confrontation is unavoidable."
+            "answer_feedback": "Can you prove it, Mr. President? If so, you may want to do so quickly, because Southern Democrats are unhappy. Quite unhappy. You try to push back on the Hiscock letter as a forgery by Conkling's allies, but such an accusation is difficult to substantiate in this day and age, and many of the papers have already made up their minds. As tempers rise and Southerners begin to obstruct legislation, It becomes clear that a confrontation is unavoidable."
         }
     },
     {
@@ -8918,7 +8918,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 5251,
             "candidate": 200,
-            "answer_feedback": "This is the majority view, and many liberals believe the Indian population is on track to parity with European-Americans as citizen."
+            "answer_feedback": "This is the majority view, and many liberals believe the Indian population is on track to parity with European-Americans as citizens."
         }
     },
     {
@@ -8936,7 +8936,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 5258,
             "candidate": 200,
-            "answer_feedback": "This cause provided your entrance to presidential politics, and, to many, there are few who so symbolize the problems with politics as Mr. Conkling. You take one last look over the crowd of your supporters, then head inside to await the results by telegraph."
+            "answer_feedback": "This cause provided your entrance to presidential politics, and, to many, there are few who so symbolize the problems with politics as Mr. Conkling. You take one last look over the crowd of your supporters, then head inside to await your future."
         }
     },
     {
@@ -8945,7 +8945,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 5259,
             "candidate": 200,
-            "answer_feedback": "An interesting move, but few can deny how heated the campaign has gotten, with increasingly personal barbs being traded between surrogates of yourself and Tilden. It can only help to be seen as a unifier. You take one last look over the crowd of your supporters, then head inside to await the results by telegraph."
+            "answer_feedback": "An interesting move, but few can deny how heated the campaign has gotten, with increasingly personal barbs being traded between surrogates of yourself and Tilden. It can only help to be seen as a unifier. You take one last look over the crowd of your supporters, then head inside to await your future."
         }
     },
     {
@@ -8954,7 +8954,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 5260,
             "candidate": 200,
-            "answer_feedback": "Not the most expected final speech, as foreign policy was not the main issue on voters’ minds this past season, but your diplomatic efforts were widely seen as successful. This will give you a small boost, particularly in the West. You take one last look over the crowd of your supporters, then head inside to await the results by telegraph."
+            "answer_feedback": "Not the most expected final speech, as foreign policy was not the main issue on voters’ minds this past season, but your diplomatic efforts were widely seen as successful. This will give you a small boost, particularly in the West. You take one last look over the crowd of your supporters, then head inside to await your future."
         }
     },
     {
@@ -8963,7 +8963,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 5261,
             "candidate": 200,
-            "answer_feedback": "While the existence of the Greenback party demonstrates that some people feel left out of the recovery, most Americans trust you on the issue after the Panic under Grant. You take one last look over the crowd of your supporters, then head inside to await the results by telegraph."
+            "answer_feedback": "While the existence of the Greenback party demonstrates that some people feel left out of the recovery, most Americans trust you on the issue after the Panic under Grant. You take one last look over the crowd of your supporters, then head inside to await your future."
         }
     },
     {
@@ -8976,6 +8976,8 @@ campaignTrail_temp.answer_feedback_json = [
         }
     }
 ]
+
+
 
 campaignTrail_temp.jet_data = [{
     "nicknames": {
@@ -9398,18 +9400,24 @@ endingPicker = (out, totv, aa, quickstats) => {
     used=true
     if (out == "tie") {
         return "<h3>A DEAD-LOCK! ELECTION GOES TO HOUSE</h3><p>You almost laugh as you stare down the stark print of the paper. To come so far, to fight so hard, for it to come to this. Republicans hold the majority of House delegations, and thus Roscoe Conkling will become President. It seems like the spoiler candidates who sought to drag your re-election down have gotten what they wanted. Republicans have held the House. And Democrats, thank God, will hold the Senate. Just barely. Conkling will take power, but there exists a faction of the party with just enough power to check his worst impulses.</p><p>You feel many things. Rage, shame, despair. But more than anything, you feel weak. America was faced with a choice between a shameless, corrupt radical and yourself. This was to be the ultimate battle of your career, the culmination of an honest life spent battling the corrupt. And the anti-corruption crusader Samuel Jones Tilden has lost his last battle, thrown from his horse by the meddling of under-handed third parties. You mope for a few minutes, but then, as you remember the crowds of people who came to see you speak, you feel a strength surge through your old bones. The Democratic party still needs leaders to stand up to men like Conkling, and with the power they hold, your voice will still carry far.</p><p>You’ll send a congratulatory telegraph. But mostly you’re preparing for a new role, as a man who will continue to command the people’s respect despite this narrow loss. You will provide guidance to your fearful party, and remind the country of its founding principles as President Conkling ascends. You are an old man. You feel ashamed at the way Conkling got under your skin, and how his dirty tricks paid off in the end. But as you rise from the table in Greystone, you feel strong enough to wage one more fight in the years you have left. </p>"
+    } else if (quickstats[0] > 184 && campaignTrail_temp.player_answers.includes(5197)) {
+        return "<h3>TILDEN: CIVIL RIGHTS SAVIOR?</h3><p>The nation holds its breath.</p><p>Perhaps Conkling's associates thought they could sink you with a forged letter. They could not have been more wrong. What kind of person could pull off such a reversal, and dare to upset the delicate balance that characterized the party? Only Samuel Tilden.</p><p>Perhaps Conkling was truly so odious, but you understand that it had to be more than that. The people trust their leader so completely that they would be willing to take this challenge with none but you at the helm. What happens next is anyone's guess. Will the South rise up again in revolt? Will they submit to the new state of affairs? No one planned for this. You have sailed the nation past every contingency, into the fog. What awaits you can only be far more difficult than everything that has come before. But there is scarcely a man more up to the challenge than you. Godspeed, Mr. President.</p>"
+    } else if (quickstats[0] < 1) {
+        return "<h2>KING ROSCOE I BANISHES FOES</h2><p>Today, King Roscoe I of Utica saw off his political foes, who had agreed to a deal whereby they would be permanently exiled to England in return for their safety. After publicly shearing the beards of both Rutherford Hayes and James Blaine, Roscoe bought the deed to Greystone estate from Tilden for one dollar. The King has enacted reforms to our broken system of patronage; before, it was possible for several offices in the country to be filled by people unknown to the monarch; this has been rectified, and the King will work diligently to ensure the quality of life of any individual in this nation is directly proportional to how much Conkling himself likes them. Long live the king!</p>"
     } else if (quickstats[0] < 100) {
         return "<h3>SEN. CONKLING THE OVERWHELMING CHOICE OF AMERICA</h3><p>You feel the world slide away from you, the stark print of the paper matter-of-factly shattering your world. You have conquered <i>the Wealth of Nations</p>i>, and Shakespeare, and book upon book of dense American law. And yet, as you scan the words multiple times, you find yourself unable to comprehend the common English. Words flash out at you like sparks on the page, until the reality that Republicans have retaken full control of government, with Conkling at the helm, settles in your brain.</p><p>You feel many things. Rage, shame, despair. But more than anything, you feel weak. America was faced with a choice between a shameless, corrupt radical and yourself. You thought you had done a good job as President. You thought you had been popular. And now the nation has thrown you aside, seemingly without a thought. It was to be the ultimate battle of your career, the culmination of an honest life spent battling the corrupt. And the crusader Samuel Jones Tilden has lost his last battle, and the country with it.</p><p>You should send a congratulatory telegraph. You should give a speech to your advisors. You should provide some semblance of leadership to your fractured and fearful party, to prepare the country for the ascendance of such a man. But you don’t do any of those things. Instead, you sit at the table where you read the news, alone in lofty Greystone, waiting for the Earth to split open and swallow you whole.</p>"
     } else if (quickstats[0] < 150) {
-        return "<h3>CONKLING THE PEOPLE’S CHOICE</h3><p>You feel the world slide away from you, the stark print of the paper matter-of-factly upending your world. You scan the words multiple times, as if some amount of re-reading can change the reality. Republicans have retaken full control of government, with Conkling at the helm, and narrow majorities in the House and Senate.</p><p>You feel many things. Rage, shame, despair. But more than anything, you feel weak. America was faced with a choice between a shameless, corrupt radical and yourself. was to be the ultimate battle of your career, the culmination of an honest life spent battling the corrupt. And you have lost the battle, and the country with it. Roscoe Conkling now has the power to shape the country as he sees fit, and he likely has bigger plans than simply reversing the decisions made under your tenure. </p><p>You will send a congratulatory telegraph. You will give a speech to your advisors. You will provide some semblance of leadership to your fractured and fearful party, to prepare the country for the ascendance of such a man. All of those things, you will do. But for now, you stay seated at the table where you read the news, alone in lofty Greystone, running through a million possibilities in your head, and sigh.</p>"
+        return "<h3>CONKLING THE PEOPLE’S CHOICE</h3><p>You feel the world slide away from you, the stark print of the paper matter-of-factly upending your world. You scan the words multiple times, as if some amount of re-reading can change the reality. Republicans have retaken full control of government, with Conkling at the helm, and narrow majorities in the House and Senate.</p><p>You feel many things. Rage, shame, despair. But more than anything, you feel weak. America was faced with a choice between a shameless, corrupt radical and yourself. This was to be the ultimate battle of your career, the culmination of an honest life spent battling the corrupt. And you have lost the battle, and the country with it. Roscoe Conkling now has the power to shape the country as he sees fit, and he likely has bigger plans than simply reversing the decisions made under your tenure. </p><p>You will send a congratulatory telegraph. You will give a speech to your advisors. You will provide some semblance of leadership to your fractured and fearful party, to prepare the country for the ascendance of such a man. All of those things, you will do. But for now, you stay seated at the table where you read the news, alone in lofty Greystone, running through a million possibilities in your head, and sigh.</p>"
     } else if (quickstats[0] < 185) {
         return "<h3>CONKLING ASSEMBLES NARROW MAJORITY</h3><p>You almost laugh as you stare down the stark print of the paper. To come so far, to fight so hard, all to come up just short. Roscoe Conkling will become President, just barely. Republicans will hold the House, just barely. And Democrats, thank God, will hold the Senate. Just barely. Conkling will take power, but there exists a faction of the party with just enough power to check his worst impulses.</p><p>You feel many things. Rage, shame, despair. But more than anything, you feel weak. America was faced with a choice between a shameless, corrupt radical and yourself. This was to be the ultimate battle of your career, the culmination of an honest life spent battling the corrupt. And the crusader Samuel Jones Tilden has lost his last battle, and the country with it. You mope for a few minutes, but then, as you remember the crowds of people who came to see you speak, you feel a strength surge through your old bones. The Democratic party still needs leaders to stand up to men like Conkling, and with the power they hold, your voice will still carry far.</p><p>You’ll send a congratulatory telegraph. But mostly you’re preparing for a new role, as a man who will continue to command the people’s respect despite this narrow loss. You will provide guidance to your fearful party, and remind the country of its founding principles as President Conkling ascends. You are an old man. You feel ashamed at the way Conkling got under your skin, and how his dirty tricks paid off in the end. But as you rise from the table in Greystone, you feel strong enough to wage one more fight in the years you have left. </p>"
-    } else if (quickstats[0] < 209) {
+    } else if (quickstats[0] < 220) {
         return "<h3>TILDEN SECURES NARROW MAJORITY FOR 2ND TERM</h3><p>You let out, perhaps, the biggest sigh of relief in your entire life. Conkling constantly got under your skin, and his dirty tricks made this election far closer than it should have been. But in the end, you prevailed, and Roscoe has no one but himself to blame. You’ve held the Senate, and Republicans have held the House. Power will remain as it is, and you can’t help but feel the nation has dodged a bullet. </p><p>You feel oddly disappointed by the results. America was faced with a choice between a shameless, corrupt radical and yourself. This was to be the ultimate battle of your career, the culmination of an honest life spent battling the corrupt. You’ve won, but only narrowly. You can’t help but feel like your efforts should have amounted to more than this. But soon, you cease your moping, and give yourself a little credit for your victory. </p><p>You are an old man, and you feel quite sure that this is your last election. Quite glad of the fact, as well. This was a far dirtier affair than your contest four years ago. You can only hope that all future presidential campaigns don’t descend to this level. But that’s a thought for another day. Now is the time to celebrate with your supporters; to chart a course for four more years of stability and security; and to continue the delicate work of rehabilitating your party in the eyes of America. It’s quite the task, but there are few more up to the challenge than you. Good luck, President Tilden!</p>"
     } else if (quickstats[0] < 250) {
         return "<h3>TILDEN THE CHOICE OF THE NATION</h3><p>You let out, perhaps, the biggest sigh of relief in your entire life. Conkling constantly got under your skin, but his dirty tricks failed to find purchase. In the end, you prevailed, and Roscoe will have his own party to answer to. You’ve held the Senate, but Republicans have just barely held the House. Power will remain as it is, and you can’t help but feel the nation has dodged a bullet. </p><p>America was faced with a choice between a shameless, corrupt radical and yourself. This was to be the ultimate battle of your career, the culmination of an honest life spent battling the corrupt – and you’ve prevailed in a piercing blow against the defenders of patronage and corruption. Your achievements in office are secure, for now.</p><p>You are an old man, and you feel quite sure that this is your last election. Quite glad of the fact, as well. This was a far dirtier affair than your contest four years ago. You can only hope that all future presidential campaigns don’t descend to this level. But that’s a thought for another day. Now is the time to celebrate with your supporters; to chart a course for four more years of stability and security; and to continue the delicate work of rehabilitating your party in the eyes of America. It’s quite the task, but there are few more up to the challenge than you. Good luck, President Tilden!</p>"
     } else if (quickstats[0] < 370) {
-        return "<h3>THE DILIGENCE REWARDED; AMERICA HANDS TILDEN A STRONG MAJORITY + 2ND TERM</h3><p>You let out a giddy laugh upon reading the headline that echoes through the halls of Greystone. Conkling got under your skin, but his dirty tricks couldn’t help him in the end. You prevailed by a wide margin, taking a clear majority of the nation. And not just that – Democrats have retaken the House as well, taking full control of the federal government for the first time since before the Rebellion. You feel deeply affected to read the results, reading how, through your diligent governance, the reputation of a scorned party has been rehabilitated to such a level that the nation is willing to entrust that party with full power again. </p><p>America was faced with a choice between a shameless, corrupt radical and yourself. This was to be the ultimate battle of your career, the culmination of an honest life spent battling the corrupt – and you’ve prevailed in stunning fashion, shattering Conkling’s reputation and aura of invincibility. You read that the reformists that Conkling worked so hard to ostracize are most vindicated of all, and Conkling’s reign as <i>de facto</i> leader of the party may already be crashing down. Good riddance. </p><p>You are an old man, and you feel quite sure that this is your last election. Quite glad of the fact, as well. This was a far dirtier affair than your contest four years ago. You can only hope that all future presidential campaigns don’t descend to this level. But that’s a thought for another day. Now is the time to celebrate with your supporters; to chart a course for four more years of stability and security; and to enjoy the adulation of Democrats everywhere, for being the one man good and honest enough to restore the party’s honor in the eyes of America. Allow yourself a little bit of pride, President Tilden; you’ve earned it.</p>"
+        return "<h3>THE DILIGENCE REWARDED; AMERICA HANDS TILDEN A STRONG MAJORITY + 2ND TERM</h3><p>You let out a giddy laugh upon reading the headline that echoes through the halls of Greystone. Conkling got under your skin, but his dirty tricks couldn’t help him in the end. You prevailed by a wide margin, taking a clear majority of the nation. And not just that – Democrats have retaken the House as well, taking full control of the federal government for the first time since before the Rebellion. You feel deeply affected to read the results, reading how, through your diligent governance, the reputation of a scorned party has been rehabilitated to such a level that the nation is willing to entrust that party with full power again. </p><p>America was faced with a choice between a shameless, corrupt radical and yourself. This was to be the ultimate battle of your career, the culmination of an honest life spent battling the corrupt – and you’ve prevailed in stunning fashion, shattering Conkling’s reputation and aura of invincibility. You read that the reformists that Conkling worked so hard to ostracize are most vindicated of all, and Conkling’s reign as <i>de facto<i> leader of the party may already be crashing down. Good riddance. </p><p>You are an old man, and you feel quite sure that this is your last election. Quite glad of the fact, as well. This was a far dirtier affair than your contest four years ago. You can only hope that all future presidential campaigns don’t descend to this level. But that’s a thought for another day. Now is the time to celebrate with your supporters; to chart a course for four more years of stability and security; and to enjoy the adulation of Democrats everywhere, for being the one man good and honest enough to restore the party’s honor in the eyes of America. Allow yourself a little bit of pride, President Tilden; you’ve earned it.</p>"
+    } else if (quickstats[0] < 371) {
+        return "<h2>CONKLING SUFFERS TOTAL BREAK-DOWN</h2><p>A disheveled man was arrested recently at President Tilden’s second inauguration, hollering that he wanted to fight the President. The large man plowed throw many attendees in an attempt to reach the podium, but was stopped when a dozen or so spectators were able to restrain him. Upon further inspection, it was revealed that the man was indeed Senator Roscoe Conkling, who lost the presidential contest to Tilden last year. How far the mighty have fallen! Tilden fell into a hacking fit of laughter at the sight, and later Conkling could be heard screaming that Chester Arthur would defend his legacy as he was being taken away.</p>"
     } else {
         return "<h3>oh no something broke</h3><h1>OOPS!</h1>"
     }
