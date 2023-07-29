@@ -229,12 +229,6 @@ achList = {
         "As Ronald Reagan, win Minnesota.",
         "</table><br><b><em>1984</em></b><br><table>"
     ],
-    //1972b
-    "Wallaloha": [
-        "'Wallaloha'",
-        "As George Wallace, win Hawaii.",
-        "</table><br><b><em>1972b</em></b><br><table>"
-    ],
     //1936c
     "fixyourmod": [
         "Fix Your Damn Mod",
@@ -2373,12 +2367,6 @@ function divideElectoralVotesProp(e, t) {
                 // 'Well, Minnesota would've been nice' - As Ronald Reagan, win Minnesota.
                 if (!run.achievements["minnesotanice"] && e.candidate_last_name == "Reagan" && e.candidate_id == e.final_state_results[22].result[0].candidate && e.election_id==15 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 ) {
                     unlockAchievement(among, "minnesotanice", "", "<b>'Well, Minnesota would've been nice'</b>")
-                } else
-
-                 // ### 1972b ###
-                // 'Wallaloha' - As George Wallace, win Hawaii.
-                if (!run.achievements["Wallaloha"] && e.candidate_last_name == "Wallace" && e.candidate_id == e.final_state_results[9].result[0].candidate && e.election_id==4 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.candidate_image_url=="https://i.imgur.com/x7FALBW.png") {
-                    unlockAchievement(among, "Wallaloha", "", "<b>'Wallaloha'</b>")
                 } else
 
                 // ### 1936c ###
