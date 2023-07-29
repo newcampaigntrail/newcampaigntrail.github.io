@@ -2339,8 +2339,6 @@ function divideElectoralVotesProp(e, t) {
                     unlockAchievement(among, "trueKorea", "", "<b>Potato P.R.I.D.E</b>")
                 } else
 
-                ([200965, 200975, 200969].includes(campaignTrail_temp.player_answers[36]))
-                (["O'Malley", "O\u0027Malley for"].includes(campaignTrail_temp.candidate_last_name))
                 // ### 2016DNC ### 
                 // I Will Survive - As Clinton, achieve the 'I Will Survive' ending.
                  if (!run.achievements["IWillSurvive"] && ([200965, 200975, 200969].includes(campaignTrail_temp.player_answers[36])) && (["Clinton", "Clinton for"].includes(campaignTrail_temp.candidate_last_name)) && e.final_outcome=="win" && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.election_id==9) {
