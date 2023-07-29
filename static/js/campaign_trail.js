@@ -203,6 +203,20 @@ achList = {
         "Get the true ending to 2019NK.",
         "</table><br><h2>Mods</h2><br><b><em>2019NK</em></b><br><table>"
     ],
+    //2016DNC
+    "IWillSurvive": [
+        "'I Will Survive'",
+        "As Clinton, achieve the 'I Will Survive' ending.",
+        "</table><br><b><em>2016 Democratic Primaries</em></b><br><table>"
+    ],
+    "MaybeThisTimeItllWork": [
+        "Maybe This Time It'll Work",
+        "Mount a primary challenge against Obama, and then win the Democratic Nomination.",
+    ],
+    "MarylandersMission": [
+        "The Marylander's Mission",
+        "As Martin O'Malley, deny both Clinton and Sanders a majority and deadlock the convention.",
+    ],
     //2008
     "peoplesvictory": [
         "The People's President",
@@ -2329,6 +2343,24 @@ function divideElectoralVotesProp(e, t) {
                 if (!run.achievements["trueKorea"] && e.running_mate_last_name
                 =="<font color='#e58585'>Kim</font> <font color='#ffffff'>Il</font>-<font color='#85a6e5'>sung</font>" && e.final_outcome=="win" && e.election_id==20) {
                     unlockAchievement(among, "trueKorea", "", "<b>Potato P.R.I.D.E</b>")
+                } else
+
+                ([200965, 200975, 200969].includes(campaignTrail_temp.player_answers[36]))
+                (["O'Malley", "O\u0027Malley for"].includes(campaignTrail_temp.candidate_last_name))
+                // ### 2016DNC ### 
+                // I Will Survive - As Clinton, achieve the 'I Will Survive' ending.
+                 if (!run.achievements["IWillSurvive"] && ([200965, 200975, 200969].includes(campaignTrail_temp.player_answers[36])) && (["Clinton", "Clinton for"].includes(campaignTrail_temp.candidate_last_name)) && e.final_outcome=="win" && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.election_id==9) {
+                    unlockAchievement(among, "IWillSurvive", "", "<b>I Will Survive</b>")
+                } else
+
+                // Maybe This Time It'll Work - Mount a primary challenge against Obama, and then win the Democratic Nomination.
+                 if (!run.achievements["MaybeThisTimeItllWork"] && (["Sanders", "Sanders for"].includes(campaignTrail_temp.candidate_last_name)) && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_outcome=="win" && e.player_answers[0] == 3501 && e.election_id==9) {
+                    unlockAchievement(among, "MaybeThisTimeItllWork", "", "<b>Maybe This Time It'll Work</b>")
+                } else
+
+                // The Marylander's Mission - As Martin O'Malley, deny both Clinton and Sanders a majority and deadlock the convention.
+                 if (!run.achievements["MarylandersMission"] && (["O'Malley", "O\u0027Malley for"].includes(campaignTrail_temp.candidate_last_name)) && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && aa[0].electoral_votes < 2382 && aa[1].electoral_votes < 2382 && aa[2].electoral_votes < 2382 && e.election_id==9) {
+                    unlockAchievement(among, "MarylandersMission", "", "<b>The Marylander's Mission</b>")
                 } else
 
                 // ### 2008 ###
