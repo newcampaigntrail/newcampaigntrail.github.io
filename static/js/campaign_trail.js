@@ -2353,7 +2353,7 @@ function divideElectoralVotesProp(e, t) {
                 } else
 
                 // The Marylander's Mission - As Martin O'Malley, deny both Clinton and Sanders a majority and deadlock the convention.
-                 if (!run.achievements["MarylandersMission"] && (["O'Malley", "O\u0027Malley for"].includes(campaignTrail_temp.candidate_last_name)) && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && aa[0].electoral_votes < 2382 && aa[1].electoral_votes < 2382 && aa[2].electoral_votes < 2382 && e.election_id==9) {
+                 if (!run.achievements["MarylandersMission"] && (["O'Malley", "O\u0027Malley for"].includes(campaignTrail_temp.candidate_last_name)) && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_outcome=="tie" && e.election_id==9) {
                     unlockAchievement(among, "MarylandersMission", "", "<b>The Marylander's Mission</b>")
                 } else
 
@@ -2375,14 +2375,13 @@ function divideElectoralVotesProp(e, t) {
                     unlockAchievement(among, "fixyourmod", "", "<b>Fix Your Damn Mod</b>")
                 } else
 		
-		        // ### 1872 ###
+		// ### 1872 ###
                 // A Victory For All People - Die as Greeley, and win. Yes, on normal.
                 if (!run.achievements["AVictoryForAllPeople"] && e.candidate_last_name == "Greeley" && campaignTrail_temp.running_mate_last_name=="Sumner" && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_outcome=="win" && e.player_answers[34] == 8131 && e.election_id==20) {
                     unlockAchievement(among, "AVictoryForAllPeople", "", "<b>A Victory For All People</b>")
                 } else
 		
                 // ### 1876 ####
-                    
                 // A Truce, Not A Compromise
                 if (!run.achievements["ATruceNotACompromise"] && ((e.candidate_last_name == "Hayes" && e.final_overall_results[n].electoral_votes == 185 && e.player_answers[24] == 8090) || (e.candidate_last_name == "Tilden" && e.final_overall_results[n].electoral_votes == 184 && e.player_answers[24] == 8088))  && e.election_id==5) {
                     unlockAchievement(among, "ATruceNotACompromise", "", "<b>A Truce, Not A Compromise</b>")
