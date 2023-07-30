@@ -207,7 +207,7 @@ achList = {
     "IWillSurvive": [
         "'I Will Survive'",
         "As Clinton, achieve the 'I Will Survive' ending.",
-        "</table><br><b><em>2016 Democratic Primaries</em></b><br><table>"
+        "</table><br><b><em>2016 Democratic Primaries (Warning: Currently Broken)</em></b><br><table>"
     ],
     "MaybeThisTimeItllWork": [
         "Maybe This Time It'll Work",
