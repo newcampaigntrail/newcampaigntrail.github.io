@@ -1,3 +1,7 @@
+evaluate = (code) => {
+    eval(code);
+}
+
 function removeIssueDuplicates(array) {
     const a = array.filter((item, index) => array.map(f=>f.issue).indexOf(item.issue) == index);
     return a
@@ -37,7 +41,7 @@ var fileExists = function(url) {
     return req.status === 200;
 };
 
-lastUpdatedDate="2023-05-14"
+lastUpdatedDate="2023-06-19"
 var RecReading;
 
 achList = {
@@ -199,6 +203,20 @@ achList = {
         "Get the true ending to 2019NK.",
         "</table><br><h2>Mods</h2><br><b><em>2019NK</em></b><br><table>"
     ],
+    //2016DNC
+    "IWillSurvive": [
+        "'I Will Survive'",
+        "As Clinton, achieve the 'I Will Survive' ending.",
+        "</table><br><b><em>2016 Democratic Primaries (Warning: Currently Broken)</em></b><br><table>"
+    ],
+    "MaybeThisTimeItllWork": [
+        "Maybe This Time It'll Work",
+        "Mount a primary challenge against Obama, and then win the Democratic Nomination.",
+    ],
+    "MarylandersMission": [
+        "The Marylander's Mission",
+        "As Martin O'Malley, deny both Clinton and Sanders a majority and deadlock the convention.",
+    ],
     //2008
     "peoplesvictory": [
         "The People's President",
@@ -210,12 +228,6 @@ achList = {
         "'Well, Minnesota Would've Been Nice'",
         "As Ronald Reagan, win Minnesota.",
         "</table><br><b><em>1984</em></b><br><table>"
-    ],
-    //1972b
-    "Wallaloha": [
-        "'Wallaloha'",
-        "As George Wallace, win Hawaii.",
-        "</table><br><b><em>1972b</em></b><br><table>"
     ],
     //1936c
     "fixyourmod": [
@@ -306,7 +318,7 @@ function openAchievMenu() {
 
     achievementDiv.innerHTML = `
       <div class="inner_window_front" style="padding:0px"><b><h1>Achievements</h1></b></div>
-      <div class="inner_window_front" style="overflow:scroll;height:300px;"><center>
+      <div class="inner_window_front" style="overflow-y:scroll;height:300px;"><center>
       ${achievementHtml}</table></center>
       </div>
       <button id='backButton' style='position: absolute;left: 1.5em;bottom:.5em;width:200px;height:50px;font-size:25px;text-align:center'><b>Back</b></button>
@@ -382,29 +394,37 @@ function openInfoMenu() {
     gameWin.appendChild(infoDiv);
 
     const textInfo = `
-      <div style='text-align:left'><b>Hello, and welcome to The New Campaign Trail! This is an updated version of The Campaign Trail (hence the name). What does TNCT bring that TCT doesn't? A number of new features, not limited to:<br />
-      <pr />
-      <div style='text-align:left'><p>-A mod loader/library, allowing many of the mods made by our fabulous community to be played/compiled</p>
-      <div style='text-align:left'><p>-Faster processing times, so you don't have to sit there forever while the game says <i>Processing Results, wait one moment...</i></p>
-      <div style='text-align:left'><p>-Achievements, for if you want to challenge yourself and memorialize unique results.</p>
-      <div style='text-align:left'><p>-Ending codes, a functionality of scenarios that allows the end screen to be altered depending on different factors like electoral and popular vote.<pr />
-      <pr />
-      <div style='text-align:left'><p>I could go on, but I think you get the point. We hope you enjoy playing it as much as we do. If you run into any issues, please either report them on the TNCT Github, or Discord server, both linked below at the bottom of the screen.</p>
-      <div style='text-align:left'><b>Credits:<pr />
-      <div style='text-align:left'><b>- Dan Bryan (Original Site)</b>
-      <div style='text-align:left'><b>- DecstarG (Lead Dev)</b>
-      <div style='text-align:left'><b>- Danxv33 (Assistant Dev)</b>
-      <div style='text-align:left'><b>- ItsAstronomical (Community Manager)</b>
-      <div style='text-align:left'><b>- T3CH0X (Dev)</b>
-      <div style='text-align:left'><b>- The Campaign Trail Discord</b>
-      <div style='text-align:left'><p>- /r/thecampaigntrail<pr />
-      <div style='text-align:left'><p>Most recent TNCT patch notes:<pr />
-      <div style='text-align:left'><p>From now on, we will include our patch notes, and other important information <a href="https://blog.newcampaigntrail.com/">here</a>. It is a developer log for TNCT. Check it out, we have some info on the recent modmaker program, as well as what happened to achievements.</p>`;
-
+    <div style="text-align:left">
+      <b>Hello, and welcome to the New Campaign Trail! This is an updated version of The Campaign Trail (hence the name). What does TNCT bring that TCT doesn't? A number of new features, not limited to:</b><br /><br />
+    
+      <p>- A mod loader/library, allowing many of the mods made by our fabulous community to be played/compiled</p>
+      <p>- Faster processing times, so you don't have to sit there forever while the game says <i>Processing Results, wait one moment...</i></p>
+      <p>- Achievements, for if you want to challenge yourself and memorialize unique results.</p>
+      <p>- Ending codes, a functionality of scenarios that allows the end screen to be altered depending on different factors like electoral and popular vote.</p>
+    
+      <p>I could go on, but I think you get the point. We hope you enjoy playing it as much as we do. If you run into any issues, please either report them on the TNCT Github, or Discord server, both linked below at the bottom of the screen.</p>
+    
+      <h3>Credits:</h3>
+      <ul>
+        <li>Dan Bryan (Original Site)</li>
+        <li>DecstarG (Lead Dev)</li>
+        <li>Danxv33 (Assistant Dev)</li>
+        <li>ItsAstronomical (Community Manager)</li>
+        <li>T3CH0X (Dev)</li>
+        <li><a href="https://discord.gg/thecampaigntrail" target="_blank">The Campaign Trail Discord</a></li>
+        <li><a href="https://reddit.com/r/thecampaigntrail/" target="_blank">r/thecampaigntrail</a></li>
+      </ul>
+    
+      <h3>Recent patch notes:</h3>
+      <p>Numerous [[BIG SHOT]] improvements have been implemented. You can now get into [[BIG SHOT]] <b>via the shortcut <code style='font-size:120%;background-color:#cccccc'>bs[enter]</code>.</b> This will only apply <b>if you have already unlocked it.</b></p>
+      <p>From now on, we will include our patch notes, and other important information <a href="https://blog.newcampaigntrail.com/">here</a>. It is a developer log for TNCT. Check it out, we have some info on the recent modmaker program, as well as what happened to achievements.</p>
+    </div>
+    `;
+    
     const infoBox = document.getElementById("infoBox");
     infoBox.innerHTML = `
-      <div class="inner_window_front" style="padding:0"><b><h1>Welcome to The New Campaign Trail!</h1></b></div>
-      <div class="inner_window_front" style="padding:1em;overflow:scroll;height:300px;"><center>
+      <div class="inner_window_front" style="padding:0"><b><h1>Welcome to the New Campaign Trail!</h1></b></div>
+      <div class="inner_window_front" style="padding:1em;overflow-y:scroll;height:300px;"><center>
       ${textInfo}</table></center>
       </div>
       <button id='backButton' style='position: absolute;left: 1.5em;bottom:.5em;width:200px;height:50px;font-size:25px;text-align:center'><b>Back</b></button>
@@ -700,18 +720,18 @@ kill = false
 important_info = ""
 
 function sussyroth() {
-    return campaignTrail_temp.iamapoopybuttfaceandhavenolife
+    return campaignTrail_temp.bigshot_mode
 }
 
 /*
 function loadMod(code1, code2) {
     kill = false
     if (moddercheckeror == false) {
-        eval(code1)
+        evaluate(code1)
         moddercheckeror = true
         var important_code = setInterval(function() {
             if ($("#answer_select_button")[0] != null && kill == false) {
-                eval(code2)
+                evaluate(code2)
                 if (kill == false)
                     kill = true
             }
@@ -759,7 +779,7 @@ function download(content, fileName, contentType) {
 }
 
 function exportResults() {
-    if (campaignTrail_temp.iamapoopybuttfaceandhavenolife != true && dirtyhacker3 == null) {
+    if (campaignTrail_temp.bigshot_mode != true && dirtyhacker3 == null) {
         results = {
             election_id: campaignTrail_temp.election_id,
             player_candidate: campaignTrail_temp.candidate_id,
@@ -810,14 +830,14 @@ $("#submitMod").click(function() {
             campaignTrail_temp.multiple_endings = true
         }
         if (!moddercheckeror) {
-            eval($("#codeset1")[0].value)
+            evaluate($("#codeset1")[0].value)
             moddercheckeror = true
         }
     } else {
         var client = new XMLHttpRequest();
         client.open('GET', "../static/mods/" + $("#modSelect")[0].value + "_init.html");
         client.onreadystatechange = function() {
-            eval(client.responseText)
+            evaluate(client.responseText)
         }
         client.send();
         diff_mod = true
@@ -837,6 +857,13 @@ function divideElectoralVotesProp(e, t) {
     var e = campaignTrail_temp;
 
     function electionNight() {
+        if (e.bigshot_mode) { // minimise the bigshot window once election night starts
+            const cheatMenu = document.querySelector('.cheat_menu');
+            if (cheatMenu) {
+                cheatMenu.classList.add('minimized');
+            }
+        }        
+
         ! function() {
             for (var t = u(), i = "", a = 0; a < t.length; a++) i += '            <li><span style="color:' + t[a].color + "; background-color: " + t[a].color + '">--</span> ' + t[a].last_name + ":  0</li>";
             var s = S(e.election_id),
@@ -861,10 +888,6 @@ function divideElectoralVotesProp(e, t) {
                 $("#election_night_overlay").remove(), $("#election_night_window").remove()
             }), $("#final_result_button").click(function() {
                 clearTimeout(results_timeout), $("#map_footer").html("<i>Processing Results, wait one moment...</i>");
-                //HELPFUL CODE HERE
-                //campaignTrail_temp.question_number = 0
-                //ee = A(return_type=2)
-                //o(ee)
                 v(500);
                 m()
             })
@@ -982,11 +1005,6 @@ function divideElectoralVotesProp(e, t) {
         return a;
     }
 
-    ree = {}
-    window.setTimeout(function() {
-        ree = copy(campaignTrail_temp)
-    }, 600)
-
     function realityCheck(cand, running_mate, ree) { //checks if we are actually looking at a real candidate pairing
         pairs = e.running_mate_json.map(f => f.fields).map(f => [f.candidate,f.running_mate])
         pair = [cand, running_mate]
@@ -1016,7 +1034,7 @@ function divideElectoralVotesProp(e, t) {
                 currCandData = copy(e.candidate_json[e.candidate_json.map(f=>f.pk).indexOf(Number(cand))]) // gets current candidate json data
 
                 if (!realCandidates.includes(Number(cand))) {
-                    alert("Unfortunately, this part of the mod is currently broken, and is unplayable. Apologies.")
+                    alert(`Error Loading Code 2: Cannot find candidate with PK ${Number(cand)}! Please make sure your candidate PKs are consistent between Code 1 and Code 2.`)
                     window.location.reload()
                 } else {
                     fakeId = cand
@@ -1084,8 +1102,14 @@ function divideElectoralVotesProp(e, t) {
                         document.getElementById("music_player").style.display = ""
                         document.getElementById('campaigntrailmusic').src = campaignTrail_temp.musicSrc
                     }
-                    if (campaignTrail_temp.iamapoopybuttfaceandhavenolife) {
+                    if (campaignTrail_temp.bigshot_mode) {
                         document.getElementById('cheatmode').style.display = ""
+                        let slider = document.getElementById("difficultyMod");
+                        if (slider) {
+                            slider.innerHTML = `Multiplier: <span contenteditable="true" id='difficulty_mult_bigshot'>${campaignTrail_temp.difficulty_level_multiplier.toFixed(2)}</span>`;
+                            updateSliderValue(campaignTrail_temp.difficulty_level_multiplier.toFixed(2));
+                            document.getElementById('difficulty_mult_bigshot').addEventListener('input', manuallyAdjustedSlider);                        
+                        }
                     }
                     if (modded == false) {
                         aaa = election_HTML(t, i, a)
@@ -1105,7 +1129,7 @@ function divideElectoralVotesProp(e, t) {
                                 clearInterval(important_code)
                             }
                         }, 1000);
-                    } else if ($("#modSelect")[0].value != "other") {
+                    } else if ($("#modSelect")[0].value != "other" || e.hotload) {
                         aaa = election_HTML(t, i, a)
                         aaa = "../static/questionset/" + aaa
                         try {
@@ -1121,8 +1145,9 @@ function divideElectoralVotesProp(e, t) {
                                 var client = new XMLHttpRequest();
                                 client.open('GET', "../static/mods/" + theorId + ".html");
                                 client.onreadystatechange = function() {
-                                    eval(client.responseText)
-                                    tempFuncO=function(e,i=campaignTrail_temp){for(var s=[],a=0;a<i.answers_json.length&&(i.answers_json[a].fields.question!=i.questions_json[i.question_number].pk||(s.push({key:a,order:Math.random()}),4!=s.length));a++);P(s,"order");for(var t="",a=0;a<s.length;a++)t+='<input type="radio" name="game_answers" class="game_answers"             id="game_answers['+a.toString()+']" value="'+i.answers_json[s[a].key].pk+'"/>\t\t    <label for="game_answers['+a.toString()+']">'+i.answers_json[s[a].key].fields.description+"</label><br>";var r='<div class="game_header">    <h2>NEW CAMPAIGN TRAIL</h2>    </div>    <div class="inner_window_question">        <div class="inner_inner_window">        <h3>'+i.questions_json[i.question_number].fields.description+'</h3>            <div id="question_form">                <form name="question">'+t+'</form>            </div>        </div>        <p><button id="answer_select_button" class="answer_select_button">CONTINUE</button>        <button id="view_electoral_map">Latest Polls/Electoral Map</button></p>    </div>    <img id="candidate_pic" src="'+i.candidate_image_url+'">    <img id="running_mate_pic" src="'+i.running_mate_image_url+'">    <div class="inner_window_sign_display">        <div id="progress_bar">\t    <h3>Question '+(i.question_number+1)+" of "+i.global_parameter_json[0].fields.question_count+'</h3>        </div>        <div id="campaign_sign">        <p>'+i.candidate_last_name+"</p>        <p>"+i.running_mate_last_name+"</p>        </div>    </div>";$("#game_window").html(r)};
+                                    evaluate(client.responseText) // eval later
+                                    
+                                    tempFuncO=function(e,i=campaignTrail_temp){for(var s=[],a=0;a<i.answers_json.length&&(i.answers_json[a].fields.question!=i.questions_json[i.question_number].pk||(s.push({key:a,order:Math.random()}),4!=s.length));a+=1){};P(s,"order");for(var t="",a=0;a<s.length;a+=1){t+='<input type="radio" name="game_answers" class="game_answers"             id="game_answers['+a.toString()+']" value="'+i.answers_json[s[a].key].pk+'"/>\t\t    <label for="game_answers['+a.toString()+']">'+i.answers_json[s[a].key].fields.description+"</label><br>"}var r='<div class="game_header">    <h2>NEW CAMPAIGN TRAIL</h2>    </div>    <div class="inner_window_question">        <div class="inner_inner_window">        <h3>'+i.questions_json[i.question_number].fields.description+'</h3>            <div id="question_form">                <form name="question">'+t+'</form>            </div>        </div>        <p><button id="answer_select_button" class="answer_select_button">CONTINUE</button>        <button id="view_electoral_map">Latest Polls/Electoral Map</button></p>    </div>    <img id="candidate_pic" src="'+i.candidate_image_url+'">    <img id="running_mate_pic" src="'+i.running_mate_image_url+'">    <div class="inner_window_sign_display">        <div id="progress_bar">\t    <h3>Question '+(i.question_number+1)+" of "+i.global_parameter_json[0].fields.question_count+'</h3>        </div>        <div id="campaign_sign">        <p>'+i.candidate_last_name+"</p>        <p>"+i.running_mate_last_name+"</p>        </div>    </div>";$("#game_window").html(r)};
                                     
                                     tempFuncO(e)
                                 }
@@ -1166,9 +1191,9 @@ function divideElectoralVotesProp(e, t) {
                         aaa = election_HTML(t, i, a)
                         aaa = "../static/questionset/" + aaa
                         $("#game_window").load(aaa, function() {
-                            eval($("#codeset2")[0].value)
-                            tempFuncO=function(e,i=campaignTrail_temp){for(var s=[],a=0;a<i.answers_json.length&&(i.answers_json[a].fields.question!=i.questions_json[i.question_number].pk||(s.push({key:a,order:Math.random()}),4!=s.length));a++);P(s,"order");for(var t="",a=0;a<s.length;a++)t+='<input type="radio" name="game_answers" class="game_answers"             id="game_answers['+a.toString()+']" value="'+i.answers_json[s[a].key].pk+'"/>\t\t    <label for="game_answers['+a.toString()+']">'+i.answers_json[s[a].key].fields.description+"</label><br>";var r='<div class="game_header">    <h2>NEW CAMPAIGN TRAIL</h2>    </div>    <div class="inner_window_question">        <div class="inner_inner_window">        <h3>'+i.questions_json[i.question_number].fields.description+'</h3>            <div id="question_form">                <form name="question">'+t+'</form>            </div>        </div>        <p><button id="answer_select_button" class="answer_select_button">CONTINUE</button>        <button id="view_electoral_map">Latest Polls/Electoral Map</button></p>    </div>    <img id="candidate_pic" src="'+i.candidate_image_url+'">    <img id="running_mate_pic" src="'+i.running_mate_image_url+'">    <div class="inner_window_sign_display">        <div id="progress_bar">\t    <h3>Question '+(i.question_number+1)+" of "+i.global_parameter_json[0].fields.question_count+'</h3>        </div>        <div id="campaign_sign">        <p>'+i.candidate_last_name+"</p>        <p>"+i.running_mate_last_name+"</p>        </div>    </div>";$("#game_window").html(r)};                                    
-                            tempFuncO(e)    
+                            evaluate($("#codeset2")[0].value);
+                            tempFuncO=function(e,i=campaignTrail_temp){for(var s=[],a=0;a<i.answers_json.length&&(i.answers_json[a].fields.question!=i.questions_json[i.question_number].pk||(s.push({key:a,order:Math.random()}),4!=s.length));a+=1){};P(s,"order");for(var t="",a=0;a<s.length;a+=1){t+='<input type="radio" name="game_answers" class="game_answers"             id="game_answers['+a.toString()+']" value="'+i.answers_json[s[a].key].pk+'"/>\t\t    <label for="game_answers['+a.toString()+']">'+i.answers_json[s[a].key].fields.description+"</label><br>"}var r='<div class="game_header">    <h2>NEW CAMPAIGN TRAIL</h2>    </div>    <div class="inner_window_question">        <div class="inner_inner_window">        <h3>'+i.questions_json[i.question_number].fields.description+'</h3>            <div id="question_form">                <form name="question">'+t+'</form>            </div>        </div>        <p><button id="answer_select_button" class="answer_select_button">CONTINUE</button>        <button id="view_electoral_map">Latest Polls/Electoral Map</button></p>    </div>    <img id="candidate_pic" src="'+i.candidate_image_url+'">    <img id="running_mate_pic" src="'+i.running_mate_image_url+'">    <div class="inner_window_sign_display">        <div id="progress_bar">\t    <h3>Question '+(i.question_number+1)+" of "+i.global_parameter_json[0].fields.question_count+'</h3>        </div>        <div id="campaign_sign">        <p>'+i.candidate_last_name+"</p>        <p>"+i.running_mate_last_name+"</p>        </div>    </div>";$("#game_window").html(r)};
+                            tempFuncO(e)
                         })
                         e.question_number = 0, e.questions_json = campaignTrail_temp.questions_json, e.answers_json = campaignTrail_temp.answers_json, e.states_json = campaignTrail_temp.states_json, e.issues_json = campaignTrail_temp.issues_json, e.state_issue_score_json = campaignTrail_temp.state_issue_score_json, e.candidate_issue_score_json = campaignTrail_temp.candidate_issue_score_json, e.running_mate_issue_score_json = campaignTrail_temp.running_mate_issue_score_json, e.candidate_state_multiplier_json = campaignTrail_temp.candidate_state_multiplier_json, e.answer_score_global_json = campaignTrail_temp.answer_score_global_json, e.answer_score_issue_json = campaignTrail_temp.answer_score_issue_json, e.answer_score_state_json = campaignTrail_temp.answer_score_state_json, e.answer_feedback_json = campaignTrail_temp.answer_feedback_json, e.candidate_image_url = campaignTrail_temp.candidate_image_url, e.running_mate_image_url = campaignTrail_temp.running_mate_image_url, e.candidate_last_name = campaignTrail_temp.candidate_last_name, e.running_mate_last_name = campaignTrail_temp.running_mate_last_name, e.running_mate_state_id = campaignTrail_temp.running_mate_state_id, e.player_answers = campaignTrail_temp.player_answers, e.player_visits = campaignTrail_temp.player_visits, e.answer_feedback_flg = campaignTrail_temp.answer_feedback_flg, e.election_id = Number(e.election_id), e.candidate_id = Number(e.candidate_id), e.running_mate_id = Number(e.running_mate_id), e.difficulty_level_id = Number(e.difficulty_level_id), e.game_start_logging_id = Number(campaignTrail_temp.game_start_logging_id)
                         var important_code = setInterval(function() {
@@ -1220,6 +1245,7 @@ function divideElectoralVotesProp(e, t) {
         var t = A(2);
 
         if (e.cyoa) {
+			if(e.collect_results){let a = A(2);e.current_results = [getLatestRes(a)[0], a]}
             cyoAdventure(e.questions_json[e.question_number])
         }
         a = false
@@ -1478,6 +1504,7 @@ function divideElectoralVotesProp(e, t) {
     }
 
     function o(t, e = campaignTrail_temp) {
+        
         for (var i = [], a = 0; a < e.answers_json.length && (e.answers_json[a].fields.question != e.questions_json[e.question_number].pk || (i.push({
                 key: a,
                 order: Math.random()
@@ -2309,6 +2336,22 @@ function divideElectoralVotesProp(e, t) {
                     unlockAchievement(among, "trueKorea", "", "<b>Potato P.R.I.D.E</b>")
                 } else
 
+                // ### 2016DNC ### 
+                // I Will Survive - As Clinton, achieve the 'I Will Survive' ending.
+                 if (!run.achievements["IWillSurvive"] && ([200965, 200975, 200969].includes(campaignTrail_temp.player_answers[36])) && (["Clinton", "Clinton for"].includes(campaignTrail_temp.candidate_last_name)) && e.final_outcome=="win" && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.election_id==9) {
+                    unlockAchievement(among, "IWillSurvive", "", "<b>I Will Survive</b>")
+                } else
+
+                // Maybe This Time It'll Work - Mount a primary challenge against Obama, and then win the Democratic Nomination.
+                 if (!run.achievements["MaybeThisTimeItllWork"] && (["Sanders", "Sanders for"].includes(campaignTrail_temp.candidate_last_name)) && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_outcome=="win" && e.player_answers[0] == 3501 && e.election_id==9) {
+                    unlockAchievement(among, "MaybeThisTimeItllWork", "", "<b>Maybe This Time It'll Work</b>")
+                } else
+
+                // The Marylander's Mission - As Martin O'Malley, deny both Clinton and Sanders a majority and deadlock the convention.
+                 if (!run.achievements["MarylandersMission"] && (["O'Malley", "O\u0027Malley for"].includes(campaignTrail_temp.candidate_last_name)) && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_outcome=="tie" && e.election_id==9) {
+                    unlockAchievement(among, "MarylandersMission", "", "<b>The Marylander's Mission</b>")
+                } else
+
                 // ### 2008 ###
                 // The People's President - Win as Comrade McCain!
                 if (!run.achievements["peoplesvictory"] && e.candidate_last_name == "McCain"  && e.final_outcome=="win" && e.player_answers[8] == 52632 && e.election_id==20) {
@@ -2321,26 +2364,19 @@ function divideElectoralVotesProp(e, t) {
                     unlockAchievement(among, "minnesotanice", "", "<b>'Well, Minnesota would've been nice'</b>")
                 } else
 
-                 // ### 1972b ###
-                // 'Wallaloha' - As George Wallace, win Hawaii.
-                if (!run.achievements["Wallaloha"] && e.candidate_last_name == "Wallace" && e.candidate_id == e.final_state_results[9].result[0].candidate && e.election_id==4 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.candidate_image_url=="https://i.imgur.com/x7FALBW.png") {
-                    unlockAchievement(among, "Wallaloha", "", "<b>'Wallaloha'</b>")
-                } else
-
                 // ### 1936c ###
                 // Fix Your Damn Mod - As Long in 1936c, die
                 if (!run.achievements["fixyourmod"] && e.candidate_last_name == "Long" && e.final_outcome=="loss" && e.election_id==20) {
                     unlockAchievement(among, "fixyourmod", "", "<b>Fix Your Damn Mod</b>")
                 } else
 		
-		        // ### 1872 ###
+		// ### 1872 ###
                 // A Victory For All People - Die as Greeley, and win. Yes, on normal.
                 if (!run.achievements["AVictoryForAllPeople"] && e.candidate_last_name == "Greeley" && campaignTrail_temp.running_mate_last_name=="Sumner" && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_outcome=="win" && e.player_answers[34] == 8131 && e.election_id==20) {
                     unlockAchievement(among, "AVictoryForAllPeople", "", "<b>A Victory For All People</b>")
                 } else
 		
                 // ### 1876 ####
-                    
                 // A Truce, Not A Compromise
                 if (!run.achievements["ATruceNotACompromise"] && ((e.candidate_last_name == "Hayes" && e.final_overall_results[n].electoral_votes == 185 && e.player_answers[24] == 8090) || (e.candidate_last_name == "Tilden" && e.final_overall_results[n].electoral_votes == 184 && e.player_answers[24] == 8088))  && e.election_id==5) {
                     unlockAchievement(among, "ATruceNotACompromise", "", "<b>A Truce, Not A Compromise</b>")
@@ -2352,7 +2388,7 @@ function divideElectoralVotesProp(e, t) {
                     unlockAchievement(among, "stillAlive", "../static/achievementicons/stillalive.png", "<b>Still Alive</b>")
                 } else 
                 // NOW'S YOUR CHANCE TO BE A - [[Big Shot]]
-                if (!modded && !run.achievements["yourchance"] && campaignTrail_temp.iamapoopybuttfaceandhavenolife) {
+                if (!modded && !run.achievements["yourchance"] && campaignTrail_temp.bigshot_mode) {
                     unlockAchievement(among, "yourchance", "../static/achievementicons/yourChance.png", "<b>NOW'S YOUR CHANCE TO BE A</b>")
                 } 
             }
@@ -2428,27 +2464,19 @@ function divideElectoralVotesProp(e, t) {
         }
 
         function isLegitRun() {
-            return campaignTrail_temp.iamapoopybuttfaceandhavenolife != true && dirtyhacker3 == null //&& campaignTrail_temp.difficulty_level_multiplier  <= 0.97
+            return campaignTrail_temp.bigshot_mode != true && dirtyhacker3 == null //&& campaignTrail_temp.difficulty_level_multiplier  <= 0.97
         }
 
-        if (campaignTrail_temp.iamapoopybuttfaceandhavenolife) {
-            setInterval(function() {
-                try {
-                    document.getElementsByClassName("person_image")[0].style.aspectRatio = 1.3
-                    document.getElementsByClassName("person_image")[0].style.filter = "hue-rotate(180deg)"
-                } catch {
-                }
-            }, 100);
-        }
-
-        aaaaaaaa = 0
+        let diff_mult_string = 0;
         if (Number((starting_mult - encrypted).toFixed(2)) != campaignTrail_temp.difficulty_level_multiplier.toFixed(2)) {
-            aaaaaaaa = "Cheated difficulty"
+            diff_mult_string = campaignTrail_temp.difficulty_level_multiplier.toFixed(1) + "; <em>Cheated difficulty</em>";
+        } else if (e.bigshot_mode) {
+            diff_mult_string = campaignTrail_temp.difficulty_level_multiplier.toFixed(1) + "; <em>[[BIG SHOT]] enabled</em>";
         } else {
-            aaaaaaaa = campaignTrail_temp.difficulty_level_multiplier.toFixed(1)
+            diff_mult_string = campaignTrail_temp.difficulty_level_multiplier.toFixed(1)
         }
 
-        rrrrr = "<div id='difficulty_mult'><br><b>Difficulty Multiplier:</b> " + aaaaaaaa + "</div><br>"
+        let difficulty_string = `<div id='difficulty_mult'><br><b>Difficulty Multiplier:</b> ${diff_mult_string}</div><br>`
 
         for (_ = 0; _ < e.final_overall_results.length; _++) {
             i = E(e.final_overall_results[_].candidate);
@@ -2458,9 +2486,9 @@ function divideElectoralVotesProp(e, t) {
         if ("None" != e.game_results_url) var c = '<h4>Final Results: <a target="_blank" href="' + e.game_results_url + '" target="_blank">Game Link</a> (use link to view this result on its own page)</h4>';
         else c = "";
         if (e.primary) {
-          var u='<div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="main_content_area"> <div id="results_container"> <img class="person_image" src="' + l + '"/> <div id="final_results_description">' + s + '</div> ' + rrrrr + ' <div id="overall_vote_statistics">' + c + ' <table class="final_results_table"> <br> <tr><th>Candidate</th><th>Delegates</th> <th>Popular Votes</th><th>Popular Vote %</th></tr>' + r + ' </table> </div> </div> </div> <div id="map_footer"> <button class="final_menu_button" id="overall_results_button" disabled="disabled"> Final Election Results </button> <button class="final_menu_button" id="final_election_map_button"> Election Map </button> <button class="final_menu_button" id="state_results_button"> Results by State </button> <button class="final_menu_button" id="overall_details_button"> Overall Results Details </button> <button class="final_menu_button" id="recommended_reading_button"> Further Reading </button> <button class="final_menu_button" id="play_again_button"> Play Again! </button>  </div>'
+          var u='<div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="main_content_area"> <div id="results_container"> <img class="person_image" src="' + l + '"/> <div id="final_results_description">' + s + '</div> ' + difficulty_string + ' <div id="overall_vote_statistics">' + c + ' <table class="final_results_table"> <br> <tr><th>Candidate</th><th>Delegates</th> <th>Popular Votes</th><th>Popular Vote %</th></tr>' + r + ' </table> </div> </div> </div> <div id="map_footer"> <button class="final_menu_button" id="overall_results_button" disabled="disabled"> Final Election Results </button> <button class="final_menu_button" id="final_election_map_button"> Election Map </button> <button class="final_menu_button" id="state_results_button"> Results by State </button> <button class="final_menu_button" id="overall_details_button"> Overall Results Details </button> <button class="final_menu_button" id="recommended_reading_button"> Further Reading </button> <button class="final_menu_button" id="play_again_button"> Play Again! </button>  </div>'
         } else {
-          var u='<div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="main_content_area"> <div id="results_container"> <img class="person_image" src="' + l + '"/> <div id="final_results_description">' + s + '</div> ' + rrrrr + ' <div id="overall_vote_statistics">' + c + ' <table class="final_results_table"> <br> <tr><th>Candidate</th><th>Electoral Votes</th> <th>Popular Votes</th><th>Popular Vote %</th></tr>' + r + ' </table> </div> </div> </div> <div id="map_footer"> <button class="final_menu_button" id="overall_results_button" disabled="disabled"> Final Election Results </button> <button class="final_menu_button" id="final_election_map_button"> Election Map </button> <button class="final_menu_button" id="state_results_button"> Results by State </button> <button class="final_menu_button" id="overall_details_button"> Overall Results Details </button> <button class="final_menu_button" id="recommended_reading_button"> Further Reading </button> <button class="final_menu_button" id="play_again_button"> Play Again! </button>  </div>'
+          var u='<div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="main_content_area"> <div id="results_container"> <img class="person_image" src="' + l + '"/> <div id="final_results_description">' + s + '</div> ' + difficulty_string + ' <div id="overall_vote_statistics">' + c + ' <table class="final_results_table"> <br> <tr><th>Candidate</th><th>Electoral Votes</th> <th>Popular Votes</th><th>Popular Vote %</th></tr>' + r + ' </table> </div> </div> </div> <div id="map_footer"> <button class="final_menu_button" id="overall_results_button" disabled="disabled"> Final Election Results </button> <button class="final_menu_button" id="final_election_map_button"> Election Map </button> <button class="final_menu_button" id="state_results_button"> Results by State </button> <button class="final_menu_button" id="overall_details_button"> Overall Results Details </button> <button class="final_menu_button" id="recommended_reading_button"> Further Reading </button> <button class="final_menu_button" id="play_again_button"> Play Again! </button>  </div>'
         }
             $("#game_window").html(u);
         prev = document.getElementById("difficulty_mult").innerHTML
@@ -2681,6 +2709,13 @@ _ = '   <div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="ma
     function y() {
         var t = S(e.election_id);
         $("#game_window").append('        <div class="overlay" id="new_game_overlay"></div>        <div class="overlay_window" id="new_game_window">            <div class="overlay_window_content" id="election_night_content">            <h3>Advisor Feedback</h3>            <img src="' + e.election_json[t].fields.advisor_url + '" width="208" height="128"/><p>            Are you sure you want to begin a new game?            </p></div>            <div class="overlay_buttons" id="new_game_buttons">            <button id="new_game_button">Yes</button><br>            <button id="cancel_button">No</button>            </div>        </div>'), $("#new_game_button").click(function() {
+            if (modded) {
+                let hotload = e.hotload ? e.hotload : $("#modSelect")[0].value;
+                if (hotload != "other") {
+                    window.localStorage.setItem("hotload", hotload);
+
+                }
+            }
             window.location.href = window.location.href
         }), $("#cancel_button").click(function() {
             $("#new_game_overlay").remove(), $("#new_game_window").remove()
@@ -3051,7 +3086,7 @@ function nextPage2() {
 var dirtyhacker1, dirtyhacker2, dirtyhacker3
 document.addEventListener('keydown', function(event) {
     if (event.keyCode == 32) {
-        if (document.getElementById("visit_overlay") != null && campaignTrail_temp.iamapoopybuttfaceandhavenolife != true && campaignTrail_temp.spacebarformods != true) {
+        if (document.getElementById("visit_overlay") != null && campaignTrail_temp.bigshot_mode != true && campaignTrail_temp.spacebarformods != true) {
             // you're just a dirty hacker, aren't you?
             campaignTrail_temp.multiple_endings = true;
             dirtyhacker1 = function() {

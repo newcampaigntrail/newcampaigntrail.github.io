@@ -1,0 +1,320 @@
+/*
+ * Mod Title: 1968TFC
+ * Mod Author: kenshii
+ * Mod Version: 1
+ * Mod Description: Reagan wins the Republican nomination in 1968 over Nelson Rockefeller (Nixon doesn’t run), Humphrey is still the Dem nominee.
+ * 
+ * Coding License: Apache License 2.0
+ * Writing License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+ * 
+ * For the coding in this mod, I hereby release the code under the terms and conditions of the Apache License 2.0. The full text of the license can be found at:
+ * https://choosealicense.com/licenses/apache-2.0/
+ * 
+ * For the writing in this mod, including documentation, text files, and other non-software written works, I hereby release the content under the terms and conditions of the Creative Commons Attribution 4.0 International (CC BY 4.0) license. The full text of the license can be found at:
+ * https://creativecommons.org/licenses/by/4.0/legalcode
+ * 
+ * By using, distributing, or modifying this mod, you agree to abide by the terms and conditions of both the Apache License 2.0 and the Creative Commons Attribution 4.0 International (CC BY 4.0) license.
+*/
+
+e = campaignTrail_temp;
+if (!e.init) {
+e.init = true;
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#0056d6";
+
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#ff8648";
+
+
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+
+
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+
+$(".container")[0].style.backgroundColor = "#930301";
+
+
+document.getElementById("header").src = "https://media.discordapp.net/attachments/818130397706846242/1121514426462384218/image.png";
+
+
+document.body.background = "https://i.imgur.com/2I5wDs5.png ";
+
+
+e.election_json = [{"model":"campaign_trail.election","pk":4,"fields":{"year":1968,"summary":"<p>The United States of America enters the 1968 election with a tinge of fear and uncertainty. The Vietnam War is still raging, and protests are ever mounting. With assassinations of key American icons such as Robert Kennedy and Martin Luther King Jr., chaos is brewing in America’s streets. Inflation is high and crime rates are higher. But, come January of 1969, only one person can lead the nation through the storm clouds.<br><br><button onclick='next0()'>The Candidates</button></p>","image_url":"https://i.imgur.com/z5KUOiT.png","winning_electoral_vote_number":270,"advisor_url":"https://media.discordapp.net/attachments/1112957441588596736/1128153848813469757/Untitled230_20230622134121.png","recommended_reading":"<ul>\n<li><a href=https://www.chicagotribune.com/opinion/editorials/ct-edit-chicago-tribune-biden-endorsement-20200925-lnyxsb5qvrftnjjmj3rnzj33jy-story.html>Our Case For Joe Biden</a></li>\n<li><a href=https://nationalinterest.org/feature/case-trump-166808>The Case For Trump</a></li>\n<li><a href=https://www.npr.org/2020/11/18/935730100/how-biden-won-ramping-up-the-base-and-expanding-margins-in-the-suburbs>How Biden Won: Ramping Up The Base And Expanding Margins In The Suburbs</a></li>\n<li><a href=https://www.prospectmagazine.co.uk/politics/donald-trump-joe-biden-us-election-almost-win-votes-concede>Why Did Trump Almost Win?</a></li>\n<li><a href=https://www.hoover.org/research/no-evidence-voter-fraud-guide-statistical-claims-about-2020-election>No Evidence For Voter Fraud: A Guide To Statistical Claims About The 2020 Election</a></li>\n</ul>","has_visits":1,"no_electoral_majority_image":"../static/images/2012-no-majority.jpg"}}];e.temp_election_list = [{"id":4,"year":1968,"is_premium":0,"display_year":"1968TFC"}];e.credits = "raygun stan and coded by u/Tom1923<br><br><em>Ending system & soundtrack from 2000N</em>";e.global_parameter_json = [{"model":"campaign_trail.global_parameter","pk":1,"fields":{"vote_variable":1.125,"max_swing":0.12,"start_point":0.94,"candidate_issue_weight":10,"running_mate_issue_weight":3,"issue_stance_1_max":-0.71,"issue_stance_2_max":-0.3,"issue_stance_3_max":-0.125,"issue_stance_4_max":0.125,"issue_stance_5_max":0.3,"issue_stance_6_max":0.71,"global_variance":0.01,"state_variance":0.005,"question_count":25,"default_map_color_hex":"#C9C9C9","no_state_map_color_hex":"#999999"}}];e.candidate_json = [{"model":"campaign_trail.candidate","pk":23,"fields":{"first_name":"Ronald ","last_name":"Reagan","election":4,"party":"Republican Party","state":"California ","priority":1,"description":"Ronald Reagan is the incumbent Governor of California, being elected a short two years ago in 1966 over then-Governor Pat Brown. A conservative to the likes of Barry Goldwater, he was originally a New Deal Democrat, having been a popular Hollywood actor in the 1940s. Coming into the 1968 election, he was seen as true competition to Nelson Rockefeller, the incumbent Governor of New York and a liberal Republican. After losing the nomination to Richard Nixon in 1960 and Barry Goldwater in 1964, it was seen as Rockefeller’s time after Nixon said he wouldn’t run.<br><br>The candidacy of Reagan drew traction amongst the growing conservative wing of the GOP who opposed Rockefeller. With fierce campaigning from surrogates and himself, as well as pools of funding and his overall charismatic nature, he managed to beat Rockefeller at the convention. Now, he must enter the general election with a unified party behind him to defeat Hubert Humphrey and reclaim the presidency for the GOP. </div></div></div></div></div></div></div></div>","color_hex":"#ff1a16","secondary_color_hex":null,"is_active":1,"image_url":"https://media.discordapp.net/attachments/1056049447798312960/1121513271481086062/image.png","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":null,"candidate_score":1,"running_mate":false,"scrollable":true}},{"model":"campaign_trail.candidate","pk":24,"fields":{"first_name":"Hubert ","last_name":"Humphrey","election":4,"party":"Democratic Party","state":"Minnesota ","priority":1,"description":"(NOT YET PLAYABLE) Hubert Humphrey is the incumbent Vice President of the United States, being elected alongside President Lyndon Johnson in 1964. A New Deal liberal from Minnesota, Humphrey is a strong supporter of civil rights and labor unions. Before his ascension to the Vice Presidency, he served as Senator from Minnesota. <br><br>However, Humphrey certainly wasn’t the first choice of many Democrats. President Johnson was originally the frontrunner for renomination, but after nearly losing the New Hampshire primary, Johnson stated that he would no longer seek another term. To add to that, Robert Kennedy, brother of the late President John F. Kennedy, entered the race. After winning a few contests, Kennedy would be assassinated giving a speech at the Ambassador Hotel. <br><br>That meant Humphrey was the most mainstream and popular Democrat left, where he would earn the nomination at the tumultuous Democratic Convention in Chicago.</div></div></div></div></div></div></div></div>","color_hex":"#2b78ff","secondary_color_hex":null,"is_active":1,"image_url":"https://media.discordapp.net/attachments/1056049447798312960/1121515687999967354/image.png","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":null,"candidate_score":1,"running_mate":false,"scrollable":true}},{"model":"campaign_trail.candidate","pk":25,"fields":{"first_name":"Herbert E. ","last_name":"Munn","election":4,"party":"Prohibition Party","state":"Minnesota ","priority":1,"description":"Hubert Humphrey is the incumbent Vice President of the United States, being elected alongside President Lyndon Johnson in 1964. A New Deal liberal from Minnesota, Humphrey is a strong supporter of civil rights and labor unions. Before his ascension to the Vice Presidency, he served as Senator from Minnesota. <br><br>However, Humphrey certainly wasn’t the first choice of many Democrats. President Johnson was originally the frontrunner for renomination, but after nearly losing the New Hampshire primary, Johnson stated that he would no longer seek another term. To add to that, Robert Kennedy, brother of the late President John F. Kennedy, entered the race. After winning a few contests, Kennedy would be assassinated giving a speech at the Ambassador Hotel. <br><br>That meant Humphrey was the most mainstream and popular Democrat left, where he would earn the nomination at the tumultuous Democratic Convention in Chicago.</div></div></div></div></div></div></div></div>","color_hex":"#800080","secondary_color_hex":null,"is_active":0,"image_url":"https://media.discordapp.net/attachments/1056049447798312960/1121515687999967354/image.png","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":null,"candidate_score":1,"running_mate":false,"scrollable":true}},{"model":"campaign_trail.candidate","pk":1003,"fields":{"first_name":"George ","last_name":"Romney","election":4,"party":"Republican Party","state":"Michigan","priority":1,"description":"George Romney is the Governor of Michigan and a key moderate Republican that can serve to unite the party. He has been championed for his fiscal efforts in Michigan (although he introduced the state’s first income tax, which conservatives opposed). He would help in the Midwest, which has been reliably Democratic for most of the 1960s. His appeal to independents is also noted, and can definitely blunt the extremist label by your opponents. ","color_hex":"#b51a00","secondary_color_hex":null,"is_active":0,"image_url":"https://media.discordapp.net/attachments/1056049447798312960/1121518751226015884/image.png","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":"George Romney is the Governor of Michigan and a key moderate Republican that can serve to unite the party. He has been championed for his fiscal efforts in Michigan (although he introduced the state’s first income tax, which conservatives opposed). He would help in the Midwest, which has been reliably Democratic for most of the 1960s. His appeal to independents is also noted, and can definitely blunt the extremist label by your opponents. ","candidate_score":1,"running_mate":true,"scrollable":false,"partner":"0"}},{"model":"campaign_trail.candidate","pk":1004,"fields":{"first_name":"Nelson","last_name":"Rockefeller","election":4,"party":"Republican Party","state":"New York","priority":1,"description":"This probably isn’t your best choice, all things considered. <br><br>Nelson Rockefeller is the current Governor of New York and was your biggest opponent during the primaries. Originally the frontrunner, he was eventually defeated at the convention. Like Goldwater in 1964, beaten by a conservative. He will demand many concessions for an endorsement, let alone the VP spot. However, unlike Goldwater, he views you as more reasonable and less extreme. You will likely have to compromise on certain social and economic issues, such as a strong federal stance on civil rights and friendliness towards labor unions. <br><br>This pick would help liberals and moderates see you in a new light, but would hurt your standing amongst conservatives, depressing turnout of your biggest voting bloc. ","color_hex":"#b51a00","secondary_color_hex":null,"is_active":0,"image_url":"https://media.discordapp.net/attachments/1056049447798312960/1121518751913877614/image.png","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":"This probably isn’t your best choice, all things considered. <br><br>Nelson Rockefeller is the current Governor of New York and was your biggest opponent during the primaries. Originally the frontrunner, he was eventually defeated at the convention. Like Goldwater in 1964, beaten by a conservative. He will demand many concessions for an endorsement, let alone the VP spot. However, unlike Goldwater, he views you as more reasonable and less extreme. You will likely have to compromise on certain social and economic issues, such as a strong federal stance on civil rights and friendliness towards labor unions. <br><br>This pick would help liberals and moderates see you in a new light, but would hurt your standing amongst conservatives, depressing turnout of your biggest voting bloc.","candidate_score":1,"running_mate":true,"scrollable":true,"partner":"0"}},{"model":"campaign_trail.candidate","pk":1005,"fields":{"first_name":"Charles ","last_name":"Percy","election":4,"party":"Republican Party","state":"Illinois","priority":1,"description":"Charles Percy is a U.S Senator from Illinois, serving since 1967, and your personal preference for Vice President. Like you, he has limited political experience and could serve to label your ticket has establishment outsiders, for better or for worse. He is a moderate, and his home state of Illinois could provide you with a boost in the Midwest. However, he wouldn’t add anything to the ticket you don’t already have, due to his inexperience. He isn’t a terrible choice, but not necessarily a great one either.","color_hex":"#b51a00","secondary_color_hex":null,"is_active":0,"image_url":"https://i.imgur.com/9RZzJ2c.png","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":"<div style='overflow-y:scroll;height:200px;'><div style='overflow-y:scroll;height:200px;'>Charles Percy is a U.S Senator from Illinois, serving since 1967, and your personal preference for Vice President. Like you, he has limited political experience and could serve to label your ticket has establishment outsiders, for better or for worse. He is a moderate, and his home state of Illinois could provide you with a boost in the Midwest. However, he wouldn’t add anything to the ticket you don’t already have, due to his inexperience. He isn’t a terrible choice, but not necessarily a great one either. </div></div>","candidate_score":1,"running_mate":true,"scrollable":true,"partner":"0"}},{"model":"campaign_trail.candidate","pk":1006,"fields":{"first_name":"Henry ","last_name":"Jackson","election":4,"party":"Democratic Party","state":"Washington","priority":1,"description":"<div style='overflow-y:scroll;height:200px;'>Henry “Scoop” Jackson has been serving as U.S Senator from Washington since 1953. His long tenure has given him loads of experience that your administration can take advantage of if elected. He is quite hawkish, supporting the efforts to contain communism and the Soviet Union through military spending, which makes him similar to Reagan in that regard. He is also a supporter of the Vietnam War, much like yourself, which can only serve to upset your liberal base. However, he is still quite liberal on most everything else and can be palatable with your base. <br><br>Like you, he is a strong supporter of civil rights, labor, and welfare programs. His selection can help out west, which is Reagan’s home turf.  </div>","color_hex":"#0000ff","secondary_color_hex":null,"is_active":0,"image_url":"https://media.discordapp.net/attachments/1056049447798312960/1121520264052752495/image.png","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":"<div style='overflow-y:scroll;height:200px;'>Henry “Scoop” Jackson has been serving as U.S Senator from Washington since 1953. His long tenure has given him loads of experience that your administration can take advantage of if elected. He is quite hawkish, supporting the efforts to contain communism and the Soviet Union through military spending, which makes him similar to Reagan in that regard. He is also a supporter of the Vietnam War, much like yourself, which can only serve to upset your liberal base. However, he is still quite liberal on most everything else and can be palatable with your base. <br><br>Like you, he is a strong supporter of civil rights, labor, and welfare programs. His selection can help out west, which is Reagan’s home turf.  </div>","candidate_score":1,"running_mate":true,"scrollable":true,"partner":"1"}},{"model":"campaign_trail.candidate","pk":1007,"fields":{"first_name":"Edmund","last_name":"Muskie","election":4,"party":"Democratic Party","state":"Maine","priority":1,"description":"<div style='overflow-y:scroll;height:200px;'>Edmund Muskie has served as U.S Senator from Maine since 1959, garnering immense experience in that role. A standard New England Democrat, he can help wrangle away some Republican states in the region, or at the least improve margins considerably. <br><br>A devout environmentalist and staunch supporter of civil rights, he is a top choice by your liberal base, and your personal preference. He is also opposed to the Vietnam War, which may cause a little strife between you two, but his stance is also shared with your liberal base. </div>","color_hex":"#0000ff","secondary_color_hex":null,"is_active":0,"image_url":"https://media.discordapp.net/attachments/1056049447798312960/1121520264589611148/image.png","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":"<div style='overflow-y:scroll;height:200px;'>Edmund Muskie has served as U.S Senator from Maine since 1959, garnering immense experience in that role. A standard New England Democrat, he can help wrangle away some Republican states in the region, or at the least improve margins considerably. <br><br>A devout environmentalist and staunch supporter of civil rights, he is a top choice by your liberal base, and your personal preference. He is also opposed to the Vietnam War, which may cause a little strife between you two, but his stance is also shared with your liberal base. </div>","candidate_score":1,"running_mate":true,"scrollable":true,"partner":"1"}},{"model":"campaign_trail.candidate","pk":1008,"fields":{"first_name":"Dan ","last_name":"Moore","election":4,"party":"Democratic Party","state":"North Carolina ","priority":1,"description":"<div style='overflow-y:scroll;height:200px;'>Dan Moore is the Governor of North Carolina, serving since 1965. His inexperience contrasted with your years of experience isn’t exactly pretty. He probably isn’t the best choice if you want to make the experience claim against Reagan. <br><br>However, being from North Carolina, he can help compete in the South, which seems to be slipping away from Democratic grasp. With the consecutive nominations of two conservative Republicans in 1964 and now in 1968, this can help your ticket if you wish to have the slightest of chances in the South. </div>","color_hex":"#0000ff","secondary_color_hex":null,"is_active":0,"image_url":"https://media.discordapp.net/attachments/785700970091905035/1121603010037043232/IMG_8941.png","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":"<div style='overflow-y:scroll;height:200px;'>Dan Moore is the Governor of North Carolina, serving since 1965. His inexperience contrasted with your years of experience isn’t exactly pretty. He probably isn’t the best choice if you want to make the experience claim against Reagan. <br><br>However, being from North Carolina, he can help compete in the South, which seems to be slipping away from Democratic grasp. With the consecutive nominations of two conservative Republicans in 1964 and now in 1968, this can help your ticket if you wish to have the slightest of chances in the South. </div>","candidate_score":1,"running_mate":true,"scrollable":true,"partner":"1"}},{"model":"campaign_trail.candidate","pk":1009,"fields":{"first_name":"N'more ","last_name":"Alcohol","election":4,"party":"Prohibition","state":"North Carolina ","priority":1,"description":"<div style='overflow-y:scroll;height:200px;'>Dan Moore is the Governor of North Carolina, serving since 1965. His inexperience contrasted with your years of experience isn’t exactly pretty. He probably isn’t the best choice if you want to make the experience claim against Reagan. <br><br>However, being from North Carolina, he can help compete in the South, which seems to be slipping away from Democratic grasp. With the consecutive nominations of two conservative Republicans in 1964 and now in 1968, this can help your ticket if you wish to have the slightest of chances in the South. </div>","color_hex":"#0000ff","secondary_color_hex":null,"is_active":0,"image_url":"https://media.discordapp.net/attachments/785700970091905035/1121603010037043232/IMG_8941.png","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":"<div style='overflow-y:scroll;height:200px;'>NO MORE ALC-EY-HOL</div>","candidate_score":1,"running_mate":true,"scrollable":true,"partner":"1"}}];e.running_mate_json = [{"model":"campaign_trail.running_mate","pk":2001,"fields":{"candidate":23,"running_mate":1003}},{"model":"campaign_trail.running_mate","pk":2002,"fields":{"candidate":23,"running_mate":1004}},{"model":"campaign_trail.running_mate","pk":2003,"fields":{"candidate":23,"running_mate":1005}},{"model":"campaign_trail.running_mate","pk":2004,"fields":{"candidate":24,"running_mate":1006}},{"model":"campaign_trail.running_mate","pk":2005,"fields":{"candidate":24,"running_mate":1007}},{"model":"campaign_trail.running_mate","pk":2006,"fields":{"candidate":24,"running_mate":1008}},{"model":"campaign_trail.running_mate","pk":2006,"fields":{"candidate":25,"running_mate":1009}}];
+
+quotes = ["“if we are able to do so we cannot wait for changes in the moon or count on the opposition to destroy itself.” ~ Ronald Reagan", "“No government ever voluntarily reduces itself in size.” ~ Ronald Reagan", "“The best social program is a job.” ~ Ronald Reagan", "“Freedom is never more than one generation from extinction.” ~ Ronald Reagan"]
+customquote = quotes[Math.floor((Math.random() * quotes.length))]
+
+            next0 = function() {
+                const imageElement = document.querySelector('#election_image img');
+              imageElement.setAttribute('src', 'https://media.discordapp.net/attachments/785700970091905035/1121511689246998619/Untitled229_20230622133103.png');
+    text = "<p>Ronald Reagan is the incumbent Governor of California, having been elected in 1966. Although he is a relative newcomer to politics, his reach throughout the Republican Party cannot be ignored. After beating Nelson Rockefeller in the primaries, Reagan must unify his party and the nation, while wrestling attacks regarding his ideology and inexperience.</p><p>Hubert Humphrey is the incumbent Vice President of the United States, serving under President Lyndon Johnson. Humphrey must keep his “Happy Warrior” moniker alive by keeping liberals and moderates on his side. While he enjoys a small lead over Reagan, all isn’t well. His pro-war stance leaves much to be desired amongst liberals, but if cards are played correctly he can be the one sitting in the Oval Office.<br><br><button onclick='back0()'>Back</button></p>"
+    document.getElementById("election_summary").innerHTML = text
+}
+back0 = function() {
+     const imageElement = document.querySelector('#election_image img');
+              imageElement.setAttribute('src', 'https://i.imgur.com/z5KUOiT.png');
+    text = "<p>The United States of America enters the 1968 election with a tinge of fear and uncertainty. The Vietnam War is still raging, and protests are ever mounting. With assassinations of key American icons such as Robert Kennedy and Martin Luther King Jr., chaos is brewing in America’s streets. Inflation is high and crime rates are higher. But, come January of 1969, only one person can lead the nation through the storm clouds.<br><br><button onclick='next0()'>The Candidates</button></p>"
+    document.getElementById("election_summary").innerHTML = text
+}
+
+musicMode = () => {
+    // Initialise custom music
+  
+    $("#music_player")[0].children[0].style.display = "none"
+    $("#music_player")[0].children[1].style.display = "none"
+  
+    document.getElementById("modLoadReveal").style.display = "none"
+    document.getElementById("modloaddiv").style.display = "none"
+  
+    musicBox = document.getElementById("music_player")
+    musicBox.style.display = ""
+  
+    var trackSel;
+    e = campaignTrail_temp
+    e.selectedSoundtrack = 0
+  
+    toTime = (seconds) => {
+        var date = new Date(null);
+        date.setSeconds(seconds);
+        return date.toISOString().substr(11, 8);
+    }
+  
+    generateTime = () => {
+        // Get the audio element
+        var audio = document.getElementById("campaigntrailmusic");
+  
+        timeTracker = document.createElement("div");
+        timeTracker.style = `
+  text-align:left;
+  border-style:solid;
+  border-width:3px;
+  height:150px;
+  width:200px;
+  background-color:#999999;
+  float:right;
+  padding: 10px;
+  `
+        $("#trackSelParent")[0].prepend(timeTracker);
+        $("#trackSelParent")[0].prepend(document.createElement("br"));
+  
+        // Create a new element to display the current position of the audio
+        var positionDisplay = document.createElement("gg");
+        positionDisplay.id = "position-display";
+  
+        // Create a new slider element to change the time
+        var timeSlider = document.createElement("input");
+        timeSlider.type = "range";
+        timeSlider.min = 0;
+        timeSlider.max = 1;
+        timeSlider.step = 0.001;
+        timeSlider.value = 0;
+        timeSlider.style.width = "200px";
+        timeSlider.id = "time-slider";
+  
+        var pausePlay = document.createElement("button");
+        pausePlay.id = "position-display";
+        pausePlay.innerHTML = "<b>Pause</b>"
+        pausePlay.style.width = "100%";
+  
+  
+        pausePlay.addEventListener("click", event => {
+            event.preventDefault();
+            updatePositionDisplay();
+            let audio = document.getElementById("campaigntrailmusic");
+            if (audio.paused) {
+                audio.play();
+                event.target.innerHTML = "<b>Pause</b>";
+                return;
+            }
+            audio.pause();
+            event.target.innerHTML = "<b>Play</b>";
+            return;
+        })
+  
+        var volumeLabel = document.createElement("gg");
+        volumeLabel.id = "volume-label";
+        volumeLabel.innerHTML = "<br><b>Volume: </b>"
+  
+        var volumeSlider = document.createElement("input");
+        volumeSlider.type = "range";
+        volumeSlider.min = 0;
+        volumeSlider.max = 1;
+        volumeSlider.step = 0.001;
+        volumeSlider.value = 0;
+        volumeSlider.style.width = "200px";
+        volumeSlider.id = "volume-slider";
+  
+        volumeSlider.value = audio.volume;
+  
+        timeTracker.appendChild(pausePlay);
+        timeTracker.appendChild(document.createElement("br"));
+        timeTracker.appendChild(document.createElement("br"));
+        timeTracker.appendChild(positionDisplay);
+        timeTracker.appendChild(timeSlider);
+        timeTracker.appendChild(volumeLabel);
+        timeTracker.appendChild(volumeSlider);
+  
+        updatePositionDisplay();
+  
+        //for (let i = 0; i < 10; i++)
+        //timeTracker.append(document.createElement("br"));
+  
+  
+        // Function to update the position display
+        function updatePositionDisplay() {
+            positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+            timeSlider.value = audio.duration ? audio.currentTime / audio.duration : 0;
+        }
+  
+        // Function to change the time of the audio
+        function changeTime() {
+            positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+            audio.currentTime = timeSlider.value * audio.duration;
+        }
+  
+        updateVolume = event => {
+            audio.volume = event.target.value;
+        }
+  
+        // Update the position display and slider every second
+        setInterval(updatePositionDisplay, 1000);
+  
+        // Listen for changes to the time slider and change the time of the audio
+        timeSlider.addEventListener("input", changeTime);
+        volumeSlider.addEventListener("input", updateVolume)
+    }
+  
+    function newMusicPlayer() {
+        trackSel = document.createElement("div");
+        trackSel.id = "trackSelParent"
+        let z = `<br><br><br><br><br><br><br><br><br><br><div id='trackSel' style="text-align:left;border-style:solid;border-width:3px;overflow-y: scroll;overflow-x: hidden;height:200px; width:400px;background-color:#999999;float:right;">`
+        z += `<b><select id='selectSoundtrack'><option value='` + soundtracks[e.selectedSoundtrack].name + `'>` + soundtracks[e.selectedSoundtrack].name + "</option>"
+        for (i in soundtracks) {
+            if (soundtracks[e.selectedSoundtrack] != soundtracks[i]) {
+                z += `<option value='` + soundtracks[i].name + `'>` + soundtracks[i].name + `</option>`
+            }
+        }
+        z += `</select></b><br><br>`
+            // <label><input type="radio" name="option" value="option1">Option 1</label><br>
+        for (i in soundtracks[e.selectedSoundtrack].tracklist) {
+            let a = soundtracks[e.selectedSoundtrack].tracklist[i]
+            let b = `<label><input class="trackSelector" type="radio" name="trackSelector" value="` + i + `">` + a.name + `</label><br>`
+            z += b
+        }
+        z += "</div><br><br>"
+        trackSel.innerHTML = z
+  
+        // select correct song
+  
+        musicBox.appendChild(trackSel);
+        Array.from(document.getElementById("trackSel").children).filter(f => {
+            return f.tagName == "LABEL"
+        }).map(f => f.children[0])[0].checked = true
+  
+        // set soundtrack changer
+  
+        soundtrackSelector = document.getElementById("selectSoundtrack")
+        soundtrackSelector.onchange = function() {
+            for (i in soundtracks) {
+                if (soundtracks[i].name == soundtrackSelector.value) {
+                    e.selectedSoundtrack = i
+                    break
+                }
+            }
+            document.getElementById("trackSelParent").remove()
+            newMusicPlayer()
+        }
+  
+        var matches = document.querySelectorAll('.trackSelector');
+  
+        for (match in matches) {
+            matches[match].onchange = function() {
+                audio = $("#campaigntrailmusic")[0];
+                audio.src = soundtracks[e.selectedSoundtrack].tracklist[this.value].url
+                audio.currentTime = 0
+            }
+        }
+  
+        musicBox.children[2].loop = false
+        musicBox.children[2].src = soundtracks[e.selectedSoundtrack].tracklist[0].url
+  
+        musicBox.children[2].onended = function() {
+            console.log("next track")
+            let selected = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+            let newSel = clamp(selected + 1, soundtracks[e.selectedSoundtrack].tracklist.length - 1, 0)
+            let buttons = Array.from(document.getElementById("trackSel").children).filter(f => {
+                    return f.tagName == "LABEL"
+                }).map(f => f.children[0])
+                //let selectedIndex = buttons.map(f=>f.children[0]).map(f=>f.checked)
+            buttons[newSel].click()
+        }
+  
+        for (w = 0; w < 7; w++) {
+            document.getElementById("trackSelParent").appendChild(document.createElement("br"))
+        }
+  
+        generateTime();
+    }
+  
+    clamp = function(a, max, min, overflow = true) {
+        if (overflow) {
+            return a > max ? min : a < min ? max : a;
+        }
+        return a > max ? max : a < min ? min : a;
+    }
+  
+  
+    // Track list
+  
+    var soundtracks = {
+        0: {
+            name: "Rockin' with Reagan",
+            tracklist: [
+              {
+                "name": "Time Of The Season - The Zombies",
+                "url": "https://cdn.discordapp.com/attachments/197866582280503296/1128532257947267122/The_Zombies_-_Time_Of_The_Season_with_lyrics_official.mp3"
+              },
+              {
+                "name": "For What It's Worth - Buffalo Springfield",
+                "url": "https://cdn.discordapp.com/attachments/197866582280503296/1128532257565577226/Buffalo_Springfield_-_For_What_Its_Worth_Official_Audio.mp3"
+              },
+              {
+                "name": "California Dreamin' - The Mamas and the Papas",
+                "url": "https://cdn.discordapp.com/attachments/197866582280503296/1128532257062256650/The_Mamas__the_Papas_-_California_Dreamin.mp3"
+              },
+              {
+                "name": "Big iron - Marty Robbins",
+                "url": "https://cdn.discordapp.com/attachments/197866582280503296/1128436434412507228/Big_Iron.mp3"
+              },
+              {
+                "name": "House of the Rising Sun - The Animals",
+                "url": "https://cdn.discordapp.com/attachments/197866582280503296/1128532256743501834/House_Of_The_Rising_Sun.mp3"
+              },
+              {
+                "name": "Paint It Black - The Rolling Stones",
+                "url": "https://cdn.discordapp.com/attachments/197866582280503296/1128532256366006352/Paint_It_Black.mp3"
+              }
+          ]
+        }
+    }
+
+  
+    // Set up new music player
+  
+    newMusicPlayer()
+  
+
+}
+
+  $("#game_start").click((event) => {
+    event.preventDefault();
+    $("#election_id_button").click((event) => {
+        musicMode()
+
+        setInterval(changeFontColour, 200)
+  
+    })
+  })
+}

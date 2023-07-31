@@ -1,3 +1,10 @@
+nct_stuff.dynamicOverride = true;
+dynamicStyle.innerHTML = `
+.inner_window_w_desc {
+  background-color: #BFE6FF !important;
+}
+`;
+
 nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = ""
 nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = ""
 document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
@@ -438,9 +445,11 @@ e.difficulty_level_json = [{"model":"campaign_trail.difficulty_level","pk":4,"fi
 
 // disable cheats (yes, I know)
 
+const cheatMenu = document.querySelector('.cheat_menu');
+cheatMenu.classList.toggle('cheat_menu');
+
 disableCheats = () => {
   Array.from($("#cheatmode")[0].children).forEach(f=>f.remove());
 }
 
 disableCheats();
-
