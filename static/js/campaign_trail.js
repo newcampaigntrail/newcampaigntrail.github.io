@@ -10,7 +10,7 @@ function removeIssueDuplicates(array) {
 AdvisorFeedbackArr=[1,0]
 
 function dHondtAllocation(votes, seats, thresh = 0.15) {
-    let quotients = votes.splice();
+    let quotients = votes.splice()
     let allocations = []
     votes.forEach(function(){allocations.push(0)})
     let total_votes = votes.reduce((sum, value)=>sum+value)
@@ -21,10 +21,9 @@ function dHondtAllocation(votes, seats, thresh = 0.15) {
         for (let w = 0; w < votes.length; w++) {
             if (perc_votes[w] < thresh) {
                 quotients[w] = 0
+            } else {
+                quotients[w] = votes[w]/(allocations[w]+1)
             }
-            else {
-              quotients[w] = votes[w]/(allocations[w]+1)
-          }
         }
         index = quotients.indexOf(Math.max(...quotients))
         allocations[index] += 1
