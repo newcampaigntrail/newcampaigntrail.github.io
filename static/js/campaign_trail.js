@@ -233,9 +233,9 @@ achList = {
     ],
     //1936c
     "fixyourmod": [
-        "Fix Your Damn Mod",
-        "As Long in 1936c, die.",
-        "</table><br><b><em>1936c</em></b><br><table>"
+        "Flopulist",
+        "As Long in 1936: Every Man a King, die.",
+        "</table><br><b><em>1936: Every Man a King</em></b><br><table>"
     ],
     //1876
     "ATruceNotACompromise": [
@@ -2368,8 +2368,8 @@ function divideElectoralVotesProp(e, t) {
 
                 // ### 1936c ###
                 // Fix Your Damn Mod - As Long in 1936c, die
-                if (!run.achievements["fixyourmod"] && e.candidate_last_name == "Long" && e.final_outcome=="loss" && e.election_id==20) {
-                    unlockAchievement(among, "fixyourmod", "", "<b>Fix Your Damn Mod</b>")
+                if (!run.achievements["fixyourmod"] && e.candidate_last_name == "Long" && ([5002, 5065].includes(campaignTrail_temp.player_answers)) && e.election_id==20) {
+                    unlockAchievement(among, "fixyourmod", "", "<b>Flopulist</b>")
                 } else
 
 		// ### 1872 ###
