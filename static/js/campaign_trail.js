@@ -10,7 +10,7 @@ function removeIssueDuplicates(array) {
 AdvisorFeedbackArr=[1,0]
 
 function dHondtAllocation(votes, seats, thresh = 0.15) {
-    let quotients = votes
+    let quotients = votes.splice()
     let allocations = []
     votes.forEach(function(){allocations.push(0)})
     let total_votes = votes.reduce((sum, value)=>sum+value)
@@ -21,8 +21,9 @@ function dHondtAllocation(votes, seats, thresh = 0.15) {
         for (let w = 0; w < votes.length; w++) {
             if (perc_votes[w] < thresh) {
                 quotients[w] = 0
+            } else {
+                quotients[w] = votes[w]/(allocations[w]+1)
             }
-            quotients[w] = votes[w]/(allocations[w]+1)
         }
         index = quotients.indexOf(Math.max(...quotients))
         allocations[index] += 1
@@ -396,14 +397,14 @@ function openInfoMenu() {
     const textInfo = `
     <div style="text-align:left">
       <b>Hello, and welcome to the New Campaign Trail! This is an updated version of The Campaign Trail (hence the name). What does TNCT bring that TCT doesn't? A number of new features, not limited to:</b><br /><br />
-    
+
       <p>- A mod loader/library, allowing many of the mods made by our fabulous community to be played/compiled</p>
       <p>- Faster processing times, so you don't have to sit there forever while the game says <i>Processing Results, wait one moment...</i></p>
       <p>- Achievements, for if you want to challenge yourself and memorialize unique results.</p>
       <p>- Ending codes, a functionality of scenarios that allows the end screen to be altered depending on different factors like electoral and popular vote.</p>
-    
+
       <p>I could go on, but I think you get the point. We hope you enjoy playing it as much as we do. If you run into any issues, please either report them on the TNCT Github, or Discord server, both linked below at the bottom of the screen.</p>
-    
+
       <h3>Credits:</h3>
       <ul>
         <li>Dan Bryan (Original Site)</li>
@@ -414,13 +415,13 @@ function openInfoMenu() {
         <li><a href="https://discord.gg/thecampaigntrail" target="_blank">The Campaign Trail Discord</a></li>
         <li><a href="https://reddit.com/r/thecampaigntrail/" target="_blank">r/thecampaigntrail</a></li>
       </ul>
-    
+
       <h3>Recent patch notes:</h3>
       <p>Numerous [[BIG SHOT]] improvements have been implemented. You can now get into [[BIG SHOT]] <b>via the shortcut <code style='font-size:120%;background-color:#cccccc'>bs[enter]</code>.</b> This will only apply <b>if you have already unlocked it.</b></p>
       <p>From now on, we will include our patch notes, and other important information <a href="https://blog.newcampaigntrail.com/">here</a>. It is a developer log for TNCT. Check it out, we have some info on the recent modmaker program, as well as what happened to achievements.</p>
     </div>
     `;
-    
+
     const infoBox = document.getElementById("infoBox");
     infoBox.innerHTML = `
       <div class="inner_window_front" style="padding:0"><b><h1>Welcome to the New Campaign Trail!</h1></b></div>
@@ -447,7 +448,7 @@ function returnToMainPage() {
     document.getElementById("below_header").style.display = "";
     addAchButton();
     addInfoButton();
-    
+
     // Adds event listeners to the achievement and info buttons
     const achButton = document.getElementById("achievMenuButton");
     achButton.addEventListener("click", openAchievMenu);
@@ -862,7 +863,7 @@ function divideElectoralVotesProp(e, t) {
             if (cheatMenu) {
                 cheatMenu.classList.add('minimized');
             }
-        }        
+        }
 
         ! function() {
             for (var t = u(), i = "", a = 0; a < t.length; a++) i += '            <li><span style="color:' + t[a].color + "; background-color: " + t[a].color + '">--</span> ' + t[a].last_name + ":  0</li>";
@@ -1048,7 +1049,7 @@ function divideElectoralVotesProp(e, t) {
                 oldRM = e.candidate_json[e.candidate_json.map(f=>f.pk).indexOf(Number(running_mate))]
                 veeplastname = ree.candidate_json[correctIndex].fields.last_name
                 e.candidate_json[correctIndex] = oldRM //sets to new RM (lmao this is such a fucking stupid solution)
-                
+
                 return yearbit + "_" + lastnamebit + "_" + veeplastname + ".html"
             } else {
                 return campaignTrail_temp.election_json[findFromPK(campaignTrail_temp.election_json, id)].fields.year + "_" + campaignTrail_temp.candidate_json[findFromPK(campaignTrail_temp.candidate_json, cand)].fields.last_name + "_" + campaignTrail_temp.candidate_json[findFromPK(campaignTrail_temp.candidate_json, running_mate)].fields.last_name + ".html"
@@ -1108,7 +1109,7 @@ function divideElectoralVotesProp(e, t) {
                         if (slider) {
                             slider.innerHTML = `Multiplier: <span contenteditable="true" id='difficulty_mult_bigshot'>${campaignTrail_temp.difficulty_level_multiplier.toFixed(2)}</span>`;
                             updateSliderValue(campaignTrail_temp.difficulty_level_multiplier.toFixed(2));
-                            document.getElementById('difficulty_mult_bigshot').addEventListener('input', manuallyAdjustedSlider);                        
+                            document.getElementById('difficulty_mult_bigshot').addEventListener('input', manuallyAdjustedSlider);
                         }
                     }
                     if (modded == false) {
@@ -1146,9 +1147,9 @@ function divideElectoralVotesProp(e, t) {
                                 client.open('GET', "../static/mods/" + theorId + ".html");
                                 client.onreadystatechange = function() {
                                     evaluate(client.responseText) // eval later
-                                    
+
                                     tempFuncO=function(e,i=campaignTrail_temp){for(var s=[],a=0;a<i.answers_json.length&&(i.answers_json[a].fields.question!=i.questions_json[i.question_number].pk||(s.push({key:a,order:Math.random()}),4!=s.length));a+=1){};P(s,"order");for(var t="",a=0;a<s.length;a+=1){t+='<input type="radio" name="game_answers" class="game_answers"             id="game_answers['+a.toString()+']" value="'+i.answers_json[s[a].key].pk+'"/>\t\t    <label for="game_answers['+a.toString()+']">'+i.answers_json[s[a].key].fields.description+"</label><br>"}var r='<div class="game_header">    <h2>NEW CAMPAIGN TRAIL</h2>    </div>    <div class="inner_window_question">        <div class="inner_inner_window">        <h3>'+i.questions_json[i.question_number].fields.description+'</h3>            <div id="question_form">                <form name="question">'+t+'</form>            </div>        </div>        <p><button id="answer_select_button" class="answer_select_button">CONTINUE</button>        <button id="view_electoral_map">Latest Polls/Electoral Map</button></p>    </div>    <img id="candidate_pic" src="'+i.candidate_image_url+'">    <img id="running_mate_pic" src="'+i.running_mate_image_url+'">    <div class="inner_window_sign_display">        <div id="progress_bar">\t    <h3>Question '+(i.question_number+1)+" of "+i.global_parameter_json[0].fields.question_count+'</h3>        </div>        <div id="campaign_sign">        <p>'+i.candidate_last_name+"</p>        <p>"+i.running_mate_last_name+"</p>        </div>    </div>";$("#game_window").html(r)};
-                                    
+
                                     tempFuncO(e)
                                 }
                                 client.send();
@@ -1167,7 +1168,7 @@ function divideElectoralVotesProp(e, t) {
                             })
 
                         } catch {
-                            
+
                         }
                         e.question_number = 0, e.questions_json = campaignTrail_temp.questions_json, e.answers_json = campaignTrail_temp.answers_json, e.states_json = campaignTrail_temp.states_json, e.issues_json = campaignTrail_temp.issues_json, e.state_issue_score_json = campaignTrail_temp.state_issue_score_json, e.candidate_issue_score_json = campaignTrail_temp.candidate_issue_score_json, e.running_mate_issue_score_json = campaignTrail_temp.running_mate_issue_score_json, e.candidate_state_multiplier_json = campaignTrail_temp.candidate_state_multiplier_json, e.answer_score_global_json = campaignTrail_temp.answer_score_global_json, e.answer_score_issue_json = campaignTrail_temp.answer_score_issue_json, e.answer_score_state_json = campaignTrail_temp.answer_score_state_json, e.answer_feedback_json = campaignTrail_temp.answer_feedback_json, e.candidate_image_url = campaignTrail_temp.candidate_image_url, e.running_mate_image_url = campaignTrail_temp.running_mate_image_url, e.candidate_last_name = campaignTrail_temp.candidate_last_name, e.running_mate_last_name = campaignTrail_temp.running_mate_last_name, e.running_mate_state_id = campaignTrail_temp.running_mate_state_id, e.player_answers = campaignTrail_temp.player_answers, e.player_visits = campaignTrail_temp.player_visits, e.answer_feedback_flg = campaignTrail_temp.answer_feedback_flg, e.election_id = Number(e.election_id), e.candidate_id = Number(e.candidate_id), e.running_mate_id = Number(e.running_mate_id), e.difficulty_level_id = Number(e.difficulty_level_id), e.game_start_logging_id = Number(campaignTrail_temp.game_start_logging_id)
                         var important_code = setInterval(function() {
@@ -1180,7 +1181,7 @@ function divideElectoralVotesProp(e, t) {
                                 null == t ? C(e.election_id) : n(t)
                             })
                             if (diff_mod) {
-                                
+
                             }
                             if ($("#answer_select_button")[0] != null) {
                                 clearInterval(important_code)
@@ -1250,7 +1251,7 @@ function divideElectoralVotesProp(e, t) {
         }
         a = false
         if (e.primary) {
-            /* Primary code format: 
+            /* Primary code format:
             e.primary_code = [
                 {
                     "breakQ": 0,
@@ -1272,7 +1273,7 @@ function divideElectoralVotesProp(e, t) {
 
         setTimeout(() => mapCache(skip = false), 0) // starts new thread for poll map preloading
 
-        if (e.corQuestion) e.corQuestion = false   
+        if (e.corQuestion) e.corQuestion = false
         else e.question_number++;
 
         if (e.player_answers.length < e.question_number) {
@@ -1286,7 +1287,7 @@ function divideElectoralVotesProp(e, t) {
                 e.final_state_results = A(1)
                 electionNight()
                 v(500)
-                m() 
+                m()
             } else {
                 e.final_state_results = A(1), electionNight();
             }
@@ -1343,25 +1344,25 @@ function divideElectoralVotesProp(e, t) {
         if (!execute) {
           return false;
         }
-      
+
         // Get the data for the current question number
         dat = e.primary_code[breaks.indexOf(e.question_number)];
-      
+
         // Get the state for the current question
         stateMap = dat.states;
-      
+
         stateMap2 = e.states_json.map(f => f.pk);
-      
+
         states = [];
-      
+
         stateMap.forEach(function(f, it, arr) {
           correctState = stateMap2.indexOf(f);
           states.push(e.states_json[correctState]);
         });
-      
+
         // Set the final state results to an array with one element (1)
         e.final_state_results = A(1);
-      
+
         // Loop through the final state results
         for (i in e.final_state_results) {
           // If the current state is not in the state map, set its value to null
@@ -1369,7 +1370,7 @@ function divideElectoralVotesProp(e, t) {
             e.final_state_results[i] = null;
           }
         }
-      
+
         // Filter out any null values from the final state results
         e.final_state_results = e.final_state_results.filter(f => f);
 
@@ -1401,7 +1402,7 @@ function divideElectoralVotesProp(e, t) {
             var i = t.map(function(item) {
               var color = item.color;
               return `<li><span style="color:${color}; background-color:${color}">--</span> ${item.last_name}: 0</li>`;
-            }).join('');            
+            }).join('');
             var s = S(e.election_id),
                 n = e.election_json[s].fields.winning_electoral_vote_number;
             $("#game_window").html('        <div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div id="main_content_area">            <div id="map_container"></div>            <div id="menu_container">                <div id="overall_result_container">                    <div id="overall_result">                        <h3>ELECTORAL VOTES</h3>                        <ul>' + i + "</ul>                        <p>0% complete</br>" + n + ' to win</p>                    </div>                </div>                <div id="state_result_container">                    <div id="state_result">                        <h3>STATE RESULTS</h3>                        <p>Click on a state to view detailed results (once returns for that state arrive).</p>                    </div>                </div>            </div>        </div>        <div id="map_footer">        <button id="final_result_button">Go back to questions</button>        </div>        <div class="overlay" id="election_night_overlay"></div>        <div class="overlay_window" id="election_night_window">            <div class="overlay_window_content" id="election_night_content">            <h3>Advisor Feedback</h3>            <img src="' + e.election_json[s].fields.advisor_url + '" width="208" height="128"/>            <p>One of many election nights has arrived. Winning the delegates in these races will be vital to your primary victory.</p>            </div>            <div class="overlay_buttons" id="election_night_buttons">            <button id="ok_button">OK</button><br>            </div>        </div>');
@@ -1504,7 +1505,7 @@ function divideElectoralVotesProp(e, t) {
     }
 
     function o(t, e = campaignTrail_temp) {
-        
+
         for (var i = [], a = 0; a < e.answers_json.length && (e.answers_json[a].fields.question != e.questions_json[e.question_number].pk || (i.push({
                 key: a,
                 order: Math.random()
@@ -1538,13 +1539,13 @@ function divideElectoralVotesProp(e, t) {
         $("#view_electoral_map").click(function() {
             _(t)
         })
-        
+
         $("#answer_select_button").click(function() {
             var nullN = $("input:radio[name=game_answers]:checked").val();
             null == nullN ? C(e.election_id) : n(nullN)
-            
 
-            
+
+
         })
     }
 
@@ -1588,7 +1589,7 @@ function divideElectoralVotesProp(e, t) {
         })
     }
 
- 
+
 
 
 
@@ -1605,7 +1606,7 @@ function divideElectoralVotesProp(e, t) {
         const state = e.states_json[s];
 
         // finds the matching state in the array
-        
+
 
         // reverses and sorts the array by percent
         nArray.sort((a, b) => b.value - a.value);
@@ -1613,17 +1614,17 @@ function divideElectoralVotesProp(e, t) {
         // updates the total popular votes
         //total_v += campaignTrail_temp.states_json[s].fields.popular_votes;
         }
-        
+
         // Use Array.prototype.filter() method to filter e.candidate_json
         const filteredCandidates = e.candidate_json.filter(candidate =>
             containsObject(candidate.pk, e.opponents_list) || candidate.pk === e.candidate_id
         )
-        
+
         // Use Array.prototype.forEach() method to update filteredCandidates
         filteredCandidates.forEach(candidate => {
             candidate.popvs = 0
             candidate.evvs = 0
-          
+
             t.forEach(state => {
                 const stateIndex = e.states_json.map(f => f.pk).indexOf(state.state)
                 const stateElectoralVotes = e.states_json[stateIndex].fields.electoral_votes
@@ -1642,30 +1643,30 @@ function divideElectoralVotesProp(e, t) {
                 } else if (candidateIndex == 0 && !e.primary) {
                     candidate.evvs += stateElectoralVotes
                 }
-                
+
                 candidate.popvs += candidateResult.votes
                 total_v += candidateResult.votes
             })
 
-            
+
           })
           filteredCandidates.forEach(candidate => {
               candidate.pvp = candidate.popvs / total_v
               candidate.popvs = 0
           })
-        
+
         // Use Array.prototype.sort() method to sort filteredCandidates in descending order of pvp
         const sortedCandidates = filteredCandidates.sort((a, b) => b.pvp - a.pvp)
-        
+
         // Use Array.prototype.map() method to create nn2 and nn3 arrays
         nn2 = sortedCandidates.map(candidate => candidate)
         nn3 = sortedCandidates.map(candidate => candidate.evvs || 0)
-        
+
         return [nn2, n]
     }
 
 	function setStatePollText(s, t) {
-        
+
         const results = t.filter(({ abbr }) => abbr === e.states_json[s].fields.abbr);
         var doPrimaryMode = false
 
@@ -1698,7 +1699,7 @@ function divideElectoralVotesProp(e, t) {
             } else {
                 return `<b>${candidateName}</b> - ${(100 * percent).toFixed(2)}%<br>`;
             }
-            
+
         });
 
         const _ = formattedResults.join('');
@@ -1793,7 +1794,7 @@ function divideElectoralVotesProp(e, t) {
             a[item.abbr] = {
               fill: candidate ? r2h(_interpolateColor(h2r(campaignTrail_temp.margin_format), h2r(candidate.fields.color_hex), gradient(Math.log((margin + 1)) * 4.5, 0, 1))) : null
             };
-          }   
+          }
 
         var c = function(i, a) {
                 res = getLatestRes(t)
@@ -1817,7 +1818,7 @@ function divideElectoralVotesProp(e, t) {
                         setStatePollText(s, t)
                         break
                     }
-				}            
+				}
 				},
             u = S(e.election_id);
         if (0 == i) var v = {
@@ -1858,7 +1859,7 @@ function divideElectoralVotesProp(e, t) {
         };
         return v
     }
-    
+
     function c(e, t) {
         P(e, "votes"), e.reverse();
         var i = (e[0].votes - e[1].votes) / (e[0].votes + e[1].votes);
@@ -1908,7 +1909,7 @@ function divideElectoralVotesProp(e, t) {
                 }
             l.push(o[c])
         }
-        
+
         return e.final_overall_results = l, i
     }
 
@@ -1953,7 +1954,7 @@ function divideElectoralVotesProp(e, t) {
                             } else {
                                 n = "                        <h3>STATE RESULTS</h3>                        <p>" + e.states_json[o].fields.name + "</p>                        <p>Electoral Votes: " + e.states_json[o].fields.electoral_votes + "<ul>" + _ + "</ul>                        </p>", $("#state_result").html(n)
                             }
-                            
+
                         }
                         break
                     }
@@ -1972,23 +1973,23 @@ function divideElectoralVotesProp(e, t) {
             for (let s = 0; s < e.states_json.length; s++) {
                 total_v += campaignTrail_temp.states_json[s].fields.popular_votes;
             }
-            
+
             // Use Array.prototype.forEach() method to update filteredCandidates
             filteredCandidates.forEach(candidate => {
                 candidate.popvs = 0
                 candidate.evvs = 0
-              
+
                 t.forEach(state => {
                     const stateIndex = e.states_json.map(f => f.pk).indexOf(state.state)
                     const stateElectoralVotes = e.states_json[stateIndex].fields.electoral_votes
-    
+
                     const candidateIndex = state.result.map(f => f.candidate).indexOf(candidate.pk)
                     const candidateResult = state.result[candidateIndex]
-    
+
                     if (e.primary_states) {
                         const primaryStates = JSON.parse(e.primary_states)
                         const primaryMap = primaryStates.map(f=>f.state)
-    
+
                         if (primaryMap.includes(state.state)) {
                             allocation = dHondtAllocation(state.result.map(f=>f.votes),stateElectoralVotes, 0.15)
                             candidate.evvs += allocation[candidateIndex]
@@ -1996,10 +1997,10 @@ function divideElectoralVotesProp(e, t) {
                     } else if (candidateIndex == 0 && !e.primary) {
                         candidate.evvs += stateElectoralVotes
                     }
-                    
+
                     candidate.popvs += candidateResult.votes
                 })
-    
+
                 candidate.pvp = candidate.popvs / total_v
                 candidate.popvs = 0
             })
@@ -2061,7 +2062,7 @@ function divideElectoralVotesProp(e, t) {
         try {
             date2 += " "+date.toString().match(/\(([A-Za-z\s].*)\)/)[1]
         } catch {}
-        
+
         e.historical_overall = "None", e.percentile = "None", e.game_results_url = "None", p()
         $.ajax({
             type: "POST",
@@ -2254,7 +2255,7 @@ function divideElectoralVotesProp(e, t) {
                 if (!modded && !run.achievements["tanks"] && e.election_id == 15 && containsObject(4439,e.player_answers) && containsObject(4484,e.player_answers)  && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_outcome == "win") {
                     unlockAchievement(among, "tanks", "", "<b>Tanks and Taxes</b>")
                 } else
-                // The Rainbow Coalition-Win as Dukakis with Jackson as your running mate               
+                // The Rainbow Coalition-Win as Dukakis with Jackson as your running mate
                 if (!modded && !run.achievements["Rainbow"] && e.election_id == 15 && campaignTrail_temp.running_mate_last_name=="Jackson" && campaignTrail_temp.final_outcome=="win" && campaignTrail_temp.difficulty_level_multiplier <= 0.97) {
                     unlockAchievement(among, "Rainbow", "", "<b>A Rainbow Coalition</b>")
                 } else
@@ -2285,39 +2286,39 @@ function divideElectoralVotesProp(e, t) {
 
                 // Not Because It Is Easy, But Because It Is Hard: Win as JFK in 1960 on impossible.
                 if (!modded && !run.achievements["BCitsHard"] && e.candidate_last_name == "Kennedy" && e.election_id == 11 && campaignTrail_temp.difficulty_level_multiplier <= 0.9 && campaignTrail_temp.final_outcome=="win") {
-                    unlockAchievement(among, "BCitsHard", "", "<b>Not because it is easy, but because it is hard.</b>")   
+                    unlockAchievement(among, "BCitsHard", "", "<b>Not because it is easy, but because it is hard.</b>")
                 } else
-                //Not because its hard, but because its easy: Win less then 100 Electoral Votes as John F. Kennedy on Cakewalk difficulty 
+                //Not because its hard, but because its easy: Win less then 100 Electoral Votes as John F. Kennedy on Cakewalk difficulty
                 if (!modded && !run.achievements["BCitsEasy"] && e.candidate_last_name =="Kennedy" &&  campaignTrail_temp.election_id == 11 && campaignTrail_temp.difficulty_level_multiplier == 1.33 && campaignTrail_temp.final_overall_results[n].electoral_votes<100) {
-                    unlockAchievement(among, "BCitsEasy", "", "<b>Not because it is hard, but because it is easy.</b>")   
-                } else            
+                    unlockAchievement(among, "BCitsEasy", "", "<b>Not because it is hard, but because it is easy.</b>")
+                } else
                  //The Vice With No Vice: Win as Nixon/Goldwater on normal in 1960
                  if (!modded && !run.achievements["Vice"] && e.election_id == 11 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && campaignTrail_temp.final_outcome=="win" && campaignTrail_temp.running_mate_last_name=="Goldwater") {
-                    unlockAchievement(among, "Vice", "", "<b>The Vice With No Vice</b>")   
-                } else             
+                    unlockAchievement(among, "Vice", "", "<b>The Vice With No Vice</b>")
+                } else
                 // ### 1948 ###
 
-                // Dixie Defeats Dewey - Win as Truman by preventing a southern walkout. 
+                // Dixie Defeats Dewey - Win as Truman by preventing a southern walkout.
                 if (!modded && !run.achievements["dixieDewey"] && e.candidate_last_name == "Truman" && e.election_id == 12 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && campaignTrail_temp.player_answers[2]==3809 && e.final_outcome=="win") {
                     unlockAchievement(among, "dixieDewey", "", "<b>Dixie Defeats Dewey</b>")
                 } else
 
-                // All Over But The Shouting - Win the Popular Vote as Thomas Dewey. 
+                // All Over But The Shouting - Win the Popular Vote as Thomas Dewey.
                 if (!modded && !run.achievements["Dewey"] && e.candidate_last_name == "Dewey" && e.election_id == 12 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && ((e.final_outcome == "win" && e.final_overall_results[0].popular_votes > e.final_overall_results[1].popular_votes)||(e.final_outcome=="loss" && e.final_overall_results[1].popular_votes > e.final_overall_results[0].popular_votes)) && e.final_outcome=="win") {
                     unlockAchievement(among, "Dewey", "", "<b>All Over But The Shouting</b>")
                 } else
                  // ### 1916 ###
 
-                // Califor-Huh? - As Charles Evans Hughes, win the election without California.. 
+                // Califor-Huh? - As Charles Evans Hughes, win the election without California..
                 if (!modded && !run.achievements["California"] && e.candidate_last_name == "Hughes" && e.election_id == 14 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.candidate_id == e.final_state_results[3].result[1].candidate && e.final_outcome=="win") {
                     unlockAchievement(among, "California", "", "<b>Califor-Huh?</b>")
                 } else
                 // ### 1896 ###
 
-                // The Great Commoner - Win as William Jennings Bryan with over 500 EVs. 
+                // The Great Commoner - Win as William Jennings Bryan with over 500 EVs.
                 if (!modded && !run.achievements["Commoner"] && e.candidate_last_name == "Bryan" && e.election_id == 5 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && campaignTrail_temp.final_overall_results[0].electoral_votes>330 && e.final_outcome=="win") {
                     unlockAchievement(among, "Commoner", "", "<b>The Great Commoner</b>")
-                } else               
+                } else
 
                 // ###### MODS ######
 
@@ -2328,7 +2329,7 @@ function divideElectoralVotesProp(e, t) {
                     unlockAchievement(among, "youwillwinoregon", "", "You <b>WILL</b> win Oregon")
                 } else
                 */
-		
+
                 // ### 2019NK ###
                 // Potato P.R.I.D.E - Get the true ending to 2019NK.
                 if (!run.achievements["trueKorea"] && e.running_mate_last_name
@@ -2336,7 +2337,7 @@ function divideElectoralVotesProp(e, t) {
                     unlockAchievement(among, "trueKorea", "", "<b>Potato P.R.I.D.E</b>")
                 } else
 
-                // ### 2016DNC ### 
+                // ### 2016DNC ###
                 // I Will Survive - As Clinton, achieve the 'I Will Survive' ending.
                  if (!run.achievements["IWillSurvive"] && ([200965, 200975, 200969].includes(campaignTrail_temp.player_answers[36])) && (["Clinton", "Clinton for"].includes(campaignTrail_temp.candidate_last_name)) && e.final_outcome=="win" && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.election_id==9) {
                     unlockAchievement(among, "IWillSurvive", "", "<b>I Will Survive</b>")
@@ -2369,28 +2370,28 @@ function divideElectoralVotesProp(e, t) {
                 if (!run.achievements["fixyourmod"] && e.candidate_last_name == "Long" && ([5002, 5065].includes(campaignTrail_temp.player_answers)) && e.election_id==20) {
                     unlockAchievement(among, "fixyourmod", "", "<b>Flopulist</b>")
                 } else
-		
+
 		// ### 1872 ###
                 // A Victory For All People - Die as Greeley, and win. Yes, on normal.
                 if (!run.achievements["AVictoryForAllPeople"] && e.candidate_last_name == "Greeley" && campaignTrail_temp.running_mate_last_name=="Sumner" && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_outcome=="win" && e.player_answers[34] == 8131 && e.election_id==20) {
                     unlockAchievement(among, "AVictoryForAllPeople", "", "<b>A Victory For All People</b>")
                 } else
-		
+
                 // ### 1876 ####
                 // A Truce, Not A Compromise
                 if (!run.achievements["ATruceNotACompromise"] && ((e.candidate_last_name == "Hayes" && e.final_overall_results[n].electoral_votes == 185 && e.player_answers[24] == 8090) || (e.candidate_last_name == "Tilden" && e.final_overall_results[n].electoral_votes == 184 && e.player_answers[24] == 8088))  && e.election_id==5) {
                     unlockAchievement(among, "ATruceNotACompromise", "", "<b>A Truce, Not A Compromise</b>")
-                }	
+                }
 
             } else {
                 // Still Alive - Enact the dream of the average r/tct user
                 if (!modded && e.candidate_last_name == "Wallace" && e.election_id == 4 && e.final_overall_results[n].electoral_votes == 535 && !run.achievements["stillAlive"]) {
                     unlockAchievement(among, "stillAlive", "../static/achievementicons/stillalive.png", "<b>Still Alive</b>")
-                } else 
+                } else
                 // NOW'S YOUR CHANCE TO BE A - [[Big Shot]]
                 if (!modded && !run.achievements["yourchance"] && campaignTrail_temp.bigshot_mode) {
                     unlockAchievement(among, "yourchance", "../static/achievementicons/yourChance.png", "<b>NOW'S YOUR CHANCE TO BE A</b>")
-                } 
+                }
             }
         }
 
@@ -2689,8 +2690,8 @@ _ = '   <div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="ma
           i = '        <div class="game_header">            <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div id="main_content_area_reading">            <h3 class="results_tab_header">Further Reading</h3>        <p>Are you interested in exploring the ' + e.election_json[t].fields.year + ' election further?         This page contains some further reading to get you up to speed.</p>        <div id="recommended_reading_box">' + e.election_json[t].fields.recommended_reading + '</div>        </div>        <div id="map_footer" style="margin-top:-35px">                <button class="final_menu_button" id="overall_results_button">                    Final Election Results                </button>                <button class="final_menu_button" id="final_election_map_button">                    Election Map                </button>                <button class="final_menu_button" id="state_results_button">                    Results by State                </button>                <button class="final_menu_button" id="overall_details_button">                    Overall Results Details                </button> <button class="final_menu_button" id="recommended_reading_button" disabled="disabled"> Further Reading    </button>                            <button class="final_menu_button" id="play_again_button">                    Play Again!                </button>            </div>';
          }
 
-       
-      
+
+
 
 
                $("#game_window").html(i), $("#overall_results_button").click(function() {
@@ -2754,7 +2755,7 @@ _ = '   <div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="ma
             }x
             return acc;
           }, []);
-        
+
           const l = n.reduce((acc, score) => acc + score, 0);
           const o =
             candidate === e.candidate_id && l < -0.4
@@ -2765,14 +2766,14 @@ _ = '   <div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="ma
               ? o * (1 + F() * e.global_parameter_json[0].fields.global_variance) * e.difficulty_level_multiplier
               : o * (1 + F() * e.global_parameter_json[0].fields.global_variance);
           const _ = isNaN(c) ? 1 : c;
-        
+
           return {
             candidate,
             global_multiplier: _,
           };
         });
 
-        
+
         const u = i.map((candidate) => {
             const v = e.candidate_issue_score_json
               .filter((item) => item.fields.candidate === candidate)
@@ -2780,13 +2781,13 @@ _ = '   <div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="ma
                 issue: item.fields.issue,
                 issue_score: item.fields.issue_score,
               }));
-          
+
             return {
               candidate_id: candidate,
               issue_scores: removeIssueDuplicates(v),
             };
           });
-          
+
         var f = [];
         for (a = 0; a < i.length; a++) {
             var m = [];
@@ -3021,7 +3022,7 @@ _ = '   <div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="ma
                     $("#running_mate_id_back").click(candSel)
             }(a, candidate_id ? candidate_id.value : e.candidate_id)
     }
-    
+
     candSel = (a) => {
         a.preventDefault(),
             function(a) {
@@ -3035,7 +3036,7 @@ _ = '   <div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="ma
                     $("#candidate_id_back").click(gameStart)
             }(e.election_id ? e.election_id : election_id.value)
     }
-    
+
     gameStart = (a) => {
         a.preventDefault(),
             function() {
@@ -3056,7 +3057,7 @@ _ = '   <div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="ma
                 }), $("#election_id_button").click(candSel)
             }()
     }
-    
+
     $("#game_start").click(gameStart), $("#skip_to_final").click(function(t) {
         e.final_state_results = A(1), electionNight()
     })
