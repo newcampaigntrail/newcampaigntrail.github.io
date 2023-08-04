@@ -233,7 +233,7 @@ achList = {
     //1936c
     "fixyourmod": [
         "Flopulist",
-        "As Long in 1936: Every Man a King, die.",
+        "As Long in 1936: Every Man a King, die as quickly as possible.",
         "</table><br><b><em>1936: Every Man a King</em></b><br><table>"
     ],
     //1876
