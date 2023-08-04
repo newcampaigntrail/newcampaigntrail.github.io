@@ -2367,7 +2367,7 @@ function divideElectoralVotesProp(e, t) {
 
                 // ### 1936c ###
                 // Fix Your Damn Mod - As Long in 1936c, die
-                if (!run.achievements["fixyourmod"] && e.candidate_last_name == "Long" && ([5002, 5065].includes(campaignTrail_temp.player_answers)) && e.election_id==20) {
+                if (!run.achievements["fixyourmod"] && e.candidate_last_name == "Long" && e.player_answers[0] == 5002 && e.election_id==20) {
                     unlockAchievement(among, "fixyourmod", "", "<b>Flopulist</b>")
                 } else
 
