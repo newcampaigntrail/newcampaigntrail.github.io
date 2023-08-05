@@ -505,6 +505,15 @@ nct_stuff.themes = {
         coloring_container: "#093F3A",
         coloring_title: "#03141C"
     },
+    "Celeste": {
+        name: "Celeste",
+        background: "../static/images/celestebg.png",
+        banner: "../static/images/celestetrail.png",
+        coloring_window: "#4299e6",
+        coloring_container: "#34479d",
+        window_url: "../static/images/celesteimgbg.png",
+        coloring_title: "#260c55"
+    },
     "custom": {
         name: "Custom",
         background: "",
