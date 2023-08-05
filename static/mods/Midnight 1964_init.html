@@ -1,0 +1,449 @@
+if(campaignTrail_temp.election_json.length!=1)
+{
+e=campaignTrail_temp
+campaignTrail_temp.election_json = JSON.parse("[{\"model\": \"campaign_trail.election\", \"pk\": 20, \"fields\": {\"year\": 1964, \"summary\": \"On November 22, 1963, while on parade in Dallas, Texas, President John Fritzgerald Kenendy was assassinated by Lee Harvery Oswald. The American people, distraught over the loss of their young, charismatic, and inspiring leader, still haven't fully recovered.<p></p>Beyond that horrible tragedy, the state of the nation is a mixed bag. Under the new President's leadership, the economy is on the rise, but racial turmoil continues to be an issue, and the direction of the nation's foreign policy remains unclear.</p><ul><li>Goldwater hopes to reunite his party while maintaining control of his Conservative base.</p><ul><li>Johnson must keep hold of his lead by emphasizing his record and the extremism of his opponent.</ul>\", \"image_url\": \"https://i.imgur.com/0SzKXC8.png\", \"winning_electoral_vote_number\": 270, \"advisor_url\": \"https://i.imgur.com/94S7niv.png\", \"recommended_reading\": \"<h4 style=\\\"margin-top: 0.5em;\\\">Wikipedia Elections</h4><a href=\\\"https://i.imgur.com/zWduaKc.png\\\" target=\\\"_blank\\\">1964 Democratic Primary</a><br><a href=\\\"https://i.imgur.com/uLcP1OL.png\\\" target=\\\"_blank\\\">1964 Presidential Election</a></br><br><h4 style=\\\"margin-top: 0.5em;\\\">By the Candidates</h4><a href=\\\"https://www.youtube.com/watch?v=OQ-7g52P7j0&t\\\" target=\\\"_blank\\\">Goldwater’s Acceptance Speech</a><br><a href=\\\"https://www.youtube.com/watch?v=fOfwGIF744o\\\" target=\\\"_blank\\\">Johnson’s Acceptance Speech</a><br>\", \"has_visits\": 1, \"no_electoral_majority_image\": \"https://i.imgur.com/7sQAIIT.png\"}}]"); 
+campaignTrail_temp.candidate_json = JSON.parse("[{\"model\": \"campaign_trail.candidate\", \"pk\": 200, \"fields\": {\"first_name\": \"Barry M.\", \"last_name\": \"Goldwater\", \"election\": 20, \"party\": \"Republican\", \"state\": \"Arizona\", \"priority\": 1, \"description\": \"<p>Barry Morris Goldwater is an incumbent Senator from the state of Arizona, himself having served for more than ten years in the office. Ever since the release of his book, “The Conscience of a Conservative,” in 1960, he is a household name, known for being a staunch conservative and constitutional constructionist.<p></p>In the Republican Primary, Goldwater faced off against familiar faces like Nelson Rockefeller, Henry Cabot Lodge Jr., William Scranton, and Margaret Chase Smith. After winning the nomination, he now stands as the Conservative face of the Republican Party, but not everyone is happy about it.<p></p>Going into the General Election campaign, Goldwater is more than thirty points behind his opponent in the polls. If he wants to have a hope in hell of winning this thing, he needs to shake things up, and fast, less he doom his beloved Conservative Ideology to the dark abyss of un-electability.\", \"color_hex\": \"#C7100F\", \"secondary_color_hex\": \"#FFFFC0\", \"is_active\": 1, \"image_url\": \"https://i.imgur.com/XzLxcGb.png\", \"electoral_victory_message\": \"<h3>GOLDWATER WINS IN UPSET; JOHNSON CONCEDES</h3><span id='ending0' style='display: initial;'><p>Holy smokes, you did it Barry! You won! Nobody expected this, but somehow, in one of the biggest upsets of the century, you've been elected President. It seems all the stars have aligned for you and, with a little help from your good pal Warren, you've done the impossible. Media outlets begin referring to you as “The Republican's Truman,” and members from all across your party call to congratulate you. Later in the evening, you finally get a muted concession from Johnson, too.</p><p>Still, you're in somewhat of a predicament. Many of your votes came in protest to Johnson rather than support of you, and it hasn't translated down ballot, as Democrats maintain significant, albeit not super, majorities in congress. With your having lost the popular vote, protests have cropped up nation wide demanding an overturning of the electoral college, and you enter office with your approval already in the negative.<br><br><button onclick='nexte0()'>More</button></p></span><span id='ending1' style='display: none;'><p><p>In the time between the election and inauguration day, the Warren Commission officially clears Lyndon Johnson of any wrongdoing, which only further exacerbates your obstacles. Congress is not eager to work with you, and the 1966 midterms are already shaping up to be a bloodbath for your party.</p><p>All things considered though, you have the opportunity to lie low. Democrats will have your hands tied, so if you keep your head down and uphold the laws, you should be able to scrape by without angering anybody too much. Just remember that the solid South went out on a limb for you this year, and they can betray you just as easily as they did the Democrats if you opt to turn your back on them.</p><p>Take a breath and say a prayer, President Goldwater, because you've officially set off the countdown to Midnight in America.<br><br><button onclick='backe0()'>Back</button></p></span>\", \"electoral_loss_message\": \"<h3>JOHNSON REELECTED; GOLDWATER CONCEDES</h3><p>Well, Barry, you lost. This was the expected result from the beginning, but it still stings. It seemed that, in that last stretch, everything was finally going your way. The party was fully united behind you, Johnson's turnout was killed, and the Warren Report confirmed the worst. But sadly, the odds were just too difficult to overcome.</p><p>In a few months Johnson will be sworn in again, this time for a full term. Trust in government is at an all time low, with half the country believing a murderer will stay in office. Republicans have seen some gains in the House and Senate though, denying Democrats a supermajority. With a new congress on its way in, discussions of impeachment have been reignited.</p><p>There's another point of good news: Your nomination and subsequent campaign have reinvigorated Conservatism in America to a point not seen since before the Great Depression. Dozens of your disciples, from Ronald Reagan to William F Buckley Jr., feel a renewed vigor in their ideology. Who knows, maybe you can be renominated in '68, however unlikely.</p><p>If you aren't, well, there's always a place for you here in Arizona.<p>\", \"no_electoral_majority_message\": \"<h3>SHOCKING: ELECTION DEADLOCKS! HOUSE TO DECIDE THE PRESIDENCY!</h3><span id='ending2' style='display: initial;'><p>Well Barry, you didn’t quite make it, but you really had Lyndon sweating there for a minute!</p><p>It’s unclear how exactly we wound up here, sitting on the knife's edge, but with the Warren report and your penchant for gaffes, it seems the people were split, at least electorally, on who they preferred as commander-in-chief.</p><p>The House is comfortably Democratic, and knowing Johnson’s pull within his party, even with a Southern schism it’s unlikely you’ll be elected. The senate has already, expectedly, elevated Humphrey to be Vice President, with even some crossover from liberal Republicans who disapproved of Miller.<br><br><button onclick='nexte1()'>More</button></p></span><span id='ending3' style='display: none;'><p><p>Still, it’s not all bad. You’ve proven a few things - first, that Republicans can win the South. That’s the big one, as far as future elections. Second, that Conservatism has a mandate in America - considering Eisenhower’s leanings on certain matters, you’re the best performing conservative candidate since the 20’s.</p><p>Johnson will likely be relegated to one term, given his controversies - that is if he even runs again at all. Speaking of, given your performance, who knows, you might get away with throwing your hat back in the ring, if you wanted. If not, there’s always the Senate!</p><p>And hey, maybe it’s better this way. In your heart, you know this is right.<br><br><button onclick='backe1()'>Back</button></p></span>\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 201, \"fields\": {\"first_name\": \"Lyndon B.\", \"last_name\": \"Johnson\", \"election\": 20, \"party\": \"Democratic\", \"state\": \"Texas\", \"priority\": 2, \"description\": \"For the past three years, Lyndon Baines Johnson has been the nation's Vice President, serving under the beloved Jack Kennedy. The office is largely a ceremonial role, with its duties being delegated to it by the President. No such duties have come, with Kennedy instead opting to seek counsel from his family, including his brother Robert, the Attorney General.  It appears his only purpose was getting the South in line back in 1960.<p></p>Before this time, Johnson was a Representative, and then a Senator, from Texas. His bombastic personality helped him rise through the ranks, eventually becoming a commanding majority-leader. He used to be one of the most powerful men in Washington, and now, some forget he exists.<p></p>And now, Jack Kennedy is dead, murdered in Dallas by the bullet of a madman. The nation, its people stuck with grief, is in disarray. Johnson, having ascended to the Presidency just hours later, is now faced with the herculean task of guiding the nation through one of its darkest hours. If he fails, the damage may be irreparable.\", \"color_hex\": \"#5E68AC\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 1, \"image_url\": \"https://i.imgur.com/FaHu6qX.png\", \"electoral_victory_message\": \"<h3>Yay</h3><p>Yay</p>\", \"electoral_loss_message\": \"<h3>Bruh</h3><p>Bruh</p>\", \"no_electoral_majority_message\": \"<h3>What</h3><p>What</p>\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 209, \"fields\": {\"first_name\": \"Hubert H.\", \"last_name\": \"Humphrey\", \"election\": 20, \"party\": \"Democratic\", \"state\": \"Minnesota\", \"priority\": 5, \"description\": \"'\", \"color_hex\": \"#800020\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"https://i.imgur.com/vvLJgEi.png\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Hubert Horatio Humphrey is an incumbent Senator from Minnesota, and well known as a liberal member within the party. During his time in Congress, Humphrey has been at the forefront of the Civil Rights issue from as far back as the 1948 D.N.C., in which he personally oversaw the addition of a Civil Rights plank to the Party Platform.<p></p>He is the primary target of speculation regarding who will be the number-two man on your ticket come August, despite your attempts to drum up rumors to the contrary. Many believe that, with yourself being a Southerner, a Northern liberal could be just what you need to balance the ticket and win a true landslide.<p></p>Humphrey appears to be a safe bet, but unless you make good on your civil rights promises, he won't entertain the idea of running with you. There is also some desire for Robert Kennedy, brother to late President, to be placed on the ticket. But that damned albatross can whine all he wants, you're the President, what's he going to do about it?</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 204, \"fields\": {\"first_name\": \"William E.\", \"last_name\": \"Miller\", \"election\": 20, \"party\": \"Republican\", \"state\": \"New York\", \"priority\": 11, \"description\": \"'\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"https://i.imgur.com/zPLTz7r.png\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>William Edward Miller is an incumbent member of the House of Representatives, a former Chairman of the National Republican Congressional Committee, and the current Chairman of the Republican National Committee. Behind the scenes, he supported you in your quest for the nomination, and many feel that he deserves a place on the ticket.<p></p>A staunch Conservative, Miller is similar to you in that regard, but his New York location and Catholic faith could help balance the ticket, though not by much. Some in your campaign feel his selection could send a message to moderate voters that you don't have any interest in appealing to them, while others relish in the thought of the sheer turnout he could bring among the base. But would that be enough to hand you the Presidency?<p></p>He has some unpopular opinions on Social Security, among other Government programs, and is relatively unknown on a national level. But hey, he drives Johnson nuts, and if that's not enough, what is?</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 202, \"fields\": {\"first_name\": \"\", \"last_name\": \"Other Candidates\", \"election\": 20, \"party\": \"Independent\", \"state\": \"Washington D.C.\", \"priority\": 4, \"description\": \"'\", \"color_hex\": \"#FFA500\", \"secondary_color_hex\": \"#FFA500\", \"is_active\": 0, \"image_url\": \"https://i.imgur.com/J5GhcqN.png\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 220, \"fields\": {\"first_name\": \"Lester\", \"last_name\": \"Maddox\", \"election\": 20, \"party\": \"Independent\", \"state\": \"Georgia\", \"priority\": 15, \"description\": \"'\", \"color_hex\": \"#FFA500\", \"secondary_color_hex\": \"#FFA500\", \"is_active\": 0, \"image_url\": \"'\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 0.0}}]"); 
+campaignTrail_temp.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 150, \"fields\": {\"candidate\": 200, \"running_mate\": 204}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 155, \"fields\": {\"candidate\": 201, \"running_mate\": 209}}]"); 
+campaignTrail_temp.opponents_default_json = JSON.parse("[{\"election\": 20, \"candidates\": [201, 200, 202]}, {\"election\": 4, \"candidates\": [23, 25, 312, 24]}]"); 
+campaignTrail_temp.opponents_weighted_json = JSON.parse("[{\"election\": 20, \"candidates\": [201, 200, 202]}, {\"election\": 4, \"candidates\": [23, 24, 25, 312]}]"); 
+campaignTrail_temp.global_parameter_json = JSON.parse("[{\"model\": \"campaign_trail.global_parameter\", \"pk\": 1, \"fields\": {\"vote_variable\": 1.125, \"max_swing\": 0.12, \"start_point\": 0.94, \"candidate_issue_weight\": 10.0, \"running_mate_issue_weight\": 0.0, \"issue_stance_1_max\": -0.71, \"issue_stance_2_max\": -0.3, \"issue_stance_3_max\": -0.125, \"issue_stance_4_max\": 0.125, \"issue_stance_5_max\": 0.3, \"issue_stance_6_max\": 0.71, \"global_variance\": 0.00, \"state_variance\": 0.00, \"question_count\": 25, \"default_map_color_hex\": \"#C9C9C9\", \"no_state_map_color_hex\": \"#999999\"}}]"); 
+campaignTrail_temp.temp_election_list = [{"id": 20, "year": 1964, "is_premium": 0, "display_year": "Midnight 1964"}];
+ var changeGameDisp = (hide) => {
+  disp = "";
+  if (hide) {
+    disp = "none";
+  }
+  document.getElementsByClassName("inner_window_w_desc")[0].style.display = disp
+};
+e.creditsPage = () => {
+  credits_html = `
+    <h3>Coding</h3>
+    <p><font color='#FFA500'>Gardfeld#5089</font></p>
+    <p>Pannut#6100</font></p>
+    <p>DecstarG#4326</font></p>
+    <p>Danxv33#6959</font></p><br>
+    <h3>Writing</h3>
+    <p><font color='#FFA500'>Gardfeld#5089</font></p>
+    <p><font color='#C10C00''>Jaques#8485</font><p>
+    <p>BasedTejano#0575<p><br>
+<h3>Executive Producer</h3>
+    <p><font color='#C10C00'>Jake Dionysos</font><p><br>
+    <h3>Banners</h3>
+    <p>Silentcool#4698</p>
+    <p>u/Informal_Ad_8315</p>
+    <br><h3>Playtesting</h3>
+    <p><font color='#e81c1c'>rmngaming#5068</font></p>
+    <p>BasedTejano#0575</p>
+<p>NeoK#7895</p>
+    <p>Jaques#8485</p><br><br>
+ <h3>Coding Bits</h3>
+<p>Credit Page - 2000N</p>
+    <p>Soundtrack System - 2000N</p>
+<p>Player Candidate Swapper - Danxv33#6959</p>
+<p>U.I. Candidate Swapper - Danxv33#6959</p>
+<p>Advisor Picture Swapper - Danxv33#6959</p>
+<p>Multi-Question Answer Based CYOA - Gardfeld#5089</p>
+    <h1><font color='#D3D3D3'>Thanks for Playing!</font></h1>
+  `
+  changeGameDisp(true);
+  var spacer = document.createElement("amongusspacerthisisntarealelement");
+  spacer.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+  document
+    .getElementsByClassName("inner_window_w_desc")[0]
+    .children[1].appendChild(spacer);
+    changeGameDisp(true);
+    var menuHeader = document.createElement("div");
+    menuHeader.classList.add("inner_window_front");
+    menuHeader.innerHTML = `<h1 style='font-family: "Times New Roman";'><font color='#D3D3D3'>Credits</font></h1>`;
+    menuHeader.id = "SOTUheader";
+    menuHeader.style = "height: 50px;background-color:#2d2d2d";
+    var newMenu = document.createElement("div");
+    newMenu.classList.add("inner_window_front");
+    newMenu.id = "SOTUmenu";
+    newMenu.style = `height:260px;background-color:#2d2d2d;color:white;overflow-y: scroll;`;
+
+    newMenu.innerHTML = credits_html;
+    let z = document.getElementById("game_window");
+    var backButton = document.createElement("button");
+    backButton.style =
+      "position: relative; bottom: -13px; left: -380px; width: 150px; height: 80px;font-size:40px;padding-top:5px;padding-left:8px";
+    backButton.id = "backSOTUBtn";
+    backButton.innerHTML = `<b>BACK</b>`;
+    backButton.onclick = function () {
+      document.getElementById("SOTUheader").remove();
+      document.getElementById("SOTUmenu").remove();
+      document.getElementById("backSOTUBtn").remove();
+      changeGameDisp(false);
+    };
+    z.appendChild(menuHeader);
+    z.appendChild(newMenu);
+    z.appendChild(backButton);
+
+}
+
+e.credits = "<button onclick='e.creditsPage()'>The Midnight Team and others</button>"
+ document.getElementById("header").src = "https://i.imgur.com/6cboaEI.jpg"
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#000000"
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#001833"
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+$(".container")[0].style.backgroundColor = "#181716"
+document.body.background = "https://i.imgur.com/iWSevF8.png"
+$("#game_window")[0].style.backgroundImage = "url(https://i.imgur.com/3vTCHMT.png)"
+HistHexcolour=["#C7100F","#5E68AC","#FFA500","#800020"];
+HistName=["Barry Goldwater","Lyndon Johnson","Other Candidates","Eric Hass"];
+        HistEV=[271,267,0,0];
+        HistPV=["33,272,164","37,016,172","211,924","70,641"];
+        HistPVP=["47.1%","52.4%","0.3%","0.1%"];
+RecReading=true
+
+quotes = ["<q>Extremism in the defense of liberty is no vice. And moderation in the pursuit of justice is no virtue.</q> - Barry Goldwater", "<q>The income tax created more criminals than any other single act of government.</q> - Barry Goldwater", "<q>I will offer a choice, not an echo.</q> - Barry Goldwater", "<q>It's a great country, where anybody can grow up to be president...even me.</q> - Barry Goldwater", "<q>I will end this war in a month. I will make North Vietnam look like a mud puddle.</q> - Barry Goldwater", "<q>Yesterday is not ours to recover, but tomorrow is ours to win or lose.</q> - Lyndon Johnson", "<q>This administration here and now declares unconditional war on poverty.</q> - Lyndon Johnson", "<q>If the American people don't love me, their descendants will.</q> - Lyndon Johnson", "<q>That goddamn bastard, that damned albatross. Just wait till I get my hands ‘round his neck.</q> - Lyndon Johnson", "<q>I may not know much, but I know chicken shit from chicken salad.</q> - Lyndon Johnson"]
+customquote = quotes[Math.floor((Math.random() * quotes.length))]
+
+corrr=`\n<h2>NEW CAMPAIGN TRAIL</h2><font id='wittyquote' size='3' color='white'><em>`+customquote+`</em></font>`
+
+bannerArr=0
+bannerlist=["https://i.imgur.com/roDClIi.png", "https://i.imgur.com/40FGwkI.png", "https://i.imgur.com/pR3Wo8r.png"]
+var changeBanner = () =>
+{
+bannerArr+=1
+document.getElementById("header").src=bannerlist[bannerArr % bannerlist.length]
+}
+document.getElementById("header").src=bannerlist[0]
+footer = $(".footer")[0]
+var button = document.createElement("button") // <button onclick="changeBanner()" style="font-weight: bold; height:19.49px; position: static; right: 770px; top: 0px;">Change banner</button>
+button.style = `font-weight: bold; height:19.49px; position: static; right: 770px; top: 0px;`
+button.innerHTML = "Change banner"
+footer.insertBefore(button, footer.firstChild);
+button.onclick = changeBanner;
+
+$("#music_player")[0].children[0].style.display="none"
+$("#music_player")[0].children[1].style.display="none"
+
+document.getElementById("modLoadReveal").style.display="none"
+document.getElementById("modloaddiv").style.display="none"
+
+musicBox = document.getElementById("music_player")
+musicBox.style.display=""
+
+var trackSel;
+e = campaignTrail_temp
+e.selectedSoundtrack = 0
+
+toTime = (seconds) => {
+  var date = new Date(null);
+  date.setSeconds(seconds);
+  return date.toISOString().substr(11, 8);
+}
+
+generateTime = () => {
+    // Get the audio element
+    var audio = document.getElementById("campaigntrailmusic");
+
+    timeTracker = document.createElement("div");
+    timeTracker.style = `
+      text-align:left;
+      border-style:solid;
+      border-width:3px;
+      height:150px;
+      width:200px;
+      background-color:#999999;
+      float:right;
+      padding: 10px;
+    `
+    $("#trackSelParent")[0].prepend(timeTracker);
+    $("#trackSelParent")[0].prepend(document.createElement("br"));
+
+    // Create a new element to display the current position of the audio
+    var positionDisplay = document.createElement("gg");
+    positionDisplay.id = "position-display";
+
+    // Create a new slider element to change the time
+    var timeSlider = document.createElement("input");
+    timeSlider.type = "range";
+    timeSlider.min = 0;
+    timeSlider.max = 1;
+    timeSlider.step = 0.001;
+    timeSlider.value = 0;
+    timeSlider.style.width = "200px";
+    timeSlider.id = "time-slider";
+
+    var pausePlay = document.createElement("button");
+    pausePlay.id = "position-display";
+    pausePlay.innerHTML = "<b>Pause</b>"
+    pausePlay.style.width = "100%";
+
+
+    pausePlay.addEventListener("click", event => {
+      event.preventDefault();
+      updatePositionDisplay();
+      let audio = document.getElementById("campaigntrailmusic");
+      if (audio.paused) {
+        audio.play();
+        event.target.innerHTML = "<b>Pause</b>";
+        return;
+      }
+      audio.pause();
+      event.target.innerHTML = "<b>Play</b>";
+      return;
+    })
+
+    var volumeLabel = document.createElement("gg");
+    volumeLabel.id = "volume-label";
+    volumeLabel.innerHTML = "<br><b>Volume: </b>"
+
+    var volumeSlider = document.createElement("input");
+    volumeSlider.type = "range";
+    volumeSlider.min = 0;
+    volumeSlider.max = 1;
+    volumeSlider.step = 0.001;
+    volumeSlider.value = 0;
+    volumeSlider.style.width = "200px";
+    volumeSlider.id = "volume-slider";
+
+    volumeSlider.value = audio.volume;
+
+    timeTracker.appendChild(pausePlay);
+    timeTracker.appendChild(document.createElement("br"));
+    timeTracker.appendChild(document.createElement("br"));
+    timeTracker.appendChild(positionDisplay);
+    timeTracker.appendChild(timeSlider);
+    timeTracker.appendChild(volumeLabel);
+    timeTracker.appendChild(volumeSlider);
+
+    updatePositionDisplay();
+
+    //for (let i = 0; i < 10; i++)
+    //timeTracker.append(document.createElement("br"));
+
+
+    // Function to update the position display
+    function updatePositionDisplay() {
+      positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+      timeSlider.value = audio.duration ? audio.currentTime / audio.duration : 0;
+    }
+
+    // Function to change the time of the audio
+    function changeTime() {
+      positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+      audio.currentTime = timeSlider.value * audio.duration;
+    }
+
+    updateVolume = event => {
+      audio.volume = event.target.value;
+    }
+    
+    // Update the position display and slider every second
+    setInterval(updatePositionDisplay, 1000);
+
+    // Listen for changes to the time slider and change the time of the audio
+    timeSlider.addEventListener("input", changeTime);
+    volumeSlider.addEventListener("input", updateVolume)
+}
+
+function newMusicPlayer() {
+  trackSel = document.createElement("div");
+  trackSel.id = "trackSelParent"
+  let z = `<br><br><br><br><br><br><br><br><br><br><div id='trackSel' style="text-align:left;border-style:solid;border-width:3px;overflow-y: scroll;overflow-x: hidden;height:200px; width:400px;background-color:#999999;float:right;">`
+  z += `<b><select id='selectSoundtrack'><option value='`+soundtracks[e.selectedSoundtrack].name+`'>`+soundtracks[e.selectedSoundtrack].name+"</option>"
+  for (i in soundtracks) {
+    if (soundtracks[e.selectedSoundtrack] != soundtracks[i]) {
+      z += `<option value='`+soundtracks[i].name+`'>`+soundtracks[i].name+`</option>`
+    }
+  }
+  z += `</select></b><br><br>`
+  // <label><input type="radio" name="option" value="option1">Option 1</label><br>
+  for (i in soundtracks[e.selectedSoundtrack].tracklist) {
+    let a = soundtracks[e.selectedSoundtrack].tracklist[i]
+    let b = `<label><input class="trackSelector" type="radio" name="trackSelector" value="`+i+`">`+a.name+`</label><br>`
+    z += b
+  }
+  z += "</div><br><br>"
+  trackSel.innerHTML = z
+
+  // select correct song
+
+  musicBox.appendChild(trackSel);
+  Array.from(document.getElementById("trackSel").children).filter(f=>{
+    return f.tagName == "LABEL"
+  }).map(f=>f.children[0])[0].checked = true
+
+  // set soundtrack changer
+
+  soundtrackSelector = document.getElementById("selectSoundtrack")
+  soundtrackSelector.onchange = function() {
+    for (i in soundtracks) {
+      if (soundtracks[i].name == soundtrackSelector.value) {
+        e.selectedSoundtrack = i
+        break
+      }
+    }
+    document.getElementById("trackSelParent").remove()
+    newMusicPlayer()
+  }
+
+  var matches = document.querySelectorAll('.trackSelector');
+
+  for (match in matches) {
+    matches[match].onchange = function() {
+      musicBox.children[2].src = soundtracks[e.selectedSoundtrack].tracklist[this.value].url
+      musicBox.children[2].currentTime = 0
+    }
+  }
+
+  musicBox.children[2].loop = false
+  musicBox.children[2].src = soundtracks[e.selectedSoundtrack].tracklist[0].url
+
+  musicBox.children[2].onended = function() {
+    console.log("next track")
+    let selected = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+    let newSel = clamp(selected+1, soundtracks[e.selectedSoundtrack].tracklist.length-1, 0)
+    let buttons = Array.from(document.getElementById("trackSel").children).filter(f=>{
+      return f.tagName == "LABEL"
+    }).map(f=>f.children[0])
+    //let selectedIndex = buttons.map(f=>f.children[0]).map(f=>f.checked)
+    buttons[newSel].click()
+  }
+
+  for (w = 0; w < 7; w++) {
+    document.getElementById("trackSelParent").appendChild(document.createElement("br"))
+  }
+  
+  generateTime();
+}
+
+clamp = function(a, max, min, overflow=true) {
+  if (overflow) {
+    return a > max ? min : a < min ? max : a;
+  }
+  return a > max ? max : a < min ? min : a;
+}
+
+// Track list
+
+var soundtracks = {
+  0: {
+    name: "1964",
+    tracklist: [
+       {
+        name: "House of the Rising Sun - The Animals",
+        url: "https://cdn.discordapp.com/attachments/1031403429941231627/1092636261853962330/Studio_Project_59.mp4",
+      },
+ {
+        name: "There I've Said It Again - Bobby Vinton",
+        url: "https://cdn.discordapp.com/attachments/1021566158069055578/1092630768720805909/Studio_Project_54.mp4",
+      },
+      {
+        name: "Needles & Pins - The Searchers",
+        url: "https://cdn.discordapp.com/attachments/1021566158069055578/1092631066721927248/Studio_Project_55.mp4",
+      },
+      {
+        name: "I Get Around - Beach Boys",
+        url: "https://cdn.discordapp.com/attachments/1021566158069055578/1092632496153301104/Studio_Project_56.mp4",
+      },
+      {
+        name: "Things You Do - The Temptations",
+        url: "https://cdn.discordapp.com/attachments/1021566158069055578/1092632826115018802/Studio_Project_57.mp4",
+      },
+      {
+        name: "I Want To Hold Your Hand - The Beatles",
+        url: "https://cdn.discordapp.com/attachments/1021566158069055578/1092633272435085332/Studio_Project_58.mp4",
+      },
+      {
+        name: "Barbara Ann - Beach Boys",
+        url: "https://cdn.discordapp.com/attachments/1031403429941231627/1092638445970673734/Studio_Project_60.mp4",
+      },
+    ],
+  },
+  1: {
+    name: "Barry Goldwater",
+    tracklist: [
+      {
+         name: "Go with Goldwater - Otis Clements",
+        url: "https://cdn.discordapp.com/attachments/619627987268141077/1074781717291880468/Studio_Project_30.mp4",
+      },
+      {
+        name: "Radio Jingle - EWR & R",
+        url: "https://cdn.discordapp.com/attachments/1021566158069055578/1092617789451284571/Studio_Project_48.mp4",
+      },
+      {
+        name: "Goldwater Rally Song - Jimmy Dempsey",
+        url: "https://cdn.discordapp.com/attachments/1021566158069055578/1092620781894258698/Studio_Project_50.mp4",
+      },
+      {
+        name: "Carry Barry to the White House - Jan McCall",
+        url: "https://cdn.discordapp.com/attachments/1021566158069055578/1092624552112160768/Studio_Project_52.mp4",
+      },
+      {
+        name: "The John Birch Society - Chad Mitchell Trio",
+        url: "https://cdn.discordapp.com/attachments/1021566158069055578/1102130861576560721/ghsooiwn.mp4",
+      },
+      {
+        name: "The Barry Goldwater Song - The Worsh Ahts",
+        url: "https://cdn.discordapp.com/attachments/1021566158069055578/1092618322597654628/Studio_Project_49.mp4",
+      },  
+{
+        name: "Go w/ Goldwater (Instrumental) - Otis Clements",
+        url: "https://cdn.discordapp.com/attachments/1021566158069055578/1092626348754878464/Studio_Project_53.mp4",
+      },
+
+    ],
+  },
+  2: {
+    name: "Lyndon Johnson",
+    tracklist: [
+      {
+        name: "Hello, Lyndon! - Ed Ames",
+        url: "https://cdn.discordapp.com/attachments/1021566158069055578/1092608584191320085/Studio_Project_41.mp4",
+      },
+   {
+        name: "All the Way With L.B.J. - Dr. Herman Silvers",
+        url: "https://cdn.discordapp.com/attachments/1021566158069055578/1092616130071384104/Studio_Project_47.mp4",
+      },
+
+      {
+        name: "Johnson our president - Bob Storm",
+        url: "https://cdn.discordapp.com/attachments/1021566158069055578/1092615808431169556/Studio_Project_46.mp4",
+      },
+      {
+        name: "That Big Man In Washington - Wes Holden",
+        url: "https://cdn.discordapp.com/attachments/1021566158069055578/1092615563999719554/Studio_Project_45.mp4",
+      },
+         {
+        name: "The Life of Lyndon Johnson- Dennis Nowicki",
+        url: "https://cdn.discordapp.com/attachments/1021566158069055578/1092614498390646846/Studio_Project_44.mp4",
+      },
+      {
+        name: "Lyndon Johnson Told the Nation - Tom Paxton",
+        url: "https://cdn.discordapp.com/attachments/1021566158069055578/1092609994140168333/Studio_Project_43.mp4",
+      },
+      {
+        name: "The Lyndon Johnson Song - Matt Beat",
+        url: "https://cdn.discordapp.com/attachments/1021566158069055578/1092608812701192202/Studio_Project_42.mp4",
+      },
+    ],
+},
+}
+
+
+newMusicPlayer()
+
+nexte0 = function() {
+    document.getElementById("ending0").style.display = "none"
+    document.getElementById("ending1").style.display = "initial" 
+}
+
+backe0 = function() {
+    document.getElementById("ending0").style.display = "initial"
+    document.getElementById("ending1").style.display = "none" 
+}
+
+nexte1 = function() {
+    document.getElementById("ending2").style.display = "none"
+    document.getElementById("ending3").style.display = "initial" 
+}
+
+backe1 = function() {
+    document.getElementById("ending2").style.display = "initial"
+    document.getElementById("ending3").style.display = "none" 
+}
+}

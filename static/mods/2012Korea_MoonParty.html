@@ -1,0 +1,3035 @@
+campaignTrail_temp.cyoa=true
+deweydead=false
+
+cyoAdventure = function(a) {
+ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
+if(ans==8084 | ans==8083)
+{
+campaignTrail_temp.question_number=23
+console.log("dead")
+deweydead=true
+}
+else
+{
+return false
+}
+}
+campaignTrail_temp.questions_json = [
+  {
+    "model": "campaign_trail.question",
+    "pk": 5000,
+    "fields": {
+      "priority": 1,
+      "description": "What will be the core message of your campaign?",
+      "likelihood": 1
+    }
+  },
+  {
+    "model": "campaign_trail.question",
+    "pk": 5001,
+    "fields": {
+      "priority": 1,
+      "description": "Do you have anything to say about the presidency of Lee Myung-bak?",
+      "likelihood": 1
+    }
+  },
+  {
+    "model": "campaign_trail.question",
+    "pk": 5002,
+    "fields": {
+      "priority": 1,
+      "description": "Do you have anything to say about the late President Roh Moo-hyun, your old boss and mentor?",
+      "likelihood": 1
+    }
+  },
+  {
+    "model": "campaign_trail.question",
+    "pk": 5003,
+    "fields": {
+      "priority": 1,
+      "description": "Your opponent is the daughter of Park Chung-hee.  How will you utilize this in your campaign?",
+      "likelihood": 1
+    }
+  },
+  {
+    "model": "campaign_trail.question",
+    "pk": 5004,
+    "fields": {
+      "priority": 1,
+      "description": "Since the current administration came in power, inter-Korean relations have declined to the point that we are in danger of armed conflict, as manifested by such incidents as the ROKS Cheonan sinking and the shelling of Yeonpyeong Island. The sudden death of Kim Jong-il, the chairman of the National Defense Commission, and the North Korean nuclear issue also contributes to the uncertainty. What is your policy on North Korea and what kind of action plan are you organizing to improve inter-Korean relations?",
+      "likelihood": 1
+    }
+},
+  {
+    "model": "campaign_trail.question",
+    "pk": 5005,
+    "fields": {
+      "priority": 1,
+      "description": "What is your position on the economy?",
+      "likelihood": 1
+    }
+  },
+  {
+    "model": "campaign_trail.question",
+    "pk": 5006,
+    "fields": {
+      "priority": 1,
+      "description": "Allegations have come out that the Roh Moo-hyun Administration was going to give up the Northern Limit Line.",
+      "likelihood": 1
+    }
+  },
+  {
+    "model": "campaign_trail.question",
+    "pk": 5007,
+    "fields": {
+      "priority": 1,
+      "description": "Ahn Cheol-soo’s support is decreasing.",
+      "likelihood": 1
+    }
+  },
+  {
+    "model": "campaign_trail.question",
+    "pk": 5008,
+    "fields": {
+      "priority": 1,
+      "description": "What is your plan for welfare?",
+      "likelihood": 1
+    }
+  },
+  {
+    "model": "campaign_trail.question",
+    "pk": 5009,
+    "fields": {
+      "priority": 1,
+      "description": "What education policies would you like to focus on?",
+      "likelihood": 1
+    }
+  },
+  {
+    "model": "campaign_trail.question",
+    "pk": 5010,
+    "fields": {
+      "priority": 1,
+      "description": "What is your view on the alliance with the United States?",
+      "likelihood": 1
+    }
+  },
+  {
+    "model": "campaign_trail.question",
+    "pk": 5011,
+    "fields": {
+      "priority": 1,
+      "description": "Anything you have to say about household debt?",
+      "likelihood": 1
+    }
+  },
+  {
+    "model": "campaign_trail.question",
+    "pk": 5012,
+    "fields": {
+      "priority": 1,
+      "description": "OK, where will you campaign?",
+      "likelihood": 1
+    }
+  },
+  {
+    "model": "campaign_trail.question",
+    "pk": 5014,
+    "fields": {
+      "priority": 1,
+      "description": "How will you campaign?",
+      "likelihood": 1
+    }
+  },
+  {
+    "model": "campaign_trail.question",
+    "pk": 5015,
+    "fields": {
+      "priority": 1,
+      "description": "What is your view on our relationship with Japan?",
+      "likelihood": 1
+    }
+  },
+  {
+    "model": "campaign_trail.question",
+    "pk": 5016,
+    "fields": {
+      "priority": 1,
+      "description": "Centrist Independent candidate Ahn Cheol-soo, who has been doing better than you in many polls, has offered to withdraw from the race and endorse you in exchange for adopting parts of his platform. What will you do?",
+      "likelihood": 1
+    }
+  },
+  {
+    "model": "campaign_trail.question",
+    "pk": 5017,
+    "fields": {
+      "priority": 1,
+      "description": "How will you attack your opponent, Park Geun-hye?",
+      "likelihood": 1
+    }
+  },
+  {
+    "model": "campaign_trail.question",
+    "pk": 5018,
+    "fields": {
+      "priority": 1,
+      "description": "If elected, Park will be the first female President of South Korea.  Will you say anything about this?",
+      "likelihood": 1
+    }
+  },
+  {
+    "model": "campaign_trail.question",
+    "pk": 5019,
+    "fields": {
+      "priority": 1,
+      "description": "Any groups you would like to pander to?",
+      "likelihood": 1
+    }
+  },
+  {
+    "model": "campaign_trail.question",
+    "pk": 5020,
+    "fields": {
+      "priority": 1,
+      "description": "Where would you like to campaign in?",
+      "likelihood": 1
+    }
+  },
+  {
+    "model": "campaign_trail.question",
+    "pk": 5021,
+    "fields": {
+      "priority": 1,
+      "description": "You have been invited to the debates?",
+      "likelihood": 1
+    }
+  },
+  {
+    "model": "campaign_trail.question",
+    "pk": 5022,
+    "fields": {
+      "priority": 1,
+      "description": "Mr. Moon, there is reason to suspect that the National Intelligence Service (NIS) is trying to influence public opinion in Park’s favor by posting biased comments on the Internet. How would you like to act on this?",
+      "likelihood": 1
+    }
+  },
+  {
+    "model": "campaign_trail.question",
+    "pk": 5023,
+    "fields": {
+      "priority": 1,
+      "description": "Do you have anything to say about the UPP?",
+      "likelihood": 1
+    }
+  },
+  {
+    "model": "campaign_trail.question",
+    "pk": 5024,
+    "fields": {
+      "priority": 1,
+      "description": "Lee Jung-hee has suspended her campaign, obviously, because she wants Park to be defeated.",
+      "likelihood": 1
+    }
+  },
+   {
+    "model": "campaign_trail.question",
+    "pk": 5025,
+    "fields": {
+      "priority": -1,
+      "description": "It is the day before election day. Where would you like to finish your campaign?",
+      "likelihood": 1
+    }
+  }
+]
+campaignTrail_temp.answers_json = [
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8000,
+    "fields": {
+      "question": 5000,
+      "description": "The Lee Myung-bak Administration is a failed government.  The policies of the ruling party have not benefitted the people of Korea.  There must be a change in power."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8001,
+    "fields": {
+      "question": 5000,
+      "description": "People First!  Our country is run by politicians, wealthy businessmen, and politically biased prosecutors.  I will be a President who is for the ordinary people.."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8002,
+    "fields": {
+      "question": 5000,
+      "description": "I will emphasize my planks—new politics, democratization of the economy, protecting our security, bringing peace to the Korean peninsula, and an end to the economic crisis."
+    }
+  },  
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8003,
+    "fields": {
+      "question": 5000,
+      "description": "We are being too negative toward each other.  Both sides are fighting each other too much.  Let’s end the politics of fighting and political retaliation..."
+    }
+},
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8004,
+    "fields": {
+      "question": 5001,
+      "description": "Lee is the worst president in our nation’s history. I will make sure that any corruption that happened under him will be punished."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8005,
+    "fields": {
+      "question": 5001,
+      "description": "Lee’s policies and scandals have been extremely harmful for this country. I will bring morality and trust back to the Blue House."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8006,
+    "fields": {
+      "question": 5001,
+      "description": "Lee is a good man and a good president. I promise to continue his policies as president."
+    }
+  },  
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8007,
+    "fields": {
+      "question": 5001,
+      "description": "No way. Lee is too polarizing for me to talk about."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8008,
+    "fields": {
+      "question": 5002,
+      "description": "President Roh was a fine man, but his presidency clearly was quite poor. I will be a much more effective president than he ever was."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8009,
+    "fields": {
+      "question": 5002,
+      "description": "President Roh’s reforms on political fundraising regulation truly benefited this country for the better and I promise to continue reforming our political system!"
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8010,
+    "fields": {
+      "question": 5002,
+      "description": "President Roh was murdered by the Lee Administration’s constant harassment! Once I’m president, I will avenge his death and defend his legacy by prosecuting all involved!"
+    }
+  },  
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8011,
+    "fields": {
+      "question": 5002,
+      "description": "President Roh was a good man who fought for what he believed was the best for Korea. He didn’t succeed in every regard, but at least we knew his heart was in the right place, and that’s a rare quality in politicians nowadays."
+    }
+},
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8013,
+    "fields": {
+      "question": 5003,
+      "description": "I will say that Park Chung-hee was a brutal dictator and we do not need someone that carries his legacy.  In fact, I will talk about how I was jailed by the Park regime."
+    }
+  },
+    {
+    "model": "campaign_trail.answer",
+    "pk": 8014,
+    "fields": {
+      "question": 5003,
+      "description": "I will say that Park Geun-hye is not truly sorry for the actions of her father. I will suggest that she will be like her father and carry the same legacy."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8015,
+    "fields": {
+      "question": 5003,
+      "description": "I will say that Park Chung-hee was a pro-Japanese collaborator, and I will mention his name Takaki Masao."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8016,
+    "fields": {
+      "question": 5003,
+      "description": "I will not talk about it much.  Park Chung-hee is popular with a lot of people."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8017,
+    "fields": {
+      "question": 5004,
+      "description": "Actually, the Lee Administration was right on this one.  North Korea cannot be trusted at all.  Instead, we must ramp up our security."
+    }
+  },
+    {
+    "model": "campaign_trail.answer",
+    "pk": 8018,
+    "fields": {
+      "question": 5004,
+      "description": "The Lee Administration’s hardline policies have only increased tensions with North Korea.  I hope to bring that back with the Sunshine Policy and the 6-way peace talks.  This is the way we can achieve peace, reunification, and prosperity."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8019,
+    "fields": {
+      "question": 5004,
+      "description": "I will emphasize that we should protect our security, but we must bring back the peace process with North Korea.  Right wing policies could lead to greater tensions and war."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 7020,
+    "fields": {
+      "question": 5004,
+      "description": "We must reunify with North Korea as soon as possible!  Stop with the anti-North right wing propaganda by the pro-Japanese collaborators and American imperialists! Let’s get rid of the tyrannical National Security Act and hold peace talks to reunify with the North! Think of it—a Korea Federation!"
+    }
+  },
+    {
+    "model": "campaign_trail.answer",
+    "pk": 8021,
+    "fields": {
+      "question": 5005,
+      "description": "I will be a candidate for the ordinary people and workers and not the chaebols unlike my opponent.  I believe we must end tax breaks for the rich.  I will also do what I can to protect small and medium-sized businesses."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8022,
+    "fields": {
+      "question": 5005,
+      "description": "Under a Moon Administration, we will focus on our entrepreneurs, information technology, and manufacturing industries.  I promise to establish a presidential body for job creation, create 400,000 public service jobs, and raise the youth employment to 70%."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8023,
+    "fields": {
+      "question": 5005,
+      "description": "Chaebols aren’t bad, actually.  They bring prosperity to our country"
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8024,
+    "fields": {
+      "question": 5005,
+      "description": "The problem is with our capitalist system.  We must understand that socialism will bring prosperity to us all."
+    }
+  },
+    {
+    "model": "campaign_trail.answer",
+    "pk": 8025,
+    "fields": {
+      "question": 5006,
+      "description": "Giving up the NLL line is not a problem.  It’s not a line negotiated by North and South Korea, but a line created by the United States."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8026,
+    "fields": {
+      "question": 5006,
+      "description": "Well, if he did that, he was wrong. I had nothing to do with it."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8093,
+    "fields": {
+      "question": 5006,
+      "description": "It's a little shocking. I think it is the Saenuri Party's dirty politics and black propaganda, which is repeated every election.  I’m pretty sure Roh never said that.  He did not even talk about the NLL."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8094,
+    "fields": {
+      "question": 5007,
+      "description": "Maybe we can win this election. Hopefully, we can get him to support us."
+    }
+  },
+    {
+    "model": "campaign_trail.answer",
+    "pk": 8027,
+    "fields": {
+      "question": 5008,
+      "description": "We need to increase welfare benefits greatly, so we can benefit the common man."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8028,
+    "fields": {
+      "question": 5008,
+      "description": "Welfare benefits should be decreased. I don’t think we can afford all those programs."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8029,
+    "fields": {
+      "question": 5008,
+      "description": "We must turn this country into a welfare state.  Look at countries like Sweden."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8030,
+    "fields": {
+      "question": 5009,
+      "description": "I propose halving the tuition fees for all students of state universities by 2013.  I will raise taxes on the rich, so that we can have the money for our students’ tuition."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8031,
+    "fields": {
+      "question": 5009,
+      "description": "Let’s reform the school system to make things more egalitarian.  I will enact policies like banning universities from assessing applicants based on high school’s ranking and ending autonomous private high schools."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8033,
+    "fields": {
+      "question": 5010,
+      "description": "America has violated our sovereignty! Conservatives have sold our sovereignty to the US with the recent Free Trade Agreement!  It’s time we take our country back from the occupying forces! Yankee go home!"
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8034,
+    "fields": {
+      "question": 5010,
+      "description": "I think we need to renegotiate the Free Trade Agreement and the Jeju airbase in a way that will benefit our national interests better."
+    }
+  },
+    {
+    "model": "campaign_trail.answer",
+    "pk": 8035,
+    "fields": {
+      "question": 5010,
+      "description": "I oppose the Free Trade Agreement and the Jeju Airbase.  The US is an important ally, but our interests come first."
+    }
+},
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8037,
+    "fields": {
+      "question": 5010,
+      "description": "We need a strong relationship with the US, and I support strengthening it even further by supporting the FTA and the Jeju airbase."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8038,
+    "fields": {
+      "question": 5011,
+      "description": "Public money shouldn’t be involved in housing.  If anything, we should prevent predatory lending by financial firms."
+    }
+  },
+    {
+    "model": "campaign_trail.answer",
+    "pk": 8039,
+    "fields": {
+      "question": 5011,
+      "description": "I support retaining the current pre-sale price ceiling system.  It protects consumers and getting rid of the pre-sale price ceiling system will only raise the price of property."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8040,
+    "fields": {
+      "question": 5011,
+      "description": "The problem is with our chaebol-dominated system.  I will limit speculation by chaebols, amend the Corporate Tax Act, and abolish special taxation on real estate owned by chaebols.  We should also give more rights to tenants, strengthen restrictions on real estate ownership by chaebols, increase public rental housing, subsidizing rent for homeless people in the 1st and 2nd quintiles of low income, and reducing the burden of rent to monthly income by 25% to 30%."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8041,
+    "fields": {
+      "question": 5011,
+      "description": "I think we should go with Ahn Cheol-soo’s policies: Implement housing vouchers, supply various types of rental housing, supply land rental housing, strengthen possession tax, and ease transaction tax."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8042,
+    "fields": {
+      "question": 5012,
+      "description": "We need to flip the Chungcheong region.  Let’s go there."
+    }
+  },
+    {
+    "model": "campaign_trail.answer",
+    "pk": 8043,
+    "fields": {
+      "question": 5012,
+      "description": "Let’s campaign in the Seoul Capitol Area.  We can appeal to many voters there."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8044,
+    "fields": {
+      "question": 5012,
+      "description": "Let’s go the Yeongnam Region.  I will especially focus on my home province, Busan."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8045,
+    "fields": {
+      "question": 5012,
+      "description": "We really need a high turnout from our base.  Let’s visit the Honam region."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8046,
+    "fields": {
+      "question": 5014,
+      "description": "I will campaign as a normal Democrat.  I am a liberal in the tradition of Kim Dae-jung and Roh Moo-hyun.  I believe that our current economy disproportionately benefits the chaebols, and I favor dialogue with North Korea, so that we can bring peace."
+    }
+  },
+    {
+    "model": "campaign_trail.answer",
+    "pk": 8047,
+    "fields": {
+      "question": 5014,
+      "description": "I will moderate my positions and campaign as a centrist.  We need to win over those Ahn Cheol-soo voters.  Let’s talk about how we can reform politics."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8048,
+    "fields": {
+      "question": 5014,
+      "description": "I will campaign as a progressive.  I will embrace the policies of Sim Sang-jung.  This will help us with workers and maybe with young voters as well."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8049,
+    "fields": {
+      "question": 5014,
+      "description": "I will campaign as a National Liberation federation left wing-nationalist. We need to stop American occupation, make our system less chaebol-friendly, change the system that has been built by chinilpa, and reunify with North Korea."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8050,
+    "fields": {
+      "question": 5015,
+      "description": "The Japanese government has not made a full apology and compensation.  Until then, we have no interest in a strong relationship with them."
+    }
+  },
+    {
+    "model": "campaign_trail.answer",
+    "pk": 8051,
+    "fields": {
+      "question": 5015,
+      "description": "My opponent is a pro-Japanese chinilpa like her father, and her pro-Japanese attitude is horrendous.  If anything, I will enact a strong anti-Japanese policy."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8052,
+    "fields": {
+      "question": 5015,
+      "description": "I think Korea-Japan relations should be dealt with decisively on issues of the past.  I promise never to compromise on the Dokdo issue.  I will also ask the Japanese government to take responsibility for the Comfort Women."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8054,
+    "fields": {
+      "question": 5015,
+      "description": "In reality, we should actually make some compromises with Japan, because it benefits our national interest and our alliance with the United States. We can’t forever rely on the past."
+    }
+  },
+    {
+    "model": "campaign_trail.answer",
+    "pk": 8055,
+    "fields": {
+      "question": 5016,
+      "description": "We don’t need Ahn’s help to win. He’s not even a member of our party so why should we listen to some independent."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8056,
+    "fields": {
+      "question": 5016,
+      "description": "I would like to thank Ahn for recognizing that Park is a danger to this country. I am glad to have his support and I look forward to working closely with him."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8057,
+    "fields": {
+      "question": 5016,
+      "description": "I thank Ahn for his offer, but unfortunately I can’t make promises on policy right now. We’re certainly happy to listen to any advice he has, though."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8058,
+    "fields": {
+      "question": 5017,
+      "description": "I will say that Park is not the president of the people. Can new politics be accomplished with arrogant and self-righteous leadership that does not communicate with the people?  Can a person who has lived all her life like a princess connect with ordinary people?  If anything, she’s not going to be a President, she’s going to be a Queen."
+    }
+},
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8059,
+    "fields": {
+      "question": 5017,
+      "description": "Park Geun-hye is someone out of touch with common people.  She may portray herself as someone that will democratize the economy, but her record speaks otherwise."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8060,
+    "fields": {
+      "question": 5017,
+      "description": "Park Geun-hye represents the forces of the past. I represent the forces of the future. We represent the forces that have always developed our country's democratic welfare and inter-Korean relations. If I properly tell the people about this difference and convince them, I think the people will choose and support me."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8061,
+    "fields": {
+      "question": 5017,
+      "description": "I will tie Park Geun-hye to Lee Myung-bak.  She is not any different from him.  She is partially responsible for the failures of Lee’s government."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8062,
+    "fields": {
+      "question": 5018,
+      "description": "No, this could backfire on us—even if we mention it, let’s only do so in a courteous way—there are more important issues to talk about."
+    }
+  },
+    {
+    "model": "campaign_trail.answer",
+    "pk": 8063,
+    "fields": {
+      "question": 5018,
+      "description": "Park may become the first female leader—but not the first President.  She is more like a queen than a President."
+    }
+},
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8064,
+    "fields": {
+      "question": 5018,
+      "description": "Let’s highlight our support from women’s organizations and young female voters."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8065,
+    "fields": {
+      "question": 5018,
+      "description": "Park is just a male in a female body.  She will not improve women’s rights—in fact, she’s a candidate of the patriarchy."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8066,
+    "fields": {
+      "question": 5019,
+      "description": "I will talk to workers and farmers.  I will tie myself to ordinary people, attack Park as a candidate of chaebols and elites, and declare my opposition to the FTA."
+    }
+  },
+    {
+    "model": "campaign_trail.answer",
+    "pk": 8067,
+    "fields": {
+      "question": 5019,
+      "description": "I will talk to religious voters.  We will visit Christian churches and Buddhist temples."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8068,
+    "fields": {
+      "question": 5019,
+      "description": "I will talk to the young and middle-aged people.  They support me, and I will enact policies that benefit them like raising youth employment."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8069,
+    "fields": {
+      "question": 5019,
+      "description": "We got to talk to former Ahn Cheol-soo’s supporters—centrists and people frustrated with both parties.  They want reform in politics.  I will promise them that reform, and make inputs of Ahn’s policies into our party’s platform.  In fact, I say, we should create a new party uniting our party and Ahn’s supporters."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8070,
+    "fields": {
+      "question": 5020,
+      "description": "We need to get Honam voters to turnout in high numbers.  Let’s campaign over there!"
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8071,
+    "fields": {
+      "question": 5020,
+      "description": "Either we win this election or we lose it.  Let’s head to the Chungcheong region."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8072,
+    "fields": {
+      "question": 5020,
+      "description": "We need to cut into Park’s Yeongnam support.  Let’s campaign over there."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8073,
+    "fields": {
+      "question": 5020,
+      "description": "Let’s go to Seoul, Gyeonggi-do, and Incheon.  It’s essentially a swing region, and we can reach out to many voters."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8074,
+    "fields": {
+      "question": 5021,
+      "description": "Let’s make our case to the Korean people."
+    }
+  },
+    {
+    "model": "campaign_trail.answer",
+    "pk": 8075,
+    "fields": {
+      "question": 5021,
+      "description": "Let’s make our case to the Korean people."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8076,
+    "fields": {
+      "question": 5021,
+      "description": "Let’s make our case to the Korean people."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8077,
+    "fields": {
+      "question": 5021,
+      "description": "No, I will focus on campaigning instead."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8078,
+    "fields": {
+      "question": 5022,
+      "description": "The public must know about this flagrant act of election fraud. I call for a full investigation into these claims immediately."
+    }
+  },
+    {
+    "model": "campaign_trail.answer",
+    "pk": 8079,
+    "fields": {
+      "question": 5022,
+      "description": "The public must know about this flagrant act of election fraud. I call for a full investigation into these claims immediately."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8080,
+    "fields": {
+      "question": 5022,
+      "description": "This kind of stuff could just backfire on us. Let’s just keep quiet about this?"
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8081,
+    "fields": {
+      "question": 5023,
+      "description": "The UPP is a great party that fights for workers.  I hope we can merge our party with them.  Maybe we can change our platform a bit to appeal to their base."
+    }
+  },
+    {
+    "model": "campaign_trail.answer",
+    "pk": 8082,
+    "fields": {
+      "question": 5023,
+      "description": "I would not talk about the UPP.  They are too controversial.  Any talk in favor of them might actually hurt us either way."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8083,
+    "fields": {
+      "question": 5023,
+      "description": "The UPP is a spoiler party.  They should drop out and endorse us."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8084,
+    "fields": {
+      "question": 5023,
+      "description": "I will actually denounce the UPP as a bunch of pro-North Korea extremists."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8085,
+    "fields": {
+      "question": 5024,
+      "description": "Hopefully, this helps us."
+    }
+  },
+    {
+    "model": "campaign_trail.answer",
+    "pk": 8086,
+    "fields": {
+      "question": 5024,
+      "description": "Hopefully, this helps us."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8087,
+    "fields": {
+      "question": 5024,
+      "description": "Hopefully, this helps us."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8088,
+    "fields": {
+      "question": 5024,
+      "description": "Hopefully, this helps us."
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8089,
+    "fields": {
+      "question": 5025,
+      "description": "Let’s campaign in Seoul, then take a train back home!"
+    }
+  },
+    {
+    "model": "campaign_trail.answer",
+    "pk": 8090,
+    "fields": {
+      "question": 5025,
+      "description": "Let’s go and rally progressives in Jeju, Ulsan, and the Honam region!"
+    }
+  },
+  {
+    "model": "campaign_trail.answer",
+    "pk": 8091,
+    "fields": {
+      "question": 5025,
+      "description": "Let’s go to Gyeonggi-do.  Let’s make appearances with our formal rival Sohn Hak-kyu."
+    }
+  },  
+{
+    "model": "campaign_trail.answer",
+    "pk": 8098,
+    "fields": {
+      "question": 5025,
+      "description": "Let’s campaign in the crucial Chungcheong region. It’s important swing region that must be won."
+    }
+  }
+] 
+campaignTrail_temp.states_json = JSON.parse("[{\"model\": \"campaign_trail.state\", \"pk\": 1000, \"fields\": {\"name\": \"Incheon\", \"abbr\": \"Incheon\", \"electoral_votes\": 0, \"popular_votes\": 1652966, \"poll_closing_time\": 120, \"winner_take_all_flg\": 1, \"election\": 20}}, {\"model\": \"campaign_trail.state\", \"pk\": 1001, \"fields\": {\"name\": \"Seoul\", \"abbr\": \"Seoul\", \"electoral_votes\": 0, \"popular_votes\": 6276699, \"poll_closing_time\": 420, \"winner_take_all_flg\": 1, \"election\": 20}}, {\"model\": \"campaign_trail.state\", \"pk\": 1002, \"fields\": {\"name\": \"Gyeonggi_Do\", \"abbr\": \"Gyeonggi_Do\", \"electoral_votes\": 0, \"popular_votes\": 6996723, \"poll_closing_time\": 180, \"winner_take_all_flg\": 1, \"election\": 20}}, {\"model\": \"campaign_trail.state\", \"pk\": 1003, \"fields\": {\"name\": \"Gangwon_Do\", \"abbr\": \"Gangwon_Do\", \"electoral_votes\": 0, \"popular_votes\": 908254, \"poll_closing_time\": 150, \"winner_take_all_flg\": 1, \"election\": 20}}, {\"model\": \"campaign_trail.state\", \"pk\": 1004, \"fields\": {\"name\": \"Chungcheongnam_Do\", \"abbr\": \"Chungcheongnam_Do\", \"electoral_votes\": 0, \"popular_votes\": 1162936, \"poll_closing_time\": 300, \"winner_take_all_flg\": 1, \"election\": 20}}, {\"model\": \"campaign_trail.state\", \"pk\": 1005, \"fields\": {\"name\": \"Daejeon\", \"abbr\": \"Daejeon\", \"electoral_votes\": 0, \"popular_votes\": 901878, \"poll_closing_time\": 180, \"winner_take_all_flg\": 1, \"election\": 20}}, {\"model\": \"campaign_trail.state\", \"pk\": 1006, \"fields\": {\"name\": \"Chungcheongbuk_Do\", \"abbr\": \"Chungcheongbuk_Do\", \"electoral_votes\": 0, \"popular_votes\": 922053, \"poll_closing_time\": 120, \"winner_take_all_flg\": 1, \"election\": 20}}, {\"model\": \"campaign_trail.state\", \"pk\": 1007, \"fields\": {\"name\": \"Gyeongsangbuk_Do\", \"abbr\": \"Gyeongsangbuk_Do\", \"electoral_votes\": 0, \"popular_votes\": 1701511, \"poll_closing_time\": 120, \"winner_take_all_flg\": 1, \"election\": 20}}, {\"model\": \"campaign_trail.state\", \"pk\": 1008, \"fields\": {\"name\": \"Daegu\", \"abbr\": \"Daegu\", \"electoral_votes\": 0, \"popular_votes\": 1581840, \"poll_closing_time\": 120, \"winner_take_all_flg\": 1, \"election\": 20}}, {\"model\": \"campaign_trail.state\", \"pk\": 1009, \"fields\": {\"name\": \"Jeollabuk_Do\", \"abbr\": \"Jeollabuk_Do\", \"electoral_votes\": 0, \"popular_votes\": 1136575, \"poll_closing_time\": 60, \"winner_take_all_flg\": 1, \"election\": 20}}, {\"model\": \"campaign_trail.state\", \"pk\": 1010, \"fields\": {\"name\": \"Gwangju\", \"abbr\": \"Gwangju\", \"electoral_votes\": 0, \"popular_votes\": 895586, \"poll_closing_time\": 360, \"winner_take_all_flg\": 1, \"election\": 20}}, {\"model\": \"campaign_trail.state\", \"pk\": 1011, \"fields\": {\"name\": \"Jeollanam_Do\", \"abbr\": \"Jeollanam_Do\", \"electoral_votes\": 0, \"popular_votes\": 1162959, \"poll_closing_time\": 300, \"winner_take_all_flg\": 1, \"election\": 20}}, {\"model\": \"campaign_trail.state\", \"pk\": 1012, \"fields\": {\"name\": \"Gyeongsangnam_Do\", \"abbr\": \"Gyeongsangnam_Do\", \"electoral_votes\": 0, \"popular_votes\": 1994771, \"poll_closing_time\": 120, \"winner_take_all_flg\": 1, \"election\": 20}}, {\"model\": \"campaign_trail.state\", \"pk\": 1013, \"fields\": {\"name\": \"Ulsan\", \"abbr\": \"Ulsan\", \"electoral_votes\": 0, \"popular_votes\": 692433, \"poll_closing_time\": 0, \"winner_take_all_flg\": 1, \"election\": 20}}, {\"model\": \"campaign_trail.state\", \"pk\": 1014, \"fields\": {\"name\": \"Busan\", \"abbr\": \"Busan\", \"electoral_votes\": 0, \"popular_votes\": 2213405, \"poll_closing_time\": 240, \"winner_take_all_flg\": 1, \"election\": 20}}, {\"model\": \"campaign_trail.state\", \"pk\": 1015, \"fields\": {\"name\": \"Sejong\", \"abbr\": \"Sejong\", \"electoral_votes\": 0, \"popular_votes\": 64697, \"poll_closing_time\": 240, \"winner_take_all_flg\": 1, \"election\": 20}}, {\"model\": \"campaign_trail.state\", \"pk\": 1016, \"fields\": {\"name\": \"Jeju_Do\", \"abbr\": \"Jeju_Do\", \"electoral_votes\": 0, \"popular_votes\": 329335, \"poll_closing_time\": 0, \"winner_take_all_flg\": 1, \"election\": 20}}]");
+campaignTrail_temp.issues_json = JSON.parse("[{\"model\": \"campaign_trail.issue\", \"pk\": 104, \"fields\": {\"name\": \"Political Leaning\", \"description\": \"'\", \"stance_1\": \"Safe Park\", \"stance_desc_1\": \"'\", \"stance_2\": \"Likely Park\", \"stance_desc_2\": \"'\", \"stance_3\": \"Lean Park\", \"stance_desc_3\": \"'\", \"stance_4\": \"Tossup\", \"stance_desc_4\": \"'\", \"stance_5\": \"Lean Moon\", \"stance_desc_5\": \"'\", \"stance_6\": \"Likely Moon\", \"stance_desc_6\": \"'\", \"stance_7\": \"Safe Moon\", \"stance_desc_7\": \"'\", \"election\": 20}}, {\"model\": \"campaign_trail.issue\", \"pk\": 103, \"fields\": {\"name\": \"Foreign Policy\", \"description\": \"'\", \"stance_1\": \"New Right\", \"stance_desc_1\": \"'\", \"stance_2\": \"Pro-Security\", \"stance_desc_2\": \"'\", \"stance_3\": \"Lean Security\", \"stance_desc_3\": \"'\", \"stance_4\": \"Balanced\", \"stance_desc_4\": \"'\", \"stance_5\": \"Lean Peace\", \"stance_desc_5\": \"'\", \"stance_6\": \"Pro-Peace\", \"stance_desc_6\": \"'\", \"stance_7\": \"Pro-North Korea\", \"stance_desc_7\": \"'\", \"election\": 20}}, {\"model\": \"campaign_trail.issue\", \"pk\": 102, \"fields\": {\"name\": \"Historical perspective\", \"description\": \"'\", \"stance_1\": \"Very Conservative\", \"stance_desc_1\": \"'\", \"stance_2\": \"Conservative\", \"stance_desc_2\": \"'\", \"stance_3\": \"Lean Conservative\", \"stance_desc_3\": \"'\", \"stance_4\": \"Balanced\", \"stance_desc_4\": \"'\", \"stance_5\": \"Lean Progressive\", \"stance_desc_5\": \"'\", \"stance_6\": \"Progressive\", \"stance_desc_6\": \"'\", \"stance_7\": \"Very Progressive\", \"stance_desc_7\": \"'\", \"election\": 20}}, {\"model\": \"campaign_trail.issue\", \"pk\": 101, \"fields\": {\"name\": \"Economic Issues\", \"description\": \"'\", \"stance_1\": \"Very Conservative\", \"stance_desc_1\": \"'\", \"stance_2\": \"Conservative\", \"stance_desc_2\": \"'\", \"stance_3\": \"Lean Conservative\", \"stance_desc_3\": \"'\", \"stance_4\": \"Moderate\", \"stance_desc_4\": \"'\", \"stance_5\": \"Lean Liberal\", \"stance_desc_5\": \"'\", \"stance_6\": \"Progressive\", \"stance_desc_6\": \"'\", \"stance_7\": \"Very Progressive\", \"stance_desc_7\": \"'\", \"election\": 20}}, {\"model\": \"campaign_trail.issue\", \"pk\": 100, \"fields\": {\"name\": \"Welfare\", \"description\": \"'\", \"stance_1\": \"Very Conservative\", \"stance_desc_1\": \"'\", \"stance_2\": \"Conservative\", \"stance_desc_2\": \"'\", \"stance_3\": \"Lean Conservative\", \"stance_desc_3\": \"'\", \"stance_4\": \"Balanced\", \"stance_desc_4\": \"'\", \"stance_5\": \"Lean Progressive\", \"stance_desc_5\": \"'\", \"stance_6\": \"Progressive\", \"stance_desc_6\": \"'\", \"stance_7\": \"Very Progressive\", \"stance_desc_7\": \"'\", \"election\": 20}}]");
+campaignTrail_temp.state_issue_score_json = 
+    JSON.parse("[{\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3000, \"fields\": {\"state\": 1000, \"issue\": 100, \"state_issue_score\": -0.4, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3001, \"fields\": {\"state\": 1000, \"issue\": 101, \"state_issue_score\": -0.25, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3002, \"fields\": {\"state\": 1000, \"issue\": 102, \"state_issue_score\": 0.1, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3003, \"fields\": {\"state\": 1000, \"issue\": 103, \"state_issue_score\": 0.15, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3004, \"fields\": {\"state\": 1000, \"issue\": 104, \"state_issue_score\": -0.3, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3005, \"fields\": {\"state\": 1001, \"issue\": 100, \"state_issue_score\": -0.65, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3006, \"fields\": {\"state\": 1001, \"issue\": 101, \"state_issue_score\": -0.1, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3007, \"fields\": {\"state\": 1001, \"issue\": 102, \"state_issue_score\": 0.1, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3008, \"fields\": {\"state\": 1001, \"issue\": 103, \"state_issue_score\": 0.2, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3009, \"fields\": {\"state\": 1001, \"issue\": 104, \"state_issue_score\": 0.3, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3010, \"fields\": {\"state\": 1002, \"issue\": 100, \"state_issue_score\": -0.4, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3011, \"fields\": {\"state\": 1002, \"issue\": 101, \"state_issue_score\": -0.25, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3012, \"fields\": {\"state\": 1002, \"issue\": 102, \"state_issue_score\": 0.1, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3013, \"fields\": {\"state\": 1002, \"issue\": 103, \"state_issue_score\": 0.15, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3014, \"fields\": {\"state\": 1002, \"issue\": 104, \"state_issue_score\": 0.1, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3015, \"fields\": {\"state\": 1003, \"issue\": 100, \"state_issue_score\": 0.1, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3016, \"fields\": {\"state\": 1003, \"issue\": 101, \"state_issue_score\": -0.5, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3017, \"fields\": {\"state\": 1003, \"issue\": 102, \"state_issue_score\": -0.7, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3018, \"fields\": {\"state\": 1003, \"issue\": 103, \"state_issue_score\": -0.4, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3019, \"fields\": {\"state\": 1003, \"issue\": 104, \"state_issue_score\": -0.7, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3020, \"fields\": {\"state\": 1004, \"issue\": 100, \"state_issue_score\": 0.45, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3021, \"fields\": {\"state\": 1004, \"issue\": 101, \"state_issue_score\": -0.7, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3022, \"fields\": {\"state\": 1004, \"issue\": 102, \"state_issue_score\": -0.2, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3023, \"fields\": {\"state\": 1004, \"issue\": 103, \"state_issue_score\": -0.4, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3024, \"fields\": {\"state\": 1004, \"issue\": 104, \"state_issue_score\": -0.5, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3025, \"fields\": {\"state\": 1005, \"issue\": 100, \"state_issue_score\": -0.1, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3026, \"fields\": {\"state\": 1005, \"issue\": 101, \"state_issue_score\": -0.1, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3027, \"fields\": {\"state\": 1005, \"issue\": 102, \"state_issue_score\": -0.1, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3028, \"fields\": {\"state\": 1005, \"issue\": 103, \"state_issue_score\": -0.1, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3029, \"fields\": {\"state\": 1005, \"issue\": 104, \"state_issue_score\": 0.0, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3030, \"fields\": {\"state\": 1006, \"issue\": 100, \"state_issue_score\": -0.45, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3031, \"fields\": {\"state\": 1006, \"issue\": 101, \"state_issue_score\": -0.7, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3032, \"fields\": {\"state\": 1006, \"issue\": 102, \"state_issue_score\": -0.2, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3033, \"fields\": {\"state\": 1006, \"issue\": 103, \"state_issue_score\": -0.4, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3034, \"fields\": {\"state\": 1006, \"issue\": 104, \"state_issue_score\": -0.5, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3035, \"fields\": {\"state\": 1007, \"issue\": 100, \"state_issue_score\": -0.6, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3036, \"fields\": {\"state\": 1007, \"issue\": 101, \"state_issue_score\": -0.6, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3037, \"fields\": {\"state\": 1007, \"issue\": 102, \"state_issue_score\": -0.9, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3038, \"fields\": {\"state\": 1007, \"issue\": 103, \"state_issue_score\": -0.9, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3039, \"fields\": {\"state\": 1007, \"issue\": 104, \"state_issue_score\": -0.9, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3040, \"fields\": {\"state\": 1008, \"issue\": 100, \"state_issue_score\": -0.6, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3041, \"fields\": {\"state\": 1008, \"issue\": 101, \"state_issue_score\": -0.6, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3042, \"fields\": {\"state\": 1008, \"issue\": 102, \"state_issue_score\": -0.9, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3043, \"fields\": {\"state\": 1008, \"issue\": 103, \"state_issue_score\": -0.9, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3044, \"fields\": {\"state\": 1008, \"issue\": 104, \"state_issue_score\": -0.9, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3045, \"fields\": {\"state\": 1009, \"issue\": 100, \"state_issue_score\": 0.6, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3046, \"fields\": {\"state\": 1009, \"issue\": 101, \"state_issue_score\": 0.9, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3047, \"fields\": {\"state\": 1009, \"issue\": 102, \"state_issue_score\": 0.7, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3048, \"fields\": {\"state\": 1009, \"issue\": 103, \"state_issue_score\": 0.7, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3049, \"fields\": {\"state\": 1009, \"issue\": 104, \"state_issue_score\": 0.9, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3050, \"fields\": {\"state\": 1010, \"issue\": 100, \"state_issue_score\": 0.6, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3051, \"fields\": {\"state\": 1010, \"issue\": 101, \"state_issue_score\": 0.9, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3052, \"fields\": {\"state\": 1010, \"issue\": 102, \"state_issue_score\": 0.8, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3053, \"fields\": {\"state\": 1010, \"issue\": 103, \"state_issue_score\": 0.7, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3054, \"fields\": {\"state\": 1010, \"issue\": 104, \"state_issue_score\": 0.9, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3055, \"fields\": {\"state\": 1011, \"issue\": 100, \"state_issue_score\": 0.6, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3056, \"fields\": {\"state\": 1011, \"issue\": 101, \"state_issue_score\": 0.9, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3057, \"fields\": {\"state\": 1011, \"issue\": 102, \"state_issue_score\": 0.7, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3058, \"fields\": {\"state\": 1011, \"issue\": 103, \"state_issue_score\": 0.7, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3059, \"fields\": {\"state\": 1011, \"issue\": 104, \"state_issue_score\": 0.9, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3060, \"fields\": {\"state\": 1012, \"issue\": 100, \"state_issue_score\": -0.1, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3061, \"fields\": {\"state\": 1012, \"issue\": 101, \"state_issue_score\": -0.5, \"weight\": 0.75}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3062, \"fields\": {\"state\": 1012, \"issue\": 102, \"state_issue_score\": -0.75, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3063, \"fields\": {\"state\": 1012, \"issue\": 103, \"state_issue_score\": -0.2, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3064, \"fields\": {\"state\": 1012, \"issue\": 104, \"state_issue_score\": -0.7, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3065, \"fields\": {\"state\": 1013, \"issue\": 100, \"state_issue_score\": 0.0, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3066, \"fields\": {\"state\": 1013, \"issue\": 101, \"state_issue_score\": -0.2, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3067, \"fields\": {\"state\": 1013, \"issue\": 102, \"state_issue_score\": -0.5, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3068, \"fields\": {\"state\": 1013, \"issue\": 103, \"state_issue_score\": -0.2, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3069, \"fields\": {\"state\": 1013, \"issue\": 104, \"state_issue_score\": -0.7, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3070, \"fields\": {\"state\": 1014, \"issue\": 100, \"state_issue_score\": -0.1, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3071, \"fields\": {\"state\": 1014, \"issue\": 101, \"state_issue_score\": -0.75, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3072, \"fields\": {\"state\": 1014, \"issue\": 102, \"state_issue_score\": -0.5, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3073, \"fields\": {\"state\": 1014, \"issue\": 103, \"state_issue_score\": -0.2, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3074, \"fields\": {\"state\": 1014, \"issue\": 104, \"state_issue_score\": -0.7, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3075, \"fields\": {\"state\": 1015, \"issue\": 100, \"state_issue_score\": -0.1, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3076, \"fields\": {\"state\": 1015, \"issue\": 101, \"state_issue_score\": -0.1, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3077, \"fields\": {\"state\": 1015, \"issue\": 102, \"state_issue_score\": -0.1, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3078, \"fields\": {\"state\": 1015, \"issue\": 103, \"state_issue_score\": -0.1, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3079, \"fields\": {\"state\": 1015, \"issue\": 104, \"state_issue_score\": -0.2, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3080, \"fields\": {\"state\": 1016, \"issue\": 100, \"state_issue_score\": 0.1, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3081, \"fields\": {\"state\": 1016, \"issue\": 101, \"state_issue_score\": 0.1, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3082, \"fields\": {\"state\": 1016, \"issue\": 102, \"state_issue_score\": 0.5, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3083, \"fields\": {\"state\": 1016, \"issue\": 103, \"state_issue_score\": 0.1, \"weight\": 1.0}}, {\"model\": \"campaign_trail.state_issue_score\", \"pk\": 3084, \"fields\": {\"state\": 1016, \"issue\": 104, \"state_issue_score\": 0.0, \"weight\": 1.0}}]");
+campaignTrail_temp.candidate_issue_score_json = 
+    JSON.parse("[{\"model\": \"campaign_trail.candidate_issue_score\", \"pk\": 1000, \"fields\": {\"candidate\": 200, \"issue\": 100, \"issue_score\": 0.5}}, {\"model\": \"campaign_trail.candidate_issue_score\", \"pk\": 1001, \"fields\": {\"candidate\": 200, \"issue\": 101, \"issue_score\": 0.5}}, {\"model\": \"campaign_trail.candidate_issue_score\", \"pk\": 1002, \"fields\": {\"candidate\": 200, \"issue\": 102, \"issue_score\": 0.6}}, {\"model\": \"campaign_trail.candidate_issue_score\", \"pk\": 1003, \"fields\": {\"candidate\": 200, \"issue\": 103, \"issue_score\": 0.4}}, {\"model\": \"campaign_trail.candidate_issue_score\", \"pk\": 1004, \"fields\": {\"candidate\": 200, \"issue\": 104, \"issue_score\": 0.5}},{\"model\": \"campaign_trail.candidate_issue_score\", \"pk\": 1005, \"fields\": {\"candidate\": 201, \"issue\": 100, \"issue_score\": 0.1}}, {\"model\": \"campaign_trail.candidate_issue_score\", \"pk\": 1006, \"fields\": {\"candidate\": 201, \"issue\": 101, \"issue_score\": -0.5}}, {\"model\": \"campaign_trail.candidate_issue_score\", \"pk\": 1007, \"fields\": {\"candidate\": 201, \"issue\": 102, \"issue_score\": -0.6}}, {\"model\": \"campaign_trail.candidate_issue_score\", \"pk\": 1008, \"fields\": {\"candidate\": 201, \"issue\": 103, \"issue_score\": -0.5}}, {\"model\": \"campaign_trail.candidate_issue_score\", \"pk\": 1009, \"fields\": {\"candidate\": 201, \"issue\": 104, \"issue_score\": -0.6}},{\"model\": \"campaign_trail.candidate_issue_score\", \"pk\": 1010, \"fields\": {\"candidate\": 202, \"issue\": 100, \"issue_score\": 0.9}}, {\"model\": \"campaign_trail.candidate_issue_score\", \"pk\": 1011, \"fields\": {\"candidate\": 202, \"issue\": 101, \"issue_score\": 0.9}}, {\"model\": \"campaign_trail.candidate_issue_score\", \"pk\": 1012, \"fields\": {\"candidate\": 202, \"issue\": 102, \"issue_score\": 0.9}}, {\"model\": \"campaign_trail.candidate_issue_score\", \"pk\": 1013, \"fields\": {\"candidate\": 202, \"issue\": 103, \"issue_score\": 0.9}}, {\"model\": \"campaign_trail.candidate_issue_score\", \"pk\": 1014, \"fields\": {\"candidate\": 202, \"issue\": 104, \"issue_score\": 0.9}}, {\"model\": \"campaign_trail.candidate_issue_score\", \"pk\": 1015, \"fields\": {\"candidate\": 203, \"issue\": 100, \"issue_score\": 0.0}}, {\"model\": \"campaign_trail.candidate_issue_score\", \"pk\": 1016, \"fields\": {\"candidate\": 203, \"issue\": 101, \"issue_score\": 0.0}}, {\"model\": \"campaign_trail.candidate_issue_score\", \"pk\": 1017, \"fields\": {\"candidate\": 203, \"issue\": 102, \"issue_score\": 0.0}}, {\"model\": \"campaign_trail.candidate_issue_score\", \"pk\":1018, \"fields\": {\"candidate\": 203, \"issue\": 103, \"issue_score\": 0.0}}, {\"model\": \"campaign_trail.candidate_issue_score\", \"pk\": 999, \"fields\": {\"candidate\": 203, \"issue\": 104, \"issue_score\": 0.0}}]");
+campaignTrail_temp.running_mate_issue_score_json = 
+    JSON.parse("[{\"model\": \"campaign_trail.candidate_issue_score\", \"pk\": 1020, \"fields\": {\"candidate\": 204, \"issue\": 100, \"issue_score\": 0.5}}, {\"model\": \"campaign_trail.candidate_issue_score\", \"pk\": 1021, \"fields\": {\"candidate\": 204, \"issue\": 101, \"issue_score\": 0.5}}, {\"model\": \"campaign_trail.candidate_issue_score\", \"pk\": 1022, \"fields\": {\"candidate\": 204, \"issue\": 102, \"issue_score\": 0.5}}, {\"model\": \"campaign_trail.candidate_issue_score\", \"pk\": 1023, \"fields\": {\"candidate\": 204, \"issue\": 103, \"issue_score\": 0.5}}, {\"model\": \"campaign_trail.candidate_issue_score\", \"pk\": 1024, \"fields\": {\"candidate\": 204, \"issue\": 104, \"issue_score\": 0.5}}]");
+campaignTrail_temp.candidate_state_multiplier_json = 
+JSON.parse("[{\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2500, \"fields\": {\"candidate\": 200, \"state\": 1000, \"state_multiplier\": 0.46}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2501, \"fields\": {\"candidate\": 200, \"state\": 1001, \"state_multiplier\": 0.51}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2502, \"fields\": {\"candidate\": 200, \"state\": 1002, \"state_multiplier\": 0.71}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2503, \"fields\": {\"candidate\": 200, \"state\": 1003, \"state_multiplier\": 0.54}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2504, \"fields\": {\"candidate\": 200, \"state\": 1004, \"state_multiplier\": 0.63}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2505, \"fields\": {\"candidate\": 200, \"state\": 1005, \"state_multiplier\": 0.54}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2506, \"fields\": {\"candidate\": 200, \"state\": 1006, \"state_multiplier\": 0.41}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2507, \"fields\": {\"candidate\": 200, \"state\": 1007, \"state_multiplier\": 0.67}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2508, \"fields\": {\"candidate\": 200, \"state\": 1008, \"state_multiplier\": 0.65}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2509, \"fields\": {\"candidate\": 200, \"state\": 1009, \"state_multiplier\": 0.65}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2510, \"fields\": {\"candidate\": 200, \"state\": 1010, \"state_multiplier\": 0.57}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2511, \"fields\": {\"candidate\": 200, \"state\": 1011, \"state_multiplier\": 0.57}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2512, \"fields\": {\"candidate\": 200, \"state\": 1012, \"state_multiplier\": 0.57}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2513, \"fields\": {\"candidate\": 200, \"state\": 1013, \"state_multiplier\": 0.42}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2514, \"fields\": {\"candidate\": 200, \"state\": 1014, \"state_multiplier\": 0.37}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2515, \"fields\": {\"candidate\": 200, \"state\": 1015, \"state_multiplier\": 0.57}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2516, \"fields\": {\"candidate\": 200, \"state\": 1016, \"state_multiplier\": 0.58}},{\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2551, \"fields\": {\"candidate\": 201, \"state\": 1000, \"state_multiplier\": 0.71}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2552, \"fields\": {\"candidate\": 201, \"state\": 1001, \"state_multiplier\": 0.78}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2553, \"fields\": {\"candidate\": 201, \"state\": 1002, \"state_multiplier\": 1.40}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2554, \"fields\": {\"candidate\": 201, \"state\": 1003, \"state_multiplier\": 0.95}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2555, \"fields\": {\"candidate\": 201, \"state\": 1004, \"state_multiplier\": 0.92}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2556, \"fields\": {\"candidate\": 201, \"state\": 1005, \"state_multiplier\": 0.78}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2557, \"fields\": {\"candidate\": 201, \"state\": 1006, \"state_multiplier\": 0.73}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2558, \"fields\": {\"candidate\": 201, \"state\": 1007, \"state_multiplier\": 0.73}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2559, \"fields\": {\"candidate\": 201, \"state\": 1008, \"state_multiplier\": 0.75}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2560, \"fields\": {\"candidate\": 201, \"state\": 1009, \"state_multiplier\": 0.63}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2561, \"fields\": {\"candidate\": 201, \"state\": 1010, \"state_multiplier\": 0.56}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2562, \"fields\": {\"candidate\": 201, \"state\": 1011, \"state_multiplier\": 0.56}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2563, \"fields\": {\"candidate\": 201, \"state\": 1012, \"state_multiplier\": 1.24}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2564, \"fields\": {\"candidate\": 201, \"state\": 1013, \"state_multiplier\": 0.88}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2565, \"fields\": {\"candidate\": 201, \"state\": 1014, \"state_multiplier\": 0.63}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2566, \"fields\": {\"candidate\": 201, \"state\": 1015, \"state_multiplier\": 1.01}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2567, \"fields\": {\"candidate\": 201, \"state\": 1016, \"state_multiplier\": 1.00}},{\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2602, \"fields\": {\"candidate\": 202, \"state\": 1000, \"state_multiplier\": 0.04}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2603, \"fields\": {\"candidate\": 202, \"state\": 1001, \"state_multiplier\": 0.04}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2604, \"fields\": {\"candidate\": 202, \"state\": 1002, \"state_multiplier\": 0.04}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2605, \"fields\": {\"candidate\": 202, \"state\": 1003, \"state_multiplier\": 0.04}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2606, \"fields\": {\"candidate\": 202, \"state\": 1004, \"state_multiplier\": 0.04}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2607, \"fields\": {\"candidate\": 202, \"state\": 1005, \"state_multiplier\": 0.04}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2608, \"fields\": {\"candidate\": 202, \"state\": 1006, \"state_multiplier\": 0.04}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2609, \"fields\": {\"candidate\": 202, \"state\": 1007, \"state_multiplier\": 12.08}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2610, \"fields\": {\"candidate\": 202, \"state\": 1008, \"state_multiplier\": 12.08}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2611, \"fields\": {\"candidate\": 202, \"state\": 1009, \"state_multiplier\": 0.02}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2612, \"fields\": {\"candidate\": 202, \"state\": 1010, \"state_multiplier\": 0.02}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2613, \"fields\": {\"candidate\": 202, \"state\": 1011, \"state_multiplier\": 0.02}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2614, \"fields\": {\"candidate\": 202, \"state\": 1012, \"state_multiplier\": 0.04}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2615, \"fields\": {\"candidate\": 202, \"state\": 1013, \"state_multiplier\": 0.04}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2616, \"fields\": {\"candidate\": 202, \"state\": 1014, \"state_multiplier\": 0.04}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2617, \"fields\": {\"candidate\": 202, \"state\": 1015, \"state_multiplier\": 0.04}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2618, \"fields\": {\"candidate\": 202, \"state\": 1016, \"state_multiplier\": 0.04}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2619, \"fields\": {\"candidate\": 203, \"state\": 1000, \"state_multiplier\": 0.51}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2620, \"fields\": {\"candidate\": 203, \"state\": 1001, \"state_multiplier\": 0.61}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2621, \"fields\": {\"candidate\": 203, \"state\": 1002, \"state_multiplier\": 0.88}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2622, \"fields\": {\"candidate\": 203, \"state\": 1003, \"state_multiplier\": 0.24}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2623, \"fields\": {\"candidate\": 203, \"state\": 1004, \"state_multiplier\": 0.52}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2624, \"fields\": {\"candidate\": 203, \"state\": 1005, \"state_multiplier\": 0.48}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2625, \"fields\": {\"candidate\": 203, \"state\": 1006, \"state_multiplier\": 0.41}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2626, \"fields\": {\"candidate\": 203, \"state\": 1007, \"state_multiplier\": 0.37}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2627, \"fields\": {\"candidate\": 203, \"state\": 1008, \"state_multiplier\": 0.37}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2628, \"fields\": {\"candidate\": 203, \"state\": 1009, \"state_multiplier\": 1.44}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2629, \"fields\": {\"candidate\": 203, \"state\": 1010, \"state_multiplier\": 1.44}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2630, \"fields\": {\"candidate\": 203, \"state\": 1011, \"state_multiplier\": 1.44}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2631, \"fields\": {\"candidate\": 203, \"state\": 1012, \"state_multiplier\": 0.38}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2632, \"fields\": {\"candidate\": 203, \"state\": 1013, \"state_multiplier\": 0.38}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2633, \"fields\": {\"candidate\": 203, \"state\": 1014, \"state_multiplier\": 0.35}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2634, \"fields\": {\"candidate\": 203, \"state\": 1015, \"state_multiplier\": 0.33}}, {\"model\": \"campaign_trail.candidate_state_multiplier\", \"pk\": 2635, \"fields\": {\"candidate\": 203, \"state\": 1016, \"state_multiplier\": 0.54}}]");
+campaignTrail_temp.answer_score_global_json = [
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80000,
+      "fields": {
+        "answer": 8000,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.027
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80001,
+      "fields": {
+        "answer": 8001,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.015
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80002,
+      "fields": {
+        "answer": 8002,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.01
+      }
+},
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80003,
+      "fields": {
+        "answer": 8003,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.0079
+      }
+},
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80004,
+      "fields": {
+        "answer": 8004,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.005
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80005,
+      "fields": {
+        "answer": 8005,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.0076
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80006,
+      "fields": {
+        "answer": 8006,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.1
+      }
+},
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 82006,
+      "fields": {
+        "answer": 8006,
+        "candidate": 200,
+        "affected_candidate": 202,
+        "global_multiplier": 0.01
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80007,
+      "fields": {
+        "answer": 8007,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.001
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80008,
+      "fields": {
+        "answer": 8008,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.12
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80009,
+      "fields": {
+        "answer": 8009,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.01
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80010,
+      "fields": {
+        "answer": 8010,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.0002
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80011,
+      "fields": {
+        "answer": 8011,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.006
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80013,
+      "fields": {
+        "answer": 8013,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.005
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80014,
+      "fields": {
+        "answer": 8014,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.004
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80015,
+      "fields": {
+        "answer": 8015,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.003
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80016,
+      "fields": {
+        "answer": 8016,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.003
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80017,
+      "fields": {
+        "answer": 8017,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.25
+      }
+},
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 82017,
+      "fields": {
+        "answer": 8017,
+        "candidate": 200,
+        "affected_candidate": 202,
+        "global_multiplier": 0.025
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80018,
+      "fields": {
+        "answer": 8018,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.004
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80019,
+      "fields": {
+        "answer": 8019,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.003
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80020,
+      "fields": {
+        "answer": 7020,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.29
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80021,
+      "fields": {
+        "answer": 8021,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.01012545
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80022,
+      "fields": {
+        "answer": 8022,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.008905
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80023,
+      "fields": {
+        "answer": 8023,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.37345
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80024,
+      "fields": {
+        "answer": 8024,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.01
+      }
+},
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 82024,
+      "fields": {
+        "answer": 8024,
+        "candidate": 200,
+        "affected_candidate": 202,
+        "global_multiplier": 0.002
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80025,
+      "fields": {
+        "answer": 8025,
+        "candidate": 200,
+        "affected_candidate": 201,
+        "global_multiplier": -0.01012545
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80026,
+      "fields": {
+        "answer": 8026,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.009
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80093,
+      "fields": {
+        "answer": 8093,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.002
+      }
+},
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 81093,
+      "fields": {
+        "answer": 8093,
+        "candidate": 200,
+        "affected_candidate": 201,
+        "global_multiplier": -0.004
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80094,
+      "fields": {
+        "answer": 8094,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.25
+      }
+},
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 81094,
+      "fields": {
+        "answer": 8094,
+        "candidate": 200,
+        "affected_candidate": 203,
+        "global_multiplier": -0.25
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80027,
+      "fields": {
+        "answer": 8027,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.0097
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80028,
+      "fields": {
+        "answer": 8028,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.02
+      }
+},
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 82028,
+      "fields": {
+        "answer": 8028,
+        "candidate": 200,
+        "affected_candidate": 202,
+        "global_multiplier": 0.003
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80030,
+      "fields": {
+        "answer": 8030,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.007
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80031,
+      "fields": {
+        "answer": 8031,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.0065
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80033,
+      "fields": {
+        "answer": 8033,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.3
+      }
+},
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80033,
+      "fields": {
+        "answer": 8033,
+        "candidate": 200,
+        "affected_candidate": 203,
+        "global_multiplier": 0.3
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80034,
+      "fields": {
+        "answer": 8034,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.00435
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80035,
+      "fields": {
+        "answer": 8035,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.003
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80037,
+      "fields": {
+        "answer": 8037,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.017
+      }
+},
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 82037,
+      "fields": {
+        "answer": 8037,
+        "candidate": 200,
+        "affected_candidate": 202,
+        "global_multiplier": 0.0035
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80038,
+      "fields": {
+        "answer": 8038,
+        "candidate": 200,
+        "affected_candidate": 201,
+        "global_multiplier": 0.004
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80039,
+      "fields": {
+        "answer": 8039,
+        "candidate": 200,
+        "affected_candidate": 201,
+        "global_multiplier": 0.006
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80041,
+      "fields": {
+        "answer": 8041,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.003
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80046,
+      "fields": {
+        "answer": 8046,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.008075
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80047,
+      "fields": {
+        "answer": 8047,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.00455
+      }
+},
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 85047,
+      "fields": {
+        "answer": 8047,
+        "candidate": 200,
+        "affected_candidate": 203,
+        "global_multiplier": -0.002
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 81047,
+      "fields": {
+        "answer": 8047,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.002
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 82047,
+      "fields": {
+        "answer": 8047,
+        "candidate": 200,
+        "affected_candidate": 202,
+        "global_multiplier": 0.002
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80048,
+      "fields": {
+        "answer": 8048,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.00205
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80049,
+      "fields": {
+        "answer": 8049,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.10575
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80050,
+      "fields": {
+        "answer": 8050,
+        "candidate": 200,
+        "affected_candidate": 201,
+        "global_multiplier": 0.005
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80051,
+      "fields": {
+        "answer": 8051,
+        "candidate": 200,
+        "affected_candidate": 201,
+        "global_multiplier": -0.002
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80052,
+      "fields": {
+        "answer": 8052,
+        "candidate": 200,
+        "affected_candidate": 201,
+        "global_multiplier": 0.006
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80053,
+      "fields": {
+        "answer": 8051,
+        "candidate": 200,
+        "affected_candidate": 201,
+        "global_multiplier": -0.004075
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80054,
+      "fields": {
+        "answer": 8054,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.01
+      }
+},
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 83054,
+      "fields": {
+        "answer": 8054,
+        "candidate": 200,
+        "affected_candidate": 202,
+        "global_multiplier": 0.005
+      }
+},
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80055,
+      "fields": {
+        "answer": 8055,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.009
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80055,
+      "fields": {
+        "answer": 8056,
+        "candidate": 200,
+        "affected_candidate": 203,
+        "global_multiplier": -5.0
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80056,
+      "fields": {
+        "answer": 8056,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.49
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80057,
+      "fields": {
+        "answer": 8057,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.055
+      }
+},
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 81057,
+      "fields": {
+        "answer": 8057,
+        "candidate": 200,
+        "affected_candidate": 203,
+        "global_multiplier": -5.0
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80058,
+      "fields": {
+        "answer": 8058,
+        "candidate": 200,
+        "affected_candidate": 201,
+        "global_multiplier": -0.0022
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 81059,
+      "fields": {
+        "answer": 8059,
+        "candidate": 200,
+        "affected_candidate": 201,
+        "global_multiplier": -0.0025
+      }
+},
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80059,
+      "fields": {
+        "answer": 8059,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.003
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80060,
+      "fields": {
+        "answer": 8060,
+        "candidate": 200,
+        "affected_candidate": 201,
+        "global_multiplier": -0.0025
+      }
+},
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 81060,
+      "fields": {
+        "answer": 8060,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.0025
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80061,
+      "fields": {
+        "answer": 8061,
+        "candidate": 200,
+        "affected_candidate": 201,
+        "global_multiplier": -0.006
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80062,
+      "fields": {
+        "answer": 8062,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.0
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80064,
+      "fields": {
+        "answer": 8064,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.004
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80065,
+      "fields": {
+        "answer": 8065,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.2
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80066,
+      "fields": {
+        "answer": 8066,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.009
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80067,
+      "fields": {
+        "answer": 8067,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.006
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80068,
+      "fields": {
+        "answer": 8068,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.008
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80069,
+      "fields": {
+        "answer": 8069,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.007
+      }
+},
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80074,
+      "fields": {
+        "answer": 8074,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.05
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80075,
+      "fields": {
+        "answer": 8075,
+        "candidate": 200,
+        "affected_candidate": 201,
+        "global_multiplier": 0.01
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80076,
+      "fields": {
+        "answer": 8076,
+        "candidate": 200,
+        "affected_candidate": 201,
+        "global_multiplier": -0.01
+      }
+},
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 81076,
+      "fields": {
+        "answer": 8076,
+        "candidate": 200,
+        "affected_candidate": 202,
+        "global_multiplier": 0.01
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80077,
+      "fields": {
+        "answer": 8077,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.03
+      }
+},
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80079,
+      "fields": {
+        "answer": 8079,
+        "candidate": 200,
+        "affected_candidate": 201,
+        "global_multiplier": -0.03
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80080,
+      "fields": {
+        "answer": 8080,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.008
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80081,
+      "fields": {
+        "answer": 8083,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.005
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80082,
+      "fields": {
+        "answer": 8083,
+        "candidate": 200,
+        "affected_candidate": 202,
+        "global_multiplier": 0.006
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80083,
+      "fields": {
+        "answer": 8084,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.001
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80084,
+      "fields": {
+        "answer": 8085,
+        "candidate": 200,
+        "affected_candidate": 201,
+        "global_multiplier": 0.02
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80085,
+      "fields": {
+        "answer": 8086,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.02
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80086,
+      "fields": {
+        "answer": 8087,
+        "candidate": 200,
+        "affected_candidate": 201,
+        "global_multiplier": 0.012
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80087,
+      "fields": {
+        "answer": 8087,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": 0.008
+      }
+},
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 82087,
+      "fields": {
+        "answer": 8085,
+        "candidate": 200,
+        "affected_candidate": 202,
+        "global_multiplier": -0.02
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 82083,
+      "fields": {
+        "answer": 8086,
+        "candidate": 200,
+        "affected_candidate": 202,
+        "global_multiplier": -0.02
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 82084,
+      "fields": {
+        "answer": 8087,
+        "candidate": 200,
+        "affected_candidate": 202,
+        "global_multiplier": -0.02
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 82085,
+      "fields": {
+        "answer": 8088,
+        "candidate": 200,
+        "affected_candidate": 202,
+        "global_multiplier": -0.02
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80092,
+      "fields": {
+        "answer": 8092,
+        "candidate": 200,
+        "affected_candidate": 201,
+        "global_multiplier": -0.025
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80089,
+      "fields": {
+        "answer": 8089,
+        "candidate": 200,
+        "affected_candidate": 201,
+        "global_multiplier": -0.05
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80090,
+      "fields": {
+        "answer": 8090,
+        "candidate": 200,
+        "affected_candidate": 201,
+        "global_multiplier": -0.05
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 80091,
+      "fields": {
+        "answer": 8091,
+        "candidate": 200,
+        "affected_candidate": 201,
+        "global_multiplier": -0.05
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 84092,
+      "fields": {
+        "answer": 8091,
+        "candidate": 200,
+        "affected_candidate": 201,
+        "global_multiplier": -0.05
+      }
+    },
+    {
+      "model": "campaign_trail.answer_score_global",
+      "pk": 99999,
+      "fields": {
+        "answer": 9999,
+        "candidate": 200,
+        "affected_candidate": 200,
+        "global_multiplier": -0.004
+      }
+    }
+  ]   
+  campaignTrail_temp.answer_score_issue_json = [
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 80000,
+    "fields": {
+      "answer": 8003,
+      "issue": 104,
+      "issue_score": -0.5,
+      "issue_importance": 4.4
+    }
+  },
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 80000,
+    "fields": {
+      "answer": 8004,
+      "issue": 102,
+      "issue_score": 0.5,
+      "issue_importance": 3.0
+    }
+  },
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 80001,
+    "fields": {
+      "answer": 8006,
+      "issue": 102,
+      "issue_score": -0.5,
+      "issue_importance": 3.0
+    }
+  },
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 80002,
+    "fields": {
+      "answer": 8008,
+      "issue": 102,
+      "issue_score": -0.5,
+      "issue_importance": 3.0
+    }
+  },
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 80003,
+    "fields": {
+      "answer": 8010,
+      "issue": 102,
+      "issue_score": 0.6,
+      "issue_importance": 3.0
+    }
+  },
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 80004,
+    "fields": {
+      "answer": 8011,
+      "issue": 102,
+      "issue_score": -0.1,
+      "issue_importance": 3.0
+    }
+  },
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 80005,
+    "fields": {
+      "answer": 8015,
+      "issue": 102,
+      "issue_score": 0.9,
+      "issue_importance": 3.0
+    }
+  },
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 80006,
+    "fields": {
+      "answer": 8017,
+      "issue": 103,
+      "issue_score": -0.7,
+      "issue_importance": 5.0
+    }
+  },
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 80007,
+    "fields": {
+      "answer": 8019,
+      "issue": 103,
+      "issue_score": -0.2,
+      "issue_importance": 3.0
+    }
+  },
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 80008,
+    "fields": {
+      "answer": 7020,
+      "issue": 103,
+      "issue_score": 0.9,
+      "issue_importance": 9.0
+    }
+  },
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 80009,
+    "fields": {
+      "answer": 8023,
+      "issue": 101,
+      "issue_score": -0.7,
+      "issue_importance": 6.0
+    }
+  },
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 80010,
+    "fields": {
+      "answer": 8024,
+      "issue": 101,
+      "issue_score": 0.7,
+      "issue_importance": 3.0
+    }
+  },
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 80011,
+    "fields": {
+      "answer": 8025,
+      "issue": 103,
+      "issue_score": 0.9,
+      "issue_importance": 5.0
+    }
+  },
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 80012,
+    "fields": {
+      "answer": 8026,
+      "issue": 103,
+      "issue_score": 0.5,
+      "issue_importance": 3.0
+    }
+  },
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 80013,
+    "fields": {
+      "answer": 8028,
+      "issue": 100,
+      "issue_score": -0.5,
+      "issue_importance": 3.0
+    }
+  },
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 80014,
+    "fields": {
+      "answer": 8029,
+      "issue": 100,
+      "issue_score": 0.5,
+      "issue_importance": 3.0
+    }
+  },
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 80015,
+    "fields": {
+      "answer": 8037,
+      "issue": 103,
+      "issue_score": -0.4,
+      "issue_importance": 3.0
+    }
+  },
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 80016,
+    "fields": {
+      "answer": 8040,
+      "issue": 101,
+      "issue_score": 0.7,
+      "issue_importance": 5.0
+    }
+  },
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 80017,
+    "fields": {
+      "answer": 8047,
+      "issue": 104,
+      "issue_score": -0.5,
+      "issue_importance": 8.0
+    }
+},
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 80018,
+    "fields": {
+      "answer": 8048,
+      "issue": 104,
+      "issue_score": 0.5,
+      "issue_importance": 5.0
+    }
+  },
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 80019,
+    "fields": {
+      "answer": 8049,
+      "issue": 104,
+      "issue_score": 0.9,
+      "issue_importance": 9.0
+    }
+  },
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 80020,
+    "fields": {
+      "answer": 8054,
+      "issue": 103,
+      "issue_score": -0.7,
+      "issue_importance": 6.0
+    }
+  },
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 80021,
+    "fields": {
+      "answer": 8081,
+      "issue": 104,
+      "issue_score": 0.7,
+      "issue_importance": 8.0
+    }
+},
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 80022,
+    "fields": {
+      "answer": 8083,
+      "issue": 104,
+      "issue_score": -0.7,
+      "issue_importance": 5.0
+    }
+  },
+  {
+    "model": "campaign_trail.answer_score_issue",
+    "pk": 999999,
+    "fields": {
+      "answer": 9999003,
+      "issue": 6,
+      "issue_score": 0.66,
+      "issue_importance": 1.0
+    }
+  }
+]
+campaignTrail_temp.answer_score_state_json = JSON.parse("[{\"model\": \"campaign_trail.answer_score_state\", \"pk\": 69001, \"fields\": {\"answer\": 8042, \"state\": 1004, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": -0.004}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 69002, \"fields\": {\"answer\": 8042, \"state\": 1005, \"candidate\": 200, \"affected_candidate\": 202, \"state_multiplier\": 0.004}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 69003, \"fields\": {\"answer\": 8042, \"state\": 1006, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": -0.004}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 69004, \"fields\": {\"answer\": 8042, \"state\": 1015, \"candidate\": 200, \"affected_candidate\": 202, \"state_multiplier\": 0.004}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 69005, \"fields\": {\"answer\": 8043, \"state\": 1000, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.004}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 69006, \"fields\": {\"answer\": 8043, \"state\": 1001, \"candidate\": 200, \"affected_candidate\": 202, \"state_multiplier\": 0.0042}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 69007, \"fields\": {\"answer\": 8043, \"state\": 1002, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.004}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 69008, \"fields\": {\"answer\": 8044, \"state\": 1007, \"candidate\": 200, \"affected_candidate\": 202, \"state_multiplier\": 0.001}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 69009, \"fields\": {\"answer\": 8044, \"state\": 1008, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.001}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 69010, \"fields\": {\"answer\": 8044, \"state\": 1012, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.002}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 69011, \"fields\": {\"answer\": 8044, \"state\": 1013, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.002}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 69012, \"fields\": {\"answer\": 8044, \"state\": 1014, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.003}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 69013, \"fields\": {\"answer\": 8045, \"state\": 1009, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.009}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 69014, \"fields\": {\"answer\": 8045, \"state\": 1010, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.009}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 69015, \"fields\": {\"answer\": 8045, \"state\": 1011, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.009}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 69016, \"fields\": {\"answer\": 8070, \"state\": 1009, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.009}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 69017, \"fields\": {\"answer\": 8070, \"state\": 1010, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.009}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20510, \"fields\": {\"answer\": 8070, \"state\": 1011, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.009}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20511, \"fields\": {\"answer\": 8071, \"state\": 1004, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.004}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20512, \"fields\": {\"answer\": 8071, \"state\": 1005, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.004}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20513, \"fields\": {\"answer\": 8071, \"state\": 1006, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.004}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20514, \"fields\": {\"answer\": 8071, \"state\": 1015, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.004}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20661, \"fields\": {\"answer\": 8072, \"state\": 1007, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.001}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20662, \"fields\": {\"answer\": 8072, \"state\": 1008, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.001}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20515, \"fields\": {\"answer\": 8072, \"state\": 1012, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.002}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20516, \"fields\": {\"answer\": 8072, \"state\": 1013, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.0025}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20517, \"fields\": {\"answer\": 8072, \"state\": 1014, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.003}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20518, \"fields\": {\"answer\": 8073, \"state\": 1000, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.004}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20663, \"fields\": {\"answer\": 8073, \"state\": 1001, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.0042}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20664, \"fields\": {\"answer\": 8073, \"state\": 1002, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.004}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20519, \"fields\": {\"answer\": 8089, \"state\": 1001, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.005}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20520, \"fields\": {\"answer\": 8089, \"state\": 1004, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.003}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20521, \"fields\": {\"answer\": 8089, \"state\": 1005, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.003}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20522, \"fields\": {\"answer\": 8089, \"state\": 1008, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.003}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20665, \"fields\": {\"answer\": 8089, \"state\": 1014, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.005}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20667, \"fields\": {\"answer\": 8090, \"state\": 1016, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.008}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20523, \"fields\": {\"answer\": 8090, \"state\": 1013, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.004}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20524, \"fields\": {\"answer\": 8090, \"state\": 1009, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.007}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20525, \"fields\": {\"answer\": 8090, \"state\": 1010, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.007}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20526, \"fields\": {\"answer\": 8090, \"state\": 1011, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.007}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20668, \"fields\": {\"answer\": 8091, \"state\": 1002, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.01}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20669, \"fields\": {\"answer\": 8092, \"state\": 1004, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.004}},{\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20670, \"fields\": {\"answer\": 8092, \"state\": 1005, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.004}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20671, \"fields\": {\"answer\": 8092, \"state\": 1006, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.004}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 20672, \"fields\": {\"answer\": 8092, \"state\": 1015, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": 0.004}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 29519, \"fields\": {\"answer\": 8089, \"state\": 1007, \"candidate\": 200, \"affected_candidate\": 202, \"state_multiplier\": 1.5}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 29520, \"fields\": {\"answer\": 8089, \"state\": 1008, \"candidate\": 200, \"affected_candidate\": 202, \"state_multiplier\": 1.5}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 29521, \"fields\": {\"answer\": 8089, \"state\": 1009, \"candidate\": 200, \"affected_candidate\": 202, \"state_multiplier\": -0.01}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 29522, \"fields\": {\"answer\": 8089, \"state\": 1010, \"candidate\": 200, \"affected_candidate\": 202, \"state_multiplier\": -0.01}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 29665, \"fields\": {\"answer\": 8089, \"state\": 1011, \"candidate\": 200, \"affected_candidate\": 202, \"state_multiplier\": -0.01}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 29667, \"fields\": {\"answer\": 8090, \"state\": 1007, \"candidate\": 200, \"affected_candidate\": 202, \"state_multiplier\": 1.5}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 29523, \"fields\": {\"answer\": 8090, \"state\": 1008, \"candidate\": 200, \"affected_candidate\": 202, \"state_multiplier\": 1.5}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 29524, \"fields\": {\"answer\": 8090, \"state\": 1009, \"candidate\": 200, \"affected_candidate\": 202, \"state_multiplier\": -0.01}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 29525, \"fields\": {\"answer\": 8090, \"state\": 1010, \"candidate\": 200, \"affected_candidate\": 202, \"state_multiplier\": -0.01}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 29526, \"fields\": {\"answer\": 8090, \"state\": 1011, \"candidate\": 200, \"affected_candidate\": 202, \"state_multiplier\": -0.01}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 29668, \"fields\": {\"answer\": 8091, \"state\": 1007, \"candidate\": 200, \"affected_candidate\": 202, \"state_multiplier\": 1.5}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 29669, \"fields\": {\"answer\": 8091, \"state\": 1008, \"candidate\": 200, \"affected_candidate\": 202, \"state_multiplier\": 1.5}},{\"model\": \"campaign_trail.answer_score_state\", \"pk\": 29670, \"fields\": {\"answer\": 8091, \"state\": 1009, \"candidate\": 200, \"affected_candidate\": 202, \"state_multiplier\": -0.01}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 29671, \"fields\": {\"answer\": 8091, \"state\": 1010, \"candidate\": 200, \"affected_candidate\": 202, \"state_multiplier\": -0.01}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 29672, \"fields\": {\"answer\": 8091, \"state\": 1011, \"candidate\": 200, \"affected_candidate\": 202, \"state_multiplier\": -0.01}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 29668, \"fields\": {\"answer\": 8092, \"state\": 1007, \"candidate\": 200, \"affected_candidate\": 202, \"state_multiplier\": 1.5}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 29669, \"fields\": {\"answer\": 8092, \"state\": 1008, \"candidate\": 200, \"affected_candidate\": 202, \"state_multiplier\": 1.5}},{\"model\": \"campaign_trail.answer_score_state\", \"pk\": 29670, \"fields\": {\"answer\": 8092, \"state\": 1009, \"candidate\": 200, \"affected_candidate\": 202, \"state_multiplier\": -0.01}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 29671, \"fields\": {\"answer\": 8092, \"state\": 1010, \"candidate\": 200, \"affected_candidate\": 202, \"state_multiplier\": -0.01}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 29672, \"fields\": {\"answer\": 8092, \"state\": 1011, \"candidate\": 200, \"affected_candidate\": 202, \"state_multiplier\": -0.01}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 45056, \"fields\": {\"answer\": 8056, \"state\": 1001, \"candidate\": 200, \"affected_candidate\": 201, \"state_multiplier\": 0.02}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 45057, \"fields\": {\"answer\": 8056, \"state\": 1002, \"candidate\": 200, \"affected_candidate\": 201, \"state_multiplier\": 0.015}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 45058, \"fields\": {\"answer\": 8056, \"state\": 1004, \"candidate\": 200, \"affected_candidate\": 201, \"state_multiplier\": 0.11}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 45059, \"fields\": {\"answer\": 8056, \"state\": 1005, \"candidate\": 200, \"affected_candidate\": 201, \"state_multiplier\": 0.08}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 45060, \"fields\": {\"answer\": 8056, \"state\": 1015, \"candidate\": 200, \"affected_candidate\": 201, \"state_multiplier\": 0.01}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 45061, \"fields\": {\"answer\": 8056, \"state\": 1007, \"candidate\": 200, \"affected_candidate\": 201, \"state_multiplier\": 0.15}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 45062, \"fields\": {\"answer\": 8056, \"state\": 1008, \"candidate\": 200, \"affected_candidate\": 201, \"state_multiplier\": 0.15}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 45063, \"fields\": {\"answer\": 8056, \"state\": 1009, \"candidate\": 200, \"affected_candidate\": 201, \"state_multiplier\": -0.008}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 45064, \"fields\": {\"answer\": 8056, \"state\": 1010, \"candidate\": 200, \"affected_candidate\": 201, \"state_multiplier\": -0.008}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 45065, \"fields\": {\"answer\": 8056, \"state\": 1011, \"candidate\": 200, \"affected_candidate\": 201, \"state_multiplier\": -0.008}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 45066, \"fields\": {\"answer\": 8056, \"state\": 1012, \"candidate\": 200, \"affected_candidate\": 201, \"state_multiplier\": -0.2}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 45067, \"fields\": {\"answer\": 8056, \"state\": 1013, \"candidate\": 200, \"affected_candidate\": 201, \"state_multiplier\": -0.2}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 45068, \"fields\": {\"answer\": 8056, \"state\": 1014, \"candidate\": 200, \"affected_candidate\": 201, \"state_multiplier\": 0.01}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 45069, \"fields\": {\"answer\": 8056, \"state\": 1005, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": -0.07}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 45070, \"fields\": {\"answer\": 8056, \"state\": 1007, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": -0.5}}, {\"model\": \"campaign_trail.answer_score_state\", \"pk\": 45071, \"fields\": {\"answer\": 8056, \"state\": 1008, \"candidate\": 200, \"affected_candidate\": 200, \"state_multiplier\": -0.9}}]");
+campaignTrail_temp.answer_feedback_json = [
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9000,
+    "fields": {
+      "answer": 8000,
+      "candidate": 200,
+      "answer_feedback": "Many people are upset because of the failures of Lee Myung-bak Administration, and would like a change in government."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9001,
+    "fields": {
+      "answer": 8001,
+      "candidate": 200,
+      "answer_feedback": "This is an important message that will clearly contrast yourself from candidate Park."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9002,
+    "fields": {
+      "answer": 8002,
+      "candidate": 200,
+      "answer_feedback": "Good, though policy is not the first thing in mind for many people."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9003,
+    "fields": {
+      "answer": 8003,
+      "candidate": 200,
+      "answer_feedback": "This will help broaden your support."
+    }
+  },
+    {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9004,
+    "fields": {
+      "answer": 8004,
+      "candidate": 200,
+      "answer_feedback": "Calling Lee the worst president is questionable since Korea has had  dictators who committed human rights abuses (including Park’s own father), but it’s always a gaood idea to bring up the corruption."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9005,
+    "fields": {
+      "answer": 8005,
+      "candidate": 200,
+      "answer_feedback": "Considering your history as a human rights lawyer, it’s a good idea to make morality and trust the center of your criticisms against Lee."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9006,
+    "fields": {
+      "answer": 8006,
+      "candidate": 200,
+      "answer_feedback": "Your promise to WHAT?"
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9007,
+    "fields": {
+      "answer": 8007,
+      "candidate": 200,
+      "answer_feedback": "You missed a great chance to gain some free points since you won’t get any support from people who like him, but whatever floats your boat."
+    }
+  },
+    {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9008,
+    "fields": {
+      "answer": 8008,
+      "candidate": 200,
+      "answer_feedback": "Why would you say something like that? You were literally his right hand man and his image is beginning to rebound now.  You’ve lost the support and respect of many people as a result."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9009,
+    "fields": {
+      "answer": 8009,
+      "candidate": 200,
+      "answer_feedback": "Roh’s reforms on political fundraising had a lot of bipartisan appeal so this is a good thing to emphasize."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9010,
+    "fields": {
+      "answer": 8010,
+      "candidate": 200,
+      "answer_feedback": "While it’s true that most people don’t buy that Roh was as corrupt as Lee said he was and that many do blame Lee somewhat for his death, this is far too aggressive for many independent voters."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9011,
+    "fields": {
+      "answer": 8011,
+      "candidate": 200,
+      "answer_feedback": "While saying Roh didn’t succeed much is a somewhat odd thing to say since you worked as his Chief of Staff, the emphasis on his character and the obvious jab at the seemingly amoral Lee is a good move."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9013,
+    "fields": {
+      "answer": 8013,
+      "candidate": 200,
+      "answer_feedback": "This is the expected answer for you."
+    }
+  },
+    {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9014,
+    "fields": {
+      "answer": 8014,
+      "candidate": 200,
+      "answer_feedback": "Certain statements from Park do seem to support your case."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9015,
+    "fields": {
+      "answer": 8015,
+      "candidate": 200,
+      "answer_feedback": "This is a bit too extreme."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9016,
+    "fields": {
+      "answer": 8016,
+      "candidate": 200,
+      "answer_feedback": "Sure, but he’s not very popular with your supporters.  What are you afraid of?"
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9017,
+    "fields": {
+      "answer": 8017,
+      "candidate": 200,
+      "answer_feedback": "Right wing on security as the South Korean liberal candidate?! What’s next? Civil Libertarian Kim Jong-un?!"
+    }
+  },
+    {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9018,
+    "fields": {
+      "answer": 8018,
+      "candidate": 200,
+      "answer_feedback": "This is the standard liberal position."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9019,
+    "fields": {
+      "answer": 8019,
+      "candidate": 200,
+      "answer_feedback": "This is a good way to balance the liberal position and win over moderates and even a few conservatives."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9020,
+    "fields": {
+      "answer": 7020,
+      "candidate": 200,
+      "answer_feedback": "You hear the door knocking.  You open it.  It’s the NIS.  They would like to have a word with you.  Something about your connections to certain North Korean spies."
+    }
+  },
+    {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9021,
+    "fields": {
+      "answer": 8021,
+      "candidate": 200,
+      "answer_feedback": "Many people would love a change from the pro-Chaebol policies of the Lee Administration for sure."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9022,
+    "fields": {
+      "answer": 8022,
+      "candidate": 200,
+      "answer_feedback": "It’s a good idea to talk about your economic plan in detail, but will it work?"
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9023,
+    "fields": {
+      "answer": 8023,
+      "candidate": 200,
+      "answer_feedback": "That’s one way to guarantee a conservative victory."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9024,
+    "fields": {
+      "answer": 8024,
+      "candidate": 200,
+      "answer_feedback": "This message would work out in Europe, but embracing socialism in South Korea is going to raise suspicion."
+    }
+  },
+    {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9025,
+    "fields": {
+      "answer": 8025,
+      "candidate": 200,
+      "answer_feedback": "Moon, it’s not even clear that Roh wanted to give up the NLL.  Are you that crazy for Lee Jung-hee’s support?"
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9026,
+    "fields": {
+      "answer": 8026,
+      "candidate": 200,
+      "answer_feedback": "This is too conservative for your supporters, who feel that these attacks are a part of a smear campaign."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9093,
+    "fields": {
+      "answer": 8093,
+      "candidate": 200,
+      "answer_feedback": "Unfortunately, due to negative campaigning on both sides, both you and Park lose support."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9094,
+    "fields": {
+      "answer": 8094,
+      "candidate": 200,
+      "answer_feedback": "Now, the task would be to get him to resign and throw his support behind you."
+    }
+  },
+    {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9027,
+    "fields": {
+      "answer": 8027,
+      "candidate": 200,
+      "answer_feedback": "This will certainly excite your base."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9028,
+    "fields": {
+      "answer": 8028,
+      "candidate": 200,
+      "answer_feedback": "First, you are the liberal candidate! Second, this is South Korea not South Carolina!"
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9029,
+    "fields": {
+      "answer": 8029,
+      "candidate": 200,
+      "answer_feedback": "That is an interesting position, but whether this will help with voters needs to be seen."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9030,
+    "fields": {
+      "answer": 8030,
+      "candidate": 200,
+      "answer_feedback": "Many parents and college students are excited by your proposal. Expect your numbers to improve."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9031,
+    "fields": {
+      "answer": 8031,
+      "candidate": 200,
+      "answer_feedback": "This is a good liberal position to take on education. You certainly want to portray yourself as someone who wants to give everyone an equal chance."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9033,
+    "fields": {
+      "answer": 8033,
+      "candidate": 200,
+      "answer_feedback": "Are you crazy?!"
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9034,
+    "fields": {
+      "answer": 8034,
+      "candidate": 200,
+      "answer_feedback": "This is a good answer that will not alienate moderates or progressives."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9035,
+    "fields": {
+      "answer": 8035,
+      "candidate": 200,
+      "answer_feedback": "While this is a normal liberal/progressive position, it will not win over moderates."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9037,
+    "fields": {
+      "answer": 8037,
+      "candidate": 200,
+      "answer_feedback": "This is what your supporters do not want to hear!"
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9046,
+    "fields": {
+      "answer": 8046,
+      "candidate": 200,
+      "answer_feedback": "This is a way to excite your base and bring in both moderate and progressive voters."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9047,
+    "fields": {
+      "answer": 8047,
+      "candidate": 200,
+      "answer_feedback": "Ahn’s supporters are crucial for winning this election.  Good strategy!"
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9048,
+    "fields": {
+      "answer": 8048,
+      "candidate": 200,
+      "answer_feedback": "The progressive base isn’t strong, so you don’t gain much support.  Moderates also find you a bit too radical."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9049,
+    "fields": {
+      "answer": 8049,
+      "candidate": 200,
+      "answer_feedback": "You were clearly drunk when you said that!"
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9050,
+    "fields": {
+      "answer": 8050,
+      "candidate": 200,
+      "answer_feedback": "You’re clearly in agreement with popular sentiment."
+    }
+  },
+    {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9051,
+    "fields": {
+      "answer": 8051,
+      "candidate": 200,
+      "answer_feedback": "This is too negative, and while Park is damaged by your comments, you lose some support as well."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9052,
+    "fields": {
+      "answer": 8052,
+      "candidate": 200,
+      "answer_feedback": "This is probably your best choice."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9054,
+    "fields": {
+      "answer": 8054,
+      "candidate": 200,
+      "answer_feedback": "Maybe it is, but the public disagrees."
+    }
+  },
+    {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9055,
+    "fields": {
+      "answer": 8055,
+      "candidate": 200,
+      "answer_feedback": "Ahn is angered by your rebuke and continues campaigning, and has increased his attacks on you now, and even though Sim Sang-jung of the Progressive Justice Party has begun to campaign for you, you’ve lost critical support.  You have only yourself to blame if you come in third."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9056,
+    "fields": {
+      "answer": 8056,
+      "candidate": 200,
+      "answer_feedback": "Ahn begins to rally his supporters behind your campaign as he stumps for you, and with Sim Sang-jung the Progressive Justice Party endorsing you as well, this can only be good for your campaign."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9057,
+    "fields": {
+      "answer": 8057,
+      "candidate": 200,
+      "answer_feedback": "Ahn is disappointed by your soft rejection.  He nonetheless withdraws from the race and makes a vague statement rebuking Park and Lee, but declines to endorse anyone.  At least you have Sim Sang-jung of the Progressive Justice Party’s support."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9058,
+    "fields": {
+      "answer": 8058,
+      "candidate": 200,
+      "answer_feedback": "You went too far when you called her Queen.  Maybe Lee Jung-hee can get away with saying such things, but she has no plan to win."
+    }
+  },
+    {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9059,
+    "fields": {
+      "answer": 8059,
+      "candidate": 200,
+      "answer_feedback": "It’s certainly a good question how someone like Park can understand the struggles of common people."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9060,
+    "fields": {
+      "answer": 8060,
+      "candidate": 200,
+      "answer_feedback": "This is a good balance of attacking your opponent and making the case for your campaign."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9061,
+    "fields": {
+      "answer": 8061,
+      "candidate": 200,
+      "answer_feedback": "It is a good idea to tie Park to the unpopular Lee Myung-bak Administration."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9062,
+    "fields": {
+      "answer": 8062,
+      "candidate": 200,
+      "answer_feedback": "No harm, no foul!"
+    }
+  },
+    {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9063,
+    "fields": {
+      "answer": 8063,
+      "candidate": 200,
+      "answer_feedback": "This is a good negative answer that will polarize the country."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9064,
+    "fields": {
+      "answer": 8064,
+      "candidate": 200,
+      "answer_feedback": "This is a good strategy that will help you with female voters."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9065,
+    "fields": {
+      "answer": 8065,
+      "candidate": 200,
+      "answer_feedback": "WHAT?! You apologize for your statements, but it’s too late.  Many female voters are furious, and you take a hit in the polls."
+    }
+  },
+    {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9074,
+    "fields": {
+      "answer": 8074,
+      "candidate": 200,
+      "answer_feedback": "Congratulations!  You won the debate! This is the breakthrough that you needed."
+    }
+  },
+    {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9075,
+    "fields": {
+      "answer": 8075,
+      "candidate": 200,
+      "answer_feedback": "Unfortunately for you, Park Geun-hye won the debate."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9076,
+    "fields": {
+      "answer": 8076,
+      "candidate": 200,
+      "answer_feedback": "Not only did Lee Jung-hee win the debate, but she was able to damage Park in the process."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9077,
+    "fields": {
+      "answer": 8077,
+      "candidate": 200,
+      "answer_feedback": "You may as well concede the election to Park!"
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9078,
+    "fields": {
+      "answer": 8078,
+      "candidate": 200,
+      "answer_feedback": "These claims don’t really go anywhere, unfortunately for you.  I guess the campaign moves on."
+    }
+  },
+    {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9079,
+    "fields": {
+      "answer": 8079,
+      "candidate": 200,
+      "answer_feedback": "A special investigation headed by prosecutor Yoon Suk-yeol has uncovered that these rumors were in fact, true, and although the Park campaign wasn’t directly involved in it, this will nonetheless hurt her.  It looks like you might have to reward Yoon for his excellent work if you win…maybe prosecutor general?"
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9080,
+    "fields": {
+      "answer": 8080,
+      "candidate": 200,
+      "answer_feedback": "Sometimes it’s best to exercise caution, but is this really one of those situations?"
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9081,
+    "fields": {
+      "answer": 8081,
+      "candidate": 200,
+      "answer_feedback": "!!!!!!!!!!!!!!!!!!!!!!!!!!."
+    }
+  },
+    {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9082,
+    "fields": {
+      "answer": 8082,
+      "candidate": 200,
+      "answer_feedback": "It’s good to play it safe."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9083,
+    "fields": {
+      "answer": 8083,
+      "candidate": 200,
+      "answer_feedback": "Your arrogance convinces Lee to continue her campaign."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9084,
+    "fields": {
+      "answer": 8084,
+      "candidate": 200,
+      "answer_feedback": "You gain some conservatives, but lose some progressives."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9085,
+    "fields": {
+      "answer": 8085,
+      "candidate": 200,
+      "answer_feedback": "No it doesn’t.  Expect a high turnout from conservatives."
+    }
+  },
+    {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9086,
+    "fields": {
+      "answer": 8086,
+      "candidate": 200,
+      "answer_feedback": "You’ve gained Lee’s progressive supporters.  It seems that Lee’s strategy worked out after all."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9087,
+    "fields": {
+      "answer": 8087,
+      "candidate": 200,
+      "answer_feedback": "You gain Lee’s progressive supporters, but the endorsement scares conservatives to turnout in high numbers."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9088,
+    "fields": {
+      "answer": 8088,
+      "candidate": 200,
+      "answer_feedback": "Nothing happens."
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9089,
+    "fields": {
+      "answer": 8089,
+      "candidate": 200,
+      "answer_feedback": "Finally, the campaign is over!  Hopefully, you can win!"
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9090,
+    "fields": {
+      "answer": 8090,
+      "candidate": 200,
+      "answer_feedback": "Finally, the campaing is over!  Hopefully, you can win!"
+    }
+},
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9091,
+    "fields": {
+      "answer": 8091,
+      "candidate": 200,
+      "answer_feedback": "Finally, the campaign is over!  Hopefully, you can win!"
+    }
+},
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 9092,
+    "fields": {
+      "answer": 8092,
+      "candidate": 200,
+      "answer_feedback": "Finally, the campaign is over!  Hopefully, you can win!"
+    }
+  },
+  {
+    "model": "campaign_trail.answer_feedback",
+    "pk": 26599,
+    "fields": {
+      "answer": 51220,
+      "candidate": 201,
+      "answer_feedback": "This is an interesting strategy."
+    }
+  }
+]
+campaignTrail_temp.candidate_image_url = 'https://i.imgur.com/PC7fVOv.jpg';
+campaignTrail_temp.running_mate_image_url = 'https://media.discordapp.net/attachments/1069119861936115752/1090176988133732372/20120220_171054_aca0adf.jpg';
+campaignTrail_temp.candidate_last_name = 'Moon';
+campaignTrail_temp.running_mate_last_name = 'Democratic';
+campaignTrail_temp.running_mate_state_id = '1013';
+campaignTrail_temp.player_answers = [];
+campaignTrail_temp.player_visits = [];
+campaignTrail_temp.answer_feedback_flg = 1;
+campaignTrail_temp.game_start_logging_id = '3660535';
+(function(e,t,n,r,i){function s(e,t,n,r){r=r instanceof Array?r:[];var i={};for(var s=0;s<r.length;s++){i[r[s]]=true}var o=function(e){this.element=e};o.prototype=n;e.fn[t]=function(){var n=arguments;var r=this;this.each(function(){var s=e(this);var u=s.data("plugin-"+t);if(!u){u=new o(s);s.data("plugin-"+t,u);if(u._init){u._init.apply(u,n)}}else if(typeof n[0]=="string"&&n[0].charAt(0)!="_"&&typeof u[n[0]]=="function"){var a=Array.prototype.slice.call(n,1);var f=u[n[0]].apply(u,a);if(n[0]in i){r=f}}});return r}}var o=1070,u=1070,a=10;var f={stateStyles:{fill:"#333",stroke:"#666","stroke-width":1,"stroke-linejoin":"round",scale:[1,1]},stateHoverStyles:{fill:"#33c",stroke:"#000",scale:[1.1,1.1]},stateHoverAnimation:500,stateSpecificStyles:{},stateSpecificHoverStyles:{},click:null,mouseover:null,mouseout:null,clickState:{},mouseoverState:{},mouseoutState:{},showLabels:true,labelWidth:20,labelHeight:15,labelGap:6,labelRadius:3,labelBackingStyles:{fill:"#333",stroke:"#666","stroke-width":1,"stroke-linejoin":"round",scale:[1,1]},labelBackingHoverStyles:{fill:"#33c",stroke:"#000"},stateSpecificLabelBackingStyles:{},stateSpecificLabelBackingHoverStyles:{},labelTextStyles:{fill:"#fff",stroke:"none","font-weight":300,"stroke-width":0,"font-size":"10px"},labelTextHoverStyles:{},stateSpecificLabelTextStyles:{},stateSpecificLabelTextHoverStyles:{}};var l={_init:function(t){this.options={};e.extend(this.options,f,t);var n=this.element.width();var i=this.element.height();var s=this.element.width()/o;var l=this.element.height()/u;this.scale=Math.min(s,l);this.labelAreaWidth=Math.ceil(a/this.scale);var c=o+Math.max(0,this.labelAreaWidth-a);this.paper=r(this.element.get(0),c,u);this.paper.setSize(n,i);this.paper.setViewBox(-500,0,c,u,false);this.stateHitAreas={};this.stateShapes={};this.topShape=null;this._initCreateStates();this.labelShapes={};this.labelTexts={};this.labelHitAreas={};if(this.options.showLabels){this._initCreateLabels()}},_initCreateStates:function(){var t=this.options.stateStyles;var n=this.paper;var r={Incheon:"M311.6 226.7l1 2.4-0.8 0.4-1.4 1-0.5 0.7-2.8 0.6-1.2-0.2-5.4 2.4-2 1.8-1.1 2-6.9 5.2-1.5-0.3-2.1 0-0.7-2.5-1.2-0.8-0.6 0.7-0.8-1.9-1-0.2-1.6 1.7-1.2-0.6-1.7-0.4 1-1-0.3-1.1-1.7-1.6-0.5-1.1 0.6-1.5 1-0.2 1.3 0.6 7.2-5 5.1-0.6 3.5 0.1 3.2-1.7 1.1-4.5 2.2-0.8 1.9 1.9 2.7 1.2 1.8 0.2 1.3 0.7 1.2 1.6 0.9 0.8z m22.7 25l-0.4-1.4-8.3-1-3.9 4.9-4-3 1.6-3.7 2.1-3.1-1.3-2.3-5.4-2.9 0.3-3.6-0.5-2.9 1.6-2.7 4.5-1.3 1.4-0.7 0.3-1.7-2.1-0.6-0.6 1.8-3.3 0.3-0.8-2-0.4-3.6 0.8-4.9 15.3-0.5 9.4 9-0.1 4.7 1.7 3.9 2.6 1.7 1.5 2.4-1.5 5-2.2 4.3-3.3 2.4-5 1.5z",Seoul:"M398.4 211.4l-1.5 5.7 4.4-0.1 3.7-1.3 3.2-0.1 1.2 2.9-0.4 3-2.2 1.1-2.4 1.6 0 3.6 1.3 1.5-2.7 3.7-1.5 2.6-4.1 2.4-4.5 1.1-4.7 2.3-1.8-4.1-3.9 0.9-4 1.2-2.7 1.6-2.9 0.5-6.8-0.3-4.7-6.1-4.6-1.4-3.1-2-0.8-5.8-3.2-4.4-3.7-4.6 2.3-5.1 4.5 0.2 5 3.1 3.8-1.2 3.4-2.1 0.2-3.4 0.9-3.2 7.1-0.7 3.7-4.6 2.2-4.8 3.2-3.3 4.9-1.2 5.7 0.4 2.7 4.7 1.1 6.4 1.6 4.4 0.1 4.9z",Gyeonggi_Do:"M245.6 280.6l-0.7 1.2-2 2.1-1.4 0.6-1.9 0.3-1.6-0.7-1.4-2.9-1.5 0.8-0.7-0.2 0.5-4 0.9-2.7 1.1-1.6 1.3 0.9 1.1 1.9 1.2 0.9 3.9 2.1 1.2 1.3z m50.4-1.9l-1.3 1.6-1.8 0.4-1.2-0.9-1.3 0.1-1.1-0.6-0.3-2.5 0.3-2.6 1.3-1.8 2.8-1.5 3.6 0.3 1.6 1.1 0.6 2.4-0.7 0.9-1.7 0.5-0.6 1.3-0.2 1.3z m15.2-7.5l0.6 1.6 1.9 1.1 3 1.2 0.8 0.9 0.8 2.6-0.8 1.8-8.1 6.5-3.7 0.4 0.1-1 1.7-2.3 0.2-1.4-0.7-1.1 2-2.4 0.1-2.4-0.8-2.9-1.2-2-1.2-1.4 0.4-0.4 2.6 1.3 2.2-2 0.5 0.2-0.4 1.7z m-139.3-74.8l-0.9 0.4-1.4-3.5 0.2-1.8 1.2-0.2 1.8 0.3 1.1 1.1-0.5 2.2-1.5 1.5z m107-0.9l-3.2 0.2-10.7-8.4 1.4-1.2 0.6-1.6 0.9-3.8 1.3-2 0.9-0.7 0.9-0.3 0.6 0.4 0.6 1.4 0.5 3.7 1 2 1 1.1 4.1 3.4 1.5 1.8 0.3 1.9-1.7 2.1z m-253.9-24l0.8 0.7-0.3 1-1.1 0.3-1.5-0.4-1.1 0.5-1 1.2-1.4 0.7 0.7-2.1 1.1-0.8 0.3-1.1 2.1 0.1 1.4-0.1z m239.1-6.6l3 1.8 3.1-0.1 2.9 0.5 1.5 1.6-1.1 3.6-2.8 2.4-3.4 0.3-6.6-1.5-3.3 1.6-1.5 0-0.6-2.2 0.3-0.7 1.8-5.5 2-1.9 2.2-0.6 2.5 0.7z m40 37.3l-1.8 4.2-1.6 1.4-1.2 0.2-0.9-0.5-1.7-1.8-1.2-0.7-0.8 0.3-1.3 1-8.3 0.5-3.1-1.5-3.3-4.3 4.9-1.3 1.2-0.8 1.3-2.1-0.2-0.9-0.9-0.6-0.8-1.1-5.6-10.8-0.4-1.7 0.6-2.1-0.1-9.5 0.6-2.2 1.6-0.5 3.7-4.4 2.9-0.7 2.5 1.8 2.4 2.8 2.4 2.2 5.1 2.6 2 2 0.8 3.2-0.2 1.7-0.8 2.7-0.2 1.2 0.4 1.3 1.4 2.7 0.4 1.5 0.5 7.2-0.5 1.7 0.8 1.1 1.4 3-2 1.2z m-287.2-37l-1.2 0.7-1.2-0.1-1 0.4-0.8 0.8-1-1.6-1.2-1.7 0.5-1.5 2.6-2.2 2.5-2.4 1.2 0.2 1.2 0.6 0.3 1.3-0.8 1.8-0.4 2-0.7 1.7z m2.9-34.2l1.8 2.1-0.3 3-2.2 1.6-3-1.9-4.1 0.4-0.8 0.4 0.1 2.1 1.5 0.7 1.8 0.4 0.9 0.7-3.2 2.6-6.5-0.9-4.8-4.1 1.6-7.1 4.1 1.4 8.7-3.1 4.4 1.7z m454.9 169.6l-1.1 2.1-1.3 1.9-2.5 1.9-1.7 3.2-7.6 14.1-3.9 2.8-0.9-1.2-3.1-0.6-2.5 2.6-1.3 3.3-1.9 2.5-4.1 1.7-2.5 2.8-1.5 5.8-5.2 1.8-6.8 3.3-7.1 2-7.4-1-6.1-5.1-6.9-3.1-13.1 5.6-6.2 0-7.5-1.5 2.1-1.6 2.4-1.1 1.7-1.9 1-4.8-0.3-0.9-1.7-2 0.8-0.8 1.7 0 2.2-1.3 1.4-0.2 1-0.7 0.5-2.3-9.5 2.7-1.4 2 0.5 6.1-1.2 1.4-3.7 1.2-5.2-0.7-6.2-3.6-5.6-5.6-2.2-5.3 9.5-1 0-1.2-2.1-1.5 1.7-0.2 1.7 0.1 1.6 0.5 1.3 1.1-0.6-3.8-2.2-3.4-1.6-3.8 1.2-5.3-1.8-0.8-1.4 1.8-0.8 3.2-0.3 3.2-0.8 3.5-1.5 0.8-1.5-1.5-3 0.6-3 0.8-7.3-2.2 0-2.3-0.7-1.9 0.6-2.7-0.3-3.4 1.8-3.4 2.2-3 2.5-1.2 2.7-1 4-0.1 4.3-1.2 0.9-1.3 0.3-3.7-1-0.7-2.2 1.2-3.3 2.9-2.1-0.5-1.5-0.9-0.8-1.5 0-2.4-3.7 1.9-3.1 2.2-5.6 6.1-1.5 1.2-1.8 0.6-1.7 0-1-1.1 0-1.8 1-1.8 2.3-3.3-4.6 1.1-1.4-0.5-0.6-2.7 0.9-2 1.9-1.1 2.2-0.8 1.6-0.9 1.9-2.6-0.5-0.7-4.2 0.6-1.4-0.9-1.1-2.1-1.1-2.7-1.2-2.5 0.7-0.2 1.4-1.2 1.2 0.9 1.7-0.1 3.1-0.8 2.5 0.7 2.1 1.3 2.1 0.6 2.4-1.2-0.2 2.3 0.2 2.1 0.8 1.7 1.5 0.7 1.7-0.6 0.7-1.9 0.8-4.3 2.7-4 2.2 0.4 2.5 1.5 3.5-0.6-0.8-1.6-1-1.2-1.2-0.8-1.5-0.4-2.2 0-1-1.5-2.3-0.4-1.9 0.6-1.9-0.1-3-0.6-5-1.6-6.9-5.2-0.3-2.3 3-4.5 2.1-2.1 5-1.5 3.3-2.4 2.2-4.3 1.5-5-1.5-2.4-2.6-1.7-1.7-3.9 0.1-4.7-9.4-9-15.3 0.5-2-4.7-3-5.1-1.8-1.8-0.1-2.7-0.6-4-1.7-6.3-2.3-16.5 0.6-2.7 2.1-0.4 8.7 3.2 2.8-0.6 2.3-1.1 2.1-0.4 2.1 1.4 0.8 2.4 0.3 3.6-0.2 3.8-0.9 2.6-0.1 4.7 4.9 4.1 6.2 2.6 3.8 0.2-3-3.1-9.1-6.6 2.6-7.1 0.8-4.2-0.6-3-1.5-3.1-0.3-4.1 0.7-4 1.6-3.2-1.2-1.5-1.5 0.2-2.4 1.7-1.1-17.3 0.8-4.7 1.9-1.4 3-0.4 4-1.5 6.3-5.1 13.6-20.7 2.7-2.8 6.1-4.7 2.6-3.1 5.4-13.3 1.9-2.5 3.2 1.6 7.9 5 1.3 3.2 1.7 1.4 1.5 1.7 1.1 3.3 1.7 2.6 2-0.3 1.9 2 5.3 4.8 5.8 2.8 2-3.3 0.1-6.6 0.4-2 1.2-1.3 1.1 0.7 0.3 2 0.6 2 3.1 2.1 3.6-0.6 2.4-2.4 2.1-2.7 1.1-0.9 1.3-0.2 1.3 0.3 1.1 0.9-1.6 2.6-1.2 3.6 0.1 3.8 2.5 2.3 2.4 1.5 6.1 1.4 6.6-2.3 2.7 1.9 1-0.1 0.9-0.8 1.2-0.3 1.1 1 1.5 4.7 0.8 9.5 2 5.3 4 3 3.8-0.2 3.5 0.1 2.2 6 2.9 1.3 3.1 0.6 3.7 5.8-0.8 8.1-1.8 2.8-3.2 1.1-8.1 5.9 0.3 3.1 0.1 3.3-0.9 2.7 1.2 3.6 0.8 3.6-4.6 5.5 1.9 2.4 4.2-1.4-0.1 4.1-0.6 3.9-1.7 3.4-0.3 3.3 3.5 3 4.3-1.4 4.3 0.7 4 2.6 4 1.7 8.9 4.9 5.3 0.7 3.9 1.5 3.8 0.4 2.3 2 1.8 3.1-1.6 3.5-3.2 1.3-2.9 3.6-2.1 3.6 0.9 4.5-1.2 4.5-9.7 20.8-7.1 17.4-8.5 15.9z m-76.3-89.2l-0.1-4.9-1.6-4.4-1.1-6.4-2.7-4.7-5.7-0.4-4.9 1.2-3.2 3.3-2.2 4.8-3.7 4.6-7.1 0.7-0.9 3.2-0.2 3.4-3.4 2.1-3.8 1.2-5-3.1-4.5-0.2-2.3 5.1 3.7 4.6 3.2 4.4 0.8 5.8 3.1 2 4.6 1.4 4.7 6.1 6.8 0.3 2.9-0.5 2.7-1.6 4-1.2 3.9-0.9 1.8 4.1 4.7-2.3 4.5-1.1 4.1-2.4 1.5-2.6 2.7-3.7-1.3-1.5 0-3.6 2.4-1.6 2.2-1.1 0.4-3-1.2-2.9-3.2 0.1-3.7 1.3-4.4 0.1 1.5-5.7z",Gangwon_Do:"M762 402.5l-1.6-0.1-5.3-1.2-5.1 2.3-10.9-4.1 1.7-4.7-0.5-4.4-1.4-4.9-0.4-5.5 2.1-5.3 1.7-4.9-1.2-1.5-1.4-1.3 0.7-4.5-11.6-0.9-3.4-1.9-3.7-1.6-1.5-3.6-1.1-4.2-5.2-2.5-3.3-4.9-0.7-6.5 1.1-4.9 2.7-2 3-1.1 4.6 1.8 3.8-2.8-1.6-4.6-4.9-3-5.4-1.2-4.3 2.2-4.2 1.1-5.8-2.7-6.2-1-2.1 0.8-1.7-0.2-1.4-1.8-1.9-0.8-4.5 3.5-4.7 1.9-0.4-3.5 0.4-3.4-2.8-1.4-3-0.7-2.2-3.9-4.4-0.4-4.3 2.1-2.8 3.5 1 4.9-0.5 4.5-0.9 4.2-4.1-0.3-4.7-1.1-3.9-1.6-4.1-2.2-3.1-2-3.2-1.4-4.1-0.5-4.1-0.8-4.2-2.7-3.7-2.9-3.8 0.1-3.8 1.2-3.4 0.6-2.9 0.2-1.1-2.6-3.2-3.3 0.3-2.8-1.6-1.7-7.5 0.8-4.8 1.6-1.4 0.7-1.5 0-2.2-1.3-1.7-1.9 2.7-4.2 4.6-3.3 1.8-4.2-2.9-0.8-9-1.5-8.8-3.1-3.7 2.8-3.1 1.7-3.8-0.8-3.2 2.4-5.2 3-5.2 1.2-2-2.7 0-4.3-6-6.4-8.1 2.7-3 3.7 0.9 9.7-3.2 2.2-1.1 1.3-1.2 1.1-2.7-1.5-4.8-0.4-4.9 1.2 1.4-9.6-16.8 2.3-16.7 4.6 8.5-15.9 7.1-17.4 9.7-20.8 1.2-4.5-0.9-4.5 2.1-3.6 2.9-3.6 3.2-1.3 1.6-3.5-1.8-3.1-2.3-2-3.8-0.4-3.9-1.5-5.3-0.7-8.9-4.9-4-1.7-4-2.6-4.3-0.7-4.3 1.4-3.5-3 0.3-3.3 1.7-3.4 0.6-3.9 0.1-4.1-4.2 1.4-1.9-2.4 4.6-5.5-0.8-3.6-1.2-3.6 0.9-2.7-0.1-3.3-0.3-3.1 8.1-5.9 3.2-1.1 1.8-2.8 0.8-8.1-3.7-5.8-3.1-0.6-2.9-1.3-2.2-6-3.5-0.1-3.8 0.2-4-3-2-5.3-0.8-9.5-1.5-4.7-1.1-1-1.2 0.3-0.9 0.8-1 0.1-2.7-1.9-6.6 2.3-6.1-1.4-2.4-1.5-2.5-2.3-0.1-3.8 1.2-3.6 1.6-2.6-1.1-0.9-1.3-0.3-1.3 0.2-1.1 0.9-2.1 2.7-2.4 2.4-3.6 0.6-3.1-2.1-0.6-2-0.3-2-1.1-0.7-1.2 1.3-0.4 2-0.1 6.6-2 3.3-5.8-2.8-5.3-4.8-1.9-2-2 0.3-1.7-2.6-1.1-3.3-1.5-1.7-1.7-1.4-1.3-3.2-7.9-5-3.2-1.6 1-1.1 8.6-7.2 10.1-6.3 10.6-4.4 10.2-1.1 5.1 0.6 19.5-1.7 15 4.5 4.8-0.4 9.3-2.8 30.5-2.7 1.3 0.9 2 2.9 1.9 2 2.2 0.5 10.5-2.2 16.6 1 10.8-0.9 10.8-3.8 10.1-6.6 8.4-8.8 3.7-5.3 3.1-5.6 2-6.3 0.7-7.1-1.3-7-0.4-3.5 1-2.6 4.3-3.4 9-4.7 12.1 24 1.5 6.4 3.7 9.7 14 27.7 10.9 29.1 1.8 3.1 5.6 7.1 2.2 5.9 26.4 37.8 10.2 14.9 12.3 13.6 1.7 1.4 8.2 9.7 0.5 4.1 0 4.9 1 4.2 5.6 3.1 1.6 3.4 4.6 15.1 2.1 3.4 2.5 1.5 2 2.2 7.2 14.2 4.4 5.4 1.5 3 0.5 3.2 1.1 3.1 7.7 8.4 2.4 6.9 2.2 15.1 2.9 8.2 8.2 11.4 0.6 2.3-1 2.3-1.4 2.2-1 2.2 0 1.9 1.1 6.2 1.4 17.7 1.5 8.2 5.2 16.6 0.5 8.2-1.7 7.5-3.5 6.9-2.9 8.1z",Chungcheongnam_Do:"M284.4 429.5l-0.3 2.2 0.4 1.9 1.2 3.6 2.2 3.3 0.9 3.1-1.6-0.7-7 0.4-2.3-0.4-0.4-2.9 0.8-1 1.2-1.2 0.6-1.7-3.7 2.4-1.8-0.9 0.5-2.9 2.8-4-1-1.2-2.2 2.6-0.7-1.8-1.7 0.9 0.9-4.7-0.6-7.3-0.8-4.3-1.6-5.5 1.4-1.8 2.8-2.6 3-1.1 2.1 3.4 0.3 1.2-0.7 1.5-1.2 0.9 0.1 1.4 2.7 6 0.4 2-0.7 1.6 0.8 1.4 1.8 1.1 1.4 2.4-3.3 0 0 1.2 1.1 0.2 2.2 1.3z m88.1-84l7.5 1.5 6.2 0 13.1-5.6 6.9 3.1 6.1 5.1 7.4 1 1.3 3 1.9 1.9 2.1 1.3 2.7 5.5 2.1 1.4-0.2 4.1 1.3 1.2 1.1 2 0.3 2.2-0.4 2.3-0.8 2-0.4 2.2-0.3 1.7-0.8 1.5-1.4 0.4-1.5-0.2-1.4 1.4-3.3 5.8-4.4 6.4-22.5-9-3.7 10.2 0.5 29.9-2.4 2.3-1.4 4.1 14.4 2.9 10.8-3 8.4 13.3 2.9 5.6 0.8 14.3 3.3 10.7 7.8-2.1 6.9-5.1 2.3-0.8 4.1-3.3 2.3-8.5 2.1-3.4 0.7-4.6 2.1-2.8 2.7-2 2.2 1 2 0.7-0.6 3.4-2.6 2-1.6 2.9-1.5 3.3-3.5 6.5-1.9 7.6-0.3 5.4 0.4 5.6 5.1-1.1 4.7 1.5 4.9 3 1.6 5.9-0.2 6.7 1.3 6.8 3.3 5.7 3.6 5.6-3.8 3.8-3.8 3.4-4.7 1.3-4.7 0.2-3.4 0.8-9.2-1.2-0.6-1.6 1.1-2.2-0.9-1.9-2.1-0.6-5.2-2.6-7.1-12.8-5.1-4.5-2.6 2.7-2.2 3.3-3.3 0.7-2.2 1-2.3 0.8-8.7 1.7-4.5 1.7-4.6 0.9-3.4-5.3 1.4-8.6-5.8-1.2-16.4 5.2-8.9 1.9-7.6 0.8-7.1 8.8-3.3 1-3.2 2.2-2.7 2.6-2.9 1.4-3.5 0.6-3.4 1.5-2.4-1.2-0.8-1.3-0.2-1.8-0.9-2.5-1.3-2.1-2.6-3.5-1.5-2.4 2.2-1.8-1-1.2-4.1-1.6-3.7-6.2-2.7-1.2-2.1 1.2-1 0-0.1-2.2-3.6-2.3-3.1 0.5-0.9 3.7-0.6 1.3-1-1 0.6-5.8 5.4-2.7 4.7-1.5 6.6 1.9-2.3-3.9-1.3-1.5-1.8-1.3-1.1-0.2-1.2 0.7-0.9-0.5-1.2-1.3-1-1.4 3.3-9.1 1.9-4.1 2.4-1.5-1.8-2.2-6.7-2-2.4-1.3 2.4-2.2 7-1.7 1.5-2.1-1.1-2.6-2.5-0.6-5.2-0.1-1-0.7-1.9-2.3-1.3-1.1 0-1.4 2.1 0-2.4-4.4 2.9-1.6 3.2-1 3.1-4.4 6.5-1.8 3.1-1.7-9.3 0-2.2 1.3-3.4 5.1-2.5 0.5-1.6-1.9-1.4-3.7-0.9-3.7 0.1-2.2 3.3-3.9 1.5-2.4-0.5-1.1-3 1.1-1.4-1.2-1.3-0.9-0.7-0.1-0.7-1.8 0.7-1.7-0.2-1.8-0.8-3.4-0.9-1.4-0.1-0.9 2.2-0.1 3.1-1.5 3.3 0.1 0.3-2.4 0.9-2.1-1.3-1.7-1.8-0.4-2.6-2.5 1.6-2.3 2.3-1.8-1.5-2.8-3.8-0.7-0.8-3.3 1.2-2.4 3.7-0.6-2.1-2.4-0.7-1.2-0.5-1.8-1.4 1.2-2.2 2.4-2.5 1.1-0.5 1.4 0.1 1.4 1.1 1.7 0.2 3.3-1.2 3.9 0.7 5.2-1.7 4.4-1.4 1.8-2.9-2.3-3.1-0.1-3-2.1 0.7-10.6 1-3.9-1.8-0.8 0.5-5-1.7-2.1-2.5 0.5-1.5 2.5-0.4 3.2-1.1 2.3-3.6 0.1 1.5 3 2.9 4.6 1 3.3-1.7 1.5 0.2 1.6 2.7 3.6-2.5 0.5-2 1.2-1.7 1.6-1.4 2.1 0-1.5-0.5-2.8-0.6-1.1 2.2-4.8-4.6-7.7 1.4-3.8-1.2-5.4-3 1.7-4.1 5.3-3.1 1.1-1.9 0.4-1.6 0.6-1.6 0.1-1.9-1.1-1.1-2.8-0.3-1.8 0.8-0.8 6.5 0.1 1.7-1.2-0.1-2.9-1.7-3.1-2.4-1.2-2.5-0.8-2.1-1.7-0.8 2.4-0.5 4.9-0.9 2.3-1.8 1.7-0.6-1.6 0.2-5-0.3-4.8 0.4-1.3 4.1-5.2 0.8-1.8 0.6-2.5 0.5 1.9 1.5 3.4 1.1 1.6 0.8-0.8 1.1 0.1 2.5 0.7-1.6-2.4-1.7-3 4.5 1.3 1.9-0.5 1.2-2.3-4.1-0.3-2.5-1.1-0.3-2.5 2.6-4.2-3.5-3 0.2-2.7 2.7-2.3 3.9-1.4-1 4.9 0.4 1.3 2.1 0.5 4-0.1 1-0.7 1.1-1.8 0.2-4.5-0.4-5.9 0.8-4.9 3.7-1.2-0.5 2.8 0.1 4.2 0.7 4.4 2 5.2-1 1.8-1.5 1.7-1 1.7 0 1.8 1 2.9 0.2 0.8-0.9 1-3.4 2.3 0.1 1.7 0.5 1.8 0.9 1.1 1.1-0.5 2.7-2.5 2 0 4.5 3.1-3.3-7.1-1.1-4.4 1.7-2 2.5 3.3 1.6 1 0.7-2.2 0.7-0.6 1.6-0.7 3.2-0.8 0-1.2-1.3-0.2-3-1.3 0-1.2 3.8-0.9 2.2-3.7 0.6-4.4-1.2-3.3-1.4-0.5-4.2-0.1-2-0.8-1.5-1.9-0.5-1.8 0.7-0.6 2.3 1.6 1-3.1-1.1-1.8-2.4-0.7-2.9 0.2 1.2-1.5 1.5-1.1 1.7-0.3 1.6 0.9 1.5 1.1 1.3 0.3 0.6-0.6-0.7-1.5 0-1.5 5.9-0.1 2.8 1 1.1 2.6-0.8 1.6-1.5 1.7-0.9 2.3 1 3.2 1.4-1.4 1.8-1 1.5 0.1 0.7 1.6 0.2 1.4 0.7 1.3 0.2 1.3-1.8 2.3-0.4 1.2 0 8.8 0.5 2.6 1.2 1.8 1.1 0.7 0.6-1 0.6-4.9 2.9-9.5 0.7-4.6 0.8-1.1 1.9 1.3 2.8 3 1.1 2.2 0.8 2 1.2 1.3 2.3 0.1 0-1.3-1.2-1.5-1.3-4-1.3-2-9.7-10.3-0.6-0.5 0.5-2.2 1.3 0.3 1.7 1.5 2.5 3.2 1.3 1.1 1.7 0.8 1.9 0 1.5-0.9 0.1-1.3-1-1.3-2.3-0.6-3-1.4-3.3-3.1-1.4-4.6-0.4-3.1 2.9 0 2.5 1.2 2.3 2 6.2 4.3 1.2 1.3 2.4 1.7 2.3 1.2 1.6 2.7-0.7 2.7-1.6 1.8 0.4 1.5 1.5 3 0.2 1.8-0.6 3.3 1.8-1.2 0.7-1.5 0.4-1.6-0.6-4.9 0.6-1.6 2.5-4.5 2.6-1.2 2.5 0 2.7 0.3 3 1.2 3.9 1 2.7 1.8 3.4 3.4 0.2 4.3-2.5 8.5 1.9-1.2 3-3.9 1.6-0.3 1.1 1.7 0.7 2.9 0.3 5.6-0.1 1.2-0.8 2.7-0.1 1.6 0.3 1.6 1.4 2.4 1.3 6.1-0.4 1.8-2.6 0.8 0.5 1.7 0.6 1.1 0.9 0.8 1.3 0.6 0.9-4.5 1.6-2.6 0.8-2.8-1.3-5 3.2 1 3.3 0.4-5.4-6.1-1.6-3.3 3.2-1.4 2.9-0.5 6.9-2.8 3-2.3z",Daejeon:"M434.4 429.6l-0.4 1.5 0.6 1.5 1.1 1.2 1.4 0.7 0.9 2.2-0.6 3.4 4.8 1.4 5.1-1.2 1.8-2.6 2.2 0.5-0.2 2.2 1.9 1.1 0.3 3.5 1.6 5.2-0.7 4.6-2.1 3.4-2.3 8.5-4.1 3.3-2.3 0.8-6.9 5.1-7.8 2.1-3.3-10.7-0.8-14.3-2.9-5.6-8.4-13.3 17.5-4.8 3.6 0.3z",Chungcheongbuk_Do:"M639.7 322.2l-1.9 2.2-2.1 1.3-1.9-0.7-1.5 0.9-3.7 3.9-4 3.4-2.7 2.5-3.2 1.1-2 1.6-1.4 2.5-4.9 3.5-3.4 5-1.7 3.7-2 3.7 1.1 2 2.1 1.9-2.3 7.8-13.3 5.5-5.6-1.8-2.4-4.8-3.7-3.2-2.7-1.9-2-2.3-2.1 2-1.6 2.6-0.8 3.1-1.1 3.3-4.6-0.4-4.9-1.7-2.5-1.7-2.7 1.8-2.6 3.5-3.2 0.2-2.5-1.6-1.9 3.2-2 4.3-1.1 4.1 3.1 3.9 2.3 4.4-11.3-1.7-6-2.7-3.4 5.2-5.6 2.6-4.9 3.3-0.4 2.4 0.1 1.8-0.9 2-3.5 4.8-2.3 2.5-2.3 0.4-2.4 1.1 1.8 4.5 6.2 1.1 7.7 11.3-2.8 2.8-1.6 4.5-0.6 10.7-1 4.7 1 3.4 1.8 3.1-2.3 4.5-3.5 3.1 0.9 9.3 6.4-1.5 3.8 1.3 4.5 3.7 3.1 1.5 8.1-2 3.5 2.7 1.8 10.2-3.3-0.2-3.8-0.7-3.9 3.3 0.9 5.3 0.1 2.6-0.4 3.3-1.5 1.8-1.2 2.2-1.4 5-2.4 4.8-4 1.4-3.8 1.8-2 2.2-2.1 1.8-2.3-1.2-2.3-2.2-5.8 2.6-5.1 3.1-2.6-0.7-1.4-1.8-7.1-2.4-2.4-2.8-2.7-1.6-1 1.4-1.3 0.3-1.5-1.4-1.3-1.6-3.6-5.6-3.3-5.7-1.3-6.8 0.2-6.7-1.6-5.9-4.9-3-4.7-1.5-5.1 1.1-0.4-5.6 0.3-5.4 1.9-7.6 3.5-6.5 1.5-3.3 1.6-2.9 2.6-2 0.6-3.4-2-0.7-2.2-1-2.7 2-2.1 2.8-1.6-5.2-0.3-3.5-1.9-1.1 0.2-2.2-2.2-0.5-1.8 2.6-5.1 1.2-4.8-1.4 0.6-3.4-0.9-2.2-1.4-0.7-1.1-1.2-0.6-1.5 0.4-1.5 0.7-1.9 0.3-2.1-0.3-2-0.5-1.2 0.3-1.5 0.8-1.9 0.1-2.1-12-0.8-11.7 2.4 0.7-6.1 2-5.7-0.3-3.3 3.1-6.7 4.4-6.4 3.3-5.8 1.4-1.4 1.5 0.2 1.4-0.4 0.8-1.5 0.3-1.7 0.4-2.2 0.8-2 0.4-2.3-0.3-2.2-1.1-2-1.3-1.2 0.2-4.1-2.1-1.4-2.7-5.5-2.1-1.3-1.9-1.9-1.3-3 7.1-2 6.8-3.3 5.2-1.8 1.5-5.8 2.5-2.8 4.1-1.7 1.9-2.5 1.3-3.3 2.5-2.6 3.1 0.6 0.9 1.2 3.9-2.8 7.6-14.1 1.7-3.2 2.5-1.9 1.3-1.9 1.1-2.1 16.7-4.6 16.8-2.3-1.4 9.6 4.9-1.2 4.8 0.4 2.7 1.5 1.2-1.1 1.1-1.3 3.2-2.2-0.9-9.7 3-3.7 8.1-2.7 6 6.4 0 4.3 2 2.7 5.2-1.2 5.2-3 3.2-2.4 3.8 0.8 3.1-1.7 3.7-2.8 8.8 3.1 9 1.5 2.9 0.8-1.8 4.2-4.6 3.3-2.7 4.2 1.7 1.9 2.2 1.3 1.5 0 1.4-0.7 4.8-1.6 7.5-0.8 1.6 1.7-0.3 2.8 3.2 3.3 1.1 2.6 2.9-0.2 3.4-0.6 3.8-1.2 3.8-0.1 3.7 2.9 4.2 2.7 4.1 0.8 4.1 0.5 3.2 1.4 3.1 2z",Gyeongsangbuk_Do:"M762 402.5l0.8 8.1 2.2 8.1 0.8 8.1-0.9 16.8-1 3.6-4.9 6-1.9 3.3-0.8 3.9-0.7 23.7 0.5 3.2 1 1.8 1 0.7 0.9 1 0.9 6.7 1.2 5.1 1.3 0.9 0.8 1.1-0.6 3.1-1.3 1.7-1.6 0.8-1.6 0.5-2.6 2.2-0.2 2.7 3.4 3.1 2.4 2.7 2.5 3.1 3.2 0.5 4.1-3.2 10-11 2-3.3 2.6 2.1 0.6 3.4 1.1 3.5 0.8 3.9-2.5 3.9-5.7 11.3-0.4 5.1-1.7 13.4-4.1 11.6 0.2 7.3-4.2 12.6-3.1 6.1-1.3 3.1 1.3 3.4 1.2 1.5-0.1 0-12.5-3-14.8 2.6-2.6-0.7-2-1.4-0.4-2.6-0.1-2.9-1.4-2.4-5.6-2.4-5.3-1.1-5.5 0.8-6.7 2.4-5.3 4.1 0.8 2.7 1.5 2.5-1 2-2.4 0-4.1 2.4-3.8 3.1-4.4 1.5-4.7-2.2-6.1-1.5-5.7 2.3-1.8 2.4-2.2 1.9-2.3 0.3-2.2 0.8-5.2 4.1-5.9-0.2-4.9-2.6-5.2-1.6-5.9 1.1-5.8 0.6-4.9-3.1-4-4.9-1.3-10.8-3.7 2.9-3.9 5.6-4.3-0.9-8.5 4.3-4.5-0.9-4-3-4.3-2.1-4.6-0.7-4.7 0.6-9.8-0.4-2.5-9 1.9-4.4 0.1-4.6-2.1-2.5-2.4-1.5-0.6-1.7-0.9-1.8-3.5-2.5-2.1-4-3-3.3-4.1-1.3-4.5 0-4.5-0.4-2.6-1.7-2-1.7-4.8-0.4-2.6-1-0.6-1.6-0.2-1.6-2.9-2.3-3.2-1.9-1.3-4.3 0.8-12.5-6.5-11.1 3.8-1.8 4-1.4 2.4-4.8 1.4-5 1.2-2.2 1.5-1.8 0.4-3.3-0.1-2.6-0.9-5.3 3.9-3.3 3.8 0.7 3.3 0.2-1.8-10.2-3.5-2.7-8.1 2-3.1-1.5-4.5-3.7-3.8-1.3-6.4 1.5-0.9-9.3 3.5-3.1 2.3-4.5-1.8-3.1-1-3.4 1-4.7 0.6-10.7 1.6-4.5 2.8-2.8-7.7-11.3-6.2-1.1-1.8-4.5 2.4-1.1 2.3-0.4 2.3-2.5 3.5-4.8 0.9-2-0.1-1.8 0.4-2.4 4.9-3.3 5.6-2.6 3.4-5.2 6 2.7 11.3 1.7-2.3-4.4-3.1-3.9 1.1-4.1 2-4.3 1.9-3.2 2.5 1.6 3.2-0.2 2.6-3.5 2.7-1.8 2.5 1.7 4.9 1.7 4.6 0.4 1.1-3.3 0.8-3.1 1.6-2.6 2.1-2 2 2.3 2.7 1.9 3.7 3.2 2.4 4.8 5.6 1.8 13.3-5.5 2.3-7.8-2.1-1.9-1.1-2 2-3.7 1.7-3.7 3.4-5 4.9-3.5 1.4-2.5 2-1.6 3.2-1.1 2.7-2.5 4-3.4 3.7-3.9 1.5-0.9 1.9 0.7 2.1-1.3 1.9-2.2 4.1 2.2 3.9 1.6 4.7 1.1 4.1 0.3 0.9-4.2 0.5-4.5-1-4.9 2.8-3.5 4.3-2.1 4.4 0.4 2.2 3.9 3 0.7 2.8 1.4-0.4 3.4 0.4 3.5 4.7-1.9 4.5-3.5 1.9 0.8 1.4 1.8 1.7 0.2 2.1-0.8 6.2 1 5.8 2.7 4.2-1.1 4.3-2.2 5.4 1.2 4.9 3 1.6 4.6-3.8 2.8-4.6-1.8-3 1.1-2.7 2-1.1 4.9 0.7 6.5 3.3 4.9 5.2 2.5 1.1 4.2 1.5 3.6 3.7 1.6 3.4 1.9 11.6 0.9-0.7 4.5 1.4 1.3 1.2 1.5-1.7 4.9-2.1 5.3 0.4 5.5 1.4 4.9 0.5 4.4-1.7 4.7 10.9 4.1 5.1-2.3 5.3 1.2 1.6 0.1z m-105.4 148.2l0.9-3.1-0.1-3.3-0.3-3.1-1.7-1.4-1.3-2-0.1-4.9 0.8-1.3 0.1-1.6-2-3.5-6.4-4.6-8.3 0.5-10.1 1.4-7.4 6.2 1 8.9-2.8 3-1.7 3.8 1.5 0.3 1.4 0.5-0.3 1.9-0.6 1.9-2.6 0.4-2.4 0-2.1 3.1 0.9 3.6 2.5 0.9 2.3 2.3 1.8 3.6 2.8 2.3 2 1.3 1.4 1.2 1.3-1 2.2-4 2.3-1.8 5.1 0.5 9.1 2.4 3.6-2.1 0.4-1.9 0-1.2 1.5-3.9 0.2-1.7 0-1.3 1.5-0.1 1.1 0.4 2.5-2.6z m338.6-316.2l-3 1.6-4-0.8-3.9-2.4-2.6-3.1-0.9-4.1 1.4-3 2.8-1.9 5.6-1 3.8-1.4 1.9-0.4 2.7 2.1-0.2 5-1.7 5.7-1.9 3.7z",Daegu:"M656.6 550.7l-2.5 2.6-1.1-0.4-1.5 0.1 0 1.3-0.2 1.7-1.5 3.9 0 1.2-0.4 1.9-3.6 2.1-9.1-2.4-5.1-0.5-2.3 1.8-2.2 4-1.3 1-1.4-1.2-2-1.3-2.8-2.3-1.8-3.6-2.3-2.3-2.5-0.9-0.9-3.6 2.1-3.1 2.4 0 2.6-0.4 0.6-1.9 0.3-1.9-1.4-0.5-1.5-0.3 1.7-3.8 2.8-3-1-8.9 7.4-6.2 10.1-1.4 8.3-0.5 6.4 4.6 2 3.5-0.1 1.6-0.8 1.3 0.1 4.9 1.3 2 1.7 1.4 0.3 3.1 0.1 3.3-0.9 3.1z",Jeollabuk_Do:"M269 598.6l0.3 1.1-0.6 1.5-2.9 2.5-1.9 2.2-1.8 1.4-0.9 0.2-0.7-0.7-0.5-1.3 0.3-1.2 1.7-0.9-1-0.8 1.2-1 0.6-0.8 1.5-0.4-0.2-1.1 2.4 0.4 1.8-1.7 0.7 0.6z m207.6-80.7l1.3 1.6 1.5 1.4 1.3-0.3 1-1.4 2.7 1.6 2.4 2.8 7.1 2.4 1.4 1.8 2.6 0.7 5.1-3.1 5.8-2.6 2.3 2.2 2.3 1.2 2.1-1.8 2-2.2 6.5 11.1-0.8 12.5-5.8 6.2-1.5 4.1-7.9 4.2-3.9 1.2-2.1-0.2-1.6 1-3 6.4-3.4 3.6-3.6 3.2-1.8 5.1-0.4 6-2 4.4-2.5 4.6-1.8 5.9-1.4 6-2.2 4.6-0.1 4.9 4 1.7 0.6 2.1 0.3 2.5 1.8 4.6-0.3 4.9 1.6 3.7 2.3 1.5-1 5.4-6.6 7.9-1 5.2-0.3 4.8-3.3 3.4-9-7.3-10.1-3.7-5.8 3.2-4.6 5-4.9 0.7-5.3 0-5.7 0.8-5.9-0.1-2.7-1.6-2.4-1.9-2.7 0.7-3.3 0-4.8 0.8-4.5 2.7-5.9-0.9-3.8-4 0.2-6.4-3.3-3.7-0.9-3.6 1.4-5.6-3.2-4.9-4.7 0.3-1.1 2-1.6 1.5-1 2.6-0.4 2.7-4.8 0.1-7.5-10.1-4.8-4-2.8-1.1-2.8-0.2-2.7 3.1-5.3-0.5-4 3.5 0 2.7 0.1 2.6-1.4 2.2-2 1.5 0.1 2 0.3 2-1.3 2.8-2.1 1.8-2.6 1.3-2.7 0.7-2.3 1.4-2.1 1.6-5.3 0.8-5.1 1.8-4.7 1.2-3.9-1.3 0.2-5.3 1-5.2 0.9-7.1-4.5-1.2-15.4 4.3-3.3 1-2.2-2.5-0.7-2 1.1-4.6 2.7-5.7 4.3-10 3.6-5.3 5.2-1.8 5.9-1.2 5-0.3 2.3-1.9 2.3-3.2 3.1-0.8 2.8 3.2 2.9 3.6 2.1 0.7-2-7.3-1.5-3.3-2.4-1.4-22.4 3.7-7.8-4.9 0.6-7.3 3.7-1.9 3.2-3.2 3-3.4 4.7-2.8 5.9-3.2 4.4-6.2 0.7-5.8 4.2-2.6 1-0.8 5.6-0.6 5.6 0.7 3.5 2.7 2.5 0.6 1.7 3 0.7-1.6 0.5-2.2 0.2-2.3-3.5-2.8-3.1-1.5-3.4-2.3-2.8-2.1-1.4-0.8 0.4-1.7 1.3-1.8 1.3-1.1 1.4-0.3 8.9 0.6 1.9-0.2 1.4-0.7 1-1.8 0.4-1.4 0.7-1 2.2-0.4 0.7-0.6-0.8-1.5-1.7-1.4-1.9-0.7-0.5 0.4-11.6 4.7-3.9 0.2-7.7-0.5-7.5-0.6-0.1-3.4-0.5-4.6-1.5-1.3-4.7-1.6-6.9 1.1-0.7-5.9 14.3-1.6 7.8-1 7.9-0.4 2.6-1.6 2.7 0.8 3.3-1.7 5.8-4.4 7.4-3 3.2-2.2 0.3-2.8-9.3 2.8 7.1-8.8 7.6-0.8 8.9-1.9 16.4-5.2 5.8 1.2-1.4 8.6 3.4 5.3 4.6-0.9 4.5-1.7 8.7-1.7 2.3-0.8 2.2-1 3.3-0.7 2.2-3.3 2.6-2.7 5.1 4.5 7.1 12.8 5.2 2.6 2.1 0.6 0.9 1.9-1.1 2.2 0.6 1.6 9.2 1.2 3.4-0.8 4.7-0.2 4.7-1.3 3.8-3.4 3.8-3.8z",Gwangju:"M368.2 668.9l8.1 3.1 3.2 8.9-6.2 8.3-9.8-1.6-8.6-5.2-4.3-9.5 3.4-3.2 5.7 1.5 4.1-1 4.4-1.3z",Jeollanam_Do:"M274.6 918.7l-0.6 0.7 0.3 1-0.7 0.5-1.5 0-0.3 1.3 0 1.2-1.1-0.2-2.4-4 1.9-0.4 1.5 0.5 2.9-0.6z m93.8-3.3l-3.6 0.6-0.4-3 1.3-0.8 1.2 0.2 1.5 3z m59.7-16.2l1 0.5 1-0.1 0.4 2.4 0.7 0.4 0.4 1.3-0.7 0.4-1.9-0.8-0.9-1.4-0.9-1.8 0.2-1.2 0.7 0.3z m-2.7-0.5l0.4 0.8-0.6 1.8 0.3 1.9 2 3.4 0.9 0.8 1.2 0.3 0.4 0.7-0.2 0.9-2.2-1.1-2.2-0.5-0.9-1.9-0.4-1.6-1.1-1-0.3-1.3 0.2-2.5 1.1 0.1 1.4-0.8z m-341.5 1.9l-0.5 0.9-1.8-0.9-3.1-2.8-1.8-1.1-0.4-1.5 0.8-2 1.2-1.1 1.8 0.6 1.4 1.7 2.2 4.7 0.2 1.5z m232.1-9.1l-3.6-0.5 1-1.2-0.5-1.1 0.5-0.5 1.1 0.2 1 1.6 0.5 1.5z m-5.8-13.3l1 0.1 1.3-0.4 1.8 0 2.2 0.9 1.3 1.6-0.3 0.9-1.3-0.7-0.2 0.7-2.1-1-1.5 0-0.8 0.9-0.6 1-1.7 1.2-1.6 1.4-2.4 1.4-3-0.1-1.7-2.2-0.1-2.9 1.4-2.9 2.8-1.9 2.4 0 3.1 2z m15.5 9.5l-1.6 0.4-0.8-0.5-0.3-0.9-1.6-0.8-0.3-2.5 1-4.5 0.3-2.4-1-1-0.3-0.9 1.3-1.2 0.1-0.7 1.3 0 2.7 1.4 0.4 1.9-1.5 1.3-0.3 1.4 1.6 2.4 0.6 0.4 0.6 0.9-1.2 0.7-0.2 1.1 0 2-0.8 1.5z m15.2-12.4l-0.4 1.3-1-1.6-0.9-0.8 0.4-1.5-0.1-1 2.3-1.9 1 2.6-0.2 1.6-1.1 1.3z m25 3.2l-1 1.8-1.8 1-2.4 0.2-1.7-0.9-1.4-1.3-1.1 0.1-0.5 1-0.6-0.4-0.7-2.9 1-2 0.3-1.8 0.6-1.5 1.1-1.1 2.3-1.1 2.7 0.7 1.6 2.3 2.4 2.5-0.4 2.4-0.4 1z m-52.3-2.3l-0.8 0.6-2.4-0.6-1.3-1.2-0.3-0.8-1.4-0.4-0.2-0.6 1.3-3.1-0.1-1.5 0.9-0.7-0.9-1.9 0.5-0.4 2.5 1 3.3 0.6 2.5 1.5 0.7 0.9 0.1 1.7-1.1 0.9-0.5 2.2-2.3 0.1-1.3 0.3 0.8 1.4z m-100.3-12l-1.7 1.8-1.2 0.4-1.4 0 0-0.9 0.6-1.7 0.8-0.7 2.9 1.1z m206.6 4.7l-0.4 1-2.9-0.6-2.8 0.7 1.3-4.1 1.6-1.5 0.5-1 1.6-0.9 0.7 0.1 0.7 1.7-0.2 2.1-0.9 1.6 0.8 0.9z m-102.7-6.5l1.4 0.6 0.8 1.6-0.8-0.1-1.1 1-0.7-0.2-1.7 0.5-1-1.6 1.3-1.2 1.8-0.6z m-88.3-0.6l0.9 0.6 0.6-0.2 0.2 2-1.4 2.9-1.1-0.4-0.9-1-0.8 1.8-0.6-1.4-1.8-0.9 1.1-1 1.4 0.2 1-0.2 1-0.8-0.1-1 0.5-0.6z m-20.4-0.9l0.2 2.4-0.4 0.5-0.6-1.5-1.2 0.4-0.5 1.1-1.7-1.1 1.3-1.7 1.5-0.5 1.4 0.4z m255.3-0.9l-0.7 0.5-1.3-1.4 1.3-0.6 0.7 0.2 0 1.3z m-154-4.1l0.9 0.8-2.1 1.1-1.5-0.3-1.4 0.2 0-1.8 1.5 0.5 2.6-0.5z m132 0.4l-1.5 0.9-0.5-3.1 2.2-0.1-0.2 2.3z m-7.6-2.5l0.6 1.3 1.9-0.8 0.6 0.8-0.7 0.5-0.4 1-2.4 2.5 0.4-5.3z m-208.6-3.6l5.5 1.1 2.3-0.4 1 0.6-0.1 2.1 0.2 1.4-0.7 1.1-1.6 0.2-0.9 0.7-0.6-0.3-0.7-1-0.8 0.9-1 0.2-3.3-1.4-1.1-1.6-0.1-1 0.7-0.9 0-1 1.2-0.7z m150.4 1.4l-1.2 0.5-1.1-0.1-0.5-0.8-0.8-0.5-0.8-0.9 0.1-1.7 0.5-1.2 2.1-1.2 3.9-0.1 2.5 1.3 0.1 1.3-0.8 1.1-3.1 2.3-0.9 0z m-156.2-6.6l2.1 0.9 1.3-0.8 3 0.4 3.2 1.8 0.3 1.1-0.8 0.3-3.7-1-3.2 0.6-2.2-0.5-0.7-2.3 0.7-0.5z m75.7 0.9l-0.7 0.5-0.9-1.2 0.2-1.1 1.6 0.7-0.2 1.1z m58.3-2.5l1.2 0.3 1.3-0.2 1.8 0.2 2.2 0.6 1.4 0.8-0.3 1.4-0.9 1.1-0.4 2-1 1.1-1.3-0.3-1.5 0.3-1.5 1.4-1.4 0.3-0.8-1.1-0.3-1.5-0.9-1.2-1.2-0.5-1.6 0.2-1.9 0.7-1.5 0-1.2-0.7-3.5-1.6-0.2-0.6 1.6-0.2 1.6-0.5 1.2-0.7 1.3 0.2 1.4 0.7 1.8-0.7 2.1-1.8 1.6-0.4 0.9 0.7z m32.1-1.5l1.2 0.6 2.2-0.7 1.6-0.2 0.7 0.7 2.3 3.5-0.9 0.2-1.4-0.7-1.5-0.4-1.2 0.5 1.4 1.1-1.1 1.1-2.8 2.2-1.6 0.7-0.2-1.7 0.8-1.2 1-0.6-0.6-0.8-3.4-0.7 0.4-0.8-0.4-0.9-1-0.7-2.7-0.2-1-0.4-0.1-0.6 1.2-0.3 0.9-0.6 1.5-1.8 1.9-1.6 1.2 1.1 1 1.5 0.6 1.7z m-273.6-5.4l-1.6 0.5-0.6-0.4-1 1-2.1-3.5 1-0.2 1.4 0.5 2.9 2.1z m226.1 11.9l2.9 2.8 0.3 1.2 0.9 2.2-0.6 0.5-1.5-0.4-2.7-1.4-0.6 0.2-0.2 1.1-0.7 0.4-1.4-0.6-2.4-0.6-3-1 0-1.2 1.4-1.2-0.3-1.4-1.4-0.3-1.7 0.4-2-0.6-1.9-1.2-1.1-1.4-0.4-2.1-0.2-2.4 0.1-2.4 0.7-2.4 1.2-1.9 1.7-0.8 3.7-0.5 1.8 0.6 1.7 1.2 1.9 2.2 1.5 3.7 0.4 3 0.5 1.5 0.9 1.1 0.5 1.7z m31.7-15.4l-0.8 3.1-0.6 0.6 0.6 2.1-1.2 1.2-1.3 0-0.7 1.1-1 0.8-1.2 0.5-2-0.6-1.1-0.9-0.8-1.6 0.4-1.9-0.3-0.7-1 0.6-1 1.2-0.7 0.1 0.1-5.1-0.6-0.8 1.1-0.3 1.1 0.8 3.6 0.2 1.3 0.3 1 0.9 1.4 0.4 1.3-0.1 1.1-1.3 0.7-1.8 0.5-0.2 0.1 1.4z m51.3 4.4l-0.6 0.2-2.3-0.7-0.6-0.9 0.2-2.5-1.3-0.7-0.3-1.6 0.5-0.4 0.8 0.2 0.7 1.2 1 0.8 0.4 1.1 1.7 2.7-0.2 0.6z m-64.9-3.4l0.1 1.2-1.1 0.2-3.3-1-1.3 0.3-0.8 1.2-4.2 2-1.5 1.9-0.4 2.1-0.9 0.6-1-1.2 0-2-0.3-1.6-1.5-0.7-0.7-0.7 1.3-2.2 1.1-2.5 2.2-2.9 3.1-1.7 3.3-0.8 2 0.3 0.7 1.2 0.2 1.2-0.9 0.9 0.2 0.4 1.4 0.9 1.2 1.4 1.1 1.5z m-247.4-8.3l-2.2 1.5-0.3-0.8 1.5-2.5 0.8 0.3 0.2 1.5z m276.2-3.1l1.6 0.8 0.5-0.4 1.2 1.3 1.8 4.7-0.7 0.9 0 1.4-0.7 0.7-0.8 0.2-0.7-3.1-1.4 1.5-0.8-0.6-2.7-6.2 0.8-0.8 1.9-0.4z m120.5 9.3l-0.2 0.3-1.9-1.5-0.6-1.2 0.8-0.9-0.8-0.8 0.9-1.6 0.4-1 0-1.3 0.2-1.2 0.8-0.3 0.5 0.9 1.3 1-1 4.5 0 1.8-0.4 1.3z m-50.2-10.3l0.8 0.3 1.4-1.4 1.5-0.1 3.5 3.7 0.7 1.9 0 1.1-1.2 1.3-2.9 1.9-2.5 0.8-0.9-0.5-0.1-1.7-1.1-1.1-1.6-0.5-0.7-1 0.4-0.8-2.7-1.9 0.5-1.4-0.3-1.9 0.7-0.5 2.3 1.2 2.2 0.6z m-43.7 7.6l-6.6 1.2-2.5-0.3-1.8-0.9-3.8-2.6 0-1.4 0.8-1.1 0.2-0.9-0.6-0.8-1.5-1 2.2-1.7 2.5-1 5.2-1 4.9-0.5 2.6 0.2 2.2 1 1.7 3.1-0.5 3.6-2.1 2.9-2.9 1.2z m-182.5-11.7l1.7 0.6-0.4 0.8-1.8 1.3-1.3 1.5-1.1 0.5-0.3-2.3-0.7-1.4 2.1-2.1 0.4-1.2 1.4 0.3 0.9 0.8-0.9 1.2z m279.4 1l-0.9 0.7-1.1 0-0.9-0.4-1.1 0.6 0-1.9 1.1-1.7 1.5-0.7 1.3-0.2 0.4 0.4-0.9 1.1 0.4 0.9 0.2 1.2z m-109.1-6.4l-1.1 1.4-2.1 0.8-0.7-1.1-0.9-0.3-0.1-1.5 1.1 0.1 0.5-1 1.9 1.1 0.4-1.6 1.1 0.4-0.1 1.7z m53.9-0.6l-0.9 1.1 5 1.6 0.8 1.7-0.3 0.6-1.3 0.9-1.5-0.1-3.4 0.9-1.2 0.5-1.9-1.9-0.1-1.2 1.3-0.8 1.2 0.1-1-1.5-0.4-1.5-2.3-0.6 0.7-0.7-0.2-0.8 0.5-1.4 1.3-1.5 2.5-0.2 1.6 1.4-2 1.5 1.1 0.8 0.5 1.1z m48.3 5.3l-1.3 0.1-0.8-1.1-1.5-0.8-2.3-0.8-1.5-1.2-0.7-1.7-0.8-1.1-1.3-0.7-1.1-1.4 0.8-1.6 2.7-1.3 2.9-0.4 2 1.5 2.4 4.7-0.2 2 1.3 0.3 1 0.6 0.7 1.1-0.3 1.2-2 0.6z m-231.6-9.5l1.1 0.8 0.7-0.2 3.6-2.3 0.1 1.7 4.7 7.6 0.3 2.7-0.5 2.9-0.8 2.9-3.1 6.7-1.3 2-1.6 1.1-0.2-0.6-2.7-2.6-1.3-0.8 0 1.2-0.6 3.1-15.1 8.2-1.8 0.7-6.7 0.5-1.8-0.5-0.4-1.6 0.9-1.4 1.2-1.2 0.4-1-0.8-1.2-4.6-2.8 0 4-3.3-3.9 2-6.4 4.5-5.2 4.4-0.3 1.4-4.2 1-1.5 1.4-1.6 1.7-1 1.5-0.2 1.2-0.9 0.4-2.7 1.9 2.3 2.5 0.3 2.2-1.5 1-2.9-1.2-2.4-4.1-3.3 1.1-1.6 2.5-0.1 2.7 1.4 2.2 1.8 1.7 0.9 1.6 3.1z m214-7.2l0.5 0.3 1.9 0 0.5-0.5 1.1 0.4 0.7 1.3-0.6 0.9-0.9 0.4-0.8-1.6-1 1.9-0.9 0.7-2.7 0.4-1.7-2.4-1-0.3 0.8-1.8 0.8-0.8 1.7-0.8 0.7 0.2 0.7 0.7 0.2 1z m-89.2-4.3l-0.9 0.4-1-2.4 1-0.6 1.4 1.3-0.5 1.3z m72-3.6l1 1 0.1 1-1.9 0.5-0.7 1.8-1.1-0.3-0.6-1.3-2.3-0.4-0.4-1.1 0.7-1.4 1.8 0.9 0.6-0.7 1.4-0.5 1.4 0.5z m-237.6 16.2l-1.7 0.2-1.9-0.5-0.5-1 1.9-0.4 1.7-1.5-0.2-0.6-3.5-0.8 0.9-1 2.2-0.4 2.3 0 1.8-1.4 0.7-1.9-0.7-1.9-1.6-2.6-1-3.2 1.2-0.9 1.9 1.5 1.2 1.2 1.9 1.1 0.1 1.7 0.7 1.4-0.2 1.9-0.5 2.2-0.1 1.8-0.9 1-2.6 2.2-3.1 1.9z m-31.7-17.1l0.4 2-0.3 0.8-0.9 0.7-2.4 0.8-1.3-0.1-1.3 0.6-1.1-0.5 0-1.1 1.1-0.2 0-0.5-3-2.5 0.9-0.3 1.3 0.7 1.6 0.3 3.5-2.1 1.1 0 0.4 1.4z m28.6 10l-1.5 0.7-1.3-1.1-0.6-6.7 0.6-3.7 1.3-1.7 2 4.4 1.7 2.5 1.3 2.7-0.4 2.3-1.4 0.4-1.7 0.2z m-9.7-11.5l0 2-1.4-0.6-0.6-1.1-0.6 0.3-1.5-0.3-0.8-1.7 1.9-1.5 1.6 0.3 0.5 1.5 0.5 0.1 0.4 1z m-79.8-2.7l-1.1 1.1-1.6-1.2 0.5-1.1 0.9-0.3 0.3-0.9 2.4-0.1-0.4 1-1 1.5z m108.3-2.8l0.2 0.8 2.5-2 1.8 1.9 0.3 2.6 1.8-0.1 0.3 0.7-3 1.5-0.8 1.1-1.1 0-1.2-0.4-0.9 0.4-0.5 0.7-1.5 0.2-1.8 1-1.1-0.4 0.6-4.9-1.2-0.6-0.9-0.9 0.6-0.7 1.1-0.6 0.6-0.8 3-2.2 0.7-0.1 1.1 0.5 0.1 1.1-0.7 1.2z m-123.6-3l-0.8 1.3-1.4-1.9 1.9-1 1.2 0.8-0.9 0.8z m9.2-4.3l0.5 1.4 1.4 0 1.8-0.5 0.3 0.8-2.1 2.2-0.4 1.1-2.5 2.9-0.5 1.4-1.1 1.7-1.4 1.9-1.6-0.7-1-2.7 0.2-2.6 0.9-2.3 1-2.1 1.2-1.8 1.3-1 1.3-0.3 0.7 0.6z m106.7-1.1l-0.9 0.9-1.3-1.1 0.5-1.2 1.6-0.9 0.1 2.3z m-143.1-2.8l0.4 0.5 1.2-0.4 0 3.1-1 2.2-2.2 1.5 0.5 1.6-1.4 0.7-0.3 1.1-1.1-1.4 0.2-0.9-0.3-1.4 1.1-0.9 0.5 0.3 1.8-3.6 0.1-1.9 0.5-0.5z m410.5 26.2l-1.8 0.1-1.8-0.9-5.6-5.7-0.7-2.3 1-3.5 0.7-0.9 3-2.3 0.5-1.1 1.2-4.9-2.4-2.6 0.3-1.5 1.7-0.8 2-0.3 1.7 0.8 0.4 1.8-0.8 2.1-1.9 1.8 1.6 0.4 1.5 2.3 1.1 2.8 1.3 4.9 0.2 2.8-0.5 2.7-1.2 2.7-1.5 1.6z m-8.8-24.4l-1.6 1.3-1.3-0.7-1.2-1.8 1-1.2 1.2 1.4 1.9 1z m-275.9 5.6l-2.4 3.2-1.1 0.8-2.7 0 0-0.6-2.3-1.4-2.5-1-0.7 0.2-1.4-3.2 1.1-1.5 4.6-1.9 2.9-3.9 1-0.5 0.6 0.4 1.3 2.5 1.9 1.7 0.5 0.8 0.2 1.5-0.3 1.5-0.7 1.4z m18.8-17.9l1.5 0.7 0.9 1 1.4 0.7 1.9 0.2 1.6 0.3 1 1 0.6 1.1 0 2.2 0.6 1.7 0 2.1-0.9 1.8-2 0.2-1.9-1.8-1.4-2.2-1.7 0-1.4 1-1.2 0.1-1.1-0.8-0.3-1.6-1.4-2.7-3.2-3.3-0.6-1.6 1.5 0.4 1.3 0 1.1-0.6 1.7-0.2 2 0.3z m31.8 1.9l-0.6 0.1-1.4-3.8 1.2-0.7 0.6-0.9 0.7 0.3 1.1 1.1-0.9 1.1-0.9 0.5-0.1 0.8 0.4 0.5-0.1 1z m-49.3-4l0.1 4.1-2.6-0.8-0.8-0.5-1.3 1.8-2.2 0-2-0.4-0.8 0.5-0.4 2.6-0.8 2.3-1.4 1.7-1.9 0.8-1.8-0.2-1.4-1.3-0.8-2-0.3-2.6 0.5-2.4 1.2-1.7 1.8-1.1 1.9-0.7 2.2 0.8 2.8-0.6 5.2-2 1.8 0 0.6 0.5 0.4 1.2z m231-3.8l-0.2 2.1-1.7 1.1-0.6 1.3-1-0.3-0.6-0.6 0.7-0.7-0.1-1.2 0.9-0.8 1.4 0.3 1.2-1.2z m-207.1 7l-1.9 0.5-1.8-1-2.1-1.8-2.6-1-2-1.1 1.6-1.4 3.9-0.6 2.3-1 1.2-1 1.5 0.7 1.6 2.3-1.1 1.8 0.4 2.6-1 1z m-2.5-22.1l0.8 0.4 0.7 1.1 0.2 1.2-2.1 1.4 0.7 3-0.3 1.8-1.2 0.7-1.5-0.1-1 1.2 0 2.1-0.5 1.9-1.7 0.9-1.4-0.1-0.3-1.9-2.4-2.7-1.3-1.8-1.1-2.1 0.5-1.5 2.3-1.2 1.9-0.2 1.5 0.9 1.5 0 0.4-1.2-0.3-2.3 1.5-1.4 3.1-0.1z m249.9-3.5l1.3 0.7 1.5-0.2 0.9 0.5-3.5 4.1-1.7 0.3-1.2-0.4-1.5-1.5-0.2-0.8 0.9-1.3 1.7-1.3 1.8-0.1z m-215.5 7.5l0.3 4-3.1 2.9-1.7-0.6 1-1.2 0.5-1.1-0.4-0.7-5.1-2.8-4.7 0.7-2 1.1-2.4 0.3-1.9-0.6-0.9-1.3 0.8-1 2.5-0.1 3.3-1.2 1-1.3 0.2-0.8 2-0.6 0.7-1.2 0.1-1.4-1.3-1.7-0.5-1.9 1.7-0.9 2.8 0.6 2.8 1.5 2 2-0.2 1.1-1.4 0.2-2.4 1.6-0.3 0.9 0.3 2 1 0.4 2.3 0 3 1.1z m-42.8-10.2l0.4 2.8-0.5 2.6-1.2 2.4-1.9 1.6-2.3 0.6-1.3-0.5-1-0.9-1.4-0.4-5.1 1.1-2 0.1 0-1.2 1.6-1.4 2.8-4.6 2.2-2 2.5 0.5 1.3 0 0.6-1.2 0.7-2.5 1.6-0.4 1.7 1.2 1.3 2.2z m24.9-1l-1.4 0.6-2 0-0.8-1.8 0.4-1.8 1.2-0.7 2.7 0 0.9 0.4 0.1 0.8-0.5 2-0.6 0.5z m4.7-10.2l0.6 0.8 1.3 0.7 1.9 4.5-0.6 1.1-2.5-0.9-0.6-2-1.4-2.6-1-1.3 2.3-0.3z m-9.9 0.6l-0.3 2.5-0.8-0.5-1.2-2.7 0.7-1.7 2.1-1.4 0.2 0.8-0.7 3z m7.4-2l-0.9 0.8-1-1.5 0.2-1.1-0.1-2.4-1-1.2 0.7-0.5 1 0.3 1.3 1.1 1.3 1.7 0.1 2.7-1.6 0.1z m-14.2-4.5l1.1 0.6 0.3 0.9-0.3 2.7-2 1.6-3 0.7-0.3 1.2 0.3 1.2-0.2 0.5-2.9 0.7 0.3-1.2 1.1-2.6 0.4-4.1 1.7-0.7-0.1-1.1-0.9 0.3-4.3 0.2-1.6-0.1-1.1-0.5-0.1-0.9 1.7-0.9 0.8-1.2 1.5-0.9 0.7-0.8 1.1-0.4 2.8 0.6 1.4 1.4 0.4 2.1 1.2 0.7z m-4.3-11.2l1.4 0.6 2-0.1 1.4 0.4 1.1 1.7 0.1 2.9-1.4 1.1-0.9-0.4-1.4-1.5-0.7-0.5-1.6 0.4-0.2-0.9-1.4-0.2-0.2-0.5 1.1-0.8-1.8-0.4 0.3-0.9 1.2-0.8 1-0.1z m-18.7-6.9l0 3.4-1.6-1.1-0.9-1.4 0.1-1.6 1.7-0.6 0.7 1.3z m25.9-1.7l1.5 0.9 1.3-0.4 1.6-0.8 0.9 0.5 0.4 0.8 1.7-0.3 0.4 1.3-1.1 1.1-1.4 0.1-0.6 0.7 0 1 1.7 1.8 1.5 0.7 1.6 0.1 0.9 1.3 0.5 1.7 0.8 1.1 0.3 1.5-0.6 1.9-2.9-0.5-1.4-2.2 0-1.7 0.3-0.9-1-0.3-4.1-0.7-0.9-0.8-2.1-0.3-1.6-1.1-0.8-1-1.7-4 1-1.6 2-0.6 1.8 0.7z m-11.8 8.3l-0.6 1.5-0.9 0.3-4.2-1.2-1.5 0.3-1.4-1.2-0.7-0.1 1.3-6.2 0.8-1.8 1.1-0.6 1.9-0.6 1.7-0.9 0.8-1.2 1.2-2.7 2.9-1.8 3.2-0.8 2.4 0.7-4.8 2.8-1.1 1.6-0.1 1.9 0.7 2 2.1 3.5-1.7 0.7-1.8 1.7-1.3 2.1z m5.5-41.7l-1.4 1.1-1.6-3.1 0-0.6 1.2-1.9 1 0.5 0.8 0.9 0.3 1.8 0.5 0.9-0.8 0.4z m-17.8-14.5l0.4 1.2-1.5 1.4-2.6 0.7 0.4-1-1.5-1.4 1.7-1-1.3-1 2-1.6 1 0.9 0.3 0.7 0.8 0.3 0.3 0.8z m250.1 14.1l-0.8 4.2 3.2 3.8 1.6 5 0.7 10.3 2.1 3.9 3.9 2.8 3.5 3.7 1.4 4.1 1.7 3.6 9.9 10.7 2.1 5.3 0 3.6 0.4 0.8-1-0.3-6.5 0.1-2.1-0.4-0.8-1-0.4-1.4-1-1.9-1.8-1.4-0.4 1.4 0.3 2.4 0.3 1-1.1 3.5-0.7 1.3-1.4 1.7-6 4.7-3.3 1.5-2.4-2-3-6.1-2.5-1-1.7 2.5-0.9 3.8 0.2 3.3 1.5 3.4 2.4 4.4 2.8 3.8 2.6 1.7 1.7 2.3 1.7 0.8 2-1.3 4.9-4.6 3.4-0.5 2.9 0.6 2.7 0.2 2.9-1.6-0.1 3.8-0.5 2.7-1.6 5.5-1.8 9.6-1.3 2.2-5.6 1.9-4.4-2.2-3.5-0.8-2.9 6.4-1-0.6-1.2 0.6 1.2 2.5 1 2.7 1.1 8.6-0.7 1.6-1.6-0.9-2.6-2.7-3.8-0.5-2.8-1.5-1.9-2.9-0.7-4.3 0.9-4.1 2.1-4 1.5-3.8-0.7-3.2-1.3-1.8-2.5-5.5-0.7-0.4-1.8-0.2-0.8-0.8 0-1 0.7-1.9-2.4-5-0.4-1.9 0.1-1.2 0.7-1.9 0.2-0.9-0.4-1.1-0.7-0.9-0.7-0.2-0.9 1.2-2.7 6.9-1.1 1.5-6.7 2.3-3.2 0.4-6.8-0.1-2.6 0.7 2.1 1.7 4.1 1.8 3.3 1 0 1.2-6.7 2.2-3.4 1.9-0.6 2.6 1.4 1.1 3-1.2 1.6 0.7 1.1 1.9-0.4 0.6-1.2 0.8 2.2 7.6 4.5 4.1 5 3.2 3.4 4.9-1.7-0.3-2.7 0-1.2 0.3 6.8 2.6 0.8 2.1 0.5 4.1-3.1 2.8-3.1-0.2-1.9 0.5-7.2-4.5-2.3-0.7-2.1 0.4-2.5 1.2-2.2 1.5-0.9 1.5 2.2 4.6 2.3 0.5 1.3 0.9 6-1.6 3.3 2.8-7.5 6.9-2.7 3.8-2.9-1.3-4.5 3.4 0.5 3.4 2 2.2-4.4 0-6.5-8.6-2.2-4.5-5.9-6.5-1.8 0.4-6.3 3.3 0.6 2 0.5 0.8-2.6-0.9-2.5-0.5-2.1-1.1-1.5-2.8-0.2-2.8 1-1.7 3.5-2.1 1.2-1 3.2-4.2 1.9-4.2 1.2-1.4 2.3-1.1-0.2 3.2-0.8 3.1-2.3 5.6 4.7-0.3 3.8-1.4 2.4-3.2-0.1-5.7-0.9-2.2-1.2-1.3-1-1.5-0.1-2.9 0.8-1.5 4.6-5.1 1.6 0.9 1.1 1.2 0.3 1.5-0.9 1.8 1 2.5 1.4 1.8 1.8 0.6 2.4-0.9 1-1.4 2.2-4.6 1.2-2-2.2-3.3-0.8-3.4-1.1-1.6-3 2.3-3.5 1.5-2.8-2.4-3.9-6.3-2.3 3.5-3.2 8.3-2.2 2.7-2.3 0.9-1.9-0.1-4-0.8-1.8 0.6-1.8 1.6-2.8 3.8-1.3 1.1-5.8 3.4-3.1 2.4-2 1.2-2 0.5-1.2 0.6-0.2 1.6 0 2.1-0.3 2.2-1 1.6-1.5 1.7-0.7 2.1 1.2 2.5-8.7 8.6 0.2 7.9-1.4 1.4-4.3-2.1-1.3 1.6-0.7 1.9 0.1 2.1 0.9 2.2-2.1-0.6-4.4-3.2-6.1-1.8-1.4-0.8-1.2-3.7 0.6-9.7-0.6-3.8 0.9-2.4-0.2-3-1-2.6-1.8-1.3-1.7 0.5-1.8 1.6-1.3 2.1-0.5 1.8 0.6 2.7 1 2.3 0.1 1.6-4.9 1.7 0.6 2.3 3.6 4.5-6.1 3.5-2.3 2.1 2.4 1 0.5 0.4 0 1.9-0.5 0.4-1-0.2-1.5-0.9-0.7-0.2-2.1 0.3-0.4 0.9-0.1 1.4-0.8 1.9-1.2 0.9-4.7 1.2-1.8 1.4-0.6 1.3-3.8 12.9-0.4 1.9 0 2.2-3.8-0.8-7.3 2.4-1.8-0.4-0.3-2.2 1.5-4.7-0.3-2.1-1.4-1.3-2-0.4-4.1 0.2 0-1.2 1.1-1.8 0.3-3 1.2 0.1 0.7-0.5 2.3-4.1 0.4-1.9-0.6-2-0.8-0.6-1.2-0.4-2.3-0.3-1.7-0.5-0.3-1 0.9-1.2 0-2.5 0.6-2.4-0.3-1.2-2.5 0.8 0.7-4.6 3.1-2.3 4.3-0.9 3.9 0-0.7-1.5-1-1.2-1.2-0.8-1.5-0.5 2.5-1.7 1.5-2.1 0.1-1.8-2-1.1-0.7 0.3-1.4 1.8-1 0.7-1.3 0-2.1-1.3-1 0-1 0.8-0.7 1.4-0.5 1.7-1.4 0.3-2.9-0.3-3.4 0.1-1.8 0.3-2.4 0.9-0.3-3-1.3-1.8-3.8-1.9 0.1-0.6-0.8-1.5-1-1-0.9 2-1.1 0.7-1.3 0.2-1-0.4-3.3-3.1-0.4-0.2-0.5-1.9 0.9-0.9 0.6-1 0.6 0.9 1.6 0 1.1-0.9-0.6-2-4.2-2.1-3.3-2.4-0.3-5.5 1.4-6.2 1.6-4.3 0.2-1.5-0.1-1.7 0.2-1.5 1.3-0.7 2.4 0.5 0.9 0.6 1.1 2.3 4.8 7.3-1.5 2-0.5 1.9 0.3 2 0.5 2.1 3.3 9.2 2 1.2 7.8 1.3 3.4 2.3 1.8-0.2 1.3-3.3-1.8 0.3-0.9-0.5-3.3-0.7-1.5-2.4-2-2 0.5-4.5-2.1 0.4-1 2.7-1.6 0.2-1-3.6-0.5-4.8 1.2-2.8-0.9-3.3 4.3-0.4 6.6 1.4 0.9 1.5-0.4 2.5 0 1.6 0.3 1.1 1.7 1.1 0.9 1.3 2.1 1.3 2.8 1.2 1.8 1.6 3.8 2.7 0.7-0.8-3.3-4.4 2-0.4 6.7 3.7 4.5 1.5 3.4-0.9-3.4-0.5-2.7-1.8-4.7-4.1 1.1-1.5-3.4-2.5-5.2-6.6-2.9-1.4-3.9-0.8-4.7 0.3-3.2-2.1-4 1.1-3.6-1.2-0.5-1.8 2.2-2.9 2.3-0.9 4.7 0.7 6-2.6 7.2 5.3 2.5-0.5 1.4 1.2 0.7 0.3-0.7-3.7 0.3-3.4 1.9-2.5 3.9-1 7.3 2.2 3.7 0.3-1.2-2.5 2.5-1.2 1.3-0.3 1.6 0.1-2.3-2.7-3.6-0.7-8.2 0.8 0.6-1.9-0.6-2.6 0-2 0.6-1.3 1.5-2.1 0-2-1.2-2.9-2.2-0.6-2.4 1.1-1.7 2.4-0.2 1.6 1.1 3.2 0.2 1.8-0.3 0.3-1.9 3.8-1.8 6.5-1.6 2.3-3.1 0.3 0-0.5-1-0.7 0.6-1.1 0.9-2 0.6-1-2.1-1.1-1.5 0.6-1.4 1.3-2.1 0.6-4.2-0.9-1.3 0.6-0.3 2-2.1 0-3.5 1.1-1.6-0.9-0.6-2 1.2-1.9 3.2-3.2 1.2-1.8 0.6-1.4 0.4-2.8-0.5-2.9 0.6-1.4 2-1.8-1.9-1.6-1.8-3.2-0.9-3.8 0.3-3.2 2.2-2 3-2.1 0.9-1.7-3.9-0.9-1.8 0.3-1.9 1.9-2.8 1.2 0.3 1.9 0.7 2.2 0.1 1.8-2.2 2.1-2.9 0.2-2.8-0.9-1.9-1.4 2.1-1.3-1.4-1-1.2-1.2-0.9-1.4-0.8-1.8 1.8-0.9 1.8 0.1 3.9 0.8-0.4-4.1 4.4-4.4-1.2-4.1-4.5-6.2-2.8-2.6-3-1 1.2 4.3-1.1 2.5-2.2 0.1-2.2-3 1.4-2-4-5.4-0.6-3.2 2.3-2.7 3.2-0.4 2.9 1.4 1.3 3.1 2-1.3 1.1-2.2 1.3-4.4 1.1 2.2 0.2 1.8-0.4 3.6-0.8 1.8-0.1 1.1 0.3 1.2 1.3-0.3 0.5 0.3 0.8 3.7 0.6 0.6 1.9 1.1 1.5 0.6 2.7 0.1 1.2 0.7-0.9 2.2 0.2 2.1 1.1 2 1.7 1.7 4-9 0.4-3.1 0-3.5-0.8-1.2-3-0.8-1.2-0.7-1.1-1-1.6-4.4-5.2-6.1-1.2-2.7 0.3-1 1.5-1.8 0.4-1.8-1.7-1.2-0.8-1.6 0.3-2.6-2 0.8-2.1 0.3-4.5 0.1 1.7-2.2 2.9-0.7 3.3-0.2 2.9-0.7-1-0.3-1-0.9-1.3-0.2 0.8-1.8 3-2.9 0.5-1.5-1-3.8 0.5-3 1.4-3 3.5-5.3 0.9 0.9 2.3 3 2.8 0.9 1.4-0.1-0.4-1.4-3-3.5 3.3-1 15.4-4.3 4.5 1.2-0.9 7.1-1 5.2-0.2 5.3 3.9 1.3 4.7-1.2 5.1-1.8 5.3-0.8 2.1-1.6 2.3-1.4 2.7-0.7 2.6-1.3 2.1-1.8 1.3-2.8-0.3-2-0.1-2 2-1.5 1.4-2.2-0.1-2.6 0-2.7 4-3.5 5.3 0.5 2.7-3.1 2.8 0.2 2.8 1.1 4.8 4 7.5 10.1 4.8-0.1 0.4-2.7 1-2.6 1.6-1.5 1.1-2 4.7-0.3 3.2 4.9-1.4 5.6 0.9 3.6 3.3 3.7-0.2 6.4 3.8 4 5.9 0.9 4.5-2.7 4.8-0.8 3.3 0 2.7-0.7 2.4 1.9 2.7 1.6 5.9 0.1 5.7-0.8 5.3 0 4.9-0.7 4.6-5 5.8-3.2 10.1 3.7 9 7.3z m-108.1 4.2l-4.4 1.3-4.1 1-5.7-1.5-3.4 3.2 4.3 9.5 8.6 5.2 9.8 1.6 6.2-8.3-3.2-8.9-8.1-3.1z",Gyeongsangnam_Do:"M579.8 789.2l0.7 0 3-1.4 0.4 0.4-0.3 1-1.5 1.9-1.7 0.6-1.5-0.3-1.2 0.2-1.7 0.8-0.8 0.8-1 0.2-0.1-0.7 0.5-1.3-0.1-1-0.7-0.7-1.3-0.6 0.5-1.9 0-1 0.7-0.6 1-0.3 5.1 2.7 0 1.2z m17-36.8l1.1 0.6 1.5-0.6 2.4-0.7 2.8-0.1 1.6 1.5 0.4 2.5-0.9 1.5 0.6 0.9-0.7 1.2-1.6-0.6-0.6 0.8 1.3 0.3 1.3 1.1-0.6 1.1-1.6 2-2.6 0.1-1.2-1.5-0.6-1.5-1.3-0.1 0.3-1.2-0.4-1.3-2.1-0.3-0.7-0.6 1.5-1.2 0.3-1.4-1.5-1.3-2.9-0.9-1.8 0.5-1.1 0-0.3-1.3 1.3-1.4 1.8-0.5 2.5 1 1.8 1.4z m-21.7 4.5l-0.5 0.5-2.4-0.8-1.8-1.2-1-1.6 0.2-1 1.1-1.8 2.1-1.6 2 0.5 2.4 2.6 0.9 1.5-0.7 1.1-1.7 0-0.8 0.4 0.2 1.4z m-36.1-13.4l0.8 0.6 0.9-2.1 1.9-3 1.5-0.2 0.5 1.3 1.6 1.3 0.3 2.3 0.9 3.2 1.6 1.8 0.9 1.3-1.7 0.4-7.2-1.9-3.9 1.3-2.3-0.3-2.3-1.4-1.4-2.8 1.1-3 2.1-2.8 1.4-2.6 1.5-1.9 2.5-0.6 0.8 2.1-1.1 3.1-0.6 2.1 0.2 1.8z m-10.1 8.6l1.9 3.4 3.1-0.5 3.9-1.6 3.6-0.7 5.4 0.9 1.1 0.4 0.8 2.2-0.5 1.9-0.9 2-0.4 2.5 0.4 4-0.1 2.3-0.9 1-1.3 0.7 1.4 3.9-0.7 2-2.4 0.4-2.4-1.4-2.5-1.1-2.9 1.4-2.6 0.3-1.5-3.7-1.8-7.8-2.6-1.4-2.1 1.5-1.4 3.2-0.5 4-1 1.7-2.2 0.1-2.4-0.8-1.4-1-1-1.7-0.3-3.1-0.3-2.5-4.4-14.2-0.6-3.5 0.4-3.3 1.9-3.5 1.2-0.9 1.2-0.2 1-0.7 0.7-4.2 0.9-1.3 2.6-2 2.1-1 2.4 0.8 2.1 1.8 1.2 2.5-0.2 2.5-1.4 2.4-3.6 3.8 0.7 1.3 0.7 3.4 0.9 1.7 1.3 1 3.4 1.1z m122.5-25.1l1 1.8 0.7 1.9-0.1 2.6-0.6 2.3-2.5 6.5 3.2-1.1 1.5-1.1 0.5 0.4 0.2 3.3-0.2 2.2-0.7 2.5-1.4 1.3-2.1-0.9 0.8 2.6 2.1 4.4 0.4 2.9-1.2 0.5-2.8-0.9-2.9-1.6-1.8-1.3-0.5 2.7-0.5 1.4-2.8 3.2-0.9 2.6 1.9 1.4 2.6 1.1 1.3 1.5-2.4 2.1-11.5 3.6-3.4 0.2 5.4-3.9-2.3-1.1-0.8-1.7 0.1-2.3 0.8-2.8-4.9 2.5-1.5-1-0.7-2.2 0.1-2.2 1-1 4-0.8 1.1-2.2 0.1-3 0.8-3.4-2.2-1.3-1.6 2-5.7 2.5-2.5 2.1-1.8-2.8-2.2-2.5-1.9-2.8-0.5-3.6 1.1-2.3 2-2 2.4-1.6 2.1-0.9 5.9-1.2 1.7 0 2.6 1.1 2 1.4 2.2 1.1 2.9 0.2 0-1.2-2.9-2-1.7-2.9-0.8-3.3-0.1-3 2.1 0.2 11-6.3-1.9-3.6 0.9-3.5 2.5-1.9 2.8 1.1 0.7 1.6 0 1.8-1 7.2 0.1 1.2 0.7 2.2z m17.1-7.6l-0.8 0.3-0.4-0.8-0.8-3.4-1.2-1.3-0.4-1 0.2-1.3-0.6-1.6-0.8-1.6 0.4-1.4 1.7-0.9 1.8-0.2 1.6 0.5 1.1 2.4-0.1 4.9-0.7 4-1 1.4z m27.9-113.6l0.7 7.7-4 8 2.4 4.8 9.8 1.5 4.1 3.2 6.8 7.8 8.1 4.5 3.7 2.8 1 5.4 3.5 3.4 4.5 1.6 0.6 0.6-0.7 2.6-0.3 3.5-0.9 1.9-1.1 1.6 0.9 2.6 0 1.1-1.7 3.6-2.6 5.4-2.8 3.4-1.8 3.8-0.3-0.7-3.2-3.3-2.8-3.7-3.7-2.9-2.8-4-0.9-4.2-3.1-2-4-0.2-3.7 1.5-3 2.2-2.3 2.8-1.6 11.5-2.3 3.4-2.4 3-1.3 2.4-0.8-0.7-1.4 2.2-4.8 8.5-2.2 0.1-0.2-3.9 0.2-3.7-1.1-0.1-1.3 3-1.2 4.7-3.9-0.5-10.4 0.2-0.6-3.6-1.1-1.9-1.4 5.4-1.6 0.8-3.7-1.7-1.7-3.2-1.9-0.2-2.4 1.8 0-8.4-0.7-0.7-1.3 0.5-1.2 1.8-0.1 3-2.5-2-1.9-2.8-2.2-1.8-3.2 1.3 0.7-2.7-1.3-3.9 0.6-1.5-1.6-5-0.9-0.6-1.8 1.7-2 3.1 0 2.1 2 4.2 1.1 5.1 0.7 1.8 1.3 2.3 2.7 3.6 0.4 1.8-0.8 2.5 1.3 0.2 3 1.2-1.4 0.9-1.3 0.4-3.3 0-1.6-0.4-0.5-1-0.1-1.3-0.5-1.3-1.5-1.6-1.1-0.9-8.6-3-2.4-0.1-5.2 1-1.4 0.7 0.1 1.3 1.8 2.6-2.9 0.6-5.5 2.8-6.2 1.7-0.8 2.4-0.3 2.7-1.7 1.7 0 1.3 15.8-8.4 2.7-0.2 0.5 3.4 1 2.5 0.3 2.3-1.3 2.5-2 1.2-3.1 0.5-3.1-0.2-2-0.8-1.1 1.9 0.7 0.9 1.5 0.8 1 1.7 0.2 2.4-0.2 4.1-1.1 7.9 1.4 1.3 1.4-0.4 1.1-1.6 0.5-1.9 2.1 2.6-2.2 3.9-4 5.2-3.5 1.1-4.8-0.3 0.1-3 3.1 0 1.3-0.3 0.8-1.2-9.9-1.2-2-0.8-2.3-3.1-0.3-1.6 1.6-1 3.7-1.5-3.6-7.2-2.6 2.6-2.6 5-3.7 0.2-3.3-4.5-1.8-1.1-3.6-0.4-1.6 1-0.8 2.3-0.4 3 0.1 2.9-3.3-0.6-7.4 0.3-2.9-1.6-0.3-1-0.1-2.9-0.1-0.7-0.8-0.2-1.7 0.3-2.3-0.5-3.7-0.3-1.3-0.7-0.8-1.6 0.1-1.5 0.7-2.8-0.3-14.3 0.3-2.3 1.2-2.5 0.7-1.8 0.2-2.4-2.5 3-2 3.4-2.5 2.6-3.8 0.3 2.9 6.9-2 1.3-4.3-0.1-4.1 2.6-1.6-4.6-1-1.9-1.8-1.4-0.5 6.2-1.7 5-3.3 2.9-4.2 0.4-3.2-1-1.2 0.1-1 0.9-2.4-1.9-1.6-0.5-0.4-0.8 0-3.6-2.1-5.3-9.9-10.7-1.7-3.6-1.4-4.1-3.5-3.7-3.9-2.8-2.1-3.9-0.7-10.3-1.6-5-3.2-3.8 0.8-4.2 3.3-3.4 0.3-4.8 1-5.2 6.6-7.9 1-5.4-2.3-1.5-1.6-3.7 0.3-4.9-1.8-4.6-0.3-2.5-0.6-2.1-4-1.7 0.1-4.9 2.2-4.6 1.4-6 1.8-5.9 2.5-4.6 2-4.4 0.4-6 1.8-5.1 3.6-3.2 3.4-3.6 3-6.4 1.6-1 2.1 0.2 3.9-1.2 7.9-4.2 1.5-4.1 5.8-6.2 1.3 4.3 3.2 1.9 2.9 2.3 0.2 1.6 0.6 1.6 2.6 1 4.8 0.4 2 1.7 2.6 1.7 4.5 0.4 4.5 0 4.1 1.3 3 3.3 2.1 4 3.5 2.5 0.9 1.8 0.6 1.7 2.4 1.5 2.1 2.5-0.1 4.6-1.9 4.4 2.5 9 9.8 0.4 4.7-0.6 4.6 0.7 4.3 2.1 4 3 4.5 0.9 8.5-4.3 4.3 0.9 3.9-5.6 3.7-2.9 1.3 10.8 4 4.9 4.9 3.1 5.8-0.6 5.9-1.1 5.2 1.6 4.9 2.6 5.9 0.2 5.2-4.1 2.2-0.8 2.3-0.3 2.2-1.9 1.8-2.4 5.7-2.3 6.1 1.5 4.7 2.2 4.4-1.5z",Ulsan:"M767.7 599.7l1.3 2.2-0.6 4.2-0.3 5-1.1 7.6-1.6 3.2-2.6 3.5-2.4 1.3-1-3.4-1-4.5-2-3.3-2.2-0.6-1.3 3.8 2.1 0.5 1.3 1.6 0.6 2.4 0.2 2.8-0.7 2.6-1.6 0.6-1.8 0.2-1.3 1.2 0.2 1.4 0.2 3.6 0.7 3.8-2.8 4.8 1.3 1.8 1 1.1-0.2 2.6-3.2 1.1-3.1 1.8-4.4 4.4-3.7-0.1-0.1 0.2-0.6-0.6-4.5-1.6-3.5-3.4-1-5.4-3.7-2.8-8.1-4.5-6.8-7.8-4.1-3.2-9.8-1.5-2.4-4.8 4-8-0.7-7.7 3.8-3.1 4.1-2.4 2.4 0 1-2-1.5-2.5-0.8-2.7 5.3-4.1 6.7-2.4 5.5-0.8 5.3 1.1 5.6 2.4 1.4 2.4 0.1 2.9 0.4 2.6 2 1.4 2.6 0.7 14.8-2.6 12.5 3 0.1 0z",Busan:"M710.4 706.9l-1.3 1.6-1-0.8-1.1-1.4-3-1.7-1.5-1.7 0.1-2.4 1.2-1.2 1.6 0.1 1.5 2.1 1.4 1.5 1.1 0.6-1 0.8-0.2 1.4 2.2 1.1z m16.2-20.3l-0.8 1.5-4.2-0.1-2.2 0.4-1.7-0.1-1.7 0.8-1.9 0.2-0.1 2.7 1.2 1.9 0.2 2.3-0.8 2.5-3.5 1.7-4.6-4-1.3-1.5-4.2 4.4-1.9 3.6-0.6 3.7-1.2 0.9-0.8-1.9-1.9-2 0.5 5.7-1.2 0-0.5-1.3-0.7-0.3-3.1 2.1-1.1-1.3-1.3-4.4 0.6-3.9 1.2-5 0.2-2.8 1.3-2.4 2.4-3 2.3-3.4 1.6-11.5 2.3-2.8 3-2.2 3.7-1.5 4 0.2 3.1 2 0.9 4.2 2.8 4 3.7 2.9 2.8 3.7 3.2 3.3 0.3 0.7z",Jeju_Do:"M350.7 994.4l1.8 2.8 2.4 1.8 7.6 3.1 2.3 2.3 1.6 5.7 1.5 2.2 1.8-1.7 0.4-0.8 1.2 2.5-0.8 0.8-1.5 0.5-1.1 1.3 0.1 1.1 1 1.8 0 1-0.5 1-1.7 2.3-2.8 3.4-5.4 4.3-1.7 3.5-2.3 4.2-0.2 1.7-1 2.5-3.9 0.4-1.5 0.8-4.2-0.3-6 4.8-16 2.9-5.4 4.6-6.5 1.4-7.1-0.7-8 1.5-6.6-2-15.1 0.2-4.7 2.2-2.7 5-2.6 0.5-2.5-1.2-3.6-5.9-4.8-1.6-4.7-4.9-1.6-5.9 2.8-7.8 2.7-4.7 1.6-1.7 5.5-3.3 4.7-8.2 4.3-1.1 2-4.3 7.4-2.6 16.2-4.6 4-3.5 15.4-1.6 10.5-4.6 2.6 0.7 12.7-2 7.5-0.7 4.9 0.9z",Sejong:"M417.6 396.7l-3.1 6.7 0.3 3.3-2 5.7-0.7 6.1 11.7-2.4 12 0.8-0.1 2.1-0.8 1.9-0.3 1.5 0.5 1.2 0.3 2-0.3 2.1-0.7 1.9-3.6-0.3-17.5 4.8-10.8 3-14.4-2.9 1.4-4.1 2.4-2.3-0.5-29.9 3.7-10.2 22.5 9z"};var i={};for(var s in r){i={};if(this.options.stateSpecificStyles[s]){e.extend(i,t,this.options.stateSpecificStyles[s])}else{i=t}this.stateShapes[s]=n.path(r[s]).attr(i);this.topShape=this.stateShapes[s];this.stateHitAreas[s]=n.path(r[s]).attr({fill:"#000","stroke-width":0,opacity:0,cursor:"pointer"});this.stateHitAreas[s].node.dataState=s}this._onClickProxy=e.proxy(this,"_onClick");this._onMouseOverProxy=e.proxy(this,"_onMouseOver"),this._onMouseOutProxy=e.proxy(this,"_onMouseOut");for(var s in this.stateHitAreas){this.stateHitAreas[s].toFront();e(this.stateHitAreas[s].node).bind("mouseout",this._onMouseOutProxy);e(this.stateHitAreas[s].node).bind("click",this._onClickProxy);e(this.stateHitAreas[s].node).bind("mouseover",this._onMouseOverProxy)}},_initCreateLabels:function(){var t=this.paper;var n=[];var r=860;var i=220;var s=this.options.labelWidth;var o=this.options.labelHeight;var u=this.options.labelGap;var a=this.options.labelRadius;var f=s/this.scale;var l=o/this.scale;var c=(s+u)/this.scale;var h=(o+u)/this.scale*.5;var p=a/this.scale;var d=this.options.labelBackingStyles;var v=this.options.labelTextStyles;var m={};for(var g=0,y,b,w;g<n.length;++g){w=n[g];y=(g+1)%2*c+r;b=g*h+i;m={};if(this.options.stateSpecificLabelBackingStyles[w]){e.extend(m,d,this.options.stateSpecificLabelBackingStyles[w])}else{m=d}this.labelShapes[w]=t.rect(y,b,f,l,p).attr(m);m={};if(this.options.stateSpecificLabelTextStyles[w]){e.extend(m,v,this.options.stateSpecificLabelTextStyles[w])}else{e.extend(m,v)}if(m["font-size"]){m["font-size"]=parseInt(m["font-size"])/this.scale+"px"}this.labelTexts[w]=t.text(y+f/2,b+l/2,w).attr(m);this.labelHitAreas[w]=t.rect(y,b,f,l,p).attr({fill:"#000","stroke-width":0,opacity:0,cursor:"pointer"});this.labelHitAreas[w].node.dataState=w}for(var w in this.labelHitAreas){this.labelHitAreas[w].toFront();e(this.labelHitAreas[w].node).bind("mouseout",this._onMouseOutProxy);e(this.labelHitAreas[w].node).bind("click",this._onClickProxy);e(this.labelHitAreas[w].node).bind("mouseover",this._onMouseOverProxy)}},_getStateFromEvent:function(e){var t=e.target&&e.target.dataState||e.dataState;return this._getState(t)},_getState:function(e){var t=this.stateShapes[e];var n=this.stateHitAreas[e];var r=this.labelShapes[e];var i=this.labelTexts[e];var s=this.labelHitAreas[e];return{shape:t,hitArea:n,name:e,labelBacking:r,labelText:i,labelHitArea:s}},_onMouseOut:function(e){var t=this._getStateFromEvent(e);if(!t.hitArea){return}return!this._triggerEvent("mouseout",e,t)},_defaultMouseOutAction:function(t){var n={};if(this.options.stateSpecificStyles[t.name]){e.extend(n,this.options.stateStyles,this.options.stateSpecificStyles[t.name])}else{n=this.options.stateStyles}t.shape.animate(n,this.options.stateHoverAnimation);if(t.labelBacking){var n={};if(this.options.stateSpecificLabelBackingStyles[t.name]){e.extend(n,this.options.labelBackingStyles,this.options.stateSpecificLabelBackingStyles[t.name])}else{n=this.options.labelBackingStyles}t.labelBacking.animate(n,this.options.stateHoverAnimation)}},_onClick:function(e){var t=this._getStateFromEvent(e);if(!t.hitArea){return}return!this._triggerEvent("click",e,t)},_onMouseOver:function(e){var t=this._getStateFromEvent(e);if(!t.hitArea){return}return!this._triggerEvent("mouseover",e,t)},_defaultMouseOverAction:function(t){this.bringShapeToFront(t.shape);this.paper.safari();var n={};if(this.options.stateSpecificHoverStyles[t.name]){e.extend(n,this.options.stateHoverStyles,this.options.stateSpecificHoverStyles[t.name])}else{n=this.options.stateHoverStyles}t.shape.animate(n,this.options.stateHoverAnimation);if(t.labelBacking){var n={};if(this.options.stateSpecificLabelBackingHoverStyles[t.name]){e.extend(n,this.options.labelBackingHoverStyles,this.options.stateSpecificLabelBackingHoverStyles[t.name])}else{n=this.options.labelBackingHoverStyles}t.labelBacking.animate(n,this.options.stateHoverAnimation)}},_triggerEvent:function(t,n,r){var i=r.name;var s=false;var o=e.Event("usmap"+t+i);o.originalEvent=n;if(this.options[t+"State"][i]){s=this.options[t+"State"][i](o,r)===false}if(o.isPropagationStopped()){this.element.trigger(o,[r]);s=s||o.isDefaultPrevented()}if(!o.isPropagationStopped()){var u=e.Event("usmap"+t);u.originalEvent=n;if(this.options[t]){s=this.options[t](u,r)===false||s}if(!u.isPropagationStopped()){this.element.trigger(u,[r]);s=s||u.isDefaultPrevented()}}if(!s){switch(t){case"mouseover":this._defaultMouseOverAction(r);break;case"mouseout":this._defaultMouseOutAction(r);break}}return!s},trigger:function(e,t,n){t=t.replace("usmap","");e=e.toUpperCase();var r=this._getState(e);this._triggerEvent(t,n,r)},bringShapeToFront:function(e){if(this.topShape){e.insertAfter(this.topShape)}this.topShape=e}};var c=[];s(e,"usmap",l,c)})(jQuery,document,window,Raphael)
+function changechart(){
+  if (document.getElementById("overall_vote_statistics")!=null) {
+  overallthing=document.getElementById("overall_vote_statistics").innerHTML;
+  overallthing.toString()
+  overallthing=overallthing.replace("Electoral Votes","Counties Won")
+  document.getElementById("overall_vote_statistics").innerHTML=overallthing
+  }
+  }
+  window.setInterval(changechart,200)
+
+
+endingPicker = (out, totv, aa, quickstats) => {
+used=false;
+    orderID = [aa[0].candidate, aa[1].candidate, aa[2].candidate, aa[3].candidate];
+    playerID = campaignTrail_temp.candidate_id;
+    playerEV = quickstats[0]
+        //out = "win", "loss", or "tie" for your candidate
+        //totv = total votes in entire election
+        //aa = all final overall results data
+        if (quickstats[1]>=70) {
+            if (used != true) {
+                setInterval(function () {
+                    used = true;
+                    imgg = document.getElementsByClassName("person_image")[0];
+                    if (imgg != null) {
+                        imgg.src = "http://www.siminsori.com/news/photo/200701/51833-2-9053.jpg";
+                    }
+                }, 100);
+            }
+return "<audio loop='true' autoplay='true' src='https://cdn.discordapp.com/attachments/1069119861936115752/1089990094141804595/1679944063cdu.mp3'' style='display:none;'></audio><h3>'Marching for our beloved.'</h3><p>”https://www.koreaherald.com/view.php?ud=20160517000757</p>"
+    } else if (quickstats[1] < 50) {
+        if (used != true) {
+            setInterval(function () {
+                used = true;
+                imgg = document.getElementsByClassName("person_image")[0];
+                if (imgg != null) {
+                    imgg.src = "https://i.imgur.com/LvzE9Oq.jpg";
+                }
+            }, 100);
+        }
+    return "<h3>Sorry! You have lost the 2012 South Korean Presidential election.</h3><p>You were always the underdog, but it's still disappointing.  It looks like Park Geun-hye will be the next President, and with the National Assembly dominated by conservatives she will be able to pass much of her agenda.  However, if you came close to winning, your political career isn't over.  After all, Kim Dae-jung became President after 3 losses.  You can look forward to becoming a party leader.  And remember: There's always 2017.</p>"
+} else if (quickstats[1] > 50) {
+    if (used != true) {
+        setInterval(function () {
+            used = true;
+            imgg = document.getElementsByClassName("person_image")[0];
+            if (imgg != null) {
+                imgg.src = "https://i.imgur.com/PC7fVOv.jpg";
+            }
+        }, 100);
+    }
+return "<h3>Congratulations! You have won the 2012 South Korean Presidential election.</h3><p>Wow! You actually did it!  You defeated Park Geun-hye in a shocking upset.  This result sends shockwaves over the entire country.  Your supporters are ecstatic beyond degree.  Park Geun-hye has called you, conceding the race</p><p>Now, running a country will not be easy.  You face a National Assembly dominated by conservatives, who will be more than happy to oppose your agenda at every level.  Will you be able to navigate the difficult task of dealing with opposition lawmakers?  Will your economic policies benefit the common man?  Will you achieve success in your conciliatory approach to North Korea and lead Korea down the path to peace and reunification?  Will the alliance with the US remain stable?  Only time can tell.</p>"
+  } else if (campaignTrail_temp.player_answers[4] == 7020 && quickstats[1] > 50) {
+        if (used != true) {
+            setInterval(function () {
+                used = true;
+                imgg = document.getElementsByClassName("person_image")[0];
+                if (imgg != null) {
+                    imgg.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Kim_Jong-un_at_the_Workers%27_Party_of_Korea_main_building.png/220px-Kim_Jong-un_at_the_Workers%27_Party_of_Korea_main_building.png";
+                }
+            }, 100);
+        }
+return "<h3>Literally 2024</h3><p>SUPREME LEADER IS WATCHING YOU.</p>"
+} else if (campaignTrail_temp.player_answers[4] == 7020 && quickstats[1] < 50) {
+        if (used != true) {
+            setInterval(function () {
+                used = true;
+                imgg = document.getElementsByClassName("person_image")[0];
+                if (imgg != null) {
+                    imgg.src = "https://i.imgur.com/LvzE9Oq.jpg";
+                }
+            }, 100);
+        }
+return "<h3>Phew!</h3><p>At least, our country won’t be in North Korea’s hands!</p>"
+} else {
+    return "<h3>Ayo?</h3>Something broke, probably. Contact Astronomical#3005 and I will try to fix it. Good job if you won."
+  }
+
+}
+
+campaignTrail_temp.multiple_endings=true

@@ -1,0 +1,166 @@
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#c60101"
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#873333"
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+$(".container")[0].style.backgroundColor = "#4f3131"
+
+banners = ["https://cdn.discordapp.com/attachments/818130397706846242/1053524452492714076/nknewslady.png","https://cdn.discordapp.com/attachments/818130397706846242/1053526420132999178/art.jpg","https://cdn.discordapp.com/attachments/818130397706846242/1053525945937580103/Untitled736_20221216221713.png","https://cdn.discordapp.com/attachments/818130397706846242/1053526924284149830/Untitled736_20221216222117.png","https://media.discordapp.net/attachments/818130397706846242/1053528758117732372/kim.jpg"]
+
+document.getElementById("header").src = banners[Math.floor(Math.random() * banners.length)];
+document.body.background = "https://d.ibtimes.co.uk/en/full/1355835/north-korea-crowd.jpg?w=400"
+
+e=campaignTrail_temp
+
+e.credits = "<button onclick='alert(`Coding:\n\nDecstarG#4326\n\nWriting team:\n\nkenshii#2663\nLieutenant Dan Taylor#1715\nT3CHOX#1805\nDiamondy30901#0308\nNeoIntenew#7895\nCoke Lives Matter#9335\nmommew#2416\nAstronomical#3005\nBoard667#8785\nastro#9407`)'>Various People</button>"
+
+e.election_json =   [
+    {
+        "model": "campaign_trail.election",
+        "pk": 20,
+        "fields": {
+            "year": 2019,
+            "summary": "<p>Election time has arrived once more in the Democratic People's Republic of Korea.</p><p>The Workers' Party of Korea is running a heated campaign to maintain dominance over the ever-changing landscape of True Korea. This election is rapidly becoming one of the most hotly contested elections in Korean history, and Chairman Kim Jong-un will need a miracle to hold on.</p>",
+            "image_url": "https://3.bp.blogspot.com/-dzofg5oN_A8/Ub8aTaPU5vI/AAAAAAAAGAw/ZGAtTK8bAQQ/s1600/Flag+of+North+Korea.jpg",
+            "winning_electoral_vote_number": 344,
+            "advisor_url": "https://cdn.discordapp.com/attachments/818130397706846242/1053522138641997875/advisors.png",
+            "recommended_reading": "True Korea",
+            "has_visits": 0,
+            "no_electoral_majority_image": "../static/images/2012-no-majority.jpg"
+        }
+    }
+]
+
+e.temp_election_list = [
+    {
+      "id": 20, 
+      "year": 2019, 
+      "is_premium": 0, 
+      "display_year": "2019NK"
+    }
+]
+
+e.opponents_default_json = [
+    {
+      "election": 20,
+      "candidates": [
+        200,
+        201
+      ]
+    }
+]
+
+e.opponents_weighted_json = [
+    {
+      "election": 20,
+      "candidates": [
+        200,
+        201
+      ]
+    }
+]
+
+e.running_mate_json = [
+    {
+      "model": "campaign_trail.running_mate",
+      "pk": 106,
+      "fields": {
+        "candidate": 200,
+        "running_mate": 202
+      }
+    }
+]
+
+
+
+e.candidate_json = [
+    {
+      "model": "campaign_trail.candidate",
+      "pk": 200,
+      "fields": {
+        "first_name": "The Fatherland",
+        "last_name": "Front",
+        "election": 20,
+        "party": "Worker's Party",
+        "state": "Pyongan",
+        "priority": 1,
+        "description": "<p>The Fatherland Front is the name for the alliance of parties, led by the Workers' Party, which leads True Korea to this day. Coming from 72 parties, the Front has thinned in membership in recent years for various reasons. The Front, and its Secretary General Pak Myong-chol, are gearing up for a tough election this year.</p><p>Will True Korea stay the course?</p>",
+        "color_hex": "#8e2929",
+        "secondary_color_hex": "#8e2929",
+        "is_active": 1,
+        "image_url": "https://cdn.discordapp.com/attachments/810034515334004766/1053526967376420904/worker_party.png",
+        "electoral_victory_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+        "electoral_loss_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+        "no_electoral_majority_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+        "description_as_running_mate": null,
+        "candidate_score": 1.0
+      }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 201,
+        "fields": {
+          "first_name": "",
+          "last_name": "Unaffiliated",
+          "election": 20,
+          "party": "Unaffiliated",
+          "state": "Pyongan",
+          "priority": 1,
+          "description": "<p>I might make a proper underground NK opposition campaign after SoL is done. I'll think about it.</p>",
+          "color_hex": "#8bb7b5",
+          "secondary_color_hex": "#8bb7b5",
+          "is_active": 0,
+          "image_url": "../static/images/barack-obama-2012.jpg",
+          "electoral_victory_message": "<h3>Congratulations! You have won the 2012 election.</h3><p>In spite of a hard-fought challenge from Mitt Romney, you have held on to the Presidency.</p><p>On the political front, it appears that your health care legislation that was passed in early 2010 will survive and go into effect. While the economy has not yet recovered as strongly as you hoped and promised, you will now have four more years to leave a strong legacy to your Democratic successor.</p>",
+          "electoral_loss_message": "<h3>Sorry! You have lost the 2012 election.</h3><p>In spite of your spirited defense, Mitt Romney has won the Presidency. Nearly two centuries after the ill-fated campaign of Joseph Smith, Romney will become America's first Mormon president.</p><p>On the political front, it appears that Romney will make a push for more tax cuts to revive the economy. He will also try to repeal your health care law. If your defeat was narrow enough, you may be able to attempt a comeback in 2016.</p>",
+          "no_electoral_majority_message": "<h3>Sorry! You have lost in a squeaker.</h3><p>No candidate achieved a majority of the electoral votes, marking the first time this has happened since 1824. Unfortunately for you, the majority of U.S. states have Republican controlled congressional delegations, and they will cast their votes for Mitt Romney.</p><p>Given the incredibly close nature of the election, you can probably set your sights on a political comeback in 2016, if that is what you desire.</p>",
+          "description_as_running_mate": null,
+          "candidate_score": 1.0
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 202,
+        "fields": {
+          "first_name": "Kim",
+          "last_name": "Jong-un",
+          "election": 20,
+          "party": "Worker's Party",
+          "state": "Pyongan",
+          "priority": 1,
+          "description": null,
+          "color_hex": "#8e2929",
+          "secondary_color_hex": "#8e2929",
+          "is_active": 0,
+          "image_url": "https://cdn.discordapp.com/attachments/810034515334004766/1053526966885679164/kim_jong_un.png",
+          "electoral_victory_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+          "electoral_loss_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+          "no_electoral_majority_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+          "description_as_running_mate": "<p>The respected Comrade Kim Jong-un is the General Secretary of the Workers’ Party of Korea, President of the State Affairs of the Democratic People’s Republic of Korea and Supreme Commander of the armed forces of the DPRK.</p>",
+          "candidate_score": 1.0
+        }
+      }
+]
+
+e.global_parameter_json = [
+    {
+      "model": "campaign_trail.global_parameter",
+      "pk": 1,
+      "fields": {
+        "vote_variable": 1.125,
+        "max_swing": 0.12,
+        "start_point": 0.94,
+        "candidate_issue_weight": 10,
+        "running_mate_issue_weight": 3,
+        "issue_stance_1_max": -0.71,
+        "issue_stance_2_max": -0.3,
+        "issue_stance_3_max": -0.125,
+        "issue_stance_4_max": 0.125,
+        "issue_stance_5_max": 0.3,
+        "issue_stance_6_max": 0.71,
+        "global_variance": 0.01,
+        "state_variance": 0.005,
+        "question_count": 100,
+        "default_map_color_hex": "#C9C9C9",
+        "no_state_map_color_hex": "#999999"
+      }
+    }
+  ]

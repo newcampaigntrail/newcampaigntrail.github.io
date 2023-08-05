@@ -1,0 +1,12 @@
+e=campaignTrail_temp
+setTimeout(()=>{
+if (!e.doom) {
+    var $jscomp=$jscomp||{};$jscomp.scope={};$jscomp.createTemplateTagFirstArg=function(a){return a.raw=a};$jscomp.createTemplateTagFirstArgWithRaw=function(a,b){a.raw=b;return a};loadScript=function(a,b){var d=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript";c.src=a;c.onreadystatechange=b;c.onload=b;d.appendChild(c)};styler=document.createElement("style");styler.innerHTML=".dosbox-container { width: 620px; height: 400px; margin:auto; }.dosbox-container > .dosbox-overlay { background: url(https://js-dos.com/cdn/DOOM.png); }";
+    document.head.appendChild(styler);$("#bottomBar").remove();$("#below_header").html('<div id="DOOM"></div><br><button onclick="dosbox.requestFullScreen();">Make fullscreen</button>');
+    loadScript("https://js-dos.com/cdn/js-dos-api.js",function(){var a=new Dosbox({id:"DOOM",onload:function(b){a.run("https://js-dos.com/cdn/upload/DOOM-@evilution.zip","./DOOM/DOOM.EXE");document.title="The New Campaign Trail"},onrun:function(b,d){console.log("Doom running.");document.title="The Doom Campaign Trail"}});$(".dosbox-start")[0].click()});nct_stuff.themes[nct_stuff.selectedTheme].coloring_title="#4f4f4f";nct_stuff.themes[nct_stuff.selectedTheme].coloring_window="#383838";
+    document.getElementsByClassName("game_header")[0].style.backgroundColor=nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;$("#game_window")[0].style.backgroundColor=nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;$(".container")[0].style.backgroundColor="#111111";document.getElementById("header").src="https://cdn.discordapp.com/attachments/810034515334004766/1076666882565865533/cmapianger.png";document.body.background="https://c1.staticflickr.com/5/4220/34015007503_122a5e3a99_b.jpg";
+    corrr='<h2><font color=\'red\'>RIP</font> AND <font color=\'red\'>TEAR</font></h2>\n<font id="wittyquote" size="4" color="white"><em>"For he will walk among us, and he will smite the evil from this earth." \u2014 Corrax Tablet 3:13</em></font>';document.getElementById("styler")&&document.getElementById("styler").remove();var themer=document.createElement("style");themer.innerHTML="\n  #final_results_description {\n    color: white;\n  }\n\n";themer.id="styler";document.body.appendChild(styler);
+    e.doom = true    
+}
+
+}, 100)

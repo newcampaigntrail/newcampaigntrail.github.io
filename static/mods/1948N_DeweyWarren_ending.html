@@ -1,0 +1,89 @@
+FRupdated=false
+function removeMulti()
+{
+if(document.getElementById("difficulty_mult")!=null)
+{
+document.getElementById("difficulty_mult").remove()
+}
+if (document.getElementById("main_content_area_reading")!=null && !FRupdated) 
+{
+    document.getElementById("main_content_area_reading").innerHTML=
+`<p style="font-family: Journal; position: relative; left: 100px; text-align: left; font-size: 18px;">This is my final goodbye to the presidency.</p>`+
+`<p style="font-family: Journal; position: relative; left: 100px; text-align: left; font-size: 18px;">I finally understand. The presidential race is truly a place where no happiness can be found.</p>`+
+`<p style="font-family: Journal; position: relative; left: 100px; text-align: left; font-size: 18px;">To the very end, it continued to expose innocent minds to a horrific reality; you'll never be president.</p>`+
+`<p style="font-family: Journal; position: relative; left: 100px; text-align: left; font-size: 18px;">A reality that our world is not designed to comprehend.</p>`+
+`<p style="font-family: Journal; position: relative; left: 100px; text-align: left; font-size: 18px;">I can't let any of my running mates undergo that same hellish epiphany</p>`+
+`<p style="font-family: Journal; position: relative; left: 100px; text-align: left; font-size: 18px;">For the time it lasted, I want to thank you. For making all my dreams come true.</p>`+
+`<p style="font-family: Journal; position: relative; left: 100px; text-align: left; font-size: 18px;">For being a friend to all my campaign staff.</p>`+
+`<p style="font-family: Journal; position: relative; left: 100px; text-align: left; font-size: 18px;">And most of all, thank you for voting for me!</p>`+
+`<p style="font-family: Journal; position: relative; left: 100px; text-align: left; font-size: 18px;">With everlasting love,</p>`+
+`<p style="font-family: Journal; position: relative; left: 100px; text-align: left; font-size: 18px;">Thomas Dewey</p>`        
+
+corrr=`\n<h2>NEW CAMPAIGN TRAIL</h2>\n<font id="wittyquote" size="4" color="white"><em>`+""+`</em></font>`
+FRupdated=true
+}
+if(document.getElementById("main_content_area_reading")==null)
+{
+corrr=`\n<h2>NEW CAMPAIGN TRAIL</h2>\n<font id="wittyquote" size="4" color="white"><em>`+nonword+`</em></font>`
+FRupdated=false
+}
+}
+
+
+nonchar=[ "¡", "¢", "£", "¤", "¥", "¦", "§", "¨", "©", "ª", "«", "¬", "®", "¯", "°", "±", "²", "³", "µ", "¶", "·", "¸", "¹", "º", "»", "¼", "½", "¾", "¿", "À","Á", "Â", "Ã", "Ä", "Å", "Æ", "Ç", "È", "É", "Ê", "Ë", "Ì", "Í", "Î", "Ï", "Ð", "Ñ", "Ò", "Ó", "Ô", "Õ", "Ö", "×", "Ø", "Ù", "Ú", "Û", "Ü", "Ý", "Þ", "ß", "à", "á", "â", "ã", "ä", "å", "æ", "ç", "è", "é", "ê", "ë", "ì", "í", "î", "ï", "ð", "ñ", "ò", "ó", "ô", "õ", "ö", "÷", "ø", "ù", "ú", "û", "ü", "ý", "þ", "ÿ", "Ā", "ā", "Ă", "ă", "Ą", "ą", "Ć", "ć", "Ĉ", "ĉ", "Ċ", "ċ", "Č", "č", "Ď", "ď", "Đ", "đ", "Ē", "ē", "Ĕ", "ĕ", "Ė", "ė", "Ę", "ę", "Ě", "ě", "Ĝ", "ĝ", "Ğ", "ğ", "Ġ", "ġ", "Ģ", "ģ", "Ĥ", "ĥ", "Ħ", "ħ", "Ĩ", "ĩ", "Ī", "ī", "Ĭ", "ĭ", "Į", "į", "İ", "ı", "Ĳ", "ĳ", "Ĵ", "ĵ", "Ķ", "ķ", "ĸ", "Ĺ", "ĺ", "Ļ", "ļ", "Ľ", "ľ", "Ŀ", "ŀ", "Ł", "ł", "Ń", "ń", "Ņ", "ņ", "Ň", "ň", "ŉ", "Ŋ", "ŋ", "Ō", "ō", "Ŏ", "ŏ", "Ő", "ő", "Œ", "œ", "Ŕ", "ŕ", "Ŗ", "ŗ", "Ř", "ř", "Ś", "ś", "Ŝ", "ŝ", "Ş", "ş", "Š", "š", "Ţ", "ţ", "Ť", "ť", "Ŧ", "ŧ", "Ũ", "ũ", "Ū", "ū", "Ŭ", "ŭ", "Ů", "ů", "Ű", "ű", "Ų", "ų", "Ŵ", "ŵ", "Ŷ", "ŷ", "Ÿ", "Ź", "ź", "Ż", "ż", "Ž", "ž" ]
+nonword="";
+
+for (let index = 0; index < 10000; index++) 
+{
+nonword += nonchar[Math.floor(Math.random()*nonchar.length)];  
+   
+}
+
+
+
+
+if (deweydead) {
+setInterval(removeMulti,200)
+document.body.background="../static/images/black.jpg"
+nct_stuff.selectedTheme="dark"
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes["dark"].coloring_window
+$(".container")[0].style.backgroundColor = nct_stuff.themes["dark"].coloring_container
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes["dark"].coloring_title
+    used = false
+    if (used != true) {
+        setInterval(function() {
+            used = true
+            imgg = document.getElementsByClassName("person_image")[0]
+            if (imgg != null) {
+                imgg.src = "https://cdn.discordapp.com/attachments/432541570915631105/1057503597027401790/B88jO7R37TXlQAAAABJRU5ErkJggg.png"
+           const color = "#000" /* white outline */
+  const r = 1 /* width of outline in pixels - CHANGE THIS AS REQUIRED */
+  const n = Math.ceil(2*Math.PI*r) /* number of shadows */
+  var str = ''
+  for(var i = 0;i<n;i++) /* append shadows in n evenly distributed directions */
+  {
+    const theta = 2*Math.PI*i/n
+    str += (r*Math.cos(theta))+"px "+(r*Math.sin(theta))+"px 0 "+color+(i==n-1?"":",")
+  }
+  document.getElementById("final_results_description").style.textShadow = str
+  document.getElementById("header").src="https://cdn.discordapp.com/attachments/432541570915631105/1058504334956040253/MOSHED-2022-12-30-16-45-23.jpg"  
+          }
+        }, 100)
+    }
+
+
+if (!document.getElementById("ddlcCringe")) {
+    audioTag = document.createElement("audio")
+    audioTag.src = "https://cdn.discordapp.com/attachments/432541570915631105/1057501556020367481/ytmp3free.cc_doki-doki-literature-club-ost-sayonara-youtubemp3free.org.mp3"
+    audioTag.autoplay=true
+    audioTag.loop=true
+    audioTag.id="ddlcCringe"
+    document.body.appendChild(audioTag)
+}
+return "<p style='display:block;font-size:16px;color:black'></p>"
+
+}
+else
+{
+return false
+} 

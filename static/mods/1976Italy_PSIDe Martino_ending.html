@@ -1,0 +1,55 @@
+used=false
+        //out = "win", "loss", or "tie" for your candidate [24] == 8090
+        //totv = total votes in entire election
+        //aa = all final overall results data
+        //quickstats = relevant data on candidate performance (format: your candidate's electoral vote count, your candidate's popular vote share, your candidate's raw vote total)
+  if (campaignTrail_temp.player_answers[19] == 4454 && quickstats[0] < 100 && campaignTrail_temp.running_mate_last_name == "De Martino") {
+        if (used != true) {
+            setInterval(function () {
+                used = true;
+                imgg = document.getElementsByClassName("person_image")[0];
+                if (imgg != null) {
+                    imgg.src = "https://cdn.discordapp.com/attachments/955864160862888029/956982392382451742/MP00005830.png";
+                }
+            }, 100);
+        }
+         return "<h3>You’ve got some ‘splainin to do…</h3><p>The polls are usually wrong, nobody’s perfect, it’s a relatively new science, but this election was a step too far. Something is a bit suspicious when polls are off by such a large margin, all benefiting one party.</p><p>As the initial results came in, your aides were genuinely upset. In a rare display of PSI members keeping their mouth shut, even some high-ranking members weren’t in the know. “It’d all be worth it in the end” you thought to yourself, desperately trying to justify what you did, but the guilt never fully went away. Now it’s all blown up in your face. Nowhere to hide, nowhere to go. You could have swallowed your pride and accepted your fate this election, but nooooo. You just had to give your young activists, your closest friends and even your family false hope. Nice job.</p>";
+  } else if (quickstats[0] < 55) {
+        if (used != true) {
+            setInterval(function () {
+                used = true;
+                imgg = document.getElementsByClassName("person_image")[0];
+                if (imgg != null) {
+                    imgg.src = "https://i.ebayimg.com/thumbs/images/g/jBYAAOSwTE5jA9fq/s-l1600.jpg";
+                }
+            }, 100);
+        }
+         return "<h3>Sorry, you have lost the 1976 general elections.</h3><p>You’ve done even worse than last time. After all that time convincing the press and mending relations inside the party, voters were still disappointed and moved on to other options. Your career is toast on all levels.</p><p>The hell happened? No, seriously? Five years ago you were the favorite to win the presidency, didn’t win but came back to lead the Socialists and regained some lost ground, but now even that has vanished. Italy is now a two-party state, between those who are corrupt and those who are communists. Whoever the next leader of the Socialists is has a big mess to clean up. You’ll be lucky to be a candidate come the next elections, but hey, every cloud has a silver lining. You won’t have to be in Italian politics anymore.</p>";
+  } else if (quickstats[0] >= 55 && quickstats[0]<210) {
+        if (used != true) {
+            setInterval(function () {
+                used = true;
+                imgg = document.getElementsByClassName("person_image")[0];
+                if (imgg != null) {
+                    imgg.src = "https://cdn.discordapp.com/attachments/955864160862888029/1016786670923829349/unknown.png";
+                }
+            }, 100);
+        }
+         return "<h3>Sorry, you have lost the 1976 general elections.</h3><p>Outright winning was never really an option, but you’ve improved your performance compared to four years ago. Considering most other parties blamed you directly for causing the constitutional crisis way back in January, that is a hell of an accomplishment.</p><p>No one will openly be demanding your resignation, but you’re nearing your 70th birthday, and it won’t be surprising if you decide to call it quits. The Italian Socialist Party will retain its unique position where it’s neither a small party like the Republicans or Liberals, but not a big one like the DC or PCI either. Questions will be raised whether or not the centre-left will be formed again due to the harsh words exchanged during the campaign, or even a desperate push for a “left alternative”, but as for now, you’ve won the right to sit back and relax.</p>";
+  } else if (quickstats[0] >= 210 && quickstats[0]<629) {
+        if (used != true) {
+            setInterval(function () {
+                used = true;
+                imgg = document.getElementsByClassName("person_image")[0];
+                if (imgg != null) {
+                    imgg.src = "https://cdn.discordapp.com/attachments/955864160862888029/1016786670923829349/unknown.png";
+                }
+            }, 100);
+        }
+         return "<h3>Congratulations, you’ve won the 1976 general elections!</h3><p>Well I don’t think anyone was expecting that! You’ve pretty much changed the Italian political landscape within a single election, and brought it in line with the rest of Western Europe, with a socialist/social democratic party and a Christian democrat/conservative party.</p><p>You can still bring in the PCI if you want to, you’re the boss, but that would anger more people than it would please. The DC would be less of a controversial pick, but they have their own baggage too. Maybe the smaller parties? Regardless, you’ve won and that’s the most important thing. Nenni, your old teacher, comes up to you with a bottle of wine, Lambrusco 1947. “I had this in my cellar for years. I bought it because I thought the Garibaldi List was going to win next year’s election. What a fool I was! You can only imagine how good it’s going to taste after all this time, Ciccio.”</p>";
+  } else if (quickstats[0] >= 629) {
+    return "<h3>Congratulations, you’ve won the 1976 general elections!</h3><p>Well I don’t think anyone was expecting that! You’ve pretty much changed the Italian political landscape within a single election, and brought it in line with the rest of Western Europe, with a socialist/social democratic party and a Christian democrat/conservative party.</p><p>You can still bring in the PCI if you want to, you’re the boss, but that would anger more people than it would please. The DC would be less of a controversial pick, but they have their own baggage too. Maybe the smaller parties? Regardless, you’ve won and that’s the most important thing. Nenni, your old teacher, comes up to you with a bottle of wine, Lambrusco 1947. “I had this in my cellar for years. I bought it because I thought the Garibaldi List was going to win next year’s election. What a fool I was! You can only imagine how good it’s going to taste after all this time, Ciccio.”</p>"
+  } else {
+    return "<h3>Something broke.</h3>Contact /u/crvenocrveni and I’ll try to fix it. Good job if you won."
+  }
+
