@@ -59,6 +59,8 @@
         <button class="tab" id="submitMod">Load</button>
     </div>  
 </div>
+
+<div class="mod_loader_overlay_block" id="mod_loader_overlay_block"></div>
   
 <script>
     const overlay = document.getElementById('overlay_scr');
@@ -663,7 +665,6 @@
             "value": "2025NL",
             "tags": ["althist", "international"]
         }
-
     ];
 
     var selectElement = document.getElementById("modSelect");
@@ -819,6 +820,11 @@
         selectElement.appendChild(option);
     }
 
+    $("#mod_loader_overlay_block").click(()=>{
+        $("#modLoadReveal").click();
+        document.body.style.overflow = '';
+    });
+
 
     $("#submitMod").click(function() {
         if ($("#importfile")[0].value != "") {
@@ -860,4 +866,3 @@
     $('.tagCheckbox').on('change', filterEntries);
     
 </script>
-    
