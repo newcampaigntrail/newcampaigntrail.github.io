@@ -759,6 +759,11 @@ for (var i = 0; i < options.length; i++) {
     widget.classList.add("widget");
     widget.setAttribute("mod-value", opt.value);
     
+    if (opt.style) {
+        widget.setAttribute("style", opt.style);
+        widget.style.border = "solid 2px";
+    }
+    
     const fav = check_favourite(opt.value) ? "<font color='white'>Favourited</font>" : "Favourite";
 
     if (check_favourite(opt.value)) {
@@ -921,3 +926,23 @@ if (cache) {
     $("#codeset2").val(cached.code_two);
     $("#codeset3").val(cached.ending_code);
 }
+
+// very important 2000n stuff
+
+const normals = ["2000N", "2000 Redux", "2000?", "2000 Normal", "Normalverse 2000", "Where am I?", "Don't think about 1993", "Normal", "2000N?", "2000"]
+let normal_mode = 0
+
+let normal_adjust = () => {
+    let normal = Array.from(document.getElementsByClassName("widget")).find(f=>f.getAttribute("mod-value")==="2000N");
+    if (!normal) {
+        return;
+    }
+    normal.children[0].innerHTML = normals[normal_mode]
+    normal_mode = (normal_mode + 1) % normals.length
+
+    if ($(".campaign_trail_start_emphasis").length > 0) {
+        window.setTimeout(normal_adjust, Math.floor(Math.random()*500));
+    }
+}
+
+normal_adjust();
