@@ -811,43 +811,6 @@ function exportResults() {
 
 diff_mod = false
 
-$("#submitMod").click(function() {
-    if ($("#importfile")[0].value != "") {
-        const content = document.querySelector('.content');
-        const [file] = document.querySelector('input[type=file]').files;
-        const reader = new FileReader();
-
-        reader.onload = function(fle) {
-            importedtext = fle.target.result
-            importedtext = encode(importedtext)
-            importedtext = atob(importedtext)
-            campaignTrail_temp.dagakotowaru = importedtext
-        }
-        reader.readAsText(file);
-    }
-    if ($("#modSelect")[0].value == "other") {
-        important_info = $("#codeset3")[0].value;
-        if (important_info != "") {
-            campaignTrail_temp.multiple_endings = true
-        }
-        if (!moddercheckeror) {
-            evaluate($("#codeset1")[0].value)
-            moddercheckeror = true
-        }
-    } else {
-        var client = new XMLHttpRequest();
-        client.open('GET', "../static/mods/" + $("#modSelect")[0].value + "_init.html");
-        client.onreadystatechange = function() {
-            evaluate(client.responseText)
-        }
-        client.send();
-        diff_mod = true
-    }
-    $("#modloaddiv")[0].style.display = 'none'
-    $("#modLoadReveal")[0].style.display = 'none'
-    modded = true
-})
-
 function divideElectoralVotesProp(e, t) {
     for (var i = [], a = 0, s = 0; s < e.length; s++) {
         var n = Math.floor(e[s] * t);

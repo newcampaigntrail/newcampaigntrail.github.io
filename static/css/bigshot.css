@@ -1,220 +1,192 @@
 .cheat_menu {
   /* FONT */
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 1.3em;
-  list-style-type: disc;
-  list-style-position: inside;
-  line-height: 1.44em;
-
+   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+   font-size: 1.3em;
+   list-style-type: disc;
+   list-style-position: inside;
+   line-height: 1.44em;
   /* BOX */
-  background-color: rgb(53, 20, 20);
-  color: rgb(255, 158, 158);
-  border: 10px solid rgb(255, 158, 158);
-  width: 500px;
-  height: 180px;
-
+   background-color: rgb(53, 20, 20);
+   color: rgb(255, 158, 158);
+   border: 10px solid rgb(255, 158, 158);
+   width: 500px;
+   height: 180px;
   /* POSITION */
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-
+   position: fixed;
+   bottom: 10px;
+   left: 10px;
   /* Additional styles */
-  transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
-  overflow: hidden;
-  padding: 10px;
+   transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+   overflow: hidden;
+   padding: 10px;
 }
-
 #minimizeBtn {
   /* BUTTON */
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.3);
-  color: rgb(255, 158, 158);
-  width: 20px;
-  height: 20px;
-  text-align: center;
-  transition: all 0.3s ease-in-out;
-  font-weight: bolder;
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   cursor: pointer;
+   background-color: rgba(255, 255, 255, 0.3);
+   color: rgb(255, 158, 158);
+   width: 20px;
+   height: 20px;
+   text-align: center;
+   transition: all 0.3s ease-in-out;
+   font-weight: bolder;
 }
 #minimizeBtn:hover {
-  background-color: rgba(255, 255, 255, 0.5);
+   background-color: rgba(255, 255, 255, 0.5);
 }
 .cheat_menu.minimized {
-  width: 100px;
-  height: 30px;
+   width: 100px;
+   height: 30px;
 }
-
 #cheat_content {
-    transition: all 0.3s ease-in-out;
+   transition: all 0.3s ease-in-out;
 }
-
 .cheat_menu.minimized #cheat_content {
-    opacity: 0;
+   opacity: 0;
 }
-
 .cheat_header {
-  font-size: 25px;
-  font-weight: bolder;
+   font-size: 25px;
+   font-weight: bolder;
 }
-
 .cheat_menu button {
-  background-color: rgb(56, 31, 31);
-  color: rgb(255, 52, 52);
-  border: 5px solid rgb(255, 52, 52);
-  font-weight: bolder;
-  transition: all 0.3s;
+   background-color: rgb(56, 31, 31);
+   color: rgb(255, 52, 52);
+   border: 5px solid rgb(255, 52, 52);
+   font-weight: bolder;
+   transition: all 0.3s;
 }
-
 .cheat_menu button:hover {
-  background-color: rgb(17, 3, 3);
-  color: rgb(255, 115, 115);
-  border: 5px solid rgb(255, 115, 115);
-  cursor: pointer;
+   background-color: rgb(17, 3, 3);
+   color: rgb(255, 115, 115);
+   border: 5px solid rgb(255, 115, 115);
+   cursor: pointer;
 }
-
 .cheat_menu button:active {
-  background-color: rgb(0, 0, 0);
-  color: rgb(255, 192, 192);
-  border: 5px solid rgb(255, 192, 192);
-  cursor: pointer;
+   background-color: rgb(0, 0, 0);
+   color: rgb(255, 192, 192);
+   border: 5px solid rgb(255, 192, 192);
+   cursor: pointer;
 }
-
 .cheat_menu button span {
-  font-size: 25px;
+   font-size: 25px;
 }
-
 #skiptoquestion {
-    background-color: rgb(56, 31, 31);
-    color: rgb(255, 52, 52);
-    border: 5px solid rgb(255, 52, 52);
-    font-weight: bolder;
-    transition: all 0.3s;  
-    outline: none;
+   background-color: rgb(56, 31, 31);
+   color: rgb(255, 52, 52);
+   border: 5px solid rgb(255, 52, 52);
+   font-weight: bolder;
+   transition: all 0.3s;
+   outline: none;
 }
-
 #skiptoquestion:hover {
-  background-color: rgb(17, 3, 3);
-  color: rgb(255, 115, 115);
-  border: 5px solid rgb(255, 115, 115);
-  cursor: pointer;
+   background-color: rgb(17, 3, 3);
+   color: rgb(255, 115, 115);
+   border: 5px solid rgb(255, 115, 115);
+   cursor: pointer;
 }
-
 #skiptoquestion:active {
-  background-color: rgb(0, 0, 0);
-  color: rgb(255, 192, 192);
-  border: 5px solid rgb(255, 192, 192);
-  cursor: pointer;
+   background-color: rgb(0, 0, 0);
+   color: rgb(255, 192, 192);
+   border: 5px solid rgb(255, 192, 192);
+   cursor: pointer;
 }
-
 #difficultyMod {
-    font-weight: bolder;
+   font-weight: bolder;
 }
-
 /* Slider */
 #difficultySlider {
-    width: 300px;
-    height: 8px;
-    background-color: rgba(255, 158, 158, 0.5);
-    border-radius: 4px;
-    position: relative;
-  }
-  
-  #difficultySlider::before {
-    content: "";
-    position: absolute;
-    top: -6px;
-    left: 0;
-    width: 100%;
-    height: 20px;
-    background-color: rgba(255, 158, 158, 0.2);
-    border-radius: 4px;
-  }
-  
-  #difficultySlider::after {
-    content: "";
-    position: absolute;
-    top: -6px;
-    left: 0;
-    width: 0;
-    height: 20px;
-    background-color: rgb(255, 158, 158);
-    border-radius: 4px;
-    transition: width 0.3s ease-in-out;
-  }
-  
-  #difficultySlider input[type="range"] {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 100%;
-    height: 8px;
-    background-color: transparent;
-    outline: none;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    z-index: 1;
-  }
-  
-  #difficultySlider input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 16px;
-    height: 16px;
-    background-color: rgb(255, 158, 158);
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    z-index: 2;
-    transition: background-color 0.3s ease-in-out;
-  }
-  
-  #difficultySlider input[type="range"]::-webkit-slider-thumb:hover {
-    background-color: rgb(255, 115, 115);
-  }
-  
-  #difficultySlider input[type="range"]::-webkit-slider-thumb:active {
-    background-color: rgb(255, 192, 192);
-  }
-  
-  #difficultySlider input[type="range"]::-moz-range-thumb {
-    width: 16px;
-    height: 16px;
-    background-color: rgb(255, 158, 158);
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    z-index: 2;
-    transition: background-color 0.3s ease-in-out;
-  }
-  
-  #difficultySlider input[type="range"]::-moz-range-thumb:hover {
-    background-color: rgb(255, 115, 115);
-  }
-  
-  #difficultySlider input[type="range"]::-moz-range-thumb:active {
-    background-color: rgb(255, 192, 192);
-  }
-  
-  #difficultySlider input[type="range"]::-ms-thumb {
-    width: 16px;
-    height: 16px;
-    background-color: rgb(255, 158, 158);
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    z-index: 2;
-    transition: background-color 0.3s ease-in-out;
-  }
-  
-  #difficultySlider input[type="range"]::-ms-thumb:hover {
-    background-color: rgb(255, 115, 115);
-  }
-  
-  #difficultySlider input[type="range"]::-ms-thumb:active {
-    background-color: rgb(255, 192, 192);
-  }
+   width: 300px;
+   height: 8px;
+   background-color: rgba(255, 158, 158, 0.5);
+   border-radius: 4px;
+   position: relative;
+}
+#difficultySlider::before {
+   content: "";
+   position: absolute;
+   top: -6px;
+   left: 0;
+   width: 100%;
+   height: 20px;
+   background-color: rgba(255, 158, 158, 0.2);
+   border-radius: 4px;
+}
+#difficultySlider::after {
+   content: "";
+   position: absolute;
+   top: -6px;
+   left: 0;
+   width: 0;
+   height: 20px;
+   background-color: rgb(255, 158, 158);
+   border-radius: 4px;
+   transition: width 0.3s ease-in-out;
+}
+#difficultySlider input[type="range"] {
+   -webkit-appearance: none;
+   appearance: none;
+   width: 100%;
+   height: 8px;
+   background-color: transparent;
+   outline: none;
+   margin: 0;
+   padding: 0;
+   position: relative;
+   z-index: 1;
+}
+#difficultySlider input[type="range"]::-webkit-slider-thumb {
+   -webkit-appearance: none;
+   appearance: none;
+   width: 16px;
+   height: 16px;
+   background-color: rgb(255, 158, 158);
+   border-radius: 50%;
+   border: none;
+   cursor: pointer;
+   position: relative;
+   z-index: 2;
+   transition: background-color 0.3s ease-in-out;
+}
+#difficultySlider input[type="range"]::-webkit-slider-thumb:hover {
+   background-color: rgb(255, 115, 115);
+}
+#difficultySlider input[type="range"]::-webkit-slider-thumb:active {
+   background-color: rgb(255, 192, 192);
+}
+#difficultySlider input[type="range"]::-moz-range-thumb {
+   width: 16px;
+   height: 16px;
+   background-color: rgb(255, 158, 158);
+   border-radius: 50%;
+   border: none;
+   cursor: pointer;
+   position: relative;
+   z-index: 2;
+   transition: background-color 0.3s ease-in-out;
+}
+#difficultySlider input[type="range"]::-moz-range-thumb:hover {
+   background-color: rgb(255, 115, 115);
+}
+#difficultySlider input[type="range"]::-moz-range-thumb:active {
+   background-color: rgb(255, 192, 192);
+}
+#difficultySlider input[type="range"]::-ms-thumb {
+   width: 16px;
+   height: 16px;
+   background-color: rgb(255, 158, 158);
+   border-radius: 50%;
+   border: none;
+   cursor: pointer;
+   position: relative;
+   z-index: 2;
+   transition: background-color 0.3s ease-in-out;
+}
+#difficultySlider input[type="range"]::-ms-thumb:hover {
+   background-color: rgb(255, 115, 115);
+}
+#difficultySlider input[type="range"]::-ms-thumb:active {
+   background-color: rgb(255, 192, 192);
+}

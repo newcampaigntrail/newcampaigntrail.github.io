@@ -194,81 +194,97 @@ function changeFavicon(src) {
 
 changeFavicon("/static/34starcircle-2.png")
 
-$(document).ready(function() {
-    var originalOptions = null;
 
-    $('.tagCheckbox').on('change', filterEntries);
+function loadEntries() {
+    $.ajax({
+        type: "GET",
+        url: "../static/mods/MODLOADERFILE.html",
+        dataType: "text",
+        success: function(response) {
+            $("#mod_sel_wrapper").html(response);
 
-    loadEntries();
+            // hot load
+            let hotload = window.localStorage.getItem("hotload");
+            if (hotload) {
+                try {
+                    $("#modSelect")[0].value = hotload;
+                    campaignTrail_temp.hotload = hotload;
+                    $("#submitMod").click();
+                } catch {
 
-    function loadEntries() {
-        $.ajax({
-            type: "GET",
-            url: "../static/mods/MODLOADERFILE.html",
-            dataType: "text",
-            success: function(response) {
-                $("#modSelect").html(response);
-
-                // hot load
-                let hotload = window.localStorage.getItem("hotload");
-                if (hotload) {
-                    try {
-                        $("#modSelect")[0].value = hotload;
-                        campaignTrail_temp.hotload = hotload;
-                        $("#submitMod").click();
-                    } catch {
-
-                    }
-                    window.localStorage.removeItem("hotload") // this should be done whether or not there is an error.
                 }
-
-                //clone so we don't reduce the list of mods every time a tag is selected
-                originalOptions = $("#modSelect option").clone();
-                filterEntries();
-            },
-            error: function() {
-                console.log("Error loading mod loader - couldn't reach server.");
-            }
-        });
-    }
-
-    function filterEntries() {
-        var selectedTags = [];
-
-        // Get all selected tags
-        $('.tagCheckbox:checked').each(function() {
-            selectedTags.push($(this).val());
-        });
-
-        var filteredOptions = originalOptions.filter(function() {
-            var entryTags = $(this).data('tags');
-
-            if (selectedTags.length === 0) {
-                // Show all if no tags are selected
-                return true;
+                window.localStorage.removeItem("hotload") // this should be done whether or not there is an error.
             }
 
-            //return mods that are tagged and have all checked tags
-            return entryTags && (containsAllTags(entryTags, selectedTags));
-        });
+            //clone so we don't reduce the list of mods every time a tag is selected
+            originalOptions = $("#modSelect option").clone();
+            filterEntries();
+        },
+        error: function() {
+            console.log("Error loading mod loader - couldn't reach server.");
+        }
+    });
+}
 
-        var $modSelect = $('#modSelect');
-        $modSelect.empty().append(filteredOptions);
+function filterEntries() {
+    var selectedTags = [];
 
-        $modSelect.val($modSelect.find('option:first').val());
-    }
+    // Get all selected tags
+    $('.tagCheckbox:checked').each(function() {
+        selectedTags.push($(this).val());
+    });
 
-    function containsAllTags(entryTags, selectedTags) {
-        var entryTagArray = entryTags.split(' ');
+    var filteredOptions = originalOptions.filter(function() {
+        var entryTags = $(this).data('tags');
 
-        for (var i = 0; i < selectedTags.length; i++) {
-            if (!entryTagArray.includes(selectedTags[i])) {
-                return false;
-            }
+        if (selectedTags.length === 0) {
+            // Show all if no tags are selected
+            return true;
         }
 
-        return true;
+        //return mods that are tagged and have all checked tags
+        return entryTags && (containsAllTags(entryTags, selectedTags));
+    });
+
+    var $modSelect = $('#modSelect');
+    $modSelect.empty().append(filteredOptions);
+
+    $modSelect.val($modSelect.find('option:first').val());
+
+    Array.from(document.getElementsByClassName("widget")).forEach(f => {
+        let value = f.getAttribute("mod-value");
+        let option = originalOptions.filter(id_clean(`#${value}_select_option`))[0];
+        let tags = option.getAttribute("data-tags");
+
+        tags = tags.split(" ");
+
+        for (var i = 0; i < selectedTags.length; i++) {
+            if (!tags.includes(selectedTags[i])) {
+                f.style.display = "none";
+                return;
+            }
+        }
+        f.style.display = "";
+    })
+}
+
+function containsAllTags(entryTags, selectedTags) {
+    var entryTagArray = entryTags.split(' ');
+
+    for (var i = 0; i < selectedTags.length; i++) {
+        if (!entryTagArray.includes(selectedTags[i])) {
+            return false;
+        }
     }
+
+    return true;
+}
+
+$(document).ready(function() {
+    var originalOptions = null;
+    
+    loadEntries();
+
 });
 
 
