@@ -22,6 +22,10 @@
     <div id="overlay_tab" class="overlay_tab">
         <div class="tab-content" id="customContent">
             <!-- MORE INFO -->
+            <div id="custom_loader_area">
+
+            </div>
+
             <div id="customMenu">
                 <br>
                 <b>Code Set 1:</b>
@@ -35,8 +39,7 @@
                 <b>ENDINGS CODE:</b>
                 <br>
                 <textarea id="codeset3" width=400 height=300></textarea>
-                <br>
-                <br>
+                <input id="custom_loader_input" placeholder="Custom name here"/> <button id="custom_loader_save">Save to Custom Loader</button>
             </div>
             <div id="fileimp">
                 <br>
@@ -865,5 +868,9 @@
     })
 
     $('.tagCheckbox').on('change', filterEntries);
+
+    $("#custom_loader_input").click(() => {
+        let name = $("#custom_loader_input").val();
+    })
     
 </script>
