@@ -785,8 +785,17 @@ $("#mod_loader_overlay_block").click(()=>{
     document.body.style.overflow = '';
 });
 
+$("#customMenu").change(()=>{
+    let cached = {
+        code_one: $("#codeset1").val(),
+        code_two: $("#codeset2").val(),
+        ending_code: $("#codeset3").val()
+    }
+    window.localStorage.setItem("mod_loader_cache", JSON.stringify(cached));
+})
 
 $("#submitMod").click(function() {
+
     document.body.style.overflow = '';
     if ($("#importfile")[0].value != "") {
         const content = document.querySelector('.content');
@@ -903,3 +912,12 @@ $("#custom_loader_delete").click(f=>{
     rebuild_custom_loader();
 
 })
+
+let cache = window.localStorage.getItem("mod_loader_cache");
+if (cache) {
+    window.localStorage.removeItem("mod_loader_cache");
+    let cached = JSON.parse(cache);
+    $("#codeset1").val(cached.code_one);
+    $("#codeset2").val(cached.code_two);
+    $("#codeset3").val(cached.ending_code);
+}
