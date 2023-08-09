@@ -433,4 +433,5 @@ $("#sort").change(e=>{
 
     reconstruct();
     filterEntries();
+    selection_click();
 });
