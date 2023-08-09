@@ -268,7 +268,7 @@ $("#submitMod").click(function() {
     modded = true
 })
 
-$('.tagCheckbox').on('change', filterEntries);
+$('.tagCheckbox').on('change', ()=>{filterEntries();selection_click()});
 
 let selection_click = () => {
     let widget = Array.from(document.getElementsByClassName("widget")).find(f=>f.getAttribute("mod-value")===$("#modSelect").val());
@@ -287,6 +287,8 @@ let selection_click = () => {
 }
 
 $("#modSelect").change(selection_click);
+
+selection_click();
 
 const rebuild_custom_loader = () => {
     $("#custom_loader_area").html("");
