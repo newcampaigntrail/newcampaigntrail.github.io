@@ -397,3 +397,40 @@ let normal_adjust = () => {
 }
 
 normal_adjust();
+
+$("#sort").change(e=>{
+    options.reverse();
+    const widgetsContainer = document.getElementById("widgetsContainer");
+    const widgetElements = Array.from(widgetsContainer.getElementsByClassName("widget"));
+    widgetElements.reverse();
+    widgetsContainer.innerHTML = '';
+
+    for (const widget of widgetElements) {
+        widgetsContainer.appendChild(widget);
+    }
+
+    const selectElement = document.getElementById("modSelect");
+    selectElement.innerHTML = '';
+
+    for (const opt of options) {
+        const option = document.createElement("option");
+        option.value = opt.value;
+        option.innerHTML = opt.label;
+        option.id = id_clean(`${opt.value}_select_option`);
+        if (opt["tags"]) {
+            option.setAttribute("data-tags", opt["tags"].join(" "));
+        }
+        if (opt.style) {
+            option.setAttribute("style", opt.style);
+        }
+        const fav = check_favourite(opt.value) ? "<font color='white'>Favourited</font>" : "Favourite";
+
+        if (check_favourite(opt.value)) {
+            option.setAttribute("data-tags", option.getAttribute("data-tags") + " favourite")
+        }
+        selectElement.appendChild(option); // Append options in reversed order
+    }
+
+    reconstruct();
+    filterEntries();
+});
