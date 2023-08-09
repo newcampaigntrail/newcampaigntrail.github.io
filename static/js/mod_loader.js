@@ -434,3 +434,20 @@ $("#sort").change(e=>{
     filterEntries();
     selection_click();
 });
+
+let fullscreen = false;
+
+$("#fullscreen_toggle").click((e) => {
+    e.preventDefault();
+    if (fullscreen) {
+        fullscreen = false;
+        $("#fullscreen_toggle")[0].classList.remove("down");
+        $(".overlay_scr")[0].classList.remove("fullscreen");
+
+        return;
+    }
+    fullscreen = true;
+    $("#fullscreen_toggle")[0].classList.add("down");
+    $(".overlay_scr")[0].classList.add("fullscreen");
+
+})

@@ -1,3 +1,5 @@
+e = campaignTrail_temp
+
 const yearField = document.getElementById("year")
 yearField.innerHTML = new Date().getFullYear()
 
