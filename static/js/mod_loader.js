@@ -423,7 +423,6 @@ $("#sort").change(e=>{
         if (opt.style) {
             option.setAttribute("style", opt.style);
         }
-        const fav = check_favourite(opt.value) ? "<font color='white'>Favourited</font>" : "Favourite";
 
         if (check_favourite(opt.value)) {
             option.setAttribute("data-tags", option.getAttribute("data-tags") + " favourite")

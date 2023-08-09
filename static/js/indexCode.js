@@ -362,6 +362,16 @@ nct_stuff = {}
 nct_stuff.dynamicOverride = false;
 nct_stuff.themes = {
     "nct": {
+        name: "NCT",
+        background: "../static/images/march.jpg",
+        background_cover: true,
+        banner: "../static/images/banner_" + num + ".png",
+        coloring_window: "#824b4b",
+        coloring_container: "#512121",
+        coloring_title: "#210505",
+        text_col: "#fff"
+    }, 
+    "oldnct": {
         name: "New Campaign Trail",
         background: "../static/images/mlk.jpg",
         banner: "../static/images/banner_" + num + ".png",
