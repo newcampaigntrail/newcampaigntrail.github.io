@@ -6851,6 +6851,54 @@ campaignTrail_temp.player_visits = [];
 campaignTrail_temp.answer_feedback_flg = 1;
 campaignTrail_temp.game_start_logging_id = '3663253';
 
+const style_overwrite = document.createElement("style");
+style_overwrite.innerHTML = 
+`#campaign_sign {
+  background-color: #2e396b;
+  border-color: #000344;
+}
+#menu_container {
+  background-color: #d1d7ec;
+}
+#overall_result_container {
+  background-color: #d1d7ec;
+}
+#state_info h3 {
+  background-color: #7386c4;
+}
+#overall_result h3 {
+  background-color: #7386c4;
+}`
+;
+document.head.appendChild(style_overwrite);
+
+
+let style = document.createElement('style');
+style.type = 'text/css';
+style.id = 'dynamic-style';
+
+style.innerHTML = `
+  .inner_window_question h3 {
+    background-color: #d1d7ec;
+  }
+  .overlay_window h3 {
+    background-color: #7386c4;
+  }
+`;
+
+document.head.appendChild(style);
+
+
+function checkIfCanAddMap() {
+    map = document.getElementById("map_container");
+    
+    if(map) {
+        map.style.backgroundImage = "url('https://cdn.discordapp.com/attachments/463383969187233792/1136526271732518962/MapBackground.png')"; 
+    }
+}
+
+setInterval(checkIfCanAddMap, 250);
+
 campaignTrail_temp.global_parameter_json = JSON.parse("[{\"model\": \"campaign_trail.global_parameter\", \"pk\": 1, \"fields\": {\"vote_variable\": 1.125, \"max_swing\": 0.0, \"start_point\": 1.00, \"candidate_issue_weight\": 10.0, \"running_mate_issue_weight\": 3.0, \"issue_stance_1_max\": -0.71, \"issue_stance_2_max\": -0.3, \"issue_stance_3_max\": -0.125, \"issue_stance_4_max\": 0.125, \"issue_stance_5_max\": 0.3, \"issue_stance_6_max\": 0.71, \"global_variance\": 0.001, \"state_variance\": 0.003, \"question_count\": 25, \"default_map_color_hex\": \"#fffcf5\", \"no_state_map_color_hex\": \"#999999\"}}]");
 
 endingPicker = (out, totv, aa, quickstats) => {
@@ -6982,7 +7030,7 @@ orderID = [aa[0].candidate, aa[1].candidate, aa[2].candidate];
                 }
             }, 100);
         }
-    return "<div style='overflow-y: scroll;height: 38em;'><table style='margin:0px;padding:0px;display: flex;'><tbody style='display: flex;'><tr><td style='border: none;padding: 0px;display: flow-root;'><p style='margin-left: 0em;margin-right: 0em;'><font color='white'><h3>WORLD BREATHES SIGH OF RELIEF AT NEWS OF JOHNSON’S VICTORY OVER GOLDWATER</h3><p><q>Dad, I bet you could’ve carried every one of those states.</q> George says half-jokingly, throwing down a newspaper reporting on President Johnson’s 44 state victory over Goldwater.</p><p>That went about the way you expected it to, and frankly you don’t mind that he lost. Barry is a nut anyway, and it’s not like you’re on bad terms with Lyndon. It’s sad that John lost the Senate race, but hey, you know the feeling, and at least you, him, and George can bond over that.</p><p>A little later, you call Lyndon to give your congratulations, which he graciously accepts, then he changes the subject to you. <q>You can do anything in this government, I think, and you can do it well,</q> he says, <q>and I’m not going to let you, the next four years, sit on your tail up there in Boston and play with your grandchildren.</q> You chuckle.</p><p>The following year he reappoints you as his Ambassador to South Vietnam, then later as his Ambassador to West Germany, and even after Johnson’s gone you continue your streak as the eternal Ambassador all the way up until 1977. When you pass away on February 27, 1985, you will have led a full life. You will have adventured around the globe, befriended people from all walks of life, crossed paths with every US President from Theodore Roosevelt to Bill Clinton, and built relationships that will continue to affect the world long after you’re gone. You will leave behind a large family, a vast legacy stretching through six consecutive Presidential administrations, and a world better thanks to you having been in it. Though you will be forgotten by many, and your memory will not always be seen in the most positive light, fairly and unfairly, as individuals in both parties use you as a scapegoat to push blame off of their more prominent figures, those who do the work to uncover the man you were will find someone worthy of admiration.</p><p><i><q>It is not often given to a man to play a part, however modest, in such a great adventure and I am deeply grateful.</q> - Henry Cabot Lodge Jr. to President Dwight D. Eisenhower</i></p><p></p><p><a href=\\\"https://www.amazon.com/Last-Brahmin-Henry-Cabot-Making/dp/0300217803\\\" target=\\\"_blank\\\">For those who wish to read more.</a></p><p></p></font>"
+    return "<div style='overflow-y: scroll;height: 38em;'><table style='margin:0px;padding:0px;display: flex;'><tbody style='display: flex;'><tr><td style='border: none;padding: 0px;display: flow-root;'><p style='margin-left: 0em;margin-right: 0em;'><font color='white'><h3>WORLD BREATHES SIGH OF RELIEF AT NEWS OF JOHNSON’S VICTORY OVER GOLDWATER</h3><p><q>Dad, I bet you could’ve carried every one of those states.</q> George says half-jokingly, throwing down a newspaper reporting on President Johnson’s 44 state victory over Goldwater.</p><p>That went about the way you expected it to, and frankly you don’t mind that he lost. Barry is a nut anyway, and it’s not like you’re on bad terms with Lyndon. It’s sad that John lost the Senate race, but hey, you know the feeling, and at least you, him, and George can bond over that.</p><p>A little later, you call Lyndon to give your congratulations, which he graciously accepts, then he changes the subject to you. <q>You can do anything in this government, I think, and you can do it well,</q> he says, <q>and I’m not going to let you, the next four years, sit on your tail up there in Boston and play with your grandchildren.</q> You chuckle.</p><p>The following year he reappoints you as his Ambassador to South Vietnam, then later as his Ambassador to West Germany, and even after Johnson’s gone you continue your streak as the eternal Ambassador all the way up until 1977. When you pass away on February 27, 1985, you will have led a full life. You will have adventured around the globe, befriended people from all walks of life, crossed paths with every US President from Theodore Roosevelt to Bill Clinton, and built relationships that will continue to affect the world long after you’re gone. You will leave behind a large family, a vast legacy stretching through six consecutive Presidential administrations, and a world better thanks to you having been in it. Though you will be forgotten by many, and your memory will not always be seen in the most positive light, fairly and unfairly, as individuals in both parties use you as a scapegoat to push blame off of their more prominent figures, those who do the work to uncover the man you were will find someone worthy of admiration.</p><p><i><q>It is not often given to a man to play a part, however modest, in such a great adventure and I am deeply grateful.</q> - Henry Cabot Lodge Jr. to President Dwight D. Eisenhower</i></p></font>"
   } else {
     return "<h3>That's not right...</h3>Something broke. Post on the subreddit and i’ll try to find a fix."
   }
