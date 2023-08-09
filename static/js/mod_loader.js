@@ -200,7 +200,7 @@ for (var i = 0; i < options.length; i++) {
     let id = id_clean(`favourite_${opt.value}_button`);
 
     widget.innerHTML = `
-        <img src='${opt.image ?? "/static/images/_default_placeholder.png"}' class='widget_image'></img>
+        <img src='${opt.image ?? "/static/images/#default_placeholder.png"}' class='widget_image'></img>
         <br>
         <h3>${opt.label}</h3>
         <span>Tags: ${opt.tags.join(", ")}</span><br>
