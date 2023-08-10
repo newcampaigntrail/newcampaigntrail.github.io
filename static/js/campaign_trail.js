@@ -1,3 +1,5 @@
+e=campaignTrail_temp
+
 evaluate = (code) => {
     eval(code);
 }
@@ -295,7 +297,14 @@ function openAchievMenu() {
     let achievementHtml = '';
 
     for (const i in achList) {
-        const achieved = run.achievements[i] || false;
+        let achieved = run.achievements[i] || false;
+        if (e.mod_achievements) {
+            let mod_ach = window.localStorage.getItem("mod_achievements");
+            mod_ach = JSON.parse(mod_ach ?? "[]");
+            if (mod_ach.includes(achList[i])) {
+                achieved = true;
+            }
+        }
         const src = `../static/achievementicons/${i}.png`;
         const imgStyle = achieved ? "width:50px;" : "width:50px;filter: grayscale(100%);";
         const imgHTML = `<img style='${imgStyle}' src='${src}'></img>`;
@@ -2092,6 +2101,23 @@ function divideElectoralVotesProp(e, t) {
 
             among = [e.final_overall_results[0].electoral_votes, e.final_overall_results[0].popular_votes / o * 100, e.final_overall_results[0].popular_votes]
             a = endingPicker(e.final_outcome, o, e.final_overall_results, quickstats)
+
+            // unlock custom mod achievements
+
+            let mod_ach = window.localStorage.getItem("mod_achievements");
+            mod_ach = JSON.parse(mod_ach ?? "[]");
+
+            if (e.unlocked_achievements) {
+                for (let i in e.unlocked_achievements) {
+                    let unlock = e.unlocked_achievements[i];
+                    if (!mod_ach.includes(unlock)) {
+                        mod_ach.push(unlock);
+                        unlockAchievement(among, unlock, achList[unlock][2], achList[unlock][0], true);
+                        window.localStorage.setItem("mod_achievements", JSON.stringify(mod_ach));
+                    }
+                }
+            }
+
             legitRun = isLegitRun()
 
             run = JSON.parse(localStorage.getItem('achievements'))
@@ -2376,26 +2402,28 @@ function divideElectoralVotesProp(e, t) {
             localStorage.setItem("ach4", secg)
         }
 
-        function unlockAchievement(ch, id, image, unlocked) {
+        function unlockAchievement(ch, id, image, unlocked, locked=false) {
 
             console.log("ACHIEVEMENT UNLOCKED: " + id)
 
             plays = ["../static/achievementicons/beep.mp3", "../static/achievementicons/beep2.mp3"]
             image = "../static/achievementicons/"+id+".png"
 
-            if (amongusonetwothree) {
-                return false
-            } else {
-                amongusonetwothree = true
-            }
+            if (!locked) {
+                if (amongusonetwothree) {
+                    return false
+                } else {
+                    amongusonetwothree = true
+                }
 
-            currentAchievement = localStorage.getItem('achievements');
-            cA = JSON.parse(currentAchievement);
-            cA.achievements[id] = true
-            newAch = JSON.stringify(cA)
-            sec = MD5(newAch)
-            localStorage.setItem("achievements", newAch)
-            localStorage.setItem("ach4", sec)
+                currentAchievement = localStorage.getItem('achievements');
+                cA = JSON.parse(currentAchievement);
+                cA.achievements[id] = true
+                newAch = JSON.stringify(cA)
+                sec = MD5(newAch)
+                localStorage.setItem("achievements", newAch)
+                localStorage.setItem("ach4", sec)
+            }
 
             var template = document.createElement("div");
             template.id = "achievement_box"
