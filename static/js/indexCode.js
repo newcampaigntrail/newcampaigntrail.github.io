@@ -3,6 +3,35 @@ e = campaignTrail_temp
 const yearField = document.getElementById("year")
 yearField.innerHTML = new Date().getFullYear()
 
+// mobile bigshot
+
+let mobile_bigshot_data = {
+    clicks: 0,
+    state: localStorage.getItem("cheated") == "true" ? 1 : 0
+};
+
+$("#year").click((e) => {
+    e.preventDefault();
+    mobile_bigshot_data.clicks++;
+    if (mobile_bigshot_data.clicks != 3) {
+        return;
+    }
+    if (mobile_bigshot_data.state == 1) {
+        alert(`ARE YOU GETTING ALL THIS [Mike]!? I'M FINALLY\nI'M FINALLY GONNA BE A BIG SHOT!!!`);
+        campaignTrail_temp.bigshot_mode = true;
+    } else {
+        let code = prompt("Spamton likes?");
+        if (code.toLowerCase() !== "kromer") {
+            alert("WRONG!!!1")
+            mobile_bigshot_data.clicks = 0;
+        } else {
+            alert("[Heaven], are you WATCHING?");
+            localStorage.setItem("cheated", true);
+            campaignTrail_temp.bigshot_mode = true;
+        }
+    }
+})
+
 // INITIAL BIGSHOT
 
 const keyCodes = [66, 73, 71, 83, 72, 79, 84, 13];
