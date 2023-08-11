@@ -711,6 +711,7 @@ function updateDynamicStyle() {
     }  
     #main_content_area {
         color: ${selectedTheme.text_col || "inherit"};
+        
     }
     #main_content_area_reading {
         color: ${selectedTheme.text_col || "inherit"};
@@ -722,6 +723,16 @@ function updateDynamicStyle() {
         color: black;
     }
     `;
+    if (e.ending_shadow) {
+        dynaStyle += `
+        #final_results_description, #difficulty_mult, #overall_details_container h3, #overall_details_container h4 {
+            text-shadow: 0px 0px 7px black;
+        }
+        #results_container h3, #results_container h4, .results_tab_header {
+            text-shadow: 0px 0px 7px black;
+        }
+        `
+    }
     if (dynamicStyle.innerHTML != dynaStyle) {
         dynamicStyle.innerHTML = dynaStyle;
     }
