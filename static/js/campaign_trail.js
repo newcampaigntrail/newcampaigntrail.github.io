@@ -1032,7 +1032,12 @@ function divideElectoralVotesProp(e, t) {
     }
 
     let issue_popup = () => {
-        if (!(e.issues_json[0].fields.description.length > 1)) {
+        let kill = true;
+        try {
+            kill = !(e.issues_json[0].fields.description.length > 1)
+        } catch {kill = true}
+
+        if (kill) {
             return;
         }
 
