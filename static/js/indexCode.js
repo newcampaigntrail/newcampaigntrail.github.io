@@ -3,6 +3,21 @@ e = campaignTrail_temp
 const yearField = document.getElementById("year")
 yearField.innerHTML = new Date().getFullYear()
 
+let neo = false;
+
+$(document).ready(function() {
+    // NEO mode
+
+    neo = localStorage.getItem("bigshot_NEO") == "true";
+
+    if (neo) {
+        campaignTrail_temp.bigshot_mode = true;
+    }
+    
+    loadEntries();
+
+});
+
 // mobile bigshot
 
 let mobile_bigshot_data = {
@@ -36,14 +51,36 @@ $("#year").click((e) => {
 
 const keyCodes = [66, 73, 71, 83, 72, 79, 84, 13];
 const altCodes = [66, 83, 13]; // shortcut
+const neoCodes = [78, 69, 79, 13]; // perma-bigshot
 let counter = 0;
 let alt_counter = 0;
+let neo_counter = 0;
 let initial = false;
 
 document.addEventListener('keydown', function(event) {
+    if (event.keyCode === neoCodes[neo_counter]) {
+        neo_counter += 1;
+
+        if (neo_counter === neoCodes.length) {
+            if (neo) {
+                alert(`NOT COOL [Valued Player]! I'LL BE IN MY [Trailer]!`);
+                localStorage.setItem("bigshot_NEO", false);
+                window.location.reload();
+            } else {
+                alert(`HOLY [[Cungadero]] DO I FEEL GOOD ...`);
+                campaignTrail_temp.bigshot_mode = true;
+                localStorage.setItem("bigshot_NEO", true);
+                neo = true;
+            }
+        }
+    } else {
+        neo_counter = 0;
+    }
+
     if (campaignTrail_temp.bigshot_mode) {
         return;
     }
+
     if (event.keyCode === keyCodes[counter]) {
         counter += 1;
 
@@ -310,13 +347,6 @@ function containsAllTags(entryTags, selectedTags) {
 
     return true;
 }
-
-$(document).ready(function() {
-    var originalOptions = null;
-    
-    loadEntries();
-
-});
 
 
 function uwuifier(a) {
