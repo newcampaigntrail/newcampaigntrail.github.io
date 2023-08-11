@@ -1031,6 +1031,65 @@ function divideElectoralVotesProp(e, t) {
         }
     }
 
+    let issue_popup = () => {
+        if (!(e.issues_json[0].fields.description.length > 1)) {
+            return;
+        }
+
+        let createPopupContent = (issue) => {
+            const popupContent = document.createElement('div');
+
+            const issueName = document.createElement('h3');
+            issueName.textContent = issue.fields.name;
+            popupContent.appendChild(issueName);
+
+            const mainContent = document.createElement('div');
+            mainContent.className = 'popup-content';
+
+            const issueDescription = document.createElement('p');
+            issueDescription.textContent = issue.fields.description;
+            mainContent.appendChild(issueDescription);
+
+            for (let i = 1; i <= 7; i++) {
+                const stance = issue.fields[`stance_${i}`];
+                const stanceDescription = issue.fields[`stance_desc_${i}`];
+                
+                if (stanceDescription !== 0 && stanceDescription.length > 0) {
+                    const stanceTitle = document.createElement('b');
+                    stanceTitle.textContent = stance;
+                    mainContent.appendChild(stanceTitle);
+
+                    const stanceDesc = document.createElement('p');
+                    stanceDesc.textContent = stanceDescription;
+                    stanceDesc.className = "stance_desc";
+                    mainContent.appendChild(stanceDesc);
+                }
+            }
+
+            popupContent.appendChild(mainContent);
+
+            return popupContent;
+        
+        }
+
+        $("#state_info")[0].outerHTML = $("#state_info")[0].outerHTML;
+
+        for (const issue of e.issues_json) {
+            $(`#issue_${issue.pk}`)[0].addEventListener('click', () => {
+
+                $("#state_info")[0].innerHTML = `
+                    <div class="overlay_tab_i" id="popup_content_container"></div>
+                `;
+
+                const popupContent = createPopupContent(issue);
+                $("#popup_content_container")[0].appendChild(popupContent);
+                
+            });
+
+            $(`#issue_${issue.pk}`)[0].style.cursor = "pointer";
+        }
+    }
+
     function s(t, i, l) {
         for (var o = "", r = 0; r < e.difficulty_level_json.length; r++) "Normal" == e.difficulty_level_json[r].fields.name ? o += "<option value=" + e.difficulty_level_json[r].pk + " selected>" + e.difficulty_level_json[r].fields.name + "</option>" : o += "<option value=" + e.difficulty_level_json[r].pk + ">" + e.difficulty_level_json[r].fields.name + "</option>";
         let d = '        <div class="game_header">        <h2>NEW CAMPAIGN TRAIL</h2>        </div>        <div class="inner_window_w_desc" id="inner_window_4">            <div id="game_options">            <form name="game_type_selection">            <p><h3>How would you like the electoral votes to be allocated?</h3>            <select name="game_type_id" id="game_type_id">                <option value=1>Default (Winner-Take-All)</option>                <option value=2>Proportional</option>            </select>            </p>            </form>            </div>            <div class="description_window_small"                 id="opponent_selection_description_window">            </div>            <div id="difficulty_level">            <form name="difficulty_level_selection">            <p><h3>Please choose your difficulty level:</h3>            <select name="difficulty_level_id" id="difficulty_level_id">' + o + '</select>            </p>            </form>            </div>        <p id="opponent_selection_id_button_p"><button class="person_button" id="opponent_selection_id_back">Back</button> <button class="person_button" id="opponent_selection_id_button">Continue</button>        </p>        </div>';
@@ -1207,10 +1266,12 @@ function divideElectoralVotesProp(e, t) {
         $("#map_container").remove()
         $("#main_content_area").html('<div id="map_container"></div>            <div id="menu_container">                <div id="overall_result_container">                    <div id="overall_result">                        <h3>ESTIMATED SUPPORT</h3>                        <p>Click on a state to view more info.</p>                    </div>                </div>                <div id="state_result_container">                    <div id="state_info">                        <h3>STATE SUMMARY</h3>                        <p>Click/hover on a state to view more info.</p>                        <p>Precise results will be available on election night.</p>                    </div>                </div>            </div>')
         $("#main_content_area")[0].style.display=""
+
         let rr = A(returnType = 2)
         rFuncRes = r(rr, 0);
         $("#map_container").usmap(rFuncRes)
         $("#main_content_area")[0].style.display="none"
+
         return true;
     }
 
@@ -1715,7 +1776,7 @@ function divideElectoralVotesProp(e, t) {
                   break;
               }
               // Add the issue name and stance to the list
-              u += "<li>" + issue.fields.name + " -- " + v + "</li>";
+              u += `<li id='issue_${issue.pk}'>` + issue.fields.name + " -- " + v + "</li>";
             }
           }
         if (e.primary) {
@@ -1747,6 +1808,7 @@ function divideElectoralVotesProp(e, t) {
             var f = "                    <h3>STATE SUMMARY</h3>                    <p>" + e.states_json[s].fields.name + "</p>                    <ul>" + u + "</ul>                    <p>Electoral Votes: " + e.states_json[s].fields.electoral_votes + "</p>" + "                    <p>Popular Votes: " + e.states_json[s].fields.popular_votes.toLocaleString() + "</p>";
         }
 		$("#state_info").html(f);
+        issue_popup();
 	}
 
     function r(t, i) {
@@ -1839,20 +1901,23 @@ function divideElectoralVotesProp(e, t) {
     }
 
     function u() {
-        var t = [],
-            i = E(e.candidate_id);
+        let t = [];
+        let i = E(e.candidate_id);
         t.push({
             candidate: e.candidate_id,
             priority: e.candidate_json[i].fields.priority,
             color: e.candidate_json[i].fields.color_hex,
             last_name: e.candidate_json[i].fields.last_name
         });
-        for (var a = 0; a < e.opponents_list.length; a++) i = E(e.opponents_list[a]), t.push({
-            candidate: e.opponents_list[a],
-            priority: e.candidate_json[i].fields.priority,
-            color: e.candidate_json[i].fields.color_hex,
-            last_name: e.candidate_json[i].fields.last_name
-        });
+        for (let a = 0; a < e.opponents_list.length; a++) {
+            i = E(e.opponents_list[a]);
+            t.push({
+                candidate: e.opponents_list[a],
+                priority: e.candidate_json[i].fields.priority,
+                color: e.candidate_json[i].fields.color_hex,
+                last_name: e.candidate_json[i].fields.last_name
+            });
+        }
         return P(t, "priority"), t
     }
 
