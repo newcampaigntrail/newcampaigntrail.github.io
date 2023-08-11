@@ -1,7 +1,7 @@
 /*
 * Mod Title: 1971 Korea
  * Mod Author: FlongydOlson
- * Mod Version: 1.0
+ * Mod Version: 1.1
  * Mod Description: THE MOST FIERCE BATTLE BETWEEN PARK CHUNG-HEE AND KIM DAE-JUNG!
  * 
  * Coding License: Apache License 2.0
@@ -5620,7 +5620,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 4213,
             "candidate": 92,
-            "answer_feedback": "Yun Posun, the candidate of the NDP in the last presidential election, made the same argument as you. But the people disagreed with it, and eventually, he was defeated by Park Chung-hee by a lot. I hope you don't follow in his footsteps."
+            "answer_feedback": "Yun Po-sun, the candidate of the NDP in the last presidential election, made the same argument as you. But the people disagreed with it, and eventually, he was defeated by Park Chung-hee by a lot. I hope you don't follow in his footsteps."
         }
     },
     {
@@ -6511,6 +6511,54 @@ campaignTrail_temp.player_visits = [];
 campaignTrail_temp.answer_feedback_flg = 1;
 campaignTrail_temp.game_start_logging_id = '3660822';
 
+const style_overwrite = document.createElement("style");
+style_overwrite.innerHTML = 
+`#campaign_sign {
+  background-color: #000000;
+  border-color: #3f3f3f;
+}
+#menu_container {
+  background-color: #c3c3c3;
+}
+#overall_result_container {
+  background-color: #c3c3c3;
+}
+#state_info h3 {
+  background-color: #ffffff;
+}
+#overall_result h3 {
+  background-color: #ffffff;
+}`
+;
+document.head.appendChild(style_overwrite);
+
+
+let style = document.createElement('style');
+style.type = 'text/css';
+style.id = 'dynamic-style';
+
+style.innerHTML = `
+  .inner_window_question h3 {
+    background-color: #e1e1e1;
+  }
+  .overlay_window h3 {
+    background-color: #b4b4b4;
+  }
+`;
+
+document.head.appendChild(style);
+
+
+function checkIfCanAddMap() {
+    map = document.getElementById("map_container");
+    
+    if(map) {
+        map.style.backgroundImage = "url('https://cdn.discordapp.com/attachments/1111091213882359890/1139514700804145162/mapground.png')"; 
+    }
+}
+
+setInterval(checkIfCanAddMap, 250);
+
 (function(e, t, n, r, i) {
     function s(e, t, n, r) {
         r = r instanceof Array ? r : [];
@@ -6979,4 +7027,3 @@ else {
     }
 }
 campaignTrail_temp.multiple_endings=true
-
