@@ -28,7 +28,52 @@ $("#bigshotSkipBtn").click((e) => {
     let sfx = $('#sfxMeme')[0];
     sfx.volume = 0.1;
     sfx.play();
+
+    let pollmap = $("#view_electoral_map")[0];
+    let resume = $("#resume_questions_button")[0];
+
+    if (pollmap) {
+        pollmap.click();
+        window.setTimeout(() => { $("#resume_questions_button").click() }, 20);
+        return;
+        
+    } else if (resume) {
+        resume.click();
+        return;
+    }
+
 });
+
+$("#bigshot_ender").click((e) => {
+    e.preventDefault();
+
+    let question_count = campaignTrail_temp.global_parameter_json[0].fields.question_count;
+
+    campaignTrail_temp.question_number = question_count - 1;
+
+    let sfx = $('#sfxMeme')[0];
+    sfx.volume = 0.1;
+    sfx.play();
+
+    let continue_button = $("#answer_select_button")[0];
+    let resume = $("#resume_questions_button")[0];
+
+    campaignTrail_temp.answer_feedback_flg = 0;
+
+    if (continue_button) {
+        $(".game_answers")[0].click();
+        continue_button.click();
+        return;
+        
+    } else if (resume) {
+        resume.click();
+        window.setTimeout(() => { 
+            $(".game_answers")[0].click();
+            $("#answer_select_button").click();
+        }, 20);
+        return;
+    }
+})
 
 duplicate_globals = {}
 
