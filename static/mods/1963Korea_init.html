@@ -44,7 +44,7 @@ campaignTrail_temp.credits =  "FlongydOlson, <button onclick='credits()'>And...<
   
 credits = function() {
   credits = [""]
-  text = "CODE CREDITS:\n2000N (Soundtrack Code)\n2025 Netherlands (Several Codes)\n\nWONDERFUL PLAYTESTERS & PROOFREADERS:\nduplicator\njchung28\nMassachusetts for Stockdale\nSkyBlue\n\nHAVE FUN!"
+  text = "CODE CREDITS:\n1964 Draft Lodge (Color Setting Codes)\n2000N (Soundtrack Code)\n2025 Netherlands (Several Codes)\n\nWONDERFUL PLAYTESTERS & PROOFREADERS:\nduplicator\njchung28\nMassachusetts for Stockdale\nSkyBlue\n\nHAVE FUN!"
   for (i in credits) {
       text += credits[i]
   }
@@ -55,10 +55,28 @@ nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#000000";
 nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#969696";
 document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
 $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
-$(".container")[0].style.backgroundColor = "#d4d4d4";
+$(".container")[0].style.backgroundColor = "#282828";
 bannerlist=["https://cdn.discordapp.com/attachments/1111091213882359890/1124304426593689652/63bannerpark.png", "https://cdn.discordapp.com/attachments/1111091213882359890/1124312387110051910/63banneryun.png"]
 document.getElementById("header").src = bannerlist[Math.floor((Math.random() * bannerlist.length))] 
 document.body.background = "https://cdn.discordapp.com/attachments/1111091213882359890/1124283334160293948/63back.png";
+
+$(".footer a").css({"color":"#ffffff"});
+nct_stuff.themes[nct_stuff.selectedTheme].text_col = "#000000"
+
+let style = document.createElement('style');
+style.type = 'text/css';
+style.id = 'dynamic-style';
+
+style.innerHTML = `
+  .campaign_trail_start_emphasis {
+    background-color: #000000;
+  }
+  a:-webkit-any-link {
+  	color: #000000;
+  }
+`;
+
+document.head.appendChild(style);
 
 quotes = ["“Let there be no more unfortunate soldiers like myself in this country.” - Park Chung-hee", "“Let's wipe out McCarthyism believers in our society!” - Park Chung-hee", "“The establishment of a self-reliant, independent Korea is all I want.” - Park Chung-hee", "“The time has come!” - Yun Po-sun", "“I am the de facto spiritual president.” - Yun Po-sun", "“From now on, it is truly the government of the people, rather than for the people.” - Yun Po-sun"]
 customquote = quotes[Math.floor((Math.random() * quotes.length))]
