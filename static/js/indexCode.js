@@ -117,40 +117,39 @@ document.addEventListener('keydown', function(event) {
 
 
 function findCandidate(pk) {
-    for (i in campaignTrail_temp.candidate_json) {
-        if (campaignTrail_temp.candidate_json[i].pk == pk) {
-            return [i, campaignTrail_temp.candidate_json[i].fields.first_name + " " + campaignTrail_temp.candidate_json[i].fields.last_name]
-        }
-    }
+    let n = e.candidate_json.find(f=>f.pk === pk);
+    let i = e.candidate_json.indexOf(n);
+    return [i, `${n.fields.first_name} ${n.fields.last_name}`];
 }
 
 function findAnswer(pk) {
-    for (i in campaignTrail_temp.answers_json) {
-        if (campaignTrail_temp.answers_json[i].pk == pk) {
-            return [i, campaignTrail_temp.answers_json[i].fields.description]
-        }
-    }
+    let n = e.answers_json.find(f=>f.pk === pk);
+    let i = e.answers_json.indexOf(n);
+    return [i, n.fields.description];
 }
 
 function findIssue(pk) {
-    for (i in campaignTrail_temp.issues_json) {
-        if (campaignTrail_temp.issues_json[i].pk == pk) {
-            return [i, campaignTrail_temp.issues_json[i].fields.name]
-        }
-    }
+    let n = e.issues_json.find(f=>f.pk === pk);
+    let i = e.issues_json.indexOf(n);
+    return [i, n.fields.name];
 }
 
 function findState(pk) {
-    for (i in campaignTrail_temp.states_json) {
-        if (campaignTrail_temp.states_json[i].pk == pk) {
-            return [i, campaignTrail_temp.states_json[i].fields.name]
-        }
-    }
+    let n = e.states_json.find(f=>f.pk === pk);
+    let i = e.states_json.indexOf(n);
+    return [i, n.fields.name];
 }
 
 function benefitCheck(objectid) {
-    object = document.getElementById("question_form").children[0].children[(objectid * 3)]
-    answerid = object.value
+    let question = e.questions_json[e.question_number]
+    let answers = e.answers_json.filter(f=>f.fields.question === question.pk).map(f=>f.pk);
+
+    if (document.getElementById("question_form")) {
+        answers = Array.from(document.getElementsByClassName("game_answers")).map(f=>Number(f.value));
+    }
+
+    answerid = answers[objectid];
+    
     effects = []
     i = 0
     for (i in campaignTrail_temp.answer_score_global_json) {
@@ -172,7 +171,6 @@ function benefitCheck(objectid) {
     }
     i = 0
 
-    console.log(effects)
     mods = ""
     for (_ = 0; _ < effects.length; _++) {
         if (effects[_][0] == "global") {
@@ -181,14 +179,14 @@ function benefitCheck(objectid) {
             name = affected[1]
             name2 = affected1[1]
             multiplier = effects[_][1].fields.global_multiplier.toString()
-            mods += "<br><em>Global:</em> Affects " + name2 + " for " + name + " by " + multiplier
+            mods += "<em>Global:</em> Affects " + name2 + " for " + name + " by " + multiplier + "<br>"
         }
         if (effects[_][0] == "issue") {
             affected = findIssue(effects[_][1].fields.issue)
             name = affected[1]
             multiplier = effects[_][1].fields.issue_score.toString()
             multiplier1 = effects[_][1].fields.issue_importance.toString()
-            mods += "<br><em>Issue:</em> Affects " + name + " by " + multiplier + " with a importance of " + multiplier1
+            mods += "<em>Issue:</em> Affects " + name + " by " + multiplier + " with a importance of " + multiplier1 + "<br>"
         }
         if (effects[_][0] == "state") {
             affected = findState(effects[_][1].fields.state)
@@ -198,28 +196,37 @@ function benefitCheck(objectid) {
             test5 = candidatething[1]
             test6 = candidatething2[1]
             multiplier = effects[_][1].fields.state_multiplier.toString()
-            mods += "<br><em>State:</em> Affects " + test5 + " for " + test6 + " in " + name1 + " by " + multiplier
+            mods += "<em>State:</em> Affects " + test5 + " for " + test6 + " in " + name1 + " by " + multiplier + "<br>"
         }
     }
     answerfeedback = "";
     for (let index = 0; index < campaignTrail_temp.answer_feedback_json.length - 1; index++) {
         if (answerid == campaignTrail_temp.answer_feedback_json[index].fields.answer) {
-            answerfeedback = "<b>" + campaignTrail_temp.answer_feedback_json[index].fields.answer_feedback + "</b>"
+            answerfeedback = "<em>" + campaignTrail_temp.answer_feedback_json[index].fields.answer_feedback + "</em>"
             break;
         }
     }
-    return '<font size="2"><b>Answer: </b>' + findAnswer(answerid)[1] + "'<br>" + "Feedback: " + answerfeedback + "'<br>" + mods + "</font><br><br>"
+    return `<h3>Answer</h3>"<em>${findAnswer(answerid)[1]}</em>"<br><h4>Feedback</h4>"${answerfeedback}"<br><h4>Effects</h4>${mods}`
 }
 
 function benefitChecker() {
-    questionlength = document.getElementById("question_form").children[0].children.length / 3
+    let question = e.questions_json[e.question_number]
+    let answers = e.answers_json.filter(f=>f.fields.question === question.pk);
+
+    questionlength = answers.length;
     nnn = ""
     for (v = 0; v < questionlength; v++) {
         n = benefitCheck(v)
         nnn += n
     }
     $("#dialogue")[0].innerHTML = nnn
-    $("#dialogue").dialog();
+    $("#dialogue").dialog(
+        {
+            draggable: false,
+            maxHeight: 600,
+            maxWidth: 500,
+            minWidth: 500
+        }).parent().draggable();
 }
 
 function difficultyChanger() {
@@ -235,7 +242,6 @@ function difficultyChanger() {
 function manuallyAdjustedSlider() {
     var multiplier = parseFloat(document.getElementById("difficulty_mult_bigshot").innerText);
     multiplier = isNaN(multiplier) ? 0.97 : multiplier;
-    console.log(multiplier)
     var sliderValue = Math.sqrt(multiplier) * 1000;
     document.getElementById("difficultySlider").value = sliderValue;
     campaignTrail_temp.difficulty_level_multiplier = multiplier;
