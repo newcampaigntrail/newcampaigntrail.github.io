@@ -206,7 +206,7 @@ function benefitCheck(objectid) {
             break;
         }
     }
-    return `<h3>Answer</h3>"<em>${findAnswer(answerid)[1]}</em>"<br><h4>Feedback</h4>"${answerfeedback}"<br><h4>Effects</h4>${mods}`
+    return `<h2>Answer</h2>"<em>${findAnswer(answerid)[1]}</em>"<br><h4>Feedback</h4>"${answerfeedback}"<br><h4>Effects</h4>${mods}`
 }
 
 function benefitChecker() {
