@@ -308,17 +308,22 @@ function filterEntries() {
         selectedTags.push($(this).val());
     });
 
-    var filteredOptions = originalOptions.filter(function() {
-        var entryTags = $(this).data('tags');
+    var filteredOptions = originalOptions.filter((f) => {
+        var entryTags = $(originalOptions[f]).data('tags');
+
+        const selected = originalOptions[f].innerText.toLowerCase().includes(nct_stuff.name_filter) || originalOptions[f].value.toLowerCase().includes(nct_stuff.name_filter);
 
         if (selectedTags.length === 0) {
             // Show all if no tags are selected
-            return true;
+            return true && selected;
         }
 
         //return mods that are tagged and have all checked tags
-        return entryTags && (containsAllTags(entryTags, selectedTags));
+        let det = entryTags && (containsAllTags(entryTags, selectedTags) && selected);
+        return det;
     });
+
+    let arrFiltVal = Array.from(filteredOptions).map(f=>f.value);
 
     var $modSelect = $('#modSelect');
     $modSelect.empty().append(filteredOptions);
@@ -331,13 +336,12 @@ function filterEntries() {
         let tags = option.getAttribute("data-tags");
 
         tags = tags.split(" ");
-
-        for (var i = 0; i < selectedTags.length; i++) {
-            if (!tags.includes(selectedTags[i])) {
-                f.style.display = "none";
-                return;
-            }
+        
+        if (!arrFiltVal.includes(value)) {
+            f.style.display = "none";
+            return;
         }
+
         f.style.display = "";
     })
 }

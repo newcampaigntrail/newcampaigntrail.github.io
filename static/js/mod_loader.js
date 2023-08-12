@@ -451,3 +451,13 @@ $("#fullscreen_toggle").click((e) => {
     $(".overlay_scr")[0].classList.add("fullscreen");
 
 })
+
+nct_stuff.name_filter = "";
+
+document.getElementById("searchInput").addEventListener("keyup", () => {
+    const searchInput = document.getElementById("searchInput").value.trim().toLowerCase();
+    
+    nct_stuff.name_filter = searchInput;
+
+    filterEntries();
+});
