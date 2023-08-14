@@ -93,6 +93,28 @@ $("#disableRNG").change((a) => {
     }
 })
 
+$("#optimalRNG").change((a) => {
+    a.preventDefault();
+
+    let checkbox = a.target;
+    let checked = checkbox.checked;
+
+    if (checked) {
+        $("#disableRNG")[0].checked = false;
+        $("#disableRNG")[0].disabled = true;
+        $("#disableRNG").trigger('change');
+
+        let myStates = e.candidate_state_multiplier_json.filter(f=>f.fields.candidate===e.candidate_id);
+        myStates.forEach(f=>f.fields.state_multiplier += 0.07);
+
+    } else {
+        $("#disableRNG")[0].disabled = false;
+
+        let myStates = e.candidate_state_multiplier_json.filter(f=>f.fields.candidate===e.candidate_id);
+        myStates.forEach(f=>f.fields.state_multiplier -= 0.07);
+    }
+})
+
 $("#skiptoquestion").keydown((e) => {
     if (e.key === 'Enter') {
         e.preventDefault();
