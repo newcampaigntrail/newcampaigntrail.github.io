@@ -1,3 +1,217 @@
+
+
+function findCandidate(pk) {
+    let n = e.candidate_json.find(f=>f.pk === pk);
+    let i = e.candidate_json.indexOf(n);
+    return [i, `${n.fields.first_name} ${n.fields.last_name}`];
+}
+
+function findAnswer(pk) {
+    let n = e.answers_json.find(f=>f.pk === pk);
+    let i = e.answers_json.indexOf(n);
+    return [i, n.fields.description];
+}
+
+function findIssue(pk) {
+    let n = e.issues_json.find(f=>f.pk === pk);
+    let i = e.issues_json.indexOf(n);
+    return [i, n.fields.name];
+}
+
+function findState(pk) {
+    let n = e.states_json.find(f=>f.pk === pk);
+    let i = e.states_json.indexOf(n);
+    return [i, n.fields.name];
+}
+
+function benefitCheck(objectid) {
+    let question = e.questions_json[e.question_number]
+    let answers = e.answers_json.filter(f=>f.fields.question === question.pk).map(f=>f.pk);
+
+    if (document.getElementById("question_form")) {
+        answers = Array.from(document.getElementsByClassName("game_answers")).map(f=>Number(f.value));
+    }
+
+    answerid = answers[objectid];
+    
+    effects = []
+    i = 0
+    for (i in campaignTrail_temp.answer_score_global_json) {
+        if (campaignTrail_temp.answer_score_global_json[i].fields.answer == answerid) {
+            effects.push(["global", campaignTrail_temp.answer_score_global_json[i]])
+        }
+    }
+    i = 0
+    for (i in campaignTrail_temp.answer_score_state_json) {
+        if (campaignTrail_temp.answer_score_state_json[i].fields.answer == answerid) {
+            effects.push(["state", campaignTrail_temp.answer_score_state_json[i]])
+        }
+    }
+    i = 0
+    for (i in campaignTrail_temp.answer_score_issue_json) {
+        if (campaignTrail_temp.answer_score_issue_json[i].fields.answer == answerid) {
+            effects.push(["issue", campaignTrail_temp.answer_score_issue_json[i]])
+        }
+    }
+    i = 0
+
+    mods = ""
+    for (_ = 0; _ < effects.length; _++) {
+        if (effects[_][0] == "global") {
+            affected = findCandidate(effects[_][1].fields.candidate)
+            affected1 = findCandidate(effects[_][1].fields.affected_candidate)
+            name = affected[1]
+            name2 = affected1[1]
+            multiplier = effects[_][1].fields.global_multiplier.toString()
+            mods += "<em>Global:</em> Affects " + name2 + " for " + name + " by " + multiplier + "<br>"
+        }
+        if (effects[_][0] == "issue") {
+            affected = findIssue(effects[_][1].fields.issue)
+            name = affected[1]
+            multiplier = effects[_][1].fields.issue_score.toString()
+            multiplier1 = effects[_][1].fields.issue_importance.toString()
+            mods += "<em>Issue:</em> Affects " + name + " by " + multiplier + " with a importance of " + multiplier1 + "<br>"
+        }
+        if (effects[_][0] == "state") {
+            affected = findState(effects[_][1].fields.state)
+            candidatething = findCandidate(effects[_][1].fields.affected_candidate)
+            candidatething2 = findCandidate(effects[_][1].fields.candidate)
+            name1 = affected[1]
+            test5 = candidatething[1]
+            test6 = candidatething2[1]
+            multiplier = effects[_][1].fields.state_multiplier.toString()
+            mods += "<em>State:</em> Affects " + test5 + " for " + test6 + " in " + name1 + " by " + multiplier + "<br>"
+        }
+    }
+    answerfeedback = "";
+    for (let index = 0; index < campaignTrail_temp.answer_feedback_json.length - 1; index++) {
+        if (answerid == campaignTrail_temp.answer_feedback_json[index].fields.answer) {
+            answerfeedback = "<em>" + campaignTrail_temp.answer_feedback_json[index].fields.answer_feedback + "</em>"
+            break;
+        }
+    }
+    return `<h2>Answer</h2>"<em>${findAnswer(answerid)[1]}</em>"<br><h4>Feedback</h4>"${answerfeedback}"<br><h4>Effects</h4>${mods}`
+}
+
+function difficultyChanger() {
+    var sliderValue = parseFloat(document.getElementById("difficultySlider").value);
+    sliderValue = isNaN(sliderValue) == NaN ? 0.97 : sliderValue;
+    var newVal = Math.pow(sliderValue / 1000, 2);
+    campaignTrail_temp.difficulty_level_multiplier = newVal;
+    document.getElementById("difficultyMod").innerHTML = `Multiplier: <span contenteditable="true" id='difficulty_mult_bigshot'>${newVal.toFixed(2)}</span>`;
+    updateSliderValue(newVal);
+    document.getElementById('difficulty_mult_bigshot').addEventListener('input', manuallyAdjustedSlider);
+}
+
+function manuallyAdjustedSlider() {
+    var multiplier = parseFloat(document.getElementById("difficulty_mult_bigshot").innerText);
+    multiplier = isNaN(multiplier) ? 0.97 : multiplier;
+    var sliderValue = Math.sqrt(multiplier) * 1000;
+    document.getElementById("difficultySlider").value = sliderValue;
+    campaignTrail_temp.difficulty_level_multiplier = multiplier;
+}
+
+function updateSliderValue(newVal) {
+    var sliderValue = Math.sqrt(newVal) * 1000;
+    document.getElementById("difficultySlider").value = sliderValue;
+}
+
+function benefitChecker() {
+    let question = e.questions_json[e.question_number];
+    let answers = e.answers_json.filter(f => f.fields.question === question.pk);
+
+    questionlength = answers.length;
+
+    let nnn = ""
+    for (v = 0; v < questionlength; v++) {
+        const n = benefitCheck(v)
+        nnn += n
+    }
+
+    $("#dialogue")[0].innerHTML = nnn
+    $("#dialogue").dialog({
+        draggable: false,
+        maxHeight: 600,
+        maxWidth: 500,
+        minWidth: 500,
+    }).parent().draggable();
+}
+
+function getTooltipContent(objectid) {
+    let answers = Array.from(document.getElementsByClassName("game_answers")).map(f=>Number(f.value));
+
+    answerid = answers[objectid];
+    
+    effects = []
+    for (let i in campaignTrail_temp.answer_score_global_json) {
+        if (campaignTrail_temp.answer_score_global_json[i].fields.answer == answerid) {
+            effects.push(["global", campaignTrail_temp.answer_score_global_json[i]])
+        }
+    }
+    for (let i in campaignTrail_temp.answer_score_state_json) {
+        if (campaignTrail_temp.answer_score_state_json[i].fields.answer == answerid) {
+            effects.push(["state", campaignTrail_temp.answer_score_state_json[i]])
+        }
+    }
+    for (let i in campaignTrail_temp.answer_score_issue_json) {
+        if (campaignTrail_temp.answer_score_issue_json[i].fields.answer == answerid) {
+            effects.push(["issue", campaignTrail_temp.answer_score_issue_json[i]])
+        }
+    }
+
+    mods = ""
+    for (_ = 0; _ < effects.length; _++) {
+        if (effects[_][0] == "global") {
+            affected = findCandidate(effects[_][1].fields.candidate)
+            affected1 = findCandidate(effects[_][1].fields.affected_candidate)
+            name = affected[1]
+            name2 = affected1[1]
+            multiplier = effects[_][1].fields.global_multiplier.toString()
+            mods += "<em>Global:</em> Affects " + name2 + " for " + name + " by " + multiplier + "<br>"
+        }
+        if (effects[_][0] == "issue") {
+            affected = findIssue(effects[_][1].fields.issue)
+            name = affected[1]
+            multiplier = effects[_][1].fields.issue_score.toString()
+            multiplier1 = effects[_][1].fields.issue_importance.toString()
+            mods += "<em>Issue:</em> Affects " + name + " by " + multiplier + " with a importance of " + multiplier1 + "<br>"
+        }
+        if (effects[_][0] == "state") {
+            affected = findState(effects[_][1].fields.state)
+            candidatething = findCandidate(effects[_][1].fields.affected_candidate)
+            candidatething2 = findCandidate(effects[_][1].fields.candidate)
+            name1 = affected[1]
+            test5 = candidatething[1]
+            test6 = candidatething2[1]
+            multiplier = effects[_][1].fields.state_multiplier.toString()
+            mods += "<em>State:</em> Affects " + test5 + " for " + test6 + " in " + name1 + " by " + multiplier + "<br>"
+        }
+    }
+
+    return `Effects:<br><br>${mods}`
+}
+
+// tooltip adder
+
+const tooltip_add = () => {
+    if ($("#question_form").val() != "set") {
+        $("#question_form").val("set")
+        let answers = Array.from(document.getElementsByClassName("game_answers"));
+        for (let i in answers) {
+            const newHTM = `   <div class="tooltip"><b>[?]</b><span class="tooltiptext">${getTooltipContent(i)}</span></div> `;
+            $("#question_form input")[i].outerHTML = newHTM + $("#question_form input")[i].outerHTML;
+        }
+    }
+}
+
+const tooltip_obs = new MutationObserver((mutationsList, observer) => {
+    if (document.querySelector("#question_form") && nct_stuff.tooltips && e.bigshot_mode) {
+        tooltip_add();
+    }
+});
+
+tooltip_obs.observe(document.body, { childList: true, subtree: true });
+
 // BIGSHOT MENU
 
 const cheatMenu = document.querySelector('.cheat_menu');
@@ -167,6 +381,20 @@ $("#optimalRNG").change((a) => {
             } while (i >= 1 || 0 == i);
             return e * Math.sqrt(-2 * Math.log(i) / i);
         };
+    }
+});
+
+$("#effectTooltips").change((a) => {
+    a.preventDefault();
+
+    let checkbox = a.target;
+    let checked = checkbox.checked;
+
+    if (checked) {
+        nct_stuff.tooltips = true;
+        tooltip_add();
+    } else {
+        nct_stuff.tooltips = false;
     }
 });
 

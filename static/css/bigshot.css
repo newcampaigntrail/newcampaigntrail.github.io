@@ -198,3 +198,40 @@
 #dialogue {
    font-size: 110%;
 }
+
+/* Tooltip container */
+.tooltip {
+   position: relative;
+   left: 5px;
+   padding: 2px;
+   background-color: white;
+   border: solid 2px;
+   color: #333;
+   display: inline-block;
+   cursor: pointer;
+   transition: opacity 0.2s;
+   font-size: 1em !important;
+}
+
+.tooltip .tooltiptext {
+   visibility: hidden;
+   width: 300px;
+   max-height: 400px;
+   overflow-y: auto;
+   background-color: #333333e0;
+   color: #fff;
+   text-align: left;
+   padding: 10px;
+   border-radius: 4px;
+   position: absolute;
+   z-index: 1;
+   top: 100%;
+   left: 50%;
+   transform: translateX(-50%);
+   opacity: 0;
+}
+
+.tooltip:hover .tooltiptext {
+   visibility: visible;
+   opacity: 1;
+}

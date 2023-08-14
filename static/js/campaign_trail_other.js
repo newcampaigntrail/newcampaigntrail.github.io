@@ -5,9 +5,21 @@ var hotkey_handler = (event) => {
     }
     
     // opening menu selection
-    if (document.querySelector("#game_start")) {
+    if (document.querySelector("#game_start") && $("#modloaddiv")[0].style.display == "none") {
         if (event.key == "Enter" || event.key == "ArrowRight") {
             $("#game_start").click();
+            return;
+        }
+        if (event.key == "m") {
+            $("#modLoadReveal").click();
+            return;
+        }
+    }
+
+    // mod loader
+    if ($("#modloaddiv")[0].style.display != "none") {
+        if (event.key == "Escape" || event.key == "m") {
+            $("#mod_loader_overlay_block").click();
             return;
         }
     }
