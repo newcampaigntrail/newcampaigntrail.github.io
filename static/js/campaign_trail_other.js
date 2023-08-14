@@ -18,7 +18,7 @@ var hotkey_handler = (event) => {
 
     // mod loader
     if ($("#modloaddiv")[0].style.display != "none") {
-        if (event.key == "Escape" || event.key == "m") {
+        if (event.key == "Escape") {
             $("#mod_loader_overlay_block").click();
             return;
         }
