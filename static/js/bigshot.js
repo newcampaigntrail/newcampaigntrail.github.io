@@ -384,6 +384,7 @@ $("#optimalRNG").change((a) => {
     }
 });
 
+nct_stuff.tooltips = true;
 $("#effectTooltips").change((a) => {
     a.preventDefault();
 
