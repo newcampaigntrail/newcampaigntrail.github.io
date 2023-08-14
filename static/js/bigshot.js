@@ -75,7 +75,7 @@ $("#bigshot_ender").click((e) => {
     }
 })
 
-duplicate_globals = JSON.parse(JSON.stringify(campaignTrail_temp.global_parameter_json[0]));
+duplicate_globals = {};
 
 $("#disableRNG").change((a) => {
     a.preventDefault();
@@ -138,6 +138,9 @@ $("#optimalRNG").change((a) => {
     let checked = checkbox.checked;
 
     if (checked) {
+        if ($("#disableRNG")[0].checked) {
+            duplicate_globals = JSON.parse(JSON.stringify(campaignTrail_temp.global_parameter_json[0]));
+        }
         $("#disableRNG")[0].checked = true;
         $("#disableRNG")[0].disabled = true;
         $("#disableRNG").trigger('change');
