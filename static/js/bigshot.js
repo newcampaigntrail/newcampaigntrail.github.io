@@ -188,7 +188,7 @@ function getTooltipContent(objectid) {
         }
     }
 
-    return `Effects:<br><br>${mods}`
+    return `<h4>Effects</h4>${mods}`
 }
 
 // tooltip adder
