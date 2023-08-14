@@ -150,12 +150,10 @@ $("#optimalRNG").change((a) => {
             if (cand === campaignTrail_temp.candidate_id) { 
                 let mult = NormSInv(Number($("#percentileValue").text())/100);
                 return mult;
+            } else {
+                let mult = NormSInv(Number($("#percentileValue").text())/100) * -1;
+                return mult;
             }
-            var e, t, i;
-            do {
-                i = (e = 2 * Math.random() - 1) * e + (t = 2 * Math.random() - 1) * t;
-            } while (i >= 1 || 0 == i);
-            return e * Math.sqrt(-2 * Math.log(i) / i);
         } // return the specified percentile of results.
 
     } else {
