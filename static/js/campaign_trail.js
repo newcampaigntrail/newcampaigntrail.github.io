@@ -2829,8 +2829,8 @@ _ = '   <div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="ma
               : 1 + l;
           const c =
             candidate === e.candidate_id
-              ? o * (1 + F() * e.global_parameter_json[0].fields.global_variance) * e.difficulty_level_multiplier
-              : o * (1 + F() * e.global_parameter_json[0].fields.global_variance);
+              ? o * (1 + F(candidate) * e.global_parameter_json[0].fields.global_variance) * e.difficulty_level_multiplier
+              : o * (1 + F(candidate) * e.global_parameter_json[0].fields.global_variance);
           const _ = isNaN(c) ? 1 : c;
 
           return {
@@ -2859,7 +2859,7 @@ _ = '   <div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="ma
             var m = [];
             for (r = 0; r < e.candidate_state_multiplier_json.length; r++)
                 if (e.candidate_state_multiplier_json[r].fields.candidate == i[a]) {
-                    var p = e.candidate_state_multiplier_json[r].fields.state_multiplier * s[a].global_multiplier * (1 + F() * e.global_parameter_json[0].fields.global_variance);
+                    var p = e.candidate_state_multiplier_json[r].fields.state_multiplier * s[a].global_multiplier * (1 + F(e.candidate_state_multiplier_json[r].fields.candidate) * e.global_parameter_json[0].fields.global_variance);
                     if (m.push({
                             state: e.candidate_state_multiplier_json[r].fields.state,
                             state_multiplier: p
@@ -2986,7 +2986,7 @@ _ = '   <div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="ma
         if (2 == t) {
             for (a = 0; a < y.length; a++) {
                 for (r = 0; r < y[a].result.length; r++) {
-                    var G = 1 + F() * e.global_parameter_json[0].fields.global_variance;
+                    var G = 1 + F(y[a].result[r].candidate) * e.global_parameter_json[0].fields.global_variance;
                     y[a].result[r].result *= G
                 }
                 for (M = 0, r = 0; r < e.states_json.length; r++)

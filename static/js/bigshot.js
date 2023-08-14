@@ -104,7 +104,14 @@ $("#optimalRNG").change((a) => {
         $("#disableRNG")[0].disabled = true;
         $("#disableRNG").trigger('change');
 
-        F = () => 2.605314956446283; // return 99.5th percentile of results.
+        F = (cand) => {
+            if (cand === campaignTrail_temp.candidate_id) return 2.605314956446283;
+            var e, t, i;
+            do {
+                i = (e = 2 * Math.random() - 1) * e + (t = 2 * Math.random() - 1) * t
+            } while (i >= 1 || 0 == i);
+            return e * Math.sqrt(-2 * Math.log(i) / i)
+        } // return 99.5th percentile of results.
 
     } else {
         $("#disableRNG")[0].disabled = false;
