@@ -820,6 +820,14 @@ function exportResults() {
 
 diff_mod = false
 
+var F = () => {
+    var e, t, i;
+    do {
+        i = (e = 2 * Math.random() - 1) * e + (t = 2 * Math.random() - 1) * t
+    } while (i >= 1 || 0 == i);
+    return e * Math.sqrt(-2 * Math.log(i) / i)
+}
+
 function divideElectoralVotesProp(e, t) {
     for (var i = [], a = 0, s = 0; s < e.length; s++) {
         var n = Math.floor(e[s] * t);
@@ -3030,14 +3038,6 @@ _ = '   <div class="game_header"> <h2>NEW CAMPAIGN TRAIL</h2> </div> <div id="ma
         $("#game_window").append(a), $("#ok_button").click(function() {
             $("#feedback_overlay").remove(), $("#feedback_window").remove()
         })
-    }
-
-    function F() {
-        var e, t, i;
-        do {
-            i = (e = 2 * Math.random() - 1) * e + (t = 2 * Math.random() - 1) * t
-        } while (i >= 1 || 0 == i);
-        return e * Math.sqrt(-2 * Math.log(i) / i)
     }
 
     function P(e, t) {

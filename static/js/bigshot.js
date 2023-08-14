@@ -75,7 +75,7 @@ $("#bigshot_ender").click((e) => {
     }
 })
 
-duplicate_globals = {}
+duplicate_globals = JSON.parse(JSON.stringify(campaignTrail_temp.global_parameter_json[0]));
 
 $("#disableRNG").change((a) => {
     a.preventDefault();
@@ -100,18 +100,21 @@ $("#optimalRNG").change((a) => {
     let checked = checkbox.checked;
 
     if (checked) {
-        $("#disableRNG")[0].checked = false;
+        $("#disableRNG")[0].checked = true;
         $("#disableRNG")[0].disabled = true;
         $("#disableRNG").trigger('change');
 
-        let myStates = e.candidate_state_multiplier_json.filter(f=>f.fields.candidate===e.candidate_id);
-        myStates.forEach(f=>f.fields.state_multiplier += 0.07);
+        F = () => 2.605314956446283; // return 99.5th percentile of results.
 
     } else {
         $("#disableRNG")[0].disabled = false;
-
-        let myStates = e.candidate_state_multiplier_json.filter(f=>f.fields.candidate===e.candidate_id);
-        myStates.forEach(f=>f.fields.state_multiplier -= 0.07);
+        F = () => {
+            var e, t, i;
+            do {
+                i = (e = 2 * Math.random() - 1) * e + (t = 2 * Math.random() - 1) * t
+            } while (i >= 1 || 0 == i);
+            return e * Math.sqrt(-2 * Math.log(i) / i)
+        }
     }
 })
 
