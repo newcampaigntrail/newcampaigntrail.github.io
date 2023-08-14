@@ -1581,9 +1581,6 @@ function divideElectoralVotesProp(e, t) {
         $("#answer_select_button").click(function() {
             var nullN = $("input:radio[name=game_answers]:checked").val();
             null == nullN ? C(e.election_id) : n(nullN)
-
-
-
         })
     }
 
