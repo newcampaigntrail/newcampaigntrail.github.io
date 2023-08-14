@@ -461,3 +461,8 @@ document.getElementById("searchInput").addEventListener("keyup", () => {
 
     filterEntries();
 });
+
+$("#game_start").click(() => {
+    // hide mod loader after game opens
+    $("#modLoadReveal")[0].style.display = "none";
+});
