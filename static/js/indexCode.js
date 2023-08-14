@@ -57,8 +57,11 @@ let alt_counter = 0;
 let neo_counter = 0;
 let initial = false;
 
-document.addEventListener('keydown', function(event) {
+var bigshot_key_handler = function(event) {
+    nct_stuff.bigshot_activation = false;
+    
     if (event.keyCode === neoCodes[neo_counter]) {
+        nct_stuff.bigshot_activation = true;
         neo_counter += 1;
 
         if (neo_counter === neoCodes.length) {
@@ -71,6 +74,7 @@ document.addEventListener('keydown', function(event) {
                 campaignTrail_temp.bigshot_mode = true;
                 localStorage.setItem("bigshot_NEO", true);
                 neo = true;
+                document.removeEventListener("keydown", bigshot_key_handler);
             }
         }
     } else {
@@ -82,6 +86,7 @@ document.addEventListener('keydown', function(event) {
     }
 
     if (event.keyCode === keyCodes[counter]) {
+        nct_stuff.bigshot_activation = true;
         counter += 1;
 
         if (counter === keyCodes.length) {
@@ -95,6 +100,7 @@ document.addEventListener('keydown', function(event) {
             } else {
                 a = initial ? `DON'T WORRY! FOR OUR [No Time Back Guaranttee]\nTHIS IS [One Cheat Code] YOU WILL [Regret] FOR THE REST OF YOUR REDDIT POST!` : `[Heaven], are you WATCHING?`;
                 campaignTrail_temp.bigshot_mode = true;
+                document.removeEventListener("keydown", bigshot_key_handler);
                 alert(a);
                 return;
             }
@@ -103,17 +109,21 @@ document.addEventListener('keydown', function(event) {
         counter = 0;
     }
     if (event.keyCode == altCodes[alt_counter] && localStorage.getItem("cheated") == "true") {
+        nct_stuff.bigshot_activation = true;
         alt_counter += 1;
         if (alt_counter === altCodes.length) {
             a = `ARE YOU GETTING ALL THIS [Mike]!? I'M FINALLY\nI'M FINALLY GONNA BE A BIG SHOT!!!`;
             campaignTrail_temp.bigshot_mode = true;
             alert(a);
+            document.removeEventListener("keydown", bigshot_key_handler);
         }
         return;
     } else {
         alt_counter = 0;
     }
-});
+}
+
+document.addEventListener('keydown', bigshot_key_handler);
 
 
 function findCandidate(pk) {

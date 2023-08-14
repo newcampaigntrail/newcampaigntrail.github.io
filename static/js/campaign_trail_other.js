@@ -1,7 +1,12 @@
-document.body.addEventListener("keydown", (event) => {
+var hotkey_handler = (event) => {
+    if (nct_stuff.bigshot_activation) {
+        nct_stuff.bigshot_activation = false;
+        return;
+    }
+    
     // opening menu selection
     if (document.querySelector("#game_start")) {
-        if (event.key == "Enter") {
+        if (event.key == "Enter" || event.key == "ArrowRight") {
             $("#game_start").click();
             return;
         }
@@ -146,20 +151,106 @@ document.body.addEventListener("keydown", (event) => {
     
     // question events    
     if (document.querySelector("#question_form")) {
-        if (event.key == "Enter") {
+        let answers = Array.from($(".game_answers"));
+
+        if (event.key == "Enter" || event.key == "ArrowRight") {
             if ($("#ok_button")[0]) {
                 $("#ok_button").click();
                 return;
             }
+            let anySelected = false;
+            answers.forEach(f=>{if (f.checked) anySelected = true});
+
+            if (!anySelected) {
+                answers[Math.floor(Math.random() * answers.length)].click();
+                return;
+            }
+
             $("#answer_select_button").click();
             return;
         }
+        if ($("#ok_button")[0]) {
+            return;
+        }
+
+        if (event.key == "ArrowLeft") {
+            $("#view_electoral_map").click();
+            return;
+        }
     
-        let answers = Array.from($(".game_answers"));
-        let selection = Number(event.key) - 1;
+        let selection = answers.findIndex(f=>f.checked);
+
+        if (event.key === "ArrowDown") {
+            event.preventDefault();
+            selection = selection + 1 > answers.length - 1 ? 0 : selection + 1;
+        } else if (event.key === "ArrowUp") {
+            event.preventDefault();
+            selection = selection - 1 < 0 ? answers.length - 1 : selection - 1;
+        } else {
+            selection = Number(event.key) - 1
+        }
+
         if (!answers[selection]) {
             return;
         }
         answers[selection].click();
+        return;
     }
-})
+
+    // poll view
+    if (document.querySelector("#AdvisorButton")) {
+        if (event.key == "Enter" || event.key == "ArrowRight") {
+            $("#resume_questions_button").click();
+        }
+        return;
+    }
+
+    // visit map
+    if (document.querySelector(".visit_text")) {
+        if (event.key == "Enter" || event.key == "ArrowRight") {
+            if ($("#confirm_visit_button")[0]) {
+                $("#confirm_visit_button").click();
+                return;
+            }
+            let stateElems = Array.from($("#map_container").children(0).children(0)).filter(f=>f.tagName == "path").filter((f, i, e)=>i > e.length/2);
+            $(stateElems[Math.floor(Math.random()*stateElems.length)]).click();
+            return;
+        }
+        if (event.key === "Backspace" || event.key == "ArrowLeft") {
+            if ($("#no_visit_button")[0]) {
+                $("#confirm_visit_button").click();
+                return;
+            }
+        }
+        return;
+    }
+
+    // election night
+    if (document.querySelector("#final_result_button")) {
+        if (event.key == "Enter" || event.key == "ArrowRight") {
+            if ($("#election_night_buttons")[0]) {
+                $("#ok_button").click();
+                return;
+            }
+            if ($("#winner_buttons")[0]) {
+                $("#ok_button").click();
+                return;
+            }
+            $("#final_result_button").click();
+        }
+        return;
+    }
+}
+
+document.body.addEventListener("keydown", hotkey_handler);
+
+// kromer killer :pensive:
+
+const observer = new MutationObserver((mutationsList, observer) => {
+    if (document.querySelector("#question_form")) {
+        document.removeEventListener("keydown", bigshot_key_handler);
+        observer.disconnect();
+    }
+});
+
+observer.observe(document.body, { childList: true, subtree: true });
