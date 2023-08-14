@@ -240,6 +240,29 @@ var hotkey_handler = (event) => {
         }
         return;
     }
+
+    // ending screen
+    if ($(".final_menu_button").length > 0) {
+        const arrowKey = event.key === "ArrowLeft" || event.key === "ArrowRight";
+        if (!arrowKey) {
+            return;
+        }
+
+        let buttons = Array.from($(".final_menu_button"));
+        buttons = buttons.slice(0, buttons.length - 1); // we don't want the play again button included
+        const currentSelection = buttons.findIndex(f=>f.disabled);
+        let newIndex;
+        
+        if (event.key === "ArrowRight") {
+            newIndex = currentSelection + 1 > buttons.length - 1 ? 0 : currentSelection + 1;
+        } else if (event.key === "ArrowLeft") {
+            newIndex = currentSelection - 1 < 0 ? buttons.length - 1 : currentSelection - 1;
+        }
+        
+        buttons[newIndex].click();
+        return;
+
+    }
 }
 
 document.body.addEventListener("keydown", hotkey_handler);
