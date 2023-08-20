@@ -408,14 +408,19 @@ generateTime = () => {
     }
 
     // Update the position display and slider every second
-    setInterval(updatePositionDisplay, 1000);
+    setInterval(()=>{
+        updatePositionDisplay();
+        if (document.querySelectorAll("#trackSelParent").length === 2) {
+            $("#music_player").remove()
+        }
+    }, 1000);
 
     // Listen for changes to the time slider and change the time of the audio
     timeSlider.addEventListener("input", changeTime);
     volumeSlider.addEventListener("input", updateVolume)
 }
 
-function newMusicPlayer() {
+function addNewMusicPlayer() {
     if ($("#trackSel").length != 0) {
         document.getElementById("trackSelParent").remove()
     }
@@ -456,7 +461,7 @@ function newMusicPlayer() {
             }
         }
         document.getElementById("trackSelParent").remove()
-        newMusicPlayer()
+        addNewMusicPlayer()
     }
 
     var matches = document.querySelectorAll('.trackSelector');
@@ -587,5 +592,6 @@ if (nct_stuff.selectedTheme == "shining") {
             ]
         }
     ]
-    newMusicPlayer();
+    addNewMusicPlayer();
 }
+
