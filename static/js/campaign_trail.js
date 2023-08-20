@@ -1322,8 +1322,9 @@ function divideElectoralVotesProp(e, t) {
         e.shining_data.ad_spending.forEach(f=>{
             const target = e.candidate_state_multiplier_json.find(_f=>f.state===_f.fields.state&&_f.fields.candidate===e.candidate_id);
             let currMult = target.fields.state_multiplier;
-            let boost = currMult * f.amount / 750000000;
+            let boost = currMult * f.amount / 10000000000;
             target.fields.state_multiplier += boost * (our_info ? our_info.ad_effect : 1);
+            console.log(boost)
 
             e.shining_data.balance -= f.amount;
         });
