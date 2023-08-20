@@ -1337,7 +1337,6 @@ function divideElectoralVotesProp(e, t) {
     }
 
     const o = (t, e = campaignTrail_temp) => {
-
         for (var i = [], a = 0; a < e.answers_json.length && (e.answers_json[a].fields.question != e.questions_json[e.question_number].pk || (i.push({
                 key: a,
                 order: Math.random()
@@ -1387,13 +1386,13 @@ function divideElectoralVotesProp(e, t) {
             _(t)
         })
 
-        $("#answer_select_button").click(function() {
-            var nullN = $("input:radio[name=game_answers]:checked").val();
-            null == nullN ? C(e.election_id) : n(nullN)
-        })
-
         $("#shining_menu_button").click(() => {
             shining_menu(t);
+        })
+
+        $("#answer_select_button")[0].addEventListener("click", function() {
+            var nullN = $("input:radio[name=game_answers]:checked").val();
+            null == nullN ? C(e.election_id) : n(nullN)
         })
     }
 
@@ -1970,7 +1969,9 @@ function divideElectoralVotesProp(e, t) {
                 }
             if (1 == i) {
                 var n = '                    <div class="overlay" id="visit_overlay"></div>                    <div class="overlay_window" id="visit_window">                        <div class="overlay_window_content" id="visit_content">                        <h3>Advisor Feedback</h3>                        <img src="' + e.election_json[a].fields.advisor_url + '" width="208" height="128"/>                        <p>' + e.answer_feedback_json[s].fields.answer_feedback + '</p>                        </div>                        <div class="overlay_buttons" id="visit_buttons">                        <button id="ok_button">OK</button><br><button id="no_feedback_button">Don\'t give me advice</button>                                                </div>                    </div>';
-                $("#game_window").append(n), $("#ok_button").click(function() {
+                if ($("#visit_overlay")[0]) return;
+                $("#game_window").append(n);
+                $("#ok_button").click(function() {
                     nextQuestion()
                 }), $("#no_feedback_button").click(function() {
                     e.answer_feedback_flg = 0, nextQuestion()
