@@ -3110,7 +3110,7 @@ function divideElectoralVotesProp(e, t) {
         }
 
         function isLegitRun() {
-            return campaignTrail_temp.bigshot_mode != true && dirtyhacker3 == null //&& campaignTrail_temp.difficulty_level_multiplier  <= 0.97
+            return campaignTrail_temp.bigshot_mode != true && dirtyhacker3 == null && e.game_type_id !== "3" //&& campaignTrail_temp.difficulty_level_multiplier  <= 0.97
         }
 
         let diff_mult_string = 0;
