@@ -1061,6 +1061,7 @@ function divideElectoralVotesProp(e, t) {
             currval = Math.abs(Number(currval))
             currval = isNaN(currval) ? 0 : Math.floor(currval);
             currval = Math.min(e.shining_data.balance / inflation_factor, currval);
+            currval = Math.max(0, currval);
 
             const selectedStatePk = Number($("#shining_ad_state_sel").val());
             const adSpendingAmount = currval;
@@ -1191,6 +1192,7 @@ function divideElectoralVotesProp(e, t) {
             currval = Math.abs(Number(currval))
             currval = isNaN(currval) ? 0 : Math.floor(currval);
             currval = Math.min(e.shining_data.balance / inflation_factor, currval);
+            currval = Math.max(0, currval);
 
             $("#ad_spending_amount").val(currval.toLocaleString());
             $("#ad_spending_slider").val(currval);
