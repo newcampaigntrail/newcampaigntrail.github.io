@@ -130,7 +130,7 @@ e.shining_info = [
             {
                 pk: 7000,
                 name: "Our Revolution",
-                image: "/static/sea_to_sea/2020/biden/_our_revolution.png",
+                image: "/static/sea_to_sea/2020/biden/lobbies/our_revolution.png",
                 description: "A group created by allies of Bernie Sanders' 2016 primary campaign that seeks to promote progressive candidates and policies.",
                 issue_tie: 110,
                 issue_link: score => score,
@@ -150,7 +150,7 @@ e.shining_info = [
             {
                 pk: 7002,
                 name: "Emily's List",
-                image: "/static/sea_to_sea/2020/biden/_emily.png",
+                image: "/static/sea_to_sea/2020/biden/lobbies/emily.png",
                 description: "Bolstered by Democratic fundraiser and philanthropist Karla M. Jurveston, Emily's List seeks to promote women's reproductive healthcare in the United States.",
                 issue_tie: 112,
                 issue_link: score => score,
@@ -160,7 +160,7 @@ e.shining_info = [
             {
                 pk: 7003,
                 name: "American-Arab Anti-Discrimination League",
-                image: "/static/sea_to_sea/2020/biden/_adc.png",
+                image: "/static/sea_to_sea/2020/biden/lobbies/adc.png",
                 description: "An advocacy group for Arab-American interests, the ADC has recently taken an interest in opposing support for the state of Israel.",
                 issue_tie: 113,
                 issue_link: score => score,
@@ -170,7 +170,7 @@ e.shining_info = [
             {
                 pk: 7004,
                 name: "Black Lives Matter",
-                image: "/static/sea_to_sea/2020/biden/_blm.png",
+                image: "/static/sea_to_sea/2020/biden/lobbies/blm.png",
                 description: "Since its formation in 2013, Black Lives Matter has made its lot in Washington supporting social justice for African-Americans.",
                 issue_tie: 114,
                 issue_link: score => score,
@@ -296,7 +296,7 @@ e.shining_info = [
             {
                 pk: 7000,
                 name: "AIPAC",
-                image: "/static/sea_to_sea/2020/trump/_aipac.png",
+                image: "/static/sea_to_sea/2020/trump/lobbies/aipac.png",
                 description: "The most prominent organization for promoting the US-Israel alliance, AIPAC seeks to further the close relationship, and is the most important and well-funded group in doing so.",
                 issue_tie: 113,
                 issue_link: score => score * -1,
@@ -306,7 +306,7 @@ e.shining_info = [
             {
                 pk: 7001,
                 name: "PhRMA",
-                image: "/static/sea_to_sea/2020/trump/_phrma.png",
+                image: "/static/sea_to_sea/2020/trump/lobbies/phrma.png",
                 description: "One of the most influential lobbies, 'big pharma' as it is derisevely known has been the most signficant roadblock against liberal attempts at reforming US healthcare policy.",
                 issue_tie: 112,
                 issue_link: score => score * -1,
@@ -316,7 +316,7 @@ e.shining_info = [
             {
                 pk: 7002,
                 name: "National Rifle Association",
-                image: "/static/sea_to_sea/2020/trump/_nra.png",
+                image: "/static/sea_to_sea/2020/trump/lobbies/nra.png",
                 description: `Touting itself as the "oldest civil rights advocacy group still in operation,' the NRA is the fearsome overlord of the mighty gun lobby, fiercely opposing any and all new regulations on US gun ownership.`,
                 issue_tie: 110,
                 issue_link: score => score * -1,
@@ -326,7 +326,7 @@ e.shining_info = [
             {
                 pk: 7003,
                 name: "Chamber of Commerce",
-                image: "/static/sea_to_sea/2020/trump/_commerce.png",
+                image: "/static/sea_to_sea/2020/trump/lobbies/commerce.png",
                 description: `Representing a bevy of industry leaders across the United States, the Chamber of Commerce is the most influential defender of free market economics, and keen to support candidates who adhere to those values.`,
                 issue_tie: 111,
                 issue_link: score => score * -1,
@@ -336,7 +336,7 @@ e.shining_info = [
             {
                 pk: 7004,
                 name: "SBA List",
-                image: "/static/sea_to_sea/2020/trump/_sba.png",
+                image: "/static/sea_to_sea/2020/trump/lobbies/sba.png",
                 description: `A group of pro-life women who seek to restrict abortion acces in the United States.`,
                 issue_tie: 114,
                 issue_link: score => score * -1,
