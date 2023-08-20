@@ -880,12 +880,7 @@ function divideElectoralVotesProp(e, t) {
                 projected_change += y;
             });
 
-            e.shining_data.ad_spending.forEach(f=>{
-                const target = e.candidate_state_multiplier_json.find(_f=>f.state===_f.fields.state&&_f.fields.candidate===e.candidate_id);
-                let currMult = target.fields.state_multiplier;
-                let boost = currMult * f.amount / 750000000;
-                target.fields.state_multiplier += boost * (our_info ? our_info.ad_effect : 1);
-    
+            e.shining_data.ad_spending.forEach(f=>{    
                 projected_change -= f.amount;
             });
 
@@ -1323,8 +1318,9 @@ function divideElectoralVotesProp(e, t) {
             const target = e.candidate_state_multiplier_json.find(_f=>f.state===_f.fields.state&&_f.fields.candidate===e.candidate_id);
             let currMult = target.fields.state_multiplier;
             let boost = currMult * f.amount / 10000000000;
+            console.log(target.fields.state_multiplier)
             target.fields.state_multiplier += boost * (our_info ? our_info.ad_effect : 1);
-            console.log(boost)
+            console.log(target.fields.state_multiplier)
 
             e.shining_data.balance -= f.amount;
         });
