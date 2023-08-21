@@ -1956,6 +1956,7 @@ function divideElectoralVotesProp(e, t) {
     }
 
     function n(t) {
+        if ($("#visit_overlay")[0]) return;
         e.player_answers.push(Number(t));
         var i = 0,
             a = S(e.election_id);
@@ -1967,7 +1968,6 @@ function divideElectoralVotesProp(e, t) {
                 }
             if (1 == i) {
                 var n = '                    <div class="overlay" id="visit_overlay"></div>                    <div class="overlay_window" id="visit_window">                        <div class="overlay_window_content" id="visit_content">                        <h3>Advisor Feedback</h3>                        <img src="' + e.election_json[a].fields.advisor_url + '" width="208" height="128"/>                        <p>' + e.answer_feedback_json[s].fields.answer_feedback + '</p>                        </div>                        <div class="overlay_buttons" id="visit_buttons">                        <button id="ok_button">OK</button><br><button id="no_feedback_button">Don\'t give me advice</button>                                                </div>                    </div>';
-                if ($("#visit_overlay")[0]) return;
                 $("#game_window").append(n);
                 $("#ok_button").click(function() {
                     nextQuestion()
