@@ -705,7 +705,7 @@ e.shining_info = [
                 opinion: 45
             },
             {
-                pk: 7003,
+                pk: 7004,
                 name: "Democratic National Committee",
                 image: "/static/sea_to_sea/2016/clinton/lobbies/dnc.png",
                 description: `The DNC is what got you this far, and now it wants you to finish the job against who no doubt will be an easy opponent.  It's willing to bankroll your campaign, too, just make sure not to screw it up.`,
