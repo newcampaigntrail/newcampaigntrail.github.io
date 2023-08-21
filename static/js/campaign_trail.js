@@ -2982,12 +2982,12 @@ function divideElectoralVotesProp(e, t) {
 
                 // ### 2016DNC ###
                 // I Will Survive - As Clinton, achieve the 'I Will Survive' ending.
-                 if (!run.achievements["IWillSurvive"] && ([200965, 200975, 200969].includes(campaignTrail_temp.player_answers[36])) && (["Clinton", "Clinton for"].includes(campaignTrail_temp.candidate_last_name)) && e.final_outcome=="win" && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.election_id==9) {
+                 if (!run.achievements["IWillSurvive"] && ([200965, 200975, 200969].includes(campaignTrail_temp.player_answers[36])) && (["Clinton", "Clinton for"].includes(campaignTrail_temp.candidate_last_name)) && campaignTrail_temp.final_overall_results[0].electoral_votes>2382 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.election_id==9) {
                     unlockAchievement(among, "IWillSurvive", "", "<b>I Will Survive</b>")
                 } else
 
                 // Maybe This Time It'll Work - Mount a primary challenge against Obama, and then win the Democratic Nomination.
-                 if (!run.achievements["MaybeThisTimeItllWork"] && (["Sanders", "Sanders for"].includes(campaignTrail_temp.candidate_last_name)) && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && e.final_outcome=="win" && e.player_answers[0] == 3501 && e.election_id==9) {
+                 if (!run.achievements["MaybeThisTimeItllWork"] && (["Sanders", "Sanders for"].includes(campaignTrail_temp.candidate_last_name)) && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && campaignTrail_temp.final_overall_results[0].electoral_votes>2382 && e.player_answers[0] == 3501 && e.election_id==9) {
                     unlockAchievement(among, "MaybeThisTimeItllWork", "", "<b>Maybe This Time It'll Work</b>")
                 } else
 
