@@ -1760,6 +1760,7 @@ function divideElectoralVotesProp(e, t) {
                     }
                     if (campaignTrail_temp.bigshot_mode) {
                         document.getElementById('cheatmode').style.display = ""
+                        if (e.game_type_id==="3") $("#imf_loan")[0].style.display = ""
                         let slider = document.getElementById("difficultyMod");
                         if (slider) {
                             slider.innerHTML = `Multiplier: <span contenteditable="true" id='difficulty_mult_bigshot'>${campaignTrail_temp.difficulty_level_multiplier.toFixed(2)}</span>`;
