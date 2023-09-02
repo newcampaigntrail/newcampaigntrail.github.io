@@ -22,13 +22,22 @@ document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_st
 $(".container")[0].style.backgroundColor = "#AC3834"
 document.body.background = "https://media.discordapp.net/attachments/1061855514536988743/1144842114279157832/1936wallpaper.png"
 
+styling = document.createElement("style");
+document.head.appendChild(styling);
+
+styling.innerHTML = `
+#opponent_selection_id_back {
+    display: none;
+}
+`
+
 let z = new MutationObserver((mutationsList, observer) => {
-        let runningMateSummary = document.querySelector("#running_mate_summary");
-        if (runningMateSummary) {
-            $("#running_mate_id_button").click();
-            observer.disconnect()
-        }
-    });
-  
-  
-    z.observe(document, { subtree: true, childList: true });
+    let runningMateSummary = document.querySelector("#running_mate_summary");
+    if (runningMateSummary) {
+        $("#running_mate_id_button").click();
+        observer.disconnect()
+    }
+});
+
+
+z.observe(document, { subtree: true, childList: true });
