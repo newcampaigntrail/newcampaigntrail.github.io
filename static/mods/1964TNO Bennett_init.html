@@ -1,0 +1,669 @@
+e = campaignTrail_temp;
+
+
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#4e6570";
+
+
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#ba823a";
+
+
+
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+
+
+
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+
+
+$(".container")[0].style.backgroundColor = "#936145";
+
+
+
+document.getElementById("header").src = "https://i.imgur.com/068duQH.png";
+
+
+
+document.body.background = "https://i.etsystatic.com/6231007/r/il/f54d61/740788181/il_570xN.740788181_3g20.jpg";
+
+
+
+quotes = ["Only those who dare to fail greatly can ever achieve greatly."]
+
+customquote = quotes[Math.floor((Math.random() * quotes.length))]
+
+
+
+corrr = `\n<h2>BENNETTVERSE</h2><font id='wittyquote' size='4' color='white'><em>` + customquote + `</em></font>`
+
+
+
+HistHexcolour=["#889bbb","#cac581","#735320","#000000"];
+
+HistName=["Wallace F. Bennett","Robert F. Kennedy","Orval Faubus","Other Candidates"];
+
+        HistEV=[339,192,0,0];
+
+        HistPV=["35,227,578","34,385,209","522,517","535"];
+
+        HistPVP=["50.2%","49.0%","0.7%","0.01%"];
+
+
+
+let style = document.createElement('style');
+
+style.type = 'text/css';
+
+style.id = 'dynamic-style';
+
+
+
+document.head.appendChild(style);
+
+
+
+RecReading=true
+
+
+
+e.election_json = [{
+
+    "model": "campaign_trail.election",
+
+    "pk": 11,
+
+    "fields": {
+
+        "year": 1960,
+
+        "summary": "<div style='overflow-y:scroll;height:200px;'><p>America in 1964 is undergoing a rather turbulent period in its life. Hitler's victory in Europe and the nuking of Pearl Harbor seriously damaged American prestige in the world. This especially shocked America's political system which saw the rise of various third parties, culminating in the National Progressive Pact, a big-tent of various political factions. In 1964, two candidates of wildly different political views run against each other. Senator Wallace F. Bennett of Utah, and Senator Robert F. Kennedy of Massachusetts.</p><p><ul><li>Wallace F. Bennett represents the conservative/moderate tent of American voters, and campaigns on a slogan of not rocking the boat too hard.</li><li>Robert F. Kennedy represents the idealistic liberal, Kennedy was angered by Nixon's veto of the civil rights act and as such joined the NPP, winning its nomination for president this year.</ul></li></p><p>Both candidates are broadly popular with the American people, but Kennedy has to make sure not to go overboard with his rhetoric or he could lose a chunk of support! The issues of the day are, the  South African war, Kennedy's Assassination, Nixon's Resignation and Civil Rights.</div>",
+
+        "image_url": "https://i.imgur.com/nSkGn2r.png",
+
+        "winning_electoral_vote_number": 270,
+
+        "advisor_url": "https://i.imgur.com/1XwRrWw.png",
+
+        "recommended_reading": "<div style='overflow-y:scroll;height:320px;'><h3 style='margin-top:</h3> 1.5em;'>BENNETTVERSE 1964</h3><b>BENNETT WINS BIG AGAINST KENNEDY! POPULAR VOTE CLOSEST IN DECADES! - </b>New York Times, November 8th, 1964.<b><br><br>WESTMORELAND PUT IN CHARGE OF C.A.R IN AFRICA, AMID RECENT ELECTION. -</b> The L.A Times, November 15th, 1964<br><br><b>BENNETT SWORN IN, AMERICA CELEBRATES ITS FIRST MORMON PRESIDENT - </b> The Chicago Tribune, January 20th, 1965.<br><br><b>GERMAN CIVIL WAR COMES TO AN END, BORMANN CROWNED NEW FUHRER IN GERMANIA - </b> The New York Times, February 17th, 1965.<br><br><b>FIGHTING IN AFRICA INCREASES AS AMERICAN' PRESENCE REMAINS -</b> The Los Angeles Free Press, March 2nd, 1965.<Br><br><b>To be continued.</b><br><br><img src='https://i.imgur.com/i0gDa8D.png' width='250px'></img><br><br></b><p>Hello everybody, this is WNDIUA here, I just wanted to say thank you for playing my mod! I recieved some good feedback on Muskie and I felt inspired to make a TNO mod, as TNO is one of my favorite alternate-history scenarios ever. Big thanks to killeritch and rmngaming5068 for help with this further reading section you are reading right now, The Kennedy side <i>will</i> release at some point in the future, but probably not soon, because its taken alot out of me to make this whole project basically on my own, with little prior javascript experience. But anyways enough rambling, thank you for playing.<br>.",
+
+        "has_visits": 1,
+
+        "no_electoral_majority_image": "../static/images/2012-no-majority.jpg"
+
+    }
+
+}];
+
+e.temp_election_list = [{
+
+    "id": 11,
+
+    "year": 1960,
+
+    "is_premium": 0,
+
+    "display_year": "1964TNO Bennett"
+
+}];
+
+e.credits = "u/WhatNameDidIUseAgain";
+
+e.global_parameter_json = [{
+
+    "model": "campaign_trail.global_parameter",
+
+    "pk": 1,
+
+    "fields": {
+
+        "vote_variable": 1.125,
+
+        "max_swing": 0.12,
+
+        "start_point": 0.94,
+
+        "candidate_issue_weight": 10,
+
+        "running_mate_issue_weight": 3,
+
+        "issue_stance_1_max": -0.71,
+
+        "issue_stance_2_max": -0.3,
+
+        "issue_stance_3_max": -0.125,
+
+        "issue_stance_4_max": 0.125,
+
+        "issue_stance_5_max": 0.3,
+
+        "issue_stance_6_max": 0.71,
+
+        "global_variance": 0.01,
+
+        "state_variance": 0.005,
+
+        "question_count": 32,
+
+        "default_map_color_hex": "#C9C9C9",
+
+        "no_state_map_color_hex": "#999999"
+
+    }
+
+}];
+
+e.candidate_json = [{
+
+    "model": "campaign_trail.candidate",
+
+    "pk": 106,
+
+    "fields": {
+
+        "first_name": "Wallace F.",
+
+        "last_name": "Bennett",
+
+        "election": 11,
+
+        "party": "RD - Republicans",
+
+        "state": "Utah",
+
+        "priority": 1,
+
+        "description": "<div style='overflow-y:scroll;height:200px;'><i>\"<i>The ascending spiral of greatness in America has risen because industry has produced wealth</i>\"</i><br><br><p>Wallace Foster Bennett is many things, a radical is not one them. Bennett is currently the senator of Utah and has held that position for little over a decade, starting his term in 1950. Before entering politics, Wallace organized a local Ford Motors dealership in Salt Lake City called the Bennett Motor Company, where he was its president from 1939 to 1950. He was elected to the senate next year.<br><br>Wallace represents the moderate to conservative reaction to the growing extremism in America, a member of the Church of the Latter-Day Saints, or the Mormon Church. He easily was able to prevail over Democratic Challenger Lyndon B. Johnson in the primaries, but it was a close fight, so Wallace is gonna need some party unity<br><br>Bennett's main drawbacks is that he tries to not rock the boat too much, as he puts it. Because of this, he rarely excites the average voter unlike Kennedy, which could cause some slippage. His nonchalance about civil rights could raise eyebrows from those in the northeast if its not handled properly.</div>",
+
+        "color_hex": "#889bbb",
+
+        "secondary_color_hex": null,
+
+        "is_active": 1,
+
+        "image_url": "https://i.imgur.com/M99uov3.png",
+
+        "electoral_victory_message": "<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>",
+
+        "electoral_loss_message": "<h3>Fake News?</h3>",
+
+        "no_electoral_majority_message": "<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>",
+
+        "description_as_running_mate": null,
+
+        "candidate_score": 1,
+
+        "running_mate": false,
+
+        "scrollable": false
+
+    }
+
+}, {
+
+    "model": "campaign_trail.candidate",
+
+    "pk": 105,
+
+    "fields": {
+
+        "first_name": "Robert F.",
+
+        "last_name": "Kennedy",
+
+        "election": 11,
+
+        "party": "NPP - Progressives",
+
+        "state": "Massachusetts",
+
+        "priority": 1,
+
+        "description": "<div style='overflow-y:scroll;height:200px;'><p><b>Not Currently Playable</b><br><br><i>\"I'm tired of chasing people.\"</i><br><br>Robert Francis Kennedy is the senator of Massachusetts and brother of beloved John F. Kennedy, who was assassinated in 1963 after Nixon's resignation. Robert Kennedy recently switched parties from the Republican-Democrats after Nixon's veto of the Civil Rights act, which infuriated Kennedy. Kennedy then ran and won the National Progressive Pact nomination for President this year.<br><br>Kennedy is very popular with progressives and liberals and his base of support is located in New England. While he might not want to, Kennedy might have to pull the \"dead-brother\" card if he wants to get a leg up on Bennett, who starts off leading in the polls.<br><br>Kennedy supports the Civil Rights act and other liberal/progressive measures of the day, which would make it extremely tough to crack even the border states in the south, let alone the deep south. But can Kennedy rock the boat without everybody falling off?",
+
+        "color_hex": "#cac581",
+
+        "secondary_color_hex": null,
+
+        "is_active": 1,
+
+        "image_url": "https://i.imgur.com/UdnyvQR.png",
+
+        "electoral_victory_message": "<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>",
+
+        "electoral_loss_message": "<h3>Fake News?</h3>",
+
+        "no_electoral_majority_message": "<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>",
+
+        "description_as_running_mate": null,
+
+        "candidate_score": 1,
+
+        "running_mate": false,
+
+        "scrollable": false
+
+    }
+
+}, {
+
+    "model": "campaign_trail.candidate",
+
+    "pk": 107,
+
+    "fields": {
+
+        "first_name": "Orval",
+
+        "last_name": "Faubus",
+
+        "election": 11,
+
+        "party": "NPP - Segregationists",
+
+        "state": "Alabama",
+
+        "priority": 1,
+
+        "description": "<div style='overflow-y:scroll;height:200px;'><p><b>Not Currently Playable</b><br><br><i>\"I'm tired of chasing people.\"Faubus Description",
+
+        "color_hex": "#735320",
+
+        "secondary_color_hex": null,
+
+        "is_active": 0,
+
+        "image_url": "https://i.imgur.com/FCkJJKT.png",
+
+        "electoral_victory_message": "<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>",
+
+        "electoral_loss_message": "<h3>Fake News?</h3>",
+
+        "no_electoral_majority_message": "<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>",
+
+        "description_as_running_mate": null,
+
+        "candidate_score": 1,
+
+        "running_mate": false,
+
+        "scrollable": false
+
+    }
+
+}, {
+
+    "model": "campaign_trail.candidate",
+
+    "pk": 1003,
+
+    "fields": {
+
+        "first_name": "Gerald",
+
+        "last_name": "Ford",
+
+        "election": 11,
+
+        "party": "RD - Republicans",
+
+        "state": "Michigan",
+
+        "priority": 1,
+
+        "description": "<p><i>\"“I promise my fellow citizens only this: To uphold the Constitution, to do what is right as God gives me to see the right, and…to do the very best that I can for America.”</i><br><br>Gerald Rudolph Ford is currently the Speaker of the House and Representative from Michigan. He is very personable and has few enemies across the political spectrum, which made him a key figure in figuring out who Bennett's VP would be.<br><br>Ford would help immensely in his home-region of the Midwest and would bring in a lot of Union boys. Michigan itself is in contention and could really help Bennett's chances out there. But unlike his soon-to-be boss, he isn't as keen on keeping things steady and not rocking the boat. He might make the occasion slip of the tongue every once in a while aswell.",
+
+        "color_hex": "#0000ff",
+
+        "secondary_color_hex": null,
+
+        "is_active": 0,
+
+        "image_url": "https://i.imgur.com/ZerGtP2.png",
+
+        "electoral_victory_message": "<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>",
+
+        "electoral_loss_message": "<h3>Fake News?</h3>",
+
+        "no_electoral_majority_message": "<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>",
+
+        "description_as_running_mate": "<p><i>\"“I promise my fellow citizens only this: To uphold the Constitution, to do what is right as God gives me to see the right, and…to do the very best that I can for America.”</i><br><br>Gerald Rudolph Ford is currently the Speaker of the House and Representative from Michigan. He is very personable and has few enemies across the political spectrum, which made him a key figure in figuring out who Bennett's VP would be.<br><br>Ford would help immensely in his home-region of the Midwest and would bring in a lot of Union boys. Michigan itself is in contention and could really help Bennett's chances out there. But unlike his soon-to-be boss, he isn't as keen on keeping things steady and not rocking the boat. He might make the occasion slip of the tongue every once in a while aswell.",
+
+        "candidate_score": 1,
+
+        "running_mate": true,
+
+        "scrollable": false,
+
+        "partner": "0"
+
+    }
+
+}, {
+
+    "model": "campaign_trail.candidate",
+
+    "pk": 1004,
+
+    "fields": {
+
+        "first_name": "William",
+
+        "last_name": "Guy",
+
+        "election": 11,
+
+        "party": "NPP - Progressives",
+
+        "state": "North Dakota",
+
+        "priority": 1,
+
+        "description": "<p><i>\"Couldnt find any quotes for this guy either.\"</i><br><br>William Lewis Guy is currently the Governor of North Dakota, known for his plain yet effective approach to progressiveness. He is very willing to serve as your running mate, and doesn't have any major quarrels with any sane section of the party.<br><br>His emphasize on infrastructure while the governor could tide over middle-class moderates, but his support for Civil Rights will no doubt pinch down south.",
+
+        "color_hex": "#0000ff",
+
+        "secondary_color_hex": null,
+
+        "is_active": 0,
+
+        "image_url": "https://i.imgur.com/Ltwq9LX.png",
+
+        "electoral_victory_message": "<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>",
+
+        "electoral_loss_message": "<h3>Fake News?</h3>",
+
+        "no_electoral_majority_message": "<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>",
+
+        "description_as_running_mate": "<p><i>\"Couldnt find any quotes for this guy either.\"</i><br><br>William Lewis Guy is currently the Governor of North Dakota, known for his plain yet effective approach to progressiveness. He is very willing to serve as your running mate, and doesn't have any major quarrels with any sane section of the party.<br><br>His emphasize on infrastructure while the governor could tide over middle-class moderates, but his support for Civil Rights will no doubt pinch down south.",
+
+        "candidate_score": 1,
+
+        "running_mate": true,
+
+        "scrollable": false,
+
+        "partner": "1"
+
+    }
+
+}, {
+
+    "model": "campaign_trail.candidate",
+
+    "pk": 1005,
+
+    "fields": {
+
+        "first_name": "John S.",
+
+        "last_name": "Cooper",
+
+        "election": 11,
+
+        "party": "RD - Republicans",
+
+        "state": "Kentucky",
+
+        "priority": 1,
+
+        "description": "<p><i>\"I never initiated nor did the FBI ever initiate any conversation or correspondence with me.\"</i><br><br>John Sherman Cooper is currently the senator of Kentucky, taking over for people like Happy Chandler and Alben Barkley. Cooper expressed his interest in being your VP to you during the primaries. Despite Cooper coming from a border state in the south, he has spoken against segregation in the past, which would make plays for the deep south impossible.<br><br>Picking Cooper would draw the line in the sand pretty clearly on what strategy you would be going for, as Cooper would help you in the border states like Missouri, Maryland and especially Kentucky, which might upset some conservatives who don't want you to rock the boat.",
+
+        "color_hex": "#0000ff",
+
+        "secondary_color_hex": null,
+
+        "is_active": 0,
+
+        "image_url": "https://i.imgur.com/mxBOiXz.png",
+
+        "electoral_victory_message": "<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>",
+
+        "electoral_loss_message": "<h3>Fake News?</h3>",
+
+        "no_electoral_majority_message": "<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>",
+
+        "description_as_running_mate": "<p><i>\"I never initiated nor did the FBI ever initiate any conversation or correspondence with me.\"</i><br><br>John Sherman Cooper is currently the senator of Kentucky, taking over for people like Happy Chandler and Alben Barkley. Cooper expressed his interest in being your VP to you during the primaries. Despite Cooper coming from a border state in the south, he has spoken against segregation in the past, which would make plays for the deep south impossible.<br><br>Picking Cooper would draw the line in the sand pretty clearly on what strategy you would be going for, as Cooper would help you in the border states like Missouri, Maryland and especially Kentucky, which might upset some conservatives who don't want you to rock the boat.",
+
+        "candidate_score": 1,
+
+        "running_mate": true,
+
+        "scrollable": false,
+
+        "partner": "0"
+
+    }
+
+}, {
+
+    "model": "campaign_trail.candidate",
+
+    "pk": 1006,
+
+    "fields": {
+
+        "first_name": "Henry C.",
+
+        "last_name": "Lodge Jr.",
+
+        "election": 11,
+
+        "party": "RD - Republicans",
+
+        "state": "Massachusetts",
+
+        "priority": 1,
+
+        "description": "<p><i>\"This organization is created to prevent you from going to hell. It isn't created to take you to heaven.</i><br><br>Henry Cabot Lodge Jr. is one of Massachusetts' finest. Former senator and current Ambassador to the U.N. Lodge was key in helping the Republicans and Democrats stay afloat after the National Progressive Pact formed. Lodge has expressed interest in being your VP, and the two of you work fine together.<br><br>By choosing Lodge, you would definitely be cutting into Kennedy's base, and he would really help you in the big northeastern states. Although this would cause some tension with your southern subordinates, make sure to not go overboard with the liberal pivot.",
+
+        "color_hex": "#0000ff",
+
+        "secondary_color_hex": null,
+
+        "is_active": 0,
+
+        "image_url": "https://i.imgur.com/4sy6xDX.png",
+
+        "electoral_victory_message": "<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>",
+
+        "electoral_loss_message": "<h3>Fake News?</h3>",
+
+        "no_electoral_majority_message": "<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>",
+
+        "description_as_running_mate": "<p><i>\"This organization is created to prevent you from going to hell. It isn't created to take you to heaven.</i><br><br>Henry Cabot Lodge Jr. is one of Massachusetts' finest. Former senator and current Ambassador to the U.N. Lodge was key in helping the Republicans and Democrats stay afloat after the National Progressive Pact formed. Lodge has expressed interest in being your VP, and the two of you work fine together.<br><br>By choosing Lodge, you would definitely be cutting into Kennedy's base, and he would really help you in the big northeastern states. Although this would cause some tension with your southern subordinates, make sure to not go overboard with the liberal pivot.",
+
+        "candidate_score": 1,
+
+        "running_mate": true,
+
+        "scrollable": false,
+
+        "partner": "0"
+
+    }
+
+}, {
+
+    "model": "campaign_trail.candidate",
+
+    "pk": 1007,
+
+    "fields": {
+
+        "first_name": "Eugene",
+
+        "last_name": "McCarthy",
+
+        "election": 11,
+
+        "party": "NPP - Progressives",
+
+        "state": "Minnesota",
+
+        "priority": 1,
+
+        "description": "<p><i>\"It is dangerous for a national candidate to say things that people might remember.\"</i><br><br>Eugene \"Gene\" Joseph McCarthy is currently the Minnesota state senator, and one of your biggest allies in the senate. McCarthy was key in helping you get the nomination, and as such he feels he should get a cabinet position at the least. The two of you work together well.<br><br>Picking McCarthy would galvanize your base but would completely write off the south, as his outspoken support for welfare and civil rights is poison down there. He also is kind of gaffe-prone, so make sure to keep his tongue on a tight leash.",
+
+        "color_hex": "#0000ff",
+
+        "secondary_color_hex": null,
+
+        "is_active": 0,
+
+        "image_url": "https://i.imgur.com/OhMSeNu.png",
+
+        "electoral_victory_message": "<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>",
+
+        "electoral_loss_message": "<h3>Fake News?</h3>",
+
+        "no_electoral_majority_message": "<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>",
+
+        "description_as_running_mate": "<p><i>\"It is dangerous for a national candidate to say things that people might remember.\"</i><br><br>Eugene \"Gene\" Joseph McCarthy is currently the Minnesota state senator, and one of your biggest allies in the senate. McCarthy was key in helping you get the nomination, and as such, he feels he should get the VP spot or a cabinet position at the least. The two of you work together well.<br><br>Picking McCarthy would double down on your beliefs and galvanize your base but would completely write off the south, as his outspoken support for welfare and civil rights is asbolutely poison down there. He also is kind of gaffe-prone, so make sure to keep his tongue on a tight leash.",
+
+        "candidate_score": 1,
+
+        "running_mate": true,
+
+        "scrollable": false,
+
+        "partner": "1"
+
+    }
+
+}, {
+
+    "model": "campaign_trail.candidate",
+
+    "pk": 1008,
+
+    "fields": {
+
+        "first_name": "Carl",
+
+        "last_name": "Albert",
+
+        "election": 11,
+
+        "party": "RD - Democrats",
+
+        "state": "Oklahoma",
+
+        "priority": 1,
+
+        "description": "<p><i>\"From early on, everything I did was calculated to being elected to Congress.\"</i><br><br>Carl Bert Albert is the House Majority Leader and is a state representative of Oklahoma. Picking Albert would be the ultimate wild-card pick, as even though he supported the 1962 Civil Right act, he still has a good rapport with southerners.<br><br>Albert would signify a more moderate, southern strategy approach to the campaign, which might deflate your base a lot, but it could also sap support away from Wallace's base. He is also 5'4.",
+
+        "color_hex": "#0000ff",
+
+        "secondary_color_hex": null,
+
+        "is_active": 0,
+
+        "image_url": "https://i.imgur.com/cb4WvLc.png",
+
+        "electoral_victory_message": "<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>",
+
+        "electoral_loss_message": "<h3>Fake News?</h3>",
+
+        "no_electoral_majority_message": "<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>",
+
+        "description_as_running_mate": "<p><i>\"From early on, everything I did was calculated to being elected to Congress.\"</i><br><br>Carl Bert Albert is the House Majority Leader and is a state representative of Oklahoma. Picking Albert would be the ultimate wild-card pick, as even though he supported the 1962 Civil Right act, he still has a good rapport with southerners.<br><br>Albert would signify a more moderate, southern strategy approach to the campaign, which might deflate your base a lot, but it could also sap support away from Wallace's base. He is also 5'4.",
+
+        "candidate_score": 1,
+
+        "running_mate": true,
+
+        "scrollable": false,
+
+        "partner": "1"
+
+    }
+
+}];
+
+e.running_mate_json = [{
+
+    "model": "campaign_trail.running_mate",
+
+    "pk": 2001,
+
+    "fields": {
+
+        "candidate": 106,
+
+        "running_mate": 1003
+
+    }
+
+}, {
+
+    "model": "campaign_trail.running_mate",
+
+    "pk": 2002,
+
+    "fields": {
+
+        "candidate": 105,
+
+        "running_mate": 1004
+
+    }
+
+}, {
+
+    "model": "campaign_trail.running_mate",
+
+    "pk": 2003,
+
+    "fields": {
+
+        "candidate": 106,
+
+        "running_mate": 1005
+
+    }
+
+}, {
+
+    "model": "campaign_trail.running_mate",
+
+    "pk": 2004,
+
+    "fields": {
+
+        "candidate": 106,
+
+        "running_mate": 1006
+
+    }
+
+}, {
+
+    "model": "campaign_trail.running_mate",
+
+    "pk": 2005,
+
+    "fields": {
+
+        "candidate": 105,
+
+        "running_mate": 1007
+
+    }
+
+}, {
+
+    "model": "campaign_trail.running_mate",
+
+    "pk": 2006,
+
+    "fields": {
+
+        "candidate": 105,
+
+        "running_mate": 1008
+
+    }
+
+}];
