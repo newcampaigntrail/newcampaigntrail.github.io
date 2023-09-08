@@ -1,0 +1,175 @@
+e = campaignTrail_temp;
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#000000";
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#0d132b";
+
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+$(".container")[0].style.backgroundColor = "#0c153c";
+
+document.getElementById("header").src = "https://i.imgur.com/PLQ8CZN.png";
+
+document.body.background = "https://i.imgur.com/ZpnIXLg.jpeg";
+
+e.election_json = [{
+    "model": "campaign_trail.election",
+    "pk": 20,
+    "fields": {
+        "year": 2016,
+        "summary": "After 8 years of George Bush, the war in Iraq, and a subsequent economic recession, the American People are looking for a change.<br><br>On the Democratic side is William Jennings Bryan, who has literally risen from the dead to run for President. For him to win, he must educate himself on the issues of the day in the hopes to appeal to the modern Democratic base.<br><br>On the Republican side is John McCain, who with the ascension of Bryan on the Democratic ticket, is in the lead. For McCain to win he must make the case that Bryan is much too out of touch to be President in 2008",
+        "image_url": "https://i.imgur.com/JvzaeiQ.jpeg",
+        "winning_electoral_vote_number": 270,
+        "advisor_url": "https://i.imgur.com/QzuJX1h.jpeg?width=208&height=128",
+        "recommended_reading": "<ul>\n<li><a href=https://www.chicagotribune.com/opinion/editorials/ct-edit-chicago-tribune-biden-endorsement-20200925-lnyxsb5qvrftnjjmj3rnzj33jy-story.html>Our Case For Joe Biden</a></li>\n<li><a href=https://nationalinterest.org/feature/case-trump-166808>The Case For Trump</a></li>\n<li><a href=https://www.npr.org/2020/11/18/935730100/how-biden-won-ramping-up-the-base-and-expanding-margins-in-the-suburbs>How Biden Won: Ramping Up The Base And Expanding Margins In The Suburbs</a></li>\n<li><a href=https://www.prospectmagazine.co.uk/politics/donald-trump-joe-biden-us-election-almost-win-votes-concede>Why Did Trump Almost Win?</a></li>\n<li><a href=https://www.hoover.org/research/no-evidence-voter-fraud-guide-statistical-claims-about-2020-election>No Evidence For Voter Fraud: A Guide To Statistical Claims About The 2020 Election</a></li>\n</ul>",
+        "has_visits": 1,
+        "no_electoral_majority_image": "../static/images/2012-no-majority.jpg"
+    }
+}];
+e.temp_election_list = [{
+    "id": 20,
+    "year": 2016,
+    "is_premium": 0,
+    "display_year": "Bryan08"
+}];
+e.credits = "Lover_of_wilderness";
+e.global_parameter_json = [{
+    "model": "campaign_trail.global_parameter",
+    "pk": 1,
+    "fields": {
+        "vote_variable": 1.125,
+        "max_swing": 0.12,
+        "start_point": 0.94,
+        "candidate_issue_weight": 10,
+        "running_mate_issue_weight": 3,
+        "issue_stance_1_max": -0.71,
+        "issue_stance_2_max": -0.3,
+        "issue_stance_3_max": -0.125,
+        "issue_stance_4_max": 0.125,
+        "issue_stance_5_max": 0.3,
+        "issue_stance_6_max": 0.71,
+        "global_variance": 0.01,
+        "state_variance": 0.005,
+        "question_count": 24,
+        "default_map_color_hex": "#C9C9C9",
+        "no_state_map_color_hex": "#999999"
+    }
+}];
+e.candidate_json = [{
+    "model": "campaign_trail.candidate",
+    "pk": 201,
+    "fields": {
+        "first_name": "William Jennings",
+        "last_name": "Bryan",
+        "election": 20,
+        "party": "Democrat",
+        "state": "Nebraska",
+        "priority": 1,
+        "description": "In the 83 years William Jennings Bryan has been dead America has gone from catastrophe to catastrophe. As war and strife devoured the world throughout the 20th Century, Bryan could only watch from the heavens above in horror. Now in the year 2008, a time of war and renewed imperialism, a time of economic strife, and a time where God is being pushed to the wayside, Bryan has finally gained permission to exit the gates of Heaven and enter again the land of the living. Although Bryan is a little-known figure to most of the people of America, his excellent oratorical skills, along with what Bryan has described as literal divine intervention, have allowed him to steal the nomination from the frontrunners Barack Obama and Hillary Clinton. Bryan is unlike any other 21st-century Democrat and is actually polling ahead of McCain in many farm states. However, Bryan's support of free trade and general favor of farmers over industrial workers have surrendered much of the Industrial North to McCain. Bryan has also alienated much of the modern Democratic base in the big cities through his strong use of religious imagery and his unclear positions on social issues. Regardless, Bryan is still a Liberal, and if can adapt to the times correctly, he may finally get his shot at the Presidency.",
+        "color_hex": "#0000ff",
+        "secondary_color_hex": null,
+        "is_active": 1,
+        "image_url": "https://i.imgur.com/SpLdvVD.png",
+        "electoral_victory_message": "<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>",
+        "electoral_loss_message": "<h3>Fake News?</h3>",
+        "no_electoral_majority_message": "<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>",
+        "description_as_running_mate": null,
+        "candidate_score": 1,
+        "running_mate": false,
+        "scrollable": false
+    }
+}, {
+    "model": "campaign_trail.candidate",
+    "pk": 1002,
+    "fields": {
+        "first_name": "Hillary",
+        "last_name": "Clinton",
+        "election": 20,
+        "party": "Democrat",
+        "state": "New York",
+        "priority": 1,
+        "description": "As one of the earliest supporters of women's rights in American history, it would not be out of character for Bryan to pick Hillary Clinton as his running mate. Picking Clinton would help Bryan significantly with female voters and would allow Bryan to mend fences with her wing of the party. Because of Hillary's association with her husband Bill, Bryan may be able to hold onto the South with her on the ticket. Picking Clinton may leave Obama feeling snubbed, and some have pointed to Clinton's lack of charisma and likeability as a potential drawback of picking her. However, many believe Bryan's oratorical skills may be more than enough to make up for Clinton's lack thereof, and Bryan's advisors have argued that the prospect of taking the South is just one too good not to take.",
+        "color_hex": "#0000ff",
+        "secondary_color_hex": null,
+        "is_active": 0,
+        "image_url": "https://i.imgur.com/NGG8MgO.png",
+        "electoral_victory_message": "<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>",
+        "electoral_loss_message": "<h3>Fake News?</h3>",
+        "no_electoral_majority_message": "<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>",
+        "description_as_running_mate": "As one of the earliest supporters of women's rights in American history, it would not be out of character for Bryan to pick Hillary Clinton as his running mate. Picking Clinton would help Bryan significantly with female voters and would allow Bryan to mend fences with her wing of the party. Because of Hillary's association with her husband Bill, Bryan may be able to hold onto the South with her on the ticket. Picking Clinton may leave Obama feeling snubbed, and some have pointed to Clinton's lack of charisma and likeability as a potential drawback of picking her. However, many believe Bryan's oratorical skills may be more than enough to make up for Clinton's lack thereof, and Bryan's advisors have argued that the prospect of taking the South is just one too good not to take.",
+        "candidate_score": 1,
+        "running_mate": true,
+        "scrollable": false,
+        "partner": "0"
+    }
+}, {
+    "model": "campaign_trail.candidate",
+    "pk": 1003,
+    "fields": {
+        "first_name": "Joe",
+        "last_name": "Biden",
+        "election": 20,
+        "party": "Democrat",
+        "state": "Delaware",
+        "priority": 1,
+        "description": "Joe Biden is a Senator from Delaware who is known for his moderate reputation. Picking Biden would allow Bryan to hold onto the South and the farm states while giving him a chance in the industrial Midwest at the cost of big Liberal states like New York and California. Biden is also gaffe-prone which may cause some awkward situations on the campaign trail, however, Bryan's oratorical skills may be able to make up for this. Picking Biden would signal a shift to the right for Bryan, and would do little to appease Liberals. Overall, picking Biden could be a bad or a good choice, depending on Bryan's strategy.",
+        "color_hex": "#0000ff",
+        "secondary_color_hex": null,
+        "is_active": 0,
+        "image_url": "https://i.imgur.com/Eaknyns.jpeg",
+        "electoral_victory_message": "<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>",
+        "electoral_loss_message": "<h3>Fake News?</h3>",
+        "no_electoral_majority_message": "<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>",
+        "description_as_running_mate": "Joe Biden is a Senator from Delaware who is known for his moderate reputation. Picking Biden would allow Bryan to hold onto the South and the farm states while giving him a chance in the industrial Midwest at the cost of big Liberal states like New York and California. Biden is also gaffe-prone which may cause some awkward situations on the campaign trail, however, Bryan's oratorical skills may be able to make up for this. Picking Biden would signal a shift to the right for Bryan, and would do little to appease Liberals. Overall, picking Biden could be a bad or a good choice, depending on Bryan's strategy.",
+        "candidate_score": 1,
+        "running_mate": true,
+        "scrollable": false,
+        "partner": "0"
+    }
+}, {
+    "model": "campaign_trail.candidate",
+    "pk": 200,
+    "fields": {
+        "first_name": "John",
+        "last_name": "McCain",
+        "election": 20,
+        "party": "Republican",
+        "state": "Arizona",
+        "priority": 1,
+        "description": "Dummy Example is a veteran from Hell. He loves puppies and magic! Dummy Example will unite America!<br><br>New line<br><br>This is <b>bold</b> and this <i>italic</i>!",
+        "color_hex": "#ff0000",
+        "secondary_color_hex": null,
+        "is_active": 0,
+        "image_url": "../static/images/barack-obama-2012.jpg",
+        "electoral_victory_message": "<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>",
+        "electoral_loss_message": "<h3>Fake News?</h3>",
+        "no_electoral_majority_message": "<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>",
+        "description_as_running_mate": null,
+        "candidate_score": 1,
+        "running_mate": false,
+        "scrollable": false
+    }
+}];
+e.running_mate_json = [{
+    "model": "campaign_trail.running_mate",
+    "pk": 2001,
+    "fields": {
+        "candidate": 201,
+        "running_mate": 1002
+    }
+}, {
+    "model": "campaign_trail.running_mate",
+    "pk": 2002,
+    "fields": {
+        "candidate": 201,
+        "running_mate": 1003
+    }
+}];
+campaignTrail_temp.opponents_default_json = JSON.parse("[{\"election\": 20, \"candidates\": [200, 201]}]");
+   HistHexcolour=["#0804fc","#ff0404"];
+        HistName=[" William Jennings Bryan"," John McCain"," God", "Satan"];
+        HistEV=[528,10];
+        HistPV=["78,794,310","58,238,524"];
+        HistPVP=["57.5%","42.5%"];
