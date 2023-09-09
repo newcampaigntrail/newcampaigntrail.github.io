@@ -1,9 +1,11 @@
+document.head.innerHTML += "<style>#recommended_reading_box {color:black}</style>"
 e = campaignTrail_temp;
 e.collect_results = true;
+
+if (!e.runIntro) {
 var music = new Audio('https://cdn.discordapp.com/attachments/1098488379575914516/1146956485679665162/y2mate.is_-_1956_HITS_ARCHIVE_I_Could_Have_Danced_All_Night_Sylvia_Syms-FlxYw8lmHm0-192k-1693526020.mp3');
 music.loop = true; 
 music.play();
-if (!e.runIntro) {
 e.runIntro = true;
 RecReading=true
 quotes = ["“Whoever kindles the flame of intolerance in America is lighting a fire underneath his own home.” ~ Harold Stassen"]
@@ -470,7 +472,7 @@ document.head.appendChild(customStyling);
         <br style='color: #000000;'>
         <p style='color: #000000;'>Graphic Designer and writer</p>
         <h3 style='color: #000000;'>Playtesters</h3>
-        <p style='color: #000000;'>Neo, duplicator, tedthing, marin, rmngaming5068, usbccable, Lurker, finnhomosapien and cdocwra.</p>
+        <p style='color: #000000;'>Neo, duplicator, tedthing, marin, rmngaming5068, usbccable, Lurker, finnhomosapien, cdocwra and lucasiguess.</p>
         <h3 style='color: #000000;'>Contributors</h3>
         <p style='color: #000000;'>Knowland banner by TedThing. Sign code and CYOA help from Decstar. Lib Counter from 1968Romney. Music Player, 2000N. vpTable code from 1972PWH. CYOA help from Nina.</p>
       `
@@ -706,10 +708,7 @@ function newMusicPlayer() {
             buttons[newSel].click()
             songsPlayed++; // Increment the songs played counter
       
-          if (songsPlayed === 2) {
-              // After 2 songs, play an audio file
-              playAudioFile();
-          }
+         
         }
           
         for (w = 0; w < 7; w++) {
