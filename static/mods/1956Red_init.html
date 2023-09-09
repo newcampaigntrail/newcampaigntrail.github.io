@@ -1,0 +1,802 @@
+e = campaignTrail_temp;
+e.collect_results = true;
+var music = new Audio('https://cdn.discordapp.com/attachments/1098488379575914516/1146956485679665162/y2mate.is_-_1956_HITS_ARCHIVE_I_Could_Have_Danced_All_Night_Sylvia_Syms-FlxYw8lmHm0-192k-1693526020.mp3');
+music.loop = true; 
+music.play();
+if (!e.runIntro) {
+e.runIntro = true;
+RecReading=true
+quotes = ["“Whoever kindles the flame of intolerance in America is lighting a fire underneath his own home.” ~ Harold Stassen"]
+customquote = quotes[Math.floor((Math.random() * quotes.length))]
+corrr=`\n<h2>NEW CAMPAIGN TRAIL</h2><font id='wittyquote' size='4' color='white'><em>`+customquote+`</em></font>`
+campaignTrail_temp.modBoxTheme = {
+  "header_color": "#3a0000",
+  "header_text_color": "#bbbbbb",
+  "description_text_color": "#ffffff",
+  "description_background_color": "#676767",
+  "main_color": "#0d0b0a",
+  "secondary_color": "#3a0000",
+  "ui_text_color": "#bbbbbb"
+}
+campaignTrail_temp.election_json = [{
+    "model": "campaign_trail.election",
+    "pk": 4,
+    "fields": {
+        "year": 1956,
+        "summary": "<p>With Harold Stassen's second term coming to an end, the 1956 presidential election is set to be a referendum on Republican governance and the ongoing Red Scare.</p><ul><li>The incumbent vice president, William Knowland must distance himself from his previous arch-conservative positions and effectively utilize Stassen's popularity.</li><li>After a strong showing in the 1954 midterms, House Majority Leader John W. McCormack champions the Democratic effort to return America to the halcyon days of the New Deal majority. He would be the first Catholic elected to the presidency, and his religion could create undue controversy.</li>",
+        "image_url": "https://i.imgur.com/ir2owWT.png",
+        "winning_electoral_vote_number": 266,
+        "advisor_url": "https://cdn.discordapp.com/attachments/1092480791948316763/1138965174984912988/image.png",
+        "recommended_reading": "<div style='overflow-y:scroll;height:357.133px;font-size:1em;'><h2 style='margin-top: 0.5em;'>Readings</h2><p><b><a href='https://www.amazon.com/Demagogue-Life-Shadow-Senator-McCarthy/dp/1328959724'>Demagogue: The Life and Long Shadow of Senator Joe McCarthy</a> by Larry Tye<p><a href='https://www.amazon.com/John-William-McCormack-Political-Biography/dp/1628925167'>John William McCormack: A Political Biography</a> by Garrison Nelson<p><a href='https://www.jstor.org/stable/3741521'>Eisenhower and Ezra Taft Benson: Farm Policy in the 1950s</a> by Edward L. Schapsmeier and Frederick H. Schapsmeier<p><a href='https://www.barnesandnoble.com/w/soapy-thomas-j-noer/1112278430'>Soapy</a> by Thomas J. Noer</b><br><br><p><i>The election is over, the choice has been made, but the wheels of time keep turning...</i><br><br><p>LAS VEGAS SUN: <b> AMERICA MAKES ITS CHOICE, McCARTHY ELECTED</b><br><br><p>NEW YORK TIMES: <b>INVESTIGATIONS INTO MILITARY ANNOUNCED; BAP STRENGTHENED BY EXECUTIVE ORDER</b><br><br><p>CHICAGO TRIBUNE:<b> PRESIDENT McCARTHY IS HEALTHY, THE NATION'S EXPERTS AGREE</b><br><br><p>NEWS OF THE WORLD:<b> PRESIDENT LODGE TRAVELS TO CHINA AS DEADLINE LOOMS</b><br><br><p><img src='https://cdn.discordapp.com/attachments/1092480791948316763/1149434512913215549/image.png' alt='Italian Trulli' style='width:630px;height:293px;'><br><i>To be continued.</i></p><br>If you enjoyed this iteration of the Red Mod Series and wish to participate in future conventions, discuss the mod and see the occasional teaser for what's coming next, <a href='https://discord.com/invite/bRGXDEW2QN'> join the Red Mod Series Discord Server!</a></div>",
+        "has_visits": 1,
+        "no_electoral_majority_image": "/static/images/2012-no-majority.jpg"
+    }
+  }, ]
+  campaignTrail_temp.candidate_json = [{
+    "model": "campaign_trail.candidate",
+    "pk": 23,
+    "fields": {
+        "first_name": "Joseph",
+        "last_name": "McCarthy",
+        "election": 4,
+        "party": "Republican",
+        "state": "Wisconsin",
+        "priority": 1,
+        "description": "<p>For eight years President Harold Stassen beat the drum of anti-Communism, and from that vile cantor has borne a stratospheric figure of modern politics, the most fierce and effective demagogue in American history.</p><p>Since the early stirrings of the decade, Joseph McCarthy has spearhead a crusade against suspected Communist infiltration, his ambition only as staggering as his own self-delusion. He certainly did not anticipate that it would be his destiny to seek the presidency of the United States—his candidacy being nothing more than an affair of vanity at the behest of his core supporters, but fate often works in funny ways. As Vice President Knowland's career cratered under the weight of his extramarital affair, McCarthy was the only one left with the infrastructure to clinch the nomination. Besides the Communism issue, McCarthy has also raised eyebrows by his oft-used tactic of envoking the Almighty, and such appeals could attract a new sort of voter altogether. With his loyal advisor Roy Cohn at his ear, McCarthy is confident he can protect Stassen's legacy and ensure a safer, stronger America.</p>",
+        "color_hex": "#721D1D",
+        "secondary_color_hex": "#721D1D",
+        "is_active": 1,
+        "image_url": "https://i.imgur.com/FfwZyde.png",
+        "electoral_victory_message": "<h3></h3><p></p>",
+        "electoral_loss_message": "<h3></h3><p></p>",
+        "no_electoral_majority_message": "<h3></h3><p></p>",
+        "description_as_running_mate": "''",
+        "candidate_score": 1
+    }
+  }, {
+    "model": "campaign_trail.candidate",
+    "pk": 24,
+    "fields": {
+        "first_name": "John",
+        "last_name": "McCormack",
+        "election": 4,
+        "party": "Democratic",
+        "state": "Massachusetts",
+        "priority": 3,
+        "description": "<p>Tall, gaunt, a loyal party man.  That's John W. McCormack, the self-made man.  The competent legislator.  The brilliant orator.  The prudish narcissist; it just depends who you ask.  McCormack's ideological leanings are as elusive as the congressman is effective.  Something of a maverick, McCormack co-founded the HUAC, aided Stassen in gaining congressional support for much of his foreign policy adventures and fought for anti-lynching legislation.</p><p>McCormack embarked on a longshot bid for the presidency from his modest post as House Majority Leader.  As Senator Truman's campaign crashed, the establishmentarian center—eager not to nominate the segregationist Fulbright or the progressive Williams—thrust McCormack into the nomination.  Did he use his towering cunning to meander himself into this position, or was he simply in the right place at the right time?  No matter, he has much more pressing business now than to dwell on circumstance.</p>",
+        "color_hex": "#0F2667",
+        "secondary_color_hex": " #0F2667",
+        "is_active": 1,
+        "image_url": "https://i.imgur.com/8pPB6ZV.png",
+        "electoral_victory_message": "''",
+        "electoral_loss_message": "''",
+        "no_electoral_majority_message": "''",
+        "description_as_running_mate": "''",
+        "candidate_score": 1
+    }
+  }, {
+    "model": "campaign_trail.candidate",
+    "pk": 25,
+    "fields": {
+        "first_name": "Tom",
+        "last_name": "Connally",
+        "election": 4,
+        "party": "Democrat",
+        "state": "Texas",
+        "priority": 3,
+        "description": "''",
+        "color_hex": "#3F302A",
+        "secondary_color_hex": "#3F302A",
+        "is_active": 0,
+        "image_url": "https://images.squarespace-cdn.com/content/v1/59677d48be6594487644e27a/1527206003950-FC461ZKE9XYLBIBHJIIO/C000684.jpg",
+        "electoral_victory_message": "''",
+        "electoral_loss_message": "''",
+        "no_electoral_majority_message": "''",
+        "description_as_running_mate": "''",
+        "candidate_score": 1
+    }
+  }, {
+    "model": "campaign_trail.candidate",
+    "pk": 26,
+    "fields": {
+        "first_name": "Eric",
+        "last_name": "Hass/Others",
+        "election": 4,
+        "party": "Commie",
+        "state": "New York",
+        "priority": 4,
+        "description": "''",
+        "color_hex": "#3b0000",
+        "secondary_color_hex": "#3b0000",
+        "is_active": 0,
+        "image_url": "https://www.marxists.org/glossary/people/h/pics/hass-eric-1964.jpg",
+        "electoral_victory_message": "''",
+        "electoral_loss_message": "''",
+        "no_electoral_majority_message": "''",
+        "description_as_running_mate": "''",
+        "candidate_score": 1
+    }
+  }, {//running mates
+    "model": "campaign_trail.candidate",
+    "pk": 95,
+    "fields": {
+        "first_name": "Henry Cabot",
+        "last_name": "Lodge Jr",
+        "election": 4,
+        "party": "Republican",
+        "state": "Massachusetts",
+        "priority": 5,
+        "description": "``",
+        "color_hex": "#0000FF",
+        "secondary_color_hex": "#90C0FF",
+        "is_active": 0,
+        "image_url": "https://i.imgur.com/WYWPwI8.png",
+        "electoral_victory_message": "''",
+        "electoral_loss_message": "''",
+        "no_electoral_majority_message": "''",
+        "description_as_running_mate": "<p>The latest member of his elite family to achieve national prominence, Henry Cabot Lodge Jr. was pried away from his hard-earned senate seat in 1950 in order to serve as Stassen's Ambassador to the UN.  In that chamber, Lodge pushed a friendly—if opportunistic approach to foreign relations, frequently defending America's imperial allies in France and Britain, as well as advancing the interests of American global power itself, most notably in backing the coups in Guatemala and Argentina.</p><p>Since 1954, Lodge has served as Stassen's Secretary of State, and has worked diligently to repair America's reputation after the election of Togliatti's Communist Party in Italy and the failed intervention for France in Indochina.</p><p>Lodge has a good relationship with the party's eastern wing, but you and him have previously had a cold acquaintanceship.  If we want this ticket to work, he'll have to put a lid on his reservations on the national security issue, and you'll have to play nice too.</p>",
+        "candidate_score": 0
+    }
+  }, {
+    "model": "campaign_trail.candidate",
+    "pk": 96,
+    "fields": {
+        "first_name": "Ezra Taft",
+        "last_name": "Benson",
+        "election": 4,
+        "party": "Republican",
+        "state": "Utah",
+        "priority": 5,
+        "description": "``",
+        "color_hex": "#0000FF",
+        "secondary_color_hex": "#90C0FF",
+        "is_active": 0,
+        "image_url": "https://cdn.discordapp.com/attachments/1092229578249994240/1140002620354859118/image.png",
+        "electoral_victory_message": "''",
+        "electoral_loss_message": "''",
+        "no_electoral_majority_message": "''",
+        "description_as_running_mate": "<p>You'll never find a man in the Stassen Administration more committed to faith, family and freedom than Ezra Taft Benson.  The problem?  He's a Mormon, and not just any Mormon, but an apostle of the church in Utah too.</p><p>Benson aligns firmly with the Taft wing of the party, and is about as conservative as they come.  While many of his actions as Secretary of Agriculture have been growingly controversial with the nation's struggling farmers, his experience and reputation on that issue could provide some firm backing to any agricultural policies you'd like to push on the trail.  Being a Mormon, his selection will doubtless have a numbing effect on your ability to motivate the Christian right, a key bloc who you've looked to court since your crusade began.  By picking up Benson, you'd be gambling that you can compensate decreased Republican turnout in the Midwest by locking down the West.</p>",
+        "candidate_score": 0
+    }
+  }, {
+    "model": "campaign_trail.candidate",
+    "pk": 97,
+    "fields": {
+        "first_name": "Joel",
+        "last_name": "Broyhill",
+        "election": 4,
+        "party": "Republican",
+        "state": "Virginia",
+        "priority": 5,
+        "description": "``",
+        "color_hex": "#0000FF",
+        "secondary_color_hex": "#90C0FF",
+        "is_active": 0,
+        "image_url": "https://cdn.discordapp.com/attachments/1092229578249994240/1140030574409555988/image.png",
+        "electoral_victory_message": "''",
+        "electoral_loss_message": "''",
+        "no_electoral_majority_message": "''",
+        "description_as_running_mate": "<p>A true, stars-and-bars Dixie Republican?  Well, it's not quite that simple.</p><p>Joel Broyhill represents a series of Virginia suburbs, one of two Republicans serving in the House from the state.  During his time in Congress he's fought for economically conservative policies whilst being one of the signers of the infamous Southern Manifesto to oppose the decision in Brown v. Board.  Broyhill isn't malignant about his attitude to America's blacks, though.  He just wants to keep his suburbs as white as possible.  Is that really so bad?</p><p>Don't answer that, Joe, because it doesn't really matter.  We want to win this election, and maybe that means thinking outside the box.  Your positions—your crusade; it's popular in the South.  We can lock down the whole region, if only we <i>adjust</i> the traditional messaging of a Republican nominee.  Joel Broyhill is that man.</p>",
+        "candidate_score": 0
+    }
+  }, {
+    "model": "campaign_trail.candidate",
+    "pk": 196,
+    "fields": {
+        "first_name": "Lyndon B.",
+        "last_name": "Johnson",
+        "election": 4,
+        "party": "Democratic",
+        "state": "Texas",
+        "priority": 6,
+        "description": "''",
+        "color_hex": "#0000FF",
+        "secondary_color_hex": "#90C0FF",
+        "is_active": 0,
+        "image_url": "https://i.imgur.com/sZla8Jo.png",
+        "electoral_victory_message": "''",
+        "electoral_loss_message": "''",
+        "no_electoral_majority_message": "''",
+        "description_as_running_mate": "<p>The so-called 'master' of the Senate and of the power of persuasion, Lyndon B. Johnson is a brilliant legislator and an ambitious figure in his own right.  An apprentice of both Sam Rayburn and J. William Fulbright, Johnson would certainly help you build bridges with the southern states—as many that can at this point be built after that convention—and gain Fulbright's own commitment to campaigning for the ticket.  Given the senator from Arkansas' popularity nationally for his maverick foreign policy positions, that'd likely be a boon for your campaign.</p><p>Johnson is also a competent retail politician—if unflinchingly aggressive—and will campaign hard for the ticket.  Just keep in mind his recent heart attack.</p><p>If your goal is unifying the party and expanding your lead going into the election, Johnson is a solid, effective pick.</p>",
+        "candidate_score": 0
+    }
+  }, {
+    "model": "campaign_trail.candidate",
+    "pk": 197,
+    "fields": {
+        "first_name": "Francis E.",
+        "last_name": "Walter",
+        "election": 4,
+        "party": "Democratic",
+        "state": "Pennsylvania",
+        "priority": 6,
+        "description": "''",
+        "color_hex": "#0000FF",
+        "secondary_color_hex": "#90C0FF",
+        "is_active": 0,
+        "image_url": "https://cdn.discordapp.com/attachments/1143206375711854665/1143206979016327369/image.png",
+        "electoral_victory_message": "''",
+        "electoral_loss_message": "''",
+        "no_electoral_majority_message": "''",
+        "description_as_running_mate": "<p>Francis Walter is a Democrat, and thus has been something of an unlikely ally for you—but an ally nonetheless.</p><p>In Congress, Walter was about as rabid on the Communism issue as you've been.  During his term as governor of Pennsylvania, he frequently clashed with both Republicans and Democrats in the legislature.</p><p>Walter grew to national fame—or infamy, depending on one's affiliation—for publicly endorsing Harold Stassen at the 1952 Democratic Convention.  Since then he's been a firm ally to the outgoing president, especially after his founding of the 'Democrats for Stassen' national organization that swayed countless conservative Democrats to the president's cause.  It'll be a tough sell to Democrats to back a McCarthy bid, but if anyone's going to win them over, it'll be Francis Walter.</p>",
+        "candidate_score": 0
+    }
+  }, {
+    "model": "campaign_trail.candidate",
+    "pk": 198,
+    "fields": {
+        "first_name": "Robert S.",
+        "last_name": "Kerr",
+        "election": 4,
+        "party": "Democratic",
+        "state": "Oklahoma",
+        "priority": 6,
+        "description": "''",
+        "color_hex": "#0000FF",
+        "secondary_color_hex": "#90C0FF",
+        "is_active": 0,
+        "image_url": "https://cdn.discordapp.com/attachments/1092229578249994240/1140031494253977711/image.png",
+        "electoral_victory_message": "''",
+        "electoral_loss_message": "''",
+        "no_electoral_majority_message": "''",
+        "description_as_running_mate": "<p>Robert Kerr is not the sort of man to give up easily, Sam Rayburn put it best when he said, “Bob Kerr is the kind of man who would charge hell with a bucket of water and believe he could put it out.”</p><p>Kerr was an oil entrepreneur and self-made man before becoming Governor then Senator of Oklahoma. As Governor, Kerr brought competent government to the oft unstable state, and as Senator proved himself not only an impressive orator but one of the Senate’s premier backroom operators and a close ally of Lyndon Johnson. </p><p>Kerr is beloved in his home state and popular in much of the farm belt for his support for farmers and oil workers. Rather than grandstand on civil rights or anti-communism, Kerr prefers to focus his efforts on infrastructure and economic issues. Infamous as an ambitious special interest politician but deeply respected for his work on infrastructure, Kerr is always looking for new opportunities, so picking him could open up significant ones for you</p>",
+        "candidate_score": 0
+    }
+  }, {
+    "model": "campaign_trail.candidate",
+    "pk": 199,
+    "fields": {
+        "first_name": "William",
+        "last_name": "Proxmire",
+        "election": 4,
+        "party": "Democratic",
+        "state": "Wisconsin",
+        "priority": 6,
+        "description": "''",
+        "color_hex": "#0000FF",
+        "secondary_color_hex": "#90C0FF",
+        "is_active": 0,
+        "image_url": "https://cdn.discordapp.com/attachments/1092229578249994240/1140031349105901769/image.png",
+        "electoral_victory_message": "''",
+        "electoral_loss_message": "''",
+        "no_electoral_majority_message": "''",
+        "description_as_running_mate": "<p>William Proxmire prides himself on his efficiency; as a state legislator in Wisconsin, he never missed a vote and was known for his frugal campaigns. As Governor,  he has focused on cutting waste and refining the tax code.</p><p>But Proxmire counts not only efficiency as a skill; before he came along, the Wisconsin Democratic Party was the third biggest party in the state and lacked organization and support. Proxmire and his allies began the tough process of rebuilding the state party and making it competitive. After a decent performance in 1952, Proxmire shocked the state by narrowly defeating incumbent Governor Walter Kohler Jr. two years later.</p><p>Proxmire would bring impressive and youthful energy to your campaign; he is liberal but with a fiscally conservative streak and has great appeal in his home state and with farmers and organized labor. And of course, picking Proxmire would signal your plans to sweep Joe McCarthy’s home state from under him.</p>",
+        "candidate_score": 0
+    }
+  }, {
+    "model": "campaign_trail.candidate",
+    "pk": 200,
+    "fields": {
+        "first_name": "Wayne",
+        "last_name": "Morse",
+        "election": 4,
+        "party": "Republican",
+        "state": "Oregon",
+        "priority": 6,
+        "description": "''",
+        "color_hex": "#0000FF",
+        "secondary_color_hex": "#90C0FF",
+        "is_active": 0,
+        "image_url": "https://cdn.discordapp.com/attachments/1092229578249994240/1140030996121657425/image.png",
+        "electoral_victory_message": "''",
+        "electoral_loss_message": "''",
+        "no_electoral_majority_message": "''",
+        "description_as_running_mate": "<p>Wayne Morse has always followed a simple guiding principle: “Principles over politics.” The Senator for Oregon is generally viewed as a maverick, both for his views and his independence from the GOP. </p><p>First elected as a Senator in 1944, Morse positioned himself as a populist, progressive Republican. Increasingly at odds with the Republican leadership, he emerged as a prominent critic of Joseph McCarthy and President Stassen, going so far as to refuse to endorse the Stassen/Knowland ticket in '52 due to its 'reactionary nature.'</p><p>Morse would be interested in becoming your running mate and may even consider joining the Democrats as well. He could help you with liberal Republicans, and his anti-interventionism would appeal to both Fulbrighters and Gideon’s Army, but he will expect you to take a strong stance against McCarthyism and will not hold back in speaking his mind.</p>",
+        "candidate_score": 0
+    }
+  }, {//southern runningmate
+    "model": "campaign_trail.candidate",
+    "pk": 120,
+    "fields": {
+        "first_name": "",
+        "last_name": "Criswell",
+        "election": 4,
+        "party": "Commie",
+        "state": "California",
+        "priority": 3,
+        "description": "''",
+        "color_hex": "#49246d",
+        "secondary_color_hex": "#49246d",
+        "is_active": 0,
+        "image_url": "https://i.imgur.com/cJ31SEY.png",
+        "electoral_victory_message": "''",
+        "electoral_loss_message": "''",
+        "no_electoral_majority_message": "''",
+        "description_as_running_mate": "<p>Bobby Seale is perhaps the embodiment of the Black Panther Party, and he's received unanimous condemnation from mainstream politics for it. Having co-founded the group with Huey Newton, he's seen his share of media attention, infamously being bound and gagged before the judge in the Chicago Eight trial – indeed earning contempt charges that will have him in prison to start the campaign. Among activists, his name is revered – among the general public, it's quite the opposite.<br><br>As a figure so unanimously popular within the Black Power movement, he would help to spread the Communist message within a key part of any coalition the CPUSA builds. His rhetorical ability is also unparalleled in the organization, and indeed far outstrip Hall's. He would generate large enthusiasm in the radical student population, where he has widespread support. Of course, there's no telling when they'll let him out of the slammer...</p>",
+        "candidate_score": 0
+    }
+  }, {//commie runningmate
+    "model": "campaign_trail.candidate",
+    "pk": 170,
+    "fields": {
+        "first_name": "some",
+        "last_name": "commie bitch",
+        "election": 4,
+        "party": "Other",
+        "state": "Indiana",
+        "priority": 4,
+        "description": "'",
+        "color_hex": "#0000FF",
+        "secondary_color_hex": "#90C0FF",
+        "is_active": 0,
+        "image_url": "https://i.imgur.com/D1P3BU7.png",
+        "electoral_victory_message": "'",
+        "electoral_loss_message": "'",
+        "no_electoral_majority_message": "'",
+        "description_as_running_mate": "<p>Edward Sadlowski is a labor leader who appeared on Hall’s radar following his 'Steelworkers Fightback' movement, in which he led a crusade against corruption in the United Steelworkers of America. He’s relatively unknown nationally, but romantically dedicated to the cause of labor and more agreeable to the general public than any of your other options will ever be.<br><br>Reconciliation with the New Left is largely regarded as CPUSA’s only path forward. If Hall has a strategy that eschews that, Sadlowski would be a powerful pick. Sadlowski would signal an old-left, blue collar turn to the campaign, perhaps rallying support among white ethnics – but no matter his progressive stances, he will always be viewed with distrust by the activist New Left that will be so vital to success. He will also do little to appeal to Black power organizations.</p>",
+        "candidate_score": 0
+    }
+  }]
+  campaignTrail_temp.running_mate_json = [{
+    "model": "campaign_trail.running_mate",
+    "pk": 58,
+    "fields": {
+        "candidate": 23,
+        "running_mate": 95
+    }
+  }]
+  
+  campaignTrail_temp.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 250, \"fields\": {\"candidate\": 24, \"running_mate\": 196}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 253, \"fields\": {\"candidate\": 23, \"running_mate\": 95}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 258, \"fields\": {\"candidate\": 25, \"running_mate\": 120}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 259, \"fields\": {\"candidate\": 26, \"running_mate\": 170}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 260, \"fields\": {\"candidate\": 23, \"running_mate\": 96}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 261, \"fields\": {\"candidate\": 23, \"running_mate\": 97}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 261, \"fields\": {\"candidate\": 23, \"running_mate\": 197}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 262, \"fields\": {\"candidate\": 24, \"running_mate\": 198}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 263, \"fields\": {\"candidate\": 24, \"running_mate\": 199}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 264, \"fields\": {\"candidate\": 24, \"running_mate\": 200}}]"); 
+campaignTrail_temp.opponents_default_json = JSON.parse("[{\"election\": 4, \"candidates\": [23, 24, 25, 26]}]"); 
+campaignTrail_temp.opponents_weighted_json = JSON.parse("[{\"election\": 4, \"candidates\": [23, 24, 25, 26]}]"); 
+campaignTrail_temp.global_parameter_json = JSON.parse("[{\"model\": \"campaign_trail.global_parameter\", \"pk\": 1, \"fields\": {\"vote_variable\": 1.125, \"max_swing\": 0.12, \"start_point\": 0.94, \"candidate_issue_weight\": 10.0, \"running_mate_issue_weight\": 3.0, \"issue_stance_1_max\": -0.71, \"issue_stance_2_max\": -0.3, \"issue_stance_3_max\": -0.125, \"issue_stance_4_max\": 0.125, \"issue_stance_5_max\": 0.3, \"issue_stance_6_max\": 0.71, \"global_variance\": 0.01, \"state_variance\": 0.005, \"question_count\": 30, \"default_map_color_hex\": \"#C9C9C9\", \"no_state_map_color_hex\": \"#999999\"}}]"); //REmember! too CHANGE VARIANCE'SS!!!
+  campaignTrail_temp.temp_election_list = [{
+    "id": 4,
+    "year": 1956,
+    "is_premium": 0,
+    "display_year": "1956Red"
+  }];
+  
+  campaignTrail_temp.difficulty_level_json = JSON.parse("[{\"model\": \"campaign_trail.difficulty_level\", \"pk\": 1, \"fields\": {\"name\": \"Cakewalk\", \"multiplier\": 1.3}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 2, \"fields\": {\"name\": \"Very Easy\", \"multiplier\": 1.2}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 3, \"fields\": {\"name\": \"Easy\", \"multiplier\": 1.1}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 4, \"fields\": {\"name\": \"Normal\", \"multiplier\": 0.97}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 5, \"fields\": {\"name\": \"Hard\", \"multiplier\": 0.95}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 6, \"fields\": {\"name\": \"Impossible\", \"multiplier\": 0.9}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 7, \"fields\": {\"name\": \"Unthinkable\", \"multiplier\": 0.83}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 8, \"fields\": {\"name\": \"Blowout\", \"multiplier\": 0.75}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 9, \"fields\": {\"name\": \"Disaster\", \"multiplier\": 0.68}}]");
+  
+  $("#game_window")[0].style.borderColor = "#a10000" 
+$(".container")[0].style.backgroundColor = "#6e0000"
+
+$("#game_window")[0].style.backgroundColor = "#d5d5d5"
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#ab0000"  
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#cdcee4" 
+document.getElementById("header").src = "https://cdn.discordapp.com/attachments/1092480791948316763/1140310661541400707/Red56TrueFinal.png"
+document.body.background = "https://i.imgur.com/Sy676wI.png" 
+
+const customStyling = document.createElement("style");
+customStyling.innerHTML = `
+.campaign_trail_start_emphasis {
+  background-color: #d5d5d5;
+}
+`;
+document.head.appendChild(customStyling);
+
+
+
+  
+  function changeFontColour() {
+    if (document.getElementById('final_results_description') != null) {
+        document.getElementById('final_results_description').style.color = "white"
+    }
+  }
+  
+
+  $("#game_start").click((event) => {
+    event.preventDefault();
+    $("#election_id_button").click((event) => {
+        event.preventDefault();
+        music.pause();
+        $("#game_window")[0].style.borderColor = "#3A0000" 
+        $(".container")[0].style.backgroundColor = "#0d0b0a"
+        $("#game_window")[0].style.backgroundColor = "#3A0000"
+        e.collect_results = true;
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#3A0000"  
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#676767" 
+        quotes = ["“McCarthyism is Americanism with its sleeves rolled.” ~ Joseph McCarthy", "“At long last, have you left no sense of decency?” ~ Joe Welsh", "“It is double pleasure to deceive the deceiver.” ~ Niccholo Machiavelli", "“There will be no interruptions, unless I think it's of importance.” ~ Joseph McCarthy", "“Roy Cohn is here speaking for Roy Cohn.” ~ Roy Cohn", "“Your motives are not always as altruistic as they seem to yourself.” ~ Bertrand Russell", "“The trouble with free elections is that you never know how they are going to turn out.” ~ Vyecheslav Molotov", "“Politics is theater, but it's more than that.  It concerns the future of all our citizens.” ~ John McCormack"]
+        customquote = quotes[Math.floor((Math.random() * quotes.length))]
+        
+        corrr=`\n<h2>NEW CAMPAIGN TRAIL</h2><font id='wittyquote' size='4' color='white'><em>`+customquote+`</em></font>`
+        document.body.background = "https://i.imgur.com/BW5QO74.jpg" 
+        bannerlist=["https://cdn.discordapp.com/attachments/1112942334229876816/1133919670806786098/image.png"]
+        document.getElementById("header").src = bannerlist[Math.floor((Math.random() * bannerlist.length))] 
+        nct_stuff.themes[nct_stuff.selectedTheme].text_col = "white"
+        e.election_json[0].fields.summary = "<p>On the Convention Floor, things were quiet.  It was the 1956 Republican Convention, and for the first time since its beginning the Dewey acolytes and their enemies on the other fringe of the party had quit their mudslinging.  The RNC Chair, Arthur Summerfield stepped down, and dared to stray forth into this once-intrepid political jungle.</p><p>The quiet grew thunderous as Summerfield continued, before finally he grew tired of playing the waiting game and moved in close, where a huddled group of McCarthy delegates were busily whispering amongst themselves, a few holding a copy of the same newspaper, this morning's copy of the Evening Star, a D.C. paper.<br><br><br><button onclick='next0()'>More</button</p>"
+       e.election_json[0].fields.image_url = "https://cdn.discordapp.com/attachments/1092480791948316763/1140719332310126652/image.png"
+        setInterval(changeFontColour, 200)
+        next1 = function() {
+          const imageElement = document.querySelector('#election_image img');
+          imageElement.setAttribute('src', 'https://cdn.discordapp.com/attachments/1092480791948316763/1140720535689510912/image.png');
+          
+          text = "<div style='position: relative;'>"+
+                 "<p>Finally reaching the Knowland Camp, Summerfield attempted to withhold his growing rage at such foolishness.</p>"+
+                 "<p>Knowland's campaign manager, Milton Marks felt just the same, and speculated out loud whether or not the Dewey or McCarthy people had been behind the leak.  Summerfield, for his thought, felt for sure the Democrats were behind it, and that the liberal Moody Family had cunningly intended to destroy Knowland.</p>"+
+                 "<p>Dewey's and McCarthy's men weren't budging, and Knowland's conservative delegates weren't going to vote for drafting a moderate.  <i>McCarthy...</i> By God, were they really considering it?<br><br><br>"+
+                 "<button style='position: absolute; left: -px; bottom: -9px;' onclick='back0()'>Reset</button>"+
+                 "</p></div>";
+          
+          document.getElementById("election_summary").innerHTML = text;
+      }
+        next0 = function() {
+          const imageElement = document.querySelector('#election_image img');
+              imageElement.setAttribute('src', 'https://cdn.discordapp.com/attachments/1092480791948316763/1140720008322875503/image.png');
+          text = "<p>The article was a wrecking ball.</p><p>Its title read 'UNCOVERED: KNOWLAND'S YEARS OF INFIDELITY.'  Summerfield's hands shook as he stepped away from the group, reading on.  The charges were astounding; detailing in length Knowland's relationship with Ruth Moody, wife of a now-deceased Democrat senator.  It got worse, though, as it explained that Helen Knowland, William's wife, had also been in an affair with Senator Moody, Ruth's husband.  Knowland had gone to extreme lengths to protect and impress his lover, the article continued, detailing how Knowland had gone under the knife to circumcise himself as a means to please his mistress.  The article ended with one last grenade, alleging Helen Knowland had attempted suicide after her lover's death, and that her husband covered it up.<br><br><button onclick='back1()'>Back</button><button onclick='next1()'>Next</button></p>"
+          document.getElementById("election_summary").innerHTML = text
+        }
+        back0 = function() {
+          const imageElement = document.querySelector('#election_image img');
+              imageElement.setAttribute('src', 'https://cdn.discordapp.com/attachments/1092480791948316763/1140719332310126652/image.png');
+          text = "<p>On the Convention Floor, things were quiet.  It was the 1956 Republican Convention, and for the first time since its beginning the Dewey acolytes and their enemies on the other fringe of the party had quit their mudslinging.  The RNC Chair, Arthur Summerfield stepped down, and dared to stray forth into this once-intrepid political jungle.</p><p>The quiet grew thunderous as Summerfield continued, before finally he grew tired of playing the waiting game and moved in close, where a huddled group of McCarthy delegates were busily whispering amongst themselves, a few holding a copy of the same newspaper, this morning's copy of the Evening Star, a D.C. paper.<br><br><br><button onclick='next0()'>More</button></p>"
+          document.getElementById("election_summary").innerHTML = text
+        }
+        back1 = function() {
+          const imageElement = document.querySelector('#election_image img');
+          imageElement.setAttribute('src', 'https://cdn.discordapp.com/attachments/1092480791948316763/1140724546014564403/image.png');
+          
+          text = "<div style='position: relative;'>"+
+                 "<p>C: And you're sure none of this will be traced back?  The Senator—no, we can't let that happen. <br> ?: It won't.  You have my guarantee. <br> C: These people are savage, you know.  They want Joe gone—they're animals.  But we're fiercer, aren't we. <br> ?: You are. <br> C: Then a deal's a deal.  This will be a very beneficial arrangement, for the both of us. <br> ?: And for our nation, too.</p>"+
+                 "<button style='position: absolute; right: 868px; bottom: -91px;' onclick='back0()'>Reset</button>"+
+                 "</div>";
+          
+          document.getElementById("election_summary").innerHTML = text;
+      }
+        
+    })
+  })
+  
+
+  
+  RecReading = true
+  
+  var changeGameDisp = (hide) => {
+    disp = "";
+    if (hide) {
+      disp = "none";
+    }
+    document.getElementsByClassName("inner_window_w_desc")[0].style.display = disp
+  };
+  var changeGameDisp = (hide) => {
+      disp = "";
+      if (hide) {
+        disp = "none";
+      }
+      document.getElementsByClassName("inner_window_w_desc")[0].style.display = disp
+    };
+    e.creditsPage = () => {
+      credits_html = `
+        <h2 style='color: #000000;'>Devs</h2>
+        <h3 style='color: #000000;'>Tom</h3>
+        <p style='color: #000000;'>Co-Creator. Lead Writer, Story/Universe Creator.</p>
+        <h3 style='color: #000000;'>Aiden</h3>
+        <p style='color: #000000;'>Co-Creator. Lead Coder, and (Colors of the site, and backround)</p>
+        <h3 style='color: #000000;'>Calgar77</h3
+        <br style='color: #000000;'>
+        <p style='color: #000000;'>Writer and researcher</p>
+        <h3 style='color: #000000;'>profesordino</h3
+        <br style='color: #000000;'>
+        <p style='color: #000000;'>Graphic Designer and writer</p>
+        <h3 style='color: #000000;'>Playtesters</h3>
+        <p style='color: #000000;'>Neo, duplicator, tedthing, marin, rmngaming5068, usbccable, Lurker, finnhomosapien and cdocwra.</p>
+        <h3 style='color: #000000;'>Contributors</h3>
+        <p style='color: #000000;'>Knowland banner by TedThing. Sign code and CYOA help from Decstar. Lib Counter from 1968Romney. Music Player, 2000N. vpTable code from 1972PWH. CYOA help from Nina.</p>
+      `
+      changeGameDisp(true);
+      var spacer = document.createElement("amongusspacerthisisntarealelement");
+      spacer.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+      document
+        .getElementsByClassName("inner_window_w_desc")[0]
+        .children[1].appendChild(spacer);
+        changeGameDisp(true);
+        var menuHeader = document.createElement("div");
+        menuHeader.classList.add("inner_window_front");
+        menuHeader.innerHTML = `<h1 style='font-family: "Cinzel";'>The 1956Red Credits</font></h1>`;
+        menuHeader.id = "SOTUheader";
+        menuHeader.style = "height: 50px;background-color:#A9A9A9";
+        var newMenu = document.createElement("div");
+        newMenu.classList.add("inner_window_front");
+        newMenu.id = "SOTUmenu";
+        newMenu.style = `height:260px;background-color:#A9A9A9;color:white;overflow-y: scroll;`;
+    
+        newMenu.innerHTML = credits_html;
+        let z = document.getElementById("game_window");
+        var backButton = document.createElement("button");
+        backButton.style =
+          "position: relative; bottom: -13px; left: -380px; width: 150px; height: 80px;font-size:40px;padding-top:5px;padding-left:8px";
+        backButton.id = "backSOTUBtn";
+        backButton.innerHTML = `<b>BACK</b>`;
+        backButton.onclick = function () {
+          document.getElementById("SOTUheader").remove();
+          document.getElementById("SOTUmenu").remove();
+          document.getElementById("backSOTUBtn").remove();
+          changeGameDisp(false);
+        };
+        z.appendChild(menuHeader);
+        z.appendChild(newMenu);
+        z.appendChild(backButton);
+    
+  }
+    
+  e.credits = "<button onclick='e.creditsPage()'>The Redmod Team</button>"
+
+ HistHexcolour=["#721D1D","#0F2667","#3F302A","#3b0000"]; HistName=[" Joseph McCarthy"," John McCormack"," Tom Connally"," Eric Hass/Others"]; HistEV=[274,238,19,0]; HistPV=["29,708,572","29,584,483","2,604,923","245,709"]; HistPVP=["47.9%","47.7%","4.2%","0.2%"];
+ let songsPlayed = 0;
+ musicMode = () => {
+  songsPlayed = 0;
+  // Initialise custom music
+
+  $("#music_player")[0].children[0].style.display = "none"
+  $("#music_player")[0].children[1].style.display = "none"
+
+  document.getElementById("modLoadReveal").style.display = "none"
+  document.getElementById("modloaddiv").style.display = "none"
+
+  musicBox = document.getElementById("music_player")
+  musicBox.style.display = ""
+
+  var trackSel;
+  e = campaignTrail_temp
+  e.selectedSoundtrack = 0
+
+  toTime = (seconds) => {
+      var date = new Date(null);
+      date.setSeconds(seconds);
+      return date.toISOString().substr(11, 8);
+  }
+
+  generateTime = () => {
+      // Get the audio element
+      var audio = document.getElementById("campaigntrailmusic");
+
+      timeTracker = document.createElement("div");
+      timeTracker.style = `
+text-align:left;
+border-style:solid;
+border-width:3px;
+height:150px;
+width:200px;
+background-color:#999999;
+float:right;
+padding: 10px;
+`
+      $("#trackSelParent")[0].prepend(timeTracker);
+      $("#trackSelParent")[0].prepend(document.createElement("br"));
+
+      // Create a new element to display the current position of the audio
+      var positionDisplay = document.createElement("gg");
+      positionDisplay.id = "position-display";
+
+      // Create a new slider element to change the time
+      var timeSlider = document.createElement("input");
+      timeSlider.type = "range";
+      timeSlider.min = 0;
+      timeSlider.max = 1;
+      timeSlider.step = 0.001;
+      timeSlider.value = 0;
+      timeSlider.style.width = "200px";
+      timeSlider.id = "time-slider";
+
+      var pausePlay = document.createElement("button");
+      pausePlay.id = "position-display";
+      pausePlay.innerHTML = "<b>Pause</b>"
+      pausePlay.style.width = "100%";
+
+
+      pausePlay.addEventListener("click", event => {
+          event.preventDefault();
+          updatePositionDisplay();
+          let audio = document.getElementById("campaigntrailmusic");
+          if (audio.paused) {
+              audio.play();
+              event.target.innerHTML = "<b>Pause</b>";
+              return;
+          }
+          audio.pause();
+          event.target.innerHTML = "<b>Play</b>";
+          return;
+      })
+
+      var volumeLabel = document.createElement("gg");
+      volumeLabel.id = "volume-label";
+      volumeLabel.innerHTML = "<br><b>Volume: </b>"
+
+      var volumeSlider = document.createElement("input");
+      volumeSlider.type = "range";
+      volumeSlider.min = 0;
+      volumeSlider.max = 1;
+      volumeSlider.step = 0.001;
+      volumeSlider.value = 0;
+      volumeSlider.style.width = "200px";
+      volumeSlider.id = "volume-slider";
+
+      volumeSlider.value = audio.volume;
+
+      timeTracker.appendChild(pausePlay);
+      timeTracker.appendChild(document.createElement("br"));
+      timeTracker.appendChild(document.createElement("br"));
+      timeTracker.appendChild(positionDisplay);
+      timeTracker.appendChild(timeSlider);
+      timeTracker.appendChild(volumeLabel);
+      timeTracker.appendChild(volumeSlider);
+
+      updatePositionDisplay();
+
+      //for (let i = 0; i < 10; i++)
+      //timeTracker.append(document.createElement("br"));
+
+
+      // Function to update the position display
+      function updatePositionDisplay() {
+          positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+          timeSlider.value = audio.duration ? audio.currentTime / audio.duration : 0;
+      }
+
+      // Function to change the time of the audio
+      function changeTime() {
+          positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+          audio.currentTime = timeSlider.value * audio.duration;
+      }
+
+      updateVolume = event => {
+          audio.volume = event.target.value;
+      }
+
+      // Update the position display and slider every second
+      setInterval(updatePositionDisplay, 1000);
+
+      // Listen for changes to the time slider and change the time of the audio
+      timeSlider.addEventListener("input", changeTime);
+      volumeSlider.addEventListener("input", updateVolume)
+  }
+function newMusicPlayer() {
+        trackSel = document.createElement("div");
+        trackSel.id = "trackSelParent"
+        let z = `<br><br><br><br><br><br><br><br><br><br><div id='trackSel' style="text-align:left;border-style:solid;border-width:3px;overflow-y: scroll;overflow-x: hidden;height:200px; width:400px;background-color:#999999;float:right;">`
+        z += `<b><select id='selectSoundtrack'><option value='` + soundtracks[e.selectedSoundtrack].name + `'>` + soundtracks[e.selectedSoundtrack].name + "</option>"
+        for (i in soundtracks) {
+            if (soundtracks[e.selectedSoundtrack] != soundtracks[i]) {
+                z += `<option value='` + soundtracks[i].name + `'>` + soundtracks[i].name + `</option>`
+            }
+        }
+        z += `</select></b><br><br>`
+            // <label><input type="radio" name="option" value="option1">Option 1</label><br>
+        for (i in soundtracks[e.selectedSoundtrack].tracklist) {
+            let a = soundtracks[e.selectedSoundtrack].tracklist[i]
+            let b = `<label><input class="trackSelector" type="radio" name="trackSelector" value="` + i + `">` + a.name + `</label><br>`
+            z += b
+        }
+        z += "</div><br><br>"
+        trackSel.innerHTML = z
+  
+        // select correct song
+  
+        musicBox.appendChild(trackSel);
+        Array.from(document.getElementById("trackSel").children).filter(f => {
+            return f.tagName == "LABEL"
+        }).map(f => f.children[0])[0].checked = true
+  
+        // set soundtrack changer
+  
+        soundtrackSelector = document.getElementById("selectSoundtrack")
+        soundtrackSelector.onchange = function() {
+            for (i in soundtracks) {
+                if (soundtracks[i].name == soundtrackSelector.value) {
+                    e.selectedSoundtrack = i
+                    break
+                }
+            }
+            document.getElementById("trackSelParent").remove()
+            newMusicPlayer()
+        }
+  
+        var matches = document.querySelectorAll('.trackSelector');
+  
+        for (match in matches) {
+            matches[match].onchange = function() {
+                audio = $("#campaigntrailmusic")[0];
+                audio.src = soundtracks[e.selectedSoundtrack].tracklist[this.value].url
+                audio.currentTime = 0
+            }
+        }
+  
+        musicBox.children[2].loop = false
+        musicBox.children[2].src = soundtracks[e.selectedSoundtrack].tracklist[0].url
+  
+        musicBox.children[2].onended = function() {
+            console.log("next track")
+            let selected = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+            let newSel = clamp(selected + 1, soundtracks[e.selectedSoundtrack].tracklist.length - 1, 0)
+            let buttons = Array.from(document.getElementById("trackSel").children).filter(f => {
+                    return f.tagName == "LABEL"
+                }).map(f => f.children[0])
+                //let selectedIndex = buttons.map(f=>f.children[0]).map(f=>f.checked)
+            buttons[newSel].click()
+            songsPlayed++; // Increment the songs played counter
+      
+          if (songsPlayed === 2) {
+              // After 2 songs, play an audio file
+              playAudioFile();
+          }
+        }
+          
+        for (w = 0; w < 7; w++) {
+            document.getElementById("trackSelParent").appendChild(document.createElement("br"))
+        }
+  
+        generateTime();
+    }
+  
+    clamp = function(a, max, min, overflow = true) {
+        if (overflow) {
+            return a > max ? min : a < min ? max : a;
+        }
+        return a > max ? max : a < min ? min : a;
+    }
+  
+  
+    // Track list
+  
+    var soundtracks = {
+        0: {
+          name: "Rock with Joe!",
+          tracklist: [
+            {
+              "name": "Sinner Man - Les Baxter",
+              "url": "https://cdn.discordapp.com/attachments/1098488379575914516/1141900910826639370/y2mate.is_-_Sinner_Man_original_Les_Baxter_1956.wmv-0ZWlE502g_4-192k-1692320464.mp3"
+            },
+            {
+              "name": "Kiss Me Another - Georgia Gibbs",
+              "url": "https://cdn.discordapp.com/attachments/1098488379575914516/1143445163167977532/y2mate.is_-_1956_HITS_ARCHIVE_Kiss_Me_Another_Georgia_Gibbs-TAd_uzMMKj8-192k-1692688946.mp3"
+            },
+            {
+              "name": "Delilah Jones - McGuire Sisters",
+              "url": "https://cdn.discordapp.com/attachments/1098488379575914516/1143737559743213719/y2mate.com_-_1956_HITS_ARCHIVE_Delilah_Jones_McGuire_Sisters.mp3"
+            },
+            {
+              "name": "The Great Pretender - Platters",
+              "url": "https://cdn.discordapp.com/attachments/1098488379575914516/1143446657992753242/y2mate.is_-_1956_HITS_ARCHIVE_The_Great_Pretender_Platters_a_1_record_-BDGmJlvn0e0-192k-1692689283.mp3"
+            },
+            {
+              "name": "In A Little Spanish Town - Bing Crosby",
+              "url": "https://cdn.discordapp.com/attachments/1098488379575914516/1143447637769592932/y2mate.is_-_1956_HITS_ARCHIVE_In_A_Little_Spanish_Town_Bing_Crosby-S3bI9rJhDjk-192k-1692689540.mp3"
+            }
+          ]
+        },
+        1: {
+          name: "Democrat Duet",
+          tracklist: [
+            {
+              "name": "It Don't Mean A Thing (If It Ain't Got That Swing) - Ella Fitzgerald & Duke Ellington",
+              "url": "https://cdn.discordapp.com/attachments/1098488379575914516/1148537474709213214/y2mate.is_-_it_don_t_mean_a_thing__if_it_ain_t_got_that_swing_-3y_d_aQg2xI-192k-1693901477.mp3"
+            },
+            {
+              "name": "Ready, Willing and Able - Doris Day & Frank Sinatra",
+              "url": "https://cdn.discordapp.com/attachments/1098488379575914516/1148538026448912424/y2mate.is_-_Ready_Willing_and_Able_78rpm_Version_-7_Jnx5KF0GY-192k-1693903169.mp3"
+            },
+            {
+              "name": "Puttin’ On The Ritz - Bing Crosby",
+              "url": "https://cdn.discordapp.com/attachments/1098488379575914516/1148538414606585856/y2mate.is_-_Puttin_On_The_Ritz-K5SDZxzLvn0-192k-1693903273.mp3"
+            },
+            {
+              "name": "Get Happy - Frank Sinatra",
+              "url": "https://cdn.discordapp.com/attachments/1098488379575914516/1148538986327969802/SaveTube.io_-_Get_Happy_Remastered_1998_320_kbps.mp3"
+            },
+            {
+              "name": "Treasure Of Love - Clyde McPhatter",
+              "url": "https://cdn.discordapp.com/attachments/1098488379575914516/1148539201336397904/SaveTube.io_-_1956_HITS_ARCHIVE_Treasure_Of_Love_-_Clyde_McPhatter_320_kbps.mp3"
+            }
+          ]
+        }
+        
+        
+    }
+  
+    // Set up new music player
+  
+    newMusicPlayer()
+}
+
+  $("#game_start").click((event) => {
+    event.preventDefault();
+    $("#election_id_button").click((event) => {
+        musicMode()
+
+        setInterval(changeFontColour, 200)
+  
+    })
+  })
+
+}
