@@ -1287,7 +1287,19 @@ else if ( e.final_overall_results[0].electoral_votes>totalSeats/2){
         	else if (playerParty.popular_votes/totalPV>0.257){
          	image.push("https://i.ibb.co/5c7ttGQ/image5-cropped.jpg")
          	header = "<h2>“Dear viewers, few would have seen this coming, just months ago. Under Scholz, the SPD truly returns to old strength, handily winning this election.”</h2>"
+         	if(playerParty.popular_votes/totalPV>0.27){
          	 addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1131296719661961257/Terry_Gilkyson__Edgar_Ott_-_Probiers_mal_mit_Gemutlichkeit.mp3?ex=651bb96c&is=651a67ec&hm=8a69262a399dff7988d926cb0052905e1230795d0f335bc3dc10c885d33efbed&")
+         	 }
+         	 else{
+         	    if(merkelism>14){
+            addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1157989611839168602/Hildegard_Knef_-_Fur_mich_solls_rote_Rosen_regnen.mp3?ex=651a9d5d&is=65194bdd&hm=f3c844e8f079d6848784704f247e5629b803ec99d01b0f6f6a9089f0152e1ed4&")
+        }
+        else{
+            addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1157989615114932266/Fur_mich_solls_rote_Rosen_regnen_2012.mp3?ex=651a9d5e&is=65194bde&hm=ae685a730005325481a9e249e99b35b5e4f89dd2985197e1f0f9fec7cf807047&")
+
+        }
+         	 }
+
         	playerPerformance = "<p>You started out at 15%. <i>15%!</i> The last time the SPD stooped so low was over a hundred years ago, in the time of the German Empire! The last few days have shown your unlikely surge to be unstoppable, as you clearly showed the world that Germany <i>needs</i> the Social Democrats. It needs a force to fight for the little man, to fight poverty and provide an affordable, fair and just life to every citizen of this great country. <br>The party is in ecstasy, and as the first results come in, it's clear, you haven’t disappointed them. Under your leadership, the SPD has reached its highest vote share since 2005, a massive feat considering the changing political landscape. The whole party is glad that, despite some misgivings, you were made the candidate. Who else, if not Olaf? Now, you just have to jump one last hurdle, the coalition talks, to form a modernizing majority and bring society back together. Only then, you can ascend from Vice Chancellor to Chancellor - but that should be little more than a formality.<br>As you look up to the night sky, seeking a small moment of calm refuge from the celebrations, you notice a small melody whistling through the wind. It’s Willy Brandt, peeking down from the heavens, playing the Internationale on a mandoline."
          	adjustWeights(20);
         	}
@@ -3129,7 +3141,9 @@ let result = applyDrift(78, -0.0008 + (dismissalsLeft >= 4 ? 0.0002 : (dismissal
     }
     if(ans===4501){
         campaignTrail_temp.questions_json[1].fields.description="The race takes shape, as Kevin Kühnert orchestrates a leftist top candidacy, consisting of Saskia Esken and Norbert Walter-Borjans. With eight notable duos running, there will be a run-off deciding between  the final two. You and Gesine Schwan are the only trans-sectional ticket, but both of you are seen as candidates of the past. What approach do you take to convince the party members to vote for you regardless?"
+        if(e.displayTooltips){
         applyTooltipsToObject(campaignTrail_temp.questions_json[1].fields);
+        }
         answerSwapper(4000, 4252, false);
         answerSwapper(4001, 4253, false);
         answerSwapper(4002, 4254, false);
@@ -3148,7 +3162,9 @@ let result = applyDrift(78, -0.0008 + (dismissalsLeft >= 4 ? 0.0002 : (dismissal
     }
     if(ans===4502){
         campaignTrail_temp.questions_json[1].fields.description="The race takes shape, as Kevin Kühnert orchestrates a leftist top candidacy, consisting of Saskia Esken and Norbert Walter-Borjans. With eight notable duos running, there will be a run-off deciding between the final two. You and Claudia Moll become the centrist’s favorite ticket, as an unlikely duo. What approach do you take to convince the party members to vote for you?"
+        if(e.displayTooltips){
         applyTooltipsToObject(campaignTrail_temp.questions_json[1].fields);
+        }
         answerSwapper(4000, 4256, false);
         answerSwapper(4001, 4257, false);
         changeGlobalEffect(78, 4001, -0.005)
@@ -3158,7 +3174,9 @@ let result = applyDrift(78, -0.0008 + (dismissalsLeft >= 4 ? 0.0002 : (dismissal
     }
     if(ans===4503){
         campaignTrail_temp.questions_json[1].fields.description="The race takes shape, as Kevin Kühnert orchestrates a leftist top candidacy, consisting of Saskia Esken and Norbert Walter-Borjans. With eight notable duos running, there will be a run-off deciding between the final two. You and Bärbel Bas are the only cross-sectional ticket, running as natural successors to the current leadership of the SPD. What approach do you take to convince the party members to vote for you?"
+        if(e.displayTooltips){
         applyTooltipsToObject(campaignTrail_temp.questions_json[1].fields);
+        }
         answerSwapper(4000, 4260, false);
         answerSwapper(4001, 4261, false);
         answerSwapper(4002, 4262, false);
