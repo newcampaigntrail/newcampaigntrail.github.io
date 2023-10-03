@@ -1,0 +1,1902 @@
+ /*
+ * Mod Title: Germany 2021 - Between Decades
+ * Mod Author: Nina, Jaeckex
+ * Mod Version: 1.0.1
+ * Mod Description: German Federal Election of 2021
+ * 
+ * Coding License: Apache License 2.0
+ * Writing License: Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
+ * 
+ * For the coding in this mod, I hereby release the code under the terms and conditions of the Apache License 2.0. The full text of the license can be found at:
+ * https://choosealicense.com/licenses/apache-2.0/
+ * 
+ * For the writing in this mod, including documentation, text files, and other non-software written works, I hereby release the content under the terms and conditions of the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license. The full text of the license can be found at:
+ * https://creativecommons.org/licenses/by-nc/4.0/legalcode
+ * 
+ * By using, distributing, or modifying this mod, you agree to abide by the terms and conditions of both the Apache License 2.0 and the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license.
+*/
+campaignTrail_temp.election_json = JSON.parse("[{\"model\": \"campaign_trail.election\", \"pk\": 9, \"fields\": {\"year\": 2021, \"summary\": \"<h2><b>Germany 2021 - Between Decades</b></h2><p>Germany stands at a crossroads. For the last 16 years, it has been governed by the popular <b>Angela Merkel</b> - a figure some describe as patient, rational and gravitational, larger than life. Others believe her to be a “chancellor of standstill”, responsible for the economic and cultural malaise in which the largest economy of Europe finds itself at the onset of the 2020’s. After leading four cabinets, she is now preparing to step down - a historic milestone in the history of the Republic, as the <b>Federal Election of 2021</b> is poised to be the first in which no incumbent chancellor will be defending their position. Not only that: it seems as though three parties might be able to lead the next government, with different characters vying to reform the country in their own image, to lead Germany into a <i>Decade</i> of their own vision.</p><p>All of this happens as the <b>SARS-CoV-2</b> virus ravages the country, changing the lives of people around the world like few crises of this century. Not only that: the cultural cleavage, the persistent development of a split in western societies, permeates Germany just as much. The number one issue for many cosmopolitanists is <b>climate change</b> and the transition to renewable energies, catapulting the Greens to the front of the political scene. On the other side, many blue collar workers and rural traditionalists feel <b>alienated</b>, particularly in East Germany - culminating in the electoral success of the AfD.<br>Anyone seeking to succeed Merkel will have to navigate this unique political moment between <b>Unity, <span style='color: red;'>Justice</span> and <span style='color: #8B8000;'>Freedom</span></b>.</p>\", \"image_url\": \"https://cdn.discordapp.com/attachments/1109846390575730788/1155585635432812744/Bundestagswahl_2021_introbild5.png\", \"winning_electoral_vote_number\": 368, \"advisor_url\": \"https://i.ibb.co/PQrG6fR/advisors.jpg\", \"recommended_reading\": \"\", \"has_visits\": 0, \"no_electoral_majority_image\": \"/static/images/2012-no-majority.jpg\", \"site_description\":\"After 16 years of Angela Merkel's stable but stagnant stewardship of Germany, the country stands at a crossroads.<br>As Covid-19 dominates everyday life, as populism takes hold in alienated parts of society and awareness about climate change grows in others, three candidates are battling it out to determine the future of the Federal Republic.<br>Which party will lead the country to frame the next decade? The incumbent CDU/CSU, the ailing Social Democrats or the ascendant Greens?<br>Determine it yourself in this extensive mod, full of unique gameplay.\"}}]");
+campaignTrail_temp.candidate_json = JSON.parse("[{\"model\": \"campaign_trail.candidate\", \"pk\": 77, \"fields\": {\"first_name\": \"\", \"last_name\": \"CDU／CSU\", \"election\": 9, \"party\": \"Christian Democratic Union/Christian Social Union\", \"state\": \"-\", \"priority\": 1, \"description\": \"<i><b> <div style='text-align: center; color: #5A5A5A; margin-bottom:8px;'>“The creation of new things always takes a lot of patience.” - Konrad Adenauer</div></b></i> <ul class='my-ul'><li>Name: Christian Democratic Union / Christian Social Union</li><li>Abbreviation: CDU/CSU</li><li>Ideology: Christian Democracy</li></ul><p>The “Union”, consisting of the Christian Social Union (in Bavaria) and the Christian Democratic Union (everywhere else), is the dominant political power in Germany. They were founded in the aftermath of the Second World War, merging the remnants of the bourgeois camp and the Zentrumspartei of the Weimar Republic, uniting protestants and catholics. They’ve made it their task to represent “The Center” of German society, espousing a center-right conservatism based in Christian Humanism. Since 1949, they have dominated German politics - more often than not, the chancellor has been a member of the CDU.</p><p>For more than sixteen years now, Angela Merkel has been the face of the CDU, capturing solid electoral majorities, governing once with the Liberals, thrice with the Social Democrats. As the populace now slowly loses trust in the compromises of the so-called “Grand Coalition”, she has announced her retirement. However, her handpicked successor, Annegret Kramp-Karrenbauer, resigned as party leader less than a year before the election, making it unclear who will follow in her footsteps.</p><p>The Union has several competing wings - a moderate wing that wants to broadly continue Merkel’s policies, and a conservative wing that wants a return to rightist orthodoxy. Meanwhile, the Bavarian offshoot CSU - considered economically leftwards and culturally rightwards of its bigger sister - also harbors significant influence on the national stage. Whoever ends up being the chancellor candidate is starting with a solid lead in the polls - although in light of recent political developments, they have their work cut out to safeguard a <b><span style='color: #5A5A5A';>Christian-Democratic Decade</span></b>.</p>\", \"color_hex\": \"#28282B\", \"secondary_color_hex\": \"#77797D\", \"is_active\": 1, \"image_url\": \"https://i.imgur.com/XGtdJT9.jpg\", \"electoral_victory_message\": \" \", \"electoral_loss_message\": \" \", \"no_electoral_majority_message\": \"\", \"description_as_running_mate\": \"\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 78, \"fields\": {\"first_name\": \"\", \"last_name\": \"SPD\", \"election\": 9, \"party\": \"Social Democratic Party\", \"state\": \"-\", \"priority\": 2, \"description\": \"<i><b> <div style='text-align: center; color: darkred; margin-bottom:8px;'>”Freedom and life can be taken from us, but not our honor.” - Otto Wels</div></b></i> <ul class='my-ul'><li>Name: Social Democratic Party of Germany</li><li>Abbreviation: SPD</li><li>Ideology: Social Democracy</li></ul><p>The Social Democratic Party of Germany (SPD) is not just one of the major political parties in Germany, it is the oldest one that’s still active. Since its establishment in 1875, the SPD has played a significant role in the country's political landscape - from the worker’s movement, the establishment of the Weimar Republic, the resistance against Hitler and the establishment of this iteration of the German state. Since the Second World War, it has provided three of the eight chancellors of Germany.</p><p>Since the defeat of chancellor Schröder against Merkel in 2005 though, the days of the party seem finally numbered. For the last eight years, it had the thankless job of being the junior coalition partner of the CDU/CSU - eroding their identity, suffering disastrous defeat after disastrous defeat, all in the name of good governance instead of ideology. Indeed, the SPD has become somewhat of a laughing stock, especially since the Greens have overtaken them in polls - a historical first. A lot of Social Democrats seek a return to a more leftist vision, as the rift between party base and party elites grows deeper and wider.</p><p>With how much the party is struggling and ailing - achieving not even 16% in the European Elections of 2019 - those who believe the tides can turn grow fewer and fewer. It will surely need a miracle for anyone to rise from the ashes, and despite the odds, forge a <b><span style='color: darkred;'>Social Democratic Decade</span></b>.</p>\", \"color_hex\": \"#D61A29\", \"secondary_color_hex\": \"#F5878F\", \"is_active\": 1, \"image_url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Sozialdemokratische_Partei_Deutschlands%2C_Logo_um_2000.svg/2048px-Sozialdemokratische_Partei_Deutschlands%2C_Logo_um_2000.svg.png\", \"electoral_victory_message\": \"\", \"electoral_loss_message\": \"\", \"no_electoral_majority_message\": \"\", \"description_as_running_mate\": \"\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 79, \"fields\": {\"first_name\": \"\", \"last_name\": \"Green Party\", \"election\": 9, \"party\": \"Alliance 90/The Greens\", \"state\": \"-\", \"priority\": 3, \"description\": \"<b> <i><div style='text-align: center; color: darkgreen; margin-bottom:8px;'>“Whatever we’re inflicting on the world, we’re inflicting on ourselves.” - Petra Kelly</div></b></i><ul class='my-ul'><li>Name: Alliance 90 / The Greens</li><li>Abbreviation: Green Party</li><li>Ideology: Progressivism / Green politics</li></ul><p>The Green Party is relatively young, having been founded in 1980 as a consequence of the New Social Movements of the 60’s and 70’s. Combining idiosyncratic elements of the New Left, pacifist- and anti-nuclear-movements, social egalitarians as well as conservationists, the colorful mixture of a party was quarreling at every corner. Nonetheless, the Greens managed to enter parliament in 1983, solidifying themselves as the defining postmaterialist force in German politics. After reunification, they merged with Alliance 90, an East German civil rights party. Since then, they have broadened their appeal from purely pacifism and environmentalism to be a general center-left party, though their strongest focus remains on combating climate change.</p><p>Having taken responsibility during the Red-Green coalition from 1998-2005, the Greens have moderated quite a bit. Recently, they're on a surprising upwards trajectory, being involved in the majority of state governments, even leading one in Baden-Württemberg. With climate change increasing in salience since 2018, they have overtaken the SPD in polls - now, they find themselves the first ‘minor party’ to have a sensible shot at the chancellery. </p><p>However, the Green Party is known for having strong showings in the polls and being unable to actually convert that to votes come election day. For now, they look like the main contender against the CDU/CSU, but a lot can still change. Whoever ends up leading the Greens into battle - if they redefine the Greens as palatable to the average German, they have a unique chance to forge the 2020’s as the first <b><span style='color: darkgreen;'>Green Decade</span></b>.</p>\", \"color_hex\": \"#13A12D\", \"secondary_color_hex\": \"#8FDB8F\", \"is_active\": 1, \"image_url\": \"https://i.ibb.co/tQmtGBz/Greens.png\", \"electoral_victory_message\": \"\", \"electoral_loss_message\": \"\", \"no_electoral_majority_message\": \"\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 303, \"fields\": {\"first_name\": \"\", \"last_name\": \"FDP\", \"election\": 9, \"party\": \"Free Democratic Party\", \"state\": \"-\", \"priority\": 4, \"description\": \"'\", \"color_hex\": \"#F5F518\", \"secondary_color_hex\": \"#FAFA9B\", \"is_active\": 0, \"image_url\": \"'\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}},{\"model\": \"campaign_trail.candidate\", \"pk\": 304, \"fields\": {\"first_name\": \"\", \"last_name\": \"The Left\", \"election\": 9, \"party\": \"The Left\", \"state\": \"-\", \"priority\": 5, \"description\": \"'\", \"color_hex\": \"#C910BA\", \"secondary_color_hex\": \"#F595ED\", \"is_active\": 0, \"image_url\": \"'\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}},{\"model\": \"campaign_trail.candidate\", \"pk\": 305, \"fields\": {\"first_name\": \"\", \"last_name\": \"AfD\", \"election\": 9, \"party\": \"Alternative for Germany\", \"-\": \"New York\", \"priority\": 6, \"description\": \"'\", \"color_hex\": \"#2B8FE0\", \"secondary_color_hex\": \"#85BEED\", \"is_active\": 0, \"image_url\": \"'\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}},{\"model\": \"campaign_trail.candidate\", \"pk\": 306, \"fields\": {\"first_name\": \"\", \"last_name\": \"Others\", \"election\": 9, \"party\": \"Minor Parties\", \"state\": \"-\", \"priority\": 7, \"description\": \"'\", \"color_hex\": \"#807E7F\", \"secondary_color_hex\": \"#C9C7C9\", \"is_active\": 0, \"image_url\": \"'\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}},{\"model\": \"campaign_trail.candidate\", \"pk\": 307, \"fields\": {\"first_name\": \"Armin\", \"last_name\": \"Laschet\", \"election\": 9, \"party\": \"CDU\", \"state\": \"North Rhine-Westphalia\", \"priority\": 8, \"description\": \"'\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"https://i.ibb.co/z4HQGwg/laschet2.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p> <i><b>”I may not be the man of perfect staging, but I am Armin Laschet, and you can count on that.”</b></i>Armin Laschet is the incumbent Minister President of Germany's most populous state, North Rhine-Westphalia. Governing the former SPD stronghold in a moderate-conservative Black-Yellow coalition of CDU and FDP, he was speculated to jump into the 2018 leadership race about Merkel's succession. He declined, but after party leader Annegret Kramp-Karrenbauer threw in the towel after three years, he is eager to join the new contest, taking over her lane as the „continuity-candidate“ – all the way up to the chancellor candidacy. <br>Whilst having the reputation of an integrous statesman, he is also quite gaffe-prone. If he can maneuver this weakness, he might be the best candidate to continue Merkel's style of governance.</p><p><i><b>”I may not be the man of perfect staging, but I am Armin Laschet, and you can count on that.”</b></i></p><p><b>Armin Laschet</b> had no ambition to be chancellor – until now.</p><p>Born into a devout catholic middle class family to a miner and his housewife in Aachen, “the heart of Europe“, the CDU politician started his career in the 1994 Bundestag election. After losing his mandate 4 years later, he started an accomplished foray into the European Parliament, after which he returned to his home state of North Rhine-Westphalia.</p><p>In 2017, he defeated popular SPD incumbent Hannelore Kraft, in what many consider the beginning of the end of the SPD federal election campaign that year. Since then, he has governed NRW, Germany's most populous state, in a CDU-FDP “Black-Yellow” coalition. His tenure turned out to fall straight into Angela Merkel's last term. </p><p>When the chancellor orchestrated Annegret Kramp-Karrenbauer to be her successor in 2018, many expected Laschet to throw his hat into the ring, as a compromise candidate between Kramp-Karrenbauer and the comeback of conservative insurgent Friedrich Merz. He declined, and Kramp-Karrenbauer’s leadership of the next 3 years proved wildly unpopular. In 2021, she finally decided to throw the towel. Even though his Covid-leadership has been shaky, the NRW-Minister President kept a good amount of respect among his peers – and in this new leadership contest, Laschet sees his time to have come.</p><p>Derided by some as a „backup“, he's widely expected to fill in the lane on which Kramp-Karrenbauer won in 2018 – as the „continuity-candidate“. His opponents, the returning Friedrich Merz and the disgraced Norbert Röttgen, are both symbols of the past – it is up to Armin Laschet to show that he can lead the party, and eventually the country, into the 2020’s.</p><p>It's up to you to deal with his controversies, his perceived aloofness and the unexpected political climate, especially since other figures of power seem to perceive a power vacuum…</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 308, \"fields\": {\"first_name\": \"Friedrich\", \"last_name\": \"Merz\", \"election\": 9, \"party\": \"CDU\", \"state\": \"North Rhine-Westphalia\", \"priority\": 9, \"description\": \"'\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"https://i.ibb.co/P4hnWXb/Merz.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p><i>“I left politics 10 years ago. I know the 20 year olds don’t know me. But the 30 year olds do well to remember - and the others are going to get to know me.”</i><b>UNDER CONSTRUCTION - COMING SOON</b></p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 309, \"fields\": {\"first_name\": \"Markus\", \"last_name\": \"Söder\", \"election\": 9, \"party\": \"CSU\", \"state\": \"Bavaria\", \"priority\": 10, \"description\": \"'\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"https://i.ibb.co/NZ4NSY9/Markus-S-der.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p><i>“Of course morality is no category in politics, except for when we want to harm someone.”</i>Markus Söder is the incumbent Minister President of Bavaria. As leader of the smaller sister of the Union, the CSU, he wants to capture the chancellor candidacy for himself. He is a cunning politician and tactician, with his favorability and polling numbers regularly above the possible CDU candidates.<br>His ideological line is quite idiosyncratic, with a hard line on refugees, A lockdown-focused Covid policy and a surprisingly significant environmentalist streak. His popularity could make him the 3rd ever Bavarian chancellor candidate. As long as his opportunism doesn't become too egregious, he might outmaneuver his opponents to become Merkel's successor.</p><p><b><i>“Of course morality is no category in politics, except for when we want to harm someone.”</i></b></p><p><b>Markus Thomas Theodor Söder</b> loves the cameras.</p><p>Raised as a religious protestant in Nürnberg by a family of artisans, he was always drawn to spectacle. As a teen, he admired Franz-Josef Strauß, hanging up a big poster of the legendary Bavarian politician on his ceiling. He’s a cinephile, particularly with Science Fiction. And he’s known for his eccentric carnival costumes, be it Gandalf, Homer Simpson, Paul Stanley or in full-on drag. </p><p>Due to his conservative upbringing, he joined the JU and began his career in politics - always in his home state of Bavaria. And of course - always upwards. Ambition. Drive. First, chair of the JU Bavaria. Then, General Secretary of the CSU. Then, State Minister in 3 different departments. Always more.</p><p>Söder might be a man of power - but one who knows what the people want. His ideological idiosyncrasy can be identified as populism, both in ire and praise. Be it a hard line against immigration and refugees, advocating for crucifixes and singing the anthem in schools, or his advocacy for traditional values, or: praising gay marriage, introducing a bavarian Space Program (Bavaria One), and standing against nuclear energy. In the words of his biographer: “He has a baroque and sometimes bizarre enjoyment of self-presentation, always following the political climate.”</p><p>His cunning can’t be doubted, and he knows how to use it. In 2017, he pressured Minister-President Horst Seehofer, his mentor, from the office, taking it for himself. As the new Bavarian head of government, he ran a hard line on Covid. More importantly though, he pushed the line on climate action within his conservative party - already in 2007 he demanded a ban on admitting new cars with combustion engines come 2020. He wants to save the bees, he advocates for an early exit from coal and for a climate-neutral Bavaria until 2040. Enshrining environmental protection within the constitution, even.</p><p>For his opponents, it’s clear what he’s doing - cold opportunism. But is it really wrong, if it produces results? Markus Söder is one of the most popular politicians in the country, respected among evangelical church goers and environmentalist soccer moms alike. In fact, many people - including within the Union - see him as a good choice for an even higher office.</p><p>Only two CSU politicians were ever chancellor candidates, Söders icon Strauß, and another mentor of his, Edmund Stoiber. Both lost: but Söder knows not to repeat their mistakes. He knows the country yearns for change. He knows the country wants a strong man, a bombastic man, a charismatic man, a good looking man.</p><p>And he, he thinks, is the only one who can deliver. </p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 310, \"fields\": {\"first_name\": \"Olaf\", \"last_name\": \"Scholz\", \"election\": 9, \"party\": \"SPD\", \"state\": \"Hamburg\", \"priority\": 11, \"description\": \"'\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"https://i.ibb.co/z735fdt/Scholz.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p><i>”You can nag about everything. You could sit in a corner and say; surely everything is going to end badly. But honestly, with that attitude, you can't govern a country.”</i>Olaf Scholz is the incumbent Vice Chancellor and Minister of Finance of the SPD, serving in the Grand Coalition under Merkel. Having an illustrious career since the Red-Green coalition, serving in several roles over two decades, most prominently Mayor of Hamburg, he is known for a calm, technocratic demeanor, dubbed the “Scholzomat” - drawing comparisons to Merkel herself. Critics call him boring, admirers call him rational. Despite once being a firebrand leftist in his younger days, he has since become a leading voice of the moderate wing of the SPD. With his impressive resumé and unwavering patience, he urgently has to renew the image of his ailing party, whilst utilizing his Merkel-esque attitude to rescue the Social Democrats from their identity crisis and a historic low in polling.</p><p><b><i>”You can nag about everything. You could sit in a corner and say; surely everything is going to end badly. But honestly, with that attitude, you can't govern a country.”</i></b></p><p><b>Olaf Scholz</b> is as boring as his three-syllabled name. He’s a self-avowed technocrat, embracing the nickname “Scholzomat”. He has “die Ruhe weg” (meaning he’s always calm), he has a small statue, a nondescript face, a bald head, a small black briefcase, he thinks politics is “fun” and in his free time, he enjoys reading scientific literature.</br>Nonetheless, or perhaps because of that, he is the most likely choice to become chancellor candidate of the Social Democratic Party of Germany.</p><p>It wasn’t always like that. Born to a family of textile workers, growing up in Osnabrück and Hamburg, when he was twelve, his career aspiration was “chancellor”. He entered the Jusos, the youth wing of the SPD, and became a leading voice in its far-left “Stamokap”-wing. He quit the church, he held speeches against Nato, against capitalism and against the social-liberal coalition of SPD and FDP. He even undertook several trips to East Germany, maintaining relationships with the communist cadres of the dictatorship.</p><p> Be it due to opportunism, a change in attitude after reunification, or simply due to growing up; he quickly abandoned those tendencies when working as a practitioner of labor law. He rose through the ranks of the SPD Hamburg, becoming MP in Gerhard Schröder’s landslide in 1998, vehemently defending the third-way-neoliberal agenda of the Red-Green coalition, even becoming Schröders General-Secretary. In 2004, he quit, one year before his boss lost the election. It wasn’t long until newly elected chancellor Angela Merkel saw his potential, giving him her Ministry of Labor for two years.</p><p> Afterwards, his impressive resumé made him Mayor of Hamburg, giving him the keys to the Senate of Germany’s second biggest city from 2011-2018. His tenure was known for a big increase in housing construction - but also several scandals, including a botched response to the G20-summit of 2017 and a shady role during the cum-ex scandals of the prominent Warburg-bank.</p><p> His leadership role in the party only increased when he became Minister of Finances and Vice Chancellor in Merkel's unpopular third Grand Coalition. Since Schröders defeat in 2005, the trajectory of his party led downwards, coinciding with a general trend of an identity crisis within European Social Democracy. The SPD reached a low of 20% in the elections of 2017, and after entering another unpopular coalition anyways, now bled to third place, behind The Greens. Internal disagreements ultimately made party chair Andrea Nahles quit her place, leaving a power vacuum in the ailing “oldest party of Germany”.</p><p>Olaf Scholz is now perceived as a leader of its moderate wing: with his unwavering loyalty and rationality, he needs to give a new shine to the SPD. Meanwhile, if he can cleverly utilize his Merkel-esque technocratic brand, he could become her successor after all - laying the foundations of an unlikely Social Democratic decade.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 313, \"fields\": {\"first_name\": \"Rolf\", \"last_name\": \"Mützenich\", \"election\": 9, \"party\": \"SPD\", \"state\": \"North Rhine-Westphalia\", \"priority\": 11, \"description\": \"'\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"https://i.ibb.co/bjhJKXD/m-tzenich-cropped.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p><i>“The current model of 'As much market as possible, as much state as necessary' isn't timely anymore. It is obvious that this motto has to be fundamentally rethought.“</i><b>UNDER CONSTRUCTION - COMING SOON</b></p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 311, \"fields\": {\"first_name\": \"Annalena\", \"last_name\": \"Baerbock\", \"election\": 9, \"party\": \"Greens\", \"state\": \"Brandenburg\", \"priority\": 12, \"description\": \"'\", \"color_hex\": \"#FFFF00\", \"secondary_color_hex\": \"#FFFFC0\", \"is_active\": 0, \"image_url\": \"https://i.ibb.co/MP0P2yQ/Baerbock.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p><i>“Climate Action is the challenge of our time, the challenge of my generation.”</i>Annalena Baerbock is the female co-chair of The Greens. She is knowledgeable on climate policies and foreign policy. A member of the moderate Realo-wing, she has ambitions to become the first Green chancellor candidate, after the party shot up in polling over the last 3 years – especially since she's the only woman between the possible contenders. If she can make the case for an energized campaign with a strong female lead over the government experience of her colleague, Robert Habeck, she might be able to snatch the nomination – and, if she stays popular, lead Germany into a whole new age.</p><p><b><i>“Climate Action is the challenge of our time, the challenge of my generation.”</i></b></p><p><b>Annalena Charlotte Alma Baerbock</b> knows she can do it. No - as a young woman between old men, she knows she<i> has</i> to do it. </p><p>Some might say, Baerbock was homegrown into The Greens. As a kid, her parents took her to pacifist demonstrations for nuclear disarmament in the 1980’s. She grew up on a farm with two sisters; she wished for a Greenpeace-Book for her birthday, she wrote for a newspaper and had a small but successful trampolining career. It is from there that she learned to “<i>have courage, to overcome yourself, to dare something new”</i>.</p><p>After university, she officially joined the Greens in 2005. Only four years later, she was the female chair of The Greens in Brandenburg. Serving in different functions for the Federal and European Green Party, by 2013, she won a mandate into the Bundestag, as climate-political speaker for her party group. She participated at the failed Jamaica talks in 2017 and one year later - was voted to be the party’s female co-chair.</p><p>Baerbock is a “Realo”, a member of the moderate, governance-focused wing of The Greens. Traditionally, their dual leadership consists of a moderate “Realo” and a leftist “Fundi”: but in 2018, when the popular Robert Habeck, also a Realo, was voted to be party chair - Baerbock still won out to be his co-lead, over her left-wing opponent Anja Piel. And it wasn't just to be second fiddle: <i>“We aren’t just voting for the woman on Roberts side, but the new Federal party chair of Alliance 90 / The Greens!”</i> she proclaimed. Habeck got the message, and they worked well together, being reelected as party chairs with a record 97.1% one year later.</p><p>It wasn’t just coincidence that the ‘dynamic duo’ got such a good result - over the course of 2018, frustration with the Status Quo and the explosion of pent-up environmentalist outrage of an oft-forgotten German youth erupted in a polling surge for The Greens. Winning a meager 8.9% in 2017, suddenly, two years later, the party found itself rivaling even the CDU for first place. Something seemed feasible, that most would’ve thought absurd just months before; <i>The Greens have a shot at the chancellery</i>. <br>Since Covid hit, the narrative moved on, with Merkel profiting from a rally-around-the-flag surge. But nonetheless, The Greens remain in second place, finding a footing in the German middle class that positions them to be the top challenger for whoever the CDU puts up. And after Kramp-Karrenbauer faltered, it’s probably gonna be another man.</p><p>This is Baerbocks shot. As a young woman, people will be fierce on her lack of experience, on her lack of “Gravitas”. She might not be able to afford many mistakes. But she thinks she can do it: as long as Robert understands that this race needs a woman - she might very well become the youngest, the second female, and the first Green chancellor of Germany.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 312, \"fields\": {\"first_name\": \"Robert\", \"last_name\": \"Habeck\", \"election\": 9, \"party\": \"Greens\", \"state\": \"Schleswig-Holstein\", \"priority\": 13, \"description\": \"'\", \"color_hex\": \"#00C100\", \"secondary_color_hex\": \"#A1FFA1\", \"is_active\": 0, \"image_url\": \"https://i.ibb.co/VBZWCSM/habeck.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p><i>”We sometimes have this tendency to make arguments immune within an academically coloured language. We’ll have to work on that.”</i> Robert Habeck is the former Minister of Agriculture from Schleswig-Holstein, and the male co-chair of The Greens. The learned philosopher and philologist has earned valuable experience serving in that capacity, commanding respect beyond party lines. He calls himself a „pragmatic idealist“ - and after The Greens shot up in polling over the last 3 years, his ambition is to lead the first Green-led government. If his worldview can prove to be more salient than the gender question, he might win out over his colleague, Annalena Baerbock, to become the first Green chancellor candidate – and if he manages to keep being the patient listener he has a reputation to be, Habeck might have a good shot at the top government post.</p><p><b><i>”We sometimes have this tendency to make arguments immune within an academically coloured language. We’ll have to work on that.”</i></b><p>If there was ever someone who could be described as a “photogenically brash intellectual with a rustic northern attitude”, they’re probably quite similar to <b>Robert Habeck</b>.</p><p>Habeck was born to a pair of pharmacists in Lübeck, home of the Hanseatic League in Northern Germany. Perhaps somewhat stereotypical for a Green, he studied Germanistics, Philosophy and Philology. During a foreign exchange year to Denmark, he was deeply impressed by the Nordic systems. It was there where he developed a (perhaps somewhat oxymoronic) “pragmatic idealism”, personally and politically. He also got to know his wife there, with whom he successfully published literature since the 90’s, mostly children’s books, adult fiction and translations of english lyricism. Living in his home state of Schleswig-Holstein with his family, he shares deep cultural ties to Northern Germany and the Danish minority population.</p><p>It was there where his political career took off rather abruptly. Joining the Green party in 2002, he immediately got introduced into local leadership circles, becoming Schleswig-Holstein’s Green party chair only two years later. Over the next 10 years, he gathered valuable experience in local politics, culminating in him becoming the state’s Vice Minister President in 2012, and with it, taking the mantle of “Minister of Agriculture, Energy Transition, the Environment and Rural Spaces”. His tenure was considered quite successful - his “no-bullshit”-attitude proved popular with broody farmers and fishermen, which helped to make Schleswig-Holstein’s agricultural sector more ecologically sustainable.</p><p>In his stride, he tried to bring his visions to a national level, running for The Green’s top candidacy in 2017, losing by an unexpectedly narrow margin. In 2018, his charisma and outsized credentials made him co-party chair, alongside Annalena Baerbock. Habeck’s pragmatism met the mood of the party - it was the first time The Greens had two members of its moderate Realo-wing at its helm, caught by an eagerness to govern.</p><p>And this ambition became increasingly probable. During this time, frustrations with the political Status Quo and the meager progress on climate action made Germany’s youth protest in the streets, with a generation of parents just as disappointed with the third Grand Coalition within 20 years. The dynamic duo of Habeck and Baerbock met the moment of this longing for change, and the Greens shot up in polling, overtaking the ailing SPD, rivaling the governing CDU/CSU for first place.</p><p>Since then, the polling highs subsided, due to Covid taking over the political discourse - but Habeck knows, this is his time. He wants to serve. Although Annalena Baerbock has her own ambitions, with The Greens eager for a new chapter in Germany’s governance, “pragmatic idealism” and governing experience might just win out over the Gender question, handing Robert Habeck the keys to the nomination and - if he doesn’t lose patience with himself and the German electorate - all the way to the chancellery.</p>\", \"candidate_score\": 0.0}}]");
+campaignTrail_temp.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 47, \"fields\": {\"candidate\": 77, \"running_mate\": 307}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 56, \"fields\": {\"candidate\": 77, \"running_mate\": 308}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 76, \"fields\": {\"candidate\": 77, \"running_mate\": 309}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 106, \"fields\": {\"candidate\": 78, \"running_mate\": 310}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 105, \"fields\": {\"candidate\": 79, \"running_mate\": 311}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 81, \"fields\": {\"candidate\": 79, \"running_mate\": 312}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 821111111111, \"fields\": {\"candidate\": 78, \"running_mate\": 313}}]");
+campaignTrail_temp.opponents_default_json = JSON.parse("[{\"election\": 9, \"candidates\": [77, 78, 79, 303, 304, 305, 306]}]");
+campaignTrail_temp.opponents_weighted_json = JSON.parse("[{\"election\": 9, \"candidates\": [77, 78, 79, 303, 304, 305, 306]}]");
+campaignTrail_temp.global_parameter_json = JSON.parse("[{\"model\": \"campaign_trail.global_parameter\", \"pk\": 1, \"fields\": {\"vote_variable\": 1.125, \"max_swing\": 0.12, \"start_point\": 0.94, \"candidate_issue_weight\": 10.0, \"running_mate_issue_weight\": 0.0, \"issue_stance_1_max\": -0.71, \"issue_stance_2_max\": -0.3, \"issue_stance_3_max\": -0.125, \"issue_stance_4_max\": 0.125, \"issue_stance_5_max\": 0.3, \"issue_stance_6_max\": 0.71, \"global_variance\": 0.01, \"state_variance\": 0.005, \"question_count\": 35, \"default_map_color_hex\": \"#C9C9C9\", \"no_state_map_color_hex\": \"#999999\"}}]");
+campaignTrail_temp.candidate_dropout_json = JSON.parse("[{\"model\": \"campaign_trail.candidate_dropout\", \"pk\": 1, \"fields\": {\"candidate\": 36, \"affected_candidate\": 18, \"probability\": 1.0}}]");
+campaignTrail_temp.temp_election_list = [{"id": 9, "year": 2021, "is_premium": 0, "display_year": "2021DE"}];
+campaignTrail_temp.show_premium = true;
+campaignTrail_temp.modBoxTheme = {
+     "header_color": "#bcbcbc",
+     "header_text_color": "#151045",
+     "description_text_color": "#000000",
+     "description_background_color": "#e1b0b0",
+     "main_color": "#c45b5b",
+     "secondary_color": "#f8f46d",
+     "ui_text_color": "#000651"
+}
+campaignTrail_temp.premier_ab_test_version = -1;
+RecReading = true;
+campaignTrail_temp.election_json[0].fields.recommended_reading = "<div style='color: black'><h3 style='margin-top: 0.5em;'>Do you want to learn more about...</h4><b>The German electoral system?</b><br><a href='https://www.bmi.bund.de/EN/topics/constitution/electoral-law/voting-system/voting-system-node.html' target='_blank'>Brief explanation (English)</a><br><a href='https://www.wahlrecht.de/bundestag/index.htm' target='_blank'>Thourough explanation (German)</a><br><br><b>The Parties?</b><br><a href='https://www.dw.com/en/spd-green-party-fdp-cdu-left-party-afd/a-38085900' target='_blank'>Overview over all major parties (English)</a><br><a href='https://archiv.wahl-o-mat.de/bundestagswahl2021/app/main_app.html' target='_blank'>Wahl-O-Mat - What do all parties think and who matches best with you (German)</a><br><a href='https://www.bundestagswahl-bw.de/wahlprogramm-cdu' target='_blank'>CDU/CSU electoral program 2021 (German)</a><br><a href='https://www.cdu-dresden.de/aktuelles/2021/cdu-csu-wahlprogramm-englisch' target='_blank'>CDU/CSU electoral program 2021 short version (English)</a><br><a href='https://www.spd.de/programm/zukunftsprogramm' target='_blank'>SPD electoral program 2021 (German/English)</a><br><a href='https://www.gruene.de/artikel/wahlprogramm-zur-bundestagswahl-2021' target='_blank'>Greens electoral program 2021 (German/English)</a><h3> Do you want to see another side of the candidates?</h3><b>Interviews without words</b><br><a href='https://sz-magazin.sueddeutsche.de/sagen-sie-jetzt-nichts/armin-laschet-interview-kanzler-merz-88875' target='_blank'>Armin Laschet (2020)</a><br><a href='https://sz-magazin.sueddeutsche.de/sagen-sie-jetzt-nichts/ist-schwarz-gruen-die-zukunft-78094' target='_blank'>Markus Söder (2011)</a><br><a href='https://sz-magazin.sueddeutsche.de/sagen-sie-jetzt-nichts/olaf-scholz-interview-ohne-worte-90544' target='_blank'>Olaf Scholz (2021)</a><br><a href='https://sz-magazin.sueddeutsche.de/sagen-sie-jetzt-nichts/gruenen-annalena-baerbock-politik-87359' target='_blank'>Annalena Baerbock (2019)</a><br><a href='https://sz-magazin.sueddeutsche.de/ein-interview-ohne-worte/sagen-sie-jetzt-nichts-robert-habeck-84368' target='_blank'>Robert Habeck (2017)</a><br>Thank you for playing this mod. We hope you learned something and had as much fun playing it as we did creating it - <i>Nina & Jaeckex </i> </div>"
+
+
+campaignTrail_temp.credits = "<button onclick='funcredits()'>Nina&Jaeckex</button>";
+
+  funcredits = function() {
+    credits = ["Lead Writer, Graphics, Music:", "Jaeckex", "", "Coding, Additional Writing:",  "Nina", "", "Banner by Calgar and Jaeckex", "", "Playtesting:", "Rickroll999, rnmgaming5068, TPLeo, Tomahawk2k, Leon Trotsky, Pompf, Ivorycore, Anne H, Jackalopemaster, EUIV ETS2", "", "Music Player adapted from 2000N", "Advisor Mode inspired by Sea to Shining Sea", ""]
+    text = "CREDITS:\n\n"
+    for (i in credits) {
+        text += credits[i] + "\n"
+    }
+    alert(text)
+  }
+campaignTrail_temp.coalitionDifficulty = 1;
+campaignTrail_temp.difficulty_level_json = JSON.parse("[{\"model\": \"campaign_trail.difficulty_level\", \"pk\": 1, \"fields\": {\"name\": \"Cakewalk\", \"multiplier\": 1.4}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 2, \"fields\": {\"name\": \"Very Easy\", \"multiplier\": 1.25}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 3, \"fields\": {\"name\": \"Easy\", \"multiplier\": 1.1}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 4, \"fields\": {\"name\": \"Normal\", \"multiplier\": 0.97}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 5, \"fields\": {\"name\": \"Hard\", \"multiplier\": 0.92}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 6, \"fields\": {\"name\": \"Impossible\", \"multiplier\": 0.86}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 7, \"fields\": {\"name\": \"Unthinkable\", \"multiplier\": 0.8}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 8, \"fields\": {\"name\": \"Blowout\", \"multiplier\": 0.72}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 9, \"fields\": {\"name\": \"Disaster\", \"multiplier\": 0.64}}]");
+e=campaignTrail_temp;
+HistName=["Replace Me"];
+e.collect_results = true;
+$("#game_window")[0].style.backgroundImage = "url(https://i.ibb.co/3p8pgGF/tagesschau.jpg)";
+backgroundGameWindow =  "url(https://i.ibb.co/3p8pgGF/tagesschau.jpg)"
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#070785"
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#031299"
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+$(".container")[0].style.backgroundColor = "#001f58"
+document.body.background = "https://www.morgenpost.de/bin/src-207619493.jpg"
+document.body.style.backgroundRepeat = "no-repeat";
+document.body.style.backgroundSize = "cover";
+document.getElementById("header").src = "https://cdn.discordapp.com/attachments/1109846390575730788/1131322097562558514/Germany3.png";
+nct_stuff.themes[nct_stuff.selectedTheme].text_col = "white"
+e.music = {};
+e.music.shuffleEnabled = false;
+e.music.Volume=0.3;
+e.music.loopEnabled = false;
+e.displayTooltips = true;
+e.realisticPolls = true;
+e.staff_mode = true;
+e.electionNight=true;
+
+quotes = [`"Wir schaffen das!" - Angela Merkel`, `"Scheitert der Euro, scheitert Europa." - Angela Merkel`, `"Das Internet ist für uns alle Neuland." - Angela Merkel`, `"Die Demokratie ist kein Supermarkt." - Frank-Walter Steinmeier`, `In my homeland Baden-Württemberg we are all sitting in one boat.`, `"Rechts von der CDU/CSU darf es keine demokratisch legitimierte Partei geben" - Franz-Joseph Strauß`, `"Jetzt wächst zusammen, was zusammen gehört" - Willy Brandt`, `Was kümmert mich mein Geschwätz von gestern? - Konrad Adenauer`, `"Wer Visionen hat, sollte zum Arzt gehen" - Helmut Schmidt`, `There will never be a revolution in Germany. The bureaucratic paperwork for it is missing.`, ]
+customquote = quotes[Math.floor((Math.random() * quotes.length))]
+
+corrr="\n<h2>NEUE WAHLKAMPF-TOUR</h2><font id='wittyquote' size='4' color='white'><em>" + customquote + "</em></font>"
+
+var element = document.getElementById('my-invisible-element');
+if (!element) {
+
+    // Get the reference to the bar
+    var bar = document.getElementById('bottomBar');
+
+    // Create the checkbox
+    var checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.id = 'volumeCheckbox';
+    checkbox.checked = true;  // Checked by default
+
+    // Create the label for the checkbox
+    var label = document.createElement('label');
+    label.htmlFor = 'volumeCheckbox';
+    label.style.fontSize = '18px';  // Increase the size of the text
+    label.style.fontWeight = 'bold';  // Make the text bold
+    label.appendChild(document.createTextNode('Enable Volume'));
+
+    // Wrap the checkbox and label in a div and style it
+    var wrapper = document.createElement('div');
+    wrapper.style.padding = '10px';  // Add some padding
+    wrapper.style.borderRadius = '10px';  // Round the corners
+    wrapper.style.backgroundColor = '#d3d3d3';  // Set the background color to the default button color
+    wrapper.style.border = '1px solid black';  // Add a black border
+    wrapper.appendChild(checkbox);
+    wrapper.appendChild(label);
+
+    // Position the wrapper in the middle of the bar
+    var div = document.createElement('div');
+    div.style.position = 'absolute';
+    div.style.left = '50%';
+    div.style.transform = 'translate(-50%, 0)';  // Center the div
+    div.appendChild(wrapper);
+
+    // Add the div to the bar
+    bar.appendChild(div);
+
+    // Add event listener to the checkbox
+    checkbox.addEventListener('change', function() {
+        if (!this.checked) {
+            e.music.Volume = 0;  // Set the initial volume of the music player to 0
+        }
+    });
+
+
+    let trackIndices;
+    let shuffledIndices;
+
+ $("#game_start").click((event) => {
+    event.preventDefault();
+    musicMode()
+      })
+    musicMode = () => {
+        $("#music_player")[0].children[0].style.display = "none"
+        $("#music_player")[0].children[1].style.display = "none"
+        document.getElementById("modLoadReveal").style.display = "none"
+        document.getElementById("modloaddiv").style.display = "none"
+        musicBox = document.getElementById("music_player")
+        musicBox.style.display = ""
+        var trackSel;
+        e = campaignTrail_temp
+        e.selectedSoundtrack = 0
+        toTime = (seconds) => {
+            var date = new Date(null);
+            date.setSeconds(seconds);
+            return date.toISOString().substr(11, 8);
+        }
+        generateTime = () => {
+            // Get the audio element
+            var audio = document.getElementById("campaigntrailmusic");
+            timeTracker = document.createElement("div");
+            timeTracker.id ='timeTracker'
+            timeTracker.style = `
+      text-align:left;
+      border-style:solid;
+      border-width:3px;
+      height:200px;
+      width:200px;
+      background-color:#6699CC;
+      float:right;
+      padding: 10px;
+      `
+            $("#trackSelParent")[0].prepend(timeTracker);
+            $("#trackSelParent")[0].prepend(document.createElement("br"));
+            var positionDisplay = document.createElement("gg");
+            positionDisplay.id = "position-display";
+            var timeSlider = document.createElement("input");
+            timeSlider.type = "range";
+            timeSlider.min = 0;
+            timeSlider.max = 1;
+            timeSlider.step = 0.001;
+            timeSlider.value = 0;
+            timeSlider.style.width = "200px";
+            timeSlider.id = "time-slider";
+            var pausePlay = document.createElement("button");
+            pausePlay.id = "position-display";
+            pausePlay.innerHTML = "<b>Pause</b>"
+            pausePlay.style.width = "100%";
+            pausePlay.style.margin = "2px";
+            pausePlay.addEventListener("click", event => {
+                event.preventDefault();
+                updatePositionDisplay();
+                let audio = document.getElementById("campaigntrailmusic");
+                if (audio.paused) {
+                    audio.play();
+                    event.target.innerHTML = "<b>Pause</b>";
+                    return;
+                }
+                audio.pause();
+                event.target.innerHTML = "<b>Play</b>";
+                return;
+            })
+            var shuffleButton = document.createElement("button");
+            shuffleButton.id = "shuffle-button";
+            shuffleButton.innerHTML = "<b>Shuffle</b>"
+            shuffleButton.style.width = "100%"
+            shuffleButton.style.margin = "2px";;
+            shuffleButton.addEventListener("click", event => {
+                event.preventDefault();
+                e.music.shuffleEnabled = !e.music.shuffleEnabled;
+                event.target.innerHTML = e.music.shuffleEnabled ? "<b>Unshuffle</b>" : "<b>Shuffle</b>";
+                if (e.music.shuffleEnabled) {
+                    shuffledIndices = shuffle(trackIndices.slice());
+                    let currentTrackIndex = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+                    shuffledIndices = shuffledIndices.filter(index => index !== currentTrackIndex);
+                    shuffledIndices.unshift(currentTrackIndex);
+                }
+            });
+            var skipButton = document.createElement("button");
+            skipButton.id = "skip-button";
+            skipButton.innerHTML = "<b>Skip</b>"
+            skipButton.style.width = "100%";
+            skipButton.style.margin = "2px"; // Add margin
+            skipButton.addEventListener("click", event => {
+                event.preventDefault();
+                let selected = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+                let newSel;
+                if (e.music.shuffleEnabled) {
+                    if (!shuffledIndices) {
+                        shuffledIndices = shuffle(trackIndices.slice());
+                    }
+                    let currentIndex = shuffledIndices.findIndex(index => index === selected);
+                    if (currentIndex === shuffledIndices.length - 1) {
+                        shuffledIndices = shuffle(trackIndices.slice());
+                        currentIndex = -1;
+                    }
+                    newSel = shuffledIndices[currentIndex + 1];
+                } else {
+                    newSel = selected + 1 === soundtracks[e.selectedSoundtrack].tracklist.length ? 0 : selected + 1;
+                }
+                let buttons = Array.from(document.getElementById("trackSel").children).filter(f => {
+                        return f.tagName == "LABEL"
+                    }).map(f => f.children[0])
+                buttons[newSel].click()
+            });
+            skipButton.style.width = "50%";
+            var loopButton = document.createElement("button");
+            loopButton.id = "loop-button";
+            loopButton.innerHTML = e.music.loopEnabled ? "<b>Unloop</b>" : "<b>Loop Song</b>";  // Check the initial loop state
+            loopButton.style.width = "50%";  // Match the width with skipButton
+            loopButton.style.margin = "2px";
+            loopButton.addEventListener("click", event => {
+                event.preventDefault();
+                e.music.loopEnabled = !e.music.loopEnabled;
+                let audio = document.getElementById("campaigntrailmusic");
+                audio.loop = e.music.loopEnabled;  // Set the audio's loop property
+                event.target.innerHTML = e.music.loopEnabled ? "<b>Unloop</b>" : "<b>Loop Song</b>";  // Toggle the button text
+            });
+            var volumeLabel = document.createElement("gg");
+            volumeLabel.id = "volume-label";
+            volumeLabel.innerHTML = "<br><b>Volume: </b>"
+            var volumeSlider = document.createElement("input");
+            volumeSlider.type = "range";
+            volumeSlider.min = 0;
+            volumeSlider.max = 1;
+            volumeSlider.step = 0.001;
+            volumeSlider.value = 0;
+            volumeSlider.style.width = "200px";
+            volumeSlider.id = "volume-slider";
+            audio.volume= e.music.Volume;
+            volumeSlider.value = audio.volume;
+            timeTracker.appendChild(pausePlay);
+            if (audio.volume === 0) {
+                audio.pause();
+                pausePlay.innerHTML = "<b>Play</b>";  // Update the pause button text to "Play"
+            }
+            timeTracker.appendChild(shuffleButton);
+            var buttonContainer = document.createElement("div");
+            buttonContainer.style.display = "flex"; // Makes children inline
+            buttonContainer.style.justifyContent = "space-between";
+            skipButton.style.flex = "1"; // Makes it take up equal space
+            skipButton.style.marginRight = "5px"; // Adds some space between the buttons
+
+            loopButton.style.marginRight = "0px";
+
+            buttonContainer.appendChild(skipButton);
+            buttonContainer.appendChild(loopButton);
+
+            timeTracker.appendChild(buttonContainer); // Add the container to timeTracker instead of individual buttons
+            timeTracker.appendChild(positionDisplay);
+            timeTracker.appendChild(timeSlider);
+            timeTracker.appendChild(volumeLabel);
+            timeTracker.appendChild(volumeSlider);
+            updatePositionDisplay();
+            function updatePositionDisplay() {
+                positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+                timeSlider.value = audio.duration ? audio.currentTime / audio.duration : 0;
+            }
+            function changeTime() {
+                positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+                audio.currentTime = timeSlider.value * audio.duration;
+            }
+            updateVolume = event => {
+                audio.volume = event.target.value;
+                e.music.Volume=audio.volume;
+            }
+            setInterval(updatePositionDisplay, 1000);
+            timeSlider.addEventListener("input", changeTime);
+            volumeSlider.addEventListener("input", updateVolume)
+        }
+
+    function newMusicPlayer(previousBgImage = null) {
+            trackSel = document.createElement("div");
+            trackSel.id = "trackSelParent";
+            let z = `<br><br><br><br><br><br><br><br><br><br><br><br><div id='trackSel' style="text-align:left;border-style:solid;border-width:3px;overflow-y: scroll;overflow-x: hidden;height:200px; width:400px;background-color:#6699CC;float:right;">`
+            z += `<b><select id='selectSoundtrack'><option value='` + soundtracks[e.selectedSoundtrack].name + `'>` + soundtracks[e.selectedSoundtrack].name + "</option>"
+            for (i in soundtracks) {
+                if (soundtracks[e.selectedSoundtrack] != soundtracks[i]) {
+                    z += `<option value='` + soundtracks[i].name + `'>` + soundtracks[i].name + `</option>`
+                }
+            }
+            z += `</select></b><br><br>`
+                // <label><input type="radio" name="option" value="option1">Option 1</label><br>
+            for (i in soundtracks[e.selectedSoundtrack].tracklist) {
+                let a = soundtracks[e.selectedSoundtrack].tracklist[i]
+                let b = `<label><input class="trackSelector" type="radio" name="trackSelector" value="` + i + `">` + a.name + `</label><br>`
+                z += b
+            }
+            z += "</div><br><br>"
+            trackSel.innerHTML = z
+            musicBox.appendChild(trackSel);
+            Array.from(document.getElementById("trackSel").children).filter(f => {
+                return f.tagName == "LABEL"
+            }).map(f => f.children[0])[0].checked = true
+            soundtrackSelector = document.getElementById("selectSoundtrack")
+            soundtrackSelector.onchange = function() {
+                let currentBgImage = document.getElementById("trackSel").style.backgroundImage;
+
+                for (i in soundtracks) {
+                    if (soundtracks[i].name == soundtrackSelector.value) {
+                        e.selectedSoundtrack = i;
+                        break;
+                    }
+                }
+                e.music.shuffleEnabled = false;
+                shuffledIndices = null;
+
+                document.getElementById("trackSelParent").remove();
+                newMusicPlayer(currentBgImage);  // Pass the current background image to the next function invocation.
+            };
+            var matches = document.querySelectorAll('.trackSelector');
+            for (match in matches) {
+                matches[match].onchange = function() {
+                    audio = $("#campaigntrailmusic")[0];
+                    audio.src = soundtracks[e.selectedSoundtrack].tracklist[this.value].url
+                    audio.currentTime = 0
+                }
+            }
+            musicBox.children[2].loop = false
+            musicBox.children[2].src = soundtracks[e.selectedSoundtrack].tracklist[0].url
+
+            trackIndices = Array.from({length: soundtracks[e.selectedSoundtrack].tracklist.length}, (_, i) => i);
+
+            musicBox.children[2].onended = function() {
+                if (e.music.loopEnabled) {
+                    this.play();  // If loop is enabled, simply play the same track again
+                } else {
+                let selected = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+                let newSel;
+                if (e.music.shuffleEnabled) {
+                    if (!shuffledIndices) {
+                        shuffledIndices = shuffle(trackIndices.slice());
+                    }
+                    let currentIndex = shuffledIndices.findIndex(index => index === selected);
+                    if (currentIndex === shuffledIndices.length - 1) {
+                        shuffledIndices = shuffle(trackIndices.slice());
+                        currentIndex = -1;
+                    }
+                    newSel = shuffledIndices[currentIndex + 1];
+                } else {
+                    newSel = selected + 1 === soundtracks[e.selectedSoundtrack].tracklist.length ? 0 : selected + 1;
+                }
+                let buttons = Array.from(document.getElementById("trackSel").children).filter(f => {
+                        return f.tagName == "LABEL"
+                    }).map(f => f.children[0])
+                buttons[newSel].click()
+                }
+            }
+
+            for (w = 0; w < 7; w++) {
+              document.getElementById("trackSelParent").appendChild(document.createElement("br"))
+            }
+            generateTime();
+           if (previousBgImage) {
+                document.getElementById("trackSel").style.backgroundImage = previousBgImage;
+                 document.getElementById("timeTracker").style.backgroundImage = previousBgImage;
+            }
+        }
+        clamp = function(a, max, min, overflow = true) {
+            if (overflow) {
+                return a > max ? min : a < min ? max : a;
+            }
+            return a > max ? max : a < min ? min : a;
+        }
+        var soundtracks = {
+		 0: {
+              name: "Intro",
+              tracklist: [
+                {
+                  "name": "Tagesthemen Intro die Ärzte",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296705669775400/Tagesthemen_Intro_Die_Arzte.mp3"
+                },
+                {
+                  "name": "Tagesschau Intro",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296698044534914/Tagesschau_Intro.mp3"
+                }
+				]
+			},
+            1: {
+              name: "German Kulturgut",
+              tracklist: [
+                 {
+                  "name": "Tatort Intro",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296542708473906/Klaus_Doldinger_-_Tatort_Intro.mp3"
+                },
+                {
+                  "name": "Lindenstraße Musik",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296532390490172/Jurgen_Knieper_-_Lindenstrae_Titelmelodie.mp3"
+                },
+                {
+                  "name": "Löwenzahn Intro",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1157372861120524348/Lowenzahn_-_Intro_.mp3"
+                },
+                {
+                  "name": "Das Lied der Deutschen",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296382335057980/August_Hoffmann_von_Fallersleben_-_Lied_der_Deutschen_German_National_Anthem.mp3"
+                },
+                {
+                  "name": "Europahymne",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296462551134340/Friedrich_Schiller__Ludwig_van_Beethoven_-_An_die_Freude_EU_Anthem.mp3"
+                },
+                {
+                  "name": "Einzug der Götter in Walhall",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296655837249657/Richard_Wagner__hr-Sinfonieorchester_-_Einzug_der_Gotter_in_Walhall_Das_Rheingold.mp3"
+                }
+            ]
+                },
+                2: {
+              name: "German Oldies",
+              tracklist: [
+                {
+                  "name": "Nena – 99 Luftballons",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296608349327381/NENA_-_99_Luftballons.mp3"
+                },
+                {
+                  "name": "Trio – Da Da Da",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296755221270558/Trio_-_Da_Da_Da.mp3"
+                },
+                {
+                  "name": "Kraftwerk – Autobahn",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1157374498752974958/Kraftwerk_-_Autobahn_2009_Remaster.mp3"
+                },
+                {
+                  "name": "Udo Jürgens – Griechischer Wein ",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296762661978183/Udo_Jurgens_-_Griechischer_Wein.mp3"
+                },
+                {
+                  "name": "Udo Lindenberg – Sonderzug nach Pankow ",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296771319017544/Udo_Lindenberg_-_Sonderzug_nach_Pankow.mp3"
+                },
+                {
+                  "name": "Nina Hagen – Du hast den Farbfilm vergessen ",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296635834613781/Nina_Hagen_-_Du_hast_den_Farbfilm_vergessen.mp3"
+                },
+                {
+                  "name": "Nena – Irgendwie, Irgendwo, Irgendwann",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296615899070544/NENA_-_Irgendwie_Irgendwo_Irgendwann.mp3"
+                },
+                {
+                  "name": "Die Ärzte - Schrei nach Liebe",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296418104090744/Die_Arzte_-_Schrei_nach_Liebe.mp3"
+                },
+                {
+                  "name": "Die Ärzte - Deine Schuld",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1135606197345583165/Die_Arzte_-_Deine_Schuld.mp3"
+                }
+            ]
+                },
+                3: {
+              name: "Modern German Music",
+              tracklist: [
+                {
+                  "name": "Wir sind Helden – Nur Ein Wort",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296791678160976/Wir_Sind_Helden_-_Nur_Ein_Wort.mp3"
+                },
+                {
+                  "name": "AnnenMayKantereit – Oft gefragt",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296345588772994/AnnenMayKantereit_-_Oft_Gefragt.mp3"
+                },
+                {
+                  "name": "Peter Fox – Schwarz zu Blau",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296645838028820/Peter_Fox_-_Schwarz_zu_Blau.mp3"
+                },
+                {
+                  "name": "KRAFTKLUB – Schüsse in die Luft",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296567064809522/Kraftklub_-_Schusse_in_die_Luft.mp3"
+                },
+                {
+                  "name": "Andreas Bourani – Auf Uns",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296341247672320/Andreas_Bourani_-_Auf_uns.mp3"
+                },
+                {
+                  "name": "Tim Bendzko – Nur Noch Kurz die Welt retten ",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296735856177282/Tim_Bendzko_-_Nur_Noch_Kurz_Die_Welt_Retten.mp3"
+                },
+                {
+                  "name": "Polarkreis 18 – Allein Allein",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1157372581872148500/Polarkreis_18_-_Allein_Allein.mp3"
+                }
+            ]
+                },
+                4: {
+              name: "Deutsche Volkslieder (CDU)",
+              tracklist: [
+                {
+                  "name": "Kein Schöner Land in dieser Zeit",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296350626140241/Anton_Wilhelm_von_Zuccalmaglio_-_Kein_schoner_Land_in_dieser_Zeit.mp3"
+                },
+                {
+                  "name": "Die Gedanken sind frei",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296366619009094/August_Hoffmann_von_Fallersleben_-_Die_Gedanken_sind_frei.mp3"
+                },
+                {
+                  "name": "Loreley (Ich weiß nicht, was soll es bedeuten)",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296500606046349/Heinrich_Heine__Friedrich_Silcher_-_Loreley_Ich_wei_nicht_was_soll_es_bedeuten.mp3"
+                },
+                {
+                  "name": "Du, Du liegst mir im Herzen",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296591505002516/Marlene_Dietrich-_Du_Du_Liegst_Mir_Im_Herzen.mp3"
+                },
+                {
+                  "name": "Wenn die bunten Fahnen wehen",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296329440702575/Alf_Zschiesche_-_Wenn_die_bunten_Fahnen_wehen.mp3"
+                }
+            ]
+                },
+                5: {
+              name: "Deutsche Protestlieder (Greens)",
+              tracklist: [
+                {
+                  "name": "Gänsehaut - Karl der Käfer",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296471967338617/Gansehaut_-_Karl_der_Kafer.mp3"
+                },
+                {
+                  "name": "Ton Steine Scherben – Keine Macht für niemand",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296741602377738/Ton_Steine_Scherben_-_Keine_Macht_fur_niemand.mp3"
+                },
+                {
+                  "name": "Bots - Aufstehen",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296393466761226/Bots_-_Aufstehen.mp3"
+                },
+                {
+                  "name": "Fehlfarben - Ein Jahr (Es geht voran)",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296445107011694/Fehlfarben_-_Ein_Jahr_Es_geht_voran.mp3"
+                },
+                {
+                  "name": "Teller Bunte Knete - Stadtmensch",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296715027251270/Teller_Bunte_Knete_-_Stadtmensch.mp3"
+                }
+            ]
+                },
+                6: {
+              name: "Deutsche Arbeiterlieder (SPD)",
+              tracklist: [
+                {
+                  "name": "Die Internationale",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296479164780654/Hannes_Wader_-_Die_Internationale.mp3"
+                },
+                {
+                  "name": "Wann wir schreiten Seit an Seit",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296517479747776/Hermann_Claudius__Michael_Englert_-_Wann_wir_schreiten_Seit_an_Seit.mp3"
+                },
+                {
+                  "name": "Brüder, zur Sonne, zur Freiheit",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296430389211166/Ernst_Busch_-_Bruder_zur_Sonne_zur_Freiheit.mp3"
+                },
+                {
+                  "name": "Auferstanden aus Ruinen (DDR Anthem)",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296491626045440/Hanns_Eisler__Johannes_Becher_-_Auferstanden_auf_Ruinen_DDR_Anthem.mp3"
+                },
+                {
+                  "name": "Das Arbeitsfrontlied",
+                  "url": "https://cdn.discordapp.com/attachments/1131296206908301423/1131296484445396992/Hannes_Wader_-_Einheitsfrontlied.mp3"
+                }
+            ]
+                }
+        }
+        newMusicPlayer()
+      }
+
+          function shuffle(array) {
+            let currentIndex = array.length, temporaryValue, randomIndex;
+
+            while (0 !== currentIndex) {
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+
+            return array;
+        }
+
+headerImage = '';
+    function updateHeader() {
+      var gameHeader = document.getElementsByClassName("game_header")[0];
+
+      if (gameHeader.getAttribute("id") !== "modifiedHeader") {
+        gameHeader.innerHTML = corrr;
+        gameHeader.style.backgroundImage = headerImage;
+        gameHeader.style.backgroundSize = "cover";
+        gameHeader.style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+        gameHeader.setAttribute("id", "modifiedHeader");
+        gameHeader.style.height="6.5em";
+      }
+    }
+
+    var headerobserver = new MutationObserver(updateHeader);
+    headerobserver.observe(document.documentElement, { childList: true, subtree: true });
+
+    function updateCandidateForm() {
+
+      const heading = document.querySelector("#candidate_form form h3");
+
+      if (heading) {
+        heading.textContent = "Please select your party:";
+      }
+     }
+
+    function updateRunningMateForm() {
+
+      const heading = document.querySelector("#running_mate_form form h3");
+
+      if (heading) {
+        heading.textContent = "Please select your candidate:";
+      }
+    }
+
+    function removeCandidateSummary() {
+        const candidateSummary = document.querySelector("#candidate_summary");
+        if (candidateSummary) {
+            const ulList = candidateSummary.querySelectorAll("ul:not(.my-ul)");
+            ulList.forEach(ul => candidateSummary.removeChild(ul));
+        }
+    }
+
+    function modifyAllocationForm() {
+
+        const form = document.querySelector('form[name="game_type_selection"]');
+            if(form){
+            const select = form.querySelector('select[name="game_type_id"]');
+
+            // change option value
+            const option = select.querySelector('option[value="1"]');
+            option.textContent = 'Proportional (Bundestag)';
+
+
+            var optionToRemove = document.querySelector('option[value="2"]');
+            if (optionToRemove) {
+              optionToRemove.style.display = 'none';
+            }
+
+            // change h3 text
+            const h3 = form.querySelector('h3');
+            h3.textContent = 'How would you like the seats to be allocated';
+            }
+   }
+
+function changeOpponentSelectionDescription() {
+    const opponentSelectionDescription = document.getElementById("opponent_selection_description_window");
+
+    if (!opponentSelectionDescription) return;
+
+    // Check if the divs already exist, and if they do, stop the function
+    if (document.getElementById("div1") || document.getElementById("div2")) return;
+
+    // Clear the original content
+    opponentSelectionDescription.innerHTML = '';
+
+    // Define the texts and button labels
+    const text1 = `<p><strong>Use the allocation method for the German Bundestag.</strong></p><p>The German electoral system is quite complex. Every voter has two votes, one for a party and one for a directly elected candidate in their constituency. Theoretically, half the parliament is determined first past the post by these direct elections and half proportionally through the party votes, with seats allocated with the Sainte-Laguë method on a per-state basis.<br> However, if a party receives more seats through this system than it would if the parliament was elected by strictly proportional votes, they get extra (overhanging) mandates and all over parties get compensatory mandates. Overall, all but three overhanging mandates get compensated. <br> To enter parliament, a party either needs 5% of the proportional vote or win in at least three districts. <br> For the purpose of this game, the system has been simplified. Only the proportional vote has been simulated - though there are some heuristics to guess the number of constituencies won by parties where this is relevant.`;
+
+     const text2 = `<p><strong>Difficulty Options</strong></p>
+
+    <p>This mod offers five unique difficulty settings to customize your game.<br>
+
+    <strong>Campaign Difficulty</strong> is the standard difficulty setting that impacts your party's standing in the polls.<br>
+
+    <strong>Coalition Difficulty</strong> determines the difficulty of post-election coalition negotiations. On "Guaranteed", any coalition you select will form, independent of election results. Generally, coalition probabilities are based on the election winner, margin of victory, campaign decisions, and certain coalitions' inherent likelihood.<br>
+
+    The <strong>Alternate Election Night option </strong>allows you to switch to an election night experience that is more in line with how election night plays out in Germany<br>
+
+    The <strong>Advisor mode</strong> allows you to hire and dismiss your campaign advisors during the campaign. They all have different effects and can be found in the headquarter.<br>
+
+    The <strong><span class="mytooltip">Tooltip option<span class="mytooltiptext">Look out for words with a light blue background like this and hover them for a tooltip.</span></span> </strong>provides tooltips for key phrases, offering extra explanations - especially beneficial for those not acquainted with German politics.</p>
+  `
+   const btnText1 = 'Difficulty Options';
+    const btnText2 = 'Electoral System';
+
+    // Create the first div with the first text and the toggle button
+    const div1 = document.createElement('div');
+    div1.id = "div1";
+    div1.innerHTML = `<p>${text1}</p><button id="toggleBtn">${btnText1}</button>`;
+
+    // Create the second div with the second text, initially hidden
+    const div2 = document.createElement('div');
+    div2.id = "div2";
+    div2.style.display = 'none';
+    div2.innerHTML = `<p>${text2}</p><button id="toggleBtn2">${btnText2}</button>`;
+
+    // Append both divs to the original element
+    opponentSelectionDescription.appendChild(div1);
+    opponentSelectionDescription.appendChild(div2);
+
+    // Get the buttons
+    const button1 = document.getElementById("toggleBtn");
+    const button2 = document.getElementById("toggleBtn2");
+
+    // Add event listeners to the buttons to toggle visibility of the divs
+    button1.addEventListener("click", function() {
+        div1.style.display = 'none';
+        div2.style.display = 'block';
+    });
+
+    button2.addEventListener("click", function() {
+        div2.style.display = 'none';
+        div1.style.display = 'block';
+    });
+}
+
+
+
+
+  function addCoalitionDifficultyDropdown() {
+        var difficultyDiv = document.getElementById("difficulty_level");
+        if (difficultyDiv && !document.getElementById("coalitionDifficultyDropdown")) {
+            var difficulties = ["Guaranteed", "Very Easy", "Easy", "Normal", "Hard", "Impossible"];
+            var difficultyValues = [1000000, 5, 1.5, 1, 0.75, 0.2];
+            var dropdown = document.createElement("select");
+            dropdown.id = "coalitionDifficultyDropdown";
+
+            for (var i = 0; i < difficulties.length; i++) {
+                var opt = document.createElement("option");
+                opt.text = difficulties[i];
+                if (difficulties[i] === "Normal") {
+                    opt.selected = true;
+                }
+                opt.value = difficultyValues[i];
+                dropdown.options.add(opt);
+            }
+
+            var form = document.createElement("form");
+            form.name = "coalition_difficulty_level_selection";
+            var header = document.createElement("h3");
+            header.textContent = "Select coalition difficulty:";
+            form.appendChild(header);
+            form.appendChild(dropdown);
+            difficultyDiv.appendChild(form);
+
+            var visitsForm = document.createElement("form");
+            visitsForm.name = "state_visits_selection";
+            var visitsHeader = document.createElement("h3");
+            visitsHeader.textContent = "Change Election Night";
+            visitsForm.appendChild(visitsHeader);
+            var visitsCheckbox = document.createElement("input");
+            visitsCheckbox.type = "checkbox";
+            visitsCheckbox.id = "stateVisitsCheckbox";
+            visitsCheckbox.checked = true;
+            visitsForm.appendChild(visitsCheckbox);
+            difficultyDiv.appendChild(visitsForm);
+
+            visitsCheckbox.addEventListener("change", function() {
+                e.electionNight = this.checked;
+            });
+
+            var AdvisorForm = document.createElement("form");
+            AdvisorForm.name = "realistic_polls_selection";
+            var AdvisorHeader = document.createElement("h3");
+            AdvisorHeader.textContent = "Advisor Mode";
+            AdvisorForm.appendChild(AdvisorHeader);
+            var AdvisorCheckbox = document.createElement("input");
+            AdvisorCheckbox.type = "checkbox";
+            AdvisorCheckbox.id = "AdvisorCheckbox";
+            AdvisorCheckbox.checked = e.realisticPolls;
+            AdvisorForm.appendChild(AdvisorCheckbox);
+            difficultyDiv.appendChild(AdvisorForm);
+
+            AdvisorCheckbox.addEventListener("change", function() {
+                e.staff_mode = this.checked;
+            });
+
+
+             // Add tooltip checkbox here
+            var tooltipForm = document.createElement("form");
+            tooltipForm.name = "tooltip_selection";
+            var tooltipHeader = document.createElement("h3");
+            tooltipHeader.textContent = "Enable tooltips";
+            tooltipForm.appendChild(tooltipHeader);
+            var tooltipCheckbox = document.createElement("input");
+            tooltipCheckbox.type = "checkbox";
+            tooltipCheckbox.id = "tooltipCheckbox";
+            tooltipCheckbox.checked = true;
+            tooltipForm.appendChild(tooltipCheckbox);
+            difficultyDiv.appendChild(tooltipForm);
+
+            tooltipCheckbox.addEventListener("change", function() {
+                e.displayTooltips = this.checked;
+            });
+
+
+            var difficultyForm = document.querySelector('form[name="difficulty_level_selection"]');
+            var difficultyHeader = difficultyForm.querySelector('h3');
+            difficultyHeader.textContent = "Select campaign difficulty:";
+
+            var forms = document.querySelectorAll("#difficulty_level form");
+            for (var i = 0; i < forms.length; i++) {
+              forms[i].style.display = "inline-block";
+              forms[i].style.paddingLeft = "10px"; // adjust the value as needed
+              forms[i].style.paddingRight = "10px"; // adjust the value as needed
+            }
+
+            dropdown.addEventListener("change", function() {
+                campaignTrail_temp.coalitionDifficulty = this.value;
+            });
+        }
+    }
+
+    function walkAndReplace(node, wordsToFind) {
+        if (node.nodeType === Node.TEXT_NODE) {
+            // Ignore nodes that are already wrapped with our span
+            if (node.parentNode.nodeName.toLowerCase() === "span" && node.parentNode.style.color === 'white') {
+                return;
+            }
+
+            let matched = false;
+            let newNodeValue = node.nodeValue;
+
+            for(let word of wordsToFind) {
+                let searchRegEx = new RegExp(word, 'g');
+                if (searchRegEx.test(newNodeValue)) {
+                    matched = true;
+                    newNodeValue = newNodeValue.replace(searchRegEx, `<span style="color: white;">${word}</span>`);
+                }
+            }
+
+            if (matched) {
+                let div = document.createElement('div');
+                div.innerHTML = newNodeValue;
+                let parent = node.parentNode;
+                while (div.firstChild) {
+                    parent.insertBefore(div.firstChild, node);
+                }
+                parent.removeChild(node);
+            }
+
+        } else {
+            for(let i = 0; i < node.childNodes.length; i++) {
+                walkAndReplace(node.childNodes[i], wordsToFind);
+            }
+        }
+    }
+
+    const myTableHTML = `
+        <table> <tbody> <tr> <th>Party</th> <th>Seats</th> <th>Popular Votes</th> <th>Popular Vote %</th> </tr>            <tr><td style="text-align: left;">            <span style="background-color: #D61A29; color: #D61A29;">----</span>  SPD</td><td> 206 </td><td> 11,955,434 </td><td> 25.7% </td></tr>            <tr><td style="text-align: left;">            <span style="background-color: #28282B; color: #28282B;">----</span>  CDU/CSU</td><td> 197 </td><td> 11,178,298 </td><td> 24.1% </td></tr>            <tr><td style="text-align: left;">            <span style="background-color: #13A12D; color: #13A12D;">----</span>  Green Party</td><td> 118 </td><td> 6,852,206 </td><td> 14.8% </td></tr>            <tr><td style="text-align: left;">            <span style="background-color: #F5F518; color: #F5F518;">----</span>  FDP</td><td> 92 </td><td> 5,319,952 </td><td> 11.5% </td></tr>            <tr><td style="text-align: left;">            <span style="background-color: #2B8FE0; color: #2B8FE0;">----</span>  AfD</td><td> 83 </td><td> 4,803,902 </td><td> 10.3% </td></tr>            <tr><td style="text-align: left;">            <span style="background-color: #C910BA; color: #C910BA;">----</span>  The Left</td><td> 39 </td><td> 2,270,906 </td><td> 4.9% </td></tr>            <tr><td style="text-align: left;">            <span style="background-color: #807E7F; color: #807E7F;">----</span>  Others</td><td> 1 </td><td> 4,061,325 </td><td> 8.7% </td></tr></tbody></table>
+    `;
+
+        function resultReplacer() {
+        const allTables = document.querySelectorAll('table');
+
+        const targetTable = Array.from(allTables).find(table => {
+            // Ensure table has at least 2 rows and the second row has at least one cell
+            if (table.rows.length > 1 && table.rows[1].cells.length > 0) {
+                // Get the first cell of the second row
+                const firstColumnSecondRow = table.rows[1].cells[0];
+
+                // Check if the cell's HTML contains '</span>'
+                if (firstColumnSecondRow.innerHTML.includes('</span>')) {
+                    // Split the cell's HTML by '</span>'
+                    const splitHTML = firstColumnSecondRow.innerHTML.split('</span>');
+
+                    // Get the text after '</span>', if any
+                    const textAfterSpan = splitHTML.length > 1 ? splitHTML[1].trim() : '';
+
+                    // Check if the text after '</span>' is 'Replace Me'
+                    if (textAfterSpan === 'Replace Me') {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        });
+
+        if (targetTable) {
+            targetTable.outerHTML = myTableHTML;
+        }
+    }
+
+let pages = [];
+let currentPage = 0;
+let maxCharsPerPage = 1250;
+
+function displayPage(pageNumber) {
+  const contentDiv = document.getElementById('running_mate_summary');
+  const oldParagraphs = Array.from(contentDiv.getElementsByTagName('p'));
+  oldParagraphs.forEach(p => p.remove());
+
+  pages[pageNumber].forEach(function(paragraph) {
+    contentDiv.appendChild(paragraph.cloneNode(true));
+  });
+
+  const ulElement = contentDiv.querySelector('ul');
+  if(pageNumber===0){
+   const firstParagraph = contentDiv.querySelector('p');
+
+    // Check if firstParagraph exists and has a child 'i' element.
+    if (firstParagraph) {    const italicContent = firstParagraph.querySelector('i');
+        if (italicContent) {
+            // Extract content from 'i' tags
+            const extractedText = italicContent.textContent;
+
+            // Remove the 'i' content from the paragraph
+            italicContent.remove();
+
+            // Create new element to hold the extracted content
+            const newElement = document.createElement('p');
+
+            // Wrap in bold and italic tags
+            const boldAndItalicText = document.createElement('i');
+            const boldText = document.createElement('b');
+            boldText.textContent = extractedText;
+
+            boldAndItalicText.appendChild(boldText);
+            newElement.appendChild(boldAndItalicText);
+
+            // Insert new element right before the ul list
+            if (ulElement) {
+                contentDiv.insertBefore(newElement, ulElement);
+            }
+        }
+    }
+    }
+
+  if (contentDiv.querySelector('ul')) {
+    contentDiv.querySelector('ul').style.display = (pageNumber === 0) ? 'block' : 'none';
+      const firstLi = ulElement.querySelector('li:first-child');
+      const liElements = ulElement.querySelectorAll('li');
+
+      if (firstLi) {
+        if(liElements.length === 3){
+            const firstLiContent = firstLi.textContent;
+            if (firstLiContent === "Name: Armin Laschet") {
+              const newLi = document.createElement('li');
+              newLi.textContent = "Character Mechanic: Statesmanship";
+              ulElement.appendChild(newLi);
+          }
+          if (firstLiContent === "Name: Friedrich Merz") {
+              const newLi = document.createElement('li');
+              newLi.textContent = "Character Mechanic: Radicalism";
+              ulElement.appendChild(newLi);
+          }
+          if (firstLiContent === "Name: Markus Söder") {
+              const newLi = document.createElement('li');
+              newLi.textContent = "Character Mechanic: Opportunism";
+              ulElement.appendChild(newLi);
+          }
+          if (firstLiContent === "Name: Olaf Scholz") {
+              const newLi = document.createElement('li');
+              newLi.textContent = "Character Mechanic: Merkelism";
+              ulElement.appendChild(newLi);
+          }
+          if (firstLiContent === "Name: Annalena Baerbock") {
+              const newLi = document.createElement('li');
+              newLi.textContent = "Character Mechanic: Likeability";
+              ulElement.appendChild(newLi);
+          }
+          if (firstLiContent === "Name: Robert Habeck") {
+              const newLi = document.createElement('li');
+              newLi.textContent = "Character Mechanic: Patience";
+              ulElement.appendChild(newLi);
+          }
+          if (firstLiContent === "Name: Rolf Mützenich") {
+              const newLi = document.createElement('li');
+              newLi.textContent = "Character Mechanic: Reformism";
+              ulElement.appendChild(newLi);
+          }
+        }
+      }
+
+  }
+
+  // Update button visibility
+  const prevButton = document.getElementById('prevButton');
+  const nextButton = document.getElementById('nextButton');
+
+  if (prevButton) {
+    prevButton.style.display = (currentPage === 0) ? 'none' : 'block';
+  }
+
+  if (nextButton) {
+    nextButton.style.display = (currentPage === pages.length - 1) ? 'none' : 'block';
+    nextButton.innerHTML = (currentPage === 0) ? 'Full Biography' : 'Next';
+  }
+
+  const buttonContainer = document.getElementById('buttonContainer');
+  if(buttonContainer) {
+    contentDiv.appendChild(buttonContainer);
+  }
+}
+
+
+function nextPage() {
+  if (currentPage < pages.length - 1) {
+    currentPage++;
+    displayPage(currentPage);
+  } else {
+    alert("You're on the last page");
+  }
+}
+
+function prevPage() {
+  if (currentPage > 0) {
+    currentPage--;
+    displayPage(currentPage);
+  } else {
+    alert("You're on the first page");
+  }
+}
+
+function createButtons() {
+  const contentDiv = document.getElementById('running_mate_summary');
+  const buttonContainer = document.createElement('div');
+  buttonContainer.id = 'buttonContainer';
+  buttonContainer.style.display = 'flex';
+
+  const prevButton = document.createElement("button");
+  prevButton.innerHTML = "Previous";
+  prevButton.onclick = prevPage;
+  prevButton.id = 'prevButton';
+
+  const nextButton = document.createElement("button");
+  nextButton.innerHTML = "Next";
+  nextButton.onclick = nextPage;
+  nextButton.id = 'nextButton';
+
+  buttonContainer.appendChild(prevButton);
+  buttonContainer.appendChild(nextButton);
+
+  contentDiv.appendChild(buttonContainer);
+}
+
+
+function removeButtons() {
+  const buttonContainer = document.getElementById('buttonContainer');
+  if (buttonContainer) buttonContainer.remove();
+}
+
+function paginateContent() {
+  const contentDiv = document.getElementById('running_mate_summary');
+  if (!contentDiv) {
+    return;
+  }
+
+  // Check if pagination has been applied
+  if (contentDiv.querySelector('.pagination-applied')) {
+    return;
+  }
+
+  const paragraphs = Array.from(contentDiv.getElementsByTagName('p'));
+
+  // Clear pages array
+  pages = [];
+  currentPage = 0;
+
+  let page = [];
+  let charCount = 0;
+  let paragraphsCount = 0;
+
+  paragraphs.forEach(paragraph => {
+    charCount += paragraph.textContent.length;
+
+    if (charCount <= maxCharsPerPage && (paragraphsCount === 0 || pages.length > 0)) {
+      page.push(paragraph);
+      paragraphsCount +=1;
+    } else {
+      pages.push(page);
+      page = [paragraph]; // Start new page
+      charCount = paragraph.textContent.length; // Reset char count
+    }
+  });
+
+  if (page.length > 0) {
+    pages.push(page); // Push last page
+  }
+
+  removeButtons();
+
+  if (pages.length > 1) {
+    createButtons();
+  }
+
+  displayPage(currentPage);
+
+  // Add marker indicating pagination has been applied
+  const paginationMarker = document.createElement('div');
+  paginationMarker.style.display = 'none';
+  paginationMarker.className = 'pagination-applied';
+  contentDiv.appendChild(paginationMarker);
+}
+
+    let changesInProgress = false;
+
+    // Define the MutationObserver
+    let masterObserver = new MutationObserver(masterFunction);
+
+
+    // Master function
+    function masterFunction() {
+        if (changesInProgress) return;
+        changesInProgress = true;
+        masterObserver.disconnect();
+
+        // Call all the functions here
+        updateCandidateForm();
+        updateRunningMateForm();
+        removeCandidateSummary();
+        modifyAllocationForm();
+        changeOpponentSelectionDescription();
+        applyColorStyles();
+        addCoalitionDifficultyDropdown();
+        resultReplacer();
+        paginateContent();
+
+        // Re-observe the document
+        changesInProgress = false;
+        masterObserver.observe(document.body, { childList: true, subtree: true });
+    }
+
+    // Start observing the document with the master observer
+    masterObserver.observe(document.body, { childList: true, subtree: true });
+
+    // Ensure we don't re-enter applyColorStyles
+    function applyColorStyles() {
+        let wordsToFind = ['Advisor Mode?','Change Election Night?', 'Select coalition difficulty:', 'Please select the election you will run in:', 'This scenario was made by', 'Please select your party:', 'Please select your candidate:', 'How would you like the seats to be allocated?', 'Select campaign difficulty:', 'Enable tooltips?'];
+
+        walkAndReplace(document.body, wordsToFind);
+    }
+
+    const bodyElement = document.body;
+    bodyElement.style.backgroundAttachment = 'fixed';
+
+   tooltipList = [
+        {searchString: "Helmut Kohl", explanationText: "CDU chancellor of Germany, from 1982-1998. Had the longest tenure of any chancellor, at 5870 days. Nicknamed “Chancellor of Unity”, due to overseeing the swift reunification of East and West Germany, and having a hand in European integration. Sometimes also criticized for the sluggishness of his administration."},
+        {searchString: "Gutmenschen", explanationText: "“Good-People”. Term usually associated with the Right Wing: sarcastic expression for a multiculturalist person, wanting to help people from other countries by bringing them to Germany."},
+        {searchString: "Hubert Ulrich", explanationText: "Longtime chair of The Greens in the Saarland (2002-2017). Was involved in local and state politics since the 80’s, as a vehement opponent against coal."},
+        {searchString: "Jeanne Dillschneider", explanationText: "Chair of the Green Youth in the Saarland (2017-2019, since 2020) and chair of the Greens in the Saarland (since 2023)."},
+        {searchString: "Kevin Kühnert", explanationText: "Former chair of the Jusos (2017-2021), the youth organization of the SPD. Quite leftwing, came to national prominence for his opposition to the Grand Coalition in 2018, as well as several controversial statements on reappropriating BMW. Has become quite influential, being one of the masterminds behind the NoWaBo/Esken leadership victory, even making it up to the post of General-Secretary of the SPD at the end of 2021."},
+        {searchString: "Von hier an anders: Eine politische Skizze", explanationText: "“Different from here on out: A political sketch”. Book by Robert Habeck, quite well received."},
+        {searchString: "Neue Ostpolitik", explanationText: "“New Eastern Policy” - influential Foreign Policy regime by Willy Brandt, SPD chancellor from 1969-1975. Included detente with Eastern Europe, a de facto recognition of East Germany and a historic trip to Poland, where he earnestly apologized for the brutal German occupation of the country during World War 2."},
+        {searchString: "Dietmar Woidke", explanationText: "SPD Minister-President of Brandenburg, since 2013. Governs the state in Red-Red coalitions and in a Kenia coalition. Grew up on an East German farm and is almost 2 Meters tall."},
+        {searchString: "Schwanzvergleich", explanationText: "German, “dick measuring contest”."},
+        {searchString: "Andrea Nahles", explanationText: "Chair of the Federal Agency of Work since 2022. Was SPD party chair from 2018-2019, with an illustrious career preceding it. Was pretty controversial in the party, suddenly and frustratedly quitting her leadership positions in 2019, after the catastrophic results of the SPD in the European Elections."},
+        {searchString: "Wolfgang Schäuble", explanationText: "Legendary CDU politician. MP since 1972, he’s had several prominent positions in party and government between 1984 and 2017 - most recently President of the Bundestag. Since an assassination attempt in 1990, he’s been in a wheelchair, but that did not stop him from having a great influence on German politics."},
+        {searchString: "Helmut Schmidt", explanationText: "SPD chancellor from 1974 to 1982. Governed in a Social-Liberal coalition alongside the FDP, commanding a moderate course, especially on Foreign Policy, until his coalition partner abandoned him mid-term for the CDU, beginning the 16year long chancellorship of Helmut Kohl."},
+        {searchString: "Stephan Weil", explanationText: "SPD Minister President of Lower Saxony (Since 2013) and former Mayor of Hanover. Governed with Greens and CDU at different points. Quite well regarded, and was considered a possible candidate for leadership on the national level, although he declined every opportunity."},
+        {searchString: "Gesine Schwan", explanationText: "Academic and longtime member and chair of the SPD Basic-Values-Commission. Was a candidate for Federal President in 2004 and 2009. A leading voice of the party’s left wing, not uncontroversial."},
+        {searchString: "Claudia Moll", explanationText: "SPD MP in the Bundestag since 2017 and former caregiver for the Caritas. An outspoken advocate for Elder Care and Social Care. A moderate, known for her no-bullshit, hard-edge personality and love for carnival."},
+        {searchString: "Bärbel Bas", explanationText: "SPD MP in the Bundestag since 2009, as a prominent member of the party’s left wing. Worked in the health insurance industry before winning her direct mandate four times. After being Parliamentarian Manager of her party in the Bundestag, she became the parliament’s President in 2021."},
+        {searchString: "nefarious revenge", explanationText: "<img src=https://cdn.discordapp.com/attachments/1131296206908301423/1150427920221868092/scholzrevenge.webp>"},
+        {searchString: "such a gesture", explanationText: "<img src=https://cdn.discordapp.com/attachments/1131296206908301423/1149749756587950260/1200x675.jpg> Great. Just great."},
+        {searchString: "Peer Steinbrück’s", explanationText: "Centrist SPD politician, also former Minister of Finances (2005-2009). Was SPD chancellor candidate in 2013, handily defeated by Angela Merkel."},
+        {searchString: "Jetzt. Wie wir unser Land erneuern", explanationText: "“Now. How we renew our country”"},
+        {searchString: "The Campaign Trail", explanationText: "good game"},
+        {searchString: "Taliban", explanationText: "Islamistic terror organization, ruling over Afghanistan. Founded from mujahedeen, during the war against the soviet union. Responsible for the 9/11 attacks, and probably the single most well known terror group."},
+        {searchString: "Hans-Georg Maaßen", explanationText: "Former president of the Federal Office for the Protection of the Constitution. Retired in 2018, after laying an absurd focus on left-wing radicalism, showing suspiciously less attention to the right wing. Afterwards, he made several antisemitic, far-right and even conspiratory statements. Currently chair of the Werte-Union, a right-wing CDU suborganization."},
+        {searchString: "Frank Ullrich", explanationText: "Former East German biathlon star and trainer for the German national biathlon and cross-country skiing teams. Won a Bundestag-Mandate for the SPD in a high profile race against Hans-Georg Maaßen. Has since been chair of the sports committee."},
+        {searchString: "Franziska Giffey", explanationText: "Former SPD Minister for Families, Seniors, Women and Youth (2018-2021) and mayor of Berlin (2021-2023). A prominent member of the centrist SPD wing. Has experienced controversies around plagiarizing in her doctoral thesis."},
+        {searchString: "Manuela Schwesig", explanationText: "SPD Minister-President of Mecklenburg-Vorpommern (since 2017). Was Minister for Families, Seniors, Women and Youth before (2013-2017). Has been an advocate against child pornography and for cooperation with Russia, especially on Nord Stream 2."},
+        {searchString: "Meckpom", explanationText: "Mecklenburg-Vorpommern"},
+        {searchString: "Wolfgang Schmidt", explanationText: "Minister of Special Tasks and chief of the chancellery since 2021. Is a trusty friend and advisor at Olaf Scholz’ side, as his chief of staff, state councilor and state secretary. Became the target of a lawsuit when he leaked the partisanship of a prosecutor investigating the Ministry of Finances."},
+        {searchString: "Wolfgang", explanationText: "Wolfgang Schmidt, Minister of Special Tasks and chief of the chancellery since 2021. Is a trusty friend and advisor at Olaf Scholz’ side, as his chief of staff, state councilor and state secretary. Became the target of a lawsuit when he leaked the partisanship of a prosecutor investigating the Ministry of Finances."},
+        {searchString: "FIU", explanationText: "Financial Intelligence Unit, suborganization under the Ministry of Finance, dedicated to fighting international tax evasion and tax fraud."},
+        {searchString: "Federal Constitutional Court", explanationText: "Highest court of the land, composed of 16 nonpartisan, parliamentary elected judges, divided in two chambers. Founded in 1951 as a reaction to the fate of the Weimar Republic. Generally enjoys high levels of trust."},
+        {searchString: "Bettina Jarasch", explanationText: "Green Senator for the Environment in Berlin (2021-2023). Before that, was the Green candidate in the mayoral race of Berlin in 2021. Was a journalist before, and has extensive media contacts. Is an actively practicing catholic and considered part of the moderate Realo-wing."},
+        {searchString: "Merkel-candidate", explanationText: "<img src=https://cdn.discordapp.com/attachments/1131296206908301423/1149750287008022639/image.webp>"},
+        {searchString: "Merkel-Raute", explanationText: "Widely known gesture, often used by Merkel. Consists of holding your hands below the chest, letting the fingertips of both hands touch, tilting the thumbs to the side, creating a diamond-like shape in between. Synonymous with prudence, calmness and moderation."},
+        {searchString: "SZ-magazine", explanationText: "Süddeutsche Zeitung Magazin (South German Newspaper - Magazine), supplement of the <i>Süddeutsche Zeitung</i>, one of the biggest newspapers in Germany."},
+        {searchString: "Kabul", explanationText: "Capital of Afghanistan."},
+        {searchString: "Karl Lauterbach", explanationText: "SPD politician specialized on health policies, and Minister of Health since 2021. As a learned medical professional, he had an outsized role as an expert during Covid. Known for his talk show appearances, his very dry personality and leftist stances inside his party, like nationalized healthcare. Unsuccessfully ran in the 2019 leadership race."},
+        {searchString: "Janet Yellen", explanationText: "US secretary of the treasury in the Biden administration, since 2021. Agreed to an international tax reform by the G7 and the G20 in June and July of 2021."},
+        {searchString: "Peter Altmaier", explanationText: "CDU Minister of Energy and the Economy (2018-2021). Before that, he was Minister for Special Tasks and chief of the Federal Chancellery and Minister of the Environment. Worked for the EU and was part of the Pizza connection, a discussion group of CDU and Green politicians."},
+        {searchString: "Svenja Schulze", explanationText: "SPD Minister of the Environment (2018-2021). Before that, was Minister of Innovation, Science and Research in North Rhine-Westphalia (2010-2017), and is now Minister of Economic Cooperation and Development. She’s vehemently against nuclear energy."},
+        {searchString: "Parlamentarische Linke", explanationText: "“Parliamentarian Left”, Subgroup of leftist SPD-Parliamentarians in the Bundestag. Began during the 60’s and 70’s as somewhat oppositional to the left of the SPD-led executive. Is keynesianist, pacifist and follows a “leftist pragmatism of gradual improvements”. Its prominent members became quite powerful since 2018, occupying leadership roles both formally and informally."},
+        {searchString: "PL", explanationText: "“Parliamentarian Left”, Subgroup of leftist SPD-Parliamentarians in the Bundestag. Began during the 60’s and 70’s as somewhat oppositional to the SPD-led executive. Is keynesianist, pacifist and follows a “leftist pragmatism of gradual improvements”. Its prominent members became quite powerful since 2018, occupying leadership roles both formally and informally."},
+        {searchString: "Seeheimer", explanationText: "Subgroup of centrist SPD-Parliamentarians in the Bundestag. Began during the 70’s, to support Helmut Schmidt and counteract a leftwards drift of the party. Supported Schröders neoliberal “Agenda 2010”. Calls itself undogmatic and pragmatic. Was the predominant wing of the party for the last 20 years, until around 2018."},
+        {searchString: "Netzwerker", explanationText: "Members of the “Netzwerk Berlin”; a subgroup of SPD-Parliamentarians in the Bundestag, founded in 1999. Traditionally wants to advance the role of younger MP’s and provide a compromise between the centrist Seeheimer and the leftist PL. Calls itself undogmatic, progressive and reformist."},
+        {searchString: "Norbert Walter-Borjans", explanationText: "Party co-chair of the SPD (2019-2021) and former Minister of Finances of North Rhine-Westphalia (2010-2017). Won in the SPD leadership contest alongside Saskia Esken, supported by leftists like Kevin Kühnert. Known for his passion in fighting tax fraud and crafting marble sculptures."},
+        {searchString: "NoWaBo", explanationText: "Nickname for Norbert Walter-Borjans, party co-chair of the SPD (2019-2021) and former Minister of Finances of North Rhine-Westphalia (2010-2017). Won in the SPD leadership contest alongside Saskia Esken, supported by leftists like Kevin Kühnert. Known for his passion in fighting tax fraud and crafting marble sculptures."},
+        {searchString: "Norbert", explanationText: "Norbert Walter-Borjans, party co-chair of the SPD (2019-2021) and former Minister of Finances of North Rhine-Westphalia (2010-2017). Won in the SPD leadership contest alongside Saskia Esken, supported by leftists like Kevin Kühnert. Known for his passion in fighting tax fraud and crafting marble sculptures."},
+        {searchString: "Saskia Esken", explanationText: "party co-chair of the SPD (since 2019). Won in the SPD leadership contest alongside Norbert Walter-Borjans, supported by leftists like Kevin Kühnert. Knowledgeable on Digitalization policies, having worked in IT in the 90’s. Not uncontroversial in her outspokenness on sociopolitical topics."},
+        {searchString: "Saskia", explanationText: "Saskia Esken, party co-chair of the SPD (since 2019). Won in the SPD leadership contest alongside Norbert Walter-Borjans, supported by leftists like Kevin Kühnert. Knowledgeable on Digitalization policies, having worked in IT in the 90’s. Not uncontroversial in her outspokenness on sociopolitical topics."},
+        {searchString: "Esken", explanationText: "Saskia Esken, party co-chair of the SPD (since 2019). Won in the SPD leadership contest alongside Norbert Walter-Borjans, supported by leftists like Kevin Kühnert. Knowledgeable on Digitalization policies, having worked in IT in the 90’s. Not uncontroversial in her outspokenness on sociopolitical topics."},
+        {searchString: "Martin Schulz", explanationText: "SPD chancellor candidate in 2017. Lost with a historic low of 20.5%. Was party chair during that time. Mostly known for being President of the European Parliament between 2012-2017 and his fiery rhetoric. Had a modest upbringing and belongs to the centrist wing of the party."},
+        {searchString: "Agenda 2010", explanationText: "Neoliberal political project to reform the German welfare system and job market, enacted by the Red-Green government under chancellor Gerhard Schröder, between 2003-2005. Contained cuts to social services, the enactment of Hartz IV and other reforms. Said to have helped economic growth and employment rates, but vehemently criticized by the left."},
+        {searchString: "Klara Geywitz", explanationText: "Moderate Social Democratic leadership member and state MP in Brandenburg (2004-2019). Became Minister of Construction and Urban Development in 2021. Is known for her outspoken support of parity-laws and feminism."},
+        {searchString: "ostalgics", explanationText: "“Ostalgie”, or “Eastalgia” is nostalgia towards the culture and society of the old DDR, the regime governing East Germany from 1949-1990. Most “ostalgic” East Germans miss the sense of social cohesion, some institutions or certain cultural icons, and feel left behind economically and socially after reunification."},
+        {searchString: "ostalgic", explanationText: "“Ostalgie”, or “Eastalgia” is nostalgia towards the culture and society of the old DDR, the regime governing East Germany from 1949-1990. Most “ostalgic” East Germans miss the sense of social cohesion, some institutions or certain cultural icons, and feel left behind economically and socially after reunification."},
+        {searchString: "Werte-Union", explanationText: "Informal organization inside the CDU, who believe the party has veered too much towards the left and demand a harsh turn to the right."},
+        {searchString: "Flügel", explanationText: "Hardline völkisch-nationalistic wing of the AfD, who have taken over nearly all of the party by 2021 - informally. Formally, they dissolved in 2020, since the Federal office for the Protection of the Constitution declared them to be a “right-wing extremist aspiration against the liberal-democratic basic order”. Their leader was the infamous Björn Höcke."},
+        {searchString: "NRW", explanationText: "North Rhine-Westphalia"},
+        {searchString: "Sylt", explanationText: "Island in the North Sea, off the coast of Schleswig-Holstein. Famous for its prominent mud flats and dangerous tides, nude beaches and its popularity for rich vacationers."},
+        {searchString: "Fundi", explanationText: "“Fundamentalists”, name for the ecosocialist-anticapitalist wing of The Greens, traditionally critical of governmental compromises. While being dominant during the founding phase, they have lost influence ever since."},
+        {searchString: "ADAC", explanationText: "“Allgemeiner Deutscher Automobil-Club” - “Common German Automobile-Club”. Leading organization around car safety, roadside assistance and advocacy for motor vehicles, motorsports and other car-related topics."},
+        {searchString: "Aldi", explanationText: "German supermarket chain, also active internationally. In the US, they also own <i>Trader Joe’s</i>, funnily enough."},
+        {searchString: "Macher", explanationText: "“maker”, “person of action”."},
+        {searchString: "Fundis", explanationText: "“Fundamentalisten”, name for the ecosocialist-anticapitalist wing of The Greens, traditionally critical of governmental compromises. While being dominant during the founding phase, they have lost influence ever since."},
+        {searchString: "FFF", explanationText: "‘Fridays For Future’, an international grassroots movement since 2018, advocating for students to skip school or Uni and protest for climate action instead. Originated in Greta Thunberg’s “Skolstrejk För Klimatet” in Sweden."},
+        {searchString: "Fridays For Future", explanationText: "An international grassroots movement since 2018, advocating for students to skip school or Uni and protest for climate action instead. Originated in Greta Thunberg’s “Skolstrejk För Klimatet” in Sweden."},
+        {searchString: "Realos", explanationText: "“Realists”, name for the moderate, governance-focused wing of The Greens, who wish to enact change by working within the system. Since the first Green governments of the 90’s, they have steadily gained in influence."},
+        {searchString: "Realo", explanationText: "“Realists”, name for the moderate, governance-focused wing of The Greens, who wish to enact change by working within the system. Since the first Green governments of the 90’s, they have steadily gained in influence."},
+        {searchString: "SED", explanationText: "“Sozialistische Einheitspartei Deutschland” - “Socialist Unity Party of Germany”. The dictatorial uniparty of the East German regime, 1949-1990. Renamed itself PDS in the wake of reunification, and after a merger with an SPD splinter, grew into today's ‘Die Linke’."},
+        {searchString: "Pasta-connection", explanationText: "One of several discussion groups by Liberal and Green MP’s during their common time in opposition. Named after the “Pizza-Connection”, a discussion circle of Greens and CDU members."},
+        {searchString: "Soli", explanationText: "Solidaritätszuschlag. An extra tax levelled since 1995 to help East Germany in its post-reunification development."},
+        {searchString: "New States", explanationText: "“Neue Bundesländer”. Somewhat archaic name for the East German states that joined West Germany in 1990."},
+        {searchString: "Tilman Kuban", explanationText: "Chair of the Young Union, the youth wing of CDU/CSU, 2019-2022. Supporter of both Friedrich Merz and Markus Söder."},
+        {searchString: "Deutsche Bahn", explanationText: "“German Train” - Majority State-owned company that runs the train network of Germany. Is usually known for the lack of punctuality and reliability in Germany’s trains. That’s the biggest misconception about Germany: no, the trains aren’t always on time, quite the contrary."},
+        {searchString: "smurfy grin", explanationText: "<img src=https://cdn.discordapp.com/attachments/1131296206908301423/1138054729604284446/schlumpf.png> :3"},
+        {searchString: "smurfily grinning", explanationText: "<img src=https://cdn.discordapp.com/attachments/1131296206908301423/1138054729604284446/schlumpf.png> >:3"},
+        {searchString: "Nord-Stream 2", explanationText: "Planned natural gas pipeline from Russia to Germany, through the Baltic Sea."},
+        {searchString: "cum-ex", explanationText: "Stock-trading scheme. Goal is to get several refunds from capital gains taxes that were paid just once. A prominent case is the Hamburg-based Warburg-Bank, who defrauded the state. While Olaf Scholz was mayor, he secretly met with their chair multiple times."},
+        {searchString: "Wirecard", explanationText: "Financial company which ran a bank until 2020, when they shut down due to several billion Euros vanishing in thin air. The regulatory organization under Minister of Finances Olaf Scholz was heavily criticized for its lack of action, despite being informed about the inconsistencies."},
+        {searchString: "NATO", explanationText: "North Atlantic Treaty Organization; international defensive military alliance between the United States, Canada and multiple European countries, including Germany since 1955. Was the winning party of the Cold War between 1949-1993."},
+        {searchString: "EU", explanationText: "European Union; supranational political entity, serving as a political and economic union between 27 European countries, including free trade, open borders, political cooperation and a common legislative body. Germany is a prominent member, being one of its predecessors founding members, going back to the post-war era."},
+        {searchString: "Canada-style point-system", explanationText: "In Canada, points are awarded for potential “economic immigrants”, for qualifications, education and experiences, formally indiscriminate of the origin country. Said to be quite successful in attracting qualified workers."},
+        {searchString: "Riester-system", explanationText: "State-encouraged private pension system named after former Minister of Labour, Walter Riester (SPD, 1998-2002), aimed at low-income workers who may get tax refunds on privately saved up money."},
+        {searchString: "Black Zero", explanationText: "“Schwarze Null” in German; economic principle that forbids new debts while promising a balanced budget."},
+        {searchString: "Der Spiegel", explanationText: "Famous German news magazine, known for its investigative journalism, breaking several scandals since 1947. Tends to be center left-liberal."},
+        {searchString: "Fukushima", explanationText: "In 2011, a disaster took place at the nuclear reactor in Fukushima, Japan. Resulted in the first Green surge, and Merkel changing course on Nuclear Energy; resuming the phase-out that started under the preceding Red-Green coalition."},
+        {searchString: "Frontex", explanationText: "The European Agency for Border- and coastal protection of the Schengen Area (internally, the EU does not have border patrols)."},
+        {searchString: "Climate Protection Act", explanationText: "“Klimaschutzgesetz” in German. Originally enacted by the Grand Coalition in 2019, it promises to uphold the goals by the Paris Conference and lays down concrete goals for CO²-emissions until 2030."},
+        {searchString: "Prioritization system", explanationText: "When covid vaccines were sparse, certain groups had a prerogative, among them people above 60, with certain pre-existing conditions or with a high risk of infection due to their profession."},
+        {searchString: "Bundeswehr", explanationText: "Name for the German armed forces and their civilian organizations."},
+        {searchString: "Social Market Economy", explanationText: "Germany’s traditional economic system; consisting of a free market economy buoyed by a welfare state. Originally envisioned by Minister of the Economy Ludwig Erhard (CDU, 1949-1963)."},
+        {searchString: "social market economy", explanationText: "Germany’s traditional economic system; consisting of a free market economy with a welfare state. Originally envisioned by Minister of the Economy Ludwig Erhard (CDU, 1949-1963)."},
+        {searchString: "Landesvater", explanationText: "“State-Father”. Traditionally a feudal lord, today jokingly used for a Head of Government in a state, usually an older male, serving as a trustworthy icon of a statesman."},
+        {searchString: "Rotkäppchen", explanationText: "Famous East German brand of sparkling wine, from Freyburg/Unstrut, since 1894."},
+        {searchString: "Baumkuchen", explanationText: "“Tree Cake”. Spit cake, baked over an open flame, with a layered dough, like the rings of a tree. Also quite popular in Japan."},
+        {searchString: "Eigenheim", explanationText: "“Own-Home”. A small detached home, owned by a family. The dream of many Germans."},
+        {searchString: "Berghain", explanationText: "Infamous techno club in Berlin. What happens in the Berghain, stays in the Berghain."},
+        {searchString: "rubber boots", explanationText: "In 2002, SPD chancellor Schröder allegedly won reelection due to media coverage of him strutting about in rubber boots during the flooding of the river Elbe."},
+        {searchString: "Laschet’s Lacher", explanationText: "<img src=https://media.discordapp.net/attachments/1131296206908301423/1135571560950935702/kritik-an-laschet-wegen-lacher-im-flutgebiet-image.jpg.webp> I’m sure it was very funny."},
+        {searchString: "boyishly laughing", explanationText: "<img src=https://media.discordapp.net/attachments/1131296206908301423/1135571560950935702/kritik-an-laschet-wegen-lacher-im-flutgebiet-image.jpg.webp> I’m sure it was very funny."},
+        {searchString: "GroKo", explanationText: "Abbr.“Große Koalition” - “Grand coalition”, consisting of Germany’s traditional two major parties, the SPD and the CDU/CSU. Has governed from 1966-1969, 2005-2009 and 2013-2021."},
+        {searchString: "Grand coalition", explanationText: "Coalition consisting of Germany’s traditional two major parties, the SPD and the CDU/CSU. Has governed from 1966-1969, 2005-2009 and 2013-2021."},
+        {searchString: "Rent moratorium", explanationText: "Mandatory period of time, during which rents are only allowed to increase with inflation."},
+        {searchString: "Putinversteher", explanationText: "“Putin understander”: derogatory word for a person sympathizing with the Russian government, or thinking they can be reasoned with."},
+        {searchString: "Querdenker", explanationText: "“Skewed Thinker” or “Across Thinker”; German word for someone who thinks outside the norm. Popularized by its usage on Covid skeptics during the pandemic."},
+        {searchString: "Bubatz", explanationText: "<img src=https://media.discordapp.net/attachments/1131296206908301423/1135575649814327307/c80463b818429cf523e9f4527d901ae1.jpg> episch"},
+        {searchString: "Die Bild", explanationText: "Famous German boulevard newspaper. Quite popular, although widely mocked for its low journalistic standards. Punk Band <i>Die Ärzte</i> succinctly summed them up as “fear, hate, tits and the weather report”."},
+        {searchString: "Oktoberfest", explanationText: "Traditional Bavarian folk festival. Internationally known for its served big mugs of beer (“Maß”) and the display of traditional Bavarian clothing (“Tracht”). Often incorrectly assumed to be a general German tradition."},
+        {searchString: "Heute-Show", explanationText: "Popular German satire show on the public TV station ZDF, moderated by Oliver Welke. The German adaptation of The Daily Show."},
+        {searchString: "small vendetta", explanationText: "Friedrich Merz was party group leader from 2000-2002 - until CDU chair Angela Merkel and CSU chair Edmund Stoiber made a deal, that the latter was to become chancellor candidate, the former new party group leader. Merz wasn’t consulted, and relegated to irrelevancy."},
+        {searchString: "Beleidigte Leberwurst", explanationText: "“offended liver sausage” - German expression for someone who is childishly sulking."},
+        {searchString: "Maut", explanationText: "Old German word for a road toll. The CSU sought to establish tolls for private vehicles in 2015, but the European courts disallowed this in 2019, citing discrimination against foreign vehicle owners."},
+        {searchString: "The Jacobin", explanationText: "Socialist newspaper magazine from America. Also available in Germany, Italy and Brazil."},
+        {searchString: "Genosse Olaf", explanationText: "<img src=https://media.discordapp.net/attachments/1131296206908301423/1135578447561904179/Olaf_Scholz_1984.jpg?width=1136&height=757> Freundschaft, Genosse!"},
+        {searchString: "Terror-Shrek", explanationText: "<img src=https://media.discordapp.net/attachments/1131296206908301423/1135621337826721792/markus_Soder_Shrek.jpg> That’s not even half of it. Don’t look up “Markus Söder Gandhi\". Worst mistake of my life."},
+        {searchString: "2015", explanationText: "In 2015, about 2 million people sought refuge in Europe, coming from the Mediterranean Sea and the Balkans. A great amount had been held up in Hungary, until Merkel unilaterally decided to let them come to Germany. About 400k Syrians fled to Germany during this time."},
+        {searchString: "JU", explanationText: "“Junge Union”, “Young Union”. The youth organization of the CDU/CSU. Usually considered quite unadventurous."},
+        {searchString: "Jusos", explanationText: "“JungsozialistInnen”, “Young Socialists”. The youth organization of the SPD. Noticeably more left-wing than the national party. Has gained in influence over the last few years, while being led by the prominent Kevin Kühnert."},
+        {searchString: "Green Youth", explanationText: "Youth organization of The Greens. Culturally and economically quite leftist. A good amount of overlap with Fridays For Future organizers and other ecological and culturally progressive organizations."},
+        {searchString: "bridge lockdown", explanationText: "Proposal by Armin Laschet. The goal is to generally open up, but to have a short term, harsh lockdown in April, to bridge the time until more people are vaccinated and more tests are available."},
+        {searchString: "3rd CSU candidate", explanationText: "The CSU has put up only two chancellor candidates for the Union: Franz-Josef Strauß in 1980 and Edmund Stoiber in 2002. Both lost against SPD incumbents."},
+        {searchString: "Annegret Kramp-Karrenbauer", explanationText: "CDU Saarland party chair 2011-2019, and for a short while in 2018, General Secretary of the CDU. She was indirectly chosen by Merkel as her successor as party leader. After her tenure was heavily criticized, she got the Ministry of Defense (2019-2021) and retired shortly after."},
+        {searchString: "Norbert Röttgen", explanationText: "Once a prominent CDU politician and Minister of the Environment (2009-2012): humiliatingly fired after his defeat as the CDU candidate for the North Rhine-Westphalian elections. In 2020 he tried for a comeback, but ended up as a third wheel behind Laschet and Merz."},
+        {searchString: "Konrad Adenauer", explanationText: "First chancellor of West Germany (1949-1963). Started his career in Weimar Germany and was imprisoned during the Nazi era. He helped found the CDU, was responsible for the founding of the European Community and remains a great icon for German conservatives and the nation as a whole."},
+        {searchString: "Reiner Haseloff", explanationText: "Minister-President of Sachsen-Anhalt (CDU, since 2011). Grew up in East Germany, and joined the CDU- block party in the DDR early on. Generally uncontroversial and respected."},
+        {searchString: "Haseloff", explanationText: "Reiner Haseloff, Minister-President of Sachsen-Anhalt (CDU, since 2011). Grew up in East Germany, and joined the CDU- block party in the DDR early on. Generally uncontroversial and respected."},
+        {searchString: "Joschka Fischer", explanationText: "One of the Green party’s founders. Became the first Green minister in Hesse 1985. During the Red-Green coalition under Schröder (1998-2005), he got the post of Vice Chancellor and Foreign Minister, where he led the Greens to support NATO involvement in Kosovo and Afghanistan, despite their pacifist roots."},
+        {searchString: "Daniel Günther", explanationText: "CDU Minister-President of Schleswig-Holstein, since 2017. Considered a leading force among the left wing of his party, heading popular Jamaica and Black-Green coalitions. Has even incurred attention by calling for the possibility of cooperation with the Left party under specific circumstances in 2018."},
+        {searchString: "Rezo", explanationText: "German Youtuber. Usually a musician and entertainer, but became known in 2019 for a video called “The Destruction of the CDU”. It contained a blistering critique of the CDU’s climate policies, well researched and thoroughly sourced. It got unprecedentedly good reviews from journalists. Some say it had a tangible effect on the European elections that year."},
+        {searchString: "Volkspartei", explanationText: "“People’s party”, German word for a type of catch-all-party that appeals to a broad net of society instead of social subgroups, usually dominating a political system. This might come at the cost of a less defined political identity."},
+        {searchString: "Guido Westerwelle", explanationText: "FDP party chair (2001-2011) and later Foreign Minister (2009-2013). Was named as  “chancellor candidate” by the FDP in 2002, in a bid to win 18%, but only got 7.4. One of the first German politicians to come out as gay, he sadly died in 2016 from leukemia."},
+        {searchString: "Boris Palmer", explanationText: "Formerly Green Mayor of Tübingen in Baden-Württemberg, since 2007. In his party, he ruffled many feathers not just with his very moderate policies, but in 2015, he came out with a quite conservative take on refugees. In 2023, he left the party. His dad is also known as an eccentric figure, running as an independent in over 250 mayoral races."},
+        {searchString: "Gerhard Schröder", explanationText: "Former German chancellor (SPD, 1998-2005). Ended 16 years of chancellor Kohl, and enacted neoliberal policies in a Red-Green coalition. Was defeated in a snap election in 2005 by Angela Merkel. Afterwards, he’s been involved with Russian companies, and is a personal friend of Vladimir Putin, to this day."},
+        {searchString: "Schröder", explanationText: "Gerhard Schröder, former German chancellor (SPD, 1998-2005). Ended 16 years of chancellor Kohl, and enacted neoliberal policies in a Red-Green coalition. Was defeated in a snap election in 2005 by Angela Merkel. Afterwards, he’s been involved with Russian companies, and is a personal friend of Vladimir Putin, to this day."},
+        {searchString: "Gerd Müller", explanationText: "Not to be confused with famous soccer player Gerd Müller (1945-2021), he was the CSU Minister of Economic Cooperation and Development (2013-2021). He advocated for a “Marshall Plan for Africa” and was called “the good conscience of the CSU”. Nowadays, he’s UNIDO director general."},
+        {searchString: "Christian Drosten", explanationText: "German virologist, and professor at the Charité in Berlin. He was a scientific advisor for the government and one of the most cited scientists in the media during the Covid pandemic. He has earned awards for his science communication."},
+        {searchString: "Martin Luther", explanationText: "Historic church reformer in the 15th century. He started the Protestant Reformation that broke the Catholic dominance of Europe, by translating the Bible into German instead of Latin and distributing it with Johannes Guttenberg’s first printing press."},
+        {searchString: "Winfried Kretschmann", explanationText: "Green Minister-President of Baden-Württemberg (since 2011). As the first Green Minister-President, he’s a leading part of their ecological-conservative wing and is partly known for his eccentric swabian dialect."},
+        {searchString: "Kretschmann", explanationText: "Winfried Kretschmann, Green Minister-President of Baden-Württemberg (since 2011). As the first Green Minister-President, he’s a leading part of their ecological-conservative wing and is partly known for his eccentric swabian dialect."},
+        {searchString: "Daniela Ludwig", explanationText: "CSU drug commissioner (2019-2021). Known for her hardline stances against graffiti, adoption by homosexual couples, gay marriage and cannabis legalization."},
+        {searchString: "Frank-Walter Steinmeier", explanationText: "Holder of the highest office of the land - The Federal President of Germany. Nominally a member of the SPD, he was Foreign Minister 2005-2009 and 2013-2017, when he was voted in as head of state. Generally respected, except by the political extremes."},
+        {searchString: "Steinmeier", explanationText: "Frank-Walter Steinmeier: holder of the highest office of the land - The Federal President of Germany. Nominally a member of the SPD, he was Foreign Minister 2005-2009 and 2013-2017, when he was voted in as head of state. Generally respected, except by the political extremes."},
+        {searchString: "Janine Wissler", explanationText: "Party co-chair of Die Linke since 2021. One of the founding members of the SPD splinter group WASG, who split from the Social Democrats due to the neoliberal policies of Gerhard Schröder in 2005. They then merged with the PDS to become Die Linke (The Left) in 2007."},
+        {searchString: "Wissler", explanationText: "Janine Wissler, party co-chair of Die Linke since 2021. One of the founding members of the SPD splinter group WASG, who split from the Social Democrats due to the neoliberal policies of Gerhard Schröder in 2005. They then merged with the PDS to become Die Linke (The Left) in 2007."},
+        {searchString: "Christian Lindner", explanationText: "Party chair of the liberal FDP since 2013, nowadays Minister of Finance (since 2021). Known for his fiery rhetorical skills, his fiscal conservatism and as somewhat of a heartthrob. He led the FDP back into the Bundestag in 2017, with a strong 10%."},
+        {searchString: "Lindner", explanationText: "Christian Lindner, party chair of the liberal FDP since 2013, nowadays Minister of Finance (since 2021). Known for his fiery rhetorical skills, his fiscal conservatism and as somewhat of a heartthrob. He led the FDP back into the Bundestag in 2017, with a strong 10%."},
+        {searchString: "Alice Weidel", explanationText: "Top candidate of the AfD in 2017 and 2021. Controversial for her remarks on “headscarf-girls and alimented Knife-Men”, talking about muslims. Interestingly, she’s in a civil partnership with a Sri Lankan woman, raising two sons in Switzerland."},
+        {searchString: "Weidel", explanationText: "Alice Weidel, top candidate of the AfD in 2017 and 2021. Controversial for her remarks on “headscarf-girls and alimented Knife-Men”, talking about muslims. Interestingly, she’s in a civil partnership with a Sri Lankan woman, raising two sons in Switzerland."},
+        {searchString: "Alexander Dobrindt", explanationText: "CSU Top candidate in Bavaria, former CSU General Secretary and Traffic Minister (2013-2017). He was known as “the most modern General Secretary of the country”. Also known for his strong critiques of the Greens and The Left as anti-democratic."},
+        {searchString: "Paul Ziemiak", explanationText: "CDU General Secretary (2018-2022). Quite young, and chosen by Kramp-Karrenbauer as an outreach to conservatives. Born in communist Poland, his parents emigrated in 1988 due to his German heritage."},
+        {searchString: "DDR", explanationText: "“Deutsche Demokratische Republik” - “German Democratic Republic”; the official title of Communist East Germany, 1949-1990."},
+        {searchString: "Rita Süssmuth", explanationText: "CDU Minister of Families (1985-1988), and then President of the Bundestag (1988-1998) she was a catholic feminist who, among other things, advocated for a woman’s quota in CDU leadership and a pro-choice stance on abortion."},
+        {searchString: "Michael Kretschmer", explanationText: "Minister-President of Saxony (Since 2017). Traveled to Moscow, and at several points demanded the sanctions against Russia be lifted. Was also somewhat of a soft Covid-skeptic in 2020, but changed course later on."},
+        {searchString: "Kretschmer", explanationText: "Michael Kretschmer, Minister-President of Saxony (Since 2017). Traveled to Moscow, and at several points demanded the sanctions against Russia be lifted. Was also somewhat of a soft Covid-skeptic in 2020, but changed course later on."},
+        {searchString: "Horst Seehofer", explanationText: "Infamous CSU politician. After stints as Minister of Health (1992-1998) and Minister of Agriculture (2005-2008) he was the Minister-President of Bavaria (2008-2018). During his tenure, he vehemently opposed Merkel’s decision to welcome refugees in 2015. Afterwards, he became Minister of the Interior, mostly continuing his hardline stance."},
+        {searchString: "Seehofer", explanationText: "Horst Seehofer, infamous CSU politician. After stints as Minister of Health (1992-1998) and Minister of Agriculture (2005-2008) he was the Minister-President of Bavaria (2008-2018). During his tenure, he vehemently opposed Merkel’s decision to welcome refugees in 2015. Afterwards, he became Minister of the Interior, mostly continuing his hardline stance."},
+        {searchString: "Heiko Maas", explanationText: "SPD chair of the Saarland (2000-2018) and Minister of Justice 2013-2018, where he had the reputation of somewhat of a nerd. He then became Foreign Minister (2018-2021). In the wake of the botched Afghanistan-retreat, he offered his resignation, but was talked out of it by Olaf Scholz."},
+        {searchString: "Hubert Aiwanger", explanationText: "Party Chair of the liberal-conservative minor party “Free Voters”, who are most successful in Bavaria. Since 2018, they are the junior partner in a coalition with the CSU under Markus Söder, with Aiwanger as Vice Minister-President and Minister for the Economy. He is known for his controversial stance on the Covid vaccine."},
+        {searchString: "Andreas Scheuer", explanationText: "Controversial CSU politician. As Minister of Transport (2018-2021), he has been the face of several scandals, especially since the failure of the Maut road toll-project (although it was developed by his predecessor Alexander Dobrindt). The botched project cost the state millions of Euros, making him the target of an inquiry committee."},
+        {searchString: "Scheuer", explanationText: "Andreas “Andi” Scheuer, controversial CSU politician. As Minister of Transport (2018-2021), he has been the face of several scandals, especially since the failure of the Maut road toll-project (although it was developed by his predecessor Alexander Dobrindt). The botched project cost the state millions of Euros, making him the target of an inquiry committee."},
+        {searchString: "Volker Bouffier", explanationText: "Minister-President of Hesse (2010-2022). Known for his sonorous voice and his leadership of one of the first Black-Green coalitions."},
+        {searchString: "Bouffier", explanationText: "Volker Bouffier, Minister-President of Hesse (2010-2022). Known for his sonorous voice and his leadership of one of the first Black-Green coalitions."},
+        {searchString: "Luisa Neubauer", explanationText: "Publicist and main coordinator of Fridays For Future-strikes in Germany. Is active in several NGO’s and advocates for a strict climate policy. Is nominally a member of The Greens, although inactive. Was part of the lawsuit against the Climate Protection Act of the Grand Coalition."},
+    ];
+
+    async function appendStyle() {
+        var metaTag=document.createElement('meta');
+        metaTag.name = "viewport";
+        metaTag.content = "width=device-width, initial-scale=1";
+        document.getElementsByTagName('head')[0].appendChild(metaTag);
+
+        if (!document.querySelector('#radio-option-style')) {
+            let style = document.createElement('style');
+            style.type = 'text/css';
+            style.id = 'radio-option-style';
+            style.innerHTML = `
+            .inner_inner_window {
+              display: flex;
+              flex-direction: column;
+            }
+            .inner_inner_window h3{
+                padding: 5px;
+            }
+              #question_form {
+              flex: 1;
+              box-sizing: border-box;
+            }
+            form[name="question"] {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              height: 100%;
+              box-sizing: border-box;
+            }
+
+            .radio-option {
+                border: 2px solid #000000;
+                background-color: #f2f2f2;
+                border-radius: 10px;
+                padding: 5px;
+                margin-bottom: 5px;
+                transition: background-color 0.1s ease;
+            }
+
+            .radio-option:hover {
+                background-color: #e0e0e0; /* or any other color that is slightly different than #f2f2f2 */
+            }
+
+            .radio-option:hover label {
+                font-size: .927em;
+                font-weight: 700;
+                margin-bottom: .1em
+            }
+
+            #question_form label:hover {
+                font-size: .927em;
+                font-weight: 700;
+                margin-bottom: .1em
+            }
+
+            .radio-option label {
+              pointer-events: none;
+            }
+
+            .radio-option label .mytooltip {
+              pointer-events: auto;
+            }
+
+            /* Remove the default appearance of the radio button */
+            input[type="radio"] {
+              appearance: none;
+              -webkit-appearance: none;
+              -moz-appearance: none;
+            }
+
+            /* Create a custom radio button */
+            input[type="radio"] {
+              position: relative;
+              display: inline-block;
+              width: 16px; /* reduce width */
+              height: 16px; /* reduce height */
+              border: 2px solid black;
+              border-radius: 4px; /* add border radius */
+            }
+
+            /* Create the cross icon (hidden when not checked) */
+            input[type="radio"]:after {
+              content: "";
+              position: absolute;
+              display: none;
+            }
+
+            /* Show the cross icon when checked */
+            input[type="radio"]:checked:after {
+              display: block;
+            }
+
+            input[type="radio"]:checked:after {
+                content: "";
+                display: inline-block;
+                background-image: url("https://cdn.discordapp.com/attachments/1109846390575730788/1130851559371198544/Red-x-mark-transparent-background-1-Transparent-Images.png");
+                background-repeat: no-repeat;
+                background-size: contain; /* Or use a specific size like '10px 10px' */
+                width: 20px;
+                height: 20px;
+                position: absolute; /* This takes the pseudo-element out of the document flow */
+                left: -1px;
+                top: -2px;
+                z-index: 1;
+            }
+
+            .rounded-box {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                border: 4px solid black;
+                margin: 10px;
+                background-color: white;
+                border-radius: 10px;
+                overflow: hidden;
+            }
+
+
+             #candidate_pic,
+            #running_mate_pic,
+            .inner_window_sign_display {
+                height: 14em;
+            }
+            #candidate_pic {
+                margin-left: 12em;
+            }
+            .inner_window_sign_display {
+                width: 27%;
+            }
+            .inner_window_question {
+                height: auto;
+            }
+            #visit_window {
+                height: auto;
+            }
+            #visit_content {
+                height: 79%;
+            }
+
+            #map_container {
+              height: 30.78em
+            }
+            .description_window_small{
+                height: 50%;
+            }
+           .campaign_trail_start_emphasis {
+                background-color: #5f9aed;
+            }
+            #map_footer{
+                margin-top: auto !important;
+            }
+            #running_mate_description_window{
+                height: 74%
+           }
+
+            #overall_details_container{
+                    height: 98%;
+                    overflow: auto;
+                }
+
+            #overall_result,
+            #final_results_description,
+            #election_summary,
+            #candidate_summary,
+            #running_mate_summary,
+            #running_mate_description_window,
+            #opponent_selection_description_window{
+                overflow: auto;
+                overflow-x:hidden;
+            }
+
+              #ev_est {
+                display: none;
+              }
+
+            .inner_window_question h3 .mytooltip{
+                background-color: lightskyblue;
+              }
+
+        .mytooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            background-color: lightblue;
+        }
+
+        .mytooltip .mytooltiptext {
+            width: 240px;  /* Adjust as needed */
+             text-shadow: none;
+            background-color: lightblue;
+            color: black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 99;
+            bottom: 20%;
+            left: 20%;
+            margin-left: -90px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border: 1px solid black;
+            pointer-events: none;
+            font-size:13px !important;
+            line-height:1.5em !important;
+            font-weight:normal !important;
+            font-style: normal !important;
+        }
+
+        .mytooltip .mytooltiptext img {
+            max-width: 240px;
+            height: auto;
+        }
+
+
+        .mytooltip:hover .mytooltiptext {
+            opacity: 1;
+            transition-delay: 0.5s;
+        }
+
+.mytooltip:hover .bubble {
+    opacity: 1;
+    transition-delay: 0.5s;
+}
+.bubble {
+    position: absolute;
+     text-shadow: none;
+    width: 250px;
+    background: #fff;
+    border-radius: 40px;
+    padding: 24px;
+    text-align: center;
+    color: #000;
+    opacity: 0;
+    z-index: 99;
+    bottom: 150%;  /* Shifted up further */
+    left: -60px;  /* Shifted left more */
+    margin-bottom: 10px;
+    border: 1px solid black;
+    pointer-events: none;
+}
+
+.bubble-bottom-left:before, .bubble-bottom-left:after {
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    pointer-events: none;
+    left: 62px;  /* Adjusted positioning */
+    bottom: -28px;  /* Adjusted positioning */
+}
+
+.bubble-bottom-left:after {
+    border-left: 35px solid black;
+    border-right: 1px solid transparent;
+    border-top: 1px solid transparent;
+    border-bottom: 28px solid transparent;
+}
+
+.bubble-bottom-left:before {
+    border-left: 24px solid #fff;
+    border-right: 12px solid transparent;
+    border-top: 12px solid #fff;
+    border-bottom: 20px solid transparent;
+    left: 63px;  /* Slight adjustment to position over the black triangle */
+    bottom: -27px;  /* Slight adjustment to position over the black triangle */
+    z-index: 100;  /* Make sure this is above the black triangle */
+}
+
+.mytooltip:hover .bubble-bottom-left:before,
+.mytooltip:hover .bubble-bottom-left:after {
+    opacity: 1;
+}
+#election_image img {
+    float: left;
+    height:200px;
+    width:auto;
+    margin-right: 20px; /* To give some space between the image and the text */
+    margin-bottom: 20px; /* To ensure there's space between the image and any content below */
+}
+#election_summary,
+#candidate_summary{
+    overflow: visible;
+    overflow-x:visible;
+    margin-left: 5px;
+}
+#inner_window_2,
+#inner_window_3{
+
+    height:auto;
+}
+.person_button{
+    margin-top:0.2em
+}
+            @media only screen and (max-width: 768px) {
+                 .inner_window_question,
+                 #results_container,
+                 #map_footer,
+                  #overall_details_container,
+                  #main_content_area_reading,
+                  #inner_window_2,
+                  #inner_window_3,
+                   #inner_window_4,
+                   #advisors{
+                    font-size: 1.8em;
+                }#inner_window_2,
+                 #inner_window_3{
+
+                    height:82%;
+                }
+                #headquarter{
+                overflow:auto;
+                font-size:1.5em;
+                }
+                #map_footer{
+                    padding-right:10em;
+                }
+                #inner_window_2 select,
+                    #inner_window_3 select,
+                    #inner_window_4 select {
+                        font-size: 1em;
+                        padding: 10px;
+                    }
+
+                    #inner_window_2 button,
+                    #inner_window_3 button,
+                    #inner_window_4 button,
+                     #game_window button,
+                      #headquarter button,
+                      #advisorsDiv button{
+                        font-size: 1em;
+                        line-height: 2em;
+                    }
+
+                 #inner_window_2,
+                 #inner_window_3,
+                 #inner_window_4{
+                    overflow:auto;
+                }
+                #opponent_selection_description_window,
+                #election_year_form,
+                #candidate_description_window,
+                #running_mate_description_window,
+                #opponent_selection_description_window{
+                height: auto;
+                overflow: visible;
+            }
+                 #title_container{
+                   font-size:1.2em
+                }
+                #visit_window {
+                    font-size: 1.8em;
+                    width: 90%;
+                    left:5%;
+                }
+                  .mobile-hide {
+                    display: none;
+                  }
+                 .inner_window_question button,
+                    #visit_window button,
+                     #map_footer{
+                        line-height: 2.5em;
+                    }
+                 #drop_down_area_state {
+                    margin-left: auto;
+                    margin-right: auto;
+                  }
+            }
+            `;
+
+            document.head.appendChild(style);
+        }
+    }
+    appendStyle();
+
+    var invisibleElement = document.createElement('div');
+    invisibleElement.style.display = 'none';
+    invisibleElement.id = 'my-invisible-element';
+    document.body.appendChild(invisibleElement);
+
+campaignTrail_temp.achievements = {
+
+    "An even grander coalition": {
+        "image": "https://i.ibb.co/yQ1vFys/kenya-cropped.png",
+        "description": "Form the Kenya-coalition.",
+        "cannotBeCheated": true
+    },
+    "Progressive Compromise": {
+        "image": "https://i.ibb.co/RQC87YP/traffic-cropped.jpg",
+        "description": "Form the Traffic Light-coalition.",
+        "cannotBeCheated": true
+    },
+    "Land of Compromises": {
+        "image": "https://i.ibb.co/pWkJksV/germany-cropped.png",
+        "description": "Form the Germany-coalition.",
+        "cannotBeCheated": true
+    },
+    "Lessons Learned": {
+        "image": "https://i.ibb.co/4fsqbYw/jamaica-cropped.jpg",
+        "description": "Form the Jamaica-coalition.",
+        "cannotBeCheated": true
+    },
+
+    "Leftist Unity": {
+        "image": "https://i.ibb.co/RgQxPnR/RRG-cropped.png",
+        "description": "Form the Red-Red-Green-coalition.",
+        "cannotBeCheated": true
+    },
+    "No escape from the inevitable": {
+        "image": "https://i.ibb.co/3SMjs36/Gro-Ko-cropped.png",
+        "description": "Form another Grand Coalition.",
+        "cannotBeCheated": true
+    },
+    "Modern Times": {
+        "image": "https://i.ibb.co/jwh6qRk/Black-Green-cropped.png",
+        "description": "Form the Black-Green-coalition.",
+        "cannotBeCheated": true
+    },
+    "Unforeseen comeback": {
+        "image": "https://i.ibb.co/0nfKBGM/Red-Green-cropped.png",
+        "description": "Form the Red-Green-coalition.",
+        "cannotBeCheated": true
+    },
+    "Dream-Team": {
+        "image": "https://i.ibb.co/mTstLV5/Black-Yellow-cropped.png",
+        "description": "Form the Black-Yellow-coalition. (Any difficulty)",
+        "cannotBeCheated": true
+    },
+    "Firewall burned down": {
+        "image": "https://i.ibb.co/nPfC27b/bahamas-cropped.png",
+        "description": "Form the Bahamas-coalition.",
+        "cannotBeCheated": true
+    },
+    "Total chaos": {
+        "image": "https://i.ibb.co/ZK43cyT/chaos-cropped.png",
+        "description": "Have the parliament erupt in chaos over your coalition.",
+        "cannotBeCheated": true
+    },
+    "Novelty": {
+        "image": "https://i.ibb.co/YNG447m/novelty-cropped.png",
+        "description": "On any difficulty, form a rare coalition (Black-Blue, Social-Liberal, Red-Red, Green-Left, Green-Yellow)",
+        "cannotBeCheated": true
+    },
+    "Frischer Wind": {
+    "image": "https://i.ibb.co/cLmnHwp/image1-cropped.jpg",
+    "description": "As Baerbock, win with maximal Likeability.",
+    "cannotBeCheated": true
+    },
+    "The Mirror": {
+        "image": "https://i.ibb.co/tM8q6yg/image2-cropped.jpg",
+        "description": "As Baerbock, witness a Habeck win",
+        "cannotBeCheated": true
+    },
+    "I'm Still Standing": {
+        "image": "https://i.ibb.co/h9n8Wbs/image3-cropped.jpg",
+        "description": "As Baerbock, win despite suffering three scandals.",
+        "cannotBeCheated": true
+    },
+    "Der Zuhörer": {
+        "image": "https://i.ibb.co/TmWrfTq/image4-cropped.jpg",
+        "description": "As Habeck, win with maximal Patience.",
+        "cannotBeCheated": true
+    },
+    "Bringer of Democracy": {
+        "image": "https://i.ibb.co/4dM5Ts6/image5-cropped.png",
+        "description": "As Habeck, win Thuringia.",
+        "cannotBeCheated": true
+    },
+    "Ahead of time": {
+        "image": "https://i.ibb.co/mqQBPyb/image6-cropped.jpg",
+        "description": "As Habeck, take two prophetic stances.",
+        "cannotBeCheated": true
+    },
+    "We want Climate Justice!": {
+        "image": "https://i.ibb.co/PTqXvSW/image7-cropped.jpg",
+        "description": "Have Luisa Neubauer appear with you.",
+        "cannotBeCheated": true
+    },
+    "Consolation Price": {
+        "image": "https://i.ibb.co/ZWD0nRf/image26-cropped.png",
+        "description": "As Greens, lose the election but win the Berlin mayoral race.",
+        "cannotBeCheated": true
+    },
+    "Der Staatsmann": {
+        "image": "https://i.ibb.co/4dXtZSN/image8-cropped.jpg",
+        "description": "As Laschet, win with maximal Statesmanship.",
+        "cannotBeCheated": true
+    },
+    "Landesvater": {
+        "image": "https://i.ibb.co/t4LP4Nf/image9-cropped.jpg",
+        "description": "As Laschet, surpass your vote share in the NRW state elections (>33%).",
+        "cannotBeCheated": true
+    },
+    "Having the last laugh": {
+        "image": "https://i.ibb.co/DfMmdbp/lacher-cropped.jpg",
+        "description": "As Laschet, win after laughing at the floods.",
+        "cannotBeCheated": true
+    },
+    "Würfelarmin": {
+        "image": "https://i.ibb.co/P1ptCM1/image10.jpg",
+        "description": "As Laschet, cheat.",
+        "cannotBeCheated": false
+    },
+    "Gradaus Kanzler": {
+        "image": "https://i.ibb.co/85bhwFT/image11-cropped.jpg",
+        "description": "As Söder, win with minimal Opportunism.",
+        "cannotBeCheated": true
+    },
+    "Bavarian Strongman": {
+        "image": "https://i.ibb.co/5YwcxKR/image12-cropped.jpg",
+        "description": "As Söder, opportunistically strongman yourself to victory in the debate.",
+        "cannotBeCheated": true
+    },
+    "O'zapft is!": {
+        "image": "https://i.ibb.co/q0fDHH2/image13-cropped.jpg",
+        "description": "As Söder, win over 30% of the popular vote.",
+        "cannotBeCheated": true
+    },
+    "Please don't fight": {
+        "image": "https://i.ibb.co/KVM3kbP/merkel-Merz-cropped.jpg",
+        "description": "Have Merkel and Merz on as advisors at the same time.",
+        "cannotBeCheated": true
+    },
+    "Merkel V": {
+        "image": "https://i.ibb.co/F7R9g74/image15-cropped.jpg",
+        "description": "As Scholz, win with maximal Merkelism.",
+        "cannotBeCheated": true
+    },
+    "Making History": {
+        "image": "https://i.ibb.co/KhZvttS/image16-cropped.jpg",
+        "description": "As Scholz, win the election and form a Traffic Light coalition.",
+        "cannotBeCheated": true
+    },
+    "Goodbye Mutti": {
+        "image": "https://i.ibb.co/Y0jNHf8/peer-cropped.jpg",
+        "description": "As Scholz, flip Merkel off and take over her job.",
+        "cannotBeCheated": true
+    },
+    "Dark Scholz rising": {
+        "image": "https://i.ibb.co/31XKwY3/image18-cropped.jpg",
+        "description": "As Scholz, give in to dark impulses.",
+        "cannotBeCheated": true
+    },
+    "Sorry, we didn't code this path": {
+        "image": "https://i.ibb.co/G2HLc0q/esken-cropped.jpg",
+        "description": "As Scholz, come closest to winning the leadership race.",
+        "cannotBeCheated": true
+    },
+    "Elbhoch- wasser all over again": {
+        "image": "https://i.ibb.co/jktTF7c/image20-cropped.jpg",
+        "description": "As Scholz, get help from a former chancellor in your crisis response.",
+        "cannotBeCheated": true
+    },
+    "Out of a job": {
+        "image": "https://i.ibb.co/ZKmZL5W/image21-cropped.jpg",
+        "description": "As Scholz, get fired by Merkel.",
+        "cannotBeCheated": true
+    },
+    "Liberal Ländle": {
+        "image": "https://i.ibb.co/fG13SZt/fdp-cropped.png",
+        "description": "Have the FDP win a state",
+        "cannotBeCheated": true
+    },
+    "Was it something I said?": {
+        "image": "https://i.ibb.co/5YLmSPy/image23-cropped.png",
+        "description": "Have three advisors quit during a campaign.",
+        "cannotBeCheated": true
+    },
+    "The Old Dame has passed away": {
+        "image": "https://i.ibb.co/LJRpDgD/image24-cropped.jpg",
+        "description": "As Greens or CDU, have the SPD land below 12%.",
+        "cannotBeCheated": true
+    },
+    "Parliamentary Subterfuge": {
+        "image": "https://i.ibb.co/stZDc7c/image27-cropped.jpg",
+        "description": "Form a coalition from second place.",
+        "cannotBeCheated": true
+    }
+
+}
+
+
+}
