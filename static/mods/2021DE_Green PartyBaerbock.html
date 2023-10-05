@@ -1527,7 +1527,7 @@ function coalitionTalks(results, optionalMode = false) {
     }
 
     function getMajorityCoalitions() {
-        return getCoalitionsBySeatsRange(1, Infinity);
+        return getCoalitionsBySeatsRange(0.1, Infinity);
     }
 
     function removeImpossibleCoalitions(coalitionList) {
@@ -1624,7 +1624,7 @@ function endingOneBuilder() {
     var disaster = false;
     var spdresult = e.candidate_json.find(p => p.pk === 78);
 
-    if(spdresult.pvp<0.12){
+    if(spdresult.pvp<0.125){
         ctsAchievement("The Old Dame has passed away")
     }
 
@@ -2177,7 +2177,7 @@ if(playerLeader===coalitionLeader){
 
 
     if (secondPage) {
-        text = [`<p>${negotiations}${sneakyText}${contestedText}</p><p>${coalitionText}</p><p>${playerFate}</p>`, `<p>${secondPageText}</p>`]
+        text = [`<p>${negotiations}${sneakyText}${contestedText}</p><p>${coalitionText}</p>`, `<p>${secondPageText}</p><p>${playerFate}</p>`]
     } else {
         text = [`<p>${negotiations}${sneakyText}${contestedText}</p><p>${coalitionText}</p><p>${playerFate}</p>`, ]
     }
@@ -4099,7 +4099,7 @@ function openHeadquarter() {
     rightCol.style.width = '30%';
     hqDiv.appendChild(rightCol);
 
-    if (window.innerWidth <= 768) {
+    if (window.screen.width <= 768) {
         hqDiv.style.flexDirection = 'column';
         hqDiv.style.height = 'auto';
         leftCol.style.width = '100%';
@@ -4303,7 +4303,7 @@ function openHeadquarter() {
         name.style.maxWidth = '115px';
         name.style.height = '32px';
 
-        if (window.innerWidth <= 768) {
+        if (window.screen.width <= 768) {
             name.style.height = '64px';
         }
         imgContainer.appendChild(name);
@@ -4361,7 +4361,7 @@ function openHeadquarter() {
         name.style.overflowWrap = 'break-word'; // Breaks the word if necessary
         name.style.maxWidth = '115px';
         name.style.height = '32px';
-        if (window.innerWidth <= 768) {
+        if (window.screen.width <= 768) {
 
                 name.style.height = '64px';
             }
@@ -4619,6 +4619,8 @@ function openHeadquarter() {
     backButton.style.marginTop = '2em';
     backButton.style.marginBottom = '1em';
     backButton.style.backgroundColor = 'lightgreen';
+    backButton.style.zIndex = 998;
+    backButton.style.position = 'relative';
     backButton.style.boxShadow = '0 0 20px 4px rgba(144, 238, 144, 0.9)'; // Stronger light green glow
     backButton.onclick = function() {
         // Hide headquarters and show the original content
@@ -4626,7 +4628,7 @@ function openHeadquarter() {
         overlay.remove();
         questions.style.display = '';
     };
-    if (window.innerWidth <= 768) {
+    if (window.screen.width <= 768) {
     rightCol.appendChild(backButton); // Attach to right column for small screens
     } else {
         middleCol.appendChild(backButton); // Attach to middle column for larger screens
@@ -4666,7 +4668,7 @@ function openHeadquarter() {
             hqRect = hqDiv.getBoundingClientRect();
             explanationBox.style.left = (rect.left - hqRect.left - (12.5 * 14)) + 'px';
             explanationBox.style.top = (rect.top - hqRect.top - (7 * 14) - rect.height) + 'px';
-            if (window.innerWidth <= 768) {
+            if (window.screen.width <= 768) {
                 explanationBox.style.left = (rect.left - hqRect.left - (18 * 14)) + 'px';
                 explanationBox.style.top = (rect.top - hqRect.top - (13 * 14) - rect.height) + 'px';
             }
@@ -4694,7 +4696,7 @@ function openHeadquarter() {
         }
     };
 
-    if (window.innerWidth <= 768) {
+    if (window.screen.width <= 768) {
     rightCol.appendChild(tutorialButton); // Attach to right column for small screens
     } else {
         middleCol.appendChild(tutorialButton); // Attach to middle column for larger screens
@@ -4732,7 +4734,7 @@ function openHeadquarter() {
                 pollingDiv.style.zIndex = 1001;
                 explanationBox.style.left = (rect1.right - hqRect.left + (2 * 14)) + 'px';
                 explanationBox.style.top = (rect1.top - hqRect.top + (4 * 14)) + 'px';
-                if (window.innerWidth <= 768) {
+                if (window.screen.width <= 768) {
                     explanationBox.style.left = (rect.left - hqRect.left - (18 * 14)) + 'px';
                     explanationBox.style.top = (rect1.top - hqRect.top + (36 * 14)) + 'px';
                 }
@@ -4748,7 +4750,7 @@ function openHeadquarter() {
                 likeabilityDescDiv.style.zIndex = 1001;
                 explanationBox.style.left = (rect2.left - hqRect.left - (33 * 14)) + 'px';
                 explanationBox.style.top = (rect2.top - hqRect.top - (2 * 14)) + 'px';
-                if (window.innerWidth <= 768) {
+                if (window.screen.width <= 768) {
                     explanationBox.style.left = (rect.left - hqRect.left - (18 * 14)) + 'px';
                     explanationBox.style.top = (rect2.top - hqRect.top - (28 * 14)) + 'px';
                 }
@@ -4769,7 +4771,7 @@ function openHeadquarter() {
                 likeabilityDescDiv.style.zIndex = '';
                 explanationBox.style.left = (rect3.right - hqRect.left + (2 * 14)) + 'px';
                 explanationBox.style.top = (rect3.top - hqRect.top + (4 * 14)) + 'px';
-                if (window.innerWidth <= 768) {
+                if (window.screen.width <= 768) {
                     explanationBox.style.left = (rect.left - hqRect.left - (18 * 14)) + 'px';
                     explanationBox.style.top = (rect3.top - hqRect.top + (46 * 14)) + 'px';
                 }
@@ -4792,7 +4794,7 @@ function openHeadquarter() {
                 dismissInfoDiv.style.zIndex = '1001';
                 explanationBox.style.left = (rect4.left - hqRect.left - (4.5 * 14)) + 'px';
                 explanationBox.style.top = (rect4.top - hqRect.top - (12 * 14)) + 'px';
-                if (window.innerWidth <= 768) {
+                if (window.screen.width <= 768) {
                     explanationBox.style.left = (rect.left - hqRect.left - (18 * 14)) + 'px';
                     explanationBox.style.top = (rect4.top - hqRect.top + (17 * 14)) + 'px';
                 }
@@ -4811,7 +4813,7 @@ function openHeadquarter() {
                 moodDiv.style.zIndex = 1001;
                 explanationBox.style.left = (rect5.left - hqRect.left - (4.5 * 14)) + 'px';
                 explanationBox.style.top = (rect5.top - hqRect.top + (12 * 14)) + 'px';
-                if (window.innerWidth <= 768) {
+                if (window.screen.width <= 768) {
                     explanationBox.style.left = (rect.left - hqRect.left - (18 * 14)) + 'px';
                     explanationBox.style.top = (rect5.top - hqRect.top + (18 * 14)) + 'px';
                 }
@@ -4826,7 +4828,7 @@ function openHeadquarter() {
                 moodDiv.style.zIndex = '';
                 explanationBox.style.left = (rect6.right - hqRect.left + (2 * 14)) + 'px';
                 explanationBox.style.top = (rect6.top - hqRect.top + (4 * 14)) + 'px';
-                if (window.innerWidth <= 768) {
+                if (window.screen.width <= 768) {
                     explanationBox.style.left = (rect.left - hqRect.left - (18 * 14)) + 'px';
                     explanationBox.style.top = (rect6.top - hqRect.top + (34 * 14)) + 'px';
                 }
@@ -4841,7 +4843,7 @@ function openHeadquarter() {
                 coalitionDiv.style.zIndex = '';
                 explanationBox.style.left = (rect7.left - hqRect.left - (12.5 * 14)) + 'px';
                 explanationBox.style.top = (rect7.top - hqRect.top - (7 * 14) - rect7.height) + 'px';
-                if (window.innerWidth <= 768) {
+                if (window.screen.width <= 768) {
                 explanationBox.style.left = (rect.left - hqRect.left - (18 * 14)) + 'px';
                 explanationBox.style.top = (rect7.top - hqRect.top - (13 * 14) - rect.height) + 'px';
             }
@@ -4977,8 +4979,8 @@ function showAdvisors() {
             // Wrap the description in another div
             let descriptionContainer = document.createElement('div');
             descriptionContainer.style.padding = '0.5em'
-            descriptionContainer.style.height = '8em'
-            if (window.innerWidth <= 768) {
+            descriptionContainer.style.height = '9em'
+            if (window.screen.width <= 768) {
                 descriptionContainer.style.padding = '0.2em'
                 descriptionContainer.style.height = '15em'
             }
@@ -5112,7 +5114,7 @@ const advisorOezdemir = new Advisor(13, "Cem Özdemir", 'https://i.ibb.co/7g9nqq
 const advisorJarasch = new Advisor(14, "Bettina Jarasch", 'https://i.ibb.co/NxF3xns/jarasch-cropped.jpg', "You could coordinate your campaign with the Green mayoral candidate's - Jarasch's backround in journalism might also help with media relations.", "The mayoral candidate in Berlin would appreciate some help for her race.",  (affectedCandidate1=79, changeAmount1=0.007) => { Object.keys(MediaMap).forEach(key => {changeGlobalEffect(affectedCandidate1, parseInt(key), changeAmount1);}); addAdvisorTooltips([4071, 4072, 4073, 4086, 4087, 4088, 4089, 4096, 4117, 4118, 4119, 4120], ["Going on the attack will get you back into the headlines, but at what cost…", "This won’t help to get you back into the horse race!","My media buddies would love to see some action here!","Good idea if you want to consolidate the Left, but he’s a tough nut to crack.","He is, but be careful that you don’t overdo it with the attacks…" ,"Nice idea, but don’t disappear into the background of those two men!", "Well, now you’re just admitting defeat.", "You’ll need another Green in the Bundesrat, and I think I can win this with your help, even though Berlin isn’t that competitive!", "Good idea, the press sees this as a race between you and him.", "The media thinks you’re already the main center-left candidate.", "My media buddies are doubtful that it’ll be enough for Red Green… but if you think so…" , "Talking to the fascists? Really?"], 'https://i.ibb.co/NxF3xns/jarasch-cropped.jpg')}, (affectedCandidate1=79, changeAmount1=-0.004) => { Object.keys(MediaMap).forEach(key => { changeGlobalEffect(affectedCandidate1, parseInt(key), changeAmount1); });removeAdvisorTooltips([4071, 4072, 4073, 4086, 4087, 4088, 4089, 4096, 4117, 4118, 4119, 4120], 'https://i.ibb.co/NxF3xns/jarasch-cropped.jpg');}, 'locked');
 const advisorBayaz = new Advisor(15, "Danyal Bayaz", "https://i.ibb.co/tPpQ65h/bayaz-cropped.jpg", "Baden-Württemberg's Minister of Finances could campaign for you there, but he also has valuable contacts within the FDP.", "This state minister is an advocate for closer cooperation with the FDP and hopes you feel the same.", () =>{coalitions.forEach(coalition => { if ([5, 6, 15].includes(coalition.id)) {coalition.weight *= 1.5;}});addAdvisorTooltips([4081], ["My friends from the ‘Pasta-connection’ already have some ideas on how to do that…"], 'https://i.ibb.co/tPpQ65h/bayaz-cropped.jpg');multiplyEffect(1.2, [4081]);},  () =>{coalitions.forEach(coalition => { if ([5, 6, 15].includes(coalition.id)) {coalition.weight *= 1/1.5;}});removeAdvisorTooltips([4081], 'https://i.ibb.co/tPpQ65h/bayaz-cropped.jpg');multiplyEffect(1/1.2, [4081]);}, 'locked');
 const advisorPeters = new Advisor(16,"Anna Peters", 'https://i.ibb.co/4TmSChy/peters-cropped.jpg',  "If you want to turn out the youth vote, who could be better suited than the co-leader of the Green Youth?", "The co-leader of the youth wing of your party wants you to show that you're taking the FFF movement seriously.", (affectedCandidate1=79, changeAmount1=0.009, affectedCandidate2=303, changeAmount2=-0.003) => { Object.keys(YouthMap).forEach(key => {      changeGlobalEffect(affectedCandidate1, parseInt(key), changeAmount1); changeGlobalEffect(affectedCandidate2, parseInt(key), changeAmount2);}); addAdvisorTooltips([4094], ["Luisa isn’t really active right now, and FFF is party-neutral. She’ll only accept if you’ve proven your steadfast allegiance with Fridays For Future."], 'https://i.ibb.co/4TmSChy/peters-cropped.jpg')}, (affectedCandidate1=79, changeAmount1=-0.009, affectedCandidate2=303, changeAmount2=0.003) => { Object.keys(YouthMap).forEach(key => {      changeGlobalEffect(affectedCandidate1, parseInt(key), changeAmount1); changeGlobalEffect(affectedCandidate2, parseInt(key), changeAmount2);}); removeAdvisorTooltips([4094], 'https://i.ibb.co/4TmSChy/peters-cropped.jpg')},'locked');
-const advisorBuntenbach = new Advisor(17, "Annelie Buntenbach", 'https://i.ibb.co/zFP3zfP/buntebach-cropped.jpg', "The Greens want to replace the SPD as leaders of the center-left this election - and as a former union functionary, Buntenbach has some ideas how..", "Perhaps targeting the SPD is a good call, for this union functionary to provide some ideas how...", (affectedCandidate1=79, changeAmount1=0.006, affectedCandidate2=78, changeAmount2=-0.004) => { Object.keys(SPDTarget).forEach(key => {changeGlobalEffect(affectedCandidate1, parseInt(key), changeAmount1); changeGlobalEffect(affectedCandidate2, parseInt(key), changeAmount2);}); }, (affectedCandidate1=79, changeAmount1=-0.006, affectedCandidate2=78, changeAmount2=0.004) => { Object.keys(SPDTarget).forEach(key => { changeGlobalEffect(affectedCandidate1, parseInt(key), changeAmount1); changeGlobalEffect(affectedCandidate2, parseInt(key), changeAmount2);}); }, 'locked');
+const advisorBuntenbach = new Advisor(17, "Annelie Buntenbach", 'https://i.ibb.co/zFP3zfP/buntebach-cropped.jpg', "The Greens want to replace the SPD as leaders of the center-left this election - and as a former union functionary, Buntenbach has some ideas how..", "Perhaps targeting the SPD is a good call, for this union functionary to provide some ideas how...", (affectedCandidate1=79, changeAmount1=0.006, affectedCandidate2=78, changeAmount2=-0.005) => { Object.keys(SPDTarget).forEach(key => {changeGlobalEffect(affectedCandidate1, parseInt(key), changeAmount1); changeGlobalEffect(affectedCandidate2, parseInt(key), changeAmount2);}); }, (affectedCandidate1=79, changeAmount1=-0.006, affectedCandidate2=78, changeAmount2=0.005) => { Object.keys(SPDTarget).forEach(key => { changeGlobalEffect(affectedCandidate1, parseInt(key), changeAmount1); changeGlobalEffect(affectedCandidate2, parseInt(key), changeAmount2);}); }, 'locked');
 const advisorGuenther = new Advisor(18, "Wolfram Günther", 'https://i.ibb.co/XWc0f73/g-nther-cropped.jpg', "The Greens are used to struggles in East Germany, but Saxon Minister of the Environment Günther wants to do his part for your campaign to change this.", "This Saxon Minister wants you to show that you're serious about appealing to East Germany.",() =>{addAdvisorTooltips([4065,4120], ["I know our potential here is limited, but if not for the election, I believe coming here is important for our national unity.", "Look, I appreciate the effort, but if anyone can talk to the AfD, it’s certainly not us."], 'https://i.ibb.co/XWc0f73/g-nther-cropped.jpg');multiplyEffect(1.2, [4065]);}, () =>{removeAdvisorTooltips([4065,4120], 'https://i.ibb.co/XWc0f73/g-nther-cropped.jpg');multiplyEffect(1.2, [4065]);}, 'locked');
 
 const advisorsList = [
