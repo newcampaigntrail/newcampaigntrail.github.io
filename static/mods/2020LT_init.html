@@ -1,0 +1,434 @@
+/*
+ * Mod Title: 2020 Lithuania - Plagues and Plaques
+ * Mod Author: Augenis
+ * Mod Version: 1.0.0
+ * Mod Description: 2020 Lithuanian parliamentary election
+ * 
+ * Coding License: Apache License 2.0
+ * Writing License: Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
+ * 
+ * For the coding in this mod, I hereby release the code under the terms and conditions of the Apache License 2.0. The full text of the license can be found at:
+ * https://choosealicense.com/licenses/apache-2.0/
+ * 
+ * For the writing in this mod, including documentation, text files, and other non-software written works, I hereby release the content under the terms and conditions of the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license. The full text of the license can be found at:
+ * https://creativecommons.org/licenses/by-nc/4.0/legalcode
+ * 
+ * By using, distributing, or modifying this mod, you agree to abide by the terms and conditions of both the Apache License 2.0 and the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license.
+*/
+campaignTrail_temp.modBoxTheme = {
+     "header_color": "#FDB913",
+     "header_text_color": "#000000",
+     "description_text_color": "#000000",
+     "description_background_color": "#00ea96",
+     "main_color": "#009d65",
+     "secondary_color": "#C1272D",
+     "ui_text_color": "#fefcfc"
+}
+function updateCandidateForm() {
+  try {
+    const form = document.querySelector("#candidate_form form");
+    const heading = form.querySelector("h3");
+    
+    heading.textContent = "Please select your party:";
+  } catch {}
+}
+window.setInterval(updateCandidateForm,200)
+function updateRunningMateForm() {
+  try {
+    const form = document.querySelector("#running_mate_form form");
+    const heading = form.querySelector("h3");
+    
+    heading.textContent = "Please select your chairman:";
+  } catch {}
+}
+window.setInterval(updateRunningMateForm,200)
+function removeCandidateSummary() {
+try {
+  const candidateSummary = document.querySelector("#candidate_summary");
+  if (candidateSummary) {
+    const ulList = candidateSummary.querySelector("ul");
+    if (ulList) {
+      candidateSummary.removeChild(ulList);
+    }
+  }
+} catch {}
+}
+window.setInterval(removeCandidateSummary,200)
+
+let z = new MutationObserver((mutationsList, observer) => {
+    let runningMateSummary = document.querySelector("#running_mate_summary");
+    if (runningMateSummary && runningMateSummary.children[0].children[2].innerHTML != runningMateSummary.children[0].children[2].innerHTML.replaceAll("Home State", "Constituency")) {
+        runningMateSummary.children[0].children[2].innerHTML = runningMateSummary.children[0].children[2].innerHTML.replaceAll("Home State", "Constituency");
+    }
+});
+
+z.observe(document, { subtree: true, childList: true });
+
+function modifyForm() {
+  try {
+    const form = document.querySelector('form[name="game_type_selection"]');
+    const select = form.querySelector('select[name="game_type_id"]');
+  
+    // change option value
+    const option = select.querySelector('option[value="1"]');
+    option.textContent = 'Default (Parallel Vote)';
+
+    // Remove second option
+    select.querySelector('option[value="2"]').remove();
+  
+    // change h3 text
+    const h3 = form.querySelector('h3');
+    h3.textContent = 'How would you like the seats to be allocated?';
+  } catch {}
+}
+window.setInterval(modifyForm,200)
+function changeOpponentSelectionDescription() {
+  try {
+    const opponentSelectionDescription = document.getElementById("opponent_selection_description_window");
+    opponentSelectionDescription.innerHTML = `<p><strong>Use the default method of allocating seats in the Lithuanian Seimas.</strong></p><p>Lithuania uses a system of parallel voting. This means that half of the seats (70 of 141) are distributed with a nationwide list-based proportional system, with a 5 percent threshold, while the other half (71 of 141) are elected in single-member constituencies. Citizens receive two ballots on the first election day on October 11th, then, if their constituency has a second round election, vote a second time on October 25th.</p><p>This method means that some proportionality is retained, but minor parties can still win some single-member constituencies and enter parliament regardless. Winning a majority of the seats is very difficult.</p><p><strong>Alongside gathering votes, your answers in the game will also affect which parties' voters will be more likely to vote for your candidates in the second round.</strong></p>`;
+  } catch {}
+}
+window.setInterval(changeOpponentSelectionDescription,200)
+
+campaignTrail_temp.election_json = JSON.parse("[{\"model\": \"campaign_trail.election\", \"pk\": 9, \"fields\": {\"year\": 2020, \"summary\": \"<span id='screen11' style='display: initial;'>The 'revolt' of the Peasants in 2016 ushered in a government led by the Union of Farmers and Greens, in coalition with Social Democrats and various populist forces. Worldwide economic upturn has left the economy growing and migration to the West decreasing, but the cabinet has gone through several humiliating scandals and internal crises.<br><br>As 2020 approaches, the Peasants are attacked from the 'Right' and their fellow 'Left'. The Homeland Union seeks to paint their opponents as incompetent pro-Russian populists, while the Social Democrats have split from their former allies and chart an attempt to recover their position. In a campaign that is about to be interrupted by the COVID-19 pandemic, will the 'Right' return to power after eight years in opposition, or will they falter at the finish line once more?<br><br><button onclick='next8()'>Terminology</button></span><span id='screen12' style='display: none;'>Lithuanian politics are divided between the <strong>'Right'</strong> and <strong>'Left'</strong> blocs, which are only loosely similar to their equivalent Western terms. Voters generally prefer parties of their bloc in the second round and are unlikely to switch.<br><br>The <strong>'Right'</strong> originates from the nationalist and anti-communist Sąjūdis and affiliates - TS-LKD, LRLS, Freedom and NS belong to this bloc. It is urban, pro-free market, anti-Russia and pro-European integration, and in recent times, it has also become increasingly socially liberal.<br><br>The <strong>'Left'</strong> is made up of successors to the Communist Party and parties whose electorate was negatively affected by the post-communist transition. LVŽS, LSDP, Labour, LSDDP and most minor parties belong to this bloc. It is rural, geopolitically pragmatic, though mostly anti-Russia, and socially conservative.<br><button onclick='back3()'>Back</button></span>\", \"image_url\": \"https://i.imgur.com/E0CRiOp.png\", \"winning_electoral_vote_number\": 270, \"advisor_url\": \"https://media.discordapp.net/attachments/559653590390800384/1146123187646631936/Campaign_advisors.png\", \"recommended_reading\": \"<div style=\\\"overflow-y:scroll;height:357.133px;\\\"><img src=\\\"https://i.imgur.com/sgqrlF8.png\\\" width=\\\"450px\\\"><br><br><h4 style=\\\"margin-top: 0.5em;\\\">Thank you for playing 2020 Lithuania!</h4><p>This is a scenario that seeks to simulate the <a href=\\\"https://en.wikipedia.org/wiki/2020_Lithuanian_parliamentary_election\\\" target=\\\"_blank\\\">2020 Lithuanian parliamentary election</a>, the most recent parliamentary election in Lithuania. Lithuania is my home country, and I had considered a scenario set in one of our elections for a while. However, I was held back, first by our complex electoral system (that is still inaccurate in this mod - it assumes that proportional and constituency votes are the same, when in fact there's a lot of split-ticket voting), and second by worry that our political system, topics and questions would be too obscure for anyone to be interested to play this. Yet, if you are reading this, it seems I succeeded! Feel free to ping me on the TCT server or message me with thoughts or feedback on this mod!<br><br>If you liked this mod, then make sure to also try my other scenario on the loader - <strong>1993: Post-Communist USA</strong> (or, if you already played it, perhaps you noticed the allusions in some of the questions 😉). Also, give a look to my other scenario, that is not on the loader - <strong><a href=\\\"https://www.reddit.com/r/thecampaigntrail/comments/14sz3o7/weimar_1930_has_been_moved_out_of_google_docs/\\\" target=\\\"_blank\\\">1930 Weimar</a></strong> - which deals with a heavier topic, namely the rise of National Socialism in Weimar Germany.</p><h4>Further Reading</h4><p>Basic information (English):<br><br><strong><a href=\\\"https://www.tandfonline.com/doi/full/10.1080/01629778.2021.1901754\\\" target=\\\"_blank\\\">Mindaugas Jurkynas, 'Change in a Time of Pandemic: the 2020 parliamentary elections in Lithuania'</a></strong><br><strong><a href=\\\"https://www.lrt.lt/en/news-in-english/19/1232763/who-s-who-in-lithuania-s-2020-parliamentary-election-explainer\\\" target=\\\"_blank\\\">'Who's who in Lithuania's 2020 parliamentary election – explainer'</a></strong><br><strong><a href=\\\"https://www.kas.de/documents/252038/7938566/Lithuania+Has+Voted+for+Change.pdf/2811e385-a8ed-b8c0-9a14-84d5cc46fb29?version=1.0&t=1604307344033\\\" target=\\\"_blank\\\">Konrad-Adenauer-Stiftung, 'Lithuania Has Voted for Change'</a></strong><br><br>In-depth introduction (Lithuanian):<br><br><strong><a href=\\\"https://books.google.lt/books/about/Posovietinės_Lietuvos_politinė_anatomi.html?id=qOYiAQAAIAAJ&redir_esc=y\\\" target=\\\"_blank\\\">Ainė Ramonaitė, 'Political Anatomy of Post-Soviet Lithuania'</a></strong><br><strong><a href=\\\"https://www.lituanistika.lt/content/77030\\\" target=\\\"_blank\\\">Mažvydas Jastramskis, 'Is It Possible to Predict Seimas Elections? The Three-Body Problem in Lithuanian Politics'</a></strong></p><h4>Where are they now?</h4><p>So what is the historical result? Who actually won, and what happened to all the characters you can play as?<br><br><strong>The election:</strong> An intense race that started as a seemingly inevitable TS-LKD victory and ended up a nail-biter due to LVŽS recovering in the polls. Still, it was won by the <strong>'Right'</strong>. A coalition of TS-LKD, LRLS and Freedom (so Conservatives and Liberals) was formed and remains the incumbent government.<br><br><strong>The Šimonytė Cabinet:</strong> Immediately after the election, quarantine was imposed, causing wide controversy. Same-sex partnership law was proposed in the Seimas several times, but has (as of time of writing, September 2023) failed every single time due to opposition from TS-LKD's 'Christian Democrat' wing. The same happened to attempts to decriminalize marijuana. As a result, tensions between TS-LKD and Freedom have mounted and internal conflicts happen almost daily.<br><br>The government's pro-LGBT stance was answered by the formation of a wide anti-LGBT, anti-vaccination and anti-'Right' movement, the Lithuanian Family Movement, which organizes protests and has splintered into several political parties.<br><br><strong>Gabrielius Landsbergis:</strong> After the election, he was appointed Minister of Foreign Affairs. Under his leadership, Lithuania challenged China over the Taiwan question, leading to a conflict that became international news, and it also became a vanguard of pro-Ukrainian policy in NATO during the Russian invasion of Ukraine. However, his popularity has plummeted and it is believed that he intends to resign from his party's leadership sometime before or after 2024.<br><br><strong>Ramūnas Karbauskis:</strong> After losing the election, he resigned from his parliamentary seat in protest, turned sharply towards anti-LGBT rhetoric and pulled out of the National Agreement on Defense in 2022. His party split - Saulius Skvernelis left in 2021 and established the 'Union of Democrats', a party which intends to be a more moderate continuation of LVŽS' 'statist' economic policy.<br><br><strong>Gintautas Paluckas:</strong> After losing the election, he resigned as chairman in early 2021. A leadership race took place between Juozas Olekas, the candidate of the conservative wing, and Vilija Blinkevičiūtė - the latter won, and she is the incumbent chairman. She retained some of Paluckas' reform (Gudžinskas is one of her vice-chairpeople), but is considered more in the party centre. Under her leadership, thanks to her personal popularity, the party regained its popularity and is now first in the polls. It is widely believed that the Social Democrats will win the 2024 election.<br><br><strong>Plaque of Jonas Noreika:</strong> It's still there.<br><br><strong>Statue to Petras Cvirka:</strong> Removed in 2021.<br><br><strong>The electoral threshold:</strong> The LVŽS attempted to lower it to 3% and received a presidential veto. They failed to overturn the veto by one vote. It is currently still at 5%.<br><br><strong>The National Development Bank:</strong> More or less forgotten, even by the LVŽS itself, even though it was their big agenda in 2020.<br><br><strong>Non-Lithuanian letters in documents:</strong> The language war was finally finished by the Šimonytė Cabinet. Non-Lithuanian letters in documents have been legalized and society has basically forgotten the question, it is no longer on the agenda.</p><br><br>\", \"has_visits\": 0, \"no_electoral_majority_image\": \"/static/images/2012-no-majority.jpg\"}}]");
+RecReading=true
+campaignTrail_temp.candidate_json = JSON.parse("[{\"model\": \"campaign_trail.candidate\", \"pk\": 77, \"fields\": {\"first_name\": \" \", \"last_name\": \"TS-LKD\", \"election\": 9, \"party\": \"Republican\", \"state\": \"Ohio\", \"priority\": 1, \"description\": \"<span id='screen7' style='display: initial;'><b>Playable.</b><li><b>Name: Homeland Union - Lithuanian Christian Democrats (TS-LKD)</b></li><p>The Homeland Union, also known as the Conservatives, is the successor to the Sąjūdis, the anti-communist movement which led Lithuania towards independence in 1990 and reorganized into a conservative party. It was traditionally supported by loyal urban voters, former deportees, religious voters and nationalists - however, since 2015, when Gabrielius Landsbergis was elected chairman, it began to pivot towards young liberal voters in Vilnius.</p><p>The TS-LKD received the largest amount of votes in 2016, but lost to LVŽS in single-member constituencies and was forced into opposition. Antagonism between the two parties has increasingly turned this election into a two-way race between pro-Western urban liberalism and pragmatic ruralism. Can the TS-LKD avoid the mistakes of 2016 and form a large liberal-conservative bloc, or will it falter to 'the Left' once again?<br><br><button onclick='next6()'>Election Strategy Briefing</button><br></p></span><span id='screen8' style='display: none;'><p>The TS-LKD enters the election with a significant lead and a loyal voter base. However, the situation in the election is a lot more precarious than it seems. Beyond our loyal base and our Liberal allies, most voters despise the TS-LKD due to our past governments, including Kubilius' management of the Great Recession. At the moment, if we fought one-on-one against the LVŽS, we would lose in most constituencies in the second round. This is what happened in 2016 - even though we got the plurality of the votes, the Peasants got a far larger seat share.<br><br>We must do something to overcome this deficiency. Destroying the prestige of the Skvernelis Cabinet could make runoffs against the LVŽS favorable, if we expect to fight them in most constituencies. Going too liberal could lose us a lot of votes, as we would simply eat into the Liberal parties while losing support beyond our fortress - but if we go too conservative, liberal voters will be much less likely to support us as well. Tread carefully, and consider your options.<br><button onclick='back1()'>Back</button></p></span>\", \"color_hex\": \"#00A59B\", \"secondary_color_hex\": \"#00A59B\", \"is_active\": 1, \"image_url\": \"https://i.imgur.com/70jKvNm.jpg\", \"electoral_victory_message\": \"<h3>Congratulations! You have won the 2000 election.</h3><p>Confounding the predictions of many experts, you were able to turn the tables on Al Gore, in spite of the economy and Clinton's popularity.</p><p>On the political front, you can push for tax cuts to spur the economy and return the budget surplus to the American people. You might also pursue education and immigration reform, individual Social Security accounts, and new laws to defend the family and the sanctity of life.</p>\", \"electoral_loss_message\": \"<h3>Sorry! You have lost the 2000 election.</h3><p>Perhaps it was always a long-shot, with the Democrats in such a commanding position after eight years of Bill Clinton. In any case, at least you are still the Governor of Texas.</p><p>Expect Al Gore to unleash a new round of government programs and environmental regulations. You are still youngish, however. If the election was close this time, perhaps you can run again in 2004, or work on behalf your brother Jeb.</p>\", \"no_electoral_majority_message\": \"<h3>Wow! You have won in a squeaker.</h3><p>No candidate achieved a majority of the electoral votes, marking the first time this has happened since 1824. Fortunately for you, the majority of U.S. states have Republican controlled congressional delegations, and they will cast their votes accordingly.</p><p>Given the incredibly close nature of the election, you will surely be expected to govern as a moderate, conciliatory President. Right??</p>\", \"description_as_running_mate\": \"''\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 78, \"fields\": {\"first_name\": \" \", \"last_name\": \"LVŽS\", \"election\": 9, \"party\": \"Democrat\", \"state\": \"Alaska\", \"priority\": 2, \"description\": \"<span id='screen9' style='display: initial;'><b>Playable.</b><li><b>Name: Lithuanian Farmers and Greens Union (LVŽS)</b></li><p>The Lithuanian Farmers and Greens Union, commonly known as the Peasants, is the largest party in the Seimas and the leading force in the Skvernelis Cabinet. It was a minor party until 2016, when it suddenly surged to dominance due to dissatisfaction with the party system and the support of popular independent former Minister of Interior Saulius Skvernelis, who is the current Prime Minister.</p><p>Joined by many new figures during this surge, the LVŽS is heterodox, but promised a technocratic government of ‘change’ and was mainly supported by older, rural, socially conservative 'Left' voters. Can it retain its positions in spite of falling support and the COVID pandemic, and prove wrong the unspoken law of Lithuanian politics - that incumbents never get reelected?<br><br><button onclick='next7()'>Election Strategy Briefing</button><br></p></span><span id='screen10' style='display: none;'><p>The LVŽS enters the election significantly behind the TS-LKD - however, their strength does not lie just in their polling numbers. In a one on one runoff, a LVŽS candidate is likely to defeat a TS-LKD candidate, as most 'Left' third party voters will choose them over the Conservatives. However, the Conservative and Liberal 'Right' starts out at an advantage in the two major cities, Vilnius and Kaunas. The latter, though a TS-LKD stronghold, was flipped by us in 2016. If the current polls hold, the TS-LKD will win a plurality due to the division of the left and gain initiative to form the government.<br><br>We must find a way to prevent this. Vilnius might be a lost cause, but Kaunas and the other cities could be flipped - however, we would need to appeal to their urban electorate somehow. Alternatively, we could give up on the two major cities entirely and focus on the rural regions - that means we would need to sweep up the minor parties and their stronghold seats. Keep the Social Democrats in mind as well - they hope to challenge you in the regions, and their candidates would actually pose a challenge if they get to the second round in many districts. Tread carefully, and consider your options.<br><button onclick='back2()'>Back</button></p></span>\", \"color_hex\": \"#00A651\", \"secondary_color_hex\": \"#00A651\", \"is_active\": 1, \"image_url\": \"https://i.imgur.com/rf7ul11.jpg\", \"electoral_victory_message\": \"<h3>Congratulations! You have won the 2000 election.</h3><p>You have an agenda to fulfill and a Real America to defend for the next four years. Will you follow through with the concessions to progressives on universal healthcare, or will you focus on your own planks like education reform and the Equal Rights Amendment? If you are as successful as Clinton, 2004 will be a cakewalk.</p><p>Radical Rex and his paleoconservative agenda will, hopefully, be repudiated by the Republicans in 2004. Let's hope he does not enter history as another Goldwater, shaping his party into a right-wing turn in spite of his loss.</p>\", \"electoral_loss_message\": \"<h3>Sorry! You have lost the 2000 election.</h3><p>It just seems all the little things affecting your campaign were too much to handle. Maybe you should have emphasized your relation to Clinton more. Maybe you should have moved politically left to mend fences with Fitzgerald's clique. Maybe you should have moved politically RIGHT to get more rural votes. Whatever it is, Rex Martin will be the next president. As it has since 94, the House and Senate will remain Republican, and Radical Rex will have a mostly free hand to enact his extreme agenda.</p><p>You are still Governor of Alaska, but who knows if you will keep that position for long? The next elections are in 2002, and Alaska looks quite red... A run in 2004 is not impossible, but it's not likely that the party will give you or your faction another shot. It seems Fitzgerald or another more progressive candidate will position themselves as the frontrunner then.</p>\", \"no_electoral_majority_message\": \"<h3>Sorry! You have lost in a squeaker.</h3><p>No candidate achieved a majority of the electoral votes, for the first time since 1824. Unfortunately for you, a majority of states have Republican controlled congressional delegations.</p><p>It seems that with Rex Martin and a Republican majority, the United States can expect to experience his radical agenda in the next four years. At least you are still Governor of Alaska.</p>\", \"description_as_running_mate\": \"''\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 79, \"fields\": {\"first_name\": \" \", \"last_name\": \"LSDP\", \"election\": 9, \"party\": \"Green\", \"state\": \"Connecticut\", \"priority\": 3, \"description\": \"<span id='screen13' style='display: initial;'><b>Playable.</b><li><b>Name: Social Democratic Party of Lithuania (LSDP)</b></li><p>The Social Democratic Party of Lithuania is the oldest party in the country, refounded in 1989 by several activists and anti-Soviet dissidents. It merged with the successor party to the Communists, the LDDP, in 2001 and led several governments since. However, the rise of the LVŽS undercut their support, and they were forced to accept a lesser role in the Skvernelis Cabinet.</p><p>The LSDP’s new chairman, Gintautas Paluckas, ended their partnership with the Peasants in 2017 and turned the party to a more genuine social democratic course, which caused much of the party's old guard to split into the LSDDP. It enters the 2020 election as a distant third to the Conservatives and Peasants - can it redeem itself and regain the power it held before 2016?<br><br><button onclick='next9()'>Election Strategy Briefing</button><br></p></span><span id='screen14' style='display: none;'><p>The Social Democrats start in a very problematic situation. The media sees the election as a race between the TS-LKD and the LVŽS, with the LSDP as an unfortunate third - unless it can stand out in some way, it is likely to bleed voters to the Peasants during the campaign. The situation in single-member constituencies is also concerning - at current polling, we won’t even be able to get to the runoff in enough constituencies for a plurality, much less win them.<br><br>We must find a way to stand out from the Peasants to avoid bleeding out, and we must grow our numbers. Most of our competitive candidates are in rural constituencies, where they will likely face LVŽS opponents - it isn’t clear where the swing 'Right' voters will vote in these races, so we should do something to align them closer to us as well. However, the Peasants will surely attack us if we collude with the 'Right'.<br><br>In spite of our party split, we still retain a strong conservative wing, which believes that we are doomed to fail, especially if we go too socially liberal. Tread carefully, and consider your options.<br><button onclick='back4()'>Back</button></p></span>\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FF0000\", \"is_active\": 1, \"image_url\": \"https://i.imgur.com/E5GTkEf.png\", \"electoral_victory_message\": \"<h3>Congratulations! You have won the 2000 election.</h3><p>This was definitely not supposed to happen. Good luck!</p>\", \"electoral_loss_message\": \"<h3>As expected, you have lost the 2000 election.</h3><p>The legacy of this campaign depends on a couple of factors. First of all, did you receive 5% of the popular vote? If so, congratulations! You will enable the Green Party to run a vigorous campaign in 2004 and present a true choice to the American people. Also, the Democrats were a little peeved that you \\\"stole\\\" votes from them in this election. Hopefully that doesn't lead to a backlash.</p>\", \"no_electoral_majority_message\": \"<h3>Wow! No candidate received 270 electoral votes, but the House will elect George W. Bush as President.</h3><p>Did you receive 5% of the popular vote? If so, congratulations! You will enable the Green Party to run a vigorous campaign in 2004 and present a true choice to the American people. Also, the Democrats were a little peeved that you \\\"stole\\\" votes from them in this election. Hopefully that doesn't lead to a backlash, especially since they will lose the vote in the House.</p>\", \"description_as_running_mate\": \"''\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 80, \"fields\": {\"first_name\": \" \", \"last_name\": \"LRLS\", \"election\": 9, \"party\": \"Reform\", \"state\": \"Alabama\", \"priority\": 4, \"description\": \"<b>Not playable, context only.</b><li><b>Name: Liberal Movement of the Republic of Lithuania (LRLS)</b></li><p>The Liberal Movement is an economically and socially liberal party which was founded in 2006. In 2015, it was a top contender in popularity polls, but collapsed after its leader, Eligijus Masiulis, was caught taking bribes from the influential MG Baltic conglomerate and was forced to resign.</p><p>After changes in leadership and party splits, the Liberals have finally recovered somewhat under the leadership of Viktorija Čmilytė-Nielsen, but remain a secondary force in Lithuanian politics. They collect votes from affluent urban voters, but also run ‘agrarian liberal’ candidates who downplay the party’s social liberalism in several rural constituencies. It is a traditional ally of the TS-LKD, but could consider alternative allies.</p>\", \"color_hex\": \"#F48100\", \"secondary_color_hex\": \"#F48100\", \"is_active\": 1, \"image_url\": \"https://i.imgur.com/hEowF4i.png\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"''\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 81, \"fields\": {\"first_name\": \"Gabrielius\", \"last_name\": \"Landsbergis\", \"election\": 9, \"party\": \"TS-LKD\", \"state\": \"Centras-Žaliakalnis\", \"priority\": 5, \"description\": \"''\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"https://i.imgur.com/MbMbly1.jpg\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"<p>Gabrielius Landsbergis is the chairman of the TS-LKD and grandson of Vytautas Landsbergis, leader of the Lithuanian independence movement in 1989-1991. Assuming the position in 2015, he has turned the party towards liberalism, such as for same-sex partnerships, while also keeping the party Europhilic, pro-free market and hawkish towards Russia and China.</p><p>Landsbergis is not the party's Prime Minister candidate - he conceded the position to the popular independent former Minister of Finance and 2019 presidential candidate, Ingrida Šimonytė, as his family name makes him controversial among many demographics. However, he intends to guide the next government and especially its foreign policy.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 82, \"fields\": {\"first_name\": \"Gintautas\", \"last_name\": \"Paluckas\", \"election\": 9, \"party\": \"LSDP\", \"state\": \"Utena\", \"priority\": 6, \"description\": \"''\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"https://i.imgur.com/ss0p6bm.jpg\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"<p>Gintautas Paluckas is the current chairman of the LSDP and has held the position since 2017. He represents the growing ‘genuine’ social democratic wing of the party, which accepts a certain level of social liberalism such as LGBT rights and decriminalization of marijuana, while also being a lot more progressive on economic affairs. His leadership is controversial within the old guard, but gathers support from the party grassroots.</p><p>Paluckas’ decision to split with the Peasants has alienated a potential coalition partner and caused old guard members to split into the Social Democratic Labour Party, or LSDDP, but he is confident that he can replace these losses with gains in the election. Otherwise, his brief leadership of the party might become shaky.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 83, \"fields\": {\"first_name\": \"Jessica\", \"last_name\": \"Dorsey\", \"election\": 9, \"party\": \"Republican\", \"state\": \"Maryland\", \"priority\": 7, \"description\": \"''\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"https://media.discordapp.net/attachments/559653590390800384/1119714249527271494/Dorsey.jpg\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"<p>Jessica Dorsey is a long-time moderate Republican representative from Maryland, who disagrees with Martin on most of his platform, lacks name recognition, and represents a state which is unlikely to swing Republican in this election.</p><p>Choosing her as running mate would mainly be an attempt to stunt Bailey's gains from the historical achievement of being the first woman nominee of a major political party.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 84, \"fields\": {\"first_name\": \"Viktor\", \"last_name\": \"Uspaskich\", \"election\": 9, \"party\": \"Labour\", \"state\": \"Not running in election\", \"priority\": 8, \"description\": \"''\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"https://i.imgur.com/7W32YVM.jpg\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"<p>Viktor Uspaskich is a millionaire businessman of Russian birth who founded the Labour Party in 2003 and led it to immediate success by taking advantage of frustration with the party system, populist appeals and a successful media campaign. In a few years, it split apart and nearly disintegrated, and Uspaskich fled to Russia to hide from an arrest for tax fraud. Yet, Labour survived and entered a coalition with LSDP in 2012, while Uspaskich gained legal immunity by being elected to the European Parliament, where he sits to this day.</p><p>Having temporarily given away leadership of the party, Uspaskich has recently returned and brought the party back from a second near death. With poll numbers surging, he is confident that his supporters will carve out a large parliamentary group and return to power once more - perhaps with the Peasants, or maybe even with the Conservatives.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 85, \"fields\": {\"first_name\": \"Ramūnas\", \"last_name\": \"Karbauskis\", \"election\": 9, \"party\": \"LVŽS\", \"state\": \"Multi-member constituency\", \"priority\": 9, \"description\": \"''\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"https://i.imgur.com/PA3m9tE.jpg\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"<p>Ramūnas Karbauskis has been the chairman of LVŽS since 2009. He is a millionaire businessman and anti-alcohol activist, who was also formerly eurosceptic and allied with right-wing nationalists, but moderated his positions. He does not hold a position in the Skvernelis Cabinet, but serves as the government’s ‘grey eminence’ and spokesman.</p><p>Within the LVŽS, he stands on the right, and tensions are slowly growing between him and Prime Minister Skvernelis. However, these two personalities are willing to work together in this election if it means that they can remain in power and stop the Conservatives.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 86, \"fields\": {\"first_name\": \"Alex\", \"last_name\": \"Markoff\", \"election\": 9, \"party\": \"Democrat\", \"state\": \"North Dakota\", \"priority\": 10, \"description\": \"''\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"https://media.discordapp.net/attachments/559653590390800384/1120069436532084876/Markoff.png\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"<p>Alex Markoff is a Russian-American Senator for North Dakota and a representative of the conservative wing of the party - focused on economic concerns while either pushing back against social issues or seeking to keep them in the back burner. He endorsed Bailey in the primaries and agrees with her on several policy points.</p><p>Choosing Markoff as her running mate would double down on rural, vaguely socially conservative populism, and inevitably lead to the left abandoning the ticket. Bailey's aim would then be to cause a realignment in the party system at large.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 87, \"fields\": {\"first_name\": \"Aušrinė\", \"last_name\": \"Armonaitė\", \"election\": 9, \"party\": \"Freedom\", \"state\": \"Lithuanians Abroad\", \"priority\": 11, \"description\": \"''\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"https://i.imgur.com/6aasavu.jpg\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"<p>Aušrinė Armonaitė is the current chairwoman of the Freedom Party and a former Liberal Movement member of the Seimas. At 31 years old, she is the youngest leader of any political party active in Lithuania. In the party, she shares power with Remigijus Šimašius, who is the incumbent Mayor of Vilnius. In the Seimas, she was one of the Liberal Movement's most progressive representatives.</p><p>She carries high support among the educated youth in Vilnius, which further adds upon Freedom's weakness - or strength - that being its focus on liberal, urban, Western values voters.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 88, \"fields\": {\"first_name\": \"Tucker\", \"last_name\": \"Reed\", \"election\": 9, \"party\": \"Democrat\", \"state\": \"West Virginia\", \"priority\": 12, \"description\": \"''\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"https://media.discordapp.net/attachments/559653590390800384/1120069436007784528/Reed.jpg\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"<p>Tucker Reed is a Senator for West Virginia who endorsed Bailey early in the Democratic primaries. He represents a similar working class populist current as her, but has a more progressive record, which would help mend fences with the party's left somewhat. West Virginia is likely to be a swing state in this election.</p><p>However, Reed is a staunch foreign policy hawk, and in a race which is likely to be defined by Martin's interventionist foreign policy proposals and their backlash, this can either help or hurt Bailey depending on her strategy.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 89, \"fields\": {\"first_name\": \"Winona\", \"last_name\": \"LaDuke\", \"election\": 9, \"party\": \"Green\", \"state\": \"Minnesota\", \"priority\": 13, \"description\": \"''\", \"color_hex\": \"#00C100\", \"secondary_color_hex\": \"#A1FFA1\", \"is_active\": 0, \"image_url\": \"/static/images/winona-laduke-2000.jpg\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"<p>Winona LaDuke is a Native American activist of Ojibwe ancestry. She lives in Minnesota and has been active in attempts to regain land that once belonged to various American Indian tribes. She has written a book and started organizations in support of this issue.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 90, \"fields\": {\"first_name\": \"Viktorija\", \"last_name\": \"Čmilytė-Nielsen\", \"election\": 9, \"party\": \"LRLS\", \"state\": \"Old Town-Žvėrynas\", \"priority\": 14, \"description\": \"<p>Viktorija Čmilytė-Nielsen is a former competitive chess player who has served as the chairwoman of the Liberal Movement since 2019. She entered politics in 2015, when she replaced Remigijus Šimašius as Member of the Seimas after he was elected mayor of Vilnius - however, unlike many other Vilnius liberals, she did not leave the LRLS for the Freedom Party and instead amassed power within it. In 2019, she briefly served as Leader of the Opposition.</p><p>As chairwoman, Čmilytė successfully managed the fallout of the Freedom Party split and managed to keep the party alive in spite of pessimistic predictions of its death ever since the Masiulis corruption scandal in 2015. Relations between the two parties are surprisingly amicable, and Čmilytė expects them both to join forces with an empowered TS-LKD after the election for a centre-right coalition.</p>\", \"color_hex\": \"#FFFF00\", \"secondary_color_hex\": \"#FFFFC0\", \"is_active\": 0, \"image_url\": \"https://i.imgur.com/LmcQxUh.jpg\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"<p>Viktorija Čmilytė-Nielsen is a former competitive chess player who has served as the chairwoman of the Liberal Movement since 2019. She entered politics in 2015, when she replaced Remigijus Šimašius as Member of the Seimas after he was elected mayor of Vilnius - however, unlike many other Vilnius liberals, she did not leave the LRLS for the Freedom Party and instead amassed power within it. In 2019, she briefly served as Leader of the Opposition.</p><p>As chairwoman, Čmilytė successfully managed the fallout of the Freedom Party split and kept the party alive in spite of pessimistic predictions of its death ever since the Masiulis corruption scandal in 2015. Relations between the two parties are surprisingly amicable, and Čmilytė expects them both to join forces with an empowered TS-LKD after the election for a centre-right coalition.\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 13761, \"fields\": {\"first_name\": \" \", \"last_name\": \"Freedom\", \"election\": 9, \"party\": \"Reform\", \"state\": \"Alabama\", \"priority\": 4, \"description\": \"<b>Not playable, context only.</b><li><b>Name: Freedom Party</b></li><p>The Freedom Party was established by former Liberals in Vilnius, including Mayor Remigijus Šimašius, in 2019. It is unabashedly socially liberal, the first party in the country to demand same-sex marriage, and follows a liberal platform of drug decriminalization, carbon neutrality, and limited taxation. The majority of its voters are in Vilnius, educated and leaning young.</p><p>Though election observers are sceptical about its chances, Freedom organizes a very energetic and optimistic campaign and aims to put the issues it represents on the national agenda. It is untested in the national arena, but it is presumed that they will lean towards cooperation with TS-LKD.</p>\", \"color_hex\": \"#F6005E\", \"secondary_color_hex\": \"#F6005E\", \"is_active\": 1, \"image_url\": \"https://i.imgur.com/G6yC2l1.png\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"''\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 13838, \"fields\": {\"first_name\": \" \", \"last_name\": \"LLRA-KŠS\", \"election\": 9, \"party\": \"LLRA-KŠS\", \"state\": \"Alabama\", \"priority\": 4, \"description\": \"''\", \"color_hex\": \"#781323\", \"secondary_color_hex\": \"#781323\", \"is_active\": 0, \"image_url\": \"''\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"''\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 13915, \"fields\": {\"first_name\": \" \", \"last_name\": \"Labour\", \"election\": 9, \"party\": \"Reform\", \"state\": \"Alabama\", \"priority\": 4, \"description\": \"<b>Not playable, context only.</b><li><b>Name: Labour Party</b></li><p>The Labour Party was established by millionaire Russian businessman Viktor Uspaskich in 2003. Through dissatisfaction with the party system and populist appeals, it became one of the largest parties in the country, but was soon taken down by corruption and tax fraud scandals.</p><p>It limped on until last year, when Uspaskich, who had previously fled the country to avoid prosecution, returned and gave the party a boost through his name recognition. It is supported by lower class, poorer and rural voters nostalgic towards the Soviet era, and though it currently supports LVŽS in the Seimas, it is flexible enough to work with almost any coalition for power.</p>\", \"color_hex\": \"#1D578C\", \"secondary_color_hex\": \"#1D578C\", \"is_active\": 1, \"image_url\": \"https://i.imgur.com/zCF6Exd.png\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"''\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 13992, \"fields\": {\"first_name\": \" \", \"last_name\": \"LSDDP\", \"election\": 9, \"party\": \"Reform\", \"state\": \"Alabama\", \"priority\": 4, \"description\": \"''\", \"color_hex\": \"#C1272D\", \"secondary_color_hex\": \"#C1272D\", \"is_active\": 0, \"image_url\": \"''\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"''\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 14069, \"fields\": {\"first_name\": \" \", \"last_name\": \"CP-Taut.\", \"election\": 9, \"party\": \"Reform\", \"state\": \"Alabama\", \"priority\": 4, \"description\": \"''\", \"color_hex\": \"#799B6F\", \"secondary_color_hex\": \"#799B6F\", \"is_active\": 0, \"image_url\": \"''\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"''\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 14146, \"fields\": {\"first_name\": \" \", \"last_name\": \"NS\", \"election\": 9, \"party\": \"Reform\", \"state\": \"Alabama\", \"priority\": 4, \"description\": \"''\", \"color_hex\": \"#FF8080\", \"secondary_color_hex\": \"#FF8080\", \"is_active\": 0, \"image_url\": \"''\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"''\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 14223, \"fields\": {\"first_name\": \" \", \"last_name\": \"LT\", \"election\": 9, \"party\": \"Reform\", \"state\": \"Alabama\", \"priority\": 4, \"description\": \"''\", \"color_hex\": \"#FBBA00\", \"secondary_color_hex\": \"#FBBA00\", \"is_active\": 0, \"image_url\": \"''\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"''\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 14300, \"fields\": {\"first_name\": \" \", \"last_name\": \"LŽP\", \"election\": 9, \"party\": \"Reform\", \"state\": \"Alabama\", \"priority\": 4, \"description\": \"''\", \"color_hex\": \"#92C83E\", \"secondary_color_hex\": \"#92C83E\", \"is_active\": 0, \"image_url\": \"''\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"''\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 14377, \"fields\": {\"first_name\": \" \", \"last_name\": \"Minor/Indep.\", \"election\": 9, \"party\": \"Reform\", \"state\": \"Alabama\", \"priority\": 4, \"description\": \"''\", \"color_hex\": \"#808080\", \"secondary_color_hex\": \"#808080\", \"is_active\": 0, \"image_url\": \"''\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"''\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 91, \"fields\": {\"first_name\": \"Winona\", \"last_name\": \"LaDuke\", \"election\": 9, \"party\": \"Green\", \"state\": \"Minnesota\", \"priority\": 13, \"description\": \"''\", \"color_hex\": \"#00C100\", \"secondary_color_hex\": \"#A1FFA1\", \"is_active\": 0, \"image_url\": \"/static/images/winona-laduke-2000.jpg\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"''\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 92, \"fields\": {\"first_name\": \"Winona\", \"last_name\": \"LaDuke\", \"election\": 9, \"party\": \"Green\", \"state\": \"Minnesota\", \"priority\": 13, \"description\": \"''\", \"color_hex\": \"#00C100\", \"secondary_color_hex\": \"#A1FFA1\", \"is_active\": 0, \"image_url\": \"/static/images/winona-laduke-2000.jpg\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"''\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 93, \"fields\": {\"first_name\": \"Winona\", \"last_name\": \"LaDuke\", \"election\": 9, \"party\": \"Green\", \"state\": \"Minnesota\", \"priority\": 13, \"description\": \"''\", \"color_hex\": \"#00C100\", \"secondary_color_hex\": \"#A1FFA1\", \"is_active\": 0, \"image_url\": \"/static/images/winona-laduke-2000.jpg\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"''\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 94, \"fields\": {\"first_name\": \" \", \"last_name\": \"Other Parties\", \"election\": 9, \"party\": \"Green\", \"state\": \"Minnesota\", \"priority\": 13, \"description\": \"<span id='screen0' style='display: initial;'><b>Not playable, context only.</b><p><button onclick='next0()'>Polish Electoral Action</button><br><button onclick='next1()'>Social Democratic Labour Party</button><br><button onclick='next2()'>Centre-Nationalists</button><br><button onclick='next3()'>National Alliance</button><br><button onclick='next4()'>Freedom and Justice</button><br><button onclick='next5()'>Green Party</button><br></p></span><span id='screen1' style='display: none;'><li><b>Name: Electoral Action of Poles in Lithuania - Alliance of Christian Families (LLRA-KŠS)</b></li><p>The Polish Electoral Action is a socially conservative party which represents the interests of the Polish minority in Lithuania - concentrated in Lithuania’s southeast, around Vilnius. Since 2007, it has had a cooperation agreement with the Russian Union and has established itself as a party representing Lithuania’s Slavic minorities. At times, it cooperates with left-wing governments, and it currently sits in the Skvernelis Cabinet as partners of the LVŽS. For years, it has unsuccessfully tried to ban abortion in Lithuania.<br><br>In the Southeast, the LLRA-KŠS has absolute control and cannot be assailed. It is an affiliate of Poland’s Law and Justice (PiS), but differs in that it is geopolitically pragmatic and is apologist of Putin’s and Lukashenko’s dictatorships. Because of this, they are despised by the Conservatives and Liberals, and their presence in the Skvernelis Cabinet is a headache for the LVŽS.<br><button onclick='back0()'>Back</button></p></span><span id='screen2' style='display: none;'><li><b>Name: Social Democratic Labour Party of Lithuania (LSDDP)</b></li><p>The Social Democratic Labour Party was established in 2018, after members of the LSDP who wished to remain in the Skvernelis Cabinet split from their party following its departure from the coalition. The LSDDP drew much of the party’s old guard and the majority of its parliamentary delegation, but little grassroots support - so, it quickly declined, conceding traditional left-wing voters to the opposition Social Democrats.<br><br>They remain loyal allies of the LVŽS, but the 2020 election campaign leaves the party uncertain of its future. It has also become a home for renegades from the Labour Party, most notably Jonas Pinskus, which has pushed the party to a more socially conservative direction - which may leave them completely overshadowed by the Peasants.<br><button onclick='back0()'>Back</button></p></span><span id='screen3' style='display: none;'><li><b>Name: Centre Party - Nationalists (CP-Taut.)</b></li><p>The Centre Party arose from a split in the Centre Union (which merged into the Liberals) in 2003 by more nationalist minded members of the party. It remained minor until 2016, when it was joined by Naglis Puteikis - former member of the TS-LKD who split in 2014 and ran for President on a populist anti-corruption and soft eurosceptic platform. Puteikis was immediately elected as the party’s chairman.<br><br>In July 2020, it merged with the Lithuanian Nationalist Union and changed its name. It reached a respectable performance with 6% of the vote in 2016 thanks to Puteikis’ name recognition, but his star has faded since. It aims to peel off a small amount of the rural vote and join the next Seimas as an ally of the Peasants.<br><button onclick='back0()'>Back</button></p></span><span id='screen4' style='display: none;'><li><b>Name: National Alliance (NS)</b></li><p>The National Alliance was established in 2020 by the eurosceptic national conservative philosopher Vytautas Radžvilas - who had unsuccessfully ran for the European Parliament a year earlier with a vow to “reclaim the state”. It is against LGBT rights, immigration and European institution interference in national policy, and it deliberately positions itself against the TS-LKD, which it claims no longer represents conservatism.<br><br>The NS stands out from its right-wing contemporaries by being urban-focused - its voters lean younger than LVŽS and much of its leadership are philosophers and right-wing intellectuals. In this, it can be compared to the early years of the Alternative for Germany, both in leadership and in its opposition to the centre-right. The 2020 election will be the NS’ first test, and though it does not expect to win, it hopes to make a strong showing if the TS-LKD leans too liberal.<br><button onclick='back0()'>Back</button></p></span><span id='screen5' style='display: none;'><li><b>Name: Freedom and Justice (LT)</b></li><p>Freedom and Justice was established in advance of the 2020 election by the “Three Musketeers” - Artūras Zuokas, Artūras Paulauskas and Remigijus Žemaitaitis, leaders of three conservative-liberal political movements which all had declined and chose to unify in order to retain their political influence. Of the three, the most prominent was Order and Justice - a personalist political party originally founded by President Rolandas Paksas, and led by Žemaitaitis until 2020.<br><br>It is economically liberal and supports some socially liberal measures such as a compromise option on same-sex partnerships, but generally aligns itself with the conservative electorate. In addition, it holds some eurosceptic and nationalist positions. Though initially a strong contender in the polls, it has fallen to hard times as its voters are increasingly drawn to more potent and active parties.<br><button onclick='back0()'>Back</button></p></span><span id='screen6' style='display: none;'><li><b>Name: Lithuanian Green Party (LŽP)</b></li><p>The Green Party was established in 2011 and exists as a small left-wing environmentalist party to this day. It is opposed to nuclear energy and supported the decommission of Lithuania’s only nuclear power plant in Ignalina, it supports green politics, progressive taxation and same-sex partnerships. Most of its voters are in the cities, although it also has attracted several high-profile figures in the regions.<br><br>It does not expect to gain a large share of the vote in the election, but it has one seat it intends to win - Vilkaviškis, where their candidate is former Social Democratic prime minister Algirdas Butkevičius, who defected to the Greens after the LSDP’s split.<br><button onclick='back0()'>Back</button></p></span>\", \"color_hex\": \"#00C100\", \"secondary_color_hex\": \"#A1FFA1\", \"is_active\": 1, \"image_url\": \"https://i.imgur.com/LTs0OYw.jpg\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"''\", \"candidate_score\": 0.0}}]");
+
+campaignTrail_temp.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 991, \"fields\": {\"candidate\": 77, \"running_mate\": 81}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 995, \"fields\": {\"candidate\": 78, \"running_mate\": 85}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 998, \"fields\": {\"candidate\": 79, \"running_mate\": 82}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 999, \"fields\": {\"candidate\": 80, \"running_mate\": 90}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 1000, \"fields\": {\"candidate\": 13761, \"running_mate\": 87}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 1001, \"fields\": {\"candidate\": 13838, \"running_mate\": 83}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 1002, \"fields\": {\"candidate\": 13915, \"running_mate\": 84}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 1003, \"fields\": {\"candidate\": 13992, \"running_mate\": 86}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 1004, \"fields\": {\"candidate\": 14069, \"running_mate\": 88}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 1005, \"fields\": {\"candidate\": 14146, \"running_mate\": 89}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 1006, \"fields\": {\"candidate\": 14233, \"running_mate\": 91}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 1007, \"fields\": {\"candidate\": 14300, \"running_mate\": 92}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 1008, \"fields\": {\"candidate\": 14377, \"running_mate\": 93}}]");
+campaignTrail_temp.opponents_default_json = JSON.parse("[{\"election\": 9, \"candidates\": [77, 78, 79, 80, 13761, 13838, 13915, 13992, 14069, 14146, 14223, 14300, 14377]}]");
+campaignTrail_temp.temp_election_list = [{"id": 9, "year": 2020, "is_premium": 0, "display_year": "2020LT"}];
+campaignTrail_temp.global_parameter_json = JSON.parse("[{\"model\": \"campaign_trail.global_parameter\", \"pk\": 1, \"fields\": {\"vote_variable\": 1.125, \"max_swing\": 0.12, \"start_point\": 1, \"candidate_issue_weight\": 10.0, \"running_mate_issue_weight\": 0.0, \"issue_stance_1_max\": -0.71, \"issue_stance_2_max\": -0.3, \"issue_stance_3_max\": -0.125, \"issue_stance_4_max\": 0.125, \"issue_stance_5_max\": 0.3, \"issue_stance_6_max\": 0.71, \"global_variance\": 0.01, \"state_variance\": 0.005, \"question_count\": 25, \"default_map_color_hex\": \"#C9C9C9\", \"no_state_map_color_hex\": \"#999999\"}}]");
+campaignTrail_temp.credits = "<button onclick='credits()'>Credits</button>";
+credits = function() {
+  credits = ["Coded, researched and written by", "Augenis", "", "Playtesters",  "The EG Emporium community, Thomahawk2k, Rickroll999, and several other people I sent the mod for testing", "", "Special thanks to", "Nina for the two-round constituency system and other advanced scripting", "The 2025NL team for inspiration and the D'Hondt electoral system code", "The 2000N team for the endings system, theme switching, CYOA and other code tricks", "TSPMI, for injecting with lifelong interest (or a curse) in my country's politics", "", "Music credits", "Dviračio žinios (Himnas apie konservatorius and Daina apie socialdemokratus), Gliorija (Naisių tvirtovė), Auksiniai svogūnai 2019 (Į durnių laivą rinkimai atkeliavo)", "", "Banner credits", "15min.lt", ""]
+  text = "CREDITS:\n\n"
+  for (i in credits) {
+      text += credits[i] + "\n"
+  }
+  alert(text)
+}
+
+next0 = function() {
+    document.getElementById("screen0").style.display = "none"
+    document.getElementById("screen1").style.display = "initial"
+}
+next1 = function() {
+    document.getElementById("screen0").style.display = "none"
+    document.getElementById("screen2").style.display = "initial" 
+}
+next2 = function() {
+    document.getElementById("screen0").style.display = "none"
+    document.getElementById("screen3").style.display = "initial" 
+}
+next3 = function() {
+    document.getElementById("screen0").style.display = "none"
+    document.getElementById("screen4").style.display = "initial" 
+}
+next4 = function() {
+    document.getElementById("screen0").style.display = "none"
+    document.getElementById("screen5").style.display = "initial" 
+}
+next5 = function() {
+    document.getElementById("screen0").style.display = "none"
+    document.getElementById("screen6").style.display = "initial" 
+}
+next6 = function() {
+    document.getElementById("screen7").style.display = "none"
+    document.getElementById("screen8").style.display = "initial" 
+}
+next7 = function() {
+    document.getElementById("screen9").style.display = "none"
+    document.getElementById("screen10").style.display = "initial" 
+}
+next8 = function() {
+    document.getElementById("screen11").style.display = "none"
+    document.getElementById("screen12").style.display = "initial" 
+}
+next9 = function() {
+    document.getElementById("screen13").style.display = "none"
+    document.getElementById("screen14").style.display = "initial" 
+}
+back0 = function() {
+    document.getElementById("screen0").style.display = "initial"
+    document.getElementById("screen1").style.display = "none" 
+	document.getElementById("screen2").style.display = "none" 
+	document.getElementById("screen3").style.display = "none" 
+	document.getElementById("screen4").style.display = "none" 
+	document.getElementById("screen5").style.display = "none" 
+	document.getElementById("screen6").style.display = "none" 
+}
+back1 = function() {
+    document.getElementById("screen7").style.display = "initial"
+    document.getElementById("screen8").style.display = "none" 
+}
+back2 = function() {
+    document.getElementById("screen9").style.display = "initial"
+    document.getElementById("screen10").style.display = "none" 
+}
+back3 = function() {
+    document.getElementById("screen11").style.display = "initial"
+    document.getElementById("screen12").style.display = "none" 
+}
+back4 = function() {
+    document.getElementById("screen13").style.display = "initial"
+    document.getElementById("screen14").style.display = "none" 
+}
+
+nct_stuff.quotes=[`“Shut the mouth of that man.” - Saulius Skvernelis`,`“Even the largest breasts in the world couldn't cover up the issues in the Eurozone.” - Ingrida Šimonytė`,`“If you run out of Russian swear words, talk to Viktor Uspaskich.” - Rimvydas Paleckis`,`“We worked so hard that we didn't even have time to go to the toilet.” - Ramūnas Karbauskis`,`“I'm not God, just the Prime Minister.” - Algirdas Brazauskas`]
+quotnum = Math.floor((Math.random() * nct_stuff.quotes.length))
+quote = nct_stuff.quotes[quotnum]
+corrr = `<h2>NAUJOJI RINKIMŲ KAMPANIJA</h2><font id="wittyquote" size="4" color="white"><em>` + quote + `</em></font>`
+
+HistHexcolour=["#00A59B","#00A651","#FF0000","#808080"]; 
+HistName=[" Centre-Right Coalition - TS-LKD, LRLS, Freedom"," LVŽS"," LSDP"," Other"]; 
+HistEV=[74,32,13,22]; 
+HistPV=["478,792","204,791","108,649","345,329"]; 
+HistPVP=["42.26%","18.07%","9.58%","30.09%"];
+
+document.getElementById("header").src = "https://i.imgur.com/PpOkPoh.jpg"
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#7a3c61"
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#ab839b"
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+$(".footer a").css({"color":"#200000"});
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+$(".container")[0].style.backgroundColor = "#c6acbc"
+document.body.background = "https://i.imgur.com/zTYc1ki.jpg"
+document.body.style.backgroundRepeat = "no-repeat";
+document.body.style.backgroundSize = "cover";
+
+const bodyElement = document.body;
+bodyElement.style.backgroundAttachment = 'fixed';
+
+$("#music_player")[0].children[0].style.display="none"
+$("#music_player")[0].children[1].style.display="none"
+
+document.getElementById("modLoadReveal").style.display="none"
+document.getElementById("modloaddiv").style.display="none"
+
+musicBox = document.getElementById("music_player")
+musicBox.style.display=""
+
+var trackSel;
+e = campaignTrail_temp
+e.selectedSoundtrack = 0
+
+toTime = (seconds) => {
+  var date = new Date(null);
+  date.setSeconds(seconds);
+  return date.toISOString().substr(11, 8);
+}
+
+generateTime = () => {
+    // Get the audio element
+    var audio = document.getElementById("campaigntrailmusic");
+
+    timeTracker = document.createElement("div");
+    timeTracker.style = `
+      text-align:left;
+      border-style:solid;
+      border-width:3px;
+      height:150px;
+      width:200px;
+      background-color:#999999;
+      float:right;
+      padding: 10px;
+    `
+    $("#trackSelParent")[0].prepend(timeTracker);
+    $("#trackSelParent")[0].prepend(document.createElement("br"));
+
+    // Create a new element to display the current position of the audio
+    var positionDisplay = document.createElement("gg");
+    positionDisplay.id = "position-display";
+
+    // Create a new slider element to change the time
+    var timeSlider = document.createElement("input");
+    timeSlider.type = "range";
+    timeSlider.min = 0;
+    timeSlider.max = 1;
+    timeSlider.step = 0.001;
+    timeSlider.value = 0;
+    timeSlider.style.width = "200px";
+    timeSlider.id = "time-slider";
+
+    var pausePlay = document.createElement("button");
+    pausePlay.id = "position-display";
+    pausePlay.innerHTML = "<b>Pause</b>"
+    pausePlay.style.width = "100%";
+
+
+    pausePlay.addEventListener("click", event => {
+      event.preventDefault();
+      updatePositionDisplay();
+      let audio = document.getElementById("campaigntrailmusic");
+      if (audio.paused) {
+        audio.play();
+        event.target.innerHTML = "<b>Pause</b>";
+        return;
+      }
+      audio.pause();
+      event.target.innerHTML = "<b>Play</b>";
+      return;
+    })
+
+    var volumeLabel = document.createElement("gg");
+    volumeLabel.id = "volume-label";
+    volumeLabel.innerHTML = "<br><b>Volume: </b>"
+
+    var volumeSlider = document.createElement("input");
+    volumeSlider.type = "range";
+    volumeSlider.min = 0;
+    volumeSlider.max = 1;
+    volumeSlider.step = 0.001;
+    volumeSlider.value = 0;
+    volumeSlider.style.width = "200px";
+    volumeSlider.id = "volume-slider";
+
+    volumeSlider.value = audio.volume;
+
+    timeTracker.appendChild(pausePlay);
+    timeTracker.appendChild(document.createElement("br"));
+    timeTracker.appendChild(document.createElement("br"));
+    timeTracker.appendChild(positionDisplay);
+    timeTracker.appendChild(timeSlider);
+    timeTracker.appendChild(volumeLabel);
+    timeTracker.appendChild(volumeSlider);
+
+    updatePositionDisplay();
+
+    //for (let i = 0; i < 10; i++)
+    //timeTracker.append(document.createElement("br"));
+
+
+    // Function to update the position display
+    function updatePositionDisplay() {
+      positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+      timeSlider.value = audio.duration ? audio.currentTime / audio.duration : 0;
+    }
+
+    // Function to change the time of the audio
+    function changeTime() {
+      positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+      audio.currentTime = timeSlider.value * audio.duration;
+    }
+
+    updateVolume = event => {
+      audio.volume = event.target.value;
+    }
+    
+    // Update the position display and slider every second
+    setInterval(updatePositionDisplay, 1000);
+
+    // Listen for changes to the time slider and change the time of the audio
+    timeSlider.addEventListener("input", changeTime);
+    volumeSlider.addEventListener("input", updateVolume)
+}
+
+function newMusicPlayer() {
+  trackSel = document.createElement("div");
+  trackSel.id = "trackSelParent"
+  let z = `<br><br><br><br><br><br><br><br><br><br><div id='trackSel' style="text-align:left;border-style:solid;border-width:3px;overflow-y: scroll;overflow-x: hidden;height:200px; width:400px;background-color:#999999;float:right;">`
+  z += `<b><select id='selectSoundtrack'><option value='`+soundtracks[e.selectedSoundtrack].name+`'>`+soundtracks[e.selectedSoundtrack].name+"</option>"
+  for (i in soundtracks) {
+    if (soundtracks[e.selectedSoundtrack] != soundtracks[i]) {
+      z += `<option value='`+soundtracks[i].name+`'>`+soundtracks[i].name+`</option>`
+    }
+  }
+  z += `</select></b><br><br>`
+  // <label><input type="radio" name="option" value="option1">Option 1</label><br>
+  for (i in soundtracks[e.selectedSoundtrack].tracklist) {
+    let a = soundtracks[e.selectedSoundtrack].tracklist[i]
+    let b = `<label><input class="trackSelector" type="radio" name="trackSelector" value="`+i+`">`+a.name+`</label><br>`
+    z += b
+  }
+  z += "</div><br><br>"
+  trackSel.innerHTML = z
+
+  // select correct song
+
+  musicBox.appendChild(trackSel);
+  Array.from(document.getElementById("trackSel").children).filter(f=>{
+    return f.tagName == "LABEL"
+  }).map(f=>f.children[0])[0].checked = true
+
+  // set soundtrack changer
+
+  soundtrackSelector = document.getElementById("selectSoundtrack")
+  soundtrackSelector.onchange = function() {
+    for (i in soundtracks) {
+      if (soundtracks[i].name == soundtrackSelector.value) {
+        e.selectedSoundtrack = i
+        break
+      }
+    }
+    document.getElementById("trackSelParent").remove()
+    newMusicPlayer()
+  }
+
+  var matches = document.querySelectorAll('.trackSelector');
+
+  for (match in matches) {
+    matches[match].onchange = function() {
+      audio = $("#campaigntrailmusic")[0];
+      audio.src = soundtracks[e.selectedSoundtrack].tracklist[this.value].url
+      audio.currentTime = 0
+    }
+  }
+
+  musicBox.children[2].loop = false
+  musicBox.children[2].src = soundtracks[e.selectedSoundtrack].tracklist[0].url
+
+  musicBox.children[2].onended = function() {
+    console.log("next track")
+    let selected = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+    let newSel = clamp(selected+1, soundtracks[e.selectedSoundtrack].tracklist.length-1, 0)
+    let buttons = Array.from(document.getElementById("trackSel").children).filter(f=>{
+      return f.tagName == "LABEL"
+    }).map(f=>f.children[0])
+    //let selectedIndex = buttons.map(f=>f.children[0]).map(f=>f.checked)
+    buttons[newSel].click()
+  }
+
+  for (w = 0; w < 7; w++) {
+    document.getElementById("trackSelParent").appendChild(document.createElement("br"))
+  }
+  
+  generateTime();
+}
+
+clamp = function(a, max, min, overflow=true) {
+  if (overflow) {
+    return a > max ? min : a < min ? max : a;
+  }
+  return a > max ? max : a < min ? min : a;
+}
+
+
+// Track list
+
+var soundtracks = {
+  0: {
+    name: "Common",
+    tracklist: [
+      {
+		"name": "Arūnas Valinskas and others (Golden Onion 2019) - Elections in the Ship of Idiots!",
+		"url": "https://cdn.discordapp.com/attachments/559653590390800384/1157228185633689630/Auksiniai_svogunai_2019__-_I_DURNIU_LAIVA_RINKIMAI_ATKELIAVO.mp3"
+	  },
+	  {
+		"name": "Dviračio žinios - Hymn to the Conservatives",
+		"url": "https://cdn.discordapp.com/attachments/559653590390800384/1149617726235623515/Dviracio_zinios._Himnas_konservatoriams.mp3"
+	  },
+	  {
+		"name": "Gliorija - Naisiai Fortress (Ode to Karbauskis)",
+		"url": "https://cdn.discordapp.com/attachments/559653590390800384/1149793261528043540/Grupe_Gliorija._Naisiu_tvirtove_LRT_2018.mp3"
+	  },
+	  {
+		"name": "Dviračio žinios - Song for the Social Democrats",
+		"url": "https://cdn.discordapp.com/attachments/559653590390800384/1149793261179895928/Daina_socialdemokratams_jau_nebeaisku_kas_bebras_o_kas_ne_Dviracio_zinios.mp3"
+	  }
+    ]
+  }
+}
+
+// Set up new music player
+
+newMusicPlayer()
