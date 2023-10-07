@@ -1,21 +1,3 @@
-/*
-* Mod Title: 1971 Korea
- * Mod Author: FlongydOlson
- * Mod Version: 1.1
- * Mod Description: THE MOST FIERCE BATTLE BETWEEN PARK CHUNG-HEE AND KIM DAE-JUNG!
- * 
- * Coding License: Apache License 2.0
- * Writing License: Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
- * 
- * For the coding in this mod, I hereby release the code under the terms and conditions of the Apache License 2.0. The full text of the license can be found at:
- * https://choosealicense.com/licenses/apache-2.0/
- * 
- * For the writing in this mod, including documentation, text files, and other non-software written works, I hereby release the content under the terms and conditions of the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license. The full text of the license can be found at:
- * https://creativecommons.org/licenses/by-nc/4.0/legalcode
- * 
- * By using, distributing, or modifying this mod, you agree to abide by the terms and conditions of both the Apache License 2.0 and the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license.
-*/
-
 campaignTrail_temp.questions_json = [
     {
         "model": "campaign_trail.question",
@@ -1095,7 +1077,7 @@ campaignTrail_temp.answers_json = [
         "pk": 4100,
         "fields": {
             "question": 3027,
-            "description": "Escalation of regional conflict - The Incitement capabilities of the Korean Central Intelligence Agency (KCIA) are excellent. I will order them to attack Jeolla in Gyeongsang, to increase my support even more. If possible, it's okay to mix in a little bit of a lie."
+            "description": "Escalation of regional conflict - The incitement capabilities of the Korean Central Intelligence Agency (KCIA) are excellent. I will order them to attack Jeolla in Gyeongsang, to increase my support even more. If possible, it's okay to mix in a little bit of a lie."
         }
     },
     {
@@ -6366,8 +6348,8 @@ campaignTrail_temp.answer_feedback_json = [
 campaignTrail_temp.jet_data = [{}
 ]
 
-campaignTrail_temp.candidate_image_url = 'https://cdn.discordapp.com/attachments/1111091213882359890/1112606430101524520/Parkingame.png';
-campaignTrail_temp.running_mate_image_url = 'https://cdn.discordapp.com/attachments/1111091213882359890/1112606465824391219/DRPingame.png';
+campaignTrail_temp.candidate_image_url = 'https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1971%20Korea/71Park.png';
+campaignTrail_temp.running_mate_image_url = 'https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1971%20Korea/DRP.png';
 campaignTrail_temp.candidate_last_name = 'Park';
 campaignTrail_temp.running_mate_last_name = 'DRP';
 campaignTrail_temp.running_mate_state_id = '239';
@@ -6413,16 +6395,14 @@ style.innerHTML = `
 
 document.head.appendChild(style);
 
-
-function checkIfCanAddMap() {
-    map = document.getElementById("map_container");
-    
-    if(map) {
-        map.style.backgroundImage = "url('https://cdn.discordapp.com/attachments/1111091213882359890/1139514700804145162/mapground.png')"; 
-    }
+const customStyling = document.createElement("style");
+customStyling.innerHTML = `
+#map_container {
+    background-image: url("https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/mapground.png");
+    background-size: cover;
 }
-
-setInterval(checkIfCanAddMap, 250);
+`;
+document.head.appendChild(customStyling);
 
 (function(e, t, n, r, i) {
     function s(e, t, n, r) {
@@ -6776,7 +6756,7 @@ if (campaignTrail_temp.player_answers[12] == 4046 && quickstats[1] >=50 ) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1114505770545979402/PlanetofApes.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1971%20Korea/PlanetofApes.png";
 			}
 		}, 100);
 	}
@@ -6789,7 +6769,7 @@ else if (campaignTrail_temp.player_answers[16] == 4061 && quickstats[1] >=50 ) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1115212414498127893/Ilsungkim.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1971%20Korea/Ilsungkim.png";
 			}
 		}, 100);
 	}
@@ -6802,7 +6782,7 @@ else if (quickstats[1] >=60) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1114468340438679622/ParkPassed.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1971%20Korea/ParkPassed.png";
 			}
 		}, 100);
 	}
@@ -6815,7 +6795,7 @@ else if (quickstats[1] >=54 && quickstats[1] <60) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1114511665220812810/Parkwinbig.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1971%20Korea/Parkwinbig.png";
 			}
 		}, 100);
 	}
@@ -6828,7 +6808,7 @@ else if (quickstats[1] >=52 && quickstats[1] <54) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1114536722022273234/ParkNormalwin.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1971%20Korea/ParkNormalwin.png";
 			}
 		}, 100);
 	}
@@ -6841,7 +6821,7 @@ else if (quickstats[1] >=50 && quickstats[1] <52) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1114533657902854154/ParkSqueaker.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1971%20Korea/ParkSqueaker.png";
 			}
 		}, 100);
 	}
@@ -6854,7 +6834,7 @@ else if (quickstats[1] >=48 && quickstats[1] <50) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1114534392845574144/KoreainChaos.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1971%20Korea/KoreainChaos.png";
 			}
 		}, 100);
 	}
@@ -6867,7 +6847,7 @@ else if (quickstats[1] >=45 && quickstats[1] <48) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1114537121693302825/RiggedElection.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1971%20Korea/RiggedElection.png";
 			}
 		}, 100);
 	}
@@ -6880,7 +6860,7 @@ else if (quickstats[1] >=40 && quickstats[1] <45) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1114537628042268804/Kimwon.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1971%20Korea/Kimwon.png";
 			}
 		}, 100);
 	}
@@ -6893,7 +6873,7 @@ else if (quickstats[1] <40) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1114537789351010334/KimdefeatsPark.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1971%20Korea/KimdefeatsPark.png";
 			}
 		}, 100);
 	}
