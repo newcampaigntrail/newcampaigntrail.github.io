@@ -6895,8 +6895,8 @@ campaignTrail_temp.answer_feedback_json = [
 campaignTrail_temp.jet_data = [{}
 ]
 
-campaignTrail_temp.candidate_image_url = 'https://cdn.discordapp.com/attachments/1111091213882359890/1122156887723479070/Park1963.png';
-campaignTrail_temp.running_mate_image_url = 'https://cdn.discordapp.com/attachments/1111091213882359890/1133924959182401676/military.png';
+campaignTrail_temp.candidate_image_url = 'https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/Park1963.png';
+campaignTrail_temp.running_mate_image_url = 'https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/military.png';
 campaignTrail_temp.candidate_last_name = 'Park';
 campaignTrail_temp.running_mate_last_name = 'Military';
 campaignTrail_temp.running_mate_state_id = '239';
@@ -6942,16 +6942,14 @@ style.innerHTML = `
 
 document.head.appendChild(style);
 
-
-function checkIfCanAddMap() {
-    map = document.getElementById("map_container");
-    
-    if(map) {
-        map.style.backgroundImage = "url('https://cdn.discordapp.com/attachments/1111091213882359890/1139514700804145162/mapground.png')"; 
-    }
+const customStyling = document.createElement("style");
+customStyling.innerHTML = `
+#map_container {
+    background-image: url("https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/mapground.png");
+    background-size: cover;
 }
-
-setInterval(checkIfCanAddMap, 250);
+`;
+document.head.appendChild(customStyling);
 
 (function(e, t, n, r, i) {
     function s(e, t, n, r) {
@@ -7305,7 +7303,7 @@ if (campaignTrail_temp.player_answers[0] == 4000 ) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1127225161612017745/failedcoup.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/failedcoup.png";
 			}
 		}, 100);
 	}
@@ -7318,7 +7316,7 @@ else if (campaignTrail_temp.player_answers[0] == 4003 ) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1127225161612017745/failedcoup.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/failedcoup.png";
 			}
 		}, 100);
 	}
@@ -7331,7 +7329,7 @@ else if (campaignTrail_temp.player_answers[1] == 4004 ) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1127225231371665519/dangerousmine.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/dangerousmine.png";
 			}
 		}, 100);
 	}
@@ -7344,7 +7342,7 @@ else if (campaignTrail_temp.player_answers[2] == 4010 ) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1127229672585965648/kornews.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/kornews.png";
 			}
 		}, 100);
 	}
@@ -7357,7 +7355,7 @@ else if (campaignTrail_temp.player_answers[2] == 4011 ) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1127229672585965648/kornews.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/kornews.png";
 			}
 		}, 100);
 	}
@@ -7370,7 +7368,7 @@ else if (campaignTrail_temp.player_answers[3] == 4015 ) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1127229672585965648/kornews.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/kornews.png";
 			}
 		}, 100);
 	}
@@ -7383,7 +7381,7 @@ else if (campaignTrail_temp.player_answers[20] == 4078 ) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1127243726662680626/permanentjunta.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/permanentjunta.png";
 			}
 		}, 100);
 	}
@@ -7396,7 +7394,7 @@ else if (campaignTrail_temp.player_answers[30] == 4114 ) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1127253780958810273/kennedypark.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/kennedypark.png";
 			}
 		}, 100);
 	}
@@ -7409,7 +7407,7 @@ else if (aa[0].candidate == 94 ) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1135430073353248828/hochong.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/hochong.png";
 			}
 		}, 100);
 	}
@@ -7422,7 +7420,7 @@ else if (aa[0].candidate == campaignTrail_temp.candidate_id && quickstats[1] >=5
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1127424086780428418/63parkbigshot.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/63parkbigshot.png";
 			}
 		}, 100);
 	}
@@ -7435,7 +7433,7 @@ else if (aa[0].candidate == campaignTrail_temp.candidate_id && quickstats[1] >=5
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1127469969135910953/63parklandslide.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/63parklandslide.png";
 			}
 		}, 100);
 	}
@@ -7448,7 +7446,7 @@ else if (aa[0].candidate == campaignTrail_temp.candidate_id && quickstats[1] >=4
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1127500013539426414/parkinglot.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/parkinglot.png";
 			}
 		}, 100);
 	}
@@ -7461,7 +7459,7 @@ else if (aa[0].candidate == campaignTrail_temp.candidate_id && quickstats[1] >=4
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1127502048682856498/63parkwin.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/63parkwin.png";
 			}
 		}, 100);
 	}
@@ -7474,7 +7472,7 @@ else if (aa[0].candidate == campaignTrail_temp.candidate_id && quickstats[1] >=4
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1127507013656653874/63park47.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/63park47.png";
 			}
 		}, 100);
 	}
@@ -7487,7 +7485,7 @@ else if (aa[0].candidate == campaignTrail_temp.candidate_id ) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1127505522870993026/63parksqueaker.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/63parksqueaker.png";
 			}
 		}, 100);
 	}
@@ -7500,7 +7498,7 @@ else if (quickstats[1] >=45 ) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1129387211012456538/yunsqueaker.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/yunsqueaker.png";
 			}
 		}, 100);
 	}
@@ -7513,7 +7511,7 @@ else if (quickstats[1] >=40 ) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1129387083778240663/yunwin.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/yunwin.png";
 			}
 		}, 100);
 	}
@@ -7526,7 +7524,7 @@ else if (quickstats[1] >=30 ) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1129386946033098923/risingyun.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/risingyun.png";
 			}
 		}, 100);
 	}
@@ -7539,7 +7537,7 @@ else if (quickstats[1] >=20 ) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1129386731070820432/pdp.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/pdp.png";
 			}
 		}, 100);
 	}
@@ -7552,7 +7550,7 @@ else if (quickstats[1] >0 ) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1129337554328637490/ParkJackson.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/ParkJackson.png";
 			}
 		}, 100);
 	}
@@ -7565,7 +7563,7 @@ else if (quickstats[1] ==0 ) {
 			used = true;
 			imgg = document.getElementsByClassName("person_image")[0];
 			if (imgg != null) {
-				imgg.src = "https://cdn.discordapp.com/attachments/1111091213882359890/1129334386781847603/officialguide.png";
+				imgg.src = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/officialguide.png";
 			}
 		}, 100);
 	}
@@ -7606,32 +7604,32 @@ cyoAdventure = function (a) {
     else if (ans == 4016)
     {
         campaignTrail_temp.running_mate_last_name = "Council"
-        campaignTrail_temp.running_mate_image_url = "https://cdn.discordapp.com/attachments/1111091213882359890/1133925150916608000/council.png"
+        campaignTrail_temp.running_mate_image_url = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/council.png"
     }
     else if (ans == 4017)
     {
         campaignTrail_temp.running_mate_last_name = "Council"
-        campaignTrail_temp.running_mate_image_url = "https://cdn.discordapp.com/attachments/1111091213882359890/1133925150916608000/council.png"
+        campaignTrail_temp.running_mate_image_url = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/council.png"
     }
     else if (ans == 4018)
     {
         campaignTrail_temp.running_mate_last_name = "Council"
-        campaignTrail_temp.running_mate_image_url = "https://cdn.discordapp.com/attachments/1111091213882359890/1133925150916608000/council.png"
+        campaignTrail_temp.running_mate_image_url = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1963%20Korea/council.png"
     }
     else if (ans == 4071)
     {
         campaignTrail_temp.running_mate_last_name = "DRP"
-        campaignTrail_temp.running_mate_image_url = "https://cdn.discordapp.com/attachments/1111091213882359890/1112606465824391219/DRPingame.png"
+        campaignTrail_temp.running_mate_image_url = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1971%20Korea/DRP.png"
     }
     else if (ans == 4072)
     {
         campaignTrail_temp.running_mate_last_name = "DRP"
-        campaignTrail_temp.running_mate_image_url = "https://cdn.discordapp.com/attachments/1111091213882359890/1112606465824391219/DRPingame.png"
+        campaignTrail_temp.running_mate_image_url = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1971%20Korea/DRP.png"
     }
     else if (ans == 4073)
     {
         campaignTrail_temp.running_mate_last_name = "DRP"
-        campaignTrail_temp.running_mate_image_url = "https://cdn.discordapp.com/attachments/1111091213882359890/1112606465824391219/DRPingame.png"
+        campaignTrail_temp.running_mate_image_url = "https://raw.githubusercontent.com/FlongydOlson/OlsonMods/main/1971%20Korea/DRP.png"
     }
     else if (ans == 4078)
     {
