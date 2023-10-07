@@ -35,7 +35,7 @@ campaignTrail_temp.modBoxTheme = {
 }
 campaignTrail_temp.premier_ab_test_version = -1;
 RecReading = true;
-campaignTrail_temp.election_json[0].fields.recommended_reading = "<div style='color: black'><h3 style='margin-top: 0.5em;'>Do you want to learn more about...</h4><b>The German electoral system?</b><br><a href='https://www.bmi.bund.de/EN/topics/constitution/electoral-law/voting-system/voting-system-node.html' target='_blank'>Brief explanation (English)</a><br><a href='https://www.wahlrecht.de/bundestag/index.htm' target='_blank'>Thourough explanation (German)</a><br><br><b>The Parties?</b><br><a href='https://www.dw.com/en/spd-green-party-fdp-cdu-left-party-afd/a-38085900' target='_blank'>Overview over all major parties (English)</a><br><a href='https://archiv.wahl-o-mat.de/bundestagswahl2021/app/main_app.html' target='_blank'>Wahl-O-Mat - What do all parties think and who matches best with you (German)</a><br><a href='https://www.bundestagswahl-bw.de/wahlprogramm-cdu' target='_blank'>CDU/CSU electoral program 2021 (German)</a><br><a href='https://www.cdu-dresden.de/aktuelles/2021/cdu-csu-wahlprogramm-englisch' target='_blank'>CDU/CSU electoral program 2021 short version (English)</a><br><a href='https://www.spd.de/programm/zukunftsprogramm' target='_blank'>SPD electoral program 2021 (German/English)</a><br><a href='https://www.gruene.de/artikel/wahlprogramm-zur-bundestagswahl-2021' target='_blank'>Greens electoral program 2021 (German/English)</a><h3> Do you want to see another side of the candidates?</h3><b>Interviews without words</b><br><a href='https://sz-magazin.sueddeutsche.de/sagen-sie-jetzt-nichts/armin-laschet-interview-kanzler-merz-88875' target='_blank'>Armin Laschet (2020)</a><br><a href='https://sz-magazin.sueddeutsche.de/sagen-sie-jetzt-nichts/ist-schwarz-gruen-die-zukunft-78094' target='_blank'>Markus Söder (2011)</a><br><a href='https://sz-magazin.sueddeutsche.de/sagen-sie-jetzt-nichts/olaf-scholz-interview-ohne-worte-90544' target='_blank'>Olaf Scholz (2021)</a><br><a href='https://sz-magazin.sueddeutsche.de/sagen-sie-jetzt-nichts/gruenen-annalena-baerbock-politik-87359' target='_blank'>Annalena Baerbock (2019)</a><br><a href='https://sz-magazin.sueddeutsche.de/ein-interview-ohne-worte/sagen-sie-jetzt-nichts-robert-habeck-84368' target='_blank'>Robert Habeck (2017)</a><br>Thank you for playing this mod. We hope you learned something and had as much fun playing it as we did creating it - <i>Nina & Jaeckex </i> </div>"
+campaignTrail_temp.election_json[0].fields.recommended_reading = "<div style='color: black; overflow: auto'><h3 style='margin-top: 0.5em;'>Do you want to learn more about...</h4><b>The German electoral system?</b><br><a href='https://www.bmi.bund.de/EN/topics/constitution/electoral-law/voting-system/voting-system-node.html' target='_blank'>Brief explanation (English)</a><br><a href='https://www.wahlrecht.de/bundestag/index.htm' target='_blank'>Thourough explanation (German)</a><br><br><b>The Parties?</b><br><a href='https://www.dw.com/en/spd-green-party-fdp-cdu-left-party-afd/a-38085900' target='_blank'>Overview over all major parties (English)</a><br><a href='https://archiv.wahl-o-mat.de/bundestagswahl2021/app/main_app.html' target='_blank'>Wahl-O-Mat - What do all parties think and who matches best with you (German)</a><br><a href='https://www.bundestagswahl-bw.de/wahlprogramm-cdu' target='_blank'>CDU/CSU electoral program 2021 (German)</a><br><a href='https://www.cdu-dresden.de/aktuelles/2021/cdu-csu-wahlprogramm-englisch' target='_blank'>CDU/CSU electoral program 2021 short version (English)</a><br><a href='https://www.spd.de/programm/zukunftsprogramm' target='_blank'>SPD electoral program 2021 (German/English)</a><br><a href='https://www.gruene.de/artikel/wahlprogramm-zur-bundestagswahl-2021' target='_blank'>Greens electoral program 2021 (German/English)</a><h3> Do you want to see another side of the candidates?</h3><b>Interviews without words</b><br><a href='https://sz-magazin.sueddeutsche.de/sagen-sie-jetzt-nichts/armin-laschet-interview-kanzler-merz-88875' target='_blank'>Armin Laschet (2020)</a><br><a href='https://sz-magazin.sueddeutsche.de/sagen-sie-jetzt-nichts/ist-schwarz-gruen-die-zukunft-78094' target='_blank'>Markus Söder (2011)</a><br><a href='https://sz-magazin.sueddeutsche.de/sagen-sie-jetzt-nichts/olaf-scholz-interview-ohne-worte-90544' target='_blank'>Olaf Scholz (2021)</a><br><a href='https://sz-magazin.sueddeutsche.de/sagen-sie-jetzt-nichts/gruenen-annalena-baerbock-politik-87359' target='_blank'>Annalena Baerbock (2019)</a><br><a href='https://sz-magazin.sueddeutsche.de/ein-interview-ohne-worte/sagen-sie-jetzt-nichts-robert-habeck-84368' target='_blank'>Robert Habeck (2017)</a><br>Thank you for playing this mod. We hope you learned something and had as much fun playing it as we did creating it - <i>Nina & Jaeckex </i> </div>"
 
 
 campaignTrail_temp.credits = "<button onclick='funcredits()'>Nina&Jaeckex</button>";
@@ -83,6 +83,7 @@ if (!element) {
 
     // Get the reference to the bar
     var bar = document.getElementById('bottomBar');
+    bar.style.display = 'block';
 
     // Create the checkbox
     var checkbox = document.createElement('input');
@@ -1173,14 +1174,14 @@ function paginateContent() {
         {searchString: "Peer Steinbrück’s", explanationText: "Centrist SPD politician, also former Minister of Finances (2005-2009). Was SPD chancellor candidate in 2013, handily defeated by Angela Merkel."},
         {searchString: "Jetzt. Wie wir unser Land erneuern", explanationText: "“Now. How we renew our country”"},
         {searchString: "The Campaign Trail", explanationText: "good game"},
-        {searchString: "Taliban", explanationText: "Islamistic terror organization, ruling over Afghanistan. Founded from mujahedeen, during the war against the soviet union. Responsible for the 9/11 attacks, and probably the single most well known terror group."},
+        {searchString: "Taliban", explanationText: "Islamistic terror organization, ruling over Afghanistan. Founded from mujahedeen, during the war against the Soviet Union. Sheltered the terrorists responsible for the 9/11 attacks, and probably the single most well known terror group."},
         {searchString: "Hans-Georg Maaßen", explanationText: "Former president of the Federal Office for the Protection of the Constitution. Retired in 2018, after laying an absurd focus on left-wing radicalism, showing suspiciously less attention to the right wing. Afterwards, he made several antisemitic, far-right and even conspiratory statements. Currently chair of the Werte-Union, a right-wing CDU suborganization."},
         {searchString: "Frank Ullrich", explanationText: "Former East German biathlon star and trainer for the German national biathlon and cross-country skiing teams. Won a Bundestag-Mandate for the SPD in a high profile race against Hans-Georg Maaßen. Has since been chair of the sports committee."},
         {searchString: "Franziska Giffey", explanationText: "Former SPD Minister for Families, Seniors, Women and Youth (2018-2021) and mayor of Berlin (2021-2023). A prominent member of the centrist SPD wing. Has experienced controversies around plagiarizing in her doctoral thesis."},
         {searchString: "Manuela Schwesig", explanationText: "SPD Minister-President of Mecklenburg-Vorpommern (since 2017). Was Minister for Families, Seniors, Women and Youth before (2013-2017). Has been an advocate against child pornography and for cooperation with Russia, especially on Nord Stream 2."},
         {searchString: "Meckpom", explanationText: "Mecklenburg-Vorpommern"},
-        {searchString: "Wolfgang Schmidt", explanationText: "Minister of Special Tasks and chief of the chancellery since 2021. Is a trusty friend and advisor at Olaf Scholz’ side, as his chief of staff, state councilor and state secretary. Became the target of a lawsuit when he leaked the partisanship of a prosecutor investigating the Ministry of Finances."},
-        {searchString: "Wolfgang", explanationText: "Wolfgang Schmidt, Minister of Special Tasks and chief of the chancellery since 2021. Is a trusty friend and advisor at Olaf Scholz’ side, as his chief of staff, state councilor and state secretary. Became the target of a lawsuit when he leaked the partisanship of a prosecutor investigating the Ministry of Finances."},
+        {searchString: "Wolfgang Schmidt", explanationText: "Minister of Special Tasks and chief of the Chancellery since 2021. Is a trusty friend and advisor at Olaf Scholz’ side, as his chief of staff, state councilor and state secretary. Became the target of a lawsuit when he leaked the partisanship of a prosecutor investigating the Ministry of Finances."},
+        {searchString: "Wolfgang", explanationText: "Wolfgang Schmidt, Minister of Special Tasks and chief of the Chancellery since 2021. Is a trusty friend and advisor at Olaf Scholz’ side, as his chief of staff, state councilor and state secretary. Became the target of a lawsuit when he leaked the partisanship of a prosecutor investigating the Ministry of Finances."},
         {searchString: "FIU", explanationText: "Financial Intelligence Unit, suborganization under the Ministry of Finance, dedicated to fighting international tax evasion and tax fraud."},
         {searchString: "Federal Constitutional Court", explanationText: "Highest court of the land, composed of 16 nonpartisan, parliamentary elected judges, divided in two chambers. Founded in 1951 as a reaction to the fate of the Weimar Republic. Generally enjoys high levels of trust."},
         {searchString: "Bettina Jarasch", explanationText: "Green Senator for the Environment in Berlin (2021-2023). Before that, was the Green candidate in the mayoral race of Berlin in 2021. Was a journalist before, and has extensive media contacts. Is an actively practicing catholic and considered part of the moderate Realo-wing."},
@@ -1608,6 +1609,10 @@ function paginateContent() {
 
     height:auto;
 }
+#recommended_reading_box{
+    height: 80%;
+    overflow: auto;
+}
 .person_button{
     margin-top:0.2em
 }
@@ -1887,7 +1892,7 @@ campaignTrail_temp.achievements = {
     },
     "The Old Dame has passed away": {
         "image": "https://i.ibb.co/LJRpDgD/image24-cropped.jpg",
-        "description": "As Greens or CDU, have the SPD land below 12%.",
+        "description": "As Greens or CDU, have the SPD land below 12.5%.",
         "cannotBeCheated": true
     },
     "Parliamentary Subterfuge": {
