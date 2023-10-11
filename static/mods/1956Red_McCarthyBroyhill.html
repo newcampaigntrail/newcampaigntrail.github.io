@@ -4,7 +4,7 @@ $("#game_window")[0].style.backgroundColor = "#633333"
 const customStyling = document.createElement("style");
 customStyling.innerHTML = `
 #campaign_sign {
-    background-image: url("https://media.discordapp.net/attachments/1138157912032825477/1143309605502468198/JoeBroyhill-01.png");
+    background-image: url("https://files.catbox.moe/a06y98.png");
     background-size: cover;
     border-color: #c9c9c9;    
     border-width: .01em;
@@ -2429,7 +2429,7 @@ e.nixon = 0
 e.racisms = 0
 e.drugs = 0
 e.lodge = 0
-
+var achv = 0;
 function tunnel(new_q){
     e = campaignTrail_temp;
     return e.questions_json[e.questions_json.map(f=>f.pk).indexOf(new_q)];
@@ -2438,6 +2438,7 @@ function tunnel(new_q){
 cyoAdventure = function(a) {
   ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
   if(ans == 8014 || ans == 8015){
+
     e.questions_json[e.questions_json.map(f=>f.pk).indexOf(40000)] = {
       "model": "campaign_trail.question",
       "pk": 4016,
@@ -2477,7 +2478,7 @@ cyoAdventure = function(a) {
     const customStyling = document.createElement("style");
     customStyling.innerHTML = `
     #campaign_sign {
-    background-image: url("https://cdn.discordapp.com/attachments/1091125206644437023/1139033311822487652/JoeCabot4.png");
+    background-image: url("https://files.catbox.moe/mdoiu8.png");
     background-size: cover;
     border-color: #c9c9c9;    
     border-width: .01em;
@@ -2491,6 +2492,7 @@ cyoAdventure = function(a) {
     color: rgb(0 0 0 / 0%);
   }
   `;
+  
   document.head.appendChild(customStyling);
     campaignTrail_temp.running_mate_image_url="https://i.imgur.com/WYWPwI8.png"
     e.lodge = 1
@@ -2499,10 +2501,14 @@ cyoAdventure = function(a) {
     e.drugs = 1
   }
   if(e.player_answers.includes(8041)){
+    achv += 1
     e.racisms = 2
   }
   if(ans == 8009){
     e.answers_json.find(f=>f.pk===8013).fields.question = null
+  }
+  if(ans == 8052){
+    achv += 1
   }
   if(ans == 8030 || ans == 8032){
     e.questions_json[e.questions_json.map(f=>f.pk).indexOf(4028)] = {
@@ -2548,7 +2554,7 @@ cyoAdventure = function(a) {
     const customStyling = document.createElement("style");
     customStyling.innerHTML = `
     #campaign_sign {
-    background-image: url("https://media.discordapp.net/attachments/1138157912032825477/1143309605838004387/JoeNixonFinal-01.png");
+    background-image: url("https://files.catbox.moe/swxbxz.png");
     background-size: cover;
     border-color: #c9c9c9;    
     border-width: .01em;
@@ -2562,8 +2568,8 @@ cyoAdventure = function(a) {
     color: rgb(0 0 0 / 0%);
   }
   `;
-  document.head.appendChild(customStyling);
-    campaignTrail_temp.running_mate_image_url="https://cdn.discordapp.com/attachments/1092480791948316763/1142508326828130425/image.png"
+  document.head.appendChild(customStyling)
+    campaignTrail_temp.running_mate_image_url="https://files.catbox.moe/55e57u.png"
     e.answer_feedback_json[e.answer_feedback_json.map(f=>f.pk).indexOf(9081)] = {
       "model": "campaign_trail.answer_feedback",
       "pk": 9081,
@@ -2585,7 +2591,6 @@ cyoAdventure = function(a) {
     e.nixon = 1
   }
   //Cohns Favors 
-  
   else if (ans === 8080 || ans === 8079) { 
     let cohnsfavors = favorCount(e.player_answers);
    
@@ -2603,6 +2608,10 @@ if (ans === 8050){
 }
   if(ans == 8097) {
     campaignTrail_temp.question_number = 29;
+  }
+  if(achv >= 2){
+    unlockAchievement("Three's a Party");
+    console.log("Achievement Gained");
   }
 }
 // Stole this from 1968RomneyBrooke and rebranded it
@@ -2805,7 +2814,7 @@ return "<h3>Nation First?</h3><p>Across the nation, the groups aligned with Bill
         }, 100);
     }
   return "<h3>Career’s End</h3><p>Drew Pearson puts up an article with that headline; ‘End of a Demagogue.’  You can imagine his snickering person, ready and willing to kick you while you’re down.  The sting of that humiliation might never wear off.</p><p>At least you have Jean… at least you have Roy…</p><p>America wasn’t ready for executive McCarthyism, and at this rate they likely never will be.  There’s still hope for your movement, of course—after all, this whole generation has been reared to fear the red menace—but your own career is certainly over.  At least you lived to see the first Catholic president.</p><p>Maybe some more whiskey will ease the pain of it all.</p>"
-  } else if (quickstats[2] <= 266) {
+  } else if (quickstats[3] >= 266) {
     if (used != true) {
           setInterval(function () {
               used = true;
@@ -2823,3 +2832,75 @@ return "<h3>MCCART HAS WON</h3><p>be ready to hit some blinkers</p>"
 }
 
 campaignTrail_temp.multiple_endings=true
+
+let vpName = "Joel Broyhill";
+
+
+
+vpTable = {
+    "Joseph McCarthy" : vpName,
+    "John McCormack" : "Lyndon B. Johnson ",
+    "Tom Connally" : "W.A Criswell",
+    "Eric Hass/Others" : "Georgia Cozzini/Others"
+}
+
+vpTableHistorical = {
+    "Joseph McCarthy" : "Henry Cabot Lodge Jr",
+    "John McCormack" : "Lyndon B. Johnson ",
+    "Tom Connally" : "W.A Criswell",
+    "Eric Hass/Others" : "Georgia Cozzini/Others"
+  } 
+
+function onGameWindowChangeCandidates() {
+        const resultsTableHolder = document.getElementById("overall_details_container");
+
+        if(!resultsTableHolder || resultsTableHolder.classList.contains("done")) {
+            return;
+        }
+
+        resultsTableHolder.classList.add("done");
+
+        const resultsTable = resultsTableHolder.childNodes[3].childNodes[3].children[0];
+        
+        for(let i = 0; i < resultsTable.children.length; i++) {
+            const row = resultsTable.children[i];
+            let name = row.firstChild.innerText;
+            row.insertCell(1);
+            if(name) {
+                name = name.replaceAll("-", "").trim();
+                console.log("name is:" + name)
+            }
+
+            if(i == 0) {
+                row.children[1].innerHTML = `<span style="font-weight:bold">Running Mate<span>`;
+            }
+            else {
+                row.children[1].innerHTML = vpTable[name];
+            }
+        }
+
+        
+        const resultsTableHistorical = resultsTableHolder.childNodes[5].childNodes[3].children[0];
+        
+        for(let i = 0; i < resultsTableHistorical.children.length; i++) {
+            const row = resultsTableHistorical.children[i];
+            let name = row.childNodes[1].innerText;
+            row.insertCell(1);
+            if(name) {
+                name = name.replaceAll("-", "").trim();
+            }
+
+            if(i == 0) {
+                row.children[1].innerHTML = `<span style="font-weight:bold">Running Mate<span>`;
+            }
+            else {
+                row.children[1].innerHTML = vpTableHistorical[name];
+            }
+        }
+}
+
+const gameWindowNode = document.getElementById("game_window");
+const candidateWatcherConfig = { attributes: true, childList: true, subtree: true };
+
+const candidateObserver = new MutationObserver(onGameWindowChangeCandidates);
+candidateObserver.observe(gameWindowNode, candidateWatcherConfig);
