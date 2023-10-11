@@ -4130,10 +4130,8 @@ cyoAdventure = function(a) {
   if ((ans == 80061 || ans == 80062 || ans == 800610 || ans == 800620 || ans == 800630)) {
     campaignTrail_temp.questions_json[campaignTrail_temp.question_number + 1] = tunnel(40018);
   }
-  let stateResult = campaignTrail_temp.final_state_results.find((x) => x.state == 1045);
-  if(stateResult.result[0].candidate == 24){
-    unlockAchievement("The Other Commonwealth");
-  }
+
+
   if(e.player_answers.includes(8033) && e.player_answers.includes(80390)){
     achv += 1
   }
@@ -4195,6 +4193,7 @@ orderID = [aa[0].candidate, aa[1].candidate, aa[2].candidate];
 //totv = total votes in entire election
 //aa = all final overall results data
 //quickstats = relevant data on candidate performance (format: your candidate's electoral vote count, your candidate's popular vote share, your candidate's raw vote total)
+let stateResult = campaignTrail_temp.final_state_results.find((x) => x.state == 1045);
 if (quickstats[0] >= 531) {
   if (used != true) {
       setInterval(function () {
@@ -4206,6 +4205,30 @@ if (quickstats[0] >= 531) {
       }, 100);
   }
    return "<h3>Catjp:oc</h3><p><i>Catjp:oc!  Catjp:oc!  Catjp:oc!</i></p><p>The chanting echoed distantly through these ancient halls of labyrinthine Boston.  In walked the mighty elder; John W. McCormack Sr.  He had just returned from his latest expedition in the Arctic, and in his hand was wrested a circular artifact of a strange metal design.</p><p>‘Finally returned from your expedition, father?’ the young John McCormack Jr. inquired at his father’s side, ‘tell me, was the bounty good?  Shall we finally stare into the eyes of Heaven?’</p><p>John McCormack Sr. smiled, ‘indeed we shall, my son.’  Coming before the altar where the other artifacts were gathered, he raised up the latest, and it rose itselfr from his hands to join the others.  The mighty Catjp;oc slithered out of its dimension, and its praises were sung forevermore.  Surely the Pope would be pleased.</p>";
+} else if (stateResult.result[0].candidate == 24 && quickstats[0] >= 266) {
+  if (used != true) {
+        setInterval(function () {
+            used = true;
+            imgg = document.getElementsByClassName("person_image")[0];
+            if (imgg != null) {
+                imgg.src = "https://i.imgur.com/eOXl2Qv.png";
+            }
+        }, 100);
+    }
+    unlockAchievement("The Other Commonwealth");
+  return "<h3>The Common Man’s Century</h3><p>You can barely contain tears of joy as NBC calls the race for you. Nancy comes running up to you, and you kiss her until you’re almost running out of breath. Next up are Fulbright, Humphrey, and Reuther, who shake your hand profusely. You can’t help but feel pride swelling up in your chest as the phone rings in the campaign headquarters.</p><p>You pick up and, on the other side, is President Wallace. Trying to be formal, you address him as sir; he asks you to call him Henry, and congratulates you on your victory. You have carried the torch of progressivism to the White House once more, and lit again the fires of a movement many thought dead. America is yours to mold into a kinder, more loving, more compassionate nation, with cleaner deeds and cleaner consciences.</p><p>As you step outside, you feel the crisp autumn air in Lansing. The people cheer, and you start to hear a guitar beside you. In a few moments, the crowd is following Pete Seeger’s rendition of Passing Through. You smile wide. It’s a new day in America— the first day of the Century of the Common Man, and you brought it on.</p>"
+}else if (sp == 1 && quickstats[0] >= 317 && quickstats[0] <= 530) {
+  if (used != true) {
+        setInterval(function () {
+            used = true;
+            imgg = document.getElementsByClassName("person_image")[0];
+            if (imgg != null) {
+                imgg.src = "https://i.imgur.com/eOXl2Qv.png";
+            }
+        }, 100);
+    }
+    unlockAchievement("Gideon's Return");
+  return "<h3>The Common Man’s Century</h3><p>You can barely contain tears of joy as NBC calls the race for you. Nancy comes running up to you, and you kiss her until you’re almost running out of breath. Next up are Fulbright, Humphrey, and Reuther, who shake your hand profusely. You can’t help but feel pride swelling up in your chest as the phone rings in the campaign headquarters.</p><p>You pick up and, on the other side, is President Wallace. Trying to be formal, you address him as sir; he asks you to call him Henry, and congratulates you on your victory. You have carried the torch of progressivism to the White House once more, and lit again the fires of a movement many thought dead. America is yours to mold into a kinder, more loving, more compassionate nation, with cleaner deeds and cleaner consciences.</p><p>As you step outside, you feel the crisp autumn air in Lansing. The people cheer, and you start to hear a guitar beside you. In a few moments, the crowd is following Pete Seeger’s rendition of Passing Through. You smile wide. It’s a new day in America— the first day of the Century of the Common Man, and you brought it on.</p>"
 } else if (sp == 0 && quickstats[0] >= 401 && quickstats[0] <= 530) {
   if (used != true) {
         setInterval(function () {
@@ -4228,18 +4251,6 @@ if (quickstats[0] >= 531) {
         }, 100);
     }
   return "<h3>WholsSUm VICTORY</h3><p>WOOO LET’S GO BABEY!!!!</p><p>YOU WON!!!!!!!!</p><p>MY LARPING IS VINDICATED THANK YOU RED PPL!!!!! taket hat mcsharty take that mack!!!</p><p>IT'S NEVER SOAPOVER, SOAPBROS; TO THOSE WHOSE HOPES HAVE BEEN OUR CONCERN, THE FIGHT GOES ON, THE CAUSE ENDURES, AND THE SOAP SHALL NEVER DROP!</p>"
-} else if (sp == 1 && quickstats[0] >= 317 && quickstats[0] <= 530) {
-  if (used != true) {
-        setInterval(function () {
-            used = true;
-            imgg = document.getElementsByClassName("person_image")[0];
-            if (imgg != null) {
-                imgg.src = "https://i.imgur.com/eOXl2Qv.png";
-            }
-        }, 100);
-    }
-    unlockAchievement("Gideon's Return");
-  return "<h3>The Common Man’s Century</h3><p>You can barely contain tears of joy as NBC calls the race for you. Nancy comes running up to you, and you kiss her until you’re almost running out of breath. Next up are Fulbright, Humphrey, and Reuther, who shake your hand profusely. You can’t help but feel pride swelling up in your chest as the phone rings in the campaign headquarters.</p><p>You pick up and, on the other side, is President Wallace. Trying to be formal, you address him as sir; he asks you to call him Henry, and congratulates you on your victory. You have carried the torch of progressivism to the White House once more, and lit again the fires of a movement many thought dead. America is yours to mold into a kinder, more loving, more compassionate nation, with cleaner deeds and cleaner consciences.</p><p>As you step outside, you feel the crisp autumn air in Lansing. The people cheer, and you start to hear a guitar beside you. In a few moments, the crowd is following Pete Seeger’s rendition of Passing Through. You smile wide. It’s a new day in America— the first day of the Century of the Common Man, and you brought it on.</p>"
 }else if (sp == 1 && quickstats[0] >= 308 && quickstats[0] <= 530) {
   if (used != true) {
         setInterval(function () {
@@ -4413,7 +4424,7 @@ return "<h3>A System Broken</h3><p>‘By God,’ one of your aides says beside y
         }, 100);
     }
   return "<h3>Wholsum Libral Lose???</h3><p>What the Hack?!?!??!</p><p>You lost!!!!</p><p>This is ridondious!!!  Wtf Red ppl?????  How do u even lose to McSHARTY?  Smh I HATE this unrealistic series</p><p>No matter.  Come next Convention I will once again vote for the most wholesome candidate I can find!</p>"
-  } else if (sp == 0 && quickstats[2] <= 266) {
+  } else if (sp == 0 && quickstats[3] >= 266) {
   if (used != true) {
         setInterval(function () {
             used = true;
