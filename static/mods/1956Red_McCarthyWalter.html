@@ -4,7 +4,7 @@ $("#game_window")[0].style.backgroundColor = "#633333"
 const customStyling = document.createElement("style");
 customStyling.innerHTML = `
 #campaign_sign {
-    background-image: url("https://media.discordapp.net/attachments/1138157912032825477/1143309606098042931/JoeWalter-01-01-01.png");
+    background-image: url("https://files.catbox.moe/nm8dte.png");
     background-size: cover;
     border-color: #c9c9c9;    
     border-width: .01em;
@@ -2420,7 +2420,7 @@ return "<h3>Nation First?</h3><p>Across the nation, the groups aligned with Bill
         }, 100);
     }
   return "<h3>Career’s End</h3><p>Drew Pearson puts up an article with that headline; ‘End of a Demagogue.’  You can imagine his snickering person, ready and willing to kick you while you’re down.  The sting of that humiliation might never wear off.</p><p>At least you have Jean… at least you have Roy…</p><p>America wasn’t ready for executive McCarthyism, and at this rate they likely never will be.  There’s still hope for your movement, of course—after all, this whole generation has been reared to fear the red menace—but your own career is certainly over.  At least you lived to see the first Catholic president.</p><p>Maybe some more whiskey will ease the pain of it all.</p>"
-  } else if (quickstats[2] <= 266) {
+  } else if (quickstats[3] >= 266) {
     if (used != true) {
           setInterval(function () {
               used = true;
@@ -2438,3 +2438,75 @@ return "<h3>MCCART HAS WON</h3><p>be ready to hit some blinkers</p>"
 }
 
 campaignTrail_temp.multiple_endings=true
+
+let vpName = "Francis E. Walter";
+
+
+
+vpTable = {
+    "Joseph McCarthy" : vpName,
+    "John McCormack" : "Lyndon B. Johnson ",
+    "Tom Connally" : "W.A Criswell",
+    "Eric Hass/Others" : "Georgia Cozzini/Others"
+}
+
+vpTableHistorical = {
+    "Joseph McCarthy" : "Henry Cabot Lodge Jr",
+    "John McCormack" : "Lyndon B. Johnson ",
+    "Tom Connally" : "W.A Criswell",
+    "Eric Hass/Others" : "Georgia Cozzini/Others"
+  } 
+
+function onGameWindowChangeCandidates() {
+        const resultsTableHolder = document.getElementById("overall_details_container");
+
+        if(!resultsTableHolder || resultsTableHolder.classList.contains("done")) {
+            return;
+        }
+
+        resultsTableHolder.classList.add("done");
+
+        const resultsTable = resultsTableHolder.childNodes[3].childNodes[3].children[0];
+        
+        for(let i = 0; i < resultsTable.children.length; i++) {
+            const row = resultsTable.children[i];
+            let name = row.firstChild.innerText;
+            row.insertCell(1);
+            if(name) {
+                name = name.replaceAll("-", "").trim();
+                console.log("name is:" + name)
+            }
+
+            if(i == 0) {
+                row.children[1].innerHTML = `<span style="font-weight:bold">Running Mate<span>`;
+            }
+            else {
+                row.children[1].innerHTML = vpTable[name];
+            }
+        }
+
+        
+        const resultsTableHistorical = resultsTableHolder.childNodes[5].childNodes[3].children[0];
+        
+        for(let i = 0; i < resultsTableHistorical.children.length; i++) {
+            const row = resultsTableHistorical.children[i];
+            let name = row.childNodes[1].innerText;
+            row.insertCell(1);
+            if(name) {
+                name = name.replaceAll("-", "").trim();
+            }
+
+            if(i == 0) {
+                row.children[1].innerHTML = `<span style="font-weight:bold">Running Mate<span>`;
+            }
+            else {
+                row.children[1].innerHTML = vpTableHistorical[name];
+            }
+        }
+}
+
+const gameWindowNode = document.getElementById("game_window");
+const candidateWatcherConfig = { attributes: true, childList: true, subtree: true };
+
+const candidateObserver = new MutationObserver(onGameWindowChangeCandidates);
+candidateObserver.observe(gameWindowNode, candidateWatcherConfig);

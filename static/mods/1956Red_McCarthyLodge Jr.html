@@ -4,7 +4,7 @@ $("#game_window")[0].style.backgroundColor = "#633333"
 const customStyling = document.createElement("style");
 customStyling.innerHTML = `
 #campaign_sign {
-    background-image: url("https://cdn.discordapp.com/attachments/1091125206644437023/1139033311822487652/JoeCabot4.png");
+    background-image: url("https://files.catbox.moe/mdoiu8.png");
     background-size: cover;
     border-color: #c9c9c9;    
     border-width: .01em;
@@ -2239,6 +2239,7 @@ function tunnel(new_q){
 
 cyoAdventure = function(a) {
   ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
+  
   if(ans == 8046 || ans == 8047){
     e.drugs = 1
   }
@@ -2292,7 +2293,7 @@ cyoAdventure = function(a) {
     const customStyling = document.createElement("style");
     customStyling.innerHTML = `
     #campaign_sign {
-    background-image: url("https://media.discordapp.net/attachments/1138157912032825477/1143309605838004387/JoeNixonFinal-01.png");
+    background-image: url("https://files.catbox.moe/swxbxz.png");
     background-size: cover;
     border-color: #c9c9c9;    
     border-width: .01em;
@@ -2308,7 +2309,7 @@ cyoAdventure = function(a) {
   `;
   document.head.appendChild(customStyling);
    vpTable["Joseph McCarthy"] = "Richard Nixon";
-    campaignTrail_temp.running_mate_image_url="https://cdn.discordapp.com/attachments/1092480791948316763/1142508326828130425/image.png"
+    campaignTrail_temp.running_mate_image_url="https://files.catbox.moe/55e57u.png"
     e.answer_feedback_json[e.answer_feedback_json.map(f=>f.pk).indexOf(9081)] = {
       "model": "campaign_trail.answer_feedback",
       "pk": 9081,
@@ -2428,11 +2429,11 @@ if (quickstats[0] >= 531) {
           used = true;
           imgg = document.getElementsByClassName("person_image")[0];
           if (imgg != null) {
-              imgg.src = "";
+              imgg.src = "https://i.imgur.com/GCgsMhU.png";
           }
       }, 100);
   }
-   return "<h3>placeholder</h3><p></p>";
+   return "<h3>Protégé</h3><p>Joseph McCarthy had won a term for himself as president, in an unprecedented landslide.  By the time 1960 came around, he won by a somehow even bigger margin.  His work did not end there, though.  With Roy, he established a new youth wing of the Republican Party, and oh did it pay dividends finding talent.</p><p>Sixty years later, a bald, orange-faced man stood at a podium, and spoke.</p><p>'I love Joe so much, in fact, I keep his picture right here in my pocket, and whenever I'm down, I smooch it and ask for Joe's wisdom, no really, it's true.  It's true.  Not in a gay way, but in a very patriotic way, because Joe was a hero, folks.  A true hero.  We love Joe.  And I was just saying to my running mate, Hillary, his work was truly astounding.  But there's so much more work to do—and we are gonna work hard, folks.  We're gonna work so hard you'll be begging us to take a break and stop bringing in the wins for our country.  Really, it's true.  The communists won't know what's coming.  Believe me.'</p><p>The media considered it a fairly typical speech for a center-right politician.</p>";
 } else if ((e.player_answers.includes(8097)) && quickstats[0] < 266) {
   if (used != true) {
         setInterval(function () {
@@ -2506,7 +2507,19 @@ if (used != true) {
       }, 100);
   }
 return "<h3>The Bully’s Pulpit</h3><p>‘We did it, Mac.  It’s all our’s.’</p><p>That’s what Roy Cohn whispers in your ear as the final results come in from California.  True enough, it was over for John McCormack, and the nation was your’s, and <i>fairly</i> won.</p><p>McCarthyism has been vindicated by this electoral victory, and soon the White House will be conquered too, the Oval Office the bully’s pulpit.</p><p>Sure, you had to step over plenty of people to get here, but life ain’t fair.  Never was, and never will be.  You’re a shocker, and you’ve produced the biggest shock of your career with this win.  Let’s hope an even greater dose of the McCarthyist drug is what America needs.</p>"
-} else if (quickstats[0] >= 266 && quickstats[0]<= 300) {
+} else if (quickstats[0] == 274) {
+  if (used != true) {
+        setInterval(function () {
+            used = true;
+            imgg = document.getElementsByClassName("person_image")[0];
+            if (imgg != null) {
+                imgg.src = "https://i.imgur.com/iXhvjvw.png";
+            }
+        }, 100);
+    }
+    unlockAchievement("This One's For The Record");
+  return "<h3>The Enemy Within</h3><p><i>Victory.</i>  The word lingers in your thoughts for hours as the results seep in, at times growing faded, at others louder, until soon a great chorus of supporters was echoing its sweet contents, letter-by-letter.</p><p><i>Victory.</i>  It was a close-won fight, but won nonetheless.  This is truly the most shocking upset in American political history, but you were always a man to defy odds.</p><p><i>Victory.</i>  Now comes the work of governance.  Americans now look to you, their unlikely leader to guide them to the end of this prosperous decade.  The leader of the free world, a man like you…</p><p>And should your crusade bear fruit; should the communists truly Grovel as you've promised, you shall have <i>victory.</i></p>"
+  }else if (quickstats[0] >= 266 && quickstats[0]<= 300) {
 if (used != true) {
       setInterval(function () {
           used = true;
@@ -2550,7 +2563,7 @@ return "<h3>Nation First?</h3><p>Across the nation, the groups aligned with Bill
         }, 100);
     }
   return "<h3>Career’s End</h3><p>Drew Pearson puts up an article with that headline; ‘End of a Demagogue.’  You can imagine his snickering person, ready and willing to kick you while you’re down.  The sting of that humiliation might never wear off.</p><p>At least you have Jean… at least you have Roy…</p><p>America wasn’t ready for executive McCarthyism, and at this rate they likely never will be.  There’s still hope for your movement, of course—after all, this whole generation has been reared to fear the red menace—but your own career is certainly over.  At least you lived to see the first Catholic president.</p><p>Maybe some more whiskey will ease the pain of it all.</p>"
-  } else if (quickstats[2] <= 266) {
+  } else if (quickstats[3] >= 266) {
     if (used != true) {
           setInterval(function () {
               used = true;
@@ -2561,7 +2574,18 @@ return "<h3>Nation First?</h3><p>Across the nation, the groups aligned with Bill
           }, 100);
       }
     return "<h3>Nation First</h3><p>As the returns piled in throughout the night, the result was a staggering shock to the American political system: America had rejected the concept of a Catholic president unilaterally and chose instead to elect Tom Connally, and vindicate his crusade against Catholics in government.</p><p>The election of a third party to the presidency was not something any predictor had seen coming—as long as you’re not counting Billy Graham, who had been predicting a sweeping Connally victory from the pulpit for the past two months.  Perhaps it was divine determination that the Texas senator was victorious?</p><p>Nonetheless, Connally has a difficult task ahead of him to unite the country and block the progress of any civil rights legislation, and his advanced age will likely make governing as stressing as campaigning proved to be.</p>"
-    } else {
+  }else if (quickstats[0] <= 1) {
+      if (used != true) {
+            setInterval(function () {
+                used = true;
+                imgg = document.getElementsByClassName("person_image")[0];
+                if (imgg != null) {
+                    imgg.src = "https://i.imgur.com/1BhNODK.png";
+                }
+            }, 100);
+        }
+      return "<h3>No Third Term?</h3><p>The writer's chair creaked as he leaned back, taking in the totality of his work.  Alternate history writing was something of a niche genre for the past few decades, but the colorful fantasy created by Catharine Drinker Bowen had brought the concept back to life.  For the last few months, Asden Thomas, a noted novelist who had wrote books on the previous two presidential elections had decided to wade into these waters.</p><p>His concept was simple, a retelling of the 1940 Election.  That was a somewhat mild election (especially compared to what would come next), but Roosevelt's unprecedented third term would come to be important, as it ushered in the leadership of the embattled Henry Wallace.  But what if Roosevelt's efforts had been met with scorn...?</p><p>The manuscript was, uh, not good.  No, this wouldn't do, but perhaps it could be improved.  Oh, but the 1960 election called...  Thomas put his 'alternate-history' to the side.  Perhaps he would finish it around Christmas time.</p>"
+      } else {
 return "<h3>MCCART HAS WON</h3><p>be ready to hit some blinkers</p>"
 }
 
