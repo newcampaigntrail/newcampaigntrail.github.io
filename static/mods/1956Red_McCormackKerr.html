@@ -4129,9 +4129,10 @@ cyoAdventure = function(a) {
     if ((ans == 80061 || ans == 80062 || ans == 800610 || ans == 800620 || ans == 800630)) {
     campaignTrail_temp.questions_json[campaignTrail_temp.question_number + 1] = tunnel(40018);
   }
-  
-
-  if(e.player_answers.includes(8033) && e.player_answers.includes(80390)){
+  if(e.player_answers.includes(8033)){
+    achv += 1
+  }
+  if(ans == 80390){
     achv += 1
   }
 }
@@ -4310,7 +4311,7 @@ if (quickstats[0] >= 531) {
     e.pages = ["<p>The sound of a violent coughing fit echoed from the other side of Cell 33A.  Eventually the ill Prisoner 3791 drifted asleep, but Lucas Gess remained awake, his wits about him.  He wouldn’t miss what was about to happen for anything.  He stashed himself by the door and listened intently.  Just down the hall a guard’s radio relayed the results of the 1956 Presidential Election, and Gess could barely hear, but hear he did.</p><p>Later in the night, when all of Cell Block A had fallen asleep, a faint knock was omitted from 33A’s door.  Lucas looked up to the door’s sally port was slid open.  ‘You’ve done well,’ the voice said on the other side, ‘the Committee is pleased, as is Roy.’</p>", "<p>‘I don’t know how much longer I can hold out here,’ Gess said, a twitch in his eye, ‘the governor has it out for me.’</p><p>‘The President will see what he can do to make this easier, though for the sake of your future credibility, you must remain here.  No pardon can be promised.’</p><p>‘Damn you,’ Gess nearly blurted out, but it came out as a stifled phrase.  ‘I was promised a pardon.’</p><p>‘There is still more work to do, Mr. Gess,’ the voice on the other side said.  ‘You will be rewarded handsomely for your work.’  Then, the sally port was slid shut once more, and Lucas listened intently to the sound of the man’s fading footsteps.</p>"];
     return construct(0);
   }
-} else if (achv == 1 && quickstats[0] >= 365) {
+} else if (achv == 2 && quickstats[0] >= 365) {
   if (used != true) {
         setInterval(function () {
             used = true;
