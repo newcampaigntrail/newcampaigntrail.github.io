@@ -3891,6 +3891,7 @@ var sex = 0;
 var sp = 0;
 var sex2 = 0;
 var langer = 0;
+var achv = 0;
 function tunnel(new_q){
     e = campaignTrail_temp;
     return e.questions_json[e.questions_json.map(f=>f.pk).indexOf(new_q)];
@@ -4201,12 +4202,12 @@ if (quickstats[0] >= 531) {
             used = true;
             imgg = document.getElementsByClassName("person_image")[0];
             if (imgg != null) {
-                imgg.src = "https://i.imgur.com/eOXl2Qv.png";
+                imgg.src = "https://files.catbox.moe/h8d7b4.png";
             }
         }, 100);
     }
     unlockAchievement("The Other Commonwealth");
-  return "<h3>The Common Man’s Century</h3><p>You can barely contain tears of joy as NBC calls the race for you. Nancy comes running up to you, and you kiss her until you’re almost running out of breath. Next up are Fulbright, Humphrey, and Reuther, who shake your hand profusely. You can’t help but feel pride swelling up in your chest as the phone rings in the campaign headquarters.</p><p>You pick up and, on the other side, is President Wallace. Trying to be formal, you address him as sir; he asks you to call him Henry, and congratulates you on your victory. You have carried the torch of progressivism to the White House once more, and lit again the fires of a movement many thought dead. America is yours to mold into a kinder, more loving, more compassionate nation, with cleaner deeds and cleaner consciences.</p><p>As you step outside, you feel the crisp autumn air in Lansing. The people cheer, and you start to hear a guitar beside you. In a few moments, the crowd is following Pete Seeger’s rendition of Passing Through. You smile wide. It’s a new day in America— the first day of the Century of the Common Man, and you brought it on.</p>"
+    return "<h3>An Expectant Landslides</h3><p>Despite all the fire, fury and smears kindled by your opponent during the course of this campaign, you have won a commanding landslide in the electoral college and popular vote, carrying most states.</p><p>With your majorities in both chambers of Congress expanded even moreso by this triumph, you should have no problem whatever working with the new Speaker, Carl Albert to pass your ambitious legislative agenda.  Should you have success working with the Senate, your administration could go down as the most legislatively successful in the history of the United States.</p><p>Just four years ago your party was defeated in a landslide of similar magnitude.  Be proud, Mack, that you’ve led it out of the din of failure and into the light of governance once more.</p>"
 }else if (sp == 1 && quickstats[0] >= 317 && quickstats[0] <= 530) {
   if (used != true) {
         setInterval(function () {
@@ -4219,7 +4220,19 @@ if (quickstats[0] >= 531) {
     }
     unlockAchievement("Gideon's Return");
   return "<h3>The Common Man’s Century</h3><p>You can barely contain tears of joy as NBC calls the race for you. Nancy comes running up to you, and you kiss her until you’re almost running out of breath. Next up are Fulbright, Humphrey, and Reuther, who shake your hand profusely. You can’t help but feel pride swelling up in your chest as the phone rings in the campaign headquarters.</p><p>You pick up and, on the other side, is President Wallace. Trying to be formal, you address him as sir; he asks you to call him Henry, and congratulates you on your victory. You have carried the torch of progressivism to the White House once more, and lit again the fires of a movement many thought dead. America is yours to mold into a kinder, more loving, more compassionate nation, with cleaner deeds and cleaner consciences.</p><p>As you step outside, you feel the crisp autumn air in Lansing. The people cheer, and you start to hear a guitar beside you. In a few moments, the crowd is following Pete Seeger’s rendition of Passing Through. You smile wide. It’s a new day in America— the first day of the Century of the Common Man, and you brought it on.</p>"
-} else if (sp == 0 && quickstats[0] >= 401 && quickstats[0] <= 530) {
+} else if (achv == 2 && quickstats[0] >= 365) {
+  if (used != true) {
+        setInterval(function () {
+            used = true;
+            imgg = document.getElementsByClassName("person_image")[0];
+            if (imgg != null) {
+                imgg.src = "https://files.catbox.moe/h8d7b4.png";
+            }
+        }, 100);
+    }
+    unlockAchievement("Boston Beats Austin");
+  return "<h3>An Expectant Landslides</h3><p>Despite all the fire, fury and smears kindled by your opponent during the course of this campaign, you have won a commanding landslide in the electoral college and popular vote, carrying most states.</p><p>With your majorities in both chambers of Congress expanded even moreso by this triumph, you should have no problem whatever working with the new Speaker, Carl Albert to pass your ambitious legislative agenda.  Should you have success working with the Senate, your administration could go down as the most legislatively successful in the history of the United States.</p><p>Just four years ago your party was defeated in a landslide of similar magnitude.  Be proud, Mack, that you’ve led it out of the din of failure and into the light of governance once more.</p>"
+}else if (sp == 0 && quickstats[0] >= 401 && quickstats[0] <= 530) {
   if (used != true) {
         setInterval(function () {
             used = true;
@@ -4303,19 +4316,7 @@ if (quickstats[0] >= 531) {
     e.pages = ["<p>The sound of a violent coughing fit echoed from the other side of Cell 33A.  Eventually the ill Prisoner 3791 drifted asleep, but Lucas Gess remained awake, his wits about him.  He wouldn’t miss what was about to happen for anything.  He stashed himself by the door and listened intently.  Just down the hall a guard’s radio relayed the results of the 1956 Presidential Election, and Gess could barely hear, but hear he did.</p><p>Later in the night, when all of Cell Block A had fallen asleep, a faint knock was omitted from 33A’s door.  Lucas looked up to the door’s sally port was slid open.  ‘You’ve done well,’ the voice said on the other side, ‘the Committee is pleased, as is Roy.’</p>", "<p>‘I don’t know how much longer I can hold out here,’ Gess said, a twitch in his eye, ‘the governor has it out for me.’</p><p>‘The President will see what he can do to make this easier, though for the sake of your future credibility, you must remain here.  No pardon can be promised.’</p><p>‘Damn you,’ Gess nearly blurted out, but it came out as a stifled phrase.  ‘I was promised a pardon.’</p><p>‘There is still more work to do, Mr. Gess,’ the voice on the other side said.  ‘You will be rewarded handsomely for your work.’  Then, the sally port was slid shut once more, and Lucas listened intently to the sound of the man’s fading footsteps.</p>"];
     return construct(0);
   }
-} else if (achv == 2 && quickstats[0] >= 365) {
-  if (used != true) {
-        setInterval(function () {
-            used = true;
-            imgg = document.getElementsByClassName("person_image")[0];
-            if (imgg != null) {
-                imgg.src = "https://files.catbox.moe/h8d7b4.png";
-            }
-        }, 100);
-    }
-    unlockAchievement("Boston Beats Austin");
-  return "<h3>An Expectant Landslide</h3><p>Despite all the fire, fury and smears kindled by your opponent during the course of this campaign, you have won a commanding landslide in the electoral college and popular vote, carrying most states.</p><p>With your majorities in both chambers of Congress expanded even moreso by this triumph, you should have no problem whatever working with the new Speaker, Carl Albert to pass your ambitious legislative agenda.  Should you have success working with the Senate, your administration could go down as the most legislatively successful in the history of the United States.</p><p>Just four years ago your party was defeated in a landslide of similar magnitude.  Be proud, Mack, that you’ve led it out of the din of failure and into the light of governance once more.</p>"
-}else if (sp == 0 && quickstats[0] >= 350 && quickstats[0] <= 400) {
+} else if (sp == 0 && quickstats[0] >= 350 && quickstats[0] <= 400) {
   if (used != true) {
         setInterval(function () {
             used = true;
