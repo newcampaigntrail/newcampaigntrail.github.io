@@ -79,7 +79,7 @@ cyoAdventure = function (a) {
     
     
     // CYOA if you choose to strike a deal with DNC, 30% chance 
-    if ([200566, 200570, 200926].includes(campaignTrail_temp.player_answers[5]) && Math.random()<0.3) {
+    if ([200566, 200570, 200926].includes(campaignTrail_temp.player_answers[5]) && Math.random()<1.3) {
       // Cause emails to leak early
       campaignTrail_temp.questions_json[36] = {
         "model": "campaign_trail.question",
@@ -135,8 +135,8 @@ e.primary_code = [
 ]
 
 
-campaignTrail_temp.candidate_image_url = 'https://cdn.discordapp.com/attachments/1061855514536988743/1064263892932497509/tYrkD6eAAAAAElFTkSuQmCC.png';
-campaignTrail_temp.running_mate_image_url = 'https://cdn.discordapp.com/attachments/1061855514536988743/1126242866130333787/image.png';
+campaignTrail_temp.candidate_image_url = 'https://itsastronomical.com/assets/2016DNC/clinton.png';
+campaignTrail_temp.running_mate_image_url = 'https://itsastronomical.com/assets/2016DNC/clinton_banner.png';
 campaignTrail_temp.candidate_last_name = 'Clinton for';
 campaignTrail_temp.running_mate_last_name = 'President';
 campaignTrail_temp.running_mate_state_id = '187';
@@ -153,18 +153,18 @@ if ((campaignTrail_temp.player_answers.includes(200975)||campaignTrail_temp.play
               used = true;
               imgg = document.getElementsByClassName("person_image")[0];
               if (imgg != null) {
-                  imgg.src = "https://media.discordapp.net/attachments/1061855514536988743/1131604236979929190/1015006_1_112220clinton.png";
+                  imgg.src = "https://itsastronomical.com/assets/2016DNC/ClintonWalk.png";
               }
           }, 100);
       }
-      return "<audio loop='false' autoplay='true' src='https://cdn.discordapp.com/attachments/1131593672857768087/1131605075949797376/I_Will_Survive.ogg' style='display:none;'></audio><h3>'I Will Survive'</h3><div style='overflow-y:scroll;height:200px;'><p>As you sit in your hotel room outside the Wells Fargo Center, you just wonder - how did it get to this point? Two years ago, you managed to look like the heir apparent to the Democratic nomination. Two years ago, it looked as if you'd be going up against Jeb Bush, perhaps to slay the beast that was the Bush dynasty once and for all - in a move so familiar to your husband. Everything was going perfectly - and then that wildcard, that 'independent' Senator came in to cause you and the Democratic Party nothing but trouble, tricks, and lies. So sure, you may have made a few decisions.<p><p>But who wouldn't in that situation? Democrats need to show a united front going into the election this fall. The quicker the nomination could be decided, the better.</p><br><br><p>The worst part? You don't even get the credit for putting an end to the Bush family's political career - that honor goes to your upcoming opponent - Donald Trump. A man who spent the entire primary doing practically everything Republicans have believed for so long not to do - go full extremist on immigration and race, but pledge less trade and to protect social security. How the hell did this world get so topsy-turvy? One of your advisors tell you that it's time to get up and go.<p><p>You quickly get up from your chair, look at Bill, and begin to walk into the venue. Despite everything that was thrown at you, a majority of delegates still backed you.<br><br><p><i>You will survive.</i><p></div>"
+      return "<audio loop='false' autoplay='true' src='https://itsastronomical.com/assets/2016DNC/music/I_Will_Survive.ogg' style='display:none;'></audio><h3>'I Will Survive'</h3><div style='overflow-y:scroll;height:200px;'><p>As you sit in your hotel room outside the Wells Fargo Center, you just wonder - how did it get to this point? Two years ago, you managed to look like the heir apparent to the Democratic nomination. Two years ago, it looked as if you'd be going up against Jeb Bush, perhaps to slay the beast that was the Bush dynasty once and for all - in a move so familiar to your husband. Everything was going perfectly - and then that wildcard, that 'independent' Senator came in to cause you and the Democratic Party nothing but trouble, tricks, and lies. So sure, you may have made a few decisions.<p><p>But who wouldn't in that situation? Democrats need to show a united front going into the election this fall. The quicker the nomination could be decided, the better.</p><br><br><p>The worst part? You don't even get the credit for putting an end to the Bush family's political career - that honor goes to your upcoming opponent - Donald Trump. A man who spent the entire primary doing practically everything Republicans have believed for so long not to do - go full extremist on immigration and race, but pledge less trade and to protect social security. How the hell did this world get so topsy-turvy? One of your advisors tell you that it's time to get up and go.<p><p>You quickly get up from your chair, look at Bill, and begin to walk into the venue. Despite everything that was thrown at you, a majority of delegates still backed you.<br><br><p><i>You will survive.</i><p></div>"
 } else if  (aa[0].electoral_votes < 2382 && aa[1].electoral_votes < 2382 && aa[2].electoral_votes < 2382) {
   if (used != true) {
       setInterval(function () {
           used = true;
           imgg = document.getElementsByClassName("person_image")[0];
           if (imgg != null) {
-              imgg.src = "https://media.discordapp.net/attachments/1061855514536988743/1121649441540165702/dnc_onpage.png";
+              imgg.src = "https://itsastronomical.com/assets/2016DNC/deadlock.png";
           }
       }, 100);
   }
@@ -187,7 +187,7 @@ return "<h3>'The Convention will be deadlocked'</h3><p>This leaves everyone in a
         }
     }, 100);
 }
-return "<video src='https://cdn.discordapp.com/attachments/1086509105792962625/1127307650774880386/ClintonFlop.mp4' onended='videoDone()' controls width='500'></video>";
+return "<video src='https://itsastronomical.com/assets/2016DNC/videos/ClintonFlop.mp4' onended='videoDone()' controls width='500'></video>";
 } else {
   return "<h3>Oops, something broke!</h3><p>Contact itsastronomical on Disccord. Congrats if you won, better luck next time if you lost.</p>"
     }
@@ -1203,7 +1203,7 @@ campaignTrail_temp.answers_json = [
         "pk": 200531,
         "fields": {
             "question": 200530,
-            "description": "As party officials, I am asking you all simply vote with your conscience. We cannot ask any more going into this convention."
+            "description": "As party officials, I am asking you all simply vote with your conscious. We cannot ask any more going into this convention."
         }
     },
     {
