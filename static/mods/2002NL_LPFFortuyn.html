@@ -9,7 +9,7 @@ const partyLeaders = [
     { party: 25, leaderName: 'Teeven', image: 'https://cdn.discordapp.com/attachments/1111938467862159440/1129425798361792582/image.png' },
     { party: 21, leaderName: 'Rosenmöller', image: 'https://cdn.discordapp.com/attachments/1111938467862159440/1129426021700079616/image.png' },
     { party: 67, leaderName: 'Marijnissen', image: 'https://cdn.discordapp.com/attachments/1111938467862159440/1129426190717947985/image.png' },
-    { party: 78, leaderName: 'Rouvoet', image: 'https://cdn.discordapp.com/attachments/1111938467862159440/1129426473904779325/image.png' },
+    { party: 78, leaderName: 'Veling', image: 'https://cdn.discordapp.com/attachments/1111938467862159440/1129426473904779325/image.png' },
     { party: 512, leaderName: 'someone', image: 'https://cdn.discordapp.com/attachments/1111938467862159440/1111939513065930762/image.png' },
     { party: 117, leaderName: 'Van der Vlies', image: 'https://cdn.discordapp.com/attachments/1111938467862159440/1129426776930648164/image.png' }
 ];
@@ -388,7 +388,7 @@ if (answer == 2174) {
   const coalition1Adjustment = coalitions.find((coalition) => coalition.id === 1);
   coalition1Adjustment.weight = 0.1;
   const coalition2Adjustment = coalitions.find((coalition) => coalition.id === 2);
-  coalition1Adjustment.weight = 0.2;
+  coalition2Adjustment.weight = 0.2;
   return;
 }
 };
@@ -681,7 +681,7 @@ const coalitions = [
     { id: 6, name: 'PvdA, VVD', weight: 1.5, parties: [17, 23], impossibleCoalitions: [7, 8] },
     { id: 7, name: 'PvdA, VVD, D66', weight: 0.8, parties: [17, 23, 16], impossibleCoalitions: [] },
     { id: 8, name: 'PvdA, VVD, CDA', weight: 0.1, parties: [17, 23, 105], impossibleCoalitions: [] },
-    { id: 9, name: 'PvdA, CDA', weight: 1.5, parties: [105, 17], impossibleCoalitions: [10, 11, 12, 14] },
+    { id: 9, name: 'PvdA, CDA', weight: 1.5, parties: [105, 17], impossibleCoalitions: [8, 10, 11, 12, 14] },
     { id: 10, name: 'PvdA, CDA, GL', weight: 1.0, parties: [105, 17, 21], impossibleCoalitions: [14] },
     { id: 11, name: 'PvdA, CDA, CU', weight: 0.8, parties: [105, 17, 78], impossibleCoalitions: [] },
     { id: 12, name: 'PvdA, CDA, D66', weight: 0.8, parties: [105, 17, 16], impossibleCoalitions: [14] },
@@ -824,7 +824,7 @@ function findLeader(coalition){
     }
     if (quickstats[1] < 50 && murdered) { // killed
       e.header = "<h2>Bewilderment and anger after the death of Pim Fortuyn</h2>"
-      e.pages = [`<p>Shockwaves passed through Dutch society. Political assassinations, that's something that happens in America, like with John F. Kennedy, where politics is pleasingly boring. But then, it somehow did.</p><p>The anger among your supporters is palpable, and it aims itself primarily at the left. Ad Melkert has to escape an angry crowd surrounding the Binnenhof, and receives a loaded gun in the mail. Meanwhile, your party is left in chaos. Some, like your brother, call on people not to vote for your party. Others insist that they should continue in your name.</p><p>Eventually, in discussion with your spokesman Mat Herben and others, the decision is made not to delay the election. A mere nine days after your death, the Dutch people cast their votes. Your allies made a substantial entry, but your movement did not last. Without a clear leader, it succumbed to infighting. By 2006 it disappeared from the Tweede Kamer. In the years that followed, many parties on the Dutch right would try, directly or indirectly, to claim your legacy, first the PVV and the Rita Verdonk faction of the VVD and her TON party, and later FvD and JA21 as well. But no one really could.</p>`]
+      e.pages = [`<p>Shockwaves passed through Dutch society. Political assassinations, that's something that happens in America, like with John F. Kennedy. Here politics is pleasingly boring. But then, it somehow did.</p><p>The anger among your supporters is palpable, and it aims itself primarily at the left. Ad Melkert has to escape an angry crowd surrounding the Binnenhof, and receives a loaded gun in the mail. Meanwhile, your party is left in chaos. Some, like your brother, call on people not to vote for your party. Others insist that they should continue in your name.</p><p>Eventually, in discussion with your spokesman Mat Herben and others, the decision is made not to delay the election. A mere nine days after your death, the Dutch people cast their votes. Your allies made a substantial entry, but your movement did not last. Without a clear leader, it succumbed to infighting. By 2006 it disappeared from the Tweede Kamer. In the years that followed, many parties on the Dutch right would try, directly or indirectly, to claim your legacy, first the PVV and the Rita Verdonk faction of the VVD and her TON party, and later FvD and JA21 as well. But no one really could.</p>`]
       e.image = "https://cdn.discordapp.com/attachments/1118147747116224632/1129332568760782928/image.png";
       return construct(0);
     }
@@ -3047,19 +3047,6 @@ function findLeader(coalition){
   
     document.head.appendChild(script);
   }
-  
-  function mcaHeight() {
-      var mca = document.getElementById("main_content_area");
-      var map = document.getElementById("map_container")
-      if (mca) {
-        mca.style.height = "79%";
-        if(map){
-         mca.style.height = "76%";
-        }
-      }
-    }
-    const mcaObserver = new MutationObserver(mcaHeight);
-    mcaObserver.observe(document.documentElement, { childList: true, subtree: true });
   
   var charts = ["voteshare", "seats"]
 
