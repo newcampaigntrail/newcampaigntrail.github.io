@@ -1,0 +1,643 @@
+e=campaignTrail_temp
+
+  e.credits = "<button onclick='credits()'>Various people</button>";
+  
+  credits = function() {
+    credits = ["LEAD CODER AND WRITER", "Killeritch", "", "MAP", "DecstarG", "", "ADDITIONAL CODE AND ASSISTANCE", "DecstarG", "Thomahawk", "Nina", "Zip"]
+    text = "CREDITS:\n\n"
+    for (i in credits) {
+        text += credits[i] + "\n"
+    }
+    alert(text)
+  }
+  
+styling = document.createElement("style");
+document.head.appendChild(styling);
+
+styling.innerHTML = `
+#candidate_form h3 {
+    visibility: hidden;
+}
+
+#candidate_form h3::before {
+  content: "Please select your party:";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  visibility: visible;
+}
+
+#candidate_id, #running_mate_id, .person_description_window, .person_button {
+    z-index: 289;
+    position:relative;
+}
+
+#running_mate_form h3 {
+    visibility: hidden;
+}
+
+#running_mate_form h3::before {
+  content: "Please select your party leader:";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  visibility: visible;
+}
+
+#candidate_summary ul li:nth-child(2),
+#candidate_summary ul li:nth-child(3), #running_mate_summary ul li:nth-child(2) {
+    display: none;
+}
+`
+
+let z = new MutationObserver((mutationsList, observer) => {
+    let runningMateSummary = document.querySelector("#running_mate_summary");
+    if (runningMateSummary && runningMateSummary.children[0].children[2].innerHTML != runningMateSummary.children[0].children[2].innerHTML.replaceAll("Home State", "Constituency")) {
+        runningMateSummary.children[0].children[2].innerHTML = runningMateSummary.children[0].children[2].innerHTML.replaceAll("Home State", "Constituency");
+    }
+});
+
+RecReading=true
+
+z.observe(document, { subtree: true, childList: true });
+
+e.election_json =   [
+    {
+        "model": "campaign_trail.election",
+        "pk": 20,
+        "fields": {
+            "year": 2010,
+            "summary": "New Labour has been in government for over a decade. In that time, Britain has seen the Iraq War, Tony Blair's resignation, and now the worst recession in 70 years.</p><ul><li>Gordon Brown must steer the economy safely through difficult times, while deciding how closely to stick to Tony Blair's mixed legacy.</li><li>David Cameron must modernise the \"nasty\" Conservative Party to lead it back into government after 13 years in Opposition.</li><li>Nick Clegg is attempting to break the two-party system and present voters with a third option.</li></ul>",
+            "image_url": "https://i.imgur.com/H0y5B44.png",
+            "winning_electoral_vote_number": 326,
+            "advisor_url": "https://i.imgur.com/YR1sMFg.png",
+			"recommended_reading": "<h4 style=\"margin-top: 0.5em;\">Books</h4>\nGordon Brown - <a href=\"https://www.amazon.co.uk/Life-Our-Times-Gordon-Brown/dp/1847924972\">My Life, Our Times</a><br>\nPolly Toynbee & David Walker - <a href=\"https://www.amazon.co.uk/Verdict-Did-Labour-Change-Britain/dp/1847082505\">The Verdict: Did Labour Change Britain?</a><br>\nTony Blair - <a href=\"https://www.amazon.co.uk/Journey-Tony-Blair/dp/0099525097\">A Journey</a><br>\nPeter Mandelson - <a href=\"https://www.amazon.co.uk/Third-Man-Life-Heart-Labour/dp/0007395302\">The Third Man: Life at the Heart of New Labour</a><br><br><h4>Videos</h4>\n<a href=\"https://youtu.be/xWCSNjM3w2A\">Blair and Brown: The New Labour Revolution Part 5: The Long Goodbye (part of a 5-part BBC documentary)</a><br><br>Rest in Peace Alistair Darling, Chancellor of the Exchequer 2007-2010<br>28th November 1953 - 30th November 2023<br>",
+            "has_visits": 0,
+            "no_electoral_majority_image": "../static/images/2012-no-majority.jpg"
+        }
+    }
+]
+
+e.temp_election_list = [
+    {
+      "id": 20, 
+      "year": 2010, 
+      "is_premium": 0, 
+      "display_year": "2010 UK"
+    }
+]
+
+e.opponents_default_json = [
+    {
+        "election": 20,
+        "candidates": [
+          200,
+          201,
+          202,
+          203
+        ]
+    }
+]
+
+e.opponents_weighted_json = [
+    {
+      "election": 20,
+      "candidates": [
+        200,
+        201,
+        202,
+        203
+      ]
+    }
+]
+
+e.running_mate_json = [
+    {
+      "model": "campaign_trail.running_mate",
+      "pk": 106,
+      "fields": {
+        "candidate": 200,
+        "running_mate": 204
+      }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 106,
+        "fields": {
+          "candidate": 201,
+          "running_mate": 205
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 106,
+        "fields": {
+          "candidate": 202,
+          "running_mate": 206
+        }
+    }
+]
+
+e.candidate_json = [
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 201,
+        "fields": {
+          "first_name": "",
+          "last_name": "Labour",
+          "election": 20,
+          "party": "Labour Party",
+          "state": "London",
+          "priority": 1,
+          "description": "<p>The Labour Party is a centre-left political party and one of two main parties in the United Kingdom. It has been the governing party since 1997.<br><br>The Labour Party was founded by trade unions in the late 19th Century, but when the mines closed and the UK de-industrialised from the 1970s onwards, Labour lost both its voter base and its identity. Labour spent in 18 years in Opposition from 1979-1997, only ending when the party rebranded itself as \"New Labour\" in the 1990s. Thanks to a combination of Tony Blair\'s smiling, inoffensive centrism, Gordon Brown\'s steady hand controlling the Treasury, and Alastair Campbell and Peter Mandelson\'s disciplined PR machine, Labour was able to win three consecutive elections for the first time in its history.<br><br>Now Tony Blair has resigned as Prime Minister, and it falls to Gordon Brown to make history and win a fourth successive election for Labour.</p>",
+		  "color_hex": "#CC0000",
+          "secondary_color_hex": "#CC0000",
+          "is_active": 1,
+          "image_url": "https://i.imgur.com/Vl3a6LV.png",
+          "electoral_victory_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+          "electoral_loss_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+          "no_electoral_majority_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+          "description_as_running_mate": null,
+          "candidate_score": 1.0
+        }
+    },
+    {
+      "model": "campaign_trail.candidate",
+      "pk": 200,
+      "fields": {
+        "first_name": "",
+        "last_name": "Conservative",
+        "election": 20,
+        "party": "Conservative",
+        "state": "London",
+        "priority": 1,
+		"description": "<p>NOT PLAYABLE IN DEMO VERSION</p>",
+        "color_hex": "#333399",
+        "secondary_color_hex": "#333399",
+        "is_active": 1,
+        "image_url": "https://i.imgur.com/rT4PKiP.png",
+        "electoral_victory_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+        "electoral_loss_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+        "no_electoral_majority_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+        "description_as_running_mate": null,
+        "candidate_score": 1.0
+      }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 202,
+        "fields": {
+          "first_name": "",
+          "last_name": "Liberal Democrats",
+          "election": 20,
+          "party": "Alliance",
+          "state": "London",
+          "priority": 1,
+          "description": "<p>NOT PLAYABLE IN DEMO VERSION</p>",
+          "color_hex": "#FF9900",
+          "secondary_color_hex": "#FF9900",
+          "is_active": 1,
+          "image_url": "https://i.imgur.com/iYjmcru.png",
+          "electoral_victory_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+          "electoral_loss_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+          "no_electoral_majority_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+          "description_as_running_mate": null,
+          "candidate_score": 1.0
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 203,
+        "fields": {
+          "first_name": "",
+          "last_name": "Other",
+          "election": 20,
+          "party": "Other",
+          "state": "London",
+          "priority": 1,
+          "description": "<p>Placeholder</p>",
+          "color_hex": "#999999",
+          "secondary_color_hex": "#999999",
+          "is_active": 0,
+          "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Logo_of_the_Green_Party_%28UK%29.svg/236px-Logo_of_the_Green_Party_%28UK%29.svg.png",
+          "electoral_victory_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+          "electoral_loss_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+          "no_electoral_majority_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+          "description_as_running_mate": null,
+          "candidate_score": 1.0
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 204,
+        "fields": {
+          "first_name": "David",
+          "last_name": "Cameron",
+          "election": 20,
+          "party": "Conservative",
+          "state": "Witney",
+          "priority": 1,
+          "description": null,
+          "color_hex": "#333399",
+          "secondary_color_hex": "#333399",
+          "is_active": 0,
+          "image_url": "https://i.imgur.com/U49Ab8k.png",
+          "electoral_victory_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+          "electoral_loss_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+          "no_electoral_majority_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+          "description_as_running_mate": "<p>NOT PLAYABLE IN DEMO VERSION</p>",
+		  "candidate_score": 1.0
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 205,
+        "fields": {
+          "first_name": "Gordon",
+          "last_name": "Brown",
+          "election": 20,
+          "party": "Labour",
+          "state": "Kirkcaldy & Cowdenbeath",
+          "priority": 1,
+          "description": null,
+          "color_hex": "#CC0000",
+          "secondary_color_hex": "#CC0000",
+          "is_active": 0,
+          "image_url": "https://i.imgur.com/EJMcZYF.png",
+          "electoral_victory_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+          "electoral_loss_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+          "no_electoral_majority_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+          "description_as_running_mate": "<p>Gordon Brown was the longest-serving Chancellor in modern British history, holding that position for ten years under Prime Minister Tony Blair. At its best, the Blair-Brown partnership was unstoppable, delivering economic stability, improved public services and three election victories, including two landslides. At its worst, it was the cause of endless infighting between the Blair and Brown camps, amid constant press speculation that Brown wanted his boss's job. When Tony Blair resigned as Prime Minister in 2007, Gordon Brown finally got his wish.<br><br>As someone who has spent over a decade in frontline politics, Gordon Brown is very much a known quantity to the British electorate. He is widely considered to be competent, experienced and hardworking. On the other hand, he is also perceived as uncharismatic, arrogant and prone to mood swings.<br><br>After 13 years in government, and with Tony Blair gone, is a fourth victory too much to ask for?</p>",
+//		  "description_as_running_mate": "<p>Gordon Brown<br><br>Brown was widely considered to have been a very competent Chancellor. The defining moments of his time at the Treasury include granting the Bank of England the power to set interest rates independently of the Government, deciding that the UK would not adopt the Euro, and avoiding the 2000-01 recession which hit much of Europe.</p>",
+          "candidate_score": 1.0
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 206,
+        "fields": {
+          "first_name": "Nick",
+          "last_name": "Clegg",
+          "election": 20,
+          "party": "Liberal Democrats",
+          "state": "Sheffield Hallam",
+          "priority": 1,
+          "description": null,
+          "color_hex": "#FF9900",
+          "secondary_color_hex": "#FF9900",
+          "is_active": 0,
+          "image_url": "https://i.imgur.com/pjJJGdh.png",
+          "electoral_victory_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+          "electoral_loss_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+          "no_electoral_majority_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+          "description_as_running_mate": "<p>NOT PLAYABLE IN DEMO VERSION</p>",
+          "candidate_score": 1.0
+        }
+    }
+]
+
+e.global_parameter_json = [
+    {
+		"model": "campaign_trail.global_parameter",
+		"pk": 1,
+		"fields": {
+			"vote_variable": 1.125,
+			"max_swing": 0.12,
+			"start_point": 0.94,
+			"candidate_issue_weight": 10,
+			"running_mate_issue_weight": 0,
+			"issue_stance_1_max": -0.71,
+			"issue_stance_2_max": -0.3,
+			"issue_stance_3_max": -0.125,
+			"issue_stance_4_max": 0.125,
+			"issue_stance_5_max": 0.3,
+			"issue_stance_6_max": 0.71,
+//			"global_variance": 0.01,
+//			"state_variance": 0.005,
+			"global_variance": 0.01,
+			"state_variance": 0.005,
+			"question_count": 8,
+			"default_map_color_hex": "#C9C9C9",
+			"no_state_map_color_hex": "#999999"
+		}
+    }
+]
+  
+ nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#CC0000"
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#CC0000"
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+$(".container")[0].style.backgroundColor = "#333399"
+document.body.background = "https://www.thesun.co.uk/wp-content/uploads/2020/10/NINTCHDBPICT000004699065-1.jpg" 
+bannerlist=["https://i.imgur.com/8sxmeSt.png"]
+document.getElementById("header").src = bannerlist[Math.floor((Math.random() * bannerlist.length))] 
+        HistHexcolour=["#333399","#CC0000","#FF9900","#999999"];
+        HistName=[" Conservative"," Labour"," Liberal Democrats"," Other"];
+        HistEV=[306,258,57,29];
+        HistPV=["10,703,654","8,606,518","6,836,248","3,541,185"];
+        HistPVP=["36.1%","29.0%","23.0%","11.9%"];
+		
+quotes = [
+	"\"I agree with Nick\"",
+	"\"Not flash, just Gordon.\"",
+	"\"Government is neither aesthetically exhilarating nor spiritually inspiring; but it may nevertheless contribute immensely to enhancing human life.\" - John Dunn"
+]
+
+customquote = quotes[Math.floor((Math.random() * quotes.length))]
+
+corrr=`\n<h2>NEW CAMPAIGN TRAIL</h2><font id='wittyquote' size='4' color='white'><em>`+customquote+`</em></font>`
+  
+  next4 = function() {
+    text = "The seemingly doomed Mrs. Thatcher saw a revival in her political fortunes when the Argentine junta invaded the British Overseas Territory of the Falkland Islands. Victory in the Falklands War unleased a wave of patriotic fervour and swept Thatcher to a landslide re-election in 1983.<br><br>This victory has mostly silenced Thatcher's critics within her own party, and she now has free rein to continue implementing her agenda. She is not entirely without internal enemies, however; her long-time rival, the prominent Tory \"wet\" Michael Heseltine, is still waiting in the wings, ready to strike should the Prime Minister's fortunes change.<br><br><br><button onclick='back4()'>Back</button>"
+    document.getElementById("running_mate_summary").children[1].innerHTML = text
+  }
+  back4 = function() {
+    text = "<p>Margaret Thatcher's rise from grocer's daughter to the first female Prime Minister of the United Kingdom was as historic as it was unexpected. After winning re-election to a second term in a landslide in 1983, her position in British politics is one of total dominance.</p><p>As a politician, Thatcher is known for her ideological conviction, her self-confidence, and above all her stubbornness. As Prime Minister, she has pursued a radical economic programme of privatising state assets, cutting taxes and tightly controlling the money supply. These policies nearly led her to disaster in the early 1980s recession, but she refused to change course, famously stating \"The Lady's not for turning\".<br><button onclick='next4()'>Next</button></p>"
+    document.getElementById("running_mate_summary").children[1].innerHTML = text
+  }
+
+//below makes the background image fit the screen
+
+document.body.style.backgroundSize="cover"
+
+// Soundtrack
+
+// Initialise custom music
+
+$("#music_player")[0].children[0].style.display="none"
+$("#music_player")[0].children[1].style.display="none"
+
+document.getElementById("modLoadReveal").style.display="none"
+document.getElementById("modloaddiv").style.display="none"
+
+musicBox = document.getElementById("music_player")
+musicBox.style.display=""
+
+var trackSel;
+e = campaignTrail_temp
+e.selectedSoundtrack = 0
+
+toTime = (seconds) => {
+  var date = new Date(null);
+  date.setSeconds(seconds);
+  return date.toISOString().substr(11, 8);
+}
+
+generateTime = () => {
+    // Get the audio element
+    var audio = document.getElementById("campaigntrailmusic");
+
+    timeTracker = document.createElement("div");
+    timeTracker.style = `
+      text-align:left;
+      border-style:solid;
+      border-width:3px;
+      height:150px;
+      width:200px;
+      background-color:#999999;
+      float:right;
+      padding: 10px;
+    `
+    $("#trackSelParent")[0].prepend(timeTracker);
+    $("#trackSelParent")[0].prepend(document.createElement("br"));
+
+    // Create a new element to display the current position of the audio
+    var positionDisplay = document.createElement("gg");
+    positionDisplay.id = "position-display";
+
+    // Create a new slider element to change the time
+    var timeSlider = document.createElement("input");
+    timeSlider.type = "range";
+    timeSlider.min = 0;
+    timeSlider.max = 1;
+    timeSlider.step = 0.001;
+    timeSlider.value = 0;
+    timeSlider.style.width = "200px";
+    timeSlider.id = "time-slider";
+
+    var pausePlay = document.createElement("button");
+    pausePlay.id = "position-display";
+    pausePlay.innerHTML = "<b>Pause</b>"
+    pausePlay.style.width = "100%";
+
+
+    pausePlay.addEventListener("click", event => {
+      event.preventDefault();
+      updatePositionDisplay();
+      let audio = document.getElementById("campaigntrailmusic");
+      if (audio.paused) {
+        audio.play();
+        event.target.innerHTML = "<b>Pause</b>";
+        return;
+      }
+      audio.pause();
+      event.target.innerHTML = "<b>Play</b>";
+      return;
+    })
+
+    var volumeLabel = document.createElement("gg");
+    volumeLabel.id = "volume-label";
+    volumeLabel.innerHTML = "<br><b>Volume: </b>"
+
+    var volumeSlider = document.createElement("input");
+    volumeSlider.type = "range";
+    volumeSlider.min = 0;
+    volumeSlider.max = 1;
+    volumeSlider.step = 0.001;
+    volumeSlider.value = 0;
+    volumeSlider.style.width = "200px";
+    volumeSlider.id = "volume-slider";
+
+    volumeSlider.value = audio.volume;
+
+    timeTracker.appendChild(pausePlay);
+    timeTracker.appendChild(document.createElement("br"));
+    timeTracker.appendChild(document.createElement("br"));
+    timeTracker.appendChild(positionDisplay);
+    timeTracker.appendChild(timeSlider);
+    timeTracker.appendChild(volumeLabel);
+    timeTracker.appendChild(volumeSlider);
+
+    updatePositionDisplay();
+
+    //for (let i = 0; i < 10; i++)
+    //timeTracker.append(document.createElement("br"));
+
+
+    // Function to update the position display
+    function updatePositionDisplay() {
+      positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+      timeSlider.value = audio.duration ? audio.currentTime / audio.duration : 0;
+    }
+
+    // Function to change the time of the audio
+    function changeTime() {
+      positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+      audio.currentTime = timeSlider.value * audio.duration;
+    }
+
+    updateVolume = event => {
+      audio.volume = event.target.value;
+    }
+    
+    // Update the position display and slider every second
+    setInterval(updatePositionDisplay, 1000);
+
+    // Listen for changes to the time slider and change the time of the audio
+    timeSlider.addEventListener("input", changeTime);
+    volumeSlider.addEventListener("input", updateVolume)
+}
+
+function newMusicPlayer() {
+  trackSel = document.createElement("div");
+  trackSel.id = "trackSelParent"
+  let z = `<br><br><br><br><br><br><br><br><br><br><div id='trackSel' style="text-align:left;border-style:solid;border-width:3px;overflow-y: scroll;overflow-x: hidden;height:200px; width:400px;background-color:#999999;float:right;">`
+  z += `<b><select id='selectSoundtrack'><option value='`+soundtracks[e.selectedSoundtrack].name+`'>`+soundtracks[e.selectedSoundtrack].name+"</option>"
+  for (i in soundtracks) {
+    if (soundtracks[e.selectedSoundtrack] != soundtracks[i]) {
+      z += `<option value='`+soundtracks[i].name+`'>`+soundtracks[i].name+`</option>`
+    }
+  }
+  z += `</select></b><br><br>`
+  // <label><input type="radio" name="option" value="option1">Option 1</label><br>
+  for (i in soundtracks[e.selectedSoundtrack].tracklist) {
+    let a = soundtracks[e.selectedSoundtrack].tracklist[i]
+    let b = `<label><input class="trackSelector" type="radio" name="trackSelector" value="`+i+`">`+a.name+`</label><br>`
+    z += b
+  }
+  z += "</div><br><br>"
+  trackSel.innerHTML = z
+
+  // select correct song
+
+  musicBox.appendChild(trackSel);
+  Array.from(document.getElementById("trackSel").children).filter(f=>{
+    return f.tagName == "LABEL"
+  }).map(f=>f.children[0])[0].checked = true
+
+  // set soundtrack changer
+
+  soundtrackSelector = document.getElementById("selectSoundtrack")
+  soundtrackSelector.onchange = function() {
+    for (i in soundtracks) {
+      if (soundtracks[i].name == soundtrackSelector.value) {
+        e.selectedSoundtrack = i
+        break
+      }
+    }
+    document.getElementById("trackSelParent").remove()
+    newMusicPlayer()
+  }
+
+  var matches = document.querySelectorAll('.trackSelector');
+
+  for (match in matches) {
+    matches[match].onchange = function() {
+      audio = $("#campaigntrailmusic")[0];
+      audio.src = soundtracks[e.selectedSoundtrack].tracklist[this.value].url
+      audio.currentTime = 0
+    }
+  }
+
+  musicBox.children[2].loop = false
+  musicBox.children[2].src = soundtracks[e.selectedSoundtrack].tracklist[0].url
+
+  musicBox.children[2].onended = function() {
+    console.log("next track")
+    let selected = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+    let newSel = clamp(selected+1, soundtracks[e.selectedSoundtrack].tracklist.length-1, 0)
+    let buttons = Array.from(document.getElementById("trackSel").children).filter(f=>{
+      return f.tagName == "LABEL"
+    }).map(f=>f.children[0])
+    //let selectedIndex = buttons.map(f=>f.children[0]).map(f=>f.checked)
+    buttons[newSel].click()
+  }
+
+  for (w = 0; w < 7; w++) {
+    document.getElementById("trackSelParent").appendChild(document.createElement("br"))
+  }
+  
+  generateTime();
+}
+
+clamp = function(a, max, min, overflow=true) {
+  if (overflow) {
+    return a > max ? min : a < min ? max : a;
+  }
+  return a > max ? max : a < min ? min : a;
+}
+
+
+// Track list
+
+var soundtracks = {
+        0: {
+          name: "Radio",
+          tracklist: [
+            {
+              "name": "Hard-Fi - Cash Machine",
+              "url": "https://audio.jukehost.co.uk/2BU03tYCOWOG4pZXxpriMK34QCkgFDD8"
+            },
+            {
+              "name": "Florence + the Machine - Rabbit Heart (Raise It Up)",
+              "url": "https://audio.jukehost.co.uk/3H9oabDiQVOXmg8Wl1wuqH2KZlrHXPO8"
+            },
+            {
+              "name": "Arctic Monkeys - When The Sun Goes Down",
+              "url": "https://audio.jukehost.co.uk/IY7wqWpXa3MryuvwW8eTaQOoAqk1ewk4"
+            },
+            {
+              "name": "Muse - Supermassive Black Hole",
+              "url": "https://audio.jukehost.co.uk/WZvBHBBeLPJkjdWJOsH3DSpFcHZGDIP1"
+            },
+//            {
+//              "name": "Lily Allen - The Fear",
+//              "url": "https://audio.jukehost.co.uk/3vBgQrN8ciEER39TmeqtUXw5y4ukbgDr"
+//            },
+            {
+              "name": "Lily Allen - LDN",
+              "url": "https://audio.jukehost.co.uk/zWFy3VT39cU4ZvvTPXkMDWizBAeVFwuJ"
+            },
+            {
+              "name": "Bloc Party - Flux",
+              "url": "https://audio.jukehost.co.uk/TzSfiwcMG9o5jSEtnGEnZg8FPf9SVLpJ"
+            },
+            {
+              "name": "Kate Nash - Foundations",
+              "url": "https://audio.jukehost.co.uk/agDKPqeUqHWvI1iJ8fNXeEYTSvfXw4YW"
+            },
+            {
+              "name": "Gorillaz - Feel Good Inc.",
+              "url": "https://audio.jukehost.co.uk/hiMOBMw2YNMQ74PO6GJ6nS1fPH89I4ei"
+            }
+        ]
+      },
+        1: {
+          name: "Ending Songs - SPOILERS!!!",
+          tracklist: [
+            {
+              "name": "Elbow - One Day Like This",
+              "url": "https://audio.jukehost.co.uk/qQsrZAhYm2hoDCW5qufQzKXCIMQvwFum"
+            },
+            {
+              "name": "Adele - Chasing Pavements",
+              "url": "https://audio.jukehost.co.uk/BwHs5LyMid3uClghRyUb3BgjWTQ31MdE"
+            },
+            {
+              "name": "Amy Winehouse - Back To Black",
+              "url": "https://audio.jukehost.co.uk/frp8GjXNp2JWozVJCfUq0fSgf56yeN7C"
+            },
+            {
+              "name": "Coldplay - Viva La Vida",
+              "url": "https://audio.jukehost.co.uk/XBjbfR5oPMPGEqN3jWMVQT3jDFWK8VB1"
+            }
+        ]
+      }
+}
+
+// Set up new music player
+
+newMusicPlayer()
