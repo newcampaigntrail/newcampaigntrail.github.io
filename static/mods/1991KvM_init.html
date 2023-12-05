@@ -1,0 +1,434 @@
+function addDynamicCSS() { //tooltips thx Nina!!
+    var css = `
+        .inner_window_question h3 .mytooltip{
+            background-color: lightskyblue;
+        }
+
+        .mytooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            background-color: lightblue;
+        }
+
+        .mytooltip .mytooltiptext {
+            width: 240px;
+            background-color: lightblue;
+            color: black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 99;
+            bottom: 20%;
+            left: 20%;
+            margin-left: -90px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border: 1px solid black;
+            pointer-events: none;
+            font-size: 13px !important;
+            line-height: 1.5em !important;
+            font-weight: normal !important;
+            font-style: normal !important;
+        }
+
+        .mytooltip .mytooltiptext img {
+            max-width: 240px;
+            height: auto;
+        }
+
+        .mytooltip:hover .mytooltiptext {
+            opacity: 1;
+            transition-delay: 0.5s;
+        }
+    `;
+
+    var styleElem = document.createElement('style');
+    styleElem.type = 'text/css';
+    
+    styleElem.appendChild(document.createTextNode(css));
+    
+    document.head.appendChild(styleElem);
+}
+addDynamicCSS();
+tooltipList = [
+    {searchString: "RSFSR", explanationText: "The Russian Soviet Federative Socialist Republic, Russia's name as a constituent Republic of the Soviet Union."},
+    {searchString: "Politburo", explanationText: "The Political Bureau of the Central Committee of the Communist Party of the Soviet Union, the USSR's supreme collective decision-making body before 1990."},
+    {searchString: "Congress of People's Deputies", explanationText: "Russia's democratic legislature, freely elected in March 1990."},
+    {searchString: "Declaration of State Sovereignty", explanationText: "On 12 June, 1990, Russian lawmakers declared the priority of Russian laws over Soviet ones, prompting an hositle reaction from Gorbachev and the Center. This day is now remembered as 'Russia Day', a national holiday."},
+    {searchString: "Chairman of the Council of Ministers", explanationText: "Prime Minister of the Soviet Union."},
+    {searchString: "Afghanistan", explanationText: "For a decade (1979-1989), the Red Army fought the US-backed Mujahideen in Afghanistan. 620,000 soldiers served in total, leaving a deep mark on Soviet society."},
+    {searchString: "International Workers' Day", explanationText: "A day celebrated by the worker's movement, on May 1st, and an holiday as well."},
+    {searchString: "Victory Day", explanationText: "Held on the 9th of May, Victory Day commemorates the Red Army's victory against Nazi Germany in the Second World War."},
+    {searchString: "Albert Makashov", explanationText: "A General from the Urals Region, he is popular with the military and will hold hardline and patriotic communist voters. <img src=https://i.ibb.co/GQwDx8d/mashakov.png>"},
+    {searchString: "Vadim Bakatin", explanationText: "A supporter of Gorbachev's reforms, his progressive rhetoric can tap into parts of Yeltsin's electorate. <img src=https://i.ibb.co/37k1c0x/bakatin.png>"},
+    {searchString: "Aman Tuleyev", explanationText: "An apparatchik from Kemerovo, he attracts the support of non-ethnic Russians and workers from Siberia. <img src=https://i.ibb.co/WvD3qvs/tuleev.png>"},
+    {searchString: "Perestroika", explanationText: "Literally 'restructuring', a program of economic reforms started by Gorbachev in 1987, aiming to improve the state of the Soviet economy through a transition from a planned to a market system."},
+    {searchString: "Abalkin", explanationText: "An economist, Leonid Abalkin has served as Chairman of the State Commission for Economic Reforms. He is a supporter of the gradual introduction of market mechanisms, but has been sidelined in favor of radical reformers, much like you. <img src=https://i.ibb.co/PDY9HZ0/abalkin.png>"},
+    {searchString: "Yavlinsky", explanationText: "Grigory Yavlinsky is a young economist, author of the radical program for a transformation of the Soviet economy in 500 days. <img src=https://i.ibb.co/6tzPyNf/yavlinsky.png>"},
+	{searchString: "smurfy grin", explanationText: "<img src=https://cdn.discordapp.com/attachments/1131296206908301423/1138054729604284446/schlumpf.png> :3"}];
+
+
+
+e = campaignTrail_temp;
+
+quotes = [`"We Russians are already living, not getting ready to live." - Boris Yeltsin`, `"A government is not an old pair of socks that you throw away." - Boris Yeltsin`, `"Christ was the new era's first Communist. He lifted his voice in support of the impoverished, and he would have joined us if he had been alive." - Gennady Zyuganov`, `"Boris, you are wrong." - Yegor Ligachyov`, `"TROFIMOV : "Mankind is striding towards the highest truth, towards the highest happiness possible on earth, and I am in the forefront !    LOPAKHIN: Will you get there?" - Anton Chekhov, </em>The Cherry Orchard<em>`, `"Perestroika - the Continuation of October !" - Soviet Slogan`, `"A thaw is a thaw: It can happen in the middle of January, and it's bound to be followed by frost." - Grigory Yavlinsky`, `"Progress towards the civilization of the 21st century will certainly not be simple." - Mikhail Gorbachev`, `"Curiously, all those who feared I would become an alcoholic became alcoholics themselves or ended up badly in some other way."- Edward Limonov, </em>The Book of Water<em>`, `"The world thinks the Russian Revolution is at an end. Do not be mistaken. The Russian Revolution is just beginning." - Alexander Kerensky`]
+selQuote = quotes[Math.floor(Math.random() * quotes.length)];
+corrr=`<h2><font id="title" color="black">КОНФРОНТАЦИЯ В МОСКВЕ</font></h2><font id="wittyquote" style='font-size:113%' color="black"><em>${selQuote}</em></font>` 
+
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#e1e1e1";
+
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#018DE9";
+            
+
+            document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+
+            $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+            $(".container")[0].style.backgroundColor = "#da291c";
+
+            document.getElementById("header").src = "https://media.discordapp.net/attachments/907651455895367720/1178447020504133713/banner.jpg?ex=65762d50&is=6563b850&hm=216b3173cb51991fa4d166c65ac8acb1a9c57aa87259bbc20d765133891a5c3d&=&format=webp&width=875&height=584";
+
+            document.body.background = "https://i.imgur.com/Gg49KuE.png";
+            RecReading=true
+
+            e.election_json = [{"model":"campaign_trail.election","pk":9,"fields":{"year":1991,"summary":"<p>With the Soviet Union navigating an era of radical political and economic reforms impulsed by President Gorbachev, Russia has awaken from her slumber. Thus the contest for the Russian Presidency will prove crucial in the ongoing conflict between the RSFSR and the Center.</p><ul><li>Boris Yeltsin, Russia's leader and democratic champion, intends the vote to be his crowning as the country's first ever democratically-elected head of state.</li></ul><ul><li>Ryzhkov and the Communists attempt to force Yeltsin into a run-off and preserve the Union.</li></ul>","image_url":"https://i.ibb.co/p2FS8YS/uf8ROIh.png","winning_electoral_vote_number":270,"advisor_url":"https://i.ibb.co/7VnF1T7/avis.png", "recommended_reading":"<h4 style='margin-top: 0.5em;'>About the Election:</h4><p>Democracy in Russia: A Study of the 1991 and 1996 Presidential Elections by Vikas Jha</a></p><a href='https://www.jstor.org/stable/152022' target='_blank'>Boris El'tsin, Democratic Russia and the Campaign for the Russian Presidency by Michael Urban</a></br><br><a href='https://www.jstor.org/stable/152426' target='_blank'>The Russian Right and the Dilemmas of Party Organisation by Robert Orttung</a></br><br><a href='https://www.amazon.com/Russian-Presidency-Society-Politics-Republic/dp/0312293372' target='_blank'>The Russian Presidency: Society and Politics in the Second Russian Republic by Thomas Nichols</a></br><p>I hope you enjoyed the first ever Russia mod for The Campaign Trail. I was working on a scenario based on the 1996 presidential election, but the modjam theme prompted me to adapt it to 1991. If this is slightly successful, I might turn this one into a full-scale mod as well.</p>", "has_visits":1,"no_electoral_majority_image":"../static/images/2012-no-majority.jpg"}}];e.temp_election_list = [{"id":9,"year":1996,"is_premium":0,"display_year":"1991KvM"}];campaignTrail_temp.credits = "<button onclick='funcredits()'>Mertz189 (Sankia on Discord)</button>";e.global_parameter_json = [{"model":"campaign_trail.global_parameter","pk":1,"fields":{"vote_variable":1.125,"max_swing":0.12,"start_point":0.94,"candidate_issue_weight":10,"running_mate_issue_weight":3,"issue_stance_1_max":-0.71,"issue_stance_2_max":-0.3,"issue_stance_3_max":-0.125,"issue_stance_4_max":0.125,"issue_stance_5_max":0.3,"issue_stance_6_max":0.71,"global_variance":0.01,"state_variance":0.005,"question_count":7,"default_map_color_hex":"#C9C9C9","no_state_map_color_hex":"#999999"}}];e.candidate_json = [{"model":"campaign_trail.candidate","pk":78,"fields":{"first_name":"Nikolai","last_name":"Ryzhkov","election":9,"party":"Communist Party of the Soviet Union","state":"Moscow","priority":1,"description":"<p>As Chairman of the Council of Ministers from 1985 to 1990, Nikolai Ryzhkov helped enact Gorbachev's reformist agenda, building a reputation as a moderate, competent manager. Sidelined after liberals turned against him and suffering an heart attack, he now finds himself as the Communist candidate for the Presidency, swimming against the tide of savage privatization and disengagement from the Union.</p><p>Despite the Party's powerful backing, the former Premier himself knows that he does not have much of a chance, and attempts are being made to postpone the elections, through legal and... less legal channels. For the stakes are too high, and should Ryzhkov fail to stop Yeltsin, the Union itself will be at risk.","color_hex":"#a30e0e","secondary_color_hex":null,"is_active":1,"image_url":"https://i.ibb.co/Gtyznj5/ryzhkov.png","electoral_victory_message":"","electoral_loss_message":"","no_electoral_majority_message":"","description_as_running_mate":null,"candidate_score":1,"running_mate":false,"scrollable":false}},{"model":"campaign_trail.candidate","pk":77,"fields":{"first_name":"Boris","last_name":"Yeltsin","election":9,"party":"Independent/Democratic Russia (endorsed)","state":"Sverdlovsk","priority":1,"description":"<p>Boris Yeltsin has accomplished what seemed impossible. Left for dead politically after his expulsion from the Politburo, he staged an impressive comeback, shaking the Union's fondations in the process. From his election to the Congress of People's Deputies to the Declaration of State Sovereignty, he has emerged as the flagbearer of Russian democracy and reform, a beacon of hope and change for the people.</p><p>Now leader of Russia as Chairman of the Supreme Soviet of the RSFSR, Yeltsin hopes to strengthen himself in his duel against Gorbachev and the Communists by creating the office of President and getting elected to it. With his momentum, the wind of reforms seems unstoppable, but being forced into a run-off would be a serious mishap.</p>","color_hex":"#253e83","secondary_color_hex":null,"is_active":1,"image_url":"https://i.ibb.co/mNGKmG8/yeltsin.png","electoral_victory_message":"","electoral_loss_message":"","no_electoral_majority_message":"","description_as_running_mate":null,"candidate_score":1,"running_mate":false,"scrollable":false}}, {"model":"campaign_trail.candidate","pk":79,"fields":{"first_name":"Vladimir","last_name":"Zhirinovsky","election":9,"party":"Liberal Democratic Party of the Soviet Union","state":"Moscow","priority":1,"description":"<p>An obscure opposition politician, Vladimir Zhirinovsky founded the Liberal Democratic Party of the Soviet Union, a splinter from the minor Liberal Democratic Party after his expulsion over allegations that he is a KGB asset. He now intends to use his party as a vehicle to launch his campaign, being the only candidate who can provide an alternative to both Yeltsin and the Communists.</p><p>Aside from a bombastic nationalist and anti-establishment appeal, Zhirinovsky has not much to offer in policy substance. He believes, however, that he can tap into a significant part of Yeltsin's electorate, mistaken by his party's name. Achieving this would not displease the Communists, eager to force the front-runner into a run-off. There might be some truth behind the allegations, after all...</p>","color_hex":"#2B8FE0","secondary_color_hex":null,"is_active":1,"image_url":"https://i.ibb.co/YbQYbYD/zhirinovsky.png","electoral_victory_message":"","electoral_loss_message":"","no_electoral_majority_message":"","description_as_running_mate":null,"candidate_score":1,"running_mate":false,"scrollable":false}},{"model":"campaign_trail.candidate","pk":80,"fields":{"first_name":"Aman","last_name":"Tuleyev","election":9,"party":"Independent","state":"Kemerovo","priority":1,"description":"null","color_hex":"#b80e00","secondary_color_hex":null,"is_active":0,"image_url":"../static/images/barack-obama-2012.jpg","electoral_victory_message":"","electoral_loss_message":"","no_electoral_majority_message":"","description_as_running_mate":null,"candidate_score":1,"running_mate":false,"scrollable":false}},{"model":"campaign_trail.candidate","pk":16,"fields":{"first_name":"Albert","last_name":"Makashov","election":9,"party":"Independent","state":"Hell","priority":1,"description":"","color_hex":"#800080","secondary_color_hex":null,"is_active":0,"image_url":"../static/images/barack-obama-2012.jpg","electoral_victory_message":"","electoral_loss_message":"","no_electoral_majority_message":"","description_as_running_mate":null,"candidate_score":1,"running_mate":false,"scrollable":false}},{"model":"campaign_trail.candidate","pk":17,"fields":{"first_name":"Vadim","last_name":"Bakatin","election":9,"party":"Independent","state":"Hell","priority":1,"description":"","color_hex":"#ad5700","secondary_color_hex":null,"is_active":0,"image_url":"../static/images/barack-obama-2012.jpg","electoral_victory_message":"","electoral_loss_message":"","no_electoral_majority_message":"","description_as_running_mate":null,"candidate_score":1,"running_mate":false,"scrollable":false}}, {"model":"campaign_trail.candidate","pk":18,"fields":{"first_name":"","last_name":"Against All","election":9,"party":"Independent","state":"Hell","priority":1,"description":"","color_hex":"#28282B","secondary_color_hex":null,"is_active":0,"image_url":"../static/images/barack-obama-2012.jpg","electoral_victory_message":"","electoral_loss_message":"","no_electoral_majority_message":"","description_as_running_mate":null,"candidate_score":1,"running_mate":false,"scrollable":false}},{    "model": "campaign_trail.candidate",    "pk":85,    "fields": {      "first_name": "Boris",      "last_name": "Gromov",      "election":9,      "party": "Communist Party of the Soviet Union",      "state": "Moscow",      "priority":-255,      "description": "",      "color_hex": "#0645b4",      "secondary_color_hex": "#b9d7ff",      "is_active": false,      "image_url": "https://i.ibb.co/ss1Qh06/gromov.png",      "electoral_victory_message": "",      "electoral_loss_message": "",      "no_electoral_majority_message": "",      "description_as_running_mate": "<p>A General in the Army, famous for being the last Soviet soldier to leave Afghanistan, Boris Gromov has since then started a political career. He was elected to the Congress of People's Deputies, then appointed Deputy Minister for Internal Affairs, and his selection as running mate would be a step further in his rise.</p><p>Aside from helping your outreach among military men, Gromov will distance your ticket from the failures of the Gorbachev years, which might prove crucial given your unpopularity among the electorate.</p>",      "candidate_score": 1.0    }}, {    "model": "campaign_trail.candidate",    "pk":81,    "fields": {      "first_name": "Alexander",      "last_name": "Rutskoy",      "election":9,      "party": "Democratic Party of the Communists of Russia",      "state": "Kursk",      "priority":-255,      "description": "",      "color_hex": "#0645b4",      "secondary_color_hex": "#b9d7ff",      "is_active": false,      "image_url": "https://i.ibb.co/bJ7WbZ2/rutskoy.png",      "electoral_victory_message": "",      "electoral_loss_message": "",      "no_electoral_majority_message": "",      "description_as_running_mate": "<p>Alexander Rutskoy is a General in the Soviet Air Force who was awarded the title of Hero of the Soviet Union for his service in Afghanistan. His popularity propelled him to win a seat in the Congress of People's Deputies, where he rallied liberal-minded Communists as part of his 'Communists for Democracy' faction.</p><p>Rutskoy's selection as running mate would please voters with a patrotic outlook without frightening democrats, and his military credentials are a great addition to the ticket. While he does not share every position with Yeltsin, this shouldn't be an issue. For now.</p>",      "candidate_score": 1.0    }}, {    "model": "campaign_trail.candidate",    "pk":89,    "fields": {      "first_name": "Andrei",      "last_name": "Zavidia",      "election":9,      "party": "Liberal Democratic Party of the Soviet Union",      "state": "Leningrad",      "priority":-255,      "description": "",      "color_hex": "#0645b4",      "secondary_color_hex": "#b9d7ff",      "is_active": false,      "image_url": "https://i.ibb.co/yQkhhjy/zavidia.png",      "electoral_victory_message": "",      "electoral_loss_message": "",      "no_electoral_majority_message": "",      "description_as_running_mate": "<p>An completely unknown personality, Andrei Zavidia is an engineer from Leningrad who became a millionnaire by repairing computers. Although he lacks any political skill, his presence on the ticket will not offend anybody, and people like millionnaires, Vladimir Volfovich, right ? Maybe he can help with campaign finances...</p>",      "candidate_score": 1.0    }}];
+            e.running_mate_json = [{"model":"campaign_trail.running_mate","pk":52,"fields":{"candidate":78,"running_mate":85}},{"model":"campaign_trail.running_mate","pk":48,"fields":{"candidate":77,"running_mate":81}}, {"model":"campaign_trail.running_mate","pk":56,"fields":{"candidate":79,"running_mate":89}}];
+            campaignTrail_temp.opponents_default_json = JSON.parse("[{\"election\": 9, \"candidates\": [77, 78, 79, 80, 16, 17, 18]}]");
+            campaignTrail_temp.opponents_weighted_json = JSON.parse("[{\"election\": 9, \"candidates\": [77, 78, 79, 80, 16, 17, 18]}]");
+            HistHexcolour=["#0645b4","#a30e0e","#2B8FE0", "#b80e00","#800080","#ad5700"];
+            HistName=[" Boris Yeltsin"," Nikolai Ryzhkov"," Vladimir Zhirinovsky"," Aman Tuleyev"," Albert Makashov"," Vadim Bakatin"];
+            HistEV=[0,0,0,0,0,0];
+            HistPV=["45,552,041","13,395,335","6,211,007","5,417,464","155,210","12,168"];
+            HistPVP=["58.6%","17.2%","8.0%","7.0%","3.8%","3.5%"];
+            
+let style = document.createElement('style');
+style.innerHTML = `#overall_result
+{overflow: auto;}`;
+document.head.appendChild(style);
+funcredits = function() {
+    credits = ["Moder:", "Sankia", "", "Theme Help:",  "Bonbishka", "", "Stockdale made the map and also hosts this super fun modjam", "", "Music Player adapted from 2000N", "Tooltips from 2021 DE. Thanks Nina for countless coding tips.", "All music credits to where they belong.", ""]
+    text = "CREDITS:\n\n"
+    for (i in credits) {
+        text += credits[i] + "\n"
+    }
+    alert(text)
+  }
+ function getTooltips(str) {
+    let matches = [];
+
+    tooltipList.forEach((tooltip, index) => {
+        // Adjust the regex to match searchString potentially surrounded by “ and followed by optional punctuation
+       let regex = new RegExp(`(?<=\\b|\\s|^|“)${tooltip.searchString}(?=[.,;!?]?\\b|\\s|”|$)`, 'g');
+
+
+        let match;
+        while ((match = regex.exec(str)) !== null) {
+            matches.push({
+                start: match.index + (match[0].startsWith('“') ? 1 : 0), // Adjust for potential starting “
+                end: match.index + match[0].length - (match[0].endsWith('”') ? 1 : 0) - (match[2] ? 1 : 0), 
+                tooltipIndex: index
+            });
+        }
+    });
+
+    // Sort by starting position; if two start at the same position, longer match comes first
+    matches.sort((a, b) => a.start - b.start || b.end - b.start - (a.end - a.start));
+
+    // Filter out overlaps
+    for (let i = 0; i < matches.length - 1; ) {
+        if (matches[i + 1].start < matches[i].end) {
+            matches.splice(i + 1, 1); // Remove the next match since it overlaps
+        } else {
+            i++; // Move to next match
+        }
+    }
+
+    return matches;
+}
+function applyTooltips(str) {
+    const matches = getTooltips(str);
+    let result = '';
+    let lastIndex = 0;
+
+    matches.forEach(match => {
+        const tooltip = tooltipList[match.tooltipIndex];
+        result += str.slice(lastIndex, match.start);
+        result += `<span class='mytooltip'>${tooltip.searchString}<span class='mytooltiptext'>${tooltip.explanationText}</span></span>`;
+        lastIndex = match.end;
+    });
+
+    result += str.slice(lastIndex); // Add the remainder of the original string
+    return result;
+}
+
+function applyTooltipsToObject(obj) {
+    for (let key in obj) {
+        if (typeof obj[key] === 'string') {
+            obj[key] = applyTooltips(obj[key]);
+        } else if (typeof obj[key] === 'object') {
+            applyTooltipsToObject(obj[key]); // Recursive call
+        }
+    }
+}
+
+applyTooltipsToObject(e.election_json);
+applyTooltipsToObject(campaignTrail_temp.election_json);
+applyTooltipsToObject(campaignTrail_temp.candidate_json);
+e.collect_results = true;
+
+musicMode = () => {
+// Initialise custom music
+    
+      $("#music_player")[0].children[0].style.display = "none"
+      $("#music_player")[0].children[1].style.display = "none"
+    
+      document.getElementById("modLoadReveal").style.display = "none"
+      document.getElementById("modloaddiv").style.display = "none"
+    
+      musicBox = document.getElementById("music_player")
+      musicBox.style.display = ""
+    
+      var trackSel;
+      e = campaignTrail_temp
+      e.selectedSoundtrack = 0
+    
+      toTime = (seconds) => {
+          var date = new Date(null);
+          date.setSeconds(seconds);
+          return date.toISOString().substr(11, 8);
+      }
+    
+      generateTime = () => {
+          // Get the audio element
+          var audio = document.getElementById("campaigntrailmusic");
+    
+          timeTracker = document.createElement("div");
+          timeTracker.style = `
+    text-align:left;
+    border-style:solid;
+    border-width:3px;
+    height:150px;
+    width:200px;
+    background-color:#999999;
+    float:right;
+    padding: 10px;
+    `
+          $("#trackSelParent")[0].prepend(timeTracker);
+          $("#trackSelParent")[0].prepend(document.createElement("br"));
+    
+          // Create a new element to display the current position of the audio
+          var positionDisplay = document.createElement("gg");
+          positionDisplay.id = "position-display";
+    
+          // Create a new slider element to change the time
+          var timeSlider = document.createElement("input");
+          timeSlider.type = "range";
+          timeSlider.min = 0;
+          timeSlider.max = 1;
+          timeSlider.step = 0.001;
+          timeSlider.value = 0;
+          timeSlider.style.width = "200px";
+          timeSlider.id = "time-slider";
+    
+          var pausePlay = document.createElement("button");
+          pausePlay.id = "position-display";
+          pausePlay.innerHTML = "<b>Pause</b>"
+          pausePlay.style.width = "100%";
+    
+    
+          pausePlay.addEventListener("click", event => {
+              event.preventDefault();
+              updatePositionDisplay();
+              let audio = document.getElementById("campaigntrailmusic");
+              if (audio.paused) {
+                  audio.play();
+                  event.target.innerHTML = "<b>Pause</b>";
+                  return;
+              }
+              audio.pause();
+              event.target.innerHTML = "<b>Play</b>";
+              return;
+          })
+    
+          var volumeLabel = document.createElement("gg");
+          volumeLabel.id = "volume-label";
+          volumeLabel.innerHTML = "<br><b>Volume: </b>"
+    
+          var volumeSlider = document.createElement("input");
+          volumeSlider.type = "range";
+          volumeSlider.min = 0;
+          volumeSlider.max = 1;
+          volumeSlider.step = 0.001;
+          volumeSlider.value = 0;
+          volumeSlider.style.width = "200px";
+          volumeSlider.id = "volume-slider";
+    
+          volumeSlider.value = audio.volume;
+    
+          timeTracker.appendChild(pausePlay);
+          timeTracker.appendChild(document.createElement("br"));
+          timeTracker.appendChild(document.createElement("br"));
+          timeTracker.appendChild(positionDisplay);
+          timeTracker.appendChild(timeSlider);
+          timeTracker.appendChild(volumeLabel);
+          timeTracker.appendChild(volumeSlider);
+    
+          updatePositionDisplay();
+    
+          //for (let i = 0; i < 10; i++)
+          //timeTracker.append(document.createElement("br"));
+    
+    
+          // Function to update the position display
+          function updatePositionDisplay() {
+              positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+              timeSlider.value = audio.duration ? audio.currentTime / audio.duration : 0;
+          }
+    
+          // Function to change the time of the audio
+          function changeTime() {
+              positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+              audio.currentTime = timeSlider.value * audio.duration;
+          }
+    
+          updateVolume = event => {
+              audio.volume = event.target.value;
+          }
+    
+          // Update the position display and slider every second
+          setInterval(updatePositionDisplay, 1000);
+    
+          // Listen for changes to the time slider and change the time of the audio
+          timeSlider.addEventListener("input", changeTime);
+          volumeSlider.addEventListener("input", updateVolume)
+      }
+    
+      function newMusicPlayer() {
+          trackSel = document.createElement("div");
+          trackSel.id = "trackSelParent"
+          let z = `<br><br><br><br><br><br><br><br><br><br><div id='trackSel' style="text-align:left;border-style:solid;border-width:3px;overflow-y: scroll;overflow-x: hidden;height:200px; width:400px;background-color:#999999;float:right;">`
+          z += `<b><select id='selectSoundtrack'><option value='` + soundtracks[e.selectedSoundtrack].name + `'>` + soundtracks[e.selectedSoundtrack].name + "</option>"
+          for (i in soundtracks) {
+              if (soundtracks[e.selectedSoundtrack] != soundtracks[i]) {
+                  z += `<option value='` + soundtracks[i].name + `'>` + soundtracks[i].name + `</option>`
+              }
+          }
+          z += `</select></b><br><br>`
+              // <label><input type="radio" name="option" value="option1">Option 1</label><br>
+          for (i in soundtracks[e.selectedSoundtrack].tracklist) {
+              let a = soundtracks[e.selectedSoundtrack].tracklist[i]
+              let b = `<label><input class="trackSelector" type="radio" name="trackSelector" value="` + i + `">` + a.name + `</label><br>`
+              z += b
+          }
+          z += "</div><br><br>"
+          trackSel.innerHTML = z
+    
+          // select correct song
+    
+          musicBox.appendChild(trackSel);
+          Array.from(document.getElementById("trackSel").children).filter(f => {
+              return f.tagName == "LABEL"
+          }).map(f => f.children[0])[0].checked = true
+    
+          // set soundtrack changer
+    
+          soundtrackSelector = document.getElementById("selectSoundtrack")
+          soundtrackSelector.onchange = function() {
+              for (i in soundtracks) {
+                  if (soundtracks[i].name == soundtrackSelector.value) {
+                      e.selectedSoundtrack = i
+                      break
+                  }
+              }
+              document.getElementById("trackSelParent").remove()
+              newMusicPlayer()
+          }
+    
+          var matches = document.querySelectorAll('.trackSelector');
+    
+          for (match in matches) {
+              matches[match].onchange = function() {
+                  audio = $("#campaigntrailmusic")[0];
+                  audio.src = soundtracks[e.selectedSoundtrack].tracklist[this.value].url
+                  audio.currentTime = 0
+              }
+          }
+    
+          musicBox.children[2].loop = false
+          musicBox.children[2].src = soundtracks[e.selectedSoundtrack].tracklist[0].url
+    
+          musicBox.children[2].onended = function() {
+              console.log("next track")
+              let selected = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+              let newSel = clamp(selected + 1, soundtracks[e.selectedSoundtrack].tracklist.length - 1, 0)
+              let buttons = Array.from(document.getElementById("trackSel").children).filter(f => {
+                      return f.tagName == "LABEL"
+                  }).map(f => f.children[0])
+                  //let selectedIndex = buttons.map(f=>f.children[0]).map(f=>f.checked)
+              buttons[newSel].click()
+          }
+    
+          for (w = 0; w < 7; w++) {
+              document.getElementById("trackSelParent").appendChild(document.createElement("br"))
+          }
+    
+          generateTime();
+      }
+    
+      clamp = function(a, max, min, overflow = true) {
+          if (overflow) {
+              return a > max ? min : a < min ? max : a;
+          }
+          return a > max ? max : a < min ? min : a;
+      }
+    
+    
+      // Track list
+    
+      var soundtracks = {
+          0: {
+              name: "Punk and Post-Punk from the Soviets",
+              tracklist: [
+                {
+                  "name": "Instructions for Survival - Нож в спину",
+                  "url": "https://audio.jukehost.co.uk/8CveXQRJaTOmM1kCmS7p5LcrXrrsUyjH"
+                },
+                {
+                  "name": "Egor Letov - Евангелие",
+                  "url": "https://audio.jukehost.co.uk/3kCkCat4pl6foy872PJG9FH5tUPVltYx"
+                },
+                {
+                  "name": "Yanka Dyagileva - Печаль моя светла",
+                  "url": "https://audio.jukehost.co.uk/Sfzk6zRYRNzscTrpu5l2WD7rlWuKxr2c"
+                },
+                {
+                  "name": "Kommunizm - Ноктюрн",
+                  "url": "https://audio.jukehost.co.uk/MclyW6nPD6lJEdf5pcWkmKXtYzO527ka"
+                },
+                {
+                  "name": "Kino - Спокойная ночь",
+                  "url": "https://audio.jukehost.co.uk/KZRVhJspyVp8DBYPwA3OadyzDjS06Ri9"
+                }                
+            ]
+          },
+      }
+      // Set up new music player
+    
+      newMusicPlayer()
+    
+  
+  }
+  
+    $("#game_start").click((event) => {
+      event.preventDefault();
+      $("#election_id_button").click((event) => {
+          musicMode()
+  
+          setInterval(changeFontColour, 200)
+    
+      })
+    })
+
+
