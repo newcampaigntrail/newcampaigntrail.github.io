@@ -2654,7 +2654,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 77,
             "state": 101,
-            "state_multiplier": 1
+            "state_multiplier": 1.02
         }
     },
     {
@@ -4042,7 +4042,7 @@ campaignTrail_temp.answer_score_state_json = [
             "state": 110,
             "candidate": 77,
             "affected_candidate": 77,
-            "state_multiplier": 0.04
+            "state_multiplier": 0.06
         }
     },
     {
@@ -5175,7 +5175,7 @@ campaignTrail_temp.answer_score_state_json = [
             "state": 107,
             "candidate": 77,
             "affected_candidate": 77,
-            "state_multiplier": 0.04
+            "state_multiplier": 0.06
         }
     },
     {
@@ -5362,7 +5362,7 @@ campaignTrail_temp.answer_score_state_json = [
             "state": 100,
             "candidate": 77,
             "affected_candidate": 77,
-            "state_multiplier": 0.08
+            "state_multiplier": -0.06
         }
     },
     {
@@ -6022,7 +6022,7 @@ campaignTrail_temp.answer_score_state_json = [
             "state": 107,
             "candidate": 77,
             "affected_candidate": 77,
-            "state_multiplier": 0.06
+            "state_multiplier": 0.07
         }
     },
     {
@@ -6264,7 +6264,7 @@ campaignTrail_temp.answer_score_state_json = [
             "state": 107,
             "candidate": 77,
             "affected_candidate": 77,
-            "state_multiplier": 0.24
+            "state_multiplier": 0.33
         }
     },
     {
@@ -7260,7 +7260,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 34001,
             "candidate": 77,
-            "answer_feedback": "At seven in the evening the Congress finally disperses, and returns on the 10th to resume the conversation. Neither side succeeds at turning heads, and inevitably the vote is postponed to "
+            "answer_feedback": "At seven in the evening the Congress finally disperses, and returns on the 10th to resume the conversation. Neither side succeeds at turning heads, and inevitably the vote is postponed to July 1. "
         }
     },
     {
@@ -8264,7 +8264,7 @@ campaignTrail_temp.running_mate_last_name = 'Jefferson';
             console.log(playerNYResult.percent);
           
     
-           if (playerPAResult.percent >= 0.50) {
+           if (playerPAResult.percent >= 0.50 && Slaver >= 0) {
               e.answers_json.find(f => f.pk === 34230).fields.question = null;
               e.answers_json.find(f => f.pk === 3423000).fields.question = 33264;
             }
@@ -8350,7 +8350,7 @@ endingPicker = (out, totv, aa, quickstats) => {
 		e.image = "https://i.imgur.com/16nw3XU.png";
 		return construct(0);	
 	}
-	else if (quickstats[0] == 12){
+	else if (quickstats[0] == 12 && quickstats[1] == 0){
 		e.header = "<h2><q>E Pluribus Unum</q></h2>"
 		e.pages = ["<p>The fires of Albion reigned down on the American continent, but Columbia persevered.  The floodgates of freedom were pulled open, and the torrents of liberty rose up to the hymn of God’s choir.  It was a poetic, and momentous period.  At that second, the umbilical chord was cut from the infant’s belly, and the child set forth to learn, mature and succeed, with the happiness of all future generations weighing on its frail shoulders.<p><p>While the Confederation that would come with immediacy henceforth would not last, the federal republic to come would.  John Adams would remark on independency; ‘The Second Day of July 1776, will be the most memorable Epocha, in the History of America.’  In typical John Adams fashion, the man would be unfortunately mistaken by a measure of two days.</p><p>Thanks to his stern, but gentle leadership, the colonies would not go off into the world and be consumed by its hostile elements.  Instead, the greatest challenges to come would originate within ourselves.  But these too, we did overcome.</p>"]
 		e.image = "https://i.imgur.com/1C5lGRA.png";
@@ -8381,7 +8381,7 @@ endingPicker = (out, totv, aa, quickstats) => {
 		e.image = "https://i.imgur.com/fDb8f1p.png";
 		return construct(0);	
 	}
-    else if (stateResultfor.result[0].candidate == 78  && stateResultsix.result[0].candidate == 78 && quickstats[0] == 10){
+    else if (stateResultfor.result[0].candidate == 78  && stateResultsix.result[0].candidate == 78 && quickstats[0] == 10 && quickstats[2] == 2){
 		e.header = "<h2><q>Philadelphia Ensnared</q></h2>"
 		e.pages = ["<p>Independence was adopted, and the proclamation that followed voiced throughout the world.  However, this great act would not be unanimous, as John Adams and his faction of liberty-minded men had intended.  Instead, when the hour of the vote arrived, it was 10-2.  Duane had relented, and the others held, but Pennsylvania and South Carolina had persisted in their obstruction.<p><p>Without the votes of Pennsylvania and South Carolina, the measure would still pass, evidently, but the cause was certainly weakened.  Dickinson’s government in Philadelphia would survive, and Rutledge fleeing.</p><p>The Congress would watch on from their new home in New York City as Philadelphia was ensnared by the Continental Army, and the Redcoats forced out in 1784.</p>"]
 		e.image = "https://i.imgur.com/tWf2D3E.png";
