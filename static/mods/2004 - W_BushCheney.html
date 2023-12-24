@@ -1,3 +1,10 @@
+function ctsAchievement(achievement, difficultyChecker = true){
+	if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
+		if(campaignTrail_temp.CTS){
+		unlockAchievement(achievement);
+	}
+}
+
 campaignTrail_temp.questions_json = [
     {
         "model": "campaign_trail.question",
@@ -1551,7 +1558,7 @@ campaignTrail_temp.answers_json = [
         "pk": 8964,
         "fields": {
             "question": 8961,
-            "description": "If there was any wrong-doing, it’s only cause it’s what everyone else has been doing for years. Look at Clinton! Get Rummy to fess up to some mistakes ad say we’ll make it a priority to plug the holes in the engine."
+            "description": "If there was any wrong-doing, it’s only cause it’s what everyone else has been doing for years. Look at Clinton! Get Rummy to fess up to some mistakes and say we’ll make it a priority to plug the holes in the engine."
         }
     },
     {
@@ -4935,7 +4942,7 @@ campaignTrail_temp.answers_json = [
         "pk": 10309,
         "fields": {
             "question": 9710,
-            "description": "You want to dig up the past, how about we start talkin' about Whitewater? Huh? How about Travelgate? How about Filegate? We all know that the Clintons have bee funneling money into their pockets their whole lives."
+            "description": "You want to dig up the past, how about we start talkin' about Whitewater? Huh? How about Travelgate? How about Filegate? We all know that the Clintons have been funneling money into their pockets their whole lives."
         }
     },
     {
@@ -36097,7 +36104,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 9846,
             "candidate": 77,
-            "answer_feedback": "At an antiwar rally last year, Wellstone shared a stage with Susan Sarandon, who told the crowd that American soldiers were \"putting Muslim children in harm's way.\" With that, your staffers spin that Wellstone agreed U.S. troops were baby-"
+            "answer_feedback": "At an antiwar rally last year, Wellstone shared a stage with Susan Sarandon, who told the crowd that American soldiers were \"putting Muslim children in harm's way.\" With that, your staffers spin that Wellstone agreed U.S. troops were baby-killers, and the Senate considers censuring him."
         }
     },
     {
@@ -38716,7 +38723,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 12792,
             "candidate": 77,
-            "answer_feedback": "At an antiwar rally last year, Wellstone shared a stage with Susan Sarandon, who told the crowd that American soldiers were \"putting Muslim children in harm's way.\" With that, your staffers spin that Wellstone agreed U.S. troops were baby-"
+            "answer_feedback": "At an antiwar rally last year, Wellstone shared a stage with Susan Sarandon, who told the crowd that American soldiers were \"putting Muslim children in harm's way.\" With that, your staffers spin that Wellstone agreed U.S. troops were baby-killers, and the Senate considers censuring him."
         }
     },
     {
@@ -39588,7 +39595,7 @@ const ads = [
             campaignTrail_temp.questions_json[21] = tunnel(9710);   
             campaignTrail_temp.questions_json[22] = tunnel(9711);
             campaignTrail_temp.questions_json[24] = tunnel(9712);   
-            unlockAchievement("I'm With Her");  
+            ctsAchievement("I'm With Her");  
         }
         if(Dem == 2){ // Gore
             // Convention Above 
@@ -39596,7 +39603,7 @@ const ads = [
             campaignTrail_temp.questions_json[21] = tunnel(9704);   
             campaignTrail_temp.questions_json[22] = tunnel(9705);
             campaignTrail_temp.questions_json[24] = tunnel(9706);     
-            unlockAchievement("Oops!...I Did It Again"); 
+            ctsAchievement("Oops!...I Did It Again"); 
         }
         if(Dem == 3){
             // Convention Above  
@@ -39604,7 +39611,7 @@ const ads = [
             campaignTrail_temp.questions_json[21] = tunnel(9698);   
             campaignTrail_temp.questions_json[22] = tunnel(9699);
             campaignTrail_temp.questions_json[24] = tunnel(9700);     
-            unlockAchievement("Boy Orator"); 
+            ctsAchievement("Boy Orator"); 
         }
         if(Dem == 4){ // Wellstone
             // Convention Above 
@@ -39612,7 +39619,7 @@ const ads = [
             campaignTrail_temp.questions_json[21] = tunnel(9692);   
             campaignTrail_temp.questions_json[22] = tunnel(9693);
             campaignTrail_temp.questions_json[24] = tunnel(9694);    
-            unlockAchievement("Clear Skies");  
+            ctsAchievement("Clear Skies");  
         }
         if(Dem == 5){ // Lieberman
             // Convention Above 
@@ -39620,7 +39627,7 @@ const ads = [
             campaignTrail_temp.questions_json[21] = tunnel(9686);   
             campaignTrail_temp.questions_json[22] = tunnel(9687);
             campaignTrail_temp.questions_json[24] = tunnel(9688);  
-            unlockAchievement("D.I.N.O.");     
+            ctsAchievement("D.I.N.O.");     
         }
         if(Dem == 6){ // Sharpton
             // Convention Above  
@@ -39628,7 +39635,7 @@ const ads = [
             campaignTrail_temp.questions_json[21] = tunnel(9680);   
             campaignTrail_temp.questions_json[22] = tunnel(9681);
             campaignTrail_temp.questions_json[24] = tunnel(9682);     
-            unlockAchievement("Now is the Time");     
+            ctsAchievement("Now is the Time");     
         }
         if(Dem == 7){ // Kennedy
             // Convention Above   
@@ -39637,28 +39644,28 @@ const ads = [
             campaignTrail_temp.questions_json[21] = tunnel(9716);   
             campaignTrail_temp.questions_json[22] = tunnel(9717);
             campaignTrail_temp.questions_json[24] = tunnel(9718);   
-            unlockAchievement("Far from Crawford");  
+            ctsAchievement("Far from Crawford");  
         }
         // in-game achievements
 
         if ((e.player_answers.includes(9101)||e.player_answers.includes(9108)) && e.player_answers.includes(9296)) { // hillary votes for iraq and soc sec
-            unlockAchievement("Goldwater Girl");  
+            ctsAchievement("Goldwater Girl");  
         }
 
         if ((e.player_answers.includes(8965)||e.player_answers.includes(9096)) && e.player_answers.includes(9296)) { // no rumsfeld but iraq
-            unlockAchievement("Known Unknowns");  
+            ctsAchievement("Known Unknowns");  
         }
 
         if (e.player_answers.includes(9086) && e.player_answers.includes(9106)) { // no compromise on bills
-            unlockAchievement("Decision Points");  
+            ctsAchievement("Decision Points");  
         }
 
         if (e.player_answers.includes(9038)) { // replace cheney when you didnt have to
-            unlockAchievement("SAM239");  
+            ctsAchievement("SAM239");  
         }
 
         if (e.player_answers.includes(9092)) { // avoid blame for pentagon
-            unlockAchievement("Loose Change");  
+            ctsAchievement("Loose Change");  
         }
         
         
@@ -40705,7 +40712,7 @@ e.executable.push([2, (() => {e.image = e.image = 'https://media.newyorker.com/p
 }
 else if ( Dem == 7 && quickstats[0] <= 87 ) { // Dubya resells the Texas Rangers 
 e.pages.push(`<h3>George W. Bush has reached an agreement on the sale of the Texas Rangers</h3>
-          <p><i>SB Nation</i><br>December 12, 2013<br><br>The Texas Rangers are one step closer to having new owners.<br><br>On Friday afternoon, the organization and a group of potential buyers led by Bakr Binladin announced that they have entered into a purchase and sale agreement. The potential new ownership group is led by Binladin, the largest stakeholder of Saudi Binladin Group, a large Middle Eastern construction conglomerate heavily involved in the construction of sports stadiums in the region.<br><br>Notable members of the potential new ownership group, making up small shares, are Owen Wilson and Dirk Nowitski. Speaking on behalf of the group, Binladin released a statement on Friday.<br><br>“We are excited to expand our operations into new fields and, indeed, a new continent. We would like to thank Mr. Bush, whose family we have long known and trusted, for facilitating this process. Our family has long had a special connection with Texas and its people, and we hope that this new acquisition will serve to further establish ourselves in America’s greatest and most strategically important state. Our gratitude goes out to the MLB family, and are dedicated to bringing championship-caliber teams for years to come.”<br><br>Bush, the current franchise owner, has been uncharacteristically silent since the sale. Bush has had a long and turbulent history with the Rangers franchise, first buying it in 1989 only to sell it in 1994 after his election as Texas Governor. This second chapter in his Rangers saga began only a few years ago, in 2010, when Bush emerged as the surprise victor in a bidding war over the ownership of the franchise. It was an unexpected return for the former president, who had kept a low public profile following a devastating loss to Edward Kenendy in the 2004 election. He took to his new role with gusto, however, quickly becoming known as one of the most active owners in baseball. After years in the doldrums, the flashy change was met with hope and optimism from Rangers fans around the country.<br><br>His honeymoon, however, would prove to be short. The Rangers’ 2011 season would immediately be characterized by high coaching turnover, with a near-unprecedented three managers leading the club at some point in the year. This already provided easy fodder for late-night comedians and baseball writers, who quickly drew comparisons to his ill-fated term as president. The next year, in 2012, things would only get worse. The Rangers would receive international notoriety following an incident where Bush fired his club’s manager mid-game and went on the field to manage the team himself, only to lose in a blowout. These events would be referenced every time that the club struck out on a high-profile free agent, leading him to receive blame for all of the club’s woes.<br><br>Of course, there are some who insist that the game was rigged from the start. As one of the most right-wing presidents in the country’s history, practically everything Bush has done since his election in 2000 has been viewed through the lens of politics. His second ownership of the Rangers has been no exception. Every winter for the past few seasons, talk radio has been ablaze with accusations that the baseball world was collectively refusing to sign with Bush so they could make him look like a loser. While none outside these circles have gone as far as to claim an anti-conservative conspiracy, others do agree with the idea that the baggage surrounding Bush has turned players off. <br><br>How true is this? Most current and former Rangers players declined to comment, but the ones who did described something different from the common theories. Speaking anonymously, this player, who was on the team during the 2011 season, said that few gave notice to Bush’s notoriety: in his words, he was “far from the only big-shot owner in baseball.” Instead, what truly doomed Bush’s ownership was the attitude that he took towards the team: a constant posture of “preening desperation” that made players feel generally uncomfortable. Also speaking off the record, another player from the Rangers’ second Bush era summed up how his teammates felt:<br><br>“Seeing him every day, it felt off. It was just, like, what the fuck? Why are you fuckin’ here, man? You're so old. Where’s your wife? Go home to your family, dude."</p>`)
+          <p><i>SB Nation</i><br>December 12, 2013<br><br>The Texas Rangers are one step closer to having new owners.<br><br>On Friday afternoon, the organization and a group of potential buyers led by Bakr Binladin announced that they have entered into a purchase and sale agreement. The potential new ownership group is led by Binladin, the largest stakeholder of Saudi Binladin Group, a large Middle Eastern construction conglomerate heavily involved in the construction of sports stadiums in the region.<br><br>Notable members of the potential new ownership group, making up small shares, are Owen Wilson and Dirk Nowitski. Speaking on behalf of the group, Binladin released a statement on Friday.<br><br>“We are excited to expand our operations into new fields and, indeed, a new continent. We would like to thank Mr. Bush, whose family we have long known and trusted, for facilitating this process. Our family has long had a special connection with Texas and its people, and we hope that this new acquisition will serve to further establish ourselves in America’s greatest and most strategically important state. Our gratitude goes out to the MLB family, and we are dedicated to bringing championship-caliber teams for years to come.”<br><br>Bush, the current franchise owner, has been uncharacteristically silent since the sale. Bush has had a long and turbulent history with the Rangers franchise, first buying it in 1989 only to sell it in 1994 after his election as Texas Governor. This second chapter in his Rangers saga began only a few years ago, in 2010, when Bush emerged as the surprise victor in a bidding war over the ownership of the franchise. It was an unexpected return for the former president, who had kept a low public profile following a devastating loss to Edward Kenendy in the 2004 election. He took to his new role with gusto, however, quickly becoming known as one of the most active owners in baseball. After years in the doldrums, the flashy change was met with hope and optimism from Rangers fans around the country.<br><br>His honeymoon, however, would prove to be short. The Rangers’ 2011 season would immediately be characterized by high coaching turnover, with a near-unprecedented three managers leading the club at some point in the year. This already provided easy fodder for late-night comedians and baseball writers, who quickly drew comparisons to his ill-fated term as president. The next year, in 2012, things would only get worse. The Rangers would receive international notoriety following an incident where Bush fired his club’s manager mid-game and went on the field to manage the team himself, only to lose in a blowout. These events would be referenced every time that the club struck out on a high-profile free agent, leading him to receive blame for all of the club’s woes.<br><br>Of course, there are some who insist that the game was rigged from the start. As one of the most right-wing presidents in the country’s history, practically everything Bush has done since his election in 2000 has been viewed through the lens of politics. His second ownership of the Rangers has been no exception. Every winter for the past few seasons, talk radio has been ablaze with accusations that the baseball world was collectively refusing to sign with Bush so they could make him look like a loser. While none outside these circles have gone as far as to claim an anti-conservative conspiracy, others do agree with the idea that the baggage surrounding Bush has turned players off. <br><br>How true is this? Most current and former Rangers players declined to comment, but the ones who did described something different from the common theories. Speaking anonymously, one player, who was on the team during the 2011 season, said that few gave notice to Bush’s notoriety: in his words, he was “far from the only big-shot owner in baseball.” Instead, what truly doomed Bush’s ownership was the attitude that he took towards the team: a constant posture of “preening desperation” that made players feel generally uncomfortable. Also speaking off the record, another player from the Rangers’ second Bush era summed up how his teammates felt:<br><br>“Seeing him every day, it felt off. It was just, like, what the fuck? Why are you fuckin’ here, man? You're so old. Where’s your wife? Go home to your family, dude."</p>`)
 e.executable.push([2, (() => {e.image = e.image = 'https://i.imgur.com/icxocTB.png'})])
 }
 else if ( quickstats[0] >= 270 && Wars == 0 && Jingo < 2) { // Bin laden 
@@ -40833,31 +40840,31 @@ e.executable.push([2, (() => {e.image = e.image = 'https://i.imgur.com/y4eg352.p
 // END-OF-GAME ACHIEVEMENTS
 
 if (quickstats[0] >= 269 && Wins == 0 && Dem == 7) { // Beat TK with no wins
-    unlockAchievement("Loved by the People");  
+    ctsAchievement("Loved by the People");  
 }
 
 if (quickstats[0] >= 269 && ConRep == 0) { // win with no congressional relations
-    unlockAchievement("Hated by the Establishment");  
+    ctsAchievement("Hated by the Establishment");  
 }
 
 if (Wars == 0) { // no war
-    unlockAchievement("Dove");  
+    ctsAchievement("Dove");  
 }
 
 if (Wars == 1) { // 1 warn
-    unlockAchievement("Chickenhawk");  
+    ctsAchievement("Chickenhawk");  
 }
 
 if (Wars == 2) { // 2 wars
-    unlockAchievement("Hawk");  
+    ctsAchievement("Hawk");  
 }
 
 if (Wars == 3) { // 3 wars
-    unlockAchievement("I Burn My Bridges Behind Me");  
+    ctsAchievement("I Burn My Bridges Behind Me");  
 }
 
 if (quickstats[0] >= 269 && (Dem == 1||Dem == 4||Dem == 6) && !e.player_answers.includes(9747)||e.player_answers.includes(9753)||e.player_answers.includes(9756)||e.player_answers.includes(9762)||e.player_answers.includes(9765)||e.player_answers.includes(9771)||e.player_answers.includes(9848)||e.player_answers.includes(9857)||e.player_answers.includes(9866)||e.player_answers.includes(9875)||e.player_answers.includes(9884)||e.player_answers.includes(9893)||e.player_answers.includes(10227)||e.player_answers.includes(11202)||e.player_answers.includes(11209)||e.player_answers.includes(10303) ||e.player_answers.includes(10312)) { // dont go dirty
-    unlockAchievement("Compassion of the Conservative");  
+    ctsAchievement("Compassion of the Conservative");  
 }
 
 return construct(0);
