@@ -4861,7 +4861,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 200,
             "state": 1027,
-            "state_multiplier": 1
+            "state_multiplier": 1.02
         }
     },
     {
@@ -5383,7 +5383,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 201,
             "state": 1034,
-            "state_multiplier": 1.07
+            "state_multiplier": 1.085
         }
     },
     {
@@ -5581,7 +5581,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 202,
             "state": 1005,
-            "state_multiplier": 0.5
+            "state_multiplier": 1.1
         }
     },
     {
@@ -5779,7 +5779,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 202,
             "state": 1027,
-            "state_multiplier": 0.8
+            "state_multiplier": 1.15
         }
     },
     {
@@ -6968,7 +6968,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 5213,
             "candidate": 200,
             "affected_candidate": 202,
-            "global_multiplier": -0.2
+            "global_multiplier": 0
         }
     },
     {
@@ -6998,7 +6998,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 5260,
             "candidate": 200,
             "affected_candidate": 200,
-            "global_multiplier": 0.008
+            "global_multiplier": 0.004
         }
     },
     {
@@ -7087,8 +7087,8 @@ campaignTrail_temp.answer_score_global_json = [
         "fields": {
             "answer": 5237,
             "candidate": 200,
-            "affected_candidate": 200,
-            "global_multiplier": 0.004
+            "affected_candidate": 201,
+            "global_multiplier": -0.005
         }
     },
     {
@@ -8569,7 +8569,7 @@ campaignTrail_temp.answer_score_state_json = [
             "state": 1040,
             "candidate": 200,
             "affected_candidate": 202,
-            "state_multiplier": 0.5
+            "state_multiplier": 0.55
         }
     },
     {
@@ -8591,7 +8591,7 @@ campaignTrail_temp.answer_score_state_json = [
             "state": 1046,
             "candidate": 200,
             "affected_candidate": 202,
-            "state_multiplier": 0.6
+            "state_multiplier": 0.65
         }
     },
     {
@@ -8679,7 +8679,7 @@ campaignTrail_temp.answer_score_state_json = [
             "state": 1040,
             "candidate": 200,
             "affected_candidate": 202,
-            "state_multiplier": 0.5
+            "state_multiplier": 0.55
         }
     },
     {
@@ -10203,19 +10203,42 @@ endingPicker = (out, totv, aa, quickstats) => {
     if(campaignTrail_temp.player_answers.includes(5251)) {progScore++};
     if(campaignTrail_temp.player_answers.includes(5252)) {progScore--};
 
-    if (out == "tie" && progScore > 2) {
-        return "<h3>Early morning of November 5th. A stately house in Springfield, IL.</h3><p>As the first results trickle in, your old heart quickens. Hour after hour goes by, with the race on a knife’s edge -- you hold majorities in some swing states, and Conkling holds some in others. At any point, the race could tip one way or the other; but it never does. And as the results from the West start to roll in, a thought grips you. You and Conkling may not be the only ones to win states this election. Perhaps you made some moves to encourage them, that they might split Conkling’s support, but as you take in that fact -- that a couple of states have slipped out of the reach of both you and Conkling, just enough to deny the both of you a majority -- it still doesn’t feel quite real.</p><p>An urgency grips you. Harper, with his handful of votes, now holds the key to the White House. Under normal circumstances, this would have been of no consequence; in the lead-up to the Democratic Convention, Harper indicated that his party’s aim was to put on a strong showing, and wouldn’t strike any deals with a Tildenite. But as the campaign progressed, and you demonstrated a greater openness to economic progressivism, his attitude changed. He said, during one rally, that, should his party carry any states, he would be willing to ‘work with the party that can promise the greatest commitment to the social and economic progress of the American nation.’</p><p>A deal may still be in reach. As you turn the possibility over in your mind, you feel warm, and strong, as though a mighty steam engine in your breast fueled your every movement. A quick wire to some of your trusted confidantes, who must be coming to the same conclusion you are; down the stairs, coat on, boots, hat! Wallet, and out the door! Find a carriage at this late hour that will take you to the train station!</p><p>You have quite the head-start on the President. Danville, Illinois, and Jesse Harper, and your destiny, lay just a hundred miles away.</p>"
+    if (out == "win" && campaignTrail_temp.player_answers.includes(5170) && campaignTrail_temp.player_answers.includes(20726) && campaignTrail_temp.player_answers.includes(5227) && campaignTrail_temp.difficulty <=1) {
+        unlockAchievement("Disentangled")
+    }
+
+    if (out == "win" && e.candidate_id == e.final_state_results[4].result[0].candidate && e.candidate_id == e.final_state_results[25].result[0].candidate && e.candidate_id == e.final_state_results[27].result[0].candidate && e.candidate_id == e.final_state_results[36].result[0].candidate && e.candidate_id == e.final_state_results[46].result[0].candidate && campaignTrail_temp.difficulty <=1) {
+        unlockAchievement("Western Strategy")
+    }
+
+    if (out == "tie" && progScore > 1) {
+
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#85805d";
+
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#342980";
+    
+        document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+    
+        $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+    
+        $(".container")[0].style.backgroundColor = "#111122";
+    
+        document.body.background = "https://i.imgur.com/HUakSH3.jpg";
+
+        if (campaignTrail_temp.difficulty <=1) {unlockAchievement("To Danville")}
+        
+        return "<h3>Early morning of November 5th. A stately house in Springfield, IL.</h3><p>As the first results trickle in, your old heart quickens. Hour after hour goes by, with the race on a knife’s edge -- you hold majorities in some swing states, and Conkling holds some in others. At any point, the race could tip one way or the other; but it never does. And as the results from the West start to roll in, a thought grips you. You and Conkling may not be the only ones to win states this election. Perhaps you made some moves to encourage them, that they might split Conkling’s support, but as you take in that fact -- that a couple of states have slipped out of the reach of both you and Conkling, just enough to deny the both of you a majority -- it still doesn’t feel quite real.</p><p>An urgency grips you. Harper, the humble party chairman only seeking to make a statement, now holds the key to the White House. Under normal circumstances, this would have been of no consequence; in the lead-up to the Democratic Convention, Harper indicated that his party’s aim was to put on a strong showing, and wouldn’t strike any deals with a Tildenite. But as the campaign progressed, and you demonstrated a greater openness to economic progressivism, his attitude changed. He said, during one rally, that, should his party carry any states, he would be willing to ‘work with the party that can promise the greatest commitment to the social and economic progress of the American nation.’</p><p>A deal may still be in reach. As you turn the possibility over in your mind, you feel warm, and strong, as though a mighty steam engine in your breast fueled your every movement. A quick wire to some of your trusted confidantes, who must be coming to the same conclusion you are; down the stairs, coat on, boots, hat! Wallet, and out the door! Find a carriage at this late hour that will take you to the train station!</p><p>You have quite the head-start on the President. Danville, Illinois, and Jesse Harper, and your destiny, lay just a hundred miles away.</p>"
     } else if (out == "tie") {
         return "<h3>DEAD-LOCK! PRES ELECTION WILL GO TO HOUSE FOR FIRST TIME SINCE JACKSON</h3><p>As the first results trickle in, your old heart quickens. Hour after hour goes by, with the race on a knife’s edge -- you hold majorities in some swing states, and Conkling holds some in others. At any point, the race could tip one way or the other; but it never does. And as the results from the West start to roll in, a thought grips you. You and Conkling may not be the only ones to win states this election. Perhaps you made some moves to encourage them, that they might split Conkling’s support, but as you take in that fact -- that a couple of states have slipped out of the reach of both you and Conkling, just enough to deny the both of you a majority -- it still doesn’t feel quite real.</p><p>You let out a little laugh. In another world, perhaps you could strike a deal with Harper to gain his votes and win at the Electoral College, but he made it clear on the trail that he didn’t see enough of a difference between yourself and the President that he would consider such a line of action. And thus, the election will go to a contingent election in the House, where Conkling has played the long game. While his rapid additions of the six new Republican-leaning states did contribute to his party’s massive losses in the House in the midterms, the handful of representatives from those states are all Republicans, meaning that Conkling will have six more states in his corner when the contingent election comes -- enough to secure him the Presidency. He’s won.</p><p>There’s little else to do but go to bed. As you were called up by the convention under unusual circumstances, you cannot expect that you will retain any sort of leadership role in the party going forward, though the Democracy respects you for running a strong campaign. You’ll return to the quiet and calm of your private law practice, as the games of power go on without you. You’re not the kind of man prone to daydreaming, but every once and a while, at the office after a long day of tiring work, or at home as you tuck into dinner, or even in the courtroom, as you stare out the window, the case temporarily forgotten, you wonder what might have been...</p>"
-    } else if (quickstats[0] < 212 && progScore < -1) {
+    } else if (quickstats[0] < 212 && progScore < 0) {
         return "<h3>CONKLING SECURES MAJORITY OVER PALMER</h3><p>As the first results trickle in, your old heart quickens, but when you see Conkling’s majorities hold firm in the swing states long into the night, you allow yourself to relax. You’ve lost races before. You’ve lost battles before. You know when it’s over. You came into the race reluctantly, but willing to work hard on behalf of your party, and against the forces of corruption, but it simply wasn’t enough. Roscoe Conkling will remain president, and serve out another four years in office.</p><p>While you tried to emulate Tilden’s economic conservatism on the trail, your efforts have left your campaign at the same dead-end his own met four years ago. The times are changing, and the growing progressive wing of the party was frustrated as you consistently shot down their hopes of a fairer economy. Still, President Tilden and his faction are grateful that you stood steadfast in your conservatism, even in the face of improbable odds.</p><p>There’s little else to do but go to bed. As you were called up by the convention under unusual circumstances, you cannot expect that you will retain any sort of leadership role in the party going forward, though the Democracy respects you for running a strong campaign. You’ll return to the quiet and calm of your private law practice, as the games of power go on without you. You’re not the kind of man prone to daydreaming, but every once and a while, at the office after a long day of tiring work, or at home as you tuck into dinner, or even in the courtroom, as you stare out the window, the case temporarily forgotten, you wonder what might have been...</p>"
-    } else if (quickstats[0] < 212 && progScore > 1) {
+    } else if (quickstats[0] < 212 && progScore > 0) {
         return "<h3>CONKLING SECURES MAJORITY OVER PALMER</h3><p>As the first results trickle in, your old heart quickens, but when you see Conkling’s majorities hold firm in the swing states long into the night, you allow yourself to relax. You’ve lost races before. You’ve lost battles before. You know when it’s over. You came into the race reluctantly, but willing to work hard on behalf of your party, and against the forces of corruption, but it simply wasn’t enough. Roscoe Conkling will remain president, and serve out another four years in office.</p><p>Your attempt to pivot the party towards the growing progressive movement brought in swathes of curious new voters, but it appears that you’ve alienated too many conservatives in the process. Tilden had watched your campaign go down this path with frustration, and, while you know he wouldn’t wish ill on your campaign, it’s hard to imagine he sees this loss as anything other than an inevitable consequence of your dabbling with populism.</p><p>There’s little else to do but go to bed. As you were called up by the convention under unusual circumstances, you cannot expect that you will retain any sort of leadership role in the party going forward, though the Democracy respects you for running a strong campaign. You’ll return to the quiet and calm of your private law practice, as the games of power go on without you. You’re not the kind of man prone to daydreaming, but every once and a while, at the office after a long day of tiring work, or at home as you tuck into dinner, or even in the courtroom, as you stare out the window, the case temporarily forgotten, you wonder what might have been...</p>"
     } else if (quickstats[0] < 212) {
         return "<h3>CONKLING SECURES MAJORITY OVER PALMER</h3><p>As the first results trickle in, your old heart quickens, but when you see Conkling’s majorities hold firm in the swing states long into the night, you allow yourself to relax. You’ve lost races before. You’ve lost battles before. You know when it’s over. You came into the race reluctantly, but willing to work hard on behalf of your party, and against the forces of corruption, but it simply wasn’t enough. Roscoe Conkling will remain president, and serve out another four years in office.</p><p>It was a mighty struggle to balance the wings of the Democratic party -- the conflict between the economically conservative Tilden faction and a growing progressive wing that seeks to radically re-balance the scales of power was too much a gap for even yourself to bridge. All in all, you’ve emerged from the election as unfettered as you have always lived, having made little impact on the direction of the party going forward.</p><p>There’s little else to do but go to bed. As you were called up by the convention under unusual circumstances, you cannot expect that you will retain any sort of leadership role in the party going forward, though the Democracy respects you for running a strong campaign. You’ll return to the quiet and calm of your private law practice, as the games of power go on without you. You’re not the kind of man prone to daydreaming, but every once and a while, at the office after a long day of tiring work, or at home as you tuck into dinner, or even in the courtroom, as you stare out the window, the case temporarily forgotten, you wonder what might have been...</p>"
-    } else if (quickstats[0] > 211 && progScore < -1) {
+    } else if (quickstats[0] > 211 && progScore < 0) {
         return "<h3>PALMER DEFEATS PRES. CONKLING!</h3><p>As the first results trickle in, your old heart quickens; only when you see your majorities hold firm in those crucial swing states long into the night do you allow yourself to relax. You’ve done it. An improbable candidate, plucked from a point of relative calm in your winding life, elevated in small part through the faith of your friends, and in large part through accident. In a race sure to have the eyes of history upon it; you’ve defeated President Roscoe Conkling, and will become the twenty-first president of the United States of America.</p><p>In your economic direction, you took after that great statesman himself, President Samuel Tilden. While the budding progressive movement was at times frustrated by your conservative stance on the economic issues of the day, they at least welcome your commitment to reform, and to thrifty and honest government. Across the country, Americans look forward to a return to sound economic governance, and you know Tilden will be able to rest easy, his legacy secure.</p><p>You can almost imagine Conkling’s fury; that his clout within the gilded halls of power could not help him where he needed it most; with the American people, who have now rejected you. It’s a given that, as you receive these results, he is plotting his survival within his party, and, if he can manage that, his revenge. He will do everything in his power to claw his way back to the nomination in four years, to take his shot at you once more. But that’s for him to worry about. It is now time to grant the wishes of the people; reform and honesty in government, a lifting of the tax burden, and a drawing-down of Conkling’s empire. You have much to do, President-elect Palmer, but the people have given you their full trust. May you serve well.</p>"
-    } else if (quickstats[0] > 211 && progScore > 1) {
+    } else if (quickstats[0] > 211 && progScore > 0) {
         return "<h3>PALMER DEFEATS PRES. CONKLING!</h3><p>As the first results trickle in, your old heart quickens; only when you see your majorities hold firm in those crucial swing states long into the night do you allow yourself to relax. You’ve done it. An improbable candidate, plucked from a point of relative calm in your winding life, elevated in small part through the faith of your friends, and in large part through accident. In a race sure to have the eyes of history upon it; you’ve defeated President Roscoe Conkling, and will become the twenty-first president of the United States of America.</p><p>Unbound by the restrictions that would bind a member of the Democratic establishment, you charted a new course for the Democratic party, harnessing the winds of the budding progressive movement as you promised a fairer economy for all Americans. You know Samuel Tilden was unhappy with the way you seemed to lead the party away from his conservative principles, but still he can rest easy knowing that the flower of reform he so carefully nurtured will, indeed, come to bloom.</p><p>You can almost imagine Conkling’s fury; that his clout within the gilded halls of power could not help him where he needed it most; with the American people, who have now rejected you. It’s a given that, as you receive these results, he is plotting his survival within his party, and, if he can manage that, his revenge. He will do everything in his power to claw his way back to the nomination in four years, to take his shot at you once more. But that’s for him to worry about. It is now time to grant the wishes of the people; reform and honesty in government, a lifting of the tax burden, and a drawing-down of Conkling’s empire. You have much to do, President-elect Palmer, but the people have given you their full trust. May you serve well.</p>"
     } else if (quickstats[0] > 211) {
         return "<h3>PALMER DEFEATS PRES. CONKLING!</h3><p>As the first results trickle in, your old heart quickens; only when you see your majorities hold firm in those crucial swing states long into the night do you allow yourself to relax. You’ve done it. An improbable candidate, plucked from a point of relative calm in your winding life, elevated in small part through the faith of your friends, and in large part through accident. In a race sure to have the eyes of history upon it; you’ve defeated President Roscoe Conkling, and will become the twenty-first president of the United States of America.</p><p>It was a mighty struggle to balance the wings of the Democratic party -- between the Tilden faction that favored a conservative direction on the economy and a growing progressive wing that seeks to radically re-balance the scales of power, you’ve emerged from the election as unfettered as you have always lived, free to guide the American economy out of its slump in whatever way you find most fitting.</p><p>You can almost imagine Conkling’s fury; that his clout within the gilded halls of power could not help him where he needed it most; with the American people, who have now rejected you. It’s a given that, as you receive these results, he is plotting his survival within his party, and, if he can manage that, his revenge. He will do everything in his power to claw his way back to the nomination in four years, to take his shot at you once more. But that’s for him to worry about. It is now time to grant the wishes of the people; reform and honesty in government, a lifting of the tax burden, and a drawing-down of Conkling’s empire. You have much to do, President-elect Palmer, but the people have given you their full trust. May you serve well.</p>"
