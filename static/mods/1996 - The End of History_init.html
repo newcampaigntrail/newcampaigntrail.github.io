@@ -198,17 +198,6 @@ e.creditsPage = () => {
   }
   `
 
-  let z = new MutationObserver((mutationsList, observer) => {
-      let runningMateSummary = document.querySelector("#running_mate_summary");
-      if (runningMateSummary) {
-          $("#running_mate_id_button").click();
-          observer.disconnect()
-      }
-  });
-
-
-  z.observe(document, { subtree: true, childList: true });
-
     nct_stuff.themes[nct_stuff.selectedTheme].text_col = "black"
     nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#9959f8"; 
     nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#C0C0C0";
@@ -449,7 +438,6 @@ let z = new MutationObserver((mutationsList, observer) => {
       observer.disconnect()
   }
 });
-
 
 z.observe(document, { subtree: true, childList: true });
 }
