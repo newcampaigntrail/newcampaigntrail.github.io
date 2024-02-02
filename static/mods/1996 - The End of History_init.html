@@ -1,4 +1,7 @@
-e = campaignTrail_temp;
+e=campaignTrail_temp
+if (!e.done) {
+e.done = true;
+
 RecReading=true
 
 if (!e.runIntro) {
@@ -439,3 +442,14 @@ button.innerHTML = "Toggle CRT Lines"
 footer.insertBefore(button, footer.firstChild);
 button.addEventListener("click", () => {crtOn = !crtOn; setCRTLines(crtOn)});
 
+let z = new MutationObserver((mutationsList, observer) => {
+  let runningMateSummary = document.querySelector("#running_mate_summary");
+  if (runningMateSummary) {
+      $("#running_mate_id_button").click();
+      observer.disconnect()
+  }
+});
+
+
+z.observe(document, { subtree: true, childList: true });
+}

@@ -1,3 +1,6 @@
+if (!campaignTrail_temp.loaded){
+campaignTrail_temp.loaded = true
+
 campaignTrail_temp.questions_json = [
     {
         "model": "campaign_trail.question",
@@ -15243,7 +15246,7 @@ if (e.question_number == 5) {
  if(ans == 5154){
     campaignTrail_temp.election_json[0]["fields"].has_visits = 1;
  }
- 
+
    // CYOA to fix the theme after Question 1
     if(ans == 20690){
         nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#9959f8"; 
@@ -15951,4 +15954,4 @@ construct = (a = 1) => {
     return construct(0);
     
     }
-    
+}
