@@ -16925,7 +16925,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 21345,
             "candidate": 200,
-            "answer_feedback": "Your independent run in 1992 angered many Republicans. Making amends will be crucial./"
+            "answer_feedback": "Your independent run in 1992 angered many Republicans. Making amends will be crucial."
         }
     },
     {
@@ -16934,7 +16934,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 21346,
             "candidate": 200,
-            "answer_feedback": "Using your independent bid to show your willingness to compromise is a smart move, but many "
+            "answer_feedback": "Using your independent bid to show your willingness to compromise is a smart move, but many hardcore party members still feel isolated from your campaign."
         }
     },
     {
@@ -17729,6 +17729,9 @@ var policyForeign = 0;
 var runningMate = 0;
 var govScore = 0;
 var woke = 0;
+var ukraine = 0;
+var right = 0;
+var wrong = 0;
 var advice = false;
 
 
@@ -18110,6 +18113,16 @@ if((ans == 21017 || ans == 5253 || ans == 5254 || ans == 5255 )  && policyForeig
 }
 }
 }
+
+// Right Way and Wrong Way Achievement Fix
+if(ans == 5150){
+    right += 1;
+}
+
+if(ans == 5147){
+    wrong += 1;
+}
+
   // This scoring system sets up if Dobson runs third party and tanks you in the south
   if(ans == 5171){
     woke += 1;                
@@ -19054,13 +19067,13 @@ construct = (a = 1) => {
     if (quickstats[0] >= 330) { // Win the election with at least 330 Electoral Votes as Wilson.
         ctsAchievement("Enough is Enough");  
     }
-    if (ans == 5150 && quickstats[0] >= 270) { // Win as Wilson without supporting Proposition 187.
+    if (right >= 1 && quickstats[0] >= 270) { // Win as Wilson without supporting Proposition 187.
       ctsAchievement("There's a Right Way...");  
     }
-    if (ans == 5147 && quickstats[0] >= 270) { // Win as Wilson while supporting Proposition 187 along with carveouts.
+    if (wrong >= 1 && quickstats[0] >= 270) { // Win as Wilson while supporting Proposition 187 along with carveouts.
       ctsAchievement("...and a Wrong Way");  
     }
-    if (ans == 5213 && quickstats[0] >= 270) { // As either candidate, oppose Ukrainian independence, and still win.
+    if (ukraine >= 1 && quickstats[0] >= 270) { // As either candidate, oppose Ukrainian independence, and still win.
       ctsAchievement("Slava Ukraine?");  
     }
     return construct(0);

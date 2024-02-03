@@ -14724,6 +14724,8 @@ var doneonce = false
 var policyForeign = 0;
 var runningMate = 0;
 var naderLies = 0;
+var baucus = 0;
+var ukraine = 0;
 var naderRoute = 0;
 var advice = false;
 
@@ -14920,13 +14922,24 @@ cyoAdventure = function (a) {
       console.log("You make a foreign policy stance.");                  
     }
 
+// Baucus achievement check
+if(ans == 21233){
+    baucus += 1;
+}
+
+// Ukraine achievement check
+if(ans == 5213){
+    ukraine += 1;
+}
+
+
 // That thickheaded fool! I will not be quartered by an impotent swine such as him. Call Akhromeyev and tell him to detain Kryuchkov and his ilk
 // Indecisive
 if(ans == 20690){
     if((ans == 21017 || ans == 5253 || ans == 5254 || ans == 5255 )  && policyForeign >= -2 && policyForeign < 2){
       campaignTrail_temp.questions_json[28] = {
         "model": "campaign_trail.question",
-        "pk": 21263,
+        "pk": 21268,
         "fields": {
           "priority": 1,
           "description": "The worst has come to pass - in the middle of the night, the fractured Red Army has continued to consume itself - as Kryuchkov’s forces begin to penetrate Yanayev’s defenses in Moscow. Not only is the public caught off guard, but the Bush Administration is too - who had been working to put together a ceasefire of some kind.",
@@ -14935,10 +14948,10 @@ if(ans == 20690){
       }
   }
 // Decisive
-  if((ans == 21017 || ans == 5253 || ans == 5254 || ans == 5255 )  && policyForeign < -2 || policyForeign < 2){
+  if((ans == 21017 || ans == 5253 || ans == 5254 || ans == 5255 )  && policyForeign < -2 || policyForeign > 2){
     campaignTrail_temp.questions_json[28] = {
       "model": "campaign_trail.question",
-      "pk": 21268,
+      "pk": 21263,
       "fields": {
         "priority": 1,
         "description": "The worst has come to pass - in the middle of the night, the fractured Red Army has continued to consume itself - as Kryuchkov’s forces begin to penetrate Yanayev’s defenses in Moscow. Not only is the public caught off guard, but the Bush Administration is too - who had been working to put together a ceasefire of some kind.",
@@ -14962,7 +14975,7 @@ if((ans == 21017 || ans == 5253 || ans == 5254 || ans == 5255 )  && policyForeig
   }
 }
 // Decisive
-if((ans == 21017 || ans == 5253 || ans == 5254 || ans == 5255 )  && policyForeign < -2 || policyForeign < 2){
+if((ans == 21017 || ans == 5253 || ans == 5254 || ans == 5255 )  && policyForeign < -2 || policyForeign > 2){
 campaignTrail_temp.questions_json[28] = {
   "model": "campaign_trail.question",
   "pk": 21285,
@@ -14989,7 +15002,7 @@ if((ans == 21017 || ans == 5253 || ans == 5254 || ans == 5255 )  && policyForeig
   }
 }
 // Decisive
-if((ans == 21017 || ans == 5253 || ans == 5254 || ans == 5255 )  && policyForeign < -2 || policyForeign < 2){
+if((ans == 21017 || ans == 5253 || ans == 5254 || ans == 5255 )  && policyForeign < -2 || policyForeign > 2){
 campaignTrail_temp.questions_json[28] = {
   "model": "campaign_trail.question",
   "pk": 21274,
@@ -15016,7 +15029,7 @@ if((ans == 21017 || ans == 5253 || ans == 5254 || ans == 5255 )  && policyForeig
   }
 }
 // Decisive
-if((ans == 21017 || ans == 5253 || ans == 5254 || ans == 5255 )  && policyForeign < -2 || policyForeign < 2){
+if((ans == 21017 || ans == 5253 || ans == 5254 || ans == 5255 )  && policyForeign < -2 || policyForeign > 2){
 campaignTrail_temp.questions_json[28] = {
   "model": "campaign_trail.question",
   "pk": 1073,
@@ -15942,10 +15955,10 @@ construct = (a = 1) => {
     if (quickstats[0] >= 400) { // Get over 400 EVs as Wofford
         ctsAchievement("Of Kennedys and Kings");  
     }
-    if (ans == 5213 && quickstats[0] >= 270) { // As either candidate, oppose Ukrainian independence, and still win.
+    if (ukraine >= 1 && quickstats[0] >= 270) { // As either candidate, oppose Ukrainian independence, and still win.
       ctsAchievement("Slava Ukraine?");  
     }
-    if (ans == 21233 && quickstats[0] >= 270) { // Make Baucus change his mind, and still win.
+    if (baucus >= 1 && quickstats[0] >= 270) { // Make Baucus change his mind, and still win.
       ctsAchievement("Anti-Baucus Caucus");  
     }
     if (naderLies >= 2 && quickstats[0] >= 270) { // Force Nader to re-enter the race as Wofford, and then win.
