@@ -8597,7 +8597,13 @@ campaignTrail_temp.achievements = {
   campaignTrail_temp.answer_feedback_flg = 1;
   campaignTrail_temp.game_start_logging_id = '3668550';
   
-  
+  function ctsAchievement(achievement, difficultyChecker = true){
+	if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
+		if(campaignTrail_temp.CTS){
+		unlockAchievement(achievement);
+	}
+}  
+
   endingPicker = (out, totv, aa, quickstats) => {
     ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
     used=false
@@ -8608,7 +8614,7 @@ campaignTrail_temp.achievements = {
     if (campaignTrail_temp.final_state_results[6].result[0].candidate == 20 || campaignTrail_temp.final_state_results[13].result[0].candidate == 20 || campaignTrail_temp.final_state_results[31].result[0].candidate == 20) { //does hayes lead any of the 3?
         if (campaignTrail_temp.final_state_results[6].result[0].percent - campaignTrail_temp.final_state_results[6].result[1].percent < 0.05 && campaignTrail_temp.final_state_results[13].result[0].percent - campaignTrail_temp.final_state_results[13].result[1].percent < 0.05 && campaignTrail_temp.final_state_results[31].result[0].percent - campaignTrail_temp.final_state_results[31].result[1].percent < 0.05) { //is the margin all less than 5%?
         if (ans == 8090 && quickstats[0] >= 185 && quickstats[0]<200 && aa[0].candidate == 20) {
-    unlockAchievement("A Truce, Not a Compromise");
+            ctsAchievement("A Truce, Not a Compromise");
     if (used != true) {
         setInterval(function () {
             used = true;
