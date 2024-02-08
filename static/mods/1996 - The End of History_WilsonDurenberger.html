@@ -17966,9 +17966,10 @@ cyoAdventure = function (a) {
 
 if (campaignTrail_temp.player_answers.includes(20690)){
     if((campaignTrail_temp.player_answers.includes(21017)||campaignTrail_temp.player_answers.includes(5253||campaignTrail_temp.player_answers.includes(5254))||campaignTrail_temp.player_answers.includes(5255)) && policyForeign > 2){
+        console.log("Too Hawkish!");
       campaignTrail_temp.questions_json[28] = {
         "model": "campaign_trail.question",
-        "pk": 21263,
+        "pk": 21268,
         "fields": {
           "priority": 1,
           "description": "The worst has come to pass - in the middle of the night, the fractured Red Army has continued to consume itself - as Kryuchkov’s forces begin to penetrate Yanayev’s defenses in Moscow. Not only is the public caught off guard, but the Bush Administration is too - who had been working to put together a ceasefire of some kind.",
@@ -17977,9 +17978,10 @@ if (campaignTrail_temp.player_answers.includes(20690)){
       }
   }
     if((campaignTrail_temp.player_answers.includes(21017)||campaignTrail_temp.player_answers.includes(5253||campaignTrail_temp.player_answers.includes(5254))||campaignTrail_temp.player_answers.includes(5255)) && policyForeign < -2){
+    console.log("Too Isolationist!");
       campaignTrail_temp.questions_json[28] = {
         "model": "campaign_trail.question",
-        "pk": 21263,
+        "pk": 21268,
         "fields": {
           "priority": 1,
           "description": "The worst has come to pass - in the middle of the night, the fractured Red Army has continued to consume itself - as Kryuchkov’s forces begin to penetrate Yanayev’s defenses in Moscow. Not only is the public caught off guard, but the Bush Administration is too - who had been working to put together a ceasefire of some kind.",
@@ -17989,9 +17991,10 @@ if (campaignTrail_temp.player_answers.includes(20690)){
   }
 // Decisive
 if((campaignTrail_temp.player_answers.includes(21017)||campaignTrail_temp.player_answers.includes(5253||campaignTrail_temp.player_answers.includes(5254))||campaignTrail_temp.player_answers.includes(5255)) && policyForeign < 3 && policyForeign > -3){
+    console.log("good");
     campaignTrail_temp.questions_json[28] = {
       "model": "campaign_trail.question",
-      "pk": 21268,
+      "pk": 21263,
       "fields": {
         "priority": 1,
         "description": "The worst has come to pass - in the middle of the night, the fractured Red Army has continued to consume itself - as Kryuchkov’s forces begin to penetrate Yanayev’s defenses in Moscow. Not only is the public caught off guard, but the Bush Administration is too - who had been working to put together a ceasefire of some kind.",
