@@ -48,19 +48,27 @@ campaignTrail_temp.answer_score_state_json = JSON.parse("[{\"model\": \"campaign
 function multiplyEffect(num, answers) {
     campaignTrail_temp.answer_score_global_json.forEach(item => {
         if (answers.includes(item.fields.answer)) {
-            item.fields.global_multiplier *= num;
+		    if (!campaignTrail_temp.player_answers.includes(item.fields.answer)){
+				item.fields.global_multiplier *= num;
+				}            
         }
     });
 
     campaignTrail_temp.answer_score_issue_json.forEach(item => {
         if (answers.includes(item.fields.answer)) {
-            item.fields.issue_importance *= num;
+			if (!campaignTrail_temp.player_answers.includes(item.fields.answer)){
+				item.fields.issue_importance *= num;
+				}
+            
         }
     });
 
     campaignTrail_temp.answer_score_state_json.forEach(item => {
         if (answers.includes(item.fields.answer)) {
-            item.fields.state_multiplier *= num;
+			if (!campaignTrail_temp.player_answers.includes(item.fields.answer)){
+				console.log(item.fields.answer)
+				item.fields.state_multiplier *= num;
+				}            
         }
     });
 }
@@ -122,9 +130,9 @@ campaignTrail_temp.game_start_logging_id = '3662498';
       { id: 15, name: 'Green-Yellow Coalition', weight: 1.9, parties: [79, 303], impossibleCoalitions: [5, 6]}
     ];
     const partyLeaders = [
-    { party: 77, leaderName: 'Laschet', image: 'https://cdn.discordapp.com/attachments/1085931527537434785/1086205163393527868/image.png' },
-    { party: 78, leaderName: 'Scholz', image: 'https://cdn.discordapp.com/attachments/1085931527537434785/1086205163393527868/image.png' },
-    { party: 79, leaderName: 'Baerbock', image: 'https://cdn.discordapp.com/attachments/1085931527537434785/1086205163393527868/image.png' }];
+    { party: 77, leaderName: 'Laschet', image: 'https://jetsimon.com/cts-media/public/2021DE_CDU／CSULaschet_0.png' },
+    { party: 78, leaderName: 'Scholz', image: 'https://jetsimon.com/cts-media/public/2021DE_CDU／CSULaschet_0.png' },
+    { party: 79, leaderName: 'Baerbock', image: 'https://jetsimon.com/cts-media/public/2021DE_CDU／CSULaschet_0.png' }];
 
     const seats = [102, 117, 29, 25, 5, 16, 50, 16, 73, 155, 36, 9, 38, 18, 28, 19];
     var possibleCoalitions = [];
@@ -572,7 +580,7 @@ e.multiple_endings = true;
   	    }
       	e.header="<h2>“The SPD and Rolf Mützenich are the winners of this night”</h2>"
       	e.pages=[`<p>To the surprise of most pundits, Rolf Mützenich has actually won the election for the SPD and now appears to be on track to be elected chancellor. Considering the polling last year, his performance is widely celebrated, and more than a few party members express relief that he was selected over you. Privately, you think that this was just a winnable election, with how much Baerbock and Laschet screwed up, but oh well - you are happy that the SPD won, too!</p>${fate}` ]
-      	addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1158462672094908539/Bruttosozialprodukt.mp3?ex=651c55f0&is=651b0470&hm=ce97f21a1cd999fc80f374e0e81860fd04cc0c6335176183c5e01fecb6dd69d8&")
+      	addOrReplaceMusic("https://audio.jukehost.co.uk/8k4kcriJbOS2btzHowEZBISx3WgE1bJc")
       	e.image=["https://i.ibb.co/gSnNqXk/image23-cropped.jpg",]
 
       	return construct(0);
@@ -589,7 +597,7 @@ e.multiple_endings = true;
       	e.header="<h2>“As expected, SPD under Mützenich struggles”</h2>"
       	e.pages=[`<p>As was predicted by most pundits, the SPD and Mützenich have lost the election. Still, this is not a bad result for him - he clawed his way back to the top, although it’s clear that the party is bleeding heavily, and something needs to happen to stop it. With the CDU winning yet again, there is little appetite for another Grand coalition, but who knows, these days. Your private feelings are mixed - you are glad that you aren't the face of this defeat, but can't help but wonder if you hadn't been able to win this, to lead your party to a better result.</p>${fate}`]
       	e.image="https://i.ibb.co/LQXKNYr/image12-cropped.jpg"
-      	 addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1131296696001908776/Sportfreunde_Stiller_-_Auf_der_Guten_Seite.mp3?ex=651bb966&is=651a67e6&hm=05e4311bbc23bbcb4103f6d9c2963c6fbcb4b1d177a5151431908f34945f05c4&")
+      	 addOrReplaceMusic("https://audio.jukehost.co.uk/hGMwXNBnesRePjdwANoV2yxx0H16fM2X")
         	return construct(0);
   	}
   }
@@ -1212,7 +1220,7 @@ function endingOneBuilder(){
      if (playerParty.electoral_votes>totalSeats/2){
     	header = "<h2>“Dear viewers, the unbelievable has happened - the SPD under Olaf Scholz has won an absolute majority of seats.”</h2>"
     	text = [`<p>Olaf, what did you do? You have done what even Brandt couldn’t accomplish - you’ve won an absolute majority of seats! After the dire state the party was in just a year ago, this is the most astonishing political development Germany has seen since reunification.</p><p> You’re not a stranger to absolute majorities, winning one yourself in Hamburg in 2011 - so I guess you already know how this is gonna go. Time to pump up the minimum wage to 20€, empower unions to take over the economy, renationalize healthcare, bleed the Bundeswehr dry, oh; and of course, no exit from coal. These workers have to be protected after all. Alternatively, you could of course do nothing like that; instead; you could just contradict your entire program as some might be used to it. With such a mandate, I’m sure no one would mind. </p><p>Some are suspicious at the size of your victory - has the Social Democratic machine flunked the results? Have you used your corrupt contacts inside the financial world to weave the strands of democracy to your liking? Well, should the opposition seek to investigate you, just say you don’t remember anything. Everything else will sort itself out on its own. Just like it did on election night.</p>`]
-    	   	addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1131296719661961257/Terry_Gilkyson__Edgar_Ott_-_Probiers_mal_mit_Gemutlichkeit.mp3?ex=651bb96c&is=651a67ec&hm=8a69262a399dff7988d926cb0052905e1230795d0f335bc3dc10c885d33efbed&")
+    	   	addOrReplaceMusic("https://audio.jukehost.co.uk/9L5oMgqa8ke2MfA4SNAVUCdPJC25R44G")
     	image.push("https://i.ibb.co/q5p57xC/image10-cropped.jpg")
 
 	}
@@ -1220,38 +1228,38 @@ else if ( e.final_overall_results[0].electoral_votes>totalSeats/2){
         if(firstParty.pk===79){
     	header = "<h2>“Dear viewers, Annalena Baerbock stuns the political establishment - she has won an absolute majority of seats.”</h2>"
     	text = [`<p> In 2018, people were already shocked by the first poll showing the Greens leading over the two major parties. Some thought it was just a fluke, just like the post-Fukushima-surge in 2011, while others believed a narrow election win was actually possible, bringing change to Germany. Tonight, Baerbock proved <i>all</i> of them wrong. <p> What transpired this night seemed unbelievable to basically every political pundit - some call it a revolution, others a transformation, and certain people, “fraud”. She won an absolute majority, the first since 1957. Never before has a left-wing party achieved a victory like this in the history of the Federal Republic.</p><p> The naysayers might put into question the validity of the victory, but she doesn't' worry about them: It's time to enact her agenda. Switch off all coal and nuclear power stations, electricity grid stability be damned! A tempo limit of 80 km/h on every German Autobahn! Mandatory Veggie-Days, at least twice a week! The future is Green!</p>`];
-    	addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1131296537377521754/Karel_Gott_-_Die_Biene_Maja.mp3?ex=651bb940&is=651a67c0&hm=b9034e26b051266bdaa97aa09a0d98b591ff6b8b98d6cc4447da17921fe5cc5c&")
+    	addOrReplaceMusic("https://audio.jukehost.co.uk/gY3Cq9J6tViglILSOldH9hAQnL60lq5j")
     	image.push("https://i.ibb.co/vvsvfnN/image18-cropped.jpg")
         }
         if(firstParty.pk===77){
     	header = "<h2>“Dear viewers, it is true, Armin Laschet has delivered an unprecedented landslide victory, with an absolute majority.”</h2>"
     	text = [`<p>As the election results pour in, a sense of shock sets in. Not only have you exceeded Merkel's performance, but you have become the first person since Adenauer in the 1950s to win an absolute majority! <i>Armin Laschet wird Kanzler!</i> What a triumph! The question is, has Germany truly embraced Laschetmania, or has <i>Würfelarmin</i> flunked the dice?</p><p> Throughout his career, he has always been underestimated. Merkel never believed he had the potential to succeed her, Söder challenged him in the spring, and half of the party favored him. They gave him disparaging nicknames, they thought of him as a clown, they ridiculed his father's profession as a miner. But now, he has proved them all wrong.</p>`]
-    	 addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1131296438463254548/Fabian_Merks_-_Armin_Laschet_wird_Kanzler_-_Party-Remix.mp3?ex=651bb929&is=651a67a9&hm=707d5d6a2e7e7dcaca689f6d856eb16e45461d92c28dfd035d2f9c70c2afa456&", true)
+    	 addOrReplaceMusic("https://audio.jukehost.co.uk/1oFSfIiZmh0OdcKh6J5AsBHAMwfl5Kul", true)
         image.push("https://i.ibb.co/6D2mT5P/image32-cropped.jpg")
         }
        if(firstParty.pk===303){
     	header = "<h2>“FDP ascendant - the Liberals win a majority!”</h2>"
     	text = [`<p>This is certainly a first. The <i>FDP</i> of all things somehow managed to capture the hearts of all of Germany, cascading a yellow wave across the country. As Christian Lindner took over the reins of government, every single area of Germany was privatized, including this mod. So unfortunately, that’ll be 5.99€ for each playthrough.<br>Sign here to complete your purchase: ___________</p>`];
-    	addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1131296600258531328/MBSounds_-_EVE_OF_RISE.mp3?ex=651bb94f&is=651a67cf&hm=228c9807b26c9fc73ab1fe950695fdf5ef9d5d6239845d58916c26886bfe0072&")
+    	addOrReplaceMusic("https://audio.jukehost.co.uk/O6qa7t3Wgt20gJk1945pSoLLMpFlymQq")
     	image.push("https://i.ibb.co/p6Hkn7W/image3.jpg")
         }
        if(firstParty.pk===304){
     	header = "<h2>“Die Linke ascendant - Socialists win a majority!”</h2>"
     	text = [`<p>The upper class around the country shudders. The leftist party <i>Die Linke</i>, a 2009 merger from the PDS, the successor of the SED; and the WASG, an SPD-splinter, has somehow managed to capture the hearts of the German people, cascading in a revolutionary wave across the country. <br>“Nobody has the intention of building a wall” - this is what Janine Wissler, newly elected chancellor of Germany, proclaimed. Shortly after, every area of the economy was nationalized, as the wealthy got expropriated, their wealth redistributed. Afterwards, a barrier was built around America, to keep them out of sniffing out other countries' affairs, called the “antifascist protection wall”. With the fervor of an internationalist revolution, dozens of communist enclaves around the world rose up, proclaiming the 6th Socialist Internationale.</p>`];
     	image.push("https://i.ibb.co/kcrcqh5/image2.jpg")
-    	addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1131296360575016980/Auferstanden_Aus_Ruinen_-_Ayden_George_Remix.mp3?ex=651bb916&is=651a6796&hm=086536fba018ee40f50848050c7cd88faf3085eea6ece0b2aaf15eca4940b72e&")
+    	addOrReplaceMusic("https://audio.jukehost.co.uk/vZyUiOw1JF3xtpPnJvxAWE849PX0Tqya")
         }
         if(firstParty.pk===305){
     	header = "<h2>“The AfD ascendant - a dark day for Germany.”</h2>"
     	text = [`<p>„A dictated peace is followed by few blessings, least of all at home. A real national community cannot be based on it. Its first prerequisite is equal law. The government may protect itself against raw excesses of polemics; it may rigorously prevent incitements to acts of violence and acts of violence in and of themselves. This may happen, if it is done toward all sides evenly and impartially, and if one foregoes treating defeated opponents as though they were proscribed. <br>Freedom and life can be taken from us, but not our honor.</p><p>After the persecutions that the Social Democratic Party has suffered recently, no one will reasonably demand or expect that it vote for the Enabling Act proposed here. The elections of March 5 have given the governing parties the majority and thus the possibility of governing in strict adherence to the words and meaning of the constitution. Where such a possibility exists, there is also an obligation to take it. [...]</p><p>Our accomplishments for the reconstruction of the state and the economy, for the liberation of occupied territories, will stand the test of history. We have established equal justice for all and a social labor law. We have helped to create a Germany in which the path to leadership of the state is open not only to princes and barons, but also to men from the working class. You cannot back away from that without relinquishing your own leader. The attempt to turn back the wheel of history will be futile. We Social Democrats know that one cannot undo the facts of power politics with mere legal protests. We see the power-political fact of your present rule. But the people’s sense of justice is also a political power, and we shall not cease to appeal to this sense of justice. </p><p>The Weimar Constitution is not a socialist constitution. But we stand by the principles enshrined in, the principles of a state based on the rule of law, of equal rights, of social justice. In this historic hour, we German Social Democrats solemnly pledge ourselves to the principles of humanity and justice, of freedom and socialism. [...]</p><p>We greet the persecuted and the oppressed. We greet our friends in the Reich. Your steadfastness and loyalty deserve admiration. The courage of your convictions and your unbroken optimism guarantee a brighter future.</p>”Otto Wels “Speech against the Passage of the ‘Enabling Act’” , March 23, 1933`];
     	image.push("https://i.ibb.co/xf22sXC/image1.jpg")
-    	addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1131296642721652917/Otto_Wels_SPD_-_Speech_to_justify_voting_against_the_Ermachtigunsgesetz.mp3?ex=651bb95a&is=651a67da&hm=0c2e4d40a6035916056f3dc69c4459ea829aaf103165dc07c7736cbd8c35f1e1&")
+    	addOrReplaceMusic("https://audio.jukehost.co.uk/ZTJ3XJux2X5gCkCThpNAMWeoiWn1aFcj")
         }
         if(firstParty.pk===306){
     	header = "<h2>“What the fuck is going on here - Alliance of minor parties win a majority”</h2>"
     	text = [`<p>Somehow, the political system has received such an upheaval, that an alliance of colourful parties - the liberal-conservative and decentralist Free Voters, the eccentrically progressive Animal Protection Party, the antivax-activist Die Basis, the satire-party Die PARTEI, the isolationist-libertarian Team Todenhöfer, the left-liberal Pirate Party, the pro-european Volt Germany and other small offshoots has won the election. It’s being headed by Stefan Seidler, a candidate by the SSW, the South-Schleswig-Voter’s Association, the party of the danish minority in Germany. </br>No one knows what the future may bring now. Probably an outlaw of the Spacebar, but that’s just my guess.</p>`];
     	image.push("https://i.ibb.co/5TKY9c6/image4.jpg")
-    	addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1157989645829808178/Alles_neu.mp3?ex=651a9d65&is=65194be5&hm=98e57979797b327076d9a62b078ab70bad6f1ddd5c4ab2f1df127f066a2ea744&")
+    	addOrReplaceMusic("https://audio.jukehost.co.uk/mLH6uqBRwSnXivkdYIFMpjrV1jqTC0zz")
         }
 	}
 	else{
@@ -1290,14 +1298,14 @@ else if ( e.final_overall_results[0].electoral_votes>totalSeats/2){
          	image.push("https://i.ibb.co/5c7ttGQ/image5-cropped.jpg")
          	header = "<h2>“Dear viewers, few would have seen this coming, just months ago. Under Scholz, the SPD truly returns to old strength, handily winning this election.”</h2>"
          	if(playerParty.popular_votes/totalPV>0.27){
-         	 addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1131296719661961257/Terry_Gilkyson__Edgar_Ott_-_Probiers_mal_mit_Gemutlichkeit.mp3?ex=651bb96c&is=651a67ec&hm=8a69262a399dff7988d926cb0052905e1230795d0f335bc3dc10c885d33efbed&")
+         	 addOrReplaceMusic("https://audio.jukehost.co.uk/9L5oMgqa8ke2MfA4SNAVUCdPJC25R44G")
          	 }
          	 else{
          	    if(merkelism>14){
-            addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1157989611839168602/Hildegard_Knef_-_Fur_mich_solls_rote_Rosen_regnen.mp3?ex=651a9d5d&is=65194bdd&hm=f3c844e8f079d6848784704f247e5629b803ec99d01b0f6f6a9089f0152e1ed4&")
+            addOrReplaceMusic("https://audio.jukehost.co.uk/RAvrbxtjkTDNqinu7nQNkFUNXuGPopqF")
         }
         else{
-            addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1157989615114932266/Fur_mich_solls_rote_Rosen_regnen_2012.mp3?ex=651a9d5e&is=65194bde&hm=ae685a730005325481a9e249e99b35b5e4f89dd2985197e1f0f9fec7cf807047&")
+            addOrReplaceMusic("https://audio.jukehost.co.uk/6tLg7339BZDRpvJe2X6k1DcqzEMmdjmG")
 
         }
          	 }
@@ -1308,10 +1316,10 @@ else if ( e.final_overall_results[0].electoral_votes>totalSeats/2){
         	else{
         	image.push("https://i.ibb.co/SP0y77R/image15-cropped.jpg")
         	        if(merkelism>14){
-            addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1157989611839168602/Hildegard_Knef_-_Fur_mich_solls_rote_Rosen_regnen.mp3?ex=651a9d5d&is=65194bdd&hm=f3c844e8f079d6848784704f247e5629b803ec99d01b0f6f6a9089f0152e1ed4&")
+            addOrReplaceMusic("https://audio.jukehost.co.uk/RAvrbxtjkTDNqinu7nQNkFUNXuGPopqF")
         }
         else{
-            addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1157989615114932266/Fur_mich_solls_rote_Rosen_regnen_2012.mp3?ex=651a9d5e&is=65194bde&hm=ae685a730005325481a9e249e99b35b5e4f89dd2985197e1f0f9fec7cf807047&")
+            addOrReplaceMusic("https://audio.jukehost.co.uk/6tLg7339BZDRpvJe2X6k1DcqzEMmdjmG")
 
         }
         	header = "<h2>“Dear viewers, just months ago this seemed improbable, but now we have confirmation - the SPD under Olaf Scholz achieves a solid victory.”</h2>"
@@ -1352,7 +1360,7 @@ else if ( e.final_overall_results[0].electoral_votes>totalSeats/2){
         	else if (playerParty.popular_votes/totalPV<0.205 && playerParty.popular_votes/totalPV>0.18){
         	header = "<h2>“Dear viewers, concerning the SPD, the decline continues. The Vice Chancellor ultimately wasn’t able to turn this around.”</h2>"
         	image.push("https://i.ibb.co/87LYX3r/image20-cropped.jpg")
-        	addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1131296696001908776/Sportfreunde_Stiller_-_Auf_der_Guten_Seite.mp3?ex=651bb966&is=651a67e6&hm=05e4311bbc23bbcb4103f6d9c2963c6fbcb4b1d177a5151431908f34945f05c4&")
+        	addOrReplaceMusic("https://audio.jukehost.co.uk/hGMwXNBnesRePjdwANoV2yxx0H16fM2X")
         	playerPerformance = "You have fought bravely, Mr. Vice Chancellor. You’ve even clawed your way back to second place, something many thought unthinkable at the start of the campaign - nonetheless, the bleeding continues. Slowly, the traditional SPD voter base starts dripping, into a puddle of decline. While the Greens haven’t superseded you yet - you did well to prevent that - the next chancellor will, again, be from the Union. <br>Something has to happen to save the party from further decline. One thing seems clear, even to you - it probably won’t involve Olaf Scholz. You epitomize the old elites, the old, grey, smoky-backroom politics that led the SPD unable to contest the " + firstParty.fields.last_name + ". They’re going to try to form a government - for you, most party members would prefer opposition. At least you hold your ground - come 2025, the SPD will be able to run another chancellor candidate."
         	adjustWeights(10);
         	midResult = true;
@@ -1361,7 +1369,7 @@ else if ( e.final_overall_results[0].electoral_votes>totalSeats/2){
         	else if (playerParty.popular_votes/totalPV<0.18){
         	header = "<h2>“Dear viewers, concerning the SPD, the decline continues. The Vice Chancellor ultimately wasn’t able to turn this around.”</h2>"
         	image.push("https://i.ibb.co/nr2YWjK/image9-cropped.jpg")
-        	addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1131296696001908776/Sportfreunde_Stiller_-_Auf_der_Guten_Seite.mp3?ex=651bb966&is=651a67e6&hm=05e4311bbc23bbcb4103f6d9c2963c6fbcb4b1d177a5151431908f34945f05c4&")
+        	addOrReplaceMusic("https://audio.jukehost.co.uk/hGMwXNBnesRePjdwANoV2yxx0H16fM2X")
         	playerPerformance = "You have fought bravely, Mr. Vice Chancellor. You’ve even clawed your way back to second place, something many thought unthinkable at the start of the campaign - nonetheless, the bleeding continues, and the wounds start to look fatal. Slowly, the traditional SPD voter base starts dripping, into a puddle of disappointment and decline. While the Greens haven’t superseded you yet - you did well to prevent that - Social Democracy seems to experience an identity crisis all across Europe.<br>Something has to happen to save the party from further decline. One thing seems clear, even to you - it probably won’t involve Olaf Scholz. You epitomize the old elites, the old, grey, smoky-backroom politics that led the SPD to such a disappointing finish, falling below 20% for the first time in a century. The " + firstParty.fields.last_name + " will try to form a government now. For you, one thing is clear: Another coalition with the CDU/CSU can't be an option, lest you retread the path of the Parti Socialiste in France."
         	adjustWeights(10);
         	badResult = true;
@@ -1375,7 +1383,7 @@ else if ( e.final_overall_results[0].electoral_votes>totalSeats/2){
         	else {
         	header = "<h2>“Dear viewers, Olaf Scholz has stopped the bleeding for the SPD; but not quite enough for a victory.”</h2>"
         	image.push("https://i.ibb.co/1ZyrCwm/image8-cropped.jpg")
-        	addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1131296696001908776/Sportfreunde_Stiller_-_Auf_der_Guten_Seite.mp3?ex=651bb966&is=651a67e6&hm=05e4311bbc23bbcb4103f6d9c2963c6fbcb4b1d177a5151431908f34945f05c4&")
+        	addOrReplaceMusic("https://audio.jukehost.co.uk/hGMwXNBnesRePjdwANoV2yxx0H16fM2X")
         	playerPerformance = "Once the results come in, neither pundits nor your party quite know what to make of them. The election night party itself is jubilant - you managed to claw your way back to the top, leaving the Greens behind you, reestablishing yourself as the major center-left party of Germany. This feat alone is worthy of praise, as you get a respectable round of applause in the Willy-Brandt-House. On the one hand, you gained votes compared to the last election and performed much better than expected in the spring. On the other, once again, you've been relegated to second place. Overall, this is a defeat - landing in second place, your chances at becoming chancellor seem grim, and a few overzealous colleagues see a wasted opportunity for a major comeback. It is the " + firstParty.fields.last_name + " who has the public mandate to form a government - with your respectable result, you have managed to save face and are able to stand by in case their talks fall through. Nonetheless, maybe reimagining itself as a strong opposition is the final jolt the party needs to come back to life."
         	adjustWeights(5);
         	}
@@ -1383,7 +1391,7 @@ else if ( e.final_overall_results[0].electoral_votes>totalSeats/2){
     	}
     	else if(playerParty===e.final_overall_results[2]){
         	thirdPlace = true;
-        	addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1131296696001908776/Sportfreunde_Stiller_-_Auf_der_Guten_Seite.mp3?ex=651bb966&is=651a67e6&hm=05e4311bbc23bbcb4103f6d9c2963c6fbcb4b1d177a5151431908f34945f05c4&")
+        	addOrReplaceMusic("https://audio.jukehost.co.uk/hGMwXNBnesRePjdwANoV2yxx0H16fM2X")
 
         	if(playerParty.popular_votes/totalPV>0.18){
          	header = "<h2>“Dear viewers, the SPD can not save itself from crisis. The oldest party of Germany seems to be ailing.”</h2>"
@@ -1467,7 +1475,7 @@ else if ( e.final_overall_results[0].electoral_votes>totalSeats/2){
     	}
     	else{
          	text = [`<p>${playerPerformance}</p>`]
-         	addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1157989510353797150/Hannes_Wader_Bella_ciao.mp3?ex=651a9d45&is=65194bc5&hm=e15b27e8184766159ef3c2faf95e43457a05840a7858529ea212a7c419c212c9&")
+         	addOrReplaceMusic("https://audio.jukehost.co.uk/P0SJXIVyd46mrfjSBpMKrUKAmOa7VGDC")
     	}
 	}
 
@@ -1498,16 +1506,16 @@ function endingTwoBuilder(){
 
 	    if(playerLeader===coalitionLeader){
         if(merkelism>14){
-            addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1157989611839168602/Hildegard_Knef_-_Fur_mich_solls_rote_Rosen_regnen.mp3?ex=651a9d5d&is=65194bdd&hm=f3c844e8f079d6848784704f247e5629b803ec99d01b0f6f6a9089f0152e1ed4&")
+            addOrReplaceMusic("https://audio.jukehost.co.uk/RAvrbxtjkTDNqinu7nQNkFUNXuGPopqF")
         }
         else{
-            addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1157989615114932266/Fur_mich_solls_rote_Rosen_regnen_2012.mp3?ex=651a9d5e&is=65194bde&hm=ae685a730005325481a9e249e99b35b5e4f89dd2985197e1f0f9fec7cf807047&")
+            addOrReplaceMusic("https://audio.jukehost.co.uk/6tLg7339BZDRpvJe2X6k1DcqzEMmdjmG")
 
         }
     }
     else {
 
-           addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1131296696001908776/Sportfreunde_Stiller_-_Auf_der_Guten_Seite.mp3?ex=651bb966&is=651a67e6&hm=05e4311bbc23bbcb4103f6d9c2963c6fbcb4b1d177a5151431908f34945f05c4&")
+           addOrReplaceMusic("https://audio.jukehost.co.uk/hGMwXNBnesRePjdwANoV2yxx0H16fM2X")
 
     }
 
@@ -2134,16 +2142,16 @@ if (campaignTrail_temp.question_number === 27) {
     if ([4511, 4510, 4509, 4508].includes(ans)) {
 
 	   if ((leftist - moderate) > 3){
-	        $("#game_window")[0].style.backgroundImage = "url(https://cdn.discordapp.com/attachments/1131296206908301423/1154739431631233115/SPDPLUnten.png)";
+	        $("#game_window")[0].style.backgroundImage = "url(https://jetsimon.com/cts-media/public/2021DE_SPDScholz_0.png)";
             $("#game_window")[0].style.backgroundSize = "cover";
-            $(".game_header")[0].style.backgroundImage = "url(https://media.discordapp.net/attachments/1131296206908301423/1154739431857721394/SPDPLOben.png)";
+            $(".game_header")[0].style.backgroundImage = "url(https://jetsimon.com/cts-media/public/2021DE_SPDScholz_1.png)";
             $(".game_header")[0].style.backgroundSize = "cover";
-            headerImage = "url(https://media.discordapp.net/attachments/1131296206908301423/1154739431857721394/SPDPLOben.png)";
-            $(".container")[0].style.backgroundImage = "url(https://cdn.discordapp.com/attachments/1131296206908301423/1154739432109391912/SPDPLSeiten.png)";
+            headerImage = "url(https://jetsimon.com/cts-media/public/2021DE_SPDScholz_1.png)";
+            $(".container")[0].style.backgroundImage = "url(https://jetsimon.com/cts-media/public/2021DE_SPDScholz_2.png)";
             $(".container")[0].style.backgroundSize = "cover";
-            $("#trackSel")[0].style.backgroundImage = "url(https://cdn.discordapp.com/attachments/1131296206908301423/1154739431631233115/SPDPLUnten.png)";
+            $("#trackSel")[0].style.backgroundImage = "url(https://jetsimon.com/cts-media/public/2021DE_SPDScholz_0.png)";
             $("#trackSel")[0].style.backgroundSize = "cover";
-            $("#timeTracker")[0].style.backgroundImage = "url(https://cdn.discordapp.com/attachments/1131296206908301423/1154739431631233115/SPDPLUnten.png)";
+            $("#timeTracker")[0].style.backgroundImage = "url(https://jetsimon.com/cts-media/public/2021DE_SPDScholz_0.png)";
             $("#timeTracker")[0].style.backgroundSize = "cover";
 	        campaignTrail_temp.questions_json[9]=extraQuestions[2];
 	        coalitions.forEach(coalition => {
@@ -2154,16 +2162,16 @@ if (campaignTrail_temp.question_number === 27) {
 	   }
 	   else if((leftist - moderate) > 1){
 	        campaignTrail_temp.questions_json[9]=extraQuestions[1];
-	        $("#game_window")[0].style.backgroundImage = "url(https://cdn.discordapp.com/attachments/1131296206908301423/1154739811756810281/SPD_Netzwerk_Unten.png)";
+	        $("#game_window")[0].style.backgroundImage = "url(https://jetsimon.com/cts-media/public/2021DE_SPDScholz_3.png)";
             $("#game_window")[0].style.backgroundSize = "cover";
-            $(".game_header")[0].style.backgroundImage = "url(https://cdn.discordapp.com/attachments/1131296206908301423/1154739812050423838/SPD_Netzwerk_Oben.png)";
+            $(".game_header")[0].style.backgroundImage = "url(https://jetsimon.com/cts-media/public/2021DE_SPDScholz_4.png)";
             $(".game_header")[0].style.backgroundSize = "cover";
-            headerImage = "url(https://cdn.discordapp.com/attachments/1131296206908301423/1154739812050423838/SPD_Netzwerk_Oben.png)";
-            $(".container")[0].style.backgroundImage = "url(https://cdn.discordapp.com/attachments/1131296206908301423/1154739812381769799/SPD_Netzwerk_Seiten.png)";
+            headerImage = "url(https://jetsimon.com/cts-media/public/2021DE_SPDScholz_4.png)";
+            $(".container")[0].style.backgroundImage = "url(https://jetsimon.com/cts-media/public/2021DE_SPDScholz_5.png)";
             $(".container")[0].style.backgroundSize = "cover";
-            $("#trackSel")[0].style.backgroundImage = "url(https://cdn.discordapp.com/attachments/1131296206908301423/1154739811756810281/SPD_Netzwerk_Unten.png)";
+            $("#trackSel")[0].style.backgroundImage = "url(https://jetsimon.com/cts-media/public/2021DE_SPDScholz_3.png)";
             $("#trackSel")[0].style.backgroundSize = "cover";
-            $("#timeTracker")[0].style.backgroundImage = "url(https://cdn.discordapp.com/attachments/1131296206908301423/1154739811756810281/SPD_Netzwerk_Unten.png)";
+            $("#timeTracker")[0].style.backgroundImage = "url(https://jetsimon.com/cts-media/public/2021DE_SPDScholz_3.png)";
             $("#timeTracker")[0].style.backgroundSize = "cover";
 
 	        coalitions.forEach(coalition => {
@@ -3390,7 +3398,9 @@ function changeGlobalEffect(affectedCandidate, answer, changeAmount) {
     // Check if the affected candidate and answer fields match the provided values
     if (item.fields.affected_candidate === affectedCandidate && item.fields.answer === answer) {
       // Update the global_multiplier
-      item.fields.global_multiplier += changeAmount;
+	  if (!campaignTrail_temp.player_answers.includes(answer)){
+		item.fields.global_multiplier += changeAmount;
+		}
       found = true;
     }
   });
@@ -3923,7 +3933,7 @@ function seatCalculator() {
 
                 var musicPlayer = document.getElementById('music_player');
                 musicPlayer.remove();
-                addOrReplaceMusic("https://cdn.discordapp.com/attachments/1131296206908301423/1131296495463833741/Hans_Carste__Henning_Lohner_-_ARD_Tagesschau_Theme.mp3")
+                addOrReplaceMusic("https://audio.jukehost.co.uk/u9gOCH9V8R4MkuG2lzvgIUhTBexd6Ceu")
             //give states their seats
             for (var i = 0; i < 16; i++) {
                 e.states_json[i].fields.electoral_votes = seats[i];
@@ -5159,7 +5169,7 @@ HQStyle.innerHTML = `
     }
 
   .happy-box {
-    background-image: url('https://media.discordapp.net/attachments/1109846390575730788/1152285958998343680/Rot.png?width=883&height=662');
+    background-image: url('https://jetsimon.com/cts-media/public/2021DE_SPDScholz_6.png');
     background-size: cover;
     background-position: center center;
     position: relative;
@@ -5208,7 +5218,7 @@ function showAdvisors() {
     advisorsDiv.id = 'advisors';
     advisorsDiv.style.boxShadow = '0 0 15px rgba(0,0,0,0.5)';
     advisorsDiv.style.color = 'white';
-    advisorsDiv.style.backgroundImage = "url('https://media.discordapp.net/attachments/1109846390575730788/1152285958998343680/Rot.png?width=883&height=662')";
+    advisorsDiv.style.backgroundImage = "url('https://jetsimon.com/cts-media/public/2021DE_SPDScholz_6.png')";
     advisorsDiv.style.backgroundSize = 'cover';
 
     // Add header
@@ -6723,16 +6733,16 @@ applyTooltipsToObject(extraQuestions);
 
 campaignTrail_temp.global_parameter_json[0].fields.question_count = 35;
 
-$("#game_window")[0].style.backgroundImage = "url(https://media.discordapp.net/attachments/1131296206908301423/1154739558525718548/SPDSeeheimerUnten.png)";
+$("#game_window")[0].style.backgroundImage = "url(https://jetsimon.com/cts-media/public/2021DE_SPDScholz_7.png)";
 $("#game_window")[0].style.backgroundSize = "cover";
-$(".game_header")[0].style.backgroundImage = "url(https://media.discordapp.net/attachments/1131296206908301423/1154739558806728865/SPDSeeheimerOben.png)";
+$(".game_header")[0].style.backgroundImage = "url(https://jetsimon.com/cts-media/public/2021DE_SPDScholz_8.png)";
 $(".game_header")[0].style.backgroundSize = "cover";
-headerImage = "url(https://media.discordapp.net/attachments/1131296206908301423/1154739558806728865/SPDSeeheimerOben.png)";
-$(".container")[0].style.backgroundImage = "url(https://media.discordapp.net/attachments/1131296206908301423/1154739559091945492/SPDSeeheimerSeiten.png)";
+headerImage = "url(https://jetsimon.com/cts-media/public/2021DE_SPDScholz_8.png)";
+$(".container")[0].style.backgroundImage = "url(https://jetsimon.com/cts-media/public/2021DE_SPDScholz_9.png)";
 $(".container")[0].style.backgroundSize = "cover";
-$("#trackSel")[0].style.backgroundImage = "url(https://media.discordapp.net/attachments/1131296206908301423/1154739558525718548/SPDSeeheimerUnten.png)";
+$("#trackSel")[0].style.backgroundImage = "url(https://jetsimon.com/cts-media/public/2021DE_SPDScholz_7.png)";
 $("#trackSel")[0].style.backgroundSize = "cover";
-$("#timeTracker")[0].style.backgroundImage = "url(https://media.discordapp.net/attachments/1131296206908301423/1154739558525718548/SPDSeeheimerUnten.png)";
+$("#timeTracker")[0].style.backgroundImage = "url(https://jetsimon.com/cts-media/public/2021DE_SPDScholz_7.png)";
 $("#timeTracker")[0].style.backgroundSize = "cover";
 
 function ctsAchievement(achievement, difficultyChecker = true){
