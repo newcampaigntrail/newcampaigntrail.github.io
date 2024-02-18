@@ -1387,7 +1387,7 @@ function divideElectoralVotesProp(e, t) {
         //$("#game_window").html(l)
 
         $("#view_electoral_map").click(function() {
-            _(t)
+            openMap(t)
         })
 
         $("#shining_menu_button").click(() => {
@@ -1825,7 +1825,7 @@ function divideElectoralVotesProp(e, t) {
                         var important_code = setInterval(function() {
                             $("#view_electoral_map").click(function() {
                                 let e = A(return_type = 2);
-                                _(e);
+                                openMap(e);
                             })
                             $("#answer_select_button").click(function() {
                                 var t = $("input:radio[name=game_answers]:checked").val();
@@ -1849,7 +1849,7 @@ function divideElectoralVotesProp(e, t) {
                         var important_code = setInterval(function() {
                             $("#view_electoral_map").click(function() {
                                 let e = A(return_type = 2);
-                                _(e);
+                                openMap(e);
                             })
                             $("#answer_select_button").click(function() {
                                 var t = $("input:radio[name=game_answers]:checked").val();
@@ -2164,7 +2164,7 @@ function divideElectoralVotesProp(e, t) {
         })
     }
 
-    function _(_e) {
+    function openMap(_e) {
         //startTime = performance.now();
         if ($("#main_content_area")[0]) {
             let n = Array.from($("#game_window")[0].children)
