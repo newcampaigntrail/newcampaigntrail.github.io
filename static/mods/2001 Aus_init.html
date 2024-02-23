@@ -1,0 +1,645 @@
+// 2001 AUS CODE 1 - CTS VERSION
+
+campaignTrail_temp.modBoxTheme = {
+  "header_color": "#026B1E",
+  "header_text_color": "#FCFC49",
+  "description_text_color": "#FCFC49",
+  "description_background_color": "#16961C",
+  "main_color": "#13821A",
+  "secondary_color": "#026B1E",
+  "ui_text_color": "#FCFC49"
+}
+
+campaignTrail_temp.achievements = {
+    "The War on Christmas" : {
+        "image" : "https://i.imgur.com/3WKVIiH.png",
+        "description" : "As Howard, send the Tampa to Christmas Island, and win the election.",
+        "cannotBeCheated" : true
+    },
+    "A Line in the Sand" : {
+        "image" : "https://i.imgur.com/7QfJtVY.png",
+        "description" : "As Howard, take a stand against illegal immigration.",
+        "cannotBeCheated" : true
+    },
+    "Well, 100 would have been nice" : {
+        "image" : "https://i.imgur.com/3DVHyAa.png",
+        "description" : "As Howard, win at least 98 seats.",
+        "cannotBeCheated" : true
+    },
+    "Look Who's Come Crawling Back" : {
+        "image" : "https://i.imgur.com/PWKyF3j.png",
+        "description" : "As Howard, win exactly 75 seats.",
+        "cannotBeCheated" : true
+    }
+}
+
+quotes = [
+    `"I thank all of those who weren't born in this country for coming here and making a contribution to Australia. We are the least discriminatory country in the world, in my view." - John Howard`,
+    `"As I write, Kim Beazley has the numbers and the game looks over." - Margo Kingston`,
+    `"When looking for votes, you are looking for votes from everyone, particularly the powerful." - Peter Costello`,
+
+]
+
+selQuote = quotes[Math.round(Math.random()*(quotes.length - 1))]
+corrr = `<h2>THE DOWN UNDER TRAIL, 2001</h2><font id="wittyquote" size="4" color="white"><em>` + selQuote + `</em></font>`
+$("#theme_picker")[0].style.display = "none"
+$("#bottomBar")[0].style.display = "none"
+
+styling = document.createElement("style");
+document.head.appendChild(styling);
+
+
+
+styling = document.createElement("style");
+document.head.appendChild(styling);
+
+styling.innerHTML = `
+#candidate_form h3 {
+    visibility: hidden;
+}
+
+#candidate_form h3::before {
+  content: "Please select your party:";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  visibility: visible;
+}
+
+#candidate_id, #running_mate_id, .person_description_window, .person_button {
+    z-index: 289;
+    position:relative;
+}
+
+#running_mate_form h3 {
+    visibility: hidden;
+}
+
+#running_mate_form h3::before {
+  content: "Please select your party leader:";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  visibility: visible;
+}
+
+#candidate_summary ul li:nth-child(2),
+#candidate_summary ul li:nth-child(3), #running_mate_summary ul li:nth-child(2) {
+    display: none;
+}
+`
+
+let z = new MutationObserver((mutationsList, observer) => {
+    let runningMateSummary = document.querySelector("#running_mate_summary");
+    if (runningMateSummary && runningMateSummary.children[0].children[2].innerHTML != runningMateSummary.children[0].children[2].innerHTML.replaceAll("Home State", "Division")) {
+        runningMateSummary.children[0].children[2].innerHTML = runningMateSummary.children[0].children[2].innerHTML.replaceAll("Home State", "Division");
+    }
+});
+
+
+z.observe(document, { subtree: true, childList: true });
+
+// Initialise custom music
+
+$("#music_player")[0].children[0].style.display="none"
+$("#music_player")[0].children[1].style.display="none"
+
+document.getElementById("modLoadReveal").style.display="none"
+document.getElementById("modloaddiv").style.display="none"
+
+musicBox = document.getElementById("music_player")
+musicBox.style.display=""
+
+var trackSel;
+e = campaignTrail_temp
+e.selectedSoundtrack = 0
+
+toTime = (seconds) => {
+  var date = new Date(null);
+  date.setSeconds(seconds);
+  return date.toISOString().substr(11, 8);
+}
+
+generateTime = () => {
+    // Get the audio element
+    var audio = document.getElementById("campaigntrailmusic");
+
+    timeTracker = document.createElement("div");
+    timeTracker.style = `
+      text-align:left;
+      border-style:solid;
+      border-width:3px;
+      height:150px;
+      width:200px;
+      background-color:#999999;
+      float:right;
+      padding: 10px;
+    `
+    $("#trackSelParent")[0].prepend(timeTracker);
+    $("#trackSelParent")[0].prepend(document.createElement("br"));
+
+    // Create a new element to display the current position of the audio
+    var positionDisplay = document.createElement("gg");
+    positionDisplay.id = "position-display";
+
+    // Create a new slider element to change the time
+    var timeSlider = document.createElement("input");
+    timeSlider.type = "range";
+    timeSlider.min = 0;
+    timeSlider.max = 1;
+    timeSlider.step = 0.001;
+    timeSlider.value = 0;
+    timeSlider.style.width = "200px";
+    timeSlider.id = "time-slider";
+
+    var pausePlay = document.createElement("button");
+    pausePlay.id = "position-display";
+    pausePlay.innerHTML = "<b>Pause</b>"
+    pausePlay.style.width = "100%";
+
+
+    pausePlay.addEventListener("click", event => {
+      event.preventDefault();
+      updatePositionDisplay();
+      let audio = document.getElementById("campaigntrailmusic");
+      if (audio.paused) {
+        audio.play();
+        event.target.innerHTML = "<b>Pause</b>";
+        return;
+      }
+      audio.pause();
+      event.target.innerHTML = "<b>Play</b>";
+      return;
+    })
+
+    var volumeLabel = document.createElement("gg");
+    volumeLabel.id = "volume-label";
+    volumeLabel.innerHTML = "<br><b>Volume: </b>"
+
+    var volumeSlider = document.createElement("input");
+    volumeSlider.type = "range";
+    volumeSlider.min = 0;
+    volumeSlider.max = 1;
+    volumeSlider.step = 0.001;
+    volumeSlider.value = 0;
+    volumeSlider.style.width = "200px";
+    volumeSlider.id = "volume-slider";
+
+    volumeSlider.value = audio.volume;
+
+    timeTracker.appendChild(pausePlay);
+    timeTracker.appendChild(document.createElement("br"));
+    timeTracker.appendChild(document.createElement("br"));
+    timeTracker.appendChild(positionDisplay);
+    timeTracker.appendChild(timeSlider);
+    timeTracker.appendChild(volumeLabel);
+    timeTracker.appendChild(volumeSlider);
+
+    updatePositionDisplay();
+
+    //for (let i = 0; i < 10; i++)
+    //timeTracker.append(document.createElement("br"));
+
+
+    // Function to update the position display
+    function updatePositionDisplay() {
+      positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+      timeSlider.value = audio.duration ? audio.currentTime / audio.duration : 0;
+    }
+
+    // Function to change the time of the audio
+    function changeTime() {
+      positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+      audio.currentTime = timeSlider.value * audio.duration;
+    }
+
+    updateVolume = event => {
+      audio.volume = event.target.value;
+    }
+    
+    // Update the position display and slider every second
+    setInterval(updatePositionDisplay, 1000);
+
+    // Listen for changes to the time slider and change the time of the audio
+    timeSlider.addEventListener("input", changeTime);
+    volumeSlider.addEventListener("input", updateVolume)
+}
+
+function newMusicPlayer() {
+  trackSel = document.createElement("div");
+  trackSel.id = "trackSelParent"
+  let z = `<br><br><br><br><br><br><br><br><br><br><div id='trackSel' style="text-align:left;border-style:solid;border-width:3px;overflow-y: scroll;overflow-x: hidden;height:200px; width:400px;background-color:#999999;float:right;">`
+  z += `<b><select id='selectSoundtrack'><option value='`+soundtracks[e.selectedSoundtrack].name+`'>`+soundtracks[e.selectedSoundtrack].name+"</option>"
+  for (i in soundtracks) {
+    if (soundtracks[e.selectedSoundtrack] != soundtracks[i]) {
+      z += `<option value='`+soundtracks[i].name+`'>`+soundtracks[i].name+`</option>`
+    }
+  }
+  z += `</select></b><br><br>`
+  // <label><input type="radio" name="option" value="option1">Option 1</label><br>
+  for (i in soundtracks[e.selectedSoundtrack].tracklist) {
+    let a = soundtracks[e.selectedSoundtrack].tracklist[i]
+    let b = `<label><input class="trackSelector" type="radio" name="trackSelector" value="`+i+`">`+a.name+`</label><br>`
+    z += b
+  }
+  z += "</div><br><br>"
+  trackSel.innerHTML = z
+
+  // select correct song
+
+  musicBox.appendChild(trackSel);
+  Array.from(document.getElementById("trackSel").children).filter(f=>{
+    return f.tagName == "LABEL"
+  }).map(f=>f.children[0])[0].checked = true
+
+  // set soundtrack changer
+
+  soundtrackSelector = document.getElementById("selectSoundtrack")
+  soundtrackSelector.onchange = function() {
+    for (i in soundtracks) {
+      if (soundtracks[i].name == soundtrackSelector.value) {
+        e.selectedSoundtrack = i
+        break
+      }
+    }
+    document.getElementById("trackSelParent").remove()
+    newMusicPlayer()
+  }
+
+  var matches = document.querySelectorAll('.trackSelector');
+
+  for (match in matches) {
+    matches[match].onchange = function() {
+      audio = $("#campaigntrailmusic")[0];
+      audio.src = soundtracks[e.selectedSoundtrack].tracklist[this.value].url
+      audio.currentTime = 0
+    }
+  }
+
+  musicBox.children[2].loop = false
+  musicBox.children[2].src = soundtracks[e.selectedSoundtrack].tracklist[0].url
+
+  musicBox.children[2].onended = function() {
+    console.log("next track")
+    let selected = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+    let newSel = clamp(selected+1, soundtracks[e.selectedSoundtrack].tracklist.length-1, 0)
+    let buttons = Array.from(document.getElementById("trackSel").children).filter(f=>{
+      return f.tagName == "LABEL"
+    }).map(f=>f.children[0])
+    //let selectedIndex = buttons.map(f=>f.children[0]).map(f=>f.checked)
+    buttons[newSel].click()
+  }
+
+  for (w = 0; w < 7; w++) {
+    document.getElementById("trackSelParent").appendChild(document.createElement("br"))
+  }
+  
+  generateTime();
+}
+
+clamp = function(a, max, min, overflow=true) {
+  if (overflow) {
+    return a > max ? min : a < min ? max : a;
+  }
+  return a > max ? max : a < min ? min : a;
+}
+
+// Track list
+
+var soundtracks = {
+  0: {
+    name: "Millennium Radio",
+    tracklist: [
+      {
+        "name": "Kylie Minogue - Spinning Around",
+        "url": "https://audio.jukehost.co.uk/WDfNSJ8wLOeez0nLhdC4505AlBhqArqt"
+      },
+      {
+        "name": "Madison Avenue - Don't Call Me Baby",
+        "url": "https://audio.jukehost.co.uk/rFawLFwtlws8KFip8PBJII0Q6TDvnuLx"
+      },
+      {
+        "name": "Bardot - Poison",
+        "url": "https://audio.jukehost.co.uk/F90rjYKtIJDhsHZPqquk1wENypfeJJIT"
+      },
+      {
+        "name": "Scandal'us - Me, Myself & I",
+        "url": "https://audio.jukehost.co.uk/JHBxnvJgQreHGIg2ZfLVrABYPuMAVSdp"
+      },
+      {
+        "name": "Kylie Minogue - Can't Get You Out Of My Head",
+        "url": "https://audio.jukehost.co.uk/KntusGgpclVUEG4znjBP5VdE6iZQpBX6"
+      },
+      {
+        "name": "Killing Heidi - Mascara",
+        "url": "https://audio.jukehost.co.uk/X4iFf7rcQPWViIko3gfA1SIDC0ryxZAK"
+      },
+      {
+        "name": "Chris Franklin - Bloke",
+        "url": "https://audio.jukehost.co.uk/VgENwKRHYYErVOSynUG6GdUPtV2qS0j7"
+      }
+    ]
+  },
+  1: {
+    name: "Classic Aussie Tunes",
+    tracklist: [
+      {
+        "name": "Midnight Oil - Beds Are Burning",
+        "url": "https://audio.jukehost.co.uk/SZXKvlhXkSm9xCdb698HINzhMSzXiDS5"
+      },
+      {
+        "name": "Icehouse - Great Southern Land",
+        "url": "https://audio.jukehost.co.uk/tQNsileQwx4exOg0bLSBhebMc8tDqK09"
+      },
+      {
+        "name": "Men At Work - Down Under",
+        "url": "https://audio.jukehost.co.uk/9bF39bLMrusVpuC9qaaMasRI1ZjYcE8K"
+      },
+      {
+        "name": "Kylie Minogue - I Should Be So Lucky",
+        "url": "https://audio.jukehost.co.uk/arim19B9AhLWWrSha8chTwsapUeMoULI"
+      },
+      {
+        "name": "John Farnham - You're The Voice",
+        "url": "https://audio.jukehost.co.uk/xxNnGRFybVyfKe515Tnyg1x2U97XfklW"
+      },
+//      {
+//        "name": "AC/DC - It's A Long Way To The Top (If You Wanna Rock 'N' Roll)",
+//        "url": "https://audio.jukehost.co.uk/ehlJAxWwY6B80eSmtUfaQA0I9OROto7C"
+//      },
+      {
+        "name": "AC/DC - Highway To Hell",
+        "url": "https://audio.jukehost.co.uk/Rb7tsCl01WKJrUeL9OM0LRi5jtAQtJ6b"
+      }	  
+    ]
+  }
+}
+
+// Set up new music player
+
+newMusicPlayer()
+
+
+e = campaignTrail_temp
+
+campaignTrail_temp.election_json = [
+  {
+    "model": "campaign_trail.election",
+    "pk": 20,
+    "fields": {
+      "year": 2001,
+      "summary": "<p><div style='overflow-y:scroll;height:200px;'>Opposition Leader Kim Beazley challenges Prime Minister John Howard for a second time in a rematch of the 1998 election.</p><ul><li>The Liberal National Coalition lead by Prime Minister John Howard is lagging behind in the polls and will need to defend the past 5 years of their Government.</li><li>The Australian Labor Party under Kim Beazley need to go on the attack against John Howard if they want to form a government. As they are currently ahead in the polls, they need to use this to their advantage.</li></ul><p>Both parties need to appeal to voters on issues such as high gas prices, Ansett Australia, taxes, jobs and national security.</div><p>",
+	  "image_url": "https://i.imgur.com/Ym6aZUf.png",
+      "winning_electoral_vote_number": 76,
+      "advisor_url": "https://i.imgur.com/eqoljri.png",
+      "recommended_reading": "",
+      "has_visits": 1,
+      "no_electoral_majority_image": "https://www.oxfam.org.au/wp-content/uploads/2022/04/HouseOfRepsBannerfeature.jpeg"
+    }
+  }
+]
+campaignTrail_temp.candidate_json = [
+  {
+    "model": "campaign_trail.candidate",
+    "pk": 200,
+    "fields": {
+      "first_name": "Liberal/National Coalition - ",
+      "last_name": "L／NP", // special character ／ because you can't have a / in a filename
+      "election": 20,
+      "party": "Liberal",
+      "state": "Canberra",
+      "priority": 1,
+      "description": "<p>The Liberal Party and National Party make up the current governing Coalition of Australia. In 1996, they won a landslide against the incumbent Labor Government which had led Australia since 1983. In 1998, they managed to win against Labor under Kim Beazley, but suffered losses from their 1996 majority. Now, Beazley and Labor are back and are looking to win. At the current time, the Labor Party is ahead in the polls as the Coalition is in disarray. The Coalition will need to shore up their main base and sway undecided voters on important key issues.<p/><p>With John Howard as their leader, the Coalition is sure to get their campaign message out there of strong and principled leadership to lead the nation into the new Millenium.<p/>",
+      "color_hex": "#0055A5", // party logo colour
+      "secondary_color_hex": "#0055A5",
+//      "color_hex": "#000065", //matching the banner
+//      "secondary_color_hex": "#000065",
+      "is_active": 1,
+      "image_url": "https://i.imgur.com/gq90EO2.png",
+      "electoral_victory_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+      "electoral_loss_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+      "no_electoral_majority_message": "<h3>the ending codes broke</h3><p>sorry uwu</p>",
+      "description_as_running_mate": "'",
+      "candidate_score": 1
+    }
+  },
+  {
+    "model": "campaign_trail.candidate",
+    "pk": 201,
+    "fields": {
+      "first_name": "Australian Labor Party - ",
+      "last_name": "ALP",
+      "election": 20,
+      "party": "Labor",
+      "state": "Canberra",
+      "priority": 2,
+      "description": "<p>NOT CURRENTLY PLAYABLE<p/><p>In 1996, Labor suffered their worst loss yet of the 90's, obtaining only 49 seats under Paul Keating. In 1998, they came back, but still lost with a gain of 18 seats. 3 years later, Labor is back at it again with Opposition Leader and party leader, Kim Beazley. After Labor’s loss in 1998, it seems that they can try to redeem themselves once again with the dissastisfaction of the Coalition. With dissastisfaction in the minds of Australian voters, Labor has taken an early lead in the polls against the Coalition, but soon, that could all change. Labor will need to remind the Australian People of the dissatisfaction of the Coalition and will need to also shore up their core voters and undecided voters.<p/><p>The party will need to focus on its main efforts in its campaign promises.<p/> <p>Will Labor manage to form a Majority? Or will the Liberals stop them in their path.<p/>",
+      "color_hex": "#E34F49", // party logo colour
+      "secondary_color_hex": "#E34F49",
+//      "color_hex": "#7F0000", //matching the banner
+//      "secondary_color_hex": "#7F0000",
+      "is_active": 1,
+      "image_url": "https://i.imgur.com/tyrkrWp.png",
+      "electoral_victory_message": "<h3>Congratulations! You've won the 2001 Federal Election!</h3><p>Christ above! You managed to win against the apparent terror that was John Howard and the Coalition forces. Everyone underestimated you, but you proved them wrong.</p><p> Prime Minister John Howard calls to concede and wishes you well in your first term. Speaking of first term, there is alot on your plate to deal with. You'll have to help the United States and the UK in their efforts to deal with the War on Terror, deal with issues at home as well such as taxes and the high gas prices. If all goes well, 2004 with be a breaze. Speaking of 2004, you'll probably have to deal with Peter Costello as Opposition Leader. </p><p> Good Luck, Prime Minister Beazley, you're gonna need it. </p> ",
+      "electoral_loss_message": "<h3>Sorry! You've lost the 2001 Federal Election!</h3><p>Wow. This is a huge blow to Labor and you now.  Core supporters are very upset that Labor hasn't managed to snatch the victory from the Coalition. With winning in the debates to early leads in the polls, pundits thought you would win, even the worm on Channel 9 went with you, but unfortunatly, the charm couldn't be transferred to the polls for the election.</p><p>You call Prime Minister Howard and congratulate him in his win, for a second time. You think back on what you have done wrong and what you could have done better. Unfortunately, Labor will be moving on to a new leader to lead the party in 2004. Simon Crean, the member for Hotham and your Parties Deputy Leader, is eyeing the Labor Party leadership.<p/><p>As of now, you still have your seat of Brand in Western Australia. You'll still be apart of the Opposition, but maybe a position in the shadow cabinet isn't out of the question, or a 3rd time being leader of the Labor Party...</p>",
+      "no_electoral_majority_message": "<h3>The Endings Have Broken!</h3><p>Contact the mod author to have this fixed.</p>",
+      "description_as_running_mate": "'",
+      "candidate_score": 1
+    }
+  },
+  {
+    "model": "campaign_trail.candidate",
+    "pk": 202,
+    "fields": {
+      "first_name": "Australian Democrats - ",
+      "last_name": "AD",
+      "election": 20,
+      "party": "Democrats",
+      "state": "Canberra",
+      "priority": 3,
+      "description": "'",
+      "color_hex": "#FCD666", // party logo colour
+//      "color_hex": "#DCD472", // original colour
+      "secondary_color_hex": "#FCD666",
+      "is_active": 0,
+      "image_url": "'",
+      "electoral_victory_message": "'",
+      "electoral_loss_message": "'",
+      "no_electoral_majority_message": "'",
+      "description_as_running_mate": "'",
+      "candidate_score": 1
+    }
+  },
+  {
+    "model": "campaign_trail.candidate",
+    "pk": 203,
+    "fields": {
+      "first_name": "Independents - ",
+      "last_name": "IND",
+      "election": 20,
+      "party": "Green",
+      "state": "Canberra",
+      "priority": 4,
+      "description": "'",
+      "color_hex": "#AAAAAA",
+      "secondary_color_hex": "#AAAAAA",
+      "is_active": 0,
+      "image_url": "'",
+      "electoral_victory_message": "'",
+      "electoral_loss_message": "'",
+      "no_electoral_majority_message": "'",
+      "description_as_running_mate": "'",
+      "candidate_score": 1
+    }
+  },
+  {
+    "model": "campaign_trail.candidate",
+    "pk": 204,
+    "fields": {
+      "first_name": "John",
+      "last_name": "Howard",
+      "election": 20,
+      "party": "Liberal",
+      "state": "Bennelong, New South Wales",
+      "priority": 5,
+      "description": "'",
+      "color_hex": "#FF0000",
+      "secondary_color_hex": "#FFA0A0",
+      "is_active": 0,
+      "image_url": "https://i.imgur.com/cQuDYgD.png", 
+      "electoral_victory_message": "'",
+      "electoral_loss_message": "'",
+      "no_electoral_majority_message": "'",
+      "description_as_running_mate": "<p>Once written off as a failure, John Howard has risen from the ashes of his near-dead political career. Howard's first stint as Liberal leader from 1985-9 was unsuccessful, but when Alexander Downer resigned in 1995 he got a second chance. With a landslide win against Paul Keating in 1996, Howard finally achieved his dream: Prime Minister.</p><p>Howard narrowly won a second term in 1998, losing the Two Party Preferred and Popular Vote by narrow margins, but obtaining 80 seats, a loss of 14. The Coalition throughout its first and second term has been broadly popular at times. Now, things are not going so well for Mr. Howard as his party is projected to lose the next election.<p/> <p>Due to voter dissatisfaction with Howard's economic reforms and a broken election promise not to implement GST, the Liberals are behind the Labor Party in the polls, but this can change. To secure a third term, Howard will need to shore up his base and energize support in rural areas. But it will take a lot to turn this around.<p/>",
+      "candidate_score": 0
+    }
+  },
+  {
+    "model": "campaign_trail.candidate",
+    "pk": 209,
+    "fields": {
+      "first_name": "Kim",
+      "last_name": "Beazley",
+      "election": 20,
+      "party": "Labor",
+      "state": "Brand, Western Australia",
+      "priority": 9,
+      "description": "'",
+      "color_hex": "#0000FF",
+      "secondary_color_hex": "#90C0FF",
+      "is_active": 0,
+      "image_url": "https://i.imgur.com/hWkqdxZ.png",
+      "electoral_victory_message": "'",
+      "electoral_loss_message": "'",
+      "no_electoral_majority_message": "'",
+      "description_as_running_mate": "<p>NOT CURRENTLY PLAYABLE<p/><p>Kim Beazley is back at it again as the leader of the Labor Party and the Opposition Leader. Kim Beazley sets the stage once again to try and win the 2001 election after the bitter loss in 1998. Beazley is widely known as serving as Minister for Defense, Transport and Communication, and Aviation under the Hawke Government and having the portfolio's of Minister for Finance, Employment and Education, and Deputy Prime Minister under the Keating Government, which saw a major loss in 1996. Fortunately, Labor is ahead in the polls due to the Coalitions dissatisfaction over some skepital legistaion that passed. Beazley and Labor will need to sore up to their main core base and undecided voters.<p/><p>Will Kim Beazley and the Labor Party manage to form a majority in Parliament? Or will the Liberal Party stop Beazley and the Labor Party to form Majority.<p/>",
+      "candidate_score": 0
+    }
+  }
+]
+campaignTrail_temp.running_mate_json = [
+  {
+    "model": "campaign_trail.running_mate",
+    "pk": 9980,
+    "fields": {
+      "candidate": 201,
+      "running_mate": 209
+    }
+  },
+  {
+      "model": "campaign_trail.running_mate",
+      "pk": 9980,
+      "fields": {
+        "candidate": 200,
+        "running_mate": 204
+      }
+    }
+]
+campaignTrail_temp.opponents_default_json = [
+  {
+    "election": 20,
+    "candidates": [
+      200,
+      201,
+      202,
+      203
+    ]
+  }
+]
+campaignTrail_temp.opponents_weighted_json = [
+  {
+    "election": 20,
+    "candidates": [
+      200,
+      201,
+      202,
+      203
+    ]
+  }
+] 
+e.global_parameter_json = [
+  {
+      "model": "campaign_trail.global_parameter",
+      "pk": 1,
+      "fields": {
+        "vote_variable": 1.125,
+        "max_swing": 0.20,
+        "start_point": 1,
+        "candidate_issue_weight": 10,
+        "running_mate_issue_weight": 3,
+        "issue_stance_1_max": -0.71,
+        "issue_stance_2_max": -0.3,
+        "issue_stance_3_max": -0.125,
+        "issue_stance_4_max": 0.125,
+        "issue_stance_5_max": 0.3,
+        "issue_stance_6_max": 0.71,
+        "global_variance": 0.0,
+        "state_variance": 0.00,
+//        "global_variance": 0.01,
+//        "state_variance": 0.005,
+        "question_count": 24,
+        "default_map_color_hex": "#C9C9C9",
+        "no_state_map_color_hex": "#999999"
+      }
+    }
+  ]
+//e.candidate_dropout_json = JSON.parse("[{\"model\": \"campaign_trail.candidate_dropout\", \"pk\": 1, \"fields\": {\"candidate\": 36, \"affected_candidate\": 18, \"probability\": 1.0}}]"); // this is probably unnneeded
+e.temp_election_list = [
+  {
+    "id": 20,
+    "year": 2016,
+    "is_premium": 0,
+    "display_year": "2001Aus"
+  }
+]
+//campaignTrail_temp.credits = 'SergeantAnderson#9811, along with the help of DecstarG#4326, Rubix#4197 and Killeritch'
+
+e.credits = "<button onclick='credits()'>Various people</button>";
+  
+credits = function() {
+    credits = ["LEAD DEVELOPER", "SergeantAnderson", "", "WRITING", "SergeantAnderson", "Killeritch", "", "CODE", "Killeritch", "DecstarG", "SergeantAnderson", "simonjet", "Rubix", "CatBox", "", "MAP", "DecstarG"]
+    text = "CREDITS:\n\n"
+    for (i in credits) {
+        text += credits[i] + "\n"
+    }
+    alert(text)
+}
+
+document.getElementById("header").src = "https://i.imgur.com/6qDm0Gy.png"
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#010a1c"
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#013766"
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+$(".container")[0].style.backgroundColor = "#BD0000"
+document.body.background = "https://digital.collections.slsa.sa.gov.au/assets/display/38943-max?u=2022-04-14+10%3A30%3A58" 
+        HistHexcolour=["#0055A5","#E34F49","#AAAAAA","#FCD666"]; // party logo colours
+//        HistHexcolour=["#000065","#7F0000","#AAAAAA","#DCD472"]; //matching banner
+        HistName=[" Liberal/National Coalition - L/NP"," Australian Labor Party - ALP"," Independents - IND"," Australian Democrats - AD"];
+        HistEV=[82,65,3,0];
+        HistPV=["4,934,959","4,341,420","1,577,498","620,197"];
+        HistPVP=["42.9%","37.8%","13.7%","5.4%"];
+
+
