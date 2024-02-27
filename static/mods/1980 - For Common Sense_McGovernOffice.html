@@ -11844,15 +11844,11 @@ endingPicker = (out, totv, aa, quickstats) => {
   e.pages = ["<p></p>",
          	"<p></p>"]
   */
-  if ((e.player_answers.includes(4173) || e.player_answers.includes(4171) || e.player_answers.includes(16433)) && out == "win") {
-	unlockAchievement("A Win-Win Scenario");
-	}
   // NOT NORMAL ENDINGS
 if ((quickstats[2] < aa[0].popular_votes) && quickstats[1] > 38.99 && quickstats[1] < 40) { 
 	e.header = "<h2><em>Vote Your Conscience</em></h2>"
 	e.pages = ["<p>The first thing I noticed about George McGovern was his penchant for looking to the top-right corner of the room as he thought of the word he wanted to use. Once you get to know him, you start to pick up on his little tics and mannerisms. When he's about to say something he believes to be witty or snarky, his eyebrows preemptively raise and a smile tugs against the rounded corners of his cheeks. When I met him, McGovern was not making any sort of face. His mouth sagged, but didn't frown. He was looking at me, but he wasn't seeing me. He was making a non-face. In two days time, he'd be grinning and shaking hands- campaigning- yet again, though this time not for any office.</p><p>He said nothing while waiting for me to begin the interview. He would fold his hands over his lap, look around the room for any excitement, unfold his hands to scratch at his nose, refold them again, and the cycle would continue. I did not sense impatience, but I figured it was probably time to begin.</p>", "<p><q>What is Americans for Common Sense?</q> I ventured. I didn't feel the need to do any introductions. This was the main event.<br><br><q>We are an organization that seeks to meet head-on the dangerous marriage of political zealots and religious extremists who impose their beliefs on America.</q> McGovern stated matter of factly, offering no more information than what he deemed necessary.<br><br><q>Why common sense?</q> I countered.<br><br><q>I believe it's something sorely needed. The single-issue interest groups are distorting the conversation mak-</q><br><br><q>And how is this different from organizations like, say, NCPAC?</q> I interrupted.</p>", "<p>McGovern's mouth stopped moving as soon as mine moved. When I finished, he concluded his thought by using my question, <q>A group like NCPAC or Young Americans for Freedom blatantly seek to distort the conversation through misdirection, exaggeration, and narrowing discussion onto one topic where they feel confident they can win. The goal of Americans for Common Sense is to speak the truth and to give candidates an ally against these super-groups</q><br><br><q>Candidates like yourself last year?</q><br><br>A slight smile indicative of recollecting a bygone time, <q>I suppose you could say that, yes.</q><br><br><q>I understand your time is focused on this organization you've founded, but the burning question, to me at least, is if 1980 was the last chance for people to vote for you?</q></p>", "<p>The question made him pause, and off went his eyes to the right-hand corner of the room, as if there was a thesaurus for him to refer to. <q>We are probably ten to twelve years behind where the conservatives are. My focus at this time is on finding coordinators for every state, full-time organizers in the big cities, and to build a million person strong mailing list.</q> He paused for a second, but only a second, as he loaded his zinger, <q>Those are the only votes I'm looking for at this time.</q><br><br>I grinned, enjoying our rapport, <q>That sounds like a non-answer.</q> He offered only a shrug. <q>Let me put it this way,</q> I continued, <q>which state is your top priority right now?</q><br><br>Up went his eyebrows and on crept the smile, <q>Iowa.</q><br><br>Hank Dylan in <em>Rolling Stone</em> magazine. For Common Sense published 2/25/81.</p>"]
 	e.image = "https://i.imgur.com/ZfyH9EP.png";
-	unlockAchievement("Vote Your Conscience");
 	return construct(0);
   }
 	
@@ -11896,13 +11892,6 @@ getResults = function (out, totv, aa, quickstats) {
 	let stateResult6 = campaignTrail_temp.final_state_results.find((x) => x.state == 15794);
 	let stateResult7 = campaignTrail_temp.final_state_results.find((x) => x.state == 15764);
 	
-    if(stateResult.result[0].candidate == 133) {
-        unlockAchievement("The New Two Party System");
-    }
-	
-	if(stateResult1.result[0].candidate == 131 && stateResult2.result[0].candidate == 131 && stateResult3.result[0].candidate == 131 && stateResult4.result[0].candidate == 131 && stateResult5.result[0].candidate == 131 && stateResult6.result[0].candidate == 131 && stateResult7.result[0].candidate == 131) {
-        unlockAchievement("Fantastical Data");
-    }
 }
 
 
