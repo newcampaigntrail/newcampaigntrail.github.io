@@ -1,0 +1,1109 @@
+RecReading=true
+
+
+campaignTrail_temp.global_parameter_json = [
+    {
+        "model": "campaign_trail.global_parameter",
+        "pk": 1,
+        "fields": {
+            "vote_variable": 1.125,
+            "max_swing": 0.12,
+            "start_point": 0.94,
+            "candidate_issue_weight": 10,
+            "running_mate_issue_weight": 3,
+            "issue_stance_1_max": -0.71,
+            "issue_stance_2_max": -0.3,
+            "issue_stance_3_max": -0.125,
+            "issue_stance_4_max": 0.125,
+            "issue_stance_5_max": 0.3,
+            "issue_stance_6_max": 0.71,
+            "global_variance": 0.01,
+            "state_variance": 0.005,
+            "question_count": 31,
+            "default_map_color_hex": "#C9C9C9",
+            "no_state_map_color_hex": "#999999"
+        }
+    }
+]
+
+campaignTrail_temp.election_json = [
+    {
+        "model": "campaign_trail.election",
+        "pk": 20,
+        "fields": {
+            "year": 2024,
+            "display_year": "ROC 2024",
+            "summary": "<div style='overflow-y:scroll;height:200px;'><p>The 16th Presidential Election of the Republic of China (Taiwan) will be held on January 13, 2024.</p>In 2020, the huge victory of the current Democratic Progressive Party (DPP) government brought President Tsai Ing-wen to the peak of her popularity and a wave of low morale for the Kuomintang (KMT). President Tsai successfully won re-election with 8.17 million votes, defeating Han Kuo-yu. However, in the 2022 local elections, the DPP suffered an unprecedented defeat, attributed to incompetence and misconduct in DPP's local governance. With the “8-year curse” looming, it appears the DPP government is destined to fall in 2024. Following the local elections, Hou You-yi, a strong candidate seen as capable of reclaiming the presidential seat lost by the KMT for eight years, temporarily exceeded the current Vice President Lai Ching-te's approval ratings.<p>But, this election presents more intricate and changing situations: former Taipei Mayor and Taiwan People's Party Chairman Ko Wen-je also harbors expectations for the presidency, advocating for rationality, practicality, and science, with substantial support from the youth. Additionally, Terry Gou, former chairman of Hon Hai Precision Industry Co., Ltd., and Taiwanese tycoon, seems inclined to compete for the KMT's presidential nomination. There are even rumors of Han Kuo-yu re-entering the presidential race. It seems that the election year of 2023 is destined to be turbulent. The relationship between the United States and China, as well as the decisions of Taiwan's 23 million inhabitants, will forever influence the future of this island. In the midst of the enormous storm in the Taiwan Strait and across the Pacific, how will the beautiful island of Formosa navigate through it? Only time will tell.</p></div>",
+            "image_url": "https://i.imgur.com/InseU2v.png",
+            "winning_electoral_vote_number": 22,
+            "advisor_url": "https://i.imgur.com/7Q4MLfL.jpeg",
+            "recommended_reading": "<b>Thank you for playing ROC2024! It took me about a month to create it, and I sincerely appreciate everyone who helped me and the creators of the jet tools. Regarding achievements, there seems to be some bugs, so even if you've completed them, you may not unlock them. I encountered many issues during testing myself. If repeated attempts and achievements don't work, I suggest you provide feedback on my Reddit, and I'll check the code. At least, you can treat the achievements system as a game goal to strive for!</b><p><b>感谢您游玩ROC2024！我花费了大概一个月的时间来创建它，并由衷感谢所有提供我帮助的人，以及我从其他一些mod抄来的代码，我非常感谢所有人和jet工具的制作者。关于成就，由于似乎存在一定的bug，你可能明明完成了它，但却无法解锁成就，我自己在测试中也遇到了很多。如果反复尝试和达成都不行，我建议你可以在我的reddit中反馈，我会检查代码。至少，你可以将成就系统中的项目当做一个游戏目标而进行游戏！ </b></p>",
+            "has_visits": 1,
+            "no_electoral_majority_image": "",
+            "site_description": "<div style='overflow-y:scroll;height:auto;'><p>The 16th Presidential Election of the Republic of China (Taiwan) will be held on January 13, 2024.</p>In 2020, the huge victory of the current Democratic Progressive Party (DPP) government brought President Tsai Ing-wen to the peak of her popularity and a wave of low morale for the Kuomintang (KMT). President Tsai successfully won re-election with 8.17 million votes, defeating Han Kuo-yu. However, in the 2022 local elections, the DPP suffered an unprecedented defeat, attributed to incompetence and misconduct in DPP's local governance. With the “8-year curse” looming, it appears the DPP government is destined to fall in 2024. Following the local elections, Hou You-yi, a strong candidate seen as capable of reclaiming the presidential seat lost by the KMT for eight years, temporarily exceeded the current Vice President Lai Ching-te's approval ratings.</p><p>But, this election presents more intricate and changing situations: former Taipei Mayor and Taiwan People's Party Chairman Ko Wen-je also harbors expectations for the presidency, advocating for rationality, practicality, and science, with substantial support from the youth. Additionally, Terry Gou, former chairman of Hon Hai Precision Industry Co., Ltd., and Taiwanese tycoon, seems inclined to compete for the KMT's presidential nomination. There are even rumors of Han Kuo-yu re-entering the presidential race. It seems that the election year of 2023 is destined to be turbulent. The relationship between the United States and China, as well as the decisions of Taiwan's 23 million inhabitants, will forever influence the future of this island. In the midst of the enormous storm in the Taiwan Strait and across the Pacific, how will the beautiful island of Formosa navigate through it? Only time will tell.</p></div>"
+        }
+    }
+]
+
+campaignTrail_temp.temp_election_list = [
+    {
+        "id": 20,
+        "year": 2024,
+        "is_premium": 0,
+        "display_year": "ROC 2024"
+    }
+]
+e.collect_results = true;
+function changeOpponentSelectionDescription() {
+    try {
+      const opponentSelectionDescription = document.getElementById("opponent_selection_description_window");
+      opponentSelectionDescription.innerHTML = `<p><strong>Use the default method of deciding the winner in the ROC presidential election.</strong></p><p>In the ROC presidential election, the candidate who receives votes more than any other opponents is elected president. Regardless of the majority, you just need to have the most to win. For example, in the historical result of this election, Lai Ching-te won 40.05 percent of the vote, beating Hou You-yi, who won only 33.49 percent of the vote. </p>`;
+    } catch {}
+  }
+  window.setInterval(changeOpponentSelectionDescription,200)
+
+campaignTrail_temp.credits = "Phone_Tall(Soyorin) and thanks for the some codes from others"
+
+campaignTrail_temp.candidate_json = [
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 67,
+        "fields": {
+            "first_name": "",
+            "last_name": "Lai Ching-te",
+            "election": 20,
+            "party": "Democratic Progressive Party",
+            "state": "New Taipei City(Taipei County)",
+            "priority": 1,
+            "description": "<div style='overflow-y:scroll;height:200px;'><p>Lai Ching-te, born in 1957, hails from Wanli Township, Taipei County, which is now Wanli District in New Taipei City, located in northern Taiwan. He has held various positions, including National Assembly representative, legislator, mayor of Tainan City, Premier of the Executive Yuan, and Vice President, making him one of the most seasoned politicians in the Democratic Progressive Party (DPP). In 2019, Lai Ching-te competed with President Tsai Ing-wen for the DPP's presidential candidacy. As the leader of the \"New Tide\" faction, his struggle with Tsai Ing-wen weakened the internal unity of the DPP and revealed rifts between the two. Nevertheless, Tsai Ing-wen chose him as her running mate to reunite the party. The Tsai-Lai ticket received a record-breaking 8.17 million votes in the 2020 elections, surpassing the 7.65 million votes obtained by President Ma Ying-jeou in 2008.</p>\n\n<p>However, in the 2022 local elections, the DPP suffered an unprecedented defeat, with its governing counties and cities retreating to a few deep-green areas in the south. In Tainan and Pingtung, the DPP's vote share was only slightly higher than that of the Kuomintang (KMT). Tainan, known as the \"Sanctuary of Democracy,\" has been a stronghold of the DPP, comparable to Massachusetts for the Democratic Party or Alabama for the Republican Party. This has been attributed to the incompetence and drawbacks of the DPP's governance, resulting in President Tsai Ing-wen resigning as party chairperson. Lai Ching-te subsequently obtained the position in the by-election.\n</p>\n<p>As 2023 approaches, Lai Ching-te maintains a relatively favorable position in opinion polls among several potential candidates. However, he is forever branded as a supporter of Taiwanese independence. In his youth, he notably raised a protest sign reading \"Long Live Taiwanese Independence\" in the parliament and identified himself as a \"pragmatic advocate for Taiwanese independence.\" Could this harm Lai Ching-te's prospects? Additionally, with the DPP's nearing eight years in power, public disillusionment with the party has reached a significant level. Will Lai Ching-te manage to maintain his leading position until January 13th, or will he be swept away by the wave of political change? Only time can provide us with the answer.</p>\n",
+            "color_hex": "#1b9431",
+            "secondary_color_hex": null,
+            "is_active": 1,
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/William_Lai_Ching-te_20230814.jpg/800px-William_Lai_Ching-te_20230814.jpg",
+            "electoral_victory_message": "",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 1002,
+        "fields": {
+            "first_name": "",
+            "last_name": "Hsiao Bi-Khim",
+            "election": 20,
+            "party": "Democratic Progressive Party",
+            "state": "Born In Japan.legislator from Hualien.",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#1b9431",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/JpqGVO0.jpeg",
+            "electoral_victory_message": "",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "",
+            "description_as_running_mate": "<div style='overflow-y:scroll;height:200px;'>From a long time ago, Taiwan's representative to the United States, nicknamed \"Fighting Cat,\" Hsiao Bi-Khim, has been widely reported by major media outlets as a possible vice presidential candidate and running mate for Lai Ching-te in 2024. Her background is quite complex - her father is Taiwanese, her mother is American, and she was born in Japan. She once held dual American and Taiwanese citizenship but later renounced her American citizenship to engage in Taiwan's domestic political affairs. She has been elected as a legislator in Hualien and is highly proficient in languages and communication, fluent in Taiwanese, Mandarin, and English.\n\n<P>Choosing Hsiao Bi-Khim would provide a perfect complement of male-female partnership, potentially attracting many female voters and leveraging her good relationship with the United States to benefit your campaign. She also has a solid base in the Hualien region, which could help you break through the stronghold of the Kuomintang. However, her drawback is the lack of surprise; she is a safe choice. Media speculation about her potential as your vice presidential candidate has been ongoing for a long time, so if you select her, there won't be much surprise.</P>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 68,
+        "fields": {
+            "first_name": "",
+            "last_name": "Hou You-Yi",
+            "election": 20,
+            "party": "Chinese Kuomintang",
+            "state": "Chiayi County",
+            "priority": 1,
+            "description": "<div style='overflow-y:scroll;height:200px;'><p>A lone hero, a police detective – that was the image of Taiwanese society once had of Hou You-yi. Hou You-yi is the first presidential candidate in the Republic of China with a police background. He has served as the President of the Central Police University, Director-General of the National Police Agency, and is currently the Mayor of New Taipei City. Hailing from the southern region, Hou You-yi is an atypical figure within the KMT, with his down-to-earth image and fluent Taiwanese dialect setting him apart from many other KMT politicians. In last year's elections, Hou You-yi won with an impressive 62.42% of the votes, defeating the DPP candidate and becoming the top-performing candidate nationwide. As the mayor of the most populous city in Taiwan, this was a remarkable achievement, and as a result, Hou You-yi is seen as a popular contender for the KMT's presidential nomination in 2024.</p>\n\n<p>However, the KMT's heavy defeats in the 2016 and 2020 elections have created a bitter political situation. In 2016, the KMT set a record low vote total of 3.81 million due to the \"abolish Hong Xiu-zhu's nomination\" movement, only slightly better than Lien Chan's performance in 2000. In 2019, Han Kuo-yu ran for president a few months after taking office as mayor of Kaohsiung, prompting widespread suspicion that his mayoral campaign was merely a stepping stone to a presidential bid. This resulted in his recall in June 2020. Similarly, as the mayor of a special municipality, Hou You-yi successfully won re-election in 2022, but if selected as a candidate, he will face the same scrutiny as Han Kuo-yu from the public. To make matters more complicated, prominent businessman Terry Gou is also vying for the KMT's presidential nomination, and there have even been rumors of Han Kuo-yu making another bid for the presidency. Mayor Hou's path to candidacy does not appear to be smooth sailing.</p>\n\n<p>Looking at the positive aspects, Hou You-yi advocates maintaining the death penalty and taking a tough stance on crime, aligning with the mainstream public opinion in Taiwanese society. Additionally, coming from the southern region and a native Taiwanese from a local family, he has more appeal to voters in the central and southern regions compared to the traditionally Mainlander-dominated KMT. The DPP's perceived failures in governance are also likely to gather significant opposition sentiment, which could potentially support the KMT. Furthermore, Hou's approval ratings in opinion polls are also high.</p>\n<p>How could things go wrong?</p>",
+            "color_hex": "#1e1ec9",
+            "secondary_color_hex": null,
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/GCeTdoX.png",
+            "electoral_victory_message": "",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 50001,
+        "fields": {
+            "first_name": "",
+            "last_name": "Blue-White Joint Tickets",
+            "election": 20,
+            "party": "Kuomintang-Taiwan People's Party",
+            "state": "All Taiwan",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2023/11/24/1/27509010.jpg&x=0&y=0&sw=0&sh=0&sl=W&fw=800&exp=3600",
+            "electoral_victory_message": "",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "",
+            "description_as_running_mate": "<div style='overflow-y:scroll;height:200px;'<P>Since the 2022 local elections, a new political upsurge led by Ko Wen-je has emerged. The Taiwan People's Party has successfully gained governance of Hsinchu City and incorporated the Kinmen County Mayor into the party. It has ascended to become Taiwan's third-largest party, offering a new choice beyond the traditional blue and green camps. The key figure in the party is undoubtedly Ko Wen-je, who enjoys substantial support from young people and swing voters. This support is precisely what the aging Kuomintang (KMT) urgently needs but struggles to attract. The KMT has long been seen as lacking support from the younger generation. Many say that the KMT's die-hard elderly supporters will eventually fade away, turning the party into a mere shell of its former self.\n</P>\n<P>In order to ensure the Democratic Progressive Party's (DPP) defeat and the possibility of a rotation of political parties in power, the KMT is seeking the possibility of forming a united opposition camp. This is to prevent the splintering of pan-blue votes from the opposition alliance, as was the case in 2000. If the KMT aims to achieve a united front, it will require more than just a strong political party and favorable polling numbers. It must also address the demands of the Taiwan People's Party and various government reform requests, binding its fate with the Taiwan People's Party. In many respects, this is a high-risk, high-reward decision.\n</P>\n<P>What are the costs and rewards?</P>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 200,
+        "fields": {
+            "first_name": "",
+            "last_name": "Ko Wen-Je",
+            "election": 20,
+            "party": "Taiwan People's Party",
+            "state": "Hsinchu City (At the time of Ko Wen-Je's birth, Hsinchu City had not yet been converted into a provincial city.)",
+            "priority": 1,
+            "description": "<div style='overflow-y:scroll;height:200px;'<p> Ko Wen-je is a living enigma in Taiwanese politics. He is known as \"Uncle Ko\" or \" Ko P(rofessor).\" He served as the Mayor of Taipei City for two consecutive terms, the first time with the help of the Democratic Progressive Party (DPP), defeating Sean Lien, the son of Lien Chan. The second time, as an independent candidate, he won a controversial election (commonly referred to as \"vote-counting while polling\") with a narrow margin of only 3,000 votes over the Kuomintang (KMT) candidate, Ting Shou-chung. <p>In 2019, Ko Wen-je established the Taiwan People's Party, quickly becoming the third-largest party in Taiwan, and announced his intention to build a new politics in Taiwan beyond the Blue-Green divide. The Taiwan People's Party is known as the White Force and won the mayoral position in Hsinchu City in the 2022 local elections. At the age of 64, Ko Wen-je is far from being a traditional politician. On the contrary, he enjoys great popularity among the younger generation, who constitute his main supporter base. Politically, he is also an unpredictable figure. Initially, he collaborated with the DPP to win the Taipei mayoral election and consistently supported green ideology. He once stated that the three things he hates the most in his life are cockroaches, mosquitoes, and the Kuomintang. </p>\n\n<p>Starting from 2018, he began criticizing the DPP and distancing himself from them. After the establishment of the Taiwan People's Party, Ko Wen-je became an undeniable figure on the political stage. He is highly likely to run for the presidency of the Republic of China (Taiwan) in 2024. Even if he doesn't win, he will undoubtedly leave his mark in history. Of course, the Taiwan People's Party is a small party, having been founded only a few years ago. Its influence nationwide is far less significant than the two major traditional parties. Its main supporters are limited to the younger generation and the online community, with almost no support from the older age groups. Many polls have shown that Ko Wen-je lacks support among the middle-aged and elderly population. Additionally, the party lacks campaign funding and resources. Its strength is slightly stronger in the northern region but weak in the central and southern regions. The Taiwan People's Party has clear advantages and disadvantages as a political party. Furthermore, the party heavily relies on Ko Wen-je's personal charisma rather than organizational capabilities and discipline. Apart from Ko Wen-je, the party has almost no nationally recognized figures. </p>\n<p>However, does the Taiwan People's Party really have to give up elections due to its lack of strength? We must bring new hope to Taiwanese politics, neither adhering to the Blue nor Green camp, but embracing a new color in Taiwanese politics: white. </p>\n<p><strong>Keep Promise, and believe in a better Taiwan.</strong></p>",
+            "color_hex": "#28c8c8",
+            "secondary_color_hex": null,
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/3fQuylW.jpeg",
+            "electoral_victory_message": "",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 50003,
+        "fields": {
+            "first_name": "",
+            "last_name": "White-Blue Joint Tickets",
+            "election": 20,
+            "party": "Taiwan People's Party-Kuomintang",
+            "state": "All Taiwan",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#28c8c8",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2023/11/18/1/27329913.jpg&x=0&y=0&sw=0&sh=0&sl=W&fw=800&exp=3600&w=930",
+            "electoral_victory_message": "",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "",
+            "description_as_running_mate": "<div style='overflow-y:scroll;height:200px;'<p>For the emerging Taiwan People's Party, relying solely on their own strength to win the presidential election is not a realistic idea. However, due to the incompetence of the Democratic Progressive Party (DPP) government, Ko Wen-je has gathered a large group of supporters and fans around him. These include disillusioned young people who are disappointed with the DPP, some pro-unification individuals with close ties to the Chinese Communist Party, former DPP members with deep green backgrounds, and centrist voters who dislike both the blue and green camps. These seemingly conflicting groups form the base of Ko Wen-je's support. While Ko Wen-je's rhetoric may be mixed and his stance wavering, this oscillating position may be exactly what Taiwan needs.</p>\n<p>In terms of the election, if Ko Wen-je aims to win the presidency, he is almost certain that his only viable path would be through a white-blue coalition ticket. Otherwise, as a lone candidate, he may not necessarily win against Lai Ching-te. However, forming an alliance with the Kuomintang poses significant challenges. Many of Ko Wen-je's supporters see the KMT as a corrupt, old-fashioned party. Nevertheless, the KMT still holds strong local factions, a solid voter base, and financial resources superior to those of the Taiwan People's Party. If the Taiwan People's Party wishes to secure the presidency, it will require more than just favorable polling numbers and mobilization capabilities; it will also need to fulfill the wish of their supporters in the opposition to oust the DPP.</p>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 201,
+        "fields": {
+            "first_name": "",
+            "last_name": "Terry Gou",
+            "election": 20,
+            "party": "Independent",
+            "state": "New Taipei City(Taipei County)",
+            "priority": 1,
+            "description": "<p></p>\n\n<p>As a successful businessman, Terry Gou's political career has not been very smooth. In the Kuomintang's presidential primary in 2019, he lost to Han Kuo-yu. Disgruntled, he immediately announced his withdrawal from the Kuomintang, and such internal discord may have contributed to further failures for Han Kuo-yu. This year, in 2023, Terry Gou is determined to secure the presidential nomination. He is currently competing with the Kuomintang's popular presidential candidate, Hou You-yi, through the primaries to vie for the Kuomintang's ultimate nomination, even though he has not yet had his party membership restored. Terry Gou's advantage lies in being a Mainlander, appealing to many Kuomintang voters, and possessing extremely strong financial resources. However, his popularity is not as high as Hou You-yi's. If he fails once again, who knows if he will run independently or choose to support Hou You-yi?</p>",
+            "color_hex": "#999999",
+            "secondary_color_hex": null,
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/IreLDUW.jpeg",
+            "electoral_victory_message": "",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "",
+            "description_as_running_mate": "<p></p>\n\n<p>As a successful businessman, Terry Gou's political career has not been very smooth. In the Kuomintang's presidential primary in 2019, he lost to Han Kuo-yu. Disgruntled, he immediately announced his withdrawal from the Kuomintang, and such internal discord may have contributed to further failures for Han Kuo-yu. This year, in 2023, Terry Gou is determined to secure the presidential nomination. He is currently competing with the Kuomintang's popular presidential candidate, Hou You-yi, through the primaries to vie for the Kuomintang's ultimate nomination, even though he has not yet had his party membership restored. Terry Gou's advantage lies in being a Mainlander, appealing to many Kuomintang voters, and possessing extremely strong financial resources. However, his popularity is not as high as Hou You-yi's. If he fails once again, who knows if he will run independently or choose to support Hou You-yi?</p>",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 50005,
+        "fields": {
+            "first_name": "",
+            "last_name": "Lai Pei-Hsia",
+            "election": 20,
+            "party": "Independent",
+            "state": "Taipei City",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#999999",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/ZmWU9KE.png",
+            "electoral_victory_message": "",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "",
+            "description_as_running_mate": "<p>Lai Pei-hsia (June 8, 1963 - ) is a female entertainer born in Taipei, Taiwan, Republic of China. She has worked as a singer, actress, writer, and spiritual lecturer. She has served as the publisher of the women's magazine \"Meili\" and as a teacher at National Yang Ming Chiao Tung University. She obtained her highest degree from Jinan University in Guangzhou, People's Republic of China, graduating from the School of International Relations with a Doctor of Law degree. Lai Pei-hsia originally held citizenship in the Republic of China and the United States. According to the law, foreigners or individuals with dual nationality are not allowed to run for president. Lai Pei-hsia renounced her U.S. citizenship on September 29, 2023, in order to be eligible for candidacy. She is also the first entertainer in the history of the Republic of China to run for both the president and vice president.</p>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 50000,
+        "fields": {
+            "first_name": "",
+            "last_name": "Zhao Shao-Kang",
+            "election": 20,
+            "party": "Chinese Kuomintang",
+            "state": "Born in Keelung",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/W8ycwUr.png",
+            "electoral_victory_message": "",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "",
+            "description_as_running_mate": "<div style='overflow-y:scroll;height:200px;'> <strong>中華民國萬歲，中華民國萬歲，中華民國萬歲！</strong>-1994 Taipei mayoral election debate</p>\n\n<p>Zhao Shao-kang, who never compromises on national identity issues, may be the most needed vice presidential candidate for the Kuomintang in 2024. Born in Keelung in 1950, Zhao Shao-kang is a descendant of the Republic of China's military family with a complete Mainlander background. He has served as a legislator for three terms, a Taipei city councilor for two terms, and the director of the Environmental Protection Administration of the Executive Yuan. He has been dubbed the \"political prodigy\" in Taiwan's political arena. During his term as a legislator, he ran for the mayor of Taipei in 1994, but was defeated by Chen Shui-bian of the Democratic Progressive Party, gradually fading out of politics since then and entering the media industry, becoming the chairman and general manager of China Broadcasting Corporation.</p>\n\n<p>Zhao Shao-kang is a powerful debater, comparable to Han Kuo-yu, but unlike Han Kuo-yu, he does not attract too many attacks. This could compensate for Hou You-yi's shortcomings in debates and strengthen the Kuomintang's base. The combination of two males and Mainlanders/Taiwanese is also a classic campaign combination for the Kuomintang. President Ma Ying-jeou has chosen this pairing twice and won. Zhao Shao-kang also holds a negative view of the Chinese Communist Party's actions in Hong Kong and opposes the CCP's suppression of Taiwan, which can weaken the Democratic Progressive Party's red baiting of the Kuomintang.</p>\n\n<p>However, wanting him to join your camp is not that easy. Although he will provide you with a lot of media exposure and support, Zhao Shao-kang believes that only cooperation between the blue and white camps can achieve the goal of party alternation and winning. Therefore, he will not appear as your vice president until the last moment. In addition, a combination of two older blue males will not provide much motivation for young female voters. You must make efforts to strengthen in this aspect. If you choose Zhao Shao-kang, you must strive until the last moment. </p>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 2020558,
+        "fields": {
+            "first_name": "",
+            "last_name": "Han Kuo-yu",
+            "election": 20,
+            "party": "Chinese Kuomintang",
+            "state": "New Taipei(Taipei County), Yunlin(household registration location)",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/%E7%AB%8B%E6%B3%95%E9%99%A2%E9%95%B7%E9%9F%93%E5%9C%8B%E7%91%9C.jpg/640px-%E7%AB%8B%E6%B3%95%E9%99%A2%E9%95%B7%E9%9F%93%E5%9C%8B%E7%91%9C.jpg",
+            "electoral_victory_message": "",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "",
+            "description_as_running_mate": "<div style='overflow-y:scroll;height:200px;'> <strong>Goods can come out, people can get in, Kaohsiung will prosper!\"   - Campaign slogan of Han Kuo-yu, mayor of Kaohsiung\n</strong>\n\n\n<p>As the Kuomintang's presidential candidate in 2020, Han Kuo-yu experienced both success and failure.   In 2018, he overturned the Democratic Progressive Party and brought Kaohsiung under Kuomintang's control, breaking the record of consecutive terms held by the DPP in Kaohsiung, and sparked the \"Han Kuo-yu whirlwind\" in this deeply green region.   However, in 2019, with his running for re-election while in office, the chaos in the primary with Terry Gou, as well as the actions of the Chinese Communist Party in Hong Kong and a series of attacks from the DPP, Tsai Ing-wen set a record of 8.17 million votes, making history, while Han Kuo-yu only received 5.52 million votes.   Subsequently, outraged Kaohsiung residents ousted Han Kuo-yu from the mayor's position, making him a politician without public office.</p>\n\n<p>Despite Han Kuo-yu's high popularity and support from his dedicated fans, along with his ability to strengthen his core base, more centrist voters and young people either see him as a joke or feel he doesn't fit the image of a president.   Han Kuo-yu's political style is seen to lean towards populism, with some even labeling him as the \"Taiwanese Trump.\"   However, being a descendant of a Kuomintang military man like Zhao Shao-kang, Han Kuo-yu can strengthen your deep blue base.   The combination of Mainlander and local Taiwanese all-male tickets is also a classic winning strategy for the KMT.   Choosing Han Kuo-yu can also alleviate doubts from his supporters and address the issue of Hou's lack of active support during his 2020 campaign.</p>\n<p>However, it is important to note that Han Kuo-yu has previously engaged with the LOCPG and has had ambiguous relations with China.   Whether true or not, he could become a red bait to aid the DPP, leading them to revive their anti-Han strategies from 2020 to attack both you and Han Kuo-yu, causing division among voters.   Moreover, Han Kuo-yu is not well-received among centrist voters, and the pairing of two aged male politicians does not appeal to female voters.   Therefore, if you choose Han Kuo-yu, you must continuously strengthen your core base until the day of victory.   Be sure to carefully weigh the pros and cons and make wise decisions to achieve the ultimate goal of winning the election! </p>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 2022055,
+        "fields": {
+            "first_name": "",
+            "last_name": "Ko Chih-en",
+            "election": 20,
+            "party": "Chinese Kuomintang",
+            "state": "Pingtung",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://img.ltn.com.tw/Upload/news/600/2020/01/15/php8mrM1K.jpg",
+            "electoral_victory_message": "",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "",
+            "description_as_running_mate": "<div style='overflow-y:scroll;height:200px;'> \n<p>Tired of male-male combinations? Well, here is a \"Female Ko P\" to meet your needs. Ko Chih-en hails from the green region of Pingtung, where her father once served as the county mayor. Being two taiwanese in same tickets is not that common, which generally could affect the voting preferences of mainlanders and deep blue supporters. However, Ko Chih-en possesses a certain demeanor of mainlanders that can counterbalance these issues. She is also one of the female fighters of the Kuomintang in the southern region, having served as a legislator and being well-versed in legislative affairs.</P>\n<p>\nShe had also run as the Kuomintang's candidate for Mayor of Kaohsiung but was defeated by the Democratic Progressive Party incumbent Mayor Chen Chi-mai seeking reelection. Nevertheless, she set a record for the second-highest number of votes for a Kuomintang candidate for Kaohsiung Mayor after the merger of Kaohsiung County and City, leading the Kuomintang to maintain its position as the largest party in the council.</p>\nIf you want to launch a completely new and different campaign, one that stands out from all previous ones, and if you aim to garner more support from the younger generation and advocate for progressive values, then Ko Chih-en might be your best choice. She advocates for strengthening women's rights, LGBT rights, pension reforms, and has helped advance Taiwan's same-sex marriage legislation. While the Kuomintang generally opposes this legislation, she and representatives from the younger faction support it. Furthermore, as the issue of LGBT rights is not a major concern in Taiwan, it may not cause significant damage to your base. Being a university professor, she knows how to engage with young people daily. If you wish to bring in a new image for the Kuomintang and attract more young voters, choosing Ko Chih-en could help you achieve that.\n",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 25000,
+        "fields": {
+            "first_name": "Cynthia",
+            "last_name": "Wu",
+            "election": 20,
+            "party": "Taiwan People's Party",
+            "state": "Born In USA",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/OdRj8T0.png",
+            "electoral_victory_message": "",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "",
+            "description_as_running_mate": "<div style='overflow-y:scroll;height:200px;'>If there is one thing Ko Wen-je's Taiwan People's Party does not lack, it would probably be beautiful female politicians. Ko Wen-Je is very aware that attractive female politicians may attract young people even more than himself, so his party includes a variety of female political figures. Cynthia Wu is one of them. She is a descendant of the renowned Taiwanese conglomerate, Shin Kong Group. Her family background is very prominent, and she was born in the United States, making her a typical rich girl. Her English proficiency may even surpass her Mandarin and Taiwanese language skills, indicating she is a typical ABC (American-born Chinese).\n\n<p>So, what are the benefits of choosing her as the vice president? Obviously, the combination of her and you will attract the votes of many young people and female voters, who are your most enthusiastic supporters. Additionally, her family background and international connections can bring in more campaign funding for you.</p>\n\n<p>Having said that, everything has its pros and cons. Her political background consists of serving as a legislator for only two years, with very limited political experience. Furthermore, her background as a scion of a major conglomerate family may not be what you are seeking, as some of your supporters strongly dislike the image of politicians associated with big business interests, which could potentially impact your electoral chances.</p>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    }
+]
+
+campaignTrail_temp.running_mate_json = [
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 91377,
+        "fields": {
+            "candidate": 67,
+            "running_mate": 1002
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 123729,
+        "fields": {
+            "candidate": 68,
+            "running_mate": 50001
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 89932,
+        "fields": {
+            "candidate": 200,
+            "running_mate": 50003
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 94824,
+        "fields": {
+            "candidate": 201,
+            "running_mate": 50005
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 112966,
+        "fields": {
+            "candidate": 68,
+            "running_mate": 50000
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 112592,
+        "fields": {
+            "candidate": 68,
+            "running_mate": 2020558
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 149818,
+        "fields": {
+            "candidate": 68,
+            "running_mate": 2022055
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 155836,
+        "fields": {
+            "candidate": 200,
+            "running_mate": 25000
+        }
+    }
+]
+
+campaignTrail_temp.opponents_default_json = [
+    {
+        "election": 20,
+        "candidates": [
+            67,
+            68,
+            200,
+            201
+        ]
+    }
+]
+
+campaignTrail_temp.opponents_weighted_json = [
+    {
+        "election": 20,
+        "candidates": [
+            67,
+            68,
+            200,
+            201
+        ]
+    }
+]
+
+jet_data = {
+    "headerColor": "#003fbd",
+    "windowColor": "#ab1c1c",
+    "containerColor": "#ffffff",
+    "innerWindowColor": "#E8FBFF",
+    "bannerImageUrl": "https://i.imgur.com/RrNbRIn.jpg",
+    "backgroundImageUrl": "https://i.imgur.com/q3C6wVC.jpeg",
+    "endingTextColor": "#000000",
+    "gameTitle": "Republic Of China Campaign Trail"
+}
+
+HistHexcolour=["#1B9431","#1e1cc9","#28c8c8","#999999"];
+        HistName=["Lai Ching-te","Hou You-yi","Ko Wen-Je","Terry Gou"];
+        HistEV=[14,8,0,0,0];
+        HistPV=["5,586,019","4,671,021","3,690,466","0"];
+        HistPVP=["40.05%","33.49%","26.46%","0%"];
+
+
+//#startcode
+
+
+corrr = '\n              <h2>Republic Of China Campaign Trail</h2>\n            ';
+
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#003fbd";
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#ab1c1c";
+
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+$(".container")[0].style.backgroundColor = "#ffffff";
+
+document.getElementById("header").src = "https://i.imgur.com/d22BTxc.jpg";
+
+document.body.background = "https://i.imgur.com/RrrCynY.jpg";
+
+document.head.innerHTML += "<style>#results_container {color:#000000;}</style>";
+
+campaignTrail_temp.achievements = {
+    //赖萧成就
+    "Sorry You are Not Taipei Mayor" : {
+        "image" : "https://i.imgur.com/beZNi61.jpeg",
+        "description" : "Play as Lai,Wins Taipei and whole election",
+        "cannotBeCheated" : true
+    },
+    "New Home And Hometown" : {
+        "image" : "https://i.imgur.com/iEPa7s4.jpeg",
+        "description" : "Play as Lai,Lose elction,and lose Chiayi County to Hou,but Won in the New Taipei City.",
+        "cannotBeCheated" : true
+    },
+    "Taiwanese independence Protégé": {
+        "image" : "https://i.imgur.com/DA50TvV.jpeg",
+        "description" : "Play as Lai,Wins 20 County and Citys.allow Easy difficult.",
+        "cannotBeCheated" : true
+    },
+    "Reverse 817": {
+        "image" : "https://i.imgur.com/mjpNwHC.jpg",
+        "description" : "Play as Lai,Lose every Counties and citys,expect Tainan.",
+        "cannotBeCheated" : true
+    },
+    "Happy surprise": {
+        "image" : "https://i.imgur.com/EHV8LYx.jpeg",
+        "description" : "Play as Lai,Only Wins in 5 Counties and Citys but won the Presidency.",
+        "cannotBeCheated" : true
+    },
+    "On the Road To Laipiliao": {
+        "image" : "https://i.imgur.com/d2tl23u.jpeg",
+        "description" : "On the road, with President tsai ing-wen and tear down your Old Home.",
+        "cannotBeCheated" : true
+    },
+    "Taiwan First": {
+        "image" : "https://i.imgur.com/dipkM8Q.jpeg",
+        "description" : "Choose the fiercely anti-China option on important issues all together and win.",
+        "cannotBeCheated" : true
+    },
+    "Blue Spoiler": {
+        "image" : "https://i.imgur.com/T03fhqN.jpeg",
+        "description" : "Assist Terry Gou in every possible way and ensure his victory in at least one county.",
+        "cannotBeCheated" : true
+    },
+    //侯康成就
+    "Three Kingdom Romance": {
+        "image" : "https://i.imgur.com/Z4Fe5Yr.png",
+        "description" : "Select all options related to the Three Kingdoms and win a three-way election.",
+        "cannotBeCheated" : true
+    },
+    "Chiayi favorite son": {
+        "image" : "https://i.imgur.com/3n0nYUT.jpeg",
+        "description" : "As Hou, wins Chiayi County, Chiayi City and New Taipei City",
+        "cannotBeCheated" : true
+    },
+    "Three Principles of People": {
+        "image" : "https://i.imgur.com/aoap3xO.jpeg",
+        "description" : "Promote the Three Principles of People in the United States and win a four-way election like Lincoln,Become the 16th President of ROC.",
+        "cannotBeCheated" : true
+    },
+    "Main Stream Opinion Wins": {
+        "image" : "https://i.imgur.com/Dc9852P.png",
+        "description" : "As Hou, won more than 58% of the vote.",
+        "cannotBeCheated" : true
+    },
+    "New Taipei Has A Mayor": {
+        "image" : "https://i.imgur.com/U1OUskl.jpeg",
+        "description" : "As Hou, make Terry Gou becomes 2024 KMT nominee and win.",
+        "cannotBeCheated" : true
+    },
+    "2004 The Nightmare KMT ONLY": {
+        "image" : "https://i.imgur.com/veA8mET.png",
+        "description" : "On the night before the election, a familiar wind blew through....",
+        "cannotBeCheated" : true
+    },
+    "Southern Boys Returning Home": {
+        "image" : "https://i.imgur.com/8LzFeCf.jpeg",
+        "description" : "As Hou, wins Chiayi County, Chiayi City and Changhua County,Yunlin County,Yilan County and Pingtung County",
+        "cannotBeCheated" : true
+    },
+    //侯韩成就
+    "Southern Vegetable Vendor Northern Detective": {
+        "image" : "https://i.imgur.com/wv9jg6s.jpeg",
+        "description" : "As Hou, choosing Han as VP, winning in Kaohsiung, New Taipei, and the entire election.",
+        "cannotBeCheated" : true
+    },
+    "Not a single one less": {
+        "image" : "https://i.imgur.com/GeXqSQV.jpeg",
+        "description" : "As Hou, choosing Han as VP, winning the entire election,And secure over 5.52 million votes.",
+        "cannotBeCheated" : true
+    },
+    //侯柯（志恩）成就
+    "County Mayor Daughter": {
+        "image" : "https://i.imgur.com/81wD3rH.jpeg",
+        "description" : "As Hou, choosing Ko Chih-en as VP, winning the entire election and Pingtung County.",
+        "cannotBeCheated" : true
+    },
+    "Challenge the Bottom Line": {
+        "image" : "https://i.imgur.com/HXjr3hU.jpeg",
+        "description" : "As Hou, with a vote share lower than 31.04%.",
+        "cannotBeCheated" : true
+    },
+    //柯侯成就//柯吴成就
+    "Cross The Song-Chu Yu wall": {
+        "image" : "https://i.imgur.com/v7vuJPN.jpeg",
+        "description" : "As Ko,In the three-way competition, secured more than 33.5% of the votes.(4,664,972 PV)",
+        "cannotBeCheated" : true
+    },
+    "The pesky mayor": {
+        "image" : "https://i.imgur.com/BE0v4Hr.jpg",
+        "description" : "As Ko,get 30% of PV, But came in third place in Taipei.",
+        "cannotBeCheated" : true
+    },
+    "Election valid": {
+        "image" : "https://i.imgur.com/7mgB9CR.jpeg",
+        "description" : "Defeated the DPP with a narrow margin of 0.3% in the contest between the TPP and the DPP.",
+        "cannotBeCheated" : true
+    },
+    "Lai the third": {
+        "image" : "https://i.imgur.com/Geml4kE.png",
+        "description" : "Let Lai Ching-te become the third in the election results.",
+        "cannotBeCheated" : true
+    },
+    "Old Third Boxed Lunch": {
+        "image" : "https://media.zenfs.com/zh-tw/newtalk.tw/a8ad3f708c4859eb715b617dd8a9bb1f",
+        "description" : "Let Hou You-yi become the third in the election results.",
+        "cannotBeCheated" : true
+    },
+    //果冻成就
+    "GTM For 2028": {
+        "image" : "https://i.imgur.com/uCqXXGI.jpeg",
+        "description" : "As Gou, get 5% of the popular vote.",
+        "cannotBeCheated" : true
+    },
+  }
+//Music
+musicMode = () => {
+    // Initialise custom music
+  
+    $("#music_player")[0].children[0].style.display = "none"
+    $("#music_player")[0].children[1].style.display = "none"
+  
+    document.getElementById("modLoadReveal").style.display = "none"
+    document.getElementById("modloaddiv").style.display = "none"
+  
+    musicBox = document.getElementById("music_player")
+    musicBox.style.display = ""
+  
+    var trackSel;
+    e = campaignTrail_temp
+    e.selectedSoundtrack = 0
+  
+    toTime = (seconds) => {
+        var date = new Date(null);
+        date.setSeconds(seconds);
+        return date.toISOString().substr(11, 8);
+    }
+  
+    generateTime = () => {
+        // Get the audio element
+        var audio = document.getElementById("campaigntrailmusic");
+  
+        timeTracker = document.createElement("div");
+        timeTracker.style = `
+  text-align:left;
+  border-style:solid;
+  border-width:3px;
+  height:150px;
+  width:200px;
+  background-color:#999999;
+  float:right;
+  padding: 10px;
+  `
+        $("#trackSelParent")[0].prepend(timeTracker);
+        $("#trackSelParent")[0].prepend(document.createElement("br"));
+  
+        // Create a new element to display the current position of the audio
+        var positionDisplay = document.createElement("gg");
+        positionDisplay.id = "position-display";
+  
+        // Create a new slider element to change the time
+        var timeSlider = document.createElement("input");
+        timeSlider.type = "range";
+        timeSlider.min = 0;
+        timeSlider.max = 1;
+        timeSlider.step = 0.001;
+        timeSlider.value = 0;
+        timeSlider.style.width = "200px";
+        timeSlider.id = "time-slider";
+  
+        var pausePlay = document.createElement("button");
+        pausePlay.id = "position-display";
+        pausePlay.innerHTML = "<b>Pause</b>"
+        pausePlay.style.width = "100%";
+  
+  
+        pausePlay.addEventListener("click", event => {
+            event.preventDefault();
+            updatePositionDisplay();
+            let audio = document.getElementById("campaigntrailmusic");
+            if (audio.paused) {
+                audio.play();
+                event.target.innerHTML = "<b>Pause</b>";
+                return;
+            }
+            audio.pause();
+            event.target.innerHTML = "<b>Play</b>";
+            return;
+        })
+  
+        var volumeLabel = document.createElement("gg");
+        volumeLabel.id = "volume-label";
+        volumeLabel.innerHTML = "<br><b>Volume: </b>"
+  
+        var volumeSlider = document.createElement("input");
+        volumeSlider.type = "range";
+        volumeSlider.min = 0;
+        volumeSlider.max = 1;
+        volumeSlider.step = 0.001;
+        volumeSlider.value = 0;
+        volumeSlider.style.width = "200px";
+        volumeSlider.id = "volume-slider";
+  
+        volumeSlider.value = audio.volume;
+  
+        timeTracker.appendChild(pausePlay);
+        timeTracker.appendChild(document.createElement("br"));
+        timeTracker.appendChild(document.createElement("br"));
+        timeTracker.appendChild(positionDisplay);
+        timeTracker.appendChild(timeSlider);
+        timeTracker.appendChild(volumeLabel);
+        timeTracker.appendChild(volumeSlider);
+  
+        updatePositionDisplay();
+  
+        //for (let i = 0; i < 10; i++)
+        //timeTracker.append(document.createElement("br"));
+  
+  
+        // Function to update the position display
+        function updatePositionDisplay() {
+            positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+            timeSlider.value = audio.duration ? audio.currentTime / audio.duration : 0;
+        }
+  
+        // Function to change the time of the audio
+        function changeTime() {
+            positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+            audio.currentTime = timeSlider.value * audio.duration;
+        }
+  
+        updateVolume = event => {
+            audio.volume = event.target.value;
+        }
+  
+        // Update the position display and slider every second
+        setInterval(updatePositionDisplay, 1000);
+  
+        // Listen for changes to the time slider and change the time of the audio
+        timeSlider.addEventListener("input", changeTime);
+        volumeSlider.addEventListener("input", updateVolume)
+    }
+  
+    function newMusicPlayer() {
+        trackSel = document.createElement("div");
+        trackSel.id = "trackSelParent"
+        let z = `<br><br><br><br><br><br><br><br><br><br><div id='trackSel' style="text-align:left;border-style:solid;border-width:3px;overflow-y: scroll;overflow-x: hidden;height:200px; width:400px;background-color:#999999;float:right;">`
+        z += `<b><select id='selectSoundtrack'><option value='` + soundtracks[e.selectedSoundtrack].name + `'>` + soundtracks[e.selectedSoundtrack].name + "</option>"
+        for (i in soundtracks) {
+            if (soundtracks[e.selectedSoundtrack] != soundtracks[i]) {
+                z += `<option value='` + soundtracks[i].name + `'>` + soundtracks[i].name + `</option>`
+            }
+        }
+        z += `</select></b><br><br>`
+            // <label><input type="radio" name="option" value="option1">Option 1</label><br>
+        for (i in soundtracks[e.selectedSoundtrack].tracklist) {
+            let a = soundtracks[e.selectedSoundtrack].tracklist[i]
+            let b = `<label><input class="trackSelector" type="radio" name="trackSelector" value="` + i + `">` + a.name + `</label><br>`
+            z += b
+        }
+        z += "</div><br><br>"
+        trackSel.innerHTML = z
+  
+        // select correct song
+  
+        musicBox.appendChild(trackSel);
+        Array.from(document.getElementById("trackSel").children).filter(f => {
+            return f.tagName == "LABEL"
+        }).map(f => f.children[0])[0].checked = true
+  
+        // set soundtrack changer
+  
+        soundtrackSelector = document.getElementById("selectSoundtrack")
+        soundtrackSelector.onchange = function() {
+            for (i in soundtracks) {
+                if (soundtracks[i].name == soundtrackSelector.value) {
+                    e.selectedSoundtrack = i
+                    break
+                }
+            }
+            document.getElementById("trackSelParent").remove()
+            newMusicPlayer()
+        }
+  
+        var matches = document.querySelectorAll('.trackSelector');
+  
+        for (match in matches) {
+            matches[match].onchange = function() {
+                audio = $("#campaigntrailmusic")[0];
+                audio.src = soundtracks[e.selectedSoundtrack].tracklist[this.value].url
+                audio.currentTime = 0
+            }
+        }
+  
+        musicBox.children[2].loop = false
+        musicBox.children[2].src = soundtracks[e.selectedSoundtrack].tracklist[0].url
+  
+        musicBox.children[2].onended = function() {
+            console.log("next track")
+            let selected = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+            let newSel = clamp(selected + 1, soundtracks[e.selectedSoundtrack].tracklist.length - 1, 0)
+            let buttons = Array.from(document.getElementById("trackSel").children).filter(f => {
+                    return f.tagName == "LABEL"
+                }).map(f => f.children[0])
+                //let selectedIndex = buttons.map(f=>f.children[0]).map(f=>f.checked)
+            buttons[newSel].click()
+        }
+  
+        for (w = 0; w < 7; w++) {
+            document.getElementById("trackSelParent").appendChild(document.createElement("br"))
+        }
+  
+        generateTime();
+    }
+  
+    clamp = function(a, max, min, overflow = true) {
+        if (overflow) {
+            return a > max ? min : a < min ? max : a;
+        }
+        return a > max ? max : a < min ? min : a;
+    }
+  
+  
+    // Track list
+  
+    var soundtracks = {
+        0: {
+            name: "Team Taiwan 2024",
+            tracklist: [
+              {
+                "name": "Team Taiwan - DPP 2024 Campaign Song",
+                "url": "https://github.com/EKMG1/ROC-2024/raw/main/teamtaiwan2024.mp3"
+              },
+              {
+                "name": "Road To 2024 - DPP 2024 Campaign Song",
+                "url": "https://github.com/EKMG1/ROC-2024/raw/main/roadto2024.mp3"
+              },
+              {
+                "name": "Made In Taiwan - DPP 2024 Campaign Song",
+                "url": "https://github.com/EKMG1/ROC-2024/raw/main/madeintaiwan.mp3"
+              },
+              {
+                "name": "Taiwan The Green - Taiwanese Independent Song",
+                "url": "https://github.com/EKMG1/ROC-2024/raw/main/Taiwan%20the%20Green.mp3"
+              }
+          ]
+        },
+        1: {
+            name: "KMT 2024 Party Alternation for better Taiwan",
+            tracklist: [
+                {
+                    "name": "New Hope For Republic of China - KMT 2024 Hakka Campaign Song",
+                    "url": "https://github.com/EKMG1/ROC-2024/raw/main/New%20HOPE%20for%20ROC.mp3"
+                  },
+              {
+                "name": "Power Tends to Corrupted -KMT 2024 Rap",
+                "url": "https://github.com/EKMG1/ROC-2024/raw/main/powertocorruption.mp3"
+              },
+              {
+                "name": "Me & You - KMT 2024 Campaign Song",
+                   "url": "https://github.com/EKMG1/ROC-2024/raw/main/Me__You.mp3"
+                },
+              {
+                "name": "My Love fell to drunk - Old Songs For KMT Campaign",
+                "url": "https://github.com/EKMG1/ROC-2024/raw/main/My%20love%20fell%20to%20drunk.mp3"
+              },
+              {
+                "name": "Hold on - Old Songs For KMT Campaign",
+                "url": "https://github.com/EKMG1/ROC-2024/raw/main/hold%20on.mp3"
+              },
+          ]
+        },
+        2: {
+            name: "Vote Wu-isely For Our Ko-untry",
+            tracklist: [
+             {
+                 "name": "Still Going - TPP 2024 Campaign Song",
+                    "url": "https://github.com/EKMG1/ROC-2024/raw/main/ko-stillgoing.mp3"
+                 },
+              {
+                "name": "The Wave  - TPP 2024 Campaign Song",
+                "url": "https://github.com/EKMG1/ROC-2024/raw/main/wave.mp3"
+              },
+              {
+                "name": "Walking Steady  - TPP 2024 Campaign Song",
+                "url": "https://github.com/EKMG1/ROC-2024/raw/main/walkingsteady.mp3"
+              },
+              {
+                "name": "Walking Together  - TPP 2024 Campaign Song",
+                "url": "https://github.com/EKMG1/ROC-2024/raw/main/Official_Music_Video2022_320kbps.mp3"
+              },
+          ]
+        },
+        3: {
+            name: "My Surname is Gou(Tiktok Campaign ad)",
+            tracklist: [
+             {
+                 "name": "My Surname is Gou - Terry Gou Tiktok Campaign ad",
+                    "url": "https://github.com/EKMG1/ROC-2024/raw/main/Mysurnameisguo.mp3"
+                 }
+          ]
+        }
+    }
+
+  
+    // Set up new music player
+  
+    newMusicPlayer()
+  
+
+}
+
+  $("#game_start").click((event) => {
+    event.preventDefault();
+    $("#election_id_button").click((event) => {
+        musicMode()
+
+        setInterval(changeFontColour, 200)
+  
+    })
+  })
+
+  e.runIntro = true;
+  RecReading=true
+  quotes = ["Keep Promise, Believe in a Better Taiwan","Give the country back to you","Taiwan's Choice - Ko Wen-je","The Best Choice is Je, Taiwan will Prosper","Abandon Blue and Green, Saving Taiwan","The era of Blue and Green will pass, the people have a future","No Regrets, Fight for once, Vote for Je, Choose Number 1","Standing for Taiwan, Team Taiwan","Believe in Taiwan","Choose the right person, walk the right path","Virtue(Bi-khim) and Competence(Ching-te), Steadily Moving Forward","2024 Taiwan Sets Sail Again","Taiwan Sets Sail Again, People Have Hou-Kang","Take Care of Taiwan, People Have Hou-Kang","Vote for 3 for President, Make Him Your Support"],"Unity for Alternation, Taiwan Sets Sail Again","Democracy Requires Checks and Balances, Parties Need Alternation"
+  customquote = quotes[Math.floor((Math.random() * quotes.length))]
+  corrr=`\n<h2>Republic of China TRAIL SHOWCASE</h2><font id='wittyquote' size='4' color='white'><em>`+customquote+`</em></font>`
+
+//抄的，先暂时不用，版面太小而且问题跳来跳去，保留着以后备用
+async function appendStyle() {
+  var metaTag=document.createElement('meta');
+ metaTag.name = "viewport";
+  metaTag.content = "width=device-width, initial-scale=1";
+document.getElementsByTagName('head')[0].appendChild(metaTag);
+
+ if (!document.querySelector('#radio-option-style')) {
+       let style = document.createElement('style');
+     style.type = 'text/css';
+    style.id = 'radio-option-style';
+      style.innerHTML = `
+     .inner_inner_window {
+      display: flex;
+      flex-direction: column;
+   }
+
+    .inner_window_question {
+        height: 337px;
+    }
+    `;
+    document.head.appendChild(style);
+ }
+}
+appendStyle();
+
+function addDynamicCSS() {
+    var css = `
+
+        .inner_window_question h3 .mytooltip{
+            background-color: lightskyblue;
+        }
+
+        .mytooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            background-color: #d8dee8;
+        }
+
+        .mytooltip .mytooltiptext {
+            width: 240px;
+            background-color: #d8dee8;
+            color: black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 99;
+            bottom: 20%;
+            left: 20%;
+            margin-left: -90px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border: 1px solid black;
+            pointer-events: none;
+            font-size: 13px !important;
+            line-height: 1.5em !important;
+            font-weight: normal !important;
+            font-style: normal !important;
+        }
+
+        .mytooltip .mytooltiptext img {
+            max-width: 240px;
+            height: auto;
+        }
+
+        .mytooltip:hover .mytooltiptext {
+            opacity: 1;
+            transition-delay: 0.5s;
+        }
+    `;
+
+    var styleElem = document.createElement('style');
+    styleElem.type = 'text/css';
+    
+    styleElem.appendChild(document.createTextNode(css));
+    
+    document.head.appendChild(styleElem);
+}
+
+addDynamicCSS();
+//查找字符串并显示图片
+tooltipList = [
+	{searchString: "Ko Wen-je", explanationText: "<img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY-C2KcAwQf_NwzMxhb96RXdUX_Yasqr3RCaT-NKSHL_Cmybqb> Taiwan People's Party chairman, former Taipei mayor Ko Wen-Je"},
+    {searchString: "Lai Ching-te", explanationText: "<img src=https://ichef.bbci.co.uk/ace/ws/640/cpsprodpb/DDA6/production/_130324765_gettyimages-1251729162.jpg> Former Tainan Mayor, former Premier, DPP Chairman, Vice President Lai Ching-te"},
+    {searchString: "Hou You-yi", explanationText: "<img src=https://images.chinatimes.com/newsphoto/2024-01-05/656/B01A00_P_03_02.jpg>The current mayor of New Taipei, former National Police Agency Agency Executives Hou You-yi"},
+    {searchString: "Eric Chu", explanationText: "<img src=https://s.yimg.com/ny/api/res/1.2/gncNNEMv2F6xfNjBHAEzEw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQ1MA--/https://media.zenfs.com/ko/mirrormedia.mg/c74f60cb5c669dcc41b13f31984a3280>Chairman of the Kuomintang"},
+    {searchString: "Tsai Ing-wen", explanationText: "<img src=https://english.president.gov.tw/File/Image/0c033a0c-eba2-404e-8e23-a1663d4197c4>The 14th and 15th President of the Republic of China"},
+    {searchString: "Formosa", explanationText: "<img src=https://i.imgur.com/wRtFMei.jpeg>My Formosa Newsletters and pollsters"},
+    {searchString: "Terry Gou", explanationText: "<img src=https://www.rfa.org/cantonese/news/htm/tw-foxconn-10232023082425.html/@@images/54fabb74-d643-4663-b32d-a16f84004ac0.jpeg>Business tycoon, former richest man in Taiwan, chairman of Hon Hai Group"},
+    {searchString: "Legislative Yuan", explanationText: "<img src=https://static.rti.org.tw/assets/thumbnails/2020/02/01/20200201000012M.jpg>The Legislative Yuan is the highest legislature of the Republic of China. After the National Assembly ceased to function, it was generally regarded as the Parliament of the Republic of China."},
+    {searchString: "Zhao Shao-kang", explanationText: "<img src=https://p5.itc.cn/q_70/images03/20231127/c39ce57e3bd3474783887481099ab36e.png>Media mogul, former legislator and TV host Zhao Shaokang"},
+    {searchString: "Zhao Shaokang", explanationText: "<img src=https://p5.itc.cn/q_70/images03/20231127/c39ce57e3bd3474783887481099ab36e.png>Media mogul, former legislator and TV host Zhao Shaokang"},
+    {searchString: "TVBS", explanationText: "<img src=https://s.yimg.com/ny/api/res/1.2/Rm1cZBYqsWsqWrfplmAGyw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTM2MA--/https://media.zenfs.com/ko/news_tvbs_com_tw_938/fb683cf6a2e18949909883bb7923ff1c>Taiwan Television, with its own polling center"},
+    {searchString: "kindergarten", explanationText: "<img src=https://img.ltn.com.tw/Upload/news/600/2023/06/15/phpSn1GSi.jpg>Involved kindergarten"},
+    {searchString: "Constitution of the ROC", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/f/f0/1946_National_Assembly_Constitution.jpg>The legacy of the founding Father"},
+    {searchString: "Constitution of the Republic of China", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/f/f0/1946_National_Assembly_Constitution.jpg>The legacy of the founding Father"},
+    {searchString: "Han Kuo-yu", explanationText: "<img src=https://c.files.bbci.co.uk/CE1D/production/_112756725_whatsubject.jpg>Former Kaohsiung mayor Han Kuo-yu"},
+    {searchString: "Cheng Li-wen", explanationText: "<img src=https://images.chinatimes.com/newsphoto/2023-10-24/656/20231024002834.jpg>KMT At-Large legislator"},
+    {searchString: "Wu Poh-hsiung", explanationText: "<img src=https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2023/03/10/realtime/20547445.jpeg&x=0&y=0&sw=0&sh=0&sl=W&fw=800&exp=3600>Former KMT Chairman"},
+    {searchString: "Ma Ying-jeou", explanationText: "<img src=https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2024/01/11/realtime/28707096.jpg&x=0&y=0&sw=0&sh=0&sl=W&fw=800&exp=3600>The 12th and 13th Presidents of the Republic of China"},
+    {searchString: "Lien Chan", explanationText: "<img src=https://img.ltn.com.tw/Upload/news/600/2023/06/16/phpCsCPaQ.png>Former KMT Chairman, 2000,2004 KMT presidential candidate"},
+    {searchString: "Wang Jin-ping", explanationText: "<img src=https://media.zenfs.com/zh-tw/news_tvbs_com_tw_938/b70670e95ac6d293b4adf791714f7474>Former The President of the Legislative Yuan,He has a legislative career of 44 years and nearly half a century"},
+    {searchString: "King Pu-tsung", explanationText: "<img src=https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2023/07/13/1/23183796.jpg&x=0&y=0&sw=0&sh=0&sl=W&fw=800&exp=3600>A former ambassador of the Republic of China to the United States, he is said to be of Aisin Gioro family descent...."},
+    {searchString: "CTiTV", explanationText: "<img src=https://yt3.googleusercontent.com/7TX5a0vWm4atw3f_uPwN651m0VOmnBSfP0sLEZb4sEha-laWJC2XpeAIVbUqPTum0NRAwuAn=s900-c-k-c0x00ffffff-no-rj>Taiwan Television, which renewed its license in mid-2020, was rejected by the National Communications Commission (NCC) and eventually had to switch to the Internet."},
+    {searchString: "Special Investigation Division", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/SPO_Special_Investigation_Division_entrance_20081105.jpg/1920px-SPO_Special_Investigation_Division_entrance_20081105.jpg>Under President Chen Shui-bian, it was established on 2 April 2007 to investigate corruption or major economic fraud cases involving high-level officials of the central government, including the President of the Republic of China, the Vice President of the Republic of China, the President of the five Yuans, and lawmakers."},
+    {searchString: "Guan Gong", explanationText: "<img src=https://cc.tvbs.com.tw/img/upload/2023/10/19/20231019140901-6d4b9308.jpg><b>玉可碎而不可改其白，竹可焚而不可毀其節，身雖殞，名可垂於竹帛也</b>"},
+    {searchString: "Little Chuck", explanationText: "<img src=https://images.chinatimes.com/newsphoto/2023-09-22/1024/B01A00_P_03_01.jpg>I can barely recognize it!"},
+    {searchString: "Mayor Adams of New York City", explanationText: "<img src=https://static.rti.org.tw/assets/thumbnails/2023/09/16/41a762411d116eb948082264eed94549.jpg>He's a policeman too! We are in the same field as me!"},
+    {searchString: "Democratic and Republican parties", explanationText: "<img src=https://imgcdn.cna.com.tw/www/WebPhotos/800/20230920/1265x768_wmky_0_C20230920000015.jpg>U.S. Republican and Democratic Congressmen"},
+    {searchString: "AIT Chairman Rosenberger also had a meeting with me", explanationText: "<img src=https://images.chinatimes.com/newsphoto/2023-09-19/656/B04A00_P_04_02.jpg>AIT Chairman and Mayor Hou"},
+    {searchString: "2018 when we campaigned together for mayor", explanationText: "<img src=https://static.rti.org.tw/assets/thumbnails/2018/09/16/153709002887080.jpg>Good Old Days!"},
+    {searchString: "Taipei Grand Hyatt", explanationText: "<img src=https://today-obs.line-scdn.net/0hJmO95vu_FUJyQAZFeSdqFUoWGTNBJg9LUC9cdFBJSXVdbFQRTyVGIVEXS24McwFBUiEPc1EQTSAMd1FBGw/w1200>"},
+    {searchString: "ancestral home is found to have violated building regulations", explanationText: "<img src=https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2023/12/18/realtime/28334926.png&s=Y&x=124&y=0&sw=1338&sh=892&exp=3600>Lai's hometown is also an illegal building!"},
+    {searchString: "Triumph Apartments", explanationText: "<img src=https://static.zaobao.com/s3fs-public/articles/2023/12/27/phpAY2z4z_0.jpg>"},
+    {searchString: "Chiang Ching-kuo", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/%E7%AC%AC7%E4%BB%BB%E7%B8%BD%E7%B5%B1%E8%94%A3%E7%B6%93%E5%9C%8B%E5%85%88%E7%94%9F%E7%8E%89%E7%85%A7.jpg/450px-%E7%AC%AC7%E4%BB%BB%E7%B8%BD%E7%B5%B1%E8%94%A3%E7%B6%93%E5%9C%8B%E5%85%88%E7%94%9F%E7%8E%89%E7%85%A7.jpg>6th - 7th President of the Republic of China"},
+    {searchString: "On November 15th", explanationText: "<img src=https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2023/11/17/realtime/27284449.jpg&x=0&y=0&sw=0&sh=0&sl=W&fw=800&exp=3600>"},
+    {searchString: "Ko Chih-en", explanationText: "<img src=https://images.chinatimes.com/newsphoto/2023-11-01/656/20231101005469.jpg>former lawmaker, candidate for mayor of Kaohsiung"},
+    {searchString: "Zhao Zilong, loyal to Liu Bei", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/f/f3/Zhaoyunfightsatchangban.jpg>Can you guide me through the Seven Ins and Seven Outs at Changbanpo?"},
+    {searchString: "Cai Pei-hui", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/4/43/%E8%94%A1%E5%9F%B9%E6%85%A7%E5%A7%94%E5%93%A1.jpg>"},
+    {searchString: "Castro", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/6/6f/Xiomara_Castro_2022_%28cropped%29.jpg>The 38th President of Honduras"},
+    {searchString: "13 diplomatic allies", explanationText: "<img src=https://pgw.worldjournal.com/gw/photo.php?u=https://uc.udn.com.tw/photo/wj/realtime/2023/03/26/20841041.jpg&x=0&y=0&sw=0&sh=0&sl=W&fw=800&exp=3600&q=75>Our country's position in the world is shrinking day by day."},
+    {searchString: "People's Republic of China", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/1200px-Flag_of_the_People%27s_Republic_of_China.svg.png>Those who want to annex us!"},
+    {searchString: "Wave Makers", explanationText: "<img src=https://occ-0-2794-2219.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABXkKyY7dSEmxbTbvzXIVmCag94Iqu7PUE6yViZrRqr9KK7ukWhpVSRgI2u1buzVwyA3vHjpw9l0qly2fUBv9VfZjsXLdYtbLt526.jpg?r=b08>"},
+    {searchString: "MeToo", explanationText: "<img src=https://live-production.wcms.abc-cdn.net.au/d4b4eb6dc44b22a48c22bee0d69b604e?impolicy=wcms_crop_resize&cropH=576&cropW=1024&xPos=0&yPos=0&width=862&height=485>"},
+    {searchString: "about 60% of the people do not support the DPP for a third term", explanationText: "<img src=https://lh3.googleusercontent.com/proxy/U38bpnlkyXk_DgZ9vVO38VrMY7_5KmhccXCZQqPoXkupTEtsF-Fl3c3m2CYBD9gDhPqhSFVmr2OqrzhGUIBgxKwhG9PWuKmBuQZRcUU>It's a good thing they're divided!"},
+    {searchString: "Ketagalan Boulevard", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Presidential_Building_%28Taiwan%29.jpg/300px-Presidential_Building_%28Taiwan%29.jpg>We're gonna live in that house!"},
+    {searchString: "Zheng Nanrong", explanationText: "<img src=https://www.taipeitimes.com/images/2016/04/03/p12-160403-b1.jpg>Taiwan's democratic martyr!"},
+    {searchString: "Santiago Peña", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/6/65/Deputy_Prime_Minister_Oliver_Dowden_visits_the_USA_and_UNGA._%2853206033761%29_%28cropped%29.jpg>52nd President of Paraguay"},
+    {searchString: "AIT Chairman Rosenberger", explanationText: "<img src=https://s.yimg.com/ny/api/res/1.2/l_DWXgRLkJGN7GqdbKS2wg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQyNw--/https://media.zenfs.com/ko/ftnn_com_tw_939/84e32a195ccec1b447aefeefab41b9be>Happy Times!"},
+    {searchString: "Bloomberg", explanationText: "<img src=https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iSR1SSQPjsGw/v19/-1x-1.jpg>Nice Shot!"},
+    {searchString: "Paraguay", explanationText: "<img src=https://static.independent.co.uk/2023/07/12/06/Taiwan_Paraguay_77367.jpg?width=1200&height=1200&fit=crop>This is our good friend and the only South American diplomatic ally!"},
+    {searchString: "Central American Parliament", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Emblema_del_Parlamento_Centroamericano.svg/1200px-Emblema_del_Parlamento_Centroamericano.svg.png>"},
+    {searchString: "Daniel Ortega dictatorship", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Daniel_Ortega_%28cropped%29.jpg/220px-Daniel_Ortega_%28cropped%29.jpg>That Old bastard!"},
+    {searchString: "National Day logo", explanationText: "<img src=https://s.yimg.com/ny/api/res/1.2/6AfatwW3No.nTc8Gq3qkOQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQyOA--/https://s.yimg.com/os/creatr-uploaded-images/2023-09/681ebf00-4b01-11ee-bffc-df54e2bc05af>"},
+    {searchString: "Zhao Tianlin", explanationText: "<img src=https://rwnews.tw/upload/newstemp_12246/wide_9rpwqpb_S__9789740.jpg>Can't this guy mind his own business?!"},
+    {searchString: "Huang Jie", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/a/a9/%E7%AC%AC%E5%8D%81%E4%B8%80%E5%B1%86%E7%AB%8B%E6%B3%95%E5%A7%94%E5%93%A1%E9%BB%83%E6%8D%B7%E8%82%96%E5%83%8F.jpg>Kaohsiung City Councilwoman"},
+    {searchString: "some cat and dog animal medals", explanationText: "<img src=https://s.yimg.com/ny/api/res/1.2/Yqux8ftREiCTIXkQqTjEzg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTM2MA--/https://media.zenfs.com/zh-tw/setn.com.tw/41ef652ac748ed18eb86293bbb07bb66>"},
+    {searchString: "Chiu Yi", explanationText: "<img src=https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2024/02/13/realtime/28960193.jpg&x=0&y=0&sw=0&sh=0&sl=W&fw=800&exp=3600>Former legislator, pro-China"},
+    {searchString: "PRC", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/1200px-Flag_of_the_People%27s_Republic_of_China.svg.png>Those who want to annex us!"},
+    {searchString: "Pompeo", explanationText: "<img src=https://media.zenfs.com/ko/setn.com.tw/4298e38185036b624e2c93d4ec2b51a0>This is real!"},
+    {searchString: "concert with Ko P singing", explanationText: "<img src=https://imgs.gvm.com.tw/upload/gallery/20230729/146369.jpg>Chairman, your song is really not good."},
+    {searchString: "event's logo", explanationText: "<img src=https://s.yimg.com/ny/api/res/1.2/6AfatwW3No.nTc8Gq3qkOQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQyOA--/https://s.yimg.com/os/creatr-uploaded-images/2023-09/681ebf00-4b01-11ee-bffc-df54e2bc05af>"},
+    {searchString: "Ettoday", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/zh/thumb/e/e3/ETToady_logo.svg/1200px-ETToady_logo.svg.png>Unlike many other polls, its polls take the form of unsolicited text phone questionnaires."},
+    {searchString: "lack sufficient strength", explanationText: "<img src=https://imgcdn.cna.com.tw/www/WebPhotos/1024/20231119/1058x768_wmky_0_C20231119000075.jpg>Here’s our team roster!"},
+    {searchString: "challenging constituencies", explanationText: "<img src=https://imgcdn.cna.com.tw/www/WebPhotos/1024/20231119/1058x768_wmky_0_C20231119000075.jpg>Here’s our team roster!"},
+    {searchString: "Huang Shanshan", explanationText: "<img src=https://images.chinatimes.com/newsphoto/2023-08-30/656/20230830003752_20231014114044.jpg>One of your staff, 2022 Taipei mayor candidate"},
+    {searchString: "my mother", explanationText: "<img src=https://images.chinatimes.com/newsphoto/2017-05-13/656/20170513002907.jpg>Dear Mother!"},
+    {searchString: "your mother fervently hopes that you become the president", explanationText: "<img src=https://images.chinatimes.com/newsphoto/2017-05-13/656/20170513002907.jpg>Dear Mother!"},
+    {searchString: "land you own in Hsinchu City", explanationText: "<img src=https://imgcdn.cna.com.tw/www/WebPhotos/800/20231221/1025x768_wmky_0_C20231221000110.jpg>"},
+    {searchString: "Emperor Gaozu of Han", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/d/d5/Liu-bang.jpg>"},
+    {searchString: "On November 23rd", explanationText: "<img src=https://today-obs.line-scdn.net/0hJmO95vu_FUJyQAZFeSdqFUoWGTNBJg9LUC9cdFBJSXVdbFQRTyVGIVEXS24McwFBUiEPc1EQTSAMd1FBGw/w1200>"},
+    {searchString: "with Chiu Yi", explanationText: "<img src=https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2024/02/13/realtime/28960193.jpg&x=0&y=0&sw=0&sh=0&sl=W&fw=800&exp=3600>Former legislator, pro-China"},
+    {searchString: "CEC", explanationText: "<img src=https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2023/11/07/realtime/26938276.jpg&x=0&y=0&sw=0&sh=0&sl=W&fw=800&exp=3600>R.O.C Central Election Commission"},
+    {searchString: "now submit to the CEC to", explanationText: "<img src=https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2023/11/07/realtime/26938276.jpg&x=0&y=0&sw=0&sh=0&sl=W&fw=800&exp=3600>R.O.C Central Election Commission"},
+    {searchString: "ECFA", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/d/d0/China_political_division.gif>The Economic Cooperation Framework Agreement (ECFA) is a free trade agreement (FTA) between the governments of the People's Republic of China (mainland China, PRC, commonly China) and the Republic of China (ROC, commonly Taiwan), that aims to reduce tariffs and commercial barriers between the two sides, as well as improve cross-strait relations."},
+    {searchString: "CSSTA", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/f/f5/Mainland_Affairs_Council_brochure_for_ECFA.jpg>Cross-Strait Service Trade Agreement"},
+    {searchString: "Republic of China", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Flag_of_the_Republic_of_China.svg/1200px-Flag_of_the_Republic_of_China.svg.png>Our Nation!"},
+    {searchString: "ROC", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Flag_of_the_Republic_of_China.svg/1200px-Flag_of_the_Republic_of_China.svg.png>Our Nation!"},
+    {searchString: "Huang Kuo-chang", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/%E9%BB%83%E5%9C%8B%E6%98%8C%E5%A7%94%E5%93%A1.jpg/200px-%E9%BB%83%E5%9C%8B%E6%98%8C%E5%A7%94%E5%93%A1.jpg>A former legislator and member of the New Power Party, joined the TPP in November"},
+    {searchString: "Su Jia-chyuan", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/d/d4/%E8%87%BA%E7%81%A3%E6%97%A5%E6%9C%AC%E9%97%9C%E4%BF%82%E5%8D%94%E6%9C%83%E6%9C%83%E9%95%B7%E8%98%87%E5%98%89%E5%85%A8.jpg>former legislative president"},
+    {searchString: "last year's county and city mayor elections", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/2022_Republic_of_China_Magistrate_%26_Mayoral_Elections.svg/640px-2022_Republic_of_China_Magistrate_%26_Mayoral_Elections.svg.png>2022 local elections"},
+    {searchString: "2022 local elections", explanationText:  "<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/2022_Republic_of_China_Magistrate_%26_Mayoral_Elections.svg/640px-2022_Republic_of_China_Magistrate_%26_Mayoral_Elections.svg.png>2022 local elections"},
+    {searchString: "Chen Yu-chen", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/c/c0/%E9%99%B3%E7%8E%89%E7%8F%8D%E5%A7%94%E5%93%A1.jpg>Kinmen County legislator"},
+    {searchString: "That's me with President Trump", explanationText: "<img src=https://s.wsj.net/public/resources/images/S1-CL037_foxcon_M_20190502105850.jpg>Great Man with Great Powers!"},
+    {searchString: "30 Pieces of Advice from Gou Dad to Young People", explanationText: "<img src=https://d2a6d2ofes041u.cloudfront.net/resize?norotation=true&url=https%3A%2F%2Fimages.vocus.cc%2F256920c4-5603-4a6f-a051-e628fc9972a2.jpg&width=1200&sign=ReIVvd_TrxJe5vshAaUse1yBBEsOXJGDyEaoRdGgwqU>My New Book!"},
+    {searchString: "Taipei Grand Hyatt Hotel", explanationText: "<img src=https://rwnews.tw/upload/newstemp_12686/rplbsjj_S__94601225.jpg>11.23"},
+    {searchString: "over a million citizen signatures", explanationText: "<img src=https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2023/11/14/realtime/27190488.png&s=Y&x=0&y=132&sw=1280&sh=952&sl=W&fw=800&exp=3600&w=930>The official confirmation of our signatures is a significant milestone, and I extend my heartfelt gratitude to the millions of people who supported us!"},
+    {searchString: "a tense debate", explanationText: "<img src=https://static.zaobao.com/s3fs-public/articles/2024/01/01/file7tiebsctv441lxbzgkqf.jpg>"},
+    {searchString: "debate will be more intriguing", explanationText: "<img src=https://media.zenfs.com/ko/chinatimes.com.tw/14eec4010ad1c352f4bd1e1a47d30de9>"},
+    {searchString: "debate were women", explanationText: "<img src=https://images.chinatimes.com/newsphoto/2023-10-31/656/20231031001457.jpg>"},
+    {searchString: "Fu Kun-chi", explanationText: "<img src=https://www.taipeitimes.com/images/2023/06/16/P03-230616-011.jpg>Hualien County Mayor"},
+    ];
+
+    campaignTrail_temp.modBoxTheme = {
+        "header_color": "#004db3",
+        "header_text_color": "#ffffff",
+        "description_text_color": "#000000",
+        "description_background_color": "#e0e0e0",
+        "main_color": "#ffffff",
+        "secondary_color": "#ae3232",
+        "ui_text_color": "#FFFFFF"
+   }
+
+//#endcode
+
