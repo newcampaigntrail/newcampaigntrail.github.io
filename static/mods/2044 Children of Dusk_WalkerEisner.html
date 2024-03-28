@@ -5354,8 +5354,8 @@ campaignTrail_temp.state_issue_score_json = [
         "fields": {
             "state": 1131,
             "issue": 110,
-            "state_issue_score": 0.334,
-            "weight": 4
+            "state_issue_score": 0.3,
+            "weight": 1
         }
     },
     {
@@ -19600,9 +19600,9 @@ var collusion = 0;
 var chinese_cooperation = 0;
 var havana_war = 0;
 var united_party = 0;
-var conservative_unity = 0;
 var lost_running_mate = 0;
 var defect_to_china = 0;
+var conservative_unity = 0;
 
 campaignTrail_temp.player_answers = [];
 
@@ -19972,13 +19972,13 @@ cyoAdventure = function(a) {
 	if (progressivism>0){
 		campaignTrail_temp.questions_json[19] = tunnel(44186)
 	}
-	else if (progressivism<=-2 && populism<2 && militarism<2){
+	else if (progressivism>-2 && populism<2 && militarism<2){
 		campaignTrail_temp.questions_json[19] = tunnel(44190)
 	}
 	else if (progressivism<=-2 && gay==1 && populism<2 && militarism<2){
 		campaignTrail_temp.questions_json[19] = tunnel(44202)
 	}
-	else if (progressivism<=-2 && gay==1 && populism<2 && militarism<2){
+	else if (progressivism<=-2 && gay==0 && populism<2 && militarism<2){
 		campaignTrail_temp.questions_json[19] = tunnel(44228)
 	}
 	else if (progressivism>-2 && (populism<2 || militarism>=2)){
@@ -20135,13 +20135,10 @@ endingPicker = (out, totv, aa, quickstats) => {
 	
 	current_slide=0;
 	if (united_party == 1 && conservative_unity == 1){
-		unlockAchievement("A Big Tent Coalition");
 	}
 	if (united_party == 1 && conservative_unity == 1 && futurism >= 2 && populism >= 2 && militarism >= 2){
-		unlockAchievement("Neverending Bickering");
 	}
 	if (quickstats[0] == 538) {
-		unlockAchievement("Wake Up");
 		slides = assemble_slide([
 								"end_of_time",
 								"awakening",
@@ -20158,7 +20155,7 @@ endingPicker = (out, totv, aa, quickstats) => {
 	} else if (aa[0].electoral_votes == 538 && aa[0].candidate == 301) {
 		setImage(cod_dict["cortezlandslide"]);
 		return "<span id='cortezlandslide' style='display: initial;'><h3>The Harbinger of God</h3><div style='overflow-y:scroll;height:235px;'><p>Cortez stood in front of the presidential podium, after winning in a 50 state landslide, including Washington DC.<br><br>“I can no longer tolerate the proliferation of the secular disease. You WILL attend the church potluck.”<br><br>Armed with a Frank Turek book, she then began levitating into the air and began to DESTROY all atheists with FACTS and LOGIC.<br><br>90% of China was dead within 5 hours.</p></div></span>"
-	} else if (aa[0].electoral_votes <= 270) {
+	} else if (aa[0].electoral_votes < 270) {
 		setImage(cod_dict["capitol"]);
 		return "<span id='cortezlandslide' style='display: initial;'><h3>Deadlocked Election</h3><div style='overflow-y:scroll;height:235px;'><p>After months of hard work and sweat, you've actually managed to do it, at least partially. A deadlocked electoral college, both you and the Progressives combined have managed to score enough to prevent Cortez from getting a majority. But it's not over, it's far from over. You'll need to undergo negotiations for the Progressive electors to vote you into office. Failing that, a Republican controlled House and Senate might get her into office.<br><br>The Mad Lady has shown vulnerability, but she is far from down. You feel a bead of sweat grow on your forehead. Prepare yourself for a rough next few months, it's far from over.</p></div></span>"
 	} else if (defect_to_china == 1) {
@@ -20167,14 +20164,12 @@ endingPicker = (out, totv, aa, quickstats) => {
 	} else if (quickstats[0] < 269) {
 		slidelist=[]
 		if (quickstats[0] > 220) {
-			unlockAchievement("An Ember in the Darkness");
 			slides = assemble_slide([
 								"light_in_the_darkness",
 								"frustrated_agenda",
 								"faded_legacy",
 								])
 		} else {
-			unlockAchievement("Under the Iron Crucifix");
 			slides = assemble_slide([
 								"cortez_goodnight_america",
 								"cortez_nowhere_to_run",
@@ -20184,21 +20179,17 @@ endingPicker = (out, totv, aa, quickstats) => {
 		setImage(imglist[0]);
 		return slides
 	} else if (quickstats[0] >= 270) {
-		unlockAchievement("Sweet Victory");
 		slidelist=["walker_victory","marriage"]
 		if (eurasian_cooperation==1) {
 			slidelist.push("handshake_deal")
 		}
 		if (havana_war==1 && militarism > 2) {
 			slidelist.push("havana_hellfire")
-			unlockAchievement("Communism Death");
 		}
 		if (diplomacy>1 && militarism <= 2) {
 			slidelist.push("walker_gets_cucked")
-			unlockAchievement("Battered Peacemaker");
 		} else if (diplomacy>1 && militarism > 2) {
 			slidelist.push("peace_through_strength")
-			unlockAchievement("Peace through Strength");
 		}
 		
 		if (united_party==0) {
@@ -20209,11 +20200,9 @@ endingPicker = (out, totv, aa, quickstats) => {
 		}
 		if (havana_war==1 && militarism <= 2 && diplomacy<=1) {
 			slidelist.push("havana_quagmire")
-			unlockAchievement("Yet Another Vietnam");
 		}
 		if (militarism>=5 && diplomacy<=1) {
 			slidelist.push("american_wrath")
-			unlockAchievement("Annihilation of America's Enemies");
 		}
 		if (militarism<5 && militarism>=0 && diplomacy<=1) {
 			slidelist.push("american_steel")
