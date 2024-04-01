@@ -1,0 +1,756 @@
+RecReading=true;
+e=campaignTrail_temp
+if (!e.done) {
+e.done = true;
+
+if(document.getElementById("position-display")==null)
+{
+
+function updateCandidateForm() {
+    try {
+      const form = document.querySelector("#candidate_form form");
+      const heading = form.querySelector("h3");
+      
+      heading.textContent = "Please select your party:";
+    } catch {}
+  }
+  window.setInterval(updateCandidateForm,10)
+  function updateRunningMateForm() {
+    try {
+      const form = document.querySelector("#running_mate_form form");
+      const heading = form.querySelector("h3");
+      
+      heading.textContent = "Read more about your party:";
+    } catch {}
+  }
+  window.setInterval(updateRunningMateForm,10)
+  function removeCandidateSummary() {
+  try {
+    const candidateSummary = document.querySelector("#candidate_summary");
+    if (candidateSummary) {
+      const ulList = candidateSummary.querySelector("ul");
+      if (ulList) {
+        candidateSummary.removeChild(ulList);
+      }
+    }
+  } catch {}
+  }
+  window.setInterval(removeCandidateSummary,10)
+  
+  let z = new MutationObserver((mutationsList, observer) => {
+      let candidateSummary = document.querySelector("#candidate_summary");
+      if (candidateSummary && candidateSummary.children[0].children[2].innerHTML != candidateSummary.children[0].children[2].innerHTML.replaceAll("Home State", "Constituency")) {
+          candidateSummary.children[0].children[2].innerHTML = candidateSummary.children[0].children[2].innerHTML.replaceAll("Home State", "Constituency");
+      }
+  });
+
+
+  campaignTrail_temp.global_parameter_json = [
+    {
+        "model": "campaign_trail.global_parameter",
+        "pk": 1,
+        "fields": {
+            "vote_variable": 1.125,
+            "max_swing": 0.12,
+            "start_point": 0.94,
+            "candidate_issue_weight": 10,
+            "running_mate_issue_weight": 3,
+            "issue_stance_1_max": -0.71,
+            "issue_stance_2_max": -0.3,
+            "issue_stance_3_max": -0.125,
+            "issue_stance_4_max": 0.125,
+            "issue_stance_5_max": 0.3,
+            "issue_stance_6_max": 0.71,
+            "global_variance": 0.01,
+            "state_variance": 0.005,
+            "question_count": 25,
+            "default_map_color_hex": "#C9C9C9",
+            "no_state_map_color_hex": "#999999"
+        }
+    }
+]
+
+campaignTrail_temp.modBoxTheme = {
+    "header_color": "#840f1c",
+    "header_text_color": "#ffffff",
+    "description_text_color": "#000000",
+    "description_background_color": "#e8fbff",
+    "main_color": "#BFE6FF",
+    "secondary_color": "#700016",
+    "ui_text_color": "#FFFFFF"
+}
+
+campaignTrail_temp.election_json = [
+    {
+        "model": "campaign_trail.election",
+        "pk": 20,
+        "fields": {
+            "year": 2024,
+            "display_year": "2024a",
+            "summary": "<p>After fourteen years in Government, Rishi Sunak's Conservatives must answer to a general election. Tory polling has improved in recent months, but the party is still lagging behind Labour badly.\n<li>Opposition Leader Kier Starmer must unite Labour, pruning weak links, and keep the party on track for a landslide victory.</li>\n<li>Prime Minister Rishi Sunak must re-establish a lead for the so-called ''natural party of government'' by fighting back against the splinter Reform UK Party and by keeping Starmer on the defense.<p>(<em>NOTE: scenario created in March 2024, may not reflect subsequent events.</em>)</p>",
+            "image_url": "https://itsastronomical.com/assets/2024-UK/2024.png",
+            "winning_electoral_vote_number": 326,
+            "advisor_url": "https://itsastronomical.com/assets/2024-UK/advisor.png",
+            "recommended_reading": "<h4 style='margin-top: 0.5em;'>The 2024 Election</h4><a href='https://youtu.be/u2kerzNLTIY?si=inC4NURIehFbGFPr&t=553' target='_blank'>Foreign Secretary David Cameron being asked if he's ever had a wank to Margaret Thatcher - Friday Night With Jonathan Ross</a><br><a href='https://edition.cnn.com/videos/media/2022/10/20/liz-truss-vs-lettuce-live-stream-british-tabloid-uk-stewart-pkg-intl-cprog-vpx.cnn' target='_blank'>A head of lettuce bests Liz Truss in tabloid Prime minister race - CNN</a><marquee scrollamount='70'><h1>APRIL FOOLS! APRIL FOOLS! APRIL FOOLS! APRIL FOOLS! APRIL FOOLS! APRIL FOOLS! APRIL FOOLS! APRIL FOOLS! APRIL FOOLS! APRIL FOOLS! APRIL FOOLS! APRIL FOOLS! APRIL FOOLS! APRIL FOOLS!</marquee><h4>Credits</h4><p>This mod was made by ItsAstronomical.<br>River helped with writing, and AeronauticBlueberry created the FPTP simulation.<br><br><img src='https://itsastronomical.com/assets/miniastro.png' width='80px'></img><br><br>Fun Fact: The initial plan for this April Fools had to be scrapped because writing got stalled and someone leaked it anyway because they 'hate fakeout mods'. But who got the last laugh? <b>ME.</b></p>",
+            "has_visits": 1,
+            "no_electoral_majority_image": "https://itsastronomical.com/assets/2024-UK/hungparliament.png",
+            "site_image": "https://itsastronomical.com/assets/2024/2024.png",
+            "site_description": "<p>A rocky four years under President Biden has reached a boiling point with the renomination of former President Donald Trump.</p> <ul><li>Joe Biden battles poor approvals, low voter enthusiasm, and skepticism about his age, but has the perceived upper hand on wedge economic and social issues.</li><li>Donald Trump's vision for change is complicated by the chaotic end of his own term (and pending legal action). His path to victory may hinge on “strength” issues like the border and foreign policy.</li></ul>"
+        }
+    },
+    {
+        "model": "campaign_trail.election",
+        "pk": 16,
+        "fields": {
+            "year": 2019,
+            "display_year": "2019",
+            "summary": "<p>The failure of Parliament to pass Prime Minister Boris Johnson's Brexit deal has led to him calling a snap election.<li>Boris Johnson must keep the Tories' eyes on the prize and focus on getting the Brexit negotiations finished once and for all.</li><li>Opposition Leader Jermey Corbyn must answer to the split view within the party on Brexit.<p>How will their campaigns play out? Will Johnson ''Get Brexit Done''? Can Corbyn recreate the miracle of the last election?</p>",
+            "image_url": "https://itsastronomical.com/assets/2024-UK/2019.png",
+            "winning_electoral_vote_number": 326,
+            "advisor_url": "https://itsastronomical.com/assets/2024-UK/advisor.png",
+        }
+    },
+    {
+        "model": "campaign_trail.election",
+        "pk": 3,
+        "fields": {
+            "year": 2017,
+            "display_year": "2017",
+            "summary": "<p>Prime Minister Theresa May hopes to improve her hand during Brexit negotiations, and thus has called a snap election. Polling indicates that the Tories will win a clearer majority which would hopefully allow her to pass a deal withdrawing Britain from the European Union.</p><p>Labour Leader Jermey Corbyn is hoping to buck the odds and defy the current polling. In order to do so, he will have to work at reuniting a divided party, while working with Labour leaders who dislike him.</p>",
+            "image_url": "https://itsastronomical.com/assets/2024-UK/2017.png",
+            "winning_electoral_vote_number": 326,
+            "advisor_url": "https://itsastronomical.com/assets/2024-UK/advisor.png",
+        }
+    },
+    {
+        "model": "campaign_trail.election",
+        "pk": 9,
+        "fields": {
+            "year": 2010,
+            "display_year": "2010",
+            "summary": "<p>Opposition Leader David Cameron hopes to bring the Conservatives back into Government, while Prime Minister Gordon Brown must play defense on much of Tony Blair's record during his decade in office. Labour has been recovering in the polls, but the Tories have held the lead since late 2007 or so. A global recession puts economic concerns at the forefront of the debate.</p><p>Meanwhile, the new, young, and energetic Nick Clegg of the Liberal Democrats hopes to shake up the results and return a hung parliament - as polling indicates is likely.</p>",
+            "image_url": "https://itsastronomical.com/assets/2024-UK/2010.png",
+            "winning_electoral_vote_number": 326,
+            "advisor_url": "https://itsastronomical.com/assets/2024-UK/advisor.png",
+        }
+    },
+    {
+        "model": "campaign_trail.election",
+        "pk": 15,
+        "fields": {
+            "year": 1997,
+            "display_year": "1997",
+            "summary": "<p>After a decade of Thatcher, and nearly seven years of John Major, Britain seems ready for a new direction in government. Opposition Leader Tony Blair must press the case for his so-called 'New Labour' while flaunting his own personal populairty.</p><p>Meanwhile, Prime Minister John Major is on the defense and must rebuild trust in the party. Both candidates must find ways to keep the race interesting. Blair could expose disivions in the Tories such as the Maastricht Treaty, while Major hopes a longer campaign could fracture Labour given Blair's move to the center.</p>",
+            "image_url": "https://itsastronomical.com/assets/2024-UK/1997.png",
+            "winning_electoral_vote_number": 308,
+            "advisor_url": "https://itsastronomical.com/assets/2024-UK/advisor.png",
+        }
+    },
+    {
+        "model": "campaign_trail.election",
+        "pk": 4,
+        "fields": {
+            "year": 1992,
+            "display_year": "1992",
+            "summary": "<p>Prime Minister John Major calls an election as the Tories are behind Labour in the polling - a recession continues, and Major struggling to recover his party from the damage done by Thatcher's 'community charge' (also known as the Poll Tax). Major is hoping to win this election on the issue of tax policy and healthcare.</p><p>The expectation is that Neil Kinnock - who stayed on as Labour leader after winning back seats from Thatcher in 1987 - will become Prime Minister with a small majority or a minority government. The newly formed Liberal Democrats will also attempt to peel votes from both the Tories and Labour.</p>",
+            "image_url": "https://itsastronomical.com/assets/2024-UK/1992.png",
+            "winning_electoral_vote_number": 308,
+            "advisor_url": "https://itsastronomical.com/assets/2024-UK/advisor.png",
+        }
+    },
+    {
+        "model": "campaign_trail.election",
+        "pk": 10,
+        "fields": {
+            "year": 1979,
+            "display_year": "1979",
+            "summary": "<p>A motion of no confidence in Prime Minister James Callaghan's government has passed by one vote, as he declares that he and Labour 'shall take our case to the country' with Parliment being dissolved. Nevertheless, polling is tight, with the collapse of support for the Liberal Party following an affair with their leader.</p><p>Margaret Thatcher benefits from the economic troubles in her quest to become Britain's first female Prime Minister, but her Conservative Party must attract a variety new Tory voters - former Liberals, middle class, and traditional Labour voters - in order to win.</p>",
+            "image_url": "https://itsastronomical.com/assets/2024-UK/1979.png",
+            "winning_electoral_vote_number": 308,
+            "advisor_url": "https://itsastronomical.com/assets/2024-UK/advisor.png",
+        }
+    },
+    {
+        "model": "campaign_trail.election",
+        "pk": 12,
+        "fields": {
+            "year": 1945,
+            "display_year": "1945",
+            "summary": "<p>With the Second World War over, the Churchill war ministry dissolves as the first election in 10 years is held. Prime Minister Winston Churchill remains beloved across the nation as a war hero, but many are looking to turn the page from the Tory governments of the last few decades and choose a new direction for the post-war peace.</p><p>Meanwhile, Clement Atlee and the Labour Party must focus on key issues such as housing, healthcare, and social reform in order to maintain the polling lead that they have maintained for the past few years.</p>",
+            "image_url": "https://itsastronomical.com/assets/2024-UK/1945.png",
+            "winning_electoral_vote_number": 308,
+            "advisor_url": "https://itsastronomical.com/assets/2024-UK/advisor.png",
+        }
+    },
+    {
+        "model": "campaign_trail.election",
+        "pk": 14,
+        "fields": {
+            "year": 1929,
+            "display_year": "1929",
+            "summary": "<p>The 1929 Election begins with unemployment on the rise, and a general exhaustion from the Conservative government. Ramsay MacDonald hopes to return to 10 Downing Street under a Labour Government after a brief stint earlier in the decade, while Prime Minister Stanley Baldwin must lead his party in battle against both Labour and Liberal candidates in marginal seats.</p><p>The Liberal Party, not reunified after a schism in the early 1920s, also hopes to retake its position as a major party capable of forming a government.</p>",
+            "image_url": "https://itsastronomical.com/assets/2024-UK/1929.png",
+            "winning_electoral_vote_number": 308,
+            "advisor_url": "https://itsastronomical.com/assets/2024-UK/advisor.png",
+        }
+    },
+    {
+        "model": "campaign_trail.election",
+        "pk": 5,
+        "fields": {
+            "year": 1906,
+            "display_year": "1906",
+            "summary": "<p>Newly sworn in Prime Minister Henry Campbell-Bannerman has called a general election to capitalize upon the unpopularity of the Conservatives. The Boer War and the concerns of imperialism and inequality that the conflict brought up only compound the trouble for the Conservatives.</p><p>Campbell-Bannerman must also address the rising Labour vote to avoid vote splitting that could enable the Tories to return to Government. Former Prime Minister Arthur Balfour must also find some way to recover the sinking popularity of the Conservatives, such as mending the divide over the tariff issue.</p>",
+            "image_url": "https://itsastronomical.com/assets/2024-UK/1906.png",
+            "winning_electoral_vote_number": 336,
+            "advisor_url": "https://itsastronomical.com/assets/2024-UK/advisor.png",
+        }
+    },
+    {
+        "model": "campaign_trail.election",
+        "pk": 13,
+        "fields": {
+            "year": 1832,
+            "display_year": "1832",
+            "summary": "<p>The sitting Whig Party has just enacted the Reform Act of 1832, and seeks to put the reformed electoral system to the test. The removal of rotten boroughs, more urban representation, and an expanded electorate will make this election even more of a challenge for the Tories.</p><li>The Earl Grey begins this election in a favorable position, after having defeated the Tories over a year prior.</li><li>The Duke of Wellington remains renowed for his service to the country, but it is unknown if that will be enough to save his party.",
+            "image_url": "https://itsastronomical.com/assets/2024-UK/1832.png",
+            "winning_electoral_vote_number": 330,
+            "advisor_url": "https://itsastronomical.com/assets/2024-UK/advisor.png",
+        }
+    }
+]
+
+campaignTrail_temp.temp_election_list = [
+    {
+        "id": 20,
+        "year": 2024,
+        "is_premium": 0,
+        "display_year": "2024a"
+    },
+    {
+        "id": 16,
+        "year": 2019,
+        "is_premium": 0,
+        "display_year": "2019"
+    },
+    {
+        "id": 3,
+        "year": 2017,
+        "is_premium": 0,
+        "display_year": "2017"
+    },
+    {
+        "id": 9,
+        "year": 2010,
+        "is_premium": 0,
+        "display_year": "2010"
+    },
+    {
+        "id": 15,
+        "year": 1997,
+        "is_premium": 0,
+        "display_year": "1997"
+    },
+    {
+        "id": 4,
+        "year": 1992,
+        "is_premium": 0,
+        "display_year": "1992"
+    },
+    {
+        "id": 10,
+        "year": 1979,
+        "is_premium": 0,
+        "display_year": "1979"
+    },
+    {
+        "id": 12,
+        "year": 1945,
+        "is_premium": 0,
+        "display_year": "1945"
+    },
+    {
+        "id": 14,
+        "year": 1929,
+        "is_premium": 0,
+        "display_year": "1929"
+    },
+    {
+        "id": 5,
+        "year": 1906,
+        "is_premium": 0,
+        "display_year": "1906"
+    },
+    {
+        "id": 13,
+        "year": 1832,
+        "is_premium": 0,
+        "display_year": "1832"
+    }
+]
+
+campaignTrail_temp.credits = "Sir Daniel Bryan MBE"
+
+campaignTrail_temp.candidate_json = [
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 201,
+        "fields": {
+            "first_name": "Keir",
+            "last_name": "Starmer",
+            "election": 20,
+            "party": "Labour",
+            "state": "Holborn and St. Pancras",
+            "priority": 1,
+            "description": "<li><b>Name: Keir Starmer</b></li><li><b>Party: Labour Party</b></li><li><b>Role: Leader of the Opposition</b></li><li><b>Constituency: Holborn and St. Pancras</b></li><p>Keir Starmer is the incumbent leader of His Majesty's Most Loyal Opposition, having been in the position since a leadership election in 2020. Previously, he served as Shadow Brexit Secretary and spent plenty of time grilling the Conservative Government for their plans on the British withdraw from the European Union.</p><p>Starmer and his Labour Party start the election with a large lead, but he must contend to divisions within the party. He ran a rather socialist campaign for leadership, but has now shifted towards the center. Therefore, his campaign must balance the desire to pivot towards the center while keeping the party's left flank secured.",
+            "color_hex": "#e2003b",
+            "secondary_color_hex": null,
+            "is_active": 1,
+            "image_url": "https://itsastronomical.com/assets/2024-UK/starmer.png",
+            "electoral_victory_message": "<h3>Congratulations! You have won the 2024 General Election for Labour!</h3><p>This comes as no suprise to everyone, but it is still exciting for you and your party. After a nearly 15 year spell in opposition, Labour has returned from the backbenches. Returns show the Tories have been torn apart, from their own unpopularity and the Reform Splinter. It'll take awhile for them to recover their political power.</p><p>In the meantime, you have a lot on your agenda that you can pursue. Your five missions - economic growth, clean energy, NHS reform, safer streets, and economic opportunities should all be primary focuses for you. If you can pull Britain's economy back up, who knows how long you could be in office? Just don't stay too long - after all, look what happened to Tony Blair's reputation.</p>",
+            "electoral_loss_message": "<h3>Britain has returned a Hung Parliament.</h3><p>This is a shock to practically everyone. Somehow, the Conservatives have outperformed expectations - or Labour lost too much to the Liberal Democrats. In any case, just like 2010, it's highly unlikely the LibDems will prop up a failing, sitting government, so be prepared to have Ed Davey as Deputy Prime Minister.</p><p>Of course, if the margin is close enough, you could also form agreements with the Alliance Party of Northern Ireland - depending on how many seats they got. Regardless, the math is in your favor, and you'll be called upon first to form His Majesty's Government. If you can pull Britain's economy back up, who knows how long you could be in office? Just don't stay too long - after all, look what happened to Tony Blair.</p>",
+            "no_electoral_majority_message": "<h3>Sorry! You have lost the 2024 General Election for Labour!</h3><p>It's a bigger upset than the 1970 election, or even the 1992 election. Somehow, despite all odds, the Tories have managed to pull off a victory. Rishi Sunak will be retained as Prime Minister, and will likely go down in the history books as one of the greatest Conservative leaders. He'll have a lot of work to pull off an economic recover, though.</p><p>You, however, are done. Slipping behind in an election like this is unheard of, and many Labour MPs are expecting (and hoping) you will resign after this. Your often mysterious and puzzling political career has come to an end. Best of luck in any future endeavors.</p>",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 200,
+        "fields": {
+            "first_name": "Rishi",
+            "last_name": "Sunak",
+            "election": 20,
+            "party": "Conservative",
+            "state": "Richmond and Northallerton",
+            "priority": 1,
+            "description": "<li><b>Name: Rishi Sunak</b></li><li><b>Party: Conservative and Unionist Party</b></li><li><b>Role: Prime Minister of the United Kingdom</b></li><li><b>Constituency: Richmond and Northallerton</b></li><p>Prime Minister Rishi Sunak took the wheel in late 2022 following a a string of government collapses resulting in Boris Johnson, and then Liz Truss resigning from the job. While the party has recovered her polling numbers post-Truss, it seems Sunak's days as Prime Minister may very well be numbered.</p><p>Sunak and the Conservatives must wage a two front war. First, they must reunite Conservatives by snuffing out the flame that is the Reform UK Party. Then, Sunak must expose Labour's weaknesses - either by exposing fractures in the party, or perhaps bringing Starmer down to his own sinking popularity.",
+            "color_hex": "#0086db",
+            "secondary_color_hex": null,
+            "is_active": 1,
+            "image_url": "https://itsastronomical.com/assets/2024-UK/sunak.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "<p>This is a running mate description it only shows for running mates</p>",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 1,
+        "fields": {
+            "first_name": "British",
+            "last_name": "Labour",
+            "election": 20,
+            "party": "Labour",
+            "state": "National",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#e3003b",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://itsastronomical.com/assets/2024-UK/labour.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "<p>The Labour Party was founded in one room over 100 years ago, as an alliance of trade unionists, democratic socialists, and others on the left. Since the 1920s-1930s, it has been the main rival of the Conservative Party.</p>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 2,
+        "fields": {
+            "first_name": "British",
+            "last_name": "Conservative",
+            "election": 20,
+            "party": "Conservative",
+            "state": "National",
+            "priority": 1,
+            "description_as_running_mate": "<p>The Conservative Party is Rishi Sunak's Political Party.</p>",
+            "color_hex": "#0086da",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://itsastronomical.com/assets/2024-UK/tory.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 202,
+        "fields": {
+            "first_name": "",
+            "last_name": "Liberal Democrats",
+            "election": 20,
+            "party": "LibDem",
+            "state": "Copium",
+            "priority": 1,
+            "description": "<p>Not Playable</p>",
+            "color_hex": "#f6a31a",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 203,
+        "fields": {
+            "first_name": "",
+            "last_name": "SNP",
+            "election": 20,
+            "party": "SNP",
+            "state": "Scotland",
+            "priority": 1,
+            "description": "<p>Not Playable</p>",
+            "color_hex": "#faf08c",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 204,
+        "fields": {
+            "first_name": "",
+            "last_name": "Democratic Unionist Party",
+            "election": 20,
+            "party": "Democratic Unionist Party",
+            "state": "Northern Ireland",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#d2694b",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 205,
+        "fields": {
+            "first_name": "",
+            "last_name": "Sinn Féin",
+            "election": 20,
+            "party": "Sinn Féin",
+            "state": "Ireland",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#31655e",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 206,
+        "fields": {
+            "first_name": "",
+            "last_name": "SDLP",
+            "election": 20,
+            "party": "SDLP",
+            "state": "Northern Ireland",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#2aa62b",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 207,
+        "fields": {
+            "first_name": "",
+            "last_name": "Alliance",
+            "election": 20,
+            "party": "Alliance",
+            "state": "Northern Ireland",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#f2c82e",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 208,
+        "fields": {
+            "first_name": "",
+            "last_name": "Reform",
+            "election": 20,
+            "party": "Reform UK",
+            "state": "UK",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#12b6cf",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 209,
+        "fields": {
+            "first_name": "",
+            "last_name": "Green",
+            "election": 20,
+            "party": "Green",
+            "state": "UK",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#02a65a",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 210,
+        "fields": {
+            "first_name": "",
+            "last_name": "Speaker",
+            "election": 20,
+            "party": "Speaker",
+            "state": "Speaker",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#000000",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 211,
+        "fields": {
+            "first_name": "",
+            "last_name": "Independents/Others",
+            "election": 20,
+            "party": "Independent",
+            "state": "UK",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#d9d9d9",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 212,
+        "fields": {
+            "first_name": "",
+            "last_name": "Plaid Cymru",
+            "election": 20,
+            "party": "Plaid Cymru",
+            "state": "Wales",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#005a53",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    }
+]
+
+campaignTrail_temp.running_mate_json = [
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 142471,
+        "fields": {
+            "candidate": 200,
+            "running_mate": 2
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 171506,
+        "fields": {
+            "candidate": 201,
+            "running_mate": 1
+        }
+    }
+]
+
+campaignTrail_temp.opponents_default_json = [
+    {
+        "election": 20,
+        "candidates": [
+            201,
+            200,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212
+        ]
+    }
+]
+
+campaignTrail_temp.opponents_weighted_json = [
+    {
+        "election": 20,
+        "candidates": [
+            201,
+            200,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            211,
+            212
+        ]
+    }
+]
+
+jet_data = {
+    "headerColor": "#700016",
+    "windowColor": "#BFE6FF",
+    "containerColor": "#FFFFFF",
+    "innerWindowColor": "#E8FBFF",
+    "bannerImageUrl": "https://itsastronomical.com/assets/2024-UK/gb_banner.png",
+    "backgroundImageUrl": "https://coolbackgrounds.io/images/backgrounds/white/pure-white-background-85a2a7fd.jpg",
+    "endingTextColor": "#000000"
+}
+
+//#startcode
+
+corrr=`\n<h2>THE CAMPAIGN TRAIL</h2>`
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#700016";
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#BFE6FF";
+
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+$(".container")[0].style.backgroundColor = "#FFFFFF";
+
+document.getElementById("header").src = "https://itsastronomical.com/assets/2024-UK/gb_banner.png";
+
+document.body.background = "https://itsastronomical.com/assets/2024-UK/bg.png";
+
+document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#E8FBFF!important;}</style>";
+
+//#endcode
+ 
+  }
+
+
+  styling = document.createElement("style");
+  document.head.appendChild(styling);
+  
+  styling.innerHTML = `
+  #opponent_selection_id_back {
+      display: none;
+  }
+  `
+
+  let z = new MutationObserver((mutationsList, observer) => {
+    let runningMateSummary = document.querySelector("#running_mate_summary");
+    if (runningMateSummary) {
+        $("#running_mate_id_button").click();
+        observer.disconnect()
+    }
+});
+
+
+z.observe(document, { subtree: true, childList: true });
+}
