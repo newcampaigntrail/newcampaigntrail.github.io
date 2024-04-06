@@ -2460,7 +2460,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 200,
             "state": 20691,
-            "state_multiplier": 0.21
+            "state_multiplier": 0.19
         }
     },
     {
@@ -6930,6 +6930,9 @@ distributeSeatsUK = () => {
         if (state == 20791 && c == 204) {return 4}
         if (state == 20791 && c == 205) {return 4}
         if (state == 20791 && c == 207) {return 2}
+        // Lib Dems in South of England
+        if (state == 20761 && c == 202) {return 5}
+        if (state == 20751 && c == 202) {return 6}
         return 0;
     }
 
