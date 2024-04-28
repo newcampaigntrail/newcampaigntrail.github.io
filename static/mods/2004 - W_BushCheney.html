@@ -55063,13 +55063,13 @@ const ads = [
                 }
             }
 		// 3rd War!!!
-			if(((VicePres == 0) && (RummyGone == 0) && (Jingo >= 4) && (e.noCounter == 27))){ // add || Dem == 10 for byrd
+			if(((VicePres == 0) && (RummyGone == 0) && (Jingo >= 4) && (Wars == 2) && (e.noCounter == 27))){ // add || Dem == 10 for byrd
 				campaignTrail_temp.questions_json[27] = tunnel(9728);   
 			}
             if((Dem == 7) && (Jingo >= 4) && (e.player_answers.includes(8978) || e.player_answers.includes(9117)) && (e.player_answers.includes(9296) || e.player_answers.includes(14488) || e.player_answers.includes(14493)) && e.player_answers.includes(14407) && (e.noCounter == 27)){ // WW3 TODO conditions
 				campaignTrail_temp.questions_json[27] = tunnel(14372);   
             }
-            if((VicePres == 0) && (e.player_answers.includes(8986) || e.player_answers.includes(12095) || e.player_answers.includes(12120) || e.player_answers.includes(12140) || e.player_answers.includes(12160)) && (Wins >= 5) && (e.player_answers.includes(9296) || e.player_answers.includes(14488) || e.player_answers.includes(14493)) && (e.player_answers.includes(8977) || e.player_answers.includes(9115))  && (e.player_answers.includes(9242) || e.player_answers.includes(9251) || e.player_answers.includes(9260) || e.player_answers.includes(9269)) && (e.noCounter == 27)){ // ww3 with cheney
+            if((VicePres == 0) && (Dem == 6) && (e.player_answers.includes(8986) || e.player_answers.includes(12095) || e.player_answers.includes(12120) || e.player_answers.includes(12140) || e.player_answers.includes(12160)) && (Wins >= 5) && (e.player_answers.includes(9296) || e.player_answers.includes(14488) || e.player_answers.includes(14493)) && (e.player_answers.includes(8977) || e.player_answers.includes(9115))  && (e.player_answers.includes(9242) || e.player_answers.includes(9251) || e.player_answers.includes(9260) || e.player_answers.includes(9269)) && (e.noCounter == 27)){ // ww3 with cheney
                 campaignTrail_temp.questions_json[27] = tunnel(14480);   
             }
 		// Democrat Questions
