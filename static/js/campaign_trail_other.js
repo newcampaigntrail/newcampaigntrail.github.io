@@ -530,31 +530,31 @@ if (nct_stuff.selectedTheme == "shining") {
             tracklist: [
                 {
                     name: "06 Concerto No. 2 in G Minor, RV 315 Summer: III. Presto - Vivaldi: The Four Seasons",
-                    url: "https://cdn.discordapp.com/attachments/810034515334004766/1142207109442838639/concerto.mp3"
+                    url: "https://github.com/newcampaigntrail/resources/raw/main/Other/Sounds/STSS/The%20Beautiful/concerto.mp3"
                 },
                 {
                     name: "Beethoven - Moonlight Sonata",
-                    url: "https://cdn.discordapp.com/attachments/810034515334004766/1142073582810304623/moonlight_sonata.mp3"
+                    url: "https://github.com/newcampaigntrail/resources/raw/main/Other/Sounds/STSS/The%20Beautiful/moonlight_sonata.mp3"
                 },
                 {
                     name: "Brahms - Hungarian Dance No. 5",
-                    url: "https://cdn.discordapp.com/attachments/810034515334004766/1142220507480076408/hungarian.mp3"
+                    url: "https://github.com/newcampaigntrail/resources/raw/main/Other/Sounds/STSS/The%20Beautiful/hungarian.mp3"
                 },
                 {
                     name: "Beethoven - 5th Symphony in C Minor",
-                    url: "https://cdn.discordapp.com/attachments/810034515334004766/1142073582206320650/5th_movement.mp3"
+                    url: "https://github.com/newcampaigntrail/resources/raw/main/Other/Sounds/STSS/The%20Beautiful/5th_movement.mp3"
                 },
                 {
                     name: "Tchaikovsky - 1812 Overture",
-                    url: "https://cdn.discordapp.com/attachments/810034515334004766/1142206148800430120/1812_overture.mp3"
+                    url: "https://github.com/newcampaigntrail/resources/raw/main/Other/Sounds/STSS/The%20Beautiful/1812_overture.mp3"
                 },
                 {
                     name: "Carl Orff - O Fortuna ~ Carmina Burana",
-                    url: "https://cdn.discordapp.com/attachments/810034515334004766/1142207750621888542/fortuna.mp3"
+                    url: "https://github.com/newcampaigntrail/resources/raw/main/Other/Sounds/STSS/The%20Beautiful/fortuna.mp3"
                 },
                 {
                     name: "Dmitri Shostakovich - Waltz No. 2",
-                    url: "https://cdn.discordapp.com/attachments/810034515334004766/1142208300079927417/waltz.mp3"
+                    url: "https://github.com/newcampaigntrail/resources/raw/main/Other/Sounds/STSS/The%20Beautiful/waltz.mp3"
                 }
             ]
         },
@@ -563,31 +563,31 @@ if (nct_stuff.selectedTheme == "shining") {
             tracklist: [
                 {
                     name: "Bob Dylan - Masters of War",
-                    url: "https://cdn.discordapp.com/attachments/810034515334004766/1142223392553062511/war.mp3"
+                    url: "https://github.com/newcampaigntrail/resources/raw/main/Other/Sounds/STSS/In%20Liberating%20Strife/war.mp3"
                 },
                 {
                     name: "Randall Hammer - Bella Ciao",
-                    url: "https://cdn.discordapp.com/attachments/810034515334004766/1142211620978823228/bella_ciao.mp3"
+                    url: "https://github.com/newcampaigntrail/resources/raw/main/Other/Sounds/STSS/In%20Liberating%20Strife/bella_ciao.mp3"
                 },
                 {
                     name: "Interlude 1",
-                    url: "https://cdn.discordapp.com/attachments/810034515334004766/1142214642777735238/allende.mp3"
+                    url: "https://github.com/newcampaigntrail/resources/raw/main/Other/Sounds/STSS/In%20Liberating%20Strife/allende.mp3"
                 },
                 {
                     name: "Verdi - Drinking Song (cover by Bridget Mermikides)",
-                    url: "https://cdn.discordapp.com/attachments/810034515334004766/1142214135992553583/drinking_song.mp3"
+                    url: "https://github.com/newcampaigntrail/resources/raw/main/Other/Sounds/STSS/In%20Liberating%20Strife/drinking_song.mp3"
                 },
                 {
                     name: "Interlude 2",
-                    url: "https://cdn.discordapp.com/attachments/810034515334004766/1142213172766441583/death.mp3"
+                    url: "https://github.com/newcampaigntrail/resources/raw/main/Other/Sounds/STSS/In%20Liberating%20Strife/death.mp3"
                 },
                 {
                     name: "Rammstein - Amerika",
-                    url: "https://cdn.discordapp.com/attachments/810034515334004766/1142210127861125250/amerika.mp3"
+                    url: "https://github.com/newcampaigntrail/resources/raw/main/Other/Sounds/STSS/In%20Liberating%20Strife/amerika.mp3"
                 },
                 {
                     name: "Mefisto - Let Go of Life",
-                    url: "https://cdn.discordapp.com/attachments/810034515334004766/1142221135828758648/let_go.mp3"
+                    url: "https://github.com/newcampaigntrail/resources/raw/main/Other/Sounds/STSS/In%20Liberating%20Strife/let_go.mp3"
                 }
             ]
         }
