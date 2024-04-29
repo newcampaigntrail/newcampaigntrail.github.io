@@ -30,7 +30,7 @@ endingPicker = (out, totv, aa, quickstats) => {
         //totv = total votes in entire election
         //aa = all final overall results data
         //quickstats = relevant data on candidate performance (format: your candidate's electoral vote count, your candidate's popular vote share, your candidate's raw vote total)
-  if (campaignTrail_temp.player_answers[16] == 5202 && quickstats[0] > 269 && campaignTrail_temp.running_mate_last_name == "Miller") {
+  if (campaignTrail_temp.player_answers.includes(5202) && quickstats[0] > 269 && campaignTrail_temp.running_mate_last_name == "Miller") {
 
     window.setTimeout(nukeEnding, 200);
 
