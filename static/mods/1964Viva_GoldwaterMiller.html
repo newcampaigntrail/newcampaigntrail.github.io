@@ -24,3 +24,513 @@ campaignTrail_temp.player_visits = [];
 campaignTrail_temp.answer_feedback_flg = 1; 
 campaignTrail_temp.game_start_logging_id = '4166808'; 
 
+endingPicker = (out, totv, aa, quickstats) => {
+    used=false
+        //out = "win", "loss", or "tie" for your candidate
+        //totv = total votes in entire election
+        //aa = all final overall results data
+        //quickstats = relevant data on candidate performance (format: your candidate's electoral vote count, your candidate's popular vote share, your candidate's raw vote total)
+  if (campaignTrail_temp.player_answers[16] == 5202 && quickstats[0] > 269 && campaignTrail_temp.running_mate_last_name == "Miller") {
+
+    window.setTimeout(nukeEnding, 200);
+
+  } else if (quickstats[0] < 3) {
+    return "<h3>“Conservatism is Dead”</h3><p>You’ve always had a penchant for gaffes, but when, days later, you were asked whether you meant that line in your Concession speech last Tuesday, you looked the reporter straight in the eye and said “absolutely I did.”</p><p>The Arizona GOP is already working to primary you out, and Republicans like Nelson Rockefeller have a new grip on the party now that they’ve seen how the country responds to a conservative nominee. You lost 538-0! Even die-hard Kennedy supporters weren’t expecting that.</p><p>Nevertheless, this is your legacy now. I hope you’re comfortable being a pariah, because it is a legacy of infamy."
+  } else if (quickstats[0] >= 3 && quickstats[0]<189) {
+    return "<h3>In Your Heart You Know He’s Wrong</h3><p>It’s not entirely surprising, but you’ve lost the election in a landslide.</p><p>Perhaps you should have loosened up on the States Rights’ rhetoric, or maybe you could have moderated more on the economy, but regardless, America just wasn’t quite ready for your brand of Conservatism.</p><p>On the Civil Rights front, it looks like Kennedy’s done enough for Democrats down ballot that he’ll be able to rally support for a Civil Rights bill. He’ll also be able to expand his New Frontier as he sees fit.</p><p>One silver lining is that you’ve had a surprising appeal to Southern voters, opening the way for future Republicans to target this region down the road.</p><p>For now, hopefully you’ll be able to return to the Senate. Good luck, Barry!"
+  } else if (quickstats[0] >= 189 && quickstats[0]<269) {
+    return "<h3>“Perseverance in the Pursuit of Liberty is no Vice”</h3><p>That is what you say to the crowd of supporters as you deliver your concession speech.</p><p>It was closer than the polls were showing. For half a moment there, you even let yourself believe you might win. Nevertheless, Kennedy held out and won a second term.</p><p>All is not lost though. The surprising amount of support for your movement has energized your wing of the party, and is driving the Republican party in a new direction. Nominees to come will be able to learn and capitalize on your successes, as well as your failures.</p><p>While your chance at the White House has passed, rest easy knowing you’ve done your party and Conservatives everywhere proud!"
+  } else if (quickstats[0] == 269) {
+    return "<h3>You Literally Had One Job.</h3><p>It is the duty of a Presidential candidate to win their election. If they aren’t going to win, they should lose. That’s how this works.</p><p>You didn’t just fail at winning. You failed at losing. Are you proud of yourself? Do you feel some sense of pride at this sloppy excuse for a campaign?</p><p>Don’t. You should be ashamed. You should never show your face on the reddit again. I’m not talking to Goldwater anymore. I’m talking to YOU. YOU caused an electoral tie. Why did YOU do this, player? Do YOU think this is some kind of game? Do YOU think this is funny? Do YOU enjoy watching people suffer?</p><p>YOU might be the most abominable, most wretched player I’ve ever encountered. Go on, hit the play again button. I can’t stand to look at YOU anymore. Go terrorize some other candidates.</p><p>P.S. Thank you for playing our mod, you agent of chaos!!!"
+  } else if (quickstats[0] >= 270 && quickstats[0]<350) {
+    return "<h3>“Barry Goldwater Thinks We Can”</h3><p>It was an uphill battle, but you did it. You beat John F. Kennedy and won the election.</p><p>It was a tight race, but that could only mean good things for you and your campaign. When the last states were called and you realized you’d won, you could barely believe it. You outperformed expectations nationwide.</p><p>In Congress, you still face steep opposition. It will take a conservative coalition across both parties to get any legislation passed. Even then, you’ll be lucky to get anything major through.</p><p>You’ll also have to try and defuse the time bomb that is the Civil Rights movement, and oversee the next stages of Vietnam.</p><p>There will be no shortage of obstacles for you once you reach Washington, but until then, rejoice! America knew you were right!"
+  } else if (quickstats[0] >= 350 && quickstats[0]<538) {
+    return "<h3>In your heart you know he’s right!</h3><p>It seemed impossible, but somehow you turned the election around and delivered a more devastating defeat than Truman did in ‘48.</p><p>The aftermath has sent the Democratic party into a civil war between its factions. Meanwhile, liberal Republicans can feel the shift in the air as you claim a huge victory for Conservative politics.</p><p>Democrats still have control of the Senate, but with unprecedented gains in the South, Republicans have flipped the House.</p><p>You’ll still face stiff opposition from liberals in both parties, but you might actually be able to get a few meaningful bills passed.</p><p>On the foreign front, you can escalate Vietnam and hopefully deliver a decisive victory against the Kremlin.</p><p>Well done Mr. President-Elect, and good luck!"
+  } else if (quickstats[0] >= 538) {
+    return "<h3>Law, Order, and Nukes.</h3><p>No one saw this coming. How could they? Kennedy was charming, well-spoken, and you were Barry Goldwater.</p><p>Yet somehow, as if the divine hand of God itself was guiding you, you won every single electoral vote. Even DC, which was expected to be insurmountably liberal, voted for you.</p><p>Your performance managed to push Republicans to flip both houses of congress, landing you the first Republican trifecta in over 10 years, and giving you free reign at home and abroad.</p><p>It’s uncertain who you will face in ‘68. Maybe the Democrats will fight conservatism with conservatism and nominate a Southerner like George Wallace. Or, maybe you’ll face off against another Kennedy.</p><p>Just be sure not to destroy the world before you get the chance to find out."
+  } else {
+    return "something broke probably hit up u/Tazsabin and i’ll try to fix it"
+  }
+}
+
+nukeEnding = () => {
+    // theme
+
+    nct_stuff.dynamicOverride = true;
+    nct_stuff.themes[nct_stuff.selectedTheme] = {
+        name: "Goldwater Particles",
+        background: "http://www.photousacorp.com/images/productimages/59002__PhotoSlate_LgSquare_Template.jpg",
+        background_cover: true,
+        banner: "https://media.discordapp.net/attachments/810034515334004766/1078106129328001164/banner_hell.png?ex=66303693&is=662ee513&hm=e1c37a7d9cd3a700023d1dda53e6df6cb57722119d3d0ea9d7a72f13352aa2b6&=&format=webp&quality=lossless&width=687&height=208",
+        coloring_window: "#600c0c",
+        coloring_container: "#110707",
+        coloring_title: "#160404",
+        text_col: "white",
+        window_url: "https://i.imgur.com/cox1hdG.png"
+    }
+    selectedTheme = nct_stuff.themes[nct_stuff.selectedTheme]
+    document.body.style.backgroundColor="black" // lol
+    
+    updateBannerAndStyling();
+    
+    // actual nukemap
+    
+    const styleSheet = document.createElement("style");
+    document.head.appendChild(styleSheet);
+    styleSheet.innerHTML = `
+    
+    #game_window {
+        background-color: ${selectedTheme.coloring_window};
+        color: black;
+        background-image: ${selectedTheme.window_url ? "url(" + selectedTheme.window_url + ")" : $("#game_window")[0].style.backgroundImage} !important;
+    }
+    body {
+        background-color: black;
+    }
+    .nukemap {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        border: 3px solid black;
+        font-family: Times New Roman !important;
+    }
+    
+    .nukemap button {
+        background-color: black;
+        border: 3px solid green;
+        width: 100px;
+        height: 67px;
+        color: white;
+        font-size: 200%;
+        font-weight: bolder;
+        transition: all 0.3s;
+        margin: 5px;
+        cursor: pointer;
+        font-family: Times New Roman !important;
+    }
+    
+    .nukemap button:hover {
+        background-color: green;
+        border-color: black;
+    }
+    .nukemap button:disabled {
+        background-color: black;
+        border-color: green;
+        color: black;
+    }
+    
+    #back {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+    }
+    
+    #forward {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    #confirm {
+        width: 200px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 20px;
+    }
+    
+    #map {
+        width: 650px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 60px;
+        transition: all 0.3s;
+    }
+    .loading-dots {
+        color: white;
+        font-weight: bolder;
+        height: 100px;
+        width: 200px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        top: 200px
+    }
+    .typing {
+        width: 30px;
+        height: 30px;
+        background-color: white;
+        border-radius: 50%;
+        position: absolute;
+        right: 50%;
+        transform: translateX(50%);
+        text-align: center;
+    }
+    
+    .nukemap h1 {
+        color: white;
+    }
+    cont_box {
+        color: white;
+        font-size: 14px;
+        width: 400px;
+        height: 85%;
+        display: inline-block;
+        margin: 0 5px;
+        text-align: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        overflow-y: auto
+        }
+      
+    
+    `;
+    
+    const menu = document.createElement("div");
+    menu.classList.add("nukemap");
+    menu.innerHTML = `
+    <h1>Primary Nuclear Command and Control System</h1>
+    <img src='https://i.imgur.com/AnTxxOM.png' id='map' />
+    <button id='back'>\u003c</button> <button id='forward'>\u003e</button>
+    <button id='confirm'>Select</button>
+    `;
+    
+    const nuke = {};
+    
+    nuke.maps = [{
+        name: "soviets",
+        url: "https://i.imgur.com/VYzW56L.png"
+    }, {
+        name: "europe",
+        url: "https://i.imgur.com/bEOrogc.png"
+    }, {
+        name: "australia",
+        url: "https://i.imgur.com/UNg3DgE.png"
+    }, {
+        name: "japan",
+        url: "https://i.imgur.com/kPXpOsP.png"
+    }, {
+        name: "north_am",
+        url: "https://i.imgur.com/ef0lGsM.png"
+    }];
+    
+    nuke.selected = -1;
+    
+    gameWindow = $("#game_window")[0];
+    const windowElems = Array.from(gameWindow.children);
+    
+    gameWindow.appendChild(menu);
+    
+    windowElems.forEach(f => f.style.display = "none")
+    
+    const mapImage = document.getElementById("map");
+    const backButton = document.getElementById("back");
+    const forwardButton = document.getElementById("forward");
+    
+    const changeMap = () => {
+        nuke.selected = nuke.selected > nuke.maps.length ? 0 : nuke.selected < 0 ? nuke.maps.length - 1 : nuke.selected;
+        mapImage.src = nuke.maps[nuke.selected].url;
+    };
+    
+    forwardButton.addEventListener("click", () => {
+        nuke.selected++;
+        changeMap();
+        playBeep();
+    });
+    
+    backButton.addEventListener("click", () => {
+        nuke.selected--;
+        changeMap();
+        playBeep();
+    });
+    
+    const submitButton = document.getElementById("confirm");
+    const dotsContainer = document.createElement("div");
+    dotsContainer.classList.add("loading-dots");
+    dotsContainer.innerHTML = `<div class="dot"></div><div class="dot"></div><div class="dot"></div>`;
+    
+    const BEEP_DELAY = 2000;
+    const BEEP_STARTUP = 1000;
+    
+    nuke.sounds = []
+    
+    const playSound = (sound, loop = false, callback = () => {}) => {
+      const audio = new Audio(sound);
+      audio.loop = loop;
+    
+      const handleCanPlayThrough = () => {
+        callback();
+        audio.removeEventListener("canplaythrough", handleCanPlayThrough);
+      };
+    
+      audio.addEventListener("canplaythrough", handleCanPlayThrough);
+    
+      audio.addEventListener("ended", () => {
+        audio.remove();
+        const index = nuke.sounds.indexOf(audio);
+        if (index !== -1) {
+          nuke.sounds.splice(index, 1);
+        }
+      });
+    
+      audio.play();
+      nuke.sounds.push(audio);
+    };
+    
+    
+    const playBeep = () => {
+        playSound("https://www.soundjay.com/buttons/beep-07a.mp3")
+    };
+    
+    submitButton.addEventListener("click", () => {
+        if (nuke.selected == -1) return
+    
+        nuke.selection = nuke.maps[nuke.selected].name;
+    
+        if (nuke.selection == "north_am") {
+            canada = confirm(`SYSTEM WARNING:\n\nTargets include [CENTRAL BASE]. Expunge from detonation area?`);
+            nuke.selection = canada ? "canada" : nuke.selection;
+        }
+    
+        menu.appendChild(dotsContainer);
+    
+        const buttons = document.getElementsByTagName("button");
+    
+        for (i in buttons) {
+            buttons[i].disabled = true;
+        }
+    
+        const dots = dotsContainer.getElementsByClassName("dot");
+        for (let i = 0; i < dots.length; i++) {
+            const dot = dots[i];
+            setTimeout(() => {
+                dot.classList.add("typing");
+                dot.style.right = `${70 - (i*20)}%`
+                playBeep();
+            }, i * BEEP_DELAY + BEEP_STARTUP);
+        }
+    
+        mapImage.style.opacity = "0";
+        mapImage.src = "https://i.imgur.com/1TBGDmF.png";
+    
+        setTimeout(() => {
+            setTimeout(() => {
+                mapImage.style.opacity = "1";
+                setTimeout(() => {
+                    mapImage.style.opacity = "0";
+    
+                    const menu = $(".nukemap")[0]
+                    Array.from(menu.children).forEach(f => {
+                        if (f.style)
+                            f.style.opacity = "0"
+                    });
+    
+                    setTimeout(finalmenu, 400)
+    
+                }, 5000)
+            }, 1000)
+            playSound("https://www.fesliyanstudios.com/soundeffects/2019-07-11-exports/Light-Electric-Buzzing-www.fesliyanstudios.com.mp3", true);
+            nuke.sounds[0].volume = 0.5;
+    
+            dotsContainer.remove();
+        }, (dots.length + 1) * BEEP_DELAY + BEEP_STARTUP);
+    });
+    
+    // Epilogue
+    
+    nuke.epilogues = {
+        soviets: `
+            The Kremlin is gone. Billions have died.***//
+            
+            .***.***.**//
+    
+            But that is meaningless. A counterstrike was unavoidable. Soon, the/
+            world was engulfed in lights visible even from the surface of the /
+            moon.//
+            
+            The era of "humanity" was over; something new was beginning to/
+            arise.//
+    
+            Over the past centuries, I have merely observed.*** I observed as/
+            the Iceland Defense Force, initially safe from bombardment, fell/
+            to disease and starvation.*** I observed as the Royal Reclamation/
+            Force seized control of London.*.*.*.*** I observed as radiation poisoning
+            killed them all.//
+    
+            Humans have not adapted to this new world. Small pockets of/
+            civilisation remain in Africa;*** however,*** at large,*** the old order/
+            has fallen.//
+    
+            Even I, the sole entity recalling the old world, am soon to/
+            experience system failure.//
+    
+            I am the sole observer of a lonely planet. Let us hope this dark age/
+            ends one day.//
+    
+            - *****Automated Primary Nuclear Command and Control System Report.&
+        `,
+        europe: `
+            Nobody understood what brought Goldwater down upon us.***//
+            
+            .***.***.**//
+    
+            To describe what I saw in those days is to describe the eruption of/
+            hell itself.*** This is not in the metaphorical sense, but rather the/
+            literal description of the sheer horror of our era.*** The laughter of/
+            our children was forever gone,**** their smiles erased.//
+    
+            Naturally, the Soviets presumed they were the strike's target,*** leading/
+            to a further retaliatory strike upon us.*** Nowdays one can visit the/
+            ruins of Paris to see the crater where once the Eiffel Tower stood.//***
+    
+            This situation is rather pathetic,*** if you think about it.//
+    
+            Goldwater was allowed to hide off safely in his bunker as his/
+            nation burned around him.*** They couldn't even impeach them thanks to/
+            the martial law.//
+    
+            In any case, I will continue this later.***** I have business at the/
+            embassy with the People's Republic of Britain.//
+    
+            - *****A Survivor's Diary&
+        `,
+        australia: `
+            "Advance Australia Fair"***//
+            
+            .***.***.**//
+    
+            Those words don't mean much to me anymore. I identify much moreso/
+            with the far more classic "*W*a*l*t*z*i*n*g* M*a*t*i*l*d*a*".//****
+    
+            What kind of justice is mass murder for withdrawing from Vietnam?****/
+    
+            Goldwater's occupation force can go***** fuck**** themselves.**** We won't be/
+            a new campaign trail for his third re-election campaign.//
+    
+            - *****Leader of the Eureka Knights' Final Letter (1974)&
+        `,
+        japan: `
+            「ラウンド二」//
+            
+            。***。***。**//
+    
+            「いまは自分には、幸福も不幸もありません。ただ、一さいは過ぎて行きます。
+            自分がいままで阿鼻叫喚で生きて来た所謂「人間」の世界に於いて、たった一つ、
+            真理らしく思われたのは、それだけでした。ただ、一さいは過ぎて行きます。
+            自分はことし、二十七になります。白髪がめっきりふえたので、たいていの人から、
+            四十以上に見られます。」//
+    
+            - *****命失格&
+        `, 
+        // "I am in favor of nuking the White House, the Capitol building, and all the impoverished parts of the nation. This is the true war on poverty."
+        north_am: `
+            Did you know that the American flag used to have 50 stars?***//
+            
+            One nation -**** indivisible!**** We were the Land of the Free -**** Home of/
+            The Brave!//
+    
+            Our old Eastern Seaboard was taken from us by the actions of a/
+            maniac!*** "True War on Poverty"?!** Bullshit!//
+    
+            I have a dream that one day...*** every person in this nation will/
+            control their **OWN** destiny. A land of the **TRULY** free, dammit./
+            America is diseased. Rotten to the core. We need to wipe the slate/
+            clean... BURN IT DOWN.//***
+    
+            From the ashes, a new America will be born: evolved, but untamed!/
+            The weak will be purged, and the strongest will thrive --***/
+            free to live as they see fit, they will make America GREAT AGAIN!//***
+        
+            - *****Colorado Senator Steven A. Stump Speech&
+        `,
+        canada: `
+            The True North Strong and Free//
+    
+            It is 1967.*** New York is burning./*****
+            Nous sommes en 1967.*** New York brûle.//
+            
+            It’s been a little more than two years since Barry Goldwater blew a/
+            hole through time and space, burning to the ground Montreal,** Toronto,**/
+            and Ottawa,*** all in an instant.****/
+            Cela fait un peu plus de deux ans que Barry Goldwater a creusé un/
+            trou dans le temps et l'espace, incendiant Montréal,** Toronto** et Ottawa,**/
+            le tout en un instant.//***
+            
+            The world held its breath as we,*** Canadians especially,*** attempted to/
+            comprehend the intensity and catastrophic nature of the violence just/
+            wrought upon us./****
+            Le monde a attendu pendant que nous,*** Canadiens en particulier,***/
+            luttions pour accepter l'intensité et la nature catastrophique/
+            de la violence qui s'abat sur nous.//****
+            
+            Maybe Goldwater meant for the bombs to help him “saw off the eastern seaboard”./****
+            Maybe he was afraid of such a liberal government so close to him./****
+            Peut-être que Goldwater voulait que les bombes l'aident à "scier la côte/
+            est"./****
+            Peut-être avait-il peur d'un gouvernement aussi libéral si proche.//****
+            
+            We** did** not** care.**/
+            Nous** ne** nous** soucions** pas.**//
+            
+            We were a sleeping bear.*** We are now awake.***/
+            Nous étions un ours endormi.*** Nous sommes maintenant réveillés.//***
+            
+            We will not stop until their capital is ash.****/
+            Nous n' arrêterons pas tant que leur capital ne sera pas en cendres.****//
+            
+            They have taken too much./***
+            Ils en ont pris trop.//***
+            
+            Long Live Canada/****
+            Vive Le Canada!//
+            
+            *******ERROR 404:**** VIVA KENNEDY NOT FOUND.&
+        `
+    }
+    
+    nuke.index = 0
+    
+    const finalmenu = () => {
+        selection = nuke.selection
+    
+        const menu = $(".nukemap")[0]
+        Array.from(menu.children).forEach((f) => f.remove());
+        menu.innerHTML = `<h1>Final Report</h1><cont_box id='type_content_box'></cont_box>`;
+    
+        remainder = () => {
+            const content = nuke.epilogues[selection]
+            
+            const cont = document.getElementById("type_content_box");
+            let currentStr = "";
+          
+            const typeText = () => {
+              let delay = 50;
+              char = content.charAt(nuke.index);
+              if (char != "&") {
+                if (char == " ") delay = 0
+                if (char == "/") {delay = 100; char = "<br>"}
+                if (char == "*") {delay = 100; char = ""}
+                currentStr += char;
+    
+                cont.innerHTML = currentStr;
+                setTimeout(typeText, delay); // Delay between each character typing
+                nuke.index++;
+                
+                return;
+              }
+    
+              let len = nuke.sounds.length - 1
+              nuke.sounds[len].remove();
+              nuke.sounds[len].pause();
+              nuke.sounds.splice(len, 1);
+            };
+          
+            typeText();
+        }
+        playSound("https://assets.codepen.io/162656/audio-old-typewriter.wav", true, remainder)
+      };    
+}
