@@ -1,0 +1,413 @@
+campaignTrail_temp.election_json = [
+    {
+        "model": "campaign_trail.election",
+        "pk": 9,
+        "fields": {
+            "year": 2024,
+            "display_year": "1992Biden",
+            "summary": "After the shellacking Reagan dished Democrats two times over, many liberals curled their toes at the thought of sending Joe Biden, a man with actual convictions, to run in '88. Yet Biden's commitment served as his greatest strength as he kept marching the straight and narrow road to the White House. While many sounded his political obituary, nothing could stop Joe. Rebuking the oldest-ever-elected president, Biden won.<br><br>The youngest-ever-elected Senator now is the youngest President since Kennedy, and easily posseses the most vigor since Johnson. If he is to be a Roosevelt, however, Biden must tug at the heart strings of an America that's fallen out of love with liberalism and rebuild the New Deal coalition so to assert an agenda that'll live far beyond his political shelf life.",
+            "image_url": "https://i.imgur.com/CRKYuBy.png",
+            "winning_electoral_vote_number": 270,
+            "advisor_url": "https://i.imgur.com/ZbqlkO5.png",
+            "recommended_reading": "<a href=\"https://arab.org/click-to-help/palestine/\" target=\\u201d_blank\\u201d>BuzzFeed - Top 10 Dark Brandon Memes</a><br><br><a href=\"https://www.masslive.com/politics/2024/03/what-states-can-you-vote-uncommitted-or-no-preference-in-the-2024-primaries.html\" target=\\u201d_blank\\u201d>The Case for Joe Biden</a>",
+            "has_visits": 0,
+            "no_electoral_majority_image": "../static/images/2012-no-majority.jpg"
+        }
+    }
+]
+
+campaignTrail_temp.temp_election_list = [
+    {
+        "id": 9,
+        "year": 2024,
+        "is_premium": 0,
+        "display_year": "1992Biden"
+    }
+]
+
+campaignTrail_temp.credits = "APA_LATCHA"
+
+RecReading=true
+
+// Select the node that will be observed for mutations
+const windowsAdvisorTargetNode = document.getElementById("game_window");
+
+// Options for the observer (which mutations to observe)
+const windowsAdvisorConfig = { attributes: true, childList: true, subtree: true };
+
+// Callback function to execute when mutations are observed
+const callback = (mutationList, observer) => {
+    visitWindow = document.getElementsByClassName("overlay_window")[0];
+
+    if(visitWindow == null || visitWindow.classList.contains("done")) {
+        return;
+    }
+    visitWindow.classList.add("done");
+    visitWindow.classList.add("window");
+    let titleBar = visitWindow.querySelector("h3");
+    titleBar.classList.add("title-bar");
+    titleBar.classList.add("title-bar-text")
+    titleBar.style.paddingLeft = "3px";
+};
+
+campaignTrail_temp.global_parameter_json = [
+    {
+        "model": "campaign_trail.global_parameter",
+        "pk": 1,
+        "fields": {
+            "vote_variable": 1.125,
+            "max_swing": 0.12,
+            "start_point": 0.94,
+            "candidate_issue_weight": 10,
+            "running_mate_issue_weight": 3,
+            "issue_stance_1_max": -0.71,
+            "issue_stance_2_max": -0.3,
+            "issue_stance_3_max": -0.125,
+            "issue_stance_4_max": 0.125,
+            "issue_stance_5_max": 0.3,
+            "issue_stance_6_max": 0.71,
+            "global_variance": 0.01,
+            "state_variance": 0.005,
+            "question_count": 16,
+            "default_map_color_hex": "#C9C9C9",
+            "no_state_map_color_hex": "#999999"
+        }
+    }
+]
+
+campaignTrail_temp.candidate_json = [
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 78,
+        "fields": {
+            "first_name": "Joe",
+            "last_name": "Biden",
+            "election": 9,
+            "party": "Democratic",
+            "state": "Delaware",
+            "priority": 1,
+            "description": "<p>When the Elites thought they'd buried him with tales of youthful folly, the vibrant Senator from Delaware continued to do what he does best—defy all odds. He preserved despite poor showings earlier in the primary, slowly racking up the support of former opponents, before unifying the Democratic Party. But heavy was the crown. After months of nasty campaigning, the race tightened right at the wire. True believers never counted Scranton Joe out, yet that didn't make his victory any less sweet. And how sweet it was. Joseph Robinette Biden Jr., after an array of sophisticated political calculations, defied politico doomsaying and was elected President of these United States.<br><br>The Biden Presidency is not about any fantastical Rooseveltian dream or a modest repackaging of Reagan's star power. President Biden's Oval must revive the very soul of America at a moment when it appears weakest. While his position seems precarious and many Elites still want to write him off, he'll show them all. He'll get his revenge.</p>",
+            "color_hex": "#9090C4",
+            "secondary_color_hex": null,
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/IlIuNUd.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 77,
+        "fields": {
+            "first_name": "George",
+            "last_name": "Bush",
+            "election": 9,
+            "party": "Republican",
+            "state": "Texas",
+            "priority": 1,
+            "description": "<p>With dumb and dumber too young to have a political career to run off of, George Bush’s silver spoon has been forced to take another dip in the presidential pudding. With the Republican primary unable to yield conservatives a fresh taste of new conservatism, Bush once again has the Republican Party at his command.<br><br>After an attempted rebranding, George Bush has dashed to the center following the primaries where he played the role of President in waiting. While his ambiguous policy stances may have been an excuse a decade ago, this time, the people have seen George Bush in government. Unless Biden’s popularity is to define the election, George Bush’s experience may come back to bite him in the rear.</p>",
+            "color_hex": "#D45C66",
+            "secondary_color_hex": null,
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/F0aVIhj.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 79,
+        "fields": {
+            "first_name": "Jerry",
+            "last_name": "Brown",
+            "election": 9,
+            "party": "Independent",
+            "state": "California",
+            "priority": 1,
+            "description": "<p>Foregoing a traditional primary challenge like he did Carter, due to lack of momentum, former California Governor Jerry Brown plays the role of the left-reaction fringe. Finding Biden’s governance to lack decisiveness and under the control of unnamed handlers.<br><br>Despite being a former Democrat, filing to run as one just months ago, Brown’s campaign seeks to unite opposition to both major candidates and establish a third rail in American politics that’s only concern is getting the job done. Balancing the budget, cutting taxes, and protecting the health of our nation’s young. That’s what the black sheep of the Brown Dynasty stands for.</p>",
+            "color_hex": "#DB90B6",
+            "secondary_color_hex": null,
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/DFaMqlF.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 80,
+        "fields": {
+            "first_name": "Lenora",
+            "last_name": "Fulani",
+            "election": 9,
+            "party": "New Alliance",
+            "state": "New York",
+            "priority": 1,
+            "description": "<p></p>",
+            "color_hex": "#BAE2BE",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/IlIuNUd.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 178,
+        "fields": {
+            "first_name": "Pat",
+            "last_name": "Schroeder",
+            "election": 9,
+            "party": "Democratic",
+            "state": "Colorado",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "<p></p>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    }
+]
+
+campaignTrail_temp.running_mate_json = [
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 109261,
+        "fields": {
+            "candidate": 78,
+            "running_mate": 178
+        }
+    }
+]
+
+campaignTrail_temp.opponents_default_json = [
+    {
+        "election": 9,
+        "candidates": [
+            77,
+            78,
+            79,
+            80
+        ]
+    }
+]
+
+campaignTrail_temp.opponents_weighted_json = [
+    {
+        "election": 9,
+        "candidates": [
+            77,
+            78,
+            79,
+            80
+        ]
+    }
+]
+
+quotes = [""]
+jet_data = {
+    "headerColor": "#000088",
+    "windowColor": "#000088",
+    "containerColor": "#8e1818",
+    "innerWindowColor": "#f7f7f7",
+    "bannerImageUrl": "https://i.imgur.com/W39Y0be.png",
+    "backgroundImageUrl": "https://i.imgur.com/5chbAA6.png",
+    "endingTextColor": "#000000",
+    "customQuote": "PRESIDENT",
+    "gameTitle": "JOE BIDEN"
+}
+
+//#startcode
+
+campaignTrail_temp.global_parameter_json = [
+    {
+        "model": "campaign_trail.global_parameter",
+        "pk": 1,
+        "fields": {
+            "vote_variable": 1.125,
+            "max_swing": 0.02,
+            "start_point": 0.94,
+            "candidate_issue_weight": 10,
+            "running_mate_issue_weight": 3,
+            "issue_stance_1_max": -0.71,
+            "issue_stance_2_max": -0.3,
+            "issue_stance_3_max": -0.125,
+            "issue_stance_4_max": 0.125,
+            "issue_stance_5_max": 0.3,
+            "issue_stance_6_max": 0.71,
+            "global_variance": 0.01,
+            "state_variance": 0.005,
+            "question_count": 25,
+            "default_map_color_hex": "#C9C9C9",
+            "no_state_map_color_hex": "#999999"
+        }
+    }
+]
+
+corrr = '\n              <h2>JOE BIDEN</h2><font id="wittyquote" size="4" color="white"><em>PRESIDENT</em></font>\n            ';
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#000088";
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#000088";
+
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+$(".container")[0].style.backgroundColor = "#8e1818";
+
+document.getElementById("header").src = "https://i.imgur.com/W39Y0be.png";
+
+document.body.background = "https://i.imgur.com/5chbAA6.png";
+
+document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#f7f7f7!important;}</style>";
+
+async function appendStyle() {
+    var metaTag=document.createElement('meta');
+    metaTag.name = "viewport";
+    metaTag.content = "width=device-width, initial-scale=1";
+    document.getElementsByTagName('head')[0].appendChild(metaTag);
+
+    if (!document.querySelector('#radio-option-style')) {
+        let style = document.createElement('style');
+        style.type = 'text/css';
+        style.id = 'radio-option-style';
+        style.innerHTML = `
+        .inner_inner_window {
+        display: flex;
+        flex-direction: column;
+        }
+        .inner_inner_window h3{
+            padding: 5px;
+        }
+
+        #candidate_pic,
+        #running_mate_pic,
+        .inner_window_sign_display {
+            height: 167px;
+        }
+        #candidate_pic {
+            margin-left: 160px;
+        }
+        #running_mate_pic {
+            margin-right: 160px;
+        }
+        `;
+
+        document.head.appendChild(style);
+    }
+}
+appendStyle();
+
+e = campaignTrail_temp
+
+const startScreenUpdater = setInterval(function() {
+	const goBackButton = document.getElementById("candidate_id_back");
+	const candidateButton = document.getElementById("candidate_id_button");
+	const runningMateButton = document.getElementById("running_mate_id_button");
+	const finalScreenBB = document.getElementById("opponent_selection_id_back");
+	const finalScreenID = document.getElementById("opponent_selection_id_button");
+    const difficultySlider = document.getElementById("difficulty_level");
+    const gameType = document.getElementById("game_type_id");
+
+    if(gameType){
+        const difficultySlider = document.getElementById("difficulty_level");
+        difficultySlider.style.display = 'none';
+        
+		multiplier = 1;
+    }
+    
+    if((candidateButton || c != 0)&& !runningMateButton){ // change theme on candidate viewing
+		var c = document.getElementById("candidate_id").value;
+		if(c == 78 && !(candidateButton) && !(runningMateButton)) {
+            goBackButton.click();
+            const initContinue = document.getElementById("election_id_button");
+            initContinue.click();
+		}
+		else if(c == 77 || c == 79) {
+            if(candidateButton) {
+                candidateButton.remove();
+            }
+		}
+	}
+    
+	else if(!candidateButton && runningMateButton) { 
+	    runningMateButton.click();
+        const finalBack = document.getElementById("opponent_selection_id_back");
+        finalBack.remove();
+        observer.disconnect()
+	}
+
+	if(finalScreenID) { // delete back button and delete the interval
+		finalScreenBB.remove();
+		clearInterval(startScreenUpdater);
+	}
+}, 1);
+
+campaignTrail_temp.modBoxTheme = {
+    "header_color": "#8e1818",
+    "header_text_color": "#ffffff",
+    "description_text_color": "#000000",
+    "description_background_color": "#ffffff",
+    "main_color": "#000088",
+    "secondary_color": "#8e1818",
+    "ui_text_color": "#FFFFFF"
+}
+
+campaignTrail_temp.achievements = {
+    "No Malarkey!" : {
+        "image" : "https://i.imgur.com/iHzKnTC.png",
+        "description" : "Win the 1992 election.",
+        "cannotBeCheated" : true
+    },
+    "Diamond Joe" : {
+        "image" : "https://i.imgur.com/USkRiQ6.png",
+        "description" : "Show the naysayers who's boss!",
+        "cannotBeCheated" : true
+    },
+    "The Great American Comeback" : {
+        "image" : "https://i.imgur.com/0ti133Z.png",
+        "description" : "Claw your way back.",
+        "cannotBeCheated" : true
+    },
+    "ijbol Veteran" : {
+        "image" : "https://i.imgur.com/xz23j8C.png",
+        "description" : "Let Schroeder handle it...",
+        "cannotBeCheated" : true
+    },
+    "The New FDR" : {
+        "image" : "https://i.imgur.com/ACNEzP2.png",
+        "description" : "Rebuild the New Deal coalition.",
+        "cannotBeCheated" : true
+    },
+    "Back to the Stone Age" : {
+        "image" : "https://i.imgur.com/8bBURHb.png",
+        "description" : "Put Saddam in his place!",
+        "cannotBeCheated" : true
+    }
+}
+campaignTrail_temp.musicOn = true
