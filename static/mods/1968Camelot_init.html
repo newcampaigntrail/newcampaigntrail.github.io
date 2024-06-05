@@ -1,0 +1,782 @@
+musicMode = () => {
+    songsPlayed = 0;
+    // Initialise custom music
+  
+    $("#music_player")[0].children[0].style.display = "none"
+    $("#music_player")[0].children[1].style.display = "none"
+  
+    document.getElementById("modLoadReveal").style.display = "none"
+    document.getElementById("modloaddiv").style.display = "none"
+  
+    musicBox = document.getElementById("music_player")
+    musicBox.style.display = ""
+  
+    var trackSel;
+    e = campaignTrail_temp
+    e.selectedSoundtrack = 0
+  
+    toTime = (seconds) => {
+        var date = new Date(null);
+        date.setSeconds(seconds);
+        return date.toISOString().substr(11, 8);
+    }
+  
+    generateTime = () => {
+        // Get the audio element
+        var audio = document.getElementById("campaigntrailmusic");
+  
+        timeTracker = document.createElement("div");
+        timeTracker.style = `
+  text-align:left;
+  border-style:solid;
+  border-width:3px;
+  height:150px;
+  width:200px;
+  background-color:#999999;
+  float:right;
+  padding: 10px;
+  `
+        $("#trackSelParent")[0].prepend(timeTracker);
+        $("#trackSelParent")[0].prepend(document.createElement("br"));
+  
+        // Create a new element to display the current position of the audio
+        var positionDisplay = document.createElement("gg");
+        positionDisplay.id = "position-display";
+  
+        // Create a new slider element to change the time
+        var timeSlider = document.createElement("input");
+        timeSlider.type = "range";
+        timeSlider.min = 0;
+        timeSlider.max = 1;
+        timeSlider.step = 0.001;
+        timeSlider.value = 0;
+        timeSlider.style.width = "200px";
+        timeSlider.id = "time-slider";
+  
+        var pausePlay = document.createElement("button");
+        pausePlay.id = "position-display";
+        pausePlay.innerHTML = "<b>Pause</b>"
+        pausePlay.style.width = "100%";
+  
+  
+        pausePlay.addEventListener("click", event => {
+            event.preventDefault();
+            updatePositionDisplay();
+            let audio = document.getElementById("campaigntrailmusic");
+            if (audio.paused) {
+                audio.play();
+                event.target.innerHTML = "<b>Pause</b>";
+                return;
+            }
+            audio.pause();
+            event.target.innerHTML = "<b>Play</b>";
+            return;
+        })
+  
+        var volumeLabel = document.createElement("gg");
+        volumeLabel.id = "volume-label";
+        volumeLabel.innerHTML = "<br><b>Volume: </b>"
+  
+        var volumeSlider = document.createElement("input");
+        volumeSlider.type = "range";
+        volumeSlider.min = 0;
+        volumeSlider.max = 1;
+        volumeSlider.step = 0.001;
+        volumeSlider.value = 0;
+        volumeSlider.style.width = "200px";
+        volumeSlider.id = "volume-slider";
+  
+        volumeSlider.value = audio.volume;
+  
+        timeTracker.appendChild(pausePlay);
+        timeTracker.appendChild(document.createElement("br"));
+        timeTracker.appendChild(document.createElement("br"));
+        timeTracker.appendChild(positionDisplay);
+        timeTracker.appendChild(timeSlider);
+        timeTracker.appendChild(volumeLabel);
+        timeTracker.appendChild(volumeSlider);
+  
+        updatePositionDisplay();
+  
+        //for (let i = 0; i < 10; i++)
+        //timeTracker.append(document.createElement("br"));
+  
+  
+        // Function to update the position display
+        function updatePositionDisplay() {
+            positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+            timeSlider.value = audio.duration ? audio.currentTime / audio.duration : 0;
+        }
+  
+        // Function to change the time of the audio
+        function changeTime() {
+            positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+            audio.currentTime = timeSlider.value * audio.duration;
+        }
+  
+        updateVolume = event => {
+            audio.volume = event.target.value;
+        }
+  
+        // Update the position display and slider every second
+        setInterval(updatePositionDisplay, 1000);
+  
+        // Listen for changes to the time slider and change the time of the audio
+        timeSlider.addEventListener("input", changeTime);
+        volumeSlider.addEventListener("input", updateVolume)
+    }
+  function newMusicPlayer() {
+          trackSel = document.createElement("div");
+          trackSel.id = "trackSelParent"
+          let z = `<br><br><br><br><br><br><br><br><br><br><div id='trackSel' style="text-align:left;border-style:solid;border-width:3px;overflow-y: scroll;overflow-x: hidden;height:200px; width:400px;background-color:#999999;float:right;">`
+          z += `<b><select id='selectSoundtrack'><option value='` + soundtracks[e.selectedSoundtrack].name + `'>` + soundtracks[e.selectedSoundtrack].name + "</option>"
+          for (i in soundtracks) {
+              if (soundtracks[e.selectedSoundtrack] != soundtracks[i]) {
+                  z += `<option value='` + soundtracks[i].name + `'>` + soundtracks[i].name + `</option>`
+              }
+          }
+          z += `</select></b><br><br>`
+              // <label><input type="radio" name="option" value="option1">Option 1</label><br>
+          for (i in soundtracks[e.selectedSoundtrack].tracklist) {
+              let a = soundtracks[e.selectedSoundtrack].tracklist[i]
+              let b = `<label><input class="trackSelector" type="radio" name="trackSelector" value="` + i + `">` + a.name + `</label><br>`
+              z += b
+          }
+          z += "</div><br><br>"
+          trackSel.innerHTML = z
+    
+          // select correct song
+    
+          musicBox.appendChild(trackSel);
+          Array.from(document.getElementById("trackSel").children).filter(f => {
+              return f.tagName == "LABEL"
+          }).map(f => f.children[0])[0].checked = true
+    
+          // set soundtrack changer
+    
+          soundtrackSelector = document.getElementById("selectSoundtrack")
+          soundtrackSelector.onchange = function() {
+              for (i in soundtracks) {
+                  if (soundtracks[i].name == soundtrackSelector.value) {
+                      e.selectedSoundtrack = i
+                      break
+                  }
+              }
+              document.getElementById("trackSelParent").remove()
+              newMusicPlayer()
+          }
+    
+          var matches = document.querySelectorAll('.trackSelector');
+    
+          for (match in matches) {
+              matches[match].onchange = function() {
+                  audio = $("#campaigntrailmusic")[0];
+                  audio.src = soundtracks[e.selectedSoundtrack].tracklist[this.value].url
+                  audio.currentTime = 0
+              }
+          }
+    
+          musicBox.children[2].loop = false
+          musicBox.children[2].src = soundtracks[e.selectedSoundtrack].tracklist[0].url
+    
+          musicBox.children[2].onended = function() {
+              console.log("next track")
+              let selected = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+              let newSel = clamp(selected + 1, soundtracks[e.selectedSoundtrack].tracklist.length - 1, 0)
+              let buttons = Array.from(document.getElementById("trackSel").children).filter(f => {
+                      return f.tagName == "LABEL"
+                  }).map(f => f.children[0])
+                  //let selectedIndex = buttons.map(f=>f.children[0]).map(f=>f.checked)
+              buttons[newSel].click()
+              songsPlayed++; // Increment the songs played counter
+        
+           
+          }
+            
+          for (w = 0; w < 7; w++) {
+              document.getElementById("trackSelParent").appendChild(document.createElement("br"))
+          }
+    
+          generateTime();
+      }
+    
+      clamp = function(a, max, min, overflow = true) {
+          if (overflow) {
+              return a > max ? min : a < min ? max : a;
+          }
+          return a > max ? max : a < min ? min : a;
+      }
+    
+   
+      // Track list
+    
+      var soundtracks = {
+          0: {
+              name: "RADIO 101.5 FM",
+              tracklist: [
+                {
+               "name": "Hey Massachusetts - Kennedy For Senate",
+                "url": "https://audio.jukehost.co.uk/hF5IsQIA6J9iCH4jsFsSmrCaFNX82hRp"
+              },
+              {
+                "name": "The Weight - The Band",
+                "url": "https://audio.jukehost.co.uk/FQZNl3jKQTp0epi60b4duG6l4MtHoZaj"
+              },
+              {
+                "name": "Going Up The Country - Canned Heat",
+                "url": "https://audio.jukehost.co.uk/qLf0FZtHMTMSyUXOFwEtUPu6bbaLzQR3"
+              },
+              {
+                "name": "I Wish It Would Rain - The Temptations",
+                "url": "https://audio.jukehost.co.uk/xab6oMjWtgz57ylN4jMxRtXzYPv2ib1t"
+            },
+            {
+                "name": "I’ve Gotta Get A Message To You - Bee Gees",
+                "url": "https://audio.jukehost.co.uk/tU4qaQSghANgiKwqwnRUHg4u3IPWSqJo"
+              },
+              {
+                "name": "Hey Bulldog - The Beatles",
+                "url": "https://audio.jukehost.co.uk/h459dYF293c5l4Ul1RpRw0YrT8dsfK7N"
+              },
+              {
+                "name": "The Philanderer - Paul Shanklin",
+                "url": "https://audio.jukehost.co.uk/V5FL73LT9GFkkTOKeAOXHJldOaxf4LQm"
+                }
+            ]
+         },
+  
+          
+          
+      }
+  
+    
+      // Set up new music player
+    
+      newMusicPlayer()
+    
+  
+  }
+  
+    $("#game_start").click((event) => {
+      event.preventDefault();
+      $("#election_id_button").click((event) => {
+          musicMode()
+  
+          setInterval(changeFontColour, 200)
+    
+      })
+    })
+  
+  
+  e = campaignTrail_temp;
+  
+  campaignTrail_temp.election_json = [
+      {
+          "model": "campaign_trail.election",
+          "pk": 10,
+          "fields": {
+              "year": 1976,
+              "summary": "<p>It's a jubilant midnight in California, as the heir of Jack and Democrat's golden child Bobby Kennedy has just scored a smashing victory there. His proud support of desegregation, economic prosperity and preserving the legacy of his brother has resonated with millions, and he well on his way to the White House at this point.<p>That was until a shot rang out into the crowded kitchen, then one more, and then some more, and when all was said and done. Bobby was dead. Millions mourned, millions more dumbfounded at why? The emotions of America were reaching a breaking point, a poisoned concotion of rage, fear and sadness all mixing together to create the most vile condition of revolution.<br><br><button onclick='next0()'>The Mourning</button></li></p>",
+              "image_url": "https://i.imgur.com/rv7Vrwa.png",
+              "winning_electoral_vote_number": 270,
+              "advisor_url": "https://i.imgur.com/zBX2ftW.png",
+              "recommended_reading": "<div style='overflow-y:scroll;height:320px;'https://millercenter.org/the-presidency/secret-white-house-tapes/conversation-edward-kennedy-june-6-1968<br><br>\\\"https://archive.nytimes.com/www.nytimes.com/library/politics/camp/680828convention-dem-ra.html<h4>Message</h4><p>Hello, jimbo here with my 12th mod, and probably my best mod so far. I actually had this idea shelved for quite some time before I regained the momentum to finish it (thanks Script) and honestly I think it came out very swell. Hope you enjoyed it! There is a possibility that this could spiral into a massive TFC/Red mod series but i wouldn't bet on it.<br><br>anyway enjoy this wikibox<br><br><img src='https://i.imgur.com/JVNS0vT.png' width='380px'></img><br><br>some lore stuff: no chappaquiddick, wallace deadlocks, but the democratic majority lets kennedy win anyway, kennedy's term is mid. vietnam sucks but the economy is good. bretton woods makes things iffy but its alright. either Ashbrook, Agnew or some other crazy conservative steps up to bat in 1972 to defeat frat boy Kennedy.</p></div>",
+              "has_visits": 1,
+              "no_electoral_majority_image": "https://www.jetsimon.com/public/static/images/2012-no-majority.jpg",
+              "creator": "Dan Bryan",
+              "display_year": "1968Camelot"
+          }
+      }
+  ]
+  
+  campaignTrail_temp.candidate_json = [
+      {
+          "model": "campaign_trail.candidate",
+          "pk": 91,
+          "fields": {
+              "first_name": "Ted",
+              "last_name": "Kennedy",
+              "election": 10,
+              "party": "Democratic",
+              "state": "Massachusetts",
+              "priority": 1,
+              "description": "<p>With the death of Bobby sending a shock-wave throughout America, the already rowdy rioting has turned near-apocalyptic. Cities burn in fury across America while scared suburbanites hide behind their curtains. But among the violence and vitriol rises a specter, a specter of hope. A draft movement started by some of Bobby's most faithful supporters to bring his young brother Teddy as the nominee has swept the convention, and through his tear-laden eyes, Ted accepts.<p>Edward Moore Kennedy is the Democrat's reluctant warrior, a stalwart for the anti-war movement and a darling of the Democratic party's liberal wing. He has served as the senator of Massachusetts since 1963, taking over for the late Jack. Ted will be forced to contend with not only Nixon and Wallace's shenanigans, but his own reluctance to give it his all, in case the worst happens while on the trail...",
+              "color_hex": "#325396",
+              "secondary_color_hex": "#90C0FF",
+              "is_active": 1,
+              "image_url": "https://i.imgur.com/tgulp90.png",
+              "electoral_victory_message": "<h3>Congratulations! You have won the 1976 Presidential Election.</h3><p>Hopefully you can make good on your promises to clean up Washington and change the political and moral culture of the country. If you are successful, there is no reason you cannot run for reelection in 1980. Just be wary of any economic problems, or of some foreign policy crisis that could dent your popularity.</p>",
+              "electoral_loss_message": "<h3>Sorry, you have lost the 1976 Presidential Election.</h3><p>As an outsider candidate, this was really your moment to make an impact on American politics and to win a national election. The beltway gossip already has it that Ted Kennedy is the frontrunner for the 1980 nomination. Perhaps you can run again for Governor of Georgia, or make an impact in some other way.</p>",
+              "no_electoral_majority_message": "<h3>Wow! You have won in a squeaker.</h3><p>While the Electoral College ended in a tie, the Democrats have a huge advantage in the House of Representatives and are sure to elect you in that manner. Hopefully the closeness of this election doesn't undermine your promises to clean up Washington and unite the people of this country.</p>",
+              "description_as_running_mate": "''",
+              "candidate_score": 1,
+              "running_mate": false
+          }
+      },
+      {
+          "model": "campaign_trail.candidate",
+          "pk": 92,
+          "fields": {
+              "first_name": "Richard",
+              "last_name": "Nixon",
+              "election": 10,
+              "party": "Republican",
+              "state": "New York",
+              "priority": 2,
+              "description": "<b>Context Only</b><p>Richard Nixon is not the same man he was in 1960. Hardened by losses in 1960 and 1962, the man once left for dead by the Republican party has re-entered with a vengeance, hellbent on ascending to the highest office in the land. Running on a promise of Law and Order, he found an untapped niche of voters he nicknamed the \"Silent Majority\" whom propelled him to victory against the wacko Reagan and nutjob Rockefeller.<p>Nixon is politically savvy, and knows what to do and when to do it, but struggles with identity within his party, he supports some stuff conservative and some stuff liberal. Not only that but he is infamously uncharismatic and struggles in open-mic settings, best exemplified  in his rather embarrassing performance against the original Kennedy in 60'. Regardless, he seems to have the upper hand this election.<p>",
+              "color_hex": "#8f2c2c",
+              "secondary_color_hex": "#FFA0A0",
+              "is_active": 1,
+              "image_url": "https://i.imgur.com/rSCFT3k.png",
+              "electoral_victory_message": "<h3>Congratulations! You have won the 1976 Presidential Election.</h3><p>Hopefully you can continue to help the United States recover from the Watergate Scandal, the recent recession, and the debacle of Vietnam. In either case, this will be your final term as President. Speculation is sure to be intense on who will replace you. Will it be Ronald Reagan? Ted Kennedy? Or someone else entirely?</p>",
+              "electoral_loss_message": "<h3>Sorry, you have lost the 1976 Presidential Election.</h3><p>Hopefully your opponent can make good on his promises to clean up Washington and change the political and moral culture of the country. Perhaps you can still play a role in 1980, or seek your old Congressional leadership positions. In any case, you can still take solace in the fact that you did the right thing by pardoning Nixon and moving the country beyond the Watergate episode.</p>",
+              "no_electoral_majority_message": "<h3>Sorry, you have lost the 1976 Presidential Election.</h3><p>While the Electoral College ended in a tie, the Democrats have a huge advantage in the House of Representatives and are sure to elect your opponent in that manner. Perhaps you can still play a role in 1980, or seek your old Congressional leadership positions. In any case, you can still take solace in the fact that you did the right thing by pardoning Nixon and moving the country beyond the Watergate episode.</p>",
+              "description_as_running_mate": "''",
+              "candidate_score": 1,
+              "running_mate": false
+          }
+      },
+      {
+          "model": "campaign_trail.candidate",
+          "pk": 93,
+          "fields": {
+              "first_name": "Henning",
+              "last_name": "Blomen/Others",
+              "election": 10,
+              "party": "Socialist Labor",
+              "state": "Massachusetts",
+              "priority": 3,
+              "description": "non marxist communist, will be happy to break 0.1%",
+              "color_hex": "#3aae75",
+              "secondary_color_hex": "#A1FFA1",
+              "is_active": 0,
+              "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Henning_A._Blomen.jpg",
+              "electoral_victory_message": "''",
+              "electoral_loss_message": "''",
+              "no_electoral_majority_message": "''",
+              "description_as_running_mate": "''",
+              "candidate_score": 1,
+              "running_mate": false
+          }
+      },
+      {
+          "model": "campaign_trail.candidate",
+          "pk": 94,
+          "fields": {
+              "first_name": "George",
+              "last_name": "Wallace",
+              "election": 10,
+              "party": "American Independent",
+              "state": "Alabama",
+              "priority": 4,
+              "description": "<b>Context Only</b><p>Hate. This is the one word that best exemplifies Alabama's less then esteemed governor. From his vow to keep segregation implemented today, tomorrow and forever. His crusade against the minorities of America has culminated into this, a presidential run filled with populist hate, racist rhetoric and the most hawkish running mate America has ever seen.<p>Wallace can't win this election, that's obvious. But that's not why he's running. He's running to force the election to the House, where he in his mind has concocted a most evil plan, to force an end to desegregation across America. It is unknown if this will be achieved, but for all of our sakes lets hope it won't be...",
+              "color_hex": "#5e4e34",
+              "secondary_color_hex": "#FFFFC0",
+              "is_active": 1,
+              "image_url": "https://i.imgur.com/ubcNPzX.png",
+              "electoral_victory_message": "''",
+              "electoral_loss_message": "''",
+              "no_electoral_majority_message": "''",
+              "description_as_running_mate": "''",
+              "candidate_score": 1,
+              "running_mate": false
+          }
+      },
+      {
+          "model": "campaign_trail.candidate",
+          "pk": 95,
+          "fields": {
+              "first_name": "Fred",
+              "last_name": "Harris",
+              "election": 10,
+              "party": "Democratic",
+              "state": "Oklahoma",
+              "priority": 5,
+              "description": "''",
+              "color_hex": "#0000FF",
+              "secondary_color_hex": "#90C0FF",
+              "is_active": 0,
+              "image_url": "https://i.imgur.com/Z4MHBMC.png",
+              "electoral_victory_message": "''",
+              "electoral_loss_message": "''",
+              "no_electoral_majority_message": "''",
+              "description_as_running_mate": "<p><b>Playable VP (V1)</b><p>Fred Roy Harris will be your lifeline in this election, Ted. A liberal in the south, a populist and a ranger. He is supported by President Johnson, and would be just the choice to salvage Texas. Harris stands for economic populism, greater rights for Native Americans, and is a vociferous ally of Johnson's Great Society programs. He would help shore up fledgling Democratic support in the south without damaging it up north.<p>Harris is not without his issues though, for any other candidate, his young age of 38 would only play into the argument that the ticket is too young and inexperienced to properly handle the issues hampering America at the moment. Plus, Oklahoma would be a ruby red state on the national environment, and Harris can't change that",
+              "candidate_score": 0,
+              "running_mate": true
+          }
+      },
+      {
+          "model": "campaign_trail.candidate",
+          "pk": 96,
+          "fields": {
+              "first_name": "Carl",
+              "last_name": "Sanders",
+              "election": 10,
+              "party": "Democratic",
+              "state": "Georgia",
+              "priority": 6,
+              "description": "''",
+              "color_hex": "#0000FF",
+              "secondary_color_hex": "#90C0FF",
+              "is_active": 0,
+              "image_url": "https://i.imgur.com/hHntj00.png",
+              "electoral_victory_message": "''",
+              "electoral_loss_message": "''",
+              "no_electoral_majority_message": "''",
+              "description_as_running_mate": "<p><b>Playable VP (V1)</b><p>If you're looking to make inroads into the south, then Carl Edward Sanders Sr. is your favored pick. A WW2 vet, he would certainly be a bit of a polarizing choice for your base, as a racial moderate from the deep south, but it's more than that. Georgia is certainly more winnable then Oklahoma, and Sanders would definitely force some bloc of southerners to warm up to your campaign. He supported your brother John's New Frontier and does the same with the Great Society.<p>However, Sanders would be a hard pill for your liberal-minded base to swallow, and you'd run the risk of pushing them away, not only that but he's rather averse to being your running mate due to your more then plenty of disagreements. He'll still accept, but he might not campaign as energetically as you'd hope.",
+              "candidate_score": 0,
+              "running_mate": true
+          }
+      },
+      {
+          "model": "campaign_trail.candidate",
+          "pk": 97,
+          "fields": {
+              "first_name": "Terry",
+              "last_name": "Sanford",
+              "election": 10,
+              "party": "Democratic",
+              "state": "North Carolina",
+              "priority": 7,
+              "description": "''",
+              "color_hex": "#0000FF",
+              "secondary_color_hex": "#90C0FF",
+              "is_active": 0,
+              "image_url": "https://i.imgur.com/wigvaDr.png",
+              "electoral_victory_message": "''",
+              "electoral_loss_message": "''",
+              "no_electoral_majority_message": "''",
+              "description_as_running_mate": "<p>Another good southerner would be James Terry Sanford, the former governor of North Carolina. Sanford was the first of the up and coming \"New South\" governors who prioritized racial moderation and economic acts over segregation. Sanford himself focusing himself of reforming the state's sloppy education system. Sanford notably endorsed your brother Jack in the 1960 primaries over southern frontrunner Lyndon Johnson, and something like that should be rewarded, no matter how long ago it was.</p><p>However, Sanford also has a lot of issues if you're considering him. He left as an unpopular governor, and his record on race would not appease the Wallace brigades in the south. He was also Johnson's campaign manager earlier this year, meaning that he might possibly endorse you. Regardless, he's a gamble. But if you play your cards right, you won't need the south.",
+              "candidate_score": 0,
+              "running_mate": true
+          }
+      },
+      {
+          "model": "campaign_trail.candidate",
+          "pk": 98,
+          "fields": {
+              "first_name": "Scoop",
+              "last_name": "Jackson",
+              "election": 10,
+              "party": "Democratic",
+              "state": "Washington",
+              "priority": 8,
+              "description": "''",
+              "color_hex": "#0000FF",
+              "secondary_color_hex": "#90C0FF",
+              "is_active": 0,
+              "image_url": "https://i.imgur.com/clrJXYR.png",
+              "electoral_victory_message": "''",
+              "electoral_loss_message": "''",
+              "no_electoral_majority_message": "''",
+              "description_as_running_mate": "<p>You know Scoop, and he knows you. Henry Martin \"Scoop\" Jackson is a man who needs little introduction, serving as Washington's senator since 1953. A staunch ally of your brother Jack, and of labor. Scoop is a union stalwart, and has the economically liberal record that would energize the base this year, along with bringing in Washington and the West Coast to your column further. Scoop also brings the benefits of moderating your record on Vietnam and your more shaky support with the establishment.<p>However, this is a risky gambit, as he is quite unfriendly with the more vocal anti-war left, whom mae up most of your coalition, and Scoop's clean record on civil rights would make cracking the south a no-go. Lastly, being a less-than-charismatic and detail-oriented man, he's prone to boring people out of their mind.",
+              "candidate_score": 0,
+              "running_mate": true
+          }
+      },
+      {
+          "model": "campaign_trail.candidate",
+          "pk": 99,
+          "fields": {
+              "first_name": "Spiro",
+              "last_name": "Agnew",
+              "election": 10,
+              "party": "Republican",
+              "state": "Maryland",
+              "priority": 9,
+              "description": "''",
+              "color_hex": "#FF0000",
+              "secondary_color_hex": "#FFA0A0",
+              "is_active": 0,
+              "image_url": "https://i.imgur.com/ibeFHiP.png",
+              "electoral_victory_message": "''",
+              "electoral_loss_message": "''",
+              "no_electoral_majority_message": "''",
+              "description_as_running_mate": "<p>Spiro Theodore Agnew is the walking, talking, personification of Nixon's silent majority. A conservative speaker with a moderate streak, he's just what old Tricky' Dick needs to make himself seem more palatable to conservatives suspicious with his record. Spiro lives and breathes the conservative dogma of the day and exudes the straight talk and antics of Nixon's most reactionary supporters.<p>He'll help in Maryland, but it's unknown if Agnew could actually snuff out Wallace's allure with blue collar workers, and some have played off Agnew's choosing as nothing more then a gimmick. But is it really a gimmick if it works so well? We'll just have to find out.",
+              "candidate_score": 0,
+              "running_mate": true
+          }
+      },
+      {
+          "model": "campaign_trail.candidate",
+          "pk": 103,
+          "fields": {
+              "first_name": "George",
+              "last_name": "Taylor",
+              "election": 10,
+              "party": "Socialist Labor",
+              "state": "No clue",
+              "priority": 13,
+              "description": "<p>Henning Blow men running mate, most generic name since John Smith",
+              "color_hex": "#00C100",
+              "secondary_color_hex": "#A1FFA1",
+              "is_active": 0,
+              "image_url": "''",
+              "electoral_victory_message": "''",
+              "electoral_loss_message": "''",
+              "no_electoral_majority_message": "''",
+              "description_as_running_mate": "''",
+              "candidate_score": 0,
+              "running_mate": true
+          }
+      },
+      {
+          "model": "campaign_trail.candidate",
+          "pk": 104,
+          "fields": {
+              "first_name": "Curtis",
+              "last_name": "LeMay",
+              "election": 10,
+              "party": "Republican",
+              "state": "Ohio",
+              "priority": 14,
+              "description": "''",
+              "color_hex": "#FFFF00",
+              "secondary_color_hex": "#FFFFC0",
+              "is_active": 0,
+              "image_url": "https://i.imgur.com/u43vreh.png",
+              "electoral_victory_message": "''",
+              "electoral_loss_message": "''",
+              "no_electoral_majority_message": "''",
+              "description_as_running_mate": "<p>You will look in vain for a more hawkish, nuke happy, air force general in America then Curtis LeMay. Tapped as one of Wallace's VPs with financial promises, LeMay is part of Wallace's strategy to make him appealing to Nixon's right, and the way the polling looks, the strategy isn't going half pear-shaped.<p>However, LeMay's loose tongue combined with his warmonger appearance could spell disaster for the Wallace campaign if those two things align, which hopefully will happen at some point.",
+              "candidate_score": 0,
+              "running_mate": true
+          }
+      }
+  ]
+  
+  campaignTrail_temp.running_mate_json = [
+      {
+          "model": "campaign_trail.running_mate",
+          "pk": 67,
+          "fields": {
+              "candidate": 94,
+              "running_mate": 104
+          }
+      },
+      {
+          "model": "campaign_trail.running_mate",
+          "pk": 66,
+          "fields": {
+              "candidate": 93,
+              "running_mate": 103
+          }
+      },
+      {
+          "model": "campaign_trail.running_mate",
+          "pk": 58,
+          "fields": {
+              "candidate": 91,
+              "running_mate": 95
+          }
+      },
+      {
+          "model": "campaign_trail.running_mate",
+          "pk": 59,
+          "fields": {
+              "candidate": 91,
+              "running_mate": 96
+          }
+      },
+      {
+          "model": "campaign_trail.running_mate",
+          "pk": 60,
+          "fields": {
+              "candidate": 91,
+              "running_mate": 97
+          }
+      },
+      {
+          "model": "campaign_trail.running_mate",
+          "pk": 61,
+          "fields": {
+              "candidate": 91,
+              "running_mate": 98
+          }
+      },
+      {
+          "model": "campaign_trail.running_mate",
+          "pk": 141532,
+          "fields": {
+              "candidate": 92,
+              "running_mate": 99
+          }
+      }
+  ]
+  
+  campaignTrail_temp.credits = "WNDIUA (Jimbo)"
+  
+  campaignTrail_temp.global_parameter_json = [
+      {
+          "model": "campaign_trail.global_parameter",
+          "pk": 1,
+          "fields": {
+              "vote_variable": 1.125,
+              "max_swing": 0.12,
+              "start_point": 0.94,
+              "candidate_issue_weight": 10,
+              "running_mate_issue_weight": 3,
+              "issue_stance_1_max": -0.71,
+              "issue_stance_2_max": -0.3,
+              "issue_stance_3_max": -0.125,
+              "issue_stance_4_max": 0.125,
+              "issue_stance_5_max": 0.3,
+              "issue_stance_6_max": 0.71,
+              "global_variance": 0.01,
+              "state_variance": 0.005,
+              "question_count": 25,
+              "default_map_color_hex": "#C9C9C9",
+              "no_state_map_color_hex": "#999999"
+          }
+      }
+  ]
+  
+  campaignTrail_temp.opponents_default_json = [
+      {
+          "election": 10,
+          "candidates": [
+              91,
+              92,
+              93,
+              94
+          ]
+      }
+  ]
+  
+  campaignTrail_temp.opponents_weighted_json = [
+      {
+          "election": 10,
+          "candidates": [
+              91,
+              92,
+              93,
+              94
+          ]
+      }
+  ]
+  
+  campaignTrail_temp.temp_election_list = [
+      {
+          "id": 10,
+          "year": 1976,
+          "is_premium": 0,
+          "display_year": "1968Camelot"
+      }
+  ]
+  
+  jet_data = {
+      "headerColor": "#97212d",
+      "windowColor": "#7d8dde",
+      "containerColor": "#2f456d",
+      "innerWindowColor": "#d2eaff",
+      "bannerImageUrl": "https://i.imgur.com/691ueNQ.png",
+      "backgroundImageUrl": "https://wtop.com/wp-content/uploads/2018/06/AP_576668137866-1814x1254.jpg",
+      "endingTextColor": "#000000",
+      "customQuote": "\"Integrity is the lifeblood of democracy. Deceit is a poison in its veins.\"",
+      "gameTitle": "Ted in 68."
+  }
+  
+  //#startcode
+  
+  RecReading = true
+
+  $(".footer a").css({"color":"#e0e0e0"});
+  nct_stuff.themes[nct_stuff.selectedTheme].text_col = "#e0e0e0"
+  
+  let style = document.createElement('style');
+  style.type = 'text/css';
+  style.id = 'dynamic-style';
+  
+  style.innerHTML = `
+    .campaign_trail_start_emphasis {
+      background-color: #373a6e;
+    }
+    a:-webkit-any-link {
+        color: #373a6e;
+    }
+  `;
+  
+  document.head.appendChild(style);
+
+  document.getElementById("inner_window_1").children[1].innerHTML = `  <li>The year is 1968.</li>  <li>America looks to be decaying, as while the streets breed rioting, the upper echelon of government appears to do nothing.</li>  <li>The death of Bobby Kennedy has all but upended society to its fullest, pulling on its increasingly frayed ropes.</li>  <li>But there is a light. A gleam from Massachusetts. Ted Kennedy is the shining beacon of what may be, instead of what will be. He must win.</li>`
+document.styleSheets[0].insertRule(".inner_window_w_desc{ margin:1em 1em 0 !important;padding-top: 0.5em !important;}", 0);
+document.styleSheets[0].insertRule(".inner_window_question{ margin:1em 1em .7em !important;padding-top: 0.3em !important;}", 0);
+document.styleSheets[0].insertRule("#main_content_area { height:82% !important;}", 0);
+  
+  next0 = function() {
+      const imageElement = document.querySelector('#election_image img');
+    imageElement.setAttribute('src', 'https://i.imgur.com/pISFT3s.png');
+  text = "<p>The Kennedy's were once again completely heartbroken and inconsolable, the patriarch Joe - as senile as he was becoming - was still as furious that his latest chance of getting back into the executive had slipped away. But among the chaos, a spark arose in his mind when he heard his youngest's eulogy of Bobby.<p>Ted was an up and coming, and was still wet behind the ears. But he had the same charm, views and looks as Bobby. The convention probably wouldn't take anybody else. McCarthy? Hah! Humphrey? No way. McGovern? Not a chance in hell. And so he pondered his options, deciding on the penultimate one.<br><br><button onclick='next1()'>The Spark</button></li></p><br><button onclick='back0()'>Reset</button><br><br></p>"
+  document.getElementById("election_summary").innerHTML = text
+  }
+  back0 = function() {
+      const imageElement = document.querySelector('#election_image img');
+               imageElement.setAttribute('src', 'https://i.imgur.com/rv7Vrwa.png');
+     text = "<p><p>It's a jubilant midnight in California, as the heir of Jack and Democrat's golden child Bobby Kennedy has just scored a smashing victory there. His proud support of desegregation, economic prosperity and preserving the legacy of his brother has resonated with millions, and he well on his way to the White House at this point<p>That was until a shot rang out into the crowded kitchen, then one more, and then some more, and when all was said and done. Bobby was dead. Millions mourned, millions more dumbfounded at why? Chief among them all would be Ted, Bobby's youngest brother.<br><br><button onclick='next0()'>The Mourning</button><br><br></p>"
+     document.getElementById("election_summary").innerHTML = text
+  }
+  next1 = function() {
+      const imageElement = document.querySelector('#election_image img');
+    imageElement.setAttribute('src', 'https://i.imgur.com/njkyM87.png');
+  text = "<p>Among everyone, Ted was the most broken. Bobby and Ted were two peas in a pod, and they were both for eachother when one was down in the dumps. Ted was even out campaigning for him in California when he was killed. As such, he felt awful about the whole situation and that paranoia would spread throughout his mind, but despite his fears, a flame within his heart would grow, the flame to preserve his brother's legacies.<p>The flame would grow viscously when he met with his father in the aftermath of the shooting, where the old man pleaded with his son in his shaky voice to run. He was in no position to yell and throw around his weight, but his influence still hung around like an aura. Ted weighed his options.<br><br><button onclick='next2()'>The Convention</button></li></p><br><button onclick='back0()'>Reset</button><br><br></p>"
+  document.getElementById("election_summary").innerHTML = text
+  }
+  next2 = function() {
+      const imageElement = document.querySelector('#election_image img');
+    imageElement.setAttribute('src', 'https://i.imgur.com/iRJLZix.png');
+  text = "<p>The primaries came and went and nobody was able to crack that barrier, and as such, chaos reigned at the convention. Protests outside turned to riots, riots turned to revolts. Things inside were just as chaotic as outside, nobody could agree on any candidate. Bobby's death had opened a void in just who would be the nominee. But among all the chaos, one thing remained consistent, the 'Draft Ted' movements.<p>Ted himself was very against running, not wanting to be shot and killed just like two of his brothers, but throughout it all, his father's demands, his own ambitions, and the public hounding him, he relented. He endorsed the movements, and the rest is history.<br><br><button onclick='next3()'>The Election</button></li></p><br><button onclick='back0()'>Reset</button><br><br></p>"
+  document.getElementById("election_summary").innerHTML = text
+  }
+  next3 = function() {
+      const imageElement = document.querySelector('#election_image img');
+    imageElement.setAttribute('src', 'https://i.imgur.com/898WJJI.png');
+  text = "<p><p>The latter half of the 60's have continued to descend into bedlam. With inflation, Vietnam, a tipping point on civil rights all culminating into chaos. The death of dynasty-heir and Democratic contender Bobby Kennedy has only contributed to the turmoil.</p> <ul><li>Nixon has positioned himself as the \"Law and Order\" candidate, and seeks to bring normalcy and stability back to American society.</li><li>After being drafted by the convention following the death of his brother, Ted Kennedy seeks to bring in his type of progressive politics into the executive.<br><br><button onclick='back0()'>The Beginning</button></li></p>"
+  document.getElementById("election_summary").innerHTML = text
+  }
+  
+  corrr = '\n              <h2>Ted in 68.</h2><font id="wittyquote" size="4" color="white"><em>"Integrity is the lifeblood of democracy. Deceit is a poison in its veins."</em></font>\n            ';
+  
+  
+  nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#090d30";
+  
+  nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#c6c6c6";
+  
+  document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+  
+  $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+  
+  $(".container")[0].style.backgroundColor = "#252b4d";
+  
+  document.getElementById("header").src = "https://i.imgur.com/691ueNQ.png";
+  
+  document.body.background = "https://i.imgur.com/I8NfcKX.png";
+  
+  document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#e3e3e3!important;}</style>";
+  
+  $("#game_window")[0].style.backgroundImage = "url(https://i.imgur.com/YSEGckV.png)"
+
+  campaignTrail_temp.credits = "<button onclick='credits()'>WNDIUA and Others</button>";
+
+  HistHexcolour=["#325396","#8f2c2c","#5e4e34","#3aae75"]; HistName=[" Ted Kennedy"," Richard Nixon"," George Wallace"," Blomen/Other Candidates"]; HistEV=[253,232,54,0]; HistPV=["31,136,721","30,665,753","11,252,563","103,408"]; HistPVP=["42.6%","41.9%","15.4%","0.1%"];
+
+  credits = function() {
+    credits = ["Concept, Coding & Writing", "WNDIUA (Jimbo) (u/WhatNameDidIUseAgain)", "", "Theme Help and Music Player implementation, and just generally being a great help and guy", ".answerisme (LBJ IS GOD)", "", "Other Thanks:", "Decstar (for the Music Player code)", "Gardfeld (Making Midnight and Playtesting)", "Halligan Elysium (suggesting the credits button)", "Orangemann (suggesting that the credits button be Red.)", "1936Lusitania (The mod in which I have graciously lifted the code for this credits button from)"]
+    text = "CREDITS:\n\n"
+    for (i in credits) {
+        text += credits[i] + "\n"
+    }
+    alert(text)
+  }
+
+  campaignTrail_temp.modBoxTheme = {
+    "header_color": "#000000",
+    "header_text_color": "#ffffff",
+    "description_text_color": "#ffffff",
+    "description_background_color": "#5e5e80",
+    "main_color": "#242b4d",
+    "secondary_color": "#6361a6",
+    "ui_text_color": "#FFFFFF"
+}
+
+  //#endcode
+  
