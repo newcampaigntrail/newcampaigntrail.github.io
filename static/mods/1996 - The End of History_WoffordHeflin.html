@@ -268,7 +268,7 @@ if (!campaignTrail_temp.loaded){
           "pk": 1075,
           "fields": {
               "priority": -2,
-              "description": "Senate Majority Leader Tom Daschle has called the United States Senate in for a special session, as has House Speaker Foley to craft a response bill to this crisis. This scheduled session will likely run through the last debate. Will you change your campaign schedule at all given recent events?",
+              "description": "Senate Majority Leader Tom Daschle has called the United States Senate in for a special session, as has House Speaker Gephardt to craft a response bill to this crisis. This scheduled session will likely run through the last debate. Will you change your campaign schedule at all given recent events?",
               "likelihood": 1
           }
       },
@@ -16945,8 +16945,17 @@ if (!campaignTrail_temp.loaded){
       pell += 1;
       hamilton +=1;                 
     }
-  
-  
+    
+    // Q3
+    // 'I've got to keep going. For Clare. It's what she would've wanted. Even if I have to go through hell to do it.' 
+    if(ans == 5139){
+        primary += 1;               
+      }
+    // 'I can't - I can't think about this right now. God, I need a break. Cancel my campaign visits for the next few days. I'm sure people in the campaign will understand. I mean, they have to.' 
+    if(ans == 5139){
+        primary -= 1;               
+    }
+
     // Q4
     // I voted against it because it's not fair to fast track the process for immigrants from some countries and not others. I question why Richards would support this, when she knows there's immigrants from Latin America looking to enter the country. Perhaps it's because they're coming through Texas?
     if(ans == 5147){
@@ -17006,7 +17015,8 @@ if (!campaignTrail_temp.loaded){
       daschle += 1;
       richards -= 1;
       baucus -= 1;
-      feingold -= 1;                
+      feingold -= 1;
+      primary -= 2;                
     }
     // I appreciate the offer, and am happy to visit the continent after the primary season - but I can see the primary polling clear as day. This debate is crucial to securing our chances - and we need to go on the defense, specifically in the upcoming primaries.
     if(ans == 5156){
