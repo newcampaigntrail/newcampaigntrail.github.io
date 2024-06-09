@@ -16486,6 +16486,7 @@ if (!campaignTrail_temp.loaded){
   var naderRoute = 0;
   var advice = false;
   var primary = 0;
+  var pulp = 0;
   
   // Scores for the NEW AND IMPROVED running mate system 
   var heflin = 0;
@@ -16711,6 +16712,15 @@ if (!campaignTrail_temp.loaded){
       ukraine += 1;
   }
   
+// Pulp Friction achievement check
+
+if(ans == 21394 ){
+    pulp += 1;  
+}
+
+if(ans == 21435){
+    pulp += 1;  
+}
   
   var audie = document.createElement("audio");
               audie.id = "cassette"
@@ -16741,7 +16751,7 @@ if (!campaignTrail_temp.loaded){
         }
     }
   // Decisive
-      if((campaignTrail_temp.player_answers.includes(21017)||campaignTrail_temp.player_answers.includes(5253||campaignTrail_temp.player_answers.includes(5254))||campaignTrail_temp.player_answers.includes(5255))  && policyForeign < -2 || policyForeign < 2){
+      if((campaignTrail_temp.player_answers.includes(21017)||campaignTrail_temp.player_answers.includes(5253||campaignTrail_temp.player_answers.includes(5254))||campaignTrail_temp.player_answers.includes(5255))  && policyForeign < -2 || policyForeign > 2){
         campaignTrail_temp.questions_json[28] = {
         "model": "campaign_trail.question",
         "pk": 21263,
@@ -16768,7 +16778,7 @@ if (!campaignTrail_temp.loaded){
     }
   }
   // Decisive
-  if((campaignTrail_temp.player_answers.includes(21017)||campaignTrail_temp.player_answers.includes(5253)||campaignTrail_temp.player_answers.includes(5254)||campaignTrail_temp.player_answers.includes(5255))  && policyForeign < -2 || policyForeign < 2){
+  if((campaignTrail_temp.player_answers.includes(21017)||campaignTrail_temp.player_answers.includes(5253)||campaignTrail_temp.player_answers.includes(5254)||campaignTrail_temp.player_answers.includes(5255))  && policyForeign < -2 || policyForeign > 2){
   
       campaignTrail_temp.questions_json[28] = {
     "model": "campaign_trail.question",
@@ -16797,7 +16807,7 @@ if (!campaignTrail_temp.loaded){
     }
   }
   // Decisive
-  if((campaignTrail_temp.player_answers.includes(21017)||campaignTrail_temp.player_answers.includes(5253)||campaignTrail_temp.player_answers.includes(5254)||campaignTrail_temp.player_answers.includes(5255))  && policyForeign < -2 || policyForeign < 2){
+  if((campaignTrail_temp.player_answers.includes(21017)||campaignTrail_temp.player_answers.includes(5253)||campaignTrail_temp.player_answers.includes(5254)||campaignTrail_temp.player_answers.includes(5255))  && policyForeign < -2 || policyForeign > 2){
   
       campaignTrail_temp.questions_json[28] = {
     "model": "campaign_trail.question",
@@ -16826,7 +16836,7 @@ if (!campaignTrail_temp.loaded){
     }
   }
   // Decisive
-    if((campaignTrail_temp.player_answers.includes(21017)||campaignTrail_temp.player_answers.includes(5253)||campaignTrail_temp.player_answers.includes(5254)||campaignTrail_temp.player_answers.includes(5255))  && policyForeign < -2 || policyForeign < 2){
+    if((campaignTrail_temp.player_answers.includes(21017)||campaignTrail_temp.player_answers.includes(5253)||campaignTrail_temp.player_answers.includes(5254)||campaignTrail_temp.player_answers.includes(5255))  && policyForeign < -2 || policyForeign > 2){
   
       campaignTrail_temp.questions_json[28] = {
     "model": "campaign_trail.question",
@@ -16899,7 +16909,7 @@ if (!campaignTrail_temp.loaded){
       console.log("What would Nader think?");                    
     }
   
-    if((ans == 21169 || ans == 21172 || ans == 21113 || ans == 21166 || ans == 21416 || ans == 21422 || ans == 21429 || ans == 21415 ) && naderLies >= 2){
+    if((ans == 21169 || ans == 21172 || ans == 21113 || ans == 21166 || ans == 21416 || ans == 21422 || ans == 21429 || ans == 21435 ) && naderLies >= 2){
       console.log("You've lied to Nader too much!");  
       campaignTrail_temp.questions_json[24] = {
         "model": "campaign_trail.question",
@@ -18220,7 +18230,7 @@ if (!campaignTrail_temp.loaded){
       if (primary > 2 && quickstats[0] >= 270) { // As Wofford, win after causing a contested convention.
         ctsAchievement("Deja Vu in Chicago");  
       }
-      if (primary > 2 && ans == 21394 && ans == 21435 && naderLies >= 2 && quickstats[0] >= 270) { // As Wofford, win by making enemies out of the whole damn coalition. (Contested convention, cause Nader to re-enter, refuse to mend divides, and still win.)
+      if (primary < 2 && pulp >= 2 && naderLies >= 2 && quickstats[0] >= 270) { // As Wofford, win by making enemies out of the whole damn coalition. (Contested convention, cause Nader to re-enter, refuse to mend divides, and still win.)
         ctsAchievement("Pulp Friction");  
       }
   
