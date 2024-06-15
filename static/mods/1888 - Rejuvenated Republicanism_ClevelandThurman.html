@@ -1,3 +1,13 @@
+if (!campaignTrail_temp.loaded){
+    campaignTrail_temp.loaded = true
+
+    function ctsAchievement(achievement, difficultyChecker = true){
+        if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
+            if(campaignTrail_temp.CTS){
+            unlockAchievement(achievement);
+        }
+    }
+    
 campaignTrail_temp.questions_json = [
     {
         "model": "campaign_trail.question",
@@ -22,7 +32,7 @@ campaignTrail_temp.questions_json = [
         "pk": 179,
         "fields": {
             "priority": 1,
-            "description": "You’ve survived until the weekend recess, and Blaine has wired in from Europe to shut down any attempt at a draft. Chicago is abuzz with operatives willing to shake any hand for a deal. New York’s delegates will be crucial, and the state party boss Thomas Platt is still deciding where to swing. Getting him on board could wrap this whole thing up.",
+            "description": "The convention is in an uproar before the first ballot is cast. Gray, the turncoat, the rogue who set in motion the riot at the Indiana General Assembly last year in his quest for a Senate seat; you now work to elevate him to an even higher office. You need to win people over quickly...",
             "likelihood": 1
         }
     },
@@ -7296,17 +7306,17 @@ endingPicker = (out, totv, aa, quickstats) => {
   //totv = total votes in entire election
   //aa = all final overall results data
   //quickstats = relevant data on candidate performance (format: your candidate's electoral vote count, your candidate's popular vote share, your candidate's raw vote total)
-  if (quickstats[0] >= 3 && quickstats[0]<154) {
+   if (quickstats[0] >= 3 && quickstats[0]<154) {
     return "<h3>Republicans Resurgent</h3><p>It’s happening almost as you had imagined it. You’re here at the inauguration. You see President Cleveland up on the East Portico. You can hear the oath of office being administered through the drizzling rain. But there’s one tiny, tragic difference. It is Harrison you see being sworn in, and your boss standing behind him, dutifully holding the new President’s umbrella.</p><p>It was one of the highest turnouts ever recorded, but in the end it was a decisive defeat. Cleveland’s obstinacy in the pursuit of what he knows to be right is noble, but it puts him at a disadvantage against the army of opportunists and experienced political operators who stoke fears and reject needed change. We probably never had a chance.</p><p>As for you, you’ll probably take a break from Washington. Maybe up to Blueberry Lodge up in Maine, to relax by the water for a spell. Frankie seems convinced that this isn’t the end for Grover, and that he still has a future in national politics. Not the least unlikely thing, depending on how Harrison’s term goes. And if that happens, you’ll be there if he needs you. But for now, some much-needed rest.</p>"
-  } else if (quickstats[0] >= 154 && quickstats[0]<201) {
+  } if (quickstats[0] >= 154 && quickstats[0]<201) {
     return "<h3>Holding the Umbrella</h3><p>It’s happening almost as you had imagined it. You’re here at the inauguration. You see President Cleveland up on the East Portico. You can hear the oath of office being administered through the drizzling rain. But there’s one tiny, tragic difference. It is Harrison you see being sworn in, and your boss standing behind him, dutifully holding the new President’s umbrella.</p><p>It was one of the highest turnouts ever recorded, but in the end your efforts came up just short. It seems America just wasn’t ready for Cleveland’s bold tariff plan, and the papers are already hailing Harrison’s complex campaign effort as the future of politics. It seems a simpler age is fading away.</p><p>As for you, you’ll probably take a break from Washington. Maybe up to Blueberry Lodge up in Maine, to relax by the water for a spell. Frankie seems convinced that this isn’t the end for Grover, and that he still has a future in national politics. Not the least unlikely thing, depending on how Harrison’s term goes. And if that happens, you’ll be there if he needs you. But for now, some much-needed rest.</p>"
-  } else if (quickstats[0] >= 201 && quickstats[0]<248) {
+  } if (quickstats[0] >= 201 && quickstats[0]<248) {
     return "<h3><q>“A public office is a public trust.”</q></h3><p>As you struggle to hear the oath of office over the rain, a sense of history overcomes you. For the first time since Jackson himself, a Democrat has won the trust of the people twice in a row. With your help, Cleveland has prevailed over Harrison, navigating through dangerous waters to secure another term.</p><p>The naysayers called Cleveland’s tariff message a blunder, but you never lost faith in your friend. Through patient education and persistent organization, the humble President was able to scratch together a slight yet significant victory. Perhaps the Republicans, sorely missing the millions of dollars they just wasted, will claim this is no great mandate. And perhaps they’re right. But America can sleep soundly knowing the President will continue to guard their money wisely.</p><p>As for you, you’ll go on serving in the Executive Mansion. Brice is claiming credit for the win, but the people who matter know who was really responsible. Perhaps a larger role in the Cabinet awaits the one who cobbled together such a defense. Or maybe you’ll continue as the President’s secretary and foremost confidant. Either way, the ship of state is in good hands. Here’s to a new American century!</p>"
-  } else if (quickstats[0] >= 248) {
+  } if (quickstats[0] >= 248) {
     return "<h3><q>“A way plain and clear which leads to happiness and perpetuity.”</q></h3><p>As you struggle to hear the oath of office over the rain, a sense of history overcomes you. For the first time since Jackson himself, a Democrat has won the trust of the people twice in a row. With your help, Cleveland has prevailed over Harrison, navigating through dangerous waters to secure another term.</p><p>The naysayers called Cleveland’s tariff message a blunder, but you never lost faith in your friend. Through patient education and persistent organization, the humble President earned a full-throated endorsement from the people. While the Republicans squabble over the pails of money they wasted in the attempt, Cleveland can go to Congress with a firm mandate to redesign the tariff around consumers, rather than big businesses.</p><p>As for you, you’ll go on serving in the Executive Mansion. Brice is claiming credit for the win, but the people who matter know who was really responsible. Perhaps a larger role in the Cabinet awaits the one who cobbled together such a defense. Or maybe you’ll continue as the President’s secretary and foremost confidant. Either way, the ship of state is in good hands. Here’s to a new American century!</p>"
-  } else if (quickstats[0] >= 201 && lilyWhite > 0) {
+  } if (quickstats[0] >= 201 && lilyWhite > 0) {
     return "<h3><q>“Equal and exact justice”?</q></h3><p>As you struggle to hear the oath of office over the rain, a sense of history overcomes you. For the first time since Jackson himself, a Democrat has won the trust of the people twice in a row. With your help, Cleveland has prevailed over Harrison, navigating through dangerous waters to secure another term.</p><p>The naysayers called Cleveland’s tariff message a blunder, but you never lost faith in your friend. Through patient education and persistent organization, the humble President was able to scratch together a slight yet significant victory. But Harrison’s ability to secure southern votes has set the party on edge. A Democratic victory without all the southern votes has strange implications indeed. As Republicans score successes in the Upper South, southern Democrats grumble of a necessity to consolidate their own power quickly, to secure the party’s future.</p><p>As for you, you’ll go on serving in the Executive Mansion. Brice is claiming credit for the win, but the people who matter know who was really responsible. Perhaps a larger role in the Cabinet awaits the one who cobbled together such a defense. Or maybe you’ll continue as the President’s secretary and foremost confidant. Either way, the ship of state is in good hands. Here’s to a new American century!</p>"
-  } else if (quickstats[0] < 201 && lilyWhite > 0) {
+  } if (quickstats[0] < 201 && lilyWhite > 0) {
     return "<h3>Not So Solid</h3><p>It’s happening almost as you had imagined it. You’re here at the inauguration. You see President Cleveland up on the East Portico. You can hear the oath of office being administered through the drizzling rain. But there’s one tiny, tragic difference. It is Harrison you see being sworn in, and your boss standing behind him, dutifully holding the new President’s umbrella.</p><p>It was one of the highest turnouts ever recorded, but in the end the ground shifted beneath your feet. The Democrats have come to rely on the ‘Solid South,’ but Harrison’s aggressive campaign was able to win a southern state for the Republicans for the first time since Reconstruction. As change comes to the South, so change will have to come to the Democrats, or the Executive Mansion will flee from our grasp for good.</p><p>As for you, you’ll probably take a break from Washington. Maybe up to Blueberry Lodge up in Maine, to relax by the water for a spell. Frankie seems convinced that this isn’t the end for Grover, and that he still has a future in national politics. Not the least unlikely thing, depending on how Harrison’s term goes. And if that happens, you’ll be there if he needs you. But for now, some much-needed rest.</p>"
   }
   
@@ -7329,6 +7339,7 @@ endingPicker = (out, totv, aa, quickstats) => {
   if (dummy >= 2 && quickstats[0] >= 201) { 
     ctsAchievement("Providence");  
   }
+}
+campaignTrail_temp.multiple_endings=true 
 
-  }
-campaignTrail_temp.multiple_endings=true
+}
