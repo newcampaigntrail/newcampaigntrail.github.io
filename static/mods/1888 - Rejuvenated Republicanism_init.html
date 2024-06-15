@@ -1,0 +1,143 @@
+e=campaignTrail_temp
+if (!e.done) {
+e.done = true;
+RecReading=true
+
+campaignTrail_temp.election_json = JSON.parse("[{\"model\": \"campaign_trail.election\", \"pk\": 5, \"fields\": {\"year\": 1888, \"summary\": \"<p>After being elected the first Democratic president in twenty-eight years, Grover Cleveland has worked towards civil service reform and tariff reduction. With Blaine rejecting another run, the RNC settled on dark horse Benjamin Harrison, a formidable orator from Indiana.</p><p><ul><li>Senator Benjamin Harrison will need to build a new kind of campaign to expose the administration's weaknesses on policy, while keeping the Republican party bosses in line.</li><li>President Grover Cleveland will have to defend his conservative administration as he seeks to retread the narrow path to a majority he traced four years ago.</li></p>\", \"image_url\": \"https://itsastronomical.com/assets/1888/1888.png\", \"winning_electoral_vote_number\": 201, \"advisor_url\": \"https://itsastronomical.com/assets/1888/harrisonadvisor.png\", \"recommended_reading\": \"<div style='overflow-y:scroll;height:370px;'><h4 style='margin-top: 0.5em;'>The 1888 Presidential Election</h4><p>The main source I used to learn about the 1888 election was <b>Minority Victory (2008)</b> by Charles W. Calhoun, which is, as far as I can tell, the only modern book-length study dedicated entirely to this election. If you’re curious to learn more about this election, I would recommend checking it out first. As of this mod’s publication, it’s available for free on the Internet Archive.</p><p>To learn about the candidates, I read Calhoun’s <b>Benjamin Harrison (2005)</b> for the American Presidents series and <b>Troy Senik’s A Man of Iron: The Turbulent Life and Improbable Presidency of Grover Cleveland (2022)</b>. Both were crucial to understand the deeply contrasting views on the role of government between Harrison and Cleveland. Calhoun’s biography is a bit shorter (but by no means inadequate), while Senik’s is longer and more in-depth.</p><p>To understand some of the particulars of Harrison’s day-to-day campaigning, I turned to <a href='https://scholarworks.iu.edu/journals/index.php/imh/article/view/22542/28460.'>“Trains, Canes, and Replica Log Cabins: Benjamin Harrison’s 1888 Front-Porch Campaign for the Presidency” (2014)</a> by Jeffrey Normand Bourdon.<a href='https://www.marxists.org/archive/debs/works/1888/881027-debs-speechonharrison.pdf'>The Eugene Debs quote was drawn from “General Benjamin Harrison -- Relentless Foe of Labor,” a speech he gave on October 27, 1888</a>. Minority Victory provided sufficient information on the Republican National Convention, but I referenced the official proceedings of the Democratic Convention, available <a href='https://www.google.com/books/edition/Official_Proceedings_of_the_National_Dem/x9-MdCcDgoUC?hl=en&gbpv=0'>on Google Books</a> for free.</p><br><h4>Full Credits and Thanks (by Astro)</h4><p>Dcmetro, who did the Hyperion series deserves full credit for the writing and the idea to play as the campaign managers.<br>I wanna thank him for his patience as this was written for quite some time before it was coded...<br><br><img src='https://itsastronomical.com/assets/miniastro.png' width='85px'></img><br><br>...and of course, I want to thank you, the player. I hope you had a fun time and learned something new! Stay tuned for 1924!</p></div>\", \"has_visits\": 0, \"no_electoral_majority_image\": \"/static/images/1896-no-majority.jpg\"}}]");
+
+campaignTrail_temp.candidate_json = JSON.parse("[{\"model\": \"campaign_trail.candidate\", \"pk\": 20, \"fields\": {\"first_name\": \"Benjamin\", \"last_name\": \"Harrison\", \"election\": 5, \"party\": \"Republican\", \"state\": \"Indiana\", \"priority\": 1, \"description\": \"<p>After the Republicans lost their first presidential election in decades, the party has been looking for a new standard-bearer. The eloquent former senator from Indiana, Benjamin Harrison, fits the bill, having declared himself a 'Rejuvenated Republican.'</p><p>In contrast to Cleveland's conservatism, Harrison has big plans for the federal government, being an avid protectionist, a committed reformer, and a proponent of civil rights. He holds an advantage in the crucial swing state of Indiana, but he'll need an ambitious campaign to expose the president's weaknesses and take back the Executive Mansion.</p>\", \"color_hex\": \"#ED6663\", \"secondary_color_hex\": \"#003893\", \"is_active\": 1, \"image_url\": \"https://itsastronomical.com/assets/1888/harrison.png\", \"electoral_victory_message\": \"<h3>Congratulations! You have won the 1888 election.</h3><p>Null</p>\", \"electoral_loss_message\": \"<h3>Sorry! You have lost the 1888 election.</h3><p>Null</p>\", \"no_electoral_majority_message\": \"<h3>Sorry! You have lost in a nail-biter.</h3><p>No candidate achieved a majority of the electoral votes, marking the first time this has happened since 1824. Unfortunately for you, the majority of U.S. states have Democratic controlled congressional delegations, and they will cast their votes for you accordingly.</p><p>It is unlikely you will have another chance in 1892. Barring another run for Congress, either from the House or Senate, it seems your political career is over.</p>\", \"description_as_running_mate\": null, \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 21, \"fields\": {\"first_name\": \"Grover\", \"last_name\": \"Cleveland\", \"election\": 5, \"party\": \"Democrat\", \"state\": \"New York\", \"priority\": 2, \"description\": \"<p>Grover Cleveland is the incumbent President - the first elected Democrat since James Buchanan back in 1856. Cleveland's record of personal integrity and support for civil service reform delivered him the presidency over James Blaine four years ago.</p><p>His obstinacy has earned him few admirers and many enemies. His support for lower tariffs has alienated both industrial capital and labor, his vetoes of pension claims have infuriated veterans, and his hard-money stance has frustrated farmers. Furthermore, Cleveland is a dull speaker with who believes active campaigning is beneath the dignity of the office; his advisors might need to save him from himself.</p>\", \"color_hex\": \"#43658B\", \"secondary_color_hex\": \"#FFB500\", \"is_active\": 1, \"image_url\": \"https://itsastronomical.com/assets/1888/cleveland.png\", \"electoral_victory_message\": \"<h3>Congratulations! You have won the 1888 election.</h3><p>Null</p>\", \"electoral_loss_message\": \"<h3>Sorry! You have lost the 1888 election.</h3><p>Null</p>\", \"no_electoral_majority_message\": \"<h3>Wow! You have won a true nail-biter.</h3><p>No candidate achieved a majority of the electoral votes, marking the first time this has happened since 1824. Fortunately for you, the majority of U.S. states have Democratic controlled congressional delegations, and they will cast their votes for you accordingly.</p><p>The important thing is that you won. Go about implementing your agenda accordingly, and pay no attention to Democrats and agitators who call for 'compromise' and 'conciliation'.</p>\", \"description_as_running_mate\": null, \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 22, \"fields\": {\"first_name\": \"Clinton B.\", \"last_name\": \"Fisk/Others\", \"election\": 5, \"party\": \"Prohibition\", \"state\": \"New Jersey\", \"priority\": 3, \"description\": \"<p>Clinton B. Fisk is the Prohibition Party's nominee. It will take an insane amount of spacebarring to get him to victory.</p>\", \"color_hex\": \"#CF9FFF\", \"secondary_color_hex\": \"#63eb87\", \"is_active\": 0, \"image_url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Peter_Cooper_Photograph.jpg/800px-Peter_Cooper_Photograph.jpg\", \"electoral_victory_message\": \"Congratulations!\", \"electoral_loss_message\": \"Better luck next time!\", \"no_electoral_majority_message\": \"Congratulations!\", \"description_as_running_mate\": null, \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 45, \"fields\": {\"first_name\": \"Levi\", \"last_name\": \"Morton\", \"election\": 5, \"party\": \"Republican\", \"state\": \"New York\", \"priority\": 20, \"description\": \"n/a\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"https://itsastronomical.com/assets/1888/morton.png\", \"electoral_victory_message\": \"n/a\", \"electoral_loss_message\": \"n/a\", \"no_electoral_majority_message\": \"n/a\", \"description_as_running_mate\": \"<p>Making inroads with the Republican establishment will be crucial to winning this November; Levi Morton is the preferred candidate of New York's powerful boss, Thomas Platt. Morton, a successful investment banker, was a member of the party's Stalwart wing a decade ago, nearly becoming Garfield's VP before Roscoe Conkling talked him out of it. He's since served as the minister to France -- a pursuit that has kept him out of the limelight for a while, which could prove beneficial if you're trying to run a flexible campaign.</p><p>Morton brings personal wealth and strong connections to the machinery necessary to win that crucial state of New York. He'd be a solid pick, but James Blaine would prefer someone else...</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 47, \"fields\": {\"first_name\": \"William Walter\", \"last_name\": \"Phelphs\", \"election\": 5, \"party\": \"Republican\", \"state\": \"New Jersey\", \"priority\": 22, \"description\": \"n/a\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"https://itsastronomical.com/assets/1888/waltphelps.png\", \"electoral_victory_message\": \"n/a\", \"electoral_loss_message\": \"n/a\", \"no_electoral_majority_message\": \"n/a\", \"description_as_running_mate\": \"<p>Making inroads with the Republican establishment will be crucial to winning this November. Many thought James Blaine could have had the nomination if he had wanted it; instead, he only asks that the convention choose his friend William Walter Phelps as your running mate.<br><br>Phelps has a solid record; Garfield appointed him minister to Austria-Hungary, and he's currently serving his fourth term as a representative from New Jersey. He's aligned with you on trade, helping to defeat the tariff-reducing bills in the House, and he brings personal wealth to the table, being one in a line of well-to-do bankers.</p><p>Phelps has the best chance of prying New Jersey back from Cleveland, and his Yale connections may help bring doubtful Connecticut into your column, but snubbing Platt will start your campaign in the Empire State on thin ice. Blaine, however, will be delighted by the choice, and he'll surely become an eager and energetic surrogate.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 48, \"fields\": {\"first_name\": \"William O'Connell\", \"last_name\": \"Bradley\", \"election\": 5, \"party\": \"Republican\", \"state\": \"Kentucky\", \"priority\": 22, \"description\": \"n/a\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"https://itsastronomical.com/assets/1888/bradley.png\", \"electoral_victory_message\": \"n/a\", \"electoral_loss_message\": \"n/a\", \"no_electoral_majority_message\": \"n/a\", \"description_as_running_mate\": \"<p>Platt and Blaine have their choices, but there exists within the convention a sizeable contingent of delegates with a different choice in mind: William O'Connell Bradley of Kentucky.<br><br>Bradley made headlines last year by running a strong  campaign in the Kentucky gubernatorial race, losing the strongly Democratic state by just six points. Bradley has some delegates convinced that, should the party center its protectionism and shelve its more ambitious civil rights proposals, some Southern states might slide into reach.</p><p>For obvious reasons, Bradley would likely be an unwise choice; wholly snubbing both Platt and Blaine to choose a gubernatorial candidate from a state that went for Cleveland by double digits, in the hopes of swinging some southern states to your side -- which would require you to run a campaign deeply at odds with your personal values -- doesn't sound like a winning strategy. But perhaps you know something the convention doesn't?</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 49, \"fields\": {\"first_name\": \"Allen\", \"last_name\": \"Thurman\", \"election\": 5, \"party\": \"Democrat\", \"state\": \"Ohio\", \"priority\": 24, \"description\": \"n/a\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"https://itsastronomical.com/assets/1888/thurman.png\", \"electoral_victory_message\": \"n/a\", \"electoral_loss_message\": \"n/a\", \"no_electoral_majority_message\": \"n/a\", \"description_as_running_mate\": \"<p>Former Senator Allen Granberry Thurman is a respected elder of the Democratic party with a record of congressional service tracing back to the Polk administration, and as such is the expected choice. His progressive views on the currency will add ideological balance to your ticket, while his tariff views are in line with yours.</p><p>Ohio will be difficult to win, however, and Thurman's former Copperhead sympathies may turn some Northerners off. Furthermore, at seventy-four years old, Thurman's health may put limits on his ability to actively campaign.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 50, \"fields\": {\"first_name\": \"Isaac\", \"last_name\": \"Gray\", \"election\": 5, \"party\": \"Democrat\", \"state\": \"Indiana\", \"priority\": 24, \"description\": \"n/a\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"https://itsastronomical.com/assets/1888/gray.png\", \"electoral_victory_message\": \"n/a\", \"electoral_loss_message\": \"n/a\", \"no_electoral_majority_message\": \"n/a\", \"description_as_running_mate\": \"<p>Governor Isaac Gray has one massive advantage; he currently governs one of the two most crucial swing states in this election, after demonstrating his ability to win that state four years earlier. A cutthroat politician of the highest order, his schemes to have himself elected Senator sunk the Indiana General Assembly into a frenzied riot last year.</p><p>For this and other reasons, many Democrats do not trust Gray, who only left the Republican party in the wake of the Grant scandals. The hardball tactics he used against the Democracy before his switch are still fresh in the minds of the party. By picking Gray, you'd be making a play for those flighty Mugwumps, at the risk of deflating your base.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 51, \"fields\": {\"first_name\": \"John\", \"last_name\": \"Black\", \"election\": 5, \"party\": \"Democratic\", \"state\": \"Illinois\", \"priority\": 26, \"description\": \"n/a\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"https://itsastronomical.com/assets/1888/black.png\", \"electoral_victory_message\": \"n/a\", \"electoral_loss_message\": \"n/a\", \"no_electoral_majority_message\": \"n/a\", \"description_as_running_mate\": \"<p>The U.S. Commissioner of Pensions John Charles Black, a former Union colonel, is being floated by some delegates as a compromise who can bring some military sheen to the ticket. His selection may deflect some criticism of Cleveland's conservative pension policies, or just as easily draw accusations of politicizing the position.</p><p>Black has never been elected to public office before, and he has little name recognition, let alone political base, outside of the Midwest. Illinois will be a difficult state to win, and he'll do you no favors with the bosses whose support you'll need to eke out another term.</p>\", \"candidate_score\": 0.0}}]");
+campaignTrail_temp.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 1, \"fields\": {\"candidate\": 20, \"running_mate\": 45}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 2, \"fields\": {\"candidate\": 21, \"running_mate\": 49}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 3, \"fields\": {\"candidate\": 21, \"running_mate\": 50}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 4, \"fields\": {\"candidate\": 21, \"running_mate\": 51}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 5, \"fields\": {\"candidate\": 20, \"running_mate\": 47}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 6, \"fields\": {\"candidate\": 20, \"running_mate\": 48}}]");
+campaignTrail_temp.opponents_default_json = JSON.parse("[{\"election\": 5, \"candidates\": [22, 20, 21]}]");
+campaignTrail_temp.opponents_weighted_json = JSON.parse("[{\"election\": 5, \"candidates\": [21, 20, 22]}]");
+campaignTrail_temp.global_parameter_json = JSON.parse("[{\"model\": \"campaign_trail.global_parameter\", \"pk\": 1, \"fields\": {\"vote_variable\": 1.125, \"max_swing\": 0.12, \"start_point\": 0.94, \"candidate_issue_weight\": 10.0, \"running_mate_issue_weight\": 3.0, \"issue_stance_1_max\": -0.71, \"issue_stance_2_max\": -0.3, \"issue_stance_3_max\": -0.125, \"issue_stance_4_max\": 0.125, \"issue_stance_5_max\": 0.3, \"issue_stance_6_max\": 0.71, \"global_variance\": 0.01, \"state_variance\": 0.005, \"question_count\": 25, \"default_map_color_hex\": \"#C9C9C9\", \"no_state_map_color_hex\": \"#999999\"}}]");
+campaignTrail_temp.temp_election_list = [{"id": 5, "year": 1888, "is_premium": 0, "display_year": "1888 - Rejuvenated Republicanism"}];
+campaignTrail_temp.credits = 'dcmetro (writer) and ItsAstronomical (coder)';
+
+corrr=`\n<h2>THE CAMPAIGN TRAIL</h2>`
+
+
+campaignTrail_temp.achievements = {
+    "Rejuvenated Republican" : {
+    "image" : "https://itsastronomical.com/assets/1888/ach/rep.png",
+     "description" : "As Harrison, win the four major swing states.",
+     "cannotBeCheated" : true
+   },
+   "A New South?" : {
+    "image" : "https://itsastronomical.com/assets/1888/ach/south.png",
+    "description" : "As Harrison, win with Bradley as your VP, and while winning any Upper South state.",
+    "cannotBeCheated" : true
+   },
+   "Tongue of Fire" : {
+    "image" : "https://itsastronomical.com/assets/1888/ach/lily.png",
+    "description" : "As Harrison, win after making a last-minute change.",
+    "cannotBeCheated" : true
+   },
+   "Providence" : {
+    "image" : "https://itsastronomical.com/assets/1888/ach/win.png",
+    "description" : "As Harrison, win despite your advisors’ incompetence.",
+    "cannotBeCheated" : true
+   },
+   "Redundant Republicans" : {
+    "image" : "https://itsastronomical.com/assets/1888/ach/4.png",
+    "description" : "As Cleveland, win the four major swing states in a repeat of ‘84.",
+    "cannotBeCheated" : true
+   },
+   "The (Very) Old Roman" : {
+    "image" : "https://itsastronomical.com/assets/1888/ach/thurman.png",
+    "description" : "As Cleveland, win with Thurman as your VP.",
+    "cannotBeCheated" : true
+   },
+   "Sisyphus Ascendant" : {
+    "image" : "https://itsastronomical.com/assets/1888/ach/gray.png",
+    "description" : "As Cleveland, win with Gray as your VP.",
+    "cannotBeCheated" : true
+   },
+   "Gallantry" : {
+    "image" : "https://itsastronomical.com/assets/1888/ach/black.png",
+    "description" : "As Cleveland, win with Black as your VP.",
+    "cannotBeCheated" : true
+   },
+   "Radical Reduction" : {
+    "image" : "https://itsastronomical.com/assets/1888/ach/win2.png",
+    "description" : "As Cleveland, win while ostracizing Randall and Dana and refusing to cut internal taxes.",
+    "cannotBeCheated" : true
+   }
+}
+HistHexcolour=["#ED6663","#43658B","#269945","#000"];
+        HistName=["Benjamin Harrison","Grover Cleveland","Clinton B. Fisk", "Alson Streeter/Others"];
+        HistEV=[233,168,0,0];
+        HistPV=["5,443,892","5,534,488","249,819","155,121"];
+        HistPVP=["47.80%","48.63%","2.20%","1.38%"];
+
+const gameThemes = {
+    "The Campaign" : function() {
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#c0c0c0";
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#ff6b6b";
+        document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+        $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+        $(".container")[0].style.backgroundColor = "#0080c0";
+        document.getElementById("header").src = "https://itsastronomical.com/assets/1888/1888banner.png";
+        document.body.background = "https://itsastronomical.com/assets/1888/1888bg.png";
+        
+    },
+    "Classic" : function() { 
+        document.getElementById("header").src = "https://www.newcampaigntrail.com/static/images/banner_classic.png";
+        document.body.style.backgroundColor = "#bfe6ff";
+        document.body.background = "";
+        $(".container")[0].style.backgroundColor = "#fff";
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#700016";
+        document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#e8fbff";
+        $("#game_window")[0].style.backgroundColor = "#bfe6ff";
+        $(".footer")[0].style.color = "#000";
+    }
+}
+
+// Replace old theme picker
+const themePicker = document.getElementById("themePicker");
+const newThemePicker = document.createElement("select");
+newThemePicker.id = "themePicker";
+newThemePicker.addEventListener("change", gameThemePicked);
+let newInnerHTML = "";
+for(theme in gameThemes) {
+    newInnerHTML += `<option value="${theme}">${theme}</option>`;
+}
+newThemePicker.innerHTML = newInnerHTML;
+themePicker.replaceWith(newThemePicker);
+
+function gameThemePicked() {
+    gameThemes[newThemePicker.value]();
+}
+
+gameThemePicked();
+
+campaignTrail_temp.modBoxTheme = {
+    "header_color": "#d43643",
+    "header_text_color": "#ffffff",
+    "description_text_color": "#ffffff",
+    "description_background_color": "#5c7d7c",
+    "main_color": "#5c7d7c",
+    "secondary_color": "#355dd4",
+    "ui_text_color": "#FFFFFF"
+}
+
+styling = document.createElement("style");
+document.head.appendChild(styling);
+
+styling.innerHTML = `
+#opponent_selection_id_back {
+    display: none;
+}
+`
+
+let z = new MutationObserver((mutationsList, observer) => {
+    let runningMateSummary = document.querySelector("#running_mate_summary");
+    if (runningMateSummary) {
+        $("#running_mate_id_button").click();
+        observer.disconnect()
+    }
+});
+
+
+z.observe(document, { subtree: true, childList: true });
+}
