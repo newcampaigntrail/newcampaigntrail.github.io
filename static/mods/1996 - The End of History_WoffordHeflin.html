@@ -16686,7 +16686,7 @@ if (!campaignTrail_temp.loaded){
       }
       // Ukraine Vote
       if(ans == 5213){
-        policyForeign -= 2;
+        policyForeign -= 1;
         console.log("You make a foreign policy stance.");                  
       }
       if(ans == 21147){
@@ -17126,18 +17126,9 @@ if(ans == 21435){
   )
   }
   
-  if((ans == 5155 || ans == 5156 ) && heflin < 2){
+  if((ans == 5155 || ans == 5156 ) && heflin >= 2){
     ctsAchievement("Judge");
     console.log("Heflin, 209");  
-    campaignTrail_temp.running_mate_json.push({
-      "model":"campaign_trail.running_mate",
-      "pk": 3,
-      "fields" : {
-          "candidate": 201,
-          "running_mate": 209
-       }
-   }
-  )
   }
   
   if((ans == 5155 || ans == 5156 ) && hamilton >= 2){
@@ -18109,7 +18100,7 @@ if(ans == 21435){
           music.play();
           e.runEnd = true;
           }
-        e.pages = ["<FONT COLOR=“000000”><h3>Ending 31 - WOFFORD PRIMARY CHALLENGER THREATENS PRESIDENT’S RE-ELECTION BID - The New York Times</h3><p>Despite his high approval ratings, and the continued success of Ukraine in its war against the Russians, it seems that President Wofford faces a serious threat to his re-election bid, as Harry Hewes of New York has announced his bid for the Democratic Presidential nomination. Hewes is a longtime New York candidate, running for senate in 1994 in his home state against Senator Daniel Patrick Moynihan. Previously, Hewes had served as a consultant and a political director for the Buchanan campaign in 1992 and for President Bush’s successful re-election campaign, but has switched to the Democratic Party due to his discontent with their last candidate for President, Pete Wilson. Running on a pro-life platform, Hewes has begun to stump across New Hampshire, expressing that some Democrats want to avoid foreign involvement and stand for the pro-life movement.<br>Hewes’ run underscores the fears many Democrats have-that President Wofford is not able to successfully mobilize his coalition behind him. Wofford may still have a steady approval rating, and early polls of New Hampshire and Iowa suggest his vote share will crack 95%, but many Democrats fear that many traditional Democratic voting groups, such as the pro-life, fiscal conservatives, and the wealthy, may be displeased with the Wofford administration. Hewes’ run makes him the first challenger towards the Wofford administration, despite persistent rumors among political insiders that challengers such as Paul Wellstone or the Vice President may mount a run against the President. An anonymous Washington source reports to the NYT that the Wofford administration is <q>immensely concerned</q> with the Hewes run, and will be rapidly stumping New Hampshire and Iowa in order to contain the impact of his bid.</p>", "<FONT COLOR=“000000”><h3>Ending 32 - STAR-SPANGLED SKINS RELEASE: HOW TO UNLOCK THE NEW SKINS IN FORTNITE SEASON 5</h3><p>In a celebration of American spirit, Fortnite has announced the next round of skins, a new line called the Star-Spangled Lineup. Players can experience Fortnite with a new set of heroes based on famous Americans, including Harvey Walters, Brock O’Llama,and Weasel Stark. Read this article now to discover how to unlock Harris Wofford in Fortnite!<br>Ahhh, excuse us. Harvey Walters…</p>"];
+        e.pages = ["<FONT COLOR=“000000”><h3>Ending 31 - WOFFORD PRIMARY CHALLENGER THREATENS PRESIDENT’S RE-ELECTION BID - The New York Times</h3><p>Despite his high approval ratings, and the continued success of Ukraine in its war against the Russians, it seems that President Wofford faces a serious threat to his re-election bid, as Harry Hewes of New York has announced his bid for the Democratic Presidential nomination. Hewes is a longtime New York candidate, running for senate in 1994 in his home state against Senator Daniel Patrick Moynihan. Previously, Hewes had served as a consultant and a political director for the Buchanan campaign in 1992 and for President Bush’s successful re-election campaign, but has switched to the Democratic Party due to his discontent with their last candidate for President, Pete Wilson. Running on a pro-life platform, Hewes has begun to stump across New Hampshire, expressing that some Democrats want to avoid foreign involvement and stand for the pro-life movement.<br><br>Hewes’ run underscores the fears many Democrats have-that President Wofford is not able to successfully mobilize his coalition behind him. Wofford may still have a steady approval rating, and early polls of New Hampshire and Iowa suggest his vote share will crack 95%, but many Democrats fear that many traditional Democratic voting groups, such as the pro-life, fiscal conservatives, and the wealthy, may be displeased with the Wofford administration. Hewes’ run makes him the first challenger towards the Wofford administration, despite persistent rumors among political insiders that challengers such as Paul Wellstone or the Vice President may mount a run against the President. An anonymous Washington source reports to the NYT that the Wofford administration is <q>immensely concerned</q> with the Hewes run, and will be rapidly stumping New Hampshire and Iowa in order to contain the impact of his bid.</p>", "<FONT COLOR=“000000”><h3>Ending 31 - STAR-SPANGLED SKINS RELEASE: HOW TO UNLOCK THE NEW SKINS IN FORTNITE SEASON 5</h3><p>In a celebration of American spirit, Fortnite has announced the next round of skins, a new line called the Star-Spangled Lineup. Players can experience Fortnite with a new set of heroes based on famous Americans, including Harvey Walters, Brock O’Llama,and Weasel Stark. Read this article now to discover how to unlock Harris Wofford in Fortnite!<br><br>Ahhh, excuse us. Harvey Walters…</p>"];
         //e.image = ""
         e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1996_EOH/endings/hewes.png'})])
         e.executable.push([1, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1996_EOH/endings/woffordfortnite.png'})])
@@ -18227,7 +18218,7 @@ if(ans == 21435){
       if (baucusLeave >= 1 && quickstats[0] >= 270) { // Make Baucus change his mind, and still win.
         ctsAchievement("Anti-Baucus Caucus");  
       }
-      if (primary > 2 && quickstats[0] >= 270) { // As Wofford, win after causing a contested convention.
+      if (primary < 2 && quickstats[0] >= 270) { // As Wofford, win after causing a contested convention.
         ctsAchievement("Deja Vu in Chicago");  
       }
       if (primary < 2 && pulp >= 2 && naderLies >= 2 && quickstats[0] >= 270) { // As Wofford, win by making enemies out of the whole damn coalition. (Contested convention, cause Nader to re-enter, refuse to mend divides, and still win.)

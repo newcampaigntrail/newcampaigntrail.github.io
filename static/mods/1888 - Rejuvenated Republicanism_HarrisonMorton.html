@@ -1,6 +1,13 @@
 if (!campaignTrail_temp.loaded){
     campaignTrail_temp.loaded = true
 
+    function ctsAchievement(achievement, difficultyChecker = true){
+        if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
+            if(campaignTrail_temp.CTS){
+            unlockAchievement(achievement);
+        }
+    }
+
 campaignTrail_temp.questions_json = [
     {
         "model": "campaign_trail.question",
@@ -7975,22 +7982,6 @@ endingPicker = (out, totv, aa, quickstats) => {
     north += 1;
     }
 
-    if (north >= 4 && quickstats[0] >= 201) { 
-        ctsAchievement("Rejuvenated Republican");  
-      }
-    
-      if (lilyWhite >= 1 && e.running_mate_last_name == "Bradley" && quickstats[0] >= 201) { 
-        ctsAchievement("A New South?");  
-      }
-    
-      if (equal >= 1 && quickstats[0] >= 201) { 
-        ctsAchievement("Tongue of Fire");  
-      }
-      
-      if (dummy >= 2 && quickstats[0] >= 201) { 
-        ctsAchievement("Providence");  
-      }
-      
     // return "<h3>Down to the last ballot</h3><p></p><p></p><p></p>
     //out = "win", "loss", or "tie" for your candidate
   //totv = total votes in entire election
@@ -8012,15 +8003,25 @@ endingPicker = (out, totv, aa, quickstats) => {
   } if (quickstats[0] < 201 && lilyWhite > 0) {
     return "<h3>A light in the darkness?</h3><p>You realize the result a bit before everyone else. In a fiercely-contested fight, Grover Cleveland has prevailed, becoming the first two-term Democrat since Jackson himself. Your great efforts have fallen just short.</p><p>It stings. Cleveland chose a battlefield on which the party felt we had the advantage, but the President triumphed nonetheless. But there is a light in the darkness. A crack, small as it may seem, has appeared in the Solid South. Harrison’s decision to elevate economic issues over sectional ones has earned the trust of a southern state for the Republicans for the first time since Reconstruction. An omen of future successes, of the industrious so-called ‘New South’? Or just a ripple? Only time will tell.</p><p>Benjamin has no hard feelings about your failure. Your friend will not get the power to make his visions into reality. Maybe you can try again in four years, but it probably won’t be the dark horse Harrison again. As for you, you'll return to Indiana and keep fighting for your party, come what may.</p>"
   }
+  
+  if (north >= 4 && quickstats[0] >= 201) { 
+    ctsAchievement("Rejuvenated Republican");  
+  }
+
+  if (lilyWhite >= 1 && e.running_mate_last_name == "Bradley" && quickstats[0] >= 201) { 
+    ctsAchievement("A New South?");  
+  }
+
+  if (equal >= 1 && quickstats[0] >= 201) { 
+    ctsAchievement("Tongue of Fire");  
+  }
+  
+  if (dummy >= 2 && quickstats[0] >= 201) { 
+    ctsAchievement("Providence");  
+  }
 
 }
 campaignTrail_temp.multiple_endings=true
   
-function ctsAchievement(achievement, difficultyChecker = true){
-    if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
-        if(campaignTrail_temp.CTS){
-        unlockAchievement(achievement);
-    }
-}
 
 }
