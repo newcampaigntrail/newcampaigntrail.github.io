@@ -6938,13 +6938,6 @@ campaignTrail_temp.jet_data = [{
 campaignTrail_temp.cyoa = true
 campaignTrail_temp.election_json[0]["fields"].advisor_url = "https://itsastronomical.com/assets/1888/whitehouse.png";
 
-function ctsAchievement(achievement, difficultyChecker = true){
-    if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
-        if(campaignTrail_temp.CTS){
-        unlockAchievement(achievement);
-    }
-}
-
 // CYOA Functions
 var lilyWhite = 0;
 var north = 0;
@@ -7303,6 +7296,27 @@ endingPicker = (out, totv, aa, quickstats) => {
     north += 1;
     }
 
+    if (north >= 4 && quickstats[0] >= 201) { 
+        ctsAchievement("Redundant Republicans");  
+      }
+    
+      if (thurman > 0 && quickstats[0] >= 201) {
+        ctsAchievement("The (Very) Old Roman");  
+      }
+    
+      if (gray >= 1 && quickstats[0] >= 201) {
+        ctsAchievement("Sisyphus Ascendant");  
+      }
+    
+      if (black >= 1 && quickstats[0] >= 201) {
+        ctsAchievement("Gallantry");  
+      }
+      
+      if (dummy >= 2 && quickstats[0] >= 201) { 
+        ctsAchievement("Radical Reduction");  
+      }
+      
+
     // return "<h3>Down to the last ballot</h3><p></p><p></p><p></p>
     //out = "win", "loss", or "tie" for your candidate
   //totv = total votes in entire election
@@ -7322,26 +7336,14 @@ endingPicker = (out, totv, aa, quickstats) => {
     return "<h3>Not So Solid</h3><p>It’s happening almost as you had imagined it. You’re here at the inauguration. You see President Cleveland up on the East Portico. You can hear the oath of office being administered through the drizzling rain. But there’s one tiny, tragic difference. It is Harrison you see being sworn in, and your boss standing behind him, dutifully holding the new President’s umbrella.</p><p>It was one of the highest turnouts ever recorded, but in the end the ground shifted beneath your feet. The Democrats have come to rely on the ‘Solid South,’ but Harrison’s aggressive campaign was able to win a southern state for the Republicans for the first time since Reconstruction. As change comes to the South, so change will have to come to the Democrats, or the Executive Mansion will flee from our grasp for good.</p><p>As for you, you’ll probably take a break from Washington. Maybe up to Blueberry Lodge up in Maine, to relax by the water for a spell. Frankie seems convinced that this isn’t the end for Grover, and that he still has a future in national politics. Not the least unlikely thing, depending on how Harrison’s term goes. And if that happens, you’ll be there if he needs you. But for now, some much-needed rest.</p>"
   }
   
-  if (north > 3 && quickstats[0] >= 201) { 
-    ctsAchievement("Redundant Republicans");  
-  }
-
-  if (thurman > 0 && quickstats[0] >= 201) {
-    ctsAchievement("A New South?");  
-  }
-
-  if (gray >= 1 && quickstats[0] >= 201) {
-    ctsAchievement("Sisyphus Ascendant");  
-  }
-
-  if (black >= 1 && quickstats[0] >= 201) {
-    ctsAchievement("Gallantry");  
-  }
-  
-  if (dummy >= 2 && quickstats[0] >= 201) { 
-    ctsAchievement("Providence");  
-  }
 }
 campaignTrail_temp.multiple_endings=true 
+
+function ctsAchievement(achievement, difficultyChecker = true){
+    if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
+        if(campaignTrail_temp.CTS){
+        unlockAchievement(achievement);
+    }
+}
 
 }
