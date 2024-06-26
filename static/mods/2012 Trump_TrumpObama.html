@@ -24236,25 +24236,6 @@ cyoAdventure = function(a) {
         campaignTrail_temp.running_mate_last_name = "Baldwin" 
         vpTable["Donald Trump"] = "Tammy Baldwin";
     }
-
-    if(ans == 332 ){
-        baldie += 1
-        atheismpoint += 3
-        answerSwapper(25, 1903, false);
-        answerSwapper(28, 1905, false);
-        answerSwapper(396, 1929, false);
-        answerSwapper(88, 1930, false);
-        answerSwapper(117, 1931, false);
-        answerSwapper(1562, 1932, false);
-        answerSwapper(1740, 1933, false);
-        answerSwapper(1742, 1934, false);
-        answerSwapper(1758, 1935, false);
-        answerSwapper(1760, 1936, false);
-        answerSwapper(1728, 1937, false);
-        campaignTrail_temp.questions_json[16] = tunnel(1949); 
-        campaignTrail_temp.questions_json[18] = tunnel(1982); 
-    }
-    
     else if(ans == 728 || ans == 1906 || ans == 1929 || ans == 396 || ans == 100 || ans == 118 || ans == 95 || ans == 286 || ans == 1 || ans ==  1465 || ans == 163){
         leftpoint += 1
     }
@@ -24294,15 +24275,38 @@ cyoAdventure = function(a) {
         answerSwapper(1332, 3011, false);
         answerSwapper(118, 3040, false);
         answerSwapper(120, 3041, false);
+        campaignTrail_temp.questions_json[16] = tunnel(3051); 
+    }
+    if(ans == 3052 || ans == 3054){
+        // giethner kept
+        campaignTrail_temp.questions_json[18] = tunnel(3086); 
         answerSwapper(1562, 3042, false);
         answerSwapper(1964, 3043, false);
         answerSwapper(1696, 3044, false);
         answerSwapper(1697, 3117, false);
         answerSwapper(1728, 3118, false);
         answerSwapper(1803, 3119, false);
-        campaignTrail_temp.questions_json[16] = tunnel(3051); 
-        campaignTrail_temp.questions_json[18] = tunnel(3086); 
     }
+    if(ans == 332 ){
+        baldie += 1
+        atheismpoint += 3
+        answerSwapper(25, 1903, false);
+        answerSwapper(28, 1905, false);
+        answerSwapper(396, 1929, false);
+        answerSwapper(88, 1930, false);
+        answerSwapper(117, 1931, false);
+        campaignTrail_temp.questions_json[16] = tunnel(1949); 
+    }
+    if(ans == 1950 || ans == 1951){
+        // baldwin kept
+        campaignTrail_temp.questions_json[18] = tunnel(1982);         
+        answerSwapper(1562, 1932, false);
+        answerSwapper(1740, 1933, false);
+        answerSwapper(1742, 1934, false);
+        answerSwapper(1758, 1935, false);
+        answerSwapper(1760, 1936, false);
+        answerSwapper(1728, 1937, false);
+    }    
     if(ans == 330){
         blago +=1
         atheismpoint += 2
@@ -24360,23 +24364,6 @@ cyoAdventure = function(a) {
 		}
     }
     if(ans == 3120 || ans == 3134 ){
-        answerSwapper(1694, 3043, false);
-        answerSwapper(1696, 3044, false);
-        answerSwapper(1697, 3177, false);
-        answerSwapper(3118, 3538, false);
-        answerSwapper(1937, 3538, false);
-        // swapping out baldwin
-        answerSwapper(1742, 1934, false);
-        answerSwapper(1740, 1933, false);
-        answerSwapper(1758, 1935, false);
-        answerSwapper(1936, 3540, false);
-        answerSwapper(1936, 1760, false);
-        answerSwapper(1760, 3540, false);
-        answerSwapper(1562, 1936, false);
-        answerSwapper(1932, 1936, false);
-        answerSwapper(3042, 1936, false);
-        // swapping out giethner
-        answerSwapper(1803, 3119, false);
         if(giethner == 1){
             clinton += 1
             campaignTrail_temp.questions_json[18] = tunnel(3411); 
@@ -24387,6 +24374,10 @@ cyoAdventure = function(a) {
             campaignTrail_temp.running_mate_image_url = "https://i.imgur.com/k2zhByN.png" 
             campaignTrail_temp.running_mate_last_name = "Clinton" 
             vpTable["Donald Trump"] = "Hillary Clinton";
+            answerSwapper(1562, 3540, false);
+            answerSwapper(1694, 3043, false);
+            answerSwapper(1696, 3044, false);
+            answerSwapper(1728, 3538, false);
         }
         if(baldie == 1){
             clinton += 1
@@ -24397,6 +24388,10 @@ cyoAdventure = function(a) {
             campaignTrail_temp.running_mate_image_url = "https://i.imgur.com/k2zhByN.png" 
             campaignTrail_temp.running_mate_last_name = "Clinton"   
             vpTable["Donald Trump"] = "Hillary Clinton";
+            answerSwapper(1562, 3540, false);
+            answerSwapper(1694, 3043, false);
+            answerSwapper(1696, 3044, false);
+            answerSwapper(1728, 3538, false);
         }
 
     }
