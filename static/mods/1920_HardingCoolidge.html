@@ -1,3 +1,10 @@
+function ctsAchievement(achievement, difficultyChecker = true){
+	if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
+		if(campaignTrail_temp.CTS){
+		unlockAchievement(achievement);
+	}
+}
+
 campaignTrail_temp.questions_json = [
     {
         "model": "campaign_trail.question",
@@ -15185,6 +15192,7 @@ endingPicker = (out, totv, aa, quickstats) => {
 ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
 
 if (aa[0].electoral_votes < 266 && aa[1].electoral_votes < 266 && aa[2].electoral_votes < 266 && aa[3].electoral_votes < 266 && aa[4].electoral_votes < 266 && campaignTrail_temp.player_answers[7] == 15245) {
+    ctsAchievement("Gainst the League, Aint You?");
     if (used != true) {
         setInterval(function () {
             used = true;
@@ -15233,6 +15241,7 @@ cyoAdventure = function (a) {
   }
 
     if(ans == 4321){
+        ctsAchievement("The Judge");
         campaignTrail_temp.candidate_json[0]["fields"].first_name = "Jeter C. ";
         campaignTrail_temp.candidate_json[0]["fields"].last_name = "Pritchard";
         campaignTrail_temp.candidate_json[0]["fields"].color_hex = "#cc0000";
@@ -15279,6 +15288,7 @@ cyoAdventure = function (a) {
           }
     }
     if(ans == 4272){
+        ctsAchievement("The Oaks");
         campaignTrail_temp.candidate_json[0]["fields"].first_name = "Frank O.";
         campaignTrail_temp.candidate_json[0]["fields"].last_name = "Lowden";
         campaignTrail_temp.candidate_json[0]["fields"].color_hex = "#B06A6A";
@@ -15324,6 +15334,7 @@ cyoAdventure = function (a) {
           }
     }
     if(ans == 4282){
+        ctsAchievement("The General");
         campaignTrail_temp.candidate_json[0]["fields"].first_name = "Leonard";
         campaignTrail_temp.candidate_json[0]["fields"].last_name = "Wood";
         campaignTrail_temp.candidate_json[0]["fields"].color_hex = "#F88379";
@@ -15369,6 +15380,7 @@ cyoAdventure = function (a) {
           }
     }
     if(ans == 4277){
+        ctsAchievement("The Preservationist");
         campaignTrail_temp.candidate_json[0]["fields"].first_name = "William C.";
         campaignTrail_temp.candidate_json[0]["fields"].last_name = "Sproul";
         campaignTrail_temp.candidate_json[0]["fields"].color_hex = "#EE4B2B";

@@ -1,3 +1,12 @@
+var south = 0;
+
+function ctsAchievement(achievement, difficultyChecker = true){
+	if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
+		if(campaignTrail_temp.CTS){
+		unlockAchievement(achievement);
+	}
+}
+
 campaignTrail_temp.questions_json = [
     {
         "model": "campaign_trail.question",
@@ -8708,6 +8717,25 @@ campaignTrail_temp.achievements = {
 }  
 
 endingPicker = (out, totv, aa, quickstats) => {
+
+    let flResult = campaignTrail_temp.final_state_results.find((x) => x.state == 58);
+if(flResult.result[0].candidate == 21) {
+south += 1;
+}
+
+let laResult = campaignTrail_temp.final_state_results.find((x) => x.state == 66);
+if(laResult.result[0].candidate == 21) {
+south += 1;
+}
+
+let scResult = campaignTrail_temp.final_state_results.find((x) => x.state == 86);
+if(scResult.result[0].candidate == 21) {
+south += 1;
+}
+
+    if (south < 1 && quickstats[0] >= 185) { 
+        ctsAchievement("Easy Math");  
+    }
         ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
         used=false
         //out = "win", "loss", or "tie" for your candidate [24] == 8090
@@ -8738,6 +8766,7 @@ endingPicker = (out, totv, aa, quickstats) => {
         } else if (quickstats[0] >= 110 && quickstats[0]<185) {
         return "<h3>Sorry! You have lost the 1876 election.</h3><p>This is somewhat of a shock, given that you were seen as the slight favorite to win. The excited convention that nominated you didn't seem to translate to an electoral win. Democrats, who saw you as a shoe-in after the corruption of Grant, are frustrated that you managed to lose an election like this. Hayes now has the chance to give the Republican Party a fresh start with the American people, and hopefully implement similar reforms that you have promised.</p><p>As you are still quite popular, the world is still your oyster. You could re-run for Governor, or try a House or Senate bid. If you choose to, renomination in 4 years also isn't out of the question. Most likely, however, you will choose to retire. May your future be bright, Governor Tilden.</p>"
         } else if (quickstats[0] == 184) {
+        ctsAchievement("Tilden or Blood");
         return "<h3>Sorry! You have narrowly lost the 1876 election.</h3><p>What a close one! This is somewhat of a shock, given that you were seen as the slight favorite to win. The excited convention that nominated you didn't seem to translate to an electoral win. Democrats, who saw you as a shoe-in after the corruption of Grant, are frustrated that you managed to lose an election like this. Hayes now has the chance to give the Republican Party a fresh start with the American people, and hopefully implement similar reforms that you have promised.</p><p>As you are still quite popular, and this race was very close, the world is still your oyster. You could re-run for Governor, or try a House or Senate bid. If you choose to, renomination in 4 years also is very possible. Most likely, however, you will choose to retire. May your future be bright, Governor Tilden.</p>"
         } else if (quickstats[0] >= 185 && quickstats[0]<245) {
         return "<h3>Congratulations! You have won the 1876 election.</h3><p>Although you were considered the slight favorite to win, this doesn't take away from what this victory means. While it may have been close, neither side seems to doubt your victory. You will be the first Democrat elected to the White House since James Buchanan in 1856, exactly 20 years ago. Democrats will retain their control over the House of Representatives, whereas the Senate seems to be held by Republicans very narrowly.</p><p>Where you go from here is up to you. You could likely pass much of your reform-minded policies with support from reformist Republicans. You also are expected to end Reconstruction as soon as possible. However, the Republican Senate might make this a challenge for you. If you can pass civil service and other reforms, winning re-election in 1880 will be no trouble at all. Best of luck, President-elect Tilden!</p>"
@@ -8757,6 +8786,7 @@ endingPicker = (out, totv, aa, quickstats) => {
     } else if (quickstats[0] >= 110 && quickstats[0]<185) {
     return "<h3>Sorry! You have lost the 1876 election.</h3><p>This is somewhat of a shock, given that you were seen as the slight favorite to win. The excited convention that nominated you didn't seem to translate to an electoral win. Democrats, who saw you as a shoe-in after the corruption of Grant, are frustrated that you managed to lose an election like this. Hayes now has the chance to give the Republican Party a fresh start with the American people, and hopefully implement similar reforms that you have promised.</p><p>As you are still quite popular, the world is still your oyster. You could re-run for Governor, or try a House or Senate bid. If you choose to, renomination in 4 years also isn't out of the question. Most likely, however, you will choose to retire. May your future be bright, Governor Tilden.</p>"
     } else if (quickstats[0] == 184) {
+    ctsAchievement("Tilden or Blood");
     return "<h3>Sorry! You have narrowly lost the 1876 election.</h3><p>What a close one! This is somewhat of a shock, given that you were seen as the slight favorite to win. The excited convention that nominated you didn't seem to translate to an electoral win. Democrats, who saw you as a shoe-in after the corruption of Grant, are frustrated that you managed to lose an election like this. Hayes now has the chance to give the Republican Party a fresh start with the American people, and hopefully implement similar reforms that you have promised.</p><p>As you are still quite popular, and this race was very close, the world is still your oyster. You could re-run for Governor, or try a House or Senate bid. If you choose to, renomination in 4 years also is very possible. Most likely, however, you will choose to retire. May your future be bright, Governor Tilden.</p>"
     } else if (quickstats[0] >= 185 && quickstats[0]<245) {
     return "<h3>Congratulations! You have won the 1876 election.</h3><p>Although you were considered the slight favorite to win, this doesn't take away from what this victory means. While it may have been close, neither side seems to doubt your victory. You will be the first Democrat elected to the White House since James Buchanan in 1856, exactly 20 years ago. Democrats will retain their control over the House of Representatives, whereas the Senate seems to be held by Republicans very narrowly.</p><p>Where you go from here is up to you. You could likely pass much of your reform-minded policies with support from reformist Republicans. You also are expected to end Reconstruction as soon as possible. However, the Republican Senate might make this a challenge for you. If you can pass civil service and other reforms, winning re-election in 1880 will be no trouble at all. Best of luck, President-elect Tilden!</p>"
@@ -8776,6 +8806,7 @@ endingPicker = (out, totv, aa, quickstats) => {
   } else if (quickstats[0] >= 110 && quickstats[0]<185) {
   return "<h3>Sorry! You have lost the 1876 election.</h3><p>This is somewhat of a shock, given that you were seen as the slight favorite to win. The excited convention that nominated you didn't seem to translate to an electoral win. Democrats, who saw you as a shoe-in after the corruption of Grant, are frustrated that you managed to lose an election like this. Hayes now has the chance to give the Republican Party a fresh start with the American people, and hopefully implement similar reforms that you have promised.</p><p>As you are still quite popular, the world is still your oyster. You could re-run for Governor, or try a House or Senate bid. If you choose to, renomination in 4 years also isn't out of the question. Most likely, however, you will choose to retire. May your future be bright, Governor Tilden.</p>"
   } else if (quickstats[0] == 184) {
+  ctsAchievement("Tilden or Blood");
   return "<h3>Sorry! You have narrowly lost the 1876 election.</h3><p>What a close one! This is somewhat of a shock, given that you were seen as the slight favorite to win. The excited convention that nominated you didn't seem to translate to an electoral win. Democrats, who saw you as a shoe-in after the corruption of Grant, are frustrated that you managed to lose an election like this. Hayes now has the chance to give the Republican Party a fresh start with the American people, and hopefully implement similar reforms that you have promised.</p><p>As you are still quite popular, and this race was very close, the world is still your oyster. You could re-run for Governor, or try a House or Senate bid. If you choose to, renomination in 4 years also is very possible. Most likely, however, you will choose to retire. May your future be bright, Governor Tilden.</p>"
   } else if (quickstats[0] >= 185 && quickstats[0]<245) {
   return "<h3>Congratulations! You have won the 1876 election.</h3><p>Although you were considered the slight favorite to win, this doesn't take away from what this victory means. While it may have been close, neither side seems to doubt your victory. You will be the first Democrat elected to the White House since James Buchanan in 1856, exactly 20 years ago. Democrats will retain their control over the House of Representatives, whereas the Senate seems to be held by Republicans very narrowly.</p><p>Where you go from here is up to you. You could likely pass much of your reform-minded policies with support from reformist Republicans. You also are expected to end Reconstruction as soon as possible. However, the Republican Senate might make this a challenge for you. If you can pass civil service and other reforms, winning re-election in 1880 will be no trouble at all. Best of luck, President-elect Tilden!</p>"

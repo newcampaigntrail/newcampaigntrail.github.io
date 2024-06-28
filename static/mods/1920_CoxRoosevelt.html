@@ -1,3 +1,10 @@
+function ctsAchievement(achievement, difficultyChecker = true){
+	if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
+		if(campaignTrail_temp.CTS){
+		unlockAchievement(achievement);
+	}
+}
+
 campaignTrail_temp.questions_json = [
     {
         "model": "campaign_trail.question",
@@ -20067,6 +20074,7 @@ return "<h3>'For the first time in almost a century, no candidate will have a ma
    } else if (campaignTrail_temp.player_answers[5] == 15541 && quickstats[0] >= 128 && quickstats[0]<266) {
    return "<h3>HARDING SWEEPS, PLEDGES 'RETURN TO NORMALCY'</h3><p>An unfortunate development. This is not a major shock, of course - there was just too much weighing on the Democrats - after this much time in power, Republicans were bound to win again. Thankfully, your loss was small enough to keep Republicans from gaining large supermajorities that many would have expected just a year ago. Returns show that Harding will have a Republican Congress who is happy to play ball with him, and Democrats will be shut out of power for at least the next two years.</p><p>There are many challenges ahead of Harding - domestic and foreign. It's possible you could run in 1924, or make an attempt to win another term as Governor of Ohio but for now, return to Marion and enjoy a retirement from public service.</p>"
    } else if (campaignTrail_temp.player_answers[5] == 15541 && quickstats[0] >= 266 && quickstats[0]<531) {
+    ctsAchievement("A Solemn Referendum");
    return "<h3>'RETURNS SHOW COX WINS'</h3><p>Well, this is unexpected, but nevertheless, you've done it! Everyone thought there was too much weighing on the Democrats - after this much time in power, Republicans were supposed to win again. You'll probably have Marshall to thank for bringing the administration's popularity up enough to pull this off.</p><p>There are many challenges ahead of you. Domestically, you'll have to work to recover the economy - by economic reforms, agricultural bills, or more. Internationally, you'll have to find the United States' place in the world - you will have to help shape foreign policy. As long as you bring normalcy back to the Country and recover the economy, re-election should be way easier than this. It’s likely that Wood and Lowden will take another shot at the Republican nomination in 1924, as will Johnson - so be careful.</p>"
    } else if (campaignTrail_temp.player_answers[5] == 15541 && quickstats[0] >= 531) {
    return "<h3>'OUTGOING PRESIDENT WILSON GOES MISSING'</h3><p>...but you know what happened to him, right?</p>"
@@ -20085,6 +20093,9 @@ return "<h3>'For the first time in almost a century, no candidate will have a ma
    return "<h3>Error</h3><p>Contact ItsAstronomical to get this fixed.</p>"
    }
 
+   if (quickstats[0] >= 128 && ans == 4275) { 
+    ctsAchievement("How Does He Do It?");  
+}
 
 }
 campaignTrail_temp.multiple_endings=true
@@ -20095,6 +20106,7 @@ campaignTrail_temp.cyoa = true
 cyoAdventure = function (a) {
     ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
     if(ans == 15766){
+        ctsAchievement("The Great Commoner");
         campaignTrail_temp.candidate_json[0]["fields"].color_hex = "#cc0000";
         campaignTrail_temp.candidate_json[1]["fields"].first_name = "William Jennings";
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Bryan";
@@ -20119,6 +20131,7 @@ cyoAdventure = function (a) {
     }
     // If you try to meet with McAdoo on question 3
     if(ans == 4343){
+        ctsAchievement("The Incumbent");
         campaignTrail_temp.candidate_json[0]["fields"].color_hex = "#DD1717";
         campaignTrail_temp.candidate_json[1]["fields"].first_name = "Woodrow";
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Wilson";
@@ -20281,6 +20294,8 @@ cyoAdventure = function (a) {
     }
     // If you continue to press McAdoo delegates on question 5
     if(ans == 4321){
+        ctsAchievement("The Officer");
+        PalmerSwitch();
         campaignTrail_temp.candidate_json[0]["fields"].color_hex = "#F88379";
         campaignTrail_temp.candidate_json[1]["fields"].first_name = "A. Mitchell";
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Palmer";
@@ -20324,6 +20339,7 @@ cyoAdventure = function (a) {
     }
     if(ans == 4277){
     // If you refuse to allow the convention to adjourn on question 4
+    ctsAchievement("The Long Man");
     campaignTrail_temp.candidate_json[0]["fields"].color_hex = "#B06A6A";
     campaignTrail_temp.candidate_json[1]["fields"].first_name = "William Gibbs";
     campaignTrail_temp.candidate_json[1]["fields"].last_name = "McAdoo";
@@ -20418,8 +20434,8 @@ cyoAdventure = function (a) {
                   "likelihood": 1
                 }
             }
-        }
-        if(ans == 15533) {
+    }
+    if(ans == 15533) {
             // If you stick around as Marshall
             campaignTrail_temp.questions_json[7] = {
                 "model": "campaign_trail.question",
@@ -20448,7 +20464,7 @@ cyoAdventure = function (a) {
                   "likelihood": 1
                 }
               }
-        }
+    }
 
     if(ans == 15541){
         
@@ -20463,6 +20479,7 @@ cyoAdventure = function (a) {
     
     }
 ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
+
 // Sets image back to Cox if you do not convince Wilson to resign
    if(ans == 4272){
     campaignTrail_temp.candidate_image_url = 'https://itsastronomical.com/assets/1920/cox.png';
@@ -20503,6 +20520,7 @@ if(ans == 4274){
         if (e.question_number == 5) {
         window.setTimeout(e.vpSwitcher, 20)
         } 
+
     function switcheroo() {
  q_list0 = [[686, "Thanks to the passage of the Nineteenth Amendment, women now have access to the polls in all 48 states. Will your campaign make any major effort to push for increased female turnout for the Democratic ticket?"], [688, "What do you have to say about the Keating–Owen Act, the Revenue Act of 1919, and other acts written in an attempt to curb child labor in the United States?"], [15597, "How much will your campaign align itself with Woodrow Wilson? What policies of his do you wish to defend, or perhaps shy away from?"], [15570, "What is your exact position on the League of Nations? Do you think the compromised passage was the right decision?"], [678, "There appears to be a somewhat significant third-party presence this year. Is there anything you wish to do to take advantage of this, or perhaps bring them into the Democratic fold?"], [676, "Another day, another round of campaigning. Your advisors found an extra slot within the next few weeks to squeeze a visit into one of four states. Which would you like to choose?"], [674, "After the Bolsheviks seizes power in Russia, there was a serious uptick in fear over both real and fictional scares of a communist takeover in America, known as the 'Red Scare'. What is your opinion on these events?"], [689, "Due to the chaos in Europe, among other things, immigration remains an important issue this election. What is the Democratic ticket's position on immigration? Would you support new limits on European immigrants?"], [681, "Enough about Wilson the man, what about the rest of his administration? His cabinet has seen several highly controversial nominations go through Congress, such as Attorney General Palmer, and Secretary of State Bryan. Which of his cabinet officials would you retain next spring, if any?"], [683, "Do you support the 18th Amendment, which outlawed alcohol in the United States? Do you think the logistics of enforcing it are worth it?"], [682, "Broadly speaking, what do you think of the current situation in post-war Europe? What do you think is most likely to bring peace to the continent?"], [691, "Over the last few years, the United States has been deep within a post-war recession. The industrial demand of a war-time economy has caused wages to go down and economic uncertainty. What do you see as the cause for the depression, and what is your plan to get the country's economy back on track?"], [694, "In the aftermath of the Spanish Flu, do you believe the federal government has a role to play in protecting America from epidemics and other spreading of diseases?"], [15238, "Given the instability of Hungary in recent years - from the Hungary Soviet Republic to their attempts to claim Czech and Yugoslav lands, what do you believe should happen to the nation?"], [15239, "Do you believe the United States should continue the military occupation of Haiti, which has persisted since 1915?"], [15240, "Do you believe the Ottoman Empire should be broken up and partitioned as established within the Treaty of Sèvres? What is your general belief for the security of Anatolia?"], [15585, "Are you willing to recruit the help of Tammany Hall to win New York? Boss Murphy has so far been indifferent to your campaign."], [15242, "Do you think it was the right decision to arrest Eugene Debs, who is now running as the Socialist nominee in this election? Would you pardon or commute his sentence as President?"]]
  function shuffle(ar) { for (let i = ar.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[ar[i], ar[j]] = [ar[j], ar[i]]; } return ar; };

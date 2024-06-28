@@ -1,3 +1,12 @@
+var south = 0;
+
+function ctsAchievement(achievement, difficultyChecker = true){
+	if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
+		if(campaignTrail_temp.CTS){
+		unlockAchievement(achievement);
+	}
+}
+
 campaignTrail_temp.questions_json = [
   {
       "model": "campaign_trail.question",
@@ -8605,6 +8614,30 @@ function ctsAchievement(achievement, difficultyChecker = true){
 }  
 
 endingPicker = (out, totv, aa, quickstats) => {
+
+    let flResult = campaignTrail_temp.final_state_results.find((x) => x.state == 58);
+if(flResult.result[0].candidate == 20) {
+south += 1;
+}
+
+let laResult = campaignTrail_temp.final_state_results.find((x) => x.state == 66);
+if(laResult.result[0].candidate == 20) {
+south += 1;
+}
+
+let scResult = campaignTrail_temp.final_state_results.find((x) => x.state == 86);
+if(scResult.result[0].candidate == 20) {
+south += 1;
+}
+    
+    if (south < 1 && quickstats[0] >= 185) { 
+        ctsAchievement("Easy Math");  
+    }
+
+    if (quickstats[1] >= 50) { 
+        ctsAchievement("A Clear Mandate");  
+    }
+
     ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
     used=false
     //out = "win", "loss", or "tie" for your candidate [24] == 8090

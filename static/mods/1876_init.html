@@ -73,9 +73,32 @@ campaignTrail_temp.modBoxTheme = {
     "ui_text_color": "#FFFFFF"
 }
 
+campaignTrail_temp.achievements = {
+    "A Truce, Not A Compromise" : {
+        "image" : "https://itsastronomical.com/assets/1876/ach/truce.png",
+        "description" : "Witness the canon results as either candidate.",
+        "cannotBeCheated" : true
+    },
+    "Easy Math" : {
+        "image" : "https://itsastronomical.com/assets/1876/ach/math.png",
+        "description" : "As either candidate, win the election without Florida, Louisiana, or South Carolina.",
+        "cannotBeCheated" : true
+    },
+     "A Clear Mandate" : {
+        "image" : "https://itsastronomical.com/assets/1876/ach/winner.png",
+        "description" : "As Hayes, win a majority of the popular vote.",
+      "cannotBeCheated" : true
+   },
+   "Tilden or Blood" : {
+    "image" : "https://itsastronomical.com/assets/1876/ach/blood.png",
+    "description" : "As Tilden, refuse to agree to an electoral commission while still losing narrowly.",
+    "cannotBeCheated" : true
+    }
+  }
+
 
 campaignTrail_temp.bunnyhop = true;
-function addBunnyhopDropdown() {
+function addColor() {
         var difficultyDiv = document.getElementById("difficulty_level");
         if (difficultyDiv && !document.getElementById("bunnyhopDropdown")) {
             var questionCounter = ["25 (Randomized Questions)", "30 (Expanded)", "35 (Full)"];
@@ -163,7 +186,7 @@ if(!campaignTrail_temp.observer){
     function masterFunction() {
         masterObserver.disconnect();
 
-        addBunnyhopDropdown();
+        addColor();
 
         masterObserver.observe(document.body, { childList: true, subtree: true });
     }
