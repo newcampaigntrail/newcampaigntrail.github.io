@@ -3,7 +3,7 @@ campaignTrail_temp.candidate_json = JSON.parse("[{    \"model\": \"campaign_trai
 campaignTrail_temp.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 56, \"fields\": {\"candidate\": 68, \"running_mate\": 129}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 57, \"fields\": {\"candidate\": 68, \"running_mate\": 130}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 44, \"fields\": {\"candidate\": 67, \"running_mate\": 71}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 53, \"fields\": {\"candidate\": 67, \"running_mate\": 127}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 54, \"fields\": {\"candidate\": 67, \"running_mate\": 128}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 55, \"fields\": {\"candidate\": 67, \"running_mate\": 73}}]")
 campaignTrail_temp.opponents_default_json = JSON.parse("[{\"election\": 8, \"candidates\": [68, 67, 70, 80]}]");
 campaignTrail_temp.temp_election_list = [{"id":8,"year":1852,"is_premium":0,"display_year":"1852"}]
-campaignTrail_temp.credits = 'u/Mertz189. Banners by Me The Guy and u/IAMMAN5, code from Decstar/Astro. Special thanks to Nina and Lurker.';
+campaignTrail_temp.credits = "<button onclick='funcredits()'>Mertz189 (Angélique on Discord)</button>";
 HistHexcolour=["#0645b4","#ffd26a","#a0c85a","#800080"];
 HistName=[" Franklin Pierce"," Winfield Scott"," John P. Hale"," Daniel Webster/Others"];
 HistEV=[254,42,"–","–"];
@@ -16,6 +16,14 @@ RecReading=true
 quotes = ["Like pissing against the wind.", "Give them hell! With Scott and Graham!", "We Polked you in '44, We shall Pierce you in '52!", "The Hero of many battles.", "The Hero of many bottles.","First in war, first in peace.", "I love to hear the Irish brogue. I have heard it before on many battlefields, and I wish to hear it many times more!", "For God’s sake, Seward, keep Scott at home.", `"To the victor belong the spoils of the enemy." - William Marcy, 1832`] 
 customquote = quotes[Math.floor((Math.random() * quotes.length))]
 corrr=`\n<h2>THE CAMPAIGN TRAIL</h2><font id='wittyquote' size='4' color='white'><em>`+customquote+`</em></font>`
+funcredits = function() {
+    credits = ["Moder:", "Angélique", "", "Banners:",  "Me the Guy and u/IAMMAN", "", "VP Switcher and other code features from Decstar and Astro", "", "Thanks to Lurker, Stockdale and Nina for their advice.", "I love my playtesters.", ""]
+    text = "CREDITS:\n\n"
+    for (i in credits) {
+        text += credits[i] + "\n"
+    }
+    alert(text)
+  }
 
 
 campaignTrail_temp.collect_results = true;
