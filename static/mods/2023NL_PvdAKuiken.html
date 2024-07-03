@@ -1417,6 +1417,7 @@ return questionSheath[index];
             e.header = "<h2>“Samen Vooruit naar Morgen”</h2>"
             e.pages = [`<p>${negotiationLength}. The first ${leader.leaderName} cabinet is a fact with the conclusion of its governing agreement, titled "Together Forwards to Tomorrow". It is composed of ${selectedCoalition.name}, making it in essence the fourth purple cabinet with its two main characters, GL/PvdA and VVD.</p><p>In that sense it's a typical polder-result: you can be sure that neither you nor the VVD were pumped for this marriage. This same lack of enthusiasm exists in the rest of society, frankly: your own supporters bemoan that the VVD is in the executive again, and those on the right are clearly disappointed that we will now get the fourth centrist 'watery compromise'-laden cabinet in a row. You and the VVD are both already suffering in the polls as a result.</p><p>${playerFate}</p>`]
             e.image = leader.image;
+            unlockAchievementSafe("Liever Turks dan Paaps");
             return construct(0);
         }
         if (selectedCoalition.id > 9 && selectedCoalition.id < 17) { // Vivaldi cabinet
@@ -1650,8 +1651,8 @@ var myChart = Highcharts.chart('myChart', {
           ['Socialist Party', SPSeats.electoral_votes, '#450101', 'SP'],
           ['GroenLinks/PvdA', LOSeats.electoral_votes, '#D90000', 'GL/PvdA'],
           ['Animal Party', PvdDSeats.electoral_votes, '#1B4D1C', 'PvdD'],
-          ['GroenLinks', BIJ1Seats.electoral_votes, '#D90000', 'PvdA'],
-          ['Labour Party', GLSeats.electoral_votes, '#39A935', 'GL'],
+          ['GroenLinks', GLSeats.electoral_votes, '#39A935', 'GL'],
+          ['Labour Party', BIJ1Seats.electoral_votes, '#D90000', 'PvdA'],
           ['DENK', DENKSeats.electoral_votes, '#9CC1C1', 'DENK'],
           ['Democrats \'66', D66Seats.electoral_votes, '#84CF84', 'D66'],
           ['Volt', VoltSeats.electoral_votes, '#AA00FF', 'Volt'],
