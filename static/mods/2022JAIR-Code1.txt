@@ -1,0 +1,831 @@
+campaignTrail_temp.global_parameter_json = [
+    {
+        "model": "campaign_trail.global_parameter",
+        "pk": 1,
+        "fields": {
+            "vote_variable": 1.125,
+            "max_swing": 0.12,
+            "start_point": 0.94,
+            "candidate_issue_weight": 10,
+            "running_mate_issue_weight": 3,
+            "issue_stance_1_max": -0.71,
+            "issue_stance_2_max": -0.3,
+            "issue_stance_3_max": -0.125,
+            "issue_stance_4_max": 0.125,
+            "issue_stance_5_max": 0.3,
+            "issue_stance_6_max": 0.71,
+            "global_variance": 0.01,
+            "state_variance": 0.005,
+            "question_count": 25,
+            "default_map_color_hex": "#C9C9C9",
+            "no_state_map_color_hex": "#999999"
+        }
+    }
+]
+
+function addDynamicCSS() {
+    var css = `
+
+        label {
+          display:inline;
+        }
+
+        .inner_window_question h3 .mytooltip{
+            background-color: lightskyblue;
+        }
+
+        .mytooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            background-color: #d8dee8;
+        }
+
+        .mytooltip .mytooltiptext {
+            width: 240px;
+            background-color: #d8dee8;
+            color: black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 99;
+            bottom: 20%;
+            left: 20%;
+            margin-left: -90px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border: 1px solid black;
+            pointer-events: none;
+            font-size: 13px !important;
+            line-height: 1.5em !important;
+            font-weight: normal !important;
+            font-style: normal !important;
+        }
+
+        .mytooltip .mytooltiptext img {
+            max-width: 240px;
+            height: auto;
+        }
+
+        .mytooltip:hover .mytooltiptext {
+            opacity: 1;
+            transition-delay: 0.5s;
+        }
+    `;
+
+    var styleElem = document.createElement('style');
+    styleElem.type = 'text/css';
+    
+    styleElem.appendChild(document.createTextNode(css));
+    
+    document.head.appendChild(styleElem);
+}
+
+
+addDynamicCSS();
+
+tooltipList = [
+  {searchString: "Foro", explanationText: "The São Paulo Forum, an international conference of socialist parties"},
+  {searchString: "Flávio Dino", explanationText: "<img src=https://files.catbox.moe/re2ig1.png>Fatass communist in one of the poorest states. What a man."},   
+  {searchString: "Flávio", explanationText: "<img src=https://files.catbox.moe/0j0y1e.png>Your son. Manages your social media account occasionally."},
+  {searchString: "Alliance for Brazil", explanationText: "<img src=https://conteudo.imguol.com.br/c/noticias/c4/2019/11/12/simbolo-do-alianca-pelo-brasil-novo-partido-do-presidente-jair-bolsonaro-1573595405405_v2_900x506.png>Your dead-in-the-water attempt at forming your own party."},
+  {searchString: "Vaccine Man", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Eduardo_Pazuello_%28cropped%29.jpg/800px-Eduardo_Pazuello_%28cropped%29.jpg>Eduardo Pazuello, Brazilian Army general and Secretary of Strategic Studies. Was responsible for vaccine delays in Brazil during the pandemic."},  
+  {searchString: "man from AMAN", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Aman_entrada.JPG/300px-Aman_entrada.JPG>AMAN refers to the Military Academy of Agulhas Negras in Rio de Janeiro. Prestigious, partly responsible for Positivism in Brazil and the formation of the Republic"},
+  {searchString: "My family.", explanationText: "<img src=https://f.i.uol.com.br/fotografia/2020/12/03/16070253505fc942c64657b_1607025350_3x2_md.jpg>God's gifts to me."},    
+  {searchString: "Pedetismo", explanationText: "In reference to the nationalist and populist Democratic Labour Party in Brazil."},
+  {searchString: "Centrão", explanationText: "Refers to the very large centrist base that exists in Brazil. Translates to \"the big Center\"."},
+  {searchString: "Enéas", explanationText: "<img src=https://www.camara.leg.br/internet/deputado/bandep/74269.jpgmaior.jpg>Enéas Carneiro. Syncretic nationalist politiican whom many of your supporters love."}
+ ];
+
+campaignTrail_temp.election_json = [
+    {
+        "model": "campaign_trail.election",
+        "pk": 21,
+        "fields": {
+            "year": 2020,
+            "summary": "<p>President Jair Messias Bolsonaro of the Federative Republic of Brazil is singlehandedly poised to be contemporary Brazil's history-etcher; burning through federal funds - which resulted in the worst federal debt of any incumbent in Brazilian history - burning through every institution that attempted to defy him; and lastly, burned through every inch of political capital he had. Bolsonaro, now a disgraced developmentalist like every other bastard President of this shithole, has few notable accomplishments under his belt. As the country eeks into increasingly large numbers of gun owners and a decreased crime rate, many still believe in him as a symbol of a revitalized Brazilian Right; yet, despite feverish fans across the country, Jair M. Bolsonaro is one of the objectively lower-tier Presidents in a country with very few good ones. At least, he can pretend that the next 4 years will be kinder to him.",
+            "image_url": "https://files.catbox.moe/242rly.jpg",
+            "winning_electoral_vote_number": 1,
+            "advisor_url": "https://files.catbox.moe/lm7c7x.jpg",
+            "recommended_reading": "<ul>\n<li><a href=https://www.chicagotribune.com/opinion/editorials/ct-edit-chicago-tribune-biden-endorsement-20200925-lnyxsb5qvrftnjjmj3rnzj33jy-story.html>Our Case For Joe Biden</a></li>\n<li><a href=https://nationalinterest.org/feature/case-trump-166808>The Case For Trump</a></li>\n<li><a href=https://www.npr.org/2020/11/18/935730100/how-biden-won-ramping-up-the-base-and-expanding-margins-in-the-suburbs>How Biden Won: Ramping Up The Base And Expanding Margins In The Suburbs</a></li>\n<li><a href=https://www.prospectmagazine.co.uk/politics/donald-trump-joe-biden-us-election-almost-win-votes-concede>Why Did Trump Almost Win?</a></li>\n<li><a href=https://www.hoover.org/research/no-evidence-voter-fraud-guide-statistical-claims-about-2020-election>No Evidence For Voter Fraud: A Guide To Statistical Claims About The 2020 Election</a></li>\n</ul>",
+            "has_visits": 1,
+            "no_electoral_majority_image": "https://www.jetsimon.com/public/static/images/2012-no-majority.jpg",
+            "creator": "/u/ragythekindahipster",
+            "display_year": "2022JAIR"
+        }
+    }
+]
+
+campaignTrail_temp.candidate_json = [
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 300,
+        "fields": {
+            "first_name": "Jair M.",
+            "last_name": "Bolsonaro",
+            "election": 21,
+            "party": "PL",
+            "state": "Rio de Janeiro",
+            "priority": 1,
+            "description": "<p>Despite having been in politics for 3 decades now, Jair Bolsonaro has been seen as a great outsider politician, one that would clean up Brazil's endemic corruption and take this country forward. Nonetheless, this narrative quickly died down as few accomplishments were successfully completed under his single term. Nonetheless, he has deep faith in his followers, who will take him to another term to keep Brazil above Everything, and God above All.<br>That said, Bolsonaro represents to many the worst excesses of the Brazilian nation-state: White supremacy, extreme conservatism, market fundamentalism and American-imported ideologies. To many others, however, he is a defender of the family, a protector of the country's Christian faith, and a guardian of Brazil's fundamentally Western values, social fabric, and its free market economy. The truth, of course, has long died in the dank halls of WhatsApp chat groups, where he is either the Antichrist or <i>o Mito</i>, the Myth.  Now, he has to claw his way back to a second term, regardless of the truth's whines and sensibilities of limp-wristed liberals. </p>",
+            "color_hex": "#00b3ff",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 1,
+            "image_url": "https://files.catbox.moe/iscl3y.jpg",
+            "electoral_victory_message": ".",
+            "electoral_loss_message": ".",
+            "no_electoral_majority_message": ".",
+            "description_as_running_mate": "",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 301,
+        "fields": {
+            "first_name": "PL",
+            "last_name": "Committee",
+            "election": 21,
+            "party": "PL",
+            "state": "Distrito Federal",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://files.catbox.moe/cdvuc0.jpg",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "<p>As Bolsonaro dug through the dozens of parties after his departure from the Social Liberal Party, including an abortive self-made party, he finally found something that worked for him: The rotting Liberal Party, a merger of PRONA and another PL from 2006. Despite the party's moribund infrastructure, it was able to be revived under Bolsonaro's vision. Now, however, as part of the agreement for Bolsonaro's entry into the party, the Party's primaries will decide who will be his running mate, to the chagrin of Hamilton Mourão.</p>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 302,
+        "fields": {
+            "first_name": "The",
+            "last_name": "Worker's Party",
+            "election": 21,
+            "party": "PT",
+            "state": "São Paulo",
+            "priority": 1,
+            "description": ".",
+            "color_hex": "#a10000",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": ".",
+            "electoral_loss_message": ".",
+            "no_electoral_majority_message": ".",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 306,
+        "fields": {
+            "first_name": "Luiz Inácio",
+            "last_name": "Lula da Silva",
+            "election": 21,
+            "party": "PT",
+            "state": "São Paulo",
+            "priority": 1,
+            "description": ".",
+            "color_hex": "#a10000",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png", //thismightnotmatter
+            "electoral_victory_message": ".",
+            "electoral_loss_message": ".",
+            "no_electoral_majority_message": ".",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 307,
+        "fields": {
+            "first_name": "Marina",
+            "last_name": "Silva", //mainline PTlulaticket
+            "election": 21,
+            "party": "REDE",
+            "state": "São Paulo",
+            "priority": 4,
+            "description": ".",
+            "color_hex": "#a10000",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png", //thismightnotmatter
+            "electoral_victory_message": ".",
+            "electoral_loss_message": ".",
+            "no_electoral_majority_message": ".",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 431600037,
+        "fields": {
+            "first_name": "Blank or",
+            "last_name": "Other",
+            "election": 21,
+            "party": "PSDB-PSB-NOVO",
+            "state": "Minas Gerais",
+            "priority": 2,
+            "description": ".",
+            "color_hex": "#c76306",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png", //thismightnotmatter
+            "electoral_victory_message": ".",
+            "electoral_loss_message": ".",
+            "no_electoral_majority_message": ".",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 308,
+        "fields": {
+            "first_name": "Eduardo",
+            "last_name": "Leite", //dissident third party ticket
+            "election": 21,
+            "party": "PSDB",
+            "state": "São Paulo",
+            "priority": 2,
+            "description": ".",
+            "color_hex": "#c76306",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png", //thismightnotmatter
+            "electoral_victory_message": ".",
+            "electoral_loss_message": ".",
+            "no_electoral_majority_message": ".",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 307,
+        "fields": {
+            "first_name": "Orlando",
+            "last_name": "Silva", //mainline PCDOBPTNotLulaTicket
+            "election": 21,
+            "party": "PCdoB",
+            "state": "São Paulo",
+            "priority": 1,
+            "description": ".",
+            "color_hex": "#a10000",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png", //thismightnotmatter
+            "electoral_victory_message": ".",
+            "electoral_loss_message": ".",
+            "no_electoral_majority_message": ".",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 303,
+        "fields": {
+            "first_name": "veep",
+            "last_name": "pt",
+            "election": 21,
+            "party": "PT",
+            "state": "Piauí",
+            "priority": 1,
+            "description": ".",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": ".",
+            "electoral_loss_message": ".",
+            "no_electoral_majority_message": ".",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 304,
+        "fields": {
+            "first_name": "Mr.",
+            "last_name": "Third Party",
+            "election": 21,
+            "party": "Unknown",
+            "state": "Piauí",
+            "priority": 3,
+            "description": ".",
+            "color_hex": "#00c90a",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": ".",
+            "electoral_loss_message": ".",
+            "no_electoral_majority_message": ".",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 305,
+        "fields": {
+            "first_name": "Veep",
+            "last_name": "Third Party",
+            "election": 21,
+            "party": "Unknown",
+            "state": "Piauí",
+            "priority": 3,
+            "description": ".",
+            "color_hex": "#00c90a",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": ".",
+            "electoral_loss_message": ".",
+            "no_electoral_majority_message": ".",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    }
+]
+
+campaignTrail_temp.running_mate_json = [
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 92538,
+        "fields": {
+            "candidate": 300,
+            "running_mate": 301
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 123612,
+        "fields": {
+            "candidate": 431600037,
+            "running_mate": 308
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 123611,
+        "fields": {
+            "candidate": 302,
+            "running_mate": 303
+        }
+    }
+]
+
+campaignTrail_temp.credits = "/u/ragythekindahipster"
+
+campaignTrail_temp.opponents_default_json = [
+    {
+        "election": 21,
+        "candidates": [
+            300,
+            302,
+            431600037
+        ]
+    }
+]
+
+campaignTrail_temp.opponents_weighted_json = [
+    {
+        "election": 21,
+        "candidates": [
+            300,
+            302,
+            431600037
+        ]
+    }
+]
+
+campaignTrail_temp.temp_election_list = [
+    {
+        "id": 21,
+        "year": 2020,
+        "is_premium": 0,
+        "display_year": "2022JAIR"
+    }
+]
+
+jet_data = {
+    "headerColor": "#007013",
+    "windowColor": "#007013",
+    "containerColor": "#2e427f",
+    "innerWindowColor": "#90b4bb",
+    "bannerImageUrl": "https://files.catbox.moe/wyt1h5.png",
+    "backgroundImageUrl": "https://files.catbox.moe/vm8nuw.jpg",
+    "endingTextColor": "#000000",
+    "customQuote": "",
+    "gameTitle": "𝑱𝑨𝑰𝑹."
+}
+
+//#startcode
+
+corrr = '\n              <h2>𝑱𝑨𝑰𝑹.</h2>\n            ';
+    document.head.innerHTML += `<style>
+    h3 {
+      font-size:1.17em!important;
+    }
+    wartext {
+        color: #FFFFFF;
+        background-color: #001240;
+        font-size:1em!important;
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif!important;
+    }
+    cetxt {
+        color: #FFFFFF;
+        background-color: #001240;
+    }
+    label {
+      font-size:1em!important;
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif!important;
+    }
+  body {display:flex!important;}
+  #game_window{max-width:1000px;}
+    </style>`
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#007013";
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#007013";
+
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+$(".container")[0].style.backgroundColor = "#2e427f";
+
+document.getElementById("header").src = "https://files.catbox.moe/wyt1h5.png";
+
+document.body.background = "https://files.catbox.moe/7yxia6.png";
+
+document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#90b4bb!important;}</style>";
+
+
+
+campaignTrail_temp.modBoxTheme = {
+  "header_color" : "#007013",
+  "header_text_color" : "#FFFFFF",
+  "description_text_color" : "#FFFFFF",
+  "description_background_color" : "#2e5735",
+  "main_color" : "#b3b007",
+  "secondary_color" : "#383838",
+  "ui_text_color": "#FFFFFF"
+}
+
+campaignTrail_temp.achievements = {
+  "We Don't Need Ro(un)ds" : {
+      "image" : "https://files.catbox.moe/39zn2k.png",
+      "description" : "Win outright in the first round.",
+      "cannotBeCheated" : true
+  },
+  "The Worst Ever" : {
+      "image" : "https://files.catbox.moe/p53d76.png",
+      "description" : "Win without a majority.",
+      "cannotBeCheated" : true
+  },
+  "Public Enemy Number One" : {
+    "image" : "https://files.catbox.moe/e12666.png",
+    "description" : "Rig the election and lose.",
+    "cannotBeCheated" : true
+  },
+"The Nuclear Option" : {
+  "image" : "https://files.catbox.moe/qsjpaj.png",
+  "description" : "Enact a violent coup -- and succeed.",
+  "cannotBeCheated" : true
+},
+"Jeitinho" : {
+  "image" : "https://files.catbox.moe/rip8q9.png",
+  "description" : "Steal the election.",
+  "cannotBeCheated" : true
+},
+"Glass Cannon" : {
+  "image" : "https://files.catbox.moe/inoayz.png",
+  "description" : "Break under pressure.",
+  "cannotBeCheated" : true
+},
+"Dust To Dust" : {
+  "image" : "https://files.catbox.moe/4gh18u.png",
+  "description" : "Burn it all away.",
+  "cannotBeCheated" : true
+},
+"Row The Boat Ashore" : {
+  "image" : "https://files.catbox.moe/okonzj.png",
+  "description" : "Die like a dog.",
+  "cannotBeCheated" : true
+},
+"Buddha" : {
+  "image" : "https://files.catbox.moe/5q36hr.png",
+  "description" : "Do no harm.",
+  "cannotBeCheated" : true
+},
+"NAZBOL GANG" : {
+  "image" : "https://i.ibb.co/L5sPnKK/image.png",
+  "description" : "WHAT?",
+  "cannotBeCheated" : true
+},
+"Ai, Que Pecado" : {
+  "image" : "https://files.catbox.moe/pv8u4k.png",
+  "description" : "Be an angel.",
+  "cannotBeCheated" : true
+}
+
+}
+// Initialise custom music
+
+$("#music_player")[0].children[0].style.display="none"
+$("#music_player")[0].children[1].style.display="none"
+
+document.getElementById("modLoadReveal").style.display="none"
+document.getElementById("modloaddiv").style.display="none"
+
+musicBox = document.getElementById("music_player")
+musicBox.style.display=""
+
+var trackSel;
+e = campaignTrail_temp
+e.selectedSoundtrack = 0
+
+toTime = (seconds) => {
+  var date = new Date(null);
+  date.setSeconds(seconds);
+  return date.toISOString().substr(11, 8);
+}
+
+generateTime = () => {
+    // Get the audio element
+    var audio = document.getElementById("campaigntrailmusic");
+
+    timeTracker = document.createElement("div-timetrack");
+    timeTracker.style = `
+      text-align:left;
+      border-style:solid;
+      border-width:3px;
+      height:150px;
+      width:200px;
+      background-color:#3d5937;
+      float:right;
+      padding: 10px;
+    `
+    $("#trackSelParent")[0].prepend(timeTracker);
+    $("#trackSelParent")[0].prepend(document.createElement("br"));
+
+    // Create a new element to display the current position of the audio
+    var positionDisplay = document.createElement("gg");
+    positionDisplay.id = "position-display";
+
+    // Create a new slider element to change the time
+    var timeSlider = document.createElement("input");
+    timeSlider.type = "range";
+    timeSlider.min = 0;
+    timeSlider.max = 1;
+    timeSlider.step = 0.001;
+    timeSlider.value = 0;
+    timeSlider.style.width = "200px";
+    timeSlider.id = "time-slider";
+
+    var pausePlay = document.createElement("button");
+    pausePlay.id = "position-display";
+    pausePlay.innerHTML = "<b>Pause</b>"
+    pausePlay.style.width = "100%";
+
+
+    pausePlay.addEventListener("click", event => {
+      event.preventDefault();
+      updatePositionDisplay();
+      let audio = document.getElementById("campaigntrailmusic");
+      if (audio.paused) {
+        audio.play();
+        event.target.innerHTML = "<b>Pause</b>";
+        return;
+      }
+      audio.pause();
+      event.target.innerHTML = "<b>Play</b>";
+      return;
+    })
+
+    var volumeLabel = document.createElement("gg");
+    volumeLabel.id = "volume-label";
+    volumeLabel.innerHTML = "<br><b>Volume: </b>"
+
+    var volumeSlider = document.createElement("input");
+    volumeSlider.type = "range";
+    volumeSlider.min = 0;
+    volumeSlider.max = 1;
+    volumeSlider.step = 0.001;
+    volumeSlider.value = 0;
+    volumeSlider.style.width = "200px";
+    volumeSlider.id = "volume-slider";
+
+    volumeSlider.value = audio.volume;
+
+    timeTracker.appendChild(pausePlay);
+    timeTracker.appendChild(document.createElement("br"));
+    timeTracker.appendChild(document.createElement("br"));
+    timeTracker.appendChild(positionDisplay);
+    timeTracker.appendChild(timeSlider);
+    timeTracker.appendChild(volumeLabel);
+    timeTracker.appendChild(volumeSlider);
+
+    updatePositionDisplay();
+
+    //for (let i = 0; i < 10; i++)
+    //timeTracker.append(document.createElement("br"));
+
+
+    // Function to update the position display
+    function updatePositionDisplay() {
+      positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+      timeSlider.value = audio.duration ? audio.currentTime / audio.duration : 0;
+    }
+
+    // Function to change the time of the audio
+    function changeTime() {
+      positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+      audio.currentTime = timeSlider.value * audio.duration;
+    }
+
+    updateVolume = event => {
+      audio.volume = event.target.value;
+    }
+    
+    // Update the position display and slider every second
+    setInterval(updatePositionDisplay, 1000);
+
+    // Listen for changes to the time slider and change the time of the audio
+    timeSlider.addEventListener("input", changeTime);
+    volumeSlider.addEventListener("input", updateVolume)
+}
+
+function newMusicPlayer() {
+  trackSel = document.createElement("div-gusic");
+  trackSel.id = "trackSelParent"
+  let z = `<br><br><br><br><br><br><br><br><br><br><div id='trackSel' style="text-align:left;border-style:solid;border-width:3px;overflow-y: scroll;overflow-x: hidden;height:200px; width:400px;background-color:#3d5937;float:right;">`
+  z += `<b><select id='selectSoundtrack'><option value='`+soundtracks[e.selectedSoundtrack].name+`'>`+soundtracks[e.selectedSoundtrack].name+"</option>"
+  for (i in soundtracks) {
+    if (soundtracks[e.selectedSoundtrack] != soundtracks[i]) {
+      z += `<option value='`+soundtracks[i].name+`'>`+soundtracks[i].name+`</option>`
+    }
+  }
+  z += `</select></b><br><br>`
+  // <label><input type="radio" name="option" value="option1">Option 1</label><br>
+  for (i in soundtracks[e.selectedSoundtrack].tracklist) {
+    let a = soundtracks[e.selectedSoundtrack].tracklist[i]
+    let b = `<label><input class="trackSelector" type="radio" name="trackSelector" value="`+i+`">`+a.name+`</label><br>`
+    z += b
+  }
+  z += "</div><br><br>"
+  trackSel.innerHTML = z
+
+  // select correct song
+
+  musicBox.appendChild(trackSel);
+  Array.from(document.getElementById("trackSel").children).filter(f=>{
+    return f.tagName == "LABEL"
+  }).map(f=>f.children[0])[0].checked = true
+
+  // set soundtrack changer
+
+  soundtrackSelector = document.getElementById("selectSoundtrack")
+  soundtrackSelector.onchange = function() {
+    for (i in soundtracks) {
+      if (soundtracks[i].name == soundtrackSelector.value) {
+        e.selectedSoundtrack = i
+        break
+      }
+    }
+    document.getElementById("trackSelParent").remove()
+    newMusicPlayer()
+  }
+
+  var matches = document.querySelectorAll('.trackSelector');
+
+  for (match in matches) {
+    matches[match].onchange = function() {
+      audio = $("#campaigntrailmusic")[0];
+      audio.src = soundtracks[e.selectedSoundtrack].tracklist[this.value].url
+      audio.currentTime = 0
+    }
+  }
+
+  musicBox.children[2].loop = false
+  musicBox.children[2].src = soundtracks[e.selectedSoundtrack].tracklist[0].url
+
+  musicBox.children[2].onended = function() {
+    console.log("next track")
+    let selected = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+    let newSel = clamp(selected+1, soundtracks[e.selectedSoundtrack].tracklist.length-1, 0)
+    let buttons = Array.from(document.getElementById("trackSel").children).filter(f=>{
+      return f.tagName == "LABEL"
+    }).map(f=>f.children[0])
+    //let selectedIndex = buttons.map(f=>f.children[0]).map(f=>f.checked)
+    buttons[newSel].click()
+  }
+
+  for (w = 0; w < 7; w++) {
+    document.getElementById("trackSelParent").appendChild(document.createElement("br"))
+  }
+  
+  generateTime();
+}
+
+clamp = function(a, max, min, overflow=true) {
+  if (overflow) {
+    return a > max ? min : a < min ? max : a;
+  }
+  return a > max ? max : a < min ? min : a;
+}
+
+
+// Track list
+
+soundtracks = {
+  0: {
+    name: "Selected Gems 1960-1990",
+    tracklist: [
+      {
+        "name": "Chico Buarque - A Banda",
+        "url": "https://files.catbox.moe/nzi748.mp3"
+      },
+      {
+        "name": "Os Mutantes - Adeus Maria Fulô",
+        "url": "https://files.catbox.moe/8reocb.mp3"
+      },
+      {
+        "name": "Tim Maia - Coroné Antônio Bento",
+        "url": "https://files.catbox.moe/p2ysic.mp3"
+      },
+      {
+        "name": "Gal Costa - Cinema Olympia",
+        "url": "https://files.catbox.moe/ikfhj6.mp3"
+      },
+      {
+        "name": "Milton Nascimento / Lô Borges - Um Girassol Da Cor De Seu Cabelo",
+        "url": "https://files.catbox.moe/752y00.mp3"
+      },
+      {
+        "name": "Chico Buarque - Construção",
+        "url": "https://files.catbox.moe/kiz9xl.mp3"
+      }
+    ]
+  },
+  1: {
+    name: "Brazilian Carnaval Oldies",
+    tracklist: [
+      {
+        "name": "Maria Sapatão",
+        "url": "https://files.catbox.moe/krlzyb.mp3"
+      },
+      {
+        "name": "Diabo Sem Rabo",
+        "url": "https://files.catbox.moe/15jy1l.mp3"
+      },
+      {
+        "name": "Orlando Da Silva - A Jardineira",
+        "url": "https://files.catbox.moe/zbzy4x.mp3"
+      },
+      {
+        "name": "Joel de Almeida - Vai Ver Que É",
+        "url": "https://files.catbox.moe/6ivukv.mp3"
+      },
+      {
+        "name": "Aurora Miranda - Cidade Maravilhosa",
+        "url": "https://files.catbox.moe/d3qhgc.mp3"
+      },
+      {
+        "name": "Carmen Miranda - Como Vaes Você?",
+        "url": "https://files.catbox.moe/i3ztk1.mp3"
+      }
+    ]
+  }
+}
+
+// Set up new music player
+
+newMusicPlayer()
+//#endcode
