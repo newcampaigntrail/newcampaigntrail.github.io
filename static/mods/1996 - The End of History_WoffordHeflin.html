@@ -637,7 +637,7 @@ if (!campaignTrail_temp.loaded){
           "pk": 5142,
           "fields": {
               "question": 1042,
-              "description": "I need to start pressing the case for a good foreign policy agenda. I'll ask Daschle if he can assign me to to the Senate Foreign Relations Committee for the next two years."
+              "description": "I need to start pressing the case for a good foreign policy agenda. I'll ask Daschle if he can assign me to the Senate Foreign Relations Committee for the next two years."
           }
       },
       {
@@ -997,7 +997,7 @@ if (!campaignTrail_temp.loaded){
           "pk": 5227,
           "fields": {
               "question": 1067,
-              "description": "We'll spend some extra the Rust Belt - an area where Clinton saw mixed success. I want to rally in Wisconsin, Michigan, and maybe even a stop in Indiana, before we head west towards Missouri."
+              "description": "We'll spend some extra money in the Rust Belt - an area where Clinton saw mixed success. I want to rally in Wisconsin, Michigan, and maybe even a stop in Indiana, before we head west towards Missouri."
           }
       },
       {
@@ -1213,7 +1213,7 @@ if (!campaignTrail_temp.loaded){
           "pk": 20745,
           "fields": {
               "question": 20743,
-              "description": "There's too much on the line to risk playing offense - Ohio gave George Bush an Electoral College victory, so we'll spend the final few days there. Let's start in briefly in Indiana, then after Ohio we go to Pennsylvania and perhaps New Jersey as well. "
+              "description": "There's too much on the line to risk playing offense - Ohio gave George Bush an Electoral College victory, so we'll spend the final few days there. Let's start briefly in Indiana, then after Ohio we go to Pennsylvania and perhaps New Jersey as well. "
           }
       },
       {
@@ -16562,12 +16562,6 @@ if (!campaignTrail_temp.loaded){
         advice = true
         }
     }
-    if(e.running_mate_last_name==="Bonior"){
-      if (!advice) {
-        addVPTooltips([5197, 21110, 5235, 21146, 21113, 21043], ["Don't hedge on Healthcare. People want change to the system.", "Take the moral high ground - voters will reward you for it.", "People think your liberalism is your greatest weakness - show them it's your strengh.", "Show the voters your strength and desire to protect America.", "Don't forget how relevant Wilson is. California is huge.", "Don't be afraid to go on the attack at this point."], campaignTrail_temp.running_mate_image_url)
-        advice = true
-        }
-    }
     if(e.running_mate_last_name==="Pell"){
         if (!advice) {
           addVPTooltips([5220, 5199, 5201, 21112, 5253, 5256], ["It's best not to rock the boat on foreign policy, after all.", "Let's focus more on the wars rather than the specifics behind a healthcare system. I'll help you pass whatever you need when we get into office.", "If you're going to play into culture wars, do it on your own terms.", "There's not many other answers you could really give here.", "This is probably a good way to appeal to doves without too much drama.", "This is probably true, after all."], campaignTrail_temp.running_mate_image_url)
@@ -16714,7 +16708,7 @@ if (!campaignTrail_temp.loaded){
   
 // Pulp Friction achievement check
 
-if(ans == 21394 ){
+if(ans == 21394){
     pulp += 1;  
 }
 
@@ -17192,6 +17186,8 @@ if(ans == 21435){
     removeAdvisorTooltips([5196, 21125, 5190, 5177, 5200, 5225], campaignTrail_temp.running_mate_image_url) 
     campaignTrail_temp.running_mate_image_url = 'https://itsastronomical.com/assets/1996_EOH/bonior.png';
     campaignTrail_temp.running_mate_last_name = 'Bonior';
+    addVPTooltips([5197, 21110, 5235, 21146, 21113, 21043], ["Don't hedge on Healthcare. People want change to the system.", "Take the moral high ground - voters will reward you for it.", "People think your liberalism is your greatest weakness - show them it's your strengh.", "Show the voters your strength and desire to protect America.", "Don't forget how relevant Wilson is. California is huge.", "Don't be afraid to go on the attack at this point."], campaignTrail_temp.running_mate_image_url)
+    advice = true
   }
   
   function removeAdvisorTooltips(pks, pictureLink) {
