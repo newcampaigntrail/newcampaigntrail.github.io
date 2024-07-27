@@ -5,6 +5,8 @@ function ctsAchievement(achievement, difficultyChecker = true){
 	}
 }
 
+marsh = 0;
+
 campaignTrail_temp.questions_json = [
     {
         "model": "campaign_trail.question",
@@ -20047,11 +20049,15 @@ used=false
 
  endingPicker = (out, totv, aa, quickstats) => {
 
-    //out = "win", "loss", or "tie" for your candidate
+//out = "win", "loss", or "tie" for your candidate
 //totv = total votes in entire election
 //aa = all final overall results data
 //quickstats = relevant data on candidate performance (format: your candidate's electoral vote count, your candidate's popular vote share, your candidate's raw vote total)
 ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
+
+if (quickstats[0] >= 128 && marsh == 0) { 
+    ctsAchievement("How Does He Do It?");  
+}
 
 if (aa[0].electoral_votes < 266 && aa[1].electoral_votes < 266 && aa[2].electoral_votes < 266 && aa[3].electoral_votes < 266 && aa[4].electoral_votes < 266) {
 return "<h3>'For the first time in almost a century, no candidate will have a majority of electoral votes'</h3><p>No candidate will have a majority, and the first job of the new House of Representatives is to decide the winner. The House is likely to have been retained by Republicans, or narrowly regained by Democrats. Alas, Harding is probably in solid condition - the Midwest and North's Representatives are likely to back him - around 20 states or so. You will likely receive the votes from the South, so around 12 state votes or so. Some western and midwestern representatives may want to ensure the demise of the League of Nations before they vote for Harding.</p><p>There are many challenges ahead of Harding, and you if you can pull this off. Domestically, one of you will have to work to recover the economy - by tariffs, agricultural bills, or more. Internationally, the next President must find the United States' place in the world - and will have to help shape foreign policy. Best of luck in the House!</p>"
@@ -20061,8 +20067,10 @@ return "<h3>'For the first time in almost a century, no candidate will have a ma
    } else if (campaignTrail_temp.player_answers[5] == 15533 && quickstats[0] >= 0 && quickstats[0]<266) {
     return "<h3>HARDING SWEEPS, PLEDGES 'RETURN TO NORMALCY'</h3><p>An unfortunate development. This is not a major shock, of course - there was just too much weighing on the Democrats - after this much time in power, Republicans were bound to win again. Many appreciate the moves you took to pull the Democratic Party's popularity back up, and it has paid off. Your loss was small enough to keep Republicans from gaining large supermajorities that many would have expected just a year ago. Returns show that Harding will have a Republican Congress who is happy to play ball with him, and Democrats will be shut out of power for at least the next two years.</p><p>There are many challenges ahead of Harding - domestic and foreign. Whether a dark horse like him is up to the task of solving it remains to be seen. It's possible you could run in 1924, but given your age it may be best you head back to Indiana and enjoy a welcoming retirement - your actions in the final year of Wilson's administration will hold you in high regard by historians.</p>"
    } else if (campaignTrail_temp.player_answers[5] == 15533 && quickstats[0] >= 266 && quickstats[0]<330) {
+    ctsAchievement("A Five-Cent Cigar!");
    return "<h3>RETURNS SHOW MARSHALL WINS!</h3><p>You've done it! You’ve absolutely done it! From Wilson's stroke to this, the world is amazed at what you just pulled off! This is one of the biggest turnarounds in political history, from being thirty points behind to pulling off a win against a Senator Harding. Returns show you'll likely be working with a Democratic Congress, and some Republicans see Lodge's compromise as a betrayal that costed them this election.</p><p>There are many challenges ahead of you. Domestically, you'll have to work to recover the economy - by economic reforms, agricultural bills, or more. Internationally, you'll have to find the United States' place in the world - you will have to help shape foreign policy. As long as you bring normalcy back to the Country and recover the economy, re-election should be much easier than this!</p>"
    } else if (campaignTrail_temp.player_answers[5] == 15533 && quickstats[0] >= 330 && quickstats[0]<531) {
+    ctsAchievement("A Five-Cent Cigar!");
    return "<h3>RETURNS SHOW MARSHALL WINS IN LANDSLIDE</h3><p>You've done it! You’ve absolutely done it! From Wilson's stroke to this, the world is amazed at what you just pulled off! This is one of the biggest turnarounds in political history, from being thirty points behind to a landslide. Returns show you'll likely be working with a Democratic Congress, and some Republicans see Lodge's compromise as a betrayal that costed them this election.</p><p>There are many challenges ahead of you. Domestically, you'll have to work to recover the economy - by economic reforms, agricultural bills, or more. Internationally, you'll have to find the United States' place in the world - you will have to help shape foreign policy. As long as you bring normalcy back to the Country and recover the economy, re-election should be much easier than this!</p>"
    } else if (campaignTrail_temp.player_answers[5] == 15533 && quickstats[0] >= 531) {
    return "<h3>'OUTGOING PRESIDENT WILSON GOES MISSING'</h3><p>...but you know what happened to him, right?</p>"
@@ -20093,9 +20101,6 @@ return "<h3>'For the first time in almost a century, no candidate will have a ma
    return "<h3>Error</h3><p>Contact ItsAstronomical to get this fixed.</p>"
    }
 
-   if (quickstats[0] >= 128 && ans == 4275) { 
-    ctsAchievement("How Does He Do It?");  
-}
 
 }
 campaignTrail_temp.multiple_endings=true
@@ -20382,6 +20387,7 @@ cyoAdventure = function (a) {
       }
     }
     if(ans == 4275){
+        marsh += 1;
         // Sets everything at the start up to Marshall if Wilson resigns
             console.log("done");
             switcheroo();
@@ -20481,7 +20487,7 @@ cyoAdventure = function (a) {
 ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
 
 // Sets image back to Cox if you do not convince Wilson to resign
-   if(ans == 4272){
+if(ans == 4272){
     campaignTrail_temp.candidate_image_url = 'https://itsastronomical.com/assets/1920/cox.png';
     campaignTrail_temp.running_mate_image_url = 'https://itsastronomical.com/assets/1920/cox_button.png';
     campaignTrail_temp.candidate_last_name = 'Cox';
