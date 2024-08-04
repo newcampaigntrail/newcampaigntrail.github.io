@@ -1,0 +1,1334 @@
+//Code1
+campaignTrail_temp.election_json = [
+  {
+      "model": "campaign_trail.election",
+      "pk": 9,
+      "fields": {
+          "year": 2020,
+          "summary": "<div style='max-height: 200px; overflow-y: auto;'>\
+              <style>\
+                  @keyframes flash {\
+                      0% { color: blue; }\
+                      33% { color: red; }\
+                      66% { color: black; }\
+                      100% { color: blue; }\
+                  }\
+                  .flashing-text {\
+                      font-weight: bold;\
+                      animation: flash 1s infinite;\
+                  }\
+              </style>\
+              <p><strong style='font-size: 1.2em;'>Donald J. Trump</strong>, the princeling billionaire real-estate mogul, chief jester of the New York tabloid circuit, a reactionary game show host with a spray tan and a cheap suit. He has destroyed the fabric of the American body politic; in only a few short years, his stint in American politics has morphed from a joke to a nightmare. </p>\
+              <p>Through fear, misogyny, and hatred. All combined with a pitiless void for an ego, this gremlin has suckered in enough hicks and rubes to buy his narrative of ‘Making America Great Again.’ With the support of America’s enemies, he has manipulated the decaying framework of the American electorate and contorted a gutless media to allow this epic tragedy to unfold.</p>\
+              <p>Can you even imagine the mind of such a low creature, the inner workings of its minute poisoned conscience, the depravities just waiting to be unleashed?</p>\
+              <p>This is <span class='flashing-text' style='font-size: 1.2em;'>American Carnage</span> …</p>\
+          </div>",
+          "image_url": "https://i.imgur.com/MOqx7PK.gif",
+          "winning_electoral_vote_number": 270,
+          "advisor_url": "https://i.imgur.com/UrGd31s.gif",
+          "recommended_reading": "<div style='text-align: center;'><a href='https://en.wikipedia.org/wiki/Donald_Trump_sexual_misconduct_allegations' class='flashing-text' style='font-size: 20px;'>The Art of the Deal</a></div><style>@keyframes flash { 0% { color: blue; } 33% { color: red; } 66% { color: black; } 100% { color: blue; } } .flashing-text { font-weight: bold; animation: flash 1s infinite; }</style>",
+          "has_visits": 1,
+          "no_electoral_majority_image": "https://i.imgur.com/5gdezUv.png",
+          "creator": "Dan Bryan",
+          "display_year": "American Carnage"
+      }
+  }
+]
+
+document.getElementById("inner_window_1").children[1].innerHTML = `<li>Welcome to American Carnage.</li><li>An Alternate History where Donald Trump was elected the 45th President of the United States.</li><li>You will answer questions about his platforms, positions and campaign strategy, between the years 2017 and 2020.</li><li>The answers will affect his popularity, both nationally and in individual states.</li><li>These policies both their success and ideology will effect the candidate you face in the 2020 election.</li><li>Additionally, the game contains Choose Your Own Adventure elements, secret endings and achievements.</li><li>Content Warning: Racism, Sexism, Islamophobia, Xenophobia, Profanity, and a general crass, crude and deeply cynical perspective on humanity.</li><li>You’ve been warned.</li>`;
+document.styleSheets[0].insertRule(".inner_window_w_desc{ margin:1em 0 0 0.5em !important;padding-top: 0.5em !important;}", 0);
+document.styleSheets[0].insertRule(".inner_window_question{ margin:1em 0 .7em 0.5em !important;padding-top: 0.3em !important;}", 0);
+document.styleSheets[0].insertRule("#main_content_area { height:82% !important;}", 0);
+
+campaignTrail_temp.modBoxTheme = {
+  "header_color": "#b71d1d",
+  "header_text_color": "#f5f3f4",
+  "description_text_color": "#000000",
+  "description_background_color": "#f5f3f4",
+  "main_color": "#b71d1d",
+  "secondary_color": "#19191E",
+  "ui_text_color": "#FFFFFF"
+}
+
+campaignTrail_temp.candidate_json = [
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 78,
+        "fields": {
+            "first_name": "Mr",
+            "last_name": "The Dems",
+            "election": 9,
+            "party": "Democrat",
+            "state": "Delaware",
+            "priority": 1,
+            "description": "<p></p>",
+            "color_hex": "#4c6dc9",
+            "secondary_color_hex": "#4c6dc9",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/5gdezUv.png",
+            "electoral_victory_message": "<h3></p>",
+            "electoral_loss_message": "<h3></p>",
+            "no_electoral_majority_message": "<h3></p>",
+            "description_as_running_mate": "",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+      "model": "campaign_trail.candidate",
+      "pk": 77,
+      "fields": {
+          "first_name": "Donald J.",
+          "last_name": "Trump",
+          "election": 9,
+          "party": "Republican",
+          "state": "Florida",
+          "priority": 2,
+          "description": "<div style=\"max-height: 200px; overflow-y: auto;\"><p><b style=\"font-size: 1.2em;\">Is this real life?</b> It can’t be; this is some bad dream. Him? You can’t be serious. The 'You're Fired' guy! They’re not that stupid, are they? With the steaks and the hair? This is an elaborate prank, or some kind of out-of-season April Fool’s Day gag.<br><br>Unless … that’s it. I’m dead. That must be it; I died, and this is hell. There’s no other logical explanation. After all, how else could this be happening?<br><br>How could we lose? There must be some explanation for it. There is no way that this ignorant moron can be up there, saying those things and still win. With the Mexican rapists, the thing with the Khans, for God’s sake, the pussy tape, it doesn’t make any sense!<br><br>Unless … there must be an explanation, something behind this. We all saw what he said about the Russians. It’s blackmail, or some kind of quid pro quo thing. There must be a method to the madness.</div>",
+          "color_hex": "#8e0c10",
+          "secondary_color_hex": "#8e0c10",
+          "is_active": 1,
+          "image_url": "https://i.imgur.com/aunTjQZ.gif",
+          "electoral_victory_message": "<h3></p>",
+          "electoral_loss_message": "<h3></p>",
+          "no_electoral_majority_message": "<h3></p>",
+          "description_as_running_mate": "",
+          "candidate_score": 1,
+          "running_mate": false
+      }
+  },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 80,
+        "fields": {
+            "first_name": "Mrs",
+            "last_name": "Libertarian",
+            "election": 9,
+            "party": "Libertarian",
+            "state": "South Carolina",
+            "priority": 3,
+            "description": "'",
+            "color_hex": "#c9b34c",
+            "secondary_color_hex": "#c9b34c",
+            "is_active": 0,
+            "image_url": "'",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "'",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 79,
+        "fields": {
+            "first_name": "Mr",
+            "last_name": "Green",
+            "election": 9,
+            "party": "Green",
+            "state": "New York",
+            "priority": 4,
+            "description": "'",
+            "color_hex": "#27772e",
+            "secondary_color_hex": "#27772e",
+            "is_active": 0,
+            "image_url": "'",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "'",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 81,
+        "fields": {
+            "first_name": "Mrs",
+            "last_name": "Democrat",
+            "election": 9,
+            "party": "Democrat",
+            "state": "California",
+            "priority": 5,
+            "description": "'",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/static/images/kamala-harris-2020.jpg",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+      "model": "campaign_trail.candidate",
+      "pk": 85,
+      "fields": {
+          "first_name": "Mike",
+          "last_name": "Pence",
+          "election": 9,
+          "party": "Republican",
+          "state": "Indiana",
+          "priority": 10,
+          "description": "'",
+          "color_hex": "#FF0000",
+          "secondary_color_hex": "#FFA0A0",
+          "is_active": 0,
+          "image_url": "https://i.imgur.com/Qae16hE.gif",
+          "electoral_victory_message": "'",
+          "electoral_loss_message": "'",
+          "no_electoral_majority_message": "'",
+          "description_as_running_mate": "<div style=\"max-height: 200px; overflow-y: auto;\"><p><b style=\"font-size: 1.2em;\">Ladies and gentlemen</b>, roll up and witness the 8th wonder of the world: the magnificent, the frightening, Spineless Man. It’s a wonderous feat how he can even stand, let alone walk, talk, and even run for office, without a single indication of the daily humiliations laid upon him.</p><p>In fact, he can even do backflips! Yes, witness him, the avowed devout evangelical, sing the praises of a serial philanderer. Watch as he dances to the tune of the ringmaster’s orchestra, proud and even pleased to take his lashings to the delight of the crowd.</p><p>“It’s a privilege,” he says, with the same vacant, corpse-like stare he is genetically predisposed to display, “to serve such a competent and organized administration.”</p><p>What must Mother think?</p></div>",
+          "candidate_score": 0,
+          "running_mate": true
+      }
+  },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 90,
+        "fields": {
+            "first_name": "Mrs",
+            "last_name": "Libertarian",
+            "election": 9,
+            "party": "Libertarian",
+            "state": "Maryland",
+            "priority": 12,
+            "description": "'",
+            "color_hex": "#FFFF00",
+            "secondary_color_hex": "#FFFFC0",
+            "is_active": 0,
+            "image_url": "'",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "'",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 89,
+        "fields": {
+            "first_name": "Mrs",
+            "last_name": "Green",
+            "election": 9,
+            "party": "Green",
+            "state": "Wisconsin",
+            "priority": 13,
+            "description": "'",
+            "color_hex": "#00C100",
+            "secondary_color_hex": "#A1FFA1",
+            "is_active": 0,
+            "image_url": "'",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "'",
+            "candidate_score": 0,
+            "running_mate": false
+        }
+    }
+]
+
+campaignTrail_temp.running_mate_json = [
+  {
+      "model": "campaign_trail.running_mate",
+      "pk": 57,
+      "fields": {
+          "candidate": 80,
+          "running_mate": 90
+      }
+  },
+  {
+      "model": "campaign_trail.running_mate",
+      "pk": 56,
+      "fields": {
+          "candidate": 79,
+          "running_mate": 89
+      }
+  },
+  {
+      "model": "campaign_trail.running_mate",
+      "pk": 48,
+      "fields": {
+          "candidate": 78,
+          "running_mate": 81
+      }
+  },
+  {
+      "model": "campaign_trail.running_mate",
+      "pk": 52,
+      "fields": {
+          "candidate": 77,
+          "running_mate": 85
+      }
+  }
+]
+
+campaignTrail_temp.credits = "<button onclick='credits()'>I Heath &</button>"
+
+credits = function() {
+  credits = [ "I Heath aka Thatchmaster : Lead", "Coding Help: Accurate_Feature9970, Obummer,", "Writing Help: TheBigCheese198", "Feedback & Further Help : Ettingermentum, Velvet, Murraythedog"]
+  text = "CREDITS:\n\n"
+  for (i in credits) {
+      text += credits[i] + "\n"
+  }
+  alert(text)
+}
+
+campaignTrail_temp.global_parameter_json[0].fields.question_count = 30
+
+campaignTrail_temp.opponents_default_json = [
+  {
+      "election": 9,
+      "candidates": [
+          77,
+          78,
+          79,
+          80
+      ]
+  }
+]
+
+campaignTrail_temp.opponents_weighted_json = [
+  {
+      "election": 9,
+      "candidates": [
+          77,
+          78,
+          79,
+          80
+      ]
+  }
+]
+
+campaignTrail_temp.temp_election_list = [
+    {
+        "id": 9,
+        "year": 2020,
+        "is_premium": 0,
+        "display_year": "American Carnage"
+    }
+]
+
+
+
+ //#startcode
+  
+  
+  
+  
+  corrr = `
+  <div style="font-size: 11px; font-family: monospace; color: white;">
+    <h2 style="font-style: normal;">
+      <img src="https://i.imgur.com/CKxWLJU.gif" alt="AMERICAN CARNAGE" style="margin-top: 5px;">
+    </h2>
+  </div>
+  `;
+  
+  
+          nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#d8dadc" 
+          nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#dd262b" 
+          $(".container")[0].style.backgroundColor = "#dee3e6"
+          $("#game_window")[0].style.backgroundImage = "url(https://i.imgur.com/ChACkRO.gif)" 
+          document.body.background = "https://i.imgur.com/M2WTVZw.gif" 
+          document.body.style.backgroundSize = "99.4% auto"
+          document.getElementById("header").src = "https://i.imgur.com/WtreeZ7.gif"
+          document.getElementById("wittyquote").color = "red" 
+          nct_stuff.themes[nct_stuff.selectedTheme].text_col = "white"
+          document.head.innerHTML += "<style>#results_container {color:#ffffff;} .inner_window_w_desc {background-color:#9e191c !important;}</style>";
+          
+          quotes = [""]
+          customquote = quotes[Math.floor((Math.random() * quotes.length))]
+  
+  
+        
+  
+  
+  
+  
+  
+  e = campaignTrail_temp
+  
+  document.head.innerHTML += `
+  <link rel="stylesheet" href="https://kexanie.github.io/csswin10">
+  <style>
+  h3 {
+    font-size: 1.025em !important;
+    line-height: 17px;
+}
+label {
+    font-size: 0.9em !important; 
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+    line-height: 1.0; 
+}
+input {
+    font-size: 0.9em !important; 
+    line-height: 17px; 
+}
+
+  
+  #game_window{max-width:1000px;}
+  </style>`
+  let contentBox = document.getElementsByClassName("content_box")[0];
+  let contentSingle = document.getElementsByClassName("content_single")[0];
+  
+  let containerRef = document.getElementsByClassName("container")[0];
+  
+  function createBanner(url, sibling, isLeft) {
+    let div = document.createElement("DIV");
+    let img = document.createElement("IMG");
+    div.style.position = "relative";
+    div.style.margin = "auto";
+    img.src = url;
+    
+    
+  
+    let x = document.createElement("DIV");
+    x.innerText = "_";
+    x.style.position = "absolute";
+    x.style.padding = "2px";
+    x.style.fontSize = "2pt";
+    x.style.cursor = "pointer";
+  
+    div.appendChild(x);
+  
+    div.appendChild(img);
+  
+    if(isLeft) {
+        sibling.parentNode.insertBefore(div, sibling);
+    }
+    else {
+        sibling.parentNode.appendChild(div);
+    }
+    x.onclick = () => div.style.visibility = "hidden";
+    x.onclick = () => img.style.visibility = "hidden";
+    return img;
+  }
+  
+  function addDynamicCSS() {
+    var css = `
+  
+        label {
+          cursor:default;
+        }
+  
+        .inner_window_question h3 .mytooltip{
+            background-color: lightskyblue;
+        }
+  
+        .mytooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            background-color: #d8dee8;
+        }
+  
+        .mytooltip .mytooltiptext {
+            width: 240px;
+            background-color: #d8dee8;
+            color: black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 99;
+            bottom: 20%;
+            left: 20%;
+            margin-left: -90px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border: 1px solid black;
+            pointer-events: none;
+            font-size: 13px !important;
+            line-height: 1.5em !important;
+            font-weight: normal !important;
+            font-style: normal !important;
+        }
+  
+        .mytooltip .mytooltiptext img {
+            max-width: 240px;
+            height: auto;
+        }
+  
+        .mytooltip:hover .mytooltiptext {
+            opacity: 1;
+            transition-delay: 0.5s;
+        }
+    `;
+  
+    var styleElem = document.createElement('style');
+    styleElem.type = 'text/css';
+    
+    styleElem.appendChild(document.createTextNode(css));
+    
+    document.head.appendChild(styleElem);
+  }
+  
+  
+  addDynamicCSS();
+    
+    tooltipList = [
+      // Q1
+      {searchString: "Hollywood nobodies", explanationText: "<img src=https://i.imgur.com/BcP7HEt.gif> Extremely Overrated!"},
+      {searchString: "President Obama", explanationText: "<img src=https://i.imgur.com/7hGvSYN.gif><br> The Founder of ISIS"},
+      {searchString: "Steve—such a smart guy", explanationText: "<img src=https://i.imgur.com/WzLU5gg.gif><br> Tough and Smart"},
+      {searchString: "Reince—such a superstar", explanationText: "<img src=https://i.imgur.com/pWZys9f.gif><br> Great Unification"},
+      {searchString: "Reagan moment", explanationText: "<img src=https://i.imgur.com/g1MsPpT.gif><br> A Great President"},
+      {searchString: "Reagan", explanationText: "<img src=https://i.imgur.com/g1MsPpT.gif><br> A Great President"},
+      {searchString: "Steele report", explanationText: "<img src=https://i.imgur.com/ztHIEJI.gif><br> FAKE NEWS"},
+      {searchString: "George W. Bush", explanationText: "<img src=https://i.imgur.com/3Z14E6D.gif><br> 𝚆"},
+      // Q2
+      {searchString: "ISIS", explanationText: "<img src=https://i.imgur.com/8ALOPIa.gif><br> Bad Guys"},
+      {searchString: "Radical Islamic Terrorism", explanationText: "<img src=https://i.imgur.com/8ALOPIa.gif><br> Bad Guys"},
+      {searchString: "Sisi", explanationText: "<img src=https://i.imgur.com/7sbuboK.gif><br> Doing a Great Job"},
+      {searchString: "CIA people", explanationText: "<img src=https://i.imgur.com/rWiGj5f.gif><br> Very Special Wall"},
+      {searchString: "Fallwell", explanationText: "<img src=https://i.imgur.com/TwRd3rq.gif><br> Jesus Freak"},
+      // Q3
+      {searchString: "Mad Dog", explanationText: "<img src=https://i.imgur.com/pfIrQl6.gif><br> Central Casting"},
+      {searchString: "Mad-Dog", explanationText: "<img src=https://i.imgur.com/pfIrQl6.gif><br> Central Casting"},
+      {searchString: "Betsy", explanationText: "<img src=https://i.imgur.com/xq2MrVn.gif><br> Treated Very Unfairly"},
+      {searchString: "Pruitt", explanationText: "<img src=https://i.imgur.com/Sn8UGPy.gif><br> Seal-Clubber"},
+      {searchString: "McCain", explanationText: "<img src=https://i.imgur.com/XxS80cQ.gif><br> Dying Bastard"},
+      {searchString: "Cruz", explanationText: "<img src=https://i.imgur.com/9qYJVAo.gif><br> Lyin' Ted"},
+      {searchString: "Sarah", explanationText: "<img src=https://i.imgur.com/vdmPqYp.gif><br> Daddy's Girl"},
+      //Q4
+      {searchString: "Crooked Hillary", explanationText: "<img src=https://i.imgur.com/YPY07Ce.gif><br> Loser"},
+      {searchString: "Ginsburg", explanationText: "<img src=https://i.imgur.com/Usp91c6.gif><br> Mind is Shot"},
+      {searchString: "Collins", explanationText: "<img src=https://i.imgur.com/asKTSKa.gif><br> Birdbrain"},
+      {searchString: "Leo and those bowties", explanationText: "<img src=https://i.imgur.com/3UIssq8.gif><br> Puppetmaster"},
+      {searchString: "Mitch", explanationText: "<img src=https://i.imgur.com/agMQ1mf.gif><br> Dumb Sonofabitch "},
+      {searchString: "McConnell", explanationText: "<img src=https://i.imgur.com/agMQ1mf.gif><br> Dumb Sonofabitch "},
+      {searchString: "Mitch McConnell", explanationText: "<img src=https://i.imgur.com/agMQ1mf.gif><br> Dumb Sonofabitch "},
+      {searchString: "Trump’s Judges", explanationText: "<img src=https://i.imgur.com/x0Tp7Yt.gif><br> My Judges "},
+      {searchString: "conservative catholic freaks", explanationText: "<img src=https://i.imgur.com/O4F3KKV.gif><br> My Judges "},
+      {searchString: "my people", explanationText: "<img src=https://i.imgur.com/yCIEbCu.gif><br> U.S.A."},
+      {searchString: "My people", explanationText: "<img src=https://i.imgur.com/yCIEbCu.gif><br> U.S.A."},
+      {searchString: "our people", explanationText: "<img src=https://i.imgur.com/yCIEbCu.gif><br> U.S.A."},
+      {searchString: "Our people", explanationText: "<img src=https://i.imgur.com/yCIEbCu.gif><br> U.S.A."},
+      //Q5
+      {searchString: "Jeff", explanationText: "<img src=https://i.imgur.com/CIN8hO0.gif><br> Retarded"},
+      {searchString: "Flynn", explanationText: "<img src=https://i.imgur.com/mAV8qeo.gif><br> Wonderful Man"},
+      {searchString: "Nunes", explanationText: "<img src=https://i.imgur.com/iyNoOse.gif><br> My Man in the House"},
+      {searchString: "Cohen", explanationText: "<img src=https://i.imgur.com/8RKgzmE.gif><br> More Breaker than Fixer"},
+      {searchString: "Comey", explanationText: "<img src=https://i.imgur.com/uhYr6WZ.gif><br> Disloyal"},
+      {searchString: "Carl Icahn", explanationText: "<img src=https://i.imgur.com/ODmbIsE.gif><br> Greed is Great"},
+      {searchString: "Ivanka", explanationText: "<img src=https://i.imgur.com/VPpdJJ6.gif><br> A Piece of Ass"},
+      {searchString: "Rudy", explanationText: "<img src=https://i.imgur.com/ZGYIKyG.gif><br> Drinks Too Much"},
+      {searchString: "Stormy", explanationText: "<img src=https://i.imgur.com/aMHfdW8.gif><br> Whore"},
+      //Q6
+      {searchString: "Ryan—what a jerk", explanationText: "<img src=https://i.imgur.com/foBnzZd.gif><br> Lame Duck"},
+      {searchString: "Ryan—good man", explanationText: "<img src=https://i.imgur.com/av7XzAs.gif><br> A Fine Wine"},
+      {searchString: "Rand", explanationText: "<img src=https://i.imgur.com/16a4Yym.gif><br> Pathetic"},
+      {searchString: "Seth Meyers", explanationText: "<img src=https://i.imgur.com/2wYARq6.gif><br> Not Funny"},
+      //Q7
+      {searchString: "Erik's guys", explanationText: "<img src=https://i.imgur.com/xx5vUyu.gif><br> Good guys"},
+      {searchString: "MOAB", explanationText: "<img src=https://i.imgur.com/AvERYM2.gif><br> Biggest Bomb"},
+      {searchString: "Newt", explanationText: "<img src=https://i.imgur.com/kHDWTZQ.gif><br> Knows the Swamp"},
+      {searchString: "Bashar", explanationText: "<img src=https://i.imgur.com/N5L812I.gif><br> A Real Killer"},
+      {searchString: "Zakaria", explanationText: "<img src=https://i.imgur.com/9oloEfW.gif><br> Clinton Shill"},
+      {searchString: "Kelly", explanationText: "<img src=https://i.imgur.com/R1wIewh.gif><br> Lowlife"},
+      {searchString: "McMaster", explanationText: "<img src=https://i.imgur.com/deWRm2y.gif><br> real-toughguy"},
+      {searchString: "McRaven", explanationText: "<img src=https://i.imgur.com/uqGrwvb.gif><br> Wimpy"},
+      //Q8
+      {searchString: "Abbott", explanationText: "<img src=https://i.imgur.com/p3FfWin.gif><br> Wheels"},
+      {searchString: "Cohn", explanationText: "<img src=https://i.imgur.com/3xy2tYq.gif><br> Tariff Man"},
+      {searchString: "Kirstjen", explanationText: "<img src=https://i.imgur.com/pKAqLee.gif><br> a Bush woman"},
+      {searchString: "NRA—Wayne", explanationText: "<img src=https://i.imgur.com/iL9uAzZ.gif><br> Gun Guy"},
+      {searchString: "Whitaker", explanationText: "<img src=https://i.imgur.com/GEqEFzW.gif><br> A Thumb"},
+      {searchString: "Duterte", explanationText: "<img src=https://i.imgur.com/z9lM1Ro.gif><br> The Punisher"},
+      {searchString: "Parkland", explanationText: "<img src=https://i.imgur.com/qog4uZG.gif><br> I hear you"},
+      //Q9
+      {searchString: "my father", explanationText: "<img src=https://i.imgur.com/pTuzMgM.gif><br> Tough but fair"},
+      {searchString: "McAuliffe—terrible Democrat", explanationText: "<img src=https://i.imgur.com/12LRpSw.gif><br> Very weak"},
+      {searchString: "John Lewis", explanationText: "<img src=https://i.imgur.com/5jHAcPr.gif><br> All-talk"},
+      //Q10
+      {searchString: "Porter", explanationText: "<img src=https://i.imgur.com/1XxZd3B.gif><br> Totally Innocent"},
+      {searchString: "Sleepy Todd", explanationText: "<img src=https://i.imgur.com/96jM9v3.gif><br> He's Fucking Sleeping!!!"},
+      {searchString: "Theresa", explanationText: "<img src=https://i.imgur.com/QfNK1PF.gif><br> Begging for a deal"},
+      {searchString: "Wilbur", explanationText: "<img src=https://i.imgur.com/FJTcLtX.gif><br> Old Prune"},
+      {searchString: "Moon", explanationText: "<img src=https://i.imgur.com/CgGHlRv.gif><br> Won't Deal"},
+      {searchString: "Mexican guy", explanationText: "<img src=https://i.imgur.com/REN59Cm.gif><br> Amigo"},
+      {searchString: "Trudeau", explanationText: "<img src=https://i.imgur.com/KZIkDvl.gif><br> Slimeball"},
+      {searchString: "Porter", explanationText: "<img src=https://i.imgur.com/iz7ropU.gif><br> Lap-dog"},
+      //Q11
+      {searchString: "Maggie", explanationText: "<img src=https://i.imgur.com/nHjzm3j.gif><br> My Maggie"},
+      {searchString: "Marco", explanationText: "<img src=https://i.imgur.com/uK6AEGj.gif><br> With me now"},
+      {searchString: "Rex", explanationText: "<img src=https://i.imgur.com/MR6CamL.gif><br> Dumb as a rock"},
+      {searchString: "Tillerson", explanationText: "<img src=https://i.imgur.com/MR6CamL.gif><br> Dumb as a rock"},
+      //Q12
+      {searchString: "Bolton", explanationText: "<img src=https://i.imgur.com/7H9t3Ip.gif><br> Walrus"},
+      {searchString: "Pompeo", explanationText: "<img src=https://i.imgur.com/Dxxltkn.gif><br> Knows his place"},
+      {searchString: "Bossie’s the man", explanationText: "<img src=https://i.imgur.com/gA1FPON.gif><br> Gifted"},
+      {searchString: "and Cory,", explanationText: "<img src=https://i.imgur.com/VzscFRl.gif><br> Womp-Womp"},
+      {searchString: "Herman Cain", explanationText: "<img src=https://i.imgur.com/xpqgn3N.gif><br> True Patriot"},
+      {searchString: "Powell", explanationText: "<img src=https://i.imgur.com/Ocsxhsh.gif><br> Miser"},
+      {searchString: "Merkel", explanationText: "<img src=https://i.imgur.com/7iTJYQx.gif><br> 0.3/10"},
+      {searchString: "Esper", explanationText: "<img src=https://i.imgur.com/cJG7QWr.gif><br> Boyscout"},
+      {searchString: "Mick", explanationText: "<img src=https://i.imgur.com/rUPHYSI.gif><br> Irish Mick"},
+      //Q13 - Conservative
+      {searchString: "Baghdadi—died like a dog", explanationText: "<img src=https://i.imgur.com/5YIo68T.gif><br> Bye-Bye"},
+      {searchString: "Kim Jong Un", explanationText: "<img src=https://i.imgur.com/f8B11U0.gif><br> Big and Tough"},
+      {searchString: "Kim", explanationText: "<img src=https://i.imgur.com/f8B11U0.gif><br> Big and Tough"},
+      //Q13 - Isolationist
+      {searchString: "Haley", explanationText: "<img src=https://i.imgur.com/wkxW77B.gif><br> Nimrada"},
+      {searchString: "ICE", explanationText: "<img src=https://i.imgur.com/GPgNr23.gif><br> Real Heroes"},
+      {searchString: "Taliban", explanationText: "<img src=https://i.imgur.com/ID5LtKg.gif><br> Quite Smart"},
+      //Q14
+      {searchString: "Bezos", explanationText: "<img src=https://i.imgur.com/rzGfPdI.gif><br> Baldy"},
+      //Q15
+      {searchString: "MS-13", explanationText: "<img src=https://i.imgur.com/fQ7ngAg.gif><br> Bad Hombre's"},
+      //Q16 - Stormy
+      {searchString: "Avenatti", explanationText: "<img src=https://i.imgur.com/CdBV0vI.gif><br> Showman"},
+      {searchString: "Schneiderman", explanationText: "<img src=https://i.imgur.com/Ih1TNJA.gif><br> Sick puppy"},
+      //Q16 - Nunes
+      {searchString: "Dorsey", explanationText: "<img src=https://i.imgur.com/PdABNFw.gif><br> Free the bird"},
+      {searchString: "Zuckerberg", explanationText: "<img src=https://i.imgur.com/MDBiEog.gif><br> Friendless"},
+      //Q16 - Mueller
+      {searchString: "Mueller", explanationText: "<img src=https://i.imgur.com/YyovAnZ.gif><br> Fuckin' Amateur"},
+      {searchString: "Dowd", explanationText: "<img src=https://i.imgur.com/hVUyang.gif><br> A doubter"},
+      //Q16 - Rudy
+      {searchString: "Lev", explanationText: "<img src=https://i.imgur.com/GIBrxTv.gif><br> Never-heard-of-him"},
+      //Q17
+      {searchString: "Chuck", explanationText: "<img src=https://i.imgur.com/drYiJsO.gif><br> Cryin' Chuck"},
+      {searchString: "Schumer", explanationText: "<img src=https://i.imgur.com/drYiJsO.gif><br> Cryin' Chuck"},
+      {searchString: "Chuck Schumer", explanationText: "<img src=https://i.imgur.com/drYiJsO.gif><br> Cryin' Chuck"},
+      {searchString: "McCarthy", explanationText: "<img src=https://i.imgur.com/NyKNpa4.gif><br> Weakling"},
+      {searchString: "Pelosi", explanationText: "<img src=https://i.imgur.com/TuokX6p.gif><br> Fragile"},
+      {searchString: "Nancy", explanationText: "<img src=https://i.imgur.com/TuokX6p.gif><br> Fragile"},
+      {searchString: "Rush", explanationText: "<img src=https://i.imgur.com/D1TZv48.gif><br> Heading Out"},
+      {searchString: "Wolf", explanationText: "<img src=https://i.imgur.com/ygFwo0x.gif><br> Lightweight"},
+      //Q18 - Conservative
+      {searchString: "Juan", explanationText: "<img src=https://i.imgur.com/0PfRrzm.gif><br> Leadership Material?"},
+      {searchString: "Lindsay", explanationText: "<img src=https://i.imgur.com/yegUpv8.gif><br> Kissed the ring"},
+      {searchString: "Maduro", explanationText: "<img src=https://i.imgur.com/Pp1PavT.gif><br> Tough Hombre"},
+      {searchString: "Soleimani", explanationText: "<img src=https://i.imgur.com/0tXslJw.gif><br> A dead man"},
+      //Q18 - Isolationist
+      {searchString: "Tucker", explanationText: "<img src=https://i.imgur.com/uExemZr.gif><br> Asskisser"},
+      {searchString: "Zelensky", explanationText: "<img src=https://i.imgur.com/cIqFIzv.gif><br> Needs $$$"},
+      {searchString: "Maddow", explanationText: "<img src=https://i.imgur.com/P1C84DR.gif><br> Liberal Tears"},
+      {searchString: "Kinzinger", explanationText: "<img src=https://i.imgur.com/nFZcMg3.gif><br> Crybaby"},
+      {searchString: "Macron", explanationText: "<img src=https://i.imgur.com/wkiy1GL.gif><br> Big fan of me"},
+      {searchString: "MBS", explanationText: "<img src=https://i.imgur.com/20tuq2s.gif><br> Hatchetman"},
+      
+      //Q19
+      {searchString: "Schiff", explanationText: "<img src=https://i.imgur.com/lno4z6R.gif><br> Shifty"},
+      {searchString: "Manchin", explanationText: "<img src=https://i.imgur.com/LAhzcZr.gif><br> Democrat?"},
+      {searchString: "Manchin", explanationText: "<img src=https://i.imgur.com/LAhzcZr.gif><br> Democrat?"},
+      //Q20
+      {searchString: "Peter", explanationText: "<img src=https://i.imgur.com/odMxeRp.gif><br> A Great Patriot"},
+      {searchString: "Mnuchin", explanationText: "<img src=https://i.imgur.com/QlUg8C2.gif><br> Talented Guy"},
+      {searchString: "Woodward", explanationText: "<img src=https://i.imgur.com/EFYgDNb.gif><br> A Smart/Dumb Guy"},
+  
+      //Q22
+      {searchString: "Brad", explanationText: "<img src=https://i.imgur.com/q9dqwTl.gif><br> A Total Lunatic"},
+      {searchString: "Hopey", explanationText: "<img src=https://i.imgur.com/zJVA8H9.gif><br> My Hopey"},
+      {searchString: "Fauci", explanationText: "<img src=https://i.imgur.com/8fstjTB.gif><br> WRONG WRONG WRONG"},
+      {searchString: "President Xi", explanationText: "<img src=https://i.imgur.com/6Xfkz2A.gif><br> Top of the Line"},
+      {searchString: "Mike Tyson", explanationText: "<img src=https://i.imgur.com/OJHlmY4.gif><br> Iron"},
+      {searchString: "Scavino", explanationText: "<img src=https://i.imgur.com/MFDEJz8.gif><br> @realDonaldTrump"},
+  
+
+      //Q24
+      {searchString: "Newsom", explanationText: "<img src=https://i.imgur.com/ZB1eH25.gif><br> Gruesome"},
+
+      //Q27
+      {searchString: "Mark", explanationText: "<img src=https://i.imgur.com/5vV2QPP.gif><br> A Mess"},
+      {searchString: "Stephen", explanationText: "<img src=https://i.imgur.com/dt3PNa0.gif><br> The Gifted One"},
+      {searchString: "Antifa", explanationText: "<img src=https://i.imgur.com/Vxjuy75.gif><br> Fascists"},
+      {searchString: "Mark Milley", explanationText: "<img src=https://i.imgur.com/W7RjGLC.gif><br> Traitor"},
+      {searchString: "Milley", explanationText: "<img src=https://i.imgur.com/W7RjGLC.gif><br> Traitor"},
+  
+      //Q29
+      {searchString: "Bill", explanationText: "<img src=https://i.imgur.com/4yWIecH.gif><br> The New Roy Cohn?"},
+      {searchString: "Pat", explanationText: "<img src=https://i.imgur.com/p1aW8sr.gif><br> Great T.V."},
+      {searchString: "Wray", explanationText: "<img src=https://i.imgur.com/yLGlXIq.gif><br> On the Chopping Block"},
+      {searchString: "Ronna", explanationText: "<img src=https://i.imgur.com/QnFAcyH.gif><br> What's his is mine"},
+      //Q30
+      {searchString: "DeSantis", explanationText: "<img src=https://i.imgur.com/0orgpDI.gif><br> Owes Me Big"},
+  
+      //Joe
+      {searchString: "Hannity", explanationText: "<img src=https://i.imgur.com/vRHtq2N.gif><br> Terrific Supporter"},
+      {searchString: "Jason", explanationText: "<img src=https://i.imgur.com/Rh8KZ6b.gif><br> A Fighter"},
+      {searchString: "his son Hunter", explanationText: "<img src=https://i.imgur.com/6tBKPSS.gif><br> Where is he?"},
+      {searchString: "Don Jr", explanationText: "<img src=https://i.imgur.com/SgXL5bV.gif><br> Not a Killer"},
+  
+      {searchString: "Stan", explanationText: "<img src=https://i.imgur.com/k1aBA4U.gif><br> RIP"},
+      {searchString: "Doocy", explanationText: "<img src=https://i.imgur.com/n3NutkW.gif><br> Total Sap"},
+      {searchString: "Jared", explanationText: "<img src=https://i.imgur.com/j4b16yH.gif><br> The Good Son"},
+      {searchString: "Alexandria Ocasio Cortez", explanationText: "<img src=https://i.imgur.com/Gvm3hzF.gif><br> Evita"},
+      {searchString: "Christie", explanationText: "<img src=https://i.imgur.com/hQiJOAR.giff><br> Too Busy Eating"},
+      {searchString: "Melania", explanationText: "<img src=https://i.imgur.com/V0ScJRj.gif><br> No.3"},
+  
+      //Sanders
+      {searchString: "Squad", explanationText: "<img src=https://i.imgur.com/0ZpKEZv.gif><br> Nasty Women"},
+      {searchString: "Jon Tester", explanationText: "<img src=https://i.imgur.com/s0BrYS7.gif><br> Looks Pregnant"},
+      {searchString: "Levin", explanationText: "<img src=https://i.imgur.com/mnYC83g.gif><br> So Great"},
+      {searchString: "Musk", explanationText: "<img src=https://i.imgur.com/oLbvNUc.gif><br> Total Bitch"},
+      {searchString: "Eric", explanationText: "<img src=https://i.imgur.com/uOevoL8.gif><br> Dumber"},
+  
+      //Warren
+      {searchString: "George Soros", explanationText: "<img src=https://i.imgur.com/3wZllCP.gif><br> Satan"},
+      {searchString: "Soros", explanationText: "<img src=https://i.imgur.com/3wZllCP.gif><br> Satan"},
+      {searchString: "Tim Apple", explanationText: "<img src=https://i.imgur.com/9ZLHATj.gif><br> Tim/Apple"},
+      {searchString: "Kellyanne", explanationText: "<img src=https://i.imgur.com/2hoVx6j.gif><br> Beloved"},
+      {searchString: "Roger Stone", explanationText: "<img src=https://i.imgur.com/EcapEJt.gif><br> A Real Creep"},
+  
+      //Pete
+      {searchString: "Putin", explanationText: "<img src=https://i.imgur.com/u6ch7VZ.gif><br> A Real Leader"},
+      {searchString: "Stallone", explanationText: "<img src=https://i.imgur.com/AImNKHp.gif><br> Stallion"},
+      {searchString: "Alfred E. Neuman", explanationText: "<img src=https://i.imgur.com/KDSskFj.gif><br> Very Funny"},
+      {searchString: "Dr Carson", explanationText: "<img src=https://i.imgur.com/N6HiopN.gif><br> A Sick Puppy"},
+      {searchString: "Psycho Joe", explanationText: "<img src=https://i.imgur.com/k15WspH.gif><br> Off His Meds"},
+      {searchString: "Crenshaw", explanationText: "<img src=https://i.imgur.com/15fYnIQ.gif><br> Sucker"},
+   
+      //Bloomberg
+      {searchString: "Lindell", explanationText: "<img src=https://i.imgur.com/kIJeZ9N.gif><br> A Wacky One"},
+      {searchString: "Murdoch", explanationText: "<img src=https://i.imgur.com/980JJ0h.gif><br> Dumb Shit"},
+      {searchString: "Romney", explanationText: "<img src=https://i.imgur.com/7DjuYqe.gif><br> Big Loser"},
+
+      //Booker
+      {searchString: "Kayleigh", explanationText: "<img src=https://i.imgur.com/wj7K3cJ.gif><br> Good girl"},
+
+      //Klobuchar
+      {searchString: "Schlapp", explanationText: "<img src=https://i.imgur.com/Wp70QnE.gif><br> Fancy"},
+
+      //Beto
+      {searchString: "Netanyahu", explanationText: "<img src=https://i.imgur.com/0MWd4N2.gif><br> Bibi"},
+
+      //Clinton
+      {searchString: "Epstein", explanationText: "<img src=https://i.imgur.com/HieszTj.gif><br> Can of Worms"},
+      {searchString: "Seth and Vince and … Kobe", explanationText: "<img src=https://i.imgur.com/Swtk5iE.gif><br> Who Knows?"},
+      {searchString: "Weinstein", explanationText: "<img src=https://i.imgur.com/keoS3Rw.gif><br> Poor Bastard"},
+
+      //Obama
+      {searchString: "Adelson", explanationText: "<img src=https://i.imgur.com/KPvZsCL.gif><br> Moneybags"},
+      {searchString: "Wright", explanationText: "<img src=https://i.imgur.com/WmfAzDP.gif><br> Big Problem for Michelle"},
+
+      //Yang
+      {searchString: "Osama", explanationText: "<img src=https://i.imgur.com/QEFUpHR.gif><br> Probably the worst ever."},
+      {searchString: "Peter Theil", explanationText: "<img src=https://i.imgur.com/KsbPFMN.gif><br> My special guy"},
+      {searchString: "Tiger Woods", explanationText: "<img src=https://i.imgur.com/Tbl6Ida.gif><br> What a swing!"},
+      {searchString: "Schultz", explanationText: "<img src=https://i.imgur.com/AHMnHKZ.gif><br> Coffee-Boy"},
+      {searchString: "Cuban", explanationText: "<img src=https://i.imgur.com/Gi840wE.gif><br> Con-Artist"},
+
+      //Gabbard
+      {searchString: "Assange", explanationText: "<img src=https://i.imgur.com/ymrl0Qs.gif><br> Major Leaker"},
+      {searchString: "Cheney", explanationText: "<img src=https://i.imgur.com/hKiHLpC.gif><br> Gets it now"},
+      {searchString: "David Duke", explanationText: "<img src=https://i.imgur.com/CfnIqo2.gif><br> Never Been a Fan"},
+      {searchString: "Kellog", explanationText: "<img src=https://i.imgur.com/Q5uBm9c.gif><br> My Kind of General"},
+      {searchString: "Modi", explanationText: "<img src=https://i.imgur.com/cwD1muT.gif><br> Howdy Modi"},
+      {searchString: "Richard Spencer", explanationText: "<img src=https://i.imgur.com/FZCsgaL.gif><br> Weird"},
+      {searchString: "Rogan", explanationText: "<img src=https://i.imgur.com/c9kFgPf.gif><br> Great Ratings I Hear"},
+      {searchString: "Snowden", explanationText: "<img src=https://i.imgur.com/jq9kxbM.gif><br> Ultimate Traitor"},
+
+      //FUBAR
+      {searchString: "Shinzo", explanationText: "<img src=https://i.imgur.com/XDP82YA.gif><br> Weak Swing"},
+
+      //Pence
+      {searchString: "Karen", explanationText: "<img src=https://i.imgur.com/EGB4ofT.gif><br> 𝑀𝑜𝓉𝒽𝑒𝓇"},
+    ];
+  
+  
+  RecReading=true
+    
+  // Select the node that will be observed for mutations
+  const windowsAdvisorTargetNode = document.getElementById("game_window");
+  
+  // Options for the observer (which mutations to observe)
+  const windowsAdvisorConfig = { attributes: true, childList: true, subtree: true };
+  
+  // Callback function to execute when mutations are observed
+  const callback = (mutationList, observer) => {
+      visitWindow = document.getElementsByClassName("overlay_window")[0];
+  
+      if(visitWindow == null || visitWindow.classList.contains("done")) {
+          return;
+      }
+      visitWindow.classList.add("done");
+      visitWindow.classList.add("window");
+      let titleBar = visitWindow.querySelector("h3");
+      titleBar.classList.add("title-bar");
+      titleBar.classList.add("title-bar-text")
+      titleBar.style.paddingLeft = "3px";
+  };
+  
+  class Song {
+    constructor(title, artist, coverLink, audioLink) {
+      this.title = title;
+      this.artist = artist;
+      this.coverLink = coverLink;
+      this.audioLink = audioLink;
+    }
+    getTitle() {
+      return this.title;
+    }
+  
+    getArtist() {
+      return this.artist;
+    }
+  
+    getCoverLink() {
+      return this.coverLink;
+    }
+  
+    getAudioLink() {
+      return this.audioLink;
+    }
+  }
+  
+  class Playlist {
+    constructor() {
+      this.songs = [];
+      this.currentSongIndex = 0;
+    }
+  
+    addSong(song) {
+      this.songs.push(song);
+    }
+  
+    getCurrentSong() {
+      return this.songs[this.currentSongIndex];
+    }
+  
+    playNext() {
+      this.currentSongIndex = (this.currentSongIndex + 1) % this.songs.length;
+    }
+  
+    playPrevious() {
+      this.currentSongIndex = (this.currentSongIndex - 1 + this.songs.length) % this.songs.length;
+    }
+  }
+  window.Playlist=Playlist
+  window.Song=Song
+  
+  function changePlaylist(newPlaylist) {
+    playlist = newPlaylist;
+    playlist.currentSongIndex = 0;
+    updateUI(playlist);
+    const audio = document.getElementById("audio");
+    audio.src = playlist.getCurrentSong().audioLink;
+    audio.play();
+  }
+  window.changePlaylist=changePlaylist
+  
+  function updateUI(playlist) {
+      const currentSong = playlist.getCurrentSong();
+      var player = document.getElementById("player");
+      player.querySelector("#cover").src = currentSong.getCoverLink();
+      player.querySelector("#title").textContent = currentSong.getTitle();
+      player.querySelector("#artist").textContent = currentSong.getArtist();
+  }
+  
+  window.updateUI=updateUI
+  
+  
+  function setupMusicPlayer() {
+    playlist = new Playlist();
+  
+  
+    const song1 = new Song(
+      "Little Dark Age",
+      "MGMT",
+      "https://i.imgur.com/d2ctDiz.png",
+      "https://audio.jukehost.co.uk/LQF5RB2PrVcCeObaqQafC2FTwkysnWdT"
+    );
+    
+    const song2 = new Song(
+      "Arrest the President",
+      "Ice Cube",
+      "https://i.imgur.com/BBOMLln.png",
+      "https://audio.jukehost.co.uk/c2cWOAnjSfzh2YI3OhW923cClDn3Iqic"
+    );
+  
+    const song3 = new Song(
+      "This is America",
+      "Childish Gambino",
+      "https://i.imgur.com/cBtRj9K.png",
+      "https://audio.jukehost.co.uk/ZaGEkUEbz72UP4IMnC01mwSxwqX4gen6"
+    );
+  
+    const song4 = new Song(
+      "Troubled Times",
+      "Green Day",
+      "https://i.imgur.com/unNGqOH.png",
+      "https://audio.jukehost.co.uk/CeVuU7lokNQcuzCWWR2cJ6I6qJuSffzT"
+    );
+  
+    const song5 = new Song(
+      "Is This the Life We Really Want",
+      "Roger Waters",
+      "https://i.imgur.com/3NCgTGN.png",
+      "https://audio.jukehost.co.uk/ng58tjZYGQSrNKrGgmH5pFp4wobiaUPe"
+    );
+  
+    const song6 = new Song(
+      "The Kids are Alt-Right",
+      "Bad Religion",
+      "https://i.imgur.com/KzlAiiO.png",
+      "https://audio.jukehost.co.uk/f9HDWEKzRO8NtI5ePOLgh0Nn6pz4nXmQ"
+    );
+  
+    const song7 = new Song(
+      "Vigilante Man",
+      "Glen Hansard",
+      "https://i.imgur.com/SvUzGQH.png",
+      "https://audio.jukehost.co.uk/MasC7udHqmabHGNLCJdlD9sSHIx9gpnV"
+    );
+  
+    const song8 = new Song(
+      "Real American",
+      "Rick Derringer",
+      "https://i.imgur.com/CalYXXW.png",
+      "https://audio.jukehost.co.uk/5aZ2PQqoNvJN2kPuLCaOoGSHmkmI95lk"
+    );
+  
+    playlist.addSong(song1);
+    playlist.addSong(song2);
+    playlist.addSong(song3);
+    playlist.addSong(song4);
+    playlist.addSong(song5);
+    playlist.addSong(song6);
+    playlist.addSong(song7);
+    playlist.addSong(song8);
+  
+    const playerContainer = document.createElement("div");
+    playerContainer.id = "player";
+  
+   const displayBox = document.createElement("div");
+  displayBox.id = "display-box";
+  
+  const coverElement = document.createElement("img");
+  coverElement.id = "cover";
+  displayBox.appendChild(coverElement);
+  
+  const infoContainer = document.createElement("div");
+  infoContainer.id = "info-container";
+  infoContainer.style.backgroundImage = "url('https://i.imgur.com/BB1ejv6.png')";
+  infoContainer.style.backgroundSize = "cover"; // Optional: adjust based on your needs
+  infoContainer.style.color = "white"; // Set text color to white
+  
+  const songInfo = document.createElement("div");
+  songInfo.id = "song-info";
+  
+  const titleElement = document.createElement("h3");
+  titleElement.id = "title";
+  titleElement.style.fontWeight = 'normal'; // Make it normal as per previous request
+  songInfo.appendChild(titleElement);
+  
+  const artistElement = document.createElement("p");
+  artistElement.id = "artist";
+  songInfo.appendChild(artistElement);
+  
+  infoContainer.appendChild(songInfo);
+  displayBox.appendChild(infoContainer);
+  
+  playerContainer.appendChild(displayBox);
+  
+  const controlsContainer = document.createElement("div");
+  controlsContainer.id = "controls-container";
+  
+  const controls = document.createElement("div");
+  controls.id = "controls";
+  
+  const prevButton = document.createElement("img");
+  prevButton.id = "prevButton";
+  prevButton.src = "https://i.imgur.com/imIqTEA.png";
+  prevButton.alt = "Previous";
+  controls.appendChild(prevButton);
+  
+  const playPauseButton = document.createElement("img");
+  playPauseButton.id = "playPauseButton";
+  playPauseButton.src = "https://i.imgur.com/oQbfTxw.png"; // Set the default play image
+  playPauseButton.alt = "Play/Pause";
+  controls.appendChild(playPauseButton);
+  
+  const nextButton = document.createElement("img");
+  nextButton.id = "nextButton";
+  nextButton.src = "https://i.imgur.com/7TtaN04.png";
+  nextButton.alt = "Next";
+  controls.appendChild(nextButton);
+  
+  controlsContainer.appendChild(controls);
+  
+  playPauseButton.addEventListener("click", function () {
+    const audio = document.getElementById("audio");
+    if (audio.paused) {
+      audio.play();
+      playPauseButton.src = "https://i.imgur.com/oQbfTxw.png"; // Set the pause image
+    } else {
+      audio.pause();
+      playPauseButton.src = "https://i.imgur.com/ttdoyfG.png"; // Set the play image
+    }
+  });
+  
+  nextButton.addEventListener("click", function () {
+    playlist.playNext();
+    updateUI(playlist);
+    const audio = document.getElementById("audio");
+    audio.src = playlist.getCurrentSong().audioLink;
+    audio.play();
+  });
+  
+  prevButton.addEventListener("click", function () {
+    playlist.playPrevious();
+    updateUI(playlist);
+    const audio = document.getElementById("audio");
+    audio.src = playlist.getCurrentSong().audioLink;
+    audio.play();
+  });
+  
+    const progressBarContainer = document.createElement("div");
+    progressBarContainer.id = "progress-bar-container";
+  
+    const progressBar = document.createElement("progress");
+    progressBar.type = "range";
+    progressBar.id = "progress-bar";
+    progressBar.value = "0";
+    progressBar.max = "100";
+  
+  
+    progressBarContainer.appendChild(progressBar);
+    controlsContainer.appendChild(progressBarContainer);
+    playerContainer.appendChild(controlsContainer);
+  
+   const volumeContainer = document.createElement("div");
+    volumeContainer.id = "volume-container";
+  
+  const volumeLabel = document.createElement("img");
+  volumeLabel.src = "https://i.imgur.com/0BJYsXt.png";
+  volumeLabel.alt = "Volume";
+  volumeContainer.appendChild(volumeLabel);
+  
+    const volumeSliderContainer = document.createElement("div");
+    volumeSliderContainer.classList.add("is-vertical");
+    volumeSliderContainer.style.marginLeft = "23%";
+    volumeSliderContainer.style.height = "126px";
+  
+    const volumeSlider = document.createElement("input");
+    volumeSlider.type = "range";
+    volumeSlider.id = "volumeSlider";
+    volumeSlider.min = 0;
+    volumeSlider.max = 9;
+    volumeSlider.step = 1;
+    volumeSlider.value = 1; // Initial volume
+  
+    volumeSliderContainer.appendChild(volumeSlider);
+  
+    const volumeDisplay = document.createElement("span");
+    volumeDisplay.id = "volume-display";
+    volumeDisplay.style.fontWeight = 'bold'; 
+    volumeDisplay.style.display = 'none';
+    volumeDisplay.textContent = "1";
+  
+    volumeContainer.appendChild(volumeSliderContainer);
+    volumeContainer.appendChild(volumeDisplay);
+  
+    playerContainer.appendChild(volumeContainer);
+  
+    gameWindow_player.insertAdjacentElement("afterend", playerContainer);
+  
+  
+    function updateProgressBar() {
+      const audio = document.getElementById("audio");
+      const progress = (audio.currentTime / audio.duration) * 100;
+      try{progressBar.value = progress}
+    catch{}
+    }
+  
+   
+    progressBar.addEventListener("input", function () {
+      const audio = document.getElementById("audio");
+      const seekTime = (progressBar.value / 100) * audio.duration;
+      audio.currentTime = seekTime;
+    });
+  
+    const audio = document.createElement("audio");
+    audio.id = "audio";
+    audio.src = playlist.getCurrentSong().audioLink;
+    audio.volume = 1/9;
+  
+    audio.addEventListener("timeupdate", updateProgressBar);
+    audio.addEventListener("ended", function () {
+      // Play the next song when the current song ends
+      playlist.playNext();
+      updateUI(playlist);
+      audio.src = playlist.getCurrentSong().audioLink;
+      audio.play();
+    });
+  
+      let currentVolume = 1; // Initial volume
+  
+    volumeSlider.addEventListener("input", function () {
+      currentVolume = parseInt(volumeSlider.value, 10);
+      updateVolumeDisplay();
+      updateAudioVolume();
+    });
+  
+    function updateVolumeDisplay() {
+      volumeDisplay.textContent = currentVolume;
+    }
+  
+     function updateAudioVolume() {
+      const audio = document.getElementById("audio");
+      audio.volume = currentVolume / 9; // Set volume between 0 and 1
+    }
+  
+    document.body.appendChild(audio);
+    audio.play();
+  
+    // Update the UI when the page loads
+    updateUI(playlist);
+  }
+  
+  const style = document.createElement("style");
+  style.textContent = `
+  #player {
+      border: 3px solid #C9C9C9; /* Add your desired border style */
+      display: flex;
+      flex-direction: row;
+    height:191px;
+      background-Image: url("https://i.imgur.com/Ok791w6.png");
+    }
+  
+    #display-box {
+      display: flex;
+      align-items: center;
+      width: 50%;
+    }
+  
+    #cover {
+      width: 176px;
+    height:176px;
+    }
+  
+    #info-container {
+      display: flex;
+      flex-direction: row;
+      height:178px;
+    width:127px;
+    margin-top: 3px;
+    }
+  
+    #song-info {
+      width: 100%;
+    padding:5px;
+    }
+  
+    #controls-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px;
+      width:100%;
+    padding-top:15px;
+  
+    }
+    .is-vertical #volumeSlider {
+    width: 16px;
+    appearance: slider-vertical;
+  }
+  
+    #controls {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      width: 80%;
+    }
+  
+    #progress-bar-container {
+      width: 100%;
+    }
+  
+    #progress-bar {
+      width: 80%;
+      margin: auto;
+      display: flex;
+      margin-Top: 20px;
+    }
+    
+  `;
+
+document.head.appendChild(style);
+
+const gameWindow_player = document.getElementById("game_window");
+//use this function directly or put it in an event listener to start the music on the press of a certain button
+setupMusicPlayer();
+
+campaignTrail_temp.achievements = {
+  
+  "Teflon Don" : {
+  "image" : "https://i.imgur.com/Vk9WA5O.gif",
+  "description" : "Don't Get Impeached",
+  "cannotBeCheated" : true
+  },
+
+  "Blue Mondays" : {
+    "image" : "https://i.imgur.com/mEWpfgZ.gif",
+    "description" : "'Win' The Midterms",
+    "cannotBeCheated" : true
+    },
+
+  "A Switch In Time" : {
+    "image" : "https://i.imgur.com/S9zncV4.gif",
+    "description" : "Get Trump Judges",
+    "cannotBeCheated" : true
+    },
+
+  "Nothingburger" : {
+  "image" : "https://i.imgur.com/fjWvWqr.gif",
+  "description" : "Get Impeached Twice, And Win",
+  "cannotBeCheated" : true
+  },
+
+  "Dealmaker" : {
+  "image" : "https://i.imgur.com/Z5M2I4H.gif",
+  "description" : "Pass 3 Major Bills",
+  "cannotBeCheated" : true
+  },
+
+  "Tired of Winning?" : {
+  "image" : "https://i.imgur.com/1VUJKTy.gif",
+  "description" : "Pass 0 Major Bills, And Win",
+  "cannotBeCheated" : true
+  },
+
+  "Hunter Killer" : {
+      "image" : "https://i.imgur.com/cqkcPbR.gif",
+      "description" : "Put an Old Man to Bed",
+      "cannotBeCheated" : true
+  },
+
+  "Bern Out" : {
+      "image" : "https://i.imgur.com/N4ZhWbm.gif",
+      "description" : "Halt the Revolution",
+      "cannotBeCheated" : true
+  },
+
+  "Washington red. Skinned" : {
+      "image" : "https://i.imgur.com/etnF8lc.gif",
+      "description" : "School a Professor",
+      "cannotBeCheated" : true
+  },
+
+  "Pride Before the Fall" : {
+      "image" : "https://i.imgur.com/pKyfmzH.gif",
+      "description" : "Send a Mayor Packing",
+      "cannotBeCheated" : true
+  },
+
+  "Minnesota à trois" : {
+    "image" : "https://i.imgur.com/gyZ2YkP.gif",
+    "description" : "Melt a Snowwoman",
+    "cannotBeCheated" : true
+  },
+
+  "Bloomberg Terminal" : {
+      "image" : "https://i.imgur.com/lEYDah3.gif",
+      "description" : "Best an Old Friend",
+      "cannotBeCheated" : true
+  },
+
+  "Don't Stop Believ---" : {
+      "image" : "https://i.imgur.com/ZJZOjp8.gif",
+      "description" : "Whack a Jerseyboy",
+      "cannotBeCheated" : true
+  },
+
+  "Texas Told'Em" : {
+      "image" : "https://i.imgur.com/D9tcDzB.gif",
+      "description" : "Eclipse a Rising Star",
+      "cannotBeCheated" : true
+  },
+
+"Do the MATH" : {
+    "image" : "https://i.imgur.com/jmPZIv2.gif",
+    "description" : "Bankrupt a Businessman",
+    "cannotBeCheated" : true
+  },
+
+"Hawaii Cried-Oh" : {
+    "image" : "https://i.imgur.com/1q1rYKk.gif",
+    "description" : "Wipeout a Surfer",
+    "cannotBeCheated" : true
+  },
+
+  "What Happened" : {
+    "image" : "https://i.imgur.com/Zs27olV.gif",
+    "description" : "Banish a Spectre",
+    "cannotBeCheated" : true
+  },
+
+  "Audacity of Nope" : {
+    "image" : "https://i.imgur.com/AAn89bR.gif",
+    "description" : "Beat the Best",
+    "cannotBeCheated" : true
+  },
+
+  "You're Fired" : {
+    "image" : "https://i.imgur.com/Vv5mEQI.gif",
+    "description" : "Lose",
+    "cannotBeCheated" : true
+ },
+
+  "Back to Jamaica" : {
+      "image" : "https://i.imgur.com/jHSQz7s.gif",
+      "description" : "Prove Dad Right",
+      "cannotBeCheated" : true,
+  },
+
+  "Take The Hill" : {
+    "image" : "https://i.imgur.com/slpWH7i.gif",
+    "description" : "Be a Sore Loser",
+    "cannotBeCheated" : true,
+  },
+
+  "God's Plan" : {
+    "image" : "https://i.imgur.com/wvQJayc.gif",
+    "description" : "Win, Despite It All",
+    "cannotBeCheated" : true,
+  },
+
+  "FUBAR" : {
+  "image" : "https://i.imgur.com/DFdGYL3.gif",
+  "description" : "Go a Little Too Far",
+  "cannotBeCheated" : true,
+  },
+
+  "But Who's Counting?" : {
+  "image" : "https://i.imgur.com/LuoDeUT.gif",
+  "description" : "Lose the Popular Vote By at least 10 Million, And Win",
+  "cannotBeCheated" : true
+  },
+
+  "The Last Temptation" : {
+    "image" : "https://i.imgur.com/5fUwbuR.gif",
+    "description" : "Cast Out The Devil",
+    "cannotBeCheated" : true
+    },
+
+  "Mask Off" : {
+    "image" : "https://i.imgur.com/8KkPqdX.gif",
+    "description" : "Win 350 or More Electoral College Votes",
+    "cannotBeCheated" : true
+},
+
+  "Mask Off" : {
+      "image" : "https://i.imgur.com/8KkPqdX.gif",
+      "description" : "Win 350 or More Electoral College Votes",
+      "cannotBeCheated" : true
+  },
+
+  "Vincerò" : {
+    "image" : "https://i.imgur.com/XmlrUmn.gif",
+    "description" : "Win 450 or More Electoral College Votes",
+    "cannotBeCheated" : true
+  },
+}
