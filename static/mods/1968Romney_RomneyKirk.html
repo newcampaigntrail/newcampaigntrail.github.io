@@ -214,10 +214,10 @@ campaignTrail_temp.questions_json = [
     },
     {
         "model": "campaign_trail.question",
-        "pk": 270,
+        "pk": 9425,
         "fields": {
             "priority": 2,
-            "description": "President Johnson has just announced a bombing halt to bring the North Vietnamese to the table, and they’ve accepted, along with the South Vietnamese -- it’s merely a few days before the election, and the time to respond is slim, though your support of a bombing halt in the past helps some. What will you hit on as the campaign comes to a close?",
+            "description": "President Johnson has just announced a bombing halt to bring the North Vietnamese to the table, and they’ve accepted -- but not the south. No, they hold on, looking forward to an administration -- yours -- with the confident touch of Nixon, of Kissinger. You don't know why. Your stock is definitely up now -- what will you do?",
             "likelihood": 1
         }
     },
@@ -245,15 +245,6 @@ campaignTrail_temp.questions_json = [
         "fields": {
             "priority": 0,
             "description": "Finally, Humphrey has called for a bombing halt, and has clearly taken the initiative on the issue. You haven't issued a statement of any similar sort so far, and whatever disaffected Democrat support you've harnessed is rushing back to Humphrey. What will you do?",
-            "likelihood": 1
-        }
-    },
-    {
-        "model": "campaign_trail.question",
-        "pk": 9425,
-        "fields": {
-            "priority": 2,
-            "description": "President Johnson has just announced a bombing halt to bring the North Vietnamese to the table, and they’ve accepted -- but not the south. No, they hold on, looking forward to an administration -- yours -- with the confident touch of Nixon, of Kissinger. You don't know why. Your stock is definitely up now -- what will you do?",
             "likelihood": 1
         }
     },
@@ -299,6 +290,15 @@ campaignTrail_temp.questions_json = [
         "fields": {
             "priority": 0,
             "description": "After such a vigorous campaign, Wallace's numbers have begun to dip, to careen down in the low teens and in some polls, single digits. All this, to Humphrey's gain -- Wallace's support in the polls had been fueled by activist conservatives, and rather than switching their vote to you, they're sitting out the election entirely. What will you do?",
+            "likelihood": 1
+        }
+    },
+    {
+        "model": "campaign_trail.question",
+        "pk": 270,
+        "fields": {
+            "priority": 2,
+            "description": "President Johnson has just announced a bombing halt to bring the North Vietnamese to the table, and they’ve accepted, along with the South Vietnamese -- it’s merely a few days before the election, and the time to respond is slim, though your support of a bombing halt in the past helps some. What will you hit on as the campaign comes to a close?",
             "likelihood": 1
         }
     }
@@ -13195,6 +13195,7 @@ var principles = 0;
 var ideology = 0;
 var nixon = 0;
 var vietnam = 0;
+var treason = 0;
 
 let polling = e.current_results;
 function tunnel(new_q){
@@ -13268,10 +13269,10 @@ cyoAdventure = function(a) {
                
     }             
     if(ans == 3259 || ans == 3260 || ans == 3261 || ans == 3262){
-        if((nixon == 1) && (ideology >= 1)){       
+        if((nixon == 1) && (ideology >= -3)){       
             answerSwapper(3236, 9383, false);
 		}
-        if((nixon == 1) && (ideology < 1)){       
+        if((nixon == 1) && (ideology < -3)){       
             answerSwapper(3236, 9384, false);
 		}
         if((nixon == 0) && (ideology < 1)){       
@@ -13290,16 +13291,17 @@ cyoAdventure = function(a) {
 		}
                
     }
-    if(ans == 1716 || ans == 1717 || ans == 1718 || ans == 1719){
-        if(nixon == 2){       
-            campaignTrail_temp.questions_json[23] = tunnel(9425);
-		} 
+    if(ans == 9744 || ans == 9474 ){
         if(vietnam == 1){       
             campaignTrail_temp.questions_json[23] = tunnel(270);
 		}
-        if(vietnam == 0){       
+        if(vietnam == 0 && nixon < 2){       
             campaignTrail_temp.questions_json[23] = tunnel(9446);
-		}       
+		}
+        if(vietnam == 0 && nixon == 2){       
+            campaignTrail_temp.questions_json[23] = tunnel(9425);
+            treason += 1
+		}               
                
     }
     // debate cyoa! this matters.        
@@ -13434,7 +13436,14 @@ endingPicker = (out, totv, aa, quickstats) => {
 e.header = "<h2></h2>"
 e.pages = "<p></p>"
 */
+// nixon win
+if (treason == 1 && out == "win") {
+    e.header = ""
+    e.pages = "<h3>“Willard Affair” Resolved; Utah To Present New Delegation at IRNC</h3><p><p style='margin-top:0em;'><br>July 15, 1992<br>The New York Times<br>Usually, few of the few-thousand-or-so delegates who officially nominate each party’s presidential candidates receive any attention. Most are laymen active in local politics who receive nominations from their state party, travel to the convention, cast a pro-forma vote and go home with the feeling that they played a part in history. But this year, one young man proved to be a major exception to this rule. Following a wild day of media outrage, interrupted speeches and near-instantaneous protests outside of the Cow Palace convention hall in San Francisco, the Independent Republican National Committee executive board has unanimously requested that Utah submit a new delegation to their convention. The reason? The inclusion on the state’s slate of one Willard Romney, son of the ex-President George Romney, whose appearance at the convention is believed to be the first public appearance of any member of the Romney family in approximately two decades.<br><br>It can be hard to understand why the younger Romney thought he would be welcomed. The passage of years have still not lessened the shock that the seemingly trustworthy and affable Michigan Governor, elected on the promise of ending the bloodshed in Vietnam, had himself worked to prolong the war for electoral gain. He would be quickly impeached, removed and imprisoned after the revelation of the scandal during the opening months of his presidency, setting the stage for years of political chaos that most Americans would like to forget. Just the fact that the organization once known as the Grand Old Party survived intact, albeit with a name change, is seen by most historians to be a minor political miracle. <br><br>To this day, the Independent Republican Party has had to work near-continuously to distance itself from the disgraced ex-President, and it is incredibly rare for either party to nominate Mormons outside of the state of Utah. Officials associated with President Ed Koch’s re-election campaign wasted no time to pounce on the incident, with campaign spokesman George Stephanapolus declaring that it highlights the importance of the administration's work to tackle cults. Independent Republican National Committee Chairman Paul Weyrich, for his part, was uncharacteristically silent, merely putting out a press release declaring Romney’s presence an “unintended error” that will be “swiftly corrected by all possible means.”<br><br>In a later statement to the press, Weyrich made clear that the replacement of the Utah delegation will not impact the scheduled timing of the official nomination of Senator Jesse Helms or the convention’s keynote speech by former acting President Richard M. Nixon.<br><br></p>"
+    e.image = "https://i.imgur.com/SqLWSKC.png ";
+    return construct(0);
 
+}
 // low Conservative
 if (principles <= -3 && ideology <= -4 && out == "win") {
     e.header = ""
@@ -13539,14 +13548,6 @@ if (principles >= 0 && out == "loss") {
     e.header = ""
     e.pages = "<h3>Vice President Muskie Loses Control in Detroit</h3><p><p style='margin-top:0em;'><br>New York Times<br><br>October 17th, 1970<br><br>While campaigning for Senator Phil Hart today in Michigan, Vice President Muskie appeared to stumble briefly on stage, getting agitated by a local heckler calling on the Vice President to explain why desegregation lawsuits in the state were being paused. When pressed by the heckler, who shouted, 'Why are you betraying us?' repeatedly while the Vice President spoke, Muskie grew agitated and shouted, 'these things will be done in due time,' towards the gentleman, who was promptly escorted out of the area by the Secret Service.<br><br>Vice President Muskie's late game campaign visit was made in hopes to shake up a situation which is looking increasingly dismal for Senate Democrats-polling indicates Senator Hart's colleagues in Tennessee, Wyoming, and Texas are already goners, and Senator Hart's polling against Representative Huber looks increasingly close. The so called Conscience of the Senate, and a key ally of the embattled President, Senator Hart's loss in Michigan would certainly cement Republican domination of the Senate and place a serious stumbling block in the place of the President's efforts to tame inflation and withdraw from Vietnam.<br><br>Attorney General Christopher has denied that the slow-tracking of Northern desegregation lawsuits has anything to do with the upcoming midterm elections, and assures those at home that it is purely due to a reassessment of local rules and regulations nationwide. Continued desegregation lawsuits are expected starting next year-sparking fears of <q>white backlash</q> by top Democrats and concerns that racial riots in Northern cities will continue. President Humphrey has spoken on this issue, saying that he supports human rights, unconditionally.</p>"
     e.image = "https://i.imgur.com/LPfrCGU.png";
-    return construct(0);
-
-}
-// nixon win
-if (nixon == 2 && vietnam == 0 && out == "win") {
-    e.header = ""
-    e.pages = "<h3>“Willard Affair” Resolved; Utah To Present New Delegation at IRNC</h3><p><p style='margin-top:0em;'><br>July 15, 1992<br>The New York Times<br>Usually, few of the few-thousand-or-so delegates who officially nominate each party’s presidential candidates receive any attention. Most are laymen active in local politics who receive nominations from their state party, travel to the convention, cast a pro-forma vote and go home with the feeling that they played a part in history. But this year, one young man proved to be a major exception to this rule. Following a wild day of media outrage, interrupted speeches and near-instantaneous protests outside of the Cow Palace convention hall in San Francisco, the Independent Republican National Committee executive board has unanimously requested that Utah submit a new delegation to their convention. The reason? The inclusion on the state’s slate of one Willard Romney, son of the ex-President George Romney, whose appearance at the convention is believed to be the first public appearance of any member of the Romney family in approximately two decades.<br><br>It can be hard to understand why the younger Romney thought he would be welcomed. The passage of years have still not lessened the shock that the seemingly trustworthy and affable Michigan Governor, elected on the promise of ending the bloodshed in Vietnam, had himself worked to prolong the war for electoral gain. He would be quickly impeached, removed and imprisoned after the revelation of the scandal during the opening months of his presidency, setting the stage for years of political chaos that most Americans would like to forget. Just the fact that the organization once known as the Grand Old Party survived intact, albeit with a name change, is seen by most historians to be a minor political miracle. <br><br>To this day, the Independent Republican Party has had to work near-continuously to distance itself from the disgraced ex-President, and it is incredibly rare for either party to nominate Mormons outside of the state of Utah. Officials associated with President Ed Koch’s re-election campaign wasted no time to pounce on the incident, with campaign spokesman George Stephanapolus declaring that it highlights the importance of the administration's work to tackle cults. Independent Republican National Committee Chairman Paul Weyrich, for his part, was uncharacteristically silent, merely putting out a press release declaring Romney’s presence an “unintended error” that will be “swiftly corrected by all possible means.”<br><br>In a later statement to the press, Weyrich made clear that the replacement of the Utah delegation will not impact the scheduled timing of the official nomination of Senator Jesse Helms or the convention’s keynote speech by former acting President Richard M. Nixon.<br><br></p>"
-    e.image = "https://i.imgur.com/SqLWSKC.png ";
     return construct(0);
 
 }
