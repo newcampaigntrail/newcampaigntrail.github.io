@@ -331,6 +331,110 @@ tooltipify = function(e) {
 // TOOLTIP TEXT
 // <span class='aquatooltip' onmouseover='tooltipify(event)'>TEXT<span class='aquatooltiptext'>TOOLTIP</span></span>
 
+// Question count selector
+// Accessing the full 31 questions can make some achievements easier
+bhToggle = function() {
+    if (document.getElementById("difficulty_level") && !document.getElementById("bh_select")){
+        let bhOptions = [["25 (Best)", 25], ["31", 31]];
+        let dd = document.createElement("select");
+        dd.id = "bh_select";
+        
+        for(let i = 0; i < bhOptions.length; i++){
+            let oo = document.createElement("option");
+            oo.text = bhOptions[i][0];
+            if(bhOptions[i][0] == "25 (Best)"){
+                oo.selected = true;
+            }
+            oo.value = bhOptions[i][1];
+            dd.options.add(oo);
+        }
+
+        let ff = document.createElement("form");
+        ff.name = "bh_select";
+        let h3 = document.createElement("h3");
+        h3.textContent = "Select the number of questions:";
+        ff.appendChild(h3);
+        ff.appendChild(dd);
+        document.getElementById("difficulty_level").appendChild(ff);
+        dd.addEventListener("change", function () {
+            campaignTrail_temp.global_parameter_json[0].fields.question_count = this.value;
+        })
+    } else {
+        return;
+    }
+}
+// Styling
+document.styleSheets[0].insertRule("#difficulty_level form {display: inline-block !important; padding: 0 1em !important;", 0);
+document.styleSheets[0].insertRule("#difficulty_level form p {margin: 0 !important;", 0);
+// Observer code
+const diffWatcherConfig = { attributes: true, childList: true, subtree: true };
+const diffObserver = new MutationObserver(bhToggle);
+diffObserver.observe(gameWindowNode, diffWatcherConfig);
+
+// Achievements
+campaignTrail_temp.achievements = {
+    "Deja Vu" : {
+        "image" : "https://i.imgur.com/0nLdcOF.png",
+        "description" : "Get the canon 2000 result as either candidate.",
+        "cannotBeCheated" : true
+    },
+    "Split Decision" : {
+        "image" : "https://i.imgur.com/UFi4GjA.png",
+        "description" : "As either candidate, tie the Electoral College and force Congress to pick the next president.",
+        "cannotBeCheated" : true
+    },
+    "I Am My Own Man" : {
+        "image" : "https://i.imgur.com/9gH7163.png",
+        "description" : "As Al Gore, win in a landslide without attacking Rudy Giuliani.",
+        "cannotBeCheated" : true
+    },
+    "Don't Be Had By A Chad" : {
+        "image" : "https://i.imgur.com/1V8yGV3.png",
+        "description" : "As Al Gore, win without Florida.",
+        "cannotBeCheated" : true
+    },
+    "Son Of The New South" : {
+        "image" : "https://i.imgur.com/FootDd5.png",
+        "description" : "As Al Gore, match or exceed Bill Clinton's performance in the South.",
+        "cannotBeCheated" : true
+    },
+    "Vacation To The Tropics" : {
+        "image" : "https://i.imgur.com/Mex62fp.png",
+        "description" : "As Al Gore, meet Bill's friends.",
+        "cannotBeCheated" : true
+    },
+    "Omaha Steaks" : {
+        "image" : "https://i.imgur.com/MiKcNzi.png",
+        "description" : "As Al Gore, win while personally offending a TV star.",
+        "cannotBeCheated" : true
+    },
+    "Never Forget" : {
+        "image" : "https://i.imgur.com/WPxMJXM.png",
+        "description" : "As Rudy Giuliani, win while talking about 9/11 and Bin Laden at every opportunity.",
+        "cannotBeCheated" : true
+    },
+    "Jesusland" : {
+        "image" : "https://i.imgur.com/BFuOz9K.png",
+        "description" : "As Rudy Giuliani, win with Rick Santorum as your running mate.",
+        "cannotBeCheated" : true
+    },
+    "New Camelot" : {
+        "image" : "https://i.imgur.com/j3qJFHs.png",
+        "description" : "As Rudy Giuliani, match or exceed Jack Kennedy's electoral vote count with J.C. Watts as your running mate.",
+        "cannotBeCheated" : true
+    },
+    "This One's For Shrub" : {
+        "image" : "https://i.imgur.com/9Kt7m4v.png",
+        "description" : "As Rudy Giuliani, win while flipping only Florida.",
+        "cannotBeCheated" : true
+    },
+    "Not Because It Is Easy" : {
+        "image" : "https://i.imgur.com/5tVQoW1.png",
+        "description" : "As Rudy Giuliani, win on impossible difficulty.",
+        "cannotBeCheated" : true
+    }
+}
+
 // Final, necessary additions
 campaignTrail_temp.modBoxTheme = {
     "header_color": "#e4e4e4",
