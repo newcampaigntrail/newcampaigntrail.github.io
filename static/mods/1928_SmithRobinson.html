@@ -1,3 +1,13 @@
+function ctsAchievement(achievement, difficultyChecker = true){
+	if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
+		if(campaignTrail_temp.CTS){
+		unlockAchievement(achievement);
+	}
+}
+
+campaignTrail_temp.cyoa = true
+var wet = 0;
+
 campaignTrail_temp.questions_json = [
   {
       "model": "campaign_trail.question",
