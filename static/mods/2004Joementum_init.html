@@ -1,0 +1,863 @@
+musicMode = () => {
+    songsPlayed = 0;
+    // Initialise custom music
+  
+    $("#music_player")[0].children[0].style.display = "none"
+    $("#music_player")[0].children[1].style.display = "none"
+  
+    document.getElementById("modLoadReveal").style.display = "none"
+    document.getElementById("modloaddiv").style.display = "none"
+  
+    musicBox = document.getElementById("music_player")
+    musicBox.style.display = ""
+  
+    var trackSel;
+    e = campaignTrail_temp
+    e.selectedSoundtrack = 0
+  
+    toTime = (seconds) => {
+        var date = new Date(null);
+        date.setSeconds(seconds);
+        return date.toISOString().substr(11, 8);
+    }
+  
+    generateTime = () => {
+        // Get the audio element
+        var audio = document.getElementById("campaigntrailmusic");
+  
+        timeTracker = document.createElement("div");
+        timeTracker.style = `
+  text-align:left;
+  border-style:solid;
+  border-width:3px;
+  height:150px;
+  width:200px;
+  background-color:#999999;
+  float:right;
+  padding: 10px;
+  `
+        $("#trackSelParent")[0].prepend(timeTracker);
+        $("#trackSelParent")[0].prepend(document.createElement("br"));
+  
+        // Create a new element to display the current position of the audio
+        var positionDisplay = document.createElement("gg");
+        positionDisplay.id = "position-display";
+  
+        // Create a new slider element to change the time
+        var timeSlider = document.createElement("input");
+        timeSlider.type = "range";
+        timeSlider.min = 0;
+        timeSlider.max = 1;
+        timeSlider.step = 0.001;
+        timeSlider.value = 0;
+        timeSlider.style.width = "200px";
+        timeSlider.id = "time-slider";
+  
+        var pausePlay = document.createElement("button");
+        pausePlay.id = "position-display";
+        pausePlay.innerHTML = "<b>Pause</b>"
+        pausePlay.style.width = "100%";
+  
+  
+        pausePlay.addEventListener("click", event => {
+            event.preventDefault();
+            updatePositionDisplay();
+            let audio = document.getElementById("campaigntrailmusic");
+            if (audio.paused) {
+                audio.play();
+                event.target.innerHTML = "<b>Pause</b>";
+                return;
+            }
+            audio.pause();
+            event.target.innerHTML = "<b>Play</b>";
+            return;
+        })
+  
+        var volumeLabel = document.createElement("gg");
+        volumeLabel.id = "volume-label";
+        volumeLabel.innerHTML = "<br><b>Volume: </b>"
+  
+        var volumeSlider = document.createElement("input");
+        volumeSlider.type = "range";
+        volumeSlider.min = 0;
+        volumeSlider.max = 1;
+        volumeSlider.step = 0.001;
+        volumeSlider.value = 0;
+        volumeSlider.style.width = "200px";
+        volumeSlider.id = "volume-slider";
+  
+        volumeSlider.value = audio.volume;
+  
+        timeTracker.appendChild(pausePlay);
+        timeTracker.appendChild(document.createElement("br"));
+        timeTracker.appendChild(document.createElement("br"));
+        timeTracker.appendChild(positionDisplay);
+        timeTracker.appendChild(timeSlider);
+        timeTracker.appendChild(volumeLabel);
+        timeTracker.appendChild(volumeSlider);
+  
+        updatePositionDisplay();
+  
+        //for (let i = 0; i < 10; i++)
+        //timeTracker.append(document.createElement("br"));
+  
+  
+        // Function to update the position display
+        function updatePositionDisplay() {
+            positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+            timeSlider.value = audio.duration ? audio.currentTime / audio.duration : 0;
+        }
+  
+        // Function to change the time of the audio
+        function changeTime() {
+            positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+            audio.currentTime = timeSlider.value * audio.duration;
+        }
+  
+        updateVolume = event => {
+            audio.volume = event.target.value;
+        }
+  
+        // Update the position display and slider every second
+        setInterval(updatePositionDisplay, 1000);
+  
+        // Listen for changes to the time slider and change the time of the audio
+        timeSlider.addEventListener("input", changeTime);
+        volumeSlider.addEventListener("input", updateVolume)
+    }
+  function newMusicPlayer() {
+          trackSel = document.createElement("div");
+          trackSel.id = "trackSelParent"
+          let z = `<br><br><br><br><br><br><br><br><br><br><div id='trackSel' style="text-align:left;border-style:solid;border-width:3px;overflow-y: scroll;overflow-x: hidden;height:200px; width:400px;background-color:#999999;float:right;">`
+          z += `<b><select id='selectSoundtrack'><option value='` + soundtracks[e.selectedSoundtrack].name + `'>` + soundtracks[e.selectedSoundtrack].name + "</option>"
+          for (i in soundtracks) {
+              if (soundtracks[e.selectedSoundtrack] != soundtracks[i]) {
+                  z += `<option value='` + soundtracks[i].name + `'>` + soundtracks[i].name + `</option>`
+              }
+          }
+          z += `</select></b><br><br>`
+              // <label><input type="radio" name="option" value="option1">Option 1</label><br>
+          for (i in soundtracks[e.selectedSoundtrack].tracklist) {
+              let a = soundtracks[e.selectedSoundtrack].tracklist[i]
+              let b = `<label><input class="trackSelector" type="radio" name="trackSelector" value="` + i + `">` + a.name + `</label><br>`
+              z += b
+          }
+          z += "</div><br><br>"
+          trackSel.innerHTML = z
+    
+          // select correct song
+    
+          musicBox.appendChild(trackSel);
+          Array.from(document.getElementById("trackSel").children).filter(f => {
+              return f.tagName == "LABEL"
+          }).map(f => f.children[0])[0].checked = true
+    
+          // set soundtrack changer
+    
+          soundtrackSelector = document.getElementById("selectSoundtrack")
+          soundtrackSelector.onchange = function() {
+              for (i in soundtracks) {
+                  if (soundtracks[i].name == soundtrackSelector.value) {
+                      e.selectedSoundtrack = i
+                      break
+                  }
+              }
+              document.getElementById("trackSelParent").remove()
+              newMusicPlayer()
+          }
+    
+          var matches = document.querySelectorAll('.trackSelector');
+    
+          for (match in matches) {
+              matches[match].onchange = function() {
+                  audio = $("#campaigntrailmusic")[0];
+                  audio.src = soundtracks[e.selectedSoundtrack].tracklist[this.value].url
+                  audio.currentTime = 0
+              }
+          }
+    
+          musicBox.children[2].loop = false
+          musicBox.children[2].src = soundtracks[e.selectedSoundtrack].tracklist[0].url
+    
+          musicBox.children[2].onended = function() {
+              console.log("next track")
+              let selected = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+              let newSel = clamp(selected + 1, soundtracks[e.selectedSoundtrack].tracklist.length - 1, 0)
+              let buttons = Array.from(document.getElementById("trackSel").children).filter(f => {
+                      return f.tagName == "LABEL"
+                  }).map(f => f.children[0])
+                  //let selectedIndex = buttons.map(f=>f.children[0]).map(f=>f.checked)
+              buttons[newSel].click()
+              songsPlayed++; // Increment the songs played counter
+        
+           
+          }
+            
+          for (w = 0; w < 7; w++) {
+              document.getElementById("trackSelParent").appendChild(document.createElement("br"))
+          }
+    
+          generateTime();
+      }
+    
+      clamp = function(a, max, min, overflow = true) {
+          if (overflow) {
+              return a > max ? min : a < min ? max : a;
+          }
+          return a > max ? max : a < min ? min : a;
+      }
+    
+   
+      // Track list
+    
+      var soundtracks = {
+          0: {
+              name: "2004",
+              tracklist: [
+                {
+               "name": "Second Term - JibJab",
+                "url": "https://audio.jukehost.co.uk/dYaqUjT5j0tl4lPtdRIxIVqg673XWTPC"
+              },
+              {
+                "name": "Float On - Modest Mouse",
+                "url": "https://audio.jukehost.co.uk/xBWzqPqn5w1sYDFwDBdRXzyrXzTRDSRt"
+              },
+              {
+                "name": "Somebody Told Me - The Killers",
+                "url": "https://audio.jukehost.co.uk/GV8Wk2nHxsdHIBzv0qGI1x7dn8AlP6hc"
+              },
+              {
+                "name": "Touch The Sky - Kanye West",
+                "url": "https://audio.jukehost.co.uk/CEecRaPUPQ1vgwAYsIhMRTBQ4qq4dmIF"
+            },
+            {
+                "name": "Toxic - Britney Spears",
+                "url": "https://audio.jukehost.co.uk/jNs50cdopNPtwODL9d03PdI86RD035OO"
+              },
+              {
+                "name": "Hey Ya! - OutKast",
+                "url": "https://audio.jukehost.co.uk/q6KIYkrSv3U2ztKRABuasRi5CTgY6OLk"
+              },
+              {
+                "name": "Crazy in Love - Beyonce ft. JAY Z",
+                "url": "https://audio.jukehost.co.uk/fldDyOS48lzKsTrxNOJW4WK87slysxep"
+              },
+              {
+                "name": "Island in the Sun - Weezer",
+                "url": "https://audio.jukehost.co.uk/ND1w5K5F3lHGICbA9MsJgHFTU8gTJPVZ"
+              }
+            ]
+         },
+  
+          
+          
+      }
+  
+    
+      // Set up new music player
+    
+      newMusicPlayer()
+    
+  
+  }
+  
+    $("#game_start").click((event) => {
+      event.preventDefault();
+      $("#election_id_button").click((event) => {
+          musicMode()
+  
+          setInterval(changeFontColour, 200)
+    
+      })
+    })
+  
+  
+  e = campaignTrail_temp;
+
+campaignTrail_temp.global_parameter_json = [
+    {
+        "model": "campaign_trail.global_parameter",
+        "pk": 1,
+        "fields": {
+            "vote_variable": 1.125,
+            "max_swing": 0.12,
+            "start_point": 0.94,
+            "candidate_issue_weight": 10,
+            "running_mate_issue_weight": 3,
+            "issue_stance_1_max": -0.71,
+            "issue_stance_2_max": -0.3,
+            "issue_stance_3_max": -0.125,
+            "issue_stance_4_max": 0.125,
+            "issue_stance_5_max": 0.3,
+            "issue_stance_6_max": 0.71,
+            "global_variance": 0.01,
+            "state_variance": 0.005,
+            "question_count": 30,
+            "default_map_color_hex": "#C9C9C9",
+            "no_state_map_color_hex": "#999999"
+        }
+    }
+]
+
+campaignTrail_temp.election_json = [
+    {
+        "model": "campaign_trail.election",
+        "pk": 9,
+        "fields": {
+            "year": 2004,
+            "summary": "<p>9/11 was a tragedy, an awful event that should have been prevented. With nationalism and patriotism at all time highs across the nation, two war-hawks have championed the nominating process.</p><ul><LI>George W. Bush, the man who led the nation through it's toughest moment, looks to be re-elected over his opponent.<ul><li>Seeing the writing on the wall, the Democratic establishment has decided to throw it's weight behind Senator Joe Lieberman, who ran on a pro-war campaign.",
+            "image_url": "https://i.imgur.com/iMdF9d1.png",
+            "winning_electoral_vote_number": 270,
+            "advisor_url": "https://i.imgur.com/L4b6TIh.png",
+            "recommended_reading": "thanks for playing this redux of joementum. i dont really have anything to say.",
+            "has_visits": 1,
+            "no_electoral_majority_image": "https://www.jetsimon.com/public/static/images/2012-no-majority.jpg",
+            "creator": "Dan Bryan",
+            "display_year": "2004Joementum"
+        }
+    }
+]
+
+campaignTrail_temp.candidate_json = [
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 77,
+        "fields": {
+            "first_name": "George W.",
+            "last_name": "Bush",
+            "election": 9,
+            "party": "Republican",
+            "state": "Texas",
+            "priority": 1,
+            "description": "<p>George W. Bush enters 2000 with the support of the Republican establishment and the name recognition of his father. He has governed Texas for five years and won bipartisan support in that state. He seeks to duplicate that formula on the national stage.</p><p>Bush has broad appeal and a united base, but lacks experience and gravitas in the eyes of some. Can he make the case that he will move beyond the partisanship of the Clinton years and bring \"compassionate conservatism\" to the nation?</p>",
+            "color_hex": "#b82729",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/jfIYdaF.png",
+            "electoral_victory_message": "<h3>Congratulations! You have won the 2000 election.</h3><p>Confounding the predictions of many experts, you were able to turn the tables on Al Gore, in spite of the economy and Clinton's popularity.</p><p>On the political front, you can push for tax cuts to spur the economy and return the budget surplus to the American people. You might also pursue education and immigration reform, individual Social Security accounts, and new laws to defend the family and the sanctity of life.</p>",
+            "electoral_loss_message": "<h3>Sorry! You have lost the 2000 election.</h3><p>Perhaps it was always a long-shot, with the Democrats in such a commanding position after eight years of Bill Clinton. In any case, at least you are still the Governor of Texas.</p><p>Expect Al Gore to unleash a new round of government programs and environmental regulations. You are still youngish, however. If the election was close this time, perhaps you can run again in 2004, or work on behalf your brother Jeb.</p>",
+            "no_electoral_majority_message": "<h3>Wow! You have won in a squeaker.</h3><p>No candidate achieved a majority of the electoral votes, marking the first time this has happened since 1824. Fortunately for you, the majority of U.S. states have Republican controlled congressional delegations, and they will cast their votes accordingly.</p><p>Given the incredibly close nature of the election, you will surely be expected to govern as a moderate, conciliatory President. Right??</p>",
+            "description_as_running_mate": "''",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 78,
+        "fields": {
+            "first_name": "Joe",
+            "last_name": "Lieberman",
+            "election": 9,
+            "party": "Democrat",
+            "state": "Connecticut",
+            "priority": 2,
+            "description": "<p><i>\"I believe that our national security lies not just in protecting our borders, but in bridging divides.\"</i><p>Joseph Isadore Lieberman is a man molded by the nineties. Elected in an upset victory in 1988, he has towed a line of centrism since he first stepped into the chambers of Congress. This has endured into the present day, where his avid support of Iraq, and dissatisfaction with violent video games have resonated with many moderate voters, so much so that Al Gore chose Joe to moderate his image, and to distance himself from the Clinton scandals.<p>Unfortunately, many on the left see Lieberman as somebody not worth voting for, as his buddy-buddy relationship with the Senate's top Republicans and warm apparatus with Bush have turned off many. Joe will have to make his case that his experience and ability to get things done is the reason you should vote for him.",
+            "color_hex": "#2f3891",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/tq4N6gm.png",
+            "electoral_victory_message": "<h3>Congratulations! You have won the 2000 election.</h3><p>Though it was perhaps expected, you could have easily faltered at a number of points. Credit to you for pulling through.</p><p>On the political front, you can continue the Clinton legacy and strengthen Social Security for generations to come. Perhaps you can succeed on health care where Clinton came up short? Or maybe you can create a future of renewable energy for America. Just be wary of a (George or Jeb?) Bush challenge in 2004.</p>",
+            "electoral_loss_message": "<h3>Sorry! You have lost the 2000 election.</h3><p>Surely the second-guessing will be intense, but if things were close you could probably run again in 2004.</p><p>It seems that with George W. Bush and a Republican majority, the United States can expect some conservative policy-making over the next four years. Hopefully Bush comes through on his promise to govern in a bipartisan, conciliatory manner. A lot should depend on the margin of his victory, and whether it was large or small.</p>",
+            "no_electoral_majority_message": "<h3>Sorry! You have lost in a squeaker.</h3><p>No candidate achieved a majority of the electoral votes, for the first time since 1824. Unfortunately for you, a majority of states have Republican controlled congressional delegations.</p><p>It seems that with George W. Bush and a Republican majority, the United States can expect some conservative policy-making over the next four years. Hopefully Bush comes through on his promise to govern in a bipartisan, conciliatory manner.</p>",
+            "description_as_running_mate": "''",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 79,
+        "fields": {
+            "first_name": "Ralph",
+            "last_name": "Nader",
+            "election": 9,
+            "party": "Green",
+            "state": "Connecticut",
+            "priority": 3,
+            "description": "<p>Ralph Nader enters the 2000 election as the Green candidate after years as an activist and consumer advocate.</p><p>After eight years of Bill Clinton, it is clear that the United States needs a true liberal alternative -- one that will fight for fair trade, universal health care, free college, and campaign finance reform. Nader's primary goal in this election is to win 5% of the popular vote, which will qualify the Green Party for federal matching funds in 2004.</p>",
+            "color_hex": "#2fb02a",
+            "secondary_color_hex": "#A1FFA1",
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/static/images/ralph-nader-2000.jpg",
+            "electoral_victory_message": "<h3>Congratulations! You have won the 2000 election.</h3><p>This was definitely not supposed to happen. Good luck!</p>",
+            "electoral_loss_message": "<h3>As expected, you have lost the 2000 election.</h3><p>The legacy of this campaign depends on a couple of factors. First of all, did you receive 5% of the popular vote? If so, congratulations! You will enable the Green Party to run a vigorous campaign in 2004 and present a true choice to the American people. Also, the Democrats were a little peeved that you \"stole\" votes from them in this election. Hopefully that doesn't lead to a backlash.</p>",
+            "no_electoral_majority_message": "<h3>Wow! No candidate received 270 electoral votes, but the House will elect George W. Bush as President.</h3><p>Did you receive 5% of the popular vote? If so, congratulations! You will enable the Green Party to run a vigorous campaign in 2004 and present a true choice to the American people. Also, the Democrats were a little peeved that you \"stole\" votes from them in this election. Hopefully that doesn't lead to a backlash, especially since they will lose the vote in the House.</p>",
+            "description_as_running_mate": "''",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 80,
+        "fields": {
+            "first_name": "Aaron",
+            "last_name": "Russo",
+            "election": 9,
+            "party": "Libertarian",
+            "state": "New York",
+            "priority": 4,
+            "description": "''",
+            "color_hex": "#FFFF00",
+            "secondary_color_hex": "#FFFFC0",
+            "is_active": 0,
+            "image_url": "''",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "''",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 81,
+        "fields": {
+            "first_name": "Dick",
+            "last_name": "Cheney",
+            "election": 9,
+            "party": "Republican",
+            "state": "Wyoming",
+            "priority": 5,
+            "description": "''",
+            "color_hex": "#FF0000",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/8b0TM0f.png",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "<p><i>\"It is easy to take liberty for granted, when you have never had it taken from you.\"</i><p>Richard Bruce Cheney, the vice-president.",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 85,
+        "fields": {
+            "first_name": "Mary",
+            "last_name": "Landrieu",
+            "election": 9,
+            "party": "Democrat",
+            "state": "Louisiana",
+            "priority": 9,
+            "description": "''",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/WjOBDWg.png",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "<p><i>\"I'm fighting for small businesses. I'm not fighting for big oil.\"</i><P>A populist, a centrist, and a woman, Mary Loretta Landrieu has it all. Being elected to the Senate in 1997, she has positioned herself as a moderate on most issues. A fellow hawk such as yourself, she voted in favor of going to Iraq, and has been vocally in support of the war since then. She also is in support of educational reform, a reformation of the nation's energy policy and other popular policies. Nationally, her presence could shift the female vote to your column.<p>The biggest issue with her is that she does little to expand your coalition, as you are both pro-war centrist Democrats. She could definitely eat into Bush's margins down in the south though, as both Louisiana and Arkansas are polled as \"competitive\" with her on as your number two.",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 86,
+        "fields": {
+            "first_name": "Richard",
+            "last_name": "Gephardt",
+            "election": 9,
+            "party": "Democrat",
+            "state": "Missouri",
+            "priority": 10,
+            "description": "''",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/7Kdcbj8.png",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "<p><i>\"Like father, like son, four years and this president is done.\"</i><p>A man who always wears his ideology on his sleeve, Richard Andrew \"Dick\" Gephardt is the esteemed congressman from Missouri, elected way back in 1977. He started out as a staunch conservative on many issues, such as abortion and tax cuts, but he's since moved to the left since then.  A fellow supporter of the war, you could definitely eat into Bush's support among suburbanites and blue collar voters with Gephardt on the ticket.<p>However, Geppy is a vocal supporter of the Iraq War, and helped shepherd it through Congress, meaning that he is persona non-grata to the left-wing of the party. His presidential run this year also fizzled out before any real momentum was attained, which could be used by Bush surrogates as evidence of the ticket's incompetence.",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 87,
+        "fields": {
+            "first_name": "Tom",
+            "last_name": "Vilsack",
+            "election": 9,
+            "party": "Democrat",
+            "state": "Iowa",
+            "priority": 11,
+            "description": "''",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/gvVE2OA.png",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "<p><i>\"If I had a rain prayer or a rain dance I could do, I would do it.\"</i><p>A stock farm boy, Thomas James Vilsack is the current Governor of Iowa, elected in an upset in 1997 against the Branstad machine. Vilsack is a party man, and has towed the line on the Democrat's charter this year. However, Vilsack's strengths come from his know-how of agricultural issues, and is seen more as a potential Secretary of Agriculture than a VP. This has the benefit of helping you greatly in the farm states, especially Missouri and Wisconsin.<p>Unfortunately, those are really Vilsack's only strengths, as corn and potatos can only get you so far. He lacks charisma, and has limited national recognition. Although he is more hesitant about Iraq than you, he has made statements in support of it in the past, meaning he hardly the best choice to patch up the cracks in your left flank.",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 88,
+        "fields": {
+            "first_name": "Richard",
+            "last_name": "Durbin",
+            "election": 9,
+            "party": "Democrat",
+            "state": "Illinois",
+            "priority": 12,
+            "description": "''",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/aAZCvRI.png",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "<p><i>\"God is not a franchise of the Republican Party.\"</i><p>A wildcard pick, Richard Joseph Durbin is the Senior Senator from Illinois, first elected in 1997. Durbin's main selling point is his vote against the war in Iraq, even sponsoring an amendment which would have affirmed that the United States would look for <i>only</i> the weapons of mass destruction. Durbin's liberal views on Abortion, Gun rights, and Climate Change would further repair the cracks in the anti-war progressive movement of the party.<p>By choosing Durbin, you would be positioning yourself to Bush's left on the war, and as such would have to pivot into opposing it. Durbin's Illinois roots could potentially help you in the Midwest aswell, as your support for NAFTA has caused some sour feelings in that region.",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 89,
+        "fields": {
+            "first_name": "Kucinich",
+            "last_name": "Running Mate",
+            "election": 9,
+            "party": "Green",
+            "state": "Various",
+            "priority": 13,
+            "description": "''",
+            "color_hex": "#00C100",
+            "secondary_color_hex": "#A1FFA1",
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/static/images/winona-laduke-2000.jpg",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "<p>Winona LaDuke is a Native American activist of Ojibwe ancestry. She lives in Minnesota and has been active in attempts to regain land that once belonged to various American Indian tribes. She has written a book and started organizations in support of this issue.</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 90,
+        "fields": {
+            "first_name": "Richard",
+            "last_name": "Campagna",
+            "election": 9,
+            "party": "Libertarian",
+            "state": "Iowa",
+            "priority": 14,
+            "description": "''",
+            "color_hex": "#FFFF00",
+            "secondary_color_hex": "#FFFFC0",
+            "is_active": 0,
+            "image_url": "''",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "''",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 9340,
+        "fields": {
+            "first_name": "David",
+            "last_name": "Cobb/Others",
+            "election": 9,
+            "party": "Green",
+            "state": "Texas",
+            "priority": 1,
+            "description": "<p>to be used after Nader gets the boot</p>",
+            "color_hex": "#bcbcbc",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 50001,
+        "fields": {
+            "first_name": "Pat",
+            "last_name": "LaMarche",
+            "election": 9,
+            "party": "Green",
+            "state": "Maine",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    }
+]
+
+campaignTrail_temp.running_mate_json = [
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 57,
+        "fields": {
+            "candidate": 80,
+            "running_mate": 90
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 56,
+        "fields": {
+            "candidate": 79,
+            "running_mate": 89
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 48,
+        "fields": {
+            "candidate": 77,
+            "running_mate": 81
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 52,
+        "fields": {
+            "candidate": 78,
+            "running_mate": 85
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 53,
+        "fields": {
+            "candidate": 78,
+            "running_mate": 86
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 54,
+        "fields": {
+            "candidate": 78,
+            "running_mate": 87
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 55,
+        "fields": {
+            "candidate": 78,
+            "running_mate": 88
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 129246,
+        "fields": {
+            "candidate": 9340,
+            "running_mate": 50001
+        }
+    }
+]
+
+campaignTrail_temp.credits = "WNDIUA (Jimbo)"
+
+campaignTrail_temp.opponents_default_json = [
+    {
+        "election": 9,
+        "candidates": [
+            77,
+            78,
+            79,
+            80,
+            9340
+        ]
+    }
+]
+
+campaignTrail_temp.opponents_weighted_json = [
+    {
+        "election": 9,
+        "candidates": [
+            77,
+            78,
+            79,
+            80,
+            9340
+        ]
+    }
+]
+
+campaignTrail_temp.temp_election_list = [
+    {
+        "id": 9,
+        "year": 2000,
+        "is_premium": 0,
+        "display_year": "2004Joementum"
+    }
+]
+
+jet_data = {
+    "headerColor": "#010864",
+    "windowColor": "#ffffff",
+    "containerColor": "#010763",
+    "innerWindowColor": "#ffffff",
+    "bannerImageUrl": "https://i.imgur.com/7rQ9ebs.png",
+    "backgroundImageUrl": "https://i.imgur.com/Ezpkohl.png",
+    "endingTextColor": "#000000",
+    "customQuote": "",
+    "gameTitle": "Joe!"
+}
+
+//#startcode
+
+campaignTrail_temp.achievements = {
+    "Joementum" : {
+        "image" : "https://i.imgur.com/Roz6sIX.png",
+        "description" : "Win."
+    },
+    "W.orst Ever!" : {
+        "image" : "https://i.imgur.com/L7tpZeI.png",
+        "description" : "Win over 330 EVs."
+    },
+    "Kuspinach" : {
+        "image" : "https://i.imgur.com/u0Cbkub.png",
+        "description" : "Make Kucinich Win. (cheats enabled)",
+        "cannotBeCheated" : false
+    },
+    "New South" : {
+        "image" : "https://i.imgur.com/oUGA96v.png",
+        "description" : "Win back the Clinton Coalition."
+    },
+    "Back to New London" : {
+        "image" : "https://i.imgur.com/IL8k6MX.png",
+        "description" : "Know how Weicker felt.",
+        "cannotBeCheated" : true
+    },
+    "Worse than 2000" : {
+        "image" : "https://i.imgur.com/W4UGUhY.png",
+        "description" : "Make 2000 look calm."
+    }
+}
+
+const gameThemes = {
+    "Campaign Website" : function() { 
+        document.getElementById("header").src = "https://i.imgur.com/7rQ9ebs.png";
+        document.body.style.backgroundColor = "#bfe6ff";
+        document.body.background = "https://i.imgur.com/Ezpkohl.png";
+        $(".container")[0].style.backgroundColor = "#010864";
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#010864";
+        document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#ffffff";
+        $("#game_window")[0].style.backgroundColor = "#010763";
+        $(".footer")[0].style.color = "#FFFFFF";
+    },
+    "Windows XP" : function() {
+        document.getElementById("header").src = "https://i.imgur.com/IfXrLGA.png"
+        document.body.style.backgroundColor = "#727C96";
+        document.body.background = "https://archive.org/download/bliss-600dpi/bliss-600dpi.png";
+        $(".container")[0].style.backgroundColor = "#0062f1";
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#389e01";
+        document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#f2f1e7";
+        $("#game_window")[0].style.backgroundColor = "#0062f1";
+        $(".footer")[0].style.color = "#000";
+        document.body.background = "https://archive.org/download/bliss-600dpi/bliss-600dpi.png"
+        document.body.style.backgroundSize = "100% auto";
+    }
+}
+
+// Replace old theme picker
+const themePicker = document.getElementById("themePicker");
+const newThemePicker = document.createElement("select");
+newThemePicker.id = "themePicker";
+newThemePicker.addEventListener("change", gameThemePicked);
+let newInnerHTML = "";
+for(theme in gameThemes) {
+    newInnerHTML += `<option value="${theme}">${theme}</option>`;
+}
+newThemePicker.innerHTML = newInnerHTML;
+themePicker.replaceWith(newThemePicker);
+
+function gameThemePicked() {
+    gameThemes[newThemePicker.value]();
+}
+
+
+RecReading = true
+
+let style = document.createElement('style');
+style.type = 'text/css';
+style.id = 'dynamic-style';
+
+style.innerHTML = `
+  .campaign_trail_start_emphasis {
+    background-color: #F8F8F8;
+  }
+  a:-webkit-any-link {
+      color: #F8F8F8;
+  }
+`;
+
+document.head.appendChild(style);
+
+corrr = '\n              <h2>Joe!</h2>\n            ';
+
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#010864";
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#ffffff";
+
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+$(".container")[0].style.backgroundColor = "#010763";
+
+document.getElementById("header").src = "https://i.imgur.com/7rQ9ebs.png";
+
+document.body.background = "https://i.imgur.com/Ezpkohl.png";
+
+document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#ffffff!important;}</style>";
+
+campaignTrail_temp.modBoxTheme = {
+    "header_color": "#010864",
+    "header_text_color": "#ffffff",
+    "description_text_color": "#000000",
+    "description_background_color": "#ffffff",
+    "main_color": "#010864",
+    "secondary_color": "#000000",
+    "ui_text_color": "#ffffff"
+}
+
+HistHexcolour=["#B82729","#2F3891","#5BBE44","#BCBCBC"]; HistName=[" George W. Bush"," Joe Lieberman"," Dennis Kucinich"," Russo/Cobb/Others"]; HistEV=[273,265,0,0]; HistPV=["58,593,490","57,516,457","5,031,549","2,110,188"]; HistPVP=["47.5%","46.7%"," 4.1%"," 1.7%"];
+
+
+//#endcode
