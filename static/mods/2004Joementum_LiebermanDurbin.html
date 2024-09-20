@@ -1,3 +1,12 @@
+campaignTrail_temp.cyoa = true
+cyoAdventure = function (a) {
+    ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
+    if(ans == 9114){
+        campaignTrail_temp.candidate_json[2]["fields"].color_hex = "#5BBE44";
+        campaignTrail_temp.candidate_json[2]["fields"].first_name = "Dennis";
+        campaignTrail_temp.candidate_json[2]["fields"].last_name = "Kucinich";
+        campaignTrail_temp.candidate_json[2]["fields"].image_url = "https://i.imgur.com/1NgUblS.png";
+    }}
 campaignTrail_temp.questions_json = [
     {
         "model": "campaign_trail.question",
@@ -85,7 +94,7 @@ campaignTrail_temp.questions_json = [
         "pk": 362,
         "fields": {
             "priority": 1,
-            "description": "The first debate is in a few days, and thankfully, Kucinich did not meet the 15% requirement - which has angered him and his supporters, who have set up a town hall to air right beside the debate. Will you attend the debate?",
+            "description": "The first debate between you and Bush will happen in a few days. Will you attend the debate?",
             "likelihood": 1
         }
     },
@@ -247,7 +256,7 @@ campaignTrail_temp.questions_json = [
         "pk": 8893,
         "fields": {
             "priority": 0,
-            "description": "As the campaign enters the middle of October, Our campaign coffers have enough money to hone in on Bush as the election wraps up. What should we do in regards to this?",
+            "description": "As the campaign enters the middle of October, Our campaign coffers have enough money to hone in on a select group of issues as the election wraps up. What should we do concerning this?",
             "likelihood": 1
         }
     },
@@ -286,7 +295,7 @@ campaignTrail_temp.answers_json = [
         "pk": 3342,
         "fields": {
             "question": 362,
-            "description": "Yes, we'll attend, but we should make sure to keep things civil between me and Bush."
+            "description": "I don't think we should attend this. The fallout from my Iraq statement still hangs over me thickly, and we'd be giving Bush a lot of campaign fodder if we were to go."
         }
     },
     {
@@ -310,7 +319,7 @@ campaignTrail_temp.answers_json = [
         "pk": 3345,
         "fields": {
             "question": 362,
-            "description": "Yes, we'll attend, and I'll make sure to point out the experience discrepancy between us two."
+            "description": "Yes, we'll attend, and I'll make sure to hammer him hard on Iraq. We've seen little real confirmed evidence of these \"WMDs\" in Iraq, and so far all we've done is destabilize a country for little reason."
         }
     },
     {
@@ -942,7 +951,7 @@ campaignTrail_temp.answers_json = [
         "pk": 9524,
         "fields": {
             "question": 9400,
-            "description": "Let's visit Ohio, Durbin's influence in that state cannot be underestimated."
+            "description": "Let's visit West Virginia, It voted for Bush last election, but I'm sure we can get it to flip back."
         }
     },
     {
@@ -999,6 +1008,14 @@ campaignTrail_temp.answers_json = [
         "fields": {
             "question": 8890,
             "description": "Sure, we can negotiate. I promise that when I become President, I won't interfere in whatever these guys are doing in Congress. I'll give them the reigns on some economic matters, and I'll sign their bills."
+        }
+    },
+    {
+        "model": "campaign_trail.answer",
+        "pk": 9594,
+        "fields": {
+            "question": 8890,
+            "description": "Sure we can negotiate. I promise them action on the environment, climate change, whatever suits their fancy. I'll let them look over that stuff while I deal with more serious issues at hand."
         }
     }
 ]
@@ -6921,8 +6938,8 @@ campaignTrail_temp.answer_score_global_json = [
         "fields": {
             "answer": 3342,
             "candidate": 78,
-            "affected_candidate": 79,
-            "global_multiplier": 0.125
+            "affected_candidate": 9340,
+            "global_multiplier": 0.05
         }
     },
     {
@@ -6941,8 +6958,8 @@ campaignTrail_temp.answer_score_global_json = [
         "fields": {
             "answer": 3345,
             "candidate": 78,
-            "affected_candidate": 79,
-            "global_multiplier": 0.1
+            "affected_candidate": 78,
+            "global_multiplier": 0.03
         }
     },
     {
@@ -7372,17 +7389,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 9208,
             "candidate": 78,
             "affected_candidate": 78,
-            "global_multiplier": 0.045
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_global",
-        "pk": 9214,
-        "fields": {
-            "answer": 9208,
-            "candidate": 78,
-            "affected_candidate": 79,
-            "global_multiplier": -0.8
+            "global_multiplier": 0.015
         }
     },
     {
@@ -7883,6 +7890,16 @@ campaignTrail_temp.answer_score_global_json = [
             "candidate": 78,
             "affected_candidate": 78,
             "global_multiplier": -0.02
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 9596,
+        "fields": {
+            "answer": 9594,
+            "candidate": 78,
+            "affected_candidate": 78,
+            "global_multiplier": 0.005
         }
     }
 ]
@@ -8483,9 +8500,9 @@ campaignTrail_temp.answer_score_issue_json = [
         "pk": 9507,
         "fields": {
             "answer": 3345,
-            "issue": 27,
-            "issue_score": 0.1,
-            "issue_importance": 1
+            "issue": 28,
+            "issue_score": 0.6,
+            "issue_importance": 2
         }
     },
     {
@@ -8553,9 +8570,39 @@ campaignTrail_temp.answer_score_issue_json = [
         "pk": 9588,
         "fields": {
             "answer": 9302,
-            "issue": "27",
+            "issue": 27,
             "issue_score": 0.2,
             "issue_importance": 1
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_issue",
+        "pk": 9592,
+        "fields": {
+            "answer": 9208,
+            "issue": 28,
+            "issue_score": 0.5,
+            "issue_importance": 2
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_issue",
+        "pk": 9593,
+        "fields": {
+            "answer": 9580,
+            "issue": "27",
+            "issue_score": 0.4,
+            "issue_importance": 1
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_issue",
+        "pk": 9597,
+        "fields": {
+            "answer": 9594,
+            "issue": 30,
+            "issue_score": 0.5,
+            "issue_importance": 2
         }
     }
 ]
@@ -10062,7 +10109,7 @@ campaignTrail_temp.answer_score_state_json = [
         "pk": 9556,
         "fields": {
             "answer": 9524,
-            "state": 215,
+            "state": 229,
             "candidate": 78,
             "affected_candidate": 78,
             "state_multiplier": 0.02
@@ -10187,7 +10234,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 3342,
             "candidate": 78,
-            "answer_feedback": "The debate is boring, and neither you nor Bush do anything of note. Meanwhile, Kucinich's town hall amasses way more viewers than anticipated, and it causes him to get a polling jolt."
+            "answer_feedback": "Bush pummels you for not showing up to the debate, but your switch-up has gotten you into the media's good graces, and many of them neglect to air his statement on your bail."
         }
     },
     {
@@ -10214,7 +10261,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 3345,
             "candidate": 78,
-            "answer_feedback": "This would be a good talking point, but Bush has been President for four years. Neither of you made any real dent in the other, and most saw the debate as a waste. Meanwhile, Kucinich's town hall saw a rise in attention during the debate."
+            "answer_feedback": "Bush tries to rebut but you interrupt him, calling him dishonest and only out for himself. He tries to rebut by pointing out that you were a big hawk just a few months ago, but your voice booms over his like a stereo. Pundits agree you were decisive and effectively explained your position."
         }
     },
     {
@@ -10520,7 +10567,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 8987,
             "candidate": 78,
-            "answer_feedback": "This is a good stance to take on the matter, as many Democrats criticized Bush's withholding of funds from the program."
+            "answer_feedback": "This is a good stance to take on the matter, as many Democrats criticized Bush's withholding of funds from the program. Durbin takes the lead on this argument, ripping into the project in a recent speech of his."
         }
     },
     {
@@ -10655,7 +10702,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 9208,
             "candidate": 78,
-            "answer_feedback": "The ad has brought some well-needed controversy to Kucinich's campaign, and some progressives uninterested in you have swung back around to your side following this. The hype around his campaign has definitely died down now."
+            "answer_feedback": "It's like herding cats, as one man put it, but your overtures towards the youth don't go unnoticed, especially after your Iraq War pivot."
         }
     },
     {
@@ -10817,7 +10864,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 9325,
             "candidate": 78,
-            "answer_feedback": "The tour goes well, however, Bush makes the rounds stopping through the Midwest to offset your gains, and he connects well with blue-collar workers much better than you do, although Gephardt has been working hard to keep them from flipping."
+            "answer_feedback": "The tour goes well, however, Bush makes the rounds stopping through the Midwest to offset your gains, and he connects well with blue-collar workers much better than you do, although Durbin has been working hard to keep them from flipping."
         }
     },
     {
@@ -10916,7 +10963,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 9580,
             "candidate": 78,
-            "answer_feedback": "Durbin is wildly effective at this, as thousands show up to watch him speak about unions and job-replacement."
+            "answer_feedback": "Durbin is wildly effective at this, as thousands show up to watch him speak about unions and job-replacement. It almost makes those conservative ones forget about your Iraq War flip-flop."
         }
     },
     {
@@ -10926,6 +10973,15 @@ campaignTrail_temp.answer_feedback_json = [
             "answer": 9589,
             "candidate": 78,
             "answer_feedback": "This isn't good enough for many of these major figures, and come election day, turnout from progressives will be quite depressed."
+        }
+    },
+    {
+        "model": "campaign_trail.answer_feedback",
+        "pk": 9595,
+        "fields": {
+            "answer": 9594,
+            "candidate": 78,
+            "answer_feedback": "Some of them, such as Feingold, agree to the terms, but many others still feel this is not enough to throw their support behind. Expect to go into election day with lower progressive support."
         }
     }
 ]
@@ -10970,7 +11026,7 @@ endingPicker = (out, totv, aa, quickstats) => {
             }
         }, 50);
     }
-    unlockAchievement("Worse than 2000.");
+    
     if(aa[0].electoral_votes < 270 && aa[1].electoral_votes < 270 && aa[2].electoral_votes < 270) {
         setImage("https://i.imgur.com/WGUjGh7.png");
         return `<h3>Deadlock? Thanks Nader.</h3><p>You start off the night in high spirits, you feel that you had run a decent campaign, and while you encountered many hiccups and roadblocks, you still felt good about your chances. However, late into the night something happened - something that had never happened before in the history of America, a pure deadlock.<p>The color drains from your face, the excited smile stretching your mouth unfurls like a flag. Soon enough, your household is swamped with calls. You quit paying attention to the television to deal with it all. What happened? Did 269 occur? or maybe Nader managed to win a state? Whatever the deal is, you lost, as the Republicans hold the House majority. You may pout and storm off, flail your arms, but nothing can change the fact that you fumbled a perfectly winnable election, Mr. Lieberman.</p>`;
@@ -10983,31 +11039,24 @@ endingPicker = (out, totv, aa, quickstats) => {
         setImage("https://bioguide.congress.gov/photo/fd25c7f96be27849a6ee2ef3fe5e29f2.jpg");
         return `<h3>On the DOVEpath.</h3><p><i>July 4, 2007</i>. A mere two years after President Joe Lieberman was elected to the highest office in the lead with the biggest landslide America has ever seen, American peaceful tanks had since consenually entered into the capitals of Iran and Syria, laying a path of unfiltered kindess and happyness all along their paths. Everybody was spared, even the children, as orders straight from the top relayed Mercy.<p>Despite the international celebrations, the happy sounds from players, the free stuff, all of it - America stands strong. A shining city on a hill. Joe Lieberman had made America what it had always supposed to be.<p><b>The Happyness Spreader of America</b></p>`;
     }
-    unlockAchievement("Back to New London");
 	if(quickstats[0] < 200) {
         setImage("https://i.imgur.com/ae5OKQS.png");
-        return `<h3>The Ultimate Humiliation.</h3><p>You try to start your night off in high spirits, repressing all your fuckups during the campaign, trying to keep your thin smile from quivering, but as states the Democrats would normally win or be atleast close in are wrapped in an Afghan rug of red, not even your inner pysche can distract you from the apparent truth. The truth that you've failed.</p><p>You've stopped watching long after they called it for Bush by wide margins, it doesn't matter how wide. You are laying in bed next to Hadassah, she comforts you. The next day, you give an ill-prepared, dreary concession speech to a somber crowd in the middle of New Haven, you try to get the words out, but some stay put, not even wanting to escape your lips. You try to end things off optimistic but you don't even bother. Good luck on any future endeavors, Mr. Lieberman.</q></p>`;
+        return `<h3>The Ultimate Humiliation.</h3><p>You try to start your night off in high spirits, repressing all your fuckups during the campaign, especially your pivot on Iraq would hang over you like a storm cloud, as you tried to keep your thin smile from quivering. But as states the Democrats would normally win or be atleast close in are wrapped in an Afghan rug of red, not even your inner pysche can distract you from the apparent truth. The truth that you've failed.</p><p>You shut the T.V long after they called it for Bush by wide margins, it even doesn't matter how wide, the fact is that you lost. You are now laying in bed next to Hadassah, she comforts you and tells you it'll all be fine. The next day, you give an ill-prepared, dreary concession speech to a somber crowd in the middle of New Haven, you try to get the words out, but they stay put, not even wanting to escape your lips. You try to end things off optimistic but you don't even bother, because whats the point? Your name is mud now. Good luck on any future endeavors, Mr. Lieberman.</q></p>`;
     }
     if(quickstats[0] < 269) {
         setImage("https://i.imgur.com/c0ODDIZ.png");
-        return `<h3>A Respectable Loss.</h3><p>As you settle in for your election night viewing, your spirits are high, and you've got some of your family in attendance aswell. Your electoral margin starts off strong, but as the minutes tick by and state after state is called, your confidence wanes. Eventually, the tipping point state is called for Bush - quite narrowly too - and a wave of disappointment washes over you. What went wrong? Was it Kucinich? Yes. It was Kucinich.<p>Where does this leave you? Well, this has certainly put to rest any future political runs, but you're not out of the game just yet. The state of Connecticut still loves you and a re-election to the Senate is certainly within your cards. But if anybody can do it? It's you, Mr. Lieberman.</p>`;
+        return `<h3>A Respectable Loss.</h3><p>As you settle in for your election night viewing, your spirits are high, and you've got some of your family in attendance aswell. Your electoral margin starts off strong, but as the minutes tick by and state after state is called, your confidence wanes. Eventually, the tipping point state is called for Bush - quite narrowly too - and a wave of disappointment washes over you. What went wrong? Was it your flip? Yes. It was your Iraq War flip.<p>Where does this leave you? Well, this has certainly put to rest any future political runs, but you're not out of the game just yet. The state of Connecticut still loves you and a re-election to the Senate is certainly within your cards. But if anybody can do it? It's you, Mr. Lieberman.</p>`;
     }
-    unlockAchievement("Joementum");
     if(quickstats[0] < 320) {
         setImage("https://i.imgur.com/nlcov2E.png");
         return `<h3>Joementum.</h3><p>You and Hadassah settle in for your election night viewing, and immedieately, things look on the up and up for you. States like Michigan, Oregon and New Jersey show you winning big. Your mood continues to improve as the minutes go by. Soon enough, the tipping-point state is in your hands, and you metaphorically jump for joy. Many of your biggest detractors couldn't believe that you could pull through over Bush.<p>What's in store for your initial Presidency? Well, it's not certain. The House and Senate especially remain narrowly in Republican hands, although your knack for negotiating with the Republicans should come in handy in this regard. Perhaps you could pass through some peacemeal reforms to healthcare and gun control. But I'm sure you could get it done. Congratulations, Mr. Lieberman.</p>`;
     }
-    unlockAchievement("Joementum");
-    unlockAchievement("W.orst Ever!");
     if(quickstats[0] > 319) {
         setImage("https://i.imgur.com/MAwUSHw.png");
-        return `<h3>They're all Cheering for You.</h3><p>You knew before any votes were tallied that things were going to go well. You ran a fantastic campaign, treading the line between your piercing moderation and appeasing the traditional liberal base. Kucinich, the whiny bastard's campaign crashed and burned, and you reaped the rewards. Bush gives you a dejected call, and you can hear the sound of disappointment through the telephone.<p>You step outside your house, to the cheering crowd that hastily circled around it, you put on your biggest smile and give off your finest words of encouragement to them. With your victory, you've narrowly flipped the Senate - Daschle, Castor and Mongiardo are all thankful for your campaigning for them. You've entered the White House with an impressive mandate, and it's because of you. Nice work, Mr. Lieberman.</p>`;
+        return `<h3>They're all Cheering for You.</h3><p>You knew before any votes were tallied that things were going to go well. You ran a fantastic campaign, treading the line between your piercing moderation and appeasing the traditional liberal base. Progressives believed your pivot, and as such turned out for your campaign in droves. Bush gives you a dejected call, and you can hear the sound of disappointment through the telephone.<p>You step outside your house, to the cheering crowd that hastily circled around it, you put on your biggest smile and give off your finest words of encouragement to them. With your victory, you've narrowly flipped the Senate - Daschle, Castor and Mongiardo are all thankful for your campaigning for them. You've entered the White House with an impressive mandate, and it's because of you. Nice work, Mr. Lieberman.</p>`;
     }
-    unlockAchievement("Joementum");
-    unlockAchievement("W.orst Ever!");
-    unlockAchievement("New South");
     if(quickstats[0] > 349) {
         setImage("https://i.imgur.com/MAwUSHw.png");
-        return `<h3>They're all Cheering for You.</h3><p>You knew before any votes were tallied that things were going to go well. You ran a fantastic campaign, treading the line between your piercing moderation and appeasing the traditional liberal base. Kucinich, the whiny bastard's campaign crashed and burned, and you reaped the rewards. Not only that, but it seems you've outperformed even Clinton's performance in some areas, which came as a shock to most Americans. Bush gives you a morose call, and you can hear the sound of disappointment through the phone line.<p>You step outside your house, to the cheering crowd that hastily circled around it, you put on your biggest smile and give off your finest words of encouragement to them. With your victory, you've narrowly flipped the Senate - Daschle, Castor and Mongiardo are all thankful for your campaigning for them. You've entered the White House with an impressive mandate, and it's because of you. Nice work, Mr. Lieberman.</p>`;
+        return `<h3>They're all Cheering for You.</h3><p>You knew before any votes were tallied that things were going to go well. You ran a fantastic campaign, treading the line between your piercing moderation and appeasing the traditional liberal base. Progressives believed your pivot, and as such turned out for your campaign in droves. Not only that, but it seems you've outperformed even Clinton's performance in some areas, which came as a shock to most Americans. Bush gives you a morose call, and you can hear the sound of disappointment through the phone line.<p>You step outside your house, to the cheering crowd that hastily circled around it, you put on your biggest smile and give off your finest words of encouragement to them. With your victory, you've narrowly flipped the Senate - Daschle, Castor and Mongiardo are all thankful for your campaigning for them. You've entered the White House with an impressive mandate, and it's because of you. Nice work, Mr. Lieberman.</p>`;
     }
 }

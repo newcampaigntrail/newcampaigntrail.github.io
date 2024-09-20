@@ -7333,7 +7333,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 9114,
             "candidate": 78,
             "affected_candidate": 79,
-            "global_multiplier": 2
+            "global_multiplier": 1.8
         }
     },
     {
@@ -7343,7 +7343,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 9114,
             "candidate": 78,
             "affected_candidate": 78,
-            "global_multiplier": -0.125
+            "global_multiplier": -0.11
         }
     },
     {
@@ -9152,7 +9152,7 @@ campaignTrail_temp.answer_score_state_json = [
             "state": 215,
             "candidate": 78,
             "affected_candidate": 79,
-            "state_multiplier": 0.2
+            "state_multiplier": 0.17
         }
     },
     {
@@ -11436,12 +11436,11 @@ endingPicker = (out, totv, aa, quickstats) => {
             }
         }, 50);
     }
-    unlockAchievement("Worse than 2000.");
+    
     if(aa[0].electoral_votes < 270 && aa[1].electoral_votes < 270 && aa[2].electoral_votes < 270) {
         setImage("https://i.imgur.com/WGUjGh7.png");
         return `<h3>Deadlock? Thanks Kucinich.</h3><p>You start off the night in high spirits, you feel that you had run a decent campaign, and while you encountered many hiccups and roadblocks, you still felt good about your chances. However, late into the night something happened - something that had never happened before in the history of America, a pure deadlock.<p>The color drains from your face, the excited smile stretching your mouth unfurls like a flag. Soon enough, your household is swamped with calls. You quit paying attention to the television to deal with it all. What happened? Did 269 occur? or maybe Kucinich managed to win a state? Whatever the deal is, you lost, as the Republicans hold the House majority. You may pout and storm off, flail your arms, but nothing can change the fact that you fumbled a perfectly winnable election, Mr. Lieberman.</p>`;
     }
-    unlockAchievement("Kuspinach");
 	if(aa[0].candidate == 79 && aa[0].electoral_votes > 270) {
         setImage("https://i.imgur.com/gZHFRzz.png");
         return `<h3>Mass Shock and Horror.</h3><p>Upon the realization of America that Dennis Kucinich, the short wimpy little congressman who ran his third party bid more as an excuse to throw a fit and tantrum has swept up a majority of American voters with his platitudes of anti-war, anti-establishmentarian views. Almost immedieately, as if to rub it in, an impromptu victory speech aired from Kucinich's own house airs, in which he relishes in the fact that he stuck it to you and Bush. You can practically hear his shit-eating grin, it infuriates you.</p><p>To you? this is the ultimate failure of your career, you had ran your campaign into the ground so hard you managed to take down Bush with you, and Kucinich ended up reaping the reward - the sweet succulent prize of victory. Pout, flail your arms, nothing will change the fact that you lost. Mr. Lieberman.</p>`;
@@ -11450,7 +11449,6 @@ endingPicker = (out, totv, aa, quickstats) => {
         setImage("https://i.imgur.com/DWExkfw.png");
         return `<h3>On the Warpath.</h3><p><i>July 4, 2007</i>. A mere two years after President Joe Lieberman was elected to the highest office in the lead with the biggest landslide America has ever seen, American tanks had since rolled into the capitals of Iran and Syria, laying a path of unfiltered destruction and terror all along their paths. Nobody was spared, not even the children, as orders straight from the top relayed No Mercy.<p>Despite the international condemnation, the scared whimpers from nonplayers, the sanctions, all of it - America stands strong. A shining city on a hill. Joe Lieberman had made America what it had always supposed to be.<p><b>The Defender of America</b></p>`;
     }
-    unlockAchievement("Back to New London");
 	if(quickstats[0] < 200) {
         setImage("https://i.imgur.com/ae5OKQS.png");
         return `<h3>The Ultimate Humiliation.</h3><p>You try to start your night off in high spirits, repressing all your fuckups during the campaign, trying to keep your thin smile from quivering, but as states the Democrats would normally win or be atleast close in are wrapped in an Afghan rug of red, not even your inner pysche can distract you from the apparent truth. The truth that you've failed.</p><p>You've stopped watching long after they called it for Bush by wide margins, it doesn't matter how wide. You are laying in bed next to Hadassah, she comforts you. The next day, you give an ill-prepared, dreary concession speech to a somber crowd in the middle of New Haven, you try to get the words out, but some stay put, not even wanting to escape your lips. You try to end things off optimistic but you don't even bother. Good luck on any future endeavors, Mr. Lieberman.</q></p>`;
@@ -11459,21 +11457,15 @@ endingPicker = (out, totv, aa, quickstats) => {
         setImage("https://i.imgur.com/c0ODDIZ.png");
         return `<h3>A Respectable Loss.</h3><p>As you settle in for your election night viewing, your spirits are high, and you've got some of your family in attendance aswell. Your electoral margin starts off strong, but as the minutes tick by and state after state is called, your confidence wanes. Eventually, the tipping point state is called for Bush - quite narrowly too - and a wave of disappointment washes over you. What went wrong? Was it Kucinich? Yes. It was Kucinich.<p>Where does this leave you? Well, this has certainly put to rest any future political runs, but you're not out of the game just yet. The state of Connecticut still loves you and a re-election to the Senate is certainly within your cards. But if anybody can do it? It's you, Mr. Lieberman.</p>`;
     }
-    unlockAchievement("Joementum");
     if(quickstats[0] < 320) {
         setImage("https://i.imgur.com/nlcov2E.png");
-        return `<h3>Joementum.</h3><p>You and Hadassah settle in for your election night viewing, and immedieately, things look on the up and up for you. States like Michigan, Oregon and New Jersey show you winning big. Your mood continues to improve as the minutes go by. Soon enough, the tipping-point state is in your hands, and you metaphorically jump for joy. Many of your biggest detractors couldn't believe that you could pull through over Bush.<p>What's in store for your initial Presidency? Well, it's not certain. The House and Senate especially remain narrowly in Republican hands, although your knack for negotiating with the Republicans should come in handy in this regard. Perhaps you could pass through some peacemeal reforms to healthcare and gun control. But I'm sure you could get it done. Congratulations, Mr. Lieberman.</p>`;
+        return `<h3>You've got Joementum.</h3><p>You and Hadassah settle in for your election night viewing, and immedieately, things look on the up and up for you. States like Michigan, Oregon and New Jersey show you winning big. Your mood continues to improve as the minutes go by. Soon enough, the tipping-point state is in your hands, and you metaphorically jump for joy. Many of your biggest detractors couldn't believe that you could pull through over Bush.<p>What's in store for your initial Presidency? Well, it's not certain. The House and Senate especially remain narrowly in Republican hands, although your knack for negotiating with the Republicans should come in handy in this regard. Perhaps you could pass through some peacemeal reforms to healthcare and gun control. But I'm sure you could get it done. Congratulations, Mr. Lieberman.</p>`;
     }
-    unlockAchievement("Joementum");
-    unlockAchievement("W.orst Ever!");
     if(quickstats[0] > 319) {
         setImage("https://i.imgur.com/MAwUSHw.png");
         return `<h3>They're all Cheering for You.</h3><p>You knew before any votes were tallied that things were going to go well. You ran a fantastic campaign, treading the line between your piercing moderation and appeasing the traditional liberal base. Kucinich, the whiny bastard's campaign crashed and burned, and you reaped the rewards. Bush gives you a dejected call, and you can hear the sound of disappointment through the telephone.<p>You step outside your house, to the cheering crowd that hastily circled around it, you put on your biggest smile and give off your finest words of encouragement to them. With your victory, you've narrowly flipped the Senate - Daschle, Castor and Mongiardo are all thankful for your campaigning for them. You've entered the White House with an impressive mandate, and it's because of you. Nice work, Mr. Lieberman.</p>`;
     }
-    unlockAchievement("Joementum");
-    unlockAchievement("W.orst Ever!");
-    unlockAchievement("New South");
-    if(quickstats[0] > 349) {
+    if(quickstats[0] > 369) {
         setImage("https://i.imgur.com/MAwUSHw.png");
         return `<h3>They're all Cheering for You.</h3><p>You knew before any votes were tallied that things were going to go well. You ran a fantastic campaign, treading the line between your piercing moderation and appeasing the traditional liberal base. Kucinich, the whiny bastard's campaign crashed and burned, and you reaped the rewards. Not only that, but it seems you've outperformed even Clinton's performance in some areas, which came as a shock to most Americans. Bush gives you a morose call, and you can hear the sound of disappointment through the phone line.<p>You step outside your house, to the cheering crowd that hastily circled around it, you put on your biggest smile and give off your finest words of encouragement to them. With your victory, you've narrowly flipped the Senate - Daschle, Castor and Mongiardo are all thankful for your campaigning for them. You've entered the White House with an impressive mandate, and it's because of you. Nice work, Mr. Lieberman.</p>`;
     }
