@@ -1,0 +1,423 @@
+e = campaignTrail_temp;
+var hasMusic = false;
+RecReading=true
+
+campaignTrail_temp.election_json = JSON.parse("[{\"model\": \"campaign_trail.election\", \"pk\": 15, \"fields\": {\"year\": 2076, \"summary\": \"<p>America is a fallen nation, the shining beacon of democracy sold to the CEO's dollar. The nation has suffered from food shortages, riots, the New Plague, and hyperinflation; since 2051, it seems the US has been at war. The American people have lost all hope as they see no action from Congress and the White House abandoned.</p><p><ul><li>President Anderson has a country to run and a re-election bid to wage. He must fight his own unpopularity and keep the riots at bay</li><li>Senator Stephenson must maintain his large lead and make his case for new, fresh, leadership.</li></p>\", \"image_url\": \"https://static.miraheze.org/mockelectionswiki/6/6e/New_York%2C_2076.jpeg\", \"winning_electoral_vote_number\": 270, \"advisor_url\": \"https://static.miraheze.org/mockelectionswiki/4/4a/4F39F97C-474C-42C8-AEBE-A872228F8FAB.png\", \"recommended_reading\": \"<br></br><img src='https://i.imgur.com/AWy6zvW.png' width='650px'></img><p>Thanks for playing my second mod! It was a ton of fun to make and I hope you all will enjoy the story that will unfold through each playthrough and update. This mod could not have been done without the oversight of my friend, Ruskipop, for the lore, and the talented efforts of the coders CatBoxXD, gamergirld20, and max_6711! A special thanks go out to Ana (plutooo2) and Otto von Habsburg for playtesting this mod to ensure its quality.</p><p>The development of this mod has surely been a trip! From researching all I could of pre-war America to coming up with state votes and margins, it surely has taken a long time but it was certainly worth it!</p><p>Thank you so much for playing this mod and I hope to continue making mods to be enjoyed!</p><p>-Gelid Lagopus</p>\", \"has_visits\": 1, \"no_electoral_majority_image\": \"/static/images/2012-no-majority.jpg\"}}]");
+campaignTrail_temp.candidate_json = JSON.parse("[{\"model\": \"campaign_trail.candidate\", \"pk\": 152, \"fields\": {\"first_name\": \"Dillon E.\", \"last_name\": \"Anderson\", \"election\": 15, \"party\": \"Republican\", \"state\": \"Indiana\", \"priority\": 1, \"description\": \"<b style='color: #ff0000'>NOT PLAYABLE</b></p>For the first time since 1812, the heart of American democracy lays abandoned; to all outward appearances, President Dillion Anderson is missing. Hidden from the public eye and unseen by even close allies in Congress. However, he is still very much in charge.<br><br>Anderson is no kind man. Under the smile and handshake is nothing more than a shell of a \\\"public figure\\\", bought and sold to the highest corporate seller. His administration, controlled by the Enclave, has stomped on the American Dream and convinced the voter it doesn't matter. His cronies have censored the press and ran a war into stagnation and yet, Anderson lives on. He won in 2068 and 2072, and he'll be damned if he won't win again.<br><br>Anderson needs not campaign, those loyal patriots in Congress and voters will do that for him. No, we have a war to win. The godless commies won't stop until we crush them...but neither will those union rioters.\", \"color_hex\": \"#d53939\", \"secondary_color_hex\": \"#ff9c9c\", \"is_active\": 1, \"image_url\": \"https://static.miraheze.org/mockelectionswiki/5/50/Presidential_portrait_of_Dillion_E._Anderson_%283x4_crop%29.jpg\", \"electoral_victory_message\": \"<h3>Congratulations! You have won the 1988 election.</h3><p>In spite of a hard-fought challenge from Michael Dukakis, you have held on to succeed Ronald Reagan.</p><p>Whatever you did, it must have worked. Observers were leaving your campaign for dead just a few months ago. On the political front, you can continue the policies of Reagan or turn in a more moderate direction. Internationally, you can hopefully oversee a period of relaxed tension with the Soviet Union.</p>\", \"electoral_loss_message\": \"<h3>Sorry. You have lost the 1988 election.</h3><p>Perhaps it was always a long-shot -- the American people just seemed ready to move on from Reagan.</p><p>Time will tell if Dukakis governs as a moderate, a liberal, or a technocrat. A lot can happen in four years, but the early gossip is that Bob Dole has the inside track for the 1992 nomination. Your next steps are unclear.</p>\", \"no_electoral_majority_message\": \"<h3>Sorry. You have lost the 1988 election.</h3><p>Although the Electoral College was tied, the Democrats have won a solid majority in the House, and will elevate Michael Dukakis to the Presidency.</p><p>Time will tell if Dukakis governs as a moderate, a liberal, or a technocrat. A lot can happen in four years, but the early gossip is that Bob Dole has the inside track for the 1992 nomination. Your next steps are unclear.</p>\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 153, \"fields\": {\"first_name\": \"Gary A.\", \"last_name\": \"Stephenson\", \"election\": 15, \"party\": \"Democratic\", \"state\": \"Colorado\", \"priority\": 2, \"description\": \"This administration is nothing but a corporate-sold sham. Everyone knows it. They have sat idly by while the poor starve and are left jobless while the rich eat hundred-dollar steaks in fancy hotel rooms. The people are rioting while the administration does nothing. The people are sick of it...and so is Gary Stephenson.<br><br>Elected in the wake of the Democratic wave of 2070, Gary Stephenson is a brave supporter of labor unions and the worker; he's bolstered himself as a voice for the common man. Going against the military industrial complex in both parties, he is no stranger to a fight.<br><br>Defeating more experienced candidates in the primaries, Stephenson leads President Anderson by a very wide margin. With no one even knowing where the President is, it seems like this race is Stephenson's to win. Let's hope there's still time to save America...\", \"color_hex\": \"#5353b2\", \"secondary_color_hex\": \"#ababff\", \"is_active\": 1, \"image_url\": \"https://static.miraheze.org/mockelectionswiki/0/05/Gary_A._Stephenson_%283x4%29.png\", \"electoral_victory_message\": \"<h3>Congratulations! You have won the 1988 election.</h3><p>In spite of a hard-fought challenge from George Bush, you have held on to succeed Ronald Reagan.</p><p>You were always the favorite to win, but a lot could have gone wrong. On the political front, you can work a Democratic House to overturn the worst excesses of Reagan. Internationally, you can hopefully oversee a period of relaxed tension with the Soviet Union.</p>\", \"electoral_loss_message\": \"<h3>Sorry. You have lost the 1988 election.</h3><p>In spite of you being the favorite, things just never seemed to click once the real campaigning began.</p><p>Time will tell if Bush governs as a moderate, or a staunch conservative. Many Democrats feel that this election was yours to lose, and it seems unlikely that you will be welcome to run again in four years. Your term as Governor, however, runs through 1991.</p>\", \"no_electoral_majority_message\": \"<h3>Congratulations! You have won the 1988 election.</h3><p>Although the Electoral College was tied, the Democrats have won a solid majority in the House, and will elevate Michael Dukakis to the Presidency.</p><p>On the political front, you can work a Democratic House to overturn the worst excesses of Reagan. Internationally, you can hopefully oversee a period of relaxed tension with the Soviet Union.</p>\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 156, \"fields\": {\"first_name\": \"Edward\", \"last_name\": \"Johnston\", \"election\": 15, \"party\": \"Republican\", \"state\": \"Alabama\", \"priority\": 5, \"description\": \"'\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"https://static.miraheze.org/mockelectionswiki/3/3b/Portrait_of_Edward_Johnston_%283x4_crop%29.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"A loyal party man, Johnston has remained steadfast in his support for the administration. A candidate backed by corporate power, Johnston is a true Southern Republican. As a Representative he supported every Republican initiative, from automation to the invasion of Mexico.<br><br>Johnston has stayed on the ticket two times before and he's ready to go a third time. Alongside President Anderson, he has also conveniently remained missing. However, he has a home with the Enclave...just as President Anderson does.<br><br>For the President, Johnston has no issues to him. Johnston stumps for the conservative causes and woos the CEOs with southern charm when needed. Despite what the liberals like Stephenson or Blackwell say, Johnston will remain Vice President...or else..\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 159, \"fields\": {\"first_name\": \"Michael\", \"last_name\": \"Richards\", \"election\": 15, \"party\": \"Democratic\", \"state\": \"Tennessee\", \"priority\": 8, \"description\": \"'\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"https://static.miraheze.org/mockelectionswiki/d/d1/Gov._Michael_Richards_%283x4%29.jpeg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"The Governor of Tennessee, Michael Richards is a moderate. He governed with a knack for compromise and governed with both parties in mind. Popular in his own state, he's someone the party bosses are comfortable with...and that's why he was chosen.<br><br>Make no mistake though, Richards is a helluva vote-getter. He was dealing with a budget scandal and a popular opponent in his re-election bid yet still won with 66.5% of the popular vote. He'll help Stephenson mix with other voters who just won't jive with the union talk and anti-corporation conspiracies. He's a comfort pick, that's all.<br><br>Richards is a nice man, he doesn't have an issue working with Stephenson. I wonder if a nice man is what America truly needs right now though...\", \"candidate_score\": 0.0}}]");
+campaignTrail_temp.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 47, \"fields\": {\"candidate\": 70, \"running_mate\": 76}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 56, \"fields\": {\"candidate\": 79, \"running_mate\": 89}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 76, \"fields\": {\"candidate\": 116, \"running_mate\": 120}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 81, \"fields\": {\"candidate\": 118, \"running_mate\": 125}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 66, \"fields\": {\"candidate\": 93, \"running_mate\": 103}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 82, \"fields\": {\"candidate\": 119, \"running_mate\": 126}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 97, \"fields\": {\"candidate\": 145, \"running_mate\": 151}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 96, \"fields\": {\"candidate\": 144, \"running_mate\": 150}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 46, \"fields\": {\"candidate\": 69, \"running_mate\": 73}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 67, \"fields\": {\"candidate\": 94, \"running_mate\": 104}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 207, \"fields\": {\"candidate\": 302, \"running_mate\": 311}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 205, \"fields\": {\"candidate\": 301, \"running_mate\": 309}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 200, \"fields\": {\"candidate\": 300, \"running_mate\": 304}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 7, \"fields\": {\"candidate\": 18, \"running_mate\": 38}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 8, \"fields\": {\"candidate\": 19, \"running_mate\": 39}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 74, \"fields\": {\"candidate\": 107, \"running_mate\": 114}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 161, \"fields\": {\"candidate\": 203, \"running_mate\": 215}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 160, \"fields\": {\"candidate\": 202, \"running_mate\": 214}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 208, \"fields\": {\"candidate\": 303, \"running_mate\": 312}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 116, \"fields\": {\"candidate\": 168, \"running_mate\": 178}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 57, \"fields\": {\"candidate\": 80, \"running_mate\": 90}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 115, \"fields\": {\"candidate\": 167, \"running_mate\": 177}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 1, \"fields\": {\"candidate\": 16, \"running_mate\": 30}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 87, \"fields\": {\"candidate\": 131, \"running_mate\": 135}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 94, \"fields\": {\"candidate\": 143, \"running_mate\": 148}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 89, \"fields\": {\"candidate\": 132, \"running_mate\": 137}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 155, \"fields\": {\"candidate\": 201, \"running_mate\": 209}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 3, \"fields\": {\"candidate\": 17, \"running_mate\": 31}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 92, \"fields\": {\"candidate\": 142, \"running_mate\": 146}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 48, \"fields\": {\"candidate\": 77, \"running_mate\": 81}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 22, \"fields\": {\"candidate\": 20, \"running_mate\": 45}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 41, \"fields\": {\"candidate\": 25, \"running_mate\": 62}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 68, \"fields\": {\"candidate\": 105, \"running_mate\": 108}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 26, \"fields\": {\"candidate\": 21, \"running_mate\": 49}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 77, \"fields\": {\"candidate\": 117, \"running_mate\": 121}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 33, \"fields\": {\"candidate\": 23, \"running_mate\": 55}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 150, \"fields\": {\"candidate\": 200, \"running_mate\": 204}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 37, \"fields\": {\"candidate\": 24, \"running_mate\": 58}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 52, \"fields\": {\"candidate\": 78, \"running_mate\": 85}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 45, \"fields\": {\"candidate\": 68, \"running_mate\": 72}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 44, \"fields\": {\"candidate\": 67, \"running_mate\": 71}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 18, \"fields\": {\"candidate\": 36, \"running_mate\": 18}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 101, \"fields\": {\"candidate\": 153, \"running_mate\": 159}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 62, \"fields\": {\"candidate\": 92, \"running_mate\": 99}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 71, \"fields\": {\"candidate\": 106, \"running_mate\": 111}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 98, \"fields\": {\"candidate\": 152, \"running_mate\": 156}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 13, \"fields\": {\"candidate\": 29, \"running_mate\": 27}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 12, \"fields\": {\"candidate\": 27, \"running_mate\": 29}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 58, \"fields\": {\"candidate\": 91, \"running_mate\": 95}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 63, \"fields\": {\"candidate\": 92, \"running_mate\": 100}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 83, \"fields\": {\"candidate\": 67, \"running_mate\": 127}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 107, \"fields\": {\"candidate\": 165, \"running_mate\": 169}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 111, \"fields\": {\"candidate\": 166, \"running_mate\": 173}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 85, \"fields\": {\"candidate\": 68, \"running_mate\": 129}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 59, \"fields\": {\"candidate\": 91, \"running_mate\": 96}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 15, \"fields\": {\"candidate\": 29, \"running_mate\": 40}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 60, \"fields\": {\"candidate\": 91, \"running_mate\": 97}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 108, \"fields\": {\"candidate\": 165, \"running_mate\": 170}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 109, \"fields\": {\"candidate\": 165, \"running_mate\": 171}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 112, \"fields\": {\"candidate\": 166, \"running_mate\": 174}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 113, \"fields\": {\"candidate\": 166, \"running_mate\": 175}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 73, \"fields\": {\"candidate\": 106, \"running_mate\": 113}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 10, \"fields\": {\"candidate\": 27, \"running_mate\": 40}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 53, \"fields\": {\"candidate\": 78, \"running_mate\": 86}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 110, \"fields\": {\"candidate\": 165, \"running_mate\": 172}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 34, \"fields\": {\"candidate\": 23, \"running_mate\": 44}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 9, \"fields\": {\"candidate\": 27, \"running_mate\": 33}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 69, \"fields\": {\"candidate\": 105, \"running_mate\": 109}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 19, \"fields\": {\"candidate\": 36, \"running_mate\": 41}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 20, \"fields\": {\"candidate\": 36, \"running_mate\": 42}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 151, \"fields\": {\"candidate\": 200, \"running_mate\": 205}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 16, \"fields\": {\"candidate\": 29, \"running_mate\": 33}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 49, \"fields\": {\"candidate\": 77, \"running_mate\": 82}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 93, \"fields\": {\"candidate\": 142, \"running_mate\": 147}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 72, \"fields\": {\"candidate\": 106, \"running_mate\": 112}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 55, \"fields\": {\"candidate\": 78, \"running_mate\": 88}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 54, \"fields\": {\"candidate\": 78, \"running_mate\": 87}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 84, \"fields\": {\"candidate\": 67, \"running_mate\": 128}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 61, \"fields\": {\"candidate\": 91, \"running_mate\": 98}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 78, \"fields\": {\"candidate\": 117, \"running_mate\": 122}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 43, \"fields\": {\"candidate\": 25, \"running_mate\": 64}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 42, \"fields\": {\"candidate\": 25, \"running_mate\": 63}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 40, \"fields\": {\"candidate\": 24, \"running_mate\": 61}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 39, \"fields\": {\"candidate\": 24, \"running_mate\": 60}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 86, \"fields\": {\"candidate\": 68, \"running_mate\": 130}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 38, \"fields\": {\"candidate\": 24, \"running_mate\": 59}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 95, \"fields\": {\"candidate\": 143, \"running_mate\": 149}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 30, \"fields\": {\"candidate\": 21, \"running_mate\": 51}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 28, \"fields\": {\"candidate\": 21, \"running_mate\": 50}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 24, \"fields\": {\"candidate\": 20, \"running_mate\": 47}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 17, \"fields\": {\"candidate\": 29, \"running_mate\": 31}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 11, \"fields\": {\"candidate\": 27, \"running_mate\": 31}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 79, \"fields\": {\"candidate\": 117, \"running_mate\": 123}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 80, \"fields\": {\"candidate\": 117, \"running_mate\": 124}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 90, \"fields\": {\"candidate\": 132, \"running_mate\": 138}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 4, \"fields\": {\"candidate\": 17, \"running_mate\": 32}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 2, \"fields\": {\"candidate\": 16, \"running_mate\": 34}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 25, \"fields\": {\"candidate\": 20, \"running_mate\": 48}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 23, \"fields\": {\"candidate\": 20, \"running_mate\": 46}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 36, \"fields\": {\"candidate\": 23, \"running_mate\": 57}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 88, \"fields\": {\"candidate\": 131, \"running_mate\": 136}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 70, \"fields\": {\"candidate\": 105, \"running_mate\": 110}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 152, \"fields\": {\"candidate\": 200, \"running_mate\": 206}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 153, \"fields\": {\"candidate\": 200, \"running_mate\": 207}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 154, \"fields\": {\"candidate\": 200, \"running_mate\": 208}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 157, \"fields\": {\"candidate\": 201, \"running_mate\": 211}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 159, \"fields\": {\"candidate\": 201, \"running_mate\": 213}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 64, \"fields\": {\"candidate\": 92, \"running_mate\": 101}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 6, \"fields\": {\"candidate\": 17, \"running_mate\": 37}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 5, \"fields\": {\"candidate\": 17, \"running_mate\": 33}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 35, \"fields\": {\"candidate\": 23, \"running_mate\": 56}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 91, \"fields\": {\"candidate\": 132, \"running_mate\": 139}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 21, \"fields\": {\"candidate\": 36, \"running_mate\": 43}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 50, \"fields\": {\"candidate\": 77, \"running_mate\": 83}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 32, \"fields\": {\"candidate\": 21, \"running_mate\": 53}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 31, \"fields\": {\"candidate\": 21, \"running_mate\": 52}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 158, \"fields\": {\"candidate\": 201, \"running_mate\": 212}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 156, \"fields\": {\"candidate\": 201, \"running_mate\": 210}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 75, \"fields\": {\"candidate\": 106, \"running_mate\": 115}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 65, \"fields\": {\"candidate\": 92, \"running_mate\": 102}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 51, \"fields\": {\"candidate\": 77, \"running_mate\": 84}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 201, \"fields\": {\"candidate\": 300, \"running_mate\": 305}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 210, \"fields\": {\"candidate\": 300, \"running_mate\": 314}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 209, \"fields\": {\"candidate\": 300, \"running_mate\": 313}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 202, \"fields\": {\"candidate\": 300, \"running_mate\": 306}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 203, \"fields\": {\"candidate\": 300, \"running_mate\": 307}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 204, \"fields\": {\"candidate\": 300, \"running_mate\": 308}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 206, \"fields\": {\"candidate\": 301, \"running_mate\": 310}}]");
+campaignTrail_temp.opponents_default_json = JSON.parse("[{\"election\": 15, \"candidates\": [152, 153]}]");
+campaignTrail_temp.opponents_weighted_json = JSON.parse("[{\"election\": 15, \"candidates\": [153, 152]}]");        
+campaignTrail_temp.difficulty_level_json = JSON.parse("[{\"model\": \"campaign_trail.difficulty_level\", \"pk\": 1, \"fields\": {\"name\": \"Cakewalk\", \"multiplier\": 1.2}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 2, \"fields\": {\"name\": \"Very Easy\", \"multiplier\": 1.12}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 3, \"fields\": {\"name\": \"Easy\", \"multiplier\": 1.06}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 4, \"fields\": {\"name\": \"Normal\", \"multiplier\": 0.97}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 5, \"fields\": {\"name\": \"Hard\", \"multiplier\": 0.93}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 6, \"fields\": {\"name\": \"Very Hard\", \"multiplier\": 0.87}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 7, \"fields\": {\"name\": \"Blowout\", \"multiplier\": 0.8}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 8, \"fields\": {\"name\": \"Impossible\", \"multiplier\": 0.75}}]");
+campaignTrail_temp.global_parameter_json = JSON.parse("[{\"model\": \"campaign_trail.global_parameter\", \"pk\": 1, \"fields\": {\"vote_variable\": 1.125, \"max_swing\": 0.12, \"start_point\": 0.94, \"candidate_issue_weight\": 10.0, \"running_mate_issue_weight\": 3.0, \"issue_stance_1_max\": -0.71, \"issue_stance_2_max\": -0.3, \"issue_stance_3_max\": -0.125, \"issue_stance_4_max\": 0.125, \"issue_stance_5_max\": 0.3, \"issue_stance_6_max\": 0.71, \"global_variance\": 0.0, \"state_variance\": 0.0, \"question_count\": 30, \"default_map_color_hex\": \"#C9C9C9\", \"no_state_map_color_hex\": \"#999999\"}}]");
+campaignTrail_temp.candidate_dropout_json = JSON.parse("[{\"model\": \"campaign_trail.candidate_dropout\", \"pk\": 1, \"fields\": {\"candidate\": 36, \"affected_candidate\": 18, \"probability\": 1.0}}]");
+campaignTrail_temp.temp_election_list = [{"id": 15, "year": 2076, "is_premium": 0, "display_year": "2076"}];
+campaignTrail_temp.show_premium = true;
+campaignTrail_temp.premier_ab_test_version = -1;
+
+e.credits = "Gelid Lagopus; with coding by max_6711, gamergirld20, and CatBoxXD; a special thanks to Ruskipop for advising the lore.<br><p><b style='color: #1e4382'>↓ HELP (WRITTEN BY CATBOXXD) ↓</b></p>2021DE (tooltips), 1996EOH (endings), and others i cant remember :( (pint-sized brain)";
+
+HistHexcolour=["#d53838","#5353b2"];
+HistName=[" Dillion E. Anderson"," Gary A. Stephenson", "-", "-"];
+HistEV=[278,260, "-", "-"];
+HistPV=["104,691,785","102,818,573", "-", "-"];
+HistPVP=["50.3%","49.4%", "-", "-"];
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#404040";
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#878787";
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+$(".container")[0].style.backgroundColor = "#696969";
+
+document.getElementById("header").src = "https://static.miraheze.org/mockelectionswiki/f/ff/Fallout_mod_banner.png";
+document.body.background = "https://static.miraheze.org/mockelectionswiki/6/60/952B9326-DD59-46E3-A1E2-26CFA3960A13.png";
+
+quotes = ["To the cynical, the idealist is the enemy..."]
+customquote = quotes[Math.floor((Math.random() * quotes.length))]
+document.getElementById("wittyquote").color = "white"
+corrr=`\n<h2>2076: The End.</h2><font id='wittyquote' size='3' color='#ffffff'><em>`+customquote+`</em></font>`
+
+campaignTrail_temp.achievements = {
+  "Tossed Out." : {
+      "image" : "https://i.imgur.com/kZifWKS.png",
+      "description" : "After winning, see the consequences of what you said."
+  },
+  "A House Divided" : {
+      "image" : "https://i.imgur.com/M8Lma2v.png",
+      "description" : "See the consequences of your actions."
+  },
+  "Ungrateful Little Bastards" : {
+      "image" : "https://i.imgur.com/mEJM7WC.png",
+      "description" : "Ally yourself with ungrateful radicals and win.",
+  },
+  "Turn Your Back Away" : {
+      "image" : "https://i.imgur.com/svmEzNM.png",
+      "description" : "Forget the people who got you where you are.",
+  }
+}
+
+campaignTrail_temp.modBoxTheme = {
+    "header_color" : "#757688",
+    "header_text_color" : "#FFFFFF",
+    "description_text_color" : "#FFFFFF",
+    "description_background_color" : "#A6A8C1",
+    "main_color" : "#8C91A4",
+    "secondary_color" : "#757688",
+    "ui_text_color": "#FFFFFF"
+}
+
+function addDynamicCSS() {
+    var css = `
+        .inner_window_question h3 .mytooltip{
+            background-color: lightskyblue;
+        }
+
+        .mytooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            background-color: lightblue;
+        }
+
+        .mytooltip .mytooltiptext {
+            width: 240px;
+            background-color: lightblue;
+            color: black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 99;
+            bottom: 20%;
+            left: 20%;
+            margin-left: -90px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border: 1px solid black;
+            pointer-events: none;
+            font-size: 13px !important;
+            line-height: 1.5em !important;
+            font-weight: normal !important;
+            font-style: normal !important;
+        }
+
+        .mytooltip .mytooltiptext img {
+            max-width: 240px;
+            height: auto;
+        }
+
+        .mytooltip:hover .mytooltiptext {
+            opacity: 1;
+            transition-delay: 0.5s;
+        }
+    `;
+
+    var styleElem = document.createElement('style');
+    styleElem.type = 'text/css';
+    
+    styleElem.appendChild(document.createTextNode(css));
+    
+    document.head.appendChild(styleElem);
+}
+
+
+addDynamicCSS();
+
+tooltipList = [
+    {searchString: "New Plague", explanationText: "A highly contagious disease, entered the US in the early 50s."},
+    {searchString: "Plague", explanationText: "A highly contagious disease, entered the US in the early 50s."},
+	{searchString: "Bailey Gordon", explanationText: "The current Speaker of the House, a moderate. An inactive fool who won’t do much for America."},
+    {searchString: "Joshua Henderson", explanationText: "Senator from Michigan, very in the pocket of corporate America. Conservative. A dumbass."},
+    {searchString: "Michael Richards", explanationText: "The Governor of Tennessee, moderate. Not terribly exciting."},
+    {searchString: "Richards", explanationText: "The Governor of Tennessee, moderate. Not terribly exciting."},
+    {searchString: "Governor Richards", explanationText: "The Governor of Tennessee, moderate. Not terribly exciting."},
+    {searchString: "Governor Michael Richards", explanationText: "The Governor of Tennessee, moderate. Not terribly exciting."},
+    {searchString: "Appalachian Territory", explanationText: "One of the 13 US Commonwealths, it encompasses Ohio, Kentucky, Maryland, Tennessee, Virginia, and West Virginia."},
+    {searchString: "Evans", explanationText: "A real bastard, the definition of political and moral corruption. True scum."},
+    {searchString: "Governor Evans", explanationText: "A real bastard, the definition of political and moral corruption. True scum."},
+    {searchString: "Sino-American War", explanationText: "An extension of the Resource Wars, beginning in 2066 after the capture of Anchorage by the Chinese. Fought over the last resources Earth has."},
+    {searchString: "Hornwright", explanationText: "Hornwright Industries, a mining company big in the automation sector."},
+    {searchString: "Canada", explanationText: "Former neighbor to the north, now is a part of America. America began eroding Canada’s sovereignty in 2059 and finally annexed her in 2072 after the invasion of Alaska."},
+    {searchString: "Wan Yang", explanationText: "Chinese saboteur arrested over the Niagara Sabotage."},
+    {searchString: "HUAC", explanationText: "House Committee on Un-American Activities, formed in 1938, it was formed to investigate internal subversion."},
+    {searchString: "European Commonwealth", explanationText: "<img src='https://static.miraheze.org/mockelectionswiki/4/4c/Fallout-European-Commonwealth.png' style='width:70%;height:70%;'><br>Formed in 2025, Encompassing the majority of Western Europe. Fall apart in 2060 after the end of the Euro-Arab War due to the oil wells running dry."},
+    {searchString: "European Civil War", explanationText: "Beginning in 2060, the European Commonwealth collapsed into bickering nationstates after the drying up of the Arab oil fields."},
+    {searchString: "United Nations", explanationText: "Formed in 1946, it united the world’s nations to work out their problems without war. The world decided to go back to war, though, and the UN dissolved in 2052."},
+    {searchString: "Sam Blackwell", explanationText: "Senator from West Virginia. Investigating the odd investment records of the Dept. of Agriculture. Supporter of the Free States Movement."},
+    {searchString: "Senator Blackwell", explanationText: "Senator from West Virginia. Investigating the odd investment records of the Dept. of Agriculture. Supporter of the Free States Movement."},
+    {searchString: "Senator Sam Blackwell", explanationText: "Senator from West Virginia. Investigating the odd investment records of the Dept. of Agriculture. Supporter of the Free States Movement."},
+    {searchString: "Blackwell", explanationText: "Senator from West Virginia. Investigating the odd investment records of the Dept. of Agriculture. Supporter of the Free States Movement."},
+    {searchString: "Rocky Mountain Arsenal", explanationText: "A toxic waste dump outside of Denver. It leaked in 2075, killing many in Denver."},
+    {searchString: "Tom Eckhart", explanationText: "Current Secretary of Agriculture. A no good idiot who's done nothing for anything."},
+    {searchString: "Mike Hampton", explanationText: "Senate Majority Whip, the darling of party bosses."},
+    {searchString: "John Conrad", explanationText: "Governor of Nebraska, social conservative and economic moderate. Connects with the farmers like no other."},
+    {searchString: "Sara Edwards", explanationText: "Senator from Washington, economic moderate and social liberal. Member of the Senate Foreign Relations Committee."},
+    {searchString: "Don Gaither", explanationText: "Your Secretary of Defense, a real go-getter. Always been a loyal member of the administration, trigger happy."},
+    {searchString: "Secretary Gaither", explanationText: "Your now former Secretary of Defense, a real go-getter. Always been a loyal member of the administration, trigger happy."},
+    {searchString: "Gaither", explanationText: "Your now former Secretary of Defense, a real go-getter. Always been a loyal member of the administration, trigger happy."},
+    {searchString: "Secretary Eckhart", explanationText: "Your Secretary of Agriculture. A loyal American conservative."},
+    {searchString: "USSA", explanationText: "<img src='https://static.miraheze.org/mockelectionswiki/1/19/USSA.png'width:70%;height:70%;'><br>The United States Space Administration, our connection to the stars. They put the first man in space in 1961 and landed a man on the moon in 1969."},
+    {searchString: "P.A.M.", explanationText: "The Predictive Analytic Machine. A machine invented in 2067, it predicts the future based on current data. Supposed to be reliable, not proven to be so."},
+        
+];
+
+$("#game_start").click((event) => {
+    event.preventDefault();
+    musicMode()  
+  })
+  
+  // MUSIC MODE
+  
+  musicMode = () => {
+    // Initialise custom music
+  
+    $("#music_player")[0].children[0].style.display = "none"
+    $("#music_player")[0].children[1].style.display = "none"
+  
+    document.getElementById("modLoadReveal").style.display = "none"
+    document.getElementById("modloaddiv").style.display = "none"
+  
+    musicBox = document.getElementById("music_player")
+    musicBox.style.display = ""
+  
+    var trackSel;
+    e = campaignTrail_temp
+    e.selectedSoundtrack = 0
+  
+    toTime = (seconds) => {
+        var date = new Date(null);
+        date.setSeconds(seconds);
+        return date.toISOString().substr(11, 8);
+    }
+  
+    generateTime = () => {
+        // Get the audio element
+        var audio = document.getElementById("campaigntrailmusic");
+  
+        timeTracker = document.createElement("div");
+        timeTracker.style = `
+  text-align:left;
+  border-style:solid;
+  border-width:3px;
+  height:150px;
+  width:200px;
+  background-color:#999999;
+  float:right;
+  padding: 10px;
+  `
+        $("#trackSelParent")[0].prepend(timeTracker);
+        $("#trackSelParent")[0].prepend(document.createElement("br"));
+  
+        // Create a new element to display the current position of the audio
+        var positionDisplay = document.createElement("gg");
+        positionDisplay.id = "position-display";
+  
+        // Create a new slider element to change the time
+        var timeSlider = document.createElement("input");
+        timeSlider.type = "range";
+        timeSlider.min = 0;
+        timeSlider.max = 1;
+        timeSlider.step = 0.001;
+        timeSlider.value = 0;
+        timeSlider.style.width = "200px";
+        timeSlider.id = "time-slider";
+  
+        var pausePlay = document.createElement("button");
+        pausePlay.id = "position-display";
+        pausePlay.innerHTML = "<b>Pause</b>"
+        pausePlay.style.width = "100%";
+  
+  
+        pausePlay.addEventListener("click", event => {
+            event.preventDefault();
+            updatePositionDisplay();
+            let audio = document.getElementById("campaigntrailmusic");
+            if (audio.paused) {
+                audio.play();
+                event.target.innerHTML = "<b>Pause</b>";
+                return;
+            }
+            audio.pause();
+            event.target.innerHTML = "<b>Play</b>";
+            return;
+        })
+  
+        var volumeLabel = document.createElement("gg");
+        volumeLabel.id = "volume-label";
+        volumeLabel.innerHTML = "<br><b>Volume: </b>"
+  
+        var volumeSlider = document.createElement("input");
+        volumeSlider.type = "range";
+        volumeSlider.min = 0;
+        volumeSlider.max = 1;
+        volumeSlider.step = 0.001;
+        volumeSlider.value = 0;
+        volumeSlider.style.width = "200px";
+        volumeSlider.id = "volume-slider";
+  
+        volumeSlider.value = audio.volume;
+  
+        timeTracker.appendChild(pausePlay);
+        timeTracker.appendChild(document.createElement("br"));
+        timeTracker.appendChild(document.createElement("br"));
+        timeTracker.appendChild(positionDisplay);
+        timeTracker.appendChild(timeSlider);
+        timeTracker.appendChild(volumeLabel);
+        timeTracker.appendChild(volumeSlider);
+  
+        updatePositionDisplay();
+  
+        //for (let i = 0; i < 10; i++)
+        //timeTracker.append(document.createElement("br"));
+  
+  
+        // Function to update the position display
+        function updatePositionDisplay() {
+            positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+            timeSlider.value = audio.duration ? audio.currentTime / audio.duration : 0;
+        }
+  
+        // Function to change the time of the audio
+        function changeTime() {
+            positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+            audio.currentTime = timeSlider.value * audio.duration;
+        }
+  
+        updateVolume = event => {
+            audio.volume = event.target.value;
+        }
+  
+        // Update the position display and slider every second
+        setInterval(updatePositionDisplay, 1000);
+  
+        // Listen for changes to the time slider and change the time of the audio
+        timeSlider.addEventListener("input", changeTime);
+        volumeSlider.addEventListener("input", updateVolume)
+    }
+  
+    function newMusicPlayer() {
+        trackSel = document.createElement("div");
+        trackSel.id = "trackSelParent"
+        let z = `<br><br><br><br><br><br><br><br><br><br><div id='trackSel' style="text-align:left;border-style:solid;border-width:3px;overflow-y: scroll;overflow-x: hidden;height:200px; width:400px;background-color:#999999;float:right;">`
+        z += `<b><select id='selectSoundtrack'><option value='` + soundtracks[e.selectedSoundtrack].name + `'>` + soundtracks[e.selectedSoundtrack].name + "</option>"
+        for (i in soundtracks) {
+            if (soundtracks[e.selectedSoundtrack] != soundtracks[i]) {
+                z += `<option value='` + soundtracks[i].name + `'>` + soundtracks[i].name + `</option>`
+            }
+        }
+        z += `</select></b><br><br>`
+            // <label><input type="radio" name="option" value="option1">Option 1</label><br>
+        for (i in soundtracks[e.selectedSoundtrack].tracklist) {
+            let a = soundtracks[e.selectedSoundtrack].tracklist[i]
+            let b = `<label><input class="trackSelector" type="radio" name="trackSelector" value="` + i + `">` + a.name + `</label><br>`
+            z += b
+        }
+        z += "</div><br><br>"
+        trackSel.innerHTML = z
+  
+        // select correct song
+  
+        musicBox.appendChild(trackSel);
+        Array.from(document.getElementById("trackSel").children).filter(f => {
+            return f.tagName == "LABEL"
+        }).map(f => f.children[0])[0].checked = true
+  
+        // set soundtrack changer
+  
+        soundtrackSelector = document.getElementById("selectSoundtrack")
+        soundtrackSelector.onchange = function() {
+            for (i in soundtracks) {
+                if (soundtracks[i].name == soundtrackSelector.value) {
+                    e.selectedSoundtrack = i
+                    break
+                }
+            }
+            document.getElementById("trackSelParent").remove()
+            newMusicPlayer()
+        }
+  
+        var matches = document.querySelectorAll('.trackSelector');
+  
+        for (match in matches) {
+            matches[match].onchange = function() {
+                audio = $("#campaigntrailmusic")[0];
+                audio.src = soundtracks[e.selectedSoundtrack].tracklist[this.value].url
+                audio.currentTime = 0
+            }
+        }
+  
+        musicBox.children[2].loop = false
+        musicBox.children[2].src = soundtracks[e.selectedSoundtrack].tracklist[0].url
+  
+        musicBox.children[2].onended = function() {
+            console.log("next track")
+            let selected = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+            let newSel = clamp(selected + 1, soundtracks[e.selectedSoundtrack].tracklist.length - 1, 0)
+            let buttons = Array.from(document.getElementById("trackSel").children).filter(f => {
+                    return f.tagName == "LABEL"
+                }).map(f => f.children[0])
+                //let selectedIndex = buttons.map(f=>f.children[0]).map(f=>f.checked)
+            buttons[newSel].click()
+        }
+  
+        for (w = 0; w < 7; w++) {
+            document.getElementById("trackSelParent").appendChild(document.createElement("br"))
+        }
+  
+        generateTime();
+    }
+  
+    clamp = function(a, max, min, overflow = true) {
+        if (overflow) {
+            return a > max ? min : a < min ? max : a;
+        }
+        return a > max ? max : a < min ? min : a;
+    }
+  
+  
+    // Track list
+var soundtracks = {
+        0: {
+            name: "97.3 Jet Set Radio",
+            tracklist: [
+              {
+                "name": "I Don’t Want to See Tomorrow - Nat King Cole",
+                "url": "https://files.catbox.moe/an073j.mp3"
+              },
+              {
+                "name": "So Doggone Lonesome - Johnny Cash",
+                "url": "https://files.catbox.moe/bzh8kj.mp3"
+              },
+              {
+                "name": "Maybe - The Ink Spots",
+                "url": "https://files.catbox.moe/zs96m3.mp3"
+              },
+              {
+                "name": "A Kiss to Build a Dream On - Louis Armstrong",
+                "url": "https://files.catbox.moe/jsyvlp.mp3"
+              },
+              {
+                "name": "Undecided - Ella Fitzgerald",
+                "url": "https://files.catbox.moe/78g9s7.mp3"
+              },
+              {
+                "name": "I Don't Want to Set the World on Fire - The Ink Spots",
+                "url": "https://files.catbox.moe/khyrnn.mp3"
+              },
+              {
+                "name": "Love Me As Though There Were No Tomorrow - Nat King Cole",
+                "url": "https://files.catbox.moe/478lsa.mp3"
+              },
+              {
+                "name": "Mr. Shorty - Marty Robbins",
+                "url": "https://files.catbox.moe/l131sf.mp3"
+              }
+          ]
+        }
+    }
+  
+    // Set up new music player
+    if (!hasMusic) {
+        newMusicPlayer()
+        hasMusic = true;
+    }
+}
