@@ -58,14 +58,18 @@ campaignTrail_temp.cyoa = true
 
 freeStatesEmboldenment = false; /// this is for the ending regarding emboldening those people in Free States movement
 impeachment = false; /// this is for the ending regarding being impeached
+var gettingImpeached = 0; /// this is to count for the ending regarding being impeached
 var civilWar = 0; /// this is for the ending regarding a civil war
 var abandonedPeople = 0; /// this is for the ending regarding abandoning the people of the United States
 
 cyoAdventure = function (a) {
 ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
 /// for the imp[eachment] ending
-if (ans == 4529 && ans == 4431 && ans == 4502 && ans == 4425) {
-  console.log("build up to being in a peach i think...");
+if (ans == 4529 || ans == 4431 || ans == 4502 || ans == 4425) {
+  console.log("getting impeached probably soon i think...");
+  gettingImpeached += 1;
+}
+if (gettingImpeached == 4) {
   impeachment = true;
 }
 /// for the emboldening free state people ending
