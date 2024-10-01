@@ -1,0 +1,932 @@
+if(!campaignTrail_temp.loaded1){
+	campaignTrail_temp.loaded1=true;
+	campaignTrail_temp.election_json = JSON.parse("[{\"model\": \"campaign_trail.election\", \"pk\": 9, \"fields\": {\"year\": 2012, \"summary\": \"Barack Hussein Obama. The first Black president. The Antichrist. The demagogic liar has succeeded in advancing himself to the highest office in the land on the premise he'd fulfill the hopes and channel the grievances of all the extremists and victims who've placed him there. Under the ever-present eyes of his teachers, the time has come to take his place as the fourth horseman of the apocalypse that will ring in a new America.<br><br>Tasked with truly defining himself and exposing his innermost ambitions, he must act upon events most extraordinary, all conveniently placed before him as if by the cruel hand of fate itself. Will he maintain the radical tutelage instilled in him from his swinging Chicago days, or betray them all at the risk of a tarnished legacy? Whatever he decides to do, it'll take all his wits, snake oil charm, and manipulative cunning to not go down with the ship he's sinking.\", \"image_url\": \"https://i.imgur.com/2z7fBcj.png\", \"winning_electoral_vote_number\": 270, \"advisor_url\": \"https://i.imgur.com/zXSQiZr.png\", \"recommended_reading\": \"<a href=\\\"https://quranonline.net/\\\" target=\\u201d_blank\\u201d>The Holy Quran</a>\", \"has_visits\": 1, \"no_electoral_majority_image\": \"/static/images/2012-no-majority.jpg\"}}]");
+	campaignTrail_temp.candidate_json = JSON.parse("[{\"model\": \"campaign_trail.candidate\", \"pk\": 77, \"fields\": {\"first_name\": \"Barack\", \"last_name\": \"Obama\", \"election\": 9, \"party\": \"Democratic\", \"state\": \"Illinois\", \"priority\": 1, \"description\": \"<p>The smooth and charming Barack Obama from parts unknown was the perfect agent of ''change'' when he arrived on the scene in 2008. With a blinding smile, armed with a fine-tuned folksy vernacular (modified on command), the freshman Senator and community organizer didn't spend his early years under the careful mentorship of Bill Ayers, Louis Farrakhan and Jeremiah Wright for nothing. He's a man on a mission from a lower power.<br><br>He's sacrificed much to be where he is today, having had to endure the muck of middle America, having to allow racist jackals like Hillary Clinton infiltrate his Cabinet to appease the blob. Yet if all goes according to plan, it'll have been worth it. Be it by hook or by crook, Obama will strive to tear down this country and rebuild, brick-by-brick. But if that course may alter, his arrogance will refuse defeat, even if it means a little ''compromise'' here and there. So long as he wins in the end, it'll have been for the greater good.</p>\", \"color_hex\": \"#184794\", \"secondary_color_hex\": \"#9c5151\", \"is_active\": 1, \"image_url\": \"https://i.imgur.com/qoFZTW1.jpeg\", \"electoral_victory_message\": \"<h3>Congratulations! You have won the 2012 election.</h3><p>Despite a close challenge from Mitt Romney, you have secured a second term for your presidency.</p><p>You’ll continue to spearhead the economic recovery in your second term, and hopefully ensure a smooth transition for the Affordable Care Act. As for foreign policy, you'll continue to maintain American hegemony abroad and keep the rising threats of extremist groups at bay. If all the above happens, you will leave a strong legacy to your successor.</p>\", \"electoral_loss_message\": \"<h3>Sorry! You have lost the 2012 election.</h3><p>Considering the fervor behind your ascension to power, it seems like you were unable to sustain it long enough to get re-elected.</p><p>Expect Mitt Romney to axe the Affordable Care Act and remodel the economic policies of the federal government. Hopefully Hillary, or maybe your vice president even, will present a strong challenge to him in 2016. As for you, you are still popular within your party, so your political career isn’t necessarily over. </p>\", \"no_electoral_majority_message\": \"<h3>Wow! You've deadlocked the election.</h3><p>No candidate achieved a majority of the electoral votes, marking the first time this has happened since 1824. Unfortunately for you, the majority of U.S. states have Republican controlled congressional delegations, and they will cast their votes accordingly.</p><p>Given the incredibly close nature of the election, you could possibly forge a comeback in 2016, if you don't face any unexpected opposition, that is.</p>\", \"description_as_running_mate\": \"''\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 81, \"fields\": {\"first_name\": \"Joe\", \"last_name\": \"Biden\", \"election\": 9, \"party\": \"Democratic\", \"state\": \"Delaware\", \"priority\": 5, \"description\": \"''\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"https://i.imgur.com/12oVFIS.jpeg\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"<p>A man past his prime, older than the most senile and dementia-addled Watergate baby, Joe Biden may have had several facial and follicle remodels over the years but he's hardly changed. Just as it was when he first entered public office, Biden is as out of his element as ever, harboring the same barely candescent ticker occupying his head and inclination to grope and molest women (among others). Everyone knows he's only here because the people demanded a more experienced, <i>whiter</i> presence to make the ticket of the radical headliner more palatable.<br><br>If certain individuals in the administration have it their way, and if Scranton Joe (circa 1953) doesn't mind his business, he just might suffer the humiliating spectale of a premature sacking. But Joe knows his time is running out, and if he doesn't make his voice heard now, he might never get the opportunity again.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 78, \"fields\": {\"first_name\": \"The\", \"last_name\": \"Republican Party\", \"election\": 9, \"party\": \"Democrat\", \"state\": \"The Heartland\", \"priority\": 2, \"description\": \"<p></p>\", \"color_hex\": \"#910c0c\", \"secondary_color_hex\": \"#9badc4\", \"is_active\": 0, \"image_url\": \"https://i.imgur.com/a4od9z3.jpeg\", \"electoral_victory_message\": \"<h3>Congratulations! You have won the 2004 election.</h3><p>You were able to defeat George Bush and win back the Presidency.</p><p>You will repeal Bush’s tax cuts in order to reduce the deficit, and to pay for a new expansive healthcare policy. Perhaps you can also push for more progressive policies on gay marriage and abortion. As for foreign policy, hopefully you can withdraw from Iraq and restore foreign faith in the United States. Given no unexpected disasters, you will probably be able to win reelection in 2008.</p>\", \"electoral_loss_message\": \"<h3>Sorry! You have lost the 2004 election.</h3><p>Despite your efforts, it seems like you just weren’t up to the task of defeating Bush.</p><p>Bush will continue the war in Iraq no matter how controversial it becomes, and will continue to alienate American allies with his War on Terror. There are murmurs within the party of you running again in 2008, but who knows what will happen in the next few years.</p>\", \"no_electoral_majority_message\": \"<h3>Sorry! You have lost in a squeaker.</h3><p>No candidate achieved a majority of the electoral votes, for the first time since 1824. Unfortunately for you, a majority of states have Republican controlled congressional delegations.</p><p>Considering how close this election was, Bush will definitely be expected to govern in a more bipartisan manner.</p>\", \"description_as_running_mate\": \"''\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 79, \"fields\": {\"first_name\": \"The\", \"last_name\": \"Greens\", \"election\": 9, \"party\": \"Independent\", \"state\": \"Connecticut\", \"priority\": 3, \"description\": \"<p>Ralph Nader enters the 2000 election as the Green candidate after years as an activist and consumer advocate.</p><p>After eight years of Bill Clinton, it is clear that the United States needs a true liberal alternative -- one that will fight for fair trade, universal health care, free college, and campaign finance reform. Nader's primary goal in this election is to win 5% of the popular vote, which will qualify the Green Party for federal matching funds in 2004.</p>\", \"color_hex\": \"#4EAF41\", \"secondary_color_hex\": \"#A1FFA1\", \"is_active\": 0, \"image_url\": \"/static/images/ralph-nader-2000.jpg\", \"electoral_victory_message\": \"<h3>Congratulations! You have won the 2000 election.</h3><p>This was definitely not supposed to happen. Good luck!</p>\", \"electoral_loss_message\": \"<h3>As expected, you have lost the 2000 election.</h3><p>The legacy of this campaign depends on a couple of factors. First of all, did you receive 5% of the popular vote? If so, congratulations! You will enable the Green Party to run a vigorous campaign in 2004 and present a true choice to the American people. Also, the Democrats were a little peeved that you \\\"stole\\\" votes from them in this election. Hopefully that doesn't lead to a backlash.</p>\", \"no_electoral_majority_message\": \"<h3>Wow! No candidate received 270 electoral votes, but the House will elect George W. Bush as President.</h3><p>Did you receive 5% of the popular vote? If so, congratulations! You will enable the Green Party to run a vigorous campaign in 2004 and present a true choice to the American people. Also, the Democrats were a little peeved that you \\\"stole\\\" votes from them in this election. Hopefully that doesn't lead to a backlash, especially since they will lose the vote in the House.</p>\", \"description_as_running_mate\": \"''\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 80, \"fields\": {\"first_name\": \"The\", \"last_name\": \"Libertarians\", \"election\": 9, \"party\": \"Libertarian/Other\", \"state\": \"Indiana\", \"priority\": 4, \"description\": \"''\", \"color_hex\": \"#D3AF41\", \"secondary_color_hex\": \"#FFFFC0\", \"is_active\": 0, \"image_url\": \"''\", \"electoral_victory_message\": \"''\", \"electoral_loss_message\": \"''\", \"no_electoral_majority_message\": \"''\", \"description_as_running_mate\": \"''\", \"candidate_score\": 1.0}}]");
+	campaignTrail_temp.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 106, \"fields\": {\"candidate\": 155, \"running_mate\": 164}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 76, \"fields\": {\"candidate\": 116, \"running_mate\": 120}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 67, \"fields\": {\"candidate\": 94, \"running_mate\": 104}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 74, \"fields\": {\"candidate\": 107, \"running_mate\": 114}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 66, \"fields\": {\"candidate\": 93, \"running_mate\": 103}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 81, \"fields\": {\"candidate\": 118, \"running_mate\": 125}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 7, \"fields\": {\"candidate\": 18, \"running_mate\": 38}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 8, \"fields\": {\"candidate\": 19, \"running_mate\": 39}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 82, \"fields\": {\"candidate\": 119, \"running_mate\": 126}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 116, \"fields\": {\"candidate\": 168, \"running_mate\": 178}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 161, \"fields\": {\"candidate\": 203, \"running_mate\": 215}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 57, \"fields\": {\"candidate\": 80, \"running_mate\": 90}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 56, \"fields\": {\"candidate\": 79, \"running_mate\": 89}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 160, \"fields\": {\"candidate\": 202, \"running_mate\": 214}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 115, \"fields\": {\"candidate\": 167, \"running_mate\": 177}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 46, \"fields\": {\"candidate\": 69, \"running_mate\": 73}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 47, \"fields\": {\"candidate\": 70, \"running_mate\": 76}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 96, \"fields\": {\"candidate\": 144, \"running_mate\": 150}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 97, \"fields\": {\"candidate\": 145, \"running_mate\": 151}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 105, \"fields\": {\"candidate\": 154, \"running_mate\": 163}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 1, \"fields\": {\"candidate\": 16, \"running_mate\": 30}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 87, \"fields\": {\"candidate\": 131, \"running_mate\": 135}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 94, \"fields\": {\"candidate\": 143, \"running_mate\": 148}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 89, \"fields\": {\"candidate\": 132, \"running_mate\": 137}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 3, \"fields\": {\"candidate\": 17, \"running_mate\": 31}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 155, \"fields\": {\"candidate\": 201, \"running_mate\": 209}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 92, \"fields\": {\"candidate\": 142, \"running_mate\": 146}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 41, \"fields\": {\"candidate\": 25, \"running_mate\": 62}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 22, \"fields\": {\"candidate\": 20, \"running_mate\": 45}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 48, \"fields\": {\"candidate\": 77, \"running_mate\": 81}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 26, \"fields\": {\"candidate\": 21, \"running_mate\": 49}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 77, \"fields\": {\"candidate\": 117, \"running_mate\": 121}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 68, \"fields\": {\"candidate\": 105, \"running_mate\": 108}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 37, \"fields\": {\"candidate\": 24, \"running_mate\": 58}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 150, \"fields\": {\"candidate\": 200, \"running_mate\": 204}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 33, \"fields\": {\"candidate\": 23, \"running_mate\": 55}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 101, \"fields\": {\"candidate\": 153, \"running_mate\": 159}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 44, \"fields\": {\"candidate\": 67, \"running_mate\": 71}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 62, \"fields\": {\"candidate\": 92, \"running_mate\": 99}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 71, \"fields\": {\"candidate\": 106, \"running_mate\": 111}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 18, \"fields\": {\"candidate\": 36, \"running_mate\": 18}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 45, \"fields\": {\"candidate\": 68, \"running_mate\": 72}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 98, \"fields\": {\"candidate\": 152, \"running_mate\": 156}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 13, \"fields\": {\"candidate\": 29, \"running_mate\": 27}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 12, \"fields\": {\"candidate\": 27, \"running_mate\": 29}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 58, \"fields\": {\"candidate\": 91, \"running_mate\": 95}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 99, \"fields\": {\"candidate\": 152, \"running_mate\": 157}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 63, \"fields\": {\"candidate\": 92, \"running_mate\": 100}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 107, \"fields\": {\"candidate\": 165, \"running_mate\": 169}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 111, \"fields\": {\"candidate\": 166, \"running_mate\": 173}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 85, \"fields\": {\"candidate\": 68, \"running_mate\": 129}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 83, \"fields\": {\"candidate\": 67, \"running_mate\": 127}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 108, \"fields\": {\"candidate\": 165, \"running_mate\": 170}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 59, \"fields\": {\"candidate\": 91, \"running_mate\": 96}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 15, \"fields\": {\"candidate\": 29, \"running_mate\": 40}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 113, \"fields\": {\"candidate\": 166, \"running_mate\": 175}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 112, \"fields\": {\"candidate\": 166, \"running_mate\": 174}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 60, \"fields\": {\"candidate\": 91, \"running_mate\": 97}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 109, \"fields\": {\"candidate\": 165, \"running_mate\": 171}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 73, \"fields\": {\"candidate\": 106, \"running_mate\": 113}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 34, \"fields\": {\"candidate\": 23, \"running_mate\": 44}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 9, \"fields\": {\"candidate\": 27, \"running_mate\": 33}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 10, \"fields\": {\"candidate\": 27, \"running_mate\": 40}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 69, \"fields\": {\"candidate\": 105, \"running_mate\": 109}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 102, \"fields\": {\"candidate\": 153, \"running_mate\": 160}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 110, \"fields\": {\"candidate\": 165, \"running_mate\": 172}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 20, \"fields\": {\"candidate\": 36, \"running_mate\": 42}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 19, \"fields\": {\"candidate\": 36, \"running_mate\": 41}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 16, \"fields\": {\"candidate\": 29, \"running_mate\": 33}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 93, \"fields\": {\"candidate\": 142, \"running_mate\": 147}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 103, \"fields\": {\"candidate\": 153, \"running_mate\": 161}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 72, \"fields\": {\"candidate\": 106, \"running_mate\": 112}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 151, \"fields\": {\"candidate\": 200, \"running_mate\": 205}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 86, \"fields\": {\"candidate\": 68, \"running_mate\": 130}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 78, \"fields\": {\"candidate\": 117, \"running_mate\": 122}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 61, \"fields\": {\"candidate\": 91, \"running_mate\": 98}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 84, \"fields\": {\"candidate\": 67, \"running_mate\": 128}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 43, \"fields\": {\"candidate\": 25, \"running_mate\": 64}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 42, \"fields\": {\"candidate\": 25, \"running_mate\": 63}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 40, \"fields\": {\"candidate\": 24, \"running_mate\": 61}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 39, \"fields\": {\"candidate\": 24, \"running_mate\": 60}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 38, \"fields\": {\"candidate\": 24, \"running_mate\": 59}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 95, \"fields\": {\"candidate\": 143, \"running_mate\": 149}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 100, \"fields\": {\"candidate\": 152, \"running_mate\": 158}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 30, \"fields\": {\"candidate\": 21, \"running_mate\": 51}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 28, \"fields\": {\"candidate\": 21, \"running_mate\": 50}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 24, \"fields\": {\"candidate\": 20, \"running_mate\": 47}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 17, \"fields\": {\"candidate\": 29, \"running_mate\": 31}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 11, \"fields\": {\"candidate\": 27, \"running_mate\": 31}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 79, \"fields\": {\"candidate\": 117, \"running_mate\": 123}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 80, \"fields\": {\"candidate\": 117, \"running_mate\": 124}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 90, \"fields\": {\"candidate\": 132, \"running_mate\": 138}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 4, \"fields\": {\"candidate\": 17, \"running_mate\": 32}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 153, \"fields\": {\"candidate\": 200, \"running_mate\": 207}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 104, \"fields\": {\"candidate\": 153, \"running_mate\": 162}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 157, \"fields\": {\"candidate\": 201, \"running_mate\": 211}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 25, \"fields\": {\"candidate\": 20, \"running_mate\": 48}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 159, \"fields\": {\"candidate\": 201, \"running_mate\": 213}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 88, \"fields\": {\"candidate\": 131, \"running_mate\": 136}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 70, \"fields\": {\"candidate\": 105, \"running_mate\": 110}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 2, \"fields\": {\"candidate\": 16, \"running_mate\": 34}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 35, \"fields\": {\"candidate\": 23, \"running_mate\": 56}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 64, \"fields\": {\"candidate\": 92, \"running_mate\": 101}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 36, \"fields\": {\"candidate\": 23, \"running_mate\": 57}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 5, \"fields\": {\"candidate\": 17, \"running_mate\": 33}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 6, \"fields\": {\"candidate\": 17, \"running_mate\": 37}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 23, \"fields\": {\"candidate\": 20, \"running_mate\": 46}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 152, \"fields\": {\"candidate\": 200, \"running_mate\": 206}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 154, \"fields\": {\"candidate\": 200, \"running_mate\": 208}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 21, \"fields\": {\"candidate\": 36, \"running_mate\": 43}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 91, \"fields\": {\"candidate\": 132, \"running_mate\": 139}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 32, \"fields\": {\"candidate\": 21, \"running_mate\": 53}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 31, \"fields\": {\"candidate\": 21, \"running_mate\": 52}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 156, \"fields\": {\"candidate\": 201, \"running_mate\": 210}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 158, \"fields\": {\"candidate\": 201, \"running_mate\": 212}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 75, \"fields\": {\"candidate\": 106, \"running_mate\": 115}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 65, \"fields\": {\"candidate\": 92, \"running_mate\": 102}}]");
+	campaignTrail_temp.opponents_default_json = JSON.parse("[{\"election\": 20, \"candidates\": [201, 202, 203, 200]},{\"election\": 16, \"candidates\": [167, 168, 166, 165]},{\"election\": 3, \"candidates\": [19, 18, 17, 16]},{\"election\": 9, \"candidates\": [77, 78, 79, 80]},{\"election\": 15, \"candidates\": [154, 155, 152, 153]},{\"election\": 10, \"candidates\": [93, 94, 91, 92]},{\"election\": 4, \"candidates\": [25, 24, 23]},{\"election\": 11, \"candidates\": [107, 105, 106]},{\"election\": 12, \"candidates\": [116, 118, 119, 117]},{\"election\": 14, \"candidates\": [143, 145, 144, 142]},{\"election\": 5, \"candidates\": [22, 20, 21]},{\"election\": 8, \"candidates\": [69, 70, 67, 68]},{\"election\": 13, \"candidates\": [133, 134, 132, 131]}]");
+	campaignTrail_temp.opponents_weighted_json = JSON.parse("[{\"election\": 20, \"candidates\": [201, 200, 202, 203]},{\"election\": 16, \"candidates\": [165, 166, 167, 168]},{\"election\": 3, \"candidates\": [16, 17, 18, 19]},{\"election\": 9, \"candidates\": [78, 77, 79, 80]},{\"election\": 15, \"candidates\": [153, 152, 154, 155]},{\"election\": 10, \"candidates\": [91, 92, 93]},{\"election\": 4, \"candidates\": [24, 25]},{\"election\": 11, \"candidates\": [105, 106, 107]},{\"election\": 12, \"candidates\": [116, 117, 118, 119]},{\"election\": 14, \"candidates\": [142, 143, 144, 145]},{\"election\": 5, \"candidates\": [21, 20, 22]},{\"election\": 8, \"candidates\": [68, 67, 69, 70]},{\"election\": 13, \"candidates\": [131, 134, 132, 133]}]");        
+	campaignTrail_temp.temp_election_list = [{"id": 9, "year": 2012, "is_premium": 0, "display_year": "2012 - Obamanation"}];
+	campaignTrail_temp.credits = "<button onclick='credits()'>Various people</button>";
+	
+	campaignTrail_temp.modBoxTheme = {
+		 "header_color": "#0045AC",
+		 "header_text_color": "#FBFBFB",
+		 "description_text_color": "#000000",
+		 "description_background_color": "#FBFBFB",
+		 "main_color": "#31CECE",
+		 "secondary_color": "#0045AC",
+		 "ui_text_color": "#FFFFFF"
+	}
+	
+	credits = function() {
+	  credits = ["Lead/Coding: Accurate_Feature9970", "Coding Help: Jet", "Writing: Murraythedog, Accurate_Feature9970", "Ending Writing Help: Thatchmaster, TheBigCheese87, DysonEngineer", "Feedback & Other Help: Massachusetts4Stockdale, DysonEngineer, Thatchmaster, Ettingermentum, velvet"]
+	  text = "CREDITS:\n\n"
+	  for (i in credits) {
+		  text += credits[i] + "\n"
+	  }
+	  alert(text)
+	}
+	campaignTrail_temp.show_premium = true;
+	campaignTrail_temp.premier_ab_test_version = -1;
+	
+		e = campaignTrail_temp
+		
+		document.head.innerHTML += `<link
+		  rel="stylesheet"
+		  href="https://unpkg.com/7.css"
+		>`
+		
+		document.head.innerHTML += `<style>
+		h3 {
+			font-size:1.17em!important;
+			font-family: Segoe UI, "Helvetica Neue", Helvetica, sans-serif!important;
+		}
+	
+		label {
+			font-size:0.92em!important;
+			font-family: Segoe UI, "Helvetica Neue", Helvetica, sans-serif!important;
+		}
+	body {display:flex!important;}
+	
+	#game_window{max-width:1000px;}
+		</style>`
+	let contentBox = document.getElementsByClassName("content_box")[0];
+	let contentSingle = document.getElementsByClassName("content_single")[0];
+	
+	let containerRef = document.getElementsByClassName("container")[0];
+	
+	function createBanner(url, sibling, isLeft) {
+		let div = document.createElement("DIV");
+		let img = document.createElement("IMG");
+		div.style.position = "relative";
+		div.style.margin = "auto";
+		img.src = url;
+		
+	
+		let x = document.createElement("DIV");
+		x.innerText = "_";
+		x.style.position = "absolute";
+		x.style.padding = "2px";
+		x.style.fontSize = "2pt";
+		x.style.cursor = "pointer";
+	
+		div.appendChild(x);
+	
+		div.appendChild(img);
+	
+		if(isLeft) {
+			sibling.parentNode.insertBefore(div, sibling);
+		}
+		else {
+			sibling.parentNode.appendChild(div);
+		}
+		x.onclick = () => div.style.visibility = "hidden";
+		x.onclick = () => img.style.visibility = "hidden";
+		return img;
+	}
+	
+	function addDynamicCSS() {
+		var css = `
+	
+			label {
+			  display:inline-block;
+			}
+  
+			.content_single li {
+			  line-height: 1.39em;
+			}
+  
+			input[type=radio]+label {
+			  display: inline;
+			}
+	
+			.inner_window_question h3 .mytooltip{
+				background-color: lightblue;
+			}
+	
+			.mytooltip {
+				position: relative;
+				display: inline-block;
+				cursor: pointer;
+				background-color: #84c8db;
+			}
+	
+			.mytooltip .mytooltiptext {
+				width: 240px;
+				background-color: #00a2ed;
+				color: black;
+				text-align: center;
+				border-radius: 6px;
+				padding: 10px;
+				position: absolute;
+				z-index: 99;
+				bottom: 20%;
+				left: 20%;
+				margin-left: -90px;
+				opacity: 0;
+				transition: opacity 0.3s;
+				border: 1px solid black;
+				pointer-events: none;
+				font-size: 13px !important;
+				line-height: 1.5em !important;
+				font-weight: normal !important;
+				font-style: normal !important;
+			}
+	
+			.mytooltip .mytooltiptext img {
+				max-width: 240px;
+				height: auto;
+			}
+	
+			.mytooltip:hover .mytooltiptext {
+				opacity: 1;
+				transition-delay: 0.5s;
+			}
+  
+			#final_results_description p {
+			  color: black;
+			  font-family: Segoe UI;
+			}
+  
+			#overall_details_container h3 {
+			  color: white;
+			}
+  
+			#overall_election_details h4 {
+			  color: white;
+			}
+  
+			#main_content_area_reading p {
+			  color: white;
+			}
+  
+			#main_content_area_reading h3.results_tab_header {
+			  color: white;
+			}
+  
+			.inner_window_w_desc h3 {
+			  color: white;
+			}
+		`;
+	
+		var styleElem = document.createElement('style');
+		styleElem.type = 'text/css';
+		
+		styleElem.appendChild(document.createTextNode(css));
+		
+		document.head.appendChild(styleElem);
+	}
+	
+	
+	addDynamicCSS();
+  
+	tooltipList = [
+  {searchString: "Bush", explanationText: "<img src=https://i.imgur.com/U86BSCC.jpeg> Don't know what you got until it's gone."},
+  {searchString: "Reverend Wright", explanationText: "<img src=https://i.imgur.com/hVCiyDT.jpeg> One of your ex-mentors, persona non grata in Washington."},
+  {searchString: "Wright", explanationText: "<img src=https://i.imgur.com/hVCiyDT.jpeg> One of your ex-mentors, persona non grata in Washington."},
+  {searchString: "Tom Daschle", explanationText: "<img src=https://i.imgur.com/diZNN3g.jpeg> Former Democratic Senate Majority Leader from South Dakota. Product of a bygone era."},
+  {searchString: "Daschle", explanationText: "<img src=https://i.imgur.com/diZNN3g.jpeg> Former Democratic Senate Majority Leader from South Dakota. Product of a bygone era."},
+  {searchString: "Donna Shalala", explanationText: "<img src=https://i.imgur.com/pTtr7Uh.jpeg> Castro devotee."},
+  {searchString: "John Kitzhaber", explanationText: "<img src=https://i.imgur.com/EugQH3l.jpeg> He wears blue jeans, so he's just like you and me."},
+  {searchString: "Jennifer Granholm", explanationText: "<img src=https://i.imgur.com/bCiRAO2.jpeg> Distinguished <i>Dating Game</i> alumni, along with Paul Reubens, Steve Martin and Rodney Alcala."},
+  {searchString: "Kathleen Sebelius", explanationText: "<img src=https://i.imgur.com/rdm30hS.jpeg> Doomed to irrelevancy and alternate history fiction."},
+  {searchString: "Nancy Pelosi", explanationText: "<img src=https://i.imgur.com/HcKjSNG.jpeg> Facebook Status: Hammered."},
+  {searchString: "Pelosi", explanationText: "<img src=https://i.imgur.com/HcKjSNG.jpeg> Facebook Status: Hammered."},
+  {searchString: "Harry Reid", explanationText: "<img src=https://i.imgur.com/mxKgddi.jpeg> The Democratic Senate Majority Leader, confident this country is ready to embrace a “light-skinned” African-American “with no Negro dialect” such as yourself."},
+  {searchString: "Reid", explanationText: "<img src=https://i.imgur.com/mxKgddi.jpeg> The Democratic Senate Majority Leader, confident this country is ready to embrace a “light-skinned” African-American “with no Negro dialect” such as yourself."},
+  {searchString: "Gibbs", explanationText: "<img src=https://i.imgur.com/8n3Wihe.jpeg> White House Press Secretary."},
+  {searchString: "Hillary's husband", explanationText: "<img src=https://i.imgur.com/xs7jPNm.jpeg> Serial predator and your Secretary of State's “beard.” Previously the first Black president."},
+  {searchString: "blob", explanationText: "<img src=https://i.imgur.com/XT16zfN.jpeg> As Rhodes calls it, a conglomerate of supposedly nefarious forces who seek further involvement in the Middle East. Many of them currently residing in your Cabinet."},
+  {searchString: "Rhodes", explanationText: "<img src=https://i.imgur.com/8eJ6O6i.jpeg> Speechwriter and advisor on national security. One of the idealistic liberals in your administration."},
+  {searchString: "Bill", explanationText: "<img src=https://i.imgur.com/kMIZs2u.jpeg> That little devil on your shoulder."},
+  {searchString: "Ayers", explanationText: "<img src=https://i.imgur.com/kMIZs2u.jpeg> That little devil on your shoulder."},
+  {searchString: "Farrakhan", explanationText: "<img src=https://i.imgur.com/6AIeA3j.png> Shadow spiritual advisor."},
+  {searchString: "David Axelrod", explanationText: "<img src=https://i.imgur.com/UlwyKpX.jpeg> Storyteller."},
+  {searchString: "Axelrod", explanationText: "<img src=https://i.imgur.com/UlwyKpX.jpeg> Storyteller."},
+  {searchString: "Rahm Emanuel", explanationText: "<img src=https://i.imgur.com/QksyHVq.jpeg> Angry."},
+  {searchString: "Rahm", explanationText: "<img src=https://i.imgur.com/QksyHVq.jpeg> Angry."},
+  {searchString: "Mitch McConnell", explanationText: "<img src=https://i.imgur.com/LROSY6r.jpeg> Part-time Senate Republican leader, full-time hater."},
+  {searchString: "McConnell", explanationText: "<img src=https://i.imgur.com/LROSY6r.jpeg> Part-time Senate Republican leader, full-time hater."},
+  {searchString: "John Boehner", explanationText: "<img src=https://i.imgur.com/HFRocAv.jpeg> House Republican leader."},
+  {searchString: "Boehner", explanationText: "<img src=https://i.imgur.com/HFRocAv.jpeg> House Republican leader."},
+  {searchString: "Bob Bauer", explanationText: "<img src=https://i.imgur.com/ujXmSnP.jpeg> White House Counsel. The sledgehammer."},
+  {searchString: "Robert Gates", explanationText: "<img src=https://i.imgur.com/eti4kCD.jpeg> A testament to the amount of change we should be expecting from your presidency?"},
+  {searchString: "Larry Summers", explanationText: "<img src=https://i.imgur.com/CbA8pXH.jpeg> Failing upwards."},
+  {searchString: "Barney", explanationText: "<img src=https://i.imgur.com/KQhRYUr.jpeg> Nipples protruding."},
+  {searchString: "Barney Frank", explanationText: "<img src=https://i.imgur.com/KQhRYUr.jpeg> Nipples protruding."},
+  {searchString: "Glenn Beck", explanationText: "<img src=https://i.imgur.com/nZJc2Yl.jpeg> School's in session."},
+  {searchString: "Michelle", explanationText: "<img src=https://i.imgur.com/JZJTOJc.jpeg> Proud of her country."},
+  {searchString: "Muammar Gaddafi", explanationText: "<img src=https://i.imgur.com/3X5d8we.jpeg> Libya's strongman. That is how you spell it, right?"},
+  {searchString: "Hosni Mubarak", explanationText: "<img src=https://i.imgur.com/BhPZfnn.jpeg> President of Egypt."},
+  {searchString: "Mubarak", explanationText: "<img src=https://i.imgur.com/BhPZfnn.jpeg> President of Egypt."},
+  {searchString: "Osama bin Laden", explanationText: "<img src=https://i.imgur.com/GYK52Cp.jpeg> Chickens come to roost."},
+  {searchString: "Boris Johnson", explanationText: "<img src=https://i.imgur.com/XqIMQ67.jpeg> Seconds before disaster."},
+  {searchString: "midterm losses", explanationText: "<img src=https://i.imgur.com/IqA2JrJ.jpeg> The 2010 midterms saw the Democrats clobbered as several Senate seats flipped Republican, only held together by a 50-50 tie; the House returned to GOP control by an overwhelming margin, dethroning Speaker Pelosi and her ilk."},
+  {searchString: "Eric Holder", explanationText: "<img src=https://i.imgur.com/ORXMiSq.jpeg> Your resident hatchet man."},
+  {searchString: "Loretta Lynch", explanationText: "<img src=https://i.imgur.com/hHWoxWC.jpeg> Holder's replacement, the new Attorney General."},
+  {searchString: "David Cameron", explanationText: "<img src=https://i.imgur.com/m68tcuG.jpeg> Pigfucker."},
+  {searchString: "Nicolas Sarkozy", explanationText: "<img src=https://i.imgur.com/jS3kPlD.jpeg> The arbiter of what makes a good world leader."},
+  {searchString: "Kamala Harris", explanationText: "<img src=https://i.imgur.com/IXS6ixu.jpeg> Existing in the context of what came before her."},
+  {searchString: "Goodwin Liu", explanationText: "<img src=https://i.imgur.com/FBuxDTi.jpeg> The potential bane of Justice Alito's existence."},
+  {searchString: "Keith Ellison", explanationText: "<img src=https://i.imgur.com/RoxtRdg.jpeg> Time to break out the Quran again."},
+  {searchString: "Arab Spring", explanationText: "<img src=https://i.imgur.com/hqRI0dL.jpeg> Anti-government protests breaking out across the Middle East, triggered by a fatigue of charismatic demagogues, breadlines, and economic stagnation. Take note, Barack."},
+  {searchString: "Harvey Weinstein", explanationText: "<img src=https://i.imgur.com/PsPrD5v.jpeg> Tinseltown Democrat megadonor."},
+  {searchString: "Pete Souza's photo", explanationText: "<img src=https://i.imgur.com/snKgPIP.jpeg> History in the making."},
+  {searchString: "Leon Panetta", explanationText: "<img src=https://i.imgur.com/aFz0JKk.jpeg> Director of the CIA, succeeding Michael Hayden."},
+  {searchString: "John Brennan", explanationText: "<img src=https://i.imgur.com/baYNzND.jpeg> Homeland Security advisor, drone apologist, “principal coordinator” of our kill lists."},
+  {searchString: "Binyamin Netanyahu", explanationText: "<img src=https://i.imgur.com/EeIYss4.jpeg> Mr. America."},
+  {searchString: "Bibi", explanationText: "<img src=https://i.imgur.com/EeIYss4.jpeg> Mr. America."},
+  {searchString: "Eric", explanationText: "<img src=https://i.imgur.com/HWl4eS8.jpeg> Republican House Majority Leader."},
+  {searchString: "Gaddafi's fate", explanationText: "<img src=https://i.imgur.com/jolDsmN.jpeg> “We came, we saw, he died!”"},
+  {searchString: "Bashar al-Assad", explanationText: "<img src=https://i.imgur.com/TDIiBV1.jpeg> He must go. He must go. He must go. He must go. He must go. He must go. He must go."},
+  {searchString: "Vladimir Putin", explanationText: "<img src=https://i.imgur.com/5itQANU.jpeg> President of the Russian Federation since 1999, ignoring the fake one they currently have in-office."},
+  {searchString: "John Bolton", explanationText: "<img src=https://i.imgur.com/wnqkyuY.jpeg> <i>The Lorax</i>, starring Zac Efron, Taylor Swift, Danny DeVito and Ed Helms, coming to theaters next year."},
+  {searchString: "Daley", explanationText: "<img src=https://i.imgur.com/mJ3oAyt.jpeg> He and his dad will both be voting for you next year."},
+  {searchString: "Occupy Wall Street", explanationText: "Somehow made New York smell worse than it already does."},
+  {searchString: "birth certificate", explanationText: "<img src=https://i.imgur.com/iJIwau2.jpeg> The question on everyone's mind."},
+  {searchString: "birth certificates", explanationText: "<img src=https://i.imgur.com/iJIwau2.jpeg> The question on everyone's mind."},
+  {searchString: "George Osborne", explanationText: "<img src=https://i.imgur.com/kWiT3io.jpeg> Not a pigfucker, though we're looking into it."},
+  {searchString: "François Hollande", explanationText: "<img src=https://i.imgur.com/yZ2E0kO.jpeg> Destined to be a popular leader."},
+  {searchString: "Ted Turner", explanationText: "<img src=https://i.imgur.com/3jWZkyf.jpeg> Mouth of the South."},
+  {searchString: "most receptive to his message", explanationText: "<img src=https://i.imgur.com/94Z1Mzh.jpeg> Crackers."},
+  {searchString: "Rmoney", explanationText: "<img src=https://i.imgur.com/eYqjoZ0.jpeg> Ching ching."},
+  {searchString: "Anthony Weiner", explanationText: "<img src=https://i.imgur.com/OuxWbq2.jpeg> Former congressman, husband to Clinton aide, and one of the world's great sleazebags."},
+  {searchString: "Sun Myung Moon", explanationText: "<img src=https://i.imgur.com/rMncfiP.jpeg> Korean cult leader."},
+  {searchString: "turned out to be more of a red ripple", explanationText: "<img src=https://i.imgur.com/RglaWRY.jpeg> The 2010 midterms saw the Democrats fare much better than originally thought, keeping hold of a 53 seat majority in the Senate following close wins in Illinois and Wisconsin; the House returned to GOP control, but by a smaller than estimated margin, dethroning Speaker Pelosi and her ilk."},
+  {searchString: "Saudi King Abdullah", explanationText: "<img src=https://i.imgur.com/fW2MoLm.jpeg> 30 wives and counting."},
+  {searchString: "Duncan", explanationText: "<img src=https://i.imgur.com/xX4ysZG.jpeg> Secretary of Education and mastermind behind Common Core."}
+  
+  ];
+	
+	campaignTrail_temp.banner1 = createBanner("https://i.imgur.com/dXHtTbw.png", containerRef, true);
+	campaignTrail_temp.banner2 = createBanner("https://i.imgur.com/CB4vjMS.png", containerRef, false);
+	
+	campaignTrail_temp.global_parameter_json[0].fields.question_count = 39
+	
+	RecReading=true
+  
+	document.getElementById("header").src = "https://i.imgur.com/UwdDFRV.png"
+	nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#08043d"
+	nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#cccccc"
+	document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+	$(".container")[0].style.backgroundColor = "#1d2754"
+	$("#game_window")[0].style.backgroundColor = "#cccccc"
+	document.body.background = "https://i.imgur.com/gtQJTON.png"
+	$("#game_window")[0].style.backgroundImage = "url(https://i.imgur.com/ENrcfdQ.png)"
+	$(".container")[0].style.border = ".2em double #cccccc"
+	$("#game_window")[0].style.border = ".2em double #ffffff"
+	document.head.innerHTML += "<style>#results_container {color:#ffffff;} .inner_window_w_desc {background-color:#040c42 !important;}</style>";
+  
+	document.body.style.backgroundSize = "175% auto";
+			
+	quotes = [""]
+	  
+	customquote = quotes[Math.floor((Math.random() * quotes.length))]
+	document.getElementById("wittyquote").color = "white"
+	corrr = `
+	<div style="font-size: 11px; font-family: monospace; color: white;">
+	<h2 style="font-style: normal;">
+	<img src="https://i.imgur.com/IhlpkjW.png" alt="THE OBAMANATION" style="margin-top: 0px; width: 963.4px; height: auto;">
+	</h2>
+	</div>
+	`;
+	
+	// Select the node that will be observed for mutations
+	const windowsAdvisorTargetNode = document.getElementById("game_window");
+	
+	// Options for the observer (which mutations to observe)
+	const windowsAdvisorConfig = { attributes: true, childList: true, subtree: true };
+	
+	// Callback function to execute when mutations are observed
+	const callback = (mutationList, observer) => {
+		visitWindow = document.getElementsByClassName("overlay_window")[0];
+	
+		if(visitWindow == null || visitWindow.classList.contains("done")) {
+			return;
+		}
+		visitWindow.classList.add("done");
+		visitWindow.classList.add("window");
+		let titleBar = visitWindow.querySelector("h3");
+		titleBar.classList.add("title-bar");
+		titleBar.classList.add("title-bar-text")
+		titleBar.style.paddingLeft = "3px";
+	};
+	
+	class Song {
+	  constructor(title, artist, genre, year, coverLink, audioLink) {
+		this.title = title;
+		this.artist = artist;
+		this.genre = genre;
+		this.year = year;
+		this.coverLink = coverLink;
+		this.audioLink = audioLink;
+	  }
+	  getTitle() {
+		return this.title;
+	  }
+	
+	  getArtist() {
+		return this.artist;
+	  }
+  
+	  getGenre() {
+		return this.genre;
+	  }
+  
+	  getYear() {
+		return this.year;
+	  }
+	
+	  getCoverLink() {
+		return this.coverLink;
+	  }
+	
+	  getAudioLink() {
+		return this.audioLink;
+	  }
+	}
+	
+	class Playlist {
+	  constructor() {
+		this.songs = [];
+		this.currentSongIndex = 0;
+	  }
+	
+	  addSong(song) {
+		this.songs.push(song);
+	  }
+	
+	  getCurrentSong() {
+		return this.songs[this.currentSongIndex];
+	  }
+	
+	  playNext() {
+		this.currentSongIndex = (this.currentSongIndex + 1) % this.songs.length;
+	  }
+	
+	  playPrevious() {
+		this.currentSongIndex = (this.currentSongIndex - 1 + this.songs.length) % this.songs.length;
+	  }
+	}
+	window.Playlist=Playlist
+	window.Song=Song
+	
+	function changePlaylist(newPlaylist) {
+	  playlist = newPlaylist;
+	  playlist.currentSongIndex = 0;
+	  updateUI(playlist);
+	  const audio = document.getElementById("audio");
+	  audio.src = playlist.getCurrentSong().audioLink;
+	  audio.play();
+	}
+	window.changePlaylist=changePlaylist
+	
+	function updateUI(playlist) {
+		const currentSong = playlist.getCurrentSong();
+		var player = document.getElementById("player");
+		player.querySelector("#cover").src = currentSong.getCoverLink();
+		player.querySelector("#title").textContent = currentSong.getTitle();
+		player.querySelector("#artist").textContent = currentSong.getArtist();
+		player.querySelector("#genre").textContent = currentSong.getGenre();
+		player.querySelector("#year").textContent = currentSong.getYear();
+	}
+	
+	window.updateUI=updateUI
+	
+	
+	function setupMusicPlayer() {
+	  playlist = new Playlist();
+	
+	
+	  const song1 = new Song(
+		"Queen of Hearts",
+		"Fucked Up",
+		"Punk",
+		"2011",
+		"https://i.imgur.com/y1p4zEg.jpeg",
+		"https://file.garden/ZjghkE74SkXuNmZh/Queen%20of%20Hearts.mp3"
+	  );
+  
+	  const song2 = new Song(
+		"Millennium of the Blind",
+		"Megadeth",
+		"Metal",
+		"2011",
+		"https://i.imgur.com/Six3bC3.jpeg",
+		"https://file.garden/ZlwBsQzAvyz0wLEA/Millennium%20of%20The%20Blind.mp3"
+	  );
+  
+	  const song3 = new Song(
+		"Hussein",
+		"Blue Scholars",
+		"Hip Hop",
+		"2011",
+		"https://i.imgur.com/jCzb20O.jpeg",
+		"https://file.garden/ZjghkE74SkXuNmZh/Hussein.mp3"
+	  );
+  
+	  const song4 = new Song(
+		"Terrorist Threats",
+		"Ab-Soul (ft. Danny Brown, Jhene Aiko)",
+		"Rap",
+		"2012",
+		"https://i.imgur.com/Uarvapg.jpeg",
+		"https://file.garden/ZkYlpFmp3wv99L22/Ab-Soul.mp3"
+	  );
+  
+	  const song5 = new Song(
+		"Obama",
+		"Chief Keef",
+		"Rap",
+		"2015",
+		"https://i.imgur.com/6pDRCmx.jpeg",
+		"https://file.garden/ZuJzv3DBzXuI1CZx/Obama.mp3"
+	  );
+  
+	  const song6 = new Song(
+		"Words I Never Said",
+		"Lupe Fiasco (ft. Skylar Grey)",
+		"Rap",
+		"2011",
+		"https://i.imgur.com/fGT2dTk.jpeg",
+		"https://file.garden/ZjwDHsS1nDDehStj/Words%20I%20Never%20Said.mp3"
+	  );
+  
+	  const song7 = new Song(
+		"Illuminati",
+		"Korn (ft. Excision, Downlink)",
+		"Metal",
+		"2011",
+		"https://i.imgur.com/I3RwsaS.jpeg",
+		"https://file.garden/ZlwBsQzAvyz0wLEA/Illuminati.mp3"
+	  );
+	
+	  playlist.addSong(song1);
+	  playlist.addSong(song2);
+	  playlist.addSong(song3);
+	  playlist.addSong(song4);
+	  playlist.addSong(song5);
+	  playlist.addSong(song6);
+	  playlist.addSong(song7);
+	
+	  const playerContainer = document.createElement("div");
+	  playerContainer.id = "player";
+	
+	 const displayBox = document.createElement("div");
+	displayBox.id = "display-box";
+	
+	const coverElement = document.createElement("img");
+	coverElement.id = "cover";
+	displayBox.appendChild(coverElement);
+	
+	const infoContainer = document.createElement("div");
+	infoContainer.id = "info-container";
+	infoContainer.style.backgroundImage = "url('')";
+	infoContainer.style.backgroundSize = "cover"; // Optional: adjust based on your needs
+	infoContainer.style.color = "black"; // Set text color to white
+	
+	const songInfo = document.createElement("div");
+	songInfo.id = "song-info";
+	
+	const titleElement = document.createElement("h3");
+	titleElement.id = "title";
+	titleElement.style.fontWeight = 'bold'; // Make it normal as per previous request
+	songInfo.appendChild(titleElement);
+	
+	const artistElement = document.createElement("p");
+	artistElement.id = "artist";
+	songInfo.appendChild(artistElement);
+  
+	const genreElement = document.createElement("p");
+	genreElement.id = "genre";
+	songInfo.appendChild(genreElement);
+  
+	const yearElement = document.createElement("p");
+	yearElement.id = "year";
+	songInfo.appendChild(yearElement);
+	
+	infoContainer.appendChild(songInfo);
+	displayBox.appendChild(infoContainer);
+	
+	playerContainer.appendChild(displayBox);
+	
+	const controlsContainer = document.createElement("div");
+	controlsContainer.id = "controls-container";
+	
+	const controls = document.createElement("div");
+	controls.id = "controls";
+	
+	const prevButton = document.createElement("img");
+	prevButton.id = "prevButton";
+	prevButton.src = "https://i.imgur.com/tbB2NMq.png";
+	prevButton.alt = "Previous";
+	controls.appendChild(prevButton);
+	
+	const playPauseButton = document.createElement("img");
+	playPauseButton.id = "playPauseButton";
+	playPauseButton.src = "https://i.imgur.com/qLb9UqQ.png"; // Set the default play image
+	playPauseButton.alt = "Play/Pause";
+	controls.appendChild(playPauseButton);
+	
+	const nextButton = document.createElement("img");
+	nextButton.id = "nextButton";
+	nextButton.src = "https://i.imgur.com/e69GXWV.png";
+	nextButton.alt = "Next";
+	controls.appendChild(nextButton);
+	
+	controlsContainer.appendChild(controls);
+	
+	playPauseButton.addEventListener("click", function () {
+	  const audio = document.getElementById("audio");
+	  if (audio.paused) {
+		audio.play();
+		playPauseButton.src = "https://i.imgur.com/qLb9UqQ.png"; // Set the pause image
+	  } else {
+		audio.pause();
+		playPauseButton.src = "https://i.imgur.com/gZME5QC.png"; // Set the play image
+	  }
+	});
+	
+	nextButton.addEventListener("click", function () {
+	  playlist.playNext();
+	  updateUI(playlist);
+	  const audio = document.getElementById("audio");
+	  audio.src = playlist.getCurrentSong().audioLink;
+	  audio.play();
+	});
+	
+	prevButton.addEventListener("click", function () {
+	  playlist.playPrevious();
+	  updateUI(playlist);
+	  const audio = document.getElementById("audio");
+	  audio.src = playlist.getCurrentSong().audioLink;
+	  audio.play();
+	});
+	
+	  const progressBarContainer = document.createElement("div");
+	  progressBarContainer.id = "progress-bar-container";
+	  progressBarContainer.role = "progressbar";
+	
+	  const progressBar = document.createElement("div");
+	  progressBar.role = "paused";
+	  progressBar.id = "progress";
+	
+	
+	  progressBarContainer.appendChild(progressBar);
+	  controlsContainer.appendChild(progressBarContainer);
+	  playerContainer.appendChild(controlsContainer);
+	
+	 const volumeContainer = document.createElement("div");
+		volumeContainer.id = "volume-container";
+	
+	const volumeLabel = document.createElement("img");
+	volumeLabel.src = "https://i.imgur.com/fvct8dN.png";
+	volumeLabel.alt = "Volume";
+	volumeContainer.appendChild(volumeLabel);
+	
+		const volumeSliderContainer = document.createElement("div");
+		volumeSliderContainer.classList.add("is-vertical");
+		volumeSliderContainer.style.marginLeft = "45%";
+		volumeSliderContainer.style.height = "126px";
+	
+		const volumeSlider = document.createElement("input");
+		volumeSlider.type = "range";
+		volumeSlider.id = "volumeSlider";
+		volumeSlider.min = 0;
+		volumeSlider.max = 9;
+		volumeSlider.step = 1;
+		volumeSlider.value = 2; // Initial volume
+	
+		volumeSliderContainer.appendChild(volumeSlider);
+	
+		const volumeDisplay = document.createElement("span");
+		volumeDisplay.id = "volume-display";
+		volumeDisplay.style.fontWeight = 'bold'; 
+		volumeDisplay.style.display = 'none';
+		volumeDisplay.textContent = "1";
+	
+		volumeContainer.appendChild(volumeSliderContainer);
+		volumeContainer.appendChild(volumeDisplay);
+	
+		playerContainer.appendChild(volumeContainer);
+	
+	  gameWindow_player.insertAdjacentElement("afterend", playerContainer);
+	
+	
+	  function updateProgressBar() {
+		const audio = document.getElementById("audio");
+		const progress = (audio.currentTime / audio.duration) * 100;
+		try{progressBar.style.width = progress + "%";}
+		catch{}
+	  }
+	
+	 
+	  progressBar.addEventListener("input", function () {
+		const audio = document.getElementById("audio");
+		const seekTime = (progressBar.value / 100) * audio.duration;
+		audio.currentTime = seekTime;
+	  });
+	
+	  const audio = document.createElement("audio");
+	  audio.id = "audio";
+	  audio.src = playlist.getCurrentSong().audioLink;
+	  audio.volume = 1/9;
+	
+	  audio.addEventListener("timeupdate", updateProgressBar);
+	  audio.addEventListener("ended", function () {
+		  // Play the next song when the current song ends
+		  playlist.playNext();
+		  updateUI(playlist);
+		  audio.src = playlist.getCurrentSong().audioLink;
+		  audio.play();
+		});
+	
+		let currentVolume = 2; // Initial volume
+	
+		volumeSlider.addEventListener("input", function () {
+		  currentVolume = parseInt(volumeSlider.value, 10);
+		  updateVolumeDisplay();
+		  updateAudioVolume();
+		});
+	
+		function updateVolumeDisplay() {
+		  volumeDisplay.textContent = currentVolume;
+		}
+	
+	   function updateAudioVolume() {
+		const audio = document.getElementById("audio");
+		audio.volume = currentVolume / 9; // Set volume between 0 and 1
+	  }
+	
+	  document.body.appendChild(audio);
+	  audio.play();
+	
+	  // Update the UI when the page loads
+	  updateUI(playlist);
+	}
+	
+	const style = document.createElement("style");
+	style.textContent = `
+	#player {
+		border: 3px solid #C9C9C9; /* Add your desired border style */
+		display: flex;
+		flex-direction: row;
+		height:191px;
+		background-Image: url("https://i.imgur.com/l2YqtSl.png");
+	  }
+	
+	  #display-box {
+		display: flex;
+		align-items: center;
+		width: 50%;
+	  }
+  
+	  p#credits {
+		color: white;
+	  }
+	
+	  #cover {
+		width: 176px;
+		height:176px;
+	  }
+  
+	  #final_results_description p {
+		color: white;
+	  }
+	
+	  #info-container {
+		display: flex;
+		flex-direction: row;
+		height:185px;
+		width:185px;
+		margin-top: 3px;
+		font-family: Segoe UI;
+	  }
+	
+	  #song-info {
+		width: 100%;
+		padding:5px;
+	  }
+	
+	  #controls-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 10px;
+		width:100%;
+		padding-top:15px;
+	
+	  }
+	  .is-vertical #volumeSlider {
+	  width: 125px;
+	}
+	
+	  #controls {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		width: 80%;
+	  }
+	
+	  #progress-bar-container {
+		width: 100%;
+	  }
+	
+	  #progress-bar {
+		width: 80%;
+		margin: auto;
+		display: flex;
+		margin-Top: 20px;
+	  }
+	  
+	`;
+	
+	document.head.appendChild(style);
+	
+	const gameWindow_player = document.getElementById("game_window");
+	//use this function directly or put it in an event listener to start the music on the press of a certain button
+	setupMusicPlayer();
+	}
+  
+	campaignTrail_temp.achievements = {
+	"I Rebuke You, Satan" : {
+	  "image" : "https://i.imgur.com/DTCKvKx.png",
+	  "description" : "Catch a whiff of pure evil and live to tell the tale.",
+	  "cannotBeCheated" : true
+	},
+	"It's Not Happening" : {
+	  "image" : "https://i.imgur.com/YZCxNVu.png",
+	  "description" : "Defeat Ron Paul.",
+	  "cannotBeCheated" : true
+	},
+	"Outlaw" : {
+	  "image" : "https://i.imgur.com/5aydcc8.png",
+	  "description" : "Defeat Joe Arpaio.",
+	  "cannotBeCheated" : true
+	},
+	"Where's Your God Now?" : {
+	  "image" : "https://i.imgur.com/sF3itRJ.png",
+	  "description" : "Defeat Michele Bachmann.",
+	  "cannotBeCheated" : true
+	},
+	"You've Been Trumped" : {
+	  "image" : "https://i.imgur.com/9kbvSlc.png",
+	  "description" : "Defeat Donald Trump.",
+	  "cannotBeCheated" : true
+	},
+	"The King is Dead" : {
+	  "image" : "https://i.imgur.com/7tw2CVu.png",
+	  "description" : "Defeat David Petraeus.",
+	  "cannotBeCheated" : true
+	},
+	"I Hate the 90s" : {
+	  "image" : "https://i.imgur.com/ER3QjLQ.png",
+	  "description" : "Defeat Newt Gingrich.",
+	  "cannotBeCheated" : true
+	},
+	"Telestial" : {
+	  "image" : "https://i.imgur.com/ON3RJ8K.png",
+	  "description" : "Defeat the Seasame Street Slasher.",
+	  "cannotBeCheated" : true
+	},
+	"Big Apple, Little Worm" : {
+	  "image" : "https://i.imgur.com/RPVYlBZ.png",
+	  "description" : "Defeat Michael Bloomberg.",
+	  "cannotBeCheated" : true
+	},
+	"Off to the Hague" : {
+	  "image" : "https://i.imgur.com/85S14GJ.png",
+	  "description" : "Defeat Condoleezza Rice.",
+	  "cannotBeCheated" : true
+	},
+	"Like a Rolling Stone" : {
+	  "image" : "https://i.imgur.com/CXiqkD8.png",
+	  "description" : "Defeat Stanley McChrystal.",
+	  "cannotBeCheated" : true
+	},
+	"Obama's Blunder" : {
+	  "image" : "https://i.imgur.com/cUyEBhs.png",
+	  "description" : "Defeat an heir to the throne and his usurper.",
+	  "cannotBeCheated" : true
+	},
+	"R.I.N.O." : {
+	  "image" : "https://i.imgur.com/fSDjoxC.png",
+	  "description" : "Defeat Jon Huntsman.",
+	  "cannotBeCheated" : true
+	},
+	"The Bigger They Are..." : {
+	  "image" : "https://i.imgur.com/LNvwi1K.png",
+	  "description" : "Beat Goliath.",
+	  "cannotBeCheated" : true
+	},
+	"The Philosopher King" : {
+	  "image" : "https://i.imgur.com/SWa2q4A.png",
+	  "description" : "In the face of opposition, successfully betray your ideals.",
+	  "cannotBeCheated" : true
+	},
+	"I've Changed" : {
+	  "image" : "https://i.imgur.com/kln6F31.png",
+	  "description" : "Pass the Affordable Care Act.",
+	  "cannotBeCheated" : true
+	},
+	"National + Democratic + Marxist" : {
+	  "image" : "https://i.imgur.com/427ZrDw.png",
+	  "description" : "Pass the public option.",
+	  "cannotBeCheated" : true
+	},
+	"Mastery of the Law" : {
+	  "image" : "https://i.imgur.com/7vCwBjT.png",
+	  "description" : "Remake the ideological make-up of the Supreme Court.",
+	  "cannotBeCheated" : true
+	},
+	"Zero Dark Thirty" : {
+	  "image" : "https://i.imgur.com/3EXLcEw.png",
+	  "description" : "Have 99 problems, and make sure bin Laden ain't one.",
+	  "cannotBeCheated" : true
+	},
+	"Leading from Behind" : {
+	  "image" : "https://i.imgur.com/pNpryph.png",
+	  "description" : "Become the neoliberal assassin you were meant to be.",
+	  "cannotBeCheated" : true
+	},
+	"Hope and Regime Change" : {
+	  "image" : "https://i.imgur.com/HQXG7FR.png",
+	  "description" : "Help the Muslim Brotherhood ascend to power.",
+	  "cannotBeCheated" : true
+	},
+	"Thanks, Obama" : {
+	  "image" : "https://i.imgur.com/vndAL33.png",
+	  "description" : "Fail to deliver and win anyway.",
+	  "cannotBeCheated" : true
+	},
+	"Enemies to Lovers" : {
+	  "image" : "https://i.imgur.com/AMhn7t4.png",
+	  "description" : "Dump Biden.",
+	  "cannotBeCheated" : true
+	},
+	"Homewrecker" : {
+	  "image" : "https://i.imgur.com/1EBuYXs.png",
+	  "description" : "Ruin a war hero's life.",
+	  "cannotBeCheated" : true
+	},
+	"From the River to the Sea" : {
+	  "image" : "https://i.imgur.com/QHA5X5v.png",
+	  "description" : "Make your allegiance known.",
+	  "cannotBeCheated" : true
+	},
+	"Weekend at Bernie's" : {
+	  "image" : "https://i.imgur.com/UHNEC1s.png",
+	  "description" : "Talk down an angry old man from playing spoiler.",
+	  "cannotBeCheated" : true
+	},
+	"Far from Kenya" : {
+	  "image" : "https://i.imgur.com/uVv3z88.png",
+	  "description" : "(Almost) lose it all.",
+	  "cannotBeCheated" : true
+	},
+	"Highway to Hell" : {
+	  "image" : "https://i.imgur.com/VA6d1S1.png",
+	  "description" : "Take over.",
+	  "cannotBeCheated" : true
+	},
+	"Ermahgerd...Terxes" : {
+	  "image" : "https://i.imgur.com/QabMDFI.png",
+	  "description" : "Ruin a venture capitalist's life.",
+	  "cannotBeCheated" : true
+	},
+	"Promises Change" : {
+	  "image" : "https://i.imgur.com/cjucmW8.png",
+	  "description" : "Win a landslide victory.",
+	  "cannotBeCheated" : true
+	},
+	"Dances with Smurfs" : {
+	  "image" : "https://i.imgur.com/N73nNHS.png",
+	  "description" : "Make a true patriot president.",
+	  "cannotBeCheated" : true
+	},
+	"Worst President of My Lifetime" : {
+	  "image" : "https://i.imgur.com/F5MeTbQ.png",
+	  "description" : "Lose to the worst of the worst.",
+	  "cannotBeCheated" : true
+	},
+	"rƎVO⅃ution" : {
+	  "image" : "https://i.imgur.com/MJMBn24.png",
+	  "description" : "Lose to the fringe.",
+	  "cannotBeCheated" : true
+	},
+	"Angel of Light" : {
+	  "image" : "https://i.imgur.com/wnGR6Nb.png",
+	  "description" : "Bring death and destruction and win.",
+	  "cannotBeCheated" : true
+	},
+	"war criminal :(" : {
+	  "image" : "https://i.imgur.com/NWfugXm.png",
+	  "description" : "Fulfill your destiny.",
+	  "cannotBeCheated" : true
+	},
+	"Barry Soetoro" : {
+	  "image" : "https://i.imgur.com/bAYUC63.png",
+	  "description" : "Finish what you started.",
+	  "cannotBeCheated" : true
+	}
+	}

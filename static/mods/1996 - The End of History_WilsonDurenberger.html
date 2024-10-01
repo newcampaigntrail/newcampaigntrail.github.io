@@ -718,7 +718,7 @@ if (!campaignTrail_temp.loaded){
           "pk": 21784,
           "fields": {
               "priority": 0,
-              "description": "You've selected outgoing Maine Senator to be your running mate. Conservatives, however, are up in arms at a fully pro-choice Republican ticket.. Christian right groups stand steadfast in opposition to this selection, to the point where some trouble at the convention poses a threat to his nomination. What do you have to say about his nomination, and how will you appease opposition?",
+              "description": "You've selected outgoing Maine Senator William Cohen to be your running mate. Conservatives, however, are up in arms at a fully pro-choice Republican ticket.. Christian right groups stand steadfast in opposition to this selection, to the point where some trouble at the convention poses a threat to his nomination. What do you have to say about his nomination, and how will you appease opposition?",
               "likelihood": 1
           }
       },
@@ -793,7 +793,7 @@ if (!campaignTrail_temp.loaded){
           "pk": 5139,
           "fields": {
               "question": 1042,
-              "description": "I took a large political hit by supporting that tax reform plan that Democrats pushed on me. The least we can do is spin it around to be a positive. Let’s focus on how despite the hardships, California will be on a more sound fiscal footing with these reforms."
+              "description": "I took a large political hit by supporting that tax reform plan that Democrats pushed on me. The least we can do is spin it around to be a positive change. Let’s focus on how despite the hardships, California will be on a more sound fiscal footing with these reforms."
           }
       },
       {
@@ -817,7 +817,7 @@ if (!campaignTrail_temp.loaded){
           "pk": 5142,
           "fields": {
               "question": 1042,
-              "description": "We’re gonna talk extensively about the LA Riots. Those who perpetrated it will continue to be prosecuted to the fullest extent of the law. We’re going to have a California Comeback, and I’ll do every in my power to keep you safe."
+              "description": "We’re gonna talk extensively about the LA Riots. Those who perpetrated it will continue to be prosecuted to the fullest extent of the law. We’re going to have a California Comeback, and I’ll do everything in my power to keep you safe."
           }
       },
       {
@@ -857,7 +857,7 @@ if (!campaignTrail_temp.loaded){
           "pk": 5148,
           "fields": {
               "question": 1044,
-              "description": "This is the perfect opportunity to safely give my base all the red meat they would want. No carveouts for Europe - that's where the line should be drawn. We don't this to come off as racially biased."
+              "description": "This is the perfect opportunity to safely give my base all the red meat they would want. No carveouts for Europe - that's where the line should be drawn. We don't want this to come off as racially biased."
           }
       },
       {
@@ -873,7 +873,7 @@ if (!campaignTrail_temp.loaded){
           "pk": 5150,
           "fields": {
               "question": 1044,
-              "description": "The economy is struggling, and you all think the solutions to my polling woes is some cultural battles? Not a chance. Focus on getting a balanced budget amendment on the ballot, and maybe we'll talk."
+              "description": "The economy is struggling, and you all think the solutions to my polling woes is through some cultural battles? Not a chance. Focus on getting a balanced budget amendment on the ballot, and maybe we'll talk."
           }
       },
       {
@@ -1897,7 +1897,7 @@ if (!campaignTrail_temp.loaded){
           "pk": 21108,
           "fields": {
               "question": 1,
-              "description": "Let's make this whole trip bipartisan. How about we invite Willie with us? Even Democrats want to get the economy back on track at this point, and I know he's itching to get a political win in too."
+              "description": "Let's make this whole trip bipartisan. How about we invite Willie with us? Even Democrats want to get the economy back on track at this point, and I know he's itching to get a political win in as well."
           }
       },
       {
@@ -21554,7 +21554,7 @@ if (!campaignTrail_temp.loaded){
     console.log("The diaspora listens");                  
   }
   // Win
-  if(e.running_mate_last_name==="Cohen" && (campaignTrail_temp.player_answers.includes(21017)||campaignTrail_temp.player_answers.includes(5253||campaignTrail_temp.player_answers.includes(5254))||campaignTrail_temp.player_answers.includes(5255)) && diasporaSupport > 2){
+  if(e.running_mate_last_name==="Cohen" && (campaignTrail_temp.player_answers.includes(21017)||campaignTrail_temp.player_answers.includes(5253)||campaignTrail_temp.player_answers.includes(5254)||campaignTrail_temp.player_answers.includes(5255)) && diasporaSupport > 2){
     campaignTrail_temp.questions_json[28] = {
       "model": "campaign_trail.question",
       "pk": 21788,
@@ -21566,7 +21566,7 @@ if (!campaignTrail_temp.loaded){
     }
   }
   // Fail
-  if(e.running_mate_last_name==="Cohen" && (campaignTrail_temp.player_answers.includes(21017)||campaignTrail_temp.player_answers.includes(5253||campaignTrail_temp.player_answers.includes(5254))||campaignTrail_temp.player_answers.includes(5255)) && diasporaSupport < 2){
+  if(e.running_mate_last_name==="Cohen" && (campaignTrail_temp.player_answers.includes(21017)||campaignTrail_temp.player_answers.includes(5253)||campaignTrail_temp.player_answers.includes(5254)||campaignTrail_temp.player_answers.includes(5255)) && diasporaSupport < 2){
     campaignTrail_temp.questions_json[28] = {
       "model": "campaign_trail.question",
       "pk": 22059,
@@ -22001,7 +22001,7 @@ if (!campaignTrail_temp.loaded){
       if(ans == 21108){
         govScore += 1;               
       }
-      if(ans == 5141){
+      if(ans == 21295){
         govScore -= 2;              
       }
       // Q4
@@ -22029,7 +22029,7 @@ if (!campaignTrail_temp.loaded){
       }
     
     // Setting if you won or not
-    if((ans == 5143 || ans == 5144 || ans == 5145 ) && govScore >= 2){
+    if((ans == 5143 || ans == 5144 || ans == 5145 ) && govScore >= 2 && govScore < 6){
         campaignTrail_temp.questions_json[5] = {
           "model": "campaign_trail.question",
           "pk": 21304,

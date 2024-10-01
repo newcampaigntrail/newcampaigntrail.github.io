@@ -1,3 +1,10 @@
+function ctsAchievement(achievement, difficultyChecker = true){
+	if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
+		if(campaignTrail_temp.CTS){
+		unlockAchievement(achievement);
+	}
+}
+
 campaignTrail_temp.questions_json = [
   {
     "model": "campaign_trail.question",
@@ -1679,6 +1686,7 @@ endingPicker = (out, totv, aa, quickstats) => {
   //quickstats = relevant data on candidate performance (format: your candidate's electoral vote count, your candidate's popular vote share, your candidate's raw vote total)
 
 if(campaignTrail_temp.player_answers[9] == 8032) {
+  ctsAchievement("I'm Outta Here");
     if (used != true) {
         setInterval(function () {
             used = true;
@@ -1702,12 +1710,15 @@ if(campaignTrail_temp.player_answers[9] == 8032) {
       }
        return "<h3>Wow! You've cancelled the divorce!</h3><p>This is quite rare, and of course, this is never the end - marriage counseling and time will be needed to solve everything, but you've managed to make things work. Luuwuu and you have agreed to try to make this marriage work, and so the court case is cancelled.</p><p>You'll of course, need to finish 2016DNC, and there's still some people peeved that you not only lied about releasing 2024, but that the mod you actually released was some April Fools Day trash. But that's a different story - and maybe if they find the true ending, maybe they'll understand. Oh wait.</p>";
     } else if (quickstats[0] < 10) {
+      ctsAchievement("It's Astrover");
       return "<h3>Sorry! You lost the case.</h3><p>Looks like Luuwuu is guaranteed to get custody of Bruno, and the jury is favoring giving her some ownership in New Campaign Trail. This is pretty bad news for you. For now, you're going to live in the basement of your local Wawa, and work on your mods there.</p><p>People are still expecting 2016DNC, and the stunt you pulled on April Fools likely left a poor taste in their mouth. Finish this semester and get working on that mod! Who knows? You might be able to recover your reputation.</p>"
     } else if (quickstats[0] == 10) {
       return "<h3>The Jury is tied.</h3><p>I honestly have no clue what happens here.</p><p>You and Luuwuu will have to work together to solve this, although given how bitterly this must have been fought, that sounds harder than expected.</p>"
     } else if (quickstats[0] >= 11 && quickstats[0]<15) {
+      ctsAchievement("Better Call Spar-kie");
       return "<h3>Wow! You have won the Divorce Trial!</h3><p>After months of litigation, the court has given you custody of a lot! You get to keep the house, and most of the stuff there. Luuwuu and Bruno will likely move out of Pennsylvania - Luuwuu's apathy for the Keystone State was outweighed for her love of you.</p><p>Many people are expecting your next mod now, and the stunt you pulled on April Fools likely left a poor taste in their mouth. Finish this semester and get working on that mod!</p>"
      } else if (quickstats[0] >= 15) {
+      ctsAchievement("Better Call Spar-kie");
       return "<h3>Wow! You have won custody of everything!</h3><p>After months of litigation, the court has given you custody of a lot, everything, in fact! You get to keep the house, and most of the stuff there. Luuwuu will likely move out of Pennsylvania - Luuwuu's apathy for the Keystone State was outweighed for her love of you. But hey - you get to keep the dog, Bruno!</p><p>Many people are expecting your next mod now, and the stunt you pulled on April Fools likely left a poor taste in their mouth. Finish this semester and get working on that mod!</p>"
   
 } else {

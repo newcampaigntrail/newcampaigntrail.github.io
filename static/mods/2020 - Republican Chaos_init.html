@@ -1,0 +1,667 @@
+campaignTrail_temp.global_parameter_json = [
+    {
+        "model": "campaign_trail.global_parameter",
+        "pk": 1,
+        "fields": {
+            "vote_variable": 1.125,
+            "max_swing": 0.12,
+            "start_point": 0.94,
+            "candidate_issue_weight": 10,
+            "running_mate_issue_weight": 3,
+            "issue_stance_1_max": -0.71,
+            "issue_stance_2_max": -0.3,
+            "issue_stance_3_max": -0.125,
+            "issue_stance_4_max": 0.125,
+            "issue_stance_5_max": 0.3,
+            "issue_stance_6_max": 0.71,
+            "global_variance": 0.01,
+            "state_variance": 0.005,
+            "question_count": 34,
+            "default_map_color_hex": "#C9C9C9",
+            "no_state_map_color_hex": "#999999"
+        }
+    }
+]
+
+campaignTrail_temp.election_json = [
+    {
+        "model": "campaign_trail.election",
+        "pk": 21,
+        "fields": {
+            "year": 2020,
+            "summary": "<p>2020 has been regarded as one of the most chaotic years in world history, including in the United States. Even before the COVID-19 pandemic, President Donald Trump has been impeached and removed from office due to obstruction of Congress and abuse of power, after he solicited the Ukrainian Government to investigate former Vice President Joe Biden in order to help his re-election bid in November. <p><p>After Trump was removed, Mike Pence was elevated to the presidency. Little did he know that he'd have to face a global pandemic and social unrest to the likes this country has never seen before. Will his handling of these crises save his presidential career? Or will the sour environment towards Republicans hand Joe Biden the presidency, giving it back to the Democrats? </p>",
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b8/House_of_Representatives_Votes_to_Adopt_the_Articles_of_Impeachment_Against_Donald_Trump.jpg",
+            "winning_electoral_vote_number": 270,
+            "advisor_url": "https://s.abcnews.com/images/Politics/Trump_quayle_split_as_160512_16x9_1600.jpg",
+            "recommended_reading": "<div style='overflow-y:scroll;height:400px;'><h4 style='margin-top: 0.5em;'>Canon Map</h4><img src='https://i.imgur.com/DM2KBgX.png' width='800px' target='_blank'<br><br>The reason Biden wins by more than he did in 2020 in this timeline is simply because the national environment would be less favorable to the Republicans. The first ever successful Senate impeachment will turn the narrative strongly in favor of the Democrats, on top of Mike Lindell's third-party MAGA candidacy. Not to mention, Pence won't do as well with working-class voters, causing ME-2, Iowa, and Ohio to be more Democratic-leaning here.</a><br><h4>Note from Modder</h4><p>This is my 11th mod, and one where I really experimented with some more hardcore CYOA if you couldn't already tell by playing the mod. Most notably, with the VP switching. This has been a mod concept that I've always wanted to do, and is the first ever mod centered around a presidential impeachment to be released. To those working on a Clinton impeachment 2000 mod, or any other future mods centered around this political process, I hope this mod is one that can be used as an inspiration. Thank you to all who playtested this mod, and gave me feedback on how to make this mod even better. I've actually made many of the changes suggested to me, unlike my last mod. But for now, stay tuned for announcements surrounding my next mod, which like my last few mods, have been teased in one of the endings. So keep playing this mod to find out my next mod before its formal announcement, and to check out some of the other VP's. <br><br>-Environmental_Cap104<br><br></p>",
+            "has_visits": 1,
+            "no_electoral_majority_image": "https://www.jetsimon.com/public/static/images/2012-no-majority.jpg",
+            "creator": "Dan Bryan",
+            "display_year": "2020 - Republican Chaos"
+        }
+    }
+]
+
+campaignTrail_temp.candidate_json = [
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 300,
+        "fields": {
+            "first_name": "Joe",
+            "last_name": "Biden",
+            "election": 21,
+            "party": "Democrat",
+            "state": "Delaware",
+            "priority": 1,
+            "description": "<p>Former Vice President Joe Biden. Not playable.",
+            "color_hex": "#0000d1",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/jp4zPXO.png",
+            "electoral_victory_message": "",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "",
+            "description_as_running_mate": "",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 301,
+        "fields": {
+            "first_name": "Mike",
+            "last_name": "Pence",
+            "election": 21,
+            "party": "Republican",
+            "state": "Indiana",
+            "priority": 2,
+            "description": "<p>What a year for Mike Pence. After Donald Trump's impeachment and removal from office, he was elevated to the presidency, and about to face one of the most tumultuous years in modern history. From a virus spread worldwide from a seafood market in Wuhan, to the untimely deaths of George Floyd, Breonna Taylor, and Jacob Blake causing riots and civil unrest in cities across the country, to Vice Presidential confirmation hearings, to constant attacks tying him to the impeached former President, Mike Pence is trying his hardest to bring the country together. Will his handling of these crises save his already slim re-election chances? Or will the sour national environment give Pence the shortest presidency since James Garfield? </p>",
+            "color_hex": "#d10000",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/mIsw7Up.png",
+            "electoral_victory_message": "",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "<h3>We're deadlocked!</h3><p>In spite of the 269-269 tie in the electoral college, Republicans control a majority of state delegations in the House of Representatives. This could be what saves your presidency, and gives you a full term as President of the United States. You can also run again in 2024 at a chance to give you the longest presidency since FDR.</p>",
+            "description_as_running_mate": "",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 302,
+        "fields": {
+            "first_name": "Mike",
+            "last_name": "Lindell",
+            "election": 21,
+            "party": "Patriot",
+            "state": "Minnesota",
+            "priority": 3,
+            "description": "'",
+            "color_hex": "#8a00bd",
+            "secondary_color_hex": "#FFFFC0",
+            "is_active": 0,
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Mike_Lindell_%2850755882433%29_%28cropped%29.jpg/330px-Mike_Lindell_%2850755882433%29_%28cropped%29.jpg",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "'",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 303,
+        "fields": {
+            "first_name": "Howie",
+            "last_name": "Hawkins/Other",
+            "election": 21,
+            "party": "Green",
+            "state": "New York",
+            "priority": 4,
+            "description": "'",
+            "color_hex": "#00C100",
+            "secondary_color_hex": "#A1FFA1",
+            "is_active": 0,
+            "image_url": "'",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "'",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 50000,
+        "fields": {
+            "first_name": "Nikki",
+            "last_name": "Haley",
+            "election": 21,
+            "party": "Republican",
+            "state": "South Carolina",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#ff0000",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/N6NRNSi.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "<p>This is who the Republicans were looking for at this time. A compassionate conservative who served in the Trump administration and is ready to turn the page on his administration. Someone who can make history, as not only the first female Vice President, but also the first Asian-American Vice President. <p><p>While some of Trump's core supporters may be let down by Haley not embracing the former President, that's only to be expected right? She can certainly help you unite the Republican Party, and can contrast to the 77-year-old former Vice President who has served in politics for fifty years very well. While her home state of South Carolina is not in contention this year, the rest of the Southern Atlantic from Virginia to Florida is expected to be extremely competitive, and Haley can give you the critical boost you need to win these do-or-die battleground states.",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 50001,
+        "fields": {
+            "first_name": "John",
+            "last_name": "Thune",
+            "election": 21,
+            "party": "Republican",
+            "state": "South Dakota",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#ff0000",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/John_Thune_117th_Congress_portrait.jpg/330px-John_Thune_117th_Congress_portrait.jpg",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "<p>After being Senate Majority Whip and Chair of the Senate Republican Committee, it only seemed fitting that he would get appointed as Vice President. A guy that the entire Republican Party can get behind, and one who is not too aligned to the former President either.<p><p>Thune can certainly help you bring back the Romney voters who rejected Trump in 2016, as well as libertarians who could be crucial in giving you a full term in office. In contrast, many hardcore Trump supporters and blue-collar voters may be turned off by his strong condemnation of the former President, as well as his support of modernizing NAFTA. While South Dakota wasn't going to be competitive anyways, Thune could be a huge asset in winning states like Wisconsin and Minnesota, which could be must-win country for you. </p>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 50002,
+        "fields": {
+            "first_name": "Paul",
+            "last_name": "Ryan",
+            "election": 21,
+            "party": "Republican",
+            "state": "Wisconsin",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#ff0000",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Paul_Ryan_official_photo.jpg",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "<p>This was gonna be a very tough sell for the hardcore Trumpers, but again, a lot of Democrats crossed over and appointed Paul Ryan. This is the same guy who lost his bid for the vice presidency with Mitt Romney just eight short years ago in a similarly bad environment for Republicans. So there is no doubt that this will cause some concerns among Republicans, but he was the former Speaker of the House, and he wanted to be VP anyways. <p><p>Most of Trump's hardcore supporters are turned off, and this confirmation is expected to fire up Mike Lindell's pro-Trump third-party campaign. However, Ryan could help among establishment Republicans who rejected Trump four years ago, and could be critical in keeping the all-important Wisconsin in the Republican column in November.</p>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 50003,
+        "fields": {
+            "first_name": "Tom",
+            "last_name": "Cotton",
+            "election": 21,
+            "party": "Republican",
+            "state": "Arkansas",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#ff0000",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/DSDckkx.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "<p>Some may say this was the right guy to unite the party, including the Trump wing. Right alongside the former President on policies, he refused to back down when his man was getting impeached. But all that mattered was that he could get the Trump wing on board in order to win 2020, and he's quite youthful too. His confirmation was quite narrow too, and all the while, Democrats cry about him becoming the next Dan Quayle.<p><p>Cotton is sure to help you with the Trump wing, and hurt Lindell's candidacy a lot. He is a strong social conservative just like you, which is expected to help you tremendously in the South, especially his home state of Arkansas. Just don't align with Trump too heavily, as the national environment is strongly against him right now, and you want to win right?</p>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    }
+]
+
+campaignTrail_temp.running_mate_json = [
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 124796,
+        "fields": {
+            "candidate": 301,
+            "running_mate": 50000
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 87723,
+        "fields": {
+            "candidate": 301,
+            "running_mate": 50001
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 161595,
+        "fields": {
+            "candidate": 301,
+            "running_mate": 50003
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 107944,
+        "fields": {
+            "candidate": 301,
+            "running_mate": 50002
+        }
+    }
+]
+
+campaignTrail_temp.credits = "Environmental_Cap104"
+
+campaignTrail_temp.opponents_default_json = [
+    {
+        "election": 21,
+        "candidates": [
+            300,
+            301,
+            302,
+            303
+        ]
+    }
+]
+
+campaignTrail_temp.opponents_weighted_json = [
+    {
+        "election": 21,
+        "candidates": [
+            300,
+            301,
+            302,
+            303
+        ]
+    }
+]
+
+campaignTrail_temp.temp_election_list = [
+    {
+        "id": 21,
+        "year": 2020,
+        "is_premium": 0,
+        "display_year": "2020 - Republican Chaos"
+    }
+]
+
+jet_data = {
+    "headerColor": "#a30021",
+    "windowColor": "#757575",
+    "containerColor": "#5e5e5e",
+    "innerWindowColor": "#808080",
+    "bannerImageUrl": "https://i.imgur.com/PrVYGCf.png",
+    "backgroundImageUrl": "https://nu.cw/wp-content/uploads/2021/01/impeachment-trump-als-eerste-president-ooit-voor-tweede-keer-aangeklaagd.jpg",
+    "endingTextColor": "#000000",
+    "customQuote": ""
+}
+
+//#startcode
+
+
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#a30021";
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#757575";
+
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+$(".container")[0].style.backgroundColor = "#5e5e5e";
+
+document.getElementById("header").src = "https://i.imgur.com/PrVYGCf.png";
+
+document.body.background = "https://nu.cw/wp-content/uploads/2021/01/impeachment-trump-als-eerste-president-ooit-voor-tweede-keer-aangeklaagd.jpg";
+
+document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#808080!important;}</style>";
+
+//#endcode
+HistHexcolour=["#0000d1","#d10000","#8a00bd","#00C100"];
+        HistName=["Joe Biden","Mike Pence","Mike Lindell","Howie Hawkins/Other"];
+        HistEV=[351,187,0,0];
+        HistPV=["79,882,534","67,508,573","8,458,151","783,162"];
+        HistPVP=["51.0%","43.1%","5.4%","0.5%"];
+
+var changeGameDisp = (hide) => {
+  disp = "";
+  if (hide) {
+    disp = "none";
+  }
+  document.getElementsByClassName("inner_window_w_desc")[0].style.display = disp
+};
+
+e.creditsPage = () => {
+  credits_html = `
+    <h3>Coding</h3>
+    <p>Environmental_Cap104</p>
+    <h3>Writing</h3>
+    <p>Environmental_Cap104</p>
+    <p>Weak-Divide-1603</p>
+    <h3>Misc.</h3>
+    <p>DecstarG for the Music Player</p>
+    <p>ItsAstronomical and 1996: The End of History for the VP Switcher</p>                
+    <p>All Who Playtested</p>
+    <h3>Music Credit</h3>
+    <p>The Clash - Should I Stay or Should I Go</p>
+    <p>Michael Jackson - Beat It</p>
+    <p>John Denver - Leaving on a Jet Plane</p>
+    <p>Billy Joel - We Didn't Start the Fire</p>
+    <p>JibJab.com - 2020 Year in Review</p><br><br>
+  `
+  changeGameDisp(true);
+  var spacer = document.createElement("amongusspacerthisisntarealelement");
+  spacer.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+  document
+    .getElementsByClassName("inner_window_w_desc")[0]
+    .children[1].appendChild(spacer);
+    changeGameDisp(true);
+    var menuHeader = document.createElement("div");
+    menuHeader.classList.add("inner_window_front");
+    menuHeader.innerHTML = `<h1 style='font-family: "Times New Roman";'><font color='#0496f7'>Credits</font></h1>`;
+    menuHeader.id = "SOTUheader";
+    menuHeader.style = "height: 50px;background-color:#2d2d2d";
+    var newMenu = document.createElement("div");
+    newMenu.classList.add("inner_window_front");
+    newMenu.id = "SOTUmenu";
+    newMenu.style = `height:260px;background-color:#2d2d2d;color:white;overflow-y: scroll;`;
+
+    newMenu.innerHTML = credits_html;
+    let z = document.getElementById("game_window");
+    var backButton = document.createElement("button");
+    backButton.style =
+      "position: relative; bottom: -13px; left: -380px; width: 150px; height: 80px;font-size:40px;padding-top:5px;padding-left:8px";
+    backButton.id = "backSOTUBtn";
+    backButton.innerHTML = `<b>BACK</b>`;
+    backButton.onclick = function () {
+      document.getElementById("SOTUheader").remove();
+      document.getElementById("SOTUmenu").remove();
+      document.getElementById("backSOTUBtn").remove();
+      changeGameDisp(false);
+    };
+    z.appendChild(menuHeader);
+    z.appendChild(newMenu);
+    z.appendChild(backButton);
+
+}
+
+e.credits = "<button onclick='e.creditsPage()'>Credits</button>"
+
+
+// Initialise custom music
+
+$("#music_player")[0].children[0].style.display="none"
+$("#music_player")[0].children[1].style.display="none"
+
+document.getElementById("modLoadReveal").style.display="none"
+document.getElementById("modloaddiv").style.display="none"
+
+musicBox = document.getElementById("music_player")
+musicBox.style.display=""
+
+var trackSel;
+e = campaignTrail_temp
+e.selectedSoundtrack = 0
+
+toTime = (seconds) => {
+  var date = new Date(null);
+  date.setSeconds(seconds);
+  return date.toISOString().substr(11, 8);
+}
+
+generateTime = () => {
+    // Get the audio element
+    var audio = document.getElementById("campaigntrailmusic");
+
+    timeTracker = document.createElement("div");
+    timeTracker.style = `
+      text-align:left;
+      border-style:solid;
+      border-width:3px;
+      height:150px;
+      width:200px;
+      background-color:#999999;
+      float:right;
+      padding: 10px;
+    `
+    $("#trackSelParent")[0].prepend(timeTracker);
+    $("#trackSelParent")[0].prepend(document.createElement("br"));
+
+    // Create a new element to display the current position of the audio
+    var positionDisplay = document.createElement("gg");
+    positionDisplay.id = "position-display";
+
+    // Create a new slider element to change the time
+    var timeSlider = document.createElement("input");
+    timeSlider.type = "range";
+    timeSlider.min = 0;
+    timeSlider.max = 1;
+    timeSlider.step = 0.001;
+    timeSlider.value = 0;
+    timeSlider.style.width = "200px";
+    timeSlider.id = "time-slider";
+
+    var pausePlay = document.createElement("button");
+    pausePlay.id = "position-display";
+    pausePlay.innerHTML = "<b>Pause</b>"
+    pausePlay.style.width = "100%";
+
+
+    pausePlay.addEventListener("click", event => {
+      event.preventDefault();
+      updatePositionDisplay();
+      let audio = document.getElementById("campaigntrailmusic");
+      if (audio.paused) {
+        audio.play();
+        event.target.innerHTML = "<b>Pause</b>";
+        return;
+      }
+      audio.pause();
+      event.target.innerHTML = "<b>Play</b>";
+      return;
+    })
+
+    var volumeLabel = document.createElement("gg");
+    volumeLabel.id = "volume-label";
+    volumeLabel.innerHTML = "<br><b>Volume: </b>"
+
+    var volumeSlider = document.createElement("input");
+    volumeSlider.type = "range";
+    volumeSlider.min = 0;
+    volumeSlider.max = 1;
+    volumeSlider.step = 0.001;
+    volumeSlider.value = 0;
+    volumeSlider.style.width = "200px";
+    volumeSlider.id = "volume-slider";
+
+    volumeSlider.value = audio.volume;
+
+    timeTracker.appendChild(pausePlay);
+    timeTracker.appendChild(document.createElement("br"));
+    timeTracker.appendChild(document.createElement("br"));
+    timeTracker.appendChild(positionDisplay);
+    timeTracker.appendChild(timeSlider);
+    timeTracker.appendChild(volumeLabel);
+    timeTracker.appendChild(volumeSlider);
+
+    updatePositionDisplay();
+
+    //for (let i = 0; i < 10; i++)
+    //timeTracker.append(document.createElement("br"));
+
+
+    // Function to update the position display
+    function updatePositionDisplay() {
+      positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+      timeSlider.value = audio.duration ? audio.currentTime / audio.duration : 0;
+    }
+
+    // Function to change the time of the audio
+    function changeTime() {
+      positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+      audio.currentTime = timeSlider.value * audio.duration;
+    }
+
+    updateVolume = event => {
+      audio.volume = event.target.value;
+    }
+    
+    // Update the position display and slider every second
+    setInterval(updatePositionDisplay, 1000);
+
+    // Listen for changes to the time slider and change the time of the audio
+    timeSlider.addEventListener("input", changeTime);
+    volumeSlider.addEventListener("input", updateVolume)
+}
+
+function newMusicPlayer() {
+  trackSel = document.createElement("div");
+  trackSel.id = "trackSelParent"
+  let z = `<br><br><br><br><br><br><br><br><br><br><div id='trackSel' style="text-align:left;border-style:solid;border-width:3px;overflow-y: scroll;overflow-x: hidden;height:200px; width:400px;background-color:#999999;float:right;">`
+  z += `<b><select id='selectSoundtrack'><option value='`+soundtracks[e.selectedSoundtrack].name+`'>`+soundtracks[e.selectedSoundtrack].name+"</option>"
+  for (i in soundtracks) {
+    if (soundtracks[e.selectedSoundtrack] != soundtracks[i]) {
+      z += `<option value='`+soundtracks[i].name+`'>`+soundtracks[i].name+`</option>`
+    }
+  }
+  z += `</select></b><br><br>`
+  // <label><input type="radio" name="option" value="option1">Option 1</label><br>
+  for (i in soundtracks[e.selectedSoundtrack].tracklist) {
+    let a = soundtracks[e.selectedSoundtrack].tracklist[i]
+    let b = `<label><input class="trackSelector" type="radio" name="trackSelector" value="`+i+`">`+a.name+`</label><br>`
+    z += b
+  }
+  z += "</div><br><br>"
+  trackSel.innerHTML = z
+
+  // select correct song
+
+  musicBox.appendChild(trackSel);
+  Array.from(document.getElementById("trackSel").children).filter(f=>{
+    return f.tagName == "LABEL"
+  }).map(f=>f.children[0])[0].checked = true
+
+  // set soundtrack changer
+
+  soundtrackSelector = document.getElementById("selectSoundtrack")
+  soundtrackSelector.onchange = function() {
+    for (i in soundtracks) {
+      if (soundtracks[i].name == soundtrackSelector.value) {
+        e.selectedSoundtrack = i
+        break
+      }
+    }
+    document.getElementById("trackSelParent").remove()
+    newMusicPlayer()
+  }
+
+  var matches = document.querySelectorAll('.trackSelector');
+
+  for (match in matches) {
+    matches[match].onchange = function() {
+      audio = $("#campaigntrailmusic")[0];
+      audio.src = soundtracks[e.selectedSoundtrack].tracklist[this.value].url
+      audio.currentTime = 0
+    }
+  }
+
+  musicBox.children[2].loop = false
+  musicBox.children[2].src = soundtracks[e.selectedSoundtrack].tracklist[0].url
+
+  musicBox.children[2].onended = function() {
+    console.log("next track")
+    let selected = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+    let newSel = clamp(selected+1, soundtracks[e.selectedSoundtrack].tracklist.length-1, 0)
+    let buttons = Array.from(document.getElementById("trackSel").children).filter(f=>{
+      return f.tagName == "LABEL"
+    }).map(f=>f.children[0])
+    //let selectedIndex = buttons.map(f=>f.children[0]).map(f=>f.checked)
+    buttons[newSel].click()
+  }
+
+  for (w = 0; w < 7; w++) {
+    document.getElementById("trackSelParent").appendChild(document.createElement("br"))
+  }
+  
+  generateTime();
+}
+
+clamp = function(a, max, min, overflow=true) {
+  if (overflow) {
+    return a > max ? min : a < min ? max : a;
+  }
+  return a > max ? max : a < min ? min : a;
+}
+
+
+// Track list
+
+var soundtracks = {
+  0: {
+    name: "2020, What a Chaotic Year!",
+    tracklist: [
+      {
+        "name": "The Clash - Should I Stay or Should I Go",
+        "url": "https://audio.jukehost.co.uk/BBAZmO9SsPl1tKzl6oQMmUEURCedVicc"
+      },
+      {
+        "name": "Michael Jackson - Beat It",
+        "url": "https://audio.jukehost.co.uk/nvHT87Q0Fup6NNdwW14T6zppY2JoL0HH"
+      },
+      {
+        "name": "John Denver - Leaving on a Jet Plane",
+        "url": "https://audio.jukehost.co.uk/v19nGJL8CD3t1PDWZKMp8jLB065lu8ta"
+      },
+      {
+        "name": "Billy Joel - We Didn't Start the Fire",
+        "url": "https://audio.jukehost.co.uk/gI76L6TQze0Gd0fb0E4ozLtSKYY5J8mu"
+      },
+      {
+        "name": "JibJab.com - 2020 Year in Review",
+        "url": "https://audio.jukehost.co.uk/APnsBN4zOp6cHOcdvD5UptBPJrUnYWOO"
+      },              
+    ]
+  }
+}
+
+// Set up new music player
+
+newMusicPlayer()
+
+RecReading=true
+
+      
+
+styling = document.createElement("style");
+document.head.appendChild(styling);
+
+styling.innerHTML = `
+#opponent_selection_id_back {
+    display: none;
+}
+`
+
+let z = new MutationObserver((mutationsList, observer) => {
+    let runningMateSummary = document.querySelector("#running_mate_summary");
+    if (runningMateSummary) {
+        $("#running_mate_id_button").click();
+        observer.disconnect()
+    }
+});
+
+
+z.observe(document, { subtree: true, childList: true });
