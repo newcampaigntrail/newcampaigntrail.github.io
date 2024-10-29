@@ -1,7 +1,7 @@
 campaignTrail_temp.election_json[0].fields.advisor_url = "https://i.imgur.com/HZeulRa.png";
 
 function ctsAchievement(achievement, difficultyChecker = true){
-	if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1.55)||!difficultyChecker)
+	if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1.06)||!difficultyChecker)
 		if(campaignTrail_temp.CTS){
 		unlockAchievement(achievement);
 	}
@@ -109,7 +109,7 @@ if (ans == 5142 || ans == 5174 || ans == 5175 || ans == 5173 || ans == 5189 || a
 if (ans == 5272 || ans == 5267) {
     ideology -= 2;
 }
-/// biden
+//// biden
 if (ans == 5148 || ans == 5152 || ans == 5225 || ans == 5224 || ans == 5226) {
     biden += 1;
 }
@@ -123,7 +123,7 @@ if (ans == 5151) {
 if (ans == 5147 || ans == 5149 || ans == 5144 || ans == 5155 || ans == 5144 || ans == 5185 || ans == 5175 || ans == 5173 || ans == 5177 || ans == 5180 || ans == 5207 || ans == 5236 || ans == 5198 || ans == 5199 || ans == 5231 || ans == 5272 || ans == 5276 || ans == 5277) {
     workersFirst += 1;
 }
-/// national democrats
+//// national democrats
 if (ans == 5221 || ans == 5182) {
     nationalDemocrats += 1;
 }
@@ -131,7 +131,7 @@ if (ans == 5221 || ans == 5182) {
 if (ans == 5263 || ans == 5262 || ans == 5205 || ans == 5266 || ans == 5233 || ans == 5274) {
     assKicker += 1;
 }
-/// achievements stuff
+//// achievements stuff
 if (nationalDemocrats == 2) {
     ctsAchievement("In It Together");
 }
@@ -158,16 +158,16 @@ endingPicker = (out, totv, aa, quickstats) => {
         if (quickstats[1] > 50.99) {
             ctsAchievement("Ass-Kicker, Not An Ass-Kisser");  
   }
-        if (ideology >= 8 && quickstats[1] >= 50.00) {
+        if (ideology >= 7 && quickstats[1] >= 50.00) {
             ctsAchievement("Liberalism in Ohio Prevails");  
   }
-        if (ideology >= -6 && quickstats[1] >= 50.00) {
+        if (ideology <= -6 && quickstats[1] >= 50.00) {
             ctsAchievement("More MAGA Than Vance?");  
   }
         if (biden >= 4 && quickstats[1] >= 50.00) {
             ctsAchievement("Build Back Better!");  
   }
-        if (biden >= -3 && quickstats[1] >= 50.00) {
+        if (biden <= -3 && quickstats[1] >= 50.00) {
             ctsAchievement("Let's Go Ryan");  
   }
         if (quickstats[1] >= 50) {
@@ -246,7 +246,7 @@ endingPicker = (out, totv, aa, quickstats) => {
     }
     return "<h3>RED WAVE FAILS ACROSS THE NATION, SWAMPS OHIO.</h3><p>Well Tim, this isn't what you were hoping for. You've lost what could've been key in bringing back a blue Ohio, and by a very large margin. You give a speech to supporters denying election fraud claims and the importance of conceding, which I suppose Vance appreciates. Whatever it was that made you lose by such a margin is perhaps unknown, maybe you focused too hard on the abortion issue, maybe you distanced yourself too far away or too close from the President, or maybe, Ohio is set to be a red state for a long time.</p><p>Regardless Tim, your campaign is seen as just another major nail in the coffin for Ohio democrats. Let's hope Sherrod can win big again in 2024, and keep the state blue."
   } else {
-    return "hello"
+    return "<h3>hello</h3>"
   }
 }
 
