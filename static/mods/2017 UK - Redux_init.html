@@ -11,7 +11,7 @@ campaignTrail_temp.difficulty_level_json = JSON.parse("[{\"model\": \"campaign_t
 
 campaignTrail_temp.candidate_dropout_json = JSON.parse("[{\"model\": \"campaign_trail.candidate_dropout\", \"pk\": 1, \"fields\": {\"candidate\": 36, \"affected_candidate\": 18, \"probability\": 1.0}}]");
 
-campaignTrail_temp.temp_election_list = [{"id": 20, "year": 2017, "is_premium": 0, "display_year": "2017 UK - Redux"}];
+campaignTrail_temp.temp_election_list = [{"id": 20, "year": 2017, "is_premium": 0, "display_year": "2017 UK"}];
 
 const introTitle = document.querySelector("#inner_window_1 h3");
   if (introTitle) {
@@ -229,13 +229,6 @@ const startScreenUpdater = setInterval(function() {
             	candidateButton.remove();
         	}
     	}
-	}
-    
-	else if(!candidateButton && runningMateButton) {
-    	runningMateButton.click();
-    	const finalBack = document.getElementById("opponent_selection_id_back");
-    	finalBack.remove();
-    	observer.disconnect()
 	}
 
 	if(finalScreenID) { // delete back button and delete the interval
