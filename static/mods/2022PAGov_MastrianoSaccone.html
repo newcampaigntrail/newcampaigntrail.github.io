@@ -1,3 +1,59 @@
+function ctsAchievement(achievement, difficultyChecker = true){
+	if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
+		if(campaignTrail_temp.CTS){
+		unlockAchievement(achievement);
+	}
+}
+
+const customStyling = document.createElement("style");
+customStyling.innerHTML = `
+#campaign_sign {
+    background-image: url("https://itsastronomical.com/assets/2022PAGov/mastriansign.png");
+    background-size: cover;
+    border-color: #c9c9c9;    
+    border-width: .01em;
+    margin: 0 auto;
+    background-position: center;
+    width: 100%; 
+    height: 104px; 
+    margin-left: -0.07em;
+  }
+#campaign_sign p {
+    color: rgb(0 0 0 / 0%);
+}
+.inner_window_sign_display {
+  margin: 0;
+    margin-right: 0px;
+    margin-left: 0px;
+  height: 25%;
+  position: relative;
+  width: 35%;
+  height: 28%;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: double;
+  border-color: #C9C9C9;
+}
+#state_info {
+  margin: 5% 0 0;
+  height: 120%;
+  background-color: #F8F8F8;
+  border-style: double;
+  border-color: #C9C9C9;
+}
+.inner_window_question {
+  margin: 0
+  padding-top: .3em;
+  border-style: double;
+  border-color: #C9C9C9;
+  text-align: center;
+  height: 55%;
+  position: relative;
+  clear: both;
+}
+`;
+document.head.appendChild(customStyling);
+
 campaignTrail_temp.questions_json = [
   {
     "model": "campaign_trail.question",
@@ -3126,8 +3182,8 @@ campaignTrail_temp.answer_feedback_json = [
     }
   }
 ]
-campaignTrail_temp.candidate_image_url = 'https://i.imgur.com/S6fK2uM.png';
-campaignTrail_temp.running_mate_image_url = 'https://i.imgur.com/z05WONr.png';
+campaignTrail_temp.candidate_image_url = 'https://itsastronomical.com/assets/2022PAGov/mastriano.png';
+campaignTrail_temp.running_mate_image_url = 'https://itsastronomical.com/assets/2022PAGov/saccone.png';
 campaignTrail_temp.candidate_last_name = 'Mastriano';
 campaignTrail_temp.running_mate_last_name = 'Saccone';
 campaignTrail_temp.running_mate_state_id = '1013';
@@ -3148,7 +3204,22 @@ function changechart(){
   }
   window.setInterval(changechart,200)
 
+  var woke = 0;
+
+  cyoAdventure = function (a) {
+    ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
+
+    if (ans == 8015 || ans == 8016 || ans == 8079) {
+      woke += 1;
+    }
+
+  }
+
   endingPicker = (out, totv, aa, quickstats) => {
+
+    if (quickstats[1] >= 43 && woke >= 3) { 
+      ctsAchievement("Wokeism Wins?");  
+    }
 
     used=false;
     orderID = [aa[0].candidate, aa[1].candidate, aa[2].candidate];
@@ -3167,7 +3238,7 @@ function changechart(){
                     }
                 }, 100);
             }
-    return "<audio loop='true' autoplay='true' src='https://audio.jukehost.co.uk/M5veEwwt9YbsUP508t0Q2l20D2RtdT83' style='display:none;'></audio><h3>TEACH ME HOW TO DOUGIE</h3><p>A Dougsweep? How?! Clearly you think you're some kind of bigshot, messing with the time-space continuum. You've completely fucked with the timeline, goddamnit! Shapiro was supposed to win, Casey was supposed to resign, and Apollo Astronomical was supposed to be appointed to replace him! Now you've sent America on a crash course to doom. Oh, and spoilers, Biden beats DeSantis in 2024, even flipping Florida thanks to the butterfly effect. Fuck you.</p><p>You think this is some kind of game, don't you? This isn't a game, this is real life. This is the history of the United States you're messing with. Well, I hope you enjoy watching America burn.</p><p>Well, now that you've doug'd on Shapiro, you probably have the political power to get the state legislature to focus on voter integrity. You can (and should) focus on fighting inflation, and make sure to teach everyone how to Dougie. Best of luck, Doug!</p>"
+    return "<audio loop='true' autoplay='true' src='https://cdn.discordapp.com/attachments/939249993041215528/1003430064936992879/Cali_Swag_District_-_Teach_Me_How_To_Dougie_Official_Video.mp3' style='display:none;'></audio><h3>TEACH ME HOW TO DOUGIE</h3><p>A Dougsweep? How?! Clearly you think you're some kind of bigshot, messing with the time-space continuum. You've completely fucked with the timeline, goddamnit! Shapiro was supposed to win, Casey was supposed to resign, and Apollo Astronomical was supposed to be appointed to replace him! Now you've sent America on a crash course to doom. Oh, and spoilers, Biden beats DeSantis in 2024, even flipping Florida thanks to the butterfly effect. Fuck you.</p><p>You think this is some kind of game, don't you? This isn't a game, this is real life. This is the history of the United States you're messing with. Well, I hope you enjoy watching America burn.</p><p>Well, now that you've doug'd on Shapiro, you probably have the political power to get the state legislature to focus on voter integrity. You can (and should) focus on fighting inflation, and make sure to teach everyone how to Dougie. Best of luck, Doug!</p>"
     } else if (aa[1].popular_votes > aa[0].popular_votes) {
         if (used != true) {
             setInterval(function () {
@@ -3180,6 +3251,7 @@ function changechart(){
         }
     return "<h3>Sorry! You have lost the 2022 Pennsylvania Gubernatorial election.</h3><p>You were always considered the underdog, and national Republicans' reluctance to pour money into the race always made this an uphill battle. Still, it's a disapointing loss as Republicans have failed to capture a key gubernatorial office. To add insult to injury, it appears Democrats are now poised to take control of the Pennsylvania State House - which many Republicans blame on you. While he'll still be working with a Republican State Senate, Shapiro's victory means voters have again rejected a Republican trifecta in Pennsylvania, and he will still has a variety of tools to get his agenda passed.</p><p>You still have your job as a State Senator, and can use this to continue to needle Shapiro on a variety of issues, just like you did with outgoing Governor Wolf. But losing in a red wave year like this likely means your political career is damaged. Maybe a House of Representatives run next time there's an opening? For now, prepare to return to the Senate to help balance the Shapiro agenda.</p>"
     } else if (aa[1].popular_votes < aa[0].popular_votes) {
+      ctsAchievement("Patriots In Control");
     if (used != true) {
         setInterval(function () {
             used = true;
