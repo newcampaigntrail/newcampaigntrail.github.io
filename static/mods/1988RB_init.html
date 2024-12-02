@@ -1,10 +1,307 @@
+musicMode = () => {
+    songsPlayed = 0;
+    // Initialise custom music
+  
+    $("#music_player")[0].children[0].style.display = "none"
+    $("#music_player")[0].children[1].style.display = "none"
+  
+    document.getElementById("modLoadReveal").style.display = "none"
+    document.getElementById("modloaddiv").style.display = "none"
+  
+    musicBox = document.getElementById("music_player")
+    musicBox.style.display = ""
+  
+    var trackSel;
+    e = campaignTrail_temp
+    e.selectedSoundtrack = 0
+  
+    toTime = (seconds) => {
+        var date = new Date(null);
+        date.setSeconds(seconds);
+        return date.toISOString().substr(11, 8);
+    }
+  
+    generateTime = () => {
+        // Get the audio element
+        var audio = document.getElementById("campaigntrailmusic");
+  
+        timeTracker = document.createElement("div");
+        timeTracker.style = `
+  text-align:left;
+  border-style:solid;
+  border-width:3px;
+  height:150px;
+  width:200px;
+  background-color:#999999;
+  float:right;
+  padding: 10px;
+  `
+        $("#trackSelParent")[0].prepend(timeTracker);
+        $("#trackSelParent")[0].prepend(document.createElement("br"));
+  
+        // Create a new element to display the current position of the audio
+        var positionDisplay = document.createElement("gg");
+        positionDisplay.id = "position-display";
+  
+        // Create a new slider element to change the time
+        var timeSlider = document.createElement("input");
+        timeSlider.type = "range";
+        timeSlider.min = 0;
+        timeSlider.max = 1;
+        timeSlider.step = 0.001;
+        timeSlider.value = 0;
+        timeSlider.style.width = "200px";
+        timeSlider.id = "time-slider";
+  
+        var pausePlay = document.createElement("button");
+        pausePlay.id = "position-display";
+        pausePlay.innerHTML = "<b>Pause</b>"
+        pausePlay.style.width = "100%";
+  
+  
+        pausePlay.addEventListener("click", event => {
+            event.preventDefault();
+            updatePositionDisplay();
+            let audio = document.getElementById("campaigntrailmusic");
+            if (audio.paused) {
+                audio.play();
+                event.target.innerHTML = "<b>Pause</b>";
+                return;
+            }
+            audio.pause();
+            event.target.innerHTML = "<b>Play</b>";
+            return;
+        })
+  
+        var volumeLabel = document.createElement("gg");
+        volumeLabel.id = "volume-label";
+        volumeLabel.innerHTML = "<br><b>Volume: </b>"
+  
+        var volumeSlider = document.createElement("input");
+        volumeSlider.type = "range";
+        volumeSlider.min = 0;
+        volumeSlider.max = 1;
+        volumeSlider.step = 0.001;
+        volumeSlider.value = 0;
+        volumeSlider.style.width = "200px";
+        volumeSlider.id = "volume-slider";
+  
+        volumeSlider.value = audio.volume;
+  
+        timeTracker.appendChild(pausePlay);
+        timeTracker.appendChild(document.createElement("br"));
+        timeTracker.appendChild(document.createElement("br"));
+        timeTracker.appendChild(positionDisplay);
+        timeTracker.appendChild(timeSlider);
+        timeTracker.appendChild(volumeLabel);
+        timeTracker.appendChild(volumeSlider);
+  
+        updatePositionDisplay();
+  
+        //for (let i = 0; i < 10; i++)
+        //timeTracker.append(document.createElement("br"));
+  
+  
+        // Function to update the position display
+        function updatePositionDisplay() {
+            positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+            timeSlider.value = audio.duration ? audio.currentTime / audio.duration : 0;
+        }
+  
+        // Function to change the time of the audio
+        function changeTime() {
+            positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+            audio.currentTime = timeSlider.value * audio.duration;
+        }
+  
+        updateVolume = event => {
+            audio.volume = event.target.value;
+        }
+  
+        // Update the position display and slider every second
+        setInterval(updatePositionDisplay, 1000);
+  
+        // Listen for changes to the time slider and change the time of the audio
+        timeSlider.addEventListener("input", changeTime);
+        volumeSlider.addEventListener("input", updateVolume)
+    }
+  function newMusicPlayer() {
+          trackSel = document.createElement("div");
+          trackSel.id = "trackSelParent"
+          let z = `<br><br><br><br><br><br><br><br><br><br><div id='trackSel' style="text-align:left;border-style:solid;border-width:3px;overflow-y: scroll;overflow-x: hidden;height:200px; width:400px;background-color:#999999;float:right;">`
+          z += `<b><select id='selectSoundtrack'><option value='` + soundtracks[e.selectedSoundtrack].name + `'>` + soundtracks[e.selectedSoundtrack].name + "</option>"
+          for (i in soundtracks) {
+              if (soundtracks[e.selectedSoundtrack] != soundtracks[i]) {
+                  z += `<option value='` + soundtracks[i].name + `'>` + soundtracks[i].name + `</option>`
+              }
+          }
+          z += `</select></b><br><br>`
+              // <label><input type="radio" name="option" value="option1">Option 1</label><br>
+          for (i in soundtracks[e.selectedSoundtrack].tracklist) {
+              let a = soundtracks[e.selectedSoundtrack].tracklist[i]
+              let b = `<label><input class="trackSelector" type="radio" name="trackSelector" value="` + i + `">` + a.name + `</label><br>`
+              z += b
+          }
+          z += "</div><br><br>"
+          trackSel.innerHTML = z
+    
+          // select correct song
+    
+          musicBox.appendChild(trackSel);
+          Array.from(document.getElementById("trackSel").children).filter(f => {
+              return f.tagName == "LABEL"
+          }).map(f => f.children[0])[0].checked = true
+    
+          // set soundtrack changer
+    
+          soundtrackSelector = document.getElementById("selectSoundtrack")
+          soundtrackSelector.onchange = function() {
+              for (i in soundtracks) {
+                  if (soundtracks[i].name == soundtrackSelector.value) {
+                      e.selectedSoundtrack = i
+                      break
+                  }
+              }
+              document.getElementById("trackSelParent").remove()
+              newMusicPlayer()
+          }
+    
+          var matches = document.querySelectorAll('.trackSelector');
+    
+          for (match in matches) {
+              matches[match].onchange = function() {
+                  audio = $("#campaigntrailmusic")[0];
+                  audio.src = soundtracks[e.selectedSoundtrack].tracklist[this.value].url
+                  audio.currentTime = 0
+              }
+          }
+    
+          musicBox.children[2].loop = false
+          musicBox.children[2].src = soundtracks[e.selectedSoundtrack].tracklist[0].url
+    
+          musicBox.children[2].onended = function() {
+              console.log("next track")
+              let selected = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+              let newSel = clamp(selected + 1, soundtracks[e.selectedSoundtrack].tracklist.length - 1, 0)
+              let buttons = Array.from(document.getElementById("trackSel").children).filter(f => {
+                      return f.tagName == "LABEL"
+                  }).map(f => f.children[0])
+                  //let selectedIndex = buttons.map(f=>f.children[0]).map(f=>f.checked)
+              buttons[newSel].click()
+              songsPlayed++; // Increment the songs played counter
+        
+           
+          }
+            
+          for (w = 0; w < 7; w++) {
+              document.getElementById("trackSelParent").appendChild(document.createElement("br"))
+          }
+    
+          generateTime();
+      }
+    
+      clamp = function(a, max, min, overflow = true) {
+          if (overflow) {
+              return a > max ? min : a < min ? max : a;
+          }
+          return a > max ? max : a < min ? min : a;
+      }
+    
+   
+      // Track list
+    
+      var soundtracks = {
+          0: {
+              name: "1988",
+              tracklist: [
+                {
+               "name": "Once in a Lifetime - Talking Heads",
+                "url": "https://audio.jukehost.co.uk/f5TWJ3STZqIAoAxx4mZNTOw7jDXT3bOO"
+              },
+              {
+                "name": "Valerie - Steve Winwood",
+                "url": "https://audio.jukehost.co.uk/oS8prV891pOehKEgsj8NnmVYLEVXFcKA"
+              },
+              {
+                "name": "Nothing's Gonna Stop Us Now - Starship",
+                "url": "https://audio.jukehost.co.uk/31jsyjftNiEE9qGg5gt0V1ujC0s57zdE"
+              },
+              {
+                "name": "Dirty Diana - Michael Jackson",
+                "url": "https://audio.jukehost.co.uk/PnB1tav3FShq23yUIpgBJCEQOSXILE7u"
+            },
+            {
+                "name": "Power of Love - Huey Lewis and the News",
+                "url": "https://audio.jukehost.co.uk/xepdtF73XkhGGdnTtj5xlCtM0tbs2XXH"
+              },
+              {
+                "name": "I Just Died In Your Arms Tonight - Cutting Crew",
+                "url": "https://audio.jukehost.co.uk/giOshEgLMhvrx55YthSj8YuAArQQ3ZhC"
+              },
+              {
+                "name": "Little Lies - Fleetwood Mac",
+                "url": "https://audio.jukehost.co.uk/21CQKhownAVfdyg0hE9mhMFjcsL7Evem"
+              }
+            ]
+         },
+  
+          
+          
+      }
+  
+    
+      // Set up new music player
+    
+      newMusicPlayer()
+    
+  
+  }
+  
+    $("#game_start").click((event) => {
+      event.preventDefault();
+      $("#election_id_button").click((event) => {
+          musicMode()
+  
+          setInterval(changeFontColour, 200)
+    
+      })
+    })
+  
+  
+  e = campaignTrail_temp;
+
+campaignTrail_temp.global_parameter_json = [
+    {
+        "model": "campaign_trail.global_parameter",
+        "pk": 1,
+        "fields": {
+            "vote_variable": 1.125,
+            "max_swing": 0.15,
+            "start_point": 0.94,
+            "candidate_issue_weight": 10,
+            "running_mate_issue_weight": 3,
+            "issue_stance_1_max": -0.71,
+            "issue_stance_2_max": -0.3,
+            "issue_stance_3_max": -0.125,
+            "issue_stance_4_max": 0.125,
+            "issue_stance_5_max": 0.3,
+            "issue_stance_6_max": 0.71,
+            "global_variance": 0.01,
+            "state_variance": 0.005,
+            "question_count": 30,
+            "default_map_color_hex": "#C9C9C9",
+            "no_state_map_color_hex": "#999999"
+        }
+    }
+]
+
 campaignTrail_temp.election_json = [
     {
         "model": "campaign_trail.election",
         "pk": 15,
         "fields": {
             "year": 1988,
-            "summary": "<p>With Ronald Reagan's popular leadership coming to an end, the country seems evermore likely to continue his line of politics going into the 90's. Why? I'll tell you.</p><ul><li>George Bush has served faithfully as Reagan's Vice-President over these last eight years, and with Reagan on his way out, he's eager to take up the presidential mantle himself.</li><li>Jesse Jackson is an incredibly polarizing candidate, winning the nomination in a complete shock following a strong primary performance. He'll have to find a way to make his views seem reasonable.</li></ul><p>The majority opinion has their bets on Bush, but if he isn't careful, he could end up like Dewey in 48'.</p>",
+            "summary": "<p>With Ronald Reagan's popular leadership coming to an end, the country seems evermore likely to continue his line of politics going into the 90's. Why? I'll tell you.</p><ul><li>George Bush has served loyally as Reagan's Vice-President for eight years, and with Reagan on his way out, he's more than eager to carve out a legacy of his own, by whatever means necessary.</li><li>Jesse Jackson is an immensely polarizing candidate, only winning the nomination in total shock following a great Super Tuesday. He needs to find a way to make his views seem reasonable.</li></ul><p>The majority opinion is betting on Bush, but if he isn't careful, he could end up how Dewey did in 48'.</p>",
             "image_url": "https://i.imgur.com/PPxNWcJ.png",
             "winning_electoral_vote_number": 270,
             "advisor_url": "https://i.imgur.com/zxypxor.png",
@@ -49,13 +346,13 @@ campaignTrail_temp.candidate_json = [
             "last_name": "Jackson",
             "election": 15,
             "party": "Democratic",
-            "state": "Illinois",
+            "state": "District of Columbia",
             "priority": 2,
-            "description": "<p>My god, Jesse Louis Jackson has finally, successfully captured the Democratic nomination following a shocking performance in Super Tuesday. Jackson is famous - or infamous - in the American public as an avid liberal, pushing through many progressive platforms such as ratifying the ERA, cutting defense spending and reviving various other 'New Deal' esque programs to help the economy. Jackson would be the first African-American on a major ticket.<br><br>Unfortunately, Jackson is very unpopular with many key voting groups he'll need to win over this year, chief among them is the Jewish community, whom he has offended in the past. Not only that, but his ethnicity will be used in dirty ways by the Bush campaign and Jackson himself has never been elected to a political office, which would be a weak spot. Jackson will need to put in the lord's work to make this race close, but by god - he's gonna do it.",
-            "color_hex": "#515fc8",
+            "description": "<p>By god, Jesse Louis Jackson has finally won the Democratic nomination following a stunning performance on Super Tuesday. Famous - or infamous - in the American public as an avid liberal, Jackson advocates for many progressive platforms such as ratifying the ERA, cutting defense spending, and reviving various other New Deal-esque programs to help the economy. Jackson would be the first African-American on a major ticket.<br><br>Unfortunately, Jackson is very unpopular with many key voting groups he'll need to win over this year, chief among them is the Jewish community, whom he has offended in the past. Not only that, but his skin color will be used in dirty ways by the Bush campaign, and Jackson himself has never been elected to a political office - a weak spot for Jesse. Jackson will need to put in the lord's work to make this race close, but by god - he's going to do it.",
+            "color_hex": "#709cdf",
             "secondary_color_hex": "#90C0FF",
             "is_active": 1,
-            "image_url": "https://i.imgur.com/7CssAE2.png",
+            "image_url": "https://i.imgur.com/tlV1H1r.png",
             "electoral_victory_message": "<h3>Congratulations! You have won the 1988 election.</h3><p>In spite of a hard-fought challenge from George Bush, you have held on to succeed Ronald Reagan.</p><p>You were always the favorite to win, but a lot could have gone wrong. On the political front, you can work a Democratic House to overturn the worst excesses of Reagan. Internationally, you can hopefully oversee a period of relaxed tension with the Soviet Union.</p>",
             "electoral_loss_message": "<h3>Sorry. You have lost the 1988 election.</h3><p>In spite of you being the favorite, things just never seemed to click once the real campaigning began.</p><p>Time will tell if Bush governs as a moderate, or a staunch conservative. Many Democrats feel that this election was yours to lose, and it seems unlikely that you will be welcome to run again in four years. Your term as Governor, however, runs through 1991.</p>",
             "no_electoral_majority_message": "<h3>Congratulations! You have won the 1988 election.</h3><p>Although the Electoral College was tied, the Democrats have won a solid majority in the House, and will elevate Michael Dukakis to the Presidency.</p><p>On the political front, you can work a Democratic House to overturn the worst excesses of Reagan. Internationally, you can hopefully oversee a period of relaxed tension with the Soviet Union.</p>",
@@ -151,7 +448,7 @@ campaignTrail_temp.candidate_json = [
             "electoral_victory_message": "'",
             "electoral_loss_message": "'",
             "no_electoral_majority_message": "'",
-            "description_as_running_mate": "<p>It's no secret that party leaders view you with discontent, and the inverse with you. But, they still feel that this race is worth salvaging, and have given you a few options - chief among them is the relatively new senator of Michigan, Carl Milton Levin. Levin would do wonders in reclaiming lost Democratic support turned off by your views. Levin's biggest upside is his religion, as you have a terrible relationship with the Jewish community, and Levin can help tithe back support from them. He is also liberal and gives you good geographic balance in Michigan and the Rustbelt.<br><br>However, it must be stated that Levin is very averse to the idea of serving as your running mate, but combined pressure from party leaders combined with a sense of duty has forced him to acquiesce, so early in the campaign he might not be the most energetic campaigner. ",
+            "description_as_running_mate": "<p>It's no secret that party leaders view you with discontent, and the inverse with you. But, they still feel that this race is worth salvaging, and have given you a few options - chief among them is the junior senator from Michigan: Carl Milton Levin. Levin's biggest upside is that he would excel in reclaiming lost support from moderates, and his religion would be invaluable given your terrible relationship with the Jews nationwide. He is also liberal and gives you good geographic balance in Michigan and the Rustbelt, although your bona fides on unions are pretty good anyway.<br><br>However, it must be stated that Levin is very averse to the idea of serving as your running mate, but combined pressure from party leaders combined with a sense of duty has forced him to acquiesce, so he might not be the most energetic campaigner. He's also not a miracle worker, you need to work with the Jewish community as well.",
             "candidate_score": 0,
             "running_mate": true
         }
@@ -174,7 +471,7 @@ campaignTrail_temp.candidate_json = [
             "electoral_victory_message": "'",
             "electoral_loss_message": "'",
             "no_electoral_majority_message": "'",
-            "description_as_running_mate": "<p>It's no secret that party leaders view you with discontent, and the inverse with you. But, they still feel that this race is worth salvaging, and have given you a few options - one of them being the senior senator of Vermont, Patrick Joseph Leahy. Leahy would be a fine running mate in all capacity, having the experience needed to help you against Bush this year. Leahy would give your campaign New England appeal and would certainly give you Vermont. Also, a vocal supporter of yours, Burlington Mayor Sanders would approve of him.<br><br>Unfortunately, Leahy isn't Jewish and doesn't appeal that strongly to moderates, due to carrying a very liberal voting record in the congress, however he is chair of the Senate Agricultural Committee. And apart from Vermont, he doesn't give a whole lot of geographic balance.",
+            "description_as_running_mate": "<p>It's no secret that party leaders view you with discontent, and the inverse with you. But, they still feel that this race is worth salvaging, and have given you a few options - one of them being the senior senator from Vermont, Patrick Joseph Leahy. Leahy would be a fine running mate in all capacity, having the experience needed to beat back Bush's inexperience argument. Leahy would give your campaign good rural appeal, as well as secure Vermont and some New England states. Also, a vocal supporter of yours, Burlington Mayor Sanders approves of him.<br><br>Unfortunately, given his strongly liberal voting record, he doesn't appeal to moderates very well, despite his status as chair of the Senate Agricultural Committee. And apart from Vermont, he doesn't give a whole lot of geographic balance, New England will swing to your column if you run a good campaign anyways, barring New Hampshire.",
             "candidate_score": 0,
             "running_mate": true
         }
@@ -197,7 +494,7 @@ campaignTrail_temp.candidate_json = [
             "electoral_victory_message": "'",
             "electoral_loss_message": "'",
             "no_electoral_majority_message": "'",
-            "description_as_running_mate": "<p>It's no secret that party leaders view you with discontent, and the inverse with you. But, they still feel that this race is worth salvaging, and have given you a few options - one of them being the senior senator of Rhode Island, Claiborne de Borda Pell. Pell would be a very surprising pick, as his experience and goodwill with his fellow senators could come seriously in handy down the line. Like Leahy, Pell would help you in New England, and would already bolster support in Rhode Island.<br><br>However, Pell isn't jewish, and is a bit of an eccentric person. He believes in the paranormal, wears suits while he jogs, and once took Fidel Castro's cigar because he thought it was a gift. Pell also holds a very progressive voting record in the Senate, which could fuel Republican attacks about the ticket's liberalism.",
+            "description_as_running_mate": "<p>It's no secret that party leaders view you with discontent, and the inverse with you. But, they still feel that this race is worth salvaging, and have given you a few options - one of them being the senior senator of Rhode Island, Claiborne de Borda Pell. Pell would come as a shock, given his desire to stay out of the spotlight, but he could come in handy if Bush seeks to make experience a main issue in the campaign, as Pell has served in the Senate since 1961. Like Leahy, Pell would help you in New England but could help on both the coasts as well, if you wish.<br><br>However, Pell isn't Jewish and is a bit of an eccentric person, which could come up. Pell also suffers from a lack of moderate appeal, and while his foreign policy chops could make up for it, many people see him as a walking talking example of the stereotype of the Democratic Party being the party for the liberal, coastal elite. RI is also safely blue.",
             "candidate_score": 0,
             "running_mate": true
         }
@@ -220,7 +517,7 @@ campaignTrail_temp.candidate_json = [
             "electoral_victory_message": "'",
             "electoral_loss_message": "'",
             "no_electoral_majority_message": "'",
-            "description_as_running_mate": "<p>It's no secret that party leaders view you with discontent, and the inverse with you. But, they still feel that this race is worth salvaging, and have given you a few options - one of them being the junior senator of South Carolina, Ernest Frederick \"Fritz\" Hollings. But don't be fooled, Hollings is no junior - it just so happens that his senior is Strom Thurmond. Hollings is a key ally of yours, being one of the only white southern congressmen to openly endorse you this year. Hollings would help bring back some white moderates uncertain with your stances.<br><br>It must be stated though that Hollings isn't Jewish, and he does carry some conservative tendencies. Not only that but South Carolina has been shifting Republican for the last 20 years, meaning that Hollings might not be enough to win it for you.",
+            "description_as_running_mate": "<p>It's no secret that party leaders view you with discontent, and the inverse with you. But, they still feel that this race is worth salvaging, and have given you a few options - one of them being the junior senator from South Carolina, Ernest Frederick \"Fritz\" Hollings. Despite serving with Strom Thurmond, Hollings is a key ally of yours, being one of the only white southern congressmen to openly endorse you this year. Hollings would assuage concerns of your \"radicalness\" and block off that avenue of attack from the Bush campaign. He can also help with the South.<br><br>It must be stated though that Hollings isn't Jewish, and he does carry many conservative beliefs, such as on social issues. Additionally, he would sharply disappoint your youthful, activist base, and many of your stark policy differences could be opened further if Bush seeks to twist the knife. South Carolina might be too far gone as well. ",
             "candidate_score": 0,
             "running_mate": true
         }
@@ -334,31 +631,6 @@ campaignTrail_temp.running_mate_json = [
 
 campaignTrail_temp.credits = "WNDIUA (Jimbo), original mod by @viviankesandre"
 
-campaignTrail_temp.global_parameter_json = [
-    {
-        "model": "campaign_trail.global_parameter",
-        "pk": 1,
-        "fields": {
-            "vote_variable": 1.125,
-            "max_swing": 0.15,
-            "start_point": 0.94,
-            "candidate_issue_weight": 10,
-            "running_mate_issue_weight": 3,
-            "issue_stance_1_max": -0.71,
-            "issue_stance_2_max": -0.3,
-            "issue_stance_3_max": -0.125,
-            "issue_stance_4_max": 0.125,
-            "issue_stance_5_max": 0.3,
-            "issue_stance_6_max": 0.71,
-            "global_variance": 0.01,
-            "state_variance": 0.005,
-            "question_count": 30,
-            "default_map_color_hex": "#C9C9C9",
-            "no_state_map_color_hex": "#999999"
-        }
-    }
-]
-
 campaignTrail_temp.opponents_default_json = [
     {
         "election": 15,
@@ -397,7 +669,7 @@ jet_data = {
     "windowColor": "#f5e3ff",
     "containerColor": "#8d8dcc",
     "innerWindowColor": "#e2d3c7",
-    "bannerImageUrl": "https://i.imgur.com/baogKOM.png",
+    "bannerImageUrl": "https://i.imgur.com/Ooe208H.png",
     "backgroundImageUrl": "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/newscms/2019_20/2862801/190519-black-vote-jesse-jackson-shirley-chisholm-cs-957a.jpg",
     "endingTextColor": "#000000",
     "customQuote": "If you fall behind, run faster. Never give up, never surrender, and rise up against the odds.",
@@ -406,15 +678,6 @@ jet_data = {
 
 //#startcode
 
-campaignTrail_temp.modBoxTheme = {
-    "header_color": "#70006d",
-    "header_text_color": "#ffffff",
-    "description_text_color": "#000000",
-    "description_background_color": "#f5e3ff",
-    "main_color": "#f5e3ff",
-    "secondary_color": "#8d8dcc",
-    "ui_text_color": "#FFFFFF"
-}
 
 corrr = '\n              <h2>THE RAINBOW TRAIL</h2><font id="wittyquote" size="4" color="white"><em>If you fall behind, run faster. Never give up, never surrender, and rise up against the odds.</em></font>\n            ';
 
@@ -434,7 +697,5 @@ document.getElementById("header").src = "https://i.imgur.com/Ooe208H.png";
 document.body.background = "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/newscms/2019_20/2862801/190519-black-vote-jesse-jackson-shirley-chisholm-cs-957a.jpg";
 
 document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#e2d3c7!important;}</style>";
-
-RecReading = true
 
 //#endcode
