@@ -32,24 +32,38 @@ endingPicker = (out, totv, aa, quickstats) => {
     orderID = [aa[0].candidate, aa[1].candidate, aa[2].candidate, aa[3].candidate];
     playerID = campaignTrail_temp.candidate_id;
     playerEV = quickstats[0]     
-    if (quickstats[0] == 269) {
+    if (aa[0].candidate == 154 && aa[0].electoral_votes >= 270) {
+          if (used != true) {
+              setInterval(function () {
+                  used = true;
+              }, 100);
+          }
+  	   return "<h3>Haha! You thought you were gonna get a secret ending, huh?</h3><p>Well uhh... it appears you made Ron Paul win. Congratulations, I guess? Eh nah, screw that. You cheated to get this, I know you did. You used bigshot or spacebar, didn't you? Actually, I don't need to ask since I know you did it. Good going, you cheating bastard!!!</p>";   
+  	} if (aa[0].candidate == 155 && aa[0].electoral_votes >= 270) {
+          if (used != true) {
+              setInterval(function () {
+                  used = true;
+              }, 100);
+          }
+  	   return "<h3>Haha! You thought you were gonna get a secret ending, huh?</h3><p>Well uhh... it appears you made Lenora Fulani win. Congratulations, I guess? Eh nah, screw that. You cheated to get this, I know you did. You used bigshot or spacebar, didn't you? Actually, I don't need to ask since I know you did it. Good going, you cheating bastard!!!</p>";     	   
+    } if (quickstats[0] == 269) {
           if (used != true) {
               setInterval(function () {
                   used = true;
                   imgg = document.getElementsByClassName("person_image")[0];
                   if (imgg != null) {
-                      imgg.src = "https://media.discordapp.net/attachments/1012710041842876446/1177738879655235604/0x0.png";
+                      imgg.src = "https://i.imgur.com/GMqDmDx.png";
                   }
               }, 100);
           }
   	   return "<h3>“A house divided against itself cannot stand.”</h3><p>Those words were meant as a metaphor during the buildup to the Civil War. Never were they meant to be taken so literally, yet here we are. No one expected this ending, for the electoral college resulting in no clear winner at all. The future of America now rests, solely, in the state delegations of the House and the Vice Presidential vote in the Senate.</p><p>However, it seems this decided to happen at the perfect moment for you. The vast majority of state delegations in the House are led by Democrats, who pledge their votes for you, and in the Senate, your running mate is elected with a clear majority. The process was excruciating to watch, which makes it all the more satisfying when George Bush finally calls you to concede, saying how our “great system works” and whatnot. Either way, hold your head high, Senator, soon they shall call you President.</p>";
-  } if (quickstats[0] > 270 && quickstats[0] < 537) {
+  } if (quickstats[0] > 269 && quickstats[0] < 538) {
           if (used != true) {
               setInterval(function () {
                   used = true;
                   imgg = document.getElementsByClassName("person_image")[0];
                   if (imgg != null) {
-                      imgg.src = "https://media.discordapp.net/attachments/1012710041842876446/1177712375592386650/gettyimages-50477437.png";
+                      imgg.src = "https://i.imgur.com/4ZdJbzp.png";
                   }
               }, 100);
           }
@@ -60,18 +74,18 @@ endingPicker = (out, totv, aa, quickstats) => {
                   used = true;
                   imgg = document.getElementsByClassName("person_image")[0];
                   if (imgg != null) {
-                      imgg.src = "https://cdn.discordapp.com/attachments/1012710041842876446/1177726586007589034/wedding.png";
+                      imgg.src = "https://i.imgur.com/FzIiZA2.png";
                   }
               }, 100);
           }
   	   return "<h3>“In my life, I hope I lie and tell everyone you were a good wife.”</h3><p>Your deal was set and everything went into motion. Your advisors were amazed, shocked even, at your victory over Bush. How could you win 50 states? How could it be that you won so much? You knew deep down, in the deepest parts of your soul what you did. You used voter fraud, you manipulated the ballots. You didn't really win, Al. You simply abused the system. But, you've gotten away with it. You got away with it. You got away with the biggest scheme in American History.</p><p>Tipper looks at you from across the room, her arms crossed and her glare pierces your skin like a knife. You sit for a second and think, could she - your wife - know what you did? You stared at her for a bit, sweat softly to go down your temple. You swallow and breathe, trying to collect yourself. You tell yourself, “She can't know, no possible way in Hell she knows.” This though, is lie, and you know it. It's your fault, Al.</p>";
-  	} if (quickstats[0] > 110 && quickstats[0] < 269) {
+  	} if (quickstats[0] > 109 && quickstats[0] < 269) {
           if (used != true) {
               setInterval(function () {
                   used = true;
                   imgg = document.getElementsByClassName("person_image")[0];
                   if (imgg != null) {
-                      imgg.src = "https://media.discordapp.net/attachments/1012710041842876446/1177735804815147149/R.png";
+                      imgg.src = "https://i.imgur.com/Ck2TpiI.png";
                   }
               }, 100);
           }
@@ -82,7 +96,7 @@ endingPicker = (out, totv, aa, quickstats) => {
                   used = true;
                   imgg = document.getElementsByClassName("person_image")[0];
                   if (imgg != null) {
-                      imgg.src = "https://media.discordapp.net/attachments/1012710041842876446/1177731732393427064/possibly-thinking-what-might-have-been-sen-albert-gore-of-tenn-his-wife-tipper-and-daughter.png";
+                      imgg.src = "https://i.imgur.com/1ob3UZd.png";
                   }
               }, 100);
           }
@@ -93,25 +107,11 @@ endingPicker = (out, totv, aa, quickstats) => {
                   used = true;
                   imgg = document.getElementsByClassName("person_image")[0];
                   if (imgg != null) {
-                      imgg.src = "https://media.discordapp.net/attachments/1012710041842876446/1177731732393427064/possibly-thinking-what-might-have-been-sen-albert-gore-of-tenn-his-wife-tipper-and-daughter.png";
+                      imgg.src = "https://i.imgur.com/1ob3UZd.png";
                   }
               }, 100);
           }
   	   return "<h3>“It's you, it's you, it's all for you.”</h3><p>You did what you could, Al, and it just didn't work out. You blame yourself - people blame you too. A part of you, the stupidest goddamn part of you, still believes that this result wasn't your fault. I mean, how could you lose so badly? There had to be something, something that went terribly wrong. You can retrace your steps, try to find what you did, but you'll never find it. Fate is a fickle thing and sometimes you just got to roll with the punches.</p><p>Right now, all you can do is sit back. There's nothing else you can do, Al, it's over. It just seems some people weren't born for the presidency and some were. I can tell you this, though: You fought hard, and I know deep down you wanted to win, but you couldn't. I'm still proud of you, despite your shortcomings. It's time to rest now, it'll be better in the morning.</p>";   
-  	} if (aa[0].candidate == 154 && aa[0].electoral_votes > 270) {
-          if (used != true) {
-              setInterval(function () {
-                  used = true;
-              }, 100);
-          }
-  	   return "<h3>Haha! You thought you were gonna get a secret ending, huh?</h3><p>Well uhh... it appears you made Ron Paul win. Congratulations, I guess? Eh nah, screw that. You cheated to get this, I know you did. You used bigshot or spacebar, didn't you? Actually, I don't need to ask since I know you did it. Good going, you cheating bastard!!!</p>";   
-  	} if (aa[0].candidate == 155 && aa[0].electoral_votes > 270) {
-          if (used != true) {
-              setInterval(function () {
-                  used = true;
-              }, 100);
-          }
-  	   return "<h3>Haha! You thought you were gonna get a secret ending, huh?</h3><p>Well uhh... it appears you made Lenora Fulani win. Congratulations, I guess? Eh nah, screw that. You cheated to get this, I know you did. You used bigshot or spacebar, didn't you? Actually, I don't need to ask since I know you did it. Good going, you cheating bastard!!!</p>";     	   
   } else {
     return "<h3>Oops.</h3><br>It appears a serious error has occured, and the ending for your situation is broken. If you see this screen, contact Diamondy or CatBox immediately."
   }
