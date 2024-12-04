@@ -1,0 +1,575 @@
+campaignTrail_temp.achievements = {
+    "Dawn of a Better Tommorow" : {
+        "image" : "https://i.imgur.com/95XeeJy.png",
+        "description" : "As Frank Clement win the Presidency.",
+    },
+    "The Dallas Requiem" : {
+        "image" : "https://i.imgur.com/VXd0WuC.png",
+        "description" : "As President Nixon launch your re-election campaign in Dallas, Texas, and meet your maker.",
+    },
+    "Did You Hear That?" : {
+        "image" : "https://i.imgur.com/shaLSVO.png",
+        "description" : "As President Nixon launch your re-election campaign in Dallas, Texas, and survive.",
+    },
+    "Clement's Close Call" : {
+        "image" : "https://i.imgur.com/z3LPjAl.png",
+        "description" : "As Frank Clement get close to winning the Presidency.",
+    },
+    "8 Years Early" : {
+        "image" : "https://i.imgur.com/b0xSyR6.png",
+        "description" : "As President Nixon win an overwhelming landslide re-election victory, surpassing both of Ike's margins.",
+    },
+    "Richard Mandate Nixon" : {
+        "image" : "https://i.imgur.com/1FaGQ7R.png",
+        "description" : "As President Nixon win a landslide re-election victory.",
+    },
+    "Nixon The Loser" : {
+        "image" : "https://i.imgur.com/OrvTb0i.png",
+        "description" : "As President Nixon lose re-election.",
+    },
+    "Dick Ambivalent" : {
+        "image" : "https://i.imgur.com/veAH90F.png",
+        "description" : "As President Nixon do not surpass, or fall short of electoral expectations.",
+    },
+    "By The Dick Of Your Teeth" : {
+        "image" : "https://i.imgur.com/8JXElQr.png",
+        "description" : "As President Nixon narrowly win re-election.",
+    },
+    "Jumbo Deja Vu" : {
+        "image" : "https://i.imgur.com/4eypuCk.png",
+        "description" : "As President Nixon face LBJ in the general.",
+    },
+    "Horn-Rimmed Glasses" : {
+        "image" : "https://i.imgur.com/1DGbNGr.png",
+        "description" : "Unlock the Pat Brown side.",
+    },
+    "Minnesota Nice" : {
+        "image" : "https://i.imgur.com/wlCCzMF.png",
+        "description" : "Unlock the Hubert Humphrey side.",
+    },
+}
+musicMode = () => {
+  songsPlayed = 0;
+  // Initialise custom music
+
+  $("#music_player")[0].children[0].style.display = "none"
+  $("#music_player")[0].children[1].style.display = "none"
+
+  document.getElementById("modLoadReveal").style.display = "none"
+  document.getElementById("modloaddiv").style.display = "none"
+
+  musicBox = document.getElementById("music_player")
+  musicBox.style.display = ""
+
+  var trackSel;
+  e = campaignTrail_temp
+  e.selectedSoundtrack = 0
+
+  toTime = (seconds) => {
+      var date = new Date(null);
+      date.setSeconds(seconds);
+      return date.toISOString().substr(11, 8);
+  }
+
+  generateTime = () => {
+      // Get the audio element
+      var audio = document.getElementById("campaigntrailmusic");
+
+      timeTracker = document.createElement("div");
+      timeTracker.style = `
+text-align:left;
+border-style:solid;
+border-width:3px;
+height:150px;
+width:200px;
+background-color:#999999;
+float:right;
+padding: 10px;
+`
+      $("#trackSelParent")[0].prepend(timeTracker);
+      $("#trackSelParent")[0].prepend(document.createElement("br"));
+
+      // Create a new element to display the current position of the audio
+      var positionDisplay = document.createElement("gg");
+      positionDisplay.id = "position-display";
+
+      // Create a new slider element to change the time
+      var timeSlider = document.createElement("input");
+      timeSlider.type = "range";
+      timeSlider.min = 0;
+      timeSlider.max = 1;
+      timeSlider.step = 0.001;
+      timeSlider.value = 0;
+      timeSlider.style.width = "200px";
+      timeSlider.id = "time-slider";
+
+      var pausePlay = document.createElement("button");
+      pausePlay.id = "position-display";
+      pausePlay.innerHTML = "<b>Pause</b>"
+      pausePlay.style.width = "100%";
+
+
+      pausePlay.addEventListener("click", event => {
+          event.preventDefault();
+          updatePositionDisplay();
+          let audio = document.getElementById("campaigntrailmusic");
+          if (audio.paused) {
+              audio.play();
+              event.target.innerHTML = "<b>Pause</b>";
+              return;
+          }
+          audio.pause();
+          event.target.innerHTML = "<b>Play</b>";
+          return;
+      })
+
+      var volumeLabel = document.createElement("gg");
+      volumeLabel.id = "volume-label";
+      volumeLabel.innerHTML = "<br><b>Volume: </b>"
+
+      var volumeSlider = document.createElement("input");
+      volumeSlider.type = "range";
+      volumeSlider.min = 0;
+      volumeSlider.max = 1;
+      volumeSlider.step = 0.001;
+      volumeSlider.value = 0;
+      volumeSlider.style.width = "200px";
+      volumeSlider.id = "volume-slider";
+
+      volumeSlider.value = audio.volume;
+
+      timeTracker.appendChild(pausePlay);
+      timeTracker.appendChild(document.createElement("br"));
+      timeTracker.appendChild(document.createElement("br"));
+      timeTracker.appendChild(positionDisplay);
+      timeTracker.appendChild(timeSlider);
+      timeTracker.appendChild(volumeLabel);
+      timeTracker.appendChild(volumeSlider);
+
+      updatePositionDisplay();
+
+      //for (let i = 0; i < 10; i++)
+      //timeTracker.append(document.createElement("br"));
+
+
+      // Function to update the position display
+      function updatePositionDisplay() {
+          positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+          timeSlider.value = audio.duration ? audio.currentTime / audio.duration : 0;
+      }
+
+      // Function to change the time of the audio
+      function changeTime() {
+          positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+          audio.currentTime = timeSlider.value * audio.duration;
+      }
+
+      updateVolume = event => {
+          audio.volume = event.target.value;
+      }
+
+      // Update the position display and slider every second
+      setInterval(updatePositionDisplay, 1000);
+
+      // Listen for changes to the time slider and change the time of the audio
+      timeSlider.addEventListener("input", changeTime);
+      volumeSlider.addEventListener("input", updateVolume)
+  }
+function newMusicPlayer() {
+        trackSel = document.createElement("div");
+        trackSel.id = "trackSelParent"
+        let z = `<br><br><br><br><br><br><br><br><br><br><div id='trackSel' style="text-align:left;border-style:solid;border-width:3px;overflow-y: scroll;overflow-x: hidden;height:200px; width:400px;background-color:#999999;float:right;">`
+        z += `<b><select id='selectSoundtrack'><option value='` + soundtracks[e.selectedSoundtrack].name + `'>` + soundtracks[e.selectedSoundtrack].name + "</option>"
+        for (i in soundtracks) {
+            if (soundtracks[e.selectedSoundtrack] != soundtracks[i]) {
+                z += `<option value='` + soundtracks[i].name + `'>` + soundtracks[i].name + `</option>`
+            }
+        }
+        z += `</select></b><br><br>`
+            // <label><input type="radio" name="option" value="option1">Option 1</label><br>
+        for (i in soundtracks[e.selectedSoundtrack].tracklist) {
+            let a = soundtracks[e.selectedSoundtrack].tracklist[i]
+            let b = `<label><input class="trackSelector" type="radio" name="trackSelector" value="` + i + `">` + a.name + `</label><br>`
+            z += b
+        }
+        z += "</div><br><br>"
+        trackSel.innerHTML = z
+  
+        // select correct song
+  
+        musicBox.appendChild(trackSel);
+        Array.from(document.getElementById("trackSel").children).filter(f => {
+            return f.tagName == "LABEL"
+        }).map(f => f.children[0])[0].checked = true
+  
+        // set soundtrack changer
+  
+        soundtrackSelector = document.getElementById("selectSoundtrack")
+        soundtrackSelector.onchange = function() {
+            for (i in soundtracks) {
+                if (soundtracks[i].name == soundtrackSelector.value) {
+                    e.selectedSoundtrack = i
+                    break
+                }
+            }
+            document.getElementById("trackSelParent").remove()
+            newMusicPlayer()
+        }
+  
+        var matches = document.querySelectorAll('.trackSelector');
+  
+        for (match in matches) {
+            matches[match].onchange = function() {
+                audio = $("#campaigntrailmusic")[0];
+                audio.src = soundtracks[e.selectedSoundtrack].tracklist[this.value].url
+                audio.currentTime = 0
+            }
+        }
+  
+        musicBox.children[2].loop = false
+        musicBox.children[2].src = soundtracks[e.selectedSoundtrack].tracklist[0].url
+  
+        musicBox.children[2].onended = function() {
+            console.log("next track")
+            let selected = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+            let newSel = clamp(selected + 1, soundtracks[e.selectedSoundtrack].tracklist.length - 1, 0)
+            let buttons = Array.from(document.getElementById("trackSel").children).filter(f => {
+                    return f.tagName == "LABEL"
+                }).map(f => f.children[0])
+                //let selectedIndex = buttons.map(f=>f.children[0]).map(f=>f.checked)
+            buttons[newSel].click()
+            songsPlayed++; // Increment the songs played counter
+      
+         
+        }
+          
+        for (w = 0; w < 7; w++) {
+            document.getElementById("trackSelParent").appendChild(document.createElement("br"))
+        }
+  
+        generateTime();
+    }
+  
+    clamp = function(a, max, min, overflow = true) {
+        if (overflow) {
+            return a > max ? min : a < min ? max : a;
+        }
+        return a > max ? max : a < min ? min : a;
+    }
+  
+ 
+    // Track list
+  
+    var soundtracks = {
+        0: {
+            name: "Nixon Nights",
+            tracklist: [
+              {
+                "name": "More Than Ever - Mike Curb Congregation",
+                "url": "https://audio.jukehost.co.uk/W2cCYSirGvMumlCT8WhiPDlB9YzGcjTM"
+              },
+              {
+                "name": "Don’t Back Down - The Beach Boys",
+                "url": "https://audio.jukehost.co.uk/K36ivX95xA2Dx5OittiTaX04deXGCdJ7"
+              },
+              {
+                "name": "Go Vote Nixon and Lodge! - The Clancy Hayes Dixieland Band",
+                "url": "https://audio.jukehost.co.uk/rsah6Ge4N7oixfyGolKgcWfLENo6wiHP"
+            },
+            {
+                "name": "He's So Fine - The Chiffons",
+                "url": "https://audio.jukehost.co.uk/fQfjiJoFFUs0Nfj6tvYVwEwTqrmdHuod"
+              },
+              {
+                "name": "No Particular Place to Go - Chuck Berry",
+                "url": "https://audio.jukehost.co.uk/haeDRghgSlY86FTdRvUqIntlyQC4r1HZ"
+              },
+              {
+                "name": "Chug-a-Lug - Roger Miller",
+                "url": "https://audio.jukehost.co.uk/mzKXRx081rAkKnmDuXVS4pi4J608wmkd"
+              },
+              {
+                "name": "Keep On Pushing - The Impressions",
+                "url": "https://audio.jukehost.co.uk/59vg74qjhDxK2QlXOfhhHC0foUuQt6Lj"
+              },
+              {
+                "name": "Can’t Buy Me Love - The Beatles",
+                "url": "https://audio.jukehost.co.uk/AbqiGiRN9xWAjRNm1bSTbXFO7RjoUfZL"
+              },
+              {
+                "name": "The Little Old Lady From Pasadena - Jan & Dean ",
+                "url": "https://audio.jukehost.co.uk/qPTXGsb6vjPtpPSyaxASfdZfKf8zAIJg"
+              }
+          ]
+       },
+        1: {
+          name: "Clement’s Sunday",
+          tracklist: [
+            {
+              "name": "What About Frank Clement (A Mighty Man) - The Prisonaires",
+              "url": "https://audio.jukehost.co.uk/gu098KxSAEjj3MzvtRAL0TMeUz2g6RTy"
+            },
+            {
+              "name": "Please Let Me Wonder - The Beach Boys",
+              "url": "https://audio.jukehost.co.uk/MCQDgiDhecAj3RafyXfQw4AagfVrES4M"
+            },
+            {
+              "name": "The Ballad of Frank Clement - Cowboy Copas",
+              "url": "https://audio.jukehost.co.uk/ei5EfxFTb5ogEeUQwDSmz1MDqJAcjjxX"
+            },
+            {
+              "name": "Baby Love - The Supremes",
+              "url": "https://audio.jukehost.co.uk/j8t6xkf4Anl70jJck5o1BDS8mDImfIh1"
+            },
+            {
+              "name": "Hello, Dolly! - Louis Armstrong",
+              "url": "https://audio.jukehost.co.uk/qYX44yz3WLHVfggxQQtaDcMHcrF335Jy"
+            },
+            {
+              "name": "Oh I Apologize - Barrett Strong",
+              "url": "https://audio.jukehost.co.uk/vGmKMEL9lbcUH2u1orOYyMeZF0Upf4sK"
+            },
+            {
+              "name": "Money (That’s What I Want) - The Kingsmen",
+              "url": "https://audio.jukehost.co.uk/D6tc8XyHLUY2GLISJ7zSSPZYk35idWUr"
+            },
+            {
+              "name": "You Can’t Do That - The Beatles",
+              "url": "https://audio.jukehost.co.uk/X9rsFrUUzpVsEkKP3rTeZ9XfhAOwuvRc"
+            },
+            {
+              "name": "Surfin' Bird (Extended) - The Trashmen",
+              "url": "https://audio.jukehost.co.uk/uL6MYOhXVfGPPpP6ujYlqNVhAHDw6QL6"
+            }
+          ]
+        }
+        
+        
+    }
+
+  
+    // Set up new music player
+  
+    newMusicPlayer()
+  
+
+}
+
+  $("#game_start").click((event) => {
+    event.preventDefault();
+    $("#election_id_button").click((event) => {
+        musicMode()
+
+        setInterval(changeFontColour, 200)
+  
+    })
+  })
+
+
+e = campaignTrail_temp;
+
+document.getElementById("header").src = "https://i.imgur.com/oSGmOXU.png"
+
+document.styleSheets[0].insertRule(".game_header{ height:4.5em !important;}", 0);
+document.styleSheets[0].insertRule("#game_window{ height:45em !important;}", 0);
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#08041A"
+
+document.styleSheets[0].insertRule(".inner_window_w_desc{ margin:1em 1em 0 !important;padding-top: 0.25em !important;}", 0);
+document.styleSheets[0].insertRule(".inner_window_question{ margin:0em 0em .1em !important;padding-top: 0.15em !important;}", 0);
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#393647"
+
+document.getElementsByClassName("game_header")[0].style.backgroundColor = 
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+
+ $("#game_window")[0].style.borderColor = "#772D2F"
+
+$(".footer a").css({"color":"#ffffff"});
+nct_stuff.themes[nct_stuff.selectedTheme].text_col = "#ffffff"
+
+  corrr = `
+  <div style="font-size: 11px; font-family: monospace; color: white;">
+    <h2 style="font-style: normal;">
+      <img src="https://i.imgur.com/Toli5Yv.gif" alt="1964N" style="margin-top: 0.1px;">
+    </h2>
+  </div>
+  `;
+
+campaignTrail_temp.modBoxTheme = {
+     "header_color": "#393647",
+     "header_text_color": "#f4e5e5",
+     "description_text_color": "#282631",
+     "description_background_color": "#ad2d2f",
+     "main_color": "#ad2d2f",
+     "secondary_color": "#393647",
+     "ui_text_color": "#f4e5e5"
+}
+
+next4 = function() {
+    text = "Clement isn’t exactly an A-list candidate, but he isn’t a complete unknown, either; the governor is perhaps most renowned for his memorable keynote address at the 1956 Democratic Convention, delivered with a theatrical, almost Bryan-esque flair at the Chicago International Amphitheatre. Although his sermon-like speech served to strengthen his bond with the rural, religious, and working-class constituents in his home state and across the American heartland, it was panned by the media, Republican partisans, and even the establishment of his own party, leading to many predicting that his career in federal politics was dead. Perhaps they will be proven right after this election.</p><p>The governor finds himself in a challenging position currently, trailing President Nixon in every single poll. It seems the campaign is not one that expects to win, rather, it’s one that aims to keep the fragile Democratic coalition together for yet another cycle until the party once again tries to find an opening in the Republican machine in 1968. Still, that’s easier said than done; Clement must find a way to stop the bleeding of Black voters from the Democratic Party while ensuring that there is no Southern splinter candidacy, as well as attempting to hold previous Democrat margins in both the cities and the rurals. If Clement is able to pull this off, however, he may be able to give Tricky Dick an ever-so-slight scare.<br><br><br><button onclick='back4()'>Back</button>"
+    document.getElementById("candidate_summary").children[1].innerHTML = text
+}
+back4 = function() {
+    text = "<p><i>’’There are three qualities we American people must require in our leaders. First is character. Second is ability, for without it, character may be misused. Third is diplomacy, without which character and ability might be wasted.’’</i></p><p>Governor Frank Goad Clement of Tennessee should not be here. After allowing himself to stand as a candidate in the Democratic National Convention simply in an attempt to boost his national name recognition in anticipation for a planned run for the US Senate, Clement watched as the entire potential field either declined to run or dropped out due to scandal. Following Jack Kennedy and Lyndon Johnson’s refusals to run, the nomination was left wide open, allowing for Clement to clinch the nomination on the 6th ballot, thanks to an uneasy alliance between Clement’s base, segregationists who initially supported Orval Faubus, and Westerners who previously backed Pat Brown, coming together to deny Hubert Humphrey the nomination.<br><br><button onclick='next4()'>More</button>"
+    document.getElementById("candidate_summary").children[1].innerHTML = text
+}
+
+
+next3 = function() {
+    text = "Domestically, Nixon has governed in a vein not entirely dissimilar to Eisenhower, with a strong focus on reforming programs such as welfare in order to reduce fiscal bloat while keeping the original intention of the program. Another area where Nixon has seen domestic success was that of Civil Rights, where his administration successfully lobbied Congress to pass the 24th Amendment, outlawing poll taxes in the South. In terms of foreign policy, his administration successfully orchestrated a coup in Cuba against Fidel Castro's Communist-aligned government, effectively making Cuba a United States puppet state. Another foreign policy challenge is the looming 'second Indochina War,' where staunch anti-Communists push for increased commitment, a stance met with some reluctance by the President.</p><p>With a robust economy, high approval rating, and the likelihood of an irrelevant opponent, it seems like it would take divine intervention to stop Nixon’s crusade.<br><br><br><button onclick='back3()'>Back</button>"
+    document.getElementById("candidate_summary").children[1].innerHTML = text
+}
+back3 = function() {
+    text = "<p><p><i>’’A man is not finished when he's defeated. He's finished when he quits.’’</i></p><p>If you had asked anyone what they thought about Richard Milhous Nixon after the Checkers scandal, they would’ve said his political career was over. If you would’ve asked them about it after the 1960 Presidential debate, they would’ve said that he would never occupy the Oval Office, always destined to be in second place or as a lapdog to a much more popular politician. Yet, Nixon enters this election as the 35th and current President of the United States, enjoying popularity that rivals that of Dwight Eisenhower himself during his first term.<br><br><button onclick='next3()'>More</button>"
+    document.getElementById("candidate_summary").children[1].innerHTML = text
+}
+next5 = function() {
+    text = "Domestically, Nixon has governed in a vein not entirely dissimilar to Eisenhower, with a strong focus on reforming programs such as welfare in order to reduce fiscal bloat while keeping the original intention of the program. Another area where Nixon has seen domestic success was that of Civil Rights, where his administration successfully lobbied Congress to pass the 24th Amendment, outlawing poll taxes in the South. In terms of foreign policy, his administration successfully orchestrated a coup in Cuba against Fidel Castro's Communist-aligned government, effectively making Cuba a United States puppet state. Another foreign policy challenge is the looming 'second Indochina War,' where staunch anti-Communists push for increased commitment, a stance met with some reluctance by the President.</p><p>With a robust economy, high approval rating, and the likelihood of an irrelevant opponent, it seems like it would take divine intervention to stop Nixon’s crusade.<br><br><br><button onclick='back5()'>Back</button>"
+    document.getElementById("candidate_summary").children[1].innerHTML = text
+}
+back5 = function() {
+    text = "<p><p><i>’’A man is not finished when he's defeated. He's finished when he quits.’’</i></p><p>If you had asked anyone what they thought about Richard Milhous Nixon after the Checkers scandal, they would’ve said his political career was over. If you would’ve asked them about it after the 1960 Presidential debate, they would’ve said that he would never occupy the Oval Office, always destined to be in second place or as a lapdog to a much more popular politician. Yet, Nixon enters this election as the 35th and current President of the United States, enjoying popularity that rivals that of Dwight Eisenhower himself during his first term.<br><br><button onclick='next5()'>More</button>"
+    document.getElementById("candidate_summary").children[1].innerHTML = text
+}
+
+let style = document.createElement('style');
+style.type = 'text/css';
+style.id = 'dynamic-style';
+
+style.innerHTML = `
+  .campaign_trail_start_emphasis {
+    background-color: #393647;
+  }
+  a:-webkit-any-link {
+  	color: #000000;
+  }
+`;
+
+const customStyling = document.createElement("style");
+customStyling.innerHTML = `
+#main_content_area_reading {
+    color: black;
+  }
+`;
+
+document.head.appendChild(style);
+
+RecReading=true
+
+campaignTrail_temp.credits = "<button onclick='credits()'>The Nixonverse Team</button>";
+ 
+$(".container")[0].style.backgroundColor = "#AD2D2F"
+
+credits = function() {
+
+
+   c = ["WRITTEN BY .theanswerisme, u/ARC-7652, Justanormalguyok, cobalt, History Lover, Nixonland, evasium.", "", "CODED BY: .theanswerisme", "", "Banners created by whatnamedidiuseagain. Thanks to all the playtesters, and the TCT community as a whole.", "","This is a creative and dramatized take on what might have happened if Nixon had won the Presidency in 1960. The mod team does not claim it is an objective prediction of events."]
+
+
+   text = "CREDITS:\n\n"
+
+
+   for (i in c) {
+
+
+       text += c[i] + "\n"
+
+
+   }
+
+
+   alert(text)
+
+
+ }
+
+$("#game_window")[0].style.backgroundImage = "url(https://i.imgur.com/JNLHvJs.png)"
+
+$("#game_window")[0].style.backgroundSize = "cover"; 
+
+document.body.background = "https://i.imgur.com/LPyaChZ.png"
+
+selectedTheme.text_col = "black"
+
+
+            e.election_json = [{"model":"campaign_trail.election","pk":9,"fields":{"year":1964,"summary":"The United States stands as possibly the most prosperous country in the world. Thanks to a successful intervention in Cuba and a strong economy, the 1964 elections look as if they’re the Republican Party’s to lose.</p><ul><li> President Richard Nixon is well on track to win re-election after a successful first term, but still must convince the American people that his views on Civil Rights and Foreign Policy are worthy of their support. Can Nixon secure 16-years of consecutive Republicans in the White House?</p><ul><li> Frank G. Clement, the populist Governor of Tennessee, emerged as the dark horse compromise choice following a chaotic DNC, and must find a way to quickly close the gap with Nixon. Can Clement pull off the biggest upset since Truman defeated Dewey?<p>","image_url":"https://i.imgur.com/FZRBeag.jpeg","winning_electoral_vote_number":270,"advisor_url":"https://i.imgur.com/wpE0gca.jpeg","recommended_reading":"<font color='black'><div style='overflow-y:scroll;height:357.133px;font-size:1em;'><h1 style='margin-top: 0.5em;'>LORE:</h1><br><p><i></i></p><p><i><img src='https://i.imgur.com/EjBk7L1.png' alt='Batman' style='width:258px;height:602px;''><br><i>(1960 Presidential Election)</i></i></p><i><br>President Richard Nixon's initial cabinet:</i><br><br><p><b>SECRETARY OF STATE: <b> ROBERT DANIEL MURPHY<br><br></b></b></p><p><b><b><b>SECRETARY OF THE TREASURY: <b> C. DOUGLAS DILLION<br><br></b></b></b></b></p><p><b><b><b><b>ATTORNEY GENERAL: <b> WILLIAM P. RODGERS<br><br></b></b></b></b></b></p><p><b><b><b><b>POSTMASTER GENERAL: <b> C. MEADE ALCORN<br><br></b></b></b></b></b></p><p><b><b><b><b>SECRETARY OF THE INTERIOR: <b> ROBERT E. SMYLIE<br><br></b></b></b></b></b></p><p><b><b><b><b>SECRETARY OF AGRICULTURE: <b> FRED A. SEATON<br><br></b></b></b></b></b></p><p><b><b><b><b>SECRETARY OF COMMERCE: <b> E. FREDERIC MORROW<br><br></b></b></b></b></b></p><p><b><b><b><b>SECRETARY OF LABOR: <b> JAMES MITCHELL<br><br></b></b></b></b></b></p><p><b><b><b><b>SECRETARY OF DEFENSE: <b>GORDON GRAY<br><br></b></b></b></b></b></p><p><b><b><b><b>SECRETARY OF HEALTH, EDUCATION, AND WELFARE: <b> ARTHUR FLEMMING<br><br></b></b></b></b></b></p><p><b><b><b><b>AMBASSADOR TO THE U.N: <b> VAL PETERSON<br><br></b></b></b></b></b></p><p><b><b><b><b>DIRECTOR OF BUREAU OF THE BUDGET: <b> MAURICE STANS<br><br></b></b></b></b></b></p><p><b><b><b><b>DIRECTOR OF CIVIL AND DEFENSE MOBILIZATION: <b> ROBERT FINCH<br><br></b></b></b></b></b></p><p><b><b><b><b>CHIEF OF STAFF: <b> H. R. HALDERMAN<br><br></b></b></b></b></b></p><p><b><b><b><b>DEPUTY CHIEF OF STAFF: <b> ALEXANDER BUTTEERFIELD<br><br></b></b></b></b></b></p><p><b><b><b><b>CHAIR OF THE ATOMIC ENERGY COMMISSION: <b> JOHN A. MCCONE<br><br></b></b></b></b></b></p><p><b><b><b><b>DIRECTOR OF CENTRAL INTELLIGENCE: <b> CHARLES P. CABELL<b><br><br></b></b></b></b></b></b></p><p><b><b><b><i><br><br>Canonical Timeline:</i></b></b></b></p><b><b><b><br><h2>1961</h2><p></p><br>(JAN 17TH) EISENHOWER WARNS NATION OF 'MILITARY-INDUSTRIAL COMPLEX' IN TELEVISED FAREWELL ADDRESS<p></p><br>(JAN 20TH) NIXON INAUGURATED AS 35TH POTUS<p></p><br>(JAN 30TH) NIXON UNVEILS $15 BILLION ‘AMERICAS INITIATIVE’ AIMED AT STRENGTHENING U.S.-LATIN AMERICA TIES, COMBATING COMMUNISM, AND PROMOTING ECONOMIC GROWTH<p></p><br>(FEB 11TH) SOVIET VENERA 1 SPACECRAFT HEADED TO VENUS<p></p><br>(MAR 17TH) SOUTH AFRICA WITHDRAWS FROM BRITISH COMMONWEALTH<p></p><br>(MAR 29TH) TWENTY-THIRD AMENDMENT RATIFIED, DESPITE RIGHT-WING OUTRAGE<p></p><br>(APR 1ND) FORMER GOVERNOR OF NEW YORK THOMAS DEWEY ISSUES STATEMENT TO PRESS RESTATING HIS LACK OF INTEREST IN SUPREME COURT APPOINTMENT<p></p><br>(APR 2ND) NIXON NOMINATES CHARLES D. BREITEL TO THE U.S. SUPREME COURT FOLLOWING WHITTAKER RETIREMENT<p></p><br>(APR 6TH) NIXON EXTENDS UNEMPLOYMENT BENEFITS AMIDST FADING RECESSION<p></p><br>(APR 17TH,) 33RD ACADEMY AWARDS: THE ALAMO WINS BEST PICTURE<p></p><br>(APR 26TH) NIXON INTRODUCES ''HEAL'' BILL, FIRST MAJOR LEGISLATION OF PRESIDENCY<p></p><br>(APR 29TH) NIXON ADMINISTRATION INCREASING MATERIAL SUPPORT TO SOUTH VIETNAM, NO WORD ON TROOP DEPLOYMENTS<p></p><br>(MAY 2ND) NIXON VOICES TEPID SUPPORT FOR RIGHTS OF ''FREEDOM RIDERS''<p></p><br>(MAY 14TH) U.S. DENIES CULPABILITY OF AIR STRIKES TO AID CUBAN RESISTANCE<p></p><br>(MAY 16TH) CASTRO DEAD! PRESIDENT HUBER MATOS INAUGURATED<p></p><br>(MAY 17TH) 10,000 NATIONAL GUARD TROOPS SENT TO CUBA TO ‘‘MANTANIAN PEACE’’<p></p><br>(MAY 28TH) APPARENT COUP LEAVES PORTUGESE PRESIDENT SALAZAR DEAD<p></p><br>(JUN 2RD) PROVISIONAL-PRESIDENT CAETANO RELEASES SEVERAL HIGH RANKING POLITICAL PRISONERS AS CIVIL WAR THREATENS PORTUGAL<p></p><br>(JUN 7TH) RECENTLY RELEASED PORTUGESE COMMUNIST ÁLVARO CUNHAL DECLARES A ‘‘RED SUMMER’’<p></p><br>(JUN 8TH) PORTUGAL ON THE BRINK: ARMED FORCES RETURN TO MAINLAND TO MAINTAIN ORDER AMIDST ESCALATING COLONIAL WAR<p></p><br>(JUN 8TH) SOVIET UNION VOICES SUPPORT FOR A ‘’PEOPLE'S GOVERNMENT’’ IN PORTUGAL, SOVEREIGNTY FOR COLONIAL SUBJECTS<p></p><br>(JUN 13TH) NIXON PLEDGES SUPPORT FOR ''LEGITMATE'' PROVISIONAL PORTUGUESE GOVERMENT LED BY MARCELO CAETANO<p></p><br>(JUN 17TH) NEW DEMOCRATIC PARTY OF CANADA FORMED FOLLOWING MERGER OF CCF and CLC<p></p><br>(JUL 2RD) PRESIDENT NIXON IN WEST GERMANY: ''WE WON’T BACK DOWN IN BERLIN, NOT NOW, NOT EVER!''<p></p><br>(JUL 16TH) VIOLENT CLASHES ERUPT IN LISBON’S PRAÇA DO COMÉRCIO—6 DEAD, 36 INJURED IN PROTESTS, AND EVENTUAL CLASH<p></p><br>(JUL 20TH) PORTUGUESE PRESIDENT MARCELO CAETANO DENOUNCES ''RIOTS IN THE STREETS'', INTRODUCES MARTIAL LAW IN LISBON<p></p><br>(AUG 10TH) U.K. APPLIES FOR MEMBERSHIP IN THE EUROPEAN ECONOMIC COMMUNITY<p></p><br>(AUG 13TH) CONSTRUCTION ON ‘‘BERLIN WALL’’ BEGINS, FURTHER RESTRICTING ACCESS BETWEEN EAST AND WEST<p></p><br>(AUG 17TH) LEADERSHIP OF PORTUGUESE PARAMILITARY UNITS TO BE IMPRISONED FOLLOWING MORE RIOTS<p></p><br>(AUG 25TH) BRAZILIAN PRESIDENT JÂNIO QUADROS ANNOUNCES INTENT TO RESIGN FROM OFFICE<p></p><br>(AUG 26TH) BRAZILIAN NATIONAL CONGRESS PASSES RESOLUTION REJECTING PRESIDENT QUADROS’S RESIGNATION<p></p><br>(AUG 27TH) QUADROS ANNOUNCES HIS PLANS TO STAY IN OFFICE - CELEBRATIONS BREAK OUT ACROSS COUNTRY<p></p><br>(SEP 24TH) UNEMPLOYMENT DROPPING MONTHLY SINCE MAY<p></p><br>(OCT 4TH) FIANNA FÁIL SUFFERS SURPRISE DEFEAT IN IRELAND - FINE GAEL &amp; LABOUR MAKE MAJOR GAINS, TO FORM COALITION LED BY JAMES DILLON<p></p><br>(OCT 30TH) SOVIETS TEST LARGEST EVER HYDROGEN BOMB<p></p><br>(NOV 3RD) STALINGRAD RENAMED TO POBEDOGRAD<p></p><br>(NOV 7TH) REPUBLICANS OVERPERFORM IN VIRGINIA GOVERNOR’S RACE AS PRESIDENT NIXON’S APPROVAL NEARS 65%<p></p><br>(NOV 18TH) NIXON TO VISIT LATIN AMERICA IN DECEMBER<p></p><br>(DEC 10TH) AUSTRALIA P.M. ROBERT MENZIES AND LIB-NAT COALITION REMAIN IN POWER DESPITE LOSES <p></p><br><p></p><br><h2>1962</h2><p></p><br>(JAN 3RD) U.S AND REPUBLIC OF CUBA TO SIGN TRADE DEAL<p></p><br>(JAN 11TH) NIXON GIVES SECOND STATE OF UNION ADDRESS<p></p><br>(JAN 13TH) CHUBBY CHECKER’S 'THE TWIST' HITS #1 AGAIN, SPARKS NATIONWIDE DANCE CRAZE<p></p><br>(JAN 23RD) BRITISH SPY KIM PHILBY DEFECTS TO SOVIET UNION, SHOCKS WESTERN INTELLIGENCE<p></p><br>(JAN 26TH) BISHOP BURKE OF BUFFALO CONDEMNS 'THE TWIST' AS IMPURE, BANS DANCE IN ALL CATHOLIC SCHOOLS<p></p><br>(FEB 14TH) FIRST LADY PAT NIXON TO HOST TELEVISED TOUR OF WHITE HOUSE FOR AMERICAN PUBLIC<p></p><br>(FEB 21TH) INDEPENDENCE PALACE BOMBED IN SOUTH VIETNAM - PRESIDENT DIEM DEAD; VP THO SUCCEEDS TO TOP JOB<p></p><br>(FEB 22ND) BAILEY V. PETERSON: SUPREME COURT HOLDS THAT SEGREGATION IN INTERSTATE OR INTRASTATE TRANSPORTATION UNCONSTITUTIONAL<p></p><br>(FEB 23TH) JOHN GLENN BECOMES THE FIRST AMERICAN TO ORBIT THE EARTH<p></p><br>(FEB 23TH) SOUTH VIETNAMESE GOVERNMENT OUSTED IN APPARENT COUP D'ÉTAT FOLLOWING DIEM KILLING - GENERAL ĐỖ MẬU DECLARED MILITARY REVOLUTIONARY COUNCIL CHAIR, PRESIDENT THƠ DECLARED PRIME MINISTER<p></p><br>(MAR 4TH) PEACE NEGOTIATIONS BETWEEN FRANCE AND PROVISIONAL ALGERIAN GOVERNMENT FACE SETBACK FOLLOWING MASS ATTACK ON CIVILIANS<p></p><br>(MAY 6TH) GIUSEPPE SARAGAT OF PSDI WINS PRESIDENCY IN ITALY<p></p><br>(JUN 5TH) FORMER GOVERNOR JOHN LODGE, BROTHER OF VP LODGE, WINS GOP NOMINATION FOR CONNECTICUT SENATE<p></p><br>(JUN 6TH) ALABAMA GOV. RACE GOES TO RUNOFF BETWEEN FOLSOM AND WALLACE<p></p><br>(JUN 16TH) TWO U.S. ARMY OFFICERS SLAIN IN SAIGON<p></p><br>(JUN 18TH) PROGRESSIVE CONSERVATIVES FACES HEAVY LOSES IN CANADIAN PARLIAMENT - WILL REMAIN IN POWER<p></p><br>(JUN 21ST) BRAZILIAN NATIONAL CONGRESS SCHEDULES PRESIDENTIAL ELECTION IN 1964 - QUADROS FACES WAVE OF POPULARITY<p></p><br>(JUN 25TH) ''BIG JIM'' FOLSOM DEFEATS WALLACE IN DEMOCRATIC GUBERNATORIAL RUNOFF - BULL CONNOR LAUNCHES INDEPENDENT BID<p></p><br>(JUN 27TH) ENGEL V. VITAL: MANDATORY SCHOOL PRAYER UNCONSTITUTIONAL BY SCOTUS<p></p><br>(JUL 18TH) PRESIDENT NIXON WELCOMES CUBAN PRESIDENT HUBER MATOS TO THE WHITE HOUSE<p></p><br>(AUG 27TH) NASA LAUNCHES MARINER 2 SPACE PROBE<p></p><br>(SEP 20TH) GOV. ROSS BARNETT DEFIES FEDERAL ORDER, BARS NEGRO STUDENT JAMES MEREDITH FROM UNIVERSITY OF MISSISSIPPI<p></p><br>(OCT 12TH) COLUMBUS DAY STORM LASHES PACIFIC NORTHWEST WITH RECORD WINDS; 46 DEAD, $230 MILLION IN DAMAGE<p></p><br>(OCT 16TH) S.F. GIANTS WIN WORLD SERIES AGAINST N.Y. YANKEES 4-3<p></p><br><p></p><br></b><br><br><p><img src='https://i.imgur.com/0EfnNnD.jpg' alt='Batman' style='width:260px;height:658px;''><br><i>(1962 Senate Elections)<p></p><br><p></p><br></b><br><br><p><img src='https://i.imgur.com/zlPUFO8.png' alt='Batman' style='width:259px;height:165px;''><br><i>(1962 Gubernatorial Elections)</i></p><br>(NOV 9TH) KEYSER, SCRANTON, RHODES, ROMNEY, AND ANDERSON ALL VICTORIOUS AS GOP SECURES OR MAINTAINS POWER NATIONWIDE<p></p><br><img src='https://i.imgur.com/ssaspOj.png' alt='Batman' style='width:307px;height:575px;''><br><i>1962 Massachusetts Gubernatorial Election</i></p><p></p><br><p></p><br><img src='https://i.imgur.com/AKgYEPD.png' alt='Batman' style='width:307px;height:601px;''><br><i>1962 Connecticut Senate Election</i></p><p></p><br><p></p><br><img src='https://i.imgur.com/bAk8CVV.png' alt='Batman' style='width:275px;height:619px;''><br><i>1962 Alabama Senate Election</i></p><p></p><br><p></p><br><img src='https://i.imgur.com/88vjzsd.png' alt='Batman' style='width:274px;height:621px;''><br><i>1962 California Governor Election</i></p><p></p><br><p></p><br><img src='https://i.imgur.com/esXMnKf.png' alt='Batman' style='width:293px;height:440px;''><br><i>1962 California Lt. Gubernatorial Election</i></p><p></p><br>GOVERNOR GAYLORD NELSON GETS WITHIN 1% OF UNSEATING SENATOR WILEY IN WI.<p></p><br>PAT BROWN HANDILY WINS SECOND TERM AS CALIFORNIA GOVERNOR, OVERCOMES NATIONWIDE GOP SURGE AND CHALLENGE FROM GOODWIN KNIGHT<p></p><br>BOBBY KENNEDY WINS MASSACHUSETTS GUBERNATORIAL IN AN UPSET</i></p><br> SENATE ELECTION IN SOUTH DAKOTA STILL TOO CLOSE TO CALL<p></p><br>(NOV 10TH) PRESIDENT NIXON REWARDED WITH GOOD NIGHT: MIDTERM VICTORY—GOP GAINS 3 SEATS IN SENATE, 24 IN HOUSE<p></p><br>(NOV 23RD) MCGOVERN LEADS BY 181 VOTES IN FINAL RECOUNT, CLAIMS SENATE SEAT<p></p><br><img src='https://i.imgur.com/0kgCakM.png' alt='Batman' style='width:307px;height:575px;''><br><i>1962 South Dakota Senate Election</i></p><p></p><br><h2>1963</h2><p></p><br>(JAN 1ST) NIXON PLEDGES TO WORK WITH NEW CONGRESS ON HEALTHCARE<p></p><br>(JAN 3RD) VIET-CONG VICTORIOUS IN THE BATTLE OF ẤP BẮC<p></p><br>(FEB 3RD) JACK KENNEDY DODGES 1964 QUESTION<p></p><br>(FEB 5TH) SOVIET LUNAR PROBE MISSION ENDS IN FAILURE<p></p><br>(FEB 14TH) HAROLD WILSON CHOSEN AS LABOUR LEADER, PROMISES FRESH VISION FOR PARTY’S FUTURE<p></p><br>(MAR 25TH) FRANCE CONDUCTS UNDERGROUND NUCLEAR TEST IN ECKER, ALGERIA<p></p><br>(MAR 31ST) VICE PRESIDENT OF BRAZIL JOÃO GOULART DEAD AFTER HEART ATTACK - SPECULATION RUNS AMOK<p></p><br>(APR 5TH) NATIONAL CIVIL RIGHTS LEADERS TO LAUNCH ‘’MARCH TO FREEDOM’’ THIS MONTH<p></p><br>(APR 8TH) CANADIAN P.M. DIEFENBAKER LOSES MINORITY GOVERNMENT - LIBERAL LEADER PEARSON TO GOVERN NATION<p></p><br>(APR 18TH) NIXON SPEAKS OUT AGAINST MARTIN LUTHER KING JR.'S IMPRISONMENT IN MISSISSIPPI<p></p><br>(APR 21TH) OVER 25,000 CUBAN COUNTER-REVOLUTIONARIES CONVICTED BY MILITARY TRIBUNAL<p></p><br>(MAY 3RD) BRITISH ACT 'THE BEATLES' SHOCK NATION; SCORES #2 U.S. HIT WITH 'FROM ME TO YOU’<p></p><br>(MAY 9TH) ĐỖ MẬU PLEDGES ‘‘MORE UNDERSTANDING’’ AS BUDDHISTS PROTEST DIEM-ERA RELIGIOUS POLICIES<p></p><br>(MAY 29TH) BEATLEMANIA: THE BEATLES OCCUPY THE TOP 5 POSITIONS ON BILLBOARD 40<p></p><br>(JUN 7TH) NIXON GIVES COMMENCEMENT ADDRESS FOR AMERICAN UNIVERSITY, TAKES AIM AT SOVIET UNION<p></p><br>(JUN 11TH) NIXON URGES NATION TO SUPPORT ABOLITION OF POLL TAX IN MAJOR ADDRESS<p></p><br>(JUN 12TH) GOVERNOR FOLSOM FACES WHITE BACKLASH FOLLOWING STATEMENTS ON ‘MARCH TO FREEDOM’ CAMPAIGN<p></p><br>(JUN 13TH) MEDGAR EVERS SURVIVES ASSASSINATION ATTEMPT BY KLAN<p></p><br>(JUL 18TH) THE BEATLES AND ROY ORBISON TO LAUNCH MONTH-LONG NATIONAL TOUR AFTER SUCCESS IN EUROPE<p></p><br>(JUL 24TH) U.S.S.R. DEFIES WESTERN PRESSURE, BLOCKS NUCLEAR TEST BAN NEGOTIATIONS<p></p><br><img src='https://i.imgur.com/z5cxZAZ.jpg' alt='Batman' style='width:331px;height:207px;''><br><p></p><br>(JUL 30TH) BRITISH SPY KIM PHILBY DISCOVERED HIDING IN MOSCOW.<p></p><br>(AUG 6TH) PHILADELPHIA NBA FRANCHISE CHANGES NAME FROM 'NATIONALS' TO '76ERS<p></p><br>(AUG 22ND) NIXON STATE DEPARTMENT TO STAND BY STRONG MAN ĐỖ MẬU IN VIETNAM, AFTER HIS INAUGURATION AS PRESIDENT.<p></p><br>(AUG 24TH) BEATLES PLAY FINAL SHOW AT DELAWARE STADIUM BEFORE HEADING BACK TO U.K.<p></p><br>(AUG 28TH) DR. MARTIN LUTHER KING JR.: 'I HAVE A DREAM THAT ONE DAY THIS NATION WILL RISE UP AND LIVE OUT THE TRUE MEANING OF ITS CREED.’<p></p><br>(SEP 3RD) NIXON UNVEILS FAMILY ASSISTANCE PLAN [F.A.P], INTRODUCES NEGATIVE INCOME TAX FOR POOR, CUTS WELFARE BENEFITS<p></p><br>(SEP 15TH) 4 CHILDREN DEAD, 22 INJURED AFTER 16TH STREET BAPTIST CHURCH BOMBING IN BIRMINGHAM <p></p><br>(SEP 30TH) FAMILY ASSISTANCE PLAN [F.A.P] SIGNED INTO LAW: PRESIDENT NIXON INTRODUCES $1,500 PAYMENTS FOR LOW-INCOME FAMILIES<p></p><br>(OCT 19TH) CHANCELLOR REGINALD MAUDLING TO SUCCEED HAROLD MACMILLAN AS PRIME MINISTER OF THE U.K & LEADER OF THE CONSERVATIVE PARTY <p></p><br>(OCT 23RD) WIDOWED FORMER FIRST LADY OF SOUTH VIETNAM MADAME NHU BEGINS SPEAKING TOUR OF U.S.; PRAISES ‘‘BRAVE’’ PRESIDENT NIXON<p></p><br>(NOV 2ND) PRESIDENT ĐỖ MẬU SURVIVES ASSASSINATION ATTEMPT AS ''BUDDHIST CRISIS'' RAGES ON<p></p><br>(NOV 5TH) LOUIE NUNN (R) WINS KENTUCKY GOVERNORSHIP<p></p><br>(NOV 11TH) NGUYỄN KHÁNH, LEADER OF ATTEMPTED COUP AGAINST PRESIDENT MẬU, TO BE PUT TO DEATH<p></p><br>(NOV 22ND) NIXON LAUNCHES 1964 CAMPAIGN WITH TOUR OF DETROIT ALONGSIDE GOV. ROMNEY<p></p><br>(NOV 30TH) AUSTRALIA'S INCUMBENT LIB-NAT COALITION FALLS TO LABOR IN SURPRISE SNAP ELECTION, ARTHUR CALWELL SET TO TAKE REINS AS P.M.<p></p><br>(DEC 2ND) NIXON VOICES FURTHER SUPPORT FOR PRESIDENT ĐỖ MẬU OF SOUTH VIETNAM, PLEDGES MORE MATERIAL AND DIPLOMATIC AID<p></p><br>(DEC 18TH) JUSTICE FRANKFURTER RESIGNS - NIXON NOMINATES C. WILLIAM O'NEILL AS REPLACEMENT<p></p><br>(DEC 29TH) SENATOR HUBERT HUMPHREY LAUNCHES THIRD WHITE HOUSE BID IN MINNEAPOLIS, KICKING OFF DEMOCRATIC RACE<p></p><br><h2>1964</h2><p></p><br>(JAN 11TH) SMOKING LINKED TO CANCER, SURGEON GENERAL BURNEY REPORTS<p></p><br>(JAN 16TH) JOHN GLENN RESIGNS FROM THE SPACE PROGRAM - RUMORS AMOK REGARDING HIS FUTURE IN NATIONAL POLITICS<p></p><br>(JAN 23RD) 24TH AMENDMENT TO THE UNITED STATES CONSTITUTION, PROHIBITING THE USE OF POLL TAXES IN NATIONAL ELECTIONS, IS RATIFIED.<p></p><br>(FEB 1ST) THE BEATLES BACK ON THE CHARTS WITH #1 HIT ''BAD TO ME''(FEB 6TH) GOVERNOR PAT BROWN LAUNCHES PRESIDENTIAL CAMPAIGN, TO CAMPAIGN FOR DEMOCRATIC PRIMARIES/CAUCUSES<p></p><br><p></p><br>(FEB 25TH) CASSIUS CLAY BEATS SONNY LISTON IN MIAMI BEACH, FLORIDA, CROWNED HEAVYWEIGHT BOXING CHAMPION OF THE WORLD<p></p><br>(MAR 4TH) JURY UNABLE TO REACH VERDICT ON JIMMY HOFFA CASE - RETRIAL TO COMMENCE<p></p><br>(MAR 10TH) RFK WRITE-IN CAMPAIGN WINS NEW HAMPSHIRE DEMOCRATIC PRIMARY, PRESIDENT NIXON WINS REPUBLICAN SIDE WITH 91% OF VOTE<p></p><br>(MAR 27TH) ALASKA HIT WITH M9.2 EARTHQUAKE, MASSIVE DAMAGE IN ANCHORAGE<p></p><br>(APR 1ST) HUMPHREY, BROWN CAMPAIGNS AIR ADS THROUGHOUT WISCONSIN AS PRIMARY GROWS CLOSER<br><p></p><br>(APR 4TH) SECDEF GORDON GRAY RESIGNS - NIXON TO APPOINT DUDLEY SHARP AS REPLACEMENT<br><p></p><br>(APR 7TH) HUMPHREY CLAIMS WISCONSIN PRIMARY VICTORY WITH 53%, BROWN FOLLOWS AT 43% <br><p></p><br>(APR 14TH) HUMPHREY NARROWLY WINS ILLINOIS PRIMARY WITH 34% AS BROWN HITS 31% AND STEVENSON TRAILS AT 29%<p></p><br>(APR 17TH) POLL: FRANK CLEMENT, ROSS BASS NECK AND NECK IN TN DEM SENATE PRIMARY<p></p><br>(APR 20TH) NIXON IN NEW YORK, KHRUSHCHEV IN MOSCOW ANNOUNCE PLANS TO REDUCE NUCLEAR WEAPONS MATERIAL PRODUCTION<p></p><br>(APR 21TH) CATHOLIC VOTE POWERS PAT BROWN TO VICTORY IN NEW JERSEY PRIMARY, BACKED BY IRISH, ITALIAN, AND LATINO VOTERS<p></p><br>(APR 28TH) HUMPHREY EDGES OUT WIN IN PENNSYLVANIA; RFK TAKES MASSACHUSETTS—KENNEDY VS. NIXON SHOWDOWN IN NOVEMBER?<p></p><br>(APR 29TH) BOBBY KENNEDY ANNOUNCES PRESIDENTIAL RUN FOLLOWING WRITE-IN SUCCESS<p></p><br> (APR 30TH) REPUBLICAN NATIONAL CONVENTION TO BE HELD AT COW PALACE, SAN FRANCISCO, STARTING AUGUST 24TH<p></p><br>(MAY 1ST) THE BEATLES ANNOUNCE THEIR SECOND USA TOUR THIS SUMMER, WITH ONLY HALF AS MANY SHOWS AS LAST YEAR'S TOUR<p></p><br>(MAY 2ND) CONGRESSMAN BRUCE ALGER WINS 18% OF THE VOTE IN TEXAS REPUBLICAN PRIMARY - NIXON CAMP ENRAGED!<p></p><br>(MAY 5TH) OHIO DEM PRIMARY WON BY FAVORITE SON PORTER, HUMPHREY WINS D.C., INDIANA<p></p><br>(MAY 7TH) POLLS SHOW PRESIDENT NIXON BEATING ALL DEMOCRATS BESIDES JACK KENNEDY & LBJ IN A LANDSLIDE<p></p><br>(MAY 10TH) DEMOCRATIC NATIONAL CONVENTION TO BE HELD AT COBB CENTER, DETROIT, MICHIGAN, STARTING ON JULY 13TH<p></p><br>(MAY 12TH) HUMPHREY CAMPAIGN SUFFERS BLOW AS BROWN WINS NEBRASKA, KENNEDY COMES CLOSE IN WEST VIRGINIA<p></p><br>(MAY 15TH) BROWN WINS OREGON PRIMARY, BESTING HUMPHREY AGAIN<p></p><br>(MAY 16TH) U.S. DETONATES NUCLEAR DEVICE AT NEVADA TEST SITE<p></p><br>(MAY 19TH) PAT BROWN WINS MARYLAND, FAUBUS SCORES SURPRISE SECOND PLACE FINISH<p></p><br>(MAY 20TH) RINGO STARR VOTED MOST POPULAR BEATLE IN NATIONWIDE HIT PARADER POLL JUST BEFORE BRITISH ACTS NATIONWIDE TOUR BEGINS<p></p><br>(MAY 26TH) FAVORITE SON GEORGE SMATHERS WINS FLORIDA PRIMARY - FAUBUS FINISHES AS RUNNER-UP<p></p><br>(MAY 29TH) PAT BROWN SWEEPS CALIFORNIA PRIMARY, HUMPHREY WINS SOUTH DAKOTA<p></p><br>(MAY 31ST) DEMOCRATIC PRIMARIES END WITH HUMPHREY, BROWN AS THE FRONTRUNNERS FOR THE NOMINATION<p></p><br><img src='https://i.imgur.com/TTgIX4p.png' alt='Batman' style='height:591px;''><br><i>(1964 Democratic Primaries)</i></p><p></p><br>(JUN 3RD) SEOUL, KOREA UNDER MARTIAL LAW: PRESIDENT PARK DECLARES EMERGENCY AS 10,000 STUDENTS OVERWHELM POLICE<p></p><br>(JUN 18TH) CHAOS IN FLORIDA: ST. AUGUSTINE MOTEL OWNER POURS ACID INTO POOL AS ACTIVISTS PROTEST SEGREGATION—KKK FIREBOMBS, RABBIS AMONG DOZENS ARRESTED<p></p><br>(JUN 21ST) EUROPEAN NATIONS CUP: SOVIET UNION BEATS SPAIN 2–1 TO WIN TOURNAMENT FOR A SECOND TIME IN A ROW<p></p><br>(JUN 23TH) BOBBY KENNEDY DROPS OUT, RELEASES DELEGATES PRIOR TO DNC<p></p><br>(JUL 13TH) DEMOCRATIC NATIONAL CONVENTION BEGINS, AMIDST DEADLOCK AND DIVISIONS IN THE PARTY REGARDING CIVIL RIGHTS<p></p><br>RFK ADDRESSES DNC, URGES UNITY<p></p><br>MISSISSIPPI DELEGATION DENOUNCED BY BROWN AND HUMPHREY AS ‘‘ILLEGITIMATE’’, BOTH DECLARE SUPPORT FOR ‘‘MISSISSIPPI FREEDOM’’ DELEGATION <p></p><br>(JUL 14TH) TN GOV FRANK CLEMENT SPEAKS AT THE DNC, CALLS FOR A ''BETTER TOMORROW''<p></p><br>MARCH TO FREEDOM ORGANIZERS AND OTHER CIVIL RIGHTS ORGANIZATIONS ARE SET TO LAUNCH A BLACK VOTER REGISTRATION CAMPAIGN IN MISSISSIPPI.<p></p><br>(JUL 15TH) DNC FIRST BALLOT: HUMPHREY CLAIMS LEAD, BROWN IN 2ND, SMATHERS 3RD, FAUBUS 4TH—CONVENTION DEADLOCKED<p></p><br> HUMPHREY HOLDS LEAD ON THIRD BALLOT AS BROWN GAINS BACKING FROM OHIO DELEGATION<p></p><br>(JUL 16) ORVAL FAUBUS THREATENS WALKOUT IF THE PLATFORM DOESN'T 'FAIRLY EVALUATE OUR VERY REAL PROBLEMS TODAY' AS HUMPHREY HOLDS ONTO LEAD ON SECOND DAY<p></p><br>SENATOR JACK KENNEDY REAFFIRMS: NO BID FOR DEMOCRATIC NOMINATION<p></p><br>(JUL 17TH) BROWN TAKES DELEGATE LEAD AS CONVENTION ENTERS THIRD DAY - SMATHERS, SYMINGTON BACK DRAFT CLEMENT MOVEMENT<p></p><br>(JUL 18TH) DRAFT CLEMENT MOVEMENT ON CONVENTION FLOOR SUCCEEDS AS TN GOV OFFICIALLY JOINS THE RACE<p></p><br>(JUL 19TH) FAUBUS DROPS OUT - BROWN CAMPAIGN IN CHAOS AS DELEGATES HEMORRHAGE TO CLEMENT<p></p><br>BROWN DROPS OUT, ENDORSES CLEMENT<p></p><br>GOVERNOR FRANK CLEMENT NOMINATED FOR POTUS - SENATOR ABE RIBICOFF AS VP<p></p><br>GOVERNOR ORVAL FAUBUS ENDORSES DEMOCRATIC TICKET, AMIDST PRESSURE TO LAUNCH INDEPENDENT BID<p></p><br>(JUL 23) NIXON APPROVES EXPANDED SHIPMENTS OF JETS, TRUCKS TO SOUTH VIETNAM AMID ESCALATING CONFLICT<p></p><br>(JUL 27TH) DEAD BODIES OF WHITE ‘MARCH TO FREEDOM’ ACTVISTS CHANEY, GOODMAN, AND SCHWERNER FOUND IN MISSISSIPPI<p></p><br>(AUG 5TH) BEATLES SET TO CONQUER ASIA FOLLOWING FINAL U.S. PERFORMANCE IN L.A.<p></p><br>(AUG 15TH) ORVAL FAUBUS BACKS PETITION MOVEMENT TO PLACE HIS NAME ON ARKANSAS BALLOT AS STATE DEMOCRATIC NOMINEE<p></p><br>(AUG 28TH) PRESIDENT NIXON SUBMITS JOINT-RESOLUTION TO DEPLOY 25,000 PEACEKEEPING FORCES TO SOUTH VIETNAM<p></p><br>(AUG 30TH) NEGRO RIOTS SHAKE PHILADELPHIA: 341 INJURED, 774 ARRESTED IN VIOLENT CLASHES WITH POLICE<p></p><br>(SEP 2ND) GOVERNOR CLEMENT'S WEST COAST TOUR TO LAUNCH NEXT WEEK; HOLLYWOOD BOWL SPEECH EXPECTED TO FEATURE 'BETTER TOMORROW' PLAN, SET TO BE BROADCAST ON TV/RADIO<p></p><br>(SEP 8TH) FIRST SET OF NIXON TELEVISION CAMPAIGN ADS RELEASED: HIGHLIGHTS FOREIGN POLICY VICTORIES, OMITS MENTION OF CLEMENT<p></p><br>(SEP 11TH) GOVERNOR CLEMENT AND FORMER PRESIDENT TRUMAN HOLD RALLY IN ST. LOUIS MISSOURI<p></p><br>(SEP 13TH) FBI DIRECTOR, J. EDGAR HOOVER AWARDED PRESIDENTIAL MEDAL OF FREEDOM AT WHITE HOUSE BY PRESIDENT NIXON<p></p><br>(SEP 16TH) PRESIDENT NIXON'S REVEALING HOUR-LONG TALK WITH CRONKITE - INSIGHTS ON CUBA, VIETNAM, THE ‘MARCH TO FREEDOM’ AND BLOCKED HEALTHCARE BILL<p></p><br>(SEP 17ST) CLEMENT CAMPAIGN UNVEILS ‘‘SENIORSHIELD’’ HEALTHCARE PLAN<p></p><br>(SEP 18TH) SOVIETS DETONATE NUCLEAR DEVICE AT NOVAYA ZEMLYA—ESCALATES GLOBAL TENSIONS<p></p><br>(SEP 28TH) CLEMENT HAMMERS NIXON CAMPAIGN TO AGREE TO DEBATE<p></p><br>(SEP 29TH) NIXON CAMPAIGN AGREES TO SINGLE DEBATE WITH CLEMENT, TO BE JOINTLY ORGANIZED BY CBS, NBC, AND ABC<p></p><br>(OCT 2ND) NIXON CONCLUDES EXTENSIVE MIDWEST TOUR, RALLIES SUPPORT ACROSS HEARTLAND<p></p><br>(OCT 5TH) 1ST AND ONLY PRESIDENTIAL DEBATE OF 1964 TO BE HELD IN TWO DAYS<p></p><br>(OCT 6TH) CLARENCE MANION, AMERICAN PARTY CANDIDATE, SLAMS 'UNIPARTY' AFTER BEING EXCLUDED FROM DEBATE, PLANS ALTERNATIVE FORUM WITH OTHER THIRD-PARTY CANDIDATES.<p></p><br>(OCT 7TH) NIXON, CLEMENT SHAKE HANDS AS NYC DEBATE BEGINS. NIXON SHOWS FRUSTRATION UNDER TOUGH QUESTIONS; CLEMENT EXHIBITS NERVOUS ENERGY. OUTCOME REMAINS UNCLEAR.<p></p><br>(OCT 8TH) BOTH NIXON AND CLEMENT CAMPS CLAIM VICTORY AFTER HEATED NYC DEBATE!<p></p><br>(OCT 10TH) NIXON AT 51%, CLEMENT AT 46% ACCORDING TO RECENT NATIONAL POLLING<p></p><br>(OCT 11TH) REPORTS OF CLEMENT'S ALCOHOLISM, AND TESTIMONY FROM FORMER COLLEAGUES FLOOD THE NEWSPAPERS<p></p><br>(OCT 12TH) SOVIETS LAUNCH VOSKHOD 1: FIRST MULTI-PERSON CREW ORBITS EARTH WITHOUT SPACE SUITS; FLIGHT CUT SHORT AFTER 16 ORBITS<p></p><br>(OCT 13TH) CLEMENT OWNS UP TO HAVING 'BATTLED THE DRAGON OF THE DRINK' IN SPEECH AT TENNESSEE CAPITOL<p></p><br>(OCT 14TH) KHRUSHCHEV OUSTED! KOSYGIN TAKES POWER AMID CRISIS OF CONFIDENCE<p></p><br>(OCT 15TH) UK P.M. REGINALD MAUDLING LEADS CONSERVATIVE PARTY TO THEIR 4TH ELECTION VICTORY IN A ROW<p></p><br>(OCT 16TH) POLLS SHOW CLEMENT POLL NUMBERS STILL BLEEDING IN AFTERMATH OF THE 'GREAT PAGE'<p></p><br>(OCT 17TH) DISILLUSIONED LABOUR MPS DEMAND NEW DIRECTION AS HOPES FOR A WILSON-LED MODERNIZATION COLLAPSE JUST A YEAR AFTER OPTIMISTIC PROJECTIONS<p></p><br>(OCT 18TH) CHINA DETONATES DEADLY ATOMIC BOMB IN SINKIANG, ESCALATING GLOBAL TENSIONS<p></p><br>(OCT 19TH) NIXON VOWS TO DEFEND AMERICA AMID RISING TENSIONS IN MORNING PRESS CONFERENCE<p></p><br>(OCT 23RD) U.S. UNLEASHES 5.3 KILOTON NUCLEAR BLAST IN MISSISSIPPI AS PART OF ATOMIC TEST PROGRAM<p></p><br>(OCT 19TH) NIXON CALLS CLEMENT 'A GOOD MAN' IN RECENT INTERVIEW<p></p><br>(OCT 20TH) CLEMENT LAUNCHES FINAL AD BLITZ OF CAMPAIGN SEASON IN INDUSTRIAL NORTH<p></p><br>(OCT 24TH) UK LABOUR IN CRISIS: GEORGE BROWN PREPARES LEADERSHIP BID AS WILSON REFUSES TO STEP ASIDE—PARTY FACES BITTER POWER STRUGGLE<p></p><br>(OCT 26TH) NIXON PLEDGES COMMITMENT TO CIVIL RIGHTS ACT IN FIRST TWO YEARS OF NEXT TERM AT MADISON SQUARE GARDEN RALLY<p></p><br>(OCT 27TH) DEMOCRATS POISED TO WIN WASHINGTON D.C. IN FIRST-EVER PRESIDENTIAL ELECTION AS NIXON CAMPAIGN WRITES OFF THE DISTRICT<p></p><br>(OCT 31TH) CLEMENT AND NIXON CAMPAIGN BOTH SPEND HALLOWEEN RALLYING IN THE MIDWEST!<p></p><br>(NOV 1ST) NORTH VIETNAMESE MORTAR FIRE STRIKES BIÊN HÒA AIR BASE, KILLING 4 U.S. MILITARY POLICE, WOUNDING 72, AND DESTROYING 5 B-57 BOMBERS<p></p><br>(NOV 2ND) FAISAL SUCCEEDS SAUD AS KING OF SAUDI ARABIA<p></p><br>(NOV 3RD) NIXON RE-ELECTED: INCUMBENT PRESIDENT DEFEATS DEMOCRATIC CHALLENGER FRANK CLEMENT WITH OVER 50% OF POPULAR VOTE<i></i></p><p><i><img src='https://i.imgur.com/SzBmzed.png' alt='Batman' style='width:275px;height:563px;''><br><i>(1964 Presidential Election)</i></i><p></p><br>...<p></p><br><p></p><br><p></p><br></b></b></div> ","has_visits":1,"no_electoral_majority_image":"https://i.imgur.com/sZbMdmE.png"}}];e.temp_election_list = [{"id":9,"year":1964,"is_premium":0,"display_year":"1964N"}];e.global_parameter_json = [{"model":"campaign_trail.global_parameter","pk":1,"fields":{"vote_variable":1.125,"max_swing":0.12,"start_point":0.94,"candidate_issue_weight":10,"running_mate_issue_weight":3,"issue_stance_1_max":-0.71,"issue_stance_2_max":-0.3,"issue_stance_3_max":-0.125,"issue_stance_4_max":0.125,"issue_stance_5_max":0.3,"issue_stance_6_max":0.71,"global_variance":0.01,"state_variance":0.005,"question_count":25,"default_map_color_hex":"#C9C9C9","no_state_map_color_hex":"#999999"}}];e.candidate_json = [{"model":"campaign_trail.candidate","pk":77,"fields":{"first_name":"Richard","last_name":"Nixon","election":9,"party":"Republican","state":"California","priority":1,"description":"<div style='overflow-y:scroll;height:200px;'><p><i>’’A man is not finished when he's defeated. He's finished when he quits.’’</i></p><p>If you had asked anyone what they thought about Richard Milhous Nixon after the Checkers scandal, they would’ve said his political career was over. If you would’ve asked them about it after the 1960 Presidential debate, they would’ve said that he would never occupy the Oval Office, always destined to be a lapdog to a much more popular politician. Yet, Nixon enters the 1964 election as the 35th and incumbent President of the United States, enjoying popularity that rivals that of Dwight Eisenhower himself during his first term.<br><br>Domestically, Nixon has governed in a vein not entirely dissimilar to Eisenhower, with a strong focus on reforming programs such as welfare in order to reduce fiscal bloat while keeping the original intention of the program. Another area where Nixon has seen domestic success was that of Civil Rights, where his administration has successfully lobbied Congress to pass the 24th Amendment, outlawing poll taxes in the South. In terms of foreign policy, he has overseen a coup in Cuba against Fidel Castro's Communist-aligned government, effectively making the island a United States rump state. Another challenge on the front is the looming civil war in Vietnam, where staunch anti-Communists push for increased commitment, a stance met with some reluctance by the President.</p><p>With a robust economy, high approval rating, and the likelihood of an irrelevant opponent, it seems like it would take divine intervention to stop Nixon’s crusade.","color_hex":"#b22b27","secondary_color_hex":null,"is_active":1,"image_url":"https://i.imgur.com/AAMeLB9.png","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>NO CANDIDATE REACHES 270 ELECTORAL VOTES! DEADLOCK!</h3>","description_as_running_mate":null,"candidate_score":1,"running_mate":false,"scrollable":false}},{"model":"campaign_trail.candidate","pk":81,"fields":{"first_name":"Henry Cabot","last_name":"Lodge","election":9,"party":"Republican","state":"Massachussetts","priority":1,"description":"<div style='overflow-y:scroll;height:200px;'><p><i>’’It is never right to compromise with dishonesty.’’</i></p><p><p> In many ways, Henry Cabot Lodge Jr., once a State Representative, Senator, and Ambassador to the United Nations, could not be more different from Richard Nixon. While Nixon grew up in a dirt-poor Quaker family on the West Coast, Lodge grew up in affluence on the East Coast. While Nixon attended his hometown Whittier College, Lodge graduated cum laude from the prestigious Harvard. While Nixon was denied from the Franklins sorority for not having a prominent-enough name, Lodge grew up in a family that included Senators and Governors, not to mention the fact that he was named after his grandfather, the first-ever Senate Majority Leader. Despite all of this, the two former military men, finding common ground as members of the Eisenhower administration, joined forces in order to defeat Jack Kennedy and Lyndon Johnson in 1960. </p><p> Despite his somewhat independent tendencies on the campaign trail, Lodge has been a loyal Vice President, supporting your advances on Civil Rights and welfare. As the standard-bearer for liberal Republicanism in the country, his place on the ticket will no doubt once again be an asset in the Northeast, but would likely severely hamper your performance in the South, as well as amongst the more staunch conservatives within your own party, who currently support a long-shot bid to replace him on the ticket. Still, who would those Republican reactionaries vote for? The party who passed the New Deal?</p>","color_hex":"#0000ff","secondary_color_hex":null,"is_active":0,"image_url":"https://i.imgur.com/QUsni2E.jpg","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>... NO CANDIDATE GETS 270 ELECTORAL VOTES</h3>","description_as_running_mate":"<div style='overflow-y:scroll;height:200px;'><p><i>’’It is never right to compromise with dishonesty.’’</i></p><p><p> In many ways, Henry Cabot Lodge Jr., once a State House Rep, Senator, and Ambassador to the United Nations, could not be more different from Richard Nixon. While Nixon grew up in a dirt-poor Quaker family on the West Coast, Lodge grew up in affluence on the East Coast. While Nixon attended his hometown Whittier College, Lodge graduated cum laude from the prestigious Harvard. While Nixon was denied from the Franklins sorority for not having a prominent-enough name, Lodge grew up in a family that included Senators and Governors, not to mention the fact that he was named after his grandfather, the first-ever Senate Majority Leader. Despite all of this, the two former military men, finding common ground as members of the Eisenhower administration, joined forces in order to defeat Jack Kennedy and Lyndon Johnson in 1960. </p><p> Despite his somewhat independent tendencies on the campaign trail, Lodge has been a loyal Vice President, supporting your advances on Civil Rights and welfare. As the standard-bearer for liberal Republicanism in the country, his place on the ticket will no doubt once again be an asset in the Northeast, but would likely severely hamper your performance in the South, as well as amongst the more staunch conservatives within your own party, who currently support a long-shot bid to replace him on the ticket. Still, who would those Republican reactionaries vote for? The party who passed the New Deal?</p>","candidate_score":1,"running_mate":true,"scrollable":false,"partner":"0"}},{"model":"campaign_trail.candidate","pk":78,"fields":{"first_name":"Frank","last_name":"Clement","election":9,"party":"Democratic","state":"Tennessee","priority":1,"description":"<div style='overflow-y:scroll;height:200px;'><p><i>’’There are three qualities we American people must require in our leaders. First is character. Second is ability, for without it, character may be misused. Third is diplomacy, without which character and ability might be wasted.’’</i></p><p>Governor Frank Goad Clement of Tennessee should not be here. After delivering a speech at the DNC simply in an attempt to boost his national name recognition in anticipation for a planned run for the US Senate, Clement watched as his name was drafted into the Presidential nomination as a compromise, without his input. Following Jack Kennedy and Lyndon Johnson’s refusals to run, the nomination was left wide open, allowing for Clement to clinch the nomination after 4 days of balloting, thanks to an uneasy alliance between Clement’s base, the campaigns of George Smathers and Stuart Symington, Southerners who initially supported Orval Faubus, and Westerners who previously backed Pat Brown, coming together to deny Hubert Humphrey the nomination.<br><br>Clement isn’t exactly an A-list candidate, but he isn’t a complete unknown, either; the governor is perhaps most renowned for his memorable keynote address at the 1956 Democratic Convention, delivered with a theatrical, almost Bryan-esque flair at the Chicago International Amphitheatre. Although his sermon-like speech served to strengthen his bond with the rural, religious, and working-class constituents in his home state and across the American heartland, it was panned by the media, Republican partisans, and even the establishment of his own party, leading to many predicting that his career in federal politics was dead. Perhaps they will be proven right after this election.</p><p>The governor finds himself in a challenging position currently, trailing President Nixon in every single poll. It seems the campaign is not one that expects to win, rather, it’s one that aims to keep the fragile Democratic coalition together for yet another cycle until the party once again tries to find a kink in the Republican machine to exploit in 1968. Still, that’s easier said than done; Clement must find a way to stop the bleeding of Black voters from the Democratic Party while minimizing damage from a Southern splinter candidacy, as well as attempting to hold previous Democrat margins in both the cities and the rurals. If Clement is able to pull this off, however, he may be able to give Tricky Dick an ever-so-slight scare, or maybe pull off what looks impossible at the onset...","color_hex":"#1E48D7","secondary_color_hex":null,"is_active":1,"image_url":"https://i.imgur.com/tnirP0g.png","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>NO CANDIDATE REACHES 270 ELECTORAL VOTES! DEADLOCK!</h3>You wake up, along with millions of other partisan Americans fully fired up for a potential victory or a potential loss, the fate of America and a brighter future- and your combined vitriol, excitement, fear, and a variety of emotion has crashed into an unsatisfying ending. With you and Nixon not reaching 270, it's up to Congress to decide who the next President is, something that hasn't happened in centuries and will be ingrained in American memory for decades to come.</p><p>Due to the fact that Democrats control Congress, you are the likely winner of this entire debacle. As you see your team prepare to assume the Presidency, you lament meeting with the leaders of the Democratic House and Senate who are using this time to haggle and mess with you to get their own agendas passed. You take a swig of whiskey as you prepare yourself for tommorow, where you will address the American people about this entire mess. But for now- you'll drink, drink, and drink until you escape into the peaceful world of sleep.</p>","description_as_running_mate":null,"candidate_score":1,"running_mate":false,"scrollable":false}},{"model":"campaign_trail.candidate","pk":85,"fields":{"first_name":"Abraham","last_name":"Ribicoff","election":9,"party":"Democratic","state":"Connecticut","priority":1,"description":"<div style='overflow-y:scroll;height:200px;'><p><i>’’My greatest ambition is to leave the world a little better place than when I found it.’’</i></p><p><p>If you want to find a running mate that both fits your populist persona while mollifying the establishment, then Abraham Alexander Ribicoff is your man. Born and raised in Connecticut, Ribicoff has served as a State Representative, Police Court Judge, Congressman, Governor, and, thanks to some luck in 1962, US Senator. As a friend of both the Kennedys and Lyndon Johnson, Ribicoff would certainly help you in your attempt to hold the coalition of voters that backed the Democratic ticket 4 years ago.</p><p>Ribicoff would certainly help you in the Northeast, with his staunch liberal views on spending and social issues paired with his commitment to peaceful internationalism is broadly appealing to his home region. However, these very same views will likely hurt you in the South. Furthermore, Ribicoff’s Jewish faith will likely do more harm than good to your ticket; while it may help in New York, the country is majority Christian, and given the recent decision of the Supreme Court to outlaw mandatory school prayer, some more reactionary groups may use his selection to stoke fear about what direction your administration might take in regards to religion. Ribicoff is also a strong supporter of Civil Rights, which would worsen your appeal with voters in the heartland; a Northern liberal religious minority who supported Civil Rights legislation didn’t exactly play well with white Southerners in the region 4 years ago. Still, if you want voters to associate your campaign with Democratic tickets of the past, Ribicoff is probably the man for the job.</p>","color_hex":"#0000ff","secondary_color_hex":null,"is_active":0,"image_url":"https://i.imgur.com/kjsFZEi.jpeg","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":"<div style='overflow-y:scroll;height:200px;'><p><i>’’My greatest ambition is to leave the world a little better place than when I found it.’’</i></p><p><p>If you want to find a running mate that both fits your populist persona while mollifying the establishment, then Abraham Alexander Ribicoff is your man. Born and raised in Connecticut, Ribicoff has served as a State Representative, Police Court Judge, Congressman, Governor, and, thanks to some luck in 1962, US Senator. As a friend of both the Kennedys and Lyndon Johnson, Ribicoff would certainly help you in your attempt to hold the coalition of voters that backed the Democratic ticket 4 years ago.</p><p>Ribicoff would certainly help you in the Northeast, his staunch liberal views on spending and social issues paired with his commitment to internationalism is broadly appealing to his home region. However, these very same views will likely hurt you in the South. Furthermore, Ribicoff’s Jewish faith will likely do more harm than good to your ticket; while it may help in New York, the country is majority Christian, and given the recent decision of the Supreme Court to outlaw mandatory school prayer, some more reactionary groups may use his selection to stoke fear about what direction your administration might take in regards to religion. Ribicoff is also a strong supporter of Civil Rights, which would worsen your appeal with voters in the region. A Northern liberal religious minority who supported Civil Rights legislation didn’t exactly play well with white Southerners in the region 4 years ago. Still, if you want voters to associate your campaign with Democratic tickets of the past, Ribicoff is probably the man for the job.</p>","candidate_score":1,"running_mate":true,"scrollable":false,"partner":"3"}},{"model":"campaign_trail.candidate","pk":1006,"fields":{"first_name":"Gordon","last_name":"Gray","election":9,"party":"Democratic","state":"Maryland","priority":1,"description":"<div style='overflow-y:scroll;height:200px;'><p><i>’’Never answer the question that is asked of you. Answer the question that you wish had been asked of you.’’</i></p><p><p><p>A former member of the Truman, Eisenhower, and Nixon administration, it wouldn’t take long to find the fingerprints of Gordon Gray all around the Department of Defense. A former businessman, lawyer, State Representative, and army man, Gray has served as Secretary of War, Director of the Office of Defense Mobilization, and National Security Advisor. His biggest position would be saved for his most recent, however, having served as Nixon’s Secretary of Defense for the first 3 years of his administration. So, why is he a possible running mate for you? Well, Gray is a bigger hawk than most give him credit for. Decrying Nixon for refusing to ramp up involvement in South Vietnam following the death of Ngô Đình Diệm, Gray tendered his resignation while the Democratic primaries began to ramp up. While he refused an attempt to draft him into the contest, he is seemingly more than happy to accept the Vice Presidential Nomination.</p><p>The obvious benefit of Gray would be that he would give you much stronger foreign policy credentials than you otherwise would have: his storied history in the Department of Defense would be nothing but a boon to your campaign. However, Gray’s only other known political positions are his support of segregation and his opposition to publicly-financed higher education, two things that will likely help you in the South but hurt you everywhere else. Gray also wants full control of your campaign’s rhetoric on foreign policy, which means that you likely will have to stand by most things that he says on the campaign trail. If you want a running mate that could cover up most of your own weaknesses, though, Gray should be your first choice.</p>","color_hex":"#0000ff","secondary_color_hex":null,"is_active":0,"image_url":"https://i.imgur.com/fBUY2RJ.png","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":"<div style='overflow-y:scroll;height:200px;'><p><i>’’Never answer the question that is asked of you. Answer the question that you wish had been asked of you.’’</i></p><p><p><p>A former member of the Truman, Eisenhower, and Nixon administration, it wouldn’t take long to find the fingerprints of Gordon Gray on the Department of Defense. A former businessman, lawyer, State Representative, and army man, Gray has served as Secretary of War, Director of the Office of Defense Mobilization, and National Security Advisor. His biggest position would be saved for his most recent, however, having served as Nixon’s Secretary of Defense for the first 3 years of his administration. So, why is he a possible running mate for you? Well, Gray is a bigger hawk than most give him credit for. Decrying Nixon for refusing to ramp up involvement in South Vietnam, Gray tendered his resignation while the Democratic primaries began to ramp up. While he refused an attempt to draft him into the contest, he is seemingly more than happy to accept the Vice Presidential Nomination.</p><p>The obvious benefit of Gray would be that he would give your credit much stronger foreign policy credentials than you otherwise would have. His storied history in the Department of Defense would be nothing but a boon to your campaign. However, Gray’s only other known political positions are his support of segregation and his opposition to publicly-financed higher education, two things that will likely help you in the South but hurt you everywhere else. Gray also wants control of your campaign’s rhetoric on foreign policy, which means that you likely will have to stand by most things that he says on the campaign trail. If you want a running mate that could cover up most of your own weaknesses, though, Gray should be your first choice.</p>","candidate_score":1,"running_mate":true,"scrollable":false,"partner":"3"}},{"model":"campaign_trail.candidate","pk":1007,"fields":{"first_name":"George","last_name":"McGovern","election":9,"party":"Democratic","state":"South Dakota","priority":1,"description":"<div style='overflow-y:scroll;height:200px;'><p><i>’’I'm fed up to the ears with old men dreaming up wars for young men to die in.’’</i></p><p><p><p>If you really want to burn every single bridge you had with the establishment, then Senator George Stanley McGovern is your guy. A left-wing populist if there ever was one, McGovern, a former Representative, was elected to the Senate by under 200 votes in 1962, after previously failing in 1960. In the Senate, his tenure has been characterized by his strong opposition to US involvement in a possible second war in Indochina, with McGovern calling South Vietnam a ‘‘trap we have fallen into’’ in September 1963. He has also advocated for a reduction in the defense budget, voted against investment into the research of new missiles and anti-missile systems, and has refused to support providing military aid to other nations. Other than that, not much can be said about his tenure so far; apparently, he has a reputation in the Senate for ‘’not doing his homework’’.</p><p>Look, Frank, you don’t need to be a genius to see why adopting a dovish stance on foreign policy would be a bad idea, especially against someone like Nixon. Yeah, sure, the guy has a strong grassroots organization in South Dakota, and he might help you in some farming states surrounding South Dakota, and maybe in a few of the ultra-liberal states on the Eastern Seaboard, but my God, he would hurt you so badly everywhere else that your campaign would be taken as a practical joke. He’s practically a communist to the people in the South, Frank, and no amount of posturing on Civil Rights can rectify that. If Faubus or Eastland don’t outright run against you for this, you might actually lose the region to a man that signed a goddamned Civil Rights Act. The party might never recover, Frank, I’m being dead serious. Please don’t actually consider him.</p>","color_hex":"#0000ff","secondary_color_hex":null,"is_active":0,"image_url":"https://i.imgur.com/0iRobp0.jpeg","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":"<div style='overflow-y:scroll;height:200px;'><p><i>’’I'm fed up to the ears with old men dreaming up wars for young men to die in.’’</i></p><p><p><p>If you really want to burn every single bridge you had with the establishment, then Senator George Stanley McGovern is your guy. A left-wing populist if there ever was one, McGovern, a former Representative, was elected to the Senate by under 200 votes in 1962, after previously failing in 1960. In the Senate, his tenure has been characterized by his strong opposition to US involvement in a possible second war in Indochina, with McGovern calling South Vietnam a ‘‘trap we have fallen into’’ in September 1963. He has also advocated for a reduction in the defense budget, voted against investment into the research of new missiles and anti-missile systems, and has refused to support providing military aid to other nations. Other than that, not much can be said about his tenure so far; apparently, he has a reputation in the Senate for ‘‘not doing his homework’’.</p><p>Look, Frank, you don’t need to be a genius to see why adopting a dovish stance on foreign policy would be a bad idea, especially against someone like Nixon. Yeah, sure, the guy has a strong grassroots organization in South Dakota, and he might help you in some farming states surrounding South Dakota, and maybe in a few of the ultra-liberal states on the Eastern Seaboard and, but my God, he would hurt you so badly everywhere else that your campaign would be taken as a practical joke. He’s practically a communist to the people in the South, Frank, and no amount of posturing on Civil Rights can rectify that. If Faubus or Eastland don’t outright run against you for this, you might actually lose the region to a man that signed a goddamned Civil Rights Act. The party might never recover, Frank, I’m being dead serious. Please don’t actually consider this bastard.</p>","candidate_score":1,"running_mate":true,"scrollable":false,"partner":"3"}},{"model":"campaign_trail.candidate","pk":79,"fields":{"first_name":"Clarence","last_name":"Manion","election":9,"party":"American","state":"Indiana","priority":1,"description":"<div style='overflow-y:scroll;height:200px;'><p><i><b>NOT PLAYABLE. FOR CONTEXT ONLY.</b></i></p><p>’’<i>Never before in the history of the human race has atheism-naked, materialistic, power-hungry, activated atheism-ever mounted its horse and started to ride across the world and do it so successfully. Communism is this activation of atheism. This is the personalization of anti-God. This is Armageddon.</i>’’</i></p><p>Clarence 'Pat' Manion, now renowned for his radio and television show, the Manion Forum, first entered politics in the 1930s as a liberal law professor at Notre Dame and a veteran of the Great War. He was a vocal supporter of Franklin Roosevelt's New Deal Coalition, and an academic. But by the Truman-Eisenhower years, however, he had risen to the position of Dean at Notre Dame and become a prominent, sometimes bombastic, figure on the American hard right.<br><br>From his involvement with the America First Committee to a brief stint in the Eisenhower administration, and now through his presence on television and radio, Manion has emerged as somewhat of a celebrity. Known for his unwavering, sometimes conspiratorial anti-communism and opposition to federal overreach, he has garnered attention in recent years for backing and occasionally organizing third-party presidential bids. His influence reached a peak during the current election cycle, particularly when he lent his guidance to Orval Faubus’s presidential campaign, which made waves with strong performances in the Democratic primaries and at the convention. Manion also used his platform to advocate for the 'Drop Nixon' campaign within hard-right circles.<br><br>After Governor Faubus opted out of a third-party presidential bid, Manion entered the race himself. Running under the newly formed 'American Party' label, his name is appearing on the ballot as the 'States Rights Democratic' party candidate in the Deep South, while in other states, he runs as an Independent or 'American' candidate. Manion aims to represent 'the invisible man' across the nation. While his campaign officially challenges the perceived dominance of the 'Nixon-Johnson uniparty' and calls for a return to conservative, constitutional principles, it also seeks to unite Taftite Republicans, and Southern Democrats—a move plainly viewed as an opportunistic effort to undermine the Clement campaign in the South.","color_hex":"#f28c28","secondary_color_hex":null,"is_active":1,"image_url":"https://i.imgur.com/okn7kaF.png","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":null,"candidate_score":1,"running_mate":false,"scrollable":false}},{"model":"campaign_trail.candidate","pk":89,"fields":{"first_name":"Ross","last_name":"Barnett","election":9,"party":"American","state":"Mississipi","priority":1,"description":"<div style='overflow-y:scroll;height:200px;'><p><i>’’Gentlemen, you are trampling on the sovereignty of this great state.... You are destroying the Constitution of this great nation.... May God have mercy on your souls.’’</i></p><p><p><p>Ross Barnett, who made his name as a charismatic and successful trial lawyer, catapulted to the Governorship of Mississippi in 1960 on a staunchly segregationist and white supremacist platform. Barnett's aggressive and occasionally militaristic tactics in handling civil rights campaigns across the South drew significant media attention, and made him one of the most prominent of the Dixiecrat Governors. Picking him would obviously endure your campaign to segregationists in Mississippi, but also throughout the entire region.</p><p>Governor Barnett emerged as a steadfast ally during this year's Democratic primaries and convention, staunchly backing Orval Faubus. Notably, he was among the prominent office holders who attended the relatively ragtag 'American Party' convention, where you were just nominated, and to have officially joined the party. Privately, Barnett has already assured you of his commitment to joining, and campaigning for your ticket as the running mate. With both your and Barnett's celebrity status, there's a tangible opportunity to transcend the fringes and become a real factor in this year's presidential election.</p>","color_hex":"#0000ff","secondary_color_hex":null,"is_active":0,"image_url":"https://i.imgur.com/E8BgLIz.png","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":"<div style='overflow-y:scroll;height:200px;'><p><i>’’Gentlemen, you are trampling on the sovereignty of this great state.... You are destroying the Constitution of this great nation.... May God have mercy on your souls.’’</i></p><p><p><p>Ross Barnett, who made his name as a charismatic and successful trial lawyer, catapulted to the Governorship of Mississippi in 1960 on a staunchly segregationist and white supremacist platform. Barnett's aggressive and occasionally militaristic tactics in handling civil rights campaigns across the South drew significant media attention, and made him one of the most prominent of the Dixiecrat Governors. Picking him would obviously endure your campaign to segregationists in Mississippi, but also throughout the entire region.</p><p>Governor Barnett emerged as a steadfast ally during this year's Democratic primaries and convention, staunchly backing Orval Faubus. Notably, he was among the prominent office holders who attended the relatively ragtag 'American Party' convention, where you were just nominated. Privately, Barnett has already assured you of his commitment to joining, and campaigning for your ticket as the running mate. With both your and Barnett's celebrity status, there's a tangible opportunity to transcend the fringes and become a real factor in this year's presidential election.</p>","candidate_score":1,"running_mate":true,"scrollable":false,"partner":"7"}},{"model":"campaign_trail.candidate","pk":299,"fields":{"first_name":"Other","last_name":"Candidates","election":9,"party":"Other","state":"Other","priority":1,"description":"Other People. Smaller parties.","color_hex":"#74c365","secondary_color_hex":null,"is_active":0,"image_url":"../static/images/barack-obama-2012.jpg","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":null,"candidate_score":1,"running_mate":false,"scrollable":false}},{"model":"campaign_trail.candidate","pk":1011,"fields":{"first_name":"Other","last_name":"Candidates","election":9,"party":"Smaller Party","state":"Smaller","priority":1,"description":"Tiny man","color_hex":"#0000ff","secondary_color_hex":null,"is_active":0,"image_url":"../static/images/barack-obama-2012.jpg","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":"Tiny man","candidate_score":1,"running_mate":true,"scrollable":false,"partner":"9"}}];e.running_mate_json = [{"model":"campaign_trail.running_mate","pk":2001,"fields":{"candidate":77,"running_mate":81}},{"model":"campaign_trail.running_mate","pk":2003,"fields":{"candidate":78,"running_mate":85}},{"model":"campaign_trail.running_mate","pk":2004,"fields":{"candidate":78,"running_mate":1006}},{"model":"campaign_trail.running_mate","pk":2005,"fields":{"candidate":78,"running_mate":1007}},{"model":"campaign_trail.running_mate","pk":2006,"fields":{"candidate":79,"running_mate":89}},{"model":"campaign_trail.running_mate","pk":2007,"fields":{"candidate":299,"running_mate":89}}];
+
+campaignTrail_temp.opponents_default_json = JSON.parse("[{\"election\": 20, \"candidates\": [201, 202, 203, 200]},{\"election\": 16, \"candidates\": [167, 168, 166, 165]},{\"election\": 3, \"candidates\": [19, 18, 17, 16]},{\"election\": 9, \"candidates\": [77, 78, 79, 299]},{\"election\": 15, \"candidates\": [154, 155, 152, 153]},{\"election\": 10, \"candidates\": [93, 94, 91, 92]},{\"election\": 4, \"candidates\": [25, 24, 23]},{\"election\": 11, \"candidates\": [107, 105, 106]},{\"election\": 12, \"candidates\": [116, 118, 119, 117]},{\"election\": 14, \"candidates\": [143, 145, 144, 142]},{\"election\": 5, \"candidates\": [22, 20, 21]},{\"election\": 8, \"candidates\": [69, 70, 67, 68]},{\"election\": 13, \"candidates\": [133, 134, 132, 131]}]");
+
+function addDynamicCSS() {
+    var css = `
+        .inner_window_question h3 .mytooltip{
+            background-color: lightskyblue;
+        }
+
+        .mytooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            background-color: lightblue;
+        }
+
+        .mytooltip .mytooltiptext {
+            width: 240px;
+            background-color: lightblue;
+            color: black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 99;
+            bottom: 20%;
+            left: 20%;
+            margin-left: -90px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border: 1px solid black;
+            pointer-events: none;
+            font-size: 13px !important;
+            line-height: 1.5em !important;
+            font-weight: normal !important;
+            font-style: normal !important;
+        }
+
+        .mytooltip .mytooltiptext img {
+            max-width: 240px;
+            height: auto;
+        }
+
+        .mytooltip:hover .mytooltiptext {
+            opacity: 1;
+            transition-delay: 0.5s;
+        }
+    `;
+
+    var styleElem = document.createElement('style');
+    styleElem.type = 'text/css';
+    
+    styleElem.appendChild(document.createTextNode(css));
+    
+    document.head.appendChild(styleElem);
+}
+
+
+addDynamicCSS();
+
+tooltipList = [
+    {searchString: "silver", explanationText: "A metal that is valuable, but less so than gold"},
+    {searchString: "gold", explanationText: "A metal that is more valuable than silver"},
+	{searchString: "smurfy grin", explanationText: "<img src=https://cdn.discordapp.com/attachments/1131296206908301423/1138054729604284446/schlumpf.png> :3"}
+        
+];
+
+campaignTrail_temp.opponents_weighted_json = JSON.parse("[{\"election\": 20, \"candidates\": [201, 200, 202, 203]},{\"election\": 16, \"candidates\": [165, 166, 167, 168]},{\"election\": 3, \"candidates\": [16, 17, 18, 19]},{\"election\": 9, \"candidates\": [78, 77, 79, 299]},{\"election\": 15, \"candidates\": [153, 152, 154, 155]},{\"election\": 10, \"candidates\": [91, 92, 93]},{\"election\": 4, \"candidates\": [24, 25]},{\"election\": 11, \"candidates\": [105, 106, 107]},{\"election\": 12, \"candidates\": [116, 117, 118, 119]},{\"election\": 14, \"candidates\": [142, 143, 144, 145]},{\"election\": 5, \"candidates\": [21, 20, 22]},{\"election\": 8, \"candidates\": [68, 67, 69, 70]},{\"election\": 13, \"candidates\": [131, 134, 132, 133]}]");        
+
+
+
+HistHexcolour=["#b22b27","#1E48D7","#f28c28","#74C365"]; HistName=[" Richard Nixon"," Frank Clement"," Clarence Manion"," Other Candidates"]; HistEV=[433,90,15,0]; HistPV=["36,446,853","31,793,142","2,710,447","312,031"]; HistPVP=["51.2%","44.6%","3.8%","0.4%"];
+
+var thing = setInterval(() => {
+        if (campaignTrail_temp.candidate_state_multiplier_json && campaignTrail_temp.candidate_state_multiplier_json.map(f=>f.fields.candidate).indexOf(299) < 0) {
+                campaignTrail_temp.opponents_list.pop();
+                window.clearInterval(thing);
+        }
+}, 100);
