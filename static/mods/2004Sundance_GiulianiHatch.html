@@ -115,28 +115,6 @@ cyoAdventure = function (a) {
         sept11++;
     }
 }
-// Achievement processing-specific functions
-ach = (achievement) => {
-    if(campaignTrail_temp.difficulty_level_multiplier<=0.97 && campaignTrail_temp.CTS){
-        unlockAchievement(achievement);
-    }
-}
-stcount = function(st, cid) {
-    let j = 0;
-    campaignTrail_temp.final_state_results.forEach((s) => {if(s["result"][0]["candidate"]==cid){if(st.includes(s["state"])){j++;}}})
-    console.log(j);
-    if(j==st.length){
-        return true;
-    }
-    return false;
-}
-// Endings image function
-imggg = function(sr) {
-    imgg = document.getElementsByClassName("person_image")[0];
-        if (imgg != null) {
-            imgg.src = sr;
-        }
-}
 // Endings image function
 imggg = function(sr) {
     imgg = document.getElementsByClassName("person_image")[0];
@@ -153,6 +131,21 @@ endingPicker = (out, totv, aa, quickstats) => {
     //quickstats = relevant data on candidate performance (format: your candidate's electoral vote count, your candidate's popular vote share, your candidate's raw vote total)
     let pva = aa[0]["popular_votes"]
     pva = pva/totv
+    // Achievement processing-specific functions
+    ach = (achievement) => {
+        if(campaignTrail_temp.difficulty_level_multiplier<=0.97 && campaignTrail_temp.CTS){
+            unlockAchievement(achievement);
+        }
+    }
+    stcount = function(st, cid) {
+        let j = 0;
+        campaignTrail_temp.final_state_results.forEach((s) => {if(s["result"][0]["candidate"]==cid){if(st.includes(s["state"])){j++;}}})
+        console.log(j);
+        if(j==st.length){
+            return true;
+        }
+        return false;
+    }
     // More achievement handling
     if(out=="win" && campaignTrail_temp.difficulty_level_multiplier<=0.9){
         ach("Not Because It Is Easy");
