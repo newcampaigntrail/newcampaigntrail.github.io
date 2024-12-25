@@ -1340,11 +1340,13 @@ function divideElectoralVotesProp(e, t) {
         return;
     }
 
+    e.answer_count = 4;
+
     const o = (t, e = campaignTrail_temp) => {
         for (var i = [], a = 0; a < e.answers_json.length && (e.answers_json[a].fields.question != e.questions_json[e.question_number].pk || (i.push({
                 key: a,
                 order: Math.random()
-            }), 4 != i.length)); a++);
+            }), e.answer_count != i.length)); a++);
         P(i, "order");
         var s = "";
         for (a = 0; a < i.length; a++) s += '<input type="radio" name="game_answers" class="game_answers"             id="game_answers[' + a.toString() + ']" value="' + e.answers_json[i[a].key].pk + '"/>\t\t    <label for="game_answers[' + a.toString() + ']">' + e.answers_json[i[a].key].fields.description + "</label><br>";
