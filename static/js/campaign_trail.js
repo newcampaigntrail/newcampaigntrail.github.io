@@ -1,6 +1,24 @@
 e=campaignTrail_temp
 e.shining_data = {}
 
+let baseScenarioDict = {
+    "1844":"1844_Clay_Fillmore.html",
+    "1860":"1860_Douglas_Guthrie.html",
+    "1896":"1896_Bryan_Boies.html",
+    "1916":"1916_Hughes_Burkett.html",
+    "1948":"1948_Dewey_Bricker.html",
+    "1960":"1960_Kennedy_Humphrey.html",
+    "1964":"1964_Goldwater_Miller.html",
+    "1968":"1968_Humphrey_Connally.html",
+    "1976":"1976_Carter_Church.html",
+    "1988":"1988_Bush_Dole.html",
+    "2000":"2000_Bush_Cheney.html",
+    "2012":"2012_Obama_Clinton.html",
+    "2016":"2016_Clinton_Booker.html",
+    "2016a":"2016a_Clinton_Booker.html",
+    "2020":"2020_Biden_Bass.html"
+}
+
 evaluate = (code) => {
     eval(code);
 }
@@ -1586,29 +1604,7 @@ function divideElectoralVotesProp(e, t) {
                 if (real) {
                     return yearbit + "_" + lastnamebit + "_" + veeplastname + ".html"
                 }
-                // corrects pairing if haven't returned yet
-
-                // corrects cand
-                realCandidates = ree.candidate_json.filter(f=>f.fields.is_active>0).map(f=>f.pk)
-                currCandData = copy(e.candidate_json[e.candidate_json.map(f=>f.pk).indexOf(Number(cand))]) // gets current candidate json data
-
-                if (!realCandidates.includes(Number(cand))) {
-                    alert(`Error Loading Code 2: Cannot find candidate with PK ${Number(cand)}! Please make sure your candidate PKs are consistent between Code 1 and Code 2.`)
-                    window.location.reload()
-                } else {
-                    fakeId = cand
-                }
-
-                // ensures correct running mate
-
-                correctPair = ree.running_mate_json[ree.running_mate_json.map(f=>f.fields.candidate).indexOf(Number(fakeId))]
-                correctRunningMate = correctPair.fields.running_mate
-                correctIndex = ree.candidate_json.map(f=>f.pk).indexOf(correctRunningMate)
-                oldRM = e.candidate_json[e.candidate_json.map(f=>f.pk).indexOf(Number(running_mate))]
-                veeplastname = ree.candidate_json[correctIndex].fields.last_name
-                e.candidate_json[correctIndex] = oldRM //sets to new RM (lmao this is such a fucking stupid solution)
-
-                return yearbit + "_" + lastnamebit + "_" + veeplastname + ".html"
+                return baseScenarioDict[yearbit]
             } else {
                 return campaignTrail_temp.election_json[findFromPK(campaignTrail_temp.election_json, id)].fields.year + "_" + campaignTrail_temp.candidate_json[findFromPK(campaignTrail_temp.candidate_json, cand)].fields.last_name + "_" + campaignTrail_temp.candidate_json[findFromPK(campaignTrail_temp.candidate_json, running_mate)].fields.last_name + ".html"
             }
