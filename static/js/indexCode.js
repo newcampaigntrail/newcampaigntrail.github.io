@@ -503,7 +503,6 @@ nct_stuff.themes = {
         coloring_window: "#ffffff",
         coloring_container: "#326942",
         coloring_title: "#326942",
-        text_col: "white"
     },
     "custom": {
         name: "Custom",
