@@ -496,6 +496,15 @@ nct_stuff.themes = {
         window_url: "../static/images/celesteimgbg.png",
         coloring_title: "#260c55"
     },
+    "carter": {
+        name: "Carter",
+        background: "https://i.imgur.com/pcmPlA7.jpeg",
+        banner: "https://i.imgur.com/lXxBoP4.png",
+        coloring_window: "#ffffff",
+        coloring_container: "#326942",
+        coloring_title: "#326942"
+        text_col: "white"
+    },
     "custom": {
         name: "Custom",
         background: "",
