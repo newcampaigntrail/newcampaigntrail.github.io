@@ -15242,7 +15242,7 @@ construct = (a = 1) => {
                 <span style="font-size: 24px; text-decoration: underline;">Barnburner</span>
             </h3>
             <p style="text-align: left; font-size: 15px; color: black;">
-                Well, this one certainly wasn’t on the cards. The election is headed to the House of Representatives, and unless something very surprising happens, you’re likely to leave office come January. You could fight for every House vote, but the outcome will almost certainly be Sarah Palin in the White House with Vice President Evan Bayh. It’s almost enough to make you laugh—if you weren’t already crying. A thought creeps in: perhaps you should concede and ask some electors to switch to Palin to avoid the final humiliation, or maybe it would be better to watch her flail and, in four years, who knows?
+            What happens now? I don’t know, is it written down anywhere? A tie? I didn’t even know this was possible, hold on let me Google it. – Yep says here that the House will vote for President and the Senate for the Vice President. That means .. I guess it means that, you won? Yep you won. Crap that means you’ll be moving in to the west wing, and need to assemble a cabinet and then be President for 4 years, who could have though huh, you ... President. So I suppose a congratulations are in order, so go ahead and crack open the champagne with all luck come January you’ll be working across the hall from Evan Bayh. This is, certainly unusual but I’m sure you’ll find some kind of accommodation, get to know one another because if you don’t it will probably be an uncomfortable 4 years.
             </p>
             `);
             e.executable.push([0, (() => {e.image = 'https://i.imgur.com/QMBLu5o.png'})]);
@@ -15287,18 +15287,21 @@ construct = (a = 1) => {
 let unlockedAchievements = JSON.parse(localStorage.getItem("unlockedAch")) || {};
 
 function ctsAchievement(title, imageUrl, soundUrl, description, difficultyChecker = true) {
-    if (cheatsActive) {
-        console.log(`Cannot unlock '${title}' because cheats are active!`);
-        return;  // Prevent unlocking achievements if cheats are active
-    }
-    if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier <= 1) || !difficultyChecker) {
-        if (campaignTrail_temp.CTS) {
-            // Check both localStorage and the original unlocked achievements list
-            if (!unlockedAchievements[title] && !campaignTrail_temp.unlockedAch?.[title]) {
-                unlockedAchievements[title] = true;
-                localStorage.setItem("unlockedAch", JSON.stringify(unlockedAchievements));
-                GetAchievement(title, title, imageUrl, soundUrl, description);
-                addAllAchievements();  // Update the UI if necessary
+    if(campaignTrail_temp.CTS) {
+    
+        if (cheatsActive) {
+            console.log(`Cannot unlock '${title}' because cheats are active!`);
+            return;  // Prevent unlocking achievements if cheats are active
+        }
+        if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier <= 1) || !difficultyChecker) {
+            if (campaignTrail_temp.CTS) {
+                // Check both localStorage and the original unlocked achievements list
+                if (!unlockedAchievements[title] && !campaignTrail_temp.unlockedAch?.[title]) {
+                    unlockedAchievements[title] = true;
+                    localStorage.setItem("unlockedAch", JSON.stringify(unlockedAchievements));
+                    GetAchievement(title, title, imageUrl, soundUrl, description);
+                    addAllAchievements();  // Update the UI if necessary
+                }
             }
         }
     }

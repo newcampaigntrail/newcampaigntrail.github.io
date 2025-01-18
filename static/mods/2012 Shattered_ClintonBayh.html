@@ -11895,18 +11895,21 @@ construct = (a = 1) => {
 let unlockedAchievements = JSON.parse(localStorage.getItem("unlockedAch")) || {};
 
 function ctsAchievement(title, imageUrl, soundUrl, description, difficultyChecker = true) {
-    if (cheatsActive) {
-        console.log(`Cannot unlock '${title}' because cheats are active!`);
-        return;  // Prevent unlocking achievements if cheats are active
-    }
-    if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier <= 1) || !difficultyChecker) {
-        if (campaignTrail_temp.CTS) {
-            // Check both localStorage and the original unlocked achievements list
-            if (!unlockedAchievements[title] && !campaignTrail_temp.unlockedAch?.[title]) {
-                unlockedAchievements[title] = true;
-                localStorage.setItem("unlockedAch", JSON.stringify(unlockedAchievements));
-                GetAchievement(title, title, imageUrl, soundUrl, description);
-                addAllAchievements();  // Update the UI if necessary
+    if(campaignTrail_temp.CTS) {
+    
+        if (cheatsActive) {
+            console.log(`Cannot unlock '${title}' because cheats are active!`);
+            return;  // Prevent unlocking achievements if cheats are active
+        }
+        if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier <= 1) || !difficultyChecker) {
+            if (campaignTrail_temp.CTS) {
+                // Check both localStorage and the original unlocked achievements list
+                if (!unlockedAchievements[title] && !campaignTrail_temp.unlockedAch?.[title]) {
+                    unlockedAchievements[title] = true;
+                    localStorage.setItem("unlockedAch", JSON.stringify(unlockedAchievements));
+                    GetAchievement(title, title, imageUrl, soundUrl, description);
+                    addAllAchievements();  // Update the UI if necessary
+                }
             }
         }
     }

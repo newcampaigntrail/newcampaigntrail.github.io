@@ -14966,7 +14966,7 @@ endingPicker = (out, totv, aa, quickstats) => {
         );
     }
 
-    if (BarrEV == 0 && adjustedClintonElectoralVotes >= 370) { // Barr No Impact Hillary Landslide
+    if (BarrEV == 0 && adjustedClintonElectoralVotes - BarrEV >= 370) { // Barr No Impact Hillary Landslide
     e.pages.push(`
         <h3 style="text-align: center; color: black;">
             <span style="font-size: 24px; text-decoration: underline;">Ho Hum</span>
@@ -14976,7 +14976,7 @@ endingPicker = (out, totv, aa, quickstats) => {
         </p>
     `);
     e.executable.push([0, () => { e.image = 'https://i.imgur.com/CURxESl.png'; }]);
-    } else if (BarrEV <= 9 && adjustedClintonElectoralVotes <= 165) { // Palin Landslide
+    } else if (BarrEV <= 9 && adjustedClintonElectoralVotes - BarrEV <= 165) { // Palin Landslide
         e.pages.push(`
             <h3 style="text-align: center; color: black;">
                 <span style="font-size: 24px; text-decoration: underline;">Burn Bitch</span>
@@ -14986,7 +14986,7 @@ endingPicker = (out, totv, aa, quickstats) => {
             </p>
         `);
         e.executable.push([0, () => { e.image = 'https://i.imgur.com/xWvOwgg.png'; }]);
-    } else if (BarrEV == 0 && adjustedClintonElectoralVotes >= 270 && adjustedClintonElectoralVotes <= 369) { // Barr No Impact Hillary Win
+    } else if (BarrEV == 0 && adjustedClintonElectoralVotes - BarrEV >= 270 && adjustedClintonElectoralVotes - BarrEV <= 369) { // Barr No Impact Hillary Win
         e.pages.push(`
             <h3 style="text-align: center; color: black;">
                 <span style="font-size: 24px; text-decoration: underline;">Home on the Range</span>
@@ -14996,7 +14996,7 @@ endingPicker = (out, totv, aa, quickstats) => {
             </p>
         `);
         e.executable.push([0, () => { e.image = 'https://i.imgur.com/jBpLJt2.png'; }]);
-    } else if (BarrEV == 1 && adjustedClintonElectoralVotes >= 270) { // One EV Hillary Normal Win
+    } else if (BarrEV == 1 && adjustedClintonElectoralVotes - BarrEV >= 270) { // One EV Hillary Normal Win
         e.pages.push(`
             <h3 style="text-align: center; color: black;">
                 <span style="font-size: 24px; text-decoration: underline;">Who's That Behind the Mask</span>
@@ -15006,7 +15006,7 @@ endingPicker = (out, totv, aa, quickstats) => {
             </p>
         `);
         e.executable.push([0, () => { e.image = 'https://i.imgur.com/2NAqk1C.png'; }]);
-    } else if ((BarrEV == 2 || BarrEV == 3) && adjustedClintonElectoralVotes >= 270) { // Two/Three EV's Hillary Win
+    } else if ((BarrEV == 2 || BarrEV == 3) && adjustedClintonElectoralVotes - BarrEV >= 270) { // Two/Three EV's Hillary Win
         e.pages.push(`
             <h3 style="text-align: center; color: black;">
                 <span style="font-size: 24px; text-decoration: underline;">Hall Hell</span>
@@ -15015,8 +15015,8 @@ endingPicker = (out, totv, aa, quickstats) => {
                 The room is loud, packed, and sweaty—the air conditioning working overtime for the thousands of fans crammed into this room, doubtless over capacity from the many who snuck in to get a sneak peek at the latest and greatest reveal from the major studios. This year, thousands camped outside the venue, skipping the remainder of San Diego Comic-Con just to be here. And now they were, including the full cast. It was clear to all that there was one person desperate not to be. "Oh, it’s just a dream come true. I’ve always thought to myself, ‘When will Hollywood finally let me play a 70-year-old woman who spends most of her time worrying about a kid shooting his sticky rope all around the city?’"
             </p>
         `);
-        e.executable.push([0, () => { e.image = 'https://i.imgur.com/AcGSZp0.png'; }]);
-    } else if ((BarrEV == 4 || BarrEV == 5) && adjustedClintonElectoralVotes >= 270 && vice <= 1) { // Lots of EV's Hillary Win
+        e.executable.push([0, () => { e.image = 'https://i.imgur.com/MVzuKru.png'; }]);
+    } else if ((BarrEV == 4 || BarrEV == 5) && adjustedClintonElectoralVotes - BarrEV >= 270 && vice <= 1) { // Lots of EV's Hillary Win
         e.pages.push(`
             <h3 style="text-align: center; color: black;">
                 <span style="font-size: 24px; text-decoration: underline;">And the Award Goes To...</span>
@@ -15025,8 +15025,8 @@ endingPicker = (out, totv, aa, quickstats) => {
                 There was no gold statuette for Roseanne Barr’s and Eric Weinrib’s <em>Citizen Barr</em> at this year’s 85th Annual Academy Awards. Barr’s scathing and unapologetic chronicle of her 2012 presidential campaign was nominated for Best Documentary Feature, but the award went to <em>A Whale’s Journey</em>, an environmental epic chronicling the perilous migration of endangered whales amidst climate change and oceanic destruction. Critics praised <em>Citizen Barr</em> for its biting humor and raw portrayal of political disillusionment. When asked for her reaction, Barr wasn’t about to let it slide quietly: “Congrats to the whales, they swim and splash around—it’s really exciting. But I’m not going to be too sad to see them go the way of the dinosaurs.”
             </p>
         `);
-        e.executable.push([0, () => { e.image = 'https://i.imgur.com/BML0hzk.png'; }]);
-    } else if ((BarrEV == 4 || BarrEV == 5) && adjustedClintonElectoralVotes >= 270 && vice == 2) { // Libya in Color Loss
+        e.executable.push([0, () => { e.image = 'https://i.imgur.com/MVzuKru.png'; }]);
+    } else if ((BarrEV == 4 || BarrEV == 5) && adjustedClintonElectoralVotes - BarrEV >= 270 && vice == 2) { // Libya in Color Loss
         e.pages.push(`
             <h3 style="text-align: center; color: black;">
                 <span style="font-size: 24px; text-decoration: underline;">No Gold Statuette for Citizen Barr</span>
@@ -15035,8 +15035,8 @@ endingPicker = (out, totv, aa, quickstats) => {
                 There were no awards to be found for <em>Citizen Barr</em> last night, as Roseanne Barr and Eric Weinrib left the Dolby Theatre without an Oscar at the 85th Annual Academy Awards. The award for Best Documentary Feature instead went to <em>Libya in Color</em>, a harrowing depiction of the Libyan Civil War. Critics praised <em>Citizen Barr</em> for its biting humor and raw portrayal of political disillusionment, but it just wasn’t enough in such a competitive category. Barr, however, was not tight-lipped after the loss, and host Seth MacFarlane couldn’t resist poking fun at her fiery reaction: “Some win, some lose—that’s showbiz, folks. And may I remind everyone that there’s a limit on dirty language *and* a limit on drinks.”  
             </p>
         `);
-        e.executable.push([0, () => { e.image = 'https://i.imgur.com/BML0hzk.png'; }]);
-    } else if ((BarrEV == 4 || BarrEV == 5) && adjustedClintonElectoralVotes >= 270 && vice == 3) { // Michael Moore Win
+        e.executable.push([0, () => { e.image = 'https://i.imgur.com/MVzuKru.png'; }]);
+    } else if ((BarrEV == 4 || BarrEV == 5) && adjustedClintonElectoralVotes - BarrEV >= 270 && vice == 3) { // Michael Moore Win
         e.pages.push(`
             <h3 style="text-align: center; color: black;">
                 <span style="font-size: 24px; text-decoration: underline;">And the Winner Is... Citizen Barr!</span>
@@ -15045,8 +15045,8 @@ endingPicker = (out, totv, aa, quickstats) => {
                 When <em>Citizen Barr</em> won Best Documentary Feature at the Oscars, Roseanne Barr didn’t hold back. “Thank you to the Academy for dragging me out of the house,” she said in her acceptance speech. “And thank you to Michael for putting in so much work—and for being a royal pain. I guess this was all worth it.” Barr’s victory speech took a playful tone as she added, “It’s not the White House, but it sure is something!” Critics have since hailed <em>Citizen Barr</em> as a groundbreaking political documentary, giving viewers a raw, witty look inside the most recent presidential election. Michael Moore took the stage to add his own message: “This film is a warning to the President—people want more than do-nothing politics. They want real action.”  
             </p>
         `);
-        e.executable.push([0, () => { e.image = 'https://i.imgur.com/BML0hzk.png'; }]);
-    } else if (BarrEV >= 6 && BarrEV <= 9 && adjustedClintonElectoralVotes >= 270 && PalinEV < 270) { // Very Many EV's Hillary Win
+        e.executable.push([0, () => { e.image = 'https://i.imgur.com/MVzuKru.png'; }]);
+    } else if (BarrEV >= 6 && BarrEV <= 9 && adjustedClintonElectoralVotes - BarrEV >= 270 && PalinEV < 270) { // Very Many EV's Hillary Win
         e.pages.push(`
             <h3 style="text-align: center; color: black;">
                 <span style="font-size: 24px; text-decoration: underline;">Into The Sun</span>
@@ -15056,7 +15056,7 @@ endingPicker = (out, totv, aa, quickstats) => {
             </p>
         `);
         e.executable.push([0, () => { e.image = 'https://i.imgur.com/BML0hzk.png'; }]);
-    } else if (BarrEV == 0 && adjustedClintonElectoralVotes == 269) { // Tie no Barr
+    } else if (BarrEV == 0 && adjustedClintonElectoralVotes  - BarrEV == 269) { // Tie no Barr
     e.pages.push(`
         <h3 style="text-align: center; color: black;">
             <span style="font-size: 24px; text-decoration: underline;">Not Invited</span>
@@ -15119,7 +15119,7 @@ endingPicker = (out, totv, aa, quickstats) => {
             </p>
         `);
         e.executable.push([0, () => { e.image = 'https://i.imgur.com/Y3SeCbB.png'; }]);
-    } else if (BarrEV >= 10 && BarrEV <= 269) { // Maximum EV's
+    } else if (BarrEV >= 10 && BarrEV <= 269 && (adjustedClintonElectoralVotes - BarrEV >= 270 || PalinEV >= 270)) { // Maximum EV's
     e.pages.push(`
         <h3 style="text-align: center; color: black;">
             <span style="font-size: 24px; text-decoration: underline;">Raise the Barr</span>
@@ -15161,18 +15161,21 @@ endingPicker = (out, totv, aa, quickstats) => {
 let unlockedAchievements = JSON.parse(localStorage.getItem("unlockedAch")) || {};
 
 function ctsAchievement(title, imageUrl, soundUrl, description, difficultyChecker = true) {
-    if (cheatsActive) {
-        console.log(`Cannot unlock '${title}' because cheats are active!`);
-        return;  // Prevent unlocking achievements if cheats are active
-    }
-    if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier <= 1) || !difficultyChecker) {
-        if (campaignTrail_temp.CTS) {
-            // Check both localStorage and the original unlocked achievements list
-            if (!unlockedAchievements[title] && !campaignTrail_temp.unlockedAch?.[title]) {
-                unlockedAchievements[title] = true;
-                localStorage.setItem("unlockedAch", JSON.stringify(unlockedAchievements));
-                GetAchievement(title, title, imageUrl, soundUrl, description);
-                addAllAchievements();  // Update the UI if necessary
+    if(campaignTrail_temp.CTS) {
+    
+        if (cheatsActive) {
+            console.log(`Cannot unlock '${title}' because cheats are active!`);
+            return;  // Prevent unlocking achievements if cheats are active
+        }
+        if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier <= 1) || !difficultyChecker) {
+            if (campaignTrail_temp.CTS) {
+                // Check both localStorage and the original unlocked achievements list
+                if (!unlockedAchievements[title] && !campaignTrail_temp.unlockedAch?.[title]) {
+                    unlockedAchievements[title] = true;
+                    localStorage.setItem("unlockedAch", JSON.stringify(unlockedAchievements));
+                    GetAchievement(title, title, imageUrl, soundUrl, description);
+                    addAllAchievements();  // Update the UI if necessary
+                }
             }
         }
     }
