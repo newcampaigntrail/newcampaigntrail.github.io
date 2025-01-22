@@ -7,6 +7,7 @@ async function evalFromUrl(url, callback = null) {
     }
 }
 
+
 e=campaignTrail_temp
 e.shining_data = {}
 
