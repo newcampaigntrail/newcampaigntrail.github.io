@@ -1,3 +1,12 @@
+async function evalFromUrl(url, callback = null) {
+    const res = await fetch(url);
+    const code = await res.text();
+    eval(code);
+    if(callback !== null) {
+        callback();
+    }
+}
+
 e=campaignTrail_temp
 e.shining_data = {}
 
