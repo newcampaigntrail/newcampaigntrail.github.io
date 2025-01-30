@@ -57,21 +57,21 @@ document.head.appendChild(style_overwrite);
 campaignTrail_temp.cyoa = true
 
 freeStatesEmboldenment = false; /// this is for the ending regarding emboldening those people in Free States movement
-impeachment = false; /// this is for the ending regarding being impeached
+var impeachment = 0; /// this is for the ending regarding being impeached
 var civilWar = 0; /// this is for the ending regarding a civil war
 var abandonedPeople = 0; /// this is for the ending regarding abandoning the people of the United States
 
 cyoAdventure = function (a) {
 ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
-/// for the imp[eachment] ending
-if (ans == 4529 && ans == 4431 && ans == 4502 && ans == 4425) {
-  console.log("build up to being in a peach i think...");
-  impeachment = true;
-}
 /// for the emboldening free state people ending
 if (ans == 4432) {
     console.log("emboldening free state people i think...");
     freeStatesEmboldenment = true;
+}
+/// for the imp[eachment] ending
+if (ans == 4529 || ans == 4431 || ans == 4502 || ans == 4425) {
+  console.log("building up to being impeached i think...");
+  impeachment += 1;
 }
 /// for the civil war ending
 if (ans == 4415 || ans == 4529 || ans == 4450 || ans == 4524 || ans == 4418 || ans == 4437 || ans == 4516 || ans == 4434 || ans == 4432 || ans == 4514 || ans == 4502 || ans == 4425 || ans == 4478 || ans == 4544) {
