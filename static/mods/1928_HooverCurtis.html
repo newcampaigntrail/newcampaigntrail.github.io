@@ -1,3 +1,19 @@
+function ctsAchievement(achievement, difficultyChecker = true){
+	if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
+		if(campaignTrail_temp.CTS){
+		unlockAchievement(achievement);
+	}
+}
+
+const style_overwrite = document.createElement("style");
+style_overwrite.innerHTML = 
+`#campaign_sign {
+  background-color: #d46f5b;
+  border-color: #b13a1a;
+}`
+;
+document.head.appendChild(style_overwrite);
+
 campaignTrail_temp.questions_json = [
     {
         "model": "campaign_trail.question",
@@ -576,7 +592,7 @@ campaignTrail_temp.answers_json = [
         "pk": 8043,
         "fields": {
             "question": 4012,
-            "description": "My time at the Commission for Relief in Belgium helped feed millions during the Great War, and recieved support by both Democrats and Republicans."
+            "description": "My time at the Commission for Relief in Belgium helped feed millions during the Great War, and received support by both Democrats and Republicans."
         }
     },
     {
@@ -13140,7 +13156,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 8028,
             "candidate": 143,
-            "answer_feedback": "Sit back, let your surrogates do the talking, and win. It's a safe, simple strategy, but should work. This is what your advisors have been reccomending."
+            "answer_feedback": "Sit back, let your surrogates do the talking, and win. It's a safe, simple strategy, but should work. This is what your advisors have been recommending."
         }
     },
     {
@@ -13158,7 +13174,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 8030,
             "candidate": 143,
-            "answer_feedback": "Your limited speeches are well recieved, and minimize the opportunity to make some embarassing blunders. Sometimes, less is more."
+            "answer_feedback": "Your limited speeches are well received, and minimize the opportunity to make some embarassing blunders. Sometimes, less is more."
         }
     },
     {
@@ -13410,7 +13426,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 8058,
             "candidate": 143,
-            "answer_feedback": "Florida is very strongly against a anti-Prohibition Catholic from becoming President, so your visit is well recieved."
+            "answer_feedback": "Florida is very strongly against a anti-Prohibition Catholic from becoming President, so your visit is well received."
         }
     },
     {
@@ -13735,13 +13751,37 @@ campaignTrail_temp.player_answers = [];
 campaignTrail_temp.player_visits = [];
 campaignTrail_temp.answer_feedback_flg = 1;
 campaignTrail_temp.game_start_logging_id = '3668530';
+
+// checks for achievement
+var nice = 1;
+
+cyoAdventure = function (a) {
+    ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
+
+    if(ans == 8023 || ans == 8024 || ans == 8032 || ans == 8036 || ans == 8037 || ans == 8038 || ans == 8042 || ans == 8049 || ans == 8050 || ans == 8064 || ans == 8065 || ans == 8066){
+        nice -= 1;              
+    }
+
+}
+
+
 endingPicker = (out, totv, aa, quickstats) => {
 used=false
+
+if (quickstats[0] >= 470) { 
+    ctsAchievement("A Chicken in Every Pot");  
+}
+
+if (quickstats[0] >= 425 && nice >= 1) { 
+    ctsAchievement("Honest Hoover");  
+}
+
 //out = "win", "loss", or "tie" for your candidate
 //totv = total votes in entire election
 //aa = all final overall results data
 //quickstats = relevant data on candidate performance (format: your candidate's electoral vote count, your candidate's popular vote share, your candidate's raw vote total)
 if (quickstats[0] < 3) {
+    ctsAchievement("Herbert Loser");
     if (used != true) {
         setInterval(function () {
             used = true;
@@ -13753,8 +13793,10 @@ if (quickstats[0] < 3) {
     }
      return "<h3>'Archbishop Al Smith has an announcement to make!'</h3><p>That is what you hear on the radio, hiding in your home in California. After such an abysmal loss, no one wants to see your face again. What is Al Smith's announcement, you wonder?</p><p>'The Tunnel between the White House and the Vatican is now complete. This is a great step in uniting our nation!'</p><p>Where did it go wrong, you wonder? You were a celebrity, Al Smith was a Catholic - you should have won in a wipeout. But now, Al Smith's taken the nation downhill. You have no one to blame but yourself. Only our Protestant God can save us now.</p>";
 } else if (quickstats[0] >= 3 && quickstats[0]<110) {
+    ctsAchievement("Herbert Loser");
 return "<h3>Sorry, you have lost the 1928 election - and by a wide margin.</h3><p>This is certainly an upset, and an disastrous one. Governor Smith will be managing the economic prosperity of the next few years, likely with a large mandate. Coolidge - and Republicans are enraged and baffled at you for your loss, especially given the state of the nation. Was it prohibition? Was it a natural desire for change? Were Catholics a larger voting block?</p><p>You are still widely respected around the nation, and may end up in another cabinent in the future. The expectation is that William Borah is the frontrunner for the Republican nomination in 1932. Perhaps you could work to ensure you can work for his administration, although it is more likely you will be retiring.</p>"
 } else if (quickstats[0] >= 110 && quickstats[0]<266) {
+    ctsAchievement("Herbert Loser");
 return "<h3>Sorry, you have lost the 1928 election.</h3><p>This is certainly an upset, and an unfortunate one. Governor Smith will be managing the economic prosperity of the next few years. Coolidge - and Republicans are enraged at you for your loss, especially given the state of the nation.</p><p>You are still widely respected around the nation, and may end up in another cabinent in the future. The expectation is that William Borah is the frontrunner for the Republican nomination in 1932. Perhaps you could work to ensure you can work for his administration?</p>"
 } else if (quickstats[0] >= 266 && quickstats[0]<350) {
 return "<h3>Congratulations! You have won the 1928 election!</h3><p>This was to be expected, as your own personal popularity, mixed with Al Smith's catholic faith paved the way for a relatively easy win - although the margin was smaller than anticipated. You will continue the Republican domination of the 1920s, and you are expected to continue the course of these last few years</p><p>Hopefully, you can continue to maintain the economic growth of the last few years, and ensure the 1930s are just as prosperous as the 1920s. Many are excited to see what the next few years shall bring...</p>"
