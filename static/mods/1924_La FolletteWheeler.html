@@ -23490,25 +23490,28 @@ if (quickstats[1] >= 20) {
   ctsAchievement("One in Five");
 }
 
-if (noparty == true && aa[1].electoral_votes < 266 && aa[2].electoral_votes < 266 && aa[3].electoral_votes < 266) {
+if (noparty == true && aa[1].electoral_votes < 266) {
   ctsAchievement("He's All In");
 }
 
 if (aa[0].electoral_votes >= 266 && quickstats[0] >= 40) {
   ctsAchievement("The People's Voice");
 }
-if (aa[0].electoral_votes >= 266 && ans == 1689) {
+if (aa[0].electoral_votes >= 266 && noparty == false) {
   ctsAchievement("A Real Choice");
 }
 if (aa[0].electoral_votes < 266 && quickstats[0] >= 70) {
   ctsAchievement("A Visible Revolt");
 }
 
+if (quickstats[0] >= 266) {
+   ctsAchievement("Fighting Bob");
+}
+
 // Page 1
 
 // La Follette Wins
-if (aa[0].electoral_votes >= 266 && aa[0].candidate == 25) {
-  ctsAchievement("Fighting Bob");
+if (quickstats[0] >= 266) {
   e.pages.push(`<h3>'The will of the people shall be the law of the land'</h3><p>For your whole career, you have pushed for progressive policies, no matter how much ire it brought you from your political opponent. Tonight's stunning result is a vindication of yourself and everything you have fought for. You aren't even sure how long you shall be in office for, given your health, but you know that you shall push for bold and great reform.<br><br>Days, perhaps weeks pass as you wait for Coolidge to telegram you a concession. Eventually he does so. He also asks that you prepare yourself to enter the White House. You're pushing for your son to be appointed to your soon-to-be vacated Senate seat, as you begin preparations to form a cabinet. Here's to hoping you can make it through all four years, and that this independence from the duopoly is here to stay!</p>`)
   e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1924/endings/bobwin.png'})])
 }
