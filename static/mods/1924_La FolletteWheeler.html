@@ -22824,13 +22824,6 @@ var noparty = false;
 // This is where the actual CYOA code really is
 
 cyoAdventure = function (a) {
-
-  // Achievement Check
-  if(ans == 1683 && ans == 1776){
-    ctsAchievement("Molotov-Ribbentrop Pact");
-  }
-
-
     // This just makes the code look neater
     ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
     
@@ -22845,6 +22838,11 @@ cyoAdventure = function (a) {
     campaignTrail_temp.candidate_json[1]["fields"].first_name = "John W.";
     campaignTrail_temp.candidate_json[1]["fields"].last_name = "Davis";
   }
+
+    // Achievement Check
+    if(ans == 1683 && ans == 1776){
+        ctsAchievement("Molotov-Ribbentrop Pact");
+    }
 
 // Boolean checks
   if (ans == 1777 || ans == 1778 || ans == 11202) {
