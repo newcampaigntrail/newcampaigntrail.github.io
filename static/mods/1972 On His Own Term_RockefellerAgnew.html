@@ -1,32 +1,3 @@
-
-
-
-campaignTrail_temp.cyoa = true;
-
-function getQuestionNumberFromPk(pk) {
-    return campaignTrail_temp.questions_json.map(q=>q.pk).indexOf(pk)-1;
-}
-
-cyoAdventure = function (a) {
-    ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length-1];
-
-    if (ans == 9592) {
-        campaignTrail_temp.question_number = getQuestionNumberFromPk(9525);
-    }
-    else if (ans == 9595) {
-        campaignTrail_temp.question_number = getQuestionNumberFromPk(9525);
-    }
-    else if (ans == 9601) {
-        campaignTrail_temp.question_number = getQuestionNumberFromPk(9525);
-    }
-    else if (ans == 9602) {
-        campaignTrail_temp.question_number = getQuestionNumberFromPk(9525);
-    }
-    else {
-        return false;
-    }
-}
-
 campaignTrail_temp.questions_json = [
     {
         "model": "campaign_trail.question",
@@ -87,7 +58,7 @@ campaignTrail_temp.questions_json = [
         "pk": 254,
         "fields": {
             "priority": 1,
-            "description": "[1970] Your old friend Malcolm Wilson recently won a term as New York Governor himself by being a fiscal hawk. Advisors are recommending you pivot your presidency to match the changing times.\n",
+            "description": "[1970] Your old friend Malcolm Wilson recently won a term as New York Governor by being a fiscal hawk. Republicans aren't interested in your long “wish lists” in federal spending. Advisors are recommending you pivot your presidency to match the changing times.",
             "likelihood": 1
         }
     },
@@ -123,7 +94,7 @@ campaignTrail_temp.questions_json = [
         "pk": 260,
         "fields": {
             "priority": 2,
-            "description": "[February 1972] In public you seem like a hardened cold warrior, however Kissinger has pulled enough strings to get you a visit to China. Agnew makes his opposition to the plan clear, while Nixon holds some reservations. Will you go?",
+            "description": "[February 1972] In public you seem like a hardened cold warrior. However, Kissinger has pulled enough strings to get you a visit to China. Agnew makes his opposition to the plan clear, while Nixon holds some reservations. Will you go?",
             "likelihood": 1
         }
     },
@@ -354,7 +325,7 @@ campaignTrail_temp.answers_json = [
         "pk": 1685,
         "fields": {
             "question": 260,
-            "description": "I understand Ted and Dick's reservations and this will undoubtedly cause a rift with the right, but there is no opportunity more important than relaxing relations with Red China. I'm goin. Henry, make sure all the cameras are ready because this is a moment that everyone needs to see.\n"
+            "description": "I understand Ted and Dick's reservations and this will undoubtedly cause a rift with the right, but there is no opportunity more important than relaxing relations with Red China. Henry, make sure all the cameras are ready because this is a moment that everyone needs to see.\n"
         }
     },
     {
@@ -370,7 +341,7 @@ campaignTrail_temp.answers_json = [
         "pk": 1691,
         "fields": {
             "question": 262,
-            "description": "He's going on and on about how the war should be over, but the truth is that if the country was under his administration, he'd humiliate us with a hastily put-together withdrawal, further sinking the trust that our allies have in us."
+            "description": "In years as turbulent as ours, America needs a steady but decisive hand to lead us. Edmund Muskie is not that man. If the country was under his administration he'd humiliate us with a hastily put-together withdrawal."
         }
     },
     {
@@ -1042,7 +1013,7 @@ campaignTrail_temp.answers_json = [
         "pk": 9585,
         "fields": {
             "question": 262,
-            "description": "I'm concerned about Muskie's logistics. I'm concerned about his actual knowledge of the war. We have made it quite clear that, we have a plan and that said plan is working. More and more Americans come home every-year, and South Vietnamese resolve stands strong."
+            "description": "I'm concerned about Muskie's logistics. I'm concerned about his actual knowledge of the war. We have made it quite clear that we have a plan and that said plan is working. More and more Americans come home every year, and South Vietnamese resolve stands strong."
         }
     },
     {
@@ -1531,7 +1502,7 @@ campaignTrail_temp.states_json = [
         "fields": {
             "name": "North Dakota",
             "abbr": "ND",
-            "electoral_votes": 4,
+            "electoral_votes": 3,
             "popular_votes": 280514,
             "poll_closing_time": 300,
             "winner_take_all_flg": 1,
@@ -1635,7 +1606,7 @@ campaignTrail_temp.states_json = [
         "fields": {
             "name": "Tennessee",
             "abbr": "TN",
-            "electoral_votes": 0,
+            "electoral_votes": 10,
             "popular_votes": 1201182,
             "poll_closing_time": 120,
             "winner_take_all_flg": 1,
@@ -1812,7 +1783,7 @@ campaignTrail_temp.issues_json = [
         "model": "campaign_trail.issue",
         "pk": 13,
         "fields": {
-            "name": "Idealogy",
+            "name": "Ideology",
             "description": 0,
             "stance_1": "Segregationist",
             "stance_desc_1": 0,
@@ -1824,9 +1795,9 @@ campaignTrail_temp.issues_json = [
             "stance_desc_4": 0,
             "stance_5": "Moderate",
             "stance_desc_5": 0,
-            "stance_6": "Liberal",
+            "stance_6": "Leans Liberal",
             "stance_desc_6": 0,
-            "stance_7": "Very Liberal",
+            "stance_7": "Liberal",
             "stance_desc_7": 0,
             "election": 4
         }
@@ -2106,7 +2077,7 @@ campaignTrail_temp.state_issue_score_json = [
         "fields": {
             "state": 101,
             "issue": 13,
-            "state_issue_score": 0.05,
+            "state_issue_score": 0.75,
             "weight": 0.6
         }
     },
@@ -3456,7 +3427,7 @@ campaignTrail_temp.state_issue_score_json = [
         "fields": {
             "state": 128,
             "issue": 13,
-            "state_issue_score": 0.4,
+            "state_issue_score": 0.7,
             "weight": 1
         }
     },
@@ -3516,7 +3487,7 @@ campaignTrail_temp.state_issue_score_json = [
         "fields": {
             "state": 129,
             "issue": 14,
-            "state_issue_score": -0.4,
+            "state_issue_score": -0.5,
             "weight": 1
         }
     },
@@ -3526,7 +3497,7 @@ campaignTrail_temp.state_issue_score_json = [
         "fields": {
             "state": 129,
             "issue": 15,
-            "state_issue_score": -0.25,
+            "state_issue_score": -0.55,
             "weight": 1
         }
     },
@@ -3756,7 +3727,7 @@ campaignTrail_temp.state_issue_score_json = [
         "fields": {
             "state": 134,
             "issue": 13,
-            "state_issue_score": 0.25,
+            "state_issue_score": 0.75,
             "weight": 1
         }
     },
@@ -3876,7 +3847,7 @@ campaignTrail_temp.state_issue_score_json = [
         "fields": {
             "state": 136,
             "issue": 15,
-            "state_issue_score": -0.15,
+            "state_issue_score": -0.45,
             "weight": 0.5
         }
     },
@@ -4457,7 +4428,7 @@ campaignTrail_temp.candidate_issue_score_json = [
         "fields": {
             "candidate": 23,
             "issue": 13,
-            "issue_score": 0.1
+            "issue_score": 0.5
         }
     },
     {
@@ -6011,26 +5982,6 @@ campaignTrail_temp.answer_score_global_json = [
     },
     {
         "model": "campaign_trail.answer_score_global",
-        "pk": 775,
-        "fields": {
-            "answer": 1691,
-            "candidate": 23,
-            "affected_candidate": 23,
-            "global_multiplier": 0.002
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_global",
-        "pk": 777,
-        "fields": {
-            "answer": 1691,
-            "candidate": 23,
-            "affected_candidate": 24,
-            "global_multiplier": -0.01
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_global",
         "pk": 778,
         "fields": {
             "answer": 1692,
@@ -6251,52 +6202,12 @@ campaignTrail_temp.answer_score_global_json = [
     },
     {
         "model": "campaign_trail.answer_score_global",
-        "pk": 917,
-        "fields": {
-            "answer": 1782,
-            "candidate": 23,
-            "affected_candidate": 23,
-            "global_multiplier": 0.004
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_global",
-        "pk": 918,
-        "fields": {
-            "answer": 1782,
-            "candidate": 24,
-            "affected_candidate": 24,
-            "global_multiplier": -0.015
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_global",
-        "pk": 924,
-        "fields": {
-            "answer": 1788,
-            "candidate": 23,
-            "affected_candidate": 23,
-            "global_multiplier": 0.02
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_global",
         "pk": 928,
         "fields": {
             "answer": 1790,
             "candidate": 23,
             "affected_candidate": 23,
             "global_multiplier": -0.111
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_global",
-        "pk": 931,
-        "fields": {
-            "answer": 1791,
-            "candidate": 23,
-            "affected_candidate": 23,
-            "global_multiplier": 0.009
         }
     },
     {
@@ -6466,7 +6377,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 3233,
             "candidate": 25,
             "affected_candidate": 25,
-            "global_multiplier": 0.04
+            "global_multiplier": 0.01
         }
     },
     {
@@ -6484,16 +6395,6 @@ campaignTrail_temp.answer_score_global_json = [
         "pk": 8863,
         "fields": {
             "answer": 3292,
-            "candidate": 23,
-            "affected_candidate": 23,
-            "global_multiplier": -0.03
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_global",
-        "pk": 9042,
-        "fields": {
-            "answer": 9040,
             "candidate": 23,
             "affected_candidate": 23,
             "global_multiplier": -0.03
@@ -6621,16 +6522,6 @@ campaignTrail_temp.answer_score_global_json = [
     },
     {
         "model": "campaign_trail.answer_score_global",
-        "pk": 9315,
-        "fields": {
-            "answer": 1708,
-            "candidate": 23,
-            "affected_candidate": 23,
-            "global_multiplier": 0.02
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_global",
         "pk": 9358,
         "fields": {
             "answer": 1786,
@@ -6711,20 +6602,10 @@ campaignTrail_temp.answer_score_global_json = [
     },
     {
         "model": "campaign_trail.answer_score_global",
-        "pk": 9490,
-        "fields": {
-            "answer": 1784,
-            "candidate": 23,
-            "affected_candidate": 23,
-            "global_multiplier": 0.004
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_global",
         "pk": 9491,
         "fields": {
             "answer": 1784,
-            "candidate": 24,
+            "candidate": 23,
             "affected_candidate": 24,
             "global_multiplier": 0.009
         }
@@ -6807,16 +6688,6 @@ campaignTrail_temp.answer_score_global_json = [
             "candidate": 23,
             "affected_candidate": 23,
             "global_multiplier": -0.023
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_global",
-        "pk": 9584,
-        "fields": {
-            "answer": 9582,
-            "candidate": 23,
-            "affected_candidate": 24,
-            "global_multiplier": -0.021
         }
     },
     {
@@ -6914,31 +6785,11 @@ campaignTrail_temp.answer_score_issue_json = [
     },
     {
         "model": "campaign_trail.answer_score_issue",
-        "pk": 692,
-        "fields": {
-            "answer": 3231,
-            "issue": 12,
-            "issue_score": 0.03,
-            "issue_importance": 12
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_issue",
-        "pk": 693,
-        "fields": {
-            "answer": 3231,
-            "issue": 14,
-            "issue_score": 0,
-            "issue_importance": 12
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_issue",
         "pk": 694,
         "fields": {
             "answer": 3231,
-            "issue": 15,
-            "issue_score": -0.25,
+            "issue": 13,
+            "issue_score": -0.035,
             "issue_importance": 12
         }
     },
@@ -6947,19 +6798,9 @@ campaignTrail_temp.answer_score_issue_json = [
         "pk": 705,
         "fields": {
             "answer": 3235,
-            "issue": 15,
-            "issue_score": 0.022,
-            "issue_importance": 9
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_issue",
-        "pk": 706,
-        "fields": {
-            "answer": 3235,
             "issue": 13,
-            "issue_score": -0.004,
-            "issue_importance": 7
+            "issue_score": -0.022,
+            "issue_importance": 9
         }
     },
     {
@@ -6968,7 +6809,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "fields": {
             "answer": 3236,
             "issue": 13,
-            "issue_score": 0.023,
+            "issue_score": 0.007,
             "issue_importance": 7
         }
     },
@@ -7017,7 +6858,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "pk": 9070,
         "fields": {
             "answer": 1664,
-            "issue": 15,
+            "issue": 13,
             "issue_score": 0.03,
             "issue_importance": 0
         }
@@ -7027,8 +6868,8 @@ campaignTrail_temp.answer_score_issue_json = [
         "pk": 9071,
         "fields": {
             "answer": 1662,
-            "issue": 14,
-            "issue_score": 0.03,
+            "issue": 13,
+            "issue_score": -0.03,
             "issue_importance": 0
         }
     },
@@ -7058,8 +6899,8 @@ campaignTrail_temp.answer_score_issue_json = [
         "fields": {
             "answer": 3248,
             "issue": 15,
-            "issue_score": 0.001,
-            "issue_importance": 2
+            "issue_score": -0.02,
+            "issue_importance": 5
         }
     },
     {
@@ -7078,8 +6919,8 @@ campaignTrail_temp.answer_score_issue_json = [
         "fields": {
             "answer": 3249,
             "issue": 15,
-            "issue_score": -0.01,
-            "issue_importance": 2
+            "issue_score": -0.05,
+            "issue_importance": 5
         }
     },
     {
@@ -7099,7 +6940,7 @@ campaignTrail_temp.answer_score_issue_json = [
             "answer": 1708,
             "issue": 15,
             "issue_score": -0.03,
-            "issue_importance": 4
+            "issue_importance": 6
         }
     },
     {
@@ -7109,7 +6950,7 @@ campaignTrail_temp.answer_score_issue_json = [
             "answer": 1709,
             "issue": 15,
             "issue_score": 0.04,
-            "issue_importance": 4
+            "issue_importance": 6
         }
     },
     {
@@ -7119,7 +6960,7 @@ campaignTrail_temp.answer_score_issue_json = [
             "answer": 1710,
             "issue": 15,
             "issue_score": 0.03,
-            "issue_importance": 2
+            "issue_importance": 6
         }
     },
     {
@@ -7129,7 +6970,7 @@ campaignTrail_temp.answer_score_issue_json = [
             "answer": 1711,
             "issue": 15,
             "issue_score": -0.02,
-            "issue_importance": 4
+            "issue_importance": 6
         }
     },
     {
@@ -7138,7 +6979,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "fields": {
             "answer": 1786,
             "issue": 13,
-            "issue_score": 0.02,
+            "issue_score": 0.04,
             "issue_importance": 0
         }
     },
@@ -7150,16 +6991,6 @@ campaignTrail_temp.answer_score_issue_json = [
             "issue": 15,
             "issue_score": 0.07,
             "issue_importance": 2
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_issue",
-        "pk": 9495,
-        "fields": {
-            "answer": 9060,
-            "issue": 13,
-            "issue_score": 0.07,
-            "issue_importance": 0
         }
     },
     {
@@ -7177,7 +7008,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "pk": 9500,
         "fields": {
             "answer": 9499,
-            "issue": 11,
+            "issue": 13,
             "issue_score": 0.04,
             "issue_importance": 4
         }
@@ -7204,20 +7035,10 @@ campaignTrail_temp.answer_score_issue_json = [
     },
     {
         "model": "campaign_trail.answer_score_issue",
-        "pk": 9514,
-        "fields": {
-            "answer": 9059,
-            "issue": 13,
-            "issue_score": 0.04,
-            "issue_importance": 4
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_issue",
         "pk": 9607,
         "fields": {
             "answer": 8984,
-            "issue": 14,
+            "issue": 13,
             "issue_score": -0.06,
             "issue_importance": 3
         }
@@ -7239,7 +7060,7 @@ campaignTrail_temp.answer_score_issue_json = [
             "answer": 1691,
             "issue": 11,
             "issue_score": -0.03,
-            "issue_importance": 3
+            "issue_importance": 5
         }
     },
     {
@@ -7258,7 +7079,37 @@ campaignTrail_temp.answer_score_issue_json = [
         "fields": {
             "answer": 1788,
             "issue": 13,
-            "issue_score": 0.07,
+            "issue_score": 0.05,
+            "issue_importance": 5
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_issue",
+        "pk": 9612,
+        "fields": {
+            "answer": 1791,
+            "issue": 14,
+            "issue_score": -0.02,
+            "issue_importance": 0
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_issue",
+        "pk": 9614,
+        "fields": {
+            "answer": 1691,
+            "issue": 13,
+            "issue_score": -0.02,
+            "issue_importance": 5
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_issue",
+        "pk": 9615,
+        "fields": {
+            "answer": 9582,
+            "issue": 14,
+            "issue_score": -0.017,
             "issue_importance": 0
         }
     }
@@ -9152,8 +9003,8 @@ campaignTrail_temp.answer_score_state_json = [
         "fields": {
             "answer": 1708,
             "state": 128,
-            "candidate": 24,
-            "affected_candidate": 24,
+            "candidate": 23,
+            "affected_candidate": 23,
             "state_multiplier": -0.02
         }
     },
@@ -9163,8 +9014,8 @@ campaignTrail_temp.answer_score_state_json = [
         "fields": {
             "answer": 1708,
             "state": 101,
-            "candidate": 24,
-            "affected_candidate": 24,
+            "candidate": 23,
+            "affected_candidate": 23,
             "state_multiplier": -0.03
         }
     },
@@ -11296,8 +11147,8 @@ campaignTrail_temp.answer_feedback_json = [
     }
 ]
 
-campaignTrail_temp.candidate_image_url = "https://i.imgur.com/VJBORr5_d.jpg?maxwidth=520&shape=thumb&fidelity=high";
-campaignTrail_temp.running_mate_image_url = "https://i.imgur.com/OD6ukvN_d.jpg?maxwidth=520&shape=thumb&fidelity=high";
+campaignTrail_temp.candidate_image_url = "https://i.imgur.com/7yLNJWR.png";
+campaignTrail_temp.running_mate_image_url = "https://i.imgur.com/Inwgojv.png";
 campaignTrail_temp.candidate_last_name = "Rockefeller";
 campaignTrail_temp.running_mate_last_name = "Agnew";
 
@@ -11315,8 +11166,8 @@ endingPicker = (out, totv, aa, quickstats) => {
         }, 50);
     }
 
-    if(quickstats[0] > 529) {
-        setImage("https://i.imgur.com/YnUsuS0_d.jpg?maxwidth=520&shape=thumb&fidelity=high");
+    if(quickstats[0] > 535) {
+        setImage("https://i.imgur.com/OTpbGM0.png");
         return `<h3>Nelson Rockefeller vs John Kennedy by @Rockyistheone</h3>
 <p>A short video posted by a creator on a rising app called TikTok compares your presidency to John F. Kennedy's. The video is accompanied by the music track “After Dark” By Mr.Kitty. The video claims the following:
 
@@ -11342,70 +11193,65 @@ Extreme Diff. Posted: 5/23/2023.
 </p>
 `;
     }
-    if(quickstats[0] > 528) {
-        setImage("https://i.imgur.com/9qrtQ7F.png");
+    if(quickstats[0] > 521) {
+        setImage("https://i.imgur.com/jOHh2DJ.png");
         return `<h3>New World Order</h3>
 <p>Despite everything that went down during the campaign, the president crushed Muskie.</p>
 <p>Rockefeller's second term in office would be a continuing series of broken promises and lies. Rockefeller's “gift-giving” always did the trick for many but some people were incorruptible. The size of his mandate gave the president confidence and complete trust in his secretary of state. When the North Vietnamese broke the armistice agreement, the bombing began once again. Rockefeller championed a new international organization. The New Left tried to oppose him, but he was never one to back down from a challenge. Over time, it became clear that the only winners were those who submitted to Rockefeller. He would live to see his nephew Jay take his old office in 1988. The presidency was now a title only a Rockefeller could hold. The New World was his and his alone to determine the fate of.</p>
 `;
     }
     if(quickstats[0] > 450) {
-        setImage("https://i.imgur.com/fP0Gmnv.png");
+        setImage("https://i.imgur.com/jOHh2DJ.png");
         return `<h3>Lincoln's Mandate</h3>
 <p>Unbelievable you blew Muskie and Rusher out of the water. It wasn't even a little close. The shockwave of your victory shakes the party as a whole. Your victory in 68 was seen as a fluke but now you have taken the party by force.</p> <p>Senator Thurmond denounces you, and most Southern “Republicans” leave the party. You've blown them back out, and now they'll probably be a problem for Democrats. The wind is blowing your way. Reagan is dumbfounded because he only supported your campaign for party appearances and to win the nomination in 76. Reagan doubts he'll be able to pull the nomination from whoever you choose as your successor. It's increasingly likely that the Democrats will nominate a Southerner like Connally or Carter in 76. Given the circumstances, you will probably choose someone like Percy or Brooke. You will have struggles in the meantime, like Agnew's skeletons and closing the Vietnam war, but victory is yours, Nelson. You revived Lincoln's Mandate.</p>`;
     }
     if(quickstats[0] > 350) {
-        setImage("https://i.imgur.com/YL4F3Ik.png");
+        setImage("https://i.imgur.com/xCGonh6.png");
         return `<h3>Just keep moving forward!</h3>
 <p>You were starstruck as you saw state after state called for you. Apparently, it was never a close race, given the size of your victory. Down-ballot Republicans suffered some losses, but your performance saved a good few of them. Maybe that will make them loyal to you.</p>
 <p>While there are going to be bumps in the road of your second term like.. your corrupt Vice president. You'll plead your innocence and tell the media you had no idea. You most definitely knew you knew he was no good even in 68, but the press will never know. Who will you nominate as his replacement? Romney? Percy? Not that it matters. More and more of the Republican party will submit to you. Nixon is a sign of the times. Who knows what lies above your next term? Maybe Nixon will give it another try in 4 years, or maybe Percy? Regardless, your victory has finally vindicated Rockefeller Republicanism. Reagan is sweating, knowing you will be the kingmaker in 76 and your chosen successor will be the shoo-in for the nomination. Goldwater denounces you at every turn. He's a man unable to be persuaded nor bought. South Vietnam will be contentious when it falls. That is if you allow it to fall. Who knows, Nelson, you've got four more years to pave the way.</p>`;
     }
     if(quickstats[0] > 269) {
-        setImage("https://i.imgur.com/eja8apX.png");
+        setImage("https://i.imgur.com/IDw8c1N.png");
         return `<h3>True Vindication</h3>
 <p>As you watched the states being called, you couldn't help but smile. You managed to wave off Muskie, even if just barely. Down Ballot Republicans took a lashing, of course, but you can't help but think of the opportunity that leaves. The power to install more “Rockefeller men” in those same positions in 2 years.</p> 
 <p>While there are going to be bumps in the road of your second term like your corrupt Vice president. You'll plead your innocence and tell the media you had no idea about his bribery scandal. You most definitely knew you knew he was no good even in 68, but the press won't find that out. Who will you nominate as his replacement? Romney? Percy? Not that it matters. More and more of the Republican party will submit to you. Nixon is a sign of the times. Who knows what lies above your next term? Maybe Nixon will give it another try in 4 years, or maybe Percy or even Brooke? Regardless, your victory has finally vindicated Rockefeller Republicanism. Goldwater denounces you at every turn. He's a man unable to be persuaded nor bought. South Vietnam will be contentious when it falls. That is if you allow it to fall. Who knows, Nelson, you've got four more years to pave the way.</p>`;
     }
-   if(aa[0].electoral_votes < 270 && aa[1].electoral_votes < 270 && aa[2].electoral_votes < 270) {
-        setImage("https://i.imgur.com/RzvY32n_d.jpg?maxwidth=520&shape=thumb&fidelity=high");
+    if(quickstats[0] == 270) {
+        setImage("https://i.imgur.com/vXML7c3.png");
         return `<h3>RUSHER FORCES A DEADLOCK</h3>
 <p>This might have been the most infuriating possible outcome for you to see. That moron actually pulled it off. Muskie is surprised that the lead he gained was cut short. Now you have more chaos as the election is thrown to the house. Muskie has the upper hand, but he will have to compromise with his right wing. You're probably thinking you can steal the votes he needs in the South, aren't you? Let's see how it goes.</p>
 <p>[January 1975] You smile toward the crowd of reporters who came to hear your announcement. The announcement that you are running for the 1976 Republican nomination. You couldn't help but lay dormant in agony for years after the house voted in favor of Muskie by a slim majority. What caused your defeat? Well, besides the obvious, like the Cambodia leaks. It was the conservative protest of some 30 representatives that betrayed the party and voted for Bill Rusher. It's starting to make sense. Rusher never planned to start a new party his goal was to get you out of the way and open the field for Reagan. Now you feel you're entitled to at least try to get back at them. Early polls predict you will lose to Reagan by 10 points plus. There's no denying he's the front-runner for the nomination, and it will be an uphill battle. Rockefeller Republicans aren't dead, but as of now, You're their life support, Nelson. </p>`;
     }
     if(quickstats[0] > 210) {
-        setImage("https://i.imgur.com/UGNcFX1_d.jpg?maxwidth=520&shape=thumb&fidelity=high");
+        setImage("https://i.imgur.com/EwepK1o.png");
         return `<h3>Desperately Aloof</h3>
 <p>Despite the fight you gave to keep the presidency, the Cambodia leaks were just too much to overcome. You will mull over this defeat and its causes for the rest of your life. Were you too liberal? Too conservative? Did you put too much trust in Henry?</p>
 <p>Muskie now takes office and is an unpopular bumbling fool. Polls predict that Muskie will lose to a Republican no matter what because of the so-called “Muskie Malaise.” You think that maybe, just maybe, you can make a comeback in 76. It'll be tough and for the second time in your career. You will need to fight a conservative champion. Given that your loss was close, maybe you can push Reagan aside and vindicate yourself. As you prepare to take the fight to Reagan other moderates feel that you should support a younger alternative like Percy. We both know your oblivious selfishness could never let the opportunity to be president again slide by. Happy, and the kids are happy to have you home but maybe you’ll change that. Regardless, it'll be interesting to see how your life continues, Nelson.</p>`;
     }
     if(quickstats[0] > 170) {
-        setImage("https://i.imgur.com/f2skQGY_d.jpg?maxwidth=520&shape=thumb&fidelity=high");
+        setImage("https://i.imgur.com/g3FssQo.png");
         return `<h3>Cynical Planning</h3>
 <p>You watched the states being called sadly as the election was called early that night. You avoided being completely crushed, but your defeat is clear. There's no further you can go from this defeat, and you know it deep down.</p>
 <p>However, not all hope is lost for your wing of the party. While your defeat leaves the opening for Reagan in 76, it doesn't mean he's won it already. If you can strong-arm the party into picking someone moderate like Percy, Ford, or hell, maybe even Romney. You might save your wing of the party. However, Nelson, I know what you're thinking. You think if you can manage to deadlock the convention, you can come up the middle and take the nomination. I'll tell you this now friend you'll make yourself look like a fool and kill your wing of the party that way. I know you're too eager to listen to me, though. You've already started planning your great return. Good luck, Nelson.</p>`;
     }
     if(quickstats[0] > 100) {
-        setImage("https://i.imgur.com/ygjYOBe_d.jpg?maxwidth=520&shape=thumb&fidelity=high");
+        setImage("https://i.imgur.com/7yLNJWR.png");
         return `<h3>The Grand Old Party's Fate</h3>
 <p>As you watch the states being called it's quite clear early on that you won't be winning this election. Down-ballot Republicans are tanked along with you, and the weight of your loss sinks any hope of preserving the Eastern establishment's power. Muskie will enter office riding high on popularity, but as South Vietnam falls and the economy sinks, it's clear that his reelection prospects are grim. Reagan had little opposition going in, and once he took the nomination, it was clear the party had been cemented as a conservative one. However, Reagan's chances are doubtful regardless. The last time an extremist like him ran, it was a disaster…</p>
  <p>[January 1977] You sit in sheer disbelief at the inauguration of the 39th president, Ronald Reagan. Happy holds your hand as you lament about the death of the “Grand Old Party.” The campaign was contentious, and it seemed that Muskie was making a comeback in the last few weeks, but time wasn't on the president's side. He lost the election 257 to Reagan's 281 electoral votes. It may not be a massive mandate, but it is one President Reagan will run with. Regardless of the success of his term, Rockefeller Republicans have been laid to rest.</p>`;
     }
     if(quickstats[0] > 0) {
-        setImage("https://i.imgur.com/FO40dnv.png");
+        setImage("https://i.imgur.com/Dod0MLu.png");
         return `<h3>Failure Republicanism</h3>
 <p>You failed Nelson You Failed, You failed, You failed. Kissinger apologizes for what happened as you watch the landslide sweep you to the side. It doesn't matter, you look at Happy as she comforts you. There is no comeback from this. There is no saving your image. You were destroyed. You will mull over this defeat and its causes for the rest of your life. Were you too liberal? Too conservative? Did you put too much trust in Henry?</p>
  <p>Muskie will have a complicated presidency but will secure a second term in his close victory over Governor Reagan. Your family is happy to have you around more, but you'll ruin that too. Your wandering eye lands on your assistant, Megan Marshack. You'll die in circumstances with her that are undoubtedly romantic. What a real, classy way to end your legacy. At the funeral session, Blanchet Rockefeller turned to Hugh Morrow “Well, we'll miss them both.” She told Morrow, referring to you and her late husband, John Rockefeller III. “But it is a lot more peaceful.”</p>`;
-    }
-    if(quickstats[0] == 0) {
-        setImage("https://i.imgur.com/toxc1jm_d.jpg?maxwidth=520&shape=thumb&fidelity=high");
-        return `<h3>Reddit Moment</h3>o
-<p>Your reputation ruined as the worst-performing incumbent will never be forgotten. So much so that you have people arguing about your legacy on the hit app Reddit. However, you have some ardent supporters remaining. This post being shown is an Edmund Muskie fanboy complaining about you and your supporters. Truly a Reddit Moment to argue about stupid shit that doesn't matter.</p>`;
     }
 }
 
 
 campaignTrail_temp.jet_data = [{
-    "cyoa_enabled": true,
+    "cyoa_enabled": false,
     "cyoa_data": {
         "1710676587433": {
             "answer": "9592",
@@ -11431,9 +11277,9 @@ campaignTrail_temp.jet_data = [{
     "banner_enabled": true,
     "banner_data": {
         "canName": "Rockefeller",
-        "canImage": "https://i.imgur.com/VJBORr5_d.jpg?maxwidth=520&shape=thumb&fidelity=high",
+        "canImage": "https://i.imgur.com/7yLNJWR.png",
         "runName": "Agnew",
-        "runImage": "https://i.imgur.com/OD6ukvN_d.jpg?maxwidth=520&shape=thumb&fidelity=high"
+        "runImage": "https://i.imgur.com/Inwgojv.png"
     },
     "nicknames": {
         "23": "Nelson"
@@ -11445,25 +11291,25 @@ campaignTrail_temp.jet_data = [{
             "variable": 0,
             "operator": ">",
             "value": 0,
-            "endingImage": "https://i.imgur.com/YnUsuS0_d.jpg?maxwidth=520&shape=thumb&fidelity=high",
+            "endingImage": "https://i.imgur.com/OTpbGM0.png",
             "endingText": "<h3>Nelson Rockefeller vs John Kennedy by @Rockyistheone</h3>\n<p>A short video posted by a creator on a rising app called TikTok compares your presidency to John F. Kennedy's. The video is accompanied by the music track “After Dark” By Mr.Kitty. The video claims the following:\n\nLeadership: Rockefeller, \nForeign Policy: Kennedy,\nDomestic Policy: Rockefeller,\nEconomics: Rockefeller,\nCivil Rights: Rockefeller,\nCrisis Handling: Kennedy,\nPolitical success: Rockefeller, \nJob Growth: Rockefeller, \nUnemployment: Kennedy,\nExperience: Rockefeller, \nSpeeches: Kennedy,\nPublic Persuasion: Rockefeller, \nCharisma: Kennedy,\nLegislation: Rockefeller, \nApproval: Kennedy,\nLegacy: Kennedy,\n\nRockefeller wins \nExtreme Diff. Posted: 5/23/2023.\n</p>\n",
-            "amount": "529"
+            "amount": "535"
         },
         "1711870630339": {
             "id": 1711870630339,
             "variable": 0,
             "operator": ">",
             "value": 0,
-            "endingImage": "https://i.imgur.com/9qrtQ7F.png",
+            "endingImage": "https://i.imgur.com/jOHh2DJ.png",
             "endingText": "<h3>New World Order</h3>\n<p>Despite everything that went down during the campaign, the president crushed Muskie.</p>\n<p>Rockefeller's second term in office would be a continuing series of broken promises and lies. Rockefeller's “gift-giving” always did the trick for many but some people were incorruptible. The size of his mandate gave the president confidence and complete trust in his secretary of state. When the North Vietnamese broke the armistice agreement, the bombing began once again. Rockefeller championed a new international organization. The New Left tried to oppose him, but he was never one to back down from a challenge. Over time, it became clear that the only winners were those who submitted to Rockefeller. He would live to see his nephew Jay take his old office in 1988. The presidency was now a title only a Rockefeller could hold. The New World was his and his alone to determine the fate of.</p>\n",
-            "amount": "528"
+            "amount": "521"
         },
         "1711870956371": {
             "id": 1711870956371,
             "variable": "0",
             "operator": ">",
             "value": 0,
-            "endingImage": "https://i.imgur.com/fP0Gmnv.png",
+            "endingImage": "https://i.imgur.com/jOHh2DJ.png",
             "endingText": "<h3>Lincoln's Mandate</h3>\n<p>Unbelievable you blew Muskie and Rusher out of the water. It wasn't even a little close. The shockwave of your victory shakes the party as a whole. Your victory in 68 was seen as a fluke but now you have taken the party by force.</p> <p>Senator Thurmond denounces you, and most Southern “Republicans” leave the party. You've blown them back out, and now they'll probably be a problem for Democrats. The wind is blowing your way. Reagan is dumbfounded because he only supported your campaign for party appearances and to win the nomination in 76. Reagan doubts he'll be able to pull the nomination from whoever you choose as your successor. It's increasingly likely that the Democrats will nominate a Southerner like Connally or Carter in 76. Given the circumstances, you will probably choose someone like Percy or Brooke. You will have struggles in the meantime, like Agnew's skeletons and closing the Vietnam war, but victory is yours, Nelson. You revived Lincoln's Mandate.</p>",
             "amount": "450"
         },
@@ -11472,7 +11318,7 @@ campaignTrail_temp.jet_data = [{
             "variable": 0,
             "operator": ">",
             "value": 0,
-            "endingImage": "https://i.imgur.com/YL4F3Ik.png",
+            "endingImage": "https://i.imgur.com/xCGonh6.png",
             "endingText": "<h3>Just keep moving forward!</h3>\n<p>You were starstruck as you saw state after state called for you. Apparently, it was never a close race, given the size of your victory. Down-ballot Republicans suffered some losses, but your performance saved a good few of them. Maybe that will make them loyal to you.</p>\n<p>While there are going to be bumps in the road of your second term like.. your corrupt Vice president. You'll plead your innocence and tell the media you had no idea. You most definitely knew you knew he was no good even in 68, but the press will never know. Who will you nominate as his replacement? Romney? Percy? Not that it matters. More and more of the Republican party will submit to you. Nixon is a sign of the times. Who knows what lies above your next term? Maybe Nixon will give it another try in 4 years, or maybe Percy? Regardless, your victory has finally vindicated Rockefeller Republicanism. Reagan is sweating, knowing you will be the kingmaker in 76 and your chosen successor will be the shoo-in for the nomination. Goldwater denounces you at every turn. He's a man unable to be persuaded nor bought. South Vietnam will be contentious when it falls. That is if you allow it to fall. Who knows, Nelson, you've got four more years to pave the way.</p>",
             "amount": "350"
         },
@@ -11481,7 +11327,7 @@ campaignTrail_temp.jet_data = [{
             "variable": 0,
             "operator": ">",
             "value": 0,
-            "endingImage": "https://i.imgur.com/eja8apX.png",
+            "endingImage": "https://i.imgur.com/IDw8c1N.png",
             "endingText": "<h3>True Vindication</h3>\n<p>As you watched the states being called, you couldn't help but smile. You managed to wave off Muskie, even if just barely. Down Ballot Republicans took a lashing, of course, but you can't help but think of the opportunity that leaves. The power to install more “Rockefeller men” in those same positions in 2 years.</p> \n<p>While there are going to be bumps in the road of your second term like your corrupt Vice president. You'll plead your innocence and tell the media you had no idea about his bribery scandal. You most definitely knew you knew he was no good even in 68, but the press won't find that out. Who will you nominate as his replacement? Romney? Percy? Not that it matters. More and more of the Republican party will submit to you. Nixon is a sign of the times. Who knows what lies above your next term? Maybe Nixon will give it another try in 4 years, or maybe Percy or even Brooke? Regardless, your victory has finally vindicated Rockefeller Republicanism. Goldwater denounces you at every turn. He's a man unable to be persuaded nor bought. South Vietnam will be contentious when it falls. That is if you allow it to fall. Who knows, Nelson, you've got four more years to pave the way.</p>",
             "amount": "269"
         },
@@ -11490,16 +11336,16 @@ campaignTrail_temp.jet_data = [{
             "variable": 0,
             "operator": "==",
             "value": 0,
-            "endingImage": "https://i.imgur.com/RzvY32n_d.jpg?maxwidth=520&shape=thumb&fidelity=high",
+            "endingImage": "https://i.imgur.com/vXML7c3.png",
             "endingText": "<h3>RUSHER FORCES A DEADLOCK</h3>\n<p>This might have been the most infuriating possible outcome for you to see. That moron actually pulled it off. Muskie is surprised that the lead he gained was cut short. Now you have more chaos as the election is thrown to the house. Muskie has the upper hand, but he will have to compromise with his right wing. You're probably thinking you can steal the votes he needs in the South, aren't you? Let's see how it goes.</p>\n<p>[January 1975] You smile toward the crowd of reporters who came to hear your announcement. The announcement that you are running for the 1976 Republican nomination. You couldn't help but lay dormant in agony for years after the house voted in favor of Muskie by a slim majority. What caused your defeat? Well, besides the obvious, like the Cambodia leaks. It was the conservative protest of some 30 representatives that betrayed the party and voted for Bill Rusher. It's starting to make sense. Rusher never planned to start a new party his goal was to get you out of the way and open the field for Reagan. Now you feel you're entitled to at least try to get back at them. Early polls predict you will lose to Reagan by 10 points plus. There's no denying he's the front-runner for the nomination, and it will be an uphill battle. Rockefeller Republicans aren't dead, but as of now, You're their life support, Nelson. </p>",
-            "amount": "270"
+            "amount": "269"
         },
         "1711950596556": {
             "id": 1711950596556,
             "variable": 0,
             "operator": ">",
             "value": 0,
-            "endingImage": "https://i.imgur.com/UGNcFX1_d.jpg?maxwidth=520&shape=thumb&fidelity=high",
+            "endingImage": "https://i.imgur.com/EwepK1o.png",
             "endingText": "<h3>Desperately Aloof</h3>\n<p>Despite the fight you gave to keep the presidency, the Cambodia leaks were just too much to overcome. You will mull over this defeat and its causes for the rest of your life. Were you too liberal? Too conservative? Did you put too much trust in Henry?</p>\n<p>Muskie now takes office and is an unpopular bumbling fool. Polls predict that Muskie will lose to a Republican no matter what because of the so-called “Muskie Malaise.” You think that maybe, just maybe, you can make a comeback in 76. It'll be tough and for the second time in your career. You will need to fight a conservative champion. Given that your loss was close, maybe you can push Reagan aside and vindicate yourself. As you prepare to take the fight to Reagan other moderates feel that you should support a younger alternative like Percy. We both know your oblivious selfishness could never let the opportunity to be president again slide by. Happy, and the kids are happy to have you home but maybe you’ll change that. Regardless, it'll be interesting to see how your life continues, Nelson.</p>",
             "amount": "210"
         },
@@ -11508,7 +11354,7 @@ campaignTrail_temp.jet_data = [{
             "variable": 0,
             "operator": ">",
             "value": 0,
-            "endingImage": "https://i.imgur.com/f2skQGY_d.jpg?maxwidth=520&shape=thumb&fidelity=high",
+            "endingImage": "https://i.imgur.com/g3FssQo.png",
             "endingText": "<h3>Cynical Planning</h3>\n<p>You watched the states being called sadly as the election was called early that night. You avoided being completely crushed, but your defeat is clear. There's no further you can go from this defeat, and you know it deep down.</p>\n<p>However, not all hope is lost for your wing of the party. While your defeat leaves the opening for Reagan in 76, it doesn't mean he's won it already. If you can strong-arm the party into picking someone moderate like Percy, Ford, or hell, maybe even Romney. You might save your wing of the party. However, Nelson, I know what you're thinking. You think if you can manage to deadlock the convention, you can come up the middle and take the nomination. I'll tell you this now friend you'll make yourself look like a fool and kill your wing of the party that way. I know you're too eager to listen to me, though. You've already started planning your great return. Good luck, Nelson.</p>",
             "amount": "170"
         },
@@ -11517,7 +11363,7 @@ campaignTrail_temp.jet_data = [{
             "variable": 0,
             "operator": ">",
             "value": 0,
-            "endingImage": "https://i.imgur.com/ygjYOBe_d.jpg?maxwidth=520&shape=thumb&fidelity=high",
+            "endingImage": "https://i.imgur.com/7yLNJWR.png",
             "endingText": "<h3>The Grand Old Party's Fate</h3>\n<p>As you watch the states being called it's quite clear early on that you won't be winning this election. Down-ballot Republicans are tanked along with you, and the weight of your loss sinks any hope of preserving the Eastern establishment's power. Muskie will enter office riding high on popularity, but as South Vietnam falls and the economy sinks, it's clear that his reelection prospects are grim. Reagan had little opposition going in, and once he took the nomination, it was clear the party had been cemented as a conservative one. However, Reagan's chances are doubtful regardless. The last time an extremist like him ran, it was a disaster…</p>\n <p>[January 1977] You sit in sheer disbelief at the inauguration of the 39th president, Ronald Reagan. Happy holds your hand as you lament about the death of the “Grand Old Party.” The campaign was contentious, and it seemed that Muskie was making a comeback in the last few weeks, but time wasn't on the president's side. He lost the election 257 to Reagan's 281 electoral votes. It may not be a massive mandate, but it is one President Reagan will run with. Regardless of the success of his term, Rockefeller Republicans have been laid to rest.</p>",
             "amount": "100"
         },
@@ -11526,17 +11372,8 @@ campaignTrail_temp.jet_data = [{
             "variable": 0,
             "operator": ">",
             "value": 0,
-            "endingImage": "https://i.imgur.com/FO40dnv.png",
+            "endingImage": "https://i.imgur.com/Dod0MLu.png",
             "endingText": "<h3>Failure Republicanism</h3>\n<p>You failed Nelson You Failed, You failed, You failed. Kissinger apologizes for what happened as you watch the landslide sweep you to the side. It doesn't matter, you look at Happy as she comforts you. There is no comeback from this. There is no saving your image. You were destroyed. You will mull over this defeat and its causes for the rest of your life. Were you too liberal? Too conservative? Did you put too much trust in Henry?</p>\n <p>Muskie will have a complicated presidency but will secure a second term in his close victory over Governor Reagan. Your family is happy to have you around more, but you'll ruin that too. Your wandering eye lands on your assistant, Megan Marshack. You'll die in circumstances with her that are undoubtedly romantic. What a real, classy way to end your legacy. At the funeral session, Blanchet Rockefeller turned to Hugh Morrow “Well, we'll miss them both.” She told Morrow, referring to you and her late husband, John Rockefeller III. “But it is a lot more peaceful.”</p>",
-            "amount": "0"
-        },
-        "1712397074219": {
-            "id": 1712397074219,
-            "variable": 0,
-            "operator": "==",
-            "value": 0,
-            "endingImage": "https://i.imgur.com/toxc1jm_d.jpg?maxwidth=520&shape=thumb&fidelity=high",
-            "endingText": "<h3>Reddit Moment</h3>o\n<p>Your reputation ruined as the worst-performing incumbent will never be forgotten. So much so that you have people arguing about your legacy on the hit app Reddit. However, you have some ardent supporters remaining. This post being shown is an Edmund Muskie fanboy complaining about you and your supporters. Truly a Reddit Moment to argue about stupid shit that doesn't matter.</p>",
             "amount": "0"
         }
     },
