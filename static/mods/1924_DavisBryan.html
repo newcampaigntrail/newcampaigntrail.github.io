@@ -24719,6 +24719,8 @@ function ctsAchievement(achievement, difficultyChecker = true){
 	}
 }
 
+campaignTrail_temp.election_json[0]["fields"].advisor_url = "https://itsastronomical.com/assets/1924/advice/mcadooadvice.png";
+
 // Sets the Republicans as "Warren Harding" before he dies
 campaignTrail_temp.candidate_json[0]["fields"].first_name = "Warren G.";
 campaignTrail_temp.candidate_json[0]["fields"].last_name = "Harding";
@@ -24940,6 +24942,7 @@ if(ans == 1776){
     campaignTrail_temp.running_mate_image_url = "https://itsastronomical.com/assets/1924/davisbutton.png";
     campaignTrail_temp.candidate_last_name = "Davis";
     campaignTrail_temp.running_mate_last_name = "For President";
+    campaignTrail_temp.election_json[0]["fields"].advisor_url = "https://itsastronomical.com/assets/1924/advice/davisadvice.png";
     campaignTrail_temp.election_json[0]["fields"].has_visits = 1;
     ctsAchievement("Lawyer's Lawyer");
 
@@ -25326,6 +25329,7 @@ if((ans == 3259 || ans == 3235 || ans == 1756) && klan < 2){
   campaignTrail_temp.candidate_json[1].fields.color_hex = '#d5e072'
   campaignTrail_temp.candidate_json[2].fields.color_hex = '#b54b4a'
   ctsAchievement("Get Plucked");
+  campaignTrail_temp.election_json[0]["fields"].advisor_url = "https://itsastronomical.com/assets/1924/advice/glassadvice.png";
   campaignTrail_temp.candidate_json[1]["fields"].first_name = "Carter";
   campaignTrail_temp.candidate_json[1]["fields"].last_name = "Glass";
   campaignTrail_temp.candidate_image_url = "https://itsastronomical.com/assets/1920/glass.png";
@@ -25505,7 +25509,7 @@ if((ans == 3259 || ans == 3235 || ans == 1756) && klan < 2){
 
 // If you drop out as McAdoo but do denounce the Klan, you get Thomas Walsh
 if((ans == 11740 || ans == 11754 || ans == 11761) && klan >= 2){
-
+campaignTrail_temp.election_json[0]["fields"].advisor_url = "https://itsastronomical.com/assets/1924/advice/walshadvice.png";
   campaignTrail_temp.candidate_json[0].fields.color_hex = '#ac0000'
   campaignTrail_temp.candidate_json[1].fields.color_hex = '#2e7484'
   campaignTrail_temp.candidate_json[2].fields.color_hex = '#377516'
