@@ -25267,41 +25267,7 @@ function onGameWindowChangeCandidates() {
 
     const resultsTable = resultsTableHolder.childNodes[3].childNodes[3].children[0];
     
-    for(let i = 0; i < resultsTable.children.length; i++) {
-        const row = resultsTable.children[i];
-        let name = row.firstChild.innerText;
-        row.insertCell(1);
-        if(name) {
-            name = name.replaceAll("-", "").trim();
-            console.log("name is:" + name)
-        }
 
-        if(i == 0) {
-            row.children[1].innerHTML = `<span style="font-weight:bold">Running Mate<span>`;
-        }
-        else {
-            row.children[1].innerHTML = vpTable[name];
-        }
-    }
-
-    
-    const resultsTableHistorical = resultsTableHolder.childNodes[5].childNodes[3].children[0];
-    
-    for(let i = 0; i < resultsTableHistorical.children.length; i++) {
-        const row = resultsTableHistorical.children[i];
-        let name = row.childNodes[1].innerText;
-        row.insertCell(1);
-        if(name) {
-            name = name.replaceAll("-", "").trim();
-        }
-
-        if(i == 0) {
-            row.children[1].innerHTML = `<span style="font-weight:bold">Running Mate<span>`;
-        }
-        else {
-            row.children[1].innerHTML = vpTableHistorical[name];
-        }
-    }
 }
 const gameWindowNode = document.getElementById("game_window");
 const candidateWatcherConfig = { attributes: true, childList: true, subtree: true };
