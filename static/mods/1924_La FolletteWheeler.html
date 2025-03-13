@@ -23498,7 +23498,7 @@ if (quickstats[1] >= 20) {
   ctsAchievement("One in Five");
 }
 
-if (noparty == true && aa[1].electoral_votes < 266) {
+if (noparty == true && aa[0].electoral_votes < 266) {
   ctsAchievement("He's All In");
 }
 
@@ -23526,16 +23526,11 @@ if (quickstats[0] >= 266) {
   e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1924/endings/bobwin.png'})])
 }
 
-// Unsuccessful Deadlock but over 40 EVs
-else if (aa[0].electoral_votes >= 266 && (aa[0].candidate == 23 || aa[0].candidate == 24) && quickstats[0] >= 40) {
-  e.pages.push(`<h3>'Wealth has never yet sacrificed itself on the altar of patriotism.'</h3><p>Within a day or so, the results trickle down and soon become obvious - you aren't going to be the next President, and neither shall there be a contest to decide the race in the House of Representatives. This was the expected result - Coolidge had the gift of the incumbency, and Davis had the backing of the Democratic Party. It is an unfortunate result, nevertheless. At one point, you did seem like a potential threat to both Coolidge's re-election bid and Davis' attempt to pull together progressives.<br><br>Of course, you did perform decently enough, winning a fair amount of electoral votes out west - more than some expected, especially given the price increase of crops in the fall. You've certainly showed that there is an appetite amongst voters for progressive values, and this is something that both candidates may have to balance with the expected conservatism of this decade. Who knows? Perhaps the Democrats shall nominate a more committed progressive in 1928? You likely won't be around to see much of the future, but you can rest easy knowing that you've helped plant the seeds of reform in America.</p>`)
-  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1924/endings/bob40.png'})])
-}
-
-// Unsuccessful Deadlock but over 20% of the popular vote
-else if (aa[0].electoral_votes >= 266 && (aa[0].candidate == 23 || aa[0].candidate == 24) && quickstats[1] >= 20) {
-  e.pages.push(`<h3>'Upon the soundness and integrity of public opinion depends the destiny of our democracy'</h3><p>It doesn't take that long to realize that you've lost - certainly, things were not at the point that they were when you were nominated. Nevertheless, it is disappointing that you failed to win, let alone deadlock the election. You pen your concession telegrams, and begin to prepare a public speech for your supporters. Within days, though, you notice the threshold you've crossed.<br><br>It appears that as of now, 1 in every 5 American nationwide decided to cast their ballot for you. 20%. That is certainly an impressive amount, only 7% behind the Bull Moose's share in 1912. Of course, the movement you are looking to set up is not attached to the party made 12 years ago, but you have still reached an important threshold. The goal should be now to keep that share of the vote - although given your health, it's unlikely you shall have much of a say in what occurs. No matter who leads this movement going forward, you have set them up for success.</p>`)
-  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1924/endings/bob20.png'})])
+// Coolidge/Davis Wins but you made your own party
+else if (aa[0].electoral_votes >= 266 && noparty == false && (aa[0].candidate == 23 || aa[0].candidate == 24)) {
+    ctsAchievement("A Real Choice");
+    e.pages.push(`<h3>'Democracy is a life, and involves continual struggle'</h3><p>The telegram comes in soon enough - the conservatives, of either the Republican or Democratic brand, will keep their stranglehold on government. You don't even stop to think about which one it is - although it's almost certainly Coolidge. Both the House and the Senate are also going to almost certainly stay divided between the two parties, although you do find solace in the fact that the Progressive Party will likely pick up a series of seats in the Midwest and New York City. You also still have until 1928 for your own Senate seat.<br><br>With the Progressive Party now formed, there are possibilities for you and this party. Your health is poor, but your sprits are not, and many are hoping that this party can have the momentum that the so-called 'Bull Moose' Party failed to achieve after the success in 1912. With not much time left, you must think about the future of this movement - who should be the leader? Will it be Bob Junior? Or your running mate? Only time will tell, but there are plenty of options.</p>`)
+    e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1924/endings/bobloss.png'})])
 }
 
 // Unsuccessful Deadlock but 2nd place
@@ -23544,24 +23539,22 @@ else if (aa[1].candidate == 25) {
   e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1924/endings/bobrunner.png'})])
 }
 
+// Unsuccessful Deadlock but over 20% of the popular vote
+else if (aa[0].electoral_votes >= 266 && (aa[0].candidate == 23 || aa[0].candidate == 24) && quickstats[1] >= 20) {
+    e.pages.push(`<h3>'Upon the soundness and integrity of public opinion depends the destiny of our democracy'</h3><p>It doesn't take that long to realize that you've lost - certainly, things were not at the point that they were when you were nominated. Nevertheless, it is disappointing that you failed to win, let alone deadlock the election. You pen your concession telegrams, and begin to prepare a public speech for your supporters. Within days, though, you notice the threshold you've crossed.<br><br>It appears that as of now, 1 in every 5 American nationwide decided to cast their ballot for you. 20%. That is certainly an impressive amount, only 7% behind the Bull Moose's share in 1912. Of course, the movement you are looking to set up is not attached to the party made 12 years ago, but you have still reached an important threshold. The goal should be now to keep that share of the vote - although given your health, it's unlikely you shall have much of a say in what occurs. No matter who leads this movement going forward, you have set them up for success.</p>`)
+    e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1924/endings/bob20.png'})])
+}
+
+// Unsuccessful Deadlock but over 40 EVs
+else if (aa[0].electoral_votes >= 266 && (aa[0].candidate == 23 || aa[0].candidate == 24) && quickstats[0] >= 40) {
+  e.pages.push(`<h3>'Wealth has never yet sacrificed itself on the altar of patriotism.'</h3><p>Within a day or so, the results trickle down and soon become obvious - you aren't going to be the next President, and neither shall there be a contest to decide the race in the House of Representatives. This was the expected result - Coolidge had the gift of the incumbency, and Davis had the backing of the Democratic Party. It is an unfortunate result, nevertheless. At one point, you did seem like a potential threat to both Coolidge's re-election bid and Davis' attempt to pull together progressives.<br><br>Of course, you did perform decently enough, winning a fair amount of electoral votes out west - more than some expected, especially given the price increase of crops in the fall. You've certainly showed that there is an appetite amongst voters for progressive values, and this is something that both candidates may have to balance with the expected conservatism of this decade. Who knows? Perhaps the Democrats shall nominate a more committed progressive in 1928? You likely won't be around to see much of the future, but you can rest easy knowing that you've helped plant the seeds of reform in America.</p>`)
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1924/endings/bob40.png'})])
+}
+
 // Coolidge/Davis Wins
 else if (aa[0].electoral_votes >= 266 && (aa[0].candidate == 23 || aa[0].candidate == 24)) {
   e.pages.push(`<h3>'Democracy is a life, and involves continual struggle'</h3><p>The telegram comes in soon enough - the conservatives, of either the Republican or Democratic brand, will keep their stranglehold on government. You don't even stop to think about which one it is - although it's almost certainly Coolidge. Both the House and the Senate are also going to almost certainly stay divided between the two parties, although you do find solace in the fact that the Farmer-Labor and Socialists will likely pick up at least one seat each. You also still have until 1928 for your own Senate seat.<br><br>Unfortunately, your poor health now puts the progressives in a tricky spot. Much of the energy was spent attempting to get you elected, with the hope that it would trickle down ballot. That has not appeared to occur, with little inroads made by the progressives nationally. Still, you have just received one of the best showings of a third party in history - the third or fourth best depending on your definition of the great election of 1860. In any case, you have little time left, but still so much work to do. You shall now return to the Senate, hoping to make some headway on the issues you so care about.</p>`)
   e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1924/endings/bobloss.png'})])
-}
-// Coolidge/Davis Wins but you made your own party
-else if (aa[0].electoral_votes >= 266 && ans == 1689 && (aa[0].candidate == 23 || aa[0].candidate == 24)) {
-  ctsAchievement("A Real Choice");
-  e.pages.push(`<h3>'Democracy is a life, and involves continual struggle'</h3><p>The telegram comes in soon enough - the conservatives, of either the Republican or Democratic brand, will keep their stranglehold on government. You don't even stop to think about which one it is - although it's almost certainly Coolidge. Both the House and the Senate are also going to almost certainly stay divided between the two parties, although you do find solace in the fact that the Progressive Party will likely pick up a series of seats in the Midwest and New York City. You also still have until 1928 for your own Senate seat.<br><br>With the Progressive Party now formed, there are possibilities for you and this party. Your health is poor, but your sprits are not, and many are hoping that this party can have the momentum that the so-called 'Bull Moose' Party failed to achieve after the success in 1912. With not much time left, you must think about the future of this movement - who should be the leader? Will it be Bob Junior? Or your running mate? Only time will tell, but there are plenty of options.</p>`)
-  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1924/endings/bobloss.png'})])
-}
-
-// Successful Deadlock 
-else if (aa[0].electoral_votes < 266 && aa[1].electoral_votes < 266 && aa[2].electoral_votes < 266 && aa[3].electoral_votes < 266) {
-  ctsAchievement("Bob's Last Stand");
-  e.pages.push(`<h3>'Men must be aggressive for what is right if government is to be saved from those who are aggressive for what is wrong'</h3><p>It takes a bit for the results to come in - as the hours pass, you grow both more anxious, and more excited. By the time you first go to sleep, the 'solid south' is called for Davis and much of the north is called for Coolidge. In the competitive north, your margins seem to track well. The west takes longer to call. But by the end of it, returns indicate that no candidate will have the required majority needed to get elected President. Republicans are stunned and horrified - many Democrats feel similarly, but they can't help but enjoy this more than losing to Coolidge.<br><br>The House is likely to elect Coolidge - with concessions. Given Democratic congressional gains in states such as Nevada and Nebraska, 'Coolidge Republicans' only control around 23 state delegations. They - or the Democrats - need the support of your allies in Minnesota and Wisconsin if they want to elect their candidate. You could allow negotiations to take place, or you could really set 'Coolidge or Chaos' into motion and allow Charles Bryan to become acting President. You don't have much time left on earth given your age, but becoming a kingmaker here is a wonderful send-off to your career fighting for the working man.</p>`)
-  success = true;
-  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1924/endings/bobdead.png'})])
 }
 
 // Successful Deadlock with 2nd place in popular vote
@@ -23580,6 +23573,14 @@ else if (aa[0].electoral_votes < 266 && aa[1].electoral_votes < 266 && aa[2].ele
   success = true;
   e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1924/endings/bobdead70.png'})])
 }
+
+// Successful Deadlock 
+else if (aa[0].electoral_votes < 266 && aa[1].electoral_votes < 266 && aa[2].electoral_votes < 266 && aa[3].electoral_votes < 266) {
+    ctsAchievement("Bob's Last Stand");
+    e.pages.push(`<h3>'Men must be aggressive for what is right if government is to be saved from those who are aggressive for what is wrong'</h3><p>It takes a bit for the results to come in - as the hours pass, you grow both more anxious, and more excited. By the time you first go to sleep, the 'solid south' is called for Davis and much of the north is called for Coolidge. In the competitive north, your margins seem to track well. The west takes longer to call. But by the end of it, returns indicate that no candidate will have the required majority needed to get elected President. Republicans are stunned and horrified - many Democrats feel similarly, but they can't help but enjoy this more than losing to Coolidge.<br><br>The House is likely to elect Coolidge - with concessions. Given Democratic congressional gains in states such as Nevada and Nebraska, 'Coolidge Republicans' only control around 23 state delegations. They - or the Democrats - need the support of your allies in Minnesota and Wisconsin if they want to elect their candidate. You could allow negotiations to take place, or you could really set 'Coolidge or Chaos' into motion and allow Charles Bryan to become acting President. You don't have much time left on earth given your age, but becoming a kingmaker here is a wonderful send-off to your career fighting for the working man.</p>`)
+    success = true;
+    e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1924/endings/bobdead.png'})])
+  }
 
 // Page 2
 
