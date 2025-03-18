@@ -1,0 +1,751 @@
+quotes = ["\"Life is supposed to get tough.\"","\"I think it’s your duty to overcome what you inherit in life.\"","\"My life is a party thrown for me by my own decisions.\"","\"The best luck of all is the luck you make for yourself.\" - Douglas MacArthur"]
+  customquote = quotes[Math.floor((Math.random() * quotes.length))]
+  
+  corrr = `\n<h2>EXILE AMERICA 2024</h2><font id='wittyquote' size='4' color='FFFFFF'><em>` + customquote + `</em></font>` 
+
+function addDynamicCSS() {
+    var css = `
+        .inner_window_question h3 .mytooltip{
+            background-color: #828282;
+        }
+
+        .mytooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            background-color: #828282;
+        }
+		
+		#visit_window {
+                height: auto;
+        }
+		
+		 #overall_details_container{
+                    height: 98%;
+                    overflow: auto;
+                }
+
+         #overall_result,
+         #final_results_description,
+         #election_summary,
+         #candidate_summary,
+         #running_mate_summary,
+         #running_mate_description_window,
+         #opponent_selection_description_window
+		{
+          overflow: auto;
+          overflow-x:hidden;
+        }
+			
+        .mytooltip .mytooltiptext {
+            width: 500px;
+            background-color: #828282;
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 99;
+            bottom: 20%;
+            left: 20%;
+            margin-left: -90px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border: 1px solid white;
+            pointer-events: none;
+            font-size: 13px !important;
+            line-height: 1.5em !important;
+            font-weight: normal !important;
+            font-style: normal !important;
+        }
+
+        .mytooltip .mytooltiptext img {
+            max-width: 800px;
+            height: auto;
+        }
+
+        .mytooltip:hover .mytooltiptext {
+            opacity: 1;
+            transition-delay: 0.5s;
+        }
+    `;
+
+    var styleElem = document.createElement('style');
+    styleElem.type = 'text/css';
+    
+    styleElem.appendChild(document.createTextNode(css));
+    
+    document.head.appendChild(styleElem);
+}
+
+
+addDynamicCSS();
+
+tooltipList = [
+	{searchString: "Russian", explanationText: "The Russian Democratic Federal Republic is the largest country in the world and fastest growing major economy in Europe. The Socialist Revolutionaries and Kadets have governed Russia – either in a grand coalition or in alternative alliances with smaller parties like the Eurasianists and Homeland – since the republic was founded."},
+    {searchString: "Appalachian Wars", explanationText: "A series of post USSA conflicts fought between the rump FR America and the secessionist Confederal States and Black Belt."},
+	{searchString: "Exile Establishment", explanationText: "The \"Exiles\" are the Anglophone descendants of MacArthur’s loyalists, who fled to Puerto Rico during the Great Retreat. They have a preponderant economic power and dominate the PB."},
+	{searchString: "Dissident Mormons", explanationText: "Mormons not affiliated with the LDS Church, for various reasons of conscience or doctrine. Especially vocal dissenters can expect to live in permanent fear of the Church’s hatchet men. The most famous example is Prime Minister Romney of New England."},
+	{searchString: "Deseret", explanationText: "The theodemocratic State of Deseret was established by militant Mormons following the collapse of the USSA. It comprises the former US state of Utah and neighbouring territories. Its bellicose conduct and possession of fissile material has been a matter of international concern for years."},
+	{searchString: "Federal Bureau of Investigation", explanationText: "Originally founded as a law enforcement agency, the FBI would grow into a secret police during the civil war. Under the fearsome leadership of J. Edgar Hoover, the Bureau coordinated both the White Terror and extraction of personnel and resources to Puerto Rico. <br><br>After the Great Retreat, the Bureau implemented a program of full spectrum surveillance in the remaining territories and brutally suppressed dissent. Hoover’s death early in the Boggs presidency was a crucial step to democratization and led to substantial reforms, but the FBI is still viewed with apprehension, even by many exiles."},
+	{searchString: "John McCain", explanationText: "The first and only PB president since Carter, John McCain was a buffoon twice carried to victory by an effective but disloyal team. His disastrous relationships with successive German chancellors and contemptuous attitude towards the post-USSA states were only mitigated by damage control from far more competent VPs and the heroic efforts of the State Department. <br><br>Well intentioned efforts to open the PB to new voters represent the major achievement of his presidency and were crucial to his re-election in spite of all his flaws."},
+	{searchString: "Alejandro García Padilla", explanationText: "As John McCain’s last Attorney General, he distinguished himself as a competent lawyer with a passion for consumer rights. Judging that his Puerto Rican ethnicity and youth would appeal to the younger generation, the party chose Padilla as their candidate against Gloria Tristani, first out of choice, then for lack of better options. <br><br>While he benefited from McCain’s outreach to non-traditional PB voters, his emphasis on fiscal stability and accusations of nepotism severely dented his campaign. On both occasions, Padilla proved competitive in the countryside, but NP attacks characterising him as a \"jíbaro\" with bad English meant he fared poorly with the urban middle class."},
+	{searchString: "British", explanationText: "The only major socialist state in Europe, the Union of Britain has been ruled by the Maximist Union Party since Oswald Mosley’s consolidation of power in 1938. For the next 40 years, the Union and its Norwegian client state were largely pariahs, with an abiding hostility towards the USSA. <br><br>With Mosley’s death in 1978, Tony Benn undertook substantial reforms which moved the UoB towards a market economy without political liberalisation, drastically improving quality of life and mollifying some of the Union’s most hostile neighbours. <br><br>Under the incumbent Chairman, Graeme Andrew Logan, the Union has begun to adopt a more aggressive posture, especially towards its traditional enemies in Canada."},
+	{searchString: "Mexicans", explanationText: "The United Mexican States in its present form is defined by Plutarco Elías Calles and Lázaro Cárdenas. Though Calles was successful in revising many of the unequal treaties with the United States, his harsh anticlericalism was deeply unpopular and led Mexico into the devastating Cristero War. <br><br>The inability of the United States to impose peace terms and gradual intervention of socialist forces on behalf of the Mexican government crystalized a broad Catholic volunteer movement, headed by the Carlists. The war only concluded with the ouster of Calles by the armed forces in favour of Cárdenas. <br><br>Reforming the Calles Law and imitating European clerical socialism, Cárdenas proceeded to successfully bring a subordinate church into the fold. Together with his combination of land reform and corporatist economics, he thus established the alliance of state, church and army which has governed Mexico into the current day."},
+	{searchString: "a jíbaro", explanationText: "Often maligned as a hillbilly, the jíbaro is an independent smallholder, especially common in the mountains. Though poor and just scrimping by, he is a proud and prudent Catholic. A stock character in Carlist political propaganda."},
+	{searchString: "Separatist Republics", explanationText: "<img src='https://i.imgur.com/mycam5F.png' style='max-width: 800px; max-height: 800px;'> The various states that emerged following the breakup of the USSA. Ranging from the dystopic to fairly pluralistic democracies, each republic defines itself by an identity opposed to those of their neighbours."},
+	{searchString: "Pacto del Olvido", explanationText: "The so-called Pact of Forgetting was an informal agreement reached between the two parties following democratization. The pact aimed to ensure a smooth transition to democracy by not overturning the cultural trappings of the dictatorship in full and offering amnesty to the security state and military. Key aspects include a prohibition on mass-removal of MacArthur statues, celebration of the 4th of July & \"Armed Forces Day\" and continued payment of veterans’ pensions. <br><br>The Pact is increasingly controversial with the younger generation and has gradually been eroded by the passage of various \"historical memory\" laws."},
+	{searchString: "claims of potential crimes", explanationText: "Under martial law, the PB dictatorship carried out a brutal campaign of political repression against independentist and socialists, aimed at stamping out a potential USSA \"fifth column\". Infamous examples of this brutality are the Jayuya massacre and the repression of opponents to chemical weapons testing on Isla de Vieques. <br><br>Notable perpetrators of regime atrocities were the famously loyalist Afro-American \"Buffalo Soldiers\" of the 24th & 25th Infantry Regiments and the notorious FBI \"Mobile Division\". The activities of the former represent a regular flashpoint in race relations on Puerto Rico."},
+	{searchString: "minority voters", explanationText: "Black and indigenous voters have traditionally been the PB’s \"iron voters\", reliably turning out for the party with supermajorities into the 2010s. While this trend has diminished in more recent elections, this loyalty is attributable to above-average enlistment in the Armed Forces, strong political machines at the local level and the NPP’s complicated relationship with people of African descent."},
+	{searchString: "Colombia", explanationText: "For the last 70 years, political life in the Republic of Colombia has been dominated by the figure of Gustavo Rojas Pinilla. After seizing power in a military coup, Rojas established a left-wing populist program inspired by developments in such countries as Mexico and China. While extremely popular with peasant smallholders and the urban poor, \"Rojismo\" disturbed the traditional elites and conservatives, who gradually took up arms against Rojas. These right-wing militias were subsequently joined by Bolivian and USSA funded partisans, seeking to establish a socialist state. Both groups funded their activities through intimidation, drug production and outright banditry. <br><br>As the conflict dragged on and it became increasingly that the government would not be toppled, rebel forces gradually began to turn drugs production from a source of income to their primary activity, giving rise to narco-militias and outright cartels. Colombia has now spent the better part of a half-century plagued by civil violence and drug crime, with a political system characterized by the \"popular tutelage\" of the National Popular Alliance."},
+	{searchString: "Mitteleuropa", explanationText: "<img src='https://i.imgur.com/nxZT7h8.png' style='max-width: 800px; max-height: 800px;'> The Old Continent’s economic and political union represents the dream of 100 years of Pan-Europeanist ideals. While German hegemony ensures their leading position in the bloc, careful work by the other Member States allows for counterbalancing action that prevents their total domination of the organisation."},
+	{searchString: "EPA", explanationText: "Established during democratization by Jimmy Carter, the Environmental Protection Agency has two roles. <br><br>On one hand, it struggles to protect Puerto Rico’s natural beauty from reckless development, environmentally destructive practices and waste dumping. <br><br>On the other, it works in tandem with the Agency for Toxic Substances and Decontamination to heal the scars left by the dictatorship’s biological and chemical weapons program, returning toxic areas to human habitation. This is best seen on the island of Vieques, where decades of testing require close-cooperation with the Armed Forces to begin clean-up and the task is projected to last until the mid-21st century."},
+	{searchString: "USSA", explanationText: "From the early 40s to its collapse in the 90s, the United Socialist States of America never fully renounced the idea of crushing \"the Caribbean entity\". While this always took a backseat to conflicts on the mainland and with Canada, fear of invasion prompted San Juan’s experiments with a biological-chemical deterrence system and a serious deterrence effort by the Kaiserliche Marine. <br><br>Repeated attempts to land saboteurs and agents on the island only stoked the fires of the White Terror and tended to coincide with the worst massacres and atrocities of the Martial Law period."},
+	{searchString: "Jimmy Carter", explanationText: "The first civilian president of the United States since ill-fated John Nance Garner was overthrown on Christmas Day 1940. A veteran of the Civil War, he continued President Boggs’ efforts to constrain the power of the FBI-led security state & made common cause with George H. W. Bush’s attempts to modernize the Bureau. This culminated in the end of Martial Law and the legalization of opposition parties, ahead of the 1988 elections. <br><br>When Baltasar Corrada del Río won, Carter made sure to assist him in preparing to take power and presided over the first peaceful transition of the presidency in 50 years. In addition, Carter’s moving away from the autarkic economy that had characterized the dictatorship laid the groundwork for the economic boom of the 1990s that made Puerto Rico one of the \"Jaguar Economies\". <br><br>Well regarded by all but the most radical, Carter’s death in 2020 was marked by a week of national mourning and condolences from from around the world."},
+	{searchString: "Martin O’Malley", explanationText: "The notorious former strongman of Mid-Atlantic, who dominated the politics of the post-USSA state for almost 30 years, establishing a hybrid regime dominated by powerful oligarchs. Ousted by an anti-corruption movement allied to FR American revivalists, he is currently in exile in Ireland, fending off attempts to extradite him to Philadelphia for a probable show trial. <br><br>Rumoured to be attempting to return to power by taking advantage of the current instability in Mid-Atlantic, O’Malley should not be ruled as a important figure in the politics of the Eastern Seaboard."},
+	{searchString: "Charlie Crist", explanationText: "The first CS president from \"the Browder Generation\", elected on a platform of modernizing services and reforming the relationship between the states and the central government in Richmond.<br><br>An active campaigner with good political instincts, which proved critical when he became enmeshed in controversy over his record in the Young Pioneers and his refusal to invite former president Taylor to his inauguration."},
+	{searchString: "PEA", explanationText: "<img src='https://i.imgur.com/R7TLS5q.png' style='max-width: 800px; max-height: 800px;'> The sucessor organisation to the GEACPS, the Pacific Economic Area corresponds to Japan’s economic and political sphere. While the other member states have grown increasingly autonomous within the organisation in the last decades, the size and scope of the Japanese economy marks it out as a clear leader in the organisation.<br><br>By abolishing customs barriers and coordinating trade practices, the organisation aims to create a single market area across the Pacific Rim, a reality complicated by the region’s inter-bloc competition. Headquartered in Tokyo and with Japanese, English and Spanish as working languages and translation services for several more."}
+];
+
+// Initialise custom music
+  
+  $("#music_player")[0].children[0].style.display="none"
+  $("#music_player")[0].children[1].style.display="none"
+  
+  document.getElementById("modLoadReveal").style.display="none"
+  document.getElementById("modloaddiv").style.display="none"
+  
+  musicBox = document.getElementById("music_player")
+  musicBox.style.display=""
+  
+  var trackSel;
+  e = campaignTrail_temp
+  e.selectedSoundtrack = 0
+  
+  toTime = (seconds) => {
+    var date = new Date(null);
+    date.setSeconds(seconds);
+    return date.toISOString().substr(11, 8);
+  }
+  
+  generateTime = () => {
+      // Get the audio element
+      var audio = document.getElementById("campaigntrailmusic");
+  
+      timeTracker = document.createElement("div");
+      timeTracker.style = `
+        text-align:left;
+        border-style:solid;
+        border-width:3px;
+        height:150px;
+        width:200px;
+        background-color:#999999;
+        float:right;
+        padding: 10px;
+      `
+      $("#trackSelParent")[0].prepend(timeTracker);
+      $("#trackSelParent")[0].prepend(document.createElement("br"));
+  
+      // Create a new element to display the current position of the audio
+      var positionDisplay = document.createElement("gg");
+      positionDisplay.id = "position-display";
+  
+      // Create a new slider element to change the time
+      var timeSlider = document.createElement("input");
+      timeSlider.type = "range";
+      timeSlider.min = 0;
+      timeSlider.max = 1;
+      timeSlider.step = 0.001;
+      timeSlider.value = 0;
+      timeSlider.style.width = "200px";
+      timeSlider.id = "time-slider";
+  
+      var pausePlay = document.createElement("button");
+      pausePlay.id = "position-display";
+      pausePlay.innerHTML = "<b>Pause</b>"
+      pausePlay.style.width = "100%";
+  
+  
+      pausePlay.addEventListener("click", event => {
+        event.preventDefault();
+        updatePositionDisplay();
+        let audio = document.getElementById("campaigntrailmusic");
+        if (audio.paused) {
+          audio.play();
+          event.target.innerHTML = "<b>Pause</b>";
+          return;
+        }
+        audio.pause();
+        event.target.innerHTML = "<b>Play</b>";
+        return;
+      })
+  
+      var volumeLabel = document.createElement("gg");
+      volumeLabel.id = "volume-label";
+      volumeLabel.innerHTML = "<br><b>Volume: </b>"
+  
+      var volumeSlider = document.createElement("input");
+      volumeSlider.type = "range";
+      volumeSlider.min = 0;
+      volumeSlider.max = 1;
+      volumeSlider.step = 0.001;
+      volumeSlider.value = 0;
+      volumeSlider.style.width = "200px";
+      volumeSlider.id = "volume-slider";
+  
+      volumeSlider.value = audio.volume;
+  
+      timeTracker.appendChild(pausePlay);
+      timeTracker.appendChild(document.createElement("br"));
+      timeTracker.appendChild(document.createElement("br"));
+      timeTracker.appendChild(positionDisplay);
+      timeTracker.appendChild(timeSlider);
+      timeTracker.appendChild(volumeLabel);
+      timeTracker.appendChild(volumeSlider);
+  
+      updatePositionDisplay();
+  
+      //for (let i = 0; i < 10; i++)
+      //timeTracker.append(document.createElement("br"));
+  
+  
+      // Function to update the position display
+      function updatePositionDisplay() {
+        positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+        timeSlider.value = audio.duration ? audio.currentTime / audio.duration : 0;
+      }
+  
+      // Function to change the time of the audio
+      function changeTime() {
+        positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+        audio.currentTime = timeSlider.value * audio.duration;
+      }
+  
+      updateVolume = event => {
+        audio.volume = event.target.value;
+      }
+      
+      // Update the position display and slider every second
+      setInterval(updatePositionDisplay, 1000);
+  
+      // Listen for changes to the time slider and change the time of the audio
+      timeSlider.addEventListener("input", changeTime);
+      volumeSlider.addEventListener("input", updateVolume)
+  }
+  
+  function newMusicPlayer() {
+    trackSel = document.createElement("div");
+    trackSel.id = "trackSelParent"
+    let z = `<br><br><br><br><br><br><br><br><br><br><div id='trackSel' style="text-align:left;border-style:solid;border-width:3px;overflow-y: scroll;overflow-x: hidden;height:200px; width:400px;background-color:#999999;float:right;">`
+    z += `<b><select id='selectSoundtrack'><option value='`+soundtracks[e.selectedSoundtrack].name+`'>`+soundtracks[e.selectedSoundtrack].name+"</option>"
+    for (i in soundtracks) {
+      if (soundtracks[e.selectedSoundtrack] != soundtracks[i]) {
+        z += `<option value='`+soundtracks[i].name+`'>`+soundtracks[i].name+`</option>`
+      }
+    }
+    z += `</select></b><br><br>`
+    // <label><input type="radio" name="option" value="option1">Option 1</label><br>
+    for (i in soundtracks[e.selectedSoundtrack].tracklist) {
+      let a = soundtracks[e.selectedSoundtrack].tracklist[i]
+      let b = `<label><input class="trackSelector" type="radio" name="trackSelector" value="`+i+`">`+a.name+`</label><br>`
+      z += b
+    }
+    z += "</div><br><br>"
+    trackSel.innerHTML = z
+  
+    // select correct song
+  
+    musicBox.appendChild(trackSel);
+    Array.from(document.getElementById("trackSel").children).filter(f=>{
+      return f.tagName == "LABEL"
+    }).map(f=>f.children[0])[0].checked = true
+  
+    // set soundtrack changer
+  
+    soundtrackSelector = document.getElementById("selectSoundtrack")
+    soundtrackSelector.onchange = function() {
+      for (i in soundtracks) {
+        if (soundtracks[i].name == soundtrackSelector.value) {
+          e.selectedSoundtrack = i
+          break
+        }
+      }
+      document.getElementById("trackSelParent").remove()
+      newMusicPlayer()
+    }
+  
+    var matches = document.querySelectorAll('.trackSelector');
+  
+    for (match in matches) {
+      matches[match].onchange = function() {
+        audio = $("#campaigntrailmusic")[0];
+        audio.src = soundtracks[e.selectedSoundtrack].tracklist[this.value].url
+        audio.currentTime = 0
+      }
+    }
+  
+    musicBox.children[2].loop = false
+    musicBox.children[2].src = soundtracks[e.selectedSoundtrack].tracklist[0].url
+  
+    musicBox.children[2].onended = function() {
+      console.log("next track")
+      let selected = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+      let newSel = clamp(selected+1, soundtracks[e.selectedSoundtrack].tracklist.length-1, 0)
+      let buttons = Array.from(document.getElementById("trackSel").children).filter(f=>{
+        return f.tagName == "LABEL"
+      }).map(f=>f.children[0])
+      //let selectedIndex = buttons.map(f=>f.children[0]).map(f=>f.checked)
+      buttons[newSel].click()
+    }
+  
+    for (w = 0; w < 7; w++) {
+      document.getElementById("trackSelParent").appendChild(document.createElement("br"))
+    }
+    
+    generateTime();
+  }
+  
+  clamp = function(a, max, min, overflow=true) {
+    if (overflow) {
+      return a > max ? min : a < min ? max : a;
+    }
+    return a > max ? max : a < min ? min : a;
+  }
+  
+  
+  // Track list
+  
+  var soundtracks = {
+    0: {
+      name: "San Juan Radio",
+      tracklist: [
+		{
+          "name": "I Like it Like That",
+          "url": "https://audio.jukehost.co.uk/YsRubR8U8OwqJEIFwXKrrr7b2k9McYWv"
+        },
+		{
+          "name": "Streets of Old San Juan",
+          "url": "https://audio.jukehost.co.uk/Hqlo67hzlrtpKXyYohJYKrCrE1KqZzZs"
+        },
+		{
+          "name": "Oye Como Va",
+          "url": "https://audio.jukehost.co.uk/pqHBobrXFzhyp9qsMZHX7l9aQ11mGnuH"
+        },
+		{
+          "name": "La Borinqueña",
+          "url": "https://audio.jukehost.co.uk/0DyC6W9RFc6l2rXExqiKdARStACm2cpr"
+        },
+		{
+          "name": "St. Thomas",
+          "url": "https://audio.jukehost.co.uk/alMw4JcCHneMTCMgBh52tLYncRgEjzys"
+        }
+      ]
+    },
+	1: {
+      name: "Patriot Radio",
+      tracklist: [
+		{
+          "name": "The Star-Spangled Banner",
+          "url": "https://audio.jukehost.co.uk/jYbNDwotqdEPTqSBCC1UlqEmx5IdeSUK"
+        },
+		{
+          "name": "My Country 'Tis of Thee",
+          "url": "https://audio.jukehost.co.uk/DyJUwUTpNyADfytNPdjRQCRn3bpXC2Sm"
+        },
+		{
+          "name": "The Stars and Stripes Forever",
+          "url": "https://audio.jukehost.co.uk/b01QHdglkAvK2Nnwy8Yca0fQRURBUn56"
+        },
+		{
+          "name": "America The Beautiful",
+          "url": "https://audio.jukehost.co.uk/ZgL9820TO9j9Po8JqYLeaaW56EW6f7dd"
+        }
+      ]
+    },
+	2: {
+      name: "Radio Patria Nueva",
+      tracklist: [
+		{
+          "name": "Dalmau, Dalmau, Dalmau",
+          "url": "https://audio.jukehost.co.uk/BL2nWuIYs17IPjduQUZbHL2QzBPrY31R"
+        },
+		{
+          "name": "Vamoa Ganar",
+          "url": "https://audio.jukehost.co.uk/gnMLtd6ukyO4u56ZaRFHfMzLs5diWTzt"
+        },
+		{
+          "name": "Infinita Tristeza",
+          "url": "https://audio.jukehost.co.uk/ZLhfo0dbsfTt22rOSSIlTtiqjGEr3ROE"
+        },
+		{
+          "name": "Panik Panik",
+          "url": "https://audio.jukehost.co.uk/VdWZHNNtD6AcoTuHXR6iNs8bATbgCXTz"
+        }
+      ]
+    }
+  }
+  
+  // Set up new music player
+  
+  newMusicPlayer()
+
+campaignTrail_temp.achievements = {
+	 "Glory, Glory, Hallelujah!" : {
+        "image" : "https://i.imgur.com/lxKCN2y.jpeg",
+        "description" : "You fulfilled an old man's dying dream.",
+        "cannotBeCheated" : true
+    },
+	 "False Prophet" : {
+        "image" : "https://i.imgur.com/9CfV7N9.png",
+        "description" : "You sold your soul for power.",
+        "cannotBeCheated" : true
+    },
+	 "Martyr" : {
+        "image" : "https://i.imgur.com/kSsB8gU.jpeg",
+        "description" : "You paid the price for your convictions.",
+        "cannotBeCheated" : true
+    },
+	 "Archeofuturist" : {
+        "image" : "https://i.imgur.com/J97qaY3.png ",
+        "description" : "Forward through the past.",
+        "cannotBeCheated" : true
+    },
+	 "Peacemaker" : {
+        "image" : "https://i.imgur.com/mtXsuQE.png",
+        "description" : "You made Carter proud.",
+        "cannotBeCheated" : true
+    },
+	 "Refounder" : {
+        "image" : "https://i.imgur.com/NYxj98k.png",
+        "description" : "America lives again through you.",
+        "cannotBeCheated" : true
+    },
+	 "The Business of America" : {
+        "image" : "https://i.imgur.com/BiPx47s.png",
+        "description" : "Negotiate a trade deal.",
+        "cannotBeCheated" : true
+    },
+    "Cheers to That" : {
+        "image" : "https://i.imgur.com/2qXIPwT.png",
+        "description" : "Win a landslide victory.",
+        "cannotBeCheated" : true
+    }
+}
+
+e = campaignTrail_temp;
+
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#3c3b6e";
+
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#828282";
+
+            document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+
+            $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+            $(".container")[0].style.backgroundColor = "#b22234";
+
+            document.getElementById("header").src = "https://i.imgur.com/n1EhwAi.png";
+
+            document.body.background = "https://i.imgur.com/RmCDbpK.jpg";
+
+campaignTrail_temp.election_json = [
+			{
+				"model":"campaign_trail.election",
+				"pk":20,
+				"fields":{
+					"year":2016,"summary":"<div style='overflow-y:scroll;height:200px;'>When Jimmy Carter ended martial law in 1988, he paved the way for the establishment of multiparty democracy. Ever since, the Patriot Bloc and its satellite parties have struggled against the Pan-Green coalition, led by the New Progressives. </p><p>A brief return to power under John McCain in 2008 was characterized by poor decision making and gaffes, which left the country increasingly isolated and the PB unpopular with the democratic generation. However, Gloria Tristani's turbulent and scandal-struck second term has damaged the NPP's reputation, presenting an opportunity for the PB. As election day nears, key issues are: </p><p><ul><li>Cracking down on institutional corruption<li>The PB’s ability to leave behind its exile past and reach out to ethnic Puerto Ricans</li><li>Constitutional reform and the question of overseas territories</p><p>Will the PB be able to survive under democracy or will the NP establish a Puerto Rican state?</div>",
+					"image_url":"https://i.imgur.com/dxG9Gkv.png",
+					"winning_electoral_vote_number":270,
+					"advisor_url":"https://i.imgur.com/a7IpHtm.png",
+					"recommended_reading":"",
+					"site_image": "https://i.imgur.com/h32hWv3.png",
+					"site_description": "<p>After their defeat in the 2nd American Civil War, MacArthur's loyalists undertook a retreat to Puerto Rico, where they spent the next 40 years plotting their return to the mainland. Following the collapse of the USSA and the reforms of Carter, gradual democratization has eroded the ruling Patriot Bloc's hold on power and allowed for the rise of a Puerto Rican nationalist movement committed to the declaration of a Puerto Rican republic.</p><p>With their Iron Voters increasingly lost to local grievances and rural issues have produced two minor parties in the form of the Spanish-Cuban influenced Carlists and the Mexican backed Hostosians, the party is at a crossroads.</p><p>In desperation, the PB have drafted Virgin Islander party-boss and former VP Kelsey Grammer to head the ticket and lead them to victory.</p><p>Will Grammer succeed or are the Exile's dreams doomed to die at last?</p>",
+					"has_visits":0,
+					"no_electoral_majority_image":"../static/images/2012-no-majority.jpg"
+					}
+				}
+			];
+campaignTrail_temp.temp_election_list = [
+				{
+					"id":20,
+					"year":2016,
+					"is_premium":0,
+					"display_year":"2024Exile"
+				}
+			];
+campaignTrail_temp.credits = "SREF & Ben. Additional credit to Decstar for the music player, Nina, Killeritch & Calgar for information on complex features and Rubix for help troubleshooting";
+campaignTrail_temp.global_parameter_json = [
+				{"model":"campaign_trail.global_parameter",
+				"pk":1,
+					"fields":{
+						"vote_variable":1.125,
+						"max_swing":0.12,
+						"start_point":0.94,
+						"candidate_issue_weight":10,
+						"running_mate_issue_weight":3,
+						"issue_stance_1_max":-0.71,
+						"issue_stance_2_max":-0.3,
+						"issue_stance_3_max":-0.125,
+						"issue_stance_4_max":0.125,
+						"issue_stance_5_max":0.3,
+						"issue_stance_6_max":0.71,
+						"global_variance":0.01,
+						"state_variance":0.005,
+						"question_count":25,
+						"default_map_color_hex":"#C9C9C9",
+						"no_state_map_color_hex":"#999999"
+					}
+				}
+			];						
+campaignTrail_temp.candidate_json = [
+		{
+			"model":"campaign_trail.candidate",
+			"pk":200,
+			"fields": {
+				"first_name":"Kelsey Grammer -",
+				"last_name":"Patriot Bloc",
+				"election":20,
+				"party":"Patriot Bloc",
+				"state":"Overseas",
+				"priority":1,
+				"description":"\<li><b>Name: Kelsey Grammer</b></li><li><b>Party: Patriot Bloc</b></li><li><b>Ideology: Right-Wing Populism</b></li><div style='overflow-y:scroll;height:200px;'>A native of the Virgin Islands, Kelsey Grammer is one of the few Anglo-Americans with roots in the territory of the rump United States. As a result, he is extremely popular in his home region. <br><br>As former vice-president, Grammer also holds the dubious distinction of being one of the few successful members of the troubled John McCain administration. In a Fortaleza characterised by McCain’s aggressive bluster and bravado, he distinguished himself by playing a straight man capable of delivering for a party machine uneasy with straight-forward Virgin Islanders.<br><br> When the party passed him over as their candidate for presidency, some said that Grammer was forever doomed to being Party Boss on St. Thomas. Now the Exile Establishment turns to him in the hope that he will take advantage of NPP weakness and return them power. <br><br>As the Bloc’s fortunes recover and they make a serious challenge to the incumbent New Progressives, <b>his popularity overseas and dynamic vision will be indispensable.</b> <br><br><i>As election day nears, everyone wonders if the Caribbean Kid can lead his party to victory and restore PB hegemony. <b>The time has come to prove all doubters wrong.</b></i></div>",
+				"color_hex":"#0d059c",
+				"secondary_color_hex":"#0D05C4",
+				"is_active":1,
+				"image_url":"https://i.imgur.com/SPRNrQx.png",
+				"electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>",
+				"electoral_loss_message":"<h3>Fake News?</h3>",
+				"no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>",
+				"description_as_running_mate":null,
+				"candidate_score":1,
+				"running_mate":false,
+				"scrollable":true
+			}
+		},
+		{
+			"model":"campaign_trail.candidate",
+			"pk":204,
+			"fields": {
+				"first_name":"Karen",
+				"last_name":"Hughes",
+				"election":20,
+				"party":"Patriot Bloc",
+				"state":"Overseas",
+				"priority":5,
+				"description":"Karen Hughes is the establishment support propping up Grammer’s heterodox candidacy. The daughter of a West Point graduate who served the United States his whole life, she followed her father into state service. Fulfilling various diplomatic roles for the State Department, she acquired a reputation for acting as a speaker for the values and image of the rump United States. With these unquestionably patriotic credentials, she is sure to marshal exile support for our campaign. <br><br>Having a devout Christian on the ticket is also likely to <b> reflect favourably with religious voters</b> and effective use of this <i>pious image</i> may be essential to the campaign’s success!",
+				"color_hex":"#0d059c",
+				"secondary_color_hex":"#0D05C4",
+				"is_active":0,
+				"image_url":"https://i.imgur.com/6bEU40a.png",
+				"electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>",
+				"electoral_loss_message":"<h3>Fake News?</h3>",
+				"no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>",
+				"description_as_running_mate":"\<li><b>Name: Karen Hughes</b></li><li><b>Party: Patriot Bloc</b></li><li><b>Ideology: Conservative Americanism</b></li>Karen Hughes is the establishment support propping up Grammer’s heterodox candidacy. The daughter of a West Point graduate who served the United States his whole life, she followed her father into state service. Fulfilling various diplomatic roles for the State Department, she acquired a reputation for acting as a speaker for the values and image of the rump United States. With these unquestionably patriotic credentials, she is sure to marshal exile support for our campaign. <br><br>Having a devout Christian on the ticket is also likely to <b> reflect favourably with religious voters</b> and effective use of this pious image may be essential to the campaign’s success!",
+				"candidate_score":1,
+				"running_mate":true,
+				"scrollable":false,
+				"partner":"200"
+			}
+		},
+		{
+			"model":"campaign_trail.candidate",
+			"pk":201,
+			"fields": {
+				"first_name":"Juan Dalmau -",
+				"last_name":"New Progressive Party",
+				"election":20,
+				"party":"New Progressive Party",
+				"state":"San Juan",
+				"priority":2,
+				"description":"Juan Dalmau is the NPP candidate, with left-wing and independentist leanings. He is not currently playable because I am a hack and have no idea what to do with him.",
+				"color_hex":"#34942a",
+				"secondary_color_hex":"#34CC2A",
+				"is_active":0,
+				"image_url":"https://i.imgur.com/jG0vrAL.png",
+				"electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>",
+				"electoral_loss_message":"<h3>Fake News?</h3>",
+				"no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>",
+				"description_as_running_mate":null,
+				"candidate_score":1,
+				"running_mate":false,
+				"scrollable":false
+			}
+		},
+		{
+			"model":"campaign_trail.candidate",
+			"pk":209,
+			"fields": {
+				"first_name":"Alexandra",
+				"last_name":"Lúgaro",
+				"election":20,
+				"party":"New Progressive Party",
+				"state":"San Juan",
+				"priority":9,
+				"description":"Alexandra Lugaro is the girlboss professional in the NPP ticket and would be crucial to the campaign if they were playable.",
+				"color_hex":"#34942a",
+				"secondary_color_hex":"#34CC2A",
+				"is_active":0,
+				"image_url":"https://i.imgur.com/R49rSWm.png",
+				"electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>",
+				"electoral_loss_message":"<h3>Fake News?</h3>",
+				"no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>",
+				"description_as_running_mate":"Alexandra Lugaro is the girlboss professional in the NPP ticket and would be crucial to the campaign if they were playable.",
+				"candidate_score":1,
+				"running_mate":true,
+				"scrollable":false,
+				"partner":"201"
+			}
+		},
+		{
+			"model":"campaign_trail.candidate",
+			"pk":202,
+			"fields": {
+				"first_name":"Joanne Rodríguez Veve -",
+				"last_name":"Carlist",
+				"election":20,
+				"party":"Carlist",
+				"state":"San Sebastián",
+				"priority":3,
+				"description":"Please keep the awooga-ing to a minimum.",
+				"color_hex":"#ff484a",
+				"secondary_color_hex":"#FF487A",
+				"is_active":0,
+				"image_url":"https://i.imgur.com/Yxn34A6.png",
+				"electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>",
+				"electoral_loss_message":"<h3>Fake News?</h3>",
+				"no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>",
+				"description_as_running_mate":null,
+				"candidate_score":1,
+				"running_mate":false,
+				"scrollable":false
+			}
+		},
+		{
+			"model":"campaign_trail.candidate",
+			"pk":203,
+			"fields": {
+				"first_name":"Julio Muriente -",
+				"last_name":"Hostosian National Independence",
+				"election":20,
+				"party":"Hostosian National Independence Movement",
+				"state":"San Juan",
+				"priority":4,
+				"description":"Multipolar meme man.",
+				"color_hex":"#800080",
+				"secondary_color_hex":"#A020F0",
+				"is_active":0,
+				"image_url":"https://i.imgur.com/1ErPpUU.jpeg",
+				"electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>",
+				"electoral_loss_message":"<h3>Fake News?</h3>",
+				"no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>",
+				"description_as_running_mate":null,
+				"candidate_score":1,
+				"running_mate":false,
+				"scrollable":false
+			}
+		}
+];		
+campaignTrail_temp.running_mate_json = [
+	{
+	"model":"campaign_trail.running_mate",
+	"pk":204,
+	"fields": 
+		{"candidate":200,"running_mate":204}
+	},
+	{"model":"campaign_trail.running_mate",
+	"pk":209,
+	"fields":
+		{"candidate":201,"running_mate":209}
+	}
+];			
+campaignTrail_temp.opponents_default_json = [
+	{
+        "election": 20,
+        "candidates": [
+            200,
+            201,
+            202,
+            203
+        ]
+    }
+]
+campaignTrail_temp.opponents_weighted_json = [
+    {
+        "election": 20,
+        "candidates": [
+            200,
+            201,
+            202,
+            203
+        ]
+    }
+]
+
+RecReading = true;
+campaignTrail_temp.election_json[0].fields.recommended_reading = "<h4 style='margin-top: 0.5em;'>The World of Exile America</h4><a href='https://i.imgur.com/x920LiK.png' target='_blank'>The World in 2024</a><br><a href='https://i.imgur.com/z4q54JY.png' target='_blank'>USA Wikibox</a><br><a href='https://i.imgur.com/LxCS8Xf.png'>USSA Wikibox</a><br><a href='https://i.imgur.com/i5fF4Hz.png' target='_blank'>Pan-Blues</a><br><a href='https://i.imgur.com/9eG0UOm.png' target='_blank'>Pan-Greens</a><br><h4>Lore</h4><p>This mod started off with a simple premise: <i>'In what kind of world could Kelsey Grammer become president?'</i> <br><br>Out of that came the wikiboxes, which were the earliest things I made for this setting. They're not amazing, but they do explain what's going on.<br><br>Fundamentally, the setting is based off Kaiserreich, as you've probably observed. To this, I've added a few of my own ideas and concepts. <br><br>Is the world I've created plausible? Probably not, but it has been fun to make and I hope you've enjoyed it, just as I hope you've enjoyed this mod.</p>"
+
+ HistHexcolour=["#0d059c","#34942a","#ff484a","#800080"];
+ HistName=["Patriot Bloc"," New Progressive Party"," Carlist","Hostosian National Independence Movement"];
+ HistEV=[38,32,7,2];
+ HistPV=["3,624,169","2,046,026","454,229","285,902"];
+ HistPVP=["56.5%","31.9%","7.1%","4.5%"];
+
+// Maintain interval-based removal
+function removeCandidateSummaries() {
+  try {
+    const candidateSummaryElements = document.querySelectorAll("#candidate_summary");
+    candidateSummaryElements.forEach(summaryElement => {
+      const ulLists = summaryElement.querySelectorAll("ul");
+      ulLists.forEach(ul => ul.remove());
+    });
+  } catch (err) {
+    console.error("Error removing summaries:", err);
+  }
+}
+
+window.setInterval(removeCandidateSummaries, 200);
+
+function removeRunningMateSummary() {
+try {
+  const running_mate_summary = document.querySelector("#running_mate_summary");
+  if (running_mate_summary) {
+    const ulList = running_mate_summary.querySelector("ul");
+    if (ulList) {
+      running_mate_summary.removeChild(ulList);
+    }
+  }
+} catch {}
+}
+window.setInterval(removeRunningMateSummary,204);
+
+
+// Combined observer for form updates
+const summaryObserver = new MutationObserver((mutations) => {
+  try {
+    // Update candidate form if needed
+    const candidateForm = document.querySelector("#candidate_form form h3");
+    if (candidateForm) {
+      candidateForm.textContent = "Please select your candidate:";
+    }
+    
+    // Remove running mate summary if present
+    const runningMateSummary = document.querySelector("#running_mate_summary");
+    if (runningMateSummary?.querySelector("ul")) {
+      runningMateSummary.querySelector("ul").remove();
+    }
+  } catch (err) {
+    console.error("Error updating UI:", err);
+  }
+});
+
+// Watch specific containers
+const containers = ["#candidate_form", "#running_mate_summary"]
+  .map(s => document.querySelector(s))
+  .filter(Boolean);
+
+containers.forEach(container => {
+  summaryObserver.observe(container, {
+    childList: true,
+    subtree: true
+  });
+});
