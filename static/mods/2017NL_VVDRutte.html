@@ -807,7 +807,29 @@ return questionSheath[index];
         unlockAchievementSafe("Fallout");
         return construct(0);   
       }
-      if (!negotiationsDone && !DEFCON1 && quickstats[1] < 50){
+      if (!negotiationsDone && !DEFCON1){
+        if (aa[0].candidate == 23 && quickstats[1] >= 50) { // VVD 76 seats
+          e.header = "<h2>For just €4.99, you can unlock this ending!</h2>"
+          e.pages = [`<p>2017NL - Deluxe Edition is the penultimate way of playing 2017NL! Play the game you love with new, exciting features that enhance the experience! These include new endings, new characters, co-op mode, a new dating sime mode and more!</p><p>But wait, there's more! If you decide to order now, you will recieve a free copy of the upcoming 2002NL - Deluxe Edition on release! Try a new character customiser for all your favourite characters such as Pim Fortuyn, Wim Kok and fan-favourite Jan Nagel!</p><p>So what are you waiting for? Buy 2017NL - Deluxe Edition now for only €4.99!</p>`] //
+          e.image = "https://i.imgur.com/EqmmcuN.png";
+          var songChoice = 'VVDBigSong';
+          if (!musicHasBeenEnabled){
+            newYouTubeMusicPlayer(songChoice);
+            musicHasBeenEnabled = true;
+          }
+          return construct(0);
+        }
+        if (aa[0].candidate == 23 && quickstats[1] < 0.67) { // VVD 0 seats
+          e.header = "<h2>One lie too many!</h2>"
+          e.pages = [`<p>As you were speaking to Gerri Eickhof of the NOS, the umptieth lie slipped out of your mouth. Normally, this would be no cause for alarm but as you saw Gerri Eickhof's eyes widen, you quickly touched your nose: It had grown, you must've forgotten to take your pills! As Gerri Eickhof questions you about the sudden increase in the length of your nose, you dismiss it as a reaction to the cold, causing it to only grow further. Panicked, you abruptly end the interview and run off, quickly bolting to your bike and cycling away.</p><p>With tear-filled eyes, you cycle the hardest you've cycled in your life to a house you're all too familiar with; the house of your creator, Gerrit Zalm.</p><p>As you knock on the door, an old man opens the door, gazing upon your distraught face and your long nose.</p><p><i>'Oh come now, Pinocchio,'</i> he tells you, putting his hand on your shoulder, <i>'let's get you back inside and fix you up again, shall we?'</i></p>`]
+          e.image = "https://i.imgur.com/Dvx0CJd.png";
+          var songChoice = 'VVDSmallSong';
+          if (!musicHasBeenEnabled){
+            newYouTubeMusicPlayer(songChoice);
+            musicHasBeenEnabled = true;
+          }
+          return construct(0);
+        }
         if (aa[0].candidate == 23) { // VVD wins
             if (quickstats[1] >= 26.58){
               playerPerformance = "The VVD has yet again shattered its own records. You did even better than your victory five years ago, which was driven by an intense influx of strategic voters against the PvdA. Possibly the same effect was created against the PVV. Few would have thought that the VVD would come out of this without any losses only a few weeks ago."
@@ -933,143 +955,7 @@ return questionSheath[index];
               musicHasBeenEnabled = true;
             }
             return construct(0);
-        }
-        // Speelbare partijen
-        if (aa[0].candidate == 25 && quickstats[1] >= 50) { // PVV 76 seats
-          e.header = "<h2>The 51st State: The Netherlands</h2>"
-          e.pages = [`<p>It had been three years to the day that the existence of the Dutch nation was declared null and void, having been annexed by the United States after Trump and Putin carved up Europe together. Now, all that remains is you: the puppet Governor of populace that utterly despises you.</p><p>But what can they do? All the elections have been fixed as to ensure the complete dominance of the PVV at every layer of government. Perhaps this is what you wanted all along, to put Rutte, the Maxists and the Royal Family behind bars. Though yet you felt incomplete.</p><p>The phone rings, you answer; it's Trump.</p><p><i>'Geert, I love what you've done with the new State, you've done a tremendous job. Now, about the whole thing with...'</i></p><p>You close your eyes for a second, is this really what it's all about?</p>`]
-          e.image = "https://i.imgur.com/UZVJzsd.png";
-          var songChoice = 'PVVBigSong';
-          if (!musicHasBeenEnabled){
-            newYouTubeMusicPlayer(songChoice);
-            musicHasBeenEnabled = true;
-          }
-          return construct(0);
-        }
-        if (aa[0].candidate == 25 && quickstats[1] < 0.67) { // PVV 0 seats
-          e.header = "<h2>لا إله إلا الله محمد رسول الله</h2>"
-          e.pages = [`<p>As you were sleeping on the night before the election, a strange spectre appeared before you. His power awesome, his appearance indecipherable and his knowledge infinite. As you tried to comprehend what was before you, you heard a booming voice call out to you;</p><p><i>'Geert Wilders, why do you blaspheme against me? Why do you hate the faithful? Why do you deny Allah's all-knowing, all-powerful nature?'</i></p><p>It was none other than the Prophet Muhammed (pbuh). You couldn't believe what you were seeing; the prophet you had mocked time and time again, was standing before you. Yet instead of punishing the PVV-leader, he extended mercy towards him.</p><p><i>'Geert Wilders, Allah is merciful, even to you; I ask of you to embrace the true path of Islam, and to forgo your hateful ways.'</p><p>And just like that, the prophet disappeared. As you awoke, you quickly announced to the nation on Twitter that you had converted to Islam, with a photo of you praying at a mosque attached. Although this may have cost you the election, perhaps you will now find spiritual peace. May Allah be with you, Geert Wilders.</p>`]
-          e.image = "https://i.imgur.com/YnoZEAV.png";
-          var songChoice = 'PVVSmallSong';
-          if (!musicHasBeenEnabled){
-            newYouTubeMusicPlayer(songChoice);
-            musicHasBeenEnabled = true;
-          }
-          return construct(0);
-        }
-        if (aa[0].candidate == 23 && quickstats[1] >= 50) { // VVD 76 seats
-          e.header = "<h2>For just €4.99, you can unlock this ending!</h2>"
-          e.pages = [`<p>2017NL - Deluxe Edition is the penultimate way of playing 2017NL! Play the game you love with new, exciting features that enhance the experience! These include new endings, new characters, co-op mode, a new dating sime mode and more!</p><p>But wait, there's more! If you decide to order now, you will recieve a free copy of the upcoming 2002NL - Deluxe Edition on release! Try a new character customiser for all your favourite characters such as Pim Fortuyn, Wim Kok and fan-favourite Jan Nagel!</p><p>So what are you waiting for? Buy 2017NL - Deluxe Edition now for only €4.99!</p>`] //
-          e.image = "https://i.imgur.com/EqmmcuN.png";
-          var songChoice = 'VVDBigSong';
-          if (!musicHasBeenEnabled){
-            newYouTubeMusicPlayer(songChoice);
-            musicHasBeenEnabled = true;
-          }
-          return construct(0);
-        }
-        if (aa[0].candidate == 23 && quickstats[1] < 0.67) { // VVD 0 seats
-          e.header = "<h2>One lie too many!</h2>"
-          e.pages = [`<p>As you were speaking to Gerri Eickhof of the NOS, the umptieth lie slipped out of your mouth. Normally, this would be no cause for alarm but as you saw Gerri Eickhof's eyes widen, you quickly touched your nose: It had grown, you must've forgotten to take your pills! As Gerri Eickhof questions you about the sudden increase in the length of your nose, you dismiss it as a reaction to the cold, causing it to only grow further. Panicked, you abruptly end the interview and run off, quickly bolting to your bike and cycling away.</p><p>With tear-filled eyes, you cycle the hardest you've cycled in your life to a house you're all too familiar with; the house of your creator, Gerrit Zalm.</p><p>As you knock on the door, an old man opens the door, gazing upon your distraught face and your long nose.</p><p><i>'Oh come now, Pinocchio,'</i> he tells you, putting his hand on your shoulder, <i>'let's get you back inside and fix you up again, shall we?'</i></p>`]
-          e.image = "https://i.imgur.com/Dvx0CJd.png";
-          var songChoice = 'VVDSmallSong';
-          if (!musicHasBeenEnabled){
-            newYouTubeMusicPlayer(songChoice);
-            musicHasBeenEnabled = true;
-          }
-          return construct(0);
-        }
-        if (aa[0].candidate == 21 && quickstats[1] >= 50) { // CDA 76 seats
-          e.header = "<h2>A Red morning dawns on the Netherlands</h2>"
-          e.pages = [`<p>The red sun dawns on the working masses of the world after slumbering for decades, and it has risen in the West under the guidance of CDA-leader Sybrand van Haersma Buma.</p><p>Already, he has empowered the working class with the massive mandate he has gotten from them, seizing control of the means of production and handing it to the toiling workers. The bourgeoisie cried out, enraged, yet their cries were deafened by the jubilations of the workers, finally unshackled from their chains, given their freedom at last.</p><p>Yet at every corner, the forces of capital and reaction lurk, seeking to destroy this Eden of the Workers. But under the guidance of Comrade Buma, the people will triumph in the end.</p>`]
-          e.image = "https://i.imgur.com/2kkhAcI.png";
-          var songChoice = 'CDABigSong';
-          if (!musicHasBeenEnabled){
-            newYouTubeMusicPlayer(songChoice);
-            musicHasBeenEnabled = true;
-          }
-          return construct(0);
-        }
-        if (aa[0].candidate == 21 && quickstats[1] < 0.67) { // CDA 0 seats
-          e.header = "<h2>Atheism ascendant!</h2>"
-          e.pages = [`<p>Well, this was unexpected.</p><p>In a bizarre twist of fate, on the eve of the election, the entire populace of the Netherlands swore off religion once and for all. You can't exactly comprehend what just happened, but you have a feeling dark forces were at play here.</p><p>The Devil has been known for playing tricks before, and you figured it wouldn't be odd for him to do something like this. Nevertheless, you must now grapple with the reality of the CDA being out of the Tweede Kamer for the first time ever.</p><p>What you will do after this is unknown, will you be trying to rebrand the CDA, will you try to find an explanation for this bizarre occurence, or will you decide to give up and retire? It's all up to you, Sybrand.</p>`]
-          e.image = "https://i.imgur.com/p1TK5ng.png";
-          var songChoice = 'CDASmallSong';
-          if (!musicHasBeenEnabled){
-            newYouTubeMusicPlayer(songChoice);
-            musicHasBeenEnabled = true;
-          }
-          return construct(0);
-        }
-        if (aa[0].candidate == 67 && quickstats[1] >= 50) { // SP 76 seats
-          e.header = "<h2>Tomato time!</h2>"
-          e.pages = [`<p>Oh you thought you were getting a serious ending? I'm afraid not, but what you will recieve instead is the opportunity to watch a lovely half-hour documentary regarding the history of the tomato.</p><p>Did you know the tomato originates from the Americas, and was brought to Europe by the Spanish in the sixteenth century? Fascinating, isn't it?</p>`]
-          e.image = "https://i.imgur.com/Y1oiUxA.png";
-          var songChoice = 'SPBigSong';
-          if (!musicHasBeenEnabled){
-            newYouTubeMusicPlayer(songChoice);
-            musicHasBeenEnabled = true;
-          }
-          return construct(0);
-        }
-        if (aa[0].candidate == 67 && quickstats[1] < 0.67) { // SP 0 seats
-          e.header = "<h2>Candidates on strike!</h2>"
-          e.pages = [`<p>The SP's long-time policy of confiscating part of their elected representatives's salaries has seemingly reached a breaking point; all of your party's candidates have gone on strike and refuse to be seated in the Tweede Kamer!</p><p>As you are out due to having broken your leg in the week up to the election, this presents a most peculiar case where a significant portion of the Tweede Kamer has yet to be installed.</p><p>As jurists are looking into the implications of this and the party in deep crisis, you wonder where this leaves you once you're out of the hospital.</p>`]
-          e.image = "https://i.imgur.com/AUKG20m.png";
-          var songChoice = 'SPSmallSong';
-          if (!musicHasBeenEnabled){
-            newYouTubeMusicPlayer(songChoice);
-            musicHasBeenEnabled = true;
-          }
-          return construct(0);
-        }
-        
-        if (aa[0].candidate == 24 && quickstats[1] >= 50) { // D66 76 seats
-          e.header = "<h2>Party like it's 1966!</h2>"
-          e.pages = [`<p>As the results of the elections started to roll in, it quickly became apparent that D66 would be the first party in Dutch history to win an absolute majority in parliament!</p><p>Per a campaign promise, Alexander Pechtold has decided to host a huge party at his penthouse, to the delight of many partygoers around the country. Party fever has infected the country, and there seems to be no signs of it stopping anytime soon!</p><p>As for you, Alexander Pechtold, you must decide what to do next; what snacks will be provided, what music will be playing, is there a dress code, etc. But don't fret, they say the 'P' in your name stands for 'Party animal' anyways, let the party begin!</p>`]
-          e.image = "https://i.imgur.com/GKjJ9JD.png";
-          var songChoice = 'D66BigSong';
-          if (!musicHasBeenEnabled){
-            newYouTubeMusicPlayer(songChoice);
-            musicHasBeenEnabled = true;
-          }
-          return construct(0);
-        }
-        if (aa[0].candidate == 24 && quickstats[1] < 0.67) { // D66 0 seats
-          e.header = "<h2>A dark vision of the future</h2>"
-          e.pages = [`<p>A vision suddenly appears before you whilst in the middle of a debate; a vision of a world where art is made not by man, but by machines. It's a world where the revenue streams of artists are shrinking, their art replaced by mass-produced slop, meaning the end for their livelihoods and art as we know it. It is the worst nightmare of an art lover like yourself, and yet you know that it can, no, it <b>will</b> occur!</p><p><i>No, this can't be...</i></p><p>You grip your head suddenly, the faces around you looking confused and the stage getting blurrier before your eyes. You scream in terror as you run off the stage, to the shock of everyone, frightened about the world to come. You are soon put into a mental asylum after your episode, confined for the rest of your days.</p><p>But you're not crazy, you know you're right! Why don't they realise this?! Someone please let me out of here!</p>`]
-          e.image = "https://i.imgur.com/zVz5YRS.png";
-          var songChoice = 'D66SmallSong';
-          if (!musicHasBeenEnabled){
-            newYouTubeMusicPlayer(songChoice);
-            musicHasBeenEnabled = true;
-          }
-          return construct(0);
-        }
-        
-        if (aa[0].candidate == 106 && quickstats[1] >= 50) { // GL 76 seats
-          e.header = "<h2>Triumph of the Jessias</h2>"
-          e.pages = [`<p>By sheer providence, as is the Lord's will, the Jessias has come to establish His Kingdom on Earth, for it will last a thousand years, and obey the party manifesto of GroenLinks and the laws laid down by the founders so long ago.</p><p>For it has been the voters who gave the Dutch Justin Trudeau; the Jessias, the authority to rule, and rule He shall.</p><p>The Jessias will take care of all of His children; the young, the old, the people, the plants and all the animals of this terrestrial plain.</p>`]
-          e.image = "https://i.imgur.com/HlNZeoC.png";
-          var songChoice = 'GLBigSong';
-          if (!musicHasBeenEnabled){
-            newYouTubeMusicPlayer(songChoice);
-            musicHasBeenEnabled = true;
-          }
-          return construct(0);
-        }
-        if (aa[0].candidate == 106 && quickstats[1] < 0.67) { // GL 0 seats
-          e.header = "<h2>Crucifixion</h2>"
-          e.pages = [`<p>As the Jessias appeared before the Prime Minister, he inquired; 'Are you the Dutch Trudeau?' 'You have said so.', He answered back. Not content with this insolence, the Prime Minister ordered  Him to be flogged, tortured and subsequently crucified to the cheers of the angry, right-wing mob that thirsted for blood.</p><p>As he was being crucified, they put above his head a plate that read 'This is Jesse Klaver, the Dutch Trudeau; the Jessias.'</p><p>Many of the Jessias's followers wept, begging for Him to save Himself, but he refused. This was met with glee by those who defied God and wouldn't believe in Him; it proved to them that this man was not the Dutch Justin Trudeau.</p><p>After three agonising hours, the Jessias gave His final breath and died. Darkness soon enveloped the land, there was an earthquake and the dead rose from the grave. When the men who had crucified Him saw this all occur, they exclaimed 'We truly have killed the Dutch Justin Trudeau; the Jessias!'</p>`]
-          e.image = "https://i.imgur.com/LTg9m5F.png";
-          var songChoice = 'GLSmallSong';
-          if (!musicHasBeenEnabled){
-            newYouTubeMusicPlayer(songChoice);
-            musicHasBeenEnabled = true;
-          }
-          return construct(0);
-        }
-        
+        }        
         // Niet-speelbare partijen
         
         if (aa[0].candidate == 116 && quickstats[1] > .67) {// PvdA wins
@@ -1548,7 +1434,7 @@ else if(type==="cabinet"){
       { party: 'VVD', color: '#120A8F', ministerTitle: 'Medical Care and Sport (VWS)', name: 'Bruno Bruins' },
       { party: 'CU', color: '#BEF6FA', ministerTitle: 'Primary and Secondary Education (OCW)', name: 'Arie Slob' },
       { party: 'VVD', color: '#120A8F', ministerTitle: 'Legal Protection (J&V)', name: 'Sander Dekker' },
-      { party: 'D66', color: '#84CF84', ministerTitle: 'Social Affairs and Employment (SZW)', name: 'Sigrid Kaag' }
+      { party: 'D66', color: '#84CF84', ministerTitle: 'Foreign Trade and Development Cooperation (BZ)', name: 'Sigrid Kaag' }
   ];
 
   // Add ministers to table

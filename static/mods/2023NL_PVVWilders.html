@@ -1251,6 +1251,1140 @@ var myChart = Highcharts.chart('myChart', {
         var container = document.getElementById("container"); // Replace with the id or selector of the element that contained the buttons div
         container.insertAdjacentHTML('beforebegin', originalHtml);
     });
+    // Add event listener to NextButton
+    document.getElementById("nextButton").addEventListener("click", function() {
+        // Save the original HTML of the buttons div
+        var originalHtml = document.querySelector(".buttons").outerHTML;
+        // Remove the buttons div
+        var buttonsDiv = document.querySelector(".buttons");
+        buttonsDiv.remove();
+    });
+}
+else if(type==="cabinet"){
+NSCCheck = (e.final_overall_results.find((r) => r.candidate === 20));
+VVDCheck = (e.final_overall_results.find((r) => r.candidate === 23));
+PVVCheck = (e.final_overall_results.find((r) => r.candidate === 25));
+if (!negotiationsDone){
+// Create table for demissionary cabinet
+const table = document.createElement('table');
+table.style.width = '80%';
+table.style.borderCollapse = 'collapse';
+table.style.marginTop = '20px';
+table.style.overflowX = 'auto';
+table.style.display = 'table';
+table.style.marginLeft = 'auto';
+table.style.marginRight = 'auto';
+
+// Create table header
+const thead = document.createElement('tr');
+['', 'Department', 'Minister', 'Party'].forEach(text => {
+    const th = document.createElement('th');
+    th.textContent = text;
+    th.style.padding = '10px';
+    th.style.borderBottom = '2px solid #ddd';
+    thead.appendChild(th);
+});
+table.appendChild(thead);
+
+// Define demissionary cabinet ministers
+const ministers = [
+    { party: 'VVD', color: '#120A8F', ministerTitle: 'Prime Minister/General Affairs (AZ)', name: 'Mark Rutte' },
+    { party: 'D66', color: '#84CF84', ministerTitle: 'Finance (FIN)', name: 'Rob Jetten' },
+    { party: 'CDA', color: '#0E644A', ministerTitle: 'Foreign Affairs (BZ)', name: 'Hanke Bruins Slot' },
+    { party: 'CDA', color: '#0E644A', ministerTitle: 'Interior and Kingdom Relations (BZK)', name: 'Hugo de Jonge' },
+    { party: 'VVD', color: '#120A8F', ministerTitle: 'Justice and Security (J&V)', name: 'Dilan Yeşilgöz-Zegerius' },
+    { party: 'D66', color: '#84CF84', ministerTitle: 'Health, Welfare and Sport (VWS)', name: 'Ernst Kuipers' },
+    { party: 'D66', color: '#84CF84', ministerTitle: 'Education, Culture and Science (OCW)', name: 'Robbert Dijkgraaf' },
+    { party: 'VVD', color: '#120A8F', ministerTitle: 'Economic Affairs and Climate (EZK)', name: 'Micky Adriaansens' },
+    { party: 'D66', color: '#84CF84', ministerTitle: 'Defense (DEF)', name: 'Kajsa Ollongren' },
+    { party: 'CDA', color: '#0E644A', ministerTitle: 'Social Affairs and Employment (SZW)', name: 'Karien van Gennip' },
+    { party: 'CU', color: '#BEF6FA', ministerTitle: 'Agriculture, Nature and Food Quality (LNV)', name: 'Piet Adema' },
+    { party: 'VVD', color: '#120A8F', ministerTitle: 'Infrastructure and Water Management (I&W)', name: 'Mark Harbers' },
+    { party: 'CU', color: '#BEF6FA', ministerTitle: 'Poverty Policy, Participation and Pensions (SZW)', name: 'Carola Schouten' },
+    { party: 'VVD', color: '#120A8F', ministerTitle: 'Long-term Care and Sport (VWS)', name: 'Conny Helder' },
+    { party: 'D66', color: '#84CF84', ministerTitle: 'Medical Care (VWS)', name: 'Pia Dijkstra' },
+    { party: 'VVD', color: '#120A8F', ministerTitle: 'Primary and Secondary Education (OCW)', name: 'Mariëlle Paul' },
+    { party: 'VVD', color: '#120A8F', ministerTitle: 'Nature and Nitrogen (LNV)', name: 'Christianne van der Wal' },
+    { party: 'VVD', color: '#120A8F', ministerTitle: 'Foreign Trade and Development Cooperation (BZ)', name: 'Liesje Schreinemacher' }
+];
+
+// Add ministers to table
+ministers.forEach(minister => {
+    const row = table.insertRow();
+    
+    // Color cell
+    const colorCell = row.insertCell();
+    colorCell.style.backgroundColor = minister.color;
+    colorCell.style.width = '20px';
+    colorCell.style.borderBottom = '1px solid #ddd';
+    
+    // Ministry cell
+    const ministryCell = row.insertCell();
+    ministryCell.textContent = minister.ministerTitle;
+    ministryCell.style.padding = '10px';
+    ministryCell.style.borderBottom = '1px solid #ddd';
+    
+    // Minister name cell
+    const ministerCell = row.insertCell();
+    ministerCell.textContent = minister.name;
+    ministerCell.style.padding = '10px';
+    ministerCell.style.borderBottom = '1px solid #ddd';
+    
+    // Party cell
+    const partyCell = row.insertCell();
+    partyCell.textContent = minister.party;
+    partyCell.style.padding = '10px';
+    partyCell.style.borderBottom = '1px solid #ddd';
+});
+
+// Add title and table to chartcontainer
+document.getElementById('chartcontainer').style.overflow = 'scroll';
+document.getElementById('chartcontainer').style.height = '100%';
+document.getElementById('chartcontainer').style.border = 'double #c9c9c9';
+document.getElementById('chartcontainer').style.backgroundColor = '#f9f9f9';
+
+const title = document.createElement('h2');
+title.textContent = 'The demissionary cabinet:';
+document.getElementById('chartcontainer').appendChild(title);
+document.getElementById('chartcontainer').appendChild(table);
+}
+else if (selectedCoalition.id === 60){
+// Create table for demissionary cabinet
+const table = document.createElement('table');
+table.style.width = '80%';
+table.style.borderCollapse = 'collapse';
+table.style.marginTop = '20px';
+table.style.overflowX = 'auto';
+table.style.display = 'table';
+table.style.marginLeft = 'auto';
+table.style.marginRight = 'auto';
+
+// Create table header
+const thead = document.createElement('tr');
+['', 'Department', 'Minister', 'Party'].forEach(text => {
+    const th = document.createElement('th');
+    th.textContent = text;
+    th.style.padding = '10px';
+    th.style.borderBottom = '2px solid #ddd';
+    thead.appendChild(th);
+});
+table.appendChild(thead);
+
+// Define demissionary cabinet ministers
+const ministers = [
+    { party: 'VVD', color: '#120A8F', ministerTitle: 'Prime Minister/General Affairs (AZ)', name: 'Mark Rutte' },
+    { party: 'D66', color: '#84CF84', ministerTitle: 'Finance (FIN)', name: 'Steven van Weyenberg' },
+    { party: 'CDA', color: '#0E644A', ministerTitle: 'Foreign Affairs (BZ)', name: 'Hanke Bruins Slot' },
+    { party: 'CDA', color: '#0E644A', ministerTitle: 'Interior and Kingdom Relations (BZK)', name: 'Hugo de Jonge' },
+    { party: 'VVD', color: '#120A8F', ministerTitle: 'Justice and Security (J&V)', name: 'Dilan Yeşilgöz-Zegerius' },
+    { party: 'VVD', color: '#120A8F', ministerTitle: 'Health, Welfare and Sport (VWS)', name: 'Conny Helder' },
+    { party: 'D66', color: '#84CF84', ministerTitle: 'Education, Culture and Science (OCW)', name: 'Robbert Dijkgraaf' },
+    { party: 'VVD', color: '#120A8F', ministerTitle: 'Economic Affairs and Climate (EZK)', name: 'Micky Adriaansens' },
+    { party: 'D66', color: '#84CF84', ministerTitle: 'Defense (DEF)', name: 'Kajsa Ollongren' },
+    { party: 'CDA', color: '#0E644A', ministerTitle: 'Social Affairs and Employment (SZW)', name: 'Karien van Gennip' },
+    { party: 'CU', color: '#BEF6FA', ministerTitle: 'Agriculture, Nature and Food Quality (LNV)', name: 'Piet Adema' },
+    { party: 'VVD', color: '#120A8F', ministerTitle: 'Infrastructure and Water Management (I&W)', name: 'Mark Harbers' },
+    { party: 'CU', color: '#BEF6FA', ministerTitle: 'Poverty Policy, Participation and Pensions (SZW)', name: 'Carola Schouten' },
+    { party: 'VVD', color: '#120A8F', ministerTitle: 'Primary and Secondary Education (OCW)', name: 'Mariëlle Paul' },
+    { party: 'D66', color: '#84CF84', ministerTitle: 'Medical Care (VWS)', name: 'Pia Dijkstra' },
+    { party: 'VVD', color: '#120A8F', ministerTitle: 'Nature and Nitrogen (LNV)', name: 'Christianne van der Wal' },
+    { party: 'VVD', color: '#120A8F', ministerTitle: 'Foreign Trade and Development Cooperation (BZ)', name: 'Liesje Schreinemacher' }
+];
+
+// Add ministers to table
+ministers.forEach(minister => {
+    const row = table.insertRow();
+    
+    // Color cell
+    const colorCell = row.insertCell();
+    colorCell.style.backgroundColor = minister.color;
+    colorCell.style.width = '20px';
+    colorCell.style.borderBottom = '1px solid #ddd';
+    
+    // Ministry cell
+    const ministryCell = row.insertCell();
+    ministryCell.textContent = minister.ministerTitle;
+    ministryCell.style.padding = '10px';
+    ministryCell.style.borderBottom = '1px solid #ddd';
+    
+    // Minister name cell
+    const ministerCell = row.insertCell();
+    ministerCell.textContent = minister.name;
+    ministerCell.style.padding = '10px';
+    ministerCell.style.borderBottom = '1px solid #ddd';
+    
+    // Party cell
+    const partyCell = row.insertCell();
+    partyCell.textContent = minister.party;
+    partyCell.style.padding = '10px';
+    partyCell.style.borderBottom = '1px solid #ddd';
+});
+
+// Add title and table to chartcontainer
+document.getElementById('chartcontainer').style.overflow = 'scroll';
+document.getElementById('chartcontainer').style.height = '100%';
+document.getElementById('chartcontainer').style.border = 'double #c9c9c9';
+document.getElementById('chartcontainer').style.backgroundColor = '#f9f9f9';
+
+const title = document.createElement('h2');
+title.textContent = 'The demissionary cabinet:';
+document.getElementById('chartcontainer').appendChild(title);
+document.getElementById('chartcontainer').appendChild(table);
+}
+else if (selectedCoalition.id === 58){
+// Create table for extraparliamentary cabinet
+const table = document.createElement('table');
+table.style.width = '80%';
+table.style.borderCollapse = 'collapse';
+table.style.marginTop = '20px';
+table.style.overflowX = 'auto';
+table.style.display = 'table';
+table.style.marginLeft = 'auto';
+table.style.marginRight = 'auto';
+
+// Create table header
+const thead = document.createElement('tr');
+['', 'Department', 'Minister', 'Party'].forEach(text => {
+    const th = document.createElement('th');
+    th.textContent = text;
+    th.style.padding = '10px';
+    th.style.borderBottom = '2px solid #ddd';
+    thead.appendChild(th);
+});
+table.appendChild(thead);
+
+// Define extraparliamentary cabinet ministers
+const ministers = [
+    { party: 'VVD', color: '#120A8F', ministerTitle: 'Prime Minister/General Affairs (AZ)', name: 'Johan Remkes' },
+    { party: 'CDA', color: '#0E644A', ministerTitle: 'Finance (FIN)', name: 'Nout Wellink' },
+    { party: 'CDA', color: '#0E644A', ministerTitle: 'Foreign Affairs (BZ)', name: 'Jaap de Hoop Scheffer' },
+    { party: 'Ind.', color: '#DDDDDD', ministerTitle: 'Interior and Kingdom Relations (BZK)', name: 'Wim Kuijken' },
+    { party: 'Ind.', color: '#DDDDDD', ministerTitle: 'Justice and Security (J&V)', name: 'Pieter-Jaap Aalbersberg' },
+    { party: 'CU', color: '#BEF6FA', ministerTitle: 'Health, Welfare and Sport (VWS)', name: 'Paul Blokhuis' },
+    { party: 'D66', color: '#84CF84', ministerTitle: 'Education, Culture and Science (OCW)', name: 'Robbert Dijkgraaf' },
+    { party: 'Ind.', color: '#DDDDDD', ministerTitle: 'Economic Affairs and Climate (EZK)', name: 'Ben van Beurden' },
+    { party: 'Ind.', color: '#DDDDDD', ministerTitle: 'Defense (DEF)', name: 'Dick Berlijn' },
+    { party: 'Ind.', color: '#DDDDDD', ministerTitle: 'Social Affairs and Employment (SZW)', name: 'Bas Jacobs' },
+    { party: 'VVD', color: '#120A8F', ministerTitle: 'Infrastructure and Water Management (I&W)', name: 'Cora van Nieuwenhuizen' },
+    { party: 'BBB', color: '#8BC11F', ministerTitle: 'Agriculture, Fisheries, Food Security and Nature (LVVN)', name: 'Aalt Dijkhuizen' },
+    { party: 'Ind.', color: '#DDDDDD', ministerTitle: 'Housing and Spatial Planning (VRO)', name: 'Niek Verra' },
+    { party: 'Ind.', color: '#DDDDDD', ministerTitle: 'Asylum and Migration (J&V)', name: 'Jan van de Beek' },
+    { party: 'NSC', color: '#F0C400', ministerTitle: 'Administrative Renewal and Democratic Strengthening (BZK)', name: 'Judith Uitermark' }
+];
+
+// Add ministers to table
+ministers.forEach(minister => {
+    const row = table.insertRow();
+    
+    // Color cell
+    const colorCell = row.insertCell();
+    colorCell.style.backgroundColor = minister.color;
+    colorCell.style.width = '20px';
+    colorCell.style.borderBottom = '1px solid #ddd';
+    
+    // Ministry cell
+    const ministryCell = row.insertCell();
+    ministryCell.textContent = minister.ministerTitle;
+    ministryCell.style.padding = '10px';
+    ministryCell.style.borderBottom = '1px solid #ddd';
+    
+    // Minister name cell
+    const ministerCell = row.insertCell();
+    ministerCell.textContent = minister.name;
+    ministerCell.style.padding = '10px';
+    ministerCell.style.borderBottom = '1px solid #ddd';
+    
+    // Party cell
+    const partyCell = row.insertCell();
+    partyCell.textContent = minister.party;
+    partyCell.style.padding = '10px';
+    partyCell.style.borderBottom = '1px solid #ddd';
+});
+
+// Add title and table to chartcontainer
+document.getElementById('chartcontainer').style.overflow = 'scroll';
+document.getElementById('chartcontainer').style.height = '100%';
+document.getElementById('chartcontainer').style.border = 'double #c9c9c9';
+document.getElementById('chartcontainer').style.backgroundColor = '#f9f9f9';
+
+const title = document.createElement('h2');
+title.textContent = 'The incumbent cabinet:';
+document.getElementById('chartcontainer').appendChild(title);
+document.getElementById('chartcontainer').appendChild(table);
+}
+else if (selectedCoalition.id === 59){
+// Create table for extraparliamentary cabinet
+const table = document.createElement('table');
+table.style.width = '80%';
+table.style.borderCollapse = 'collapse';
+table.style.marginTop = '20px';
+table.style.overflowX = 'auto';
+table.style.display = 'table';
+table.style.marginLeft = 'auto';
+table.style.marginRight = 'auto';
+
+// Create table header
+const thead = document.createElement('tr');
+['', 'Department', 'Minister', 'Party'].forEach(text => {
+    const th = document.createElement('th');
+    th.textContent = text;
+    th.style.padding = '10px';
+    th.style.borderBottom = '2px solid #ddd';
+    thead.appendChild(th);
+});
+table.appendChild(thead);
+
+// Define extraparliamentary cabinet ministers
+const ministers = [
+    { party: 'PvdA', color: '#D90000', ministerTitle: 'Prime Minister/General Affairs (AZ)', name: 'Kim Putters' },
+    { party: 'Ind.', color: '#DDDDDD', ministerTitle: 'Finance (FIN)', name: 'Laura van Geest' },
+    { party: 'Ind.', color: '#DDDDDD', ministerTitle: 'Foreign Affairs (BZ)', name: 'Thijs van der Plas' },
+    { party: 'Ind.', color: '#DDDDDD', ministerTitle: 'Interior and Kingdom Relations (BZK)', name: 'Caroline van Gils' },
+    { party: 'Ind.', color: '#DDDDDD', ministerTitle: 'Justice and Security (J&V)', name: 'Aalt Willem Heringa' },
+    { party: 'VVD', color: '#120A8F', ministerTitle: 'Health, Welfare and Sport (VWS)', name: 'Marian Kaljouw' },
+    { party: 'D66', color: '#84CF84', ministerTitle: 'Education, Culture and Science (OCW)', name: 'Robbert Dijkgraaf' },
+    { party: 'Ind.', color: '#DDDDDD', ministerTitle: 'Economic Affairs and Climate (EZK)', name: 'Ben van Beurden' },
+    { party: 'Ind.', color: '#DDDDDD', ministerTitle: 'Defense (DEF)', name: 'Rob Bauer' },
+    { party: 'PvdA', color: '#D90000', ministerTitle: 'Social Affairs and Employment (SZW)', name: 'Mariëtte Hamer' },
+    { party: 'VVD', color: '#120A8F', ministerTitle: 'Infrastructure and Water Management (I&W)', name: 'Cora van Nieuwenhuizen' },
+    { party: 'D66', color: '#84CF84', ministerTitle: 'Agriculture, Fisheries, Food Security and Nature (LVVN)', name: 'Tjeerd de Groot' },
+    { party: 'PvdA', color: '#D90000', ministerTitle: 'Housing and Spatial Planning (VRO)', name: 'Rob van Gijzel' },
+    { party: 'Ind.', color: '#DDDDDD', ministerTitle: 'Asylum and Migration (J&V)', name: 'Hein de Haas' },
+    { party: 'NSC', color: '#F0C400', ministerTitle: 'Administrative Renewal and Democratic Strengthening (BZK)', name: 'Judith Uitermark' }
+];
+
+// Add ministers to table
+ministers.forEach(minister => {
+    const row = table.insertRow();
+    
+    // Color cell
+    const colorCell = row.insertCell();
+    colorCell.style.backgroundColor = minister.color;
+    colorCell.style.width = '20px';
+    colorCell.style.borderBottom = '1px solid #ddd';
+    
+    // Ministry cell
+    const ministryCell = row.insertCell();
+    ministryCell.textContent = minister.ministerTitle;
+    ministryCell.style.padding = '10px';
+    ministryCell.style.borderBottom = '1px solid #ddd';
+    
+    // Minister name cell
+    const ministerCell = row.insertCell();
+    ministerCell.textContent = minister.name;
+    ministerCell.style.padding = '10px';
+    ministerCell.style.borderBottom = '1px solid #ddd';
+    
+    // Party cell
+    const partyCell = row.insertCell();
+    partyCell.textContent = minister.party;
+    partyCell.style.padding = '10px';
+    partyCell.style.borderBottom = '1px solid #ddd';
+});
+
+// Add title and table to chartcontainer
+document.getElementById('chartcontainer').style.overflow = 'scroll';
+document.getElementById('chartcontainer').style.height = '100%';
+document.getElementById('chartcontainer').style.border = 'double #c9c9c9';
+document.getElementById('chartcontainer').style.backgroundColor = '#f9f9f9';
+
+const title = document.createElement('h2');
+title.textContent = 'The incumbent cabinet:';
+document.getElementById('chartcontainer').appendChild(title);
+document.getElementById('chartcontainer').appendChild(table);
+}
+else if (selectedCoalition.id === 23 && VVDCheck.electoral_votes > 22 && VVDCheck.electoral_votes < 27 && PVVCheck.electoral_votes > 34 && PVVCheck.electoral_votes < 42 && NSCCheck.electoral_votes > 17 && NSCCheck.electoral_votes < 23){
+// Create table for canon cabinet
+const table = document.createElement('table');
+table.style.width = '80%';
+table.style.borderCollapse = 'collapse';
+table.style.marginTop = '20px';
+table.style.overflowX = 'auto';
+table.style.display = 'table';
+table.style.marginLeft = 'auto';
+table.style.marginRight = 'auto';
+
+// Create table header
+const thead = document.createElement('tr');
+['', 'Department', 'Minister', 'Party'].forEach(text => {
+    const th = document.createElement('th');
+    th.textContent = text;
+    th.style.padding = '10px';
+    th.style.borderBottom = '2px solid #ddd';
+    thead.appendChild(th);
+});
+table.appendChild(thead);
+
+// Define canon cabinet ministers
+const ministers = [
+    { party: 'Ind.', color: '#DDDDDD', ministerTitle: 'Prime Minister/General Affairs (AZ)', name: 'Dick Schoof' },
+    { party: 'VVD', color: '#120A8F', ministerTitle: 'Finance (FIN)', name: 'Eelco Heinen' },
+    { party: 'NSC', color: '#F0C400', ministerTitle: 'Foreign Affairs (BZ)', name: 'Caspar Veldkamp' },
+    { party: 'NSC', color: '#F0C400', ministerTitle: 'Interior and Kingdom Relations (BZK)', name: 'Judith Uitermark' },
+    { party: 'VVD', color: '#120A8F', ministerTitle: 'Justice and Security (J&V)', name: 'David van Weel' },
+    { party: 'PVV', color: '#598694', ministerTitle: 'Health, Welfare and Sport (VWS)', name: 'Fleur Agema' },
+    { party: 'NSC', color: '#F0C400', ministerTitle: 'Education, Culture and Science (OCW)', name: 'Eppo Bruins' },
+    { party: 'PVV', color: '#598694', ministerTitle: 'Economic Affairs (EZK)', name: 'Dirk Beljaarts' },
+    { party: 'VVD', color: '#120A8F', ministerTitle: 'Defense (DEF)', name: 'Ruben Brekelmans' },
+    { party: 'NSC', color: '#F0C400', ministerTitle: 'Social Affairs and Employment (SZW)', name: 'Eddy van Hijum' },
+    { party: 'PVV', color: '#598694', ministerTitle: 'Infrastructure and Water Management (I&W)', name: 'Barry Madlener' },
+    { party: 'BBB', color: '#8BC11F', ministerTitle: 'Agriculture, Nature and Food Quality (LNV)', name: 'Femke Wiersma' },
+    { party: 'BBB', color: '#8BC11F', ministerTitle: 'Housing and Spatial Planning (VRO)', name: 'Mona Keijzer' },
+    { party: 'VVD', color: '#120A8F', ministerTitle: 'Climate and Green Growth (KGG)', name: 'Sophie Hermans' },
+    { party: 'PVV', color: '#598694', ministerTitle: 'Asylum and Migration (A&M)', name: 'Marjolein Faber' },
+    { party: 'PVV', color: '#598694', ministerTitle: 'Foreign Trade and Development Aid (BZ)', name: 'Reinette Klever' }
+];
+
+// Add ministers to table
+ministers.forEach(minister => {
+    const row = table.insertRow();
+    
+    // Color cell
+    const colorCell = row.insertCell();
+    colorCell.style.backgroundColor = minister.color;
+    colorCell.style.width = '20px';
+    colorCell.style.borderBottom = '1px solid #ddd';
+    
+    // Ministry cell
+    const ministryCell = row.insertCell();
+    ministryCell.textContent = minister.ministerTitle;
+    ministryCell.style.padding = '10px';
+    ministryCell.style.borderBottom = '1px solid #ddd';
+    
+    // Minister name cell
+    const ministerCell = row.insertCell();
+    ministerCell.textContent = minister.name;
+    ministerCell.style.padding = '10px';
+    ministerCell.style.borderBottom = '1px solid #ddd';
+    
+    // Party cell
+    const partyCell = row.insertCell();
+    partyCell.textContent = minister.party;
+    partyCell.style.padding = '10px';
+    partyCell.style.borderBottom = '1px solid #ddd';
+});
+
+// Add title and table to chartcontainer
+document.getElementById('chartcontainer').style.overflow = 'scroll';
+document.getElementById('chartcontainer').style.height = '100%';
+document.getElementById('chartcontainer').style.border = 'double #c9c9c9';
+document.getElementById('chartcontainer').style.backgroundColor = '#f9f9f9';
+
+const title = document.createElement('h2');
+title.textContent = 'The incumbent cabinet:';
+document.getElementById('chartcontainer').appendChild(title);
+document.getElementById('chartcontainer').appendChild(table);
+}
+else {
+const ministerList = [
+    { minID: 1, ministerTitle: 'Prime Minister/General Affairs (AZ)', party: 512 },
+    { minID: 2, ministerTitle: 'Finance (FIN)', party: 512 },
+    { minID: 3, ministerTitle: 'Foreign Affairs (BZ)', party: 512 },
+    { minID: 4, ministerTitle: 'Interior and Kingdom Relations (BZK)', party: 512 },
+    { minID: 5, ministerTitle: 'Justice and Security (J&V)', party: 512 },
+    { minID: 6, ministerTitle: 'Health, Welfare and Sport (VWS)', party: 512 },
+    { minID: 7, ministerTitle: 'Education, Culture and Science (OCW)', party: 512 },
+    { minID: 8, ministerTitle: 'Economic Affairs and Climate (EZK)', party: 512 },
+    { minID: 9, ministerTitle: 'Defense (DEF)', party: 512 },
+    { minID: 10, ministerTitle: 'Social Affairs and Employment (SZW)', party: 512 },
+    { minID: 11, ministerTitle: 'Infrastructure and Water Management (I&W)', party: 512 },
+    { minID: 12, ministerTitle: 'Agriculture, Nature and Food Quality (LNV)', party: 512 },
+    { minID: 13, ministerTitle: 'Housing and Spatial Planning (VRO)', party: 512 },
+    { minID: 14, ministerTitle: 'Climate and Nitrogen (EZK)', party: 512 },
+    { minID: 15, ministerTitle: 'Asylum and Migration (A&M)', party: 512 },
+    { minID: 16, ministerTitle: 'Foreign Trade and Development Cooperation (BZ)', party: 512 }
+];
+const partyPreferences = [
+    { party: 105, preference: [1, 2, 12, 9, 13, 4, 8, 15, 16, 14, 5, 7, 11, 6, 10, 3] },
+    { party: 106, preference: [1, 2, 7, 3, 6, 14, 10, 13, 4, 8, 12, 16, 5, 11, 9, 15] },
+    { party: 24, preference: [1, 2, 3, 14, 7, 9, 16, 8, 10, 13, 4, 5, 15, 11, 6, 12] },
+    { party: 20, preference: [1, 2, 4, 10, 5, 3, 7, 13, 12, 8, 9, 15, 6, 16, 14, 11] },
+    { party: 21, preference: [1, 2, 12, 9, 15, 13, 5, 7, 11, 8, 3, 14, 4, 16, 6, 10] },
+    { party: 23, preference: [1, 2, 5, 9, 15, 14, 11, 8, 3, 16, 7, 6, 4, 12, 10, 13] },
+    { party: 25, preference: [1, 2, 15, 6, 8, 11, 16, 12, 13, 10, 9, 3, 14, 4, 7, 5] },
+    { party: 67, preference: [1, 2, 6, 10, 13, 8, 4, 11, 7, 14, 16, 12, 5, 15, 3, 9] },
+    { party: 68, preference: [1, 2, 15, 8, 11, 16, 12, 13, 9, 3, 6, 14, 10, 4, 7, 5] },
+    { party: 77, preference: [1, 2, 14, 16, 15, 10, 12, 13, 7, 3, 4, 5, 6, 11, 8, 9] },
+    { party: 78, preference: [1, 2, 7, 12, 15, 13, 11, 6, 10, 14, 9, 5, 4, 8, 3, 16] },
+    { party: 79, preference: [1, 2, 15, 3, 8, 14, 11, 16, 7, 9, 13, 5, 4, 6, 10, 12] },
+    { party: 91, preference: [1, 2, 15, 13, 7, 16, 8, 11, 12, 14, 9, 5, 3, 4, 6, 10] },
+    { party: 92, preference: [1, 2, 15, 13, 10, 6, 11, 14, 9, 5, 4, 8, 12, 16, 3, 7] },
+    { party: 116, preference: [1, 2, 13, 7, 10, 6, 11, 14, 9, 5, 4, 8, 12, 15, 3, 16] },
+    { party: 512, preference: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] },
+    { party: 117, preference: [1, 2, 7, 9, 12, 15, 11, 6, 10, 13, 8, 16, 5, 4, 3, 14] }
+];
+
+var coalitionSeats = 0;
+var coalitionParties = [];
+
+// Get coalition parties and their seats
+if(selectedCoalition.parties.includes(105)) {
+    BBBPart = (e.final_overall_results.find((r) => r.candidate === 105));
+    coalitionSeats += BBBPart.popular_votes;
+    coalitionParties.push({party: 105, seats: BBBPart.popular_votes, name: "BBB", color: "#8BC11F"});
+}
+if(selectedCoalition.parties.includes(106)) {
+    GLPvdAPart = (e.final_overall_results.find((r) => r.candidate === 106));
+    coalitionSeats += GLPvdAPart.popular_votes;
+    coalitionParties.push({party: 106, seats: GLPvdAPart.popular_votes, name: "GL/PvdA", color: "#D90000"});
+}
+if(selectedCoalition.parties.includes(24)) {
+    D66Part = (e.final_overall_results.find((r) => r.candidate === 24));
+    coalitionSeats += D66Part.popular_votes;
+    coalitionParties.push({party: 24, seats: D66Part.popular_votes, name: "D66", color: "#84CF84"});
+}
+if(selectedCoalition.parties.includes(20)) {
+  NSCPart = (e.final_overall_results.find((r) => r.candidate === 20));
+  coalitionSeats += NSCPart.popular_votes;
+  coalitionParties.push({party: 20, seats: NSCPart.popular_votes, name: "NSC", color: "#F0C400"});
+}
+if(selectedCoalition.parties.includes(21)) {
+    CDAPart = (e.final_overall_results.find((r) => r.candidate === 21));
+    coalitionSeats += CDAPart.popular_votes;
+    coalitionParties.push({party: 21, seats: CDAPart.popular_votes, name: "CDA", color: "#0E644A"});
+}
+if(selectedCoalition.parties.includes(23)) {
+    VVDPart = (e.final_overall_results.find((r) => r.candidate === 23));
+    coalitionSeats += VVDPart.popular_votes;
+    coalitionParties.push({party: 23, seats: VVDPart.popular_votes, name: "VVD", color: "#120A8F"});
+}
+if(selectedCoalition.parties.includes(25)) {
+    PVVPart = (e.final_overall_results.find((r) => r.candidate === 25));
+    coalitionSeats += PVVPart.popular_votes;
+    coalitionParties.push({party: 25, seats: PVVPart.popular_votes, name: "PVV", color: "#598694"});
+}
+if(selectedCoalition.parties.includes(67)) {
+    SPPart = (e.final_overall_results.find((r) => r.candidate === 67));
+    coalitionSeats += SPPart.popular_votes;
+    coalitionParties.push({party: 67, seats: SPPart.popular_votes, name: "SP", color: "#450101"});
+}
+if(selectedCoalition.parties.includes(68)) {
+    FvDPart = (e.final_overall_results.find((r) => r.candidate === 68));
+    coalitionSeats += FvDPart.popular_votes;
+    coalitionParties.push({party: 68, seats: FvDPart.popular_votes, name: "FvD", color: "#800000"});
+}
+if(selectedCoalition.parties.includes(77)) {
+    PvdDPart = (e.final_overall_results.find((r) => r.candidate === 77));
+    coalitionSeats += PvdDPart.popular_votes;
+    coalitionParties.push({party: 77, seats: PvdDPart.popular_votes, name: "PvdD", color: "#1B4D1C"});
+}
+if(selectedCoalition.parties.includes(78)) {
+    CUPart = (e.final_overall_results.find((r) => r.candidate === 78));
+    coalitionSeats += CUPart.popular_votes;
+    coalitionParties.push({party: 78, seats: CUPart.popular_votes, name: "CU", color: "#BEF6FA"});
+}
+if(selectedCoalition.parties.includes(79)) {
+  VoltPart = (e.final_overall_results.find((r) => r.candidate === 79));
+  coalitionSeats += VoltPart.popular_votes;
+  coalitionParties.push({party: 79, seats: VoltPart.popular_votes, name: "Volt", color: "#AA00FF"});
+}
+if(selectedCoalition.parties.includes(91)) {
+  JA21Part = (e.final_overall_results.find((r) => r.candidate === 91));
+  coalitionSeats += JA21Part.popular_votes;
+  coalitionParties.push({party: 91, seats: JA21Part.popular_votes, name: "JA21", color: "#000048"});
+}
+if(selectedCoalition.parties.includes(92)) {
+    DENKPart = (e.final_overall_results.find((r) => r.candidate === 92));
+    coalitionSeats += DENKPart.popular_votes;
+    coalitionParties.push({party: 92, seats: DENKPart.popular_votes, name: "DENK", color: "#9CC1C1"});
+}
+if(selectedCoalition.parties.includes(116)) {
+    PvdAPart = (e.final_overall_results.find((r) => r.candidate === 116));
+    coalitionSeats += PvdAPart.popular_votes;
+    coalitionParties.push({party: 116, seats: PvdAPart.popular_votes, name: "PvdA", color: "#D90000"});
+}
+if(selectedCoalition.parties.includes(512)) {
+    OthersPart = (e.final_overall_results.find((r) => r.candidate === 512));
+    coalitionSeats += OthersPart.popular_votes;
+    coalitionParties.push({party: 512, seats: OthersPart.popular_votes, name: "Ind.", color: "#DDDDDD"});
+}
+if(selectedCoalition.parties.includes(117)) {
+    SGPPart = (e.final_overall_results.find((r) => r.candidate === 117));
+    coalitionSeats += SGPPart.popular_votes;
+    coalitionParties.push({party: 117, seats: SGPPart.popular_votes, name: "SGP", color: "#B56B21"});
+}
+
+// Remove parties from allocation for 2023NL
+if (selectedCoalition.id === 51) {
+  coalitionParties = coalitionParties.filter(party => 
+    ![21, 78, 79].includes(party.party)
+  );
+}
+if (selectedCoalition.id === 52) {
+  coalitionParties = coalitionParties.filter(party => 
+    ![21, 78, 91].includes(party.party)
+  );
+}
+if (selectedCoalition.id === 53) {
+  coalitionParties = coalitionParties.filter(party => 
+    ![21, 67, 78, 92].includes(party.party)
+  );
+}
+if (selectedCoalition.id === 54) {
+  coalitionParties = coalitionParties.filter(party => 
+    ![21, 67, 77, 78].includes(party.party)
+  );
+}
+if (selectedCoalition.id === 55) {
+  coalitionParties = coalitionParties.filter(party => 
+    ![20, 68, 117, 78].includes(party.party)
+  );
+}
+if (selectedCoalition.id === 56) {
+  coalitionParties = coalitionParties.filter(party => 
+    ![23, 68, 117, 78].includes(party.party)
+  );
+}
+if (selectedCoalition.id === 57) {
+  coalitionParties = coalitionParties.filter(party => 
+    ![21, 79].includes(party.party)
+  );
+}
+
+// Sort coalition parties by seats (descending)
+coalitionParties.sort((a, b) => b.seats - a.seats);
+
+// If PVV is in coalition, rename BHO
+if (selectedCoalition.parties.includes(25)) {
+    ministerList.find(m => m.ministerTitle === "Foreign Trade and Development Cooperation (BZ)").ministerTitle = "Foreign Trade and Development Aid (BZ)";
+}
+// If BBB is in coalition, rename LVVN
+if (selectedCoalition.parties.includes(105)) {
+    ministerList.find(m => m.ministerTitle === "Agriculture, Nature and Food Quality (LNV)").ministerTitle = "Agriculture, Fisheries, Food Security and Nature (LVVN)";
+}
+
+// First give each party 1 minister
+coalitionParties.forEach(party => {
+    party.ministers = 1;
+});
+
+let remainingMinisters = 16 - coalitionParties.length;
+
+// Distribute remaining ministers using D'Hondt method
+while (remainingMinisters > 0) {
+    // Find party with highest quotient (seats / (ministers + 1))
+    let maxQuotient = 0;
+    let partyWithMax = null;
+    
+    coalitionParties.forEach(party => {
+        const quotient = party.seats / (party.ministers + 1);
+        if (quotient > maxQuotient) {
+            maxQuotient = quotient;
+            partyWithMax = party;
+        }
+    });
+    
+    partyWithMax.ministers++;
+    remainingMinisters--;
+}
+
+console.log("Minister distribution:");
+coalitionParties.forEach(party => {
+    console.log(`${party.name}: ${party.ministers} ministers (${party.seats} seats)`);
+});
+
+// Allocate ministers
+let takenPosts = new Set();
+
+// Each party takes turns picking their most preferred available post
+while(takenPosts.size < 16) {
+    for(let party of coalitionParties) {
+        if(party.ministers > 0) {
+            // Find first preferred post that's still available
+            const partyPrefs = partyPreferences.find(p => p.party === party.party).preference;
+            for(let postID of partyPrefs) {
+                if(!takenPosts.has(postID)) {
+                    // Assign post to party
+                    ministerList.find(m => m.minID === postID).party = party.party;
+                    takenPosts.add(postID);
+                    party.ministers--;
+                    break;
+                }
+            }
+        }
+    }
+}
+
+console.log("\nFinal cabinet composition:");
+ministerList.forEach(minister => {
+    const partyName = coalitionParties.find(p => p.party === minister.party)?.name || "Unassigned";
+    console.log(`${minister.ministerTitle}: ${partyName}`);
+});
+
+// Create h2 title
+const title = document.createElement('h2');
+title.textContent = `The incumbent cabinet:`;
+document.getElementById('chartcontainer').appendChild(title);
+
+
+// Create table to display cabinet composition
+const table = document.createElement('table');
+table.style.width = '80%'; // Reduced from 100% to allow centering
+table.style.borderCollapse = 'collapse';
+table.style.marginTop = '20px';
+table.style.overflowX = 'auto';
+table.style.display = 'table'; // Changed from 'block' to allow centering
+table.style.marginLeft = 'auto';
+table.style.marginRight = 'auto';
+
+// Define ministers per party
+const ministerNames = {
+    105: {
+    1: "Mona Keijzer",
+    2: "Henk Vermeer", 
+    3: "Ilona Lagas",
+    4: "Eddie van Marum",
+    5: "Lilian Helder",
+    6: "Nicky Pouw-Verweij",
+    7: "Annie Schreijer-Pierik",
+    8: "Mariska Rikkers-Oosterkamp",
+    9: "Gijs Tuinman",
+    10: "Claudia van Zanten",
+    11: "Wim Jaspers",
+    12: "Femke Wiersma",
+    13: "Gert-Jan Oplaat",
+    14: "Geert Dales",
+    15: "Toine Manders",
+    16: "Martine Baay-Timmerman"
+    },
+    106: {
+    1: "Frans Timmermans",
+    2: "Jesse Klaver", 
+    3: "Judith Sargentini",
+    4: "Esmah Lahlah",
+    5: "Kathalijne Buitenweg",
+    6: "Corinne Ellemeet",
+    7: "Lisa Westerveld",
+    8: "Senna Maatoug",
+    9: "Saskia Kluit",
+    10: "Paul Rosenmöller",
+    11: "Suzanne Kröger",
+    12: "Laura Bromet",
+    13: "Roel van Gurp",
+    14: "Tom van der Lee",
+    15: "Sofie van den Enk",
+    16: "Bram van Ojik"
+    },
+    24: {
+    1: "Rob Jetten",
+    2: "Steven van Weyenberg",
+    3: "Sjoerd Sjoerdsma",
+    4: "Joost Sneller",
+    5: "Maarten Groothuizen",
+    6: "Victor Everhardt",
+    7: "Paul van Meenen",
+    8: "Alexander Rinnooy Kan",
+    9: "Jan Swillens",
+    10: "Sander Schimmelpenninck",
+    11: "Hans Vijlbrief",
+    12: "Tjeerd de Groot",
+    13: "Floris Alkemade",
+    14: "Stientje van Veldhoven",
+    15: "Salima Belhaj",
+    16: "Carline van Breugel"
+    },      
+    20: {
+    1: "Eddy van Hijum",
+    2: "Folkert Idsinga",
+    3: "Caspar Veldkamp",
+    4: "Judith Uitermark",
+    5: "Teun Struycken",
+    6: "Rosanne Hertzberger",
+    7: "Eppo Bruins",
+    8: "Tjebbe van Oostenbruggen",
+    9: "Mart de Kruif",
+    10: "Sandra Palmen",
+    11: "Wytske Postma",
+    12: "Harm Holman",
+    13: "Michel Rog",
+    14: "Herman Wijffels",
+    15: "Isa Kahraman",
+    16: "Agnes Joseph"
+    },
+    21: {
+    1: "Henri Bontenbal",
+    2: "Evert Jan Slootweg",
+    3: "Esther de Lange",
+    4: "Jaco Geurts",
+    5: "Anne Kuik",
+    6: "Joba van den Berg",
+    7: "Hugo de Jonge",
+    8: "Jouke Spoelstra",
+    9: "Raymond Knops",
+    10: "Greet Prins-Modderaar",
+    11: "Martijn van Helvert",
+    12: "Eline Vedder",
+    13: "Derk Boswijk",
+    14: "Bart van den Brink",
+    15: "Madeleine van Toorenburg",
+    16: "Chris Buijink"
+    },
+    23: {
+    1: "Dilan Yeşilgöz-Zegerius",
+    2: "Eelco Heinen", 
+    3: "Jeroen van Wijngaarden",
+    4: "Mark Harbers",
+    5: "David van Weel",
+    6: "Conny Helder",
+    7: "Mariëlle Paul",
+    8: "Liesje Schreinemacher",
+    9: "Ruben Brekelmans",
+    10: "Jurgen Nobel",
+    11: "Vincent Karremans",
+    12: "Silvio Erkens",
+    13: "Peter Valstar",
+    14: "Sophie Hermans",
+    15: "Bente Becker",
+    16: "Anne Mulder"
+    },
+    25: {
+    1: "Geert Wilders",
+    2: "Jacques Monasch", 
+    3: "Gidi Markuszower",
+    4: "Ronald Schneider",
+    5: "Ingrid Coenradie",
+    6: "Fleur Agema",
+    7: "Richard de Mos",
+    8: "Dirk Beljaarts",
+    9: "Toine Beukering",
+    10: "Vicky Maeijer",
+    11: "Barry Madlener",
+    12: "Chris Jansen",
+    13: "Marco Pastors",
+    14: "Sebastiaan Stöteler",
+    15: "Marjolein Faber",
+    16: "Reinette Klever"
+    },
+    67: {
+    1: "Lilian Marijnissen",
+    2: "Ewout Irrgang", 
+    3: "Sadet Karabulut",
+    4: "Emile Roemer",
+    5: "Michiel van Nispen",
+    6: "Paul Ulenbelt",
+    7: "Jasper van Dijk",
+    8: "Ron Meyer",
+    9: "Harry van Bommel",
+    10: "Bart van Kent",
+    11: "Tiny Kox",
+    12: "Frank Futselaar",
+    13: "Jimmy Dijk",
+    14: "Eric Smaling",
+    15: "Renske Leijten",
+    16: "Nicole Temmink"
+    },
+    68: {
+    1: "Thierry Baudet",
+    2: "Andreas Bakir", 
+    3: "Marcel de Graaff",
+    4: "Pepijn van Houwelingen",
+    5: "Paul Cliteur",
+    6: "Lidewij de Vos",
+    7: "Ralf Dekker",
+    8: "Hans Hugenholtz",
+    9: "Simone Kerseboom",
+    10: "Sid Lukassen",
+    11: "Freek Jansen",
+    12: "Tom Russcher",
+    13: "Johan Dessing",
+    14: "Gideon van Meijeren",
+    15: "Anton van Schijndel",
+    16: "Joris van den Oetelaar"
+    },
+    77: {
+    1: "Marianne Thieme",
+    2: "Lammert van Raan", 
+    3: "Mensje van Keulen",
+    4: "Pascale Plusquin",
+    5: "Eva Meijer",
+    6: "Frank Wassenberg",
+    7: "Ines Kostić",
+    8: "Lammert van Raan",
+    9: "Eva van Esch",
+    10: "Miryanna van Reeden",
+    11: "Eva Akerboom",
+    12: "Chris Teunissen",
+    13: "Babette van Veen",
+    14: "Ewald Engelen",
+    15: "Niko Koffeman",
+    16: "Maryam Hassouni"
+    },
+    78: {
+    1: "Mirjam Bikker",
+    2: "Pieter Grimbergen",
+    3: "Gert-Jan Segers",
+    4: "Rien Fraanje",
+    5: "Stieneke van der Graaf",
+    6: "Carla Dik-Faber",
+    7: "Carola Schouten",
+    8: "Pieter Grinwis",
+    9: "Bert-Jan Ruissen",
+    10: "Nico van der Voet",
+    11: "André Rouvoet",
+    12: "Piet Adema",
+    13: "Paul Blokhuis",
+    14: "Peter van Dalen",
+    15: "Roel Kuiper",
+    16: "Joël Voordewind"
+    },
+    79: {
+    1: "Laurens Dassen",
+    2: "Mazdak Soltani",
+    3: "Sophie in 't Veld",
+    4: "Anna Strolenberg",
+    5: "Marieke Koekoek",
+    6: "Theo Doreleijers",
+    7: "Gaby Perin-Gopie",
+    8: "Ernst Boutkan",
+    9: "Imane Elfilali",
+    10: "Inge Teklenburg",
+    11: "Eddy Hartog",
+    12: "Cankut Ercan",
+    13: "Arjen van Silfhout",
+    14: "Charlotte Passier",
+    15: "Reinier van Lanschot",
+    16: "Robin Brokman"
+    },
+    91: {
+    1: "Joost Eerdmans",
+    2: "Cas van Berkel", 
+    3: "Kees Kok",
+    4: "Daniël van den Berg",
+    5: "Annabel Nanninga",
+    6: "Karin van Bijsterveld",
+    7: "Ronald Sørensen",
+    8: "Willem Rutjens",
+    9: "Ruben Baumgarten",
+    10: "Philippe Schyns",
+    11: "Keven Kreuger",
+    12: "Jan Cees Vogelaar",
+    13: "Marco Pastors",
+    14: "Maarten Goudzwaard",
+    15: "Simon Ceulemans",
+    16: "Thom van Vught"
+    },
+    92: {
+    1: "Stephan van Baarle",
+    2: "Ayşegül Kiliç", 
+    3: "Aydin Peksert",
+    4: "Mustafa Ayranci",
+    5: "Metin Çelik",
+    6: "Mourad Taimounti",
+    7: "Ali Tsouli",
+    8: "Gladys Albitrouw",
+    9: "Ayşegül Kiliç",
+    10: "Farid Azarkan",
+    11: "Selçuk Öztürk",
+    12: "Tunahan Kuzu",
+    13: "Gladis Albitrouw",
+    14: "Magdalena Charlot",
+    15: "Rabia Karaman",
+    16: "Yunus Kayiş"
+    },
+    116: {
+    1: "Attje Kuiken",
+    2: "Henk Nijboer", 
+    3: "Lilianne Ploumen",
+    4: "Artie Ramsodit-de Graaf",
+    5: "Jeroen Recourt",
+    6: "Marjolein Moorman",
+    7: "Ruud Koole",
+    8: "Barbara Kathmann",
+    9: "Söngül Mutluer",
+    10: "Pierre Heijnen",
+    11: "John Kerstens",
+    12: "Hetty Janssen",
+    13: "Yasin Torunoglu",
+    14: "Diederik Samsom",
+    15: "Luc Stultiens",
+    16: "Kati Piri"
+    },
+    512: {
+    1: "Placeholder",
+    2: "Placeholder", 
+    3: "Placeholder",
+    4: "Placeholder",
+    5: "Placeholder",
+    6: "Placeholder",
+    7: "Placeholder",
+    8: "Placeholder",
+    9: "Placeholder",
+    10: "Placeholder",
+    11: "Placeholder",
+    12: "Placeholder",
+    13: "Placeholder",
+    14: "Placeholder",
+    15: "Placeholder",
+    16: "Placeholder"
+    },
+    117: {
+    1: "Chris Stoffer",
+    2: "Elbert Dijkgraaf", 
+    3: "Diederik van Dijk",
+    4: "Evert Jan van Nieuwenhuis",
+    5: "Matthijs de Blois",
+    6: "Daniël van Schalkwijk",
+    7: "Roelof Bisschop",
+    8: "Hans Tanis",
+    9: "Peter Schalk",
+    10: "Leen van der Waal",
+    11: "André Flach",
+    12: "Bert-Jan Ruissen",
+    13: "Bas van der Vlies",
+    14: "Dick van Meeuwen",
+    15: "Sytse de Jong",
+    16: "Breunis van de Weerd"
+    }
+};
+
+if (!ministerList.find(m => m.minID === 1 && m.party === 20)) {
+  ministerNames[20][10] = "Eddy van Hijum";
+}
+if (ministerList.filter(m => m.party === 106).length > 0 && GLPvdA) {
+  const party106Ministers = ministerList.filter(m => m.party === 106);
+  party106Ministers.forEach((minister, index) => {
+      if (index % 2 === 1) { // Every second minister
+          ministerNames[106][minister.minID] = ministerNames[116][minister.minID];
+      }
+  });
+}
+if (ministerList.find(m => m.party === 91)) {
+    const firstJA21Minister = ministerList.find(m => m.party === 91);
+    ministerNames[91][firstJA21Minister.minID] = "Joost Eerdmans";
+}
+if (ministerList.find(m => m.party === 79)) {
+    const firstVoltMinister = ministerList.find(m => m.party === 79);
+    ministerNames[79][firstVoltMinister.minID] = "Laurens Dassen";
+}
+if (!selectedCoalition.parties.includes(25)) {
+  ministerNames[105][12] = "Aalt Dijkhuizen";
+  ministerList.find(m => m.minID === 15).ministerTitle = "Migration and Asylum (J&V)";
+}
+if (selectedCoalition.parties.includes(25) || selectedCoalition.parties.includes(91)) {
+  ministerList.find(m => m.minID === 8).ministerTitle = "Economic Affairs (EZ)";
+}
+if (!ministerList.find(m => m.minID === 1 && m.party === 105)) {
+    ministerNames[105][13] = "Mona Keijzer";
+}
+if (ministerList.find(m => m.minID === 12 && m.party === 77)) {
+  ministerList.find(m => m.minID === 12).ministerTitle = "Food Quality and Nature (VVN)";
+}
+if (ministerList.find(m => m.minID === 14 && m.party === 23)) {
+  ministerList.find(m => m.minID === 8).ministerTitle = "Economic Affairs (EZ)";
+  ministerList.find(m => m.minID === 14).ministerTitle = "Climate and Green Growth (KGG)";
+}
+if (ministerList.find(m => m.minID === 14 && m.party === 25)) {
+  ministerList.find(m => m.minID === 14).ministerTitle = "Government Efficiency (OE)";
+}
+if (ministerList.find(m => m.minID === 14 && m.party === 105)) {
+  ministerList.find(m => m.minID === 14).ministerTitle = "Fisheries and Food Security (LVVN)";
+}
+if (ministerList.find(m => m.minID === 14 && m.party === 68)) {
+  ministerList.find(m => m.minID === 14).ministerTitle = "De-Woke-ification (J&V)";
+}
+if (ministerList.find(m => m.minID === 14 && m.party === 91)) {
+  ministerList.find(m => m.minID === 14).ministerTitle = "Digitalisation and Innovation (EZ)";
+}
+if (ministerList.find(m => m.minID === 14 && m.party === 117)) {
+  ministerList.find(m => m.minID === 14).ministerTitle = "Family Life and Welfare (VWS)";
+}
+if (ministerList.find(m => m.minID === 15 && (m.party === 20 || m.party === 24))) {
+  ministerList.find(m => m.minID === 15).ministerTitle = "Migration and Integration (J&V)";
+}
+if (ministerList.find(m => m.minID === 15 && m.party === 67)) {
+  ministerList.find(m => m.minID === 15).ministerTitle = "Benefit Scandal Recovery (FIN)";
+}
+if (ministerList.find(m => m.minID === 15 && m.party === 77)) {
+  ministerList.find(m => m.minID === 15).ministerTitle = "Animal Protection (J&V)";
+}
+if (ministerList.find(m => m.minID === 15 && m.party === 78)) {
+  ministerList.find(m => m.minID === 15).ministerTitle = "Family Life and Welfare (VWS)";
+}
+if (ministerList.find(m => m.minID === 15 && m.party === 79)) {
+  ministerList.find(m => m.minID === 15).ministerTitle = "European Affairs (BZ)";
+}
+if (ministerList.find(m => m.minID === 15 && m.party === 106)) {
+  ministerList.find(m => m.minID === 15).ministerTitle = "Taxes and Benefits (FIN)";
+}
+if (ministerList.find(m => m.minID === 16 && m.party === 20)) {
+  ministerList.find(m => m.minID === 16).ministerTitle = "Pensions and Elderly Care (SZW)";
+}
+
+
+// Create header row
+const headerRow = table.insertRow();
+['', 'Department', 'Minister', 'Party'].forEach(text => {
+    const th = document.createElement('th');
+    th.textContent = text;
+    th.style.padding = '10px';
+    th.style.borderBottom = '2px solid #ddd';
+    headerRow.appendChild(th);
+});
+
+// Add minister rows
+ministerList.forEach(minister => {
+    const row = table.insertRow();
+    
+    // Color cell
+    const colorCell = row.insertCell();
+    if (minister.party === 25 && selectedCoalition.parties.includes(20) && minister.ministerTitle === 'Prime Minister/General Affairs (AZ)') {
+        colorCell.style.backgroundColor = '#DDDDDD';
+    } else if (minister.party === 20 && (minister.ministerTitle.includes('Justice and Security') || minister.ministerTitle.includes('Defense') || minister.ministerTitle.includes('Climate and Nitrogen'))) {
+      colorCell.style.background = `repeating-linear-gradient(-45deg, #DCDCDC, #DCDCDC 5px, ${coalitionParties.find(p => p.party === minister.party)?.color} 5px, ${coalitionParties.find(p => p.party === minister.party)?.color} 10px)`;
+    } else {
+        colorCell.style.backgroundColor = coalitionParties.find(p => p.party === minister.party)?.color || '#ffffff';
+    }
+    colorCell.style.width = '20px';
+    
+    // Ministry cell
+    const ministryCell = row.insertCell();
+    ministryCell.textContent = minister.ministerTitle;
+    ministryCell.style.padding = '10px';
+    
+    // Minister name cell
+    const ministerCell = row.insertCell();
+    if (minister.party === 25 && selectedCoalition.parties.includes(20) && minister.ministerTitle === 'Prime Minister/General Affairs (AZ)') {
+        ministerCell.textContent = 'Dick Schoof';
+    } else {
+        ministerCell.textContent = ministerNames[minister.party]?.[minister.minID] || "TBD";
+    }
+    ministerCell.style.padding = '10px';
+    
+    // Party cell
+    const partyCell = row.insertCell();
+    if ((minister.party === 25 && selectedCoalition.parties.includes(20) && minister.ministerTitle === 'Prime Minister/General Affairs (AZ)') || (minister.party === 20 && (minister.ministerTitle.includes('Justice and Security') || minister.ministerTitle.includes('Defense') || minister.ministerTitle.includes('Climate and Nitrogen')))) {
+        partyCell.textContent = 'Ind.';
+    } else {
+        partyCell.textContent = coalitionParties.find(p => p.party === minister.party)?.name || "Unassigned";
+    }
+    partyCell.style.padding = '10px';
+
+    // Add border bottom
+    row.childNodes.forEach(cell => {
+        cell.style.borderBottom = '1px solid #ddd';
+    });
+});
+
+// Add table to chartcontainer
+document.getElementById('chartcontainer').appendChild(table);
+
+// Set chartcontainer attributes
+document.getElementById('chartcontainer').style.overflow = 'scroll';
+document.getElementById('chartcontainer').style.height = '100%';
+
+
+// Add event listener to BackButton
+document.getElementById("backButton").addEventListener("click", function() {
+    // Save the original HTML of the buttons div
+    var originalHtml = document.querySelector(".buttons").outerHTML;
+    // Remove the buttons div
+    var buttonsDiv = document.querySelector(".buttons");
+    buttonsDiv.remove();
+});
+
+const chartButton = document.getElementById("chart_button");
+chartButton.disabled = true;
+}
 }
 else if(type==="voteshare"){
     var totalPopularVote = 10462677
@@ -2183,7 +3317,7 @@ function charting(chartIndex=0){
     document.head.appendChild(script);
   }
   
-  var charts = ["voteshare", "seats"]
+  var charts = ["voteshare", "seats", "cabinet"]
 
   let observerRunning = false;
   let changeChartRunning = false;

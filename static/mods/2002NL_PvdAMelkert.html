@@ -69,6 +69,8 @@ musicHasBeenEnabled = false;
 musicHasBeenUpdated = false;
 darkMelkertActivated = false;
 FortuynLives = true;
+BenkRemoved = false;
+PMKok = false;
 
 cyoAdventure = function (a) {
 answer = e.player_answers[e.player_answers.length - 1]; // get current answer selection
@@ -130,6 +132,7 @@ if(answer == 2044) {
   return;
 }
 if(answer == 2046){
+  BenkRemoved = true;
   e.questions_json.splice(15, 1 , getQuestionFromPk(1028))
   e.questions_json.splice(21, 1 , getQuestionFromPk(1032))
   return;
@@ -174,9 +177,15 @@ if (answer == 2036 || answer == 2037) {
   coalition3Adjustment.weight = 0;
   return;
 }
+if (answer == 2136) {
+  PMKok = true;
+  const leader17 = partyLeaders.find((leader) => leader.party === 17);
+  leader17.leaderName = 'third Kok';
+  leader17.image = 'https://i.imgur.com/CS1dZbV.png';
+}
 };
 
-e.answers_json = [{"model":"campaign_trail.answer","pk":2000,"fields":{"question":1000,"description":"You should completely endorse me as the new leader of the PvdA, Wim. No one is seriously in a position to challenge me, so the upcoming party congress will be little more than a rubber stamp. We should display unity by sharing the podium, as the king and his successor."}},{"model":"campaign_trail.answer","pk":2001,"fields":{"question":1000,"description":"Now, I do not want this process to look like a coronation. Here is my proposal: Wim, you should not endorse me until after my election, and we should ask someone to run a token counter-candidacy so the members will have something else to choose. Maybe that will also encourage a more serious candidate to throw their hat in the ring as well. After I win the leadership election, I should appear with you, as well as other high profile PvdA'ers such as Wouter Bos, Nehabat Albayrak and Jeltje van Nieuwenhoven."}},{"model":"campaign_trail.answer","pk":2002,"fields":{"question":1000,"description":"I see a lot of latent dissatisfaction with the status-quo when I talk to people out on the streets. I'm sorry, but I wish to avoid associating too closely with the incumbent cabinet. It's best if I participate in the leadership election on my own strength."}},{"model":"campaign_trail.answer","pk":2004,"fields":{"question":1001,"description":"Shit, this is the last thing we need, just as I am about to enter the election as a candidate for prime minister. We need to prevent this from spreading: let our civil servants inform the other newspapers that this is all nonsense. Contact colleagues of these journalists to inquire whether this can be stopped. I do not want to see this story spread to any other newspapers."}},{"model":"campaign_trail.answer","pk":2005,"fields":{"question":1001,"description":"You cannot expect me as the minister to know exactly what each commission in my ministry is doing. It is clear that there has been some irresponsible behavior by some lower civil servants, but obviously you cannot pin that on me,."}},{"model":"campaign_trail.answer","pk":2006,"fields":{"question":1001,"description":"We need a scapegoat, and it isn't going to be me. I haven't been the minister of Social Affairs since 1998. Clearly it have been my successors Klaas de Vries and Willem Vermeend who have let this fester, while I had been very strong against fraud prevention the entire time."}},{"model":"campaign_trail.answer","pk":2007,"fields":{"question":1001,"description":"Mistakes were made here, and the oversight on the ESF subsidies has indeed left some to be desired. I take political responsibility for that. However, compared to the successes I have had as minister this is a minor mistake."}},{"model":"campaign_trail.answer","pk":2008,"fields":{"question":1002,"description":"That... That is awful. The Netherlands stands with the people of the United States in the light of this awful terrorist attack. Our free and open societies deserve to be defended from terror."}},{"model":"campaign_trail.answer","pk":2009,"fields":{"question":1002,"description":"That... That is awful. The Netherlands stands with the people of the United States in the light of this awful terrorist attack. However, we must do everything in our power to prevent the fear these attacks provoke from being used as hate against Muslims in this country."}},{"model":"campaign_trail.answer","pk":2012,"fields":{"question":1003,"description":"We saw what going against your party's incumbent, popular prime minister did for Elco Brinkman. I am not about to follow in his footsteps. We will campaign on the successes of purple. It won Wim 1998, it will win me 2002 - it is also why we are polling so well right now."}},{"model":"campaign_trail.answer","pk":2013,"fields":{"question":1003,"description":"With due respect, Wim, I think you're in the wrong here. There are absolutely many achievements of the purple cabinet that we worked hard for, and we should mention those, but we cannot ignore the problems we face: immigration, crime, and waiting lists in healthcare. These are points I already mentioned. Jacques' strategy is going to be the winning one.","hell_answer":true}},{"model":"campaign_trail.answer","pk":2014,"fields":{"question":1003,"description":"Both of you are mistaken. The purple cabinets have been too right-wing, due to the VVD. We ought to return to our ideological roots, to more classical social democratic values, to the PvdA of Den Uyl. We need to end privatization and make the government work for the common man again."}},{"model":"campaign_trail.answer","pk":2016,"fields":{"question":1004,"description":"That is concerning. Have you seen some of his rhetoric: A cold war against Islam? Most Muslims in this country have nothing to do with terrorism. They ask me, does he want to fight a cold war with us? Let us hope this is just a passing fad. The last thing this country needs is a Hans Janmaat returning with a different face.","controversial":true}},{"model":"campaign_trail.answer","pk":2017,"fields":{"question":1004,"description":"Now, now, look at this. This man wants the exact same thing as the VVD, just with a stronger focus on migration and without the disadvantage of having to defend the policies of the current cabinet. Let them split the VVD's base, then we will be the largest party by far come 2002."}},{"model":"campaign_trail.answer","pk":2018,"fields":{"question":1004,"description":"I must caution people against rallying around a media phenomenon like that. What are his policies? Who will he be sharing his list with? With the PvdA you know what you're voting for, but Pim Fortuyn, who is he and his party really? We vote for parties here, not personalities."}},{"model":"campaign_trail.answer","pk":2019,"fields":{"question":1004,"description":"This man speaks to many of the problems that afflict the country today, but his solution is 'debureaucratization'? Less money to solve these problems? Clearly, that will not work. We need to spend some more, and work together to solve the problems that have arisen."}},{"model":"campaign_trail.answer","pk":2020,"fields":{"question":1005,"description":"I plan to visit my home village of Gouderak and invite the press to film me there. I will be visiting my old soccer club and my father's barber shop. This will make it clear to the voter that there's a normal guy behind the administrator they see on TV."}},{"model":"campaign_trail.answer","pk":2021,"fields":{"question":1005,"description":"I will visit my old high school in the city of Gouda at its new location as well as the school that's now occupies the old location, which unlike my old school, isn't a gymnasium and therefore is more relatable. It would be a good way to show my connection to society through my past."}},{"model":"campaign_trail.answer","pk":2022,"fields":{"question":1005,"description":"What nonsense. In the Netherlands we vote for parties, not for personalities. The prime minister isn't even elected, parliament is. You suggest I must put up some unauthentic clownshow? People know me as an administrator, and that's because I am an administrator: I get things done instead of doing a bad acting job."}},{"model":"campaign_trail.answer","pk":2023,"fields":{"question":1005,"description":"I... What is this suggestion by a junior staffer? A campaign visit to the Thunderdome at the Heineken Music Hall?! Haha, that idea is so insane that I like it. Let's make this an election year rave!"}},{"model":"campaign_trail.answer","pk":2024,"fields":{"question":1006,"description":"An important reason why we are currently struggling with waiting lists in healthcare is the fact that people increasingly live longer. That is a good thing, but it leads to complications, as we're seeing. The problem is going to be more acute in the future. We need to increase the government's investment in healthcare to increase its scale. It's the industry of the future."}},{"model":"campaign_trail.answer","pk":2025,"fields":{"question":1006,"description":"Contrary to what Fortuyn says, the waiting lists have actually shortened and the healthcare sector has attracted 100,000 new workers in the past four years. We should simply stay on the current course, and this trend will continue. Soon the problem will have entirely disappeared."}},{"model":"campaign_trail.answer","pk":2026,"fields":{"question":1006,"description":"Our waiting lists are the result of a substantial health deficit among the lesser educated and lower earners, this means that these groups are forced to make use of our healthcare system relatively more often than other groups. We should help them adopt a better lifestyle."}},{"model":"campaign_trail.answer","pk":2027,"fields":{"question":1006,"description":"I disagree with Fortuyn on many matters, but when it comes to waiting lists he has a point: There is too much bureaucracy in our healthcare system. It is time to trim off the layers and layers of managers, and use the money this frees up for operations."}},{"model":"campaign_trail.answer","pk":2028,"fields":{"question":1007,"description":"Fortuyn appeals to and exploits a feeling of fear among a section of the population of the unknown, of migrants, and of Muslims to gain support. That is dirty politics, there's no two ways about it. It therefore worries me that Livable is offering him a platform in this way. I'm confident however, that the Dutch voter will eventually see him for what he is and reject him.","controversial":true}},{"model":"campaign_trail.answer","pk":2029,"fields":{"question":1007,"description":"Why are you asking me this? You didn't ask me what I thought of Balkenende becoming party leader of the CDA, even though he's a serious contender this cycle. The media in this country is really a joke, it's all Fortuyn, Fortuyn, Fortuyn. No wonder he's polling so well, he is a creation by the media. It would be great for our democracy if the media would refrain from such behavior. No further comments."}},{"model":"campaign_trail.answer","pk":2030,"fields":{"question":1007,"description":"I congratulate Mr. Fortuyn for his election as leader of Livable and I look forward to debating him during this campaign. It will not surprise you that I do not agree with many of his plans, and I firmly believe that once the campaign shifts from style to substance, Pim's plans will not be as appealing as they seem now."}},{"model":"campaign_trail.answer","pk":2032,"fields":{"question":1008,"description":"We have seen the benefits from this program. Thousands of Melketeers have moved through their Melkertbaan into the regular workforce with a regular wage. It has played a key role in the transition from the high unemployment of 1994 to the very low rates of today."}},{"model":"campaign_trail.answer","pk":2033,"fields":{"question":1008,"description":"This was an excellent policy that played a key role in bringing down our unemployment rate. However, we must look to its future: not everyone is able to go into the regular workforce and we need the government to be trustworthy. Therefore, it is paramount that we can guarantee job security for current Melketeers."}},{"model":"campaign_trail.answer","pk":2034,"fields":{"question":1008,"description":"This was excellent policy that played a key role in bringing down our unemployment rate. However, we must look to its future: our unemployment rates are now broadly low and we need to stimulate people to go into the regular workforce. Therefore, we will be slowly phasing out the Melkertbanen to encourage remaining Melketeers join the rest of the labor market."}},{"model":"campaign_trail.answer","pk":2036,"fields":{"question":1009,"description":"Absolutely not! The PvdA is not going to give the keys of government to someone who exploits people's fear of the unknown for electoral gain. I must also condemn the VVD and CDA for not taking a similar position: they are making themselves an indirect vote for Fortuyn. There is only one way to prevent him from rising to power, and that is a strong PvdA!","controversial":true}},{"model":"campaign_trail.answer","pk":2037,"fields":{"question":1009,"description":"I don't view it as a credible scenario. The distance between the PvdA and Fortuyn's Livable Netherlands is simply far too great. Fortuyn proposes to ignore international law to prevent any further integration, because the Netherlands is supposedly 'full'."}},{"model":"campaign_trail.answer","pk":2038,"fields":{"question":1009,"description":"Just look at Fortuyn's economic program. Privatize this, cut bureaucracy that. He is a neoliberal just like the VVD and that is the last thing this country needs. We need to return to our social democratic roots. An alliance with Fortuyn, or the VVD for that matter, would run contrary to that goal."}},{"model":"campaign_trail.answer","pk":2039,"fields":{"question":1009,"description":"As we are seeing, Fortuyn is touching on a untapped feeling in society. The PvdA does not wish to ignore this feeling any longer. On other issues, we certainly have our disagreements, but the Dutch way is to find compromise and if the election results ask us to sit at the table with Livable, that is what we will do.","hell_answer":true}},{"model":"campaign_trail.answer","pk":2040,"fields":{"question":1010,"description":"The Kok cabinets have done a lot of good for this country. A renewed partnership with the VVD, possibly without D66 if the voter gives us a mandate for that, would be the beacon of stability our country needs."}},{"model":"campaign_trail.answer","pk":2041,"fields":{"question":1010,"description":"It's not a secret that there has been some tension in the cabinet. We are quite far apart from the VVD politically, even though we can work together. My preference would be a new start with a new coalition, one composed of the PvdA, CDA and GroenLinks."}},{"model":"campaign_trail.answer","pk":2042,"fields":{"question":1010,"description":"Ideally, we should have a true and broad left-wing cabinet that can pass the plans this country needs. A cabinet composed of PvdA, GroenLinks, SP and D66 is what we need."}},{"model":"campaign_trail.answer","pk":2044,"fields":{"question":1011,"description":"Korthals' reasoning is sound: it is simply legally infeasible to annul the settlement at this stage. Plus, our own Minister Netelenbos is also implicated. Van Gijzel digging up muck about this while we follow that line is inevitably going to hurt us however. We need to control this by stripping him of his position as spokesman on the fraud case and by ordering him to subject his statements on the matter to my personal review."}},{"model":"campaign_trail.answer","pk":2045,"fields":{"question":1011,"description":"Korthals' reasoning is sound: it is simply legally unviable to annul the settlement at this stage. Plus, our own Minister Netelenbos is also implicated. However, we do need to seem proactive in our desire to investigate this matter. Let us work with Van Gijzel to set up a parliamentary inquiry."}},{"model":"campaign_trail.answer","pk":2046,"fields":{"question":1011,"description":"How can we in good conscience call ourselves socialists if we condone this? We need to get to the bottom of this. The parliamentary faction of the PvdA demands a full-scale investigation, and that settlement needs to be annulled at once. Otherwise, we will table a motion of no confidence against Minister Korthals."}},{"model":"campaign_trail.answer","pk":2048,"fields":{"question":1012,"description":"This is a mild recession caused by a momentary spike in inflation. It cannot be compared in scope to the economic situation when the Kok cabinet rose to power in 1994. We will get through it by maintaining our current course, which made us one of the strongest economies on the continent."}},{"model":"campaign_trail.answer","pk":2049,"fields":{"question":1012,"description":"The fiscal policy of the Kok cabinets has been very prudent by saving money and thus building up reserves for such a situation. Now is the time to pump money into the economy to get it going again."}},{"model":"campaign_trail.answer","pk":2050,"fields":{"question":1012,"description":"The answer to inflation is to cut government spending so that the economy gets the opportunity to cool down a bit. It will admittedly hurt a bit in the short term, but in the long term it will make the economy to return to a sound growth rate with low inflation."}},{"model":"campaign_trail.answer","pk":2052,"fields":{"question":1013,"description":"This is a historic moment in European cooperation! We are most satisfied with the implementation of the new currency, the Netherlands is one of the earliest adopters, with many other countries still in transition. Now we need to go further, and create a European constitution. Our continent will be stronger because of it."}},{"model":"campaign_trail.answer","pk":2053,"fields":{"question":1013,"description":"A massive win for big corporations, of course. Now they can trade much more easily between one another within the whole eurozone. But does the common man benefit? I'm not so sure, when we are struck by inflation, the DNB (Central Bank of the Netherlands) must be able to raise interest rates to counter that. With a shared currency, only the new ECB can do that, and they must balance the interests of the whole eurozone. We should have negotiated an opt-out like Britain and Denmark."}},{"model":"campaign_trail.answer","pk":2054,"fields":{"question":1013,"description":"The Euro will greatly enhance trading relations on the European continent, which is excellent for a trading nation like the Netherlands. However, I'm a bit concerned by the increasing drift to federalization of the European Community: our relationship to the EU should be one of commercial interests, not political integration. As such I am not supportive of the proposed European constitution. Our own traditions are important too.","hell_answer":true}},{"model":"campaign_trail.answer","pk":2056,"fields":{"question":1014,"description":"It was about time for that. I hope this is the last we hear of that awful man with his fearmongering campaign. I'm pleased the Livable leadership still does have some standards, we have only one society that we have to work in together and if one person says to another that they are backwards, or that there is no place for them... It's just disgusting.","controversial":true}},{"model":"campaign_trail.answer","pk":2057,"fields":{"question":1014,"description":"Fortuyn puts it in crude words, which I personally would never use. Every Dutch person does have civil rights, but there is a commonly apparent problem. Mr. Fortuyn will have to decide for himself how he wishes to formulate his political future after this, but rest assured that with the PvdA of Melkert, stronger policies on integration and migration will also be pursued.","hell_answer":true}},{"model":"campaign_trail.answer","pk":2058,"fields":{"question":1014,"description":"Well, it's not appropriate for me to comment on the misfortune of one of my opponents, or former opponents, due to internal party politics, is it? Fortuyn and Livable will both have to make their own decisions."}},{"model":"campaign_trail.answer","pk":2060,"fields":{"question":1015,"description":"Shit. I cannot afford to risk losing control of my faction so close to the elections. Here's what we're going to do: I'm going to turn around and announce my own opposition to the JSF project to preserve unity within my parliamentary faction."}},{"model":"campaign_trail.answer","pk":2061,"fields":{"question":1015,"description":"Another rogue spokesman? Are these backbenchers trying to leverage the election to extract concessions from me? They're being emboldened by me playing nice with Van Gijzel with the Schipholtunnel affair! Not anymore! We need to call Timmermans to order, ordering him to rescind his statements, officially endorse the JSF bill, and state he will vote in its favor. Otherwise I will personally see to it that he has no political future with the PvdA."}},{"model":"campaign_trail.answer","pk":2062,"fields":{"question":1015,"description":"Shit. I cannot afford to risk losing control of my faction so close to the elections, but I also don't want the PvdA to be the party to be the one pulling the plug from the cabinet and look like a flip-flopper myself. I will reaffirm my support for the JSF project, and ignore Timmermans' bluster. The PvdA will vote for the project."}},{"model":"campaign_trail.answer","pk":2064,"fields":{"question":1016,"description":"Fortuyn is grasping at straws here. If you compare Dutch education with other countries, it is of good quality. The Kok cabinets have also increased the education budget by ƒ3 billion to keep it that way and to make education future-proof. There is no argument here."}},{"model":"campaign_trail.answer","pk":2065,"fields":{"question":1016,"description":"Education needs to be future-proofed by preparing children for the information age they will be living in. Teaching children to make a website is an important aspect of that, and although larger schools have benefits as well as disadvantages, it does make it much easier to ensure that students have the access to the internet they need."}},{"model":"campaign_trail.answer","pk":2066,"fields":{"question":1016,"description":"There are some problems in education, particularly a lack of teachers. Fortuyn did adequately recognize that problem. However, unlike him, I will actually be solving that problem: while Fortuyn goes on about manager culture, as if good leadership is harmful, the PvdA will raise teacher's wages to ensure more people consider the profession."}},{"model":"campaign_trail.answer","pk":2067,"fields":{"question":1016,"description":"Indeed! Indeed there are problems! Currently, we have white and black schools, segregation in the polder due to perceived qualitative differences! And Fortuyn, he divides, he puts them away as one evil group. We need to stop it."}},{"model":"campaign_trail.answer","pk":2068,"fields":{"question":1017,"description":"Yes Wim, I know we're not winning the war like this... No, it's not over yet... I need to get on the road to go to that debate tonight. Driver, drive drive drive! It's quite far to Amersfoort from Heerenveen. We cannot be late, full speed! Don't drive so slowly, man!"}},{"model":"campaign_trail.answer","pk":2069,"fields":{"question":1017,"description":"Yes Wim, I know we're not winning the war like this... No, it's not over yet... I need to get on the road to go to that debate tonight. Driver, try to get us to Amersfoort as fast as possible so we are not late. I need to catch some sleep on the ride there."}},{"model":"campaign_trail.answer","pk":2072,"fields":{"question":1018,"description":"As we've seen, every time we give that man the attention he craves, he wins over more minds. I'm going to deny him that opportunity by avoiding him as much as possible, and focusing on other opposition: Rosenmöller, Dijkstal, and Balkenende."}},{"model":"campaign_trail.answer","pk":2073,"fields":{"question":1018,"description":"The Dutch people are clearly not seeing who they're dealing with in Fortuyn. I'll be attacking him harshly. His demagoguery has gone unchallenged for long enough. There is no place for fascism in this country!","controversial":true}},{"model":"campaign_trail.answer","pk":2074,"fields":{"question":1018,"description":"Citations, professor! Professor Pim has a lot to talk about, but when you dig into the details, you find that it's not true. I'll be calling for his citations every time he does that. We could use some academic integrity in this political debate!"}},{"model":"campaign_trail.answer","pk":2075,"fields":{"question":1018,"description":"The issues! Don't let the circumstances pull you from the issues. Fortuyn is good at pointing at problems, but when it comes to solutions, he falls short. This is what I will be focusing on throughout the debates."}},{"model":"campaign_trail.answer","pk":2076,"fields":{"question":1019,"description":"The government has done much to make the Netherlands a safer place by strengthening the police and building more prisons, and it paid off: after years and years of a rising crime rate since the 1960s, it has actually fallen under the stewardship of the purple cabinet."}},{"model":"campaign_trail.answer","pk":2077,"fields":{"question":1019,"description":"The most problematic safety issue afflicting the Netherlands today is youth crime. Younger and younger children commit increasingly serious crimes, and rehabilitation resources as well as youth help do not have the resources to deal with it. Providing extra resources in this area will be the most efficient step we can take to combat crime."}},{"model":"campaign_trail.answer","pk":2078,"fields":{"question":1019,"description":"Law and order is what we need to address the rising crime epidemic. More police on the streets will help to dissuade feelings of insecurity, and make sure that when one is targeted by a crime, there are enough officers to take one's testimony. All too often, no one is there to do that now."}},{"model":"campaign_trail.answer","pk":2080,"fields":{"question":1020,"description":"The financial policies of the Kok cabinets have been very successful and have contributed its fair share to make the Netherlands the prosperous country it is today. Of course, it's also in part dependent on our coalition partners, but we remain committed to fiscal discipline."}},{"model":"campaign_trail.answer","pk":2081,"fields":{"question":1020,"description":"The sound fiscal policies of purple have left us in a very good position, and there are problems that are in need of being addressed. It is therefore responsible to take a slightly less rigid approach to the state's finances."}},{"model":"campaign_trail.answer","pk":2084,"fields":{"question":1021,"description":"The Dutch government bears responsibility, albeit not guilt - that lies with the Serbians. But for our responsibility, the only right thing for the cabinet to do is to resign."}},{"model":"campaign_trail.answer","pk":2085,"fields":{"question":1021,"description":"What nonsense, there was nothing the Dutch government could have done here. Frankly, I do not agree with the call to resign."}},{"model":"campaign_trail.answer","pk":2088,"fields":{"question":1022,"description":"If you flirt with Fortuyn, then the same thing that happened in France will soon happen in the Netherlands! There they woke up with Le Pen, soon we will wake up with Fortuyn. Netherlands, wake up!","controversial":true}},{"model":"campaign_trail.answer","pk":2089,"fields":{"question":1022,"description":"Evidently, this is beyond concerning. Jean-Marie Le Pen goes much further than Fortuyn goes, to the point that they can hardly be compared. I sincerely hope that his brand of hate will be soundly rejected in the second round."}},{"model":"campaign_trail.answer","pk":2092,"fields":{"question":1023,"description":"We need international star power to underscore the dangers that the far-right poses to the Netherlands. We've already invited Gerhard Schröder. Let's bring over Tony Blair to speak as well. Let's really hammer home how the Netherlands would look awful internationally with Fortuyn as our prime minister."}},{"model":"campaign_trail.answer","pk":2093,"fields":{"question":1023,"description":"We're talking about the successes of purple: we turned the Netherlands into one of the wealthiest countries in Europe, with the highest GDP per capita, and we did that without letting anyone down. Unemployment is still at a record low, for example!"}},{"model":"campaign_trail.answer","pk":2094,"fields":{"question":1023,"description":"The stronger social democratic positions: more money to solve the waiting lists in healthcare and the lack of teachers in education. That will stand in contrast to the calls for 'de-bureaucratization' from those our loudest critics."}},{"model":"campaign_trail.answer","pk":2096,"fields":{"question":1024,"description":"We're facing substantial competition from Fortuyn in the west. We should visit the major cities of Rotterdam, The Hague, Amsterdam and Utrecht to counteract this with a broad coalition of both white- and immigrant voters."}},{"model":"campaign_trail.answer","pk":2097,"fields":{"question":1024,"description":"The red north: if we can make it a bit redder still, it will make sure we don't come just short against the CDA, VVD or LPF."}},{"model":"campaign_trail.answer","pk":2098,"fields":{"question":1024,"description":"Around the Rhine; we can visit cities like Nijmegen in Gelderland, as well as Brabant, and maybe a bit of northern Limburg. We won a lot of municipalities in this region in 1998 so perhaps we can repeat that feat."}},{"model":"campaign_trail.answer","pk":2100,"fields":{"question":1025,"description":"The Kok cabinets have done a lot of good for this country. A renewed partnership with the VVD, possibly without D66 if the voter gives us a mandate for that, would be the beacon of stability our country needs."}},{"model":"campaign_trail.answer","pk":2101,"fields":{"question":1025,"description":"It's not a secret that there has been some tension in the cabinet. We are quite far from the VVD politically, even though we can work together. My preference would be a new start with a new coalition, one composed of the PvdA, CDA and GroenLinks."}},{"model":"campaign_trail.answer","pk":2102,"fields":{"question":1025,"description":"Ideally, we should have a true and broad left-wing cabinet that can pass the plans this country needs. A cabinet composed of PvdA, GroenLinks, SP and D66 is what we need."}},{"model":"campaign_trail.answer","pk":2103,"fields":{"question":1025,"description":"My aim is to redirect the PvdA back to the concerns of the working class, though perhaps in the past we have unintentionally placed some distance between us. Cooperation with Pim Fortuyn, therefore, seems like the most straightforward option, perhaps in combination with either the SP or CDA. However, much depends on how much he can live up to his current polling.","hell_answer":true}},{"model":"campaign_trail.answer","pk":2104,"fields":{"question":1026,"description":"You misunderstood me: the Kok cabinets have done a lot of good for this country. I only said that another alliance with the VVD would not be the preferred option. Ours is the polder model, if the voter condemns us to each other then yes, it would be possible."}},{"model":"campaign_trail.answer","pk":2105,"fields":{"question":1026,"description":"We need a new start, and starting anew should be done with a new coalition: one composed of the PvdA, CDA and GroenLinks."}},{"model":"campaign_trail.answer","pk":2106,"fields":{"question":1026,"description":"The only way to truly be able to give this country what it needs is an actual socialist cabinet. We need to join forces with our comrades at GroenLinks and SP, as well as with the progressive liberals of D66. Let's turn a page from the politics of the 'free boys' of the VVD."}},{"model":"campaign_trail.answer","pk":2108,"fields":{"question":1027,"description":"Shit. I cannot afford to risk losing control of my faction so close to the elections. Here's what we're going to do: I'm going to turn around and announce my own opposition to the JSF project to preserve unity within my party."}},{"model":"campaign_trail.answer","pk":2109,"fields":{"question":1027,"description":"Another rogue spokesman? Are these backbenchers trying to leverage the election to extract concessions from me? Timmermans should have learned from the fate of Van Gijzel! We need to call Timmermans to order, make him to row back his statements, officially endorse the JSF bill, and state he will vote in its favor of the JSF bill. If he does not comply I will personally see to it that he has no political future with the PvdA ever again."}},{"model":"campaign_trail.answer","pk":2110,"fields":{"question":1027,"description":"Shit. I cannot afford to risk losing control of my faction so close to the elections, but I also don't want the PvdA to be the party pulling the plug from the cabinet, and look like a flip-flopper myself. I will reaffirm my support for the JSF project, and ignore Timmermans' bluster. The PvdA will vote for the project."}},{"model":"campaign_trail.answer","pk":2112,"fields":{"question":1028,"description":"I was going to support the JSF project because as coalition partners, you sometimes have to accept something you don't agree with. Now that the marriage is over however, I can freely take my own position again, that participation in the JSF project is not a responsible use of the taxpayer's money. Frans's statements are in line with the wider position of the PvdA."}},{"model":"campaign_trail.answer","pk":2113,"fields":{"question":1028,"description":"Another rogue spokesman? Are these backbenchers trying to leverage the election to extract concessions from me? They're being emboldened by me playing nice with Van Gijzel with the Schipholtunnel affair! Not anymore! We need to call Timmermans, order him to take back his statements, officially endorse the JSF bill, and state he will vote in its favor of the JSF bill. If he does not comply I will personally see to it that he has no political future with the PvdA."}},{"model":"campaign_trail.answer","pk":2114,"fields":{"question":1028,"description":"Shit. I cannot afford to risk losing control of my faction so close to the election, but I also don't want the PvdA to be the party pulling the plug from the cabinet, and looking like a flip-flopper myself. I will reaffirm my support for the JSF project, and ignore Timmermans' bluster. The PvdA will vote for the project."}},{"model":"campaign_trail.answer","pk":2116,"fields":{"question":1029,"description":"See, Wim? I told you my strategy was going to pay off. Our municipal party is probably going to cooperate with Livable, and finally respond to the problems to which we were called out by the voter. No, we can't continue, if I don't leave now, I will be late for the debate. Let's go, driver."}},{"model":"campaign_trail.answer","pk":2120,"fields":{"question":1030,"description":"As we've seen, every time we give that man the attention he craves, he wins over more minds. I'm going to deny him that opportunity by avoiding him as much as possible, and focusing on other opposition: Rosenmöller, Dijkstal, and Balkenende."}},{"model":"campaign_trail.answer","pk":2121,"fields":{"question":1030,"description":"The Dutch people are clearly not seeing who they're dealing with in Fortuyn. I'm going on the attack, and hard. His demagoguery has gone unchallenged for long enough. There is no place for fascism in this country!"}},{"model":"campaign_trail.answer","pk":2122,"fields":{"question":1030,"description":"Citations, professor! Professor Pim has a lot to talk about, but when you dig into the details you find that it's not true. I'll be calling for his citations every time he does that. We could use some academic integrity in this political debate!"}},{"model":"campaign_trail.answer","pk":2123,"fields":{"question":1030,"description":"The issues! Don't let the circumstances pull you from the issues. Fortuyn is good at pointing to problems but when it comes to solutions he falls short. This is what I will be focusing on throughout the debates."}},{"model":"campaign_trail.answer","pk":2124,"fields":{"question":1031,"description":"We're going to be cordial to Fortuyn, his entrance in municipal politics is nothing if not impressive. We'll also announce our hope to work with him in Rotterdam. At the same time, we will not hesitate to criticize his privatization policies. That's an important point where the two of us differ."}},{"model":"campaign_trail.answer","pk":2125,"fields":{"question":1031,"description":"He's the winner of the night, so obviously we are going to congratulate him on that achievement, espouse our hopes that the PvdA and his party can work together, and emphasize how we can cooperate, while taking the attack to Balkenende, our true opponent now that the VVD seems to be ailing."}},{"model":"campaign_trail.answer","pk":2126,"fields":{"question":1031,"description":"We're going to emphasize that we actually beat out his LPF and denied him first place in Rotterdam, and that while we are willing to cooperate, it will be on our terms. Social democracy cannot be a victim of our cooperation."}},{"model":"campaign_trail.answer","pk":2128,"fields":{"question":1032,"description":"The Dutch government bears responsibility, albeit not guilt - that lies with the Serbians. But we must bear the responsibility, we made mistakes that enabled this terrible crime to be committed."}},{"model":"campaign_trail.answer","pk":2129,"fields":{"question":1032,"description":"What nonsense, there was nothing the Dutch government could have done here."}},{"model":"campaign_trail.answer","pk":2132,"fields":{"question":1033,"description":"My God, that's barbaric... how that can happen in this country... They... Who?!"}},{"model":"campaign_trail.answer","pk":2136,"fields":{"question":1034,"description":"I... Wim, I know it wasn't what you'd been looking for, but after the debate, you said to me angrily that the project goes before the person. That's how it is right now too. The project needs you, Wim."}},{"model":"campaign_trail.answer","pk":2137,"fields":{"question":1034,"description":"Maybe it won't be that bad? Fortuyn's supporters blame me, but they wouldn't vote for us anyways. Surely the regular voter?..."}},{"model":"campaign_trail.answer","pk":2138,"fields":{"question":1034,"description":"..."}}];
+e.answers_json = [{"model":"campaign_trail.answer","pk":2000,"fields":{"question":1000,"description":"You should completely endorse me as the new leader of the PvdA, Wim. No one is seriously in a position to challenge me, so the upcoming party congress will be little more than a rubber stamp. We should display unity by sharing the podium, as the king and his successor."}},{"model":"campaign_trail.answer","pk":2001,"fields":{"question":1000,"description":"Now, I do not want this process to look like a coronation. Here is my proposal: Wim, you should not endorse me until after my election, and we should ask someone to run a token counter-candidacy so the members will have something else to choose. Maybe that will also encourage a more serious candidate to throw their hat in the ring as well. After I win the leadership election, I should appear with you, as well as other high profile PvdA'ers such as Wouter Bos, Nebahat Albayrak and Jeltje van Nieuwenhoven."}},{"model":"campaign_trail.answer","pk":2002,"fields":{"question":1000,"description":"I see a lot of latent dissatisfaction with the status-quo when I talk to people out on the streets. I'm sorry, but I wish to avoid associating too closely with the incumbent cabinet. It's best if I participate in the leadership election on my own strength."}},{"model":"campaign_trail.answer","pk":2004,"fields":{"question":1001,"description":"Shit, this is the last thing we need, just as I am about to enter the election as a candidate for prime minister. We need to prevent this from spreading: let our civil servants inform the other newspapers that this is all nonsense. Contact colleagues of these journalists to inquire whether this can be stopped. I do not want to see this story spread to any other newspapers."}},{"model":"campaign_trail.answer","pk":2005,"fields":{"question":1001,"description":"You cannot expect me as the minister to know exactly what each commission in my ministry is doing. It is clear that there has been some irresponsible behavior by some lower civil servants, but obviously you cannot pin that on me,."}},{"model":"campaign_trail.answer","pk":2006,"fields":{"question":1001,"description":"We need a scapegoat, and it isn't going to be me. I haven't been the minister of Social Affairs since 1998. Clearly it have been my successors Klaas de Vries and Willem Vermeend who have let this fester, while I had been very strong against fraud prevention the entire time."}},{"model":"campaign_trail.answer","pk":2007,"fields":{"question":1001,"description":"Mistakes were made here, and the oversight on the ESF subsidies has indeed left some to be desired. I take political responsibility for that. However, compared to the successes I have had as minister this is a minor mistake."}},{"model":"campaign_trail.answer","pk":2008,"fields":{"question":1002,"description":"That... That is awful. The Netherlands stands with the people of the United States in the light of this awful terrorist attack. Our free and open societies deserve to be defended from terror."}},{"model":"campaign_trail.answer","pk":2009,"fields":{"question":1002,"description":"That... That is awful. The Netherlands stands with the people of the United States in the light of this awful terrorist attack. However, we must do everything in our power to prevent the fear these attacks provoke from being used as hate against Muslims in this country."}},{"model":"campaign_trail.answer","pk":2012,"fields":{"question":1003,"description":"We saw what going against your party's incumbent, popular prime minister did for Elco Brinkman. I am not about to follow in his footsteps. We will campaign on the successes of purple. It won Wim 1998, it will win me 2002 - it is also why we are polling so well right now."}},{"model":"campaign_trail.answer","pk":2013,"fields":{"question":1003,"description":"With due respect, Wim, I think you're in the wrong here. There are absolutely many achievements of the purple cabinet that we worked hard for, and we should mention those, but we cannot ignore the problems we face: immigration, crime, and waiting lists in healthcare. These are points I already mentioned. Jacques' strategy is going to be the winning one.","hell_answer":true}},{"model":"campaign_trail.answer","pk":2014,"fields":{"question":1003,"description":"Both of you are mistaken. The purple cabinets have been too right-wing, due to the VVD. We ought to return to our ideological roots, to more classical social democratic values, to the PvdA of Den Uyl. We need to end privatization and make the government work for the common man again."}},{"model":"campaign_trail.answer","pk":2016,"fields":{"question":1004,"description":"That is concerning. Have you seen some of his rhetoric: A cold war against Islam? Most Muslims in this country have nothing to do with terrorism. They ask me, does he want to fight a cold war with us? Let us hope this is just a passing fad. The last thing this country needs is a Hans Janmaat returning with a different face.","controversial":true}},{"model":"campaign_trail.answer","pk":2017,"fields":{"question":1004,"description":"Now, now, look at this. This man wants the exact same thing as the VVD, just with a stronger focus on migration and without the disadvantage of having to defend the policies of the current cabinet. Let them split the VVD's base, then we will be the largest party by far come 2002."}},{"model":"campaign_trail.answer","pk":2018,"fields":{"question":1004,"description":"I must caution people against rallying around a media phenomenon like that. What are his policies? Who will he be sharing his list with? With the PvdA you know what you're voting for, but Pim Fortuyn, who is he and his party really? We vote for parties here, not personalities."}},{"model":"campaign_trail.answer","pk":2019,"fields":{"question":1004,"description":"This man speaks to many of the problems that afflict the country today, but his solution is 'debureaucratization'? Less money to solve these problems? Clearly, that will not work. We need to spend some more, and work together to solve the problems that have arisen."}},{"model":"campaign_trail.answer","pk":2020,"fields":{"question":1005,"description":"I plan to visit my home village of Gouderak and invite the press to film me there. I will be visiting my old soccer club and my father's barber shop. This will make it clear to the voter that there's a normal guy behind the administrator they see on TV."}},{"model":"campaign_trail.answer","pk":2021,"fields":{"question":1005,"description":"I will visit my old high school in the city of Gouda at its new location as well as the school that's now occupies the old location, which unlike my old school, isn't a gymnasium and therefore is more relatable. It would be a good way to show my connection to society through my past."}},{"model":"campaign_trail.answer","pk":2022,"fields":{"question":1005,"description":"What nonsense. In the Netherlands we vote for parties, not for personalities. The prime minister isn't even elected, parliament is. You suggest I must put up some unauthentic clownshow? People know me as an administrator, and that's because I am an administrator: I get things done instead of doing a bad acting job."}},{"model":"campaign_trail.answer","pk":2023,"fields":{"question":1005,"description":"I... What is this suggestion by a junior staffer? A campaign visit to the Thunderdome at the Heineken Music Hall?! Haha, that idea is so insane that I like it. Let's make this an election year rave!"}},{"model":"campaign_trail.answer","pk":2024,"fields":{"question":1006,"description":"An important reason why we are currently struggling with waiting lists in healthcare is the fact that people increasingly live longer. That is a good thing, but it leads to complications, as we're seeing. The problem is going to be more acute in the future. We need to increase the government's investment in healthcare to increase its scale. It's the industry of the future."}},{"model":"campaign_trail.answer","pk":2025,"fields":{"question":1006,"description":"Contrary to what Fortuyn says, the waiting lists have actually shortened and the healthcare sector has attracted 100,000 new workers in the past four years. We should simply stay on the current course, and this trend will continue. Soon the problem will have entirely disappeared."}},{"model":"campaign_trail.answer","pk":2026,"fields":{"question":1006,"description":"Our waiting lists are the result of a substantial health deficit among the lesser educated and lower earners, this means that these groups are forced to make use of our healthcare system relatively more often than other groups. We should help them adopt a better lifestyle."}},{"model":"campaign_trail.answer","pk":2027,"fields":{"question":1006,"description":"I disagree with Fortuyn on many matters, but when it comes to waiting lists he has a point: There is too much bureaucracy in our healthcare system. It is time to trim off the layers and layers of managers, and use the money this frees up for operations."}},{"model":"campaign_trail.answer","pk":2028,"fields":{"question":1007,"description":"Fortuyn appeals to and exploits a feeling of fear among a section of the population of the unknown, of migrants, and of Muslims to gain support. That is dirty politics, there's no two ways about it. It therefore worries me that Livable is offering him a platform in this way. I'm confident however, that the Dutch voter will eventually see him for what he is and reject him.","controversial":true}},{"model":"campaign_trail.answer","pk":2029,"fields":{"question":1007,"description":"Why are you asking me this? You didn't ask me what I thought of Balkenende becoming party leader of the CDA, even though he's a serious contender this cycle. The media in this country is really a joke, it's all Fortuyn, Fortuyn, Fortuyn. No wonder he's polling so well, he is a creation by the media. It would be great for our democracy if the media would refrain from such behavior. No further comments."}},{"model":"campaign_trail.answer","pk":2030,"fields":{"question":1007,"description":"I congratulate Mr. Fortuyn for his election as leader of Livable and I look forward to debating him during this campaign. It will not surprise you that I do not agree with many of his plans, and I firmly believe that once the campaign shifts from style to substance, Pim's plans will not be as appealing as they seem now."}},{"model":"campaign_trail.answer","pk":2032,"fields":{"question":1008,"description":"We have seen the benefits from this program. Thousands of Melketeers have moved through their Melkertbaan into the regular workforce with a regular wage. It has played a key role in the transition from the high unemployment of 1994 to the very low rates of today."}},{"model":"campaign_trail.answer","pk":2033,"fields":{"question":1008,"description":"This was an excellent policy that played a key role in bringing down our unemployment rate. However, we must look to its future: not everyone is able to go into the regular workforce and we need the government to be trustworthy. Therefore, it is paramount that we can guarantee job security for current Melketeers."}},{"model":"campaign_trail.answer","pk":2034,"fields":{"question":1008,"description":"This was excellent policy that played a key role in bringing down our unemployment rate. However, we must look to its future: our unemployment rates are now broadly low and we need to stimulate people to go into the regular workforce. Therefore, we will be slowly phasing out the Melkertbanen to encourage remaining Melketeers join the rest of the labor market."}},{"model":"campaign_trail.answer","pk":2036,"fields":{"question":1009,"description":"Absolutely not! The PvdA is not going to give the keys of government to someone who exploits people's fear of the unknown for electoral gain. I must also condemn the VVD and CDA for not taking a similar position: they are making themselves an indirect vote for Fortuyn. There is only one way to prevent him from rising to power, and that is a strong PvdA!","controversial":true}},{"model":"campaign_trail.answer","pk":2037,"fields":{"question":1009,"description":"I don't view it as a credible scenario. The distance between the PvdA and Fortuyn's Livable Netherlands is simply far too great. Fortuyn proposes to ignore international law to prevent any further integration, because the Netherlands is supposedly 'full'."}},{"model":"campaign_trail.answer","pk":2038,"fields":{"question":1009,"description":"Just look at Fortuyn's economic program. Privatize this, cut bureaucracy that. He is a neoliberal just like the VVD and that is the last thing this country needs. We need to return to our social democratic roots. An alliance with Fortuyn, or the VVD for that matter, would run contrary to that goal."}},{"model":"campaign_trail.answer","pk":2039,"fields":{"question":1009,"description":"As we are seeing, Fortuyn is touching on a untapped feeling in society. The PvdA does not wish to ignore this feeling any longer. On other issues, we certainly have our disagreements, but the Dutch way is to find compromise and if the election results ask us to sit at the table with Livable, that is what we will do.","hell_answer":true}},{"model":"campaign_trail.answer","pk":2040,"fields":{"question":1010,"description":"The Kok cabinets have done a lot of good for this country. A renewed partnership with the VVD, possibly without D66 if the voter gives us a mandate for that, would be the beacon of stability our country needs."}},{"model":"campaign_trail.answer","pk":2041,"fields":{"question":1010,"description":"It's not a secret that there has been some tension in the cabinet. We are quite far apart from the VVD politically, even though we can work together. My preference would be a new start with a new coalition, one composed of the PvdA, CDA and GroenLinks."}},{"model":"campaign_trail.answer","pk":2042,"fields":{"question":1010,"description":"Ideally, we should have a true and broad left-wing cabinet that can pass the plans this country needs. A cabinet composed of PvdA, GroenLinks, SP and D66 is what we need."}},{"model":"campaign_trail.answer","pk":2044,"fields":{"question":1011,"description":"Korthals' reasoning is sound: it is simply legally infeasible to annul the settlement at this stage. Plus, our own Minister Netelenbos is also implicated. Van Gijzel digging up muck about this while we follow that line is inevitably going to hurt us however. We need to control this by stripping him of his position as spokesman on the fraud case and by ordering him to subject his statements on the matter to my personal review."}},{"model":"campaign_trail.answer","pk":2045,"fields":{"question":1011,"description":"Korthals' reasoning is sound: it is simply legally unviable to annul the settlement at this stage. Plus, our own Minister Netelenbos is also implicated. However, we do need to seem proactive in our desire to investigate this matter. Let us work with Van Gijzel to set up a parliamentary inquiry."}},{"model":"campaign_trail.answer","pk":2046,"fields":{"question":1011,"description":"How can we in good conscience call ourselves socialists if we condone this? We need to get to the bottom of this. The parliamentary faction of the PvdA demands a full-scale investigation, and that settlement needs to be annulled at once. Otherwise, we will table a motion of no confidence against Minister Korthals."}},{"model":"campaign_trail.answer","pk":2048,"fields":{"question":1012,"description":"This is a mild recession caused by a momentary spike in inflation. It cannot be compared in scope to the economic situation when the Kok cabinet rose to power in 1994. We will get through it by maintaining our current course, which made us one of the strongest economies on the continent."}},{"model":"campaign_trail.answer","pk":2049,"fields":{"question":1012,"description":"The fiscal policy of the Kok cabinets has been very prudent by saving money and thus building up reserves for such a situation. Now is the time to pump money into the economy to get it going again."}},{"model":"campaign_trail.answer","pk":2050,"fields":{"question":1012,"description":"The answer to inflation is to cut government spending so that the economy gets the opportunity to cool down a bit. It will admittedly hurt a bit in the short term, but in the long term it will make the economy to return to a sound growth rate with low inflation."}},{"model":"campaign_trail.answer","pk":2052,"fields":{"question":1013,"description":"This is a historic moment in European cooperation! We are most satisfied with the implementation of the new currency, the Netherlands is one of the earliest adopters, with many other countries still in transition. Now we need to go further, and create a European constitution. Our continent will be stronger because of it."}},{"model":"campaign_trail.answer","pk":2053,"fields":{"question":1013,"description":"A massive win for big corporations, of course. Now they can trade much more easily between one another within the whole eurozone. But does the common man benefit? I'm not so sure, when we are struck by inflation, the DNB (Central Bank of the Netherlands) must be able to raise interest rates to counter that. With a shared currency, only the new ECB can do that, and they must balance the interests of the whole eurozone. We should have negotiated an opt-out like Britain and Denmark."}},{"model":"campaign_trail.answer","pk":2054,"fields":{"question":1013,"description":"The Euro will greatly enhance trading relations on the European continent, which is excellent for a trading nation like the Netherlands. However, I'm a bit concerned by the increasing drift to federalization of the European Community: our relationship to the EU should be one of commercial interests, not political integration. As such I am not supportive of the proposed European constitution. Our own traditions are important too.","hell_answer":true}},{"model":"campaign_trail.answer","pk":2056,"fields":{"question":1014,"description":"It was about time for that. I hope this is the last we hear of that awful man with his fearmongering campaign. I'm pleased the Livable leadership still does have some standards, we have only one society that we have to work in together and if one person says to another that they are backwards, or that there is no place for them... It's just disgusting.","controversial":true}},{"model":"campaign_trail.answer","pk":2057,"fields":{"question":1014,"description":"Fortuyn puts it in crude words, which I personally would never use. Every Dutch person does have civil rights, but there is a commonly apparent problem. Mr. Fortuyn will have to decide for himself how he wishes to formulate his political future after this, but rest assured that with the PvdA of Melkert, stronger policies on integration and migration will also be pursued.","hell_answer":true}},{"model":"campaign_trail.answer","pk":2058,"fields":{"question":1014,"description":"Well, it's not appropriate for me to comment on the misfortune of one of my opponents, or former opponents, due to internal party politics, is it? Fortuyn and Livable will both have to make their own decisions."}},{"model":"campaign_trail.answer","pk":2060,"fields":{"question":1015,"description":"Shit. I cannot afford to risk losing control of my faction so close to the elections. Here's what we're going to do: I'm going to turn around and announce my own opposition to the JSF project to preserve unity within my parliamentary faction."}},{"model":"campaign_trail.answer","pk":2061,"fields":{"question":1015,"description":"Another rogue spokesman? Are these backbenchers trying to leverage the election to extract concessions from me? They're being emboldened by me playing nice with Van Gijzel with the Schipholtunnel affair! Not anymore! We need to call Timmermans to order, ordering him to rescind his statements, officially endorse the JSF bill, and state he will vote in its favor. Otherwise I will personally see to it that he has no political future with the PvdA."}},{"model":"campaign_trail.answer","pk":2062,"fields":{"question":1015,"description":"Shit. I cannot afford to risk losing control of my faction so close to the elections, but I also don't want the PvdA to be the party to be the one pulling the plug from the cabinet and look like a flip-flopper myself. I will reaffirm my support for the JSF project, and ignore Timmermans' bluster. The PvdA will vote for the project."}},{"model":"campaign_trail.answer","pk":2064,"fields":{"question":1016,"description":"Fortuyn is grasping at straws here. If you compare Dutch education with other countries, it is of good quality. The Kok cabinets have also increased the education budget by ƒ3 billion to keep it that way and to make education future-proof. There is no argument here."}},{"model":"campaign_trail.answer","pk":2065,"fields":{"question":1016,"description":"Education needs to be future-proofed by preparing children for the information age they will be living in. Teaching children to make a website is an important aspect of that, and although larger schools have benefits as well as disadvantages, it does make it much easier to ensure that students have the access to the internet they need."}},{"model":"campaign_trail.answer","pk":2066,"fields":{"question":1016,"description":"There are some problems in education, particularly a lack of teachers. Fortuyn did adequately recognize that problem. However, unlike him, I will actually be solving that problem: while Fortuyn goes on about manager culture, as if good leadership is harmful, the PvdA will raise teacher's wages to ensure more people consider the profession."}},{"model":"campaign_trail.answer","pk":2067,"fields":{"question":1016,"description":"Indeed! Indeed there are problems! Currently, we have white and black schools, segregation in the polder due to perceived qualitative differences! And Fortuyn, he divides, he puts them away as one evil group. We need to stop it."}},{"model":"campaign_trail.answer","pk":2068,"fields":{"question":1017,"description":"Yes Wim, I know we're not winning the war like this... No, it's not over yet... I need to get on the road to go to that debate tonight. Driver, drive drive drive! It's quite far to Amersfoort from Heerenveen. We cannot be late, full speed! Don't drive so slowly, man!"}},{"model":"campaign_trail.answer","pk":2069,"fields":{"question":1017,"description":"Yes Wim, I know we're not winning the war like this... No, it's not over yet... I need to get on the road to go to that debate tonight. Driver, try to get us to Amersfoort as fast as possible so we are not late. I need to catch some sleep on the ride there."}},{"model":"campaign_trail.answer","pk":2072,"fields":{"question":1018,"description":"As we've seen, every time we give that man the attention he craves, he wins over more minds. I'm going to deny him that opportunity by avoiding him as much as possible, and focusing on other opposition: Rosenmöller, Dijkstal, and Balkenende."}},{"model":"campaign_trail.answer","pk":2073,"fields":{"question":1018,"description":"The Dutch people are clearly not seeing who they're dealing with in Fortuyn. I'll be attacking him harshly. His demagoguery has gone unchallenged for long enough. There is no place for fascism in this country!","controversial":true}},{"model":"campaign_trail.answer","pk":2074,"fields":{"question":1018,"description":"Citations, professor! Professor Pim has a lot to talk about, but when you dig into the details, you find that it's not true. I'll be calling for his citations every time he does that. We could use some academic integrity in this political debate!"}},{"model":"campaign_trail.answer","pk":2075,"fields":{"question":1018,"description":"The issues! Don't let the circumstances pull you from the issues. Fortuyn is good at pointing at problems, but when it comes to solutions, he falls short. This is what I will be focusing on throughout the debates."}},{"model":"campaign_trail.answer","pk":2076,"fields":{"question":1019,"description":"The government has done much to make the Netherlands a safer place by strengthening the police and building more prisons, and it paid off: after years and years of a rising crime rate since the 1960s, it has actually fallen under the stewardship of the purple cabinet."}},{"model":"campaign_trail.answer","pk":2077,"fields":{"question":1019,"description":"The most problematic safety issue afflicting the Netherlands today is youth crime. Younger and younger children commit increasingly serious crimes, and rehabilitation resources as well as youth help do not have the resources to deal with it. Providing extra resources in this area will be the most efficient step we can take to combat crime."}},{"model":"campaign_trail.answer","pk":2078,"fields":{"question":1019,"description":"Law and order is what we need to address the rising crime epidemic. More police on the streets will help to dissuade feelings of insecurity, and make sure that when one is targeted by a crime, there are enough officers to take one's testimony. All too often, no one is there to do that now."}},{"model":"campaign_trail.answer","pk":2080,"fields":{"question":1020,"description":"The financial policies of the Kok cabinets have been very successful and have contributed its fair share to make the Netherlands the prosperous country it is today. Of course, it's also in part dependent on our coalition partners, but we remain committed to fiscal discipline."}},{"model":"campaign_trail.answer","pk":2081,"fields":{"question":1020,"description":"The sound fiscal policies of purple have left us in a very good position, and there are problems that are in need of being addressed. It is therefore responsible to take a slightly less rigid approach to the state's finances."}},{"model":"campaign_trail.answer","pk":2084,"fields":{"question":1021,"description":"The Dutch government bears responsibility, albeit not guilt - that lies with the Serbians. But for our responsibility, the only right thing for the cabinet to do is to resign."}},{"model":"campaign_trail.answer","pk":2085,"fields":{"question":1021,"description":"What nonsense, there was nothing the Dutch government could have done here. Frankly, I do not agree with the call to resign."}},{"model":"campaign_trail.answer","pk":2088,"fields":{"question":1022,"description":"If you flirt with Fortuyn, then the same thing that happened in France will soon happen in the Netherlands! There they woke up with Le Pen, soon we will wake up with Fortuyn. Netherlands, wake up!","controversial":true}},{"model":"campaign_trail.answer","pk":2089,"fields":{"question":1022,"description":"Evidently, this is beyond concerning. Jean-Marie Le Pen goes much further than Fortuyn goes, to the point that they can hardly be compared. I sincerely hope that his brand of hate will be soundly rejected in the second round."}},{"model":"campaign_trail.answer","pk":2092,"fields":{"question":1023,"description":"We need international star power to underscore the dangers that the far-right poses to the Netherlands. We've already invited Gerhard Schröder. Let's bring over Tony Blair to speak as well. Let's really hammer home how the Netherlands would look awful internationally with Fortuyn as our prime minister."}},{"model":"campaign_trail.answer","pk":2093,"fields":{"question":1023,"description":"We're talking about the successes of purple: we turned the Netherlands into one of the wealthiest countries in Europe, with the highest GDP per capita, and we did that without letting anyone down. Unemployment is still at a record low, for example!"}},{"model":"campaign_trail.answer","pk":2094,"fields":{"question":1023,"description":"The stronger social democratic positions: more money to solve the waiting lists in healthcare and the lack of teachers in education. That will stand in contrast to the calls for 'de-bureaucratization' from those our loudest critics."}},{"model":"campaign_trail.answer","pk":2096,"fields":{"question":1024,"description":"We're facing substantial competition from Fortuyn in the west. We should visit the major cities of Rotterdam, The Hague, Amsterdam and Utrecht to counteract this with a broad coalition of both white- and immigrant voters."}},{"model":"campaign_trail.answer","pk":2097,"fields":{"question":1024,"description":"The red north: if we can make it a bit redder still, it will make sure we don't come just short against the CDA, VVD or LPF."}},{"model":"campaign_trail.answer","pk":2098,"fields":{"question":1024,"description":"Around the Rhine; we can visit cities like Nijmegen in Gelderland, as well as Brabant, and maybe a bit of northern Limburg. We won a lot of municipalities in this region in 1998 so perhaps we can repeat that feat."}},{"model":"campaign_trail.answer","pk":2100,"fields":{"question":1025,"description":"The Kok cabinets have done a lot of good for this country. A renewed partnership with the VVD, possibly without D66 if the voter gives us a mandate for that, would be the beacon of stability our country needs."}},{"model":"campaign_trail.answer","pk":2101,"fields":{"question":1025,"description":"It's not a secret that there has been some tension in the cabinet. We are quite far from the VVD politically, even though we can work together. My preference would be a new start with a new coalition, one composed of the PvdA, CDA and GroenLinks."}},{"model":"campaign_trail.answer","pk":2102,"fields":{"question":1025,"description":"Ideally, we should have a true and broad left-wing cabinet that can pass the plans this country needs. A cabinet composed of PvdA, GroenLinks, SP and D66 is what we need."}},{"model":"campaign_trail.answer","pk":2103,"fields":{"question":1025,"description":"My aim is to redirect the PvdA back to the concerns of the working class, though perhaps in the past we have unintentionally placed some distance between us. Cooperation with Pim Fortuyn, therefore, seems like the most straightforward option, perhaps in combination with either the SP or CDA. However, much depends on how much he can live up to his current polling.","hell_answer":true}},{"model":"campaign_trail.answer","pk":2104,"fields":{"question":1026,"description":"You misunderstood me: the Kok cabinets have done a lot of good for this country. I only said that another alliance with the VVD would not be the preferred option. Ours is the polder model, if the voter condemns us to each other then yes, it would be possible."}},{"model":"campaign_trail.answer","pk":2105,"fields":{"question":1026,"description":"We need a new start, and starting anew should be done with a new coalition: one composed of the PvdA, CDA and GroenLinks."}},{"model":"campaign_trail.answer","pk":2106,"fields":{"question":1026,"description":"The only way to truly be able to give this country what it needs is an actual socialist cabinet. We need to join forces with our comrades at GroenLinks and SP, as well as with the progressive liberals of D66. Let's turn a page from the politics of the 'free boys' of the VVD."}},{"model":"campaign_trail.answer","pk":2108,"fields":{"question":1027,"description":"Shit. I cannot afford to risk losing control of my faction so close to the elections. Here's what we're going to do: I'm going to turn around and announce my own opposition to the JSF project to preserve unity within my party."}},{"model":"campaign_trail.answer","pk":2109,"fields":{"question":1027,"description":"Another rogue spokesman? Are these backbenchers trying to leverage the election to extract concessions from me? Timmermans should have learned from the fate of Van Gijzel! We need to call Timmermans to order, make him to row back his statements, officially endorse the JSF bill, and state he will vote in its favor of the JSF bill. If he does not comply I will personally see to it that he has no political future with the PvdA ever again."}},{"model":"campaign_trail.answer","pk":2110,"fields":{"question":1027,"description":"Shit. I cannot afford to risk losing control of my faction so close to the elections, but I also don't want the PvdA to be the party pulling the plug from the cabinet, and look like a flip-flopper myself. I will reaffirm my support for the JSF project, and ignore Timmermans' bluster. The PvdA will vote for the project."}},{"model":"campaign_trail.answer","pk":2112,"fields":{"question":1028,"description":"I was going to support the JSF project because as coalition partners, you sometimes have to accept something you don't agree with. Now that the marriage is over however, I can freely take my own position again, that participation in the JSF project is not a responsible use of the taxpayer's money. Frans's statements are in line with the wider position of the PvdA."}},{"model":"campaign_trail.answer","pk":2113,"fields":{"question":1028,"description":"Another rogue spokesman? Are these backbenchers trying to leverage the election to extract concessions from me? They're being emboldened by me playing nice with Van Gijzel with the Schipholtunnel affair! Not anymore! We need to call Timmermans, order him to take back his statements, officially endorse the JSF bill, and state he will vote in its favor of the JSF bill. If he does not comply I will personally see to it that he has no political future with the PvdA."}},{"model":"campaign_trail.answer","pk":2114,"fields":{"question":1028,"description":"Shit. I cannot afford to risk losing control of my faction so close to the election, but I also don't want the PvdA to be the party pulling the plug from the cabinet, and looking like a flip-flopper myself. I will reaffirm my support for the JSF project, and ignore Timmermans' bluster. The PvdA will vote for the project."}},{"model":"campaign_trail.answer","pk":2116,"fields":{"question":1029,"description":"See, Wim? I told you my strategy was going to pay off. Our municipal party is probably going to cooperate with Livable, and finally respond to the problems to which we were called out by the voter. No, we can't continue, if I don't leave now, I will be late for the debate. Let's go, driver."}},{"model":"campaign_trail.answer","pk":2120,"fields":{"question":1030,"description":"As we've seen, every time we give that man the attention he craves, he wins over more minds. I'm going to deny him that opportunity by avoiding him as much as possible, and focusing on other opposition: Rosenmöller, Dijkstal, and Balkenende."}},{"model":"campaign_trail.answer","pk":2121,"fields":{"question":1030,"description":"The Dutch people are clearly not seeing who they're dealing with in Fortuyn. I'm going on the attack, and hard. His demagoguery has gone unchallenged for long enough. There is no place for fascism in this country!"}},{"model":"campaign_trail.answer","pk":2122,"fields":{"question":1030,"description":"Citations, professor! Professor Pim has a lot to talk about, but when you dig into the details you find that it's not true. I'll be calling for his citations every time he does that. We could use some academic integrity in this political debate!"}},{"model":"campaign_trail.answer","pk":2123,"fields":{"question":1030,"description":"The issues! Don't let the circumstances pull you from the issues. Fortuyn is good at pointing to problems but when it comes to solutions he falls short. This is what I will be focusing on throughout the debates."}},{"model":"campaign_trail.answer","pk":2124,"fields":{"question":1031,"description":"We're going to be cordial to Fortuyn, his entrance in municipal politics is nothing if not impressive. We'll also announce our hope to work with him in Rotterdam. At the same time, we will not hesitate to criticize his privatization policies. That's an important point where the two of us differ."}},{"model":"campaign_trail.answer","pk":2125,"fields":{"question":1031,"description":"He's the winner of the night, so obviously we are going to congratulate him on that achievement, espouse our hopes that the PvdA and his party can work together, and emphasize how we can cooperate, while taking the attack to Balkenende, our true opponent now that the VVD seems to be ailing."}},{"model":"campaign_trail.answer","pk":2126,"fields":{"question":1031,"description":"We're going to emphasize that we actually beat out his LPF and denied him first place in Rotterdam, and that while we are willing to cooperate, it will be on our terms. Social democracy cannot be a victim of our cooperation."}},{"model":"campaign_trail.answer","pk":2128,"fields":{"question":1032,"description":"The Dutch government bears responsibility, albeit not guilt - that lies with the Serbians. But we must bear the responsibility, we made mistakes that enabled this terrible crime to be committed."}},{"model":"campaign_trail.answer","pk":2129,"fields":{"question":1032,"description":"What nonsense, there was nothing the Dutch government could have done here."}},{"model":"campaign_trail.answer","pk":2132,"fields":{"question":1033,"description":"My God, that's barbaric... how that can happen in this country... They... Who?!"}},{"model":"campaign_trail.answer","pk":2136,"fields":{"question":1034,"description":"I... Wim, I know it wasn't what you'd been looking for, but after the debate, you said to me angrily that the project goes before the person. That's how it is right now too. The project needs you, Wim."}},{"model":"campaign_trail.answer","pk":2137,"fields":{"question":1034,"description":"Maybe it won't be that bad? Fortuyn's supporters blame me, but they wouldn't vote for us anyways. Surely the regular voter?..."}},{"model":"campaign_trail.answer","pk":2138,"fields":{"question":1034,"description":"..."}}];
 e.answer_feedback_json = [{"model":"campaign_trail.answer_feedback","pk":3000,"fields":{"answer":2000,"candidate":e.candidate_id,"answer_feedback":"Displaying yourself as being close to Prime Minister Kok is a no-brainer: the prime minister is highly popular. And with no other candidates, you are soon coronated as the new prime minister. Some feel this was a bit too automatic for a democratic party though."}},{"model":"campaign_trail.answer_feedback","pk":3001,"fields":{"answer":2001,"candidate":e.candidate_id,"answer_feedback":"This strategy worries Dick Benschop and Wim Kok, who have been carefully preparing for your ascension. Nevertheless, no real counter-candidacy is filed and you easily win party leadership, and your display of unity does well among the electorate."}},{"model":"campaign_trail.answer_feedback","pk":3002,"fields":{"answer":2002,"candidate":e.candidate_id,"answer_feedback":"Prime Minister Kok is highly popular, and you risk offending him by doing this. You would do well to keep in mind the fate of Elco Brinkman, the crown prince of another prime minister that was an electoral juggernaut: Ruud Lubbers. Lacking a serious opponent, you still easily win."}},{"model":"campaign_trail.answer_feedback","pk":3004,"fields":{"answer":2004,"candidate":e.candidate_id,"answer_feedback":"This intimidation campaign is successful, and the ESF story soon disappears into the background. Undoubtedly it will bubble back to the surface at some point, but that will be after the election."}},{"model":"campaign_trail.answer_feedback","pk":3005,"fields":{"answer":2005,"candidate":e.candidate_id,"answer_feedback":"No Ad, as the minister you have the political responsibility for everything that happens in your Ministry. You cannot just push the blame onto civil servants and wash your hands from this. It is going to hurt, no matter what."}},{"model":"campaign_trail.answer_feedback","pk":3006,"fields":{"answer":2006,"candidate":e.candidate_id,"answer_feedback":"Your betrayal of your fellow party members may have limited the damage of the scandal somewhat, but it has entrenched your reputation as a power-hungry career politician, something you were already struggling with."}},{"model":"campaign_trail.answer_feedback","pk":3007,"fields":{"answer":2007,"candidate":e.candidate_id,"answer_feedback":"You've taken the high road here, and it will hurt some, but you will persevere."}},{"model":"campaign_trail.answer_feedback","pk":3008,"fields":{"answer":2008,"candidate":e.candidate_id,"answer_feedback":"9/11 goes down in history as one of the world’s most infamous terror attacks, and the fact that it was carried out by Muslim terrorists galvanizes anti-Muslim sentiment. Back in the Netherlands, the columns of an Elsevier columnist attract attention."}},{"model":"campaign_trail.answer_feedback","pk":3009,"fields":{"answer":2009,"candidate":e.candidate_id,"answer_feedback":"9/11 goes down in history as one of the world’s most infamous terror attacks, and the fact that it was carried out by Muslim terrorists galvanizes anti-Muslim sentiment. Back in the Netherlands, the columns of an Elsevier columnist attract attention."}},{"model":"campaign_trail.answer_feedback","pk":3012,"fields":{"answer":2012,"candidate":e.candidate_id,"answer_feedback":"You're opting not to rock the boat too much, given your solid polling position likely a safe bet."}},{"model":"campaign_trail.answer_feedback","pk":3013,"fields":{"answer":2013,"candidate":e.candidate_id,"answer_feedback":"It is clear that Kok and Benschop are not pleased at all, but it is your decision. Jacques assures you that your estimation of the zeitgeist is correct, and that you will benefit with this strategy."}},{"model":"campaign_trail.answer_feedback","pk":3014,"fields":{"answer":2014,"candidate":e.candidate_id,"answer_feedback":"An uncomfortable silence fills the room. Has the original Melkert of the PPR returned? But is this a winning message today? Everyone else in the room doubts it. And it seems unlikely the CDA will want to work with a Den Uyl-style PvdA either way."}},{"model":"campaign_trail.answer_feedback","pk":3016,"fields":{"answer":2016,"candidate":e.candidate_id,"answer_feedback":"Unfortunately, Fortuyn is attracting quite a lot of media attention. But it will die down once they get to know him, right?"}},{"model":"campaign_trail.answer_feedback","pk":3017,"fields":{"answer":2017,"candidate":e.candidate_id,"answer_feedback":"This could be a valid strategy, but you should be a bit wary: if the two are so similar, they could also form a coalition without you, even if you are the largest. Also, your base does want you to talk about Fortuyn."}},{"model":"campaign_trail.answer_feedback","pk":3018,"fields":{"answer":2018,"candidate":e.candidate_id,"answer_feedback":"This is a decent attack to roll back some of Fortuyn's momentum. Surely you can bring him to a standstill once he has to provide stances on the issues?"}},{"model":"campaign_trail.answer_feedback","pk":3019,"fields":{"answer":2019,"candidate":e.candidate_id,"answer_feedback":"This is a decent way to pit yourself against Fortuyn. Fortuyn will likely benefit too, but you can consolidate the left somewhat in this way. Do keep in mind, however: fiscal responsibility and the Zalmnorm are highly popular."}},{"model":"campaign_trail.answer_feedback","pk":3020,"fields":{"answer":2020,"candidate":e.candidate_id,"answer_feedback":"This goes pretty well, you playing as goalie against the kids in the club leads to some good shots and your father's barber shop emphasizes your normal background. It does not go unnoticed however, that most of your former fellow villagers intend to vote for the VVD instead of you."}},{"model":"campaign_trail.answer_feedback","pk":3021,"fields":{"answer":2021,"candidate":e.candidate_id,"answer_feedback":"This is a good way to counter your reputation as an ivory-tower intellectual with little ties to society at large. The children of course do confront you with the newest media phenomenon Pim Fortuyn, but overall Gouda is a PvdA-friendly environment, giving you the opportunity to show yourself a bit more as a man of the people."}},{"model":"campaign_trail.answer_feedback","pk":3022,"fields":{"answer":2022,"candidate":e.candidate_id,"answer_feedback":"Twenty years ago, you might have gotten away with this. In the year 2001 however, and especially with the rise of Pim Fortuyn, the electorate does vote based on whether they like the party leaders, for better or worse. This will likely cost you voters, both to Fortuyn and Balkenende."}},{"model":"campaign_trail.answer_feedback","pk":3023,"fields":{"answer":2023,"candidate":e.candidate_id,"answer_feedback":"Although you are obviously out of your comfort zone, photos of you talking to people high on acid at Thunderdome do keep your name in contention. Perhaps Mr. Melkert isn't such a boring bureaucrat after all..."}},{"model":"campaign_trail.answer_feedback","pk":3024,"fields":{"answer":2024,"candidate":e.candidate_id,"answer_feedback":"This is a solution in the short term, but this does leave you open to criticism from the VVD and Fortuyn that you are going to let the healthcare costs to the government spiral out of control, which they frame as irresponsible use of the citizen's tax money."}},{"model":"campaign_trail.answer_feedback","pk":3025,"fields":{"answer":2025,"candidate":e.candidate_id,"answer_feedback":"This is not a satisfactory answer to most voters. Even though your statistics are correct, there are still people who are dying on the waiting list due to a lack of necessary care. To say that you will do nothing different only strengthens the yearning for change."}},{"model":"campaign_trail.answer_feedback","pk":3026,"fields":{"answer":2026,"candidate":e.candidate_id,"answer_feedback":"This is a good, concrete plan to bring the waiting lists under control without resorting to funding increases that may prove unsustainable in the future."}},{"model":"campaign_trail.answer_feedback","pk":3027,"fields":{"answer":2027,"candidate":e.candidate_id,"answer_feedback":"While adopting some talking points of Fortuyn could be beneficial, this is not one of them. These points do not resonate with the PvdA's base, and causes people working in healthcare to be anxious that the LABOUR party of them all is going to cut their jobs."}},{"model":"campaign_trail.answer_feedback","pk":3028,"fields":{"answer":2028,"candidate":e.candidate_id,"answer_feedback":"For now, his polling position just keeps rising."}},{"model":"campaign_trail.answer_feedback","pk":3029,"fields":{"answer":2029,"candidate":e.candidate_id,"answer_feedback":"This comes off more as an angry rant from someone on the street than as the response of a serious politician. Pim reacts to it later that day, appealing to you to be a bit more cheerful and rubbing salt in the wound."}},{"model":"campaign_trail.answer_feedback","pk":3030,"fields":{"answer":2030,"candidate":e.candidate_id,"answer_feedback":"This is a fine response."}},{"model":"campaign_trail.answer_feedback","pk":3032,"fields":{"answer":2032,"candidate":e.candidate_id,"answer_feedback":"Satisfied Melketeers and ex-Melketeers are ready to vote for the PvdAer who got them out of the unemployment they were seemingly stuck in."}},{"model":"campaign_trail.answer_feedback","pk":3033,"fields":{"answer":2033,"candidate":e.candidate_id,"answer_feedback":"Melkertbanen are one of your main achievements, which satisfied Melketeers, thankful that they have a job now, will be happy to support you for. Your pledge to ensure that they stay in place naturally is also received well among them."}},{"model":"campaign_trail.answer_feedback","pk":3034,"fields":{"answer":2034,"candidate":e.candidate_id,"answer_feedback":"This is not going down well with the present Melketeers. During the Kok cabinets the allegation has often been that the PvdA abandoned social democracy by governing with the VVD. These complaints are likely to resurface in light of this statement."}},{"model":"campaign_trail.answer_feedback","pk":3036,"fields":{"answer":2036,"candidate":e.candidate_id,"answer_feedback":"You are positioning yourself as the vanguard against Fortuyn's rhetoric. We will see how it plays out for you."}},{"model":"campaign_trail.answer_feedback","pk":3037,"fields":{"answer":2037,"candidate":e.candidate_id,"answer_feedback":"This is a reasonable answer."}},{"model":"campaign_trail.answer_feedback","pk":3038,"fields":{"answer":2038,"candidate":e.candidate_id,"answer_feedback":"Having excluded the possibility of coalition with both the VVD and LN, you are putting yourself in a corner. It is questionable if the CDA will be willing to work with a left-wing PvdA - you might be moving yourself back into the isolation of 1980s. This is also a sharp departure from the purple status-quo, irritating Kok."}},{"model":"campaign_trail.answer_feedback","pk":3039,"fields":{"answer":2039,"candidate":e.candidate_id,"answer_feedback":"Kok and Benschop are furious with the road you are taking, with the latter resigning from your campaign team. Meanwhile Monasch insists it's the right way. Just watch out for Kok, lest he pull a Lubbers."}},{"model":"campaign_trail.answer_feedback","pk":3040,"fields":{"answer":2040,"candidate":e.candidate_id,"answer_feedback":"Many people are growing a bit tired with the government's composition, and some serious disagreements have slipped into the current cabinet, having almost caused its early demise multiple times. Nonetheless, your argument of stability does resonate somewhat."}},{"model":"campaign_trail.answer_feedback","pk":3041,"fields":{"answer":2041,"candidate":e.candidate_id,"answer_feedback":"This would be a bit more of a turn to the left and seems attractive to your base. The only question is whether the CDA would be willing to enter such a cabinet."}},{"model":"campaign_trail.answer_feedback","pk":3042,"fields":{"answer":2042,"candidate":e.candidate_id,"answer_feedback":"This would be quite a leftward turn, the most left-wing cabinet since Den Uyl. Nonetheless, the prospect does excite the base, even though revealing such ambitions publicly also means that the CDA and VVD become more hesitant to work with you, given how left-wing this stance is, and it is not certain that this cabinet will attain a majority."}},{"model":"campaign_trail.answer_feedback","pk":3044,"fields":{"answer":2044,"candidate":e.candidate_id,"answer_feedback":"An angered Van Gijzel leaves the parliamentary PvdA faction and resigns as MP, claiming he cannot properly do his work as a representative under your leadership. Eventually the house does start a parliamentary inquiry, but it will only start in August, so the political consequences in this cycle will be limited."}},{"model":"campaign_trail.answer_feedback","pk":3045,"fields":{"answer":2045,"candidate":e.candidate_id,"answer_feedback":"Van Gijzel is angered that you pick Korthals' side here, but goes along with your proactive approach. Though the inquiry will only begin after the election is already over, Van Gijzel unfortunately spends a lot of time talking about it, keeping the affair in the media and hurting both you and the VVD."}},{"model":"campaign_trail.answer_feedback","pk":3046,"fields":{"answer":2046,"candidate":e.candidate_id,"answer_feedback":"This is it. The VVD stays solid behind Korthals. Not too long after, Wim Kok hands in the resignation of his cabinet to the queen. Because the regular election is already planned so soon, it will not be held earlier. With the help of the opposition, your motion of no confidence succeeds and Korthals is forced to resign."}},{"model":"campaign_trail.answer_feedback","pk":3048,"fields":{"answer":2048,"candidate":e.candidate_id,"answer_feedback":"Emphasizing your achievements is a decent way to defend yourself against the attack, but still, an ailing economy will hurt the PvdA as the governing party."}},{"model":"campaign_trail.answer_feedback","pk":3049,"fields":{"answer":2049,"candidate":e.candidate_id,"answer_feedback":"Abandoning the Zalmnorm isn't popular with the nation at large, and some economists say that this will actually make inflation worse, but this position will help you win support from your left-wing adjacents."}},{"model":"campaign_trail.answer_feedback","pk":3050,"fields":{"answer":2050,"candidate":e.candidate_id,"answer_feedback":"You've taken up too many characteristics of the coalition partner you've been cooperating with for the past eight years."}},{"model":"campaign_trail.answer_feedback","pk":3052,"fields":{"answer":2052,"candidate":e.candidate_id,"answer_feedback":"This is a good response for you."}},{"model":"campaign_trail.answer_feedback","pk":3053,"fields":{"answer":2053,"candidate":e.candidate_id,"answer_feedback":"A strange repudiation of your own party's foreign policy. Furthermore, the Netherlands is a trade nation, so the benefits of sharing a currency, especially with our largest trade partner Germany, is very clear. Pundits are confused as to why you are changing course."}},{"model":"campaign_trail.answer_feedback","pk":3054,"fields":{"answer":2054,"candidate":e.candidate_id,"answer_feedback":"You seem to be trying to pull the rug under Fortuyn by appealing to his section of voters. But you might be losing pro-European support from the back door."}},{"model":"campaign_trail.answer_feedback","pk":3056,"fields":{"answer":2056,"candidate":e.candidate_id,"answer_feedback":"Fortuyn didn't even leave Van de Linde's house when he already declared to the press that he will be the next prime minister of the Netherlands. It seems he plans to start his own party."}},{"model":"campaign_trail.answer_feedback","pk":3057,"fields":{"answer":2057,"candidate":e.candidate_id,"answer_feedback":"Immediately going after his voters, eh? Unfortunately for you, Fortuyn soon announces that he intends to start his own party and participate nevertheless."}},{"model":"campaign_trail.answer_feedback","pk":3058,"fields":{"answer":2058,"candidate":e.candidate_id,"answer_feedback":"That's right, let the two of them collapse in on themselves. Fortuyn soon announces that he will participate with his own list."}},{"model":"campaign_trail.answer_feedback","pk":3060,"fields":{"answer":2060,"candidate":e.candidate_id,"answer_feedback":"The press has a field day with your turnaround and your VVD coalition partners are angry. The vote is not for some time, so the cabinet hasn't fallen yet, but given that your turnaround means that the PvdA will vote against, it is likely the matter will come to a head in April, when Dutch participation will likely be voted down."}},{"model":"campaign_trail.answer_feedback","pk":3061,"fields":{"answer":2061,"candidate":e.candidate_id,"answer_feedback":"Melkert's ironclad factional discipline within the PvdA strikes again, and Timmermans concedes to your demand. Crisis averted, and it's Timmermans taking the political hit for flip-flopping rather than yourself."}},{"model":"campaign_trail.answer_feedback","pk":3062,"fields":{"answer":2062,"candidate":e.candidate_id,"answer_feedback":"With you signaling that you are not going to curtail him, other PvdA MPs are not afraid to publicly follow Timmermans in his position. It is clear to all that you have become an impotent faction leader who cannot whip his MPs at the 11th hour."}},{"model":"campaign_trail.answer_feedback","pk":3064,"fields":{"answer":2064,"candidate":e.candidate_id,"answer_feedback":"You're turning this issue into a yes-no argument. Let's hope parents agree with you that education in its current form is satisfactory."}},{"model":"campaign_trail.answer_feedback","pk":3065,"fields":{"answer":2065,"candidate":e.candidate_id,"answer_feedback":"Focusing on modernisation is a good way to signal that the PvdA has not forgotten about education, but also does little to address the wider problem of classes being sent home due to a lack of teachers."}},{"model":"campaign_trail.answer_feedback","pk":3066,"fields":{"answer":2066,"candidate":e.candidate_id,"answer_feedback":"This a decent way to deconstruct the argument of Fortuyn and show that his argument has no merit."}},{"model":"campaign_trail.answer_feedback","pk":3067,"fields":{"answer":2067,"candidate":e.candidate_id,"answer_feedback":"Relating everything to Fortuyn's immigration standpoint will likely not do you well electorally."}},{"model":"campaign_trail.answer_feedback","pk":3068,"fields":{"answer":2068,"candidate":e.candidate_id,"answer_feedback":"Despite your constant nagging of your driver, he refuses to exceed the speed limit. To make matters worse, you get stuck in a traffic jam - perhaps Fortuyn's infrastructure complaints weren't fully off-point in the end? You arrive late to the debate, in a bad mood, after having spent the evening with your ear being chewed off by Prime Minister Kok."}},{"model":"campaign_trail.answer_feedback","pk":3069,"fields":{"answer":2069,"candidate":e.candidate_id,"answer_feedback":"You arrive late to the debate, but the sleep did refresh you well. Let's hope your late arrival does not spoil your performance."}},{"model":"campaign_trail.answer_feedback","pk":3072,"fields":{"answer":2072,"candidate":e.candidate_id,"answer_feedback":"Dijkstal seems to be of the same mind, but unfortunately, the debate leader Witteman does not let you get away with it. One particularly painful moment is when Witteman points out you're not looking to Fortuyn, who really comes off as the incoming prime minister. At least you share the defeat with the VVD."}},{"model":"campaign_trail.answer_feedback","pk":3073,"fields":{"answer":2073,"candidate":e.candidate_id,"answer_feedback":"This is a long and painful night. Your attacks come over as desperate and amiss. Balkenende even declares that you come off as more extreme than Fortuyn tonight, and it's particularly painful when even Dijkstal admits he agrees."}},{"model":"campaign_trail.answer_feedback","pk":3074,"fields":{"answer":2074,"candidate":e.candidate_id,"answer_feedback":"Only the select part of the population that studied at university can relate to your point when you refer to citations. The rest of the country does not."}},{"model":"campaign_trail.answer_feedback","pk":3075,"fields":{"answer":2075,"candidate":e.candidate_id,"answer_feedback":"Substantively, what you say is strong, but your points are undermined by the way you present yourself, perhaps due to the long day. Nonetheless, Dijkstal does even worse and makes you look good by comparison, so you've at least averted a total defeat."}},{"model":"campaign_trail.answer_feedback","pk":3076,"fields":{"answer":2076,"candidate":e.candidate_id,"answer_feedback":"Though the statistics are hopeful, it doesn't change that many people still feel unsafe. And these are also topics that, fairly or unfairly, the VVD receives more credit for than you."}},{"model":"campaign_trail.answer_feedback","pk":3077,"fields":{"answer":2077,"candidate":e.candidate_id,"answer_feedback":"This is an excellent way to address this issue, as it lets you appeal to those who are worried about crime, while not alienating your left-wing base by appearing callous."}},{"model":"campaign_trail.answer_feedback","pk":3078,"fields":{"answer":2078,"candidate":e.candidate_id,"answer_feedback":"You sound like the VVD on this issue. It probably helps you appeal to their and Fortuyn's supporters, but your left-wing base is not a fan of the complete lack of consideration of what drove the criminal to do the crime."}},{"model":"campaign_trail.answer_feedback","pk":3080,"fields":{"answer":2080,"candidate":e.candidate_id,"answer_feedback":"This is a satisfactory response to most people, although some leftists are disappointed and defect to GroenLinks and the SP."}},{"model":"campaign_trail.answer_feedback","pk":3081,"fields":{"answer":2081,"candidate":e.candidate_id,"answer_feedback":"The Zalmnorm is highly popular, so unsurprisingly this doesn't go well. At least you wins some support from the parties to the left of your own."}},{"model":"campaign_trail.answer_feedback","pk":3084,"fields":{"answer":2084,"candidate":e.candidate_id,"answer_feedback":"Given the short timeframe until the regular elections, no snap elections will be held."}},{"model":"campaign_trail.answer_feedback","pk":3085,"fields":{"answer":2085,"candidate":e.candidate_id,"answer_feedback":"The fuck is wrong with you? Many people died! Air support might have made the difference!"}},{"model":"campaign_trail.answer_feedback","pk":3088,"fields":{"answer":2088,"candidate":e.candidate_id,"answer_feedback":"You now sound like a classical know-it-all 1970s PvdAer. This will not benefit you at the polls."}},{"model":"campaign_trail.answer_feedback","pk":3089,"fields":{"answer":2089,"candidate":e.candidate_id,"answer_feedback":"Let us hope so..."}},{"model":"campaign_trail.answer_feedback","pk":3092,"fields":{"answer":2092,"candidate":e.candidate_id,"answer_feedback":"That the Netherlands would look bad in the international community is a strong argument that might win over voters, and the star power of Schröder and Blair greatly emphasizes the point. Of course, Fortuyn blames you and the media for sketching such a caricature of him."}},{"model":"campaign_trail.answer_feedback","pk":3093,"fields":{"answer":2093,"candidate":e.candidate_id,"answer_feedback":"Unfortunately, Fortuyn's activities have really emphasized the negative sides of purple."}},{"model":"campaign_trail.answer_feedback","pk":3094,"fields":{"answer":2094,"candidate":e.candidate_id,"answer_feedback":"This is a good topic to focus on as you wrap up your campaign."}},{"model":"campaign_trail.answer_feedback","pk":3096,"fields":{"answer":2096,"candidate":e.candidate_id,"answer_feedback":"Good luck on the 15th!"}},{"model":"campaign_trail.answer_feedback","pk":3097,"fields":{"answer":2097,"candidate":e.candidate_id,"answer_feedback":"Good luck on the 15th!"}},{"model":"campaign_trail.answer_feedback","pk":3098,"fields":{"answer":2098,"candidate":e.candidate_id,"answer_feedback":"Good luck on the 15th!"}},{"model":"campaign_trail.answer_feedback","pk":3100,"fields":{"answer":2100,"candidate":e.candidate_id,"answer_feedback":"Many people are growing a bit tired with the government's composition, and some serious disagreements have slipped into the current cabinet, having almost caused its early demise multiple times. Nonetheless, your argument of stability does resonate somewhat."}},{"model":"campaign_trail.answer_feedback","pk":3101,"fields":{"answer":2101,"candidate":e.candidate_id,"answer_feedback":"This would be a bit more of a turn to the left and seems attractive to your base. The only question is whether the CDA would be willing to enter such a cabinet."}},{"model":"campaign_trail.answer_feedback","pk":3102,"fields":{"answer":2102,"candidate":e.candidate_id,"answer_feedback":"This would be quite a leftward turn, the most left-wing cabinet since Den Uyl. Nonetheless, the prospect does excite the base, even though revealing such ambitions publicly also means that the CDA and VVD become more hesitant to work with you, given how left-wing this stance is, and it is not certain that this cabinet will attain a majority."}},{"model":"campaign_trail.answer_feedback","pk":3103,"fields":{"answer":2103,"candidate":e.candidate_id,"answer_feedback":"To say that Wim is horrified by the road you're taking is an understatement. He speaks to you of betrayal, a repudiation of his cabinet and that the PvdA campaign this year will be doomed. But in the polls his doom and gloom cannot be seen."}},{"model":"campaign_trail.answer_feedback","pk":3104,"fields":{"answer":2104,"candidate":e.candidate_id,"answer_feedback":"Rolling back on this is probably the best choice to keep your options open, but you do appear inconsistent now, and more hard-leftist anti-Third Way types are very disappointed by it."}},{"model":"campaign_trail.answer_feedback","pk":3105,"fields":{"answer":2105,"candidate":e.candidate_id,"answer_feedback":"This would be a bit more of a turn to the left and seems attractive to your base. The o question is whether the CDA would be willing to enter such a cabinet."}},{"model":"campaign_trail.answer_feedback","pk":3106,"fields":{"answer":2106,"candidate":e.candidate_id,"answer_feedback":"Alea iacta est. This new PvdA is almost certainly too left-wing for the CDA to be willing to work with, returning you to the situation of the early 1970s. It's ride or die now: the cabinet you described must win a majority, otherwise the opposition will be a certain fate for you."}},{"model":"campaign_trail.answer_feedback","pk":3108,"fields":{"answer":2108,"candidate":e.candidate_id,"answer_feedback":"The press has a field day with your turnaround and your VVD coalition partners are angry. The vote is not for some time, so the cabinet hasn't fallen yet, but given that your turnaround means that the PvdA will vote against, it is likely the matter will come to a head in April if Dutch participation is rejected."}},{"model":"campaign_trail.answer_feedback","pk":3109,"fields":{"answer":2109,"candidate":e.candidate_id,"answer_feedback":"You've overplayed your hand. Timmermans does not give in, and he receives support from a majority of your MPs, who were already frustrated with your treatment of Van Gijzel. They vote to remove you as parliamentary leader. This does not mean that you lose your position as party leader too - the party as a whole decides on that, but to say it's a bad look is an understatement."}},{"model":"campaign_trail.answer_feedback","pk":3110,"fields":{"answer":2110,"candidate":e.candidate_id,"answer_feedback":"With you signaling that you are not going to curtail him, other PvdA MPs are not afraid to publicly follow Timmermans in his position. It is clear to all that you have become an impotent faction leader who cannot whip his MPs at the 11th hour."}},{"model":"campaign_trail.answer_feedback","pk":3112,"fields":{"answer":2112,"candidate":e.candidate_id,"answer_feedback":"This is a turnaround, but you explain what motivates your turnaround well. Of course, the VVD is unhappy with this change of position, but they can go pound sand."}},{"model":"campaign_trail.answer_feedback","pk":3113,"fields":{"answer":2113,"candidate":e.candidate_id,"answer_feedback":"Melkert's ironclad factional discipline within the PvdA strikes again, and Timmermans concedes to your demand. Crisis averted, and it's Timmermans taking the political hit for flip-flopping rather than yourself."}},{"model":"campaign_trail.answer_feedback","pk":3114,"fields":{"answer":2114,"candidate":e.candidate_id,"answer_feedback":"With you signaling that you are not going to curtail him, other PvdA MPs are not afraid to publicly follow Timmermans in his position. It is clear to all that you have become an impotent faction leader who cannot whip his MPs at the 11th hour."}},{"model":"campaign_trail.answer_feedback","pk":3116,"fields":{"answer":2116,"candidate":e.candidate_id,"answer_feedback":"Prime Minister Kok's dissatisfaction with your course is clear, but the municipal results speak for themselves."}},{"model":"campaign_trail.answer_feedback","pk":3120,"fields":{"answer":2120,"candidate":e.candidate_id,"answer_feedback":"You do a decent job roping in the other party leaders. The debate leader, Witteman, does not allow you to avoid Fortuyn entirely, but you handle it well and manage to avoid him taking control of the debate. Dijkstal clearly wasn't in a good mood and performed very poorly. You probably don't have to worry about the VVD anymore this campaign."}},{"model":"campaign_trail.answer_feedback","pk":3121,"fields":{"answer":2121,"candidate":e.candidate_id,"answer_feedback":"This is not a good night. Your attacks come over as a little desperate. At least Dijkstal is also doing poorly. The big winners are Fortuyn and Balkenende."}},{"model":"campaign_trail.answer_feedback","pk":3122,"fields":{"answer":2122,"candidate":e.candidate_id,"answer_feedback":"Only the select part of the population that studied at university can relate to your point when you refer to citations. The rest of the country does not."}},{"model":"campaign_trail.answer_feedback","pk":3123,"fields":{"answer":2123,"candidate":e.candidate_id,"answer_feedback":"This works pretty well, and you manage to corner Fortuyn together with Rosenmöller. To the amazement of all, he simply refuses to answer and walks away. Undoubtedly many of his supporters won't care, but the two of you are very clearly the winners of this debate."}},{"model":"campaign_trail.answer_feedback","pk":3124,"fields":{"answer":2124,"candidate":e.candidate_id,"answer_feedback":"This is a good way to show that despite your rough agreement on migration and integration, the two of you still differ on crucial points."}},{"model":"campaign_trail.answer_feedback","pk":3125,"fields":{"answer":2125,"candidate":e.candidate_id,"answer_feedback":"The problem with this is that it becomes increasingly unclear why one should vote for the PvdA, instead of the original, Fortuyn. You won't win over his voters with it, while staunch anti-Fortuynists are defecting to GroenLinks and D66."}},{"model":"campaign_trail.answer_feedback","pk":3126,"fields":{"answer":2126,"candidate":e.candidate_id,"answer_feedback":"Emphasizing so strongly that you increased your voteshare by 2% while Livable Rotterdam went from zero to 29% comes off as rather dishonest, but it does help you prevent defections to GroenLinks and D66."}},{"model":"campaign_trail.answer_feedback","pk":3128,"fields":{"answer":2128,"candidate":e.candidate_id,"answer_feedback":"Had the cabinet not already fallen, this would likely have done it."}},{"model":"campaign_trail.answer_feedback","pk":3129,"fields":{"answer":2129,"candidate":e.candidate_id,"answer_feedback":"The fuck is wrong with you? Many people died! Air support might have made the difference!"}},{"model":"campaign_trail.answer_feedback","pk":3132,"fields":{"answer":2132,"candidate":e.candidate_id,"answer_feedback":"It is soon found out that some ecological activist is the murderer, from a left-wing background. Fortuyn's supporters and even neutral voters squarely place the blame for this assassination on you and your rhetoric. A loaded gun is mailed to you, but intercepted by the protective detail that has now been dispatched to all politicians."}},{"model":"campaign_trail.answer_feedback","pk":3136,"fields":{"answer":2136,"candidate":e.candidate_id,"answer_feedback":"A wary Kok nods. But at this rate it is unclear if this will even be enough to salvage this campaign."}},{"model":"campaign_trail.answer_feedback","pk":3137,"fields":{"answer":2137,"candidate":e.candidate_id,"answer_feedback":"Kok holds his hand up; he is not going to replace you at this late stage. You'll be leading the PvdA - almost certainly to defeat."}},{"model":"campaign_trail.answer_feedback","pk":3138,"fields":{"answer":2138,"candidate":e.candidate_id,"answer_feedback":"Kok shakes his head, he's not doing it. You'll be leading the PvdA - almost certainly to defeat."}}];
 campaignTrail_temp.states_json = JSON.parse("[{\"model\": \"campaign_trail.state\", \"pk\": 3001, \"fields\": {\"name\": \"Drenthe\", \"abbr\": \"DR\", \"electoral_votes\": 0, \"popular_votes\": 291961, \"poll_closing_time\": 5, \"winner_take_all_flg\": 1, \"election\": 11}}, {\"model\": \"campaign_trail.state\", \"pk\": 3002, \"fields\": {\"name\": \"Overijssel\", \"abbr\": \"OV\", \"electoral_votes\": 0, \"popular_votes\": 664913, \"poll_closing_time\": 10, \"winner_take_all_flg\": 1, \"election\": 11}}, {\"model\": \"campaign_trail.state\", \"pk\": 3003, \"fields\": {\"name\": \"Gelderland\", \"abbr\": \"GD\", \"electoral_votes\": 0, \"popular_votes\": 1188999, \"poll_closing_time\": 70, \"winner_take_all_flg\": 1, \"election\": 11}}, {\"model\": \"campaign_trail.state\", \"pk\": 3004, \"fields\": {\"name\": \"Utrecht\", \"abbr\": \"UT\", \"electoral_votes\": 0, \"popular_votes\": 697100, \"poll_closing_time\": 80, \"winner_take_all_flg\": 1, \"election\": 11}}, {\"model\": \"campaign_trail.state\", \"pk\": 3005, \"fields\": {\"name\": \"Noord-Holland\", \"abbr\": \"NH\", \"electoral_votes\": 0, \"popular_votes\": 1492264, \"poll_closing_time\": 60, \"winner_take_all_flg\": 1, \"election\": 11}}, {\"model\": \"campaign_trail.state\", \"pk\": 3006, \"fields\": {\"name\": \"Groningen\", \"abbr\": \"GR\", \"electoral_votes\": 0, \"popular_votes\": 348224, \"poll_closing_time\": 40, \"winner_take_all_flg\": 1, \"election\": 11}}, {\"model\": \"campaign_trail.state\", \"pk\": 3007, \"fields\": {\"name\": \"Fryslân\", \"abbr\": \"FR\", \"electoral_votes\": 0, \"popular_votes\": 393729, \"poll_closing_time\": 30, \"winner_take_all_flg\": 1, \"election\": 11}}, {\"model\": \"campaign_trail.state\", \"pk\": 3008, \"fields\": {\"name\": \"Flevoland\", \"abbr\": \"FL\", \"electoral_votes\": 0, \"popular_votes\": 187509, \"poll_closing_time\": 50, \"winner_take_all_flg\": 1, \"election\": 11}}, {\"model\": \"campaign_trail.state\", \"pk\": 3009, \"fields\": {\"name\": \"Limburg\", \"abbr\": \"LB\", \"electoral_votes\": 0, \"popular_votes\": 637760, \"poll_closing_time\": 25, \"winner_take_all_flg\": 1, \"election\": 11}}, {\"model\": \"campaign_trail.state\", \"pk\": 3010, \"fields\": {\"name\": \"Noord-Brabant\", \"abbr\": \"NB\", \"electoral_votes\": 0, \"popular_votes\": 1386493, \"poll_closing_time\": 55, \"winner_take_all_flg\": 1, \"election\": 11}}, {\"model\": \"campaign_trail.state\", \"pk\": 3011, \"fields\": {\"name\": \"Zeeland\", \"abbr\": \"ZL\", \"electoral_votes\": 0, \"popular_votes\": 224693, \"poll_closing_time\": 30, \"winner_take_all_flg\": 1, \"election\": 11}}, {\"model\": \"campaign_trail.state\", \"pk\": 3012, \"fields\": {\"name\": \"Zuid-Holland\", \"abbr\": \"ZH\", \"electoral_votes\": 0, \"popular_votes\": 2001581, \"poll_closing_time\": 85, \"winner_take_all_flg\": 1, \"election\": 11}}]");
 campaignTrail_temp.issues_json = JSON.parse("[{\"model\": \"campaign_trail.issue\", \"pk\": 37, \"fields\": {\"name\": \"Infrastructure\", \"description\": \"\", \"stance_1\": \"Daily traffic jams\", \"stance_desc_1\": \"\", \"stance_2\": \"Common traffic jams\", \"stance_desc_2\": \"\", \"stance_3\": \"Very busy\", \"stance_desc_3\": \"\", \"stance_4\": \"Moderately busy\", \"stance_desc_4\": \"\", \"stance_5\": \"Slightly busy\", \"stance_desc_5\": \"\", \"stance_6\": \"No problem\", \"stance_desc_6\": \"\", \"stance_7\": \"Open roads\", \"stance_desc_7\": \"\", \"election\": 11}}, {\"model\": \"campaign_trail.issue\", \"pk\": 39, \"fields\": {\"name\": \"Multiculturalism\", \"description\": \"\", \"stance_1\": \"Critical tension\", \"stance_desc_1\": \"\", \"stance_2\": \"Very high tension\", \"stance_desc_2\": \"\", \"stance_3\": \"High tension\", \"stance_desc_3\": \"\", \"stance_4\": \"Medium tension\", \"stance_desc_4\": \"\", \"stance_5\": \"Low Tension\", \"stance_desc_5\": \"\", \"stance_6\": \"Very low tension\", \"stance_desc_6\": \"\", \"stance_7\": \"Homogeneous\", \"stance_desc_7\": \"\", \"election\": 11}}, {\"model\": \"campaign_trail.issue\", \"pk\": 40, \"fields\": {\"name\": \"Economy\", \"description\": \"\", \"stance_1\": \"Very conservative\", \"stance_desc_1\": \"\", \"stance_2\": \"Conservative\", \"stance_desc_2\": \"\", \"stance_3\": \"Slightly conservative\", \"stance_desc_3\": \"\", \"stance_4\": \"Moderate\", \"stance_desc_4\": \"\", \"stance_5\": \"Slightly progressive\", \"stance_desc_5\": \"\", \"stance_6\": \"Progressive\", \"stance_desc_6\": \"\", \"stance_7\": \"Very progressive\", \"stance_desc_7\": \"\", \"election\": 11}}, {\"model\": \"campaign_trail.issue\", \"pk\": 41, \"fields\": {\"name\": \"Waiting Lists\", \"description\": \"\", \"stance_1\": \"Very acute\", \"stance_desc_1\": \"\", \"stance_2\": \"Acute\", \"stance_desc_2\": \"\", \"stance_3\": \"Somewhat acute\", \"stance_desc_3\": \"\", \"stance_4\": \"Tolerable\", \"stance_desc_4\": \"\", \"stance_5\": \"Very tolerable\", \"stance_desc_5\": \"\", \"stance_6\": \"Nearly non-existent\", \"stance_desc_6\": \"\", \"stance_7\": \"Non-existent\", \"stance_desc_7\": \"\", \"election\": 11}}, {\"model\": \"campaign_trail.issue\", \"pk\": 38, \"fields\": {\"name\": \"Purple's social policy\", \"description\": \"\", \"stance_1\": \"Horrified\", \"stance_desc_1\": \"\", \"stance_2\": \"Concerned\", \"stance_desc_2\": \"\", \"stance_3\": \"Ambivalent\", \"stance_desc_3\": \"\", \"stance_4\": \"Uncaring\", \"stance_desc_4\": \"\", \"stance_5\": \"Supportive\", \"stance_desc_5\": \"\", \"stance_6\": \"Enthusiastic\", \"stance_desc_6\": \"\", \"stance_7\": \"Not going far enough\", \"stance_desc_7\": \"\", \"election\": 11}}]");
@@ -706,10 +715,21 @@ function findLeader(coalition){
       if (VVDResults.electoral_votes < 22) {
         unlockAchievementSafe("Geert who?");
       }
-      if (aa[0].candidate == 17 && !FortuynLives) { // PvdA Wins after Fortuyn was killed
+      if (aa[0].candidate == 17 && !FortuynLives && !PMKok) { // PvdA Wins after Fortuyn was killed
         e.header = "<h2>New Natural Governing Party?</h2>"
-        e.pages = [`<p>Considering what the party was put through by Fortuyn, especially when events culminated in this assassination, this result, which would've been most expected a year ago still comes as a surprise. This also leads to a rather perilous political dynamic, because the LPF blames the PvdA for the events that transpired. The riots that began before the election are certainly intensifying as the prospects of you rising to the premiership increase.</p><p>The mood at your election night event is schizophrenic. There is happiness and even some satisfaction that you made it is there, but the events surrounding Fortuyn poisons the mood. Even you, after having clearly been backed up by the electorate, are afraid of being seen as too chipper. You will likely be prime minister. But you will be starting your tenure as the eye of the storm.</p>`, `<div id="coalitionList"><p>As the results trickle in, the total number of seats of each party is calculated. As expected, neither you nor any other party has gained an outright majority and a coalition will be necessary. The largest party will get to take the initiative in this process, but they will have to be careful: if their negotiations stall, they may find themselves being relegated to the opposition by a coalition of smaller parties.</p></div>`, `<div id="coalitionList"><p>As the results trickle in, the total number of seats of each party is calculated. As expected, neither you nor any other party has gained an outright majority and a coalition will be necessary. The largest party will get to take the initiative in this process, but they will have to be careful: if their negotiations stall, they may find themselves being relegated to the opposition by a coalition of smaller parties.</p></div>`]
+        e.pages = [`<p>Considering what the party was put through by Fortuyn, especially when events culminated in this assassination, this result, which would've been most expected a year ago still comes as a surprise. This also leads to a rather perilous political dynamic, because the LPF blames the PvdA for the events that transpired. The riots that began before the election are certainly intensifying as the prospects of you rising to the premiership increase.</p><p>The mood at your election night event is schizophrenic. There is happiness and even some satisfaction that you made it is there, but the events surrounding Fortuyn poisons the mood. Even you, after having clearly been backed up by the electorate, are afraid of being seen as too chipper. You will likely be prime minister. But you will be starting your tenure as the eye of the storm.</p>`, `<div id="coalitionList"><p>As the results trickle in, the total number of seats of each party is calculated. As expected, neither you nor any other party has gained an outright majority and a coalition will be necessary. The largest party will get to take the initiative in this process, but they will have to be careful: if their negotiations stall, they may find themselves being relegated to the opposition by a coalition of smaller parties.</p></div>`]
         e.image = "https://i.imgur.com/wVNhr3f.png";
+        var songChoice = 'PvdASong';
+        if (!musicHasBeenEnabled){
+          newYouTubeMusicPlayer(songChoice);
+          musicHasBeenEnabled = true;
+        }
+        return construct(0);
+      }
+      if (aa[0].candidate == 17 && !FortuynLives && PMKok) { // PvdA Wins after Fortuyn was killed
+        e.header = "<h2>New Natural Governing Party?</h2>"
+        e.pages = [`<p>Considering what the party was put through by Fortuyn, especially when events culminated in this assassination, this result, which would've been most expected a year ago still comes as a surprise. This also leads to a rather perilous political dynamic, because the LPF blames the PvdA for the events that transpired. You have had to bend the knee to these events, and Wim Kok came in to assure the nation he would take a third term to calm things down. That paid off, and the PvdA is thus still the largest party of the country</p><p>The mood at your election night event is schizophrenic. There is happiness and even some satisfaction that Wim saved the PvdA against your backdrop, but the events surrounding Fortuyn poison the mood. Even he, after having clearly been backed up by the electorate, is afraid of being seen as too chipper. To him the task of riding the nation through the eye of the storm.</p>`, `<div id="coalitionList"><p>As the results trickle in, the total number of seats of each party is calculated. As expected, neither you nor any other party has gained an outright majority and a coalition will be necessary. The largest party will get to take the initiative in this process, but they will have to be careful: if their negotiations stall, they may find themselves being relegated to the opposition by a coalition of smaller parties.</p></div>`]
+        e.image = "https://i.imgur.com/H1fDg2Y.png";
         var songChoice = 'PvdASong';
         if (!musicHasBeenEnabled){
           newYouTubeMusicPlayer(songChoice);
@@ -814,8 +834,11 @@ function findLeader(coalition){
     }
     if(negotiationsDone) {
       leader = findLeader(selectedCoalition);
-      if (leader.party == 17) {
+      if (leader.party == 17 && !PMKok) {
         playerFate = "You have fulfilled your ambition to become this country's prime minister. Congratulations!"
+      }
+      else if (leader.party == 17 && PMKok) {
+        playerFate = "As for you, you resigned after the new <i>Tweede Kamer</i> came together, at the insistence of Prime Minister Kok. Your place as the PvdA's faction leader has been taken over by Jeltje van Nieuwenhoven. You are carrying on as a backbencher for now, but the prime minister has pulled some strings and you will likely be appointed as the Dutch representative to the World Bank in Washington DC. Hopefully your bags are packed already."
       }
       else if (darkMelkertActivated && selectedCoalition > 14 && quickstats[1] < 21) {
         playerFate = "As for you, you have had to fend off an attempt by now-former-Prime Minister Kok to have you replaced as leader with Interior Minister Klaas de Vries. When it became clear that a cabinet with the LPF was in the cards however, you had a solid argument to carry on. In the end, you narrowly prevailed. You've since chosen to become deputy prime minister and the new minister of the interior in this cabinet."
@@ -890,10 +913,17 @@ function findLeader(coalition){
       unlockAchievementSafe("Normaal");
       return construct(0);
     }
-    if(leader.party == 17 && negotiationsDone && selectedCoalition.id === 7){ //PvdA-VVD-D66
+    if(leader.party == 17 && !PMKok && negotiationsDone && selectedCoalition.id === 7){ //PvdA-VVD-D66
       leader = findLeader(selectedCoalition);
       e.header="<h2>Purple III</h2>"
       e.pages=[`<p>Some 150 days have gone by since the 2002 elections, and white smoke finally comes out of the chimney at the Binnenhof. A government has finally been formed. And it is another purple cabinet with VVD, PvdA and D66.</p><p>Wim Kok smiles when he hands you the key of the prime minister's office following your formal appointment by the queen, this is absolutely the result he hoped for in his succession.</p><p>Do remain somewhat weary: as you are intricately aware, the Kok II government almost collapsed multiple times, and voter fatigue with the PvdA-VVD-D66 combination is increasing, as the phenomenon Fortuyn made painfully clear. Be wary on your left flank as well, with the SP. The US seems to be intent on invading Iraq, which could make them become a problem if you decide to participate.</p>`]
+      e.image = leader.image
+      return construct(0);
+    }
+    if(leader.party == 17 && PMKok && negotiationsDone && selectedCoalition.id === 7){ //PvdA-VVD-D66
+      leader = findLeader(selectedCoalition);
+      e.header="<h2>Purple III</h2>"
+      e.pages=[`<p>Some 150 days have gone by since the 2002 elections, and white smoke finally comes out of the chimney at the Binnenhof. A government has finally been formed. And it is the same composition that has governed the country for the past eight years.</p><p>Unfortunately, you have had to hand the party back to Prime Minister Kok for your sins, and now he is here to serve a third term he didn't want. Frustrating.</p><p>${playerFate}</p>`]
       e.image = leader.image
       return construct(0);
     }
@@ -904,10 +934,17 @@ function findLeader(coalition){
       e.image = leader.image
       return construct(0);
     }
-    if(leader.party == 17 && negotiationsDone && selectedCoalition.id === 8){ //PvdA-VVD-CDA
+    if(leader.party == 17 && !PMKok && negotiationsDone && selectedCoalition.id === 8){ //PvdA-VVD-CDA
       leader = findLeader(selectedCoalition);
       e.header="<h2>Desperate establishment.</h2>"
       e.pages=[`<p>An unprecedented coalition of national unity, composed of all three broad people's parties. That this is a rabid reaction to Fortuyn's entrance onto the political scene is clear. His growth must have closed off many or most other options for this to happen.</p><p>Nevertheless, you have fulfilled your ambition to become the new prime minister, and you will be leading this cabinet over the next four years. You will have to be wary: your newfound primary opposition will do everything in his power to bring your cabinet down prematurely. Public discourse mentions 'the last convulsions of a dying establishment'. It will be up to you to prove them wrong. The first challenge will be the Provincial Elections of 2003. At least you have a massive majority in the Senate right now, meaning you have a lot of room to lose. Be wary too of your right-leaning coalition partners: it would be a shame if you hold out until 2006 only for the PvdA to be destroyed in that election.</p>`]
+      e.image = leader.image
+      return construct(0);
+    }
+    if(leader.party == 17 && PMKok && negotiationsDone && selectedCoalition.id === 8){ //PvdA-VVD-CDA
+      leader = findLeader(selectedCoalition);
+      e.header="<h2>Desperate establishment.</h2>"
+      e.pages=[`<p>An unprecedented coalition of national unity, composed of all three broad people's parties. That this is a rabid reaction to Fortuyn's entrance onto the political scene is clear. His growth must have closed off many or most other options for this to happen.</p><p>You are also a bit regretful that you had to give the party back to Prime Minister Kok, causing him to become the new prime minister for the third time. You will have to be wary: your newfound primary opposition will do everything in his power to bring your cabinet down prematurely. Public discourse involves 'the last convulsions of a dying establishment'. It will be up to you to prove them wrong. The first challenge will be the Provincial Elections of 2003. At least you have a massive majority in the Senate right now, meaning you have a lot of room to lose. Be wary too of your right-leaning coalition partners: it would be a shame if you hold out until 2006 only for the PvdA to be destroyed in that election.</p><p>${playerFate}</p>`]
       e.image = leader.image
       return construct(0);
     }
@@ -918,10 +955,21 @@ function findLeader(coalition){
       e.image = leader.image
       return construct(0);
     }
-    if(leader.party == 17 && negotiationsDone && selectedCoalition.id === 9){ //PvdA-CDA
+    if(leader.party == 17 && !PMKok && negotiationsDone && selectedCoalition.id === 9){ //PvdA-CDA
       leader = findLeader(selectedCoalition);
       e.header="<h2>Return of the Center-Left.</h2>"
       e.pages=[`<p>Some 150 days have gone by since the 2002 elections, and white smoke finally comes out of the chimney at the Binnenhof. A government has finally been formed.</p><p>The queen has appointed you to form a new cabinet, with the support of an easily achieved majority in the House of Representatives, composed of your PvdA and Balkenende's CDA.</p><p>Wim Kok smiles when he hands you the key of the prime minister's office following your formal appointment by the queen. This is an excellent outcome for him. You personally hope that together with the Christian Democrats, you might be able to profile the social democratic character of the PvdA a bit more strongly than in the past years. There are some challenges too: your government lacks a majority in the Senate, and will have to find support from the VVD, D66 and GroenLinks there. Perhaps you can secure a majority next year, but with the LPF's likely grand entrance, that forecast looks a bit grim. Furthermore, Balkenende does not seem too enthused with this cabinet which may not be good for its stability.</p>`]
+      e.image = leader.image
+      var VVDResults = (e.final_overall_results.find((r) => r.candidate === 23));
+      if (VVDResults.electoral_votes < 30) {
+        unlockAchievementSafe("Geert who?");
+      }
+      return construct(0);
+    }
+    if(leader.party == 17 && PMKok && negotiationsDone && selectedCoalition.id === 9){ //PvdA-CDA
+      leader = findLeader(selectedCoalition);
+      e.header="<h2>Return of the Center-Left.</h2>"
+      e.pages=[`<p>Some 150 days have gone by since the 2002 elections, and white smoke finally comes out of the chimney at the Binnenhof. A government has finally been formed.</p><p>The queen has appointed Wim Kok to form his third and hopefully last cabinet, with the support of an easily achieved majority in the House of Representatives, composed of your PvdA and Balkenende's CDA.</p><p>Personally, you hope that together with the Christian Democrats, he might be able to profile the social democratic character of the PvdA a bit more strongly than in the past years. ${playerFate}</p>`]
       e.image = leader.image
       var VVDResults = (e.final_overall_results.find((r) => r.candidate === 23));
       if (VVDResults.electoral_votes < 30) {
@@ -940,10 +988,21 @@ function findLeader(coalition){
       }
       return construct(0);
     }
-    if(leader.party == 17 && negotiationsDone && selectedCoalition.id === 10){ //PvdA-CDA-GL
+    if(leader.party == 17 && !PMKok && negotiationsDone && selectedCoalition.id === 10){ //PvdA-CDA-GL
       leader = findLeader(selectedCoalition);
       e.header="<h2>Return of the Center-Left.</h2>"
       e.pages=[`<p>Some 150 days have gone by since the 2002 elections, and white smoke finally comes out of the chimney at the Binnenhof. A government has finally been formed.</p><p>The queen has appointed you to form a new cabinet, with the support of an easily achieved majority in the House of Representatives, composed of your PvdA, Balkenende's CDA and Rosenmöller's GroenLinks, for whom it's the first time in national government.</p><p>Wim Kok smiles when he hands you the key of the prime minister's office following your formal appointment by the queen. This is an excellent outcome for him. You personally hope that together with the Christian Democrats, you might be able to profile the social democratic character of the PvdA a bit more strongly than in the past years. There are some challenges too: though your government has a majority in the Senate now, maintaining it in the face of the LPF's likely grand entrance in the Provincial elections next year might prove challenging. Furthermore, Balkenende does not seem too enthused with this cabinet which may not be good for its stability if the CDA comes to have electoral benefit from ending it in the future.</p>`]
+      e.image = leader.image
+      var VVDResults = (e.final_overall_results.find((r) => r.candidate === 23));
+      if (VVDResults.electoral_votes < 30) {
+        unlockAchievementSafe("Geert who?");
+      }
+      return construct(0);
+    }
+    if(leader.party == 17 && PMKok && negotiationsDone && selectedCoalition.id === 10){ //PvdA-CDA
+      leader = findLeader(selectedCoalition);
+      e.header="<h2>Return of the Center-Left.</h2>"
+      e.pages=[`<p>Some 150 days have gone by since the 2002 elections, and white smoke finally comes out of the chimney at the Binnenhof. A government has finally been formed.</p><p>The queen has appointed Wim Kok to form his third and hopefully last cabinet, with the support of an easily achieved majority in the House of Representatives, composed of what was until shortly ago your PvdA, Balkenende's CDA and Rosenmöller's GroenLinks.</p><p>Personally, you hope that together with the Christian Democrats, he might be able to profile the social democratic character of the PvdA a bit more strongly than in the past years. ${playerFate}</p>`]
       e.image = leader.image
       var VVDResults = (e.final_overall_results.find((r) => r.candidate === 23));
       if (VVDResults.electoral_votes < 30) {
@@ -962,10 +1021,21 @@ function findLeader(coalition){
       }
       return construct(0);
     }
-    if(leader.party == 17 && negotiationsDone && selectedCoalition.id === 11){ //PvdA-CDA-CU
+    if(leader.party == 17 && !PMKok && negotiationsDone && selectedCoalition.id === 11){ //PvdA-CDA-CU
       leader = findLeader(selectedCoalition);
       e.header="<h2>Return of the Center-Left.</h2>"
       e.pages=[`<p>Some 150 days have gone by since the 2002 elections, and white smoke finally comes out of the chimney at the Binnenhof. A government has finally been formed.</p><p>The queen has appointed you to form a new cabinet, with the support of an easily achieved majority in the House of Representatives, composed of your PvdA, Balkenende's CDA and Veling's ChristianUnion.</p><p>Wim Kok smiles when he hands you the key of the prime minister's office following your formal appointment by the queen. This is an excellent outcome for him. You personally hope that together with the Christian Democrats, you might be able to profile the social democratic character of the PvdA a bit more strongly than in the past years. There are some challenges too: your government lacks a majority in the Senate, and will have to find support from the VVD, D66 and GroenLinks there. Perhaps you can secure a majority next year, but with the LPF's likely grand entrance, that forecast looks a bit grim. Furthermore, Balkenende does not seem too enthused with this cabinet which may not be good for its stability if the CDA comes to have electoral benefit from ending it in the future.</p>`]
+      e.image = leader.image
+      var VVDResults = (e.final_overall_results.find((r) => r.candidate === 23));
+      if (VVDResults.electoral_votes < 30) {
+        unlockAchievementSafe("Geert who?");
+      }
+      return construct(0);
+    }
+    if(leader.party == 17 && PMKok && negotiationsDone && selectedCoalition.id === 11){ //PvdA-CDA
+      leader = findLeader(selectedCoalition);
+      e.header="<h2>Return of the Center-Left.</h2>"
+      e.pages=[`<p>Some 150 days have gone by since the 2002 elections, and white smoke finally comes out of the chimney at the Binnenhof. A government has finally been formed.</p><p>The queen has appointed Wim Kok to form his third and hopefully last cabinet, with the support of an easily achieved majority in the House of Representatives, composed of what was until shortly ago your PvdA, Balkenende's CDA and Veling's ChristianUnion.</p><p>Personally, you hope that together with the Christian Democrats, he might be able to profile the social democratic character of the PvdA a bit more strongly than in the past years. ${playerFate}</p>`]
       e.image = leader.image
       var VVDResults = (e.final_overall_results.find((r) => r.candidate === 23));
       if (VVDResults.electoral_votes < 30) {
@@ -984,10 +1054,21 @@ function findLeader(coalition){
       }
       return construct(0);
     }
-    if(leader.party == 17 && negotiationsDone && selectedCoalition.id === 12){ //PvdA-CDA-D66
+    if(leader.party == 17 && !PMKok && negotiationsDone && selectedCoalition.id === 12){ //PvdA-CDA-D66
       leader = findLeader(selectedCoalition);
       e.header="<h2>Return of the Center-Left.</h2>"
       e.pages=[`<p>Some 150 days have gone by since the 2002 elections, and white smoke finally comes out of the chimney at the Binnenhof. A government has finally been formed.</p><p>The queen has appointed you to form a new cabinet, with the support of an easily achieved majority in the House of Representatives, composed of your PvdA, Balkenende's CDA and De Graaf's D66.</p><p>Wim Kok smiles when he hands you the key of the prime minister's office following your formal appointment by the queen. This is an excellent outcome for him. You personally hope that together with the Christian Democrats, you might be able to profile the social democratic character of the PvdA a bit more strongly than in the past years. There are some challenges too: though your government has a majority in the Senate now, maintaining it in the face of the LPF's likely grand entrance in the Provincial elections next year might prove challenging. Furthermore, Balkenende does not seem too enthused with this cabinet which may not be good for its stability if the CDA comes to have electoral benefit from ending it in the future.</p>`]
+      e.image = leader.image
+      var VVDResults = (e.final_overall_results.find((r) => r.candidate === 23));
+      if (VVDResults.electoral_votes < 30) {
+        unlockAchievementSafe("Geert who?");
+      }
+      return construct(0);
+    }
+    if(leader.party == 17 && PMKok && negotiationsDone && selectedCoalition.id === 12){ //PvdA-CDA
+      leader = findLeader(selectedCoalition);
+      e.header="<h2>Return of the Center-Left.</h2>"
+      e.pages=[`<p>Some 150 days have gone by since the 2002 elections, and white smoke finally comes out of the chimney at the Binnenhof. A government has finally been formed.</p><p>The queen has appointed Wim Kok to form his third and hopefully last cabinet, with the support of an easily achieved majority in the House of Representatives, composed of what was until shortly ago your PvdA, Balkenende's CDA and De Graaf's D66.</p><p>Personally, you hope that together with the Christian Democrats, he might be able to profile the social democratic character of the PvdA a bit more strongly than in the past years. ${playerFate}</p>`]
       e.image = leader.image
       var VVDResults = (e.final_overall_results.find((r) => r.candidate === 23));
       if (VVDResults.electoral_votes < 30) {
@@ -1019,10 +1100,21 @@ function findLeader(coalition){
       
       return construct(0);
     }
-    if(leader.party == 17 && negotiationsDone && selectedCoalition.id === 14){ //PvdA-CDA-GL-D66
+    if(leader.party == 17 && !PMKok && negotiationsDone && selectedCoalition.id === 14){ //PvdA-CDA-GL-D66
       leader = findLeader(selectedCoalition);
       e.header="<h2>Return of the Center-Left.</h2>"
       e.pages=[`<p>Some 150 days have gone by since the 2002 elections, and white smoke finally comes out of the chimney at the Binnenhof. A government has finally been formed.</p><p>The queen has appointed you to form a new cabinet, with the support of an easily achieved majority in the House of Representatives, composed of your PvdA, Balkenende's CDA, Rosenmöller's GroenLinks and De Graaf's D66.</p><p>Wim Kok smiles when he hands you the key of the prime minister's office following your formal appointment by the queen. This is an excellent outcome for him. You personally hope that together with the Christian Democrats, you might be able to profile the social democratic character of the PvdA a bit more strongly than in the past years. There are some challenges too: though your government has a majority in the Senate now, maintaining it in the face of the LPF's likely grand entrance in the Provincial elections next year might prove challenging. Furthermore, Balkenende does not seem too enthused with this cabinet which may not be good for its stability if the CDA comes to have electoral benefit from ending it in the future.</p>`]
+      e.image = leader.image
+      var VVDResults = (e.final_overall_results.find((r) => r.candidate === 23));
+      if (VVDResults.electoral_votes < 30) {
+        unlockAchievementSafe("Geert who?");
+      }
+      return construct(0);
+    }
+    if(leader.party == 17 && PMKok && negotiationsDone && selectedCoalition.id === 14){ //PvdA-CDA
+      leader = findLeader(selectedCoalition);
+      e.header="<h2>Return of the Center-Left.</h2>"
+      e.pages=[`<p>Some 150 days have gone by since the 2002 elections, and white smoke finally comes out of the chimney at the Binnenhof. A government has finally been formed.</p><p>The queen has appointed Wim Kok to form his third and hopefully last cabinet, with the support of an easily achieved majority in the House of Representatives, composed of what was until shortly ago your PvdA, Balkenende's CDA, Rosenmöller's GroenLinks and De Graaf's D66.</p><p>Personally, you hope that together with the Christian Democrats, he might be able to profile the social democratic character of the PvdA a bit more strongly than in the past years. ${playerFate}</p>`]
       e.image = leader.image
       var VVDResults = (e.final_overall_results.find((r) => r.candidate === 23));
       if (VVDResults.electoral_votes < 30) {
@@ -1233,6 +1325,620 @@ function findLeader(coalition){
           var container = document.getElementById("container"); // Replace with the id or selector of the element that contained the buttons div
           container.insertAdjacentHTML('beforebegin', originalHtml);
       });
+      // Add event listener to NextButton
+      document.getElementById("nextButton").addEventListener("click", function() {
+          // Save the original HTML of the buttons div
+          var originalHtml = document.querySelector(".buttons").outerHTML;
+          // Remove the buttons div
+          var buttonsDiv = document.querySelector(".buttons");
+          buttonsDiv.remove();
+      });
+  }
+  else if(type==="cabinet"){
+  LPFCheck = (e.final_overall_results.find((r) => r.candidate === 106));
+  CDACheck = (e.final_overall_results.find((r) => r.candidate === 105));
+  if (!negotiationsDone || selectedCoalition.id === 60){
+  // Create table for demissionary cabinet
+  const table = document.createElement('table');
+  table.style.width = '80%';
+  table.style.borderCollapse = 'collapse';
+  table.style.marginTop = '20px';
+  table.style.overflowX = 'auto';
+  table.style.display = 'table';
+  table.style.marginLeft = 'auto';
+  table.style.marginRight = 'auto';
+
+  // Create table header
+  const thead = document.createElement('tr');
+  ['', 'Department', 'Minister', 'Party'].forEach(text => {
+      const th = document.createElement('th');
+      th.textContent = text;
+      th.style.padding = '10px';
+      th.style.borderBottom = '2px solid #ddd';
+      thead.appendChild(th);
+  });
+  table.appendChild(thead);
+
+  // Define demissionary cabinet ministers
+  const ministers = [
+      { party: 'PvdA', color: '#D90000', ministerTitle: 'Prime Minister/General Affairs (AZ)', name: 'Wim Kok' },
+      { party: 'VVD', color: '#120A8F', ministerTitle: 'Finance (FIN)', name: 'Gerrit Zalm' },
+      { party: 'VVD', color: '#120A8F', ministerTitle: 'Foreign Affairs (BZ)', name: 'Jozias van Aartsen' },
+      { party: 'PvdA', color: '#D90000', ministerTitle: 'Interior and Kingdom Relations (BZK)', name: 'Klaas de Vries' },
+      { party: 'VVD', color: '#120A8F', ministerTitle: 'Justice (JUS)', name: 'Benk Korthals' },
+      { party: 'D66', color: '#84CF84', ministerTitle: 'Health, Welfare and Sport (VWS)', name: 'Els Borst' },
+      { party: 'VVD', color: '#120A8F', ministerTitle: 'Education, Culture and Science (OCW)', name: 'Loek Hermans' },
+      { party: 'VVD', color: '#120A8F', ministerTitle: 'Economic Affairs (EZ)', name: 'Annemarie Jorritsma' },
+      { party: 'VVD', color: '#120A8F', ministerTitle: 'Defense (DEF)', name: 'Frank de Grave' },
+      { party: 'PvdA', color: '#D90000', ministerTitle: 'Social Affairs and Employment (SZW)', name: 'Willem Vermeend' },
+      { party: 'PvdA', color: '#D90000', ministerTitle: 'Transport and Watermanagement (V&W)', name: 'Tineke Netelenbos' },
+      { party: 'D66', color: '#84CF84', ministerTitle: 'Agriculture, Nature and Fisheries (LNV)', name: 'Laurens-Jan Brinkhorst' },
+      { party: 'PvdA', color: '#D90000', ministerTitle: 'Housing, Spatial Planning and the Environment (VROM)', name: 'Jan Pronk' },
+      { party: 'D66', color: '#84CF84', ministerTitle: 'Integration and Urban Planning (BZK)', name: 'Roger van Boxtel' },
+      { party: 'PvdA', color: '#D90000', ministerTitle: 'Development Cooperation (BZ)', name: 'Eveline Herfkens' }
+  ];
+
+  // Replace Benk Korthals with Johan Remkes if BenkRemoved flag is set
+  if (BenkRemoved) {
+      ministers.find(m => m.name === 'Benk Korthals').name = 'Johan Remkes';
+  }
+
+  // Add ministers to table
+  ministers.forEach(minister => {
+      const row = table.insertRow();
+      
+      // Color cell
+      const colorCell = row.insertCell();
+      colorCell.style.backgroundColor = minister.color;
+      colorCell.style.width = '20px';
+      colorCell.style.borderBottom = '1px solid #ddd';
+      
+      // Ministry cell
+      const ministryCell = row.insertCell();
+      ministryCell.textContent = minister.ministerTitle;
+      ministryCell.style.padding = '10px';
+      ministryCell.style.borderBottom = '1px solid #ddd';
+      
+      // Minister name cell
+      const ministerCell = row.insertCell();
+      ministerCell.textContent = minister.name;
+      ministerCell.style.padding = '10px';
+      ministerCell.style.borderBottom = '1px solid #ddd';
+      
+      // Party cell
+      const partyCell = row.insertCell();
+      partyCell.textContent = minister.party;
+      partyCell.style.padding = '10px';
+      partyCell.style.borderBottom = '1px solid #ddd';
+  });
+
+  // Add title and table to chartcontainer
+  document.getElementById('chartcontainer').style.overflow = 'scroll';
+  document.getElementById('chartcontainer').style.height = '100%';
+  document.getElementById('chartcontainer').style.border = 'double #c9c9c9';
+  document.getElementById('chartcontainer').style.backgroundColor = '#f9f9f9';
+
+  const title = document.createElement('h2');
+  title.textContent = 'The demissionary cabinet:';
+  document.getElementById('chartcontainer').appendChild(title);
+  document.getElementById('chartcontainer').appendChild(table);
+  }
+  else if (selectedCoalition.id === 2 && LPFCheck.electoral_votes > 24 && LPFCheck.electoral_votes < 29 && CDACheck.electoral_votes > 40 && CDACheck.electoral_votes < 46){
+  // Create table for canon cabinet
+  const table = document.createElement('table');
+  table.style.width = '80%';
+  table.style.borderCollapse = 'collapse';
+  table.style.marginTop = '20px';
+  table.style.overflowX = 'auto';
+  table.style.display = 'table';
+  table.style.marginLeft = 'auto';
+  table.style.marginRight = 'auto';
+
+  // Create table header
+  const thead = document.createElement('tr');
+  ['', 'Department', 'Minister', 'Party'].forEach(text => {
+      const th = document.createElement('th');
+      th.textContent = text;
+      th.style.padding = '10px';
+      th.style.borderBottom = '2px solid #ddd';
+      thead.appendChild(th);
+  });
+  table.appendChild(thead);
+
+  // Define canon cabinet ministers
+  const ministers = [
+      { party: 'CDA', color: '#0E644A', ministerTitle: 'Prime Minister/General Affairs (AZ)', name: 'Jan Peter Balkenende' },
+      { party: 'VVD', color: '#120A8F', ministerTitle: 'Finance (FIN)', name: 'Hans Hoogervorst' },
+      { party: 'CDA', color: '#0E644A', ministerTitle: 'Foreign Affairs (BZ)', name: 'Jaap de Hoop Scheffer' },
+      { party: 'VVD', color: '#120A8F', ministerTitle: 'Interior and Kingdom Relations (BZK)', name: 'Johan Remkes' },
+      { party: 'CDA', color: '#0E644A', ministerTitle: 'Justice and Security (J&V)', name: 'Piet Hein Donner' },
+      { party: 'LPF', color: '#DBD000', ministerTitle: 'Health, Welfare and Sport (VWS)', name: 'Eduard Bomhoff' },
+      { party: 'CDA', color: '#0E644A', ministerTitle: 'Education, Culture and Science (OCW)', name: 'Maria van der Hoeven' },
+      { party: 'LPF', color: '#DBD000', ministerTitle: 'Economic Affairs (EZ)', name: 'Herman Heinsbroek' },
+      { party: 'VVD', color: '#120A8F', ministerTitle: 'Defense (DEF)', name: 'Benk Korthals' },
+      { party: 'CDA', color: '#0E644A', ministerTitle: 'Social Affairs and Employment (SZW)', name: 'Aart Jan de Geus' },
+      { party: 'LPF', color: '#DBD000', ministerTitle: 'Transport and Water Management (V&W)', name: 'Roelf de Boer' },
+      { party: 'CDA', color: '#0E644A', ministerTitle: 'Agriculture, Nature and Fisheries (LNV)', name: 'Cees Veerman' },
+      { party: 'VVD', color: '#120A8F', ministerTitle: 'Housing, Spatial Planning and the Environment (VROM)', name: 'Henk Kamp' },
+      { party: 'LPF', color: '#DBD000', ministerTitle: 'Foreigner Affairs and Integration (JUS)', name: 'Hilbrand Nawijn' }
+  ];
+
+  // Add ministers to table
+  ministers.forEach(minister => {
+      const row = table.insertRow();
+      
+      // Color cell
+      const colorCell = row.insertCell();
+      colorCell.style.backgroundColor = minister.color;
+      colorCell.style.width = '20px';
+      colorCell.style.borderBottom = '1px solid #ddd';
+      
+      // Ministry cell
+      const ministryCell = row.insertCell();
+      ministryCell.textContent = minister.ministerTitle;
+      ministryCell.style.padding = '10px';
+      ministryCell.style.borderBottom = '1px solid #ddd';
+      
+      // Minister name cell
+      const ministerCell = row.insertCell();
+      ministerCell.textContent = minister.name;
+      ministerCell.style.padding = '10px';
+      ministerCell.style.borderBottom = '1px solid #ddd';
+      
+      // Party cell
+      const partyCell = row.insertCell();
+      partyCell.textContent = minister.party;
+      partyCell.style.padding = '10px';
+      partyCell.style.borderBottom = '1px solid #ddd';
+  });
+
+  // Add title and table to chartcontainer
+  document.getElementById('chartcontainer').style.overflow = 'scroll';
+  document.getElementById('chartcontainer').style.height = '100%';
+  document.getElementById('chartcontainer').style.border = 'double #c9c9c9';
+  document.getElementById('chartcontainer').style.backgroundColor = '#f9f9f9';
+
+  const title = document.createElement('h2');
+  title.textContent = 'The incumbent cabinet:';
+  document.getElementById('chartcontainer').appendChild(title);
+  document.getElementById('chartcontainer').appendChild(table);
+  }
+  else {
+  const ministerList = [
+      { minID: 1, ministerTitle: 'Prime Minister/General Affairs (AZ)', party: 512 },
+      { minID: 2, ministerTitle: 'Finance (FIN)', party: 512 },
+      { minID: 3, ministerTitle: 'Foreign Affairs (BZ)', party: 512 },
+      { minID: 4, ministerTitle: 'Interior and Kingdom Relations (BZK)', party: 512 },
+      { minID: 5, ministerTitle: 'Justice (JUS)', party: 512 },
+      { minID: 6, ministerTitle: 'Health, Welfare and Sport (VWS)', party: 512 },
+      { minID: 7, ministerTitle: 'Education, Culture and Science (OCW)', party: 512 },
+      { minID: 8, ministerTitle: 'Economic Affairs (EZ)', party: 512 },
+      { minID: 9, ministerTitle: 'Defense (DEF)', party: 512 },
+      { minID: 10, ministerTitle: 'Social Affairs and Employment (SZW)', party: 512 },
+      { minID: 11, ministerTitle: 'Transport and Water Management (V&W)', party: 512 },
+      { minID: 12, ministerTitle: 'Agriculture, Nature and Fisheries (LNV)', party: 512 },
+      { minID: 13, ministerTitle: 'Housing, Spatial Planning and the Environment (VROM)', party: 512 },
+      { minID: 14, ministerTitle: 'Foreigner Affairs and Integration (JUS)', party: 512 }
+  ];
+  const partyPreferences = [
+      { party: 105, preference: [1, 2, 5, 4, 3, 12, 10, 7, 13, 6, 9, 8, 11, 14] },
+      { party: 106, preference: [1, 14, 6, 8, 11, 9, 12, 5, 2, 7, 4, 13, 10, 3] },
+      { party: 16, preference: [1, 2, 10, 4, 8, 7, 14, 3, 13, 6, 5, 9, 11, 12] },
+      { party: 17, preference: [1, 2, 10, 14, 6, 5, 13, 12, 7, 3, 4, 9, 8, 11, 14] },
+      { party: 23, preference: [1, 2, 14, 4, 8, 5, 9, 3, 13, 11, 10, 6, 7, 12] },
+      { party: 25, preference: [1, 2, 10, 14, 11, 8, 9, 13, 7, 3, 4, 6, 5, 12] },
+      { party: 21, preference: [1, 2, 10, 6, 13, 12, 4, 7, 8, 11, 3, 5, 9, 14] },
+      { party: 67, preference: [1, 10, 6, 13, 14, 7, 2, 4, 11, 12, 5, 3, 8, 9] },
+      { party: 78, preference: [1, 2, 8, 4, 9, 11, 12, 13, 10, 3, 5, 6, 7, 14] },
+      { party: 512, preference: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] },
+      { party: 117, preference: [1, 2, 12, 11, 6, 13, 7, 5, 4, 3, 10, 9, 8, 14] }
+  ];
+
+  var coalitionSeats = 0;
+  var coalitionParties = [];
+
+  // Get coalition parties and their seats
+  if(selectedCoalition.parties.includes(105)) {
+      CDAPart = (e.final_overall_results.find((r) => r.candidate === 105));
+      coalitionSeats += CDAPart.popular_votes;
+      coalitionParties.push({party: 105, seats: CDAPart.popular_votes, name: "CDA", color: "#0E644A"});
+  }
+  if(selectedCoalition.parties.includes(106)) {
+      LPFPart = (e.final_overall_results.find((r) => r.candidate === 106));
+      coalitionSeats += LPFPart.popular_votes;
+      coalitionParties.push({party: 106, seats: LPFPart.popular_votes, name: "LPF", color: "#DBD000"});
+  }
+  if(selectedCoalition.parties.includes(16)) {
+      D66Part = (e.final_overall_results.find((r) => r.candidate === 16));
+      coalitionSeats += D66Part.popular_votes;
+      coalitionParties.push({party: 16, seats: D66Part.popular_votes, name: "D66", color: "#84CF84"});
+  }
+  if(selectedCoalition.parties.includes(23)) {
+      VVDPart = (e.final_overall_results.find((r) => r.candidate === 23));
+      coalitionSeats += VVDPart.popular_votes;
+      coalitionParties.push({party: 23, seats: VVDPart.popular_votes, name: "VVD", color: "#120A8F"});
+  }
+  if(selectedCoalition.parties.includes(17)) {
+      PvdAPart = (e.final_overall_results.find((r) => r.candidate === 17));
+      coalitionSeats += PvdAPart.popular_votes;
+      coalitionParties.push({party: 17, seats: PvdAPart.popular_votes, name: "PvdA", color: "#D90000"});
+  }
+  if(selectedCoalition.parties.includes(21)) {
+    GroenLinksPart = (e.final_overall_results.find((r) => r.candidate === 21));
+    coalitionSeats += GroenLinksPart.popular_votes;
+    coalitionParties.push({party: 21, seats: GroenLinksPart.popular_votes, name: "GroenLinks", color: "#009900"});
+  }
+  if(selectedCoalition.parties.includes(25)) {
+      LNPart = (e.final_overall_results.find((r) => r.candidate === 25));
+      coalitionSeats += LNPart.popular_votes;
+      coalitionParties.push({party: 25, seats: LNPart.popular_votes, name: "LN", color: "#B7ABF4"});
+  }
+  if(selectedCoalition.parties.includes(67)) {
+      SPPart = (e.final_overall_results.find((r) => r.candidate === 67));
+      coalitionSeats += SPPart.popular_votes;
+      coalitionParties.push({party: 67, seats: SPPart.popular_votes, name: "SP", color: "#450101"});
+  }
+  if(selectedCoalition.parties.includes(78)) {
+      CUPart = (e.final_overall_results.find((r) => r.candidate === 78));
+      coalitionSeats += CUPart.popular_votes;
+      coalitionParties.push({party: 78, seats: CUPart.popular_votes, name: "CU", color: "#BEF6FA"});
+  }
+  if(selectedCoalition.parties.includes(512)) {
+      OthersPart = (e.final_overall_results.find((r) => r.candidate === 512));
+      coalitionSeats += OthersPart.popular_votes;
+      coalitionParties.push({party: 512, seats: OthersPart.popular_votes, name: "Ind.", color: "#DDDDDD"});
+  }
+  if(selectedCoalition.parties.includes(117)) {
+      SGPPart = (e.final_overall_results.find((r) => r.candidate === 117));
+      coalitionSeats += SGPPart.popular_votes;
+      coalitionParties.push({party: 117, seats: SGPPart.popular_votes, name: "SGP", color: "#B56B21"});
+  }
+
+  // Remove parties from allocation for 2023NL
+  //if (selectedCoalition.parties.includes(512) && selectedCoalition.id === 60) {
+  //    coalitionParties = coalitionParties.filter(party => party.party !== 512);
+  //}
+
+  // Sort coalition parties by seats (descending)
+  coalitionParties.sort((a, b) => b.seats - a.seats);
+  
+  // First give each party 1 minister
+  coalitionParties.forEach(party => {
+      party.ministers = 1;
+  });
+  
+  let remainingMinisters = 14 - coalitionParties.length;
+  
+  // Distribute remaining ministers using D'Hondt method
+  while (remainingMinisters > 0) {
+      // Find party with highest quotient (seats / (ministers + 1))
+      let maxQuotient = 0;
+      let partyWithMax = null;
+      
+      coalitionParties.forEach(party => {
+          const quotient = party.seats / (party.ministers + 1);
+          if (quotient > maxQuotient) {
+              maxQuotient = quotient;
+              partyWithMax = party;
+          }
+      });
+      
+      partyWithMax.ministers++;
+      remainingMinisters--;
+  }
+  
+  console.log("Minister distribution:");
+  coalitionParties.forEach(party => {
+      console.log(`${party.name}: ${party.ministers} ministers (${party.seats} seats)`);
+  });
+  
+  // Allocate ministers
+  let takenPosts = new Set();
+  
+  // Each party takes turns picking their most preferred available post
+  while(takenPosts.size < 14) {
+      for(let party of coalitionParties) {
+          if(party.ministers > 0) {
+              // Find first preferred post that's still available
+              const partyPrefs = partyPreferences.find(p => p.party === party.party).preference;
+              for(let postID of partyPrefs) {
+                  if(!takenPosts.has(postID)) {
+                      // Assign post to party
+                      ministerList.find(m => m.minID === postID).party = party.party;
+                      takenPosts.add(postID);
+                      party.ministers--;
+                      break;
+                  }
+              }
+          }
+      }
+  }
+
+  console.log("\nFinal cabinet composition:");
+  ministerList.forEach(minister => {
+      const partyName = coalitionParties.find(p => p.party === minister.party)?.name || "Unassigned";
+      console.log(`${minister.ministerTitle}: ${partyName}`);
+  });
+
+  // Create h2 title
+  const title = document.createElement('h2');
+  title.textContent = `The incumbent cabinet:`;
+  document.getElementById('chartcontainer').appendChild(title);
+
+
+  // Create table to display cabinet composition
+  const table = document.createElement('table');
+  table.style.width = '80%'; // Reduced from 100% to allow centering
+  table.style.borderCollapse = 'collapse';
+  table.style.marginTop = '20px';
+  table.style.overflowX = 'auto';
+  table.style.display = 'table'; // Changed from 'block' to allow centering
+  table.style.marginLeft = 'auto';
+  table.style.marginRight = 'auto';
+
+  // Define ministers per party
+  const ministerNames = {
+      105: {
+      1: "Jan Peter Balkenende",
+      2: "Yvonne van Rooy", 
+      3: "Jaap de Hoop Scheffer",
+      4: "Gerda Verburg",
+      5: "Piet Hein Donner",
+      6: "Agnes van Ardenne",
+      7: "Maria van der Hoeven",
+      8: "Joop Wijn",
+      9: "Cees van der Knaap",
+      10: "Aart Jan de Geus",
+      11: "Karla Peijs",
+      12: "Cees Veerman",
+      13: "Pieter van Geel",
+      14: "Jos van Gennip"
+      },
+      106: {
+      1: "Pim Fortuyn",
+      2: "Steven van Eijck", 
+      3: "João Varela",
+      4: "Rob Hessing",
+      5: "Jim Janssen van Raaij",
+      6: "Eduard Bomhoff",
+      7: "Cees van Leeuwen",
+      8: "Herman Heinsbroek",
+      9: "Ferry Hoogendijk",
+      10: "Philomena Bijlhout",
+      11: "Roelf de Boer",
+      12: "Jan Odink",
+      13: "Joost Eerdmans",
+      14: "Hilbrand Nawijn"
+      },
+      16: {
+      1: "Thom de Graaf",
+      2: "Francine Giskens",
+      3: "Jan Hoekema",
+      4: "Thom de Graaf",
+      5: "Boris Dittrich",
+      6: "Gerard Schouw",
+      7: "Medy van der Laan",
+      8: "Laurens-Jan Brinkhorst",
+      9: "Eddy Schuyer",
+      10: "Annelies Verstand",
+      11: "Alexander Pechtold",
+      12: "Pieter ter Veer",
+      13: "Roger van Boxtel",
+      14: "Ruud Hessing"
+      },
+      17: {
+        1: "Ad Melkert",
+        2: "Wouter Bos",
+        3: "Jan Pronk",
+        4: "Jeltje van Nieuwenhoven",
+        5: "Job Cohen",
+        6: "Tineke Netelenbos",
+        7: "Rick van der Ploeg",
+        8: "Willem Vermeend",
+        9: "Frans Timmermans",
+        10: "Karin Adelmund",
+        11: "Rob Oudkerk",
+        12: "Hans Alders",
+        13: "Guusje ter Horst",
+        14: "Nebahat Albayrak"
+      },   
+      21: {
+      1: "Paul Rosenmöller",
+      2: "Paul Rosenmöller",
+      3: "Farah Karimi",
+      4: "Femke Halsema",
+      5: "Ineke van Gent",
+      6: "Marijke Vos",
+      7: "Sam Pormes",
+      8: "Kees Vendrik",
+      9: "Jacques de Milliano",
+      10: "Ina Brouwer",
+      11: "Mohamed Rabbae",
+      12: "Arie van den Brand",
+      13: "Wijnand Duyvendak",
+      14: "Roel van Duijn"
+      },
+      23: {
+      1: "Hans Dijkstal",
+      2: "Gerrit Zalm", 
+      3: "Atzo Nicolaï",
+      4: "Johan Remkes",
+      5: "Laetitia Griffith",
+      6: "Frank de Grave",
+      7: "Willibrord van Beek",
+      8: "Hella Voûte-Droste",
+      9: "Benk Korthals",
+      10: "Mark Rutte",
+      11: "Melanie Schultz van Haegen",
+      12: "Sybilla Dekker",
+      13: "Henk Kamp",
+      14: "Rita Verdonk"
+      },
+      25: {
+      1: "Fred Teeven",
+      2: "Emile Ratelband", 
+      3: "Tjerk Westerterp",
+      4: "Kay van de Linde",
+      5: "Aart-Jan Moerkerke",
+      6: "David Pinto",
+      7: "Willem Bol",
+      8: "Willem van Kooten",
+      9: "Dick Jense",
+      10: "Jan Nagel",
+      11: "Fred Teeven",
+      12: "Bert Snel",
+      13: "Marten Bierman",
+      14: "Fons Zinken"
+      },
+      67: {
+      1: "Jan Marijnissen",
+      2: "Ewout Irrgang", 
+      3: "Anja Meulenbelt",
+      4: "Hans van Hooft Sr.",
+      5: "Jan de Wit",
+      6: "Agnes Kant",
+      7: "Harry van Bommel",
+      8: "Gerrie Elfrink",
+      9: "Krista van Velzen",
+      10: "Tiny Kox",
+      11: "Arda Gerkens",
+      12: "Remi Poppe",
+      13: "Piet de Ruiter",
+      14: "Erik Meijer"
+      },
+      78: {
+      1: "Kars Veling",
+      2: "Steven van der Kroon",
+      3: "Ad de Boer",
+      4: "Gert Schutte",
+      5: "Egbert Schuurman",
+      6: "Esmé Wiegman",
+      7: "Arie Slob",
+      8: "Leen van Dijke",
+      9: "Eimert van Middelkoop",
+      10: "André Rouvoet",
+      11: "Tineke Huizinga",
+      12: "Dick Stellingwerf",
+      13: "Hans Blokland",
+      14: "Henk van Rhee"
+      },
+      512: {
+      1: "Placeholder",
+      2: "Placeholder", 
+      3: "Placeholder",
+      4: "Placeholder",
+      5: "Placeholder",
+      6: "Placeholder",
+      7: "Placeholder",
+      8: "Placeholder",
+      9: "Placeholder",
+      10: "Placeholder",
+      11: "Placeholder",
+      12: "Placeholder",
+      13: "Placeholder",
+      14: "Placeholder"
+      },
+      117: {
+      1: "Bas van der Vlies",
+      2: "Hans Tanis", 
+      3: "Engelbert van Voorden",
+      4: "Hendrik Schriever",
+      5: "Kees van der Staaij",
+      6: "Leen van der Waal",
+      7: "Roelof Bisschop",
+      8: "Rinus Houtman",
+      9: "Jan Nathan Roozendaal",
+      10: "Peter Zevenbergen",
+      11: "Wim Kolijn",
+      12: "Breunis van de Weerd",
+      13: "Catharinus van der Berg",
+      14: "Henk van Rossum"
+      }
+  };
+
+  if (selectedCoalition.parties.includes(106)) {
+    ministerNames[23][2] = "Hans Hoogervorst";
+    ministerNames[17][3] = "Jacques Monasch";
+  }
+  if (darkMelkertActivated) {
+    ministerNames[17][14] = "Dick Schoof";
+  }
+  if (PMKok) {
+    ministerNames[17][1] = "Wim Kok";
+  }
+  if (!ministerList.find(m => m.minID === 1 && m.party === 105)) {
+    ministerNames[105][5] = "Jan Peter Balkenende";
+  }
+  if (ministerList.find(m => m.minID === 14 && m.party === 17 && !darkMelkertActivated)) {
+    ministerList.find(m => m.minID === 14).ministerTitle = "Development Cooperation (BZ)";
+  }
+  if (ministerList.find(m => m.minID === 14 && m.party === 21)) {
+    ministerList.find(m => m.minID === 14).ministerTitle = "Development Cooperation (BZ)";
+  }
+  if (ministerList.find(m => m.minID === 14 && m.party === 16)) {
+    ministerList.find(m => m.minID === 14).ministerTitle = "Integration and Urban Planning (BZK)";
+  }
+
+  // Create header row
+  const headerRow = table.insertRow();
+  ['', 'Department', 'Minister', 'Party'].forEach(text => {
+      const th = document.createElement('th');
+      th.textContent = text;
+      th.style.padding = '10px';
+      th.style.borderBottom = '2px solid #ddd';
+      headerRow.appendChild(th);
+  });
+
+  // Add minister rows
+  ministerList.forEach(minister => {
+      const row = table.insertRow();
+      
+      // Color cell
+      const colorCell = row.insertCell();
+      colorCell.style.backgroundColor = coalitionParties.find(p => p.party === minister.party)?.color || '#ffffff';
+      colorCell.style.width = '20px';
+      
+      // Ministry cell
+      const ministryCell = row.insertCell();
+      ministryCell.textContent = minister.ministerTitle;
+      ministryCell.style.padding = '10px';
+      
+      // Minister name cell
+      const ministerCell = row.insertCell();
+      ministerCell.textContent = ministerNames[minister.party]?.[minister.minID] || "TBD";
+      ministerCell.style.padding = '10px';
+      
+      // Party cell
+      const partyCell = row.insertCell();
+      partyCell.textContent = coalitionParties.find(p => p.party === minister.party)?.name || "Unassigned";
+      partyCell.style.padding = '10px';
+
+      // Add border bottom
+      row.childNodes.forEach(cell => {
+          cell.style.borderBottom = '1px solid #ddd';
+      });
+  });
+
+  // Add table to chartcontainer
+  document.getElementById('chartcontainer').appendChild(table);
+
+  // Set chartcontainer attributes
+  document.getElementById('chartcontainer').style.overflow = 'scroll';
+  document.getElementById('chartcontainer').style.height = '100%';
+
+  
+  // Add event listener to BackButton
+  document.getElementById("backButton").addEventListener("click", function() {
+      // Save the original HTML of the buttons div
+      var originalHtml = document.querySelector(".buttons").outerHTML;
+      // Remove the buttons div
+      var buttonsDiv = document.querySelector(".buttons");
+      buttonsDiv.remove();
+  });
+
+  const chartButton = document.getElementById("chart_button");
+  chartButton.disabled = true;
+  }
   }
   else if(type==="voteshare"){
       var totalPopularVote = 9515226
@@ -2226,7 +2932,7 @@ function findLeader(coalition){
     document.head.appendChild(script);
   }
   
-  var charts = ["voteshare", "seats"]
+  var charts = ["voteshare", "seats", "cabinet"]
 
   let observerRunning = false;
   let changeChartRunning = false;
