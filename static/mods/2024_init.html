@@ -1,0 +1,907 @@
+campaignTrail_temp.credits = "ItsAstronomical and Martha"
+RecReading = true;
+
+document.getElementById("inner_window_1").children[1].innerHTML = `<p>Welcome to the 2024 Presidential Election, a mod for The Campaign Trail. This mod is split into two versions ― <b>2024</b>, and <b>2024: Divided States of America</b>.</p><img src="https://itsastronomical.com/assets/2024/2024introbanner.png" width="800"><li><b>2024</b> plays like your typical scenario, and is intended to emulate an "official" 2024 scenario, with Kamala Harris vs Donald Trump. Just like the original site, many questions are randomized (with an option to answer them all).</li><img src="https://itsastronomical.com/assets/2024/2024introbannerdsa.png" width="800"><li><b>2024: Divided States of America</b> takes the base of <b>2024</b> and uses it to add alternate history elements to allow for a less historical route, where you start as President Biden or Former President Donald Trump. This version also features less vanilla content, such as Choose Your Own Adventure, plenty of endings, and soundtracks for each side. <b>2024: Divided States of America</b> is currently not released yet.</li><br>`;
+document.styleSheets[0].insertRule(".inner_window_w_desc{ margin:1em 0 0 0.5em !important;padding-top: 0.5em !important;}", 0);
+document.styleSheets[0].insertRule(".inner_window_question{ margin:1em 0 .7em 0.5em !important;padding-top: 0.3em !important;}", 0);
+document.styleSheets[0].insertRule("#main_content_area { height:82% !important;}", 0);
+
+
+campaignTrail_temp.modBoxTheme = {
+    "header_color": "#840f1c",
+    "header_text_color": "#ffffff",
+    "description_text_color": "#000000",
+    "description_background_color": "#e8fbff",
+    "main_color": "#bfe6ff",
+    "secondary_color": "#700016",
+    "ui_text_color": "#FFFFFF"
+}
+
+campaignTrail_temp.global_parameter_json = [
+    {
+        "model": "campaign_trail.global_parameter",
+        "pk": 1,
+        "fields": {
+            "vote_variable": 1.125,
+            "max_swing": 0.1,
+            "start_point": 0.94,
+            "candidate_issue_weight": 10,
+            "running_mate_issue_weight": 3,
+            "issue_stance_1_max": -0.71,
+            "issue_stance_2_max": -0.3,
+            "issue_stance_3_max": -0.125,
+            "issue_stance_4_max": 0.125,
+            "issue_stance_5_max": 0.3,
+            "issue_stance_6_max": 0.71,
+            "global_variance": 0.01,
+            "state_variance": 0.005,
+            "question_count": 25,
+            "default_map_color_hex": "#C9C9C9",
+            "no_state_map_color_hex": "#999999"
+        }
+    }
+]
+
+campaignTrail_temp.election_json = [
+    {
+        "model": "campaign_trail.election",
+        "pk": 20,
+        "fields": {
+            "year": 2024,
+            "summary": "<p>A rocky four years under President Biden have culminated in the renomination of Donald Trump, followed by the earth-shaking withdrawal of Joe Biden from the race.</p><li>Donald Trump, fresh off of 34 felony convictions, only seems to trail Harris very narrowly. Can he keep his momentum going all the way through Election Day? Is the momentum even real?</li><li>Kamala Harris assumed the Democratic nomination with the strong support of President Biden. She enters the general election rested and ready, riding a surge of enthusiasm and record fundraising.</li></ul>",
+            "image_url": "https://itsastronomical.com/assets/2024/2024bryan.png",
+            "winning_electoral_vote_number": 270,
+            "advisor_url": "https://itsastronomical.com/assets/2024/advisorfinal.png",
+            "recommended_reading": "<div style='overflow-y:scroll;height:370px;'> <h2>The 2024 Presidential Election</h2><h3>by ItsAstronomical and Martha</h3><h4>Thoughts/Devlog</h4><h3>Donald Trump and the Republicans</h3><img src='https://itsastronomical.com/assets/2024/trumpwound.png' height='100px'><p>Martha did most of Trump's writing. Regardless of your thoughts on him, we found him quite fun to write for.</p><p>One thing I think Bryan did in the original scenarios was balance the writing with the absurdity of Trump's usual dialogue.</p><p>We think we did a good job not losing what each answer is meant to do.<h3>Kamala Harris and the Democratic Party</h3><img src='https://itsastronomical.com/assets/2024/harris.png' height='100px'><p>As someone who worked for and voted for Harris, I think I did a good job balancing the failures of her campaign.</p><p>My understanding of the situation was that she led post-September Debate, but fumbled the advantage badly.</p><p>As such, the mod may reflect that, although I know that's not the consensus amongst former advisors.</p><p>The margins are partially based off what I saw on the ground, in that regard.</p><h4>Special Thanks</h4><p>Thanks to all the playtesters, DSA devs, other devs, my wife, your momma, and uh, idk. </p><p>- Astronomical</p><img src='https://itsastronomical.com/assets/astro_in_space_woooo.png' width='800px'></img><br><br><p>What are you doing here?! Go play the mod again!</p></div>",
+            "has_visits": 1,
+            "no_electoral_majority_image": "https://www.jetsimon.com/public/static/images/2012-no-majority.jpg",
+            "creator": "Dan Bryan",
+            "display_year": "2024"
+        }
+    },
+    {
+        "model": "campaign_trail.election",
+        "pk": 21,
+        "fields": {
+            "year": 2024,
+            "display_year": "2024 - Divided",
+            "summary": "<p><b>COMING SOON - </b>America is a country scarred by COVID, fiscally insecure from economic policy, and polarized by Trump. Biden promised a return to normalcy - and doubts have festered that he may not be able to fulfill the core promise of his campaign. Failures in Afghanistan and economic woes have sent his approvals into a death spiral.</p><p>Meanwhile, Donald Trump left Washington as a pariah in 2021, and has become more authoritarian than ever. But as he prepares a comeback, seeking revenge and retribution, many on both sides believe that American democracy - and the identity of the nation - is on the line and the ballot.</p>",
+            "image_url": "https://itsastronomical.com/assets/2024/DSAintro.png",
+            "winning_electoral_vote_number": 270,
+            "advisor_url": "https://i.imgur.com/NbyHGL8.png",
+            "recommended_reading": "<ul>\n<li><a href=https://www.chicagotribune.com/opinion/editorials/ct-edit-chicago-tribune-biden-endorsement-20200925-lnyxsb5qvrftnjjmj3rnzj33jy-story.html>Our Case For Joe Biden</a></li>\n<li><a href=https://nationalinterest.org/feature/case-trump-166808>The Case For Trump</a></li>\n<li><a href=https://www.npr.org/2020/11/18/935730100/how-biden-won-ramping-up-the-base-and-expanding-margins-in-the-suburbs>How Biden Won: Ramping Up The Base And Expanding Margins In The Suburbs</a></li>\n<li><a href=https://www.prospectmagazine.co.uk/politics/donald-trump-joe-biden-us-election-almost-win-votes-concede>Why Did Trump Almost Win?</a></li>\n<li><a href=https://www.hoover.org/research/no-evidence-voter-fraud-guide-statistical-claims-about-2020-election>No Evidence For Voter Fraud: A Guide To Statistical Claims About The 2020 Election</a></li>\n</ul>",
+            "has_visits": 1,
+            "no_electoral_majority_image": "../static/images/2012-no-majority.jpg"
+        }
+    }
+]
+
+campaignTrail_temp.temp_election_list = [
+    {
+        "id": 21,
+        "year": 2024,
+        "is_premium": 0,
+        "display_year": "2024 - Divided"
+    },
+    {
+        "id": 20,
+        "year": 2024,
+        "is_premium": 0,
+        "display_year": "2024"
+    }
+]
+
+campaignTrail_temp.candidate_json = [
+    // 2024 Bryanesque Candidates/VPs
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 200,
+        "fields": {
+            "first_name": "Donald",
+            "last_name": "Trump",
+            "election": 20,
+            "party": "Republican",
+            "state": "Florida",
+            "priority": 2,
+            "description": "<p>Donald Trump is without a doubt the most infamous figure in recent American history. Eight years ago, he shocked the political establishment, romping to victory in a massive upset while losing the popular vote. Four years later, he lost reelection to Joe Biden in an incredibly contentious election, even if he’ll never admit it. He seems nearly poised to win this time, despite 34 criminal convictions, two high-profile impeachments, and one insurrection.</p><p>Politically, Trump is the furthest right he's ever been. His campaign has been described as “openly authoritarian,” marked by calls to terminate the U.S. Constitution and promised retribution against his political opponents. He has even gone so far as to claim that he wants to become “a dictator on day one.” His supporters are fervent, as are his opponents, and many believe a second nonconsecutive Trump term is a distinct possibility.</p>",
+            "color_hex": "#FF0000",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 1,
+            "image_url": "https://imgur.com/KQL9a1i.png",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "'",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 201,
+        "fields": {
+            "first_name": "Kamala",
+            "last_name": "Harris",
+            "election": 20,
+            "party": "Democratic",
+            "state": "California",
+            "priority": 1,
+            "description": "<p>Kamala Harris wasn't supposed to be here. In fact, her candidacy was dreaded, cited by many as the single strongest argument for Biden's candidacy in 2024. Yet Biden's dismal debate performance and the subsequent Democratic panic sank his polling numbers, leading to his withdrawal under fire in late July.</p><p>Harris’ candidacy has breathed life into a party once resigned to defeat, but that only solves half the problem. She needs to find her footing, define herself to a public largely unfamiliar with her, and run a strong campaign all within a hundred days if she wants to rally her party and dispatch Donald Trump for the second — and hopefully last — time.",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/xy6OS3F.png",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "'",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 202,
+        "fields": {
+            "first_name": "Robert F.",
+            "last_name": "Kennedy/Others",
+            "election": 20,
+            "party": "Independent",
+            "state": "California",
+            "priority": 3,
+            "description": "<p>nutjob</p>",
+            "color_hex": "#FFFF00",
+            "secondary_color_hex": "#FFFFC0",
+            "is_active": 0,
+            "image_url": "'",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "'",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 203,
+        "fields": {
+            "first_name": "Jill",
+            "last_name": "Stein/Others",
+            "election": 20,
+            "party": "Green",
+            "state": "Massachusetts",
+            "priority": 4,
+            "description": "'",
+            "color_hex": "#00C100",
+            "secondary_color_hex": "#A1FFA1",
+            "is_active": 0,
+            "image_url": "'",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "'",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 204,
+        "fields": {
+            "first_name": "J. D.",
+            "last_name": "Vance",
+            "election": 20,
+            "party": "Republican",
+            "state": "Ohio",
+            "priority": 5,
+            "description": "'",
+            "color_hex": "#FF0000",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/e2lEQxC.png",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "<p>J. D. Vance’s political career started two years ago when his U.S. Senate bid succeeded, mostly due to the coveted Trump endorsement.  Previously, he was known for his 2016 book <em>Hillbilly Elegy</em>, a memoir about his upbringing in rural Appalachia.</p><p>Vance hails from the populist wing of the Republican Party. He supports high protective tariffs, a hard-line against China, and strongly opposes aid to Ukraine. He marches in lockstep with Trump on most issues, and his selection would be seen as a sign of confidence and a doubling down on Trump's core appeal.</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 205,
+        "fields": {
+            "first_name": "Doug",
+            "last_name": "Burgum",
+            "election": 20,
+            "party": "Republican",
+            "state": "North Dakota",
+            "priority": 6,
+            "description": "'",
+            "color_hex": "#FF0000",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/kUWDNCK.png",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "<p>Doug Burgum declined to run for a third term as Governor of North Dakota, instead mounting a longshot bid for the Republican nomination for president. He lost to Trump, but has since landed a spot as the Trump campaign’s chief advisor for energy policy.</p><p>North Dakota is hardly a swing state, and Burgum would likely do little to expand the ticket’s appeal to any distinct group of swing voters. But he has amassed quite a fortune in the tech industry, and that money would be invaluable to the campaign, especially with the big bucks Biden is raking in right now. However, the six-week abortion ban he signed as governor last year may complicate his appeal to moderate swing voters.</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 206,
+        "fields": {
+            "first_name": "Ben",
+            "last_name": "Carson",
+            "election": 20,
+            "party": "Republican",
+            "state": "Michigan",
+            "priority": 7,
+            "description": "'",
+            "color_hex": "#FF0000",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/vJ0514O.png",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "<p>Ben Carson’s dark horse 2016 candidacy and expertise in the medical field landed him a spot in the Trump Administration in charge of the Department of Housing and Urban Development, in which he served from 2017 to 2021. Carson was loyal and kept his head down, even after most of Trump’s cabinet resigned in the wake of the January 6th attack. </p><p>Carson would make for the first Black American on a Republican ticket, an interesting first that is sure to shake up the race. His soft-spoken, cerebral presence could woo over some voters uncomfortable with Trump himself, although Carson is definitely something of a political lightweight.</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 207,
+        "fields": {
+            "first_name": "Marco",
+            "last_name": "Rubio",
+            "election": 20,
+            "party": "Republican",
+            "state": "Florida",
+            "priority": 8,
+            "description": "'",
+            "color_hex": "#FF0000",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/iBqZm4g.png",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "<p>Marco Rubio is easily the most experienced politician on Trump’s shortlist, and the only one to have served in more than one elected office. He ran against Trump for the Republican nomination in 2016, earning him the derisive nickname “Little Marco.”</p><p>Since then, he has mended fences with the Trump camp, although he remains one of the most prominent Republicans to be decidedly non-MAGA, and would make for a more mainstream voice on the ticket. Also, note that either Trump or Rubio would have to move their residence to make this ticket happen, but that’s only a slight hassle.</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 209,
+        "fields": {
+            "first_name": "Tim",
+            "last_name": "Walz",
+            "election": 20,
+            "party": "Democratic",
+            "state": "Minnesota",
+            "priority": 9,
+            "description": "'",
+            "color_hex": "#1241d3",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/VNl8VIC.png",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "<p>Tim Walz boasts six House terms representing rural Minnesota and six more years as Governor, wielding a Democratic trifecta to pursue a boldly progressive agenda. His humble background as a public school teacher and a U.S. Army soldier give him an attractive biography, especially compared to the disastrous J. D. Vance.</p><p>It's worth noting that some progressives may take issue with Walz’ support for the Minneapolis Police Department and his quick activation of the National Guard during the 2020 Black Lives Matter protests. Also, Minnesota is already expected to go to Harris this year, although Walz could be helpful in neighboring Wisconsin.</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 210,
+        "fields": {
+            "first_name": "Mark",
+            "last_name": "Kelly",
+            "election": 20,
+            "party": "Democratic",
+            "state": "Arizona",
+            "priority": 10,
+            "description": "'",
+            "color_hex": "#1241d3",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/JoSciDJ.png",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "<p>Over the past four years, Mark Kelly has defended his Senate seat twice, proving his remarkable staying power in a state that, despite being won by Joe Biden four years ago, is still considered light red at the local level. His impressive electoral record combined with his star power as a Gulf War naval aviator and a veteran NASA astronaut make him a likely formidable choice for running mate.</p><p>However, he is not the most captivating public speaker, and his elevation to the Vice Presidency would put his Senate seat up for grabs in a 2026 special election, coinciding with the Democrats’ “six year itch” midterm and providing a potential gain for Republicans.",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 211,
+        "fields": {
+            "first_name": "Josh",
+            "last_name": "Shapiro",
+            "election": 20,
+            "party": "Democratic",
+            "state": "Pennsylvania",
+            "priority": 11,
+            "description": "'",
+            "color_hex": "#1241d3",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/VreV3aj.png",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "<p>Two years ago, Josh Shapiro romped to victory in the Keystone State, crushing Trump-endorsed Doug Mastriano by nearly fifteen percentage points. Young, moderate, Jewish, and with powerful oratory skills, Shapiro would virtually guarantee Harris the state of Pennsylvania and its 19 electoral votes — crucial for an Electoral College victory.</p><p>Elsewhere, though, he may cause some problems. His strong support for private school vouchers and his emphatically pro-Israel record (including volunteering for the IDF) would greatly dishearten the progressive base, and questions persist about his office’s roundly criticized response to a sexual harassment scandal involving one of his closest aides last year.</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 213,
+        "fields": {
+            "first_name": "Andy",
+            "last_name": "Beshear",
+            "election": 20,
+            "party": "Democratic",
+            "state": "Kentucky",
+            "priority": 13,
+            "description": "'",
+            "color_hex": "#1241d3",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/aXdMx4u.png",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "<p>Andy Beshear is one of the most popular Democratic governors in the country, maintaining strong approvals in a state Donald Trump won in 2020 by a wide margin. His record of crisis leadership is even more impressive, and he has made headlines as a relentless defender of LGBTQ rights in a solid red state.</p><p>His electoral success in such a red state is indicative of strong crossover appeal, and his folksy, southern accent could contrast well with the big city prosecutor persona of Kamala Harris. But he is definitely untested on the national stage, and his native Kentucky is not considered winnable this year.</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 214,
+        "fields": {
+            "first_name": "Nicole",
+            "last_name": "Shanahan",
+            "election": 20,
+            "party": "Libertarian",
+            "state": "California",
+            "priority": 14,
+            "description": "'",
+            "color_hex": "#ffc677",
+            "secondary_color_hex": "#FFFFC0",
+            "is_active": 0,
+            "image_url": "'",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "'",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 215,
+        "fields": {
+            "first_name": "unknown",
+            "last_name": "running mate",
+            "election": 20,
+            "party": "Green",
+            "state": "Unknown",
+            "priority": 15,
+            "description": "'",
+            "color_hex": "#00C100",
+            "secondary_color_hex": "#A1FFA1",
+            "is_active": 0,
+            "image_url": "'",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "'",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    }
+]
+
+campaignTrail_temp.running_mate_json = [
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 157106,
+        "fields": {
+            "candidate": 304,
+            "running_mate": 312
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 121566,
+        "fields": {
+            "candidate": 303,
+            "running_mate": 311
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 117739,
+        "fields": {
+            "candidate": 301,
+            "running_mate": 306
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 102302,
+        "fields": {
+            "candidate": 301,
+            "running_mate": 308
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 178260,
+        "fields": {
+            "candidate": 301,
+            "running_mate": 307
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 167134,
+        "fields": {
+            "candidate": 301,
+            "running_mate": 309
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 170659,
+        "fields": {
+            "candidate": 300,
+            "running_mate": 305
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 161,
+        "fields": {
+            "candidate": 203,
+            "running_mate": 215
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 160,
+        "fields": {
+            "candidate": 202,
+            "running_mate": 214
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 155,
+        "fields": {
+            "candidate": 201,
+            "running_mate": 209
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 150,
+        "fields": {
+            "candidate": 200,
+            "running_mate": 204
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 151,
+        "fields": {
+            "candidate": 200,
+            "running_mate": 205
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 153,
+        "fields": {
+            "candidate": 200,
+            "running_mate": 207
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 157,
+        "fields": {
+            "candidate": 201,
+            "running_mate": 211
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 159,
+        "fields": {
+            "candidate": 201,
+            "running_mate": 213
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 152,
+        "fields": {
+            "candidate": 200,
+            "running_mate": 206
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 156,
+        "fields": {
+            "candidate": 201,
+            "running_mate": 210
+        }
+    }
+]
+
+campaignTrail_temp.opponents_default_json = [
+    {
+        "election": 21,
+        "candidates": [
+            300,
+            301,
+            303,
+            304
+        ]
+    },
+    {
+        "election": 20,
+        "candidates": [
+            201,
+            200,
+            202,
+            203
+        ]
+    }
+]
+
+campaignTrail_temp.opponents_weighted_json = [
+    {
+        "election": 21,
+        "candidates": [
+            300,
+            301,
+            303,
+            304
+        ]
+    },
+    {
+        "election": 20,
+        "candidates": [
+            201,
+            200,
+            202,
+            203
+        ]
+    }
+]
+
+jet_data = {
+    "headerColor": "#0c1b38",
+    "windowColor": "#ffffff",
+    "containerColor": "#1750d7",
+    "innerWindowColor": "#ffffff",
+    "bannerImageUrl": "https://i.imgur.com/w0jkXba.png",
+    "backgroundImageUrl": "https://i.imgur.com/mQznF9M.png",
+    "endingTextColor": "#000000",
+    "customQuote": "",
+    "gameTitle": "The Campaign Trail"
+}
+
+// :(
+
+HistHexcolour = ["#FF0000", "#0000FF", "#FFFF00", "#00C100"];
+HistName = [
+  " Donald Trump",
+  " Kamala Harris",  
+  " Jill Stein/Others",
+  " Robert F. Kennedy Jr./Others",
+
+];
+HistEV = [312, 226, 0, 0];
+HistPV = ["77,301,997", "75,017,626", "1,695,116", "1,406,519"];
+HistPVP = ["49.8%", "48.3%", "1.0%", "0.0%"];
+
+campaignTrail_temp.achievements = {
+    "Never Surrender!" : {
+        "image" : "https://itsastronomical.com/assets/2024/ach/dba/surrender.png",
+        "description" : "As Donald Trump, win the 2024 election.",
+        "cannotBeCheated" : true
+    },
+    "They're Not After You" : {
+        "image" : "https://itsastronomical.com/assets/2024/ach/dba/notafter.png",
+        "description" : "As Donald Trump, win at least 312 electoral votes on hard difficulty.",
+        "cannotBeCheated" : true
+    },
+    "Burgum Patriots in Control" : {
+        "image" : "https://itsastronomical.com/assets/2024/ach/dba/burgum.png",
+        "description" : "Win 350 electoral votes with the Trump/Burgum ticket.",
+        "cannotBeCheated" : true
+    },
+    "Empire State of Mind" : {
+        "image" : "https://itsastronomical.com/assets/2024/ach/dba/ny.png",
+        "description" : "As Donald Trump, win New York.",
+        "cannotBeCheated" : true
+    },
+    "Selzer Awoken" : {
+        "image" : "https://itsastronomical.com/assets/2024/ach/dba/selzer.png",
+        "description" : "As Donald Trump, lose Iowa.",
+        "cannotBeCheated" : true
+    },
+    "81 Million Votes, My Ass" : {
+        "image" : "https://itsastronomical.com/assets/2024/ach/dba/81.png",
+        "description" : "As Donald Trump, win 81,000,000 votes.",
+        "cannotBeCheated" : true
+    },
+    "Third Time's Not The Charm" : {
+        "image" : "https://itsastronomical.com/assets/2024/ach/dba/goodboy.png",
+        "description" : "As Donald Trump, lose the popular vote and still manage to win. Again.",
+        "cannotBeCheated" : true
+    },
+    "Project 2024" : {
+        "image" : "https://itsastronomical.com/assets/2024/ach/dba/p2025.png",
+        "description" : "As Donald Trump, win despite endorsing Project 2025.",
+        "cannotBeCheated" : true
+    },
+    "Possibly Even the Ocean" : {
+        "image" : "https://itsastronomical.com/assets/2024/ach/dba/palestine.png",
+        "description" : "As Donald Trump, buck the party playbook on the Middle East, and still win.",
+        "cannotBeCheated" : true
+    },
+    "Not Going Back!" : {
+        "image" : "https://itsastronomical.com/assets/2024/ach/dba/kamala.png",
+        "description" : "As Kamala Harris, win the 2024 election.",
+        "cannotBeCheated" : true
+    },
+    "Balls to the Walz" : {
+        "image" : "https://itsastronomical.com/assets/2024/ach/dba/walz.png",
+        "description" : "Win 319 electoral votes with the Harris/Walz ticket.",
+        "cannotBeCheated" : true
+    },
+    "Texas Tough" : {
+        "image" : "https://itsastronomical.com/assets/2024/ach/dba/texas.png",
+        "description" : "As Kamala Harris, win Texas.",
+        "cannotBeCheated" : true
+    },
+    "We're Not Aiming For PA!" : {
+        "image" : "https://itsastronomical.com/assets/2024/ach/dba/birds.png",
+        "description" : "As Kamala Harris, win without Pennsylvania.",
+        "cannotBeCheated" : true
+    },
+    "Expanding The Map" : {
+        "image" : "https://itsastronomical.com/assets/2024/ach/dba/jersey.png",
+        "description" : "As Kamala Harris, lose New Jersey.",
+        "cannotBeCheated" : true
+    },
+    "Sith Apprentice" : {
+        "image" : "https://itsastronomical.com/assets/2024/ach/dba/sith.png",
+        "description" : "As Kamala Harris, win after agreeing to defend Biden's legacy.",
+        "cannotBeCheated" : true
+    },
+    "The Rise of a Midwest Prince" : {
+        "image" : "https://itsastronomical.com/assets/2024/ach/dba/beshear.png",
+        "description" : "As Kamala Harris, with the Harris/Beshear ticket.",
+        "cannotBeCheated" : true
+    },
+    "Blast From The Past" : {
+        "image" : "https://itsastronomical.com/assets/2024/ach/dba/biden.png",
+        "description" : "As Kamala Harris, get a map identical to the 2020 election.",
+        "cannotBeCheated" : true
+    },
+    "Von Dutch" : {
+        "image" : "https://itsastronomical.com/assets/2024/ach/dba/brat.png",
+        "description" : "As Kamala Harris, lose the popular vote while winning the Electoral College.",
+        "cannotBeCheated" : true
+    }
+}
+
+corrr = '\n              <h2>THE CAMPAIGN TRAIL</h2>\n            '; 
+document.getElementById("header").src = "https://www.newcampaigntrail.com/static/images/banner_classic.png";
+document.body.style.backgroundColor = "#bfe6ff";
+document.body.background = "";
+$(".container")[0].style.backgroundColor = "#fff";
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#700016";
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#e8fbff";
+$("#game_window")[0].style.backgroundColor = "#bfe6ff";
+$(".footer")[0].style.color = "#000";
+document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#e8fbff!important;}</style>";
+document.head.innerHTML += "<style>#results_container {color:#000000;}";
+
+var changeGameDisp = (hide) => {
+    disp = "";
+    if (hide) {
+      disp = "none";
+    }
+    document.getElementsByClassName("inner_window_w_desc")[0].style.display = disp
+  };
+
+e.creditsPage = () => {
+    credits_html = `
+   <h2>Project Leads</h2><img src="https://itsastronomical.com/assets/miniastro.png" width="60px">
+    <h4><font color="#5d81e3">ItsAstronomical</font> - Coding, Writing</h4>
+    <img src="https://static-assets-1.truthsocial.com/tmtg:prime-ts-assets/accounts/avatars/107/854/629/747/368/010/original/0c5c53c1f17152e7.jpeg" width="60px">
+    <h4><font color="#6cc778">Martha</font> - Writing</h4>
+    <h2>Writers - Divided States of America</h2>
+    <h4>Bonbishka</h4>
+    <h4>Pedro/Liutenant_</h4>
+    <h4>Jake Dionysos</h4>
+    <h4>Emmythegremlin</h4>
+    <h4>Wafflesdadog</h4>
+    <h4>Celia</h4>
+    <h4>NoReading</h4>
+    <h4>Spar-kie</h4>
+    <h4>Greeleycrat</h4>
+    <h2>Custom Features (Mostly for Divided States)</h2>
+    <h4></h4>
+    <h4><font color="#E97451">Rubix - Candidate Switcher/Bugfixing</font></h4>
+    <h4><font color="#87CEEB">Mangolith - Ending/Bugfixing</font></h4>
+    <h4><font color="#569c7d">DecstarG - Credits, Midgame VP Switcher</font></h4>
+    <h4><font color="#0fd7d4">Nina - Base for HQ Menus</font></h4>
+    <h4><font color="#b42813">Liquid Astro - Bunnyhop</font></h4>
+    <h2>Playtesters/Other Adivce</h2>
+    <h4>Obummer</h4>
+    <h4>MassachusettsForStockdale</h4>
+    </div>
+    `
+    changeGameDisp(true);
+    var spacer = document.createElement("amongusspacerthisisntarealelement");
+    spacer.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+    document
+      .getElementsByClassName("inner_window_w_desc")[0]
+      .children[1].appendChild(spacer);
+      changeGameDisp(true);
+      var menuHeader = document.createElement("div");
+      menuHeader.classList.add("inner_window_front");
+      menuHeader.innerHTML = `<h1 style='font-family: "Times New Roman";'><font color='#0496f7'>The 2024 Election: Credits</font></h1>`;
+      menuHeader.id = "SOTUheader";
+      menuHeader.style = "height: 50px;background-color:#2d2d2d";
+      var newMenu = document.createElement("div");
+      newMenu.classList.add("inner_window_front");
+      newMenu.id = "SOTUmenu";
+      newMenu.style = `height:320px;background-color:#2d2d2d;color:white;overflow-y: scroll;`;
+  
+      newMenu.innerHTML = credits_html;
+      let z = document.getElementById("game_window");
+      var backButton = document.createElement("button");
+      backButton.style =
+        "position: relative; bottom: -13px; left: -380px; width: 120px; height: 50px; font-size: 20px; padding-top: 5px; padding-left: 8px;";
+      backButton.id = "backSOTUBtn";
+      backButton.innerHTML = `<b>BACK</b>`;
+      backButton.onclick = function () {
+        document.getElementById("SOTUheader").remove();
+        document.getElementById("SOTUmenu").remove();
+        document.getElementById("backSOTUBtn").remove();
+        changeGameDisp(false);
+      };
+      z.appendChild(menuHeader);
+      z.appendChild(newMenu);
+      z.appendChild(backButton);
+  
+  }
+  
+  e.credits = "<button onclick='e.creditsPage()'>Astro, Martha, and...</button>"
+
+  styling = document.createElement("style");
+  document.head.appendChild(styling);
+
+
+  campaignTrail_temp.bunnyhop = true;
+  function addColor() {
+          var difficultyDiv = document.getElementById("difficulty_level");
+          if (difficultyDiv && !document.getElementById("bunnyhopDropdown")) {
+              var questionCounter = ["25 (Randomized Questions)", "30 (Expanded)", "35 (Full)"];
+              var questions = [25, 30, 35];
+              var dropdown = document.createElement("select");
+              dropdown.id = "bunnyhopDropdown";
+  
+              for (var i = 0; i < questions.length; i++) {
+                  var opt = document.createElement("option");
+                  opt.text = questionCounter[i];
+                  if (questionCounter[i] === "25 (Randomized Questions)") {
+                      opt.selected = true;
+                  }
+                  opt.value = questions[i];
+                  dropdown.options.add(opt);
+              }
+  
+              var form = document.createElement("form");
+              form.name = "bunnyhopForm";
+              var header = document.createElement("h3");
+              header.textContent = "Select Question Count:";
+              form.appendChild(header);
+              form.appendChild(dropdown);
+              difficultyDiv.appendChild(form);
+  
+              dropdown.addEventListener("change", function() {
+  
+                  if (this.value == 25){
+                      campaignTrail_temp.bunnyhop = true;
+                  }
+                  else{
+                      campaignTrail_temp.bunnyhop = false;
+                  }
+                  campaignTrail_temp.global_parameter_json[0].fields.question_count = this.value;
+              });
+  
+              var colourForm = document.createElement("form");
+              colourForm.name = "colour_selection";
+              var colourHeader = document.createElement("h3");
+              colourHeader.textContent = "Enable Expanded Styling?";
+              colourForm.appendChild(colourHeader);
+              var colourCheckbox = document.createElement("input");
+              colourCheckbox.type = "checkbox";
+              colourCheckbox.id = "colour";
+              colourCheckbox.checked = false;
+              colourForm.appendChild(colourCheckbox);
+              difficultyDiv.appendChild(colourForm);
+  
+              colourCheckbox.addEventListener("change", function() {
+                  if (this.checked){
+                      campaignTrail_temp.candidate_json[0].fields.color_hex = '#b31200'
+                      campaignTrail_temp.candidate_json[1].fields.color_hex = '#052e71'
+                      campaignTrail_temp.candidate_json[2].fields.color_hex = '#ffc677'
+                      campaignTrail_temp.candidate_json[3].fields.color_hex = '#669c35'
+
+                  }
+                  else{          
+                    campaignTrail_temp.candidate_json[0].fields.color_hex = '#FF0000'
+                    campaignTrail_temp.candidate_json[1].fields.color_hex = '#0000FF'
+                    campaignTrail_temp.candidate_json[2].fields.color_hex = '#FFFF00'
+                    campaignTrail_temp.candidate_json[3].fields.color_hex = '#00C100'
+                  }
+              });
+  
+              var difficultyForm = document.querySelector('form[name="difficulty_level_selection"]');
+              var difficultyHeader = difficultyForm.querySelector('h3');
+              difficultyHeader.textContent = "Select campaign difficulty:";
+  
+              var forms = document.querySelectorAll("#difficulty_level form");
+              for (var i = 0; i < forms.length; i++) {
+                forms[i].style.display = "inline-block";
+                forms[i].style.paddingLeft = "10px"; // adjust the value as needed
+                forms[i].style.paddingRight = "10px"; // adjust the value as needed
+              }
+  
+          }
+  }
+  // the wrapper here is the same that makes sure your music player doesn't exist twice basically
+  if(!campaignTrail_temp.observer){
+  
+      campaignTrail_temp.observer = true
+  
+      // Define the MutationObserver
+      let masterObserver = new MutationObserver(masterFunction);
+      function masterFunction() {
+          masterObserver.disconnect();
+  
+          addColor();
+  
+          masterObserver.observe(document.body, { childList: true, subtree: true });
+      }
+  
+      // Start observing the document with the master observer
+      masterObserver.observe(document.body, { childList: true, subtree: true });
+  }
