@@ -1,0 +1,691 @@
+e=campaignTrail_temp
+
+var hasMusic = false;
+
+RecReading=true
+
+selectedTheme.text_col="white"
+
+campaignTrail_temp.election_json = JSON.parse("[{\"model\": \"campaign_trail.election\", \"pk\": 15, \"fields\": {\"year\": 1988, \"summary\": \"<div style='margin-top: -1.75em;'><p>The late 80s have been stained with a deep recession. Artificially low interest rates combined with massive tax cuts and military spending has caused the country to feel the sting of calamity. Once thought to be a new golden age of America's life has turned from prosperity to protests, riots, crime, and economic instability. After these tumultuous years of disorder, the nation seems desperate for a new direction and move past the events of Black Monday. It seems that both parties have listened to the downtroddens prayer, as young and popular Gary Hart is in the Democrat's column and political outsider and televangelist Pat Robertson is in the Republican camp.</p><p><ul style='margin-top: -1.0em;'><li>Hart must focus on the message of change all while keeping his squeaky clean image intact.</li><li>Robertson must unite the broken Republican party while dodging the constant controversies bubbling from his mouth and his past.</li></ul></p></div>\", \"site_description\": \"<p>The late 80s have been stained with a deep recession. Artificially low interest rates combined with massive tax cuts and military spending has caused the country to feel the sting of calamity. Once thought to be a new golden age of America's life has turned from prosperity to protests, riots, crime, and economic instability. After these tumultuous years of disorder, the nation seems desperate for a new direction and move past the events of Black Monday. It seems that both parties have listened to the downtroddens prayer, as young and popular Gary Hart is in the Democrat's column and political outsider and televangelist Pat Robertson is in the Republican camp.</p><ul><li>Hart must focus on the message of change all while keeping his squeaky clean image intact.</li><li>Robertson must unite the broken Republican party while dodging the constant controversies bubbling from his mouth and his past.</li></ul>\", \"image_url\": \"https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDNjNGViZTJiZmFmNDI2NDI5ZWQ4ZTA5Yzk2MWQxZGE2NTk5ZGM3MyZjdD1n/ZyHKIdXzSPb6msfe6b/giphy.gif\", \"winning_electoral_vote_number\": 270, \"advisor_url\": \"\", \"recommended_reading\": \"\", \"has_visits\": 1, \"no_electoral_majority_image\": \"\"}}]");
+
+campaignTrail_temp.candidate_json = JSON.parse("[{\"model\": \"campaign_trail.candidate\", \"pk\": 152, \"fields\": {\"first_name\": \"Gary\", \"last_name\": \"Hart\", \"election\": 15, \"party\": \"Democratic\", \"state\": \"Colorado\", \"priority\": 1, \"description\": \"<p>Gary Warren Hart is the young, telegenic senator from Colorado and the leader of the Atari-Democrat movement. Hart is mainly known for running George McGovern's unsuccessful presidential bid against Richard Nixon in 1972 and narrowly losing the Democratic nomination to Walter Mondale in 1984. With Hart’s moderate image and youthful appearance, he is seen as a man destined to become president, much as his hero John Kennedy was.</p><p>However, Hart may have some secrets below the surface that could shift the gears of fate against him…</p>\", \"color_hex\": \"#3062b3\", \"secondary_color_hex\": \"#8ab6ff\", \"is_active\": 1, \"image_url\": \"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2NjYzU0NjgwMzBjMDEyMmI4ZjNhMTBlYWRkNDMzZmIzNjJkODViZSZjdD1n/LVhoKBjktTRooCnQxX/giphy.gif\", \"electoral_victory_message\": \"<h3>Congratulations! You have won the 1988 election.</h3><p>This was to be expected, the country was gripped by a deep recession, and many were looking for any solution to their problem. However, you’d be lying to yourself if you said this result was satisfying. This was supposed to be the year that Reaganesque conservatism was supposed to be put through the wringer. I mean, why not? The Republicans nominated a radical and people were struggling under a poor economy. The Democrats were supposed to dominate, not just the House, or the Senate, but the presidency as well.</p><p>But that didn’t happen. Perhaps it was a combination of Pats’ well-run campaign on top of your embarrassing scandal. Regardless, you’ve won the presidency. Democrats have scored quite the victories down-ballot, despite your lackluster mandate. You will still have to compromise with your left flank to keep most of the party happy.</p><p>Hopefully, you’ll be able to invest in new forms of energy and technology and finally get the country out of this deep recession.</p>\", \"electoral_loss_message\": \"<h3>Sorry. You have lost the 1988 election.</h3><p>Well, this is a surprise. In a year where a recession gripped the land and an incumbent administration was as unpopular as it is, Pat Robertson has achieved what many thought to be impossible. Perhaps it was the crime wave or the popularity of Bush’s caretaker presidency, maybe Robertson just ran a dynamite campaign, or maybe you lost because of why most people think you lost: your infidelity.</p><p>Regardless, this is a great embarrassment for the Democratic party. In a year with such hope and a yearning for change, you’ve scorned what seemed like a perfect opportunity to bring a Democrat back into the White House. Regardless, Cuomo, Dukakis, Jackson, and a slew of other Democrats have teased a potential run in ’92, but who knows what will happen in four years under President Pat Robertson?</p><p>You wanted to be like your hero Kennedy, but you just weren’t up to it.</p>\", \"no_electoral_majority_message\": \"<h3>Congratulations! You have won the 1988 election.</h3><p>This was to be expected, the country was gripped by a deep recession, and many were looking for any solution to their problem. However, you’d be lying to yourself if you said this result was satisfying. This was supposed to be the year that Reaganesque conservatism was supposed to be put through the wringer. I mean, why not? The Republicans nominated a radical and people were struggling under a poor economy. The Democrats were supposed to dominate, not just the House, or the Senate, but the presidency as well.</p><p>But that didn’t happen. Perhaps it was a combination of Pats’ well-run campaign on top of your embarrassing scandal. Regardless, you’ve won the presidency. Democrats have scored quite the victories down-ballot, despite your lackluster mandate. You will still have to compromise with your left flank to keep most of the party happy.</p><p>Hopefully, you’ll be able to invest in new forms of energy and technology and finally get the country out of this deep recession.</p>\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 153, \"fields\": {\"first_name\": \"Pat\", \"last_name\": \"Robertson\", \"election\": 15, \"party\": \"Republican\", \"state\": \"Virginia\", \"priority\": 2, \"description\": \"<p>Marion Gordon “Pat” Robertson is the famous media mogul televangelist and leader of the “Charismatic Movement” within protestant evangelicalism. Pat is known for his fiery language, bombastic statements, and his large fan base of the “Christian Right.” Robertson narrowly defeated Vice-President George H.W. Bush for the nomination by capitalizing on his outsider appeal and religious background. Despite this victory, Pat is seen as behind his opponent due to some of his dogmatic statements and controversial past.</p><p>However, Pat may once again pull off an upset, after all, stranger things have happened…</p>\", \"color_hex\": \"#de3e56\", \"secondary_color_hex\": \"#ff99a8\", \"is_active\": 1, \"image_url\": \"https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTZjMjM2ODk3OThkYzk1Njc0NzhiZWI3NmU1OTk0ZWRmMTI0YWM4YiZjdD1n/yx0DbLDF1w10eDZd6s/giphy.gif\", \"electoral_victory_message\": \"<h3>Congratulations! You have won the 1988 election.</h3><p>You’ve done it. In a year where a recession gripped the land and an incumbent administration being as unpopular as it is, you’ve achieved what the pundits and pollsters deemed impossible. Perhaps it was how you framed your cultural battles, or maybe you downplayed the controversies you created for yourself, or maybe you won because of why most people think you won: Hart's infidelity.</p><p>Regardless of why you won, you did it, and Republicans get to control the White House for another four years. You now have the power to push the Republican party into an even harsher social conservative direction, you’re expected to take harsh actions curbing abortion, homosexuality and taking a stand against cultural degeneracy.</p><p>On the economic front, most think you’ll partake in things much like Reagan did, pursuing a balanced budget and trying to keep taxes low, although with the recession, that might be hard.</p><p>The easier part of this journey is over Pat, get ready to wrangle things in the White House.</p>\", \"electoral_loss_message\": \"<h3>Sorry. You have lost the 1988 election.</h3><p>Maybe it was the way you framed the culture battles, your hard stance on crime, or Hart's sinful actions pushing the public against him, whatever it was, you've proven your ideologies electoral strength. Top Republican leaders are already formulating strategies to improve on the framework you've created to take back the White House.</p><p>Now, where does this leave you? Well, viewership for the 700 club is up, and the mark you've made on the Republican party is well known. So, although you won't have another shot to run for President, you will certainly play a part in choosing how the Republican party evolves in the future.</p>\", \"no_electoral_majority_message\": \"<h3>Sorry. You have lost the 1988 election.</h3><p>Maybe it was the way you framed the culture battles, your hard stance on crime, or Hart's sinful actions pushing the public against him, whatever it was, you've proven your ideologies electoral strength. Top Republican leaders are already formulating strategies to improve on the framework you've created to take back the White House.</p><p>Now, where does this leave you? Well, viewership for the 700 club is up, and the mark you've made on the Republican party is well known. So, although you won't have another shot to run for President, you will certainly play a part in choosing how the Republican party evolves in the future.</p>\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 154, \"fields\": {\"first_name\": \"Russell\", \"last_name\": \"Means\", \"election\": 15, \"party\": \"Libertarian\", \"state\": \"Texas\", \"priority\": 3, \"description\": \"\", \"color_hex\": \"#deae3e\", \"secondary_color_hex\": \"#ffe19c\", \"is_active\": 0, \"image_url\": \"\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 155, \"fields\": {\"first_name\": \"Lenora\", \"last_name\": \"Fulani/Others\", \"election\": 15, \"party\": \"Independent\", \"state\": \"Pennsylvania\", \"priority\": 4, \"description\": \"'\", \"color_hex\": \"#4db533\", \"secondary_color_hex\": \"#b8ffa6\", \"is_active\": 0, \"image_url\": \"\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 156, \"fields\": {\"first_name\": \"Howard\", \"last_name\": \"Metzenbaum\", \"election\": 15, \"party\": \"Democratic\", \"state\": \"Ohio\", \"priority\": 5, \"description\": \"'\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2xzZjR2aXZtbXJwZzV3czBiazkwbDNsdGE4NGNiY29jM2UxdTg1NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wz97DGeDkskDjwM30R/giphy.gif\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Howard Metzenbaum is a popular and very old senator in the Buckeye state. Born the son of poor Jewish immigrants, Metzenbaum has established himself as a fighter against big-money interests and lobbyists, specifically those in the gun lobby. As a fierce liberal advocate, his career has been marked by championing anti-trust and pro-union legislation, making him definitely the more left-wing of your choices here.</p><p>Overall, \\\"Senator No\\\" would help patch up your relationship with the more advocate base of the Democratic party, and certainly would help in the swing state of Ohio. However, it should be noted that Metzenbaum's Jewish faith might draw hateful attacks from Republican partisans. Furthermore, Metzenbaum's strict fiscal liberalism may hurt you with some moderates.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 157, \"fields\": {\"first_name\": \"Bob\", \"last_name\": \"Graham\", \"election\": 15, \"party\": \"Democratic\", \"state\": \"Florida\", \"priority\": 6, \"description\": \"'\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDAwMDM2YjliNzFmZGNmNDc5MGY0MjA5MTIzYTYxZTBkYzdiMjVlYyZjdD1n/emXCbYMxvZCHU6yz5m/giphy.gif\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Robert Graham is the current senator in Florida. Before becoming a senator of Florida, he served as the 38th Governor of the state, winning by consistently large margins. Like you, he is very moderate on most issues but holds very liberal thoughts on certain positions such as healthcare and education.</p><p>Graham's personal popularity would do wonders in his home state and picking him would double-down on your personal Atari-Democrat beliefs.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 158, \"fields\": {\"first_name\": \"Bill\", \"last_name\": \"Clinton\", \"election\": 15, \"party\": \"Democratic\", \"state\": \"Arkansas\", \"priority\": 7, \"description\": \"'\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWYwNDU2ZTVkYjFiOGNmYzgwZGEzYzk0Mzk3NmM3MTA1YTZlOGNmOSZjdD1n/41O3J0bDtN4OgJczgQ/giphy.gif\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Bill Clinton is the current popular governor of Arkansas. Billy is known for his response to Reagan's 1985 State of the Union address and his charisma (Especially with female voters). However, Bill has a shadowy past, ripe with controversy and scandal, something no campaign can afford. Clinton seems to be a rather weak choice in general, as he doesn't really cover any bases you don't already have covered. Your advisors suggest looking elsewhere for help…</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 159, \"fields\": {\"first_name\": \"Dick\", \"last_name\": \"Cheney\", \"election\": 15, \"party\": \"Republican\", \"state\": \"Wyoming\", \"priority\": 8, \"description\": \"'\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExM2E4MDA3OTg5Yzk2NDYwMWEwYjQ1NDVhMjg0OTk1OTEyZDNhODNkYSZjdD1n/dPa3KOskIcDhZTzX0J/giphy.gif\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Dick Cheney has all the things you don't. He's served for many years within the government, from the Chief of Staff, to running Ford's very close presidential campaign, and serving as a House member for many years. Cheney would mend fences with the party with his fiscal conservatism and responsible image. However, Cheney is a staunch Family Guy and will not tolerate any light shed on his daughter, and with someone as loud and pugnacious as you, that might be hard...</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 160, \"fields\": {\"first_name\": \"John\", \"last_name\": \"McCain\", \"election\": 15, \"party\": \"Republican\", \"state\": \"Arizona\", \"priority\": 9, \"description\": \"'\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzRhMWQzZmM3NmVmMTg4MGNjODY3ZjM4MDliZWJhZmMyYjk3OTQwNCZjdD1n/RvtOEQmEggJklVhUg2/giphy.gif\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>There are no two ways around it: John McCain is a war hero. Following in his father's footsteps, John entered the Navy and became a pilot. Johnny was taken as a Prisoner of War in 1967 and was subjected to brutal torture for five and a half years, until he was finally released. His torture left him with significant problems such as not being able to raise his arms above his head. Despite all of this, John McCain is incredibly capable and popular with a good amount of Americans. He is currently a senator in Arizona and is seen as a bit of a Reaganite, It's important to keep note however, that McCain holds some views that may go against party line.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 161, \"fields\": {\"first_name\": \"Dick\", \"last_name\": \"Thornburgh\", \"election\": 15, \"party\": \"Republican\", \"state\": \"Pennsylvania\", \"priority\": 10, \"description\": \"'\", \"color_hex\": \"#0000FF\", \"secondary_color_hex\": \"#90C0FF\", \"is_active\": 0, \"image_url\": \"https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWE4NjYzMmU3ZjVmZDcyYzNlMjIyNzYyZTRlOWU1M2EyOTdjYWJjYyZjdD1n/kire1FkCWoTml7xzxO/giphy.gif\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Dick Thornburgh is the current governor of Pennsylvania. On the more moderate side of the Republican party, Dick could expand the ticket's appeal and separate the party's image from the failings of the Reagan Administration. Thornburgh has also gained a reputation for being tough on crime which can certainly help with the recent influx of riots as of late. Dick is also known for his work on welfare reform and job creation, and gained national praise for his work to ensure emergency response efforts during the partial nuclear power plant meltdown on Three Mile Island.</p><p></p><p>Overall, Dick is an experienced, uncontroversial pick, which given your tendency to be somewhat the opposite, might just be for the best.</p>\", \"candidate_score\": 0.0}}]");
+
+campaignTrail_temp.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 98, \"fields\": {\"candidate\": 152, \"running_mate\": 156}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 99, \"fields\": {\"candidate\": 152, \"running_mate\": 157}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 100, \"fields\": {\"candidate\": 152, \"running_mate\": 158}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 101, \"fields\": {\"candidate\": 153, \"running_mate\": 159}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 102, \"fields\": {\"candidate\": 153, \"running_mate\": 160}}, {\"model\": \"campaign_trail.running_mate\", \"pk\": 103, \"fields\": {\"candidate\": 153, \"running_mate\": 161}}]");
+
+campaignTrail_temp.opponents_default_json = JSON.parse("[{\"election\": 15, \"candidates\": [154, 155, 152, 153]}]");
+
+campaignTrail_temp.opponents_weighted_json = JSON.parse("[{\"election\": 15, \"candidates\": [153, 152, 154, 155]}]");
+
+campaignTrail_temp.difficulty_level_json = JSON.parse("[{\"model\": \"campaign_trail.difficulty_level\", \"pk\": 1, \"fields\": {\"name\": \"Cakewalk\", \"multiplier\": 1.2}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 2, \"fields\": {\"name\": \"Very Easy\", \"multiplier\": 1.12}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 3, \"fields\": {\"name\": \"Easy\", \"multiplier\": 1.06}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 4, \"fields\": {\"name\": \"Normal\", \"multiplier\": 0.97}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 5, \"fields\": {\"name\": \"Hard\", \"multiplier\": 0.93}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 6, \"fields\": {\"name\": \"Very Hard\", \"multiplier\": 0.87}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 7, \"fields\": {\"name\": \"Blowout\", \"multiplier\": 0.8}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 8, \"fields\": {\"name\": \"Impossible\", \"multiplier\": 0.75}}]");
+
+campaignTrail_temp.global_parameter_json = JSON.parse("[{\"model\": \"campaign_trail.global_parameter\", \"pk\": 1, \"fields\": {\"vote_variable\": 1.125, \"max_swing\": 0.12, \"start_point\": 0.94, \"candidate_issue_weight\": 10.0, \"running_mate_issue_weight\": 3.0, \"issue_stance_1_max\": -0.71, \"issue_stance_2_max\": -0.3, \"issue_stance_3_max\": -0.125, \"issue_stance_4_max\": 0.125, \"issue_stance_5_max\": 0.3, \"issue_stance_6_max\": 0.71, \"global_variance\": 0.01, \"state_variance\": 0.005, \"question_count\": 30, \"default_map_color_hex\": \"#C9C9C9\", \"no_state_map_color_hex\": \"#999999\"}}]");
+
+campaignTrail_temp.candidate_dropout_json = JSON.parse("[{\"model\": \"campaign_trail.candidate_dropout\", \"pk\": 1, \"fields\": {\"candidate\": 36, \"affected_candidate\": 18, \"probability\": 1.0}}]");
+
+campaignTrail_temp.temp_election_list = [{"id": 15, "year": 1988, "is_premium": 0, "display_year": "1988TTWH"}];
+
+campaignTrail_temp.show_premium = true;
+
+campaignTrail_temp.premier_ab_test_version = -1;
+
+e.credits = "<button onclick='e.creditsPage()'>JFNixon!</button>"
+
+bannerlist=["https://i.imgur.com/755BVCs.png", "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzNjdW5peWVucGo0M3hlc2Y3djk3dzg0bGpwOGt5MjFkM3dwNW9sMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/iaBZqbu3lMSeaHgosO/giphy.gif"]
+document.getElementById("header").src = bannerlist[Math.floor((Math.random() * bannerlist.length))]
+
+customquote="I said that I bend, but don't break, and believe me, I'm not broken."
+corrr=`\n<h2>THIS TIME, WITH HART</h2><font id='Gothic' size='5' color='#9f2898'><em>`+customquote+`</em></font>`
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#219cbb"
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#2c5683"
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+
+$(".container")[0].style.backgroundColor = "#9f2898"
+$(".footer a").css({"color":"#79b1db"});
+$("#site_credits a").css({"color":"#79b1db"});
+
+$("#game_window")[0].style.backgroundImage = "url(https://media2.giphy.com/media/ZNhPgAy2yfHwuJvwAy/giphy.gif)"
+document.body.background = "https://i.imgur.com/6jLUKvN.png"
+
+HistHexcolour=["#3062b3","#de3e56","#deae3e","#4db533"];
+HistName=[" Gary Hart"," Pat Robertson"," Russell Means"," Lenora Fulani/Others"];
+HistEV=[285,253,"-","-"];
+HistPV=["45,430,964","44,240,233","1,007,541","824,352"];
+HistPVP=["49.6%","48.3%","1.1%","1.0%"];
+
+campaignTrail_temp.modBoxTheme = {
+  "header_color" : "#471191",
+  "header_text_color" : "#ffffff",
+  "description_text_color" : "#ffffff",
+  "description_background_color" : "#2c5683",
+  "main_color" : "#219cbb",
+  "secondary_color" : "#2c5683",
+  "ui_text_color": "#821e7c"
+}
+
+const style_overwrite = document.createElement("style");
+style_overwrite.innerHTML = 
+        `a {
+            color: #79b1db;
+        }
+        #credits,
+        #election_year_form h3,
+        #candidate_form h3,
+        #running_mate_form h3,
+        #game_options h3,
+        #difficulty_level h3 {
+            color: #ffffff;
+        }
+        #election_image img {
+            width: 348px;
+            height: 210px;
+            margin-left: -0.95em;
+            margin-top: -0.85em;
+        }
+        `;
+document.head.appendChild(style_overwrite);
+
+campaignTrail_temp.achievements = {
+  "You Gotta Have Hart!" : {
+      "image" : "https://i.imgur.com/VgfjWtZ.png",
+      "description" : "As Gary Hart, win with 350+ EVs."
+  },
+  "Forever and Ever, Amen" : {
+      "image" : "https://i.imgur.com/NwkYVjY.png",
+      "description" : "As Pat Robertson, win with 350+ EVs."
+  },
+  "Have Some Hart" : {
+      "image" : "https://i.imgur.com/1A1qhK7.png",
+      "description" : "As Gary Hart, win a majority in the popular vote."
+  },
+  "Moral Majority" : {
+      "image" : "https://i.imgur.com/VUPL7dQ.png",
+      "description" : "As Pat Robertson, win a majority in the popular vote."
+  },
+  "Hartbreaker..." : {
+      "image" : "https://i.imgur.com/0aCpYMs.png",
+      "description" : "As Gary Hart, be an Atari Democrat till the end.",
+  },
+  "Dream Maker!" : {
+      "image" : "https://i.imgur.com/Lx4Z7nU.png",
+      "description" : "As Gary Hart, align with your liberal wing.",
+  },
+  "Total Eclipse of the Hart" : {
+      "image" : "https://i.imgur.com/JBB4IVR.png",
+      "description" : "As Gary Hart, anger your liberal wing.",
+  },
+  "It Was the Heat of the Moment" : {
+      "image" : "https://i.imgur.com/ENesNQl.png",
+      "description" : "As Gary Hart, deal with your scandal in the best way you could.",
+  },
+  "Tanks, Tanks, and More Tanks" : {
+      "image" : "https://i.imgur.com/uYpvrUP.png",
+      "description" : "As Gary Hart, lose the primaries.",
+  },
+  "Slick Willy" : {
+      "image" : "https://i.imgur.com/o1hxcl7.png",
+      "description" : "As Gary Hart, trust your running mate.",
+  },
+  "Put God in the White House" : {
+      "image" : "https://i.imgur.com/Wkuf6fz.png",
+      "description" : "As Pat Robertson, continue your rhetoric.",
+  },
+  "New Republican" : {
+      "image" : "https://i.imgur.com/RF37nmS.png",
+      "description" : "As Pat Robertson, be a part of the New Wave.",
+  },
+  "Give Me A Prayer" : {
+      "image" : "https://i.imgur.com/BoJ2ecl.png",
+      "description" : "As Pat Robertson, deal with the impact of economic woes.",
+  },
+  "Buchanan <3 Robertson Besties!!!!!" : {
+      "image" : "https://i.imgur.com/sXgZZR1.png",
+      "description" : "As Pat Robertson, take part in a canon event.",
+  },
+  "Hard Times" : {
+      "image" : "https://i.imgur.com/c1ehtu6.png",
+      "description" : "As Pat Robertson, lose the primaries.",
+  },
+  "Viva Hart!" : {
+      "image" : "https://i.imgur.com/D5SxHVi.png",
+      "description" : "As Gary Hart, win Texas.",
+  },
+  "Ronnie's Favorite Televangelist" : {
+      "image" : "https://i.imgur.com/zfXIwnu.png",
+      "description" : "As Pat Robertson, win California.",
+  },
+  "Hartaches" : {
+      "image" : "https://i.imgur.com/18HYer7.png",
+      "description" : "As Gary Hart, lose everything.",
+  },
+  "Livin' On A Prayer" : {
+      "image" : "https://i.imgur.com/2zATjho.png",
+      "description" : "As Pat Robertson, lose everything.",
+  }
+}
+
+var changeGameDisp = (hide) => {
+  disp = "";
+  if (hide) {
+    disp = "none";
+  }
+  document.getElementsByClassName("inner_window_w_desc")[0].style.display = disp
+};
+
+e.creditsPage = () => {
+  credits_html = `
+    <h2>Creator</h2>
+    <p><font color='#69bfdb'>JFNixon</font></p>
+    <h2>Writing Credits</h2>
+    <p><font color='#69bfdb'>JFNixon</font></p>
+    <h2>Coding Credits</h2>
+    <p><font color='#ff85c2'>CatBoxXD</font></p>
+    <h2>Playtesting Credits</h2>
+    <p><font color='#846acc'>Evas</font></p>
+    <p><font color='#51cf4e'>Ordep</font></p>
+    <p><font color='#9199ff'>Massachusetts 4 Stockdale</font></p>
+    <p><font color='#d43a2c'>Lexordo</font></p>
+    <p><font color='#ff8c8c'>Kaiserin</font></p>
+    <p><font color='#c4f9ff'>Script</font></p>
+    <p><font color='#37ff00'>Calgar77</font></p>
+    <p><font color='#d65eba'>Literally Nelson Rockefeller</font></p>
+    <p><font color='#8f0000'>Senator Cringe</font></p>
+    <p><font color='#fff06e'>Dyson</font></p>
+    <p><font color='#a7dbb6'>Hamish</font></p>
+    <p>and anyone that did playtest but forgot (super sorry >.<)</p>
+    <h2>Other Credits</h2>
+    <p><font color='#d17834'>Decstar</font> / <font color='#55c272'>Max</font> - Soundtrack Format</p>
+    <p><font color='#d1a849'>Kermity</font> - Banner (Hart & Robertson) & Campaign Signs</p>
+    <p><font color='#878787'>Onkel Danny</font> - Banner (Robertson)</p>
+    <p><font color='#8f0000'>Senator Cringe</font> - Campaign Sign (Metzenbaum)</p>
+    <p><font color='#e0e0e0'>Mango</font> - NBC '88 Map</p>
+    <p>2000N / <font color='#d17834'>Decstar</font> - Credits Page, Quote & Title</p>
+    <p>2008 SpongeBob / <font color='#ff70f8'>Diamondy</font> / <font color='#b3ff61'>Empress Taylor</font>- Ending Music</p>
+    <p>1996 End of History / <font color='#67d2db'>Astro</font> - Ending Format</p>
+    <p>1976 Italy / <font color='#73ff93'>u/crvenocrveni</font>- Alternating Banners</p>
+    <p>1956 Red / <font color='#d13434'>Aiden</font> - Campaign Sign</p>
+    <p>1965 Midnight / <font color='#ff9100'>Gardfeld</font> - Election Map Background</p>
+    <p>and anyone or any mod that did contribute but forgot (super sorry >.<)</p>
+    <p>Thank you to NEO, Diamondy, and DecStarG for coding help and HUGE thanks to Jake, Chapu, and Gardfeld for helping me with writing advice and helping me with my shitty cropping skills.</p>
+    <h2>Music Credits</h2>
+    <p>Subway of Your Mind (Synth Version) - Ayden George</p>
+    <p>Subway of Your Mind - FEX</p>
+    <p>The Devil Went Down to Georgia - Charlie Daniels</p>
+    <p>Hard Times - Fresh Bush & The Invisible Man</p>
+    <p>Dancing with Tears in My Eyes - Ultravox</p>
+    <p>Margaritaville - Jimmy Buffett</p>
+    <p>Down To The River To Pray - Alison Krauss</p>
+    <p>Oh Lord, It's Hard To Be Humble - Tommy Dell</p>
+    <p>Happy Trails - Roy Rodgers</p>
+    <p>The Rodeo Song - Gary Lee and Showdown</p>
+    <p>Dirty Laundry - Don Henley</p>
+    <p>Ballad of Gary Hart - Tom Paxton</p>
+    <p>Cult of Personality - Living Colour</p>
+    <p>Jessie's Girl - Rick Springfield</p>
+    <p>Heat of the Moment - Asia</p>
+    <p>Big In Japan - Alphaville</p>
+    <p>Material Girl - Madonna</p>
+    <p>Take On Me - a-ha</p>
+    <p>Turn Around - Bonnie Tyler</p>
+    <p>Livin On A Prayer - Bon Jovi</p>
+    <p>Once In A Lifetime - Talking Heads</p>
+    <p>Danger Zone - Kenny Loggins</p>
+    <p>Never Gonna Give You Up - Rick Astley</p>
+    <p>Girls Just Want To Have Fun - Cyndi Lauper</p>
+    <p>Africa - Toto</p>
+    <p>Every Breath You Take - The Police</p>
+    <p>Land of Confusion - Genesis</p>
+    <p>Jump - Van Halen</p>
+    <p>Out Of Touch - Daryl Hall & John Oates</p>
+    <p>Chessboards - Killing Joke</p>
+    <p>Jesus He Knows Me - Genesis</p>
+    <p>American Made - The Oak Ridge Boys</p>
+    <p>Lord Have Mercy on the Working Man - Travis Tritt</p>
+    <p>There'll Come a Payday - Baby Billy Freeman</p>
+    <p>If Heaven Ain't A Lot Like Dixie - Hank Williams</p>
+    <p>Tempted - Marty Stuart</p>
+    <p>The Race Is On - Sawyer Brown</p>
+    <p>I'm In A Hurry (And I Don't Know Why) - Alabama</p>
+    <p>A Country Boy Can Survive - Hank Williams Jr.</p>
+    <p>Fishin' In The Dark - Nitty Gritty Dirt Band</p>
+    <p>Guitars, Cadillacs - Dwight Yoakam</p>
+    <p>Deeper Than The Holler - Randy Travis</p>
+    <p>Louisiana Saturday Night - Mel McDaniel</p>
+    <p>I Think I'll Just Stay Here And Drink - Merle Haggard</p>
+    <p>Brother Jukebox - Mark Chesnutt</p>
+    <p>All My Ex's Live In Texas - George Strait</p>
+    <p>Two Dozen Roses - Shenandoah</p>
+    <p>Armarillo By Morning - George Strait</p>
+    </div>
+  `
+  changeGameDisp(true);
+  var spacer = document.createElement("amongusspacerthisisntarealelement");
+  spacer.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+  document
+    .getElementsByClassName("inner_window_w_desc")[0]
+    .children[1].appendChild(spacer);
+    changeGameDisp(true);
+    var menuHeader = document.createElement("div");
+    menuHeader.classList.add("inner_window_front");
+    menuHeader.innerHTML = `<h1 style='margin-top: 0.4em;'><font id='Gothic' size='6' color='#9f2898'><i>THIS TIME, WITH HART</i> was made possible by:</font></h1>`;
+    menuHeader.id = "SOTUheader";
+    menuHeader.style = "height: 50px;background-color:#212121";
+    var newMenu = document.createElement("div");
+    newMenu.classList.add("inner_window_front");
+    newMenu.id = "SOTUmenu";
+    newMenu.style = `height:303px;background-color:#212121;color:white;overflow-y: scroll;`;
+
+    newMenu.innerHTML = credits_html;
+    let z = document.getElementById("game_window");
+    var backButton = document.createElement("button");
+    backButton.style =
+      "position: relative; bottom: -4px; left: -392px; width: 130px; height: 50px;font-size:20px;padding-top:5px;padding-left:8px";
+    backButton.id = "backSOTUBtn";
+    backButton.innerHTML = `<b>BACK</b>`;
+    backButton.onclick = function () {
+      document.getElementById("SOTUheader").remove();
+      document.getElementById("SOTUmenu").remove();
+      document.getElementById("backSOTUBtn").remove();
+      changeGameDisp(false);
+    };
+    z.appendChild(menuHeader);
+    z.appendChild(newMenu);
+    z.appendChild(backButton);
+
+}
+
+$("#game_start").click((event) => {
+  event.preventDefault();
+  musicMode()  
+})
+
+// MUSIC MODE
+
+musicMode = () => {
+  // Initialise custom music
+
+  $("#music_player")[0].children[0].style.display = "none"
+    $("#music_player")[0].children[1].style.display = "none"
+  
+    document.getElementById("modLoadReveal").style.display = "none"
+    document.getElementById("modloaddiv").style.display = "none"
+  
+    musicBox = document.getElementById("music_player")
+    musicBox.style.display = ""
+  
+    var trackSel;
+    e = campaignTrail_temp
+    e.selectedSoundtrack = 0
+  
+    toTime = (seconds) => {
+        var date = new Date(null);
+        date.setSeconds(seconds);
+        return date.toISOString().substr(11, 8);
+    }
+  
+    generateTime = () => {
+        // Get the audio element
+        var audio = document.getElementById("campaigntrailmusic");
+  
+        timeTracker = document.createElement("div");
+        timeTracker.style = `
+  text-align:left;
+  border-style:solid;
+  border-width:3px;
+  height:150px;
+  width:200px;
+  background-color:#999999;
+  float:right;
+  padding: 10px;
+  `
+        $("#trackSelParent")[0].prepend(timeTracker);
+        $("#trackSelParent")[0].prepend(document.createElement("br"));
+  
+        // Create a new element to display the current position of the audio
+        var positionDisplay = document.createElement("gg");
+        positionDisplay.id = "position-display";
+  
+        // Create a new slider element to change the time
+        var timeSlider = document.createElement("input");
+        timeSlider.type = "range";
+        timeSlider.min = 0;
+        timeSlider.max = 1;
+        timeSlider.step = 0.001;
+        timeSlider.value = 0;
+        timeSlider.style.width = "200px";
+        timeSlider.id = "time-slider";
+  
+        var pausePlay = document.createElement("button");
+        pausePlay.id = "position-display";
+        pausePlay.innerHTML = "<b>Pause</b>"
+        pausePlay.style.width = "100%";
+  
+  
+        pausePlay.addEventListener("click", event => {
+            event.preventDefault();
+            updatePositionDisplay();
+            let audio = document.getElementById("campaigntrailmusic");
+            if (audio.paused) {
+                audio.play();
+                event.target.innerHTML = "<b>Pause</b>";
+                return;
+            }
+            audio.pause();
+            event.target.innerHTML = "<b>Play</b>";
+            return;
+        })
+  
+        var volumeLabel = document.createElement("gg");
+        volumeLabel.id = "volume-label";
+        volumeLabel.innerHTML = "<br><b>Volume: </b>"
+  
+        var volumeSlider = document.createElement("input");
+        volumeSlider.type = "range";
+        volumeSlider.min = 0;
+        volumeSlider.max = 1;
+        volumeSlider.step = 0.001;
+        volumeSlider.value = 0;
+        volumeSlider.style.width = "200px";
+        volumeSlider.id = "volume-slider";
+  
+        volumeSlider.value = audio.volume;
+  
+        timeTracker.appendChild(pausePlay);
+        timeTracker.appendChild(document.createElement("br"));
+        timeTracker.appendChild(document.createElement("br"));
+        timeTracker.appendChild(positionDisplay);
+        timeTracker.appendChild(timeSlider);
+        timeTracker.appendChild(volumeLabel);
+        timeTracker.appendChild(volumeSlider);
+  
+        updatePositionDisplay();
+  
+        //for (let i = 0; i < 10; i++)
+        //timeTracker.append(document.createElement("br"));
+  
+  
+        // Function to update the position display
+        function updatePositionDisplay() {
+            positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+            timeSlider.value = audio.duration ? audio.currentTime / audio.duration : 0;
+        }
+  
+        // Function to change the time of the audio
+        function changeTime() {
+            positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+            audio.currentTime = timeSlider.value * audio.duration;
+        }
+  
+        updateVolume = event => {
+            audio.volume = event.target.value;
+        }
+  
+        // Update the position display and slider every second
+        setInterval(updatePositionDisplay, 1000);
+  
+        // Listen for changes to the time slider and change the time of the audio
+        timeSlider.addEventListener("input", changeTime);
+        volumeSlider.addEventListener("input", updateVolume)
+    }
+  
+    function newMusicPlayer() {
+        trackSel = document.createElement("div");
+        trackSel.id = "trackSelParent"
+        let z = `<div id='trackSel' style="text-align:left;border-style:solid;border-width:3px;overflow-y: scroll;overflow-x: hidden;height:170px; width:400px;background-color:#999999;float:right;">`
+        z += `<b><select id='selectSoundtrack'><option value='` + soundtracks[e.selectedSoundtrack].name + `'>` + soundtracks[e.selectedSoundtrack].name + "</option>"
+        for (i in soundtracks) {
+            if (soundtracks[e.selectedSoundtrack] != soundtracks[i]) {
+                z += `<option value='` + soundtracks[i].name + `'>` + soundtracks[i].name + `</option>`
+            }
+        }
+        z += `</select></b><br><br>`
+            // <label><input type="radio" name="option" value="option1">Option 1</label><br>
+        for (i in soundtracks[e.selectedSoundtrack].tracklist) {
+            let a = soundtracks[e.selectedSoundtrack].tracklist[i]
+            let b = `<label><input class="trackSelector" type="radio" name="trackSelector" value="` + i + `">` + a.name + `</label><br>`
+            z += b
+        }
+        z += "</div><br><br>"
+        trackSel.innerHTML = z
+  
+        // select correct song
+  
+        musicBox.appendChild(trackSel);
+        Array.from(document.getElementById("trackSel").children).filter(f => {
+            return f.tagName == "LABEL"
+        }).map(f => f.children[0])[0].checked = true
+  
+        // set soundtrack changer
+  
+        soundtrackSelector = document.getElementById("selectSoundtrack")
+        soundtrackSelector.onchange = function() {
+            for (i in soundtracks) {
+                if (soundtracks[i].name == soundtrackSelector.value) {
+                    e.selectedSoundtrack = i
+                    break
+                }
+            }
+            document.getElementById("trackSelParent").remove()
+            newMusicPlayer()
+        }
+  
+        var matches = document.querySelectorAll('.trackSelector');
+  
+        for (match in matches) {
+            matches[match].onchange = function() {
+                audio = $("#campaigntrailmusic")[0];
+                audio.src = soundtracks[e.selectedSoundtrack].tracklist[this.value].url
+                audio.currentTime = 0
+            }
+        }
+  
+        musicBox.children[2].loop = false
+        musicBox.children[2].src = soundtracks[e.selectedSoundtrack].tracklist[0].url
+  
+        musicBox.children[2].onended = function() {
+            console.log("next track")
+            let selected = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+            let newSel = clamp(selected + 1, soundtracks[e.selectedSoundtrack].tracklist.length - 1, 0)
+            let buttons = Array.from(document.getElementById("trackSel").children).filter(f => {
+                    return f.tagName == "LABEL"
+                }).map(f => f.children[0])
+                //let selectedIndex = buttons.map(f=>f.children[0]).map(f=>f.checked)
+            buttons[newSel].click()
+        }
+  
+        for (w = 0; w < 7; w++) {
+            document.getElementById("trackSelParent").appendChild(document.createElement("br"))
+        }
+  
+        generateTime();
+    }
+  
+    clamp = function(a, max, min, overflow = true) {
+        if (overflow) {
+            return a > max ? min : a < min ? max : a;
+        }
+        return a > max ? max : a < min ? min : a;
+    }
+
+
+  // Track list
+var soundtracks = {
+        0: {
+            name: "Intro",
+            tracklist: [
+              {
+                "name": "Subway of Your Mind (Synth Version) - Ayden George",
+                "url": "https://files.catbox.moe/v5pbk5.mp3"
+              }
+          ]
+      },
+      1: {
+            name: "HartThrobe",
+            tracklist: [
+              {
+                "name": "Dirty Laundry - Don Henley",
+                "url": "https://files.catbox.moe/kg3b21.mp3"
+              },
+              {
+                "name": "Ballad of Gary Hart - Tom Paxton",
+                "url": "https://files.catbox.moe/8ihtx2.m4a"
+              },
+              {
+                "name": "Cult of Personality - Living Colour",
+                "url": "https://files.catbox.moe/ve0bmy.mp3"
+              },
+              {
+                "name": "Jessie's Girl - Rick Springfield",
+                "url": "https://files.catbox.moe/jy0zld.mp3"
+              },
+              {
+                "name": "Heat of the Moment - Asia",
+                "url": "https://files.catbox.moe/9b6cwp.mp3"
+              },
+              {
+                "name": "Big In Japan - Alphaville",
+                "url": "https://files.catbox.moe/gyven6.mp3"
+              },
+              {
+                "name": "Material Girl - Madonna",
+                "url": "https://files.catbox.moe/0pu3z9.mp3"
+              },
+              {
+                "name": "Take On Me - a-ha",
+                "url": "https://files.catbox.moe/tacgoy.mp3"
+              },
+              {
+                "name": "Turn Around - Bonnie Tyler",
+                "url": "https://files.catbox.moe/7iaeot.mp3"
+              },
+              {
+                "name": "Livin On A Prayer - Bon Jovi",
+                "url": "https://files.catbox.moe/zr8mn0.mp3"
+              },
+              {
+                "name": "Once In A Lifetime - Talking Heads",
+                "url": "https://files.catbox.moe/2jap5w.mp3"
+              },
+              {
+                "name": "Danger Zone - Kenny Loggins",
+                "url": "https://files.catbox.moe/cebwxd.mp3"
+              },
+              {
+                "name": "Never Gonna Give You Up - Rick Astley",
+                "url": "https://files.catbox.moe/hs8d1y.mp3"
+              },
+              {
+                "name": "Girls Just Want To Have Fun - Cyndi Lauper",
+                "url": "https://files.catbox.moe/fbow60.mp3"
+              },
+              {
+                "name": "Africa - Toto",
+                "url": "https://files.catbox.moe/4fjt87.mp3"
+              },
+              {
+                "name": "Every Breath You Take - The Police",
+                "url": "https://files.catbox.moe/j346oi.mp3"
+              },
+              {
+                "name": "Land of Confusion - Genesis",
+                "url": "https://files.catbox.moe/cxs5vs.mp3"
+              },
+              {
+                "name": "Jump - Van Halen",
+                "url": "https://files.catbox.moe/xe918n.mp3"
+              },
+              {
+                "name": "Out Of Touch - Daryl Hall & John Oates",
+                "url": "https://files.catbox.moe/t0x6cr.mp3"
+              },
+              {
+                "name": "Chessboards - Killing Joke",
+                "url": "https://files.catbox.moe/n994n6.mp3"
+              }
+          ]
+      },
+      2: {
+            name: "Holy Hits",
+            tracklist: [
+              {
+                "name": "Jesus He Knows Me - Genesis",
+                "url": "https://files.catbox.moe/dmp5q2.mp3"
+              },
+              {
+                "name": "American Made - The Oak Ridge Boys",
+                "url": "https://files.catbox.moe/6pnfmp.mp3"
+              },
+              {
+                "name": "Lord Have Mercy on the Working Man - Travis Tritt",
+                "url": "https://files.catbox.moe/778dap.mp3"
+              },
+              {
+                "name": "There'll Come a Payday - Baby Billy Freeman",
+                "url": "https://files.catbox.moe/jeeps0.mp3"
+              },
+              {
+                "name": "If Heaven Ain't A Lot Like Dixie - Hank Williams Jr.",
+                "url": "https://files.catbox.moe/aortqu.mp3"
+              },
+              {
+                "name": "Tempted - Marty Stuart",
+                "url": "https://files.catbox.moe/nbkic5.mp3"
+              },
+              {
+                "name": "The Race Is On - Sawyer Brown",
+                "url": "https://files.catbox.moe/fgu4o1.mp3"
+              },
+              {
+                "name": "I'm In A Hurry (And Don't Know Why) - Alabama",
+                "url": "https://files.catbox.moe/j6txnc.mp3"
+              },
+              {
+                "name": "A Country Boy Can Survive - Hank Williams Jr.",
+                "url": "https://files.catbox.moe/hluef0.mp3"
+              },
+              {
+                "name": "Fishin' In The Dark - Nitty Gritty Dirt Band",
+                "url": "https://files.catbox.moe/rbplfq.mp3"
+              },
+              {
+                "name": "Guitar, Cadillacs - Dwight Yoakam",
+                "url": "https://files.catbox.moe/evw2m9.mp3"
+              },
+              {
+                "name": "Deeper Than The Holler - Randy Travis",
+                "url": "https://files.catbox.moe/n98qlb.mp3"
+              },
+              {
+                "name": "Louisiana Saturday Night - Mel McDaniel",
+                "url": "https://files.catbox.moe/hqugb1.mp3"
+              },
+              {
+                "name": "I Think I'll Just Stay Here And Drink - Merle Haggard",
+                "url": "https://files.catbox.moe/m5ufrc.mp3"
+              },
+              {
+                "name": "Brother Jukebox - Mark Chesnutt",
+                "url": "https://files.catbox.moe/a6l2ht.mp3"
+              },
+              {
+                "name": "All My Ex's Live In Texas - George Strait",
+                "url": "https://files.catbox.moe/qhitg7.mp3"
+              },
+              {
+                "name": "Two Dozen Roses - Shenandoah",
+                "url": "https://files.catbox.moe/itbeiu.mp3"
+              },
+              {
+                "name": "Amarillo By Morning - George Strait",
+                "url": "https://files.catbox.moe/lz4i7g.mp3"
+              }
+          ]
+      }
+  }
+
+  // Set up new music player
+  if (!hasMusic) {
+      newMusicPlayer()
+      hasMusic = true;
+  }
+}
