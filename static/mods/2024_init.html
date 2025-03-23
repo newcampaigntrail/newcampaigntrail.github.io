@@ -670,6 +670,21 @@ campaignTrail_temp.achievements = {
         "description" : "As Donald Trump, buck the party playbook on the Middle East, and still win.",
         "cannotBeCheated" : true
     },
+    "How High?" : {
+        "image" : "https://itsastronomical.com/assets/2024/ach/dba/elon.png",
+        "description" : "As Donald Trump, win while avoiding working with Elon Musk.",
+        "cannotBeCheated" : true
+    },
+    "Posted It Again Award" : {
+        "image" : "https://itsastronomical.com/assets/2024/ach/dba/wojak.png",
+        "description" : "As Donald Trump, get the 2016 Electoral Map. Again.",
+        "cannotBeCheated" : true
+    },
+    "Teflon Don? More like Tesla Don." : {
+        "image" : "https://itsastronomical.com/assets/2024/ach/dba/trumpsad.png",
+        "description" : "As Donald Trump, lose on cakewalk difficulty.",
+        "cannotBeCheated" : true
+    },
     "Not Going Back!" : {
         "image" : "https://itsastronomical.com/assets/2024/ach/dba/kamala.png",
         "description" : "As Kamala Harris, win the 2024 election.",
@@ -698,6 +713,21 @@ campaignTrail_temp.achievements = {
     "Sith Apprentice" : {
         "image" : "https://itsastronomical.com/assets/2024/ach/dba/sith.png",
         "description" : "As Kamala Harris, win after agreeing to defend Biden's legacy.",
+        "cannotBeCheated" : true
+    },
+    "Caught in a Vice" : {
+        "image" : "https://itsastronomical.com/assets/2024/ach/dba/cheney.png",
+        "description" : "As Kamala Harris, win over 319 electoral votes while accepting Dick Cheney's endorsement.",
+        "cannotBeCheated" : true
+    },
+    "Dropped the Walz" : {
+        "image" : "https://itsastronomical.com/assets/2024/ach/dba/ball.png",
+        "description" : "As Kamala Harris, have Tim Walz fumble the debate, and still win over 300 electoral votes.",
+        "cannotBeCheated" : true
+    },
+    "Historically Accurate" : {
+        "image" : "https://itsastronomical.com/assets/2024/ach/dba/impossible.png",
+        "description" : "As Kamala Harris, win the election on Impossible difficulty.",
         "cannotBeCheated" : true
     },
     "The Rise of a Midwest Prince" : {
@@ -812,8 +842,8 @@ e.creditsPage = () => {
   function addColor() {
           var difficultyDiv = document.getElementById("difficulty_level");
           if (difficultyDiv && !document.getElementById("bunnyhopDropdown")) {
-              var questionCounter = ["25 (Randomized Questions)", "30 (Expanded)", "35 (Full)"];
-              var questions = [25, 30, 35];
+              var questionCounter = ["25 (Randomized Questions)", "25 (Static Question Set)", "30 (Expanded)", "35 (Full)"];
+              var questions = [25, 25, 30, 35];
               var dropdown = document.createElement("select");
               dropdown.id = "bunnyhopDropdown";
   
@@ -823,7 +853,7 @@ e.creditsPage = () => {
                   if (questionCounter[i] === "25 (Randomized Questions)") {
                       opt.selected = true;
                   }
-                  opt.value = questions[i];
+                  opt.value = questionCounter[i]; // Use the text as the value
                   dropdown.options.add(opt);
               }
   
@@ -836,14 +866,17 @@ e.creditsPage = () => {
               difficultyDiv.appendChild(form);
   
               dropdown.addEventListener("change", function() {
-  
-                  if (this.value == 25){
+                  if (this.value === "25 (Randomized Questions)") {
                       campaignTrail_temp.bunnyhop = true;
-                  }
-                  else{
+                      campaignTrail_temp.staticQuestions = false; // Ensure staticQuestions is false
+                  } else if (this.value === "25 (Static Question Set)") {
                       campaignTrail_temp.bunnyhop = false;
+                      campaignTrail_temp.staticQuestions = true; // Set staticQuestions to true
+                  } else {
+                      campaignTrail_temp.bunnyhop = false;
+                      campaignTrail_temp.staticQuestions = false; // Ensure staticQuestions is false
                   }
-                  campaignTrail_temp.global_parameter_json[0].fields.question_count = this.value;
+                  campaignTrail_temp.global_parameter_json[0].fields.question_count = parseInt(this.value.match(/\d+/)[0]); // Extract the number
               });
   
               var colourForm = document.createElement("form");

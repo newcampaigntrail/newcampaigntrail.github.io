@@ -660,7 +660,7 @@ campaignTrail_temp.answers_json = [
         "pk": 20680,
         "fields": {
             "question": 1038,
-            "description": "As they say on those college campuses, “from the river to the sea.” A big sea. Possibly even the ocean. We are going to free Palestine."
+            "description": "They tell me there needs to be a state, for the Palestinians. Two states, in fact. One for Israel, one for Palestine. This is something we're seriously going to look into once the carnage is over, and once the terrorists in Gaza are obliterated. "
         }
     },
     {
@@ -5503,7 +5503,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 200,
             "state": 1028,
-            "state_multiplier": 0.96
+            "state_multiplier": 0.94
         }
     },
     {
@@ -5755,7 +5755,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 201,
             "state": 1005,
-            "state_multiplier": 1.0878
+            "state_multiplier": 1.125
         }
     },
     {
@@ -5782,7 +5782,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 201,
             "state": 1008,
-            "state_multiplier": 0.9
+            "state_multiplier": 0.8
         }
     },
     {
@@ -5953,7 +5953,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 201,
             "state": 1027,
-            "state_multiplier": 0.97
+            "state_multiplier": 0.92
         }
     },
     {
@@ -5962,7 +5962,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 201,
             "state": 1028,
-            "state_multiplier": 1.05
+            "state_multiplier": 0.98
         }
     },
     {
@@ -6016,7 +6016,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 201,
             "state": 1034,
-            "state_multiplier": 0.8008275
+            "state_multiplier": 0.88
         }
     },
     {
@@ -8261,7 +8261,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 20725,
             "candidate": 200,
             "affected_candidate": 202,
-            "global_multiplier": -0.16
+            "global_multiplier": -0.6
         }
     },
     {
@@ -8271,7 +8271,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 20728,
             "candidate": 200,
             "affected_candidate": 202,
-            "global_multiplier": -0.16
+            "global_multiplier": -0.7
         }
     },
     {
@@ -8281,7 +8281,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 20731,
             "candidate": 200,
             "affected_candidate": 202,
-            "global_multiplier": -0.16
+            "global_multiplier": -0.6
         }
     },
     {
@@ -8291,7 +8291,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 20735,
             "candidate": 200,
             "affected_candidate": 202,
-            "global_multiplier": -0.16
+            "global_multiplier": -0.65
         }
     },
     {
@@ -9570,7 +9570,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 20680,
             "candidate": 200,
-            "answer_feedback": "What? Your campaign issues a statement clarifying that your comment was meant to be a joke, but you’ve already done considerable damage to your relationships with Jewish leaders."
+            "answer_feedback": "Pro-Israeli Republican leaders are not pleased with such a response, but your anti-war rhetoric appeals to Republicans very well. It's not like they're going to vote Democrat anyway."
         }
     },
     {
@@ -10386,6 +10386,12 @@ campaignTrail_temp.jet_data = [{
 }
 ]
 
+
+
+
+
+
+
 function ctsAchievement(achievement, difficultyChecker = true){
 	if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
 		if(campaignTrail_temp.CTS){
@@ -10492,7 +10498,86 @@ campaignTrail_temp.cyoa = true
 ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
 campaignTrail_temp.player_answers = [];
 
-if (campaignTrail_temp.global_parameter_json[0].fields.question_count == 25) {
+if (campaignTrail_temp.global_parameter_json[0].fields.question_count == 25 && campaignTrail_temp.staticQuestions == true) {
+    // Basically just a static question list
+    // Set 2
+    campaignTrail_temp.questions_json[8] = {
+        "model": "campaign_trail.question",
+        "pk": 20777,
+        "fields": {
+            "priority": 0,
+            "description": "Since the start of her campaign, Harris has been somewhat oblique regarding her actual agenda if elected president. She has yet to do a single interview as the nominee, and her campaign website still does not have an “Issues” tab, nearly a month after she announced her candidacy. What do you think about this?",
+            "likelihood": 1
+        }
+    }
+    campaignTrail_temp.questions_json[9] = {
+        "model": "campaign_trail.question",
+        "pk": 1012,
+        "fields": {
+            "priority": 10,
+            "description": "Earlier this year, President Biden announced new tariffs on Chinese steel, solar panels, and electric vehicles, some tariff rates reaching as high as 100 percent. Your first administration also saw the imposition of high tariffs on Chinese goods, a break from the previous Republican consensus of open markets. What course will you take on trade policy during a second Trump administration?",
+            "likelihood": 1
+        }
+    }
+    campaignTrail_temp.questions_json[10] = {
+        "model": "campaign_trail.question",
+        "pk": 1027,
+        "fields": {
+            "priority": 10,
+            "description": "Immigration has become a key issue during the election, with coverage of it at an all-time high. You're known for your strict, anti-immigrant rhetoric, and it's proving to be more popular than ever before. Will you continue to talk about immigration from this perspective?",
+            "likelihood": 1
+        }
+    }
+    campaignTrail_temp.questions_json[11] = {
+        "model": "campaign_trail.question",
+        "pk": 20761,
+        "fields": {
+            "priority": 0,
+            "description": "Project 2025 is a plan published by the Heritage Foundation aiming to consolidate power under the presidency, undermining democratic institutions to enact a far-right authoritarian policy agenda. Harris has been relentlessly on the attack, tying you to it at every turn. How will you handle these charges?",
+            "likelihood": 1
+        }
+    }
+    campaignTrail_temp.questions_json[12] = {
+        "model": "campaign_trail.question",
+        "pk": 20798,
+        "fields": {
+            "priority": 0,
+            "description": "After a recent FEC ruling allowing campaigns to coordinate their ground efforts with outside groups, you have been offered assistance in your campaign’s ground game by Elon Musk’s “America PAC,” among other groups. Some of your campaign advisors believe that outsourcing your get out the vote efforts to these organizations could act as a force multiplier, drastically increasing the amount of voters contacted by your supporters. Is this something you’re interested in?",
+            "likelihood": 1
+        }
+    }
+    campaignTrail_temp.questions_json[13] = {
+        "model": "campaign_trail.question",
+        "pk": 22033,
+        "fields": {
+            "priority": 0,
+            "description": "Most folks remember the economy of your first term as fairly strong - save for COVID, of course. You, however, have not really focused much on specific economic policies during your campaign, other than talking about bringing down inflation. Is there any specific plan you'd like to lay out on the economy?",
+            "likelihood": 1
+        }
+    }
+
+    // Set 3
+    campaignTrail_temp.questions_json[17] = {
+        "model": "campaign_trail.question",
+        "pk": 20828,
+        "fields": {
+            "priority": 0,
+            "description": "J. D. Vance and your, uh, loyal supporter, Laura Loomer, have been telling you about some disturbing rumors coming from Springfield, Ohio — allegedly, Haitian migrants are abducting and eating native residents’ pet cats and dogs. There is little evidence to support this, but they think it could play well into your campaign message regarding immigration. What do you think?",
+            "likelihood": 1
+        }
+    }
+    campaignTrail_temp.questions_json[18] = {
+        "model": "campaign_trail.question",
+        "pk": 22034,
+        "fields": {
+            "priority": 0,
+            "description": "Social issues have been a little hit-or-miss for most Republicans, but many of your advisors believe that you can define Harris as out-of-touch with the average American on these policies easily. Is this something you wish to do, or will you keep the culture war rhetoric toned down?",
+            "likelihood": 1
+        }
+    }
+}
+
+else if (campaignTrail_temp.global_parameter_json[0].fields.question_count == 25) {
     q_list0 = [[1007, "Let’s set the midterm thing aside for a second. Elon Musk, now owner of Twitter, has just announced that your old account, @realDonaldTrump, has been unbanned. You are now free to return, if you want. Does this idea interest you?"], [1001, "Let’s touch back on the midterms for a second. Despite the Republicans’ pitiful showing in the Senate, they were able to narrowly flip the House, and now they are currently in the process of electing the Speaker for the 118th Congress. As the second vote ends without a majority, congressional Republicans are starting to realize that this might take a long time. Will you put your finger on the scales during this delicate process?"], [1006, "An old friend of yours, Kanye West, has asked to meet with you. Many of his recent statements have drawn considerable condemnation and controversy, but he is commonly recognized as one of the greatest musicians of all time, and your advisors are encouraging you to do more to court the unusually shaky youth vote. Will you meet with him?"]];
     q_list1 = [[1027, "Immigration has become a key issue during the election, with coverage of it at an all-time high. You're known for your strict, anti-immigrant rhetoric, and it's proving to be more popular than ever before. Will you continue to talk about immigration from this perspective?"], [20761, "Project 2025 is a plan published by the Heritage Foundation aiming to consolidate power under the presidency, undermining democratic institutions to enact a far-right authoritarian policy agenda. Harris has been relentlessly on the attack, tying you to it at every turn. How will you handle these charges?"], [20771, "Last Saturday, a wide scope of confidential campaign documents, including a dossier on your running mate, were leaked to Politico in what your campaign described as an Iranian cyberattack. Do you have anything to say about this?"], [20777, "Since the start of her campaign, Harris has been somewhat oblique regarding her actual agenda if elected president. She has yet to do a single interview as the nominee, and her campaign website still does not have an “Issues” tab, nearly a month after she announced her candidacy. What do you think about this?"], [20798, "After a recent FEC ruling allowing campaigns to coordinate their ground efforts with outside groups, you have been offered assistance in your campaign’s ground game by Elon Musk’s “America PAC,” among other groups. Some of your campaign advisors believe that outsourcing your get out the vote efforts to these organizations could act as a force multiplier, drastically increasing the amount of voters contacted by your supporters. Is this something you’re interested in?"], [20805, "The family of one of the thirteen U.S. servicemembers killed during the 2021 Afghanistan withdrawal has invited you to attend a private wreath-laying ceremony at Arlington National Cemetery. Some of your advisors think this could make for a great opportunity to film material for your campaign ads, and that you could even attack Biden and Harris for not showing up to the ceremony. Will you go?"], [20816, "Last Thursday, you criticized Florida’s six-week abortion ban and seemed to imply that you would be voting for Amendment 4, a Florida ballot measure seeking to protect the right to an abortion before fetal viability (about 23 to 24 weeks). Your statement has drawn criticism from many evangelical groups, and contradicts the stances of Governor DeSantis and the Florida GOP. Can you clarify whether you will be voting for Amendment 4?"], [1029, "Dissatisfaction with President Biden’s support for the Israeli war in Gaza is threatening to tear apart the Democratic base, and he struggles with Arab-American support in the critical swing state of Michigan. Some of your allies, including Massad Boulos and Richard Grenell, are sensing an opening. They want to meet with Arab-American community leaders in Michigan and start an organization called “Arab Americans for Trump.” Do you think this is a good idea?"], [1012, "Recently, President Biden announced new tariffs on Chinese steel, solar panels, and electric vehicles, some tariff rates reaching as high as 100 percent. Your first administration also saw the imposition of high tariffs on Chinese goods, a break from the previous Republican consensus of open markets. What course will you take on trade policy during a second Trump administration?"], [1030, "Since the Russian invasion of Ukraine, Finland and Sweden have become part of the North Atlantic Treaty Organization, with President Biden’s strong support. Biden has also been open to admitting Ukraine after the war’s end (presuming Ukraine still exists independently). What do you think about America’s role in NATO?"]];
     q_list2 = [[20828, "J. D. Vance and your, uh, loyal supporter, Laura Loomer, have been telling you about some disturbing rumors coming from Springfield, Ohio — allegedly, Haitian migrants are abducting and eating native residents’ pet cats and dogs. There is little evidence to support this, but they think it could play well into your campaign message regarding immigration. What do you think?"], [20883, "In 2020, your claims of massive voter fraud and a stolen election culminated in the infamous January 6th riot and your second impeachment. Do you think something similar could happen in this election?"], [20930, "A favorite Democratic line of attack over the past couple of years is that you would repeal the Affordable Care Act (also known as Obamacare), jeopardizing the healthcare of millions of Americans. Is there any truth to these claims?"], [20856, "News outlets have begun to report that President Biden intends to block the proposed 14.9 billion dollar takeover of U.S. Steel by Japanese firm Nippon Steel, citing security risks in having American steel production controlled by foreign entities. What public position will you take on this?"], [20869, "Maine and Nebraska are the only states in the country to allocate their electoral votes by congressional district. Typically, this cancels out, with Republicans winning Maine’s second and Democrats winning Nebraska’s second. However, the deadline to change Maine’s electoral votes for this election has passed, meaning that Nebraska could theoretically revert to winner-takes-all without fear of retaliation. Would you support this elaborate heist of one electoral vote by Nebraska Republicans?"], [22033, "Most folks remember the economy of your first term as fairly strong - save for COVID, of course. You, however, have not really focused much on specific economic policies during your campaign, other than talking about bringing down inflation. Is there any specific plan you'd like to lay out on the economy?"], [22034, "Social issues have been a little hit-or-miss for most Republicans, but many of your advisors believe that you can define Harris as out-of-touch with the average American on these policies easily. Is this something you wish to do, or will you keep the culture war rhetoric toned down?"]];
@@ -10507,7 +10592,7 @@ if (campaignTrail_temp.global_parameter_json[0].fields.question_count == 25) {
     console.log("🐰")
 }
 
-if (campaignTrail_temp.global_parameter_json[0].fields.question_count == 30) {
+else if (campaignTrail_temp.global_parameter_json[0].fields.question_count == 30) {
       campaignTrail_temp.questions_json[4] = {
         "model": "campaign_trail.question",
         "pk": 1038,
@@ -10634,9 +10719,9 @@ if (campaignTrail_temp.global_parameter_json[0].fields.question_count == 30) {
     console.log("🐰")
 }
 
-if (campaignTrail_temp.global_parameter_json[0].fields.question_count == 35) {
+else if (campaignTrail_temp.global_parameter_json[0].fields.question_count == 35) {
 
-    campaignTrail_temp.questions_json[4] = {
+      campaignTrail_temp.questions_json[4] = {
         "model": "campaign_trail.question",
         "pk": 1038,
         "fields": {
@@ -10914,6 +10999,36 @@ if(out=="win" && e.player_answers.includes(20768)){
 
 if (out=="win" && aa[1].popular_votes > aa[0].popular_votes) {
   ctsAchievement("Third Time's Not The Charm");
+}
+
+if(out=="win" && e.player_answers.includes(5016) && e.player_answers.includes(20802)){
+  ctsAchievement("How High?");
+}
+
+stcount = function(st, cid) {
+    let j = 0;
+    campaignTrail_temp.final_state_results.forEach((s) => {
+        if(s["result"][0]["candidate"] == cid) {
+            if(st.includes(s["state"])) {
+                j++;
+            }
+        }
+    })
+    console.log(j);
+    if(j == st.length) {
+        return true;
+    }
+    return false;
+}
+
+let trumpStates = [1002, 1009, 1021, 1037, 1049];
+let demStates = [1027];
+if (out=="win" && stcount(demStates, 201) && stcount(trumpStates, 200)) {
+   ctsAchievement("Posted It Again Award");
+}  
+
+if(out=="lose" && campaignTrail_temp.difficulty_level_multiplier >= 1.33){
+    ctsAchievement("Teflon Don? More like Tesla Don.");
 }
 
 if (quickstats[0] < 3) {
