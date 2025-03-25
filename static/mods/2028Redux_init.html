@@ -1,0 +1,308 @@
+campaignTrail_temp.global_parameter_json = [
+    {
+        "model": "campaign_trail.global_parameter",
+        "pk": 1,
+        "fields": {
+            "vote_variable": 1.125,
+            "max_swing": 0.08,
+            "start_point": 0.94,
+            "candidate_issue_weight": 10,
+            "running_mate_issue_weight": 3,
+            "issue_stance_1_max": -0.71,
+            "issue_stance_2_max": -0.3,
+            "issue_stance_3_max": -0.125,
+            "issue_stance_4_max": 0.125,
+            "issue_stance_5_max": 0.3,
+            "issue_stance_6_max": 0.71,
+            "global_variance": 0.01,
+            "state_variance": 0.005,
+            "question_count": 26,
+            "default_map_color_hex": "#C9C9C9",
+            "no_state_map_color_hex": "#999999"
+        }
+    }
+]
+
+campaignTrail_temp.election_json = [
+    {
+        "model": "campaign_trail.election",
+        "pk": 20,
+        "fields": {
+            "year": 2028,
+            "display_year": "2028Redux",
+            "summary": "Gavin Newsom and J.D. Vance face off in a high-stakes 2028 election, each representing starkly different visions for America’s future.<br>\n<br>\nAfter eight years of Republican rule under Donald Trump, the country stands at a crossroads. Gavin Newsom, the Democratic nominee and former governor of California, promises to restore progressive leadership with a focus on climate change, healthcare expansion, and social justice. Meanwhile, J.D. Vance, the Republican nominee and Vice President under Trump, champions a populist-nationalist agenda, vowing to secure the border, slash regulations, and continue the \"America First\" policies of his predecessor.<br>\n<br>\nCan Newsom unite a coalition to bring Democrats back to power, or will Vance cement Republican dominance for another four years?",
+            "image_url": "https://imgur.com/ZoiQBBY.jpeg",
+            "winning_electoral_vote_number": 270,
+            "advisor_url": "https://imgix.ranker.com/list_img_v2/1465/621465/original/list-of-famous-strategists-u4?w=817&h=427&fm=jpg&q=50&fit=crop",
+            "recommended_reading": "a",
+            "has_visits": 1,
+            "no_electoral_majority_image": "../static/images/2012-no-majority.jpg"
+        }
+    }
+]
+
+campaignTrail_temp.temp_election_list = [
+    {
+        "id": 20,
+        "year": 2028,
+        "is_premium": 0,
+        "display_year": "2028Redux"
+    }
+]
+
+campaignTrail_temp.credits = "the American Crossroads Dev Team"
+
+campaignTrail_temp.candidate_json = [
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 1001,
+        "fields": {
+            "first_name": "Gavin",
+            "last_name": "Newsom",
+            "election": 20,
+            "party": "Democratic Party",
+            "state": "California",
+            "priority": 1,
+            "description": "Gavin Newsom enters the 2028 election as the Democratic nominee, seeking to reclaim the White House after eight years of Republican rule.<br><br>As the former governor of California and a leading progressive figure, Newsom presents himself as the candidate of competence, experience, and a return to stability. He promises aggressive action on climate change, healthcare expansion, and restoring civil rights protections rolled back under the Trump-Vance administration. However, his ties to the Democratic establishment and his reputation as a staunch liberal make him a polarizing figure in an increasingly divided America.<br><br>Newsom faces an uphill battle against Vice President J.D. Vance, who seeks to continue Trump-era policies. Can Newsom energize the Democratic base and win back key swing states, or will his progressive policies alienate moderates in a nation still reeling from political and economic turbulence?</div></div></div></div></div></div></div></div></div></div></div>",
+            "color_hex": "#2c4e87",
+            "secondary_color_hex": null,
+            "is_active": 1,
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Newsom_April_2024_%283x4_cropped%29.jpg/220px-Newsom_April_2024_%283x4_cropped%29.jpg",
+            "electoral_victory_message": "<br><br><h2>Congratulations! You have won the 2028 election.</h2><br>\n<br>\nAfter a bitter and hard-fought campaign, Gavin Newsom has defeated J.D. Vance to reclaim the White House for the Democratic Party. Riding a wave of strong turnout among progressives, young voters, and suburban moderates, your campaign overcame relentless Republican attacks and a divided political climate to secure victory.<br>\n<br>\nHowever, your path forward won’t be easy. With a closely divided Congress and a nation still grappling with economic and social upheaval, you must work to restore stability and enact your ambitious agenda. Can you push forward on climate action, healthcare expansion, and voting rights, or will Republican opposition and internal party divisions derail your presidency?<br>\n<br>\nYour legacy is in your hands.",
+            "electoral_loss_message": "<br><br><h2>Defeat! J.D. Vance has won the 2028 election.</h2><br>\n<br>\nDespite a grueling campaign and strong Democratic enthusiasm, Gavin Newsom has fallen short in his bid for the presidency. J.D. Vance’s message of economic nationalism, border security, and populist conservatism resonated with key swing-state voters, flipping battlegrounds that Democrats needed to win.<br>\n<br>\nWhile your campaign energized progressives and maintained strong support in urban centers, it wasn’t enough to overcome Republican strength in the Rust Belt, Sun Belt, and rural America. The political landscape now shifts further to the right, as Vance prepares to continue the Trump-era agenda for another four years.<br>\n<br>\nAs the Democratic Party regroups, the question remains: Was this a temporary setback, or a sign of a long-term conservative realignment in American politics?",
+            "no_electoral_majority_message": "<br><br><h2>The 2028 Election Ends in Deadlock!</h2><br>\n<br>\nFor the first time in modern history, no candidate has secured the necessary 270 electoral votes to win the presidency outright. With the electoral map deeply divided, neither Gavin Newsom nor J.D. Vance has achieved a majority, sending the election to the House of Representatives for the final decision.<br>\n<br>\nNewsom’s coalition of urban voters, progressives, and suburban moderates proved strong but not strong enough to decisively win. Meanwhile, Vance’s rural dominance and Rust Belt appeal kept him competitive, leading to a razor-thin deadlock. Third-party candidates or faithless electors may have played a role in this unprecedented outcome.<br>\n<br>\nNow, the fate of the presidency lies in the hands of Congress. Can Newsom rally enough state delegations to claim victory, or will the Republican-controlled House deliver the presidency to Vance? The battle isn’t over yet.",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 50000,
+        "fields": {
+            "first_name": "J.D.",
+            "last_name": "Vance",
+            "election": 20,
+            "party": "Republican Party",
+            "state": "Ohio",
+            "priority": 1,
+            "description": "NOT CURRENTLY PLAYABLE, INCLUDED FOR REFERENCE. MAY OR MAY NOT EVEN BE ADDED IN THE FUTURE.<br><br>J.D. Vance enters the 2028 election as the Republican nominee, looking to continue the legacy of Donald Trump and cement a new era of conservative populism.<br><br>After serving as Vice President under Trump, Vance has emerged as the standard-bearer for the nationalist movement, vowing to secure the border, take on corporate and media elites, and restore \"traditional American values.\" With a blue-collar appeal and a tough stance on crime, immigration, and economic nationalism, he seeks to hold together the coalition that propelled Trump to victory in 2016 and 2024.<br><br>However, Vance faces challenges of his own—Democrats paint him as an extremist, and his populist rhetoric has sparked unease among establishment Republicans. As the country remains deeply divided, can Vance prove himself as a leader in his own right, or will he struggle to escape the long shadow of Trump?</div></div></div></div></div></div></div></div></div></div></div></div></div></div></div>",
+            "color_hex": "#b31200",
+            "secondary_color_hex": null,
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/A5W4JTq.jpeg",
+            "electoral_victory_message": "Congratulations! J.D. Vance has won the 2028 election.<br>\n<br>\nAgainst fierce opposition and a deeply divided electorate, J.D. Vance has emerged victorious, securing a Republican hold on the White House for another four years. His message of economic nationalism, border security, and cultural conservatism resonated with voters across the Rust Belt, Sun Belt, and rural America, overcoming Gavin Newsom’s challenge.<br>\n<br>\nHowever, the road ahead will not be easy. The nation remains polarized, with Democrats controlling key governorships and potentially the Senate, ready to push back against Vance’s agenda. With global tensions rising and economic challenges still looming, will President Vance successfully solidify his vision for America, or will internal and external pressures derail his presidency?<br>\n<br>\nThe next chapter of American politics begins now.",
+            "electoral_loss_message": "Defeat! Gavin Newsom has won the 2028 election.<br>\n<br>\nDespite a hard-fought campaign and strong Republican enthusiasm, J.D. Vance has fallen short in his bid for the presidency. Newsom’s coalition of suburban moderates, young voters, and progressives proved too formidable, flipping key battleground states and delivering the White House back to the Democrats.<br>\n<br>\nWhile Vance’s populist message resonated with rural voters and working-class conservatives, it wasn’t enough to overcome the Democratic wave in urban centers and key swing states. The loss raises questions about the future of the Republican Party—will it continue down the nationalist path set by Trump and Vance, or will a new direction emerge?<br>\n<br>\nFor now, America turns blue once more, and the GOP must regroup for the battles ahead.",
+            "no_electoral_majority_message": "Electoral Deadlock! No Candidate Wins a Majority in 2028.<br>\n<br>\nThe 2028 presidential election has ended in an unprecedented stalemate. Neither J.D. Vance nor Gavin Newsom has secured the required 270 electoral votes, thrusting the nation into a constitutional crisis and sending the outcome to the House of Representatives.<br>\n<br>\nVance’s rural dominance and Rust Belt strength clashed with Newsom’s urban coalition and coastal support, creating a deeply divided map. A strong third-party showing or razor-thin margins in key states prevented either side from claiming a clear victory.<br>\n<br>\nNow, the balance of power shifts to Capitol Hill. With the House set to vote by state delegation, and the Senate poised to determine the Vice President, the outcome remains uncertain. Will the Republicans maintain control, or can Democrats pull off a comeback in Congress?<br>\n<br>\nThe election is over—yet the decision is still to come.",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 50001,
+        "fields": {
+            "first_name": "Raphael",
+            "last_name": "Warnock",
+            "election": 20,
+            "party": "Democratic Party",
+            "state": "Georgia",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#2c4e87",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Raphael_Warnock_official_photo.jpg/440px-Raphael_Warnock_official_photo.jpg",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "Senator Raphael Warnock enters the 2028 election as the Democratic Vice Presidential nominee, bringing a powerful voice for justice, faith, and progress to the campaign.<br><br>A two-term senator from Georgia and the senior pastor of Ebenezer Baptist Church, Warnock has been a champion for voting rights, economic justice, and healthcare expansion. His presence on the ticket offers regional balance to Newsom’s West Coast leadership and strengthens the Democratic Party’s appeal to Black voters and working-class communities across the South.<br><br>However, Warnock faces a tough national race where Republicans will attack him as too progressive for a country still deeply divided on key issues. Can he help Newsom unify the Democratic coalition and flip key battleground states, or will the GOP’s populist messaging under J.D. Vance prove too strong to overcome?",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 50002,
+        "fields": {
+            "first_name": "Katie",
+            "last_name": "Britt",
+            "election": 20,
+            "party": "Republican Party",
+            "state": "Alabama",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#b31200",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Katie_Britt.jpg/220px-Katie_Britt.jpg",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "Senator Katie Britt enters the 2028 election as J.D. Vance’s running mate, aiming to solidify the Republican ticket with her sharp political instincts and Southern conservative appeal.<br><br>As the junior senator from Alabama, Britt has quickly risen as a prominent voice in the Republican Party, advocating for strong border security, pro-business policies, and traditional family values. Her selection balances Vance’s Rust Belt populism with deep Southern Republican support, helping to energize the party’s base in key battlegrounds across the Sun Belt.<br><br>However, Britt’s rapid ascent in national politics has drawn scrutiny, with Democrats portraying her as inexperienced and too rigidly conservative for a changing electorate. Can the Vance-Britt ticket rally the Trump coalition for another Republican victory, or will their brand of conservatism face resistance in an evolving political landscape?",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    }
+]
+
+campaignTrail_temp.running_mate_json = [
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 85720,
+        "fields": {
+            "candidate": 1001,
+            "running_mate": 50001
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 95390,
+        "fields": {
+            "candidate": 50000,
+            "running_mate": 50002
+        }
+    }
+]
+
+campaignTrail_temp.opponents_default_json = [
+    {
+        "election": 20,
+        "candidates": [
+            1001,
+            50000
+        ]
+    }
+]
+
+campaignTrail_temp.opponents_weighted_json = [
+    {
+        "election": 20,
+        "candidates": [
+            1001,
+            50000
+        ]
+    }
+]
+
+jet_data = {
+    "headerColor": "#3133b3",
+    "windowColor": "#3620a7",
+    "containerColor": "#08224d",
+    "innerWindowColor": "#2024a7",
+    "bannerImageUrl": "https://i.imgur.com/7Un0Ds8.png",
+    "backgroundImageUrl": "https://i.imgur.com/JKHoZm2.jpeg",
+    "endingTextColor": "#f8f8f8",
+    "customQuote": "",
+    "gameTitle": "THE AMERICAN CROSSROADS"
+}
+
+//
+
+HistHexcolour = ["#b31200", "#2c4e87", "#FFFF00", "#00C100"];
+HistName = [
+  " J.D. Vance",
+  " Gavin Newsom",  
+  " Others",
+
+];
+HistEV = [275, 263, 0, 0];
+HistPV = ["77,756,473", "79,038,902", "2,558,053"];
+HistPVP = ["48.8%", "49.6%", "1.6%"];
+
+//#startcode
+
+
+corrr = '\n              <h2>THE AMERICAN CROSSROADS</h2>\n            ';
+
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#3133b3";
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#3620a7";
+
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+$(".container")[0].style.backgroundColor = "#08224d";
+
+document.getElementById("header").src = "https://i.imgur.com/7Un0Ds8.png";
+
+document.body.background = "https://i.imgur.com/JKHoZm2.jpeg";
+
+document.head.innerHTML += "<style>#results_container {color:#f8f8f8;} .inner_window_w_desc {background-color:#2024a7!important;}</style>";
+
+//#endcode
+
+e=campaignTrail_temp
+
+var changeGameDisp = (hide) => {
+  disp = "";
+  if (hide) {
+    disp = "none";
+  }
+  document.getElementsByClassName("inner_window_w_desc")[0].style.display = disp
+};
+
+e.creditsPage = () => {
+  credits_html = `
+    <h3>Coding and Writing</h3>
+    <p><font color='#65bc6d'>gamerdoglover</font></p>
+    <h3>Artist</h3>
+    <p><font color='#b665bc'>mrgreatmorals</font></p>
+	<h3>Playtesting/Misc. Help</h3>
+    <p><em><b><font color='red'>politicalroleplayer_91915</font></b></em></p>
+    <h3>Credits and Music Systems</h3>
+    <p><em><b><font color='red'>DecstarG</font></b></em></p>
+    <h3>Music Credit</h3>
+    <p>Come As You Are - Nirvana</p>
+    <p>Lincoln and Liberty - Pete Seeger</p>
+    <p>Never Can Say Goodbye - The Jackson 5</p>
+    <p>Land of Hope and Dreams</p>
+    <p>Talkin' Bout a Revolution (2015 Remaster) - Tracy Chapman</p>
+    <p>God Bless the USA - Lee Greenwood</p><br><br>
+    <h1><font color='gold'>Final Note</font></h1>
+    <div style='width: 70%;text-overflow: ellipsis;text-align:center;display: block;margin-left: auto;margin-right: auto;'>
+    <p>Hi, this is gamerdoglover. I just wanted to thank you for playing this mod.</p>
+    <p>I hope you enjoy/did enjoy the mod.</p>
+    <p>This was my first mod and I intend to expand upon my knowledge I have recently gained to potentially make more mods in the future!</p>
+    </div>
+  `
+  changeGameDisp(true);
+  var spacer = document.createElement("amongusspacerthisisntarealelement");
+  spacer.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+  document
+    .getElementsByClassName("inner_window_w_desc")[0]
+    .children[1].appendChild(spacer);
+    changeGameDisp(true);
+    var menuHeader = document.createElement("div");
+    menuHeader.classList.add("inner_window_front");
+    menuHeader.innerHTML = `<h1 style='font-family: "Times New Roman";'><font color='#0496f7'>Credits</font></h1>`;
+    menuHeader.id = "SOTUheader";
+    menuHeader.style = "height: 50px;background-color:#2d2d2d";
+    var newMenu = document.createElement("div");
+    newMenu.classList.add("inner_window_front");
+    newMenu.id = "SOTUmenu";
+    newMenu.style = `height:260px;background-color:#2d2d2d;color:white;overflow-y: scroll;`;
+
+    newMenu.innerHTML = credits_html;
+    let z = document.getElementById("game_window");
+    var backButton = document.createElement("button");
+    backButton.style =
+      "position: relative; bottom: -13px; left: -380px; width: 150px; height: 80px;font-size:40px;padding-top:5px;padding-left:8px";
+    backButton.id = "backSOTUBtn";
+    backButton.innerHTML = `<b>BACK</b>`;
+    backButton.onclick = function () {
+      document.getElementById("SOTUheader").remove();
+      document.getElementById("SOTUmenu").remove();
+      document.getElementById("backSOTUBtn").remove();
+      changeGameDisp(false);
+    };
+    z.appendChild(menuHeader);
+    z.appendChild(newMenu);
+    z.appendChild(backButton);
+
+}
+
+e.credits = "<button onclick='e.creditsPage()'>Credits</button>"
