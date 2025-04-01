@@ -87,6 +87,7 @@ const customStyling = document.createElement("style");
     #confirm_visit_button,
     #no_visit_button,
     #final_result_button,
+    #overlay_result_button,
     #overall_results_button,
     #final_election_map_button,
     #state_results_button,
@@ -196,6 +197,8 @@ document.head.appendChild(customStyling);
     campaignTrail_temp.running_mate_image_url = 'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzRhMWQzZmM3NmVmMTg4MGNjODY3ZjM4MDliZWJhZmMyYjk3OTQwNCZjdD1n/RvtOEQmEggJklVhUg2/giphy.gif';
 }
 if (ans == 4414) { //// goes straight to the end with george bush as the candidate instead :3
+    robertsoncandidate = false
+    bushcandidate = true
     e.candidate_json[1]["fields"].first_name = "George";
     e.candidate_json[1]["fields"].last_name = "Bush";
     e.question_number = 31;
