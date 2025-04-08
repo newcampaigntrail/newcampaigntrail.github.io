@@ -73,7 +73,42 @@ style_overwrite.innerHTML =
         #candidate_form h3,
         #running_mate_form h3,
         #game_options h3,
-        #difficulty_level h3 {
+        #difficulty_level h3,
+        #margin_switcher,
+        #resume_questions_button,
+        #AdvisorButton,
+        #ok_button,
+        #no_feedback_button,
+        #confirm_visit_button,
+        #no_visit_button,
+        #final_result_button,
+        #overlay_result_button,
+        #overall_results_button,
+        #final_election_map_button,
+        #state_results_button,
+        #overall_details_button,
+        #recommended_reading_button,
+        #play_again_button,
+        #ExportFileButton,
+        #new_game_button,
+        #cancel_button,
+        #pvswitcher,
+        #ev_est,
+        #overall_result,
+        #state_info,
+        #state_result,
+        #visit_window p,
+        #election_night_window p,
+        #new_game_window p,
+        #overall_result h3,
+        #state_info h3,
+        #state_result h3,
+        #visit_window h3,
+        #election_night_window h3,
+        #new_game_window h3,
+        #progress_bar h3,
+        .inner_inner_window h3,
+        .visit_text {
             color: #ffffff;
         }
         #election_image img {
@@ -81,6 +116,63 @@ style_overwrite.innerHTML =
             height: 210px;
             margin-left: -0.95em;
             margin-top: -0.85em;
+        }
+        #margin_switcher,
+        #resume_questions_button,
+        #AdvisorButton,
+        #ok_button,
+        #no_feedback_button,
+        #confirm_visit_button,
+        #no_visit_button,
+        #final_result_button,
+        #overlay_result_button,
+        #overall_results_button,
+        #final_election_map_button,
+        #state_results_button,
+        #overall_details_button,
+        #recommended_reading_button,
+        #play_again_button,
+        #ExportFileButton,
+        #new_game_button,
+        #cancel_button,
+        #pvswitcher,
+        #ev_est {
+            background-color: #9e2e95;
+            border-color: #73daff;
+        }
+        .inner_window_sign_display {
+            background-image: url("https://media2.giphy.com/media/ZNhPgAy2yfHwuJvwAy/giphy.gif");
+            border-image: url("https://media2.giphy.com/media/ZNhPgAy2yfHwuJvwAy/giphy.gif");;
+        }
+        #overall_result h3,
+        #state_info h3,
+        #state_result h3 {
+            background-color: #219cbb;
+        }
+        #overall_result,
+        #state_info,
+        #state_result {
+            background-color: #bf4eb0;
+        }
+        #visit_window h3,
+        #election_night_window h3,
+        #new_game_window h3 {
+            background-color: #2caebf;
+        }
+        #menu_container,
+        #overall_result_container,
+        #new_game_window,
+        #visit_window,
+        #election_night_window,
+        .inner_inner_window h3 {
+            background-image: url("https://media2.giphy.com/media/ZNhPgAy2yfHwuJvwAy/giphy.gif");
+        }
+        .inner_inner_window h3 {
+            padding: 0.25em;
+        }
+        #map_container {
+            background-image: url("https://i.imgur.com/062AD8O.jpg");
+            background-size: cover;
         }
         `;
 document.head.appendChild(style_overwrite);
@@ -178,6 +270,7 @@ e.creditsPage = () => {
     <p><font color='#69bfdb'>JFNixon</font></p>
     <h2>Writing Credits</h2>
     <p><font color='#69bfdb'>JFNixon</font></p>
+    <p><font color='#ff85c2'>CatBoxXD</font> (Dukakis & Bush endings)</p>
     <h2>Coding Credits</h2>
     <p><font color='#ff85c2'>CatBoxXD</font></p>
     <h2>Playtesting Credits</h2>
@@ -334,7 +427,8 @@ musicMode = () => {
   border-width:3px;
   height:150px;
   width:200px;
-  background-color:#999999;
+  background-color:#c95189;
+  border-color:#96d0ff;
   float:right;
   padding: 10px;
   `
@@ -431,7 +525,7 @@ musicMode = () => {
     function newMusicPlayer() {
         trackSel = document.createElement("div");
         trackSel.id = "trackSelParent"
-        let z = `<div id='trackSel' style="text-align:left;border-style:solid;border-width:3px;overflow-y: scroll;overflow-x: hidden;height:170px; width:400px;background-color:#999999;float:right;">`
+        let z = `<div id='trackSel' style="text-align:left;border-style:solid;border-width:3px;overflow-y: scroll;overflow-x: hidden;height:170px; width:400px;background-color:#c95189;border-color:#96d0ff;float:right;">`
         z += `<b><select id='selectSoundtrack'><option value='` + soundtracks[e.selectedSoundtrack].name + `'>` + soundtracks[e.selectedSoundtrack].name + "</option>"
         for (i in soundtracks) {
             if (soundtracks[e.selectedSoundtrack] != soundtracks[i]) {
