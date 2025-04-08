@@ -1,7 +1,7 @@
 e=campaignTrail_temp
 
-function ctsAchievement(achievement, difficultyChecker = true){
-	if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
+function ctsAchievement(achievement, difficultyChecker = true) {
+	if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=0.97)||!difficultyChecker)
 		if(campaignTrail_temp.CTS){
 		unlockAchievement(achievement);
 	}
@@ -61,78 +61,6 @@ const customStyling = document.createElement("style");
       width: 117%; 
       height: 107px; 
       margin-left: -1.95em;
-    }
-    #overall_result,
-    #state_info,
-    #state_result,
-    #visit_window p,
-    #election_night_window p,
-    #new_game_window p,
-    #overall_result h3,
-    #state_info h3,
-    #state_result h3,
-    #visit_window h3,
-    #election_night_window h3,
-    #new_game_window h3,
-    #progress_bar h3,
-    .inner_inner_window h3,
-    .visit_text {
-      color: #ffffff;
-    }
-    #margin_switcher,
-    #resume_questions_button,
-    #AdvisorButton,
-    #ok_button,
-    #no_feedback_button,
-    #confirm_visit_button,
-    #no_visit_button,
-    #final_result_button,
-    #overlay_result_button,
-    #overall_results_button,
-    #final_election_map_button,
-    #state_results_button,
-    #overall_details_button,
-    #recommended_reading_button,
-    #play_again_button,
-    #ExportFileButton,
-    #new_game_button,
-    #cancel_button,
-    #pvswitcher,
-    #ev_est {
-      background-color: #9e2e95;
-      border-color: #73daff;
-      color: #ffffff;
-    }
-    .inner_window_sign_display {
-      background-image: url("https://media2.giphy.com/media/ZNhPgAy2yfHwuJvwAy/giphy.gif");
-      border-image: url("https://media2.giphy.com/media/ZNhPgAy2yfHwuJvwAy/giphy.gif");;
-    }
-    #overall_result h3,
-    #state_info h3,
-    #state_result h3 {
-      background-color: #219cbb;
-    }
-    #overall_result,
-    #state_info,
-    #state_result {
-      background-color: #bf4eb0;
-    }
-    #visit_window h3,
-    #election_night_window h3,
-    #new_game_window h3 {
-      background-color: #2caebf;
-    }
-    #menu_container,
-    #overall_result_container,
-    #new_game_window,
-    #visit_window,
-    #election_night_window,
-    .inner_inner_window h3 {
-      background-image: url("https://media2.giphy.com/media/ZNhPgAy2yfHwuJvwAy/giphy.gif");
-    }
-    #map_container {
-        background-image: url("https://i.imgur.com/062AD8O.jpg");
-        background-size: cover;
     }
     `;
 document.head.appendChild(customStyling);
