@@ -9399,3 +9399,51 @@ campaignTrail_temp.jet_data = [{
 }
 ]
 
+endingPicker = (out, totv, aa, quickstats) => {
+ //out = "win", "loss", or "tie" for your candidate
+        //totv = total votes in entire election
+        //aa = all final overall results data
+        //quickstats = relevant data on candidate performance (format: your candidate's electoral vote count, your candidate's popular vote share, your candidate's raw vote total)
+playerEV=quickstats[0]
+if(playerEV>=500)
+{
+ return "<h3>“Good work, Operative Dukakis, M. 2291-03.”</h3><p>“Your performance has satisfied us,” said the shadowy voice over the phone. “Our work to create the one world government continues unabated. You are one of our best operatives.” Dukakis pet his Siamese cat behind the <em>Resolute</em> desk, smiling menacingly. “Yes, my lord,” said Dukakis with an evil laugh. “I can't believe those morons actually fell back in line. I thought I was in trouble for a minute.” “Yes, yes indeed,” said the voice. “I must go now. We will talk soon, Operative.” The phone line immediately disconnected.</p><p>Deep in the shadowy Illuminati complex in the mountains of northern Siberia, the grand Illuminator of the New World Order hung up the phone and cackled menacingly. “That doddering idiot thinks he's in on the secret,” said in an unmistakably female voice. “I want him assassinated immediately.” Soon, the Illuminator knew, she would be the leader of not only the United States, but the entire world. And there would be no more polls to Pokemon Go to after that.</p>"
+}
+else if(playerEV>=400)
+{
+return "<h3>“We always hold out for a better tomorrow. And today, with the help of all of you, that better tomorrow is here.”</h3><p>How did you even manage to do this? With a garbage economy and terrible approval ratings, you've managed to score a huge electoral college victory, scooping up every swing state, and even several Republican-leaning states. Now you have healthy majorities in Congress and a clear mandate to pass all the legislation you wanted. Maybe it's time for DukeCare to rise from the ashes once more?</p><p>These last four years were the most difficult of your life in almost every respect, and your agenda was almost completely torn to shreds. America was staring down dark times in this election. But, at the end of the day, when it really counted, you were vindicated -- overwhelmingly.</p>"
+}
+else if(playerEV>=360)
+{
+return "<h3>“We always hold out for a better tomorrow. And today, with the help of all of you, that better tomorrow is here.”</h3><p>This might be the biggest political turnaround in American history. You looked like a goner at this time, just a year ago. Whatever you did in the interval worked. With this margin, some of your staffers are starting to say that you would have beaten Bob Dole had he been the Republican candidate. Regardless, you have healthy majorities in Congress and a clear mandate to pass all the legislation you wanted. Maybe it's time for DukeCare to rise from the ashes once more?</p><p>These last four years were the most difficult of your life in almost every respect, and your agenda was almost completely torn to shreds. America was staring down dark times in this election. But, at the end of the day, when it really counted, you were vindicated in a landslide. And you can't deny that it feels fantastic.</p>"
+}
+else if(playerEV>=330)
+{
+return "<h3>“We always hold out for a better tomorrow. And today, with the help of all of you, that better tomorrow is here.”</h3><p>Many people were saying this race would go down to the wire. It didn't. You had a suspicion that voters were less comfortable with Buchanan than the talking heads realized. You knew that, no matter how much they didn't like you, when they went into that voting booth, they just wouldn't pull the lever for him. You were correct.<p><p>These last four years were the most difficult of your life in almost every respect, and your agenda was almost completely torn to shreds. America was staring down dark times in this election. But, at the end of the day, when it really counted, you were vindicated -- and by a healthy margin, too. You beat the polls and shocked the pundits. And you can't deny that it feels fantastic.</p>"
+}
+else if(playerEV>=270)
+{
+return "<h3>“We always hold out for a better tomorrow. And today, with the help of all of you, that better tomorrow is here.”</h3><p>The pictures tell the story of that night better than you ever could. A picture of you watching the television as they call Michigan for you, your thumb rested tensely on your chin. A picture of you backstage before your speech, adjusting your tie with a wide smile. A picture of you waving down to the crowd from within a massive wall of red, white, and blue confetti. It makes the cover of <em>Time</em> magazine.<p><p>These last four years were the most difficult of your life in almost every respect, and your agenda was almost completely torn to shreds. America was staring down dark times in this election. But, at the end of the day, when it really counted, you were vindicated. The worst did not come to pass. And you can't deny that it feels fantastic.</p>"
+}
+else if (quickstats[0] > 269 && quickstats[0]<269)
+{
+return "<h3>“We can now project that the Electoral College is deadlocked.”</h3><p>Nobody can believe it came down to this. It hasn't happened in 150 years. At this hour, a slew of close House races are uncalled. The upcoming contingent election is anybody's game, so best of luck.</p><p>Buchanan is probably just as floored as you are, and just as certain to contest the contingent election as you are. So buckle up and start your engines, because you're in overtime. Anything can happen at this point.</p>"
+}
+else if(playerEV>=200)
+{
+return "<h3>“Our greatest strength comes not from what we possess, but from what we believe; not from what we have, but from who we are.”</h3><p>Chaos erupted when they called the election for Buchanan. Some of your staffers screamed in shock. Others gasped. A few even wept. The only person not to react was you. You sat motionless, watching the television, your head rested on your clasped hands.</p><p>You delivered your concession speech in freezing rain to a despondent crowd early the next morning. “You all poured your hearts and souls into this campaign,” you told them. “Our movement represented the hopes and dreams of so many people, all across America.” You were starting to choke up. “And we moved mountains. I'm proud of what we accomplished together. You should be, too.”</p>"
+}
+else if(playerEV>=80)
+{
+return "<h3>“Our greatest strength comes not from what we possess, but from what we believe; not from what we have, but from who we are.”</h3><p>Even with the weaknesses of Buchanan, you just never seemed to be able to get the ball rolling. Buchanan certainly has the mandate he needs to pursue his right-wing agenda over the next four years, much to the dismay of Democrats nationwide.</p><p>You delivered your concession speech in freezing rain to a despondent crowd early the next morning. “You all poured your hearts and souls into this campaign,” you told them. “Our movement represented the hopes and dreams of so many people, all across America.” You were starting to choke up. “And we moved mountains. I'm proud of what we accomplished together. You should be, too.”</p>"
+}
+else if(playerEV>=50)
+{
+ return "<h3>“It's not over yet.”</h3><p>That's what you tell them from the podium, surrounded by freezing rain and the occasional bolt of lightning. “We won this election by a lot,” you said. “This election was blatantly fraudulent. Millions of ballots were switched over from me to Buchanan. They're trying to steal the election from us.” Your supporters whooped and cheered. They weren't sad. They were angry.</p><p>“We're going to go to the big, beautiful Capitol,” you said, your voice conveying clear intent. “And we're gonna make the Earth shake.”</p>"
+}
+else
+{
+ return "<h3>Do the worm</h3>" 
+}
+}
+campaignTrail_temp.multiple_endings=true
