@@ -18280,6 +18280,52 @@ endingPicker = (out, totv, aa, quickstats) => {
     if (quickstats[0] >= 0 && vp >= 2) { 
         ctsAchievement("Third Time's The Charm");  
     }
+
+    if (out=="loss") { 
+        if (used != true) {
+          const playlist = new Playlist();
+            const song = new Song(
+              "I Like Ike!",
+              "Eisenhower '52 Campaign",
+              "https://itsastronomical.com/assets/1956/ikeimage.png",
+              "https://itsastronomical.com/assets/1956/ILikeIke.mp3"
+            );
+            playlist.addSong(song);
+          changePlaylist(playlist);
+          
+          used = true;
+          } 
+      }
+      else if (out=="tie") { 
+        if (used != true) {
+          const playlist = new Playlist();
+            const song = new Song(
+              "Adlai for President",
+              "Stevenson '52 Campaign",
+              "https://itsastronomical.com/assets/1956/steve1.png",
+              "https://itsastronomical.com/assets/1956/AdlaiForPresident.mp3"
+            );
+            playlist.addSong(song);
+          changePlaylist(playlist);
+          
+          used = true;
+          } 
+      }
+      else if (out=="win") { 
+        if (used != true) {
+          const playlist = new Playlist();
+            const song = new Song(
+              "Stevenson, Stevenson",
+              "Volunteers for Stevenson",
+              "https://itsastronomical.com/assets/1956/steve2.png",
+              "https://itsastronomical.com/assets/1956/Stevenson.mp3"
+            );
+            playlist.addSong(song);
+          changePlaylist(playlist);
+          
+          used = true;
+          } 
+      }
     
     ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
     used=false
