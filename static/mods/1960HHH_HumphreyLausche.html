@@ -13,7 +13,7 @@ campaignTrail_temp.questions_json = [
         "pk": 449,
         "fields": {
             "priority": 2,
-            "description": "With your nomination secured, you've nudged the delegates a little bit, and as such, Robert Kerr, the Senator from Oklahoma was nominated as your running mate. He is a delicate pick, useful for administrative duties, but a bit of a fragile fellow on the campaign trail. How will you bring him out?",
+            "description": "With your nomination secured, you've allowed party leaders to take the reigns on the decision of running mate. Thus, with a bit of haggling, Ohio Senator Frank Lausche has been nominated as your running mate. He is an interesting pick, as his autonomous streak has made him a favorite among independents in both parties, and he could further open up the Midwest for you. How will you describe him to the convention?",
             "likelihood": 1
         }
     },
@@ -175,7 +175,7 @@ campaignTrail_temp.questions_json = [
         "pk": 488,
         "fields": {
             "priority": 11,
-            "description": "Throughout the campaign, your running mate Robert Kerr has occasionally come out and campaigned for you, but due to his advanced age, has mostly taken a backseat approach to his duties. But with the recent realization of Nixon's lethargy, you've summoned Kerr for a strategy meeting. What will you say to him?",
+            "description": "Throughout the campaign, your running mate, Frank Lausche, has been a good pick so far, campaigning for you from time to time. But with the recent realization of Nixon's lethargy, you've summoned Lausche for a strategy meeting. What will you say to him?",
             "likelihood": 1
         }
     },
@@ -232,7 +232,15 @@ campaignTrail_temp.answers_json = [
         "pk": 3663,
         "fields": {
             "question": 449,
-            "description": "Robert is the type of \"hands-on\" leader we need in this country. Eisenhower's light touch has sent our economy crashing, our wages plummeting, and our national situation more unknown than ever. Together, Kerr and I will work diligently to fix our nation's problems."
+            "description": "Given his unique appeal across the aisle, Lausche will be useful in connecting with voters who feel left behind by the rich-man policies of the Eisenhower administration, along with tamping down feelings on my \"radicalism\""
+        }
+    },
+    {
+        "model": "campaign_trail.answer",
+        "pk": 3664,
+        "fields": {
+            "question": 449,
+            "description": "Lausche is what it means to be an American. Born and raised in Cleveland, he played baseball at a young age, joined the army while America fought in World War I, and then became a highly-ranked lawyer. If that doesn't spell out America, then I don't know what does!"
         }
     },
     {
@@ -608,7 +616,7 @@ campaignTrail_temp.answers_json = [
         "pk": 3777,
         "fields": {
             "question": 488,
-            "description": "Although I'm concerned about his health, of course, we need Kerr to do more for the campaign. I understand that he is quite old and not in the best of health, but he can certainly step up the speeches. Ask him if he could stump in the upper Midwest."
+            "description": "Let's have him tour the Midwest. Recent polls have come out that have shown a close race in many of these states, including his home state of Ohio, which could swing the election for us if things are close."
         }
     },
     {
@@ -616,15 +624,7 @@ campaignTrail_temp.answers_json = [
         "pk": 3778,
         "fields": {
             "question": 488,
-            "description": "Kerr is doing good, but we need to tell him about Nixon's campaign and insist that he step it up in the donation department. Our campaign has hit some bumps recently due to television ads."
-        }
-    },
-    {
-        "model": "campaign_trail.answer",
-        "pk": 3779,
-        "fields": {
-            "question": 488,
-            "description": "Many can see that the best way to take advantage of this is to put on a united front in these last few weeks, and Kerr is vital to that. If he can convince some of those Southerners who've been ambivalent to my efforts so far to reverse course, then we can really embarrass those Republicans come election day."
+            "description": "Lausche is doing decent enough as is, but when victory is this close, decent is not good enough. I'll tell him about Nixon's campaign revelation and insist that focus on coaxing donations out at this stage. We need all the money we can get."
         }
     },
     {
@@ -880,7 +880,7 @@ campaignTrail_temp.answers_json = [
         "pk": 13596,
         "fields": {
             "question": 480,
-            "description": "This seems like a job for Kerr. I'll ask to see if he can pull some favors, sway some votes, do whatever is necessary to ensure our chances aren't further snuffed out by this temper-tantrum."
+            "description": "This seems like a job for Lausche. I'll ask to see if he can pull some favors, sway some votes, do whatever is necessary to ensure our chances aren't further snuffed out by this temper-tantrum."
         }
     },
     {
@@ -893,10 +893,10 @@ campaignTrail_temp.answers_json = [
     },
     {
         "model": "campaign_trail.answer",
-        "pk": 13640,
+        "pk": 13643,
         "fields": {
-            "question": 449,
-            "description": "Kerr has fought to protect the interests of Oklahoma's citizens and has done so without the need to advertise his achievements across the country. That's how you know a man has integrity."
+            "question": 479,
+            "description": "My running mate, Frank Lausche, is a practicing Catholic. Surely he can do some good work in bringing this demographic back into the fold?"
         }
     }
 ]
@@ -6536,7 +6536,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 3777,
             "candidate": 105,
             "affected_candidate": 105,
-            "global_multiplier": 0.0175
+            "global_multiplier": 0.0125
         }
     },
     {
@@ -6701,16 +6701,6 @@ campaignTrail_temp.answer_score_global_json = [
     },
     {
         "model": "campaign_trail.answer_score_global",
-        "pk": 1586,
-        "fields": {
-            "answer": 3779,
-            "candidate": 105,
-            "affected_candidate": 105,
-            "global_multiplier": 0.015
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_global",
         "pk": 1588,
         "fields": {
             "answer": 3781,
@@ -6746,7 +6736,17 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 3663,
             "candidate": 105,
             "affected_candidate": 105,
-            "global_multiplier": 0.04
+            "global_multiplier": 0.025
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 13311,
+        "fields": {
+            "answer": 3664,
+            "candidate": 105,
+            "affected_candidate": 105,
+            "global_multiplier": 0.02
         }
     },
     {
@@ -6764,6 +6764,16 @@ campaignTrail_temp.answer_score_global_json = [
         "pk": 13331,
         "fields": {
             "answer": 3663,
+            "candidate": 105,
+            "affected_candidate": 107,
+            "global_multiplier": -0.05
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 13332,
+        "fields": {
+            "answer": 3664,
             "candidate": 105,
             "affected_candidate": 107,
             "global_multiplier": -0.05
@@ -7016,7 +7026,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 3778,
             "candidate": 105,
             "affected_candidate": 105,
-            "global_multiplier": 0.02
+            "global_multiplier": 0.01
         }
     },
     {
@@ -7086,7 +7096,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 13596,
             "candidate": 105,
             "affected_candidate": 107,
-            "global_multiplier": -0.05
+            "global_multiplier": -0.025
         }
     },
     {
@@ -7141,22 +7151,22 @@ campaignTrail_temp.answer_score_global_json = [
     },
     {
         "model": "campaign_trail.answer_score_global",
-        "pk": 13642,
+        "pk": 13645,
         "fields": {
-            "answer": 13640,
+            "answer": 13643,
             "candidate": 105,
             "affected_candidate": 105,
-            "global_multiplier": 0.04
+            "global_multiplier": -0.005
         }
     },
     {
         "model": "campaign_trail.answer_score_global",
-        "pk": 13643,
+        "pk": 13646,
         "fields": {
-            "answer": 13640,
+            "answer": 13643,
             "candidate": 105,
             "affected_candidate": 107,
-            "global_multiplier": -0.05
+            "global_multiplier": 0.03
         }
     }
 ]
@@ -7464,16 +7474,6 @@ campaignTrail_temp.answer_score_issue_json = [
     },
     {
         "model": "campaign_trail.answer_score_issue",
-        "pk": 1353,
-        "fields": {
-            "answer": 3779,
-            "issue": 38,
-            "issue_score": -0.05,
-            "issue_importance": 3
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_issue",
         "pk": 1354,
         "fields": {
             "answer": 3780,
@@ -7584,11 +7584,31 @@ campaignTrail_temp.answer_score_issue_json = [
     },
     {
         "model": "campaign_trail.answer_score_issue",
+        "pk": 13312,
+        "fields": {
+            "answer": 3664,
+            "issue": 38,
+            "issue_score": 0.25,
+            "issue_importance": 3
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_issue",
+        "pk": 13313,
+        "fields": {
+            "answer": 3664,
+            "issue": 39,
+            "issue_score": 0.25,
+            "issue_importance": 3
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_issue",
         "pk": 13314,
         "fields": {
             "answer": 3663,
-            "issue": 39,
-            "issue_score": 0.4,
+            "issue": 38,
+            "issue_score": 0.1,
             "issue_importance": 3
         }
     },
@@ -7597,7 +7617,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "pk": 13315,
         "fields": {
             "answer": 3663,
-            "issue": 38,
+            "issue": 39,
             "issue_score": 0.15,
             "issue_importance": 3
         }
@@ -7898,7 +7918,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "fields": {
             "answer": 3777,
             "issue": 40,
-            "issue_score": 0.1,
+            "issue_score": -0.3,
             "issue_importance": 3
         }
     },
@@ -7994,21 +8014,11 @@ campaignTrail_temp.answer_score_issue_json = [
     },
     {
         "model": "campaign_trail.answer_score_issue",
-        "pk": 13644,
+        "pk": 13647,
         "fields": {
-            "answer": 13640,
-            "issue": 39,
-            "issue_score": 0.4,
-            "issue_importance": 3
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_issue",
-        "pk": 13645,
-        "fields": {
-            "answer": 13640,
+            "answer": 13643,
             "issue": 38,
-            "issue_score": 0.15,
+            "issue_score": 0.2,
             "issue_importance": 3
         }
     }
@@ -8295,10 +8305,43 @@ campaignTrail_temp.answer_score_state_json = [
         "pk": 13316,
         "fields": {
             "answer": 3663,
-            "state": 318,
+            "state": 317,
             "candidate": 105,
             "affected_candidate": 105,
-            "state_multiplier": 0.175
+            "state_multiplier": 0.05
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_state",
+        "pk": 13317,
+        "fields": {
+            "answer": 3663,
+            "state": 295,
+            "candidate": 105,
+            "affected_candidate": 105,
+            "state_multiplier": 0.03
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_state",
+        "pk": 13318,
+        "fields": {
+            "answer": 3664,
+            "state": 317,
+            "candidate": 105,
+            "affected_candidate": 105,
+            "state_multiplier": 0.06
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_state",
+        "pk": 13319,
+        "fields": {
+            "answer": 3664,
+            "state": 295,
+            "candidate": 105,
+            "affected_candidate": 105,
+            "state_multiplier": 0.033
         }
     },
     {
@@ -9156,7 +9199,7 @@ campaignTrail_temp.answer_score_state_json = [
             "state": 317,
             "candidate": 105,
             "affected_candidate": 105,
-            "state_multiplier": 0.025
+            "state_multiplier": 0.02
         }
     },
     {
@@ -9332,7 +9375,7 @@ campaignTrail_temp.answer_score_state_json = [
             "state": 317,
             "candidate": 105,
             "affected_candidate": 105,
-            "state_multiplier": 0.015
+            "state_multiplier": 0.02
         }
     },
     {
@@ -9399,127 +9442,6 @@ campaignTrail_temp.answer_score_state_json = [
             "candidate": 105,
             "affected_candidate": 105,
             "state_multiplier": 0.015
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 13520,
-        "fields": {
-            "answer": 3779,
-            "state": 325,
-            "candidate": 105,
-            "affected_candidate": 105,
-            "state_multiplier": 0.02
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 13521,
-        "fields": {
-            "answer": 3779,
-            "state": 286,
-            "candidate": 105,
-            "affected_candidate": 105,
-            "state_multiplier": 0.01
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 13522,
-        "fields": {
-            "answer": 3779,
-            "state": 300,
-            "candidate": 105,
-            "affected_candidate": 105,
-            "state_multiplier": 0.01
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 13523,
-        "fields": {
-            "answer": 3779,
-            "state": 324,
-            "candidate": 105,
-            "affected_candidate": 105,
-            "state_multiplier": 0.01
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 13524,
-        "fields": {
-            "answer": 3779,
-            "state": 299,
-            "candidate": 105,
-            "affected_candidate": 105,
-            "state_multiplier": 0.01
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 13525,
-        "fields": {
-            "answer": 3779,
-            "state": 283,
-            "candidate": 105,
-            "affected_candidate": 105,
-            "state_multiplier": 0.01
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 13526,
-        "fields": {
-            "answer": 3779,
-            "state": 306,
-            "candidate": 105,
-            "affected_candidate": 105,
-            "state_multiplier": 0.01
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 13527,
-        "fields": {
-            "answer": 3779,
-            "state": 292,
-            "candidate": 105,
-            "affected_candidate": 105,
-            "state_multiplier": 0.01
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 13528,
-        "fields": {
-            "answer": 3779,
-            "state": 315,
-            "candidate": 105,
-            "affected_candidate": 105,
-            "state_multiplier": 0.04
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 13529,
-        "fields": {
-            "answer": 3779,
-            "state": 322,
-            "candidate": 105,
-            "affected_candidate": 105,
-            "state_multiplier": 0.01
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 13530,
-        "fields": {
-            "answer": 3779,
-            "state": 291,
-            "candidate": 105,
-            "affected_candidate": 105,
-            "state_multiplier": 0.01
         }
     },
     {
@@ -9942,109 +9864,21 @@ campaignTrail_temp.answer_score_state_json = [
     },
     {
         "model": "campaign_trail.answer_score_state",
-        "pk": 13646,
-        "fields": {
-            "answer": 13640,
-            "state": 318,
-            "candidate": 105,
-            "affected_candidate": 105,
-            "state_multiplier": 0.175
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 13647,
-        "fields": {
-            "answer": 13640,
-            "state": 298,
-            "candidate": 105,
-            "affected_candidate": 105,
-            "state_multiplier": 0.1
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
         "pk": 13648,
         "fields": {
-            "answer": 3663,
-            "state": 298,
+            "answer": 13643,
+            "state": 314,
             "candidate": 105,
             "affected_candidate": 105,
-            "state_multiplier": 0.1
+            "state_multiplier": 0.03
         }
     },
     {
         "model": "campaign_trail.answer_score_state",
         "pk": 13649,
         "fields": {
-            "answer": 3663,
-            "state": 309,
-            "candidate": 105,
-            "affected_candidate": 105,
-            "state_multiplier": 0.05
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 13650,
-        "fields": {
-            "answer": 3663,
-            "state": 288,
-            "candidate": 105,
-            "affected_candidate": 105,
-            "state_multiplier": 0.05
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 13651,
-        "fields": {
-            "answer": 13640,
-            "state": 309,
-            "candidate": 105,
-            "affected_candidate": 105,
-            "state_multiplier": 0.05
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 13652,
-        "fields": {
-            "answer": 13640,
-            "state": 288,
-            "candidate": 105,
-            "affected_candidate": 105,
-            "state_multiplier": 0.05
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 13653,
-        "fields": {
-            "answer": 13479,
-            "state": 318,
-            "candidate": 105,
-            "affected_candidate": 105,
-            "state_multiplier": 0.01
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 13654,
-        "fields": {
-            "answer": 3757,
-            "state": 318,
-            "candidate": 105,
-            "affected_candidate": 105,
-            "state_multiplier": 0.01
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 13655,
-        "fields": {
-            "answer": 3779,
-            "state": 318,
+            "answer": 13643,
+            "state": 312,
             "candidate": 105,
             "affected_candidate": 105,
             "state_multiplier": 0.02
@@ -10052,10 +9886,10 @@ campaignTrail_temp.answer_score_state_json = [
     },
     {
         "model": "campaign_trail.answer_score_state",
-        "pk": 13656,
+        "pk": 13650,
         "fields": {
-            "answer": 3777,
-            "state": 323,
+            "answer": 13643,
+            "state": 300,
             "candidate": 105,
             "affected_candidate": 105,
             "state_multiplier": 0.03
@@ -10063,10 +9897,21 @@ campaignTrail_temp.answer_score_state_json = [
     },
     {
         "model": "campaign_trail.answer_score_state",
-        "pk": 13657,
+        "pk": 13651,
         "fields": {
-            "answer": 3777,
-            "state": 316,
+            "answer": 13643,
+            "state": 300,
+            "candidate": 105,
+            "affected_candidate": 107,
+            "state_multiplier": -0.025
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_state",
+        "pk": 13652,
+        "fields": {
+            "answer": 13643,
+            "state": 303,
             "candidate": 105,
             "affected_candidate": 105,
             "state_multiplier": 0.03
@@ -10074,13 +9919,13 @@ campaignTrail_temp.answer_score_state_json = [
     },
     {
         "model": "campaign_trail.answer_score_state",
-        "pk": 13658,
+        "pk": 13653,
         "fields": {
-            "answer": 3777,
-            "state": 308,
+            "answer": 13643,
+            "state": 317,
             "candidate": 105,
             "affected_candidate": 105,
-            "state_multiplier": 0.03
+            "state_multiplier": 0.01
         }
     }
 ]
@@ -10092,7 +9937,16 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 3663,
             "candidate": 105,
-            "answer_feedback": "Kerr's nomination hits no snags, as he's quite popular. While his health is a bit of a detriment, he is a great choice for those voters who'll withstand holding their noses and voting for you."
+            "answer_feedback": "Lausche has some minor dissent from Southerners angered about his civil rights stances, but for the most part, his easy-going nature and popularity among moderates catapulted him on the first ballot."
+        }
+    },
+    {
+        "model": "campaign_trail.answer_feedback",
+        "pk": 1208,
+        "fields": {
+            "answer": 3664,
+            "candidate": 105,
+            "answer_feedback": "Lausche has some minor dissent from Southerners angered about his civil rights stances, but for the most part, his easy-going nature and popularity among moderates catapulted him on the first ballot."
         }
     },
     {
@@ -10344,7 +10198,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 3757,
             "candidate": 105,
-            "answer_feedback": "This is a good answer that re-affirms your liberal credentials. Kerr uses this line at some of the rallies he attends."
+            "answer_feedback": "This is a good answer that re-affirms your liberal credentials."
         }
     },
     {
@@ -10380,7 +10234,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 3767,
             "candidate": 105,
-            "answer_feedback": "A strong attacking stance against Eisenhower is risky, as he holds great popularity among most people in the country, but you are correct in stating that the Highway Act was a Democrat bill."
+            "answer_feedback": "A strong attacking stance against Eisenhower is risky, as he holds great popularity among most people in the country, but you are correct in stating that the Highway Act was a Democrat bill. Lausche thinks you should ease up on attacking Eisenhower though, given his popularity."
         }
     },
     {
@@ -10426,15 +10280,6 @@ campaignTrail_temp.answer_feedback_json = [
             "answer": 3776,
             "candidate": 105,
             "answer_feedback": "This flies in the face of your reputation, and opens you up to attacks from Republican surrogates regarding your wishy-washy nature."
-        }
-    },
-    {
-        "model": "campaign_trail.answer_feedback",
-        "pk": 1316,
-        "fields": {
-            "answer": 3779,
-            "candidate": 105,
-            "answer_feedback": "Kerr pulls some favors and soon enough, \"Big Jim\" Folsom, Frank Clement, Albert Gore, Luther Hodges - just to name a few - are all singing the praises of your campaign. You shake Kerr's hand vigorously the next time you see him."
         }
     },
     {
@@ -10488,7 +10333,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 3794,
             "candidate": 105,
-            "answer_feedback": "You've re-affirmed your support for unions, but some within your own party like John Kennedy point out Union excesses under the Teamsters Union and Jimmy Hoffa. "
+            "answer_feedback": "You've re-affirmed your support for unions, but some within your own party like John Kennedy point out Union excesses under the Teamsters Union and Jimmy Hoffa. Lausche wishes you would tone down the union talk, though."
         }
     },
     {
@@ -10560,7 +10405,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 3804,
             "candidate": 105,
-            "answer_feedback": "You're a brave man, and your rallies with Folsom, Collins, and Gore give great ratings on television, but with constant heckling and Eisenhower's popularity still sky-high, the polls are unknown at this point. Pray that you make it through as you settle in, Hubert."
+            "answer_feedback": "You're a brave man, and your rallies with Folsom, Collins, and Kefauver give great ratings on television, but with constant heckling and Eisenhower's popularity still sky-high, the polls are unknown at this point. Pray that you make it through as you settle in, Hubert."
         }
     },
     {
@@ -10677,7 +10522,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 3758,
             "candidate": 105,
-            "answer_feedback": "An odd pivot, but one that fiscal conservatives can get under their belt."
+            "answer_feedback": "An odd pivot, but one that fiscal conservatives can get under their belt. "
         }
     },
     {
@@ -10695,7 +10540,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 13479,
             "candidate": 105,
-            "answer_feedback": "Urban decay has yet to seriously kick in across many American cities, but to those living in places where the sprawl of the cities reaches its maximum, the cracks forming concern them dearly. It's good to reach out to those voters. Kerr is pleased with this plan too."
+            "answer_feedback": "Urban decay has yet to seriously kick in across many American cities, but to those living in places where the sprawl of the cities reaches its maximum, the cracks forming concern them dearly. It's good to reach out to those voters."
         }
     },
     {
@@ -10740,7 +10585,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 3777,
             "candidate": 105,
-            "answer_feedback": "Kerr hits the stump with as much vigor as he can give, and the factory men sure do love him and you together like that."
+            "answer_feedback": "The people sure love Lausche, it seems, as he sees large crowds wherever he goes. Even some Republicans can't help but clap when they hear the man speak on responsible politics."
         }
     },
     {
@@ -10749,7 +10594,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 3778,
             "candidate": 105,
-            "answer_feedback": "Kerr is quite interested by the news about Nixon and leaves with a kick in his step once the meeting is over. Soon enough, you're donation coffers are refilled, and things are nice and dandy."
+            "answer_feedback": "Lausche agrees and soon gets to work doing all he can in getting people and businesses to donate to your campaign."
         }
     },
     {
@@ -10821,7 +10666,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 13596,
             "candidate": 105,
-            "answer_feedback": "Kerr does his best, swaying some more economically-focused members, but for the most part, the men are not convinced and issue their endorsements of Faubus and his disgusting bile. Kerr apologizes to you that he couldn't do more."
+            "answer_feedback": "Lausche struggles, swaying only a few members. Overall, the congressmen are not swayed and issue their endorsements of Faubus and his disgusting bile."
         }
     },
     {
@@ -10835,19 +10680,19 @@ campaignTrail_temp.answer_feedback_json = [
     },
     {
         "model": "campaign_trail.answer_feedback",
-        "pk": 13641,
+        "pk": 13644,
         "fields": {
-            "answer": 13640,
+            "answer": 13643,
             "candidate": 105,
-            "answer_feedback": "Kerr's nomination hits no snags, as he's quite popular. While his health is a bit of a detriment, he is a great choice for those voters who'll withstand holding their noses and voting for you."
+            "answer_feedback": "Although there's some mumbo-jumbo about his religion arising from his marriage, he is still a practicing Catholic, and the first one on a national ticket since 1928. He is able to bring back most of the Catholics who vowed to sit out, although some are utterly unconvinced anyway."
         }
     }
 ]
 
 campaignTrail_temp.candidate_image_url = "https://i.imgur.com/WVhwtI4.png";
-campaignTrail_temp.running_mate_image_url = "https://i.imgur.com/1QY2oXK.png";
+campaignTrail_temp.running_mate_image_url = "https://i.imgur.com/u1ts2hx.png";
 campaignTrail_temp.candidate_last_name = "Humphrey";
-campaignTrail_temp.running_mate_last_name = "Kerr";
+campaignTrail_temp.running_mate_last_name = "Lausche";
 
 const style_overwrite = document.createElement("style");
 style_overwrite.innerHTML = 
@@ -10868,8 +10713,8 @@ campaignTrail_temp.jet_data = [{
     "banner_enabled": true,
     "banner_data": {
         "canName": "Humphrey",
-        "runName": "Kerr",
-        "runImage": "https://i.imgur.com/1QY2oXK.png",
+        "runName": "Lausche",
+        "runImage": "https://i.imgur.com/u1ts2hx.png",
         "canImage": "https://i.imgur.com/WVhwtI4.png"
     },
     "endings_enabled": false,
