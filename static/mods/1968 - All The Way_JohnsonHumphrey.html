@@ -284,7 +284,7 @@ campaignTrail_temp.questions_json = [
         "pk": 8843,
         "fields": {
             "priority": 1,
-            "description": "The sky cracks, and the earth shakes. Your worst fears have come to pass, The PAVN and the VC have unleashed a massive surprising, and brutal offensive across all of South Vietnam. The fighting in Saigon alone is an utter disaster, as the Vietcong Flag is raised over the American embassy and a captured radio station plays a poem by Ho Chi Min. The world has turned upside down overnight, you told everyone we were winning this war, is that still true?",
+            "description": "The sky cracks, and the earth shakes. Your worst fears have come to pass, The PAVN and the VC have unleashed a massive, surprising, and brutal offensive across all of South Vietnam. The fighting in Saigon alone is an utter disaster, as the Vietcong Flag is raised over the American embassy and a captured radio station plays a poem by Ho Chi Min. The world has turned upside down overnight, you told everyone we were winning this war, is that still true?",
             "likelihood": 1
         }
     },
@@ -48524,7 +48524,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 8947,
             "candidate": 23,
-            "answer_feedback": "It’s a noble statement, replete with the typical Johnsonian pragmatism. But we don’t live in pragmatic times anymore. And when a gunman’s bullet takes the life of Dr. King's close ally, Reverand Jackson. Pragmatism breathes its last. And when you call, it is Corretta and not Martin who you briefly converse with."
+            "answer_feedback": "It’s a noble statement, replete with the typical Johnsonian pragmatism. But we don’t live in pragmatic times anymore. And when a gunman’s bullet takes the life of Dr. King's close ally, Reverend Jackson. Pragmatism breathes its last. And when you call, it is Corretta and not Martin who you briefly converse with."
         }
     },
     {
@@ -51386,7 +51386,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 10764,
             "candidate": 23,
-            "answer_feedback": "With his choice of Lyndsey and the eastern establishment Nixon has clearly opted for a northern strategy and is abandoning any hope of winning votes below the mason-dixon. Hammering this home could win back a swath of traditional democrats."
+            "answer_feedback": "With his choice of Lindsay and the eastern establishment Nixon has clearly opted for a northern strategy and is abandoning any hope of winning votes below the mason-dixon. Hammering this home could win back a swath of traditional democrats."
         }
     },
     {
@@ -51395,7 +51395,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 10780,
             "candidate": 23,
-            "answer_feedback": "Republicans are already dreaming of a landslide in November, and the selection of the moderate Lyndsey might be enough to buy into the flashy advertising of the ‘New Nixon’. While weary eyes look toward Chicago."
+            "answer_feedback": "Republicans are already dreaming of a landslide in November, and the selection of the moderate Lindsay might be enough to buy into the flashy advertising of the ‘New Nixon’. While weary eyes look toward Chicago."
         }
     },
     {
@@ -56750,7 +56750,7 @@ var McCarthy = 0;
 var GOP = 0;
 var USSR = 0;
 var Peace = 0;
-
+var Ouch = 0;
 var LBJVP = 0;
 let vpSwitcherTriggered = false;
 let Nominee = "Johnson"; 
@@ -60785,7 +60785,6 @@ function updateAdvisorImage(e) {
     if (e.noCounter == 25 && Nominee === "Church" && VP == "McNair") {
         campaignTrail_temp.election_json[0].fields.advisor_url = "https://i.imgur.com/nzuc2ZM.gif";
     }
-    let Ouch = 0;
     if (e.noCounter === 29 && Nominee === "Church" && Jumbo <= 0 && VP == "Kennedy" && Disunity > 4) {
         campaignTrail_temp.questions_json[29] = tunnel(13519);
         campaignTrail_temp.election_json[0].fields.advisor_url = "https://i.imgur.com/8h1g8pF.gif";
@@ -61298,6 +61297,14 @@ function updateAdvisorImage(e) {
                 "As LBJ, <strong>WIN THE PEACE</strong>" 
             );        
         }
+        if (e.player_answers.includes(13520)) {
+            ctsAchievement(
+            "S.C.U.M.", 
+            "https://i.imgur.com/izwapu4.png",  
+            "https://audio.jukehost.co.uk/IqmnIY6GXX61wHYSnD23FnhIQiqnKLJN",  
+            "As Church pay the price"
+        );
+        }  
 
     }
 
@@ -62568,7 +62575,7 @@ function generatePresidentRow(number, name, image, term, party, partyColor) {
     let showConnally1term = false, showConnallypart1term = false;
     let showYorty1term = false, showYortypartyswitch2term = false;
     let showSchafer2term = false, showMathias1term = false;
-    let showAgnew2term = false, showCrane2term = false, showCarey2term = false, showBumpers2term = false;
+    let showAgnew2term = false, showAgnew1term = false, showCrane2term = false, showCarey2term = false, showBumpers2term = false;
     let showTedKennedy2term = false, showAnderson2term = false, show39TedKennedy2term = false;
     let show1980Laxalt2term = false, showKemp2term = false;
     let showTedKennedyAssassinated = false, showBradley2thirds1term = false;
@@ -62586,7 +62593,7 @@ function generatePresidentRow(number, name, image, term, party, partyColor) {
     let showFallwell2term = false, showBradley1term = false, showFerraro1term = false, showWilson2term = false;
     let showAshcroft2term = false, showSpringer2term = false;
     
-    let showJesseJackson2term = false, show96Glenn2term = false;
+    let showJesseJackson2term = false, showMLK2term = false, show96Glenn2term = false;
     let showAnneArmstrong1term = false, showJoeBiden1term = false, showFritzHollings1term = false;
     
     let show40ChuckRobb2term = false, show41ChuckRobb2term = false, show42ChuckRobb2term = false;
@@ -62644,7 +62651,9 @@ function generatePresidentRow(number, name, image, term, party, partyColor) {
 
 
    // Johnson 1 term path (Nixon wins 1968)
-
+   let Num = null;
+   let Year = null;
+   let Party = null;
         
     // Wallace path
     if (WallaceEV > 269) {
@@ -62740,7 +62749,12 @@ function generatePresidentRow(number, name, image, term, party, partyColor) {
         }
     
         if (JohnsonEV > 330 && DNC < 4 && (VP !== "Boggs" || VP === "Goldberg" && (e.player_answers.includes(14486) || e.player_answers.includes(14487)))) {
-            if (CivilRights == LawandOrder) {
+            if (VP == "Humphrey" && ["James Rhodes", "John Lindsay"].includes(NVP)) {
+                showMathias1term = true;
+            } else if (VP == "Humphrey" && ["George Bush", "Hiram Fong"].includes(NVP)) {
+                showAgnew1term = true;
+                }
+            else if (CivilRights == LawandOrder) {
                 showLaird1term = true;
             } else if (["James Rhodes", "John Lindsay"].includes(NVP)) {
                 showBuckley1term = true;
@@ -62776,7 +62790,11 @@ if (LBJVP == 1 && NixonEV < 270 && WallaceEV < 270 && FourthPartyEV < 270) {
         }
       }
     if (Nominee === "Humphrey") {
-        if (WallaceEV > JohnsonEV && JohnsonEV < 270) {
+        if (JohnsonEV > 269 && e.player_answers.includes(12309)) {
+            showHumphreyAlt2term = true;
+            showAgnew1term = true;
+        }
+        else if (WallaceEV > JohnsonEV && JohnsonEV < 270) {
             NixonWinContingent = true;
         } else if (JohnsonEV > 330) {
           showHumphreyAlt2term = true;
@@ -62961,23 +62979,22 @@ if (LBJVP == 1 && NixonEV < 270 && WallaceEV < 270 && FourthPartyEV < 270) {
         }
     }
 
-    let Num = null;
-    let Year = null;
-    let Party = null;
+
     
     // Set the starting point based on earlier logic
     if (showRhodes1term) {
         show40Reagan1term = true;
-        Num = 40;
-        Year = 1985;
+        showGaryHart2term = true;
+        Num = 42;
+        Year = 1993;
     } else if (
       showRFK2term || showChisolm2term || showGravel2term || showMcGovern722term || showHufstedler1month ||
-      showRomney2term || showLaxalt2term || showPercy2term || showAgnew2term || showReagan2term ||
+      showRomney2term || showLaxalt2term || showPercy2term || showAgnew2term || showReagan2term || showAgnew1term ||
       showWestmoreland2term || showAshbrook2term || showBaker2term || showGoldwater2term ||
       showScranton2term || showHatfield2term || showSchafer2term || showLindsay2term ||
       showBush2term || showYortypartyswitch2term || showReagan1term ||
       showMathias1term || showChafee1term || showNixonReturns1term || showConnally2term || showVance2term ||
-      showDemLindsay2term || showMills2term || showRepConnally2term || showRumsfeld1term 
+      showDemLindsay2term || showMills2term || showRepConnally2term || showRumsfeld1term || showSchlafly1term
     ) {
       Num = 39;
       Year = 1981;
@@ -62987,7 +63004,7 @@ if (LBJVP == 1 && NixonEV < 270 && WallaceEV < 270 && FourthPartyEV < 270) {
       showChurchReturns || showFredHarris1term || showTedKennedy1term ||
       showByrd1term || showBayh1term || showBuckley1term || showSchweiker1term ||
       showFord1term || showGoldwaterJr1term || showDole1term || showTemple1term ||
-      showNixonsback1term || showThurmond1term
+      showNixonsback1term || showThurmond1term || showLaird1term
     ) {
       Num = 40;
       Year = 1981;
@@ -63035,7 +63052,7 @@ if (LBJVP == 1 && NixonEV < 270 && WallaceEV < 270 && FourthPartyEV < 270) {
         } else if (Jumbo == 1) {
             showWeicker1term = true;
             Num += 1; Party = "R";  Year = 1985; 
-        } else if (Jumbo <= 0) {
+        } else {
             showCrane2term = true;
             Num += 1; Party = "R";  Year = 1989; 
         }
@@ -63046,7 +63063,7 @@ if (LBJVP == 1 && NixonEV < 270 && WallaceEV < 270 && FourthPartyEV < 270) {
       if (JohnsonEV > 400 && (NVP === "John Lindsay" || NVP === "Hiram Fong")) {
         show40ReaganConservative2term = true;
         show41CarrollCampbell1term = true;
-        Num += 1; Party = "R";  Year = 1993; 
+        Num += 2; Party = "R";  Year = 1993; 
       } else {
         if (e.player_answers.includes(11625) || e.player_answers.includes(11773)) {
             showGlenn2term = true;
@@ -63063,8 +63080,8 @@ if (LBJVP == 1 && NixonEV < 270 && WallaceEV < 270 && FourthPartyEV < 270) {
         } else if (Jumbo == 1) {
             showAnderson2term = true;
             Num += 1; Party = "R";  Year = 1989; 
-        } else if (Jumbo <= 0) {
-            if ((showLaxalt2term)||(showLaxalt1term)) {
+        } else {
+            if (showLaxalt2term || showLaxalt1term) {
                 showBumpers2term = true;
                 Num += 1; Party = "D";  Year = 1989; 
               } else {
@@ -63151,7 +63168,7 @@ if (LBJVP == 1 && NixonEV < 270 && WallaceEV < 270 && FourthPartyEV < 270) {
         }  else if (CivilRights > LawandOrder) {
             showFerraro1term = true;
             Num += 1; Party = "D";  Year = 1993;         
-        } else if (LawandOrder >= CivilRights) {
+        } else {
             showSununu2term = true;
             Num += 1; Party = "R";  Year = 1997;       
         }
@@ -63172,12 +63189,12 @@ if (LBJVP == 1 && NixonEV < 270 && WallaceEV < 270 && FourthPartyEV < 270) {
         } else if (WallaceEV > 100 && JohnsonEV < 270 && NixonEV < 270) {
           show41MarioCuomo2term = true;
           Num += 1; Party = "D";  Year = 1997; 
-        } else if (WallaceEV > 50 && JohnsonEV < 270 && NixonEV < 270) {
-          showFritzHollings1term = true;
-          Num += 1; Party = "D";  Year = 1993; 
         } else if ((Nominee === "Connally" || USSR === 1) && NixonEV < 270 && JohnsonEV < 270 && WallaceEV > 0) {
             showThadCochran1term = true;
             Num += 1; Party = "R";  Year = 1993; 
+        } else if (WallaceEV > 50 && JohnsonEV < 270 && NixonEV < 270) {
+          showFritzHollings1term = true;
+          Num += 1; Party = "D";  Year = 1993; 
         } else if (Nominee === "Ribicoff" && JohnsonEV > 269 && VP === "Brown") {
             showAlexander1term = true;
             Num += 1; Party = "R";  Year = 1993; 
@@ -63197,8 +63214,16 @@ if (LBJVP == 1 && NixonEV < 270 && WallaceEV < 270 && FourthPartyEV < 270) {
             Num += 1; Party = "R";  Year = 1997; 
           }
           else if (Bill == 1 && DeadMLK == 0) {
+            if (e.player_answers.includes(8947) && CivilRights > 2) {
+                showMLK2term = true;
+                Num += 1; Party = "D";  Year = 1997; 
+            } else if (e.player_answers.includes(8947)) {
+                showDukakis2term = true;
+                Num += 1; Party = "D";  Year = 1997; 
+            } else {
             showJesseJackson2term = true;
             Num += 1; Party = "D";  Year = 1997; 
+            }
           } 
           else if (Party === "D") {
             showAshcroft2term = true;
@@ -63220,12 +63245,12 @@ if (LBJVP == 1 && NixonEV < 270 && WallaceEV < 270 && FourthPartyEV < 270) {
         } else if (JohnsonEV > 269 && e.player_answers.includes(11191)) {
           show41BobKerrey2term = true;
            Party = "D";  Year = 2001; 
-        } else if (WallaceEV > 50 && JohnsonEV < 270 && NixonEV < 270) {
-          show41ClintEastwood2term = true;
-           Party = "R";  Year = 2001; 
         } else if ((Nominee === "Connally" || USSR === 1) && NixonEV < 270 && JohnsonEV < 270 && WallaceEV > 0) {
           show41RossPerot2term = true;
            Party = "I";  Year = 2001; 
+        }  else if (WallaceEV > 50 && JohnsonEV < 270 && NixonEV < 270) {
+          show41ClintEastwood2term = true;
+           Party = "R";  Year = 2001; 
         } else if (Nominee === "Ribicoff" && JohnsonEV > 269 && VP === "Brown") {
           show41JerryBrown2term = true;
            Party = "D";  Year = 2001; 
@@ -63275,12 +63300,12 @@ if (LBJVP == 1 && NixonEV < 270 && WallaceEV < 270 && FourthPartyEV < 270) {
         }  else if (JohnsonEV > 269 && e.player_answers.includes(11191)) {
           show42BobKerrey2term = true;
           Party = "D";  Year = 2001; 
+        } else if ((Nominee === "Connally" || USSR === 1) && NixonEV < 270 && JohnsonEV < 270 && WallaceEV > 0) {
+            show42RossPerot2term = true;
+            Party = "I";  Year = 2001; 
         } else if (WallaceEV > 50 && JohnsonEV < 270 && NixonEV < 270) {
           show42ClintEastwood2term = true;
           Party = "R";  Year = 2001; 
-        } else if ((Nominee === "Connally" || USSR === 1) && NixonEV < 270 && JohnsonEV < 270 && WallaceEV > 0) {
-          show42RossPerot2term = true;
-          Party = "I";  Year = 2001; 
         } else if (Nominee === "Ribicoff" && JohnsonEV > 269 && VP === "Brown") {
           show42JerryBrown2term = true;
           Party = "D";  Year = 2001; 
@@ -63299,7 +63324,7 @@ if (LBJVP == 1 && NixonEV < 270 && WallaceEV < 270 && FourthPartyEV < 270) {
         }  else if (GOP == 3 && JohnsonEV > 270 || GOP == 4 && JohnsonEV < 270){
             showRockefeller2term = true;
             Party = "D";  Year = 2001; 
-        }  else if (GOP == 4 && JohnsonEV > 270 || GOP == 1 && JohnsonEV < 270){
+        }  else {
             showSpecter2term = true;
             Party = "D";  Year = 2001; 
         }
@@ -63393,25 +63418,33 @@ if (LBJVP == 1 && NixonEV < 270 && WallaceEV < 270 && FourthPartyEV < 270) {
         } else if (Party == "R") {
           if (Leverage >= 10) {
             show41RobertReich1term = true;
+            Party = "D";  Year = 2001;
           } else if (Leverage >= 5) {
             show41Bradley1term = true;
+            Party = "D";  Year = 2001;
           } else if (Leverage >= 0) {
             show42AlGore2term = true;
+            Party = "D";  Year = 2005;
           } else {
             showWellstone2term = true;
+            Party = "D";  Year = 2005;
           }
-          Party = "D";  Year = 2005;
+
         } else {
           if (Leverage >= 10) {
             showBuddyCianci1term = true;
+            Party = "R";  Year = 2001;
           } else if (Leverage >= 5) {
             show42DanQuayle2term = true;
+            Party = "R";  Year = 2001;
           } else if (Leverage >= 0) {
             showFredThompson2term = true;
+            Party = "R";  Year = 2001;
           } else {
             show41SteveForbes1term = true;
+            Party = "R";  Year = 2001;
           }
-          Party = "R";  Year = 2005;
+          
         }
       }
       
@@ -63501,7 +63534,7 @@ if (LBJVP == 1 && NixonEV < 270 && WallaceEV < 270 && FourthPartyEV < 270) {
         { show: showYortypartyswitch2term, num: 38, name: "Sam Yorty", term: "August 9, 1975 –<br>January 20, 1981", party: "Democratic → Republican", img: "https://i.imgur.com/QCrN9ly.png"},
         { show: showSchmitz1term, num: 37, name: "John G. Schmitz", term: "May 15, 1975 –<br>January 20, 1977", party: "American Independent", img: "https://i.imgur.com/4U5EFly.png"},
         { show: showBayh1term, num: 39, name: "Birch Bayh", term: "January 20, 1977 –<br>January 20, 1981", party: "Democratic", img: "https://i.imgur.com/uQw15e9.png"},
-        { show: showLaird1term, num: 40, name: "Melvin Laird", term: "January 20, 1973 –<br>January 20, 1977", party: "Republican", img: "https://i.imgur.com/WYNrqne.png" },
+        { show: showLaird1term, num: 39, name: "Melvin Laird", term: "January 20, 1977 –<br>January 20, 1981", party: "Republican", img: "https://i.imgur.com/WYNrqne.png" },
         { show: showNixonsback1term, num: 39, name: "Richard Nixon", term: "January 20, 1977 –<br>January 20, 1981", party: "Republican", img: "https://i.imgur.com/ujCaM7S.png" },
         { show: showRumsfeld1term, num: 38, name: "Donald Rumsfeld", term: "January 20, 1977 –<br>January 20, 1981", party: "Republican", img: "https://i.imgur.com/jdGfxlA.png" },
 
@@ -63523,7 +63556,7 @@ if (LBJVP == 1 && NixonEV < 270 && WallaceEV < 270 && FourthPartyEV < 270) {
         { show: showJerry1term,   num: 39, name: "Jerry Brown",   term: "January 20, 1977 –<br>January 20, 1981", party: "Democratic", img: "https://i.imgur.com/7j2APNU.png"},
         { show: showMathias1term, num: 38, name: "Charles Mathias", term: "January 20, 1977 –<br>January 20, 1981", party: "Republican", img: "https://i.imgur.com/5vs1v5a.png"},
         { show: showMcCarthyFordterm, num: 40, name: "Gerald Ford", term: "January 20, 1977 –<br>January 20, 1989", party: "Republican", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Gerald_Ford_%28portrait%29_%28cropped2%29.png/640px-Gerald_Ford_%28portrait%29_%28cropped2%29.png"},
-        { show: showKerry2term, num: 41, name: "John Kerry", term: "January 20, 1989 –<br>January 20, 1997", party: "Democratic", img: "https://i.imgur.com/11jZuTn.png" },
+        { show: showKerry2term, num: Num - 1, name: "John Kerry", term: "January 20, 1989 –<br>January 20, 1997", party: "Democratic", img: "https://i.imgur.com/11jZuTn.png" },
 
         { show: showMoUdall2term, num: 39, name: "Morris K. Udall", term: "January 20, 1977 –<br>January 20, 1985", party: "Democratic", img: "https://i.imgur.com/x1vnOZM.png"},
         { show: showMondale1term, num: 39, name: "Walter Mondale", term: "January 20, 1977 –<br>January 20, 1981", party: "Democratic", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Walter_Mondale_%281%29.jpg/640px-Walter_Mondale_%281%29.jpg"},
@@ -63534,6 +63567,7 @@ if (LBJVP == 1 && NixonEV < 270 && WallaceEV < 270 && FourthPartyEV < 270) {
         { show: showRichardson2term, num: 38, name: "Elliot Richardson", term: "January 20, 1977 –<br>January 20, 1985", party: "Republican", img: "https://upload.wikimedia.org/wikipedia/commons/7/7d/Elliot_Richardson.png"},
         { show: showHarvey2term, num: 38, name: "Paul Harvey", term: "January 20, 1977 –<br>January 20, 1985", party: "American Independent", img: "https://i.imgur.com/1ZZSf0m.png"},
         { show: showSchlafly1term, num: 38, name: "Phyllis Schlafly", term: "January 20, 1977 –<br>January 20, 1981", party: "Republican", img: "https://i.imgur.com/WXdAnQV.png"},
+        { show: showAgnew1term, num: 38, name: "Spiro Agnew", term: "January 20, 1977 –<br>January 20, 1981", party: "Republican", img: "https://i.imgur.com/KBDJR13.png"},
         { show: showSchweiker1term, num: 39, name: "Richard Schweiker", term: "January 20, 1977 –<br>January 20, 1981", party: "Republican", img: "https://i.imgur.com/Gwtwqa4.png"},
         { show: showTedKennedy1term, num: 39, name: "Ted Kennedy", term: "January 20, 1977 –<br>January 20, 1981", party: "Democratic", img: "https://i.imgur.com/YibB5v4.png"},
         { show: showTemple1term, num: 39, name: "Shirley Temple Black", term: "January 20, 1977 –<br>January 20, 1981", party: "Republican", img: "https://i.imgur.com/DQAk8nJ.png"},
@@ -63563,7 +63597,7 @@ if (LBJVP == 1 && NixonEV < 270 && WallaceEV < 270 && FourthPartyEV < 270) {
         { show: showWeicker1term, num: 39, name: "Lowell P. Weicker Jr.", term: "January 20, 1981 –<br>January 20, 1985", party: "Republican", img: "https://i.imgur.com/h3uYHf9.png"},
         { show: showCheney2term, num: 39, name: "Dick Cheney", term: "January 20, 1985 –<br>January 20, 1993", party: "Republican", img: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Secretary_of_Defense_Richard_B._Cheney%2C_official_portrait_%28cropped%29.jpg"},
         { show: showDickLugar1term, num: 40, name: "Dick Lugar", term: "January 20, 1985 –<br>January 20, 1989", party: "Republican", img: "https://i.imgur.com/6G87ABi.png"},
-        { show: showGlenn2term, num: 40, name: "John Glenn", term: "January 20, 1989 –<br>January 20, 1997", party: "Democratic", img: "https://i.imgur.com/CDQq7tH.png" },
+        { show: showGlenn2term, num: Num - 1, name: "John Glenn", term: "January 20, 1989 –<br>January 20, 1997", party: "Democratic", img: "https://i.imgur.com/CDQq7tH.png" },
         { show: showKirkpatrickDem1term, num: 40, name: "Jeane Kirkpatrick", term: "January 20, 1985 –<br>January 20, 1989", party: "Democratic", img: "https://i.imgur.com/pBC8TyZ.png" },
         { show: showKirkpatrickRep1term, num: 40, name: "Jeane Kirkpatrick", term: "January 20, 1985 –<br>January 20, 1989", party: "Republican", img: "https://i.imgur.com/QGFpRvC.png" },
         { show: showShultz1term, num: 40, name: "George Shultz", term: "January 20, 1985 –<br>January 20, 1989", party: "Republican", img: "https://i.imgur.com/9kyJajS.png" },
@@ -63572,38 +63606,40 @@ if (LBJVP == 1 && NixonEV < 270 && WallaceEV < 270 && FourthPartyEV < 270) {
         { show: showGaryHart2term, num: 41, name: "Gary Hart", term: "January 20, 1985 –<br>January 20, 1993", party: "Democratic", img: "https://i.imgur.com/wUlK2RI.png"},
         { show: showHeinz1term, num: 40, name: "John Heinz", term: "January 20, 1985 –<br>January 20, 1989", party: "Republican", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/JohnHeinz.png/640px-JohnHeinz.png"},
         { show: showPatSchroeder1term, num: 40, name: "Pat Schroeder", term: "January 20, 1985 –<br>January 20, 1989", party: "Democratic", img: "https://i.imgur.com/uhiHGiA.png"},
-        { show: show40BillWeld2term, num: 40, name: "William F. Weld", term: "January 20, 1989 –<br>January 20, 1997", party: "Republican", img: "https://i.imgur.com/C0RYWjo.png"},
+        { show: show40BillWeld2term, num: Num - 1, name: "William F. Weld", term: "January 20, 1989 –<br>January 20, 1997", party: "Republican", img: "https://i.imgur.com/C0RYWjo.png"},
         { show: show40CarrollCampbell1term, num: 40, name: "Carroll A. Campbell Jr.", term: "January 20, 1989 –<br>January 20, 1993", party: "Conservative", img: "https://i.imgur.com/ljNxBJx.png"},
-        { show: show40MarioCuomo2term, num: 40, name: "Mario M. Cuomo", term: "January 20, 1989 –<br>January 20, 1997", party: "Democratic", img: "https://i.imgur.com/lBxRqyM.png"},
-        { show: show41BillWeld2term, num: 41, name: "William F. Weld", term: "January 20, 1989 –<br>January 20, 1997", party: "Republican", img: "https://i.imgur.com/C0RYWjo.png"},
+        { show: show40MarioCuomo2term, num: Num - 1, name: "Mario M. Cuomo", term: "January 20, 1989 –<br>January 20, 1997", party: "Democratic", img: "https://i.imgur.com/lBxRqyM.png"},
+        { show: show41BillWeld2term, num: Num - 1, name: "William F. Weld", term: "January 20, 1989 –<br>January 20, 1997", party: "Republican", img: "https://i.imgur.com/C0RYWjo.png"},
         { show: show41CarrollCampbell1term, num: 41, name: "Carroll A. Campbell Jr.", term: "January 20, 1989 –<br>January 20, 1993", party: "Conservative", img: "https://i.imgur.com/ljNxBJx.png"},
-        { show: show41MarioCuomo2term, num: 41, name: "Mario M. Cuomo", term: "January 20, 1989 –<br>January 20, 1997", party: "Democratic", img: "https://i.imgur.com/lBxRqyM.png"},
+        { show: show41MarioCuomo2term, num: Num - 1, name: "Mario M. Cuomo", term: "January 20, 1989 –<br>January 20, 1997", party: "Democratic", img: "https://i.imgur.com/lBxRqyM.png"},
         { show: show89Mondale1term, num: 40, name: "Walter Mondale", term: "January 20, 1989 –<br>January 20, 1993", party: "Democratic", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Waltermondaleasdiplomat.jpg/640px-Waltermondaleasdiplomat.jpg"},
         { show: showAlexanderHaig1term, num: 41, name: "Alexander Haig", term: "January 20, 1989 –<br>January 20, 1993", party: "Republican", img: "https://i.imgur.com/Dc7sCe9.png"},
         { show: showAnneArmstrong1term, num: 41, name: "Anne Armstrong", term: "January 20, 1989 –<br>January 20, 1993", party: "Republican", img: "https://i.imgur.com/XZHqdiS.png"},
         { show: showRobertson1term, num: 40, name: "Pat Robertson", term: "January 20, 1989 –<br>January 20, 1993", party: "Republican", img: "https://i.imgur.com/pv8ZbXl.png" },
         { show: showUeberroth1term, num: 40, name: "Peter Ueberroth", term: "January 20, 1989 –<br>January 20, 1993", party: "Republican", img: "https://i.imgur.com/LCVr37i.png" },
         { show: showClinton1term, num: 41, name: "Bill Clinton", term: "January 20, 1989 –<br>January 20, 1993", party: "Democratic", img: "https://i.imgur.com/ccY5Pb7.png" },
-        { show: show40Clinton2term, num: 40, name: "Bill Clinton", term: "January 20, 1989 –<br>January 20, 1997", party: "Democratic", img: "https://i.imgur.com/yMOwBbq.png" },
-        { show: show41Clinton2term, num: 41, name: "Bill Clinton", term: "January 20, 1989 –<br>January 20, 1997", party: "Democratic", img: "https://i.imgur.com/yMOwBbq.png" },
+        { show: show40Clinton2term, num: Num - 1, name: "Bill Clinton", term: "January 20, 1989 –<br>January 20, 1997", party: "Democratic", img: "https://i.imgur.com/yMOwBbq.png" },
+        { show: show41Clinton2term, num: Num - 1, name: "Bill Clinton", term: "January 20, 1989 –<br>January 20, 1997", party: "Democratic", img: "https://i.imgur.com/yMOwBbq.png" },
         { show: showClintonImpeached, num: 40, name: "Bill Clinton", term: "January 20, 1989 –<br>May 10, 1994", party: "Democratic", img: "https://i.imgur.com/uQSMDbJ.png" },
-        { show: showAspinFinishClinton, num: 41, name: "Les Aspin", term: "May 10, 1994 –<br>January 20, 1997", party: "Democratic", img: "https://i.imgur.com/ltzUICK.png" },
+        { show: showAspinFinishClinton, num: Num - 1, name: "Les Aspin", term: "May 10, 1994 –<br>January 20, 1997", party: "Democratic", img: "https://i.imgur.com/ltzUICK.png" },
         { show: showAlexander1term, num: 41, name: "Lamar Alexander", term: "January 20, 1989 –<br>January 20, 1993", party: "Republican", img: "https://i.imgur.com/NmGFaH5.png" },
-        { show: showSununu2term, num: 40, name: "John H. Sununu", term: "January 20, 1989 –<br>January 20, 1997", party: "Republican", img: "https://i.imgur.com/q11dkdd.png" },
+        { show: showSununu2term, num: Num - 1, name: "John H. Sununu", term: "January 20, 1989 –<br>January 20, 1997", party: "Republican", img: "https://i.imgur.com/q11dkdd.png" },
         { show: showBennett1term, num: 41, name: "William J. Bennett", term: "January 20, 1989 –<br>January 20, 1993", party: "Republican", img: "https://i.imgur.com/ChFW6pK.png" },
 
         
-        { show: showAshcroft2term, num: 41, name: "John Ashcroft", term: "January 20, 1989 –<br>January 20, 1997", party: "Republican", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/John_Ashcroft_official_photo_as_Governor_%28cropped%29.jpg/640px-John_Ashcroft_official_photo_as_Governor_%28cropped%29.jpg"},
-        { show: showDuPont2term, num: 40, name: "Pierre S. du Pont IV", term: "January 20, 1989 –<br>January 20, 1997", party: "Republican", img: "https://i.imgur.com/GHRGBcC.png"},
+        { show: showAshcroft2term, num: Num - 1, name: "John Ashcroft", term: "January 20, 1989 –<br>January 20, 1997", party: "Republican", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/John_Ashcroft_official_photo_as_Governor_%28cropped%29.jpg/640px-John_Ashcroft_official_photo_as_Governor_%28cropped%29.jpg"},
+        { show: showDuPont2term, num: Num - 1, name: "Pierre S. du Pont IV", term: "January 20, 1989 –<br>January 20, 1997", party: "Republican", img: "https://i.imgur.com/GHRGBcC.png"},
         { show: showDukakis1term, num: 40, name: "Michael Dukakis", term: "January 20, 1989 –<br>January 20, 1993", party: "Democratic", img: "https://i.imgur.com/zTNpa1s.png"},
-        { show: showDukakis2term, num: 41, name: "Michael Dukakis", term: "January 20, 1989 –<br>January 20, 1997", party: "Democratic", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Dukakis_campaign_portrait_3x4.jpg/640px-Dukakis_campaign_portrait_3x4.jpg"},
-        { show: showFallwell2term, num: 41, name: "Jerry Falwell", term: "January 20, 1989 –<br>January 20, 1997", party: "Republican", img: "https://i.imgur.com/2Myjx0R.png"},
+        { show: showDukakis2term, num: Num - 1, name: "Michael Dukakis", term: "January 20, 1989 –<br>January 20, 1997", party: "Democratic", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Dukakis_campaign_portrait_3x4.jpg/640px-Dukakis_campaign_portrait_3x4.jpg"},
+        { show: showFallwell2term, num: Num - 1, name: "Jerry Falwell", term: "January 20, 1989 –<br>January 20, 1997", party: "Republican", img: "https://i.imgur.com/2Myjx0R.png"},
         { show: showFerraro1term, num: 40, name: "Geraldine Ferraro", term: "January 20, 1989 –<br>January 20, 1993", party: "Democratic", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Geraldine_Ferraro_1998_%281%29.jpg/640px-Geraldine_Ferraro_1998_%281%29.jpg"},
         { show: showFritzHollings1term, num: 41, name: "Ernest 'Fritz' Hollings", term: "January 20, 1989 –<br>January 20, 1993", party: "Democratic", img: "https://i.imgur.com/o4fIr3T.png"},
-        { show: showJesseJackson2term, num: 41, name: "Jesse Jackson", term: "January 20, 1989 –<br>January 20, 1997", party: "Democratic", img: "https://i.imgur.com/Z4zRPco.png"},
+        { show: showJesseJackson2term, num: Num - 1, name: "Jesse Jackson", term: "January 20, 1989 –<br>January 20, 1997", party: "Democratic", img: "https://i.imgur.com/Z4zRPco.png"},
+        { show: showMLK2term, num: Num - 1, name: "Martin Luther King", term: "January 20, 1989 –<br>January 20, 1997", party: "Independent", img: "https://i.imgur.com/IyfAgNK.png"},
+
         { show: showJoeBiden1term, num: 40, name: "Joe Biden", term: "January 20, 1989 –<br>January 20, 1993", party: "Democratic", img: "https://i.imgur.com/O76enei.png"},
         { show: showJohnMcCain1term, num: 40, name: "John McCain", term: "January 20, 1989 –<br>January 20, 1993", party: "Republican", img: "https://i.imgur.com/WLVdBGJ.png"},
-        { show: showPaulSimon2term, num: 41, name: "Paul Simon", term: "January 20, 1989 –<br>January 20, 1997", party: "Democratic", img: "https://i.imgur.com/gKU52th.png"},
+        { show: showPaulSimon2term, num: Num - 1, name: "Paul Simon", term: "January 20, 1989 –<br>January 20, 1997", party: "Democratic", img: "https://i.imgur.com/gKU52th.png"},
         { show: showThadCochran1term, num: 41, name: "Thad Cochran", term: "January 20, 1989 –<br>January 20, 1993", party: "Republican", img: "https://i.imgur.com/nLs8zXB.png"},
         { show: show40BobKerrey2term, num: 40, name: "Bob Kerrey", term: "January 20, 1993 –<br>January 20, 2001", party: "Democratic", img: "https://i.imgur.com/mz2RDTz.png"},
         { show: show40ChuckRobb2term, num: 40, name: "Chuck Robb", term: "January 20, 1993 –<br>January 20, 2001", party: "Democratic", img: "https://i.imgur.com/QO5rVZZ.png"},
@@ -63620,20 +63656,20 @@ if (LBJVP == 1 && NixonEV < 270 && WallaceEV < 270 && FourthPartyEV < 270) {
         { show: show42ClintEastwood2term, num: Num, name: "Clint Eastwood", term: "January 20, 1993 –<br>January 20, 2001", party: "Republican", img: "https://i.imgur.com/oxjzTXe.png"},
         { show: show42JerryBrown2term, num: Num, name: "Jerry Brown", term: "January 20, 1993 –<br>January 20, 2001", party: "Democratic", img: "https://i.imgur.com/YTp6LL5.png"},
         { show: show42RossPerot2term, num: Num, name: "Ross Perot", term: "January 20, 1993 –<br>January 20, 2001", party: "Reform", img: "https://i.imgur.com/cpfAWHL.pngg"},
-        { show: showDeukmejian1term, num: 41, name: "George Deukmejian", term: "January 20, 1993 –<br>January 20, 1997", party: "Republican", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/George-Deukmejian-Official-Photo-Cropped.jpg/640px-George-Deukmejian-Official-Photo-Cropped.jpg"},
+        { show: showDeukmejian1term, num: Num - 1, name: "George Deukmejian", term: "January 20, 1993 –<br>January 20, 1997", party: "Republican", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/George-Deukmejian-Official-Photo-Cropped.jpg/640px-George-Deukmejian-Official-Photo-Cropped.jpg"},
         { show: showPatBuchanan2term, num: Num, name: "Pat Buchanan", term: "January 20, 1993 –<br>January 20, 2001", party: "Republican", img: "https://i.imgur.com/zXoxYzj.png"},
-        { show: showKeyes1term, num: 41, name: "Alan Keyes", term: "January 20, 1993 –<br>January 20, 1997", party: "Republican", img: "https://i.imgur.com/6FmyUJ9.png" },
+        { show: showKeyes1term, num: Num - 1, name: "Alan Keyes", term: "January 20, 1993 –<br>January 20, 1997", party: "Republican", img: "https://i.imgur.com/6FmyUJ9.png" },
         { show: showHarkin2term, num: Num, name: "Tom Harkin", term: "January 20, 1993 –<br>January 20, 2001", party: "Democratic", img: "https://i.imgur.com/jogoRAc.png" },
         { show: showTsongas2term, num: Num, name: "Paul Tsongas", term: "January 20, 1993 –<br>January 20, 2001", party: "Democratic", img: "https://i.imgur.com/pGw1Iwd.png" },
         { show: showRockefeller2term, num: Num, name: "Jay Rockefeller", term: "January 20, 1993 –<br>January 20, 2001", party: "Democratic", img: "https://i.imgur.com/XSxtqKU.png" },
         { show: showConnieMack2term, num: Num, name: "Connie Mack", term: "January 20, 1993 –<br>January 20, 2001", party: "Republican", img: "https://i.imgur.com/BBwjkKr.png" },
-        { show: showSilber1term, num: 41, name: "John Silber", term: "January 20, 1993 –<br>January 20, 1997", party: "Democratic", img: "https://i.imgur.com/oZ4zJp9.png" },
+        { show: showSilber1term, num: Num - 1, name: "John Silber", term: "January 20, 1993 –<br>January 20, 1997", party: "Democratic", img: "https://i.imgur.com/oZ4zJp9.png" },
         { show: showSpecter2term, num: Num, name: "Arlen Specter", term: "January 20, 1993 –<br>January 20, 2001", party: "Republican", img: "https://i.imgur.com/AdGGRdG.png" },
         { show: showJamesBaker2term, num: Num, name: "James Baker", term: "January 20, 1993 –<br>January 20, 2001", party: "Republican", img: "https://i.imgur.com/Rhrq7Tc.png" },
-        { show: showPerot1term, num: 41, name: "Ross Perot", term: "January 20, 1993 –<br>January 20, 1997", party: "Reform", img: "https://i.imgur.com/N8C4e85.png" },
-        { show: showIacocca1term, num: 41, name: "Lee Iacocca", term: "January 20, 1989 –<br>January 20, 1993", party: "Democratic", img: "https://i.imgur.com/riJP4UE.png"},
+        { show: showPerot1term, num: Num - 1, name: "Ross Perot", term: "January 20, 1993 –<br>January 20, 1997", party: "Reform", img: "https://i.imgur.com/N8C4e85.png" },
+        { show: showIacocca1term, num: Num - 1, name: "Lee Iacocca", term: "January 20, 1993 –<br>January 20, 1997", party: "Democratic", img: "https://i.imgur.com/riJP4UE.png"},
         
-        { show: show93JohnMcCain1term, num: 40, name: "John McCain", term: "January 20, 1993 –<br>January 20, 1997", party: "Republican", img: "https://i.imgur.com/WLVdBGJ.png"},
+        { show: show93JohnMcCain1term, num: Num - 1, name: "John McCain", term: "January 20, 1993 –<br>January 20, 1997", party: "Republican", img: "https://i.imgur.com/WLVdBGJ.png"},
         { show: showDuketerm, num: 41, name: "David Duke", term: "January 20, 1997 –<br>January 20, 2001", party: "Democratic", img: "https://i.imgur.com/HtF5RBs.png"},
         { show: show41AlGore2term, num: Num, name: "Al Gore", term: "January 20, 1997 –<br>January 20, 2001", party: "Democratic", img: "https://i.imgur.com/TZ58uMr.png"},
         { show: show41BobDole1term, num: Num, name: "Bob Dole", term: "January 20, 1997 –<br>January 20, 2001", party: "Republican", img: "https://i.imgur.com/wPxmgxf.png"},
@@ -65771,7 +65807,7 @@ else if (JohnsonEV > 269 && DeadMLK == 0 && CivilRights > 5) { // MLK Mandela Ef
         </blockquote>
     </div>
     `);
-    e.executable.push([24, () => { e.image = 'https://i.imgur.com/qc9MHd4.gif'; }]);
+    e.executable.push([1, () => { e.image = 'https://i.imgur.com/qc9MHd4.gif'; }]);
 }
 else if (JohnsonEV > 269 && Disunity < 3) { //Edwards Exposed // Edwards
     e.pages.push(`
@@ -66336,14 +66372,7 @@ else { // Rumsfeld Resignation - Britannica Style (Canasta)
         "As McGovern, expose Nixon"
     );
     }  
-    if (e.player_answers.includes(13519)) {
-        ctsAchievement(
-        "S.C.U.M.", 
-        "https://i.imgur.com/izwapu4.png",  
-        "https://audio.jukehost.co.uk/IqmnIY6GXX61wHYSnD23FnhIQiqnKLJN",  
-        "As Church pay the price"
-    );
-    }  
+
 
         // Display the constructed ending
         return construct(0);
