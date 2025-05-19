@@ -4,21 +4,74 @@ e.done = true;
 
 e = campaignTrail_temp;
 
-            nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#393646";
+const gameThemes = {
+"Return to Normalcy" : function() {
 
-            nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#f4eee0";
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#3f647e";
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#f4eee0";
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+$(".container")[0].style.backgroundColor = "#727c96";
+document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#f4eee0!important;}</style>";
+document.getElementById("header").src = "https://itsastronomical.com/assets/1920/1920banner.png";
+document.body.background = "https://itsastronomical.com/assets/1920/blended.png";
 
-            document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+selectedTheme.text_col="black"
+        styling = document.createElement("style");
+        document.head.appendChild(styling);          
+        styling.innerHTML = `
+        body {
+            background-size: cover;
+        }
+        `},   
+"Armistice" : function() {
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#393646";
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#f4eee0";
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+$(".container")[0].style.backgroundColor = "#4f4557";
+document.getElementById("header").src = "https://itsastronomical.com/assets/1920/banner.png";
+document.body.background = "https://itsastronomical.com/assets/1920/peace.png";
+$("#game_window")[0].style.backgroundImage = "url()" 
 
-            $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+selectedTheme.text_col="black"
+        styling = document.createElement("style");
+        document.head.appendChild(styling);          
+        styling.innerHTML = `
+        body {
+            background-size: contain;
+        }
+        `},
+"Classic" : function() { 
+document.getElementById("header").src = "https://www.newcampaigntrail.com/static/images/banner_classic.png";
+document.body.style.backgroundColor = "#bfe6ff";
+document.body.background = "";
+$(".container")[0].style.backgroundColor = "#fff";
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#700016";
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#e8fbff";
+$("#game_window")[0].style.backgroundColor = "#bfe6ff";
+$(".footer")[0].style.color = "#000";
+document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#E8FBFF!important;}</style>";
+}
+}
 
-            $(".container")[0].style.backgroundColor = "#4f4557";
+// Replace old theme picker
+const themePicker = document.getElementById("themePicker");
+const newThemePicker = document.createElement("select");
+newThemePicker.id = "themePicker";
+newThemePicker.addEventListener("change", gameThemePicked);
+let newInnerHTML = "";
+for(theme in gameThemes) {
+    newInnerHTML += `<option value="${theme}">${theme}</option>`;
+}
+newThemePicker.innerHTML = newInnerHTML;
+themePicker.replaceWith(newThemePicker);
 
-            document.getElementById("header").src = "https://itsastronomical.com/assets/1920/banner.png";
+function gameThemePicked() {
+    gameThemes[newThemePicker.value]();
+}
 
-            document.body.background = "https://itsastronomical.com/assets/1920/peace.png";
-
-            selectedTheme.text_col="black"
+gameThemePicked();
 
 RecReading=true
 

@@ -40,6 +40,18 @@ e.ElectionPopup = "Election night has arrived. Settle in and wait for the return
 e.WinPopup = "Congratulations! You won this year's election! Click OK to view the                     rest of the returns, or skip straight to the final results. We hope                     you have a nice victory speech prepared for your supporters."
 e.LosePopup = "Sorry. You have lost the election this time. Click OK to view the                     rest of the returns, or skip straight to the final results. We hope                     you have a nice concession speech prepared."
 
+function substitutePlaceholders(str) {
+  if (!str || typeof str !== "string") return str;
+  return str.replace(/\{\{(.*?)\}\}/g, (_, varName) => {
+    try {
+      return (window[varName] !== undefined) ? window[varName] : `{{${varName}}}`;
+    } catch {
+      return `{{${varName}}}`;
+    }
+  });
+}
+
+
 evaluate = (code) => {
     eval(code);
 }
@@ -99,7 +111,7 @@ var fileExists = function(url) {
     return req.status === 200;
 };
 
-lastUpdatedDate="2024-12-31"
+lastUpdatedDate="2025-5-19"
 var RecReading;
 
 achList = {
@@ -489,7 +501,7 @@ function openInfoMenu() {
       </ul>
 
       <h3>Recent patch notes:</h3>
-      <p>Added 「Sea to Shining Sea」 mode. Check it out in base 2020 (maybe more when you read this). <b>Thank you to <span style='color:red'>u/Tom1923</span> for his help on this.</b></p>
+      <p>Added <a href="https://www.reddit.com/r/thecampaigntrail/comments/1kqpl9o/nct_and_cts_update_variables_in/" target="_blank">support for variables to be used in Questions/Answers/Advisor Feedback</a>.</p>
     </div>
     `;
 
@@ -1388,7 +1400,7 @@ function divideElectoralVotesProp(e, t) {
             }), e.answer_count != i.length)); a++);
         P(i, "order");
         var s = "";
-        for (a = 0; a < i.length; a++) s += '<input type="radio" name="game_answers" class="game_answers"             id="game_answers[' + a.toString() + ']" value="' + e.answers_json[i[a].key].pk + '"/>\t\t    <label for="game_answers[' + a.toString() + ']">' + e.answers_json[i[a].key].fields.description + "</label><br>";
+        for (a = 0; a < i.length; a++) s += '<input type="radio" name="game_answers" class="game_answers"             id="game_answers[' + a.toString() + ']" value="' + e.answers_json[i[a].key].pk + '"/>\t\t    <label for="game_answers[' + a.toString() + ']">' + substitutePlaceholders(e.answers_json[i[a].key].fields.description) + "</label><br>";
         var l = '<img id="candidate_pic" src="' + e.candidate_image_url + '">    <img id="running_mate_pic" src="' + e.running_mate_image_url + '">    <div class="inner_window_sign_display">        <div id="progress_bar">\t    <h3>Question ' + (e.question_number + 1) + " of " + e.global_parameter_json[0].fields.question_count + '</h3>        </div>        <div id="campaign_sign">        <p>' + e.candidate_last_name + "</p>        <p>" + e.running_mate_last_name + "</p>        </div>    </div>";
         let game_winArr = Array.from($("#game_window")[0].children)
         let shining_button = e.game_type_id == "3" ? `
@@ -1396,7 +1408,7 @@ function divideElectoralVotesProp(e, t) {
         ` : "";
         let z = `
         <div class="inner_inner_window">
-            <h3>${e.questions_json[e.question_number].fields.description}</h3>
+            <h3>${substitutePlaceholders(e.questions_json[e.question_number].fields.description)}</h3>
             <div id="question_form">
                 <form name="question">${s}</form>
             </div>
@@ -1993,7 +2005,7 @@ function divideElectoralVotesProp(e, t) {
                     break
                 }
             if (1 == i) {
-                var n = '                    <div class="overlay" id="visit_overlay"></div>                    <div class="overlay_window" id="visit_window">                        <div class="overlay_window_content" id="visit_content">                        <h3>Advisor Feedback</h3>                        <img src="' + e.election_json[a].fields.advisor_url + '" width="208" height="128"/>                        <p>' + e.answer_feedback_json[s].fields.answer_feedback + '</p>                        </div>                        <div class="overlay_buttons" id="visit_buttons">                        <button id="ok_button">OK</button><br><button id="no_feedback_button">Don\'t give me advice</button>                                                </div>                    </div>';
+                var n = '                    <div class="overlay" id="visit_overlay"></div>                    <div class="overlay_window" id="visit_window">                        <div class="overlay_window_content" id="visit_content">                        <h3>Advisor Feedback</h3>                        <img src="' + e.election_json[a].fields.advisor_url + '" width="208" height="128"/>                        <p>' + substitutePlaceholders(e.answer_feedback_json[s].fields.answer_feedback) + '</p>                        </div>                        <div class="overlay_buttons" id="visit_buttons">                        <button id="ok_button">OK</button><br><button id="no_feedback_button">Don\'t give me advice</button>                                                </div>                    </div>';
                 $("#game_window").append(n);
                 $("#ok_button").click(function() {
                     nextQuestion()
