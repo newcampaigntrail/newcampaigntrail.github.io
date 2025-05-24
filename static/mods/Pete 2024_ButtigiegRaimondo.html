@@ -398,7 +398,7 @@ campaignTrail_temp.answers_json = [
         "pk": 103928,
         "fields": {
             "question": 103864,
-            "description": "The bipartisan infrastructure bill was the most groundbreaking piece of legislation signed into law in the past 10 years. Because of President Biden, we're going to fix our roads, and we've only just started. Just as the President has championed security abroad, I've championed security from collapsing bridges at home.\t\t\n\t\t\n\t\t\n\t\t"
+            "description": "The bipartisan infrastructure bill was groundbreaking. Because of President Biden, we're going to fix our roads, and we've only just started. Just as the President has championed security abroad, I've championed security from collapsing bridges at home.\t\t\n\t\t\n\t\t\n\t\t"
         }
     },
     {
@@ -12484,11 +12484,6 @@ campaignTrail_temp.jet_data = [{
 
 
 
-
-
-
-
-
 campaignTrail_temp.cyoa = true
 e=campaignTrail_temp 
 let polling = e.current_results;
@@ -12556,7 +12551,7 @@ const targetNode = document.getElementById("game_window");
 	const observer = new MutationObserver(onGameWindowChanged);
 	observer.observe(targetNode, config);
 
-let vpcand = "khanna"
+let vpcand = "raimondo"
 function updateQuestionBanner() {
     let questionBanner = document.getElementById("campaign_sign");
     if(!questionBanner || questionBanner.nodeName != "DIV") return;
@@ -12831,67 +12826,9 @@ construct = (a = 1) => {
 
 
 campaignTrail_temp.candidate_image_url = 'https://i.imgur.com/WnuUfHi.png';
-campaignTrail_temp.running_mate_image_url = 'https://i.imgur.com/cO58PMW.png';
+campaignTrail_temp.running_mate_image_url = 'https://i.imgur.com/Z3DJKJ0.png';
 campaignTrail_temp.candidate_last_name = 'Buttigieg';
-campaignTrail_temp.running_mate_last_name = 'Khanna';
+campaignTrail_temp.running_mate_last_name = 'Raimondo';
 campaignTrail_temp.player_answers = [];
 campaignTrail_temp.player_visits = [];
 campaignTrail_temp.answer_feedback_flg = 1;
-
-async function appendStyle() {
-    var metaTag = document.createElement('meta');
-    metaTag.name = "viewport";
-    metaTag.content = "width=device-width, initial-scale=1";
-    document.getElementsByTagName('head')[0].appendChild(metaTag);
-
-    if (!document.querySelector('#radio-option-style')) {
-        let style = document.createElement('style');
-        style.type = 'text/css';
-        style.id = 'radio-option-style';
-        style.innerHTML = `
-        h3 {
-            font-size: 1.08em !important;
-            line-height: 17px;
-        }
-        input {
-            font-size: 0.9em !important; 
-            line-height: 17px; 
-        }
-
-        #visit_window {
-            height: auto;
-        }
-        #visit_content {
-            height: 79%;
-        }
-
-        .person_button {
-            margin-top: 0.2em;
-        }
-
-        @media only screen and (max-width: 768px) {
-            #inner_window_2,
-            #inner_window_3,
-            #inner_window_4 {
-                overflow: auto;
-            }
-            #visit_window {
-                font-size: 1.8em;
-                width: 90%;
-                left: 5%;
-            }
-            .inner_window_question button,
-            #visit_window button,
-            #map_footer {
-                line-height: 2.5em;
-            }
-            #drop_down_area_state {
-                margin-left: auto;
-                margin-right: auto;
-            }
-        }
-        `;
-        document.head.appendChild(style);
-    }
-}
-appendStyle();
