@@ -1495,6 +1495,7 @@ function divideElectoralVotesProp(e, t) {
 		e.candidate_json.find(({ pk }) => pk === e.final_state_results[0].result[t].candidate)?.fields.first_name +
 		' ' +
 		e.candidate_json.find(({ pk }) => pk === e.final_state_results[0].result[t].candidate)?.fields.last_name,
+	    candidate_color: e.candidate_json.find(({ pk }) => pk === e.final_state_results[0].result[t].candidate)?.fields.color_hex,
             candidate: e.final_state_results[0].result[t].candidate,
             electoral_votes: 0,
             popular_votes: 0
