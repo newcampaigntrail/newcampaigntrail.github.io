@@ -1491,6 +1491,10 @@ function divideElectoralVotesProp(e, t) {
         }();
         e.final_overall_results = [];
         for (var t = 0; t < e.final_state_results[0].result.length; t++) e.final_overall_results.push({
+	    candidate_name: 
+		e.candidate_json.find(({ pk }) => pk === e.final_state_results[0].result[t].candidate)?.fields.first_name +
+		' ' +
+		e.candidate_json.find(({ pk }) => pk === e.final_state_results[0].result[t].candidate)?.fields.last_name,
             candidate: e.final_state_results[0].result[t].candidate,
             electoral_votes: 0,
             popular_votes: 0
