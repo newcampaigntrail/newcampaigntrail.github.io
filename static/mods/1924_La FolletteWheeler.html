@@ -23636,13 +23636,16 @@ else if (aa[1].candidate == 25) {
 // Coolidge/Davis Wins but you made your own party
 else if (aa[0].electoral_votes >= 266 && ans == 1689 && (aa[0].candidate == 23 || aa[0].candidate == 24)) {
   ctsAchievement("A Real Choice");
+  e.pages.push(`<h3>'Democracy is a life, and involves continual struggle'</h3><p>The telegram comes in soon enough - the conservatives, of either the Republican or Democratic brand, will keep their stranglehold on government. You don't even stop to think about which one it is - although it's almost certainly Coolidge. Both the House and the Senate are also going to almost certainly stay divided between the two parties, although you do find solace in the fact that the Progressive Party will likely pick up a series of seats in the Midwest and New York City. You also still have until 1928 for your own Senate seat.<br><br>With the Progressive Party now formed, there are possibilities for you and this party. Your health is poor, but your sprits are not, and many are hoping that this party can have the momentum that the so-called 'Bull Moose' Party failed to achieve after the success in 1912. With not much time left, you must think about the future of this movement - who should be the leader? Will it be Bob Junior? Or your running mate? Only time will tell, but there are plenty of options.</p>`)
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1924/endings/bobloss.png'})])
+}
+
 // Successful Deadlock 
 else if (aa[0].electoral_votes < 266 && aa[1].electoral_votes < 266 && aa[2].electoral_votes < 266 && aa[3].electoral_votes < 266) {
-    ctsAchievement("Bob's Last Stand");
-    e.pages.push(`<h3>'Men must be aggressive for what is right if government is to be saved from those who are aggressive for what is wrong'</h3><p>It takes a bit for the results to come in - as the hours pass, you grow both more anxious, and more excited. By the time you first go to sleep, the 'solid south' is called for Davis and much of the north is called for Coolidge. In the competitive north, your margins seem to track well. The west takes longer to call. But by the end of it, returns indicate that no candidate will have the required majority needed to get elected President. Republicans are stunned and horrified - many Democrats feel similarly, but they can't help but enjoy this more than losing to Coolidge.<br><br>The House is likely to elect Coolidge - with concessions. Given Democratic congressional gains in states such as Nevada and Nebraska, 'Coolidge Republicans' only control around 23 state delegations. They - or the Democrats - need the support of your allies in Minnesota and Wisconsin if they want to elect their candidate. You could allow negotiations to take place, or you could really set 'Coolidge or Chaos' into motion and allow Charles Bryan to become acting President. You don't have much time left on earth given your age, but becoming a kingmaker here is a wonderful send-off to your career fighting for the working man.</p>`)
-    success = true;
-    e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1924/endings/bobdead.png'})])
-  }
+  ctsAchievement("Bob's Last Stand");
+  e.pages.push(`<h3>'Men must be aggressive for what is right if government is to be saved from those who are aggressive for what is wrong'</h3><p>It takes a bit for the results to come in - as the hours pass, you grow both more anxious, and more excited. By the time you first go to sleep, the 'solid south' is called for Davis and much of the north is called for Coolidge. In the competitive north, your margins seem to track well. The west takes longer to call. But by the end of it, returns indicate that no candidate will have the required majority needed to get elected President. Republicans are stunned and horrified - many Democrats feel similarly, but they can't help but enjoy this more than losing to Coolidge.<br><br>The House is likely to elect Coolidge - with concessions. Given Democratic congressional gains in states such as Nevada and Nebraska, 'Coolidge Republicans' only control around 23 state delegations. They - or the Democrats - need the support of your allies in Minnesota and Wisconsin if they want to elect their candidate. You could allow negotiations to take place, or you could really set 'Coolidge or Chaos' into motion and allow Charles Bryan to become acting President. You don't have much time left on earth given your age, but becoming a kingmaker here is a wonderful send-off to your career fighting for the working man.</p>`)
+  success = true;
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1924/endings/bobdead.png'})])
 }
 
 // Coolidge/Davis Wins
@@ -23841,7 +23844,7 @@ function openHeadquarter() {
     hqDiv.style.backgroundImage = 'url(https://itsastronomical.com/assets/1924/bobhq.png)'; // Set background image. I would recommend using the same file size as the original image, ~959 x 327. Otherwise it will stretch the image. Comment or remove this line of text if you don't want a background image and instead want hqDiv.style.backgroundColor to set your background color
     hqDiv.style.border = '5px solid black';
     hqDiv.style.borderRadius = '10px';
-    hqDiv.style.height = '56%';
+    hqDiv.style.height = '52%';
     hqDiv.style.flexDirection = 'column';
     hqDiv.style.alignItems = 'center';
 
@@ -23999,7 +24002,7 @@ function openOpButton() {
   hqDiv.style.backgroundImage = 'url(https://itsastronomical.com/assets/1924/opp/progopphq.png)'; // Set background image. I would recommend using the same file size as the original image, ~959 x 327. Otherwise it will stretch the image. Comment or remove this line of text if you don't want a background image and instead want hqDiv.style.backgroundColor to set your background color
   hqDiv.style.border = '5px solid black';
   hqDiv.style.borderRadius = '10px';
-  hqDiv.style.height = '56%';
+  hqDiv.style.height = '52%';
   hqDiv.style.flexDirection = 'column';
   hqDiv.style.alignItems = 'center';
 
@@ -24118,6 +24121,7 @@ for (const [id, nominee] of Object.entries(nominees)) {
   
 }
 
+
 function handleMutations(mutationsList, observer) {
   if (observerRunning) return;
   observerRunning = true;
@@ -24128,6 +24132,7 @@ function handleMutations(mutationsList, observer) {
   observer.observe(document.documentElement, { childList: true, subtree: true });
   observerRunning = false;
 }
+
 
 let observerRunning = false;
 
