@@ -22793,7 +22793,7 @@ campaignTrail_temp.answer_feedback_json = [
         "pk": 9914,
         "fields": {
             "answer": 9913,
-            "candidate": 23,
+            "candidate": 24,
             "answer_feedback": "Smith and McAdoo reluctantly back you, although that's to be expected of their party's nominee. It's apparent that McAdoo is still quite bitter, however."
         }
     },
@@ -23063,7 +23063,7 @@ campaignTrail_temp.answer_feedback_json = [
         "pk": 10236,
         "fields": {
             "answer": 10235,
-            "candidate": 23,
+            "candidate": 24,
             "answer_feedback": "Tying Wilson to the economic boom is an interesting idea, whilst hitting on the fact that not everyone is feeling the prosperity."
         }
     },
@@ -23387,7 +23387,7 @@ campaignTrail_temp.answer_feedback_json = [
         "pk": 10562,
         "fields": {
             "answer": 10561,
-            "candidate": 23,
+            "candidate": 24,
             "answer_feedback": "An aggressive response. You'll be hurt as much as Coolidge will be with rhetoric like this spreading."
         }
     },
@@ -23459,7 +23459,7 @@ campaignTrail_temp.answer_feedback_json = [
         "pk": 10603,
         "fields": {
             "answer": 10580,
-            "candidate": 23,
+            "candidate": 24,
             "answer_feedback": "It's a bit sentimental, and not electorally strategic, but you do manage to see your original home. Best of luck, Mr. McAdoo!"
         }
     },
@@ -23603,7 +23603,7 @@ campaignTrail_temp.answer_feedback_json = [
         "pk": 10702,
         "fields": {
             "answer": 10701,
-            "candidate": 23,
+            "candidate": 24,
             "answer_feedback": "You will be hurt regardless, but putting up a good fight is never the wrong move."
         }
     },
@@ -23909,7 +23909,7 @@ campaignTrail_temp.answer_feedback_json = [
         "pk": 11019,
         "fields": {
             "answer": 11018,
-            "candidate": 23,
+            "candidate": 24,
             "answer_feedback": "Regardless of the results of the election, it is indeed clear that such a bold move will have your campaign remembered in the history books. You also manage to reach a lot of audiences here. "
         }
     },
@@ -23945,7 +23945,7 @@ campaignTrail_temp.answer_feedback_json = [
         "pk": 11050,
         "fields": {
             "answer": 11049,
-            "candidate": 23,
+            "candidate": 24,
             "answer_feedback": "You return to your home in Virginia, hoping for good results - although it is clear that is unlikely. We wish you the best of luck, Mr. Glass!"
         }
     },
@@ -24134,7 +24134,7 @@ campaignTrail_temp.answer_feedback_json = [
         "pk": 11179,
         "fields": {
             "answer": 11178,
-            "candidate": 23,
+            "candidate": 24,
             "answer_feedback": "It's always a good strategy to indirectly nudge third party voters. "
         }
     },
@@ -24377,7 +24377,7 @@ campaignTrail_temp.answer_feedback_json = [
         "pk": 11525,
         "fields": {
             "answer": 11524,
-            "candidate": 23,
+            "candidate": 24,
             "answer_feedback": "This is the best of both worlds, and your advisors are pleased to hear you take this strategy. Some of these ideas do seem a little early, however."
         }
     },
@@ -24413,7 +24413,7 @@ campaignTrail_temp.answer_feedback_json = [
         "pk": 11557,
         "fields": {
             "answer": 11556,
-            "candidate": 23,
+            "candidate": 24,
             "answer_feedback": "You return to your home in Helena, hoping for good results. We wish you the best of luck, Mr. Walsh!"
         }
     },
@@ -24776,6 +24776,23 @@ style.id = 'dynamic-style';
 cyoAdventure = function (a) {
   ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
 
+// Walsh disappears if you don't denounce the Klan twice
+if (campaignTrail_temp.question_number == 8 && klan < 1) {
+  delete nominees.walsh;
+}
+// Walsh disappears if you don't denounce the Klan twice
+if (campaignTrail_temp.question_number == 13 && klan < 2) {
+  delete nominees.walsh;
+}
+// Glass disappears if you denounce the Klan twice
+if (campaignTrail_temp.question_number == 13 && klan >= 2) {
+  delete nominees.glass;
+}
+// Glass disappears if you denounce the Klan twice
+if (campaignTrail_temp.question_number == 18 && primary < 8) {
+  delete nominees.mcadoo;
+}
+
 // Achievement checks
 
 // Get Reed in the campaign
@@ -24935,6 +24952,7 @@ if((ans == 1685 || ans == 1686 || ans == 1687) && klan >= 2){
 
 // Changes the candidate to John W. Davis when you lose
 if(ans == 1776){
+    lockInNominee('davis');
     campaignTrail_temp.candidate_json[1]["fields"].first_name = "John W.";
     campaignTrail_temp.candidate_json[1]["fields"].last_name = "Davis";
     campaignTrail_temp.global_parameter_json [0]["fields"].question_count = "37";
@@ -24950,7 +24968,7 @@ if(ans == 1776){
 
 // If you win the nomination as McAdoo, you get to play as him!
 if((ans == 9004 || ans == 9005) && money == 0 && klan >= 2 && primary >= 8){
-
+  lockInNominee('mcadoo');
   campaignTrail_temp.candidate_json[0].fields.color_hex = '#8d3d3d'
   campaignTrail_temp.candidate_json[1].fields.color_hex = '#16537e'
   campaignTrail_temp.candidate_json[2].fields.color_hex = '#56705d'
@@ -25137,7 +25155,7 @@ if((ans == 9004 || ans == 9005) && money == 0 && klan >= 2 && primary >= 8){
 
 // If you get a perfect primary score
 if((ans == 9004 || ans == 9005) && money == 0 && klan >= 2 && primary >= 12){
-
+  lockInNominee('mcadoo');
   campaignTrail_temp.candidate_json[0].fields.color_hex = '#8d3d3d'
   campaignTrail_temp.candidate_json[1].fields.color_hex = '#16537e'
   campaignTrail_temp.candidate_json[2].fields.color_hex = '#56705d'
@@ -25324,7 +25342,7 @@ if((ans == 9004 || ans == 9005) && money == 0 && klan >= 2 && primary >= 12){
 
 // If you drop out as McAdoo, but don't denounce the Klan, you get Carter Glass
 if((ans == 3259 || ans == 3235 || ans == 1756) && klan < 2){
-
+  lockInNominee('glass');
   campaignTrail_temp.candidate_json[0].fields.color_hex = '#40497a'
   campaignTrail_temp.candidate_json[1].fields.color_hex = '#d5e072'
   campaignTrail_temp.candidate_json[2].fields.color_hex = '#b54b4a'
@@ -25509,6 +25527,7 @@ if((ans == 3259 || ans == 3235 || ans == 1756) && klan < 2){
 
 // If you drop out as McAdoo but do denounce the Klan, you get Thomas Walsh
 if((ans == 11740 || ans == 11754 || ans == 11761) && klan >= 2){
+lockInNominee('walsh');
 campaignTrail_temp.election_json[0]["fields"].advisor_url = "https://itsastronomical.com/assets/1924/advice/walshadvice.png";
   campaignTrail_temp.candidate_json[0].fields.color_hex = '#ac0000'
   campaignTrail_temp.candidate_json[1].fields.color_hex = '#2e7484'
@@ -26058,6 +26077,43 @@ Go ahead and use this code in your mods - just give me credit. I hope it helps y
 */
 e=campaignTrail_temp
 
+
+// This handles all the nominees in the "Opposition File"
+// As you play the game, possible Dem Candidates slowly get removed.
+const nominees = {
+    mcadoo: {
+      name: 'William G. McAdoo',
+      imgURL: 'https://itsastronomical.com/assets/1924/opp/mcadoo.png',
+      isActive: true,
+      bioText: '<h5>Former United States Secretary of the Treasury</h5><center><img src="https://itsastronomical.com/assets/1924/opp/mcadoo.png" style="width: 75px; height: 75px; display: block; margin: 0px; cursor: pointer; border: 3px solid white; border-radius: 1px; object-fit: cover;"></center><p>A staunch Wilsonian and prohibitionist, McAdoo is a favorite of Southern Democrats and progressives alike. Having come close to the nomination in 1920, McAdoo is eager to claim it this time. Of course, many factors persist that could cause him to fail in this quest.</p><p>For starters, he must avoid giving his opponents any amount of dirt that could impact his chances at the nomination. This ranges from potential accusations of corruption, to rumored ties to the Ku Klux Klan.</p><p>If he can secure the nomination, Mr. McAdoo has a real shot at victory - he is capable of uniting much of the Democratic Party behind him in his quest to defeat Republicans.</p>'
+    },
+    walsh: {
+      name: 'Thomas J. Walsh',
+      imgURL: 'https://itsastronomical.com/assets/1924/opp/walsh.png',
+      isActive: true,
+      bioText: '<h5>United States Senator from Montana</h5><center><img src="https://itsastronomical.com/assets/1924/opp/walsh.png" style="width: 75px; height: 75px; display: block; margin: 0px; cursor: pointer; border: 3px solid white; border-radius: 1px; object-fit: cover;"></center> <p>Mr. Walsh is a compromise candidate, acceptable to all sides. Of course, Walsh is uninterested in seeking the nomination for himself, and seems intent on simply chairing the Convention and helping the party unite.</p><p>If McAdoo is on track to lose the nomination, Senator Walsh would certainly be an acceptable choice by him and his allies to unite the party, if they offer to drop out. With that said, Mr. Walsh would likely only take the nomination if the Ku Klux Klan is removed as an issue.</p><p>If he can secure the nomination, Mr. Walsh has a real shot at victory - he is capable of uniting much of the Democratic Party behind him in his quest to defeat the Republicans. Of course, getting him to accept shall be the hardest part.</p>'
+    },
+    glass: {
+      name: 'Carter Glass',
+      imgURL: 'https://itsastronomical.com/assets/1924/opp/glass.png',
+      isActive: true,
+      bioText: '<h5>United States Senator from Virginia</h5><center><img src="https://itsastronomical.com/assets/1924/opp/glass.png" style="width: 75px; height: 75px; display: block; margin: 0px; cursor: pointer; border: 3px solid white; border-radius: 1px; object-fit: cover;"></center> <p>As an ally of William Gibbs McAdoo, Carter Glass is not a direct candidate for President. Nevertheless, he very well could become a compromise candidate if none of the frontrunners could make headways.</p><p>If McAdoo is on track to lose the nomination, Senator Glass would certainly be an acceptable choice by him and his allies to unite the party, if they offer to drop out. With that said, Glass may only secure the nomination if the Klan remains an ambiguous issue.</p><p>If he can secure the nomination, he would struggle to make headways outside of the south. At most, he may be interested in deadlocking the election in order to deny the Republicans an electoral majority.</p>'
+    },
+    davis: {
+      name: 'John W. Davis',
+      imgURL: 'https://itsastronomical.com/assets/1924/opp/davis.png',
+      isActive: true,
+      bioText: '<h5>Former United States Ambassador to Great Britain</h5><center><img src="https://itsastronomical.com/assets/1924/opp/davis.png" style="width: 75px; height: 75px; display: block; margin: 0px; cursor: pointer; border: 3px solid white; border-radius: 1px; object-fit: cover;"></center> <p>The second bid by John Davis for our party’s nomination may seem like a long-shot, but make no mistake - Mr. Davis is seen as an real possibility for a compromise candidate if the convention cannot decide on a candidate.</p><p>Someone like Mr. Davis could only win if the convention reaches a breaking point, something that shall hopefully not happen. Nevertheless, he would be an acceptable choice compared to Underwood or Smith.</p><p>In the event of his nomination, it is hard to see him winning, period. He would need a miracle upon his side.</p>'
+    },
+};
+
+// Used for when the nominee is finalized
+function lockInNominee(selectedId) {
+    for (const id in nominees) {
+      nominees[id].isActive = (id === selectedId);
+    }
+}
+
 function addHeadquarterButton() {
     // Check if the button already exists
     if (document.getElementById('headquarter_button')) {
@@ -26077,7 +26133,7 @@ function addHeadquarterButton() {
 
     newButton.style.marginLeft = '1.5em';
 
-    newButton.innerHTML = 'Democratic Campaign';
+    newButton.innerHTML = 'Campaign Data 📻';
 
     // Attach the click event listener
     newButton.addEventListener('click', openHeadquarter);
@@ -26203,25 +26259,198 @@ function openHeadquarter() {
     
 }
 
-function handleMutations(mutationsList, observer) {
-    if (observerRunning) return;
-    observerRunning = true;
+function addOpButton() {
+  // Check if the button already exists
+  if (document.getElementById('op_button')) {
+      return;
+  }
 
-    addHeadquarterButton()
+  // Find the reference button by its ID
+  const refButton = document.getElementById('view_electoral_map');
+  if (!refButton) {
+      return;
+  }
 
-    observer.observe(document.documentElement, { childList: true, subtree: true });
-    observerRunning = false;
+  // Create a new button element
+  const newButton = document.createElement('button');
+
+  newButton.id = 'op_button';
+
+  newButton.style.marginLeft = '1.5em';
+
+  newButton.innerHTML = 'The DNC ⚖️';
+
+  // Attach the click event listener
+  newButton.addEventListener('click', openOpButton);
+
+    // Insert the new button next to the Headquarters button
+    const headquarterButton = document.getElementById('headquarter_button');
+    if (headquarterButton) {
+        headquarterButton.insertAdjacentElement('afterend', newButton);
+    } else {
+        refButton.insertAdjacentElement('afterend', newButton);
+    }
+  
 }
 
+function openOpButton() {
+    
+  let questions = document.querySelector(".inner_window_question");
+
+  questions.style.display = 'none';
+
+  const OpButton = document.getElementById('op_button');
+  if (OpButton) {
+    OpButton.remove();
+  }
+
+  // Create and set up the headquarters div
+  let hqDiv = document.createElement('div');
+  hqDiv.id = 'headquarter';
+  hqDiv.style.display = 'flex'; // Set layout to flex to allow columns
+  hqDiv.style.color = 'white';
+  hqDiv.style.backgroundColor = '#383838';
+  hqDiv.style.backgroundImage = 'url(https://itsastronomical.com/assets/1924/opp/demhq.png)'; // Set background image. I would recommend using the same file size as the original image, ~959 x 327. Otherwise it will stretch the image. Comment or remove this line of text if you don't want a background image and instead want hqDiv.style.backgroundColor to set your background color
+  hqDiv.style.border = '5px solid black';
+  hqDiv.style.borderRadius = '10px';
+  hqDiv.style.height = '56%';
+  hqDiv.style.flexDirection = 'column';
+  hqDiv.style.alignItems = 'center';
+
+  // Create header div
+  let headerDiv = document.createElement('div');
+  headerDiv.style.display = 'flex';
+  headerDiv.style.justifyContent = 'space-between';
+  headerDiv.style.width = '100%';
+  headerDiv.style.alignItems = 'center';
+
+  // Add back button to the header
+  let backButton = document.createElement('button');
+  backButton.innerText = 'Back';
+  backButton.style.margin = '5px'
+  backButton.style.backgroundColor = 'grey';
+  backButton.onclick = function() {
+      // Hide headquarters and show the original content
+      hqDiv.remove();
+      questions.style.display = '';
+  }
+  headerDiv.appendChild(backButton);
+
+  /* This is a header text that you can add if you want to. It is not necessary. - Astro
+  let headerText = document.createElement('h3');
+  headerText.textContent = 'Chief of Staff - Campaign Info';
+  headerText.style.textAlign = 'center';  // Center the text
+  headerText.style.flexGrow = '1';  // Make h3 take up the maximum space available
+  headerDiv.appendChild(headerText);
+  */
+
+  // Append headerDiv to the main hqDiv
+  hqDiv.appendChild(headerDiv);
+
+  // Create a container div for both columns
+  let columnsDiv = document.createElement('div');
+  columnsDiv.style.display = 'flex';
+  columnsDiv.style.width = '100%';
+
+  // Create inner divs for columns
+  let leftCol = document.createElement('div');
+  leftCol.style.width = '50%';
+  columnsDiv.appendChild(leftCol);
+
+  let rightCol = document.createElement('div');
+  rightCol.style.width = '50%';
+  columnsDiv.appendChild(rightCol);
+
+  // Append columnsDiv to the main hqDiv
+  hqDiv.appendChild(columnsDiv);
+
+
+  questions.parentNode.insertBefore(hqDiv, questions.nextSibling);
+
+  // This is all the unique stuff for the Opposition File. 
+
+// Panel
+
+// Container for both columns
+let demPanel = document.createElement('div');
+demPanel.style.display = 'flex';
+demPanel.style.width = '95%';
+demPanel.style.height = '300px';
+demPanel.style.marginTop = '1em';
+hqDiv.appendChild(demPanel);
+
+// Right column, which shows all the possible "nominees" in a grid. It's not the prettiest grid but whateverrrrrrrrrrr
+let nomineeGrid = document.createElement('div');
+nomineeGrid.style.display = 'grid';
+nomineeGrid.style.gridTemplateColumns = "repeat(auto-fill, minmax(70px, 1fr))";
+nomineeGrid.style.rowGap = "4px";   // Smaller vertical gap
+nomineeGrid.style.columnGap = "16px"; // Keep horizontal gap 
+nomineeGrid.style.width = '520px';
+nomineeGrid.style.height = '220px';
+nomineeGrid.style.border = '2px solid black';
+nomineeGrid.style.padding = '4px';
+nomineeGrid.style.backgroundColor = '#222';
+demPanel.appendChild(nomineeGrid);
+
+// Right Column, which lets you read about the candidates
+let bioViewer = document.createElement('div');
+bioViewer.style.width = '420px';
+bioViewer.style.marginLeft = '20px';
+bioViewer.style.backgroundColor = '#444';
+bioViewer.style.border = '2px solid black';
+bioViewer.style.padding = '12px';
+bioViewer.style.color = 'white';
+bioViewer.style.height = '250px'; 
+bioViewer.style.overflowY = 'auto';
+bioViewer.style.scrollbarWidth = 'thin';
+bioViewer.style.overflowX = 'hidden';    
+bioViewer.style.color = 'white';
+bioViewer.innerHTML = "<h3>Welcome to the Democratic National Convention File! Please select a candidate to learn more about them.</h3><center><img src='https://itsastronomical.com/assets/1924/opp/chad.png' style='width: 85px; height: 85px; display: block; margin: 0px; cursor: pointer; border: 3px solid white; border-radius: 1px; object-fit: cover;'></center><p>Mr. McAdoo desires the nomination quite badly, and is only willing to accept a few possible compromises candidates. The odds of each of them securing victory will be shown here.</p>"; // You can change this as needed, obviously
+demPanel.appendChild(bioViewer);
+
+// Add nominee portrait box
+for (const [id, nominee] of Object.entries(nominees)) {
+    if (!nominee.isActive) continue;
+    let box = document.createElement('img');
+    box.src = nominee.imgURL;
+    box.style.width = '75px';
+    box.style.height = '75px';
+    box.style.display = 'block';
+    box.style.margin = '10px';
+    box.style.cursor = 'pointer';
+    box.style.border = '3px solid white';
+    box.style.borderRadius = '2px';
+    box.title = nominee.name;
+    box.style.objectFit = 'cover';
+    box.onclick = () => {
+      bioViewer.innerHTML = `<h3>${nominee.name}</h3>${nominee.bioText}`;
+    };
+  
+    nomineeGrid.appendChild(box);
+}
+
+  
+}
+
+function handleMutations(mutationsList, observer) {
+  if (observerRunning) return;
+  observerRunning = true;
+
+  addHeadquarterButton();
+  addOpButton();
+
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+  observerRunning = false;
+}
 
 let observerRunning = false;
 
 var element = document.getElementById('controlElement');
 if (!element) {
-	let singleObserver = new MutationObserver(handleMutations);
-	singleObserver.observe(document.documentElement, { childList: true, subtree: true });
-	var controlElement = document.createElement('div');
-	controlElement.style.display = 'none';
-	controlElement.id = 'controlElement';
-	document.body.appendChild(controlElement);
+let singleObserver = new MutationObserver(handleMutations);
+singleObserver.observe(document.documentElement, { childList: true, subtree: true });
+var controlElement = document.createElement('div');
+controlElement.style.display = 'none';
+controlElement.id = 'controlElement';
+document.body.appendChild(controlElement);
 }
