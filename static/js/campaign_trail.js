@@ -32,13 +32,19 @@ let baseScenarioDict = {
 // Global Text Variables
 
 // Code 1 Text
-e.SelectText = "Please select the election you will run in:"
-e.CandidText = "Please select your candidate:"
-e.VpText = "Please select your running mate:"
+e.SelectText = "Please select the election you will run in:";
+e.CandidText = "Please select your candidate:";
+e.VpText = "Please select your running mate:";
+e.PartyText = "Party:";
+e.HomeStateText = "Home State:";
 // Ending Popups
-e.ElectionPopup = "Election night has arrived. Settle in and wait for the returns, however                 long it may take. Best of luck!"
-e.WinPopup = "Congratulations! You won this year's election! Click OK to view the                     rest of the returns, or skip straight to the final results. We hope                     you have a nice victory speech prepared for your supporters."
-e.LosePopup = "Sorry. You have lost the election this time. Click OK to view the                     rest of the returns, or skip straight to the final results. We hope                     you have a nice concession speech prepared."
+e.ElectionPopup = "Election night has arrived. Settle in and wait for the returns, however                 long it may take. Best of luck!";
+e.WinPopup = "Congratulations! You won this year's election! Click OK to view the                     rest of the returns, or skip straight to the final results. We hope                     you have a nice victory speech prepared for your supporters.";
+e.LosePopup = "Sorry. You have lost the election this time. Click OK to view the                     rest of the returns, or skip straight to the final results. We hope                     you have a nice concession speech prepared.";
+
+e.finalPercentDigits = 1; // for PV % in final results
+e.statePercentDigits = 2;
+e.SelAnsContText = "Please select an answer before continuing!";
 
 function substitutePlaceholders(str) {
   if (!str || typeof str !== "string") return str;
@@ -1576,7 +1582,7 @@ function divideElectoralVotesProp(e, t) {
                 t = i;
                 break
             }
-        $("#candidate_description_window").html('<div class="person_image" id="candidate_image">            <img src="' + e.candidate_json[t].fields.image_url + '" width="210" height="250"/>        </div>        <div class="person_summary" id="candidate_summary">        <ul><li>Name: ' + e.candidate_json[t].fields.first_name + " " + e.candidate_json[t].fields.last_name + "</li>        <li>Party: " + e.candidate_json[t].fields.party + "</li>        <li>Home State: " + e.candidate_json[t].fields.state + "</li>        </ul>" + e.candidate_json[t].fields.description + "</div>")
+        $("#candidate_description_window").html('<div class="person_image" id="candidate_image">            <img src="' + e.candidate_json[t].fields.image_url + '" width="210" height="250"/>        </div>        <div class="person_summary" id="candidate_summary">        <ul><li>Name: ' + e.candidate_json[t].fields.first_name + " " + e.candidate_json[t].fields.last_name + "</li>        <li>" + e.PartyText + " " + e.candidate_json[t].fields.party + "</li>        <li>" + e.HomeStateText + " " + e.candidate_json[t].fields.state + "</li>        </ul>" + e.candidate_json[t].fields.description + "</div>")
     }
 
     function i() {
@@ -3335,7 +3341,7 @@ _ = '   <div class="game_header"> ' + corrr + ' </div> <div id="main_content_are
         for (i = 0; i < e.final_overall_results.length; i++) {
             var s = E(e.final_overall_results[i].candidate),
                 n = e.candidate_json[s].fields.color_hex;
-            a += '            <tr><td style="text-align: left;">            <span style="background-color: ' + n + "; color: " + n + ';">----</span> ' + (e.candidate_json[s].fields.first_name + " " + e.candidate_json[s].fields.last_name) + "</td><td> " + e.final_overall_results[i].electoral_votes + " </td><td> " + M(e.final_overall_results[i].popular_votes) + " </td><td> " + (e.final_overall_results[i].popular_votes / t * 100).toFixed(1) + "% </td></tr>"
+            a += '            <tr><td style="text-align: left;">            <span style="background-color: ' + n + "; color: " + n + ';">----</span> ' + (e.candidate_json[s].fields.first_name + " " + e.candidate_json[s].fields.last_name) + "</td><td> " + e.final_overall_results[i].electoral_votes + " </td><td> " + M(e.final_overall_results[i].popular_votes) + " </td><td> " + (e.final_overall_results[i].popular_votes / t * 100).toFixed(e.finalPercentDigits) + "% </td></tr>"
         }
         let o;
         if ("None" != e.percentile) var l = "<p>You have done better than approximately <strong>" + e.percentile + "%</strong> of the games that have been played with your candidate and difficulty level.</p>";
@@ -3455,7 +3461,7 @@ _ = '   <div class="game_header"> ' + corrr + ' </div> <div id="main_content_are
             if (e.final_state_results[a].state == t)
                 for (var s = 0; s < e.final_state_results[a].result.length; s++) {
                     var n = E(e.final_state_results[a].result[s].candidate);
-                    i += "                    <tr><td>" + (e.candidate_json[n].fields.first_name + " " + e.candidate_json[n].fields.last_name) + "</td><td>" + M(e.final_state_results[a].result[s].votes) + "</td><td>" + (100 * e.final_state_results[a].result[s].percent).toFixed(2) + "</td><td>" + e.final_state_results[a].result[s].electoral_votes + "</td></tr>"
+                    i += "                    <tr><td>" + (e.candidate_json[n].fields.first_name + " " + e.candidate_json[n].fields.last_name) + "</td><td>" + M(e.final_state_results[a].result[s].votes) + "</td><td>" + (100 * e.final_state_results[a].result[s].percent).toFixed(e.statePercentDigits) + "</td><td>" + e.final_state_results[a].result[s].electoral_votes + "</td></tr>"
                 }
         return i += "</table>"
     }
@@ -3690,7 +3696,7 @@ _ = '   <div class="game_header"> ' + corrr + ' </div> <div id="main_content_are
 
     function C(t) {
         var i = S(t),
-            a = '    <div class="overlay" id="feedback_overlay"></div>    <div class="overlay_window" id="feedback_window">        <div class="overlay_window_content" id="feedback_content">        <h3>Advisor Feedback</h3>        <img src="' + e.election_json[i].fields.advisor_url + '" width="208" height="128"/>        <p>Please select an answer before continuing!</p>        </div>        <div id="visit_buttons">        <button id="ok_button">OK</button><br>        </div>    </div>';
+            a = '    <div class="overlay" id="feedback_overlay"></div>    <div class="overlay_window" id="feedback_window">        <div class="overlay_window_content" id="feedback_content">        <h3>Advisor Feedback</h3>        <img src="' + e.election_json[i].fields.advisor_url + '" width="208" height="128"/>        <p>' + e.SelAnsContText + '</p>        </div>        <div id="visit_buttons">        <button id="ok_button">OK</button><br>        </div>    </div>';
         $("#game_window").append(a), $("#ok_button").click(function() {
             $("#feedback_overlay").remove(), $("#feedback_window").remove()
         })
