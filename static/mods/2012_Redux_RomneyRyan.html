@@ -1,7 +1,15 @@
+
+function ctsAchievement(achievement, difficultyChecker = true){
+	if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
+		if(campaignTrail_temp.CTS){
+		unlockAchievement(achievement);
+	}
+}
+
 campaignTrail_temp.questions_json = [
     {
         "model": "campaign_trail.question",
-        "pk": 113,
+        "pk": 10000,
         "fields": {
             "priority": 0,
             "description": "You have officially clinched the Republican nomination and will face Democratic President Barack Obama in the November election. What is your campaign strategy for defeating him?",
@@ -10,7 +18,7 @@ campaignTrail_temp.questions_json = [
     },
     {
         "model": "campaign_trail.question",
-        "pk": 131,
+        "pk": 20000,
         "fields": {
             "priority": 0,
             "description": "You have selected Wisconsin Representative Paul Ryan as your running mate. What will you say about him in your announcement?",
@@ -19,7 +27,7 @@ campaignTrail_temp.questions_json = [
     },
     {
         "model": "campaign_trail.question",
-        "pk": 22,
+        "pk": 30000,
         "fields": {
             "priority": 1,
             "description": "What will be the defining theme of your nomination speech at the Republican National Convention?",
@@ -28,28 +36,37 @@ campaignTrail_temp.questions_json = [
     },
     {
         "model": "campaign_trail.question",
-        "pk": 42,
+        "pk": 3,
         "fields": {
             "priority": 1,
-            "description": "In response to the DREAM Act being stalled in Congress, the Obama administration has implemented the Deferred Action for Childhood Arrivals (DACA) Program. Will you attack this on the campaign trail?",
+            "description": "",
             "likelihood": 1
         }
     },
     {
         "model": "campaign_trail.question",
-        "pk": 25,
+        "pk": 4,
         "fields": {
             "priority": 1,
-            "description": "Earlier this year, President Obama announced his support for legalizing same-sex marriage. Where do you stand on this?",
+            "description": "",
             "likelihood": 1
         }
     },
     {
         "model": "campaign_trail.question",
-        "pk": 114,
+        "pk": 5,
         "fields": {
             "priority": 1,
-            "description": "What is your stance on the Bush Tax Cuts, which are set to expire at the end of the year?",
+            "description": "",
+            "likelihood": 1
+        }
+    },
+    {
+        "model": "campaign_trail.question",
+        "pk": 6,
+        "fields": {
+            "priority": 1,
+            "description": "",
             "likelihood": 1
         }
     },
@@ -58,52 +75,43 @@ campaignTrail_temp.questions_json = [
         "pk": 7,
         "fields": {
             "priority": 1,
-            "description": "The signature achievement of your opponent’s first term is signing the Affordable Care Act, though it has become something of a lightning rod on the right. What will be the messaging surrounding Obamacare as you try to deny him a second term?",
+            "description": "",
             "likelihood": 1
         }
     },
     {
         "model": "campaign_trail.question",
-        "pk": 43,
+        "pk": 8,
         "fields": {
-            "priority": 2,
-            "description": "What is your guiding foreign policy philosophy?",
+            "priority": 1,
+            "description": "",
             "likelihood": 1
         }
     },
     {
         "model": "campaign_trail.question",
-        "pk": 38,
+        "pk": 9,
         "fields": {
-            "priority": 2,
-            "description": "You are the first Mormon major party presidential nominee. To what extent will you speak about your religious faith on the campaign trail?",
+            "priority": 1,
+            "description": "",
             "likelihood": 1
         }
     },
     {
         "model": "campaign_trail.question",
-        "pk": 109,
+        "pk": 10,
         "fields": {
-            "priority": 2,
-            "description": "Your tenure at Bain Capital has been a source of controversy during the campaign, with critics saying you laid off thousands of workers at various companies that it purchased. Do you have any comment on this?",
+            "priority": 1,
+            "description": "",
             "likelihood": 1
         }
     },
     {
         "model": "campaign_trail.question",
-        "pk": 75,
+        "pk": 11,
         "fields": {
-            "priority": 2,
-            "description": "It is no secret that you are not the Tea Party’s preferred Republican presidential candidate. Will you make any attempts to reach out to these voters during the general election?",
-            "likelihood": 1
-        }
-    },
-    {
-        "model": "campaign_trail.question",
-        "pk": 81,
-        "fields": {
-            "priority": 2,
-            "description": "Some economists have suggested that the government should do more to stabilize home prices. What is your stance?",
+            "priority": 1,
+            "description": "",
             "likelihood": 1
         }
     },
@@ -111,14 +119,14 @@ campaignTrail_temp.questions_json = [
         "model": "campaign_trail.question",
         "pk": 12,
         "fields": {
-            "priority": 2,
-            "description": "You’ve faced attacks from both sides on the similarities between your healthcare plan in Massachusetts and Obama’s Affordable Care Act. Let’s diffuse these critiques. How does Romneycare differ from Obamacare?",
+            "priority": 1,
+            "description": "",
             "likelihood": 1
         }
     },
     {
         "model": "campaign_trail.question",
-        "pk": 117,
+        "pk": 140000,
         "fields": {
             "priority": 2,
             "description": "A terrorist group in Libya attacked the US consulate and a CIA annex in Benghazi, killing 4 Americans, including the US Ambassador. What is your response to this tragedy?",
@@ -127,34 +135,34 @@ campaignTrail_temp.questions_json = [
     },
     {
         "model": "campaign_trail.question",
-        "pk": 54,
+        "pk": 14,
         "fields": {
-            "priority": 2,
-            "description": "How will you approach Iran should diplomatic negotiations to prevent them from developing nuclear weapons continue to yield minimal results?",
+            "priority": 1,
+            "description": "",
             "likelihood": 1
         }
     },
     {
         "model": "campaign_trail.question",
-        "pk": 67,
+        "pk": 15,
         "fields": {
-            "priority": 2,
-            "description": "The landmark <em>Citizens United</em> Supreme Court case remains a heated topic of discussion. What is your take on the matter?",
+            "priority": 1,
+            "description": "",
             "likelihood": 1
         }
     },
     {
         "model": "campaign_trail.question",
-        "pk": 101,
+        "pk": 16,
         "fields": {
-            "priority": 2,
-            "description": "In the past you have expressed varying opinions about abortion. Can you reassure the evangelical Christian movement that you are 100% pro-life in all circumstances?",
+            "priority": 1,
+            "description": "",
             "likelihood": 1
         }
     },
     {
         "model": "campaign_trail.question",
-        "pk": 82,
+        "pk": 180000,
         "fields": {
             "priority": 2,
             "description": "With the calendar year turning to October, everyone is talking about the upcoming debates. Are you ready to take on Barack Obama one-on-one?",
@@ -163,61 +171,61 @@ campaignTrail_temp.questions_json = [
     },
     {
         "model": "campaign_trail.question",
-        "pk": 6,
+        "pk": 18,
         "fields": {
-            "priority": 2,
-            "description": "Time to tackle another sticky subject: gun control. What is your position on handgun restrictions?",
+            "priority": 1,
+            "description": "",
             "likelihood": 1
         }
     },
     {
         "model": "campaign_trail.question",
-        "pk": 26,
+        "pk": 19,
         "fields": {
-            "priority": 2,
-            "description": "What actions do you support to mitigate the effects of climate change?",
+            "priority": 1,
+            "description": "",
             "likelihood": 1
         }
     },
     {
         "model": "campaign_trail.question",
-        "pk": 33,
+        "pk": 20,
         "fields": {
-            "priority": 2,
-            "description": "Let’s do something a little different and pause on the aggressive campaigning. Say something nice about Barack Obama.",
+            "priority": 1,
+            "description": "",
             "likelihood": 1
         }
     },
     {
         "model": "campaign_trail.question",
-        "pk": 106,
+        "pk": 21,
         "fields": {
-            "priority": 2,
-            "description": "The automobile industry was one of the hardest hit in the Great Recession. Do you support increasing tariffs on foreign vehicles while the auto industry recovers?",
+            "priority": 1,
+            "description": "",
             "likelihood": 1
         }
     },
     {
         "model": "campaign_trail.question",
-        "pk": 24,
+        "pk": 22,
+        "fields": {
+            "priority": 1,
+            "description": "",
+            "likelihood": 1
+        }
+    }, 
+    {
+        "model": "campaign_trail.question",
+        "pk": 240000,
         "fields": {
             "priority": 2,
-            "description": "With Social Security projected to become insolvent in the next couple decades, do you have any changes you’d like to propose to the program?",
+            "description": "Days before the election, Hurricane Sandy has slammed the East Coast, particularly urbanized New York and New Jersey. It’s likely to benefit the president if he handles it well. How do you navigate this?",
             "likelihood": 1
         }
     },
     {
         "model": "campaign_trail.question",
-        "pk": 105,
-        "fields": {
-            "priority": 2,
-            "description": "Days before the election, Hurricane Sandy has slammed the East Coast, particularly urbanized New York and New Jersey. It’s unknown right now how this will shake up the race, if it does at all. How do you navigate this?",
-            "likelihood": 1
-        }
-    },
-    {
-        "model": "campaign_trail.question",
-        "pk": 80,
+        "pk": 250000,
         "fields": {
             "priority": 2,
             "description": "There are only a couple days left before Election Day. Where will you host your final campaign rallies?",
@@ -226,12 +234,202 @@ campaignTrail_temp.questions_json = [
     }
 ]
 
+if (campaignTrail_temp.global_parameter_json[0].fields.question_count == 25 && campaignTrail_temp.staticQuestions == true) {
+    console.log("Adding static questions")
+    // Basically just a static question list
+    // Set 1
+    campaignTrail_temp.questions_json[3] = {
+        "model": "campaign_trail.question",
+        "pk": 40000,
+        "fields": {
+            "priority": 1,
+            "description": "In response to the DREAM Act being stalled in Congress, the Obama administration has implemented the Deferred Action for Childhood Arrivals (DACA) Program. Will you attack this on the campaign trail?",
+            "likelihood": 1
+        }
+    }
+    campaignTrail_temp.questions_json[4] = {
+        "model": "campaign_trail.question",
+        "pk": 50000,
+        "fields": {
+            "priority": 1,
+            "description": "Earlier this year, President Obama announced his support for legalizing same-sex marriage. Where do you stand on this?",
+            "likelihood": 1
+        }
+    }
+    campaignTrail_temp.questions_json[5] = {
+        "model": "campaign_trail.question",
+        "pk": 60000,
+        "fields": {
+            "priority": 1,
+            "description": "What is your stance on the Bush Tax Cuts, which are set to expire at the end of the year?",
+            "likelihood": 1
+        }
+    }
+    campaignTrail_temp.questions_json[6] = {
+        "model": "campaign_trail.question",
+        "pk": 70000,
+        "fields": {
+            "priority": 1,
+            "description": "The signature achievement of your opponent’s first term is signing the Affordable Care Act, though it has become something of a lightning rod on the right. What will be the messaging surrounding Obamacare as you try to deny him a second term?",
+            "likelihood": 1
+        }
+    }
+
+campaignTrail_temp.questions_json[7] = {
+        "model": "campaign_trail.question",
+        "pk": 80000,
+        "fields": {
+            "priority": 1,
+            "description": "What is your guiding foreign policy philosophy?",
+            "likelihood": 1
+        }
+    }
+    // Set 2
+    campaignTrail_temp.questions_json[8] = {
+        "model": "campaign_trail.question",
+        "pk": 90000,
+        "fields": {
+            "priority": 1,
+            "description": "You are the first Mormon major party presidential nominee. To what extent will you speak about your religious faith on the campaign trail?",
+            "likelihood": 1
+        }
+    }
+    campaignTrail_temp.questions_json[9] = {
+        "model": "campaign_trail.question",
+        "pk": 100000,
+        "fields": {
+            "priority": 1,
+            "description": "Your tenure at Bain Capital has been a source of controversy during the campaign, with critics saying you laid off thousands of workers at various companies that it purchased. Do you have any comment on this?",
+            "likelihood": 1
+        }
+    }
+    campaignTrail_temp.questions_json[10] = {
+        "model": "campaign_trail.question",
+        "pk": 110000,
+        "fields": {
+            "priority": 1,
+            "description": "It is no secret that you are not the Tea Party’s preferred Republican presidential candidate. Will you make any attempts to reach out to these voters during the general election?",
+            "likelihood": 1
+        }
+    }
+    campaignTrail_temp.questions_json[11] = {
+        "model": "campaign_trail.question",
+        "pk": 120000,
+        "fields": {
+            "priority": 1,
+            "description": "Some economists have suggested that the government should do more to stabilize home prices. What is your stance?",
+            "likelihood": 1
+        }
+    }
+    campaignTrail_temp.questions_json[12] = {
+        "model": "campaign_trail.question",
+        "pk": 130000,
+        "fields": {
+            "priority": 1,
+            "description": "You’ve faced attacks from both sides on the similarities between your healthcare plan in Massachusetts and Obama’s Affordable Care Act. Let’s diffuse these critiques. How does Romneycare differ from Obamacare?",
+            "likelihood": 1
+        }
+    }
+    // Set 3
+    campaignTrail_temp.questions_json[14] = {
+        "model": "campaign_trail.question",
+        "pk": 150000,
+        "fields": {
+            "priority": 1,
+            "description": "How will you approach Iran should diplomatic negotiations to prevent them from developing nuclear weapons continue to yield minimal results?",
+            "likelihood": 1
+        }
+    }
+    campaignTrail_temp.questions_json[15] = {
+        "model": "campaign_trail.question",
+        "pk": 160000,
+        "fields": {
+            "priority": 1,
+            "description": "The landmark <em>Citizens United</em> Supreme Court case remains a heated topic of discussion. What is your take on the matter?",
+            "likelihood": 1
+        }
+    }
+
+campaignTrail_temp.questions_json[16] = {
+        "model": "campaign_trail.question",
+        "pk": 170000,
+        "fields": {
+            "priority": 1,
+            "description": "In the past you have expressed varying opinions about abortion. Can you reassure the evangelical Christian movement that you are 100% pro-life in all circumstances?",
+            "likelihood": 1
+        }
+    }
+    // Set 4
+    campaignTrail_temp.questions_json[18] = {
+        "model": "campaign_trail.question",
+        "pk": 190000,
+        "fields": {
+            "priority": 1,
+            "description": "Time to tackle another sticky subject: gun control. What is your position on handgun restrictions?",
+            "likelihood": 1
+        }
+    }
+    campaignTrail_temp.questions_json[19] = {
+        "model": "campaign_trail.question",
+        "pk": 200000,
+        "fields": {
+            "priority": 1,
+            "description": "What actions, if any, do you support to mitigate the effects of climate change?",
+            "likelihood": 1
+        }
+    }
+    campaignTrail_temp.questions_json[20] = {
+        "model": "campaign_trail.question",
+        "pk": 210000,
+        "fields": {
+            "priority": 1,
+            "description": "Let’s do something a little different and pause on the aggressive campaigning. Say something nice about Barack Obama.",
+            "likelihood": 1
+        }
+    }
+    campaignTrail_temp.questions_json[21] = {
+        "model": "campaign_trail.question",
+        "pk": 220000,
+        "fields": {
+            "priority": 1,
+            "description": "The automobile industry was one of the hardest hit in the Great Recession. Do you support increasing tariffs on foreign vehicles while the auto industry recovers?",
+            "likelihood": 1
+        }
+    }
+    campaignTrail_temp.questions_json[22] = {
+        "model": "campaign_trail.question",
+        "pk": 230000,
+        "fields": {
+            "priority": 1,
+            "description": "With Social Security projected to become insolvent in the next couple decades, do you have any changes you’d like to propose to the program?",
+            "likelihood": 1
+        }
+    }
+}
+
+else if (campaignTrail_temp.global_parameter_json[0].fields.question_count == 25) {
+
+q_list0 = [[40000, "In response to the DREAM Act being stalled in Congress, the Obama administration has implemented the Deferred Action for Childhood Arrivals (DACA) Program. Will you attack this on the campaign trail?"], [50000, "Earlier this year, President Obama announced his support for legalizing same-sex marriage. Where do you stand on this?"], [60000, "What is your stance on the Bush Tax Cuts, which are set to expire at the end of the year?"], [70000, "The signature achievement of your opponent’s first term is signing the Affordable Care Act, though it has become something of a lightning rod on the right. What will be the messaging surrounding Obamacare as you try to deny him a second term?"], [80000, "What is your guiding foreign policy philosophy?"]]
+q_list1= [[90000, "You are the first Mormon major party presidential nominee. To what extent will you speak about your religious faith on the campaign trail?"], [100000, "Your tenure at Bain Capital has been a source of controversy during the campaign, with critics saying you laid off thousands of workers at various companies that it purchased. Do you have any comment on this?"], [110000, "It is no secret that you are not the Tea Party’s preferred Republican presidential candidate. Will you make any attempts to reach out to these voters during the general election?"], [120000, "Some economists have suggested that the government should do more to stabilize home prices. What is your stance?"], [130000, "You’ve faced attacks from both sides on the similarities between your healthcare plan in Massachusetts and Obama’s Affordable Care Act. Let’s diffuse these critiques. How does Romneycare differ from Obamacare?"]]
+q_list2= [[150000, "How will you approach Iran should diplomatic negotiations to prevent them from developing nuclear weapons continue to yield minimal results?"], [160000, "The landmark <em>Citizens United</em> Supreme Court case remains a heated topic of discussion. What is your take on the matter?"], [170000, "In the past you have expressed varying opinions about abortion. Can you reassure the evangelical Christian movement that you are 100% pro-life in all circumstances?"]]
+q_list3= [[190000, "Time to tackle another sticky subject: gun control. What is your position on handgun restrictions?"], [200000, "What actions, if any, do you support to mitigate the effects of climate change?"], [210000, "Let’s do something a little different and pause on the aggressive campaigning. Say something nice about Barack Obama."], [220000, "The automobile industry was one of the hardest hit in the Great Recession. Do you support increasing tariffs on foreign vehicles while the auto industry recovers?"], [230000, "With Social Security projected to become insolvent in the next couple decades, do you have any changes you’d like to propose to the program?"]]
+function shuffle(ar) { for (let i = ar.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[ar[i], ar[j]] = [ar[j], ar[i]]; } return ar; };
+shuffle(q_list0);
+shuffle(q_list1);
+shuffle(q_list2);
+shuffle(q_list3);
+for(let i = 0; i < 5; i++) { campaignTrail_temp.questions_json[i+3].pk = q_list0[i][0]; campaignTrail_temp.questions_json[i+3].fields["description"] = q_list0[i][1]; }
+for(let i = 0; i < 5; i++) { campaignTrail_temp.questions_json[i+8].pk = q_list1[i][0]; campaignTrail_temp.questions_json[i+8].fields["description"] = q_list1[i][1]; }
+for(let i = 0; i < 3; i++) { campaignTrail_temp.questions_json[i+14].pk = q_list2[i][0]; campaignTrail_temp.questions_json[i+14].fields["description"] = q_list2[i][1]; }
+for(let i = 0; i < 5; i++) { campaignTrail_temp.questions_json[i+18].pk = q_list3[i][0]; campaignTrail_temp.questions_json[i+18].fields["description"] = q_list3[i][1]; }
+}
+
 campaignTrail_temp.answers_json = [
     {
         "model": "campaign_trail.answer",
         "pk": 21,
         "fields": {
-            "question": 6,
+            "question": 190000,
             "description": "Handgun ownership should be severely restricted. Any other system makes it too easy for guns to be smuggled to Mexico and to urban gangs within the U.S."
         }
     },
@@ -239,7 +437,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 22,
         "fields": {
-            "question": 6,
+            "question": 190000,
             "description": "There should be increased safety requirements, and greater measures against illegal ownership by criminals. Sportsmen should be allowed to own handguns for personal use."
         }
     },
@@ -247,7 +445,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 23,
         "fields": {
-            "question": 6,
+            "question": 190000,
             "description": "Some limited, sensible regulation is prudent. Overall, the right to own a gun should be protected."
         }
     },
@@ -255,7 +453,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 24,
         "fields": {
-            "question": 6,
+            "question": 190000,
             "description": "Gun rights are protected by the Second Amendment. Furthermore, an armed citizenry is our best defense against crime and government tyranny."
         }
     },
@@ -263,7 +461,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 25,
         "fields": {
-            "question": 7,
+            "question": 70000,
             "description": "Obamacare is a disaster. Not only is it an unconstitutional violation of personal freedom, but it will lead to a decline in American health care. It’ll prove to be financially impossible to maintain without socializing the health care system."
         }
     },
@@ -271,7 +469,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 26,
         "fields": {
-            "question": 7,
+            "question": 70000,
             "description": "My allies can tackle Obamacare and I’ll focus on the economy instead."
         }
     },
@@ -279,7 +477,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 27,
         "fields": {
-            "question": 7,
+            "question": 70000,
             "description": "This is the wrong way to reform the American health care system. We should be focusing on malpractice reform and on cutting red tape for private insurers."
         }
     },
@@ -287,7 +485,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 28,
         "fields": {
-            "question": 7,
+            "question": 70000,
             "description": "We absolutely can’t rubber stamp this program, but we need to address the misinformation some people on our side have been spreading about this. Obamacare is not socialism."
         }
     },
@@ -295,7 +493,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 45,
         "fields": {
-            "question": 12,
+            "question": 130000,
             "description": "My plan was effective for Massachusetts because that state has better human capital. The United States as a whole has too much obesity, diabetes, and chronic illness to make collective insurance viable."
         }
     },
@@ -303,7 +501,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 46,
         "fields": {
-            "question": 12,
+            "question": 130000,
             "description": "My plan was a good plan for Massachusetts. Obamacare is bad because it forces an individual mandate on the American public."
         }
     },
@@ -311,7 +509,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 47,
         "fields": {
-            "question": 12,
+            "question": 130000,
             "description": "It's probably time to admit that there isn't much of a difference between our plans. I was simply forced to pander to extreme elements of the Republican Party during our primary election process."
         }
     },
@@ -319,7 +517,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 48,
         "fields": {
-            "question": 12,
+            "question": 130000,
             "description": "I've changed my position on health care over the years after much reflection. We should focus on doing anything we can to overturn Obamacare, rather than dwelling on what I used to think years in the past."
         }
     },
@@ -327,7 +525,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 85,
         "fields": {
-            "question": 22,
+            "question": 30000,
             "description": "I will hammer on the theme that Obama has completely failed the United States as President. He has presided over the largest deficit increases and highest unemployment rate in almost a hundred years."
         }
     },
@@ -335,7 +533,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 86,
         "fields": {
-            "question": 22,
+            "question": 30000,
             "description": "My message will be a message of hope. After four years of economic blight the American people need to feel good about themselves, and they need to know that their efforts will be rewarded with material prosperity."
         }
     },
@@ -343,7 +541,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 87,
         "fields": {
-            "question": 22,
+            "question": 30000,
             "description": "I will emphasize the point that the Republican Party has a big tent. We are the party for anyone who tries to work hard and get ahead in America."
         }
     },
@@ -351,7 +549,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 88,
         "fields": {
-            "question": 22,
+            "question": 30000,
             "description": "I will address the long-term danger that liberalism has to create an ossified, uncreative society. I will also emphasize the danger to our individual and collective rights that is inherent in Obama's philosophy."
         }
     },
@@ -359,7 +557,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 93,
         "fields": {
-            "question": 24,
+            "question": 230000,
             "description": "Social Security is not going bankrupt. I pledge not to touch Social Security."
         }
     },
@@ -367,7 +565,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 94,
         "fields": {
-            "question": 24,
+            "question": 230000,
             "description": "You know, the projected shortfall that people talk of, we're not even talking about the Trust Fund making a net payout until 2033. Maybe there are some tweaks we can make to the program, but it is fundamentally sound."
         }
     },
@@ -375,7 +573,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 95,
         "fields": {
-            "question": 24,
+            "question": 230000,
             "description": "With minor changes like an increase to the retirement age and means testing after a certain benefit level, we can ensure the solvency of this program long into the future."
         }
     },
@@ -383,7 +581,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 96,
         "fields": {
-            "question": 24,
+            "question": 230000,
             "description": "The Social Security program has unfunded liabilities of over $100 trillion. It's time for us to admit that the Social Security program is bankrupt before it drags the rest of the federal government down with it."
         }
     },
@@ -391,7 +589,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 97,
         "fields": {
-            "question": 25,
+            "question": 50000,
             "description": "You know, I’m inclined to agree with the president. All people should be allowed to marry their loved ones."
         }
     },
@@ -399,7 +597,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 98,
         "fields": {
-            "question": 25,
+            "question": 50000,
             "description": "I believe civil unions are an acceptable compromise. I understand this is a contentious issue for many Americans."
         }
     },
@@ -407,7 +605,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 99,
         "fields": {
-            "question": 25,
+            "question": 50000,
             "description": "I’m personally opposed, but we need to leave this issue to the states."
         }
     },
@@ -415,7 +613,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 100,
         "fields": {
-            "question": 25,
+            "question": 50000,
             "description": "Marriage should be between a man and a woman, as God intended."
         }
     },
@@ -423,7 +621,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 101,
         "fields": {
-            "question": 26,
+            "question": 200000,
             "description": "Climate change is a hoax purveyed by a collection of scientists and liberal politicians to provide them a pretext for further intervention in the economy."
         }
     },
@@ -431,7 +629,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 103,
         "fields": {
-            "question": 26,
+            "question": 200000,
             "description": "Even if climate change is real, it's impossible to determine how much of it results from human action. It's just as possible that the earth is warming of its own accord, and it makes no sense to disrupt our economy and potentially cause a depression until we have more information."
         }
     },
@@ -439,7 +637,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 104,
         "fields": {
-            "question": 26,
+            "question": 200000,
             "description": "We should increase investment in alternative energy sources such as solar and wind while continuing our use of fossil fuels. Diversifying our energy sources will help America achieve energy independence."
         }
     },
@@ -447,7 +645,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 129,
         "fields": {
-            "question": 33,
+            "question": 210000,
             "description": "Even if I disagree with his views, I admire him for campaigning on hope and change in 2008. It was clear the people were looking for someone to believe in at the time and he rose to the occasion."
         }
     },
@@ -455,7 +653,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 130,
         "fields": {
-            "question": 33,
+            "question": 210000,
             "description": "I respect the fact that he’s a family man, with a wonderful wife and two daughters. I also appreciate his fervent belief in God."
         }
     },
@@ -463,7 +661,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 131,
         "fields": {
-            "question": 33,
+            "question": 210000,
             "description": "Regardless of what happens in the election, Barack Obama is a historic president. He’s the first African American to serve as commander-in-chief and no one can take that from him."
         }
     },
@@ -471,7 +669,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 132,
         "fields": {
-            "question": 33,
+            "question": 210000,
             "description": "I shouldn’t say this in public, but I don’t have anything nice to say about him. He is an incredibly divisive incumbent who’s destroying our country."
         }
     },
@@ -479,7 +677,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 149,
         "fields": {
-            "question": 38,
+            "question": 90000,
             "description": "The Mormon Church has been the guiding force of my life. It's only natural for me to discuss this influence in my campaign speeches."
         }
     },
@@ -487,7 +685,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 150,
         "fields": {
-            "question": 38,
+            "question": 90000,
             "description": "On occasion it makes sense to bring this up. Over the years I have helped out many in need through the Mormon Church, both with my time and through charity. We should make sure the American people know this about me."
         }
     },
@@ -495,7 +693,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 151,
         "fields": {
-            "question": 38,
+            "question": 90000,
             "description": "I already made one speech that was entirely devoted to this issue back in 2008. Bringing it up more often runs the risk of distracting the American people from the most important issues of this campaign."
         }
     },
@@ -503,7 +701,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 165,
         "fields": {
-            "question": 42,
+            "question": 40000,
             "description": "This is an unbelievable slap in the face to hard-working Americans. These kids should not be allowed to stay in the country legally."
         }
     },
@@ -511,7 +709,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 166,
         "fields": {
-            "question": 42,
+            "question": 40000,
             "description": "The Obama administration is openly defying ICE. I call on the Supreme Court to squash this program."
         }
     },
@@ -519,7 +717,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 167,
         "fields": {
-            "question": 42,
+            "question": 40000,
             "description": "I don’t want to comment too much on this. Let’s focus on other issues."
         }
     },
@@ -527,7 +725,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 168,
         "fields": {
-            "question": 42,
+            "question": 40000,
             "description": "Honestly, I’m in support of DACA. As long as this amnesty is not granted to all illegals."
         }
     },
@@ -535,7 +733,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 169,
         "fields": {
-            "question": 43,
+            "question": 80000,
             "description": "American Exceptionalism — Providence has given America to the world as an inspiration, and we must vigorously defend the ideals of peace and freedom wherever they may be threatened."
         }
     },
@@ -543,7 +741,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 170,
         "fields": {
-            "question": 43,
+            "question": 80000,
             "description": "Human rights — It's past time that we cut allegiances with dictators like the House of Saud and truly lived up to our ideals. I will only support or give aid to democratically elected leaders."
         }
     },
@@ -551,7 +749,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 171,
         "fields": {
-            "question": 43,
+            "question": 80000,
             "description": "Pragmatism — Our foreign policy right now is effective. We need to guide foreign nations towards democracy and open markets. Doing so will increase the world's prosperity and decrease the chance of future wars."
         }
     },
@@ -559,7 +757,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 172,
         "fields": {
-            "question": 43,
+            "question": 80000,
             "description": "Non-Intervention — Most of our foreign troop deployments are relics of the Cold War. We need to stop occupying other nations and focus on fixing our problems here at home."
         }
     },
@@ -567,7 +765,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 205,
         "fields": {
-            "question": 54,
+            "question": 150000,
             "description": "We should withdraw from these discussions. The United States has no right to say who should or shouldn't have a nuclear weapon."
         }
     },
@@ -575,7 +773,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 206,
         "fields": {
-            "question": 54,
+            "question": 150000,
             "description": "I'd rather not discuss this issue right now while diplomatic negotiations are in progress."
         }
     },
@@ -583,7 +781,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 243,
         "fields": {
-            "question": 67,
+            "question": 160000,
             "description": "I fully support this decision. The right to disseminate one's political viewpoints freely is central to American democracy."
         }
     },
@@ -591,7 +789,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 244,
         "fields": {
-            "question": 67,
+            "question": 160000,
             "description": "My feelings are mixed on the matter. I think we can maybe investigate ways to prevent money from having an undue influence in politics."
         }
     },
@@ -599,7 +797,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 245,
         "fields": {
-            "question": 67,
+            "question": 160000,
             "description": "Well, I would be happy to disavow the use of Super PAC advertising if Obama would as well. Unfortunately the other side will do anything to win this election, regardless of how it aligns with the will of the public."
         }
     },
@@ -607,7 +805,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 268,
         "fields": {
-            "question": 75,
+            "question": 110000,
             "description": "Certainly. The Tea Party is a positive, invigorating force in American politics. They are drawing badly needed attention to our government deficits."
         }
     },
@@ -615,15 +813,15 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 269,
         "fields": {
-            "question": 75,
-            "description": "I don’t think it’s necessary. Conservatives operate under the “big tent” philosophy. They’ll back me."
+            "question": 110000,
+            "description": "I don’t think that’s necessary. Conservatives operate under the “big tent” philosophy. They’ll back me."
         }
     },
     {
         "model": "campaign_trail.answer",
         "pk": 270,
         "fields": {
-            "question": 75,
+            "question": 110000,
             "description": "A funny thing happened on January 20, 2009 — millions of people who supported Bush's deficits suddenly flip-flopped into budget hawks. This group is obviously just a political front for the far right wing of the Republican Party. I have no interest in courting these people."
         }
     },
@@ -631,7 +829,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 286,
         "fields": {
-            "question": 80,
+            "question": 250000,
             "description": "Florida is a huge swing state up for grabs. We’ll go up and down the peninsula and hit the panhandle. We win Florida, we win the White House."
         }
     },
@@ -639,7 +837,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 287,
         "fields": {
-            "question": 80,
+            "question": 250000,
             "description": "It’s best to hang around the Eastern Seaboard. We have a great shot at North Carolina and Virginia. If we’ve got the time, we can even squeeze in a trip to New Hampshire."
         }
     },
@@ -647,7 +845,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 288,
         "fields": {
-            "question": 80,
+            "question": 250000,
             "description": "We’ll start in Iowa. Then from there, we’ll barnstorm Colorado and Nevada. With enough campaigning, we should sweep these states."
         }
     },
@@ -655,7 +853,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 289,
         "fields": {
-            "question": 81,
+            "question": 120000,
             "description": "The only people suggesting this are paid by the Obama administration to promote socialism."
         }
     },
@@ -663,7 +861,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 290,
         "fields": {
-            "question": 81,
+            "question": 120000,
             "description": "I think we could be doing more to purchase homes from the banks, and perhaps rent them out until the situation improves. This would help support a price recovery."
         }
     },
@@ -671,7 +869,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 291,
         "fields": {
-            "question": 81,
+            "question": 120000,
             "description": "For the most part, I don't think that's appropriate. There are some limited areas, like relaxing restrictions on foreign ownership, where we can still help out."
         }
     },
@@ -679,7 +877,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 292,
         "fields": {
-            "question": 81,
+            "question": 120000,
             "description": "The government has no business regulating the value of a home. We will never fully recover from this recession until prices are allowed to find their floor, and then start increasing through market forces."
         }
     },
@@ -687,7 +885,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 293,
         "fields": {
-            "question": 82,
+            "question": 180000,
             "description": "Of course. I am confident I can make the case for why I’m the man to fix our country."
         }
     },
@@ -695,7 +893,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 294,
         "fields": {
-            "question": 82,
+            "question": 180000,
             "description": "Of course. I am confident I can make the case for why I’m the man to fix our country."
         }
     },
@@ -703,7 +901,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 296,
         "fields": {
-            "question": 82,
+            "question": 180000,
             "description": "Of course. I am confident I can make the case for why I’m the man to fix our country."
         }
     },
@@ -711,7 +909,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 353,
         "fields": {
-            "question": 101,
+            "question": 170000,
             "description": "I am deeply pro-life. The taking of life should never be legal under any circumstances."
         }
     },
@@ -719,7 +917,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 354,
         "fields": {
-            "question": 101,
+            "question": 170000,
             "description": "We have to be realistic. I am pro-life in most cases, but we also need exceptions for cases of rape and incest. I do agree, however, that taxpayers should never be forced to finance this practice."
         }
     },
@@ -727,7 +925,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 355,
         "fields": {
-            "question": 101,
+            "question": 170000,
             "description": "I'm a proud moderate on the abortion issue."
         }
     },
@@ -735,7 +933,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 366,
         "fields": {
-            "question": 105,
+            "question": 240000,
             "description": "Over a hundred Americans were killed by this hurricane and New York City is underwater. Why are we talking politics?"
         }
     },
@@ -743,7 +941,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 367,
         "fields": {
-            "question": 105,
+            "question": 240000,
             "description": "Ann and I grieve alongside everyone impacted by this. I will help these people in whatever way I can when I’m president."
         }
     },
@@ -751,7 +949,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 368,
         "fields": {
-            "question": 105,
+            "question": 240000,
             "description": "I want to visit and tour the damage. Make sure I’m on camera talking to a few people about how Obama let them down."
         }
     },
@@ -759,7 +957,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 369,
         "fields": {
-            "question": 106,
+            "question": 220000,
             "description": "Absolutely. We need to create an environment where American products can compete fairly with foreign imports."
         }
     },
@@ -767,7 +965,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 370,
         "fields": {
-            "question": 106,
+            "question": 220000,
             "description": "I think that's a little extreme. I do support measures to assist displaced workers in Michigan and elsewhere as they seek other jobs and education."
         }
     },
@@ -775,7 +973,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 371,
         "fields": {
-            "question": 106,
+            "question": 220000,
             "description": "Most foreign companies also build their cars in the United States and employ thousands of Americans. This policy would be like robbing Peter to pay Paul."
         }
     },
@@ -783,7 +981,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 377,
         "fields": {
-            "question": 109,
+            "question": 100000,
             "description": "Joseph Schumpeter coined the term of “creative destruction”. Society will never evolve if some people aren't relocated into more productive pursuits from time to time."
         }
     },
@@ -791,7 +989,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 378,
         "fields": {
-            "question": 109,
+            "question": 100000,
             "description": "We created numerous companies like Staples, which are American success stories employing thousands of people."
         }
     },
@@ -799,7 +997,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 391,
         "fields": {
-            "question": 113,
+            "question": 10000,
             "description": "We will attack President Obama relentlessly. He has gone back on his pledge to clean up our political system, he has destroyed hundreds of thousands of jobs in his first term, his values are out of touch with those of most Americans, and his health care reform is disastrous."
         }
     },
@@ -807,7 +1005,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 392,
         "fields": {
-            "question": 113,
+            "question": 10000,
             "description": "My surrogates have plenty of points to make about the failure of the Obama Administration. As the nominee, I will take the high road and stick to a message of optimism and American renewal."
         }
     },
@@ -815,7 +1013,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 393,
         "fields": {
-            "question": 113,
+            "question": 10000,
             "description": "I will reach out to moderates and conservative Democrats and attempt to build an all-encompassing coalition. It's time that America had a true leader in charge."
         }
     },
@@ -823,7 +1021,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 394,
         "fields": {
-            "question": 113,
+            "question": 10000,
             "description": "I will emphasize the conservatism of my views and my governing philosophy. I will remind the American people that I am strong on defense and that I'm pro-life, pro-free market, pro-business, and deeply religious."
         }
     },
@@ -831,7 +1029,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 395,
         "fields": {
-            "question": 114,
+            "question": 60000,
             "description": "I support letting the cuts expire. The increased tax revenue will go right back into Americans’ pockets and help balance the budget."
         }
     },
@@ -839,7 +1037,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 396,
         "fields": {
-            "question": 114,
+            "question": 60000,
             "description": "We should keep the tax cuts as is for the foreseeable future. Let the economy recover a bit more first."
         }
     },
@@ -847,7 +1045,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 397,
         "fields": {
-            "question": 114,
+            "question": 60000,
             "description": "They should stay in place. Raising taxes is never a good idea."
         }
     },
@@ -855,7 +1053,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 398,
         "fields": {
-            "question": 114,
+            "question": 60000,
             "description": "Not only should we keep them, we need further tax cuts to stimulate the economy."
         }
     },
@@ -863,7 +1061,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 405,
         "fields": {
-            "question": 117,
+            "question": 140000,
             "description": "I unequivocally condemn this terrorist attack. My thoughts and prayers are with the families of the deceased."
         }
     },
@@ -871,7 +1069,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 406,
         "fields": {
-            "question": 117,
+            "question": 140000,
             "description": "My heart goes out to the dead, but how on Earth was this allowed to happen? I call for an immediate investigation into this."
         }
     },
@@ -879,7 +1077,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 407,
         "fields": {
-            "question": 117,
+            "question": 140000,
             "description": "The fact that these monsters succeeded in killing Americans, on the anniversary of 9/11 no less, is damning proof of Barack Obama’s weakness. I vow that this will never happen under a Romney administration."
         }
     },
@@ -887,7 +1085,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 730,
         "fields": {
-            "question": 131,
+            "question": 20000,
             "description": "Paul Ryan is a leader. He is a man of tremendous character who doesn’t demonize his opponents and understands that honorable people can have honest differences."
         }
     },
@@ -895,7 +1093,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 731,
         "fields": {
-            "question": 131,
+            "question": 20000,
             "description": "Representative Ryan understands the fiscal challenges facing America. Together, we offer a positive, governing agenda that will lead to economic growth, to widespread and shared prosperity, and that will improve the lives of our fellow citizens."
         }
     },
@@ -903,7 +1101,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 1345,
         "fields": {
-            "question": 109,
+            "question": 100000,
             "description": "We all made mistakes when we were younger. I'm no exception."
         }
     },
@@ -911,7 +1109,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 1384,
         "fields": {
-            "question": 54,
+            "question": 150000,
             "description": "I will always act in the best interests of the United States. All options should be on the table, but it's irresponsible at this point to go into further details."
         }
     },
@@ -919,7 +1117,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 1385,
         "fields": {
-            "question": 54,
+            "question": 150000,
             "description": "This is a regime that has publicly stated its desire to 'wipe Israel off the map'. It would be suicidal to watch them develop a nuclear weapon without making some attempt to strike back."
         }
     },
@@ -927,7 +1125,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 1397,
         "fields": {
-            "question": 67,
+            "question": 160000,
             "description": "This is one of the worst decisions in the history of the court. If they can't see that campaign finance regulation is entirely constitutional, then we need to have an Amendment in place."
         }
     },
@@ -935,7 +1133,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 1404,
         "fields": {
-            "question": 101,
+            "question": 170000,
             "description": "We should be focusing on more important issues, such as educating the next generation of American children to compete effectively in the global economy. This incessant focus on picayune facets of the abortion debate detracts from the political conversation."
         }
     },
@@ -943,7 +1141,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 1455,
         "fields": {
-            "question": 82,
+            "question": 180000,
             "description": "Actually, I’m feeling a little under the weather. Maybe we could reschedule?"
         }
     },
@@ -951,7 +1149,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 1468,
         "fields": {
-            "question": 26,
+            "question": 200000,
             "description": "We should have more laws and regulations to reduce our total carbon emissions. Sensible next steps include some combination of a cap-and-trade program domestically, as well as international agreements with other nations."
         }
     },
@@ -959,7 +1157,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 1484,
         "fields": {
-            "question": 106,
+            "question": 220000,
             "description": "I am a firm believer in free trade. This would not help anybody and it would further distort our economy."
         }
     },
@@ -967,7 +1165,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 1513,
         "fields": {
-            "question": 105,
+            "question": 240000,
             "description": "You’ll notice the most impacted areas are deep blue. Incompetent Democrat governance is to blame for all the damage caused."
         }
     },
@@ -975,7 +1173,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 1535,
         "fields": {
-            "question": 80,
+            "question": 250000,
             "description": "Our main target is Ohio, a must-win state. We can visit other Midwestern states like Wisconsin, Michigan, and Pennsylvania, but we’re focusing on Ohio."
         }
     }
@@ -5933,7 +6131,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 1,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -5942,7 +6140,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 2,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -5951,7 +6149,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 3,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -5960,7 +6158,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 4,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -5969,7 +6167,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 5,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -5978,7 +6176,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 6,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -5987,7 +6185,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 7,
-            "state_multiplier": 0.004
+            "state_multiplier": 0.008
         }
     },
     {
@@ -5996,7 +6194,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 8,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6005,7 +6203,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 9,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6014,7 +6212,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 10,
-            "state_multiplier": 0.004
+            "state_multiplier": 0.008
         }
     },
     {
@@ -6023,7 +6221,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 11,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6032,7 +6230,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 12,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6041,7 +6239,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 13,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6050,7 +6248,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 14,
-            "state_multiplier": 0.004
+            "state_multiplier": 0.008
         }
     },
     {
@@ -6059,7 +6257,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 15,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6068,7 +6266,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 16,
-            "state_multiplier": 0.004
+            "state_multiplier": 0.008
         }
     },
     {
@@ -6077,7 +6275,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 17,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6086,7 +6284,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 18,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6095,7 +6293,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 19,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6104,7 +6302,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 20,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6113,7 +6311,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 21,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6122,7 +6320,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 22,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6131,7 +6329,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 23,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6140,7 +6338,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 24,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6185,7 +6383,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 29,
-            "state_multiplier": 0.004
+            "state_multiplier": 0.008
         }
     },
     {
@@ -6194,7 +6392,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 30,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6203,7 +6401,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 31,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6212,7 +6410,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 32,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6230,7 +6428,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 34,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6239,7 +6437,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 35,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6257,7 +6455,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 37,
-            "state_multiplier": 0.011
+            "state_multiplier": 0.022
         }
     },
     {
@@ -6266,7 +6464,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 38,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6275,7 +6473,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 39,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6284,7 +6482,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 40,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6302,7 +6500,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 42,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6311,7 +6509,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 43,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6320,7 +6518,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 44,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6329,7 +6527,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 45,
-            "state_multiplier": 0.004
+            "state_multiplier": 0.008
         }
     },
     {
@@ -6338,7 +6536,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 46,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6347,7 +6545,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 47,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6356,7 +6554,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 48,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6365,7 +6563,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 49,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6374,7 +6572,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 50,
-            "state_multiplier": 0.0092
+            "state_multiplier": 0.0184
         }
     },
     {
@@ -6383,7 +6581,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 19,
             "state": 51,
-            "state_multiplier": 0.004
+            "state_multiplier": 0.008
         }
     }
 ]
@@ -6796,7 +6994,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 28,
             "candidate": 17,
             "affected_candidate": 17,
-            "global_multiplier": -0.01
+            "global_multiplier": -0.02
         }
     },
     {
@@ -6906,16 +7104,6 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 27,
             "candidate": 17,
             "affected_candidate": 17,
-            "global_multiplier": 0.01
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_global",
-        "pk": 1321,
-        "fields": {
-            "answer": 28,
-            "candidate": 17,
-            "affected_candidate": 16,
             "global_multiplier": 0.01
         }
     },
@@ -7227,6 +7415,46 @@ campaignTrail_temp.answer_score_global_json = [
             "candidate": 17,
             "affected_candidate": 17,
             "global_multiplier": 0.006
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 1566,
+        "fields": {
+            "answer": 366,
+            "candidate": 17,
+            "affected_candidate": 16,
+            "global_multiplier": 0.03
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 1567,
+        "fields": {
+            "answer": 367,
+            "candidate": 17,
+            "affected_candidate": 16,
+            "global_multiplier": 0.03
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 1568,
+        "fields": {
+            "answer": 368,
+            "candidate": 17,
+            "affected_candidate": 16,
+            "global_multiplier": 0.03
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 1569,
+        "fields": {
+            "answer": 1513,
+            "candidate": 17,
+            "affected_candidate": 16,
+            "global_multiplier": 0.03
         }
     }
 ]
@@ -9486,7 +9714,7 @@ campaignTrail_temp.answer_score_state_json = [
             "state": 30,
             "candidate": 17,
             "affected_candidate": 16,
-            "state_multiplier": 0.025
+            "state_multiplier": 0.0375
         }
     },
     {
@@ -9497,7 +9725,7 @@ campaignTrail_temp.answer_score_state_json = [
             "state": 32,
             "candidate": 17,
             "affected_candidate": 16,
-            "state_multiplier": 0.025
+            "state_multiplier": 0.0375
         }
     },
     {
@@ -9695,7 +9923,7 @@ campaignTrail_temp.answer_score_state_json = [
             "state": 30,
             "candidate": 17,
             "affected_candidate": 16,
-            "state_multiplier": 0.02
+            "state_multiplier": 0.03
         }
     },
     {
@@ -9706,7 +9934,7 @@ campaignTrail_temp.answer_score_state_json = [
             "state": 32,
             "candidate": 17,
             "affected_candidate": 16,
-            "state_multiplier": 0.02
+            "state_multiplier": 0.03
         }
     },
     {
@@ -9717,7 +9945,7 @@ campaignTrail_temp.answer_score_state_json = [
             "state": 30,
             "candidate": 17,
             "affected_candidate": 17,
-            "state_multiplier": -0.025
+            "state_multiplier": -0.0375
         }
     },
     {
@@ -9728,7 +9956,7 @@ campaignTrail_temp.answer_score_state_json = [
             "state": 32,
             "candidate": 17,
             "affected_candidate": 17,
-            "state_multiplier": -0.025
+            "state_multiplier": -0.0375
         }
     },
     {
@@ -9739,7 +9967,7 @@ campaignTrail_temp.answer_score_state_json = [
             "state": 30,
             "candidate": 17,
             "affected_candidate": 17,
-            "state_multiplier": -0.04
+            "state_multiplier": -0.06
         }
     },
     {
@@ -9750,7 +9978,7 @@ campaignTrail_temp.answer_score_state_json = [
             "state": 32,
             "candidate": 17,
             "affected_candidate": 17,
-            "state_multiplier": -0.04
+            "state_multiplier": -0.06
         }
     }
 ]
@@ -10604,13 +10832,29 @@ campaignTrail_temp.answer_feedback_json = [
     }
 ]
 
-campaignTrail_temp.candidate_image_url = "https://www.jetsimon.com/public/static/images/mitt-romney-2012.jpg";
-campaignTrail_temp.running_mate_image_url = "https://www.jetsimon.com/public/static/images/paul-ryan-2012.jpg";
+campaignTrail_temp.candidate_image_url = "https://i.imgur.com/hphXtYo.png";
+campaignTrail_temp.running_mate_image_url = "https://i.imgur.com/A3J5zod.png";
 campaignTrail_temp.candidate_last_name = "Romney";
 campaignTrail_temp.running_mate_last_name = "Ryan";
 
 campaignTrail_temp.multiple_endings = true;
 endingPicker = (out, totv, aa, quickstats) => {
+
+    if(quickstats[0] == 6) {
+        ctsAchievement("Mormon Country         ");
+    }
+
+    if((quickstats[0] >= 270) && (campaignTrail_temp.player_answers.includes(395) && campaignTrail_temp.player_answers.includes(377) && campaignTrail_temp.player_answers.includes(45))) {
+        ctsAchievement("Mitt “Joe Biden” Romney         ");
+    }
+
+    if(quickstats[0] == 206) {
+        ctsAchievement("Nothing Ever Happens         ");
+    }
+
+    if(quickstats[0] >= 333) {
+        ctsAchievement("No Apology         ");
+    }
 
     function setImage(url) {
         if(url == '' || url == null) return;
@@ -10627,27 +10871,27 @@ endingPicker = (out, totv, aa, quickstats) => {
         setImage("");
         return `<h3>Breaking News: RomneyMania Sweeps America</h3><p>From coast to coast and town to town, in nearly every public meeting space and private residence, millions of Americans have been captivated, inspired, and in some cases even moved to tears by Republican presidential candidate Mitt Romney, all signs that the nation has undeniably been swept up in full-scale RomneyMania. The raw energy and enthusiasm of Romney coupled with his uplifting story of rising from moderate wealth to overwhelming riches are just some of the reasons reverent portraits of the former Massachusetts governor have started appearing in windows across the country, often accompanied by one of Romney's signature inspirational phrases, such as 'let Detroit go bankrupt’, or 'Corporations are people.'</p>`;
     }
-    if(quickstats[0] > 329) {
+    if(quickstats[0] > 329 && quickstats[0] < 538) {
         setImage("");
         return `<h3>Congratulations! You have won the 2012 election.</h3><p>Despite a well-fought battle from Barack Obama, you've become the first Mormon president and prevented the 3rd re-election in a row. Your margin of victory is remarkable, a complete flip of 2008. It seems the US population was ready for change again. The Senate flips a few seats in favor of the Republicans, too.</p><p>Romneycare will most likely be replacing Obamacare (although they aren't all too different), and the Bush tax cuts will be extended to help the economy grow. If you're able to recover it and don't make any major mistakes, you should be able to win re-election in 2016. Get ready to move into the White House!</p>`;
     }
-    if(quickstats[0] > 308) {
+    if(quickstats[0] > 308 && quickstats[0] < 330) {
         setImage("");
         return `<h3>Congratulations! You have won the 2012 election.</h3><p>Despite a well-fought battle from Barack Obama, you've become the first Mormon president and prevented the 3rd re-election in a row. With a respectable win, you will net a few Senate seats, but so few coming your way likely means Ryan will be breaking a few ties. Let’s hope your bipartisanship and moderate views help decisions be made quickly and effectively.</p><p>Romneycare will most likely be replacing Obamacare (although they aren't all too different), and the Bush tax cuts will be extended to help the economy grow. If you're able to recover it and don't make any major mistakes, you should be able to win re-election in 2016. Get ready to move into the White House!</p>`;
     }
-    if(quickstats[0] > 269) {
+    if(quickstats[0] > 269 && quickstats[0] < 309) {
         setImage("");
         return `<h3>Congratulations! You have won the 2012 election.</h3><p>Despite a well-fought battle from Barack Obama, you've become the first Mormon president and prevented the 3rd re-election in a row. It was close, though. Your slim margins will keep the Senate in Democrats’ hands, so be prepared to make concessions to your propositions.</p><p>Romneycare will most likely be replacing Obamacare (although they aren't all too different), and the Bush tax cuts will be extended to help the economy grow. If you're able to recover it and don't make any major mistakes, you should be able to win re-election in 2016. Get ready to move into the White House!</p>`;
     }
-    if(quickstats[0] < 218) {
+    if(quickstats[0] < 218 && quickstats[0] > 0) {
         setImage("");
         return `<h3>Sorry! You have lost the 2012 election.</h3><p>It seems Obama will have another four years to recover the economy, as well as deal with the Middle East. Republicans are despondent that you didn't defeat him, as they felt he was a very exploitable incumbent. Another crushing defeat was not what the Republicans needed, but at least they are keeping their House majority.</p><p>Many in the conservative wing of the Republican Party weren't too keen on you being the nominee, so it's unlikely you'll get nominated again. You still do have a future in politics, so perhaps you could join the Senate or run for governor again, as New England is showing an increasing willingness to elect moderate Republicans on the gubernatorial scale. You might be able to carve out a strong base of support, based on one of your political or personal aspects, to win in either of these positions.</p>`;
     }
-    if(quickstats[0] < 232) {
+    if(quickstats[0] < 232 && quickstats[0] > 217) {
         setImage("");
         return `<h3>Sorry! You have lost the 2012 election.</h3><p>It seems Obama will have another four years to recover the economy, as well as deal with the Middle East. Republicans are despondent that you didn't defeat him, as they felt he was a very exploitable incumbent. Fortunately, you did better than McCain, although that might have just been the stagnant economy that caused that.</p><p>Many in the conservative wing of the Republican Party weren't too keen on you being the nominee, so it's unlikely you'll get nominated again. You still do have a future in politics, so perhaps you could join the Senate or run for governor again, as New England is showing an increasing willingness to elect moderate Republicans on the gubernatorial scale. You might be able to carve out a strong base of support, based on one of your political or personal aspects, to win in either of these positions.</p>`;
     }
-    if(quickstats[0] < 269) {
+    if(quickstats[0] < 269 && quickstats[0] > 231) {
         setImage("");
         return `<h3>Sorry! You have lost the 2012 election.</h3><p>It seems Obama will have another four years to recover the economy, as well as deal with the Middle East. Republicans are despondent that you didn't defeat him, as they felt he was a very exploitable incumbent. Fortunately, you did much better than McCain, and it wasn't another landslide loss.</p><p>Many in the conservative wing of the Republican Party weren't too keen on you being the nominee, so it's unlikely you'll get nominated again. You still do have a future in politics, so perhaps you could join the Senate or run for governor again, as New England is showing an increasing willingness to elect moderate Republicans on the gubernatorial scale. You might be able to carve out a strong base of support, based on one of your political or personal aspects, to win in either of these positions.</p>`;
     }
@@ -10667,84 +10911,6 @@ campaignTrail_temp.jet_data = [{
         "runImage": "https://www.jetsimon.com/public/static/images/paul-ryan-2012.jpg"
     },
     "endings_enabled": true,
-    "ending_data": {
-        "1735882728058": {
-            "id": 1735882728058,
-            "variable": "0",
-            "operator": "==",
-            "value": 0,
-            "endingImage": "",
-            "endingText": "<h3>Breaking News: RomneyMania Sweeps America</h3><p>From coast to coast and town to town, in nearly every public meeting space and private residence, millions of Americans have been captivated, inspired, and in some cases even moved to tears by Republican presidential candidate Mitt Romney, all signs that the nation has undeniably been swept up in full-scale RomneyMania. The raw energy and enthusiasm of Romney coupled with his uplifting story of rising from moderate wealth to overwhelming riches are just some of the reasons reverent portraits of the former Massachusetts governor have started appearing in windows across the country, often accompanied by one of Romney's signature inspirational phrases, such as 'let Detroit go bankrupt’, or 'Corporations are people.'</p>",
-            "amount": "538"
-        },
-        "1735883906067": {
-            "id": 1735883906067,
-            "variable": "0",
-            "operator": ">",
-            "value": 0,
-            "endingImage": "",
-            "endingText": "<h3>Congratulations! You have won the 2012 election.</h3><p>Despite a well-fought battle from Barack Obama, you've become the first Mormon president and prevented the 3rd re-election in a row. Your margin of victory is remarkable, a complete flip of 2008. It seems the US population was ready for change again. The Senate flips a few seats in favor of the Republicans, too.</p><p>Romneycare will most likely be replacing Obamacare (although they aren't all too different), and the Bush tax cuts will be extended to help the economy grow. If you're able to recover it and don't make any major mistakes, you should be able to win re-election in 2016. Get ready to move into the White House!</p>",
-            "amount": "329"
-        },
-        "1735925411818": {
-            "id": 1735925411818,
-            "variable": 0,
-            "operator": ">",
-            "value": 0,
-            "endingImage": "",
-            "endingText": "<h3>Congratulations! You have won the 2012 election.</h3><p>Despite a well-fought battle from Barack Obama, you've become the first Mormon president and prevented the 3rd re-election in a row. With a respectable win, you will net a few Senate seats, but so few coming your way likely means Ryan will be breaking a few ties. Let’s hope your bipartisanship and moderate views help decisions be made quickly and effectively.</p><p>Romneycare will most likely be replacing Obamacare (although they aren't all too different), and the Bush tax cuts will be extended to help the economy grow. If you're able to recover it and don't make any major mistakes, you should be able to win re-election in 2016. Get ready to move into the White House!</p>",
-            "amount": "308"
-        },
-        "1735925531122": {
-            "id": 1735925531122,
-            "variable": 0,
-            "operator": ">",
-            "value": 0,
-            "endingImage": "",
-            "endingText": "<h3>Congratulations! You have won the 2012 election.</h3><p>Despite a well-fought battle from Barack Obama, you've become the first Mormon president and prevented the 3rd re-election in a row. It was close, though. Your slim margins will keep the Senate in Democrats’ hands, so be prepared to make concessions to your propositions.</p><p>Romneycare will most likely be replacing Obamacare (although they aren't all too different), and the Bush tax cuts will be extended to help the economy grow. If you're able to recover it and don't make any major mistakes, you should be able to win re-election in 2016. Get ready to move into the White House!</p>",
-            "amount": "269"
-        },
-        "1735925619352": {
-            "id": 1735925619352,
-            "variable": 0,
-            "operator": "<",
-            "value": 0,
-            "endingImage": "",
-            "endingText": "<h3>Sorry! You have lost the 2012 election.</h3><p>It seems Obama will have another four years to recover the economy, as well as deal with the Middle East. Republicans are despondent that you didn't defeat him, as they felt he was a very exploitable incumbent. Another crushing defeat was not what the Republicans needed, but at least they are keeping their House majority.</p><p>Many in the conservative wing of the Republican Party weren't too keen on you being the nominee, so it's unlikely you'll get nominated again. You still do have a future in politics, so perhaps you could join the Senate or run for governor again, as New England is showing an increasing willingness to elect moderate Republicans on the gubernatorial scale. You might be able to carve out a strong base of support, based on one of your political or personal aspects, to win in either of these positions.</p>",
-            "amount": "218"
-        },
-        "1735925676703": {
-            "id": 1735925676703,
-            "variable": 0,
-            "operator": "<",
-            "value": 0,
-            "endingImage": "",
-            "endingText": "<h3>Sorry! You have lost the 2012 election.</h3><p>It seems Obama will have another four years to recover the economy, as well as deal with the Middle East. Republicans are despondent that you didn't defeat him, as they felt he was a very exploitable incumbent. Fortunately, you did better than McCain, although that might have just been the stagnant economy that caused that.</p><p>Many in the conservative wing of the Republican Party weren't too keen on you being the nominee, so it's unlikely you'll get nominated again. You still do have a future in politics, so perhaps you could join the Senate or run for governor again, as New England is showing an increasing willingness to elect moderate Republicans on the gubernatorial scale. You might be able to carve out a strong base of support, based on one of your political or personal aspects, to win in either of these positions.</p>",
-            "amount": "232"
-        },
-        "1735927068436": {
-            "id": 1735927068436,
-            "variable": 0,
-            "operator": "<",
-            "value": 0,
-            "endingImage": "",
-            "endingText": "<h3>Sorry! You have lost the 2012 election.</h3><p>It seems Obama will have another four years to recover the economy, as well as deal with the Middle East. Republicans are despondent that you didn't defeat him, as they felt he was a very exploitable incumbent. Fortunately, you did much better than McCain, and it wasn't another landslide loss.</p><p>Many in the conservative wing of the Republican Party weren't too keen on you being the nominee, so it's unlikely you'll get nominated again. You still do have a future in politics, so perhaps you could join the Senate or run for governor again, as New England is showing an increasing willingness to elect moderate Republicans on the gubernatorial scale. You might be able to carve out a strong base of support, based on one of your political or personal aspects, to win in either of these positions.</p>",
-            "amount": "269"
-        },
-        "1735927069272": {
-            "id": 1735927069272,
-            "variable": 0,
-            "operator": "==",
-            "value": 0,
-            "endingImage": "",
-            "endingText": "<h3>BREAKING NEWS: ROMNEY WAS OBAMA’S PUPPET</h3><p>Just hear me out OK? Who <em>really</em> believes that Obama (who wasn’t even born in America!!!) swept the entire country, coast to coast, town to town, all that crap. I mean, think about it. Doesn’t it seem a little… fishy? RIGGED perhaps? Well guess what suckers? It was. Yeah, that’s right. The Democrats rigged the election and I’ve got the proof. They boosted that RINO Mitt Romney during the primaries and kept us American patriots from rallying around a true conservative. Anyone else would’ve smoked him. Santorum, Gingrich, fuck it, even Ron Paul would’ve walloped his ass. The economy’s a dumpster fire and Obama’s too busy spreading socialist healthcare to give a crap about you and me. The Democrats may have gotten the best of us this time, but we’ll be back in 2016. WE THE PEOPLE will rise up and select a God-fearing American. Someone outside the DC hellhole. Someone beyond the Democrats’ reach. Someone who will fight for US. PALIN 2016 BABY!!!</p>",
-            "amount": "0"
-        }
-    },
-    "mapping_enabled": false,
-    "mapping_data": {},
-    "cyoa_enabled": false,
-    "cyoa_data": {}
+    "ending_data": {}
 }
 ]
-
