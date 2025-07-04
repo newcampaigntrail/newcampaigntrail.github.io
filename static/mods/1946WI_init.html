@@ -1,0 +1,168 @@
+e = campaignTrail_temp;
+
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#2f040d";
+
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#935353";
+
+            document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+
+            $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+            $(".container")[0].style.backgroundColor = "#300403";
+
+            document.getElementById("header").src = "https://i.imgur.com/M1A2mEi.jpg";
+
+            document.body.background = "https://i.imgur.com/cnoykem.jpeg";
+
+            HistHexcolour=["#8c1717","#1f8f3d","#6316b1"];
+            HistName=[" Joseph McCarthy"," Robert M. La Follette Jr."," Perry Stearns"];
+            HistEV=[0,0,0];
+            HistPV=["207,935","202,557","29,605"];
+            HistPVP=["47.25%","46.03%","6.73%"];
+
+            e.election_json = [{"model":"campaign_trail.election","pk":15,"fields":{"year":1988,"summary":"<p>Who in Wisconsin has not heard of the La Follettes? Since the turn of the century, the elder La Follette and his sons have dominated the politics of the Badger State. Their campaigns, achievements, and battles have become mythos to the progressive movement. But times are changing. With the family patriarch dead 20 years, and the youngest out of electoral politics, Robert La Follette Jr. remains the last of the dynasty, having held his father’s senate seat since his death in 1925. But Robert is no ‘Fighting Bob’. He lacks the combative spirit and love for the campaign circuit his father and brother possessed. Forced into the role of a political leader, he now reluctantly takes charge of a progressive machine that has lost its way. Even still, the La Follette name is worth its weight in gold, and if he plays his cards correctly, his re-election is all but assured.","image_url":"https://i.imgur.com/thJmDJl.png","winning_electoral_vote_number":0,"advisor_url":"https://i.imgur.com/ZcGIL4g.png","recommended_reading":"<h4 style='margin-top: 0.5em;'>Sources</h4><a href='https://archive.org/details/youngbobbiograph0000mane' target='_blank'>Young Bob: A Biography of Robert M. La Follette Jr.</a><br><a href='https://archive.org/details/fightingsonbiogr0000kasp' target='_blank'>Fighting Son: A biography of Philip F. La Follette</a><br><a href='https://www.amazon.com/Demagogue-Life-Shadow-Senator-McCarthy/dp/1328959724' target='_blank'>Demagogue: The Life and Long Shadow of Senator Joe McCarthy</a><br><a href='https://shop.wisconsinhistory.org/history-of-wisconsin-volume-vi-continuity-and-change-1940-1965' target='_blank'>History of Wisconsin Volume VI: Continuity and Change 1940-1965</a><br><a href='https://www.jstor.org/journal/wiscmagahist' target='_blank'>Wisconsin Magazine of History, Volumes 63, 80, and 104</a><br><a href='https://www.newspapers.com/' target='_blank'>Local Newspapers found on Newspapers.com</a><br>more random articles that i dont remember atm...</p><h4>Message from the Creator</h4>Hey, thanks for checking out the mod! It was a long time in the making, and my first one (unless you count the one I did for the mod jam, which i dont). I started working on this what must've been about two years ago, this has been a true passion project and something I'm very proud to have actually finished. Both the La Follettes and McCarthy have been such fascinating characters to research, and I hope I did them justice here (also yes, the La Follette side is meant to be that easy).<br>Anyway, thanks for playing!</p>","has_visits":0,"no_electoral_majority_image":"../static/images/2012-no-majority.jpg"}}];
+e.temp_election_list = [{"id":15,"year":1988,"is_premium":0,"display_year":"1946 Wisconsin Senate"}];
+e.credits = "MoyBoy600";
+e.global_parameter_json = [{"model":"campaign_trail.global_parameter","pk":1,"fields":{"vote_variable":1.125,"max_swing":0.12,"start_point":0.94,"candidate_issue_weight":10,"running_mate_issue_weight":3,"issue_stance_1_max":-0.71,"issue_stance_2_max":-0.3,"issue_stance_3_max":-0.125,"issue_stance_4_max":0.125,"issue_stance_5_max":0.3,"issue_stance_6_max":0.71,"global_variance":0.01,"state_variance":0.005,"question_count":28,"default_map_color_hex":"#C9C9C9","no_state_map_color_hex":"#999999"}}];
+e.candidate_json = [{"model":"campaign_trail.candidate","pk":152,"fields":{"first_name":"Robert","last_name":"La Follette Jr.","election":15,"party":"Progressive","state":"Dane County","priority":1,"description":"<p>Few men have had their lives so intrinsically tied to politics as Robert La Follette Jr has. From boyhood, “Young Bob” has known the ins and outs of Capitol Hill. When titans of the Progressive Era came over to Maple Bluff or Washington, Bob would listen closely. Many of his formative days were spent watching his father, Fighting Bob, perform his magic in the halls of congress or to the ravenous crowds along the prairie. From that age, it became clear to the elder Robert that his namesake was to be his political heir. And so the Senator would guide his son through school, college, and eventually to his congressional office in Washington, grooming him for a career that he did not want. But after father’s death, Bob would be compelled into succeeding his dad in the Senate, the only one with the magic name that could unite even the bitterest of progressive enemies. From there began a distinguished twenty-year career in the Senate highlighted by work instrumental in creating The New Deal, a revered investigative committee, assisting in forging a third party in Wisconsin that would briefly upend the two-party system, and working against American intervention abroad. Today, Bob is a nationally recognizable figure, with an illustrious reputation and popularity at home.<br><br><button onclick='next3()'>Next</button</p>","color_hex":"#1f8f3d","secondary_color_hex":null,"is_active":1,"image_url":"https://i.imgur.com/v1baArl.jpeg","electoral_victory_message":"<h3>LA FOLLETTE HOLDS ON, MCCARTHY NEARLY UPSETS</h3><p>As the night dragged on, the initially confident attitude of your advisors and friends were quickly dashed. County after county considered to be safe La Follette territory was called for McCarthy, and as counting progressed, your once wide lead began to dwindle. It wasn’t until late into the night, as urban counties reported their votes, that you were able to hold on and victory was declared. Upon the call, your friends and associates are unsure how to celebrate, most just breathe a sigh of relief, with a few cheering, your campaign manager, _, tells you “It was a good win, Bob.” but you feel empty, this victory is hollow.</p><p>Your fifth term in the Senate is quite eventful, with your shift to unabashed isolationist to cautious internationalist complete, you became one of the most productive congressmen, being a key ally of Truman and defender of the New Deal during the “Do-Nothing” Congress, with some liberals even floating you for the VP nomination in ‘48, but that never came to be. As 1952 approached, Tom Coleman the stalwart machine prepared for another fight for the primary, one that they would take seriously this time, but that fight never came. You didn’t want to run again if it meant taking up anything more than a token campaign. Your fifth term would be your final.</p><p>After 1952, you take up retirement, working at a consultancy in Washington, but you find this work unfulfilling, being a public figure has been your whole life, and you feel lost without it. So, at the urging of your fellow progressives and close friends, you run for house, serving two terms from 1956-1960.</p>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":null,"candidate_score":1,"running_mate":false,"scrollable":false}},
+
+{"model":"campaign_trail.candidate","pk":153,"fields":{"first_name":"Joseph","last_name":"McCarthy","election":15,"party":"Republican","state":"Outagamie County","priority":1,"description":"<p>People just can’t seem to stop underestimating Joseph McCarthy. From a young age, the world has tried to bring Joe down, and every time the world has failed. When the broad-shouldered chicken farmer strolled around Chicago, he was called a hick way in over his head. But soon his chicken business was booming. When a bout of sickness killed off his flock, he moved to Manawa, assigned to run the smallest storefront of the Cash-Way grocery chain. In a year, it became Cash-Way’s most profitable location. When McCarthy dreamed big, vowing to get over with high school in two years, folks saw it as admirable, but impossible. He did it in one. When most assumed his political career to be dead in the water after being trounced in 1936, he performed one of the state’s greatest upsets by taking down a popular 24-year incumbent in the 10th Judicial Circuit. Even as a judge, a disastrous handling of a price control case threatened to end his career again. Instead, he turned it into a PR victory.</p><p>Now, as McCarthy looks on towards greener pastures, towards federal office, the naysayers have crawled out of the woodwork once more, claiming he has no realistic path to victory. They never learn, do they?</p>","color_hex":"#8c1717","secondary_color_hex":null,"is_active":1,"image_url":"https://i.imgur.com/z04DX1f.jpeg","electoral_victory_message":"<h3>Victory</h3<p>It was over.<br>Despite facing Wisconsin’s most powerful dynasty, despite being all but ignored by his own party, despite being doubted by reporters, the public, hell, just about everyone, he’d done it. McCarthy cracked a smile, as he realized the storm of calls, messages, and reporters that were about to hit him, the stream of analysts who would be forced to walk back their predictions with their tails between their backs, the progressives who would cry crocodile tears at the end of the La Follette dynasty. But he had no time to think about that. Despite the sweetness of the moment, there will still be doubters, naysayers, <b>Enemies</b>. They will all be dealt with, no matter the cost. America will not soon forget the name Joseph McCarthy.</p>","electoral_loss_message":"<h3>Defeat</h3><p>Humiliation.<br/> As the results came in, it became clear that, despite your wildest hopes, the pundits would be proven correct, and Bob La Follette would once again win another 6 years to the Senate. Let the press rant and rave about the closer than expected margins, your stellar and electric campaign, all you could think about is where it all went wrong. God, you were running against a man who practically gave you the election! Coleman was right. You were wrong. Looking to the future, it looks bleak. Rising stars are quickly taking every available office, and it would have to take one hell of an effort to unseat them. But hey, when has that ever dissuaded you? No, the world will not, shall not, ever forget the name Joseph McCarthy.</p>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":null,"candidate_score":1,"running_mate":false,"scrollable":false}},
+
+{"model":"campaign_trail.candidate","pk":154,"fields":{"first_name":"Perry","last_name":"Stearns","election":15,"party":"Republican","state":"Milwaukee County","priority":1,"description":"Dummy Example is a veteran from Hell. He loves puppies and magic! Dummy Example will unite America!<br><br>New line<br><br>This is <b>bold</b> and this <i>italic</i>!","color_hex":"#6316b1","secondary_color_hex":null,"is_active":0,"image_url":"https://i.ebayimg.com/images/g/atYAAOSwH6Nko96A/s-l1600.jpg","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":null,"candidate_score":1,"running_mate":false,"scrollable":false}},
+
+{"model":"campaign_trail.candidate","pk":155,"fields":{"first_name":"Julius","last_name":"Heil","election":15,"party":"Democrat","state":"Milwaukee County","priority":1,"description":"Dummy Example is a veteran from Hell. He loves puppies and magic! Dummy Example will unite America!<br><br>New line<br><br>This is <b>bold</b> and this <i>italic</i>!","color_hex":"#1616c0","secondary_color_hex":null,"is_active":0,"image_url":"https://i.imgur.com/GjE1kgi.png","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":null,"candidate_score":1,"running_mate":false,"scrollable":false}},
+
+{"model":"campaign_trail.candidate","pk":156,"fields":{"first_name":"Wisconsin","last_name":"GOP","election":15,"party":"Republican","state":"Wisconsin","priority":1,"description":"<p>If you and the progressives are to survive election season this November, the only sane option is to flee from the rotting carcass of the Progressive Party and to the La Follettes’ original home, the GOP. Since the party was birthed in the Ripon schoolhouse, the Republicans have been historically dominant in the Badger State, vacant from the Governor’s Mansion just five times in the party’s 90-year history. But under the veneer of domination lies a fierce battle between progressives and stalwarts over the soul of the Party of Lincoln that has been raging for decades. Recently though, stalwarts have had free reign, with Phil forming the Progressive Party in an attempt to realign all liberals to one party. Phil's dream would prove to be folly. The Progressive Party, while initially successful, would prove too disunited and too vulnerable to the New Deal, causing the party to rapidly wither away, their once sturdy majority reduced to a handful or hangers-on, failing to even field a full slate of candidates the last few years. While today Democrats like Wallace and McMurray send velvety words your way and the country bumpkins up north plead to keep Phil’s grand experiment alive, the party's days appear numbered.","color_hex":"#0000ff","secondary_color_hex":null,"is_active":0,"image_url":"https://i.imgur.com/xpygNmn.jpeg","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":"<p>If you and the progressives are to survive election season this November, the only sane option is to flee from the rotting carcass of the Progressive Party and to the La Follettes’ original home, the GOP. Since the party was birthed in the Ripon schoolhouse, the Republicans have been historically dominant in the Badger State, vacant from the Governor’s Mansion just five times in the party’s 90-year history. But under the veneer of domination lies a fierce battle between progressives and stalwarts over the soul of the Party of Lincoln that has been raging for decades. Recently though, stalwarts have had free reign, with Phil forming the Progressive Party in an attempt to realign all liberals to one party. Phil's dream would prove to be folly. The Progressive Party, while initially successful, would prove too disunited and too vulnerable to the New Deal, causing the party to rapidly wither away, their once sturdy majority reduced to a handful or hangers-on, failing to even field a full slate of candidates the last few years. While today Democrats like Wallace and McMurray send velvety words your way and the country bumpkins up north plead to keep Phil’s grand experiment alive, the party's days appear numbered.</p>","candidate_score":1,"running_mate":true,"scrollable":false,"partner":"0"}},
+
+{"model":"campaign_trail.candidate","pk":157,"fields":{"first_name":"Wisconsin","last_name":"Progressive Party","election":15,"party":"Progressive","state":"Wisconsin","priority":1,"description":"<p>Of course, there's always another option. Despite the collapse of the party the past few years, you could certainly negotiate with your brother to keep the party alive for one more go of it. Although this would give you more independence, the lack of an campaign apparatus and third party status would surely hurt you in the general.","color_hex":"#0000ff","secondary_color_hex":null,"is_active":0,"image_url":"https://upload.wikimedia.org/wikipedia/commons/8/8a/National_Progressive_Party_banner%2C_Madison%2C_Wisconsin%2C_1938_-_Wisconsin_Historical_Museum_-_DSC03257.JPG","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":"<p><b>may or may not do, currently under development</b></p>","candidate_score":1,"running_mate":true,"scrollable":false,"partner":"0"}},
+
+{"model":"campaign_trail.candidate","pk":159,"fields":{"first_name":"Wisconsin","last_name":"GOP","election":15,"party":"Republican","state":"Wisconsin","priority":1,"description":"<p>The Wisconsin Republican Party claims the birthplace of the Grand Old Party from Ripon, Wisconsin. Historically, they have been successful in the Badger State since the Civil War, but as of recently they've found themselves bested by the Progressive Party, but with the party collapsing, your nomination could lead to an easy senate election and seat, given you take the right moves to convince the more conservative voters that you would be a better senator than La Follette Jr.","color_hex":"#0000ff","secondary_color_hex":null,"is_active":0,"image_url":"https://i.imgur.com/xpygNmn.jpeg","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":"<p>The Wisconsin Republican Party claims the birthplace of the Grand Old Party from Ripon, Wisconsin. Historically, they have been successful in the Badger State since the Civil War, but as of recently they've found themselves bested by the Progressive Party, but with the party collapsing, your nomination could lead to an easy senate election and seat, given you take the right moves to convince the more conservative voters that you would be a better senator than La Follette Jr.","candidate_score":1,"running_mate":true,"scrollable":false,"partner":"1"}}];e.running_mate_json = [{"model":"campaign_trail.running_mate","pk":2001,"fields":{"candidate":152,"running_mate":156}},{"model":"campaign_trail.running_mate","pk":2002,"fields":{"candidate":152,"running_mate":157}},{"model":"campaign_trail.running_mate","pk":2003,"fields":{"candidate":153,"running_mate":159}}];
+
+e.displayTooltips = true;
+
+function addDynamicCSS() {
+  var css = `
+      .inner_window_question h3 .mytooltip {
+          background-color: lightblue;
+      }
+
+      .mytooltip {
+          position: relative;
+          display: inline-block;
+          cursor: pointer;
+          background-color: lightblue;
+      }
+
+      .mytooltip .mytooltiptext {
+          width: 240px;
+          background-color: lightblue;
+          color: black;
+          text-align: center;
+          border-radius: 6px;
+          padding: 10px;
+          position: absolute;
+          z-index: 99;
+          bottom: 20%;
+          left: 20%;
+          margin-left: -90px;
+          opacity: 0;
+          transition: opacity 0.3s;
+          border: 1px solid black;
+          pointer-events: none;
+          font-size: 12px !important;
+          line-height: 1.5em !important;
+          font-weight: normal !important;
+          font-style: normal !important;
+      }
+
+      .mytooltip .mytooltiptext img {
+          max-width: 240px;
+          height: auto;
+      }
+
+      .mytooltip:hover .mytooltiptext {
+          opacity: 1;
+          transition-delay: 0.5s;
+      }
+  `;
+
+  var styleElem = document.createElement('style');
+  styleElem.type = 'text/css';
+  
+  styleElem.appendChild(document.createTextNode(css));
+  
+  document.head.appendChild(styleElem);
+}
+
+
+addDynamicCSS();
+
+tooltipList = [
+  {searchString: "Walter Goodland", explanationText: "<img src=https://i.imgur.com/ohQ0F5G.png><br> The 'Tough Old Codger' has been Governor since 1943, after the passing of Governor-elect Loomis. At 84, the cigar puffing maverick is running for re-election against the wishes of Republican leadership. Still, his unabashedly independent reputation has made him a juggernaut in Wisconsin politics only comparable to the La Follettes."},
+  {searchString: "Ralph Immell", explanationText: "<img src=https://i.imgur.com/De5oOw8.png><br> Longtime Adjutant General and La Follette ally, managed Phil's doomed National Progressives of America organization. A member of the long-dead Blaine faction of progressives, he's a popular figure in the state."},
+  {searchString: "Phil", explanationText: "<img src=https://i.imgur.com/uKS7j1y.png><br> Your brother and former Governor (1931-1933, 1935-1939), Philip is far gone from his days of national prominence during the Depression. After being trounced in '38, he became a gadfly for the isolationist movement. Since the war and his service, however, he's lost poiltically, currently booming MacArthur for the presidency in 1948. He'll work with you, but your relationship with him is not what it once was."},
+  {searchString: "Howard McMurray", explanationText: "<img src=https://i.imgur.com/ZrkW6hz.png><br> Former Representative and intellectual from the Madison area. A fierce internationalist and New Dealer, McMurray is a key leader in the Democratic Party."},
+  {searchString: "PRA", explanationText: "Organization set up after the Progressive Party died to find and elect local progressives throughout the state. Chaired by former Goodland staffer Ed Doan."},
+  {searchString: "Progressive Republican Association", explanationText: "Organization set up after the Progressive Party died to find and elect local progressives throughout the state. Chaired by former Goodland staffer Ed Doan."},
+  {searchString: "Aiken", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/6/64/GeorgeAiken-VTSEN-_%28cropped%29.jpg><br> Vermont Senator and an ally of yours, Aiken is the titular Liberal Republican. However, he's no tour de force within the party."},
+  {searchString: "Robert Taft", explanationText: "<img src=https://i.imgur.com/ZM7k8FT.jpeg><br> Mr. Republican himself, Senator from Ohio and a nationally known conservative ideologue. However, he holds a strong rapport with La Follette, despite their stark ideological differences."},
+  {searchString: "Charles,", explanationText: "<img src=https://i.imgur.com/JQ4NFxn.png><br> Representative from Southern Indiana, fierce defender of labor, villified by his own party for it."},
+  {searchString: "Morse", explanationText: "<img src=https://i.imgur.com/Kf1ZgWl.jpeg><br> Curious senator from Oregon, heading the fight to make the GOP a liberal, internationalist party, but still has admiration for you and your father."},
+  {searchString: "The Progressive", explanationText: "<img src=https://i.imgur.com/054dSRi.jpeg><br> Your dad's magazine, passed down to the rest of the family. Perpetually insolvent."},
+  {searchString: "JCOC", explanationText: "Joint Committee on the Organization of Congress, formed in 1945 to investigate how Congress could be reformed, they are calling for complete reorganization and shifting of power."},
+  {searchString: "Civil Liberties Committee", explanationText: "<img src=https://i.imgur.com/kRBTiBU.jpegg><br> Widely dubbed the La Follette Committee, exposed in lurid detail the shameful union-busting tactics of big business, briefly a national sensation in the press."},
+  {searchString: "Delbert J. Kenny", explanationText: "<img src=https://i.imgur.com/B0i5SCU.jpeg><br> Staunch Coleman loyalist and conservative vying for the governorship."},
+  {searchString: "Delbert Kenny", explanationText: "<img src=https://i.imgur.com/B0i5SCU.jpeg><br> Staunch Coleman loyalist and conservative vying for the governorship."},
+  {searchString: "Thomas Coleman", explanationText: "<img src=https://i.imgur.com/5dJkvCU.jpeg><br> Holds the keys to the Wisconsin Republican Party, rules the party with an iron thumb, even if he denies it. Hater of all things liberal and La Follette."},
+  {searchString: "Tom Coleman", explanationText: "<img src=https://i.imgur.com/5dJkvCU.jpeg><br> Chairman of the RVC, stalwart, and holder of the keys to the Wisconsin Republican Party. He rules the party with an iron thumb, even if he denies it. Enemy of all things liberal and La Follette."},
+  {searchString: "Black Book", explanationText: "Book of records kept by the La Follette family containing addresses and names of supporters across the state. Slightly out of date."},
+  {searchString: "Robert Wood", explanationText: "<img src=https://i.imgur.com/SB6Xp0d.jpeg><br> Former general and business magnate and a key funder/founder of the America First Committee. A fierce isolationist and conservative, in that order."},
+  {searchString: "Virginia Manor", explanationText: "<img src=https://i.imgur.com/Bc3lKSn.png>"},
+  {searchString: "Virginia manor", explanationText: "<img src=https://i.imgur.com/Bc3lKSn.png>"},
+  {searchString: "Gerald L.K. Smith", explanationText: "<img src=https://i.imgur.com/Qycgura.jpeg><br> America's premier anti-semite and fascist gadfly, formerly Long's right-hand man turned failed demagogue. A truly sad man."},
+  {searchString: "Fred Zimmerman", explanationText: "<img src=https://i.imgur.com/4Btdqz2.jpeg><br> Once upon a time, he was the chief enemy of progressives, prostituting the La Follette name for his own gain as a failed Governor. Nowadays, he's on much better terms with progressives, as the elder statesman of Wisconsin politics, having been Secretary of State since 1939"},
+  {searchString: "Sam Rayburn", explanationText: "<img src=https://i.imgur.com/Y6VYkkY.jpeg><br> Speaker of the House and doctrinaire Democrat. Has bigger problems than you to deal with."},
+  {searchString: "our benefactors", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/mk/e/e2/Wallace_Breen_breencast_bust.jpg>"},
+  {searchString: "Hull", explanationText: "<img src=https://i.imgur.com/FpjXrVz.jpeg><br> U.S. Representative for Wisconsin's 9th District and the only surviving Progressive in federal office."},
+  {searchString: "Alexander Wiley", explanationText: "<img src=https://i.imgur.com/v8eumtG.jpeg><br> Incumbent Junior Senator from Wisconsin. He prefers to work in the background, being a bit of a no-namer."},
+  {searchString: "Werner", explanationText: "The man you defamed and dishonored to become circuit judge."},
+  {searchString: "Carl Zeidler", explanationText: "<img src=https://i.imgur.com/A6hyYlA.jpeg><br> Mayor of Milwaukee who garnered national adoration when he resigned to become a marine. His gift for gab rivals only you. He scares the hell out of you."},
+  {searchString: "Republican Voluntary Committee", explanationText: "Organization founded to control of the GOP in conservative hands. Essentially acts as an extra-legal party that issues 'official' Republican endorsements and fundraise unlimited amounts. Run by the GOP's good old boys."},
+  {searchString: "Young Republicans", explanationText: "The GOP's youth wing. Generally much more motivated and conservative than the stodgy RVC."},
+  {searchString: "Walter Kohler Jr.", explanationText: "<img src=https://i.imgur.com/h5Gz6IF.jpeg><br> In many ways, the veteran son of former governor Walter Kohler acts as your counterpart. Where you're brash, he's amiable. Where you're conservative, he's moderate. Where you're eager, he's reluctant."},
+  {searchString: "Julius Heil", explanationText: "<img src=https://i.imgur.com/Onsgy9e.jpeg><br> The jovial, chunky two-term governor who licked Phil in 1938. His knack for publicity stunts and constant humour would be the key to his rise and his disastrous downfall in the state, losing to the Progressives in 1942 after the party was already dead and buried. He is an anchor on the party."},
+  {searchString: "Wallace", explanationText: "<img src=https://i.imgur.com/JWCDDNK.jpeg><br> Tweedledum."},
+  {searchString: "Pepper", explanationText: "<img src=https://i.imgur.com/cdK8VcB.jpeg><br> Tweedledee."},
+  {searchString: "Harold Stassen", explanationText: "<img src=https://i.imgur.com/3GLaYjz.jpeg><br> Minnesota's very own Goodland. Slayed the Farmer-Labor leviathan, and with a popular, moderate pedigree, seeks to slay the Democratic leviathan in 1948."},
+  {searchString: "Flying Badgers", explanationText: "<img src=https://i.imgur.com/ZqLNJpY.jpeg><br> Your very own private campaign airforce. Great for publicity."},
+  {searchString: "O'Konski", explanationText: "<img src=https://i.imgur.com/4t3WdxZ.jpeg><br> Congressmen for Wisconsin's 10th district, comprising of the Northwoods. Rabidly Anti-Communist, but much more moderate domestically. An odd fellow."}
+      
+];
+
+quotes = ["\"Have you no sense of decency, sir? At long last, have you left no sense of decency?\"","\"The La Follettes have nine lives. They will come back.\"","\"Congress Needs a Tail-Gunner!\"","\"Everyone in Wisconsin calls me Bob, or that son of a bitch.\""]
+
+customquote = quotes[Math.floor((Math.random() * quotes.length))]
+
+  next3 = function() {
+    text = "But this all begs the question: If Bob has committed so much of his life to politics, then why does he hate it so? Ever reserved and antisocial, you’ll never find him among the parties of socialites in DC. Nor will you see him stumping on the campaign trail, always wary of retail politics. In fact, these days you’ll rarely see him around Wisconsin altogether. Since he begrudgingly went along with Phil in founding the Wisconsin Progressive Party, he has been averse to all types of political leadership or organizing, instead insulating himself within Washington. The truth is, Bob despises public life. He abhors the lack of privacy and constant need to please interest groups and fight back against the mudslinging prevalent in the political sphere. He’s bitter about being abandoned by Phil during the pre-war and war years, left to lead a party that he himself doesn’t want to exist. Although he has, after much deliberation, decided to stand for re-election, he has only done so on the promise that he will not have to fight for his seat. As spring brings the start of election season, all eyes turn to Bob, as his level of leadership will in all likelihood determine the outcome of the election.<br><br><button onclick='back3()'>Back</button></p>"
+    document.getElementById("candidate_summary").children[1].innerHTML = text
+  }
+  back3 = function() {
+    text = "<p>Few men have had their lives so intrinsically tied to politics as Robert La Follette Jr has. From boyhood, “Young Bob” has known the ins and outs of Capitol Hill. When titans of the Progressive Era came over to Maple Bluff or Washington, Bob would listen closely. Many of his formative days were spent watching his father, Fighting Bob, perform his magic in the halls of congress or to the ravenous crowds along the prairie. From that age, it became clear to the elder Robert that his namesake was to be his political heir. And so the Senator would guide his son through school, college, and eventually to his congressional office in Washington, grooming him for a career that he did not want. But after father’s death, Bob would be compelled into succeeding his dad in the Senate, the only one with the magic name that could unite even the bitterest of progressive enemies. From there began a distinguished twenty-year career in the Senate highlighted by work instrumental in creating The New Deal, a revered investigative committee, assisting in forging a third party in Wisconsin that would briefly upend the two-party system, and working against American intervention abroad. Today, Bob is a nationally recognizable figure, with an illustrious reputation and popularity at home.<br><br><button onclick='next3()'>Next</button></p>"
+    document.getElementById("candidate_summary").children[1].innerHTML = text
+  }
+
+corrr = `\n<h2>NEW CAMPAIGN TRAIL</h2><font id='wittyquote' size='4' color='white'><em>` + customquote + `</em></font>`
+
+RecReading=true;
+
+// Custom Text Variables
+
+// Code 1 Text
+e.SelectText = "Please select the election you will run in:"
+e.CandidText = "Please select your candidate:"
+e.VpText = "Please select your party:"
+// Ending Popups
+e.ElectionPopup = "Election night has arrived. Settle in and wait for the returns, however                 long it may take. Best of luck!"
+e.WinPopup = "Congratulations! You won this year's election! Click OK to view the                     rest of the returns, or skip straight to the final results. We hope                     you have a nice victory speech prepared for your supporters."
+e.LosePopup = "Sorry. You have lost the election this time. Click OK to view the                     rest of the returns, or skip straight to the final results. We hope                     you have a nice concession speech prepared."
