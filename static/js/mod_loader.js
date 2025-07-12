@@ -200,6 +200,10 @@ for (var i = 0; i < options.length; i++) {
     let id = id_clean(`favourite_${opt.value}_button`);
 
     widget.innerHTML = `
+        <div class="widget_url_icon tooltip_wrap" onclick="copyModURL('${encodeURIComponent(opt.value)}')">
+            🔗
+            <span class="tooltip_text">Copies a permanent mod link.</span>
+        </div>
         <img src='${opt.image ?? "/static/mod_icons/default_placeholder.png"}' class='widget_image'></img>
         <br>
         <h3>${opt.label}</h3>
@@ -219,6 +223,15 @@ $("#mod_loader_overlay_block").click(()=>{
     changeFavicon("/static/34starcircle-2.png");
     document.body.style.overflow = '';
 });
+
+var copyModURL = (displayName) => {
+    const url = `${window.location.origin}${window.location.pathname}?modName=${displayName}`;
+    navigator.clipboard.writeText(url).then(() => {
+    }).catch(err => {
+        console.log(err)
+    });
+}
+
 
 $("#customMenu").change(()=>{
     let cached = {

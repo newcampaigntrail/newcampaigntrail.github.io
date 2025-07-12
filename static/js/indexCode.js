@@ -163,6 +163,18 @@ function loadEntries() {
                 window.localStorage.removeItem("hotload") // this should be done whether or not there is an error.
             }
 
+            //hotload 2!
+            let link_split=window.location.href.split("?");
+            if (link_split.length>1) {
+                ((link_split)=>{
+                    modName = link_split[1].split("modName=");
+                    if (modName.length == 1) return;
+                    e.hotload = decodeURIComponent(modName[1]);
+                    $("#modSelect")[0].value = e.hotload;
+                    $("#submitMod").click();
+                })(link_split)
+            }
+
             //clone so we don't reduce the list of mods every time a tag is selected
             originalOptions = $("#modSelect option").clone();
             filterEntries();
