@@ -1,14 +1,174 @@
-campaignTrail_temp.credits = "ItsAstronomical and Martha"
-RecReading = true;
+e = campaignTrail_temp;
+campaignTrail_temp.credits = "<button onclick='e.creditsPage()'>Astro, Martha, and...</button>"
+var c = 20;
+var storedChar = 0;
+const startScreenUpdater = setInterval(function() {
+    const initialButton = document.getElementById("election_id_button");
+    const runningMateButton = document.getElementById("running_mate_id_button");
+    const candidateButton = document.getElementById("candidate_id_button");
+    const finalScreenBB = document.getElementById("opponent_selection_id_back");
+    const difficultySelect = document.getElementById("difficulty_level_id");
+    const finalScreenID = document.getElementById("opponent_selection_id_button");
+    const modeSelection = document.getElementById("opponent_selection_description_window");
+    const window = document.getElementById("inner_window_4");
+    const gamemode = document.getElementById("game_options");
+    const candbackb = document.getElementById("candidate_id_back");
+    var selectElement = document.getElementById('candidate_id');
+    var gamemodElem = document.getElementById('game_type_id');
+    if(initialButton) { // reset theme at main menu
+       
+      c = document.getElementById("election_id").value;
+      console.log(c + "   " + storedChar);
 
-document.getElementById("inner_window_1").children[1].innerHTML = `<p>Welcome to the 2024 Presidential Election, a mod for The Campaign Trail. This mod is split into two versions ― <b>2024</b>, and <b>2024: Divided States of America</b>.</p><img src="https://itsastronomical.com/assets/2024/2024introbanner.png" width="800"><li><b>2024</b> plays like your typical scenario, and is intended to emulate an "official" 2024 scenario, with Kamala Harris vs Donald Trump. Just like the original site, many questions are randomized (with an option to answer them all).</li><img src="https://itsastronomical.com/assets/2024/2024introbannerdsa.png" width="800"><li><b>2024: Divided States of America</b> takes the base of <b>2024</b> and uses it to add alternate history elements to allow for a less historical route, where you start as President Biden or Former President Donald Trump. This version also features less vanilla content, such as Choose Your Own Adventure, plenty of endings, and soundtracks for each side. <b>2024: Divided States of America</b> is currently not released yet.</li><br>`;
-document.styleSheets[0].insertRule(".inner_window_w_desc{ margin:1em 0 0 0.5em !important;padding-top: 0.5em !important;}", 0);
+      // Remove existing layout fix if any
+      const existingFix = document.getElementById("descriptionLayoutFix");
+      if (existingFix) existingFix.remove();
+      // Only apply the expanded layout fix for c == 21 (Divided States)
+      if (c == 21) {
+        const summaryDiv = document.getElementById("election_summary");
+if (summaryDiv) {
+  summaryDiv.style.maxHeight = "none";
+  summaryDiv.style.overflowY = "visible";
+}
+  const styleFix = document.createElement("style");
+  styleFix.id = "descriptionLayoutFix";
+styleFix.innerHTML = `
+#election_description_window {
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  min-height: 250px;
+}
+
+  #election_image img {
+    width: 300px;
+    height: auto;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  #election_summary {
+    max-width: 580px;
+    flex-grow: 1;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: normal;
+    display: block;
+    min-height: 200px;
+  }
+
+  #election_description_window > div {
+    min-width: 0;
+  }
+  `;
+  document.head.appendChild(styleFix);
+      }
+      if(c == 20 && storedChar != 20) {
+        console.log("dan bryan")
+corrr = '\n              <h2>THE CAMPAIGN TRAIL</h2>\n            '; 
+document.getElementById("header").src = "https://www.newcampaigntrail.com/static/images/banner_classic.png";
+document.body.style.backgroundColor = "#bfe6ff";
+document.body.background = "";
+$(".container")[0].style.backgroundColor = "#fff";
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#700016";
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#e8fbff";
+$("#game_window")[0].style.backgroundColor = "#bfe6ff";
+$("#game_window")[0].style.backgroundImage = "url()" 
+HistHexcolour = ["#FF0000", "#0000FF", "#FFFF00", "#00C100"];
+$(".footer")[0].style.color = "#000";
+document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#e8fbff!important;}</style>";
+document.head.innerHTML += "<style>#results_container {color:#000000;}";
+$(".game_header")[0].style.height="65px";
+
+
+storedChar = c;
+      }
+      else if(c == 21 && storedChar != 21) {
+        console.log("divided states")
+        storedChar = c;
+$("#game_window")[0].style.backgroundImage = "url(https://itsastronomical.com/assets/2024/trumpbiden.png)" 
+
+corrr = `
+<div style="font-size: 11px; font-family: monospace; color: white;">
+  <h2 style="font-style: normal;">
+    <img src="https://itsastronomical.com/assets/2024/dividedlogo.png" alt="DIVIDED STATES" style="margin-top: 0px; margin-bottom: -4px;">
+  </h2>
+</div>
+`;
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#292929";
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#ffffff";
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+$(".container")[0].style.backgroundColor = "#131920";
+document.getElementById("header").src = "https://itsastronomical.com/assets/2024/dsashort.png";
+document.body.background = "https://vastphotos.com/files/uploads/photos/11151/black-and-white-photo-of-us-capitol-building-l.jpg?v=20220712043521";
+document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#ffffff!important;}</style>";
+styling = document.createElement("style");
+document.head.appendChild(styling);       
+document.head.innerHTML += "<style>#results_container {color:#000000;}";
+$(".game_header")[0].style.height="65px";
+
+      }
+    }
+}, 1);
+
+RecReading=true;
+HistHexcolour = ["#b31200", "#052e71", "#ffc677", "#669c35"];
+
+  function removeCandidateSummary() {
+  try {
+    const candidateSummary = document.querySelector("#candidate_summary");
+    if (candidateSummary && storedChar == 21) {
+      const ulList = candidateSummary.querySelector("ul");
+      if (ulList) {
+        candidateSummary.removeChild(ulList);
+      }
+    }
+  } catch {}
+  }
+  window.setInterval(removeCandidateSummary,10)
+
+let z = new MutationObserver((mutationsList, observer) => {
+    let runningMateSummary = document.querySelector("#running_mate_summary");
+    if (runningMateSummary && storedChar == 21) {
+        styling = document.createElement("style");
+        document.head.appendChild(styling);
+        
+        styling.innerHTML = `
+        #opponent_selection_id_back {
+            display: none;
+        }
+        `
+        $("#running_mate_id_button").click();
+        observer.disconnect()
+        }
+    });
+z.observe(document, { subtree: true, childList: true });
+
+document.getElementById("inner_window_1").children[1].innerHTML = `<p>Welcome to the 2024 Presidential Election, a mod for The Campaign Trail. This mod is split into two versions ― <b>2024</b>, and <b>2024: Divided States of America</b>.</p><img src="https://itsastronomical.com/assets/2024/2024introbanner.png" width="800"><li><b>2024</b> plays like your typical scenario, and is intended to emulate an "official" 2024 scenario, with Kamala Harris vs Donald Trump. Just like the original site, many questions are randomized (with an option to answer them all).</li><img src="https://itsastronomical.com/assets/2024/2024introbannerdsa.png" width="800"><li><b>2024: Divided States of America</b> takes the base of <b>2024</b> and uses it to add alternate history elements to allow for a less historical route, where you start as President Biden or Former President Donald Trump. This version also features less vanilla content, such as Choose Your Own Adventure, plenty of endings, and soundtracks for each side. To play <b>2024: Divided States of America</b>, you must select it on the election dropdown screen.</li><br><br>`;
+document.styleSheets[0].insertRule(".inner_window_w_desc{ margin:1em 0 0 0.5em;padding-top: 0.5em;}", 0);
 document.styleSheets[0].insertRule(".inner_window_question{ margin:1em 0 .7em 0.5em !important;padding-top: 0.3em !important;}", 0);
 document.styleSheets[0].insertRule("#main_content_area { height:82% !important;}", 0);
-
+corrr = '\n              <h2>THE CAMPAIGN TRAIL</h2>\n            '; 
+document.getElementById("header").src = "https://www.newcampaigntrail.com/static/images/banner_classic.png";
+document.body.style.backgroundColor = "#bfe6ff";
+document.body.background = "";
+$(".container")[0].style.backgroundColor = "#fff";
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#700016";
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#e8fbff";
+$("#game_window")[0].style.backgroundColor = "#bfe6ff";
+$(".footer")[0].style.color = "#000";
+document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#e8fbff!important;}</style>";
+document.head.innerHTML += "<style>#results_container {color:#000000;}";
+const style = document.createElement('style');
+style.innerHTML = `.game_header { height: 65px !important; }`;
+document.head.appendChild(style);
 
 campaignTrail_temp.modBoxTheme = {
     "header_color": "#840f1c",
+    "header_image_url": "https://itsastronomical.com/assets/2024/dsamodbox.png",
     "header_text_color": "#ffffff",
     "description_text_color": "#000000",
     "description_background_color": "#e8fbff",
@@ -23,7 +183,7 @@ campaignTrail_temp.global_parameter_json = [
         "pk": 1,
         "fields": {
             "vote_variable": 1.125,
-            "max_swing": 0.1,
+            "max_swing": 0.12,
             "start_point": 0.94,
             "candidate_issue_weight": 10,
             "running_mate_issue_weight": 3,
@@ -35,7 +195,7 @@ campaignTrail_temp.global_parameter_json = [
             "issue_stance_6_max": 0.71,
             "global_variance": 0.01,
             "state_variance": 0.005,
-            "question_count": 25,
+            "question_count": 35,
             "default_map_color_hex": "#C9C9C9",
             "no_state_map_color_hex": "#999999"
         }
@@ -47,7 +207,7 @@ campaignTrail_temp.election_json = [
         "model": "campaign_trail.election",
         "pk": 20,
         "fields": {
-            "year": 2024,
+            "year": 2016,
             "summary": "<p>A rocky four years under President Biden have culminated in the renomination of Donald Trump, followed by the earth-shaking withdrawal of Joe Biden from the race.</p><li>Donald Trump, fresh off of 34 felony convictions, only seems to trail Harris very narrowly. Can he keep his momentum going all the way through Election Day? Is the momentum even real?</li><li>Kamala Harris assumed the Democratic nomination with the strong support of President Biden. She enters the general election rested and ready, riding a surge of enthusiasm and record fundraising.</li></ul>",
             "image_url": "https://itsastronomical.com/assets/2024/2024bryan.png",
             "winning_electoral_vote_number": 270,
@@ -56,7 +216,9 @@ campaignTrail_temp.election_json = [
             "has_visits": 1,
             "no_electoral_majority_image": "https://www.jetsimon.com/public/static/images/2012-no-majority.jpg",
             "creator": "Dan Bryan",
-            "display_year": "2024"
+            "display_year": "2024",
+            "site_image": "https://itsastronomical.com/assets/2024/2024gif.gif",
+	        "site_description": "<h3>2024: Divided States of America</h3> is out now! Play it, or the original 2024 here!</p><p>Can you cling on as Biden? Change the course of history in Butler, Pennsylvania?</p>"
         }
     },
     {
@@ -65,11 +227,11 @@ campaignTrail_temp.election_json = [
         "fields": {
             "year": 2024,
             "display_year": "2024 - Divided",
-            "summary": "<p><b>COMING SOON - </b>America is a country scarred by COVID, fiscally insecure from economic policy, and polarized by Trump. Biden promised a return to normalcy - and doubts have festered that he may not be able to fulfill the core promise of his campaign. Failures in Afghanistan and economic woes have sent his approvals into a death spiral.</p><p>Meanwhile, Donald Trump left Washington as a pariah in 2021, and has become more authoritarian than ever. But as he prepares a comeback, seeking revenge and retribution, many on both sides believe that American democracy - and the identity of the nation - is on the line and the ballot.</p>",
-            "image_url": "https://itsastronomical.com/assets/2024/DSAintro.png",
+            "summary": "<div style='overflow-y: auto; max-height: none;'><p><b>America</b> is a country scarred by COVID, fiscally insecure from rising inflation, and polarized by Trump. It has been in a crisis for the past decade or so, and there is no sign of it ending.</p><p><font color='#404485'><b>President Joe Biden</b></font> was elected after promises to return the country to normalcy — now, doubts have festered that he may not be able to fulfill the core promise of his campaign. Failures in Afghanistan and economic woes have sent his approvals into a death spiral, with the clock ticking before another election — possibly the final one.</p><p>Meanwhile, <font color='#691212'><b>former President Donald Trump</b></font> left Washington as a pariah in 2021, and has become more authoritarian and extremist than ever. As he prepares a comeback, seeking revenge and retribution, many on both sides believe that American democracy - and the identity of the nation - is on the line and the ballot.</p></div>",
+            "image_url": "https://itsastronomical.com/assets/2024/dsatall.png",
             "winning_electoral_vote_number": 270,
             "advisor_url": "https://i.imgur.com/NbyHGL8.png",
-            "recommended_reading": "<ul>\n<li><a href=https://www.chicagotribune.com/opinion/editorials/ct-edit-chicago-tribune-biden-endorsement-20200925-lnyxsb5qvrftnjjmj3rnzj33jy-story.html>Our Case For Joe Biden</a></li>\n<li><a href=https://nationalinterest.org/feature/case-trump-166808>The Case For Trump</a></li>\n<li><a href=https://www.npr.org/2020/11/18/935730100/how-biden-won-ramping-up-the-base-and-expanding-margins-in-the-suburbs>How Biden Won: Ramping Up The Base And Expanding Margins In The Suburbs</a></li>\n<li><a href=https://www.prospectmagazine.co.uk/politics/donald-trump-joe-biden-us-election-almost-win-votes-concede>Why Did Trump Almost Win?</a></li>\n<li><a href=https://www.hoover.org/research/no-evidence-voter-fraud-guide-statistical-claims-about-2020-election>No Evidence For Voter Fraud: A Guide To Statistical Claims About The 2020 Election</a></li>\n</ul>",
+            "recommended_reading": "<h1 style='font-weight: 500; font-size: 35px; font-family: Bebas Neue'>The 2024 Presidential Election: <u>Divided States of America</u></h1><p>by ItsAstronomical, and many others</p><br>Thank you for playing!",
             "has_visits": 1,
             "no_electoral_majority_image": "../static/images/2012-no-majority.jpg"
         }
@@ -81,17 +243,271 @@ campaignTrail_temp.temp_election_list = [
         "id": 21,
         "year": 2024,
         "is_premium": 0,
-        "display_year": "2024 - Divided"
+        "display_year": "Divided States"
     },
     {
         "id": 20,
-        "year": 2024,
+        "year": 2016,
         "is_premium": 0,
         "display_year": "2024"
     }
 ]
 
 campaignTrail_temp.candidate_json = [
+    // 2024 DSA Candidates
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 300,
+        "fields": {
+            "first_name": "Joe",
+            "last_name": "Biden",
+            "election": 21,
+            "party": "Democratic",
+            "state": "Delaware",
+            "priority": 1,
+            "description": "<li><b>Name: Joe Biden</b></li><li><b>State: Delusion</b></li><li><b>Role: President of the United States, King Ozymandias</b></li><p>About once every five to ten years, <b>Joe Biden</b> is swept away by the waves of change. His political obituary is published, and Americans seem ready to move on. But every single time, this proves premature. His head pops though the surface downstream, coughing and sputtering, but very much alive. Whether he pulls through in the greatest fight of his political life has yet to be seen.</p><p>Biden is a political moderate, striking a liberal populist tone on economic and cultural issues while pivoting to the right on trade and immigration. If he can read the pulse of the country and meet the moment, he might be able to secure himself a second term. But if something — whether it be Trump, the economy, or some foreign crisis — catches him off guard, it might do him in for good.</p>",
+            "color_hex": "#052e71",
+            "secondary_color_hex": null,
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/yllahdc.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 305,
+        "fields": {
+            "first_name": "Kamala",
+            "last_name": "Harris",
+            "election": 21,
+            "party": "Democratic",
+            "state": "California",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/EZkY3WB.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "<p>Initially praised as a historic choice during the 2020 election campaign, Kamala Harris has turned out to be something of a dud as Vice President. She has failed to find a signature issue or define herself in any way, other than her famous awkwardness and palpable lack of charisma. Politically, she is more progressive than Biden, although her prosecutorial record has raised some eyebrows in the party’s left wing.</p><p>Despite her unpopularity, though, dropping Harris from the ticket would come with its own set of problems. It’s not a good look to dump the first Black and first female Vice President in American history, and Harris is not without her own support base. It could also make Biden seem indecisive, and rock the boat with intra-party drama. And it’s not like Biden and Harris don’t have a viable working relationship.",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 301,
+        "fields": {
+            "first_name": "Donald",
+            "last_name": "Trump",
+            "election": 21,
+            "party": "Republican",
+            "state": "Florida",
+            "priority": 1,
+            "description": "<li><b>Name: Donald Trump</b></li><li><b>Verdict: Guilty On All Charges</b></li><li><b>Role: Villain, Antagonist</b></li><p><b>Donald Trump</b> is without a doubt the most infamous figure in recent American history. Eight years ago, he shocked the political establishment, romping to victory in an unbelievable upset while losing the popular vote. Four years later, he lost reelection to Joe Biden in a contentious election, even if he’ll never admit it. He seems nearly poised to win this time, despite 34 criminal convictions and two high-profile impeachments.</p><p>Politically, Trump is the furthest right he's ever been. His campaign has been described as “openly authoritarian,” marked by calls to terminate the U.S. Constitution and promised retribution against his political opponents. He has even gone so far as to claim that he wants to become “a dictator on day one.” His supporters are fervent, as are his opponents, and many believe a second nonconsecutive Trump term is a distinct possibility.</p>",
+            "color_hex": "#b31200",
+            "secondary_color_hex": null,
+            "is_active": 1,
+            "image_url": "https://itsastronomical.com/assets/2024/guiltyaf.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 306,
+        "fields": {
+            "first_name": "J. D.",
+            "last_name": "Vance",
+            "election": 21,
+            "party": "Republican",
+            "state": "Ohio",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/e2lEQxC.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "<p>J. D. Vance’s political career started two years ago when his U.S. Senate bid succeeded, partially due to Trump’s endorsement.  Previously, he was known for his 2016 book <em>Hillbilly Elegy</em>, a memoir about his upbringing in rural Appalachia.</p><p>Vance hails from the populist wing of the Republican Party. He supports high protective tariffs, a hard-line against China, and opposes aid to Ukraine. He marches in lockstep with Trump on most issues, and his selection would be seen as a doubling down on Trump’s core appeal. He also brings youth to the ticket, a strong contrast with the aging President Biden.",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 307,
+        "fields": {
+            "first_name": "Doug",
+            "last_name": "Burgum",
+            "election": 21,
+            "party": "Republican",
+            "state": "North Dakota",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/kUWDNCK.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "<p>Doug Burgum declined to run for a third term as Governor of North Dakota, instead mounting a longshot bid for the Republican nomination for president. He lost to Trump, but has since landed a spot as the Trump campaign’s chief advisor for energy policy.</p><p>North Dakota is hardly a swing state, and Burgum would likely do little to expand the ticket’s appeal to any distinct group of swing voters. But he has amassed quite a fortune in the tech industry, and that money would be invaluable to the campaign, especially with the big bucks Biden is raking in right now. However, the six-week abortion ban he signed as governor last year may complicate his appeal to moderate swing voters.",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 308,
+        "fields": {
+            "first_name": "Marco",
+            "last_name": "Rubio",
+            "election": 21,
+            "party": "Republican",
+            "state": "Florida",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/iBqZm4g.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "<p>Marco Rubio is easily the most experienced politician on Trump’s shortlist, and the only one to have served in more than one elected office. He ran against Trump for the Republican nomination in 2016, earning him the derisive nickname “Little Marco.”</p><p>Since then, he has mended fences with the Trump camp, although he remains one of the most prominent Republicans to be decidedly non-MAGA, and would make for a more mainstream voice on the ticket. Also, note that either Trump or Rubio would have to move their residence to make this ticket happen, but that’s only a slight hassle.",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 309,
+        "fields": {
+            "first_name": "Ben",
+            "last_name": "Carson",
+            "election": 21,
+            "party": "Republican",
+            "state": "Michigan",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/AzqAiyK.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "<p>Ben Carson’s expertise in the medical field landed him a spot in the Trump Administration in charge of the Department of Housing and Urban Development, in which he served from 2017 to 2021. Carson was loyal and kept his head down, even after most of Trump’s cabinet resigned in the wake of the January 6th attack.</p><p>Carson would make for the first Black American on a Republican ticket, an interesting first that is sure to shake up the race. His soft-spoken, cerebral presence could woo over some voters uncomfortable with Trump himself, although Carson is definitely something of a political lightweight.",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 312,
+        "fields": {
+            "first_name": "Butch ",
+            "last_name": "Ware",
+            "election": 21,
+            "party": "Green",
+            "state": "California",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#29ff54",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 302,
+        "fields": {
+            "first_name": "Robert F.",
+            "last_name": "Kennedy/Others",
+            "election": 21,
+            "party": "Independent",
+            "state": "New York",
+            "priority": 1,
+            "description": "<p>nutjob</p>",
+            "color_hex": "#ffc677",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 303,
+        "fields": {
+            "first_name": "Jill",
+            "last_name": "Stein/Others",
+            "election": 21,
+            "party": "Green",
+            "state": "Massachusetts",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#669c35",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 311,
+        "fields": {
+            "first_name": "Nicole",
+            "last_name": "Shanahan",
+            "election": 21,
+            "party": "Independent",
+            "state": "California",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
     // 2024 Bryanesque Candidates/VPs
     {
         "model": "campaign_trail.candidate",
@@ -103,7 +519,7 @@ campaignTrail_temp.candidate_json = [
             "party": "Republican",
             "state": "Florida",
             "priority": 2,
-            "description": "<p>Donald Trump is without a doubt the most infamous figure in recent American history. Eight years ago, he shocked the political establishment, romping to victory in a massive upset while losing the popular vote. Four years later, he lost reelection to Joe Biden in an incredibly contentious election, even if he’ll never admit it. He seems nearly poised to win this time, despite 34 criminal convictions, two high-profile impeachments, and one insurrection.</p><p>Politically, Trump is the furthest right he's ever been. His campaign has been described as “openly authoritarian,” marked by calls to terminate the U.S. Constitution and promised retribution against his political opponents. He has even gone so far as to claim that he wants to become “a dictator on day one.” His supporters are fervent, as are his opponents, and many believe a second nonconsecutive Trump term is a distinct possibility.</p>",
+            "description": "<p>Donald Trump is without a doubt the most infamous figure in recent American history. Eight years ago, he shocked the political establishment, romping to victory in a massive upset while losing the popular vote. Four years later, he lost reelection to Joe Biden in an incredibly contentious election, even if he’ll never admit it. He seems nearly poised to win this time, despite 34 criminal convictions, two high-profile impeachments, and one insurrection.</p><p>Politically, Trump is the furthest right he’s ever been. His campaign has been described as “openly authoritarian,” marked by calls to terminate the U.S. Constitution and promised retribution against his political opponents. He has even gone so far as to claim that he wants to become “a dictator on day one.” His supporters are fervent, as are his opponents, and many believe a second nonconsecutive Trump term is a distinct possibility.</p>",
             "color_hex": "#FF0000",
             "secondary_color_hex": "#90C0FF",
             "is_active": 1,
@@ -414,7 +830,564 @@ campaignTrail_temp.candidate_json = [
             "candidate_score": 0,
             "running_mate": true
         }
+    },
+    // Trump alternate candidates
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 1,
+        "fields": {
+            "first_name": "Donald",
+            "last_name": "Trump Jr.",
+            "election": 20,
+            "party": "Republican",
+            "state": "New York",
+            "priority": 15,
+            "description": "<p>When he had heard of his father’s tragic demise in Butler, Donald Trump Jr. did not just feel horrified. He felt angry, and filled with rage. As one of his father’s closest advisors, as a proud Republican, and as his son, he felt that he needed to do all he could to pick up the mantle of the movement his father started. So long as he chooses to run, he can easily sway the support of the delegates.</p><p>Once nominated, the former President’s son will seek to ride any sort of sympathy boost all the way until November 5th, providing it exists. He also must wage an aggressive campaign despite his lack of political experience, and grapple with an existential question for the Republican Party – <i>Did Trumpism just die with Trump himself?</i></p>",
+            "color_hex": "#00C100",
+            "secondary_color_hex": "#A1FFA1",
+            "is_active": 0,
+            "image_url": "https://itsastronomical.com/assets/2024/donjr.png",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "<p>When he had heard of his father’s tragic demise in Butler, Donald Trump Jr. did not just feel horrified. He felt angry, and filled with rage. As one of his father's closest advisors, as a proud Republican, and as his son, he felt that he needed to do all he could to pick up the mantle of the movement his father started. So long as he chooses to run, he can easily sway the support of the delegates.</p><p>Once nominated, the former President’s son will seek to ride any sort of sympathy boost all the way until November 5th, providing it exists. In addition, Don Jr. must wage an aggressive campaign despite his lack of political experience, and grapple with an existential question for the Republican Party – <i>Did Trumpism just die with Trump himself?</i></p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    }, 
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 2,
+        "fields": {
+            "first_name": "Nikki",
+            "last_name": "Haley",
+            "election": 20,
+            "party": "Republican",
+            "state": "South Carolina",
+            "priority": 15,
+            "description": "<p>Nikki Haley had lost the nominating contest with ease and with grace, winning only Vermont and Washington, D.C. She had even endorsed the former President and had planned on speaking at the convention. But with Donald Trump out of the picture, perhaps it’s time for the Republican Party to move on. Perhaps it is even time for a regime change within the party.</p><p>There are many challenges that Nikki Haley faces, if nominated. Many Republicans don’t trust her after her battle with Trump for the nomination. There are also concerns of giving the party’s nomination to the runner up, even in these unprecedented times. If she can keep her right flank in check, winning the general election shouldn’t be too difficult, but she must grapple with an existential question for the Republican Party – <i>Is there room for Nikki Haley and her brand of Republicanism in the Grand Old Party?</i></p>",
+            "color_hex": "#00C100",
+            "secondary_color_hex": "#A1FFA1",
+            "is_active": 0,
+            "image_url": "https://itsastronomical.com/assets/2024/haley.png",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "<p>Nikki Haley had lost the nominating contest with ease and with grace, winning only Vermont and Washington, D.C. She had even endorsed the former President and had planned on speaking at the convention. But with Donald Trump out of the picture, perhaps it’s time for the Republican Party to move on. Perhaps it is even time for a regime change within the party.</p><p>There are many challenges that Nikki Haley faces, if nominated. Many Republicans don’t trust her after her battle with Trump for the nomination. There are also concerns of giving the party’s nomination to the runner up, even in these unprecedented times. If she can keep her right flank in check, winning the general election shouldn’t be too difficult, but she must grapple with an existential question for the Republican Party – <i>Is there room for Nikki Haley and her brand of Republicanism in the Grand Old Party?</i></p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    }, 
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 3,
+        "fields": {
+            "first_name": "Ron",
+            "last_name": "DeSantis",
+            "election": 20,
+            "party": "Republican",
+            "state": "Florida",
+            "priority": 15,
+            "description": "<p>By the time Ron DeSantis had dropped out and endorsed Trump, he’d realized that 2024 was not his year. Still, DeSantis had hoped that all the money, all the energy, all the hype would not completely go to waste and for the party to nominate a loser again. Trump’s untimely demise, no matter how tragic, presented an opportunity for the party to move forward towards freedom.</p><p>DeSantis’ reputation as Governor of Florida certainly provides him with a different kind of platform compared to Trump, and there is a hope he can thread the needle between standard Republicanism and Trump’s brand of politics. But DeSantis remains very unpopular with Democrats, and some diehard Trump supporters may never be pleased. But even if he can solve these issues, he must grapple with an existential question for the Republican Party – <i>Can right-wing populists Republicans win nationally without Donald Trump?</i></p>",
+            "color_hex": "#00C100",
+            "secondary_color_hex": "#A1FFA1",
+            "is_active": 0,
+            "image_url": "https://itsastronomical.com/assets/2024/desantis.png",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "<p>By the time Ron DeSantis had dropped out and endorsed Trump, he’d realized that 2024 was not his year. Still, DeSantis had hoped that all the money, all the energy, all the hype would not completely go to waste and for the party to nominate a loser again. Trump’s untimely demise, no matter how tragic, presented an opportunity for the party to move forward towards freedom.</p><p>DeSantis’ reputation as Governor of Florida certainly provides him with a different kind of platform compared to Trump, and there is a hope he can thread the needle between standard Republicanism and Trump’s brand of politics. But DeSantis remains very unpopular with Democrats, and some diehard Trump supporters may never be pleased. But even if he can solve these issues, he must grapple with an existential question for the Republican Party – <i>Can right-wing populists Republicans win nationally without Donald Trump?</i></p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    }, 
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 4,
+        "fields": {
+            "first_name": "JD",
+            "last_name": "Vance",
+            "election": 20,
+            "party": "Republican",
+            "state": "Ohio",
+            "priority": 15,
+            "description": "<p>The JD Vance from eight years ago would have been ecstatic to learn that Donald Trump’s brains had been blown to bits on national television. The JD Vance of today? No. Instead, he basks in the glory of Trump’s brand of populist politics, so much so that he was repeatedly being vetted for the role of Vice President before his death. With this in mind, Vance can’t help but wonder: could <i>he</i> be the one to be nominated in Trump’s place?</p><p>Vance’s story – from writing <i>Hillbilly Elegy</i>, to his conversion, salvation, and baptism in Trumpism may attract diehard Trump supporters to his cause. Trump vetting him for the role of Vice President proving that he was the anointed successor of his movement may be enough to hand him the nomination. Vance himself remains untested as a candidate, underperforming in his Ohio Senate race, and he must grapple with an existential question for the Republican Party – <i>Can Trump-y candidates make his supporters turn out without Trump?</i></p>",
+            "color_hex": "#00C100",
+            "secondary_color_hex": "#A1FFA1",
+            "is_active": 0,
+            "image_url": "https://imgur.com/e2lEQxC.png",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "<p>The JD Vance from eight years ago would have been ecstatic to learn that Donald Trump’s brains had been blown to bits on national television. The JD Vance of today? No. Instead, he basks in the glory of Trump’s brand of populist politics, so much so that he was repeatedly being vetted for the role of Vice President before his death. With this in mind, Vance can’t help but wonder: could <i>he</i> be the one to be nominated in Trump’s place?</p><p>Vance’s story – from writing <i>Hillbilly Elegy</i>, to his conversion, salvation, and baptism in Trumpism may attract diehard Trump supporters to his cause. Trump vetting him for the role of Vice President proving that he was the anointed successor of his movement may be enough to hand him the nomination. Vance himself remains untested as a candidate, underperforming in his Ohio Senate race, and he must grapple with an existential question for the Republican Party – <i>Can Trump-y candidates make his supporters turn out without Trump?</i></p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 5,
+        "fields": {
+            "first_name": "Doug",
+            "last_name": "Burgum",
+            "election": 20,
+            "party": "Republican",
+            "state": "North Dakota",
+            "priority": 15,
+            "description": "<p>Doug Burgum’s 2024 presidential bid seemed like a longshot. He was on his way out as Governor, and it wouldn’t hurt to give it a shot. Maybe he could get an advisory role, or perhaps the most lucrative role - Secretary of Energy. When he was being vetted for Vice President, he hadn’t even considered it. Now, with Trump’s demise, there is a real shot Burgum could win the nomination at the convention, as a dark horse.</p><p>Despite running for President, Burgum has a low profile, which could help or hurt him. Trump’s vetting of Burgum may be key to his bid to get the nomination. The general election too remains a mystery: just who the hell is Doug Burgum? Can he beat Joe Biden? With all of this, it is clear that he must grapple with an existential question for the Republican Party – <i>Can the Trump movement learn to moderate?</i></p>",
+            "color_hex": "#00C100",
+            "secondary_color_hex": "#A1FFA1",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/kUWDNCK.png",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "<p>Doug Burgum’s 2024 presidential bid seemed like a longshot. He was on his way out as Governor, and it wouldn’t hurt to give it a shot. Maybe he could get an advisory role, or perhaps the most lucrative role - Secretary of Energy. When he was being vetted for Vice President, he hadn’t even considered it. Now, with Trump’s demise, there is a real shot Burgum could win the nomination at the convention, as a dark horse.</p><p>Despite running for President, Burgum has a low profile, which could help or hurt him. Trump’s vetting of Burgum may be key to his bid to get the nomination. The general election too remains a mystery: just who the hell is Doug Burgum? Can he beat Joe Biden? With all of this, it is clear that he must grapple with an existential question for the Republican Party – <i>Can the Trump movement learn to moderate?</i></p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 6,
+        "fields": {
+            "first_name": "Robert F.",
+            "last_name": "Kennedy Jr.",
+            "election": 20,
+            "party": "Independent",
+            "state": "New York",
+            "priority": 15,
+            "description": "<p>nutjob</p>",
+            "color_hex": "#00C100",
+            "secondary_color_hex": "#A1FFA1",
+            "is_active": 0,
+            "image_url": "https://itsastronomical.com/assets/2024/rfkjr.png",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "<p>If anyone knows what the GOP is going through, it sure as hell is Robert F. Kennedy Jr. The son of Bobby Kennedy himself has managed to secure the Republican nomination for President following a hectic few days – the assassinaton of Donald Trump, the campaign of Nikki Haley for the Republican nomination, an an unprecedented floor revolt by delegates, who voted for the only other man seeking the nomination.</p><p>Such a turn of events is nothing short of shocking. Kennedy, who up until 2023 has wanted little to do with the Republican Party, now stands in complete control of the organization. He now has to manage how his strange and populistic views on certain issues align with the rest of the base, and more importantly, he must grapple with an existential question for the Republican Party – <i>Just how far is MAGA willing to go without their prophet to lead them?</i></p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 7,
+        "fields": {
+            "first_name": "",
+            "last_name": "P01135809",
+            "election": 20,
+            "party": "Willful retention of national defense information, False statements and representations, Conspiracy to obstruct justice, Withholding a document or record, etc",
+            "state": "Total of Four Years House Arrest",
+            "priority": 15,
+            "description": "<p>nutjob</p>",
+            "color_hex": "#eeeeeee",
+            "secondary_color_hex": "#eeeeeee",
+            "is_active": 0,
+            "image_url": "https://itsastronomical.com/assets/2024/trumpmugshot.png",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "<p>This is war.</p><p>You must be ready to <b>FIGHT!</b> You must be ready to <b>WIN!</b></p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    // Harris Bio
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 100,
+        "fields": {
+            "first_name": "Kamala",
+            "last_name": "Harris",
+            "election": 20,
+            "party": "Democratic",
+            "state": "California",
+            "priority": 1,
+            "description": "<p>Kamala Harris wasn’t supposed to be here. In fact, her candidacy was dreaded, cited by many as the single strongest argument for Biden’s candidacy in 2024. Yet Biden’s dismal performance and the subsequent Democratic panic sank his polling numbers, leading to his withdrawal under fire in late July.</p><p>Harris’ candidacy has breathed life into a party once resigned to defeat, but that only solves half the problem. She needs to find her footing, define herself to a public largely unfamiliar with her, and run a strong campaign all within a hundred days if she wants to rally her party, dispatch the Republicans, and defend democracy.</p>",
+            "color_hex": "#052e71",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://itsastronomical.com/assets/2024/harrisalt.png",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "<p>Kamala Harris wasn’t supposed to be here. In fact, her candidacy was dreaded, cited by many as the single strongest argument for Biden’s candidacy in 2024. Yet Biden’s dismal performance and the subsequent Democratic panic sank his polling numbers, leading to his withdrawal under fire in late July.</p><p>Harris’ candidacy has breathed life into a party once resigned to defeat, but that only solves half the problem. She needs to find her footing, define herself to a public largely unfamiliar with her, and run a strong campaign all within a hundred days if she wants to rally her party, dispatch the Republicans, and defend democracy.</p>",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    // Harris Bio if she runs in the primaries
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 101,
+        "fields": {
+            "first_name": "Kamala",
+            "last_name": "Harris",
+            "election": 20,
+            "party": "Democratic",
+            "state": "California",
+            "priority": 1,
+            "description": "<p>Kamala Harris enters the 2024 election as the frontrunner for the Democratic nomination, with President Biden’s backing and preliminary fundraising. Much like Joe four years ago, she’s hardly the consensus first choice, but definitely isn’t their last choice either. This is her biggest strength as she seeks the Democratic nomination.</p><p>Once nominated, Harris will have to lead a party that is unpopular nationally against the Republicans, who themselves have been struggling in elections as of late. She must also be prepared to make crucial decisions about how closely to associate herself with President Biden and how to handle her Republican opponent, whoever it may become.</p>",
+            "color_hex": "#052e71",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://itsastronomical.com/assets/2024/harrisalt.png",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "<p>Kamala Harris enters the 2024 election as the frontrunner for the Democratic nomination, with President Biden’s backing and preliminary fundraising. Much like Joe four years ago, she’s hardly the consensus first choice, but definitely isn’t their last choice either. This is her biggest strength as she seeks the Democratic nomination.</p><p>Once nominated, Harris will have to lead a party that is unpopular nationally against the Republicans, who themselves have been struggling in elections as of late. She must also be prepared to make crucial decisions about how closely to associate herself with President Biden and how to handle her Republican opponent, whoever it may become.</p>",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    // Bonus VPs if Harris goes through the Primaries
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 220,
+        "fields": {
+            "first_name": "Dean",
+            "last_name": "Phillips",
+            "election": 20,
+            "party": "Democratic",
+            "state": "Minnesota",
+            "priority": 1,
+            "description": "<p>Dean Phillips is a Congressman from Minnesota, flipping a longtime Republican district in the Democratic bloodbath of 2018. He’d initially anticipated running against President Biden, making clear he believed that Biden shouldn’t seek a second term.</p><p>Phillips’ time in office was marked by a strong bipartisan reputation, but he started to align more and more with progressives during his 2024 campaign. This may hurt or help Harris in certain regions. Keep in mind that Harris risks personally offending Biden if she picks Dean Phillips.</p>",
+            "color_hex": "#052e71",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://itsastronomical.com/assets/2024/phillips.png",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "<p>Dean Phillips is a Congressman from Minnesota, flipping a longtime Republican district in the Democratic bloodbath of 2018. He’d initially anticipated running against President Biden, making clear he believed that Biden shouldn’t seek a second term.</p><p>Phillips’ time in office was marked by a strong bipartisan reputation, but he started to align more and more with progressives during his 2024 campaign. This may hurt or help Harris in certain regions. Keep in mind that Harris risks personally offending Biden if she picks Dean Phillips.</p>",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 221,
+        "fields": {
+            "first_name": "Joaquin",
+            "last_name": "Castro",
+            "election": 20,
+            "party": "Democratic",
+            "state": "Texas",
+            "priority": 1,
+            "description": "<p>Joaquin Castro is a Congressman from Texas, representing most of western San Antonio. During his tenure in Congress, he has staked himself out as a consistent political progressive. His selection reinforces the campaign’s outreach to Hispanic voters, particularly in key battlegrounds like Arizona, Nevada, and perhaps even his home state of Texas.</p><p>However, Castro has never run a statewide race, and Texas remains a perennial longshot for Democrats. Some moderates may also be wary of his progressive stances on economic and social issues. Still, his presence on the ticket could energize Latino turnout, who Democrats have been struggling with lately.</p>",
+            "color_hex": "#052e71",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://itsastronomical.com/assets/2024/castro.png",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "<p>Joaquin Castro is a Congressman from Texas, representing most of western San Antonio. During his tenure in Congress, he has staked himself out as a consistent political progressive. His selection reinforces the campaign’s outreach to Hispanic voters, particularly in key battlegrounds like Arizona, Nevada, and perhaps even his home state of Texas.</p><p>However, Castro has never run a statewide race, and Texas remains a perennial longshot for Democrats. Some moderates may also be wary of his progressive stances on economic and social issues. Still, his presence on the ticket could energize Latino turnout, who Democrats have been struggling with lately.</p>",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    // Alt GOP VPs 
+{
+    "model": "campaign_trail.candidate",
+    "pk": 1001,
+    "fields": {
+        "first_name": "Vivek",
+        "last_name": "Ramaswamy",
+        "election": 20,
+        "party": "Republican",
+        "state": "Texas",
+        "priority": 15,
+        "description": "<p>NULL</p>",
+        "color_hex": "#00C100",
+        "secondary_color_hex": "#A1FFA1",
+        "is_active": 0,
+        "image_url": "https://itsastronomical.com/assets/2024/vivekfinal.png",
+        "electoral_victory_message": "'",
+        "electoral_loss_message": "'",
+        "no_electoral_majority_message": "'",
+        "description_as_running_mate": "<p>Vivek Ramaswamy made a name for himself in the early GOP debates, burning bridges with every other candidate on stage. The only person he didn’t attack, of course, was Donald Trump himself. Ramaswamy has made it known he is open to serving as Don Jr.’s running mate and is eager to “avenge” Trump.</p><p>Vivek lacks political experience and doesn’t bring much to the ticket that you don’t already have, but he is fluent in the culture war playbook and speaks the language of the online right.</p>",
+        "candidate_score": 0,
+        "running_mate": true
     }
+}, 
+{
+    "model": "campaign_trail.candidate",
+    "pk": 1002,
+    "fields": {
+        "first_name": "Elon",
+        "last_name": "Musk",
+        "election": 20,
+        "party": "Republican",
+        "state": "Texas",
+        "priority": 15,
+        "description": "<p>NULL</p>",
+        "color_hex": "#00C100",
+        "secondary_color_hex": "#A1FFA1",
+        "is_active": 0,
+        "image_url": "https://itsastronomical.com/assets/2024/musk.png",
+        "electoral_victory_message": "'",
+        "electoral_loss_message": "'",
+        "no_electoral_majority_message": "'",
+        "description_as_running_mate": "<p>With his brain rotted by culture war grievances, Elon Musk is the embodiment of Silicon Valley’s shift to the right. Musk, once a standard, tech-oriented “liberal,” has gone down a rabbit hole of right-wing conspiracies and is now eager to assist Donald Trump Jr.’s campaign for President of the United States.</p><p>Musk cannot be Vice President on paper – that paper, of course, being the United States Constitution. But in practice, his influence could still be useful. With ownership of the most powerful social media network, 𝕏, Musk will have a great deal of influence on the campaign regardless of whether you go forward with what will essentially be a publicity stunt.</p>",
+        "candidate_score": 0,
+        "running_mate": true
+    }
+}, 
+{
+    "model": "campaign_trail.candidate",
+    "pk": 1003,
+    "fields": {
+        "first_name": "Bryon",
+        "last_name": "Donalds",
+        "election": 20,
+        "party": "Republican",
+        "state": "Florida",
+        "priority": 15,
+        "description": "<p>NULL</p>",
+        "color_hex": "#00C100",
+        "secondary_color_hex": "#A1FFA1",
+        "is_active": 0,
+        "image_url": "https://itsastronomical.com/assets/2024/donalds.png",
+        "electoral_victory_message": "'",
+        "electoral_loss_message": "'",
+        "no_electoral_majority_message": "'",
+        "description_as_running_mate": "<p>An emergency meeting of the Republican National Convention has forced Donald Trump Jr. to accede to Byron Donalds as his running mate. Donalds is a second-term congressman from Florida and one of the most vocal Black conservatives in the country. He quickly emerged as a favorite of the MAGA base for his opposition to Kevin McCarthys speakership bid and unwavering loyalty to Donald Trump.</p><p>Donalds may lack deep experience, but that shouldn’t really matter in the Trump era. What matters is that his presence helps calm uneasy Republican leadership while filling the #2 slot with a loyalist.</p>",
+        "candidate_score": 0,
+        "running_mate": true
+    }
+}, 
+{
+    "model": "campaign_trail.candidate",
+    "pk": 2001,
+    "fields": {
+        "first_name": "Glenn",
+        "last_name": "Youngkin",
+        "election": 20,
+        "party": "Republican",
+        "state": "Florida",
+        "priority": 15,
+        "description": "<p>NULL</p>",
+        "color_hex": "#00C100",
+        "secondary_color_hex": "#A1FFA1",
+        "is_active": 0,
+        "image_url": "https://itsastronomical.com/assets/2024/youngkin.png",
+        "electoral_victory_message": "'",
+        "electoral_loss_message": "'",
+        "no_electoral_majority_message": "'",
+        "description_as_running_mate": "<p>Glenn Youngkin won the Virginia governorship in 2021 by walking a careful tightrope between appealing to the suburbs and keeping Donald Trump's base engaged. Since then, he’s been seen as the guy to win back college-educated whites without scaring off the MAGA base, and was even briefly considered as a dark horse running mate before Trump’s demise.</p><p>Haley’s advisors see him as a calming presence, one that reassures donors and double down on Haley's more “orthodox” stances. Of course, Youngkin’s balancing act has its limits. He’s never been tested on a national stage, and his refusal to fully embrace Trump has made him suspect among the loudest voices in the party, especially with Haley at the top of the ticket.</p>",
+        "candidate_score": 0,
+        "running_mate": true
+    }
+},
+{
+    "model": "campaign_trail.candidate",
+    "pk": 2002,
+    "fields": {
+        "first_name": "Josh",
+        "last_name": "Hawley",
+        "election": 20,
+        "party": "Republican",
+        "state": "Missouri",
+        "priority": 15,
+        "description": "<p>NULL</p>",
+        "color_hex": "#00C100",
+        "secondary_color_hex": "#A1FFA1",
+        "is_active": 0,
+        "image_url": "https://itsastronomical.com/assets/2024/hawley.png",
+        "electoral_victory_message": "'",
+        "electoral_loss_message": "'",
+        "no_electoral_majority_message": "'",
+        "description_as_running_mate": "<p>Josh Hawley is a Senator from the Show-Me State, best known for raising his fist on January 6th and then running from the consequences. However, he’s also carved out a reputation as one of the GOP’s loudest populist intellectuals, quoting the Founders while railing against porn, Big Tech, and wokeism. His addition to the Haley ticket is an olive branch to the post-Trump right.</p><p>Hawley brings energy and youth to the campaign, along with a flair for culture war confrontation. But he’s also deeply polarizing, and his name still evokes January 6th for many educated voters. If Haley chooses him, it will be universally interpreted as an appeasement to the Trump wing of the party.</p>",
+        "candidate_score": 0,
+        "running_mate": true
+    }
+}, 
+{
+    "model": "campaign_trail.candidate",
+    "pk": 3001,
+    "fields": {
+        "first_name": "Kim",
+        "last_name": "Reynolds",
+        "election": 20,
+        "party": "Republican",
+        "state": "Iowa",
+        "priority": 15,
+        "description": "<p>NULL</p>",
+        "color_hex": "#00C100",
+        "secondary_color_hex": "#A1FFA1",
+        "is_active": 0,
+        "image_url": "https://itsastronomical.com/assets/2024/reynolds.png",
+        "electoral_victory_message": "'",
+        "electoral_loss_message": "'",
+        "no_electoral_majority_message": "'",
+        "description_as_running_mate": "<p>Iowa governor Kim Reynolds was one of the first Republican governors to fully embrace Ron DeSantis, even when it put her at odds with Trumpworld. The two formed a close alliance early on, and her selection would be a natural continuation of that.</p><p>Reynolds brings staunch conservative credentials, a proven record on culture war issues, and Midwestern geography to the ticket. However, her six-week abortion ban could alienate moderates in key battleground states, and Reynolds has been struggling with popularity in her own home state.</p>",
+        "candidate_score": 0,
+        "running_mate": true
+    }
+},
+{
+    "model": "campaign_trail.candidate",
+    "pk": 3002,
+    "fields": {
+        "first_name": "Kevin",
+        "last_name": "Stitt",
+        "election": 20,
+        "party": "Republican",
+        "state": "North Dakota",
+        "priority": 15,
+        "description": "<p>NULL</p>",
+        "color_hex": "#00C100",
+        "secondary_color_hex": "#A1FFA1",
+        "is_active": 0,
+        "image_url": "https://itsastronomical.com/assets/2024/stitt.png",
+        "electoral_victory_message": "'",
+        "electoral_loss_message": "'",
+        "no_electoral_majority_message": "'",
+        "description_as_running_mate": "<p>Kevin Stitt is Governor of Oklahoma and has built a reputation as one of the GOP’s most dependable conservatives. During his tenure, he's pushed aggressive education reform and clashed repeatedly with tribal governments over jurisdiction and tax issues. While never a major national figure, he earned quiet respect among DeSantis allies for adopting a similar approach to COVID and cultural politics.</p><p>At the very least, Stitt’s presence on the ticket would signal ideological consistency. He doesn’t have DeSantis’s name recognition, but he doesn’t have his baggage either. But Stitt does have executive experience, Christian right credibility, and solid loyalty. Do keep in mind his home state of Oklahoma is unlikely to be competitive this year.</p>",
+        "candidate_score": 0,
+        "running_mate": true
+    }
+}, 
+{
+    "model": "campaign_trail.candidate",
+    "pk": 4001,
+    "fields": {
+        "first_name": "Ben",
+        "last_name": "Carson",
+        "election": 20,
+        "party": "Republican",
+        "state": "Michigan",
+        "priority": 15,
+        "description": "<p>NULL</p>",
+        "color_hex": "#00C100",
+        "secondary_color_hex": "#A1FFA1",
+        "is_active": 0,
+        "image_url": "https://itsastronomical.com/assets/2024/carson.png",
+        "electoral_victory_message": "'",
+        "electoral_loss_message": "'",
+        "no_electoral_majority_message": "'",
+        "description_as_running_mate": "<p>Ben Carson’s expertise in the medical field earned him a place in the Trump administration, where he led the Department of Housing and Urban Development from 2017 to 2021. One of the few cabinet members to remain through the end, Carson stayed loyal even after January 6 and quietly returned to private life after Trump left office.</p><p>Now, with Trump gone and J. D. Vance carrying the torch, Carson returns as a symbol of continuity and calm. His faith, race, and reputation for humility could help Vance soften his image. But Carson’s political instincts remain untested, and it’s unclear whether this nostalgic nod to the first Trump era will connect in a very different moment.</p>",
+        "candidate_score": 0,
+        "running_mate": true
+    }
+},
+{
+    "model": "campaign_trail.candidate",
+    "pk": 4002,
+    "fields": {
+        "first_name": "Doug",
+        "last_name": "Burgum",
+        "election": 20,
+        "party": "Republican",
+        "state": "North Dakota",
+        "priority": 15,
+        "description": "<p>NULL</p>",
+        "color_hex": "#00C100",
+        "secondary_color_hex": "#A1FFA1",
+        "is_active": 0,
+        "image_url": "https://itsastronomical.com/assets/2024/burgum.png",
+        "electoral_victory_message": "'",
+        "electoral_loss_message": "'",
+        "no_electoral_majority_message": "'",
+        "description_as_running_mate": "<p>Doug Burgum declined to run for a third term as North Dakota governor, instead launching a longshot bid for the 2024 nomination. Though he lost to Trump, Burgum earned respect behind the scenes and later became one of Trump’s key advisors on energy policy, a role he held until Trump’s assassination.</p><p>Vance’s selection of Burgum would be a safe, business-minded choice. Burgum brings deep pockets, executive experience, and little of the chaos that defined the Trump years. But he’s low on charisma, and the six-week abortion ban he signed as governor may stir backlash among swing voters, especially now that the spotlight is fully on him and Vance to define the post-Trump GOP.</p>",
+        "candidate_score": 0,
+        "running_mate": true
+    }
+}, 
+{
+    "model": "campaign_trail.candidate",
+    "pk": 5001,
+    "fields": {
+        "first_name": "Marco",
+        "last_name": "Rubio",
+        "election": 20,
+        "party": "Republican",
+        "state": "Florida",
+        "priority": 15,
+        "description": "<p>NULL</p>",
+        "color_hex": "#00C100",
+        "secondary_color_hex": "#A1FFA1",
+        "is_active": 0,
+        "image_url": "https://itsastronomical.com/assets/2024/rubio.png",
+        "electoral_victory_message": "'",
+        "electoral_loss_message": "'",
+        "no_electoral_majority_message": "'",
+        "description_as_running_mate": "<p>Marco Rubio is easily the most experienced politician on Burgum’s shortlist, and the only one to have served in more than one elected office. He ran against Trump for the Republican nomination in 2016, earning him the derisive nickname “Little Marco.”</p><p>Since then, he mended fences with the Trump wing of the party, though he remains one of the most prominent Republicans to be decidedly non-MAGA. For Burgum, he brings foreign policy credentials, mainstream appeal, and a steady hand. Of course, Trumpworld might not be pleased with two orthodox Republicans leading the party into November.</p>",
+        "candidate_score": 0,
+        "running_mate": true
+    }
+},
+{
+    "model": "campaign_trail.candidate",
+    "pk": 5002,
+    "fields": {
+        "first_name": "JD",
+        "last_name": "Vance",
+        "election": 20,
+        "party": "Republican",
+        "state": "Ohio",
+        "priority": 15,
+        "description": "<p>NULL</p>",
+        "color_hex": "#00C100",
+        "secondary_color_hex": "#A1FFA1",
+        "is_active": 0,
+        "image_url": "https://itsastronomical.com/assets/2024/vance.png",
+        "electoral_victory_message": "'",
+        "electoral_loss_message": "'",
+        "no_electoral_majority_message": "'",
+        "description_as_running_mate": "<p>J. D. Vance’s political career started two years ago when his U.S. Senate bid succeeded, mostly due to the coveted Trump endorsement. Previously, he was known for his 2016 book Hillbilly Elegy, a memoir about his upbringing in rural Appalachia. Trumpworld reportedly is pleased at the prospects of Burgum selecting Vance.</p><p>Vance hails from the populist wing of the Republican Party. He supports high protective tariffs, a hard line against China, and opposes aid to Ukraine. His selection by Burgum would be seen as a bridge to the Trump base and a doubling down on core nationalist themes. He also brings youth and ideological clarity, qualities Burgum himself may lack on the national stage.</p>",
+        "candidate_score": 0,
+        "running_mate": true
+    }
+},
+{
+    "model": "campaign_trail.candidate",
+    "pk": 6001,
+    "fields": {
+        "first_name": "Mike",
+        "last_name": "Lee",
+        "election": 20,
+        "party": "Republican",
+        "state": "Utah",
+        "priority": 15,
+        "description": "<p>NULL</p>",
+        "color_hex": "#00C100",
+        "secondary_color_hex": "#A1FFA1",
+        "is_active": 0,
+        "image_url": "https://itsastronomical.com/assets/2024/lee.png",
+        "electoral_victory_message": "'",
+        "electoral_loss_message": "'",
+        "no_electoral_majority_message": "'",
+        "description_as_running_mate": "<p>Mike Lee is the Senior Senator from Utah, having served since his ousting of Bob Bennett in 2010. Although he was opposed to Trump in 2016, Lee quickly became one of his closest allies during his administration, and was eager to endorse him in 2020 and 2024. He also supported plans to overturn the results of the 2020 election, which has made enemies out of the few Utah Democrats.</p><p>Lee will provide a relatively experienced hand at a time where many are questioning your ability to serve as President, and someone ideologically aligned with Trump. However, he provides nothing of note to any moderate, swing voters looking for a way out from the Biden Administration, something that would be very useful in these times.</p>",
+        "candidate_score": 0,
+        "running_mate": true
+    }
+},
+{
+    "model": "campaign_trail.candidate",
+    "pk": 6002,
+    "fields": {
+        "first_name": "Tulsi",
+        "last_name": "Gabbard",
+        "election": 20,
+        "party": "Independent",
+        "state": "Hawaii",
+        "priority": 15,
+        "description": "<p>NULL</p>",
+        "color_hex": "#00C100",
+        "secondary_color_hex": "#A1FFA1",
+        "is_active": 0,
+        "image_url": "https://itsastronomical.com/assets/2024/gabbard.png",
+        "electoral_victory_message": "'",
+        "electoral_loss_message": "'",
+        "no_electoral_majority_message": "'",
+        "description_as_running_mate": "<p>Tulsi Gabbard is a former Congresswoman from Hawaii, having retired to make a futile run for the Democratic nomination in 2020. Spurred on by the culture war and populism, she's now is an independent, roaming in the political wilderness, searching for a party to call home. In that regard, you and her are much alike.</p><p>A ticket of two former Democrats, now converted into independent Republicans will certainly grab headlines and perhaps help make the case that the Republican Party is the one with the big tent. Still, while Gabbard's anti-Democrat, pro-Russia rhetoric might make MAGA glee, she wouldn't help you unite more traditional Republicans back to the cause.</p>",
+        "candidate_score": 0,
+        "running_mate": true
+    }
+}           
 ]
 
 campaignTrail_temp.running_mate_json = [
@@ -562,8 +1535,8 @@ campaignTrail_temp.opponents_default_json = [
         "candidates": [
             300,
             301,
-            303,
-            304
+            302,
+            303
         ]
     },
     {
@@ -572,7 +1545,7 @@ campaignTrail_temp.opponents_default_json = [
             201,
             200,
             202,
-            203
+            203,
         ]
     }
 ]
@@ -616,8 +1589,8 @@ HistHexcolour = ["#FF0000", "#0000FF", "#FFFF00", "#00C100"];
 HistName = [
   " Donald Trump",
   " Kamala Harris",  
-  " Robert F. Kennedy Jr./Others",
   " Jill Stein/Others",
+  " Robert F. Kennedy Jr./Others",
 
 ];
 HistEV = [312, 226, 0, 0];
@@ -747,53 +1720,55 @@ campaignTrail_temp.achievements = {
     }
 }
 
-corrr = '\n              <h2>THE CAMPAIGN TRAIL</h2>\n            '; 
-document.getElementById("header").src = "https://www.newcampaigntrail.com/static/images/banner_classic.png";
-document.body.style.backgroundColor = "#bfe6ff";
-document.body.background = "";
-$(".container")[0].style.backgroundColor = "#fff";
-nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#700016";
-document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
-nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#e8fbff";
-$("#game_window")[0].style.backgroundColor = "#bfe6ff";
-$(".footer")[0].style.color = "#000";
-document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#e8fbff!important;}</style>";
-document.head.innerHTML += "<style>#results_container {color:#000000;}";
-
+/*
+List of localStorage variables used by the game:
+vance
+burgum
+haley
+desantis
+rfk
+*/
 var changeGameDisp = (hide) => {
     disp = "";
     if (hide) {
       disp = "none";
     }
     document.getElementsByClassName("inner_window_w_desc")[0].style.display = disp
-  };
+};
 
 e.creditsPage = () => {
     credits_html = `
-   <h2>Project Leads</h2><img src="https://itsastronomical.com/assets/miniastro.png" width="60px">
+   <h2>Project/Conceptual Leads</h2><img src="https://itsastronomical.com/assets/miniastro.png" width="60px">
     <h4><font color="#5d81e3">ItsAstronomical</font> - Coding, Writing</h4>
     <img src="https://static-assets-1.truthsocial.com/tmtg:prime-ts-assets/accounts/avatars/107/854/629/747/368/010/original/0c5c53c1f17152e7.jpeg" width="60px">
     <h4><font color="#6cc778">Martha</font> - Writing</h4>
-    <h2>Writers - Divided States of America</h2>
-    <h4>Bonbishka</h4>
-    <h4>Pedro/Liutenant_</h4>
+   <h2>Writing Lead</h2><img src="https://i.imgur.com/RMPsaM7.jpeg" width="60px">
+   <h4><font color="#f1ca95">Pedro/Liutenant_</font> - Writing</h4>
+    <h2>Writers - <i>Divided States of America</i></h2>
     <h4>Jake Dionysos</h4>
     <h4>Emmythegremlin</h4>
     <h4>Wafflesdadog</h4>
-    <h4>Celia</h4>
+    <h4>horrificnecktieenjoyer</h4>
+    <h4>Cecilia</h4>
     <h4>NoReading</h4>
+    <h4>Amira the Alligator</h4>
+    <h2>Additional <i>Divided States</i> Writers (Endings)</h2>
     <h4>Spar-kie</h4>
+    <h4>Bonbishka</h4>
     <h4>Greeleycrat</h4>
-    <h2>Custom Features (Mostly for Divided States)</h2>
-    <h4></h4>
+    <h2>Custom Features</h2>
     <h4><font color="#E97451">Rubix - Candidate Switcher/Bugfixing</font></h4>
-    <h4><font color="#87CEEB">Mangolith - Ending/Bugfixing</font></h4>
+    <h4><font color="#87CEEB">Mangolith - Ending Bugfixing</font></h4>
     <h4><font color="#569c7d">DecstarG - Credits, Midgame VP Switcher</font></h4>
-    <h4><font color="#0fd7d4">Nina - Base for HQ Menus</font></h4>
-    <h4><font color="#b42813">Liquid Astro - Bunnyhop</font></h4>
-    <h2>Playtesters/Other Adivce</h2>
-    <h4>Obummer</h4>
+    <h4><font color="#789b90">Nina - Base for HQ Menus, Pre-Game options for <i>2024</i></font></h4>
+    <h4><font color="#8936B9">Thatchmaster - Music Player</font></h4>
+    <h2>Playtesters/Other Advice</h2>
     <h4>MassachusettsForStockdale</h4>
+    <h4>Obummer</h4>
+    <h4>RouteVenus</h4>
+    <h4>Ctaccount</h4>
+    <h2>Special Thanks</h2>
+    <h4>You, for playing.</h4>
     </div>
     `
     changeGameDisp(true);
@@ -830,111 +1805,7 @@ e.creditsPage = () => {
       z.appendChild(newMenu);
       z.appendChild(backButton);
   
-  }
+}
   
-  e.credits = "<button onclick='e.creditsPage()'>Astro, Martha, and...</button>"
-
-  styling = document.createElement("style");
-  document.head.appendChild(styling);
-
-
-  campaignTrail_temp.bunnyhop = true;
-  function addColor() {
-          var difficultyDiv = document.getElementById("difficulty_level");
-          if (difficultyDiv && !document.getElementById("bunnyhopDropdown")) {
-              var questionCounter = ["25 (Randomized Questions)", "25 (Static Question Set)", "30 (Expanded)", "35 (Full)"];
-              var questions = [25, 25, 30, 35];
-              var dropdown = document.createElement("select");
-              dropdown.id = "bunnyhopDropdown";
-  
-              for (var i = 0; i < questions.length; i++) {
-                  var opt = document.createElement("option");
-                  opt.text = questionCounter[i];
-                  if (questionCounter[i] === "25 (Randomized Questions)") {
-                      opt.selected = true;
-                  }
-                  opt.value = questionCounter[i]; // Use the text as the value
-                  dropdown.options.add(opt);
-              }
-  
-              var form = document.createElement("form");
-              form.name = "bunnyhopForm";
-              var header = document.createElement("h3");
-              header.textContent = "Select Question Count:";
-              form.appendChild(header);
-              form.appendChild(dropdown);
-              difficultyDiv.appendChild(form);
-  
-              dropdown.addEventListener("change", function() {
-                  if (this.value === "25 (Randomized Questions)") {
-                      campaignTrail_temp.bunnyhop = true;
-                      campaignTrail_temp.staticQuestions = false; // Ensure staticQuestions is false
-                  } else if (this.value === "25 (Static Question Set)") {
-                      campaignTrail_temp.bunnyhop = false;
-                      campaignTrail_temp.staticQuestions = true; // Set staticQuestions to true
-                  } else {
-                      campaignTrail_temp.bunnyhop = false;
-                      campaignTrail_temp.staticQuestions = false; // Ensure staticQuestions is false
-                  }
-                  campaignTrail_temp.global_parameter_json[0].fields.question_count = parseInt(this.value.match(/\d+/)[0]); // Extract the number
-              });
-  
-              var colourForm = document.createElement("form");
-              colourForm.name = "colour_selection";
-              var colourHeader = document.createElement("h3");
-              colourHeader.textContent = "Enable Expanded Styling?";
-              colourForm.appendChild(colourHeader);
-              var colourCheckbox = document.createElement("input");
-              colourCheckbox.type = "checkbox";
-              colourCheckbox.id = "colour";
-              colourCheckbox.checked = false;
-              colourForm.appendChild(colourCheckbox);
-              difficultyDiv.appendChild(colourForm);
-  
-              colourCheckbox.addEventListener("change", function() {
-                  if (this.checked){
-                      campaignTrail_temp.candidate_json[0].fields.color_hex = '#b31200'
-                      campaignTrail_temp.candidate_json[1].fields.color_hex = '#052e71'
-                      campaignTrail_temp.candidate_json[2].fields.color_hex = '#ffc677'
-                      campaignTrail_temp.candidate_json[3].fields.color_hex = '#669c35'
-
-                  }
-                  else{          
-                    campaignTrail_temp.candidate_json[0].fields.color_hex = '#FF0000'
-                    campaignTrail_temp.candidate_json[1].fields.color_hex = '#0000FF'
-                    campaignTrail_temp.candidate_json[2].fields.color_hex = '#FFFF00'
-                    campaignTrail_temp.candidate_json[3].fields.color_hex = '#00C100'
-                  }
-              });
-  
-              var difficultyForm = document.querySelector('form[name="difficulty_level_selection"]');
-              var difficultyHeader = difficultyForm.querySelector('h3');
-              difficultyHeader.textContent = "Select campaign difficulty:";
-  
-              var forms = document.querySelectorAll("#difficulty_level form");
-              for (var i = 0; i < forms.length; i++) {
-                forms[i].style.display = "inline-block";
-                forms[i].style.paddingLeft = "10px"; // adjust the value as needed
-                forms[i].style.paddingRight = "10px"; // adjust the value as needed
-              }
-  
-          }
-  }
-  // the wrapper here is the same that makes sure your music player doesn't exist twice basically
-  if(!campaignTrail_temp.observer){
-  
-      campaignTrail_temp.observer = true
-  
-      // Define the MutationObserver
-      let masterObserver = new MutationObserver(masterFunction);
-      function masterFunction() {
-          masterObserver.disconnect();
-  
-          addColor();
-  
-          masterObserver.observe(document.body, { childList: true, subtree: true });
-      }
-  
-      // Start observing the document with the master observer
-      masterObserver.observe(document.body, { childList: true, subtree: true });
-  }
+styling = document.createElement("style");
+document.head.appendChild(styling);
