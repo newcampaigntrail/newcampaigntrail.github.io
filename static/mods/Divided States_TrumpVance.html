@@ -5545,7 +5545,7 @@ campaignTrail_temp.answers_json = [
         "pk": 22117,
         "fields": {
             "question": 22116,
-            "description": "It's quite simple - Vivek is loyal to the movement that my father built. We need absolutely loyalty if we're going to win the war that Biden and the Democrats started by killing my father."
+            "description": "It's quite simple - Vivek is loyal to the movement that my father built. We need absolute loyalty if we're going to win the war that Biden and the Democrats started by killing my father."
         }
     },
     {
@@ -38885,7 +38885,7 @@ if(campaignTrail_temp.question_number == 10 || campaignTrail_temp.question_numbe
 }
 
 // Reenables them
-if(campaignTrail_temp.question_number == 12 || campaignTrail_temp.question_number == 16){
+if(campaignTrail_temp.question_number == 13 || campaignTrail_temp.question_number == 16){
   campaignTrail_temp.election_json[1]["fields"].has_visits = 1;
   campaignTrail_temp.election_json[1]["fields"].has_visits = 1;
 }
@@ -38978,6 +38978,14 @@ if(localStorage.getItem("burgum")){
 window.setTimeout(e.candidateSwitcher, 20)
 }
 
+// disable visits for a bit
+if(ans == 21189){
+  campaignTrail_temp.election_json[1]["fields"].has_visits = 0; 
+}
+// reenables them
+if(campaignTrail_temp.question_number == 22){
+  campaignTrail_temp.election_json[1]["fields"].has_visits = 1; 
+}
 // The five "default" candidates
 if(ans == 21189 && campaignTrail_temp.running_mate_last_name == "Trump Jr."){
     campaignTrail_temp.candidate_image_url = "https://itsastronomical.com/assets/2024/square/donjr.png";
