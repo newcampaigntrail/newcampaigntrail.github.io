@@ -43962,7 +43962,7 @@ if(ans == 21259 || ans == 21262 || ans == 21319 || ans == 21322) {
   campaignTrail_temp.election_json[1]["fields"].has_visits = 0;
 }
 // VP Options
-if(ans == 5139 || ans == 5140 || ans == 5141 || ans == 5142){
+if(ans == 5139 || ans == 5140 || ans == 5141 || ans == 5142 && campaignTrail_temp.candidate_last_name == Harris){
     // Set the flag to indicate candidateSwitcher has been loaded
   switcherType = 'vpSwitcher';
   window.setTimeout(e.vpSwitcher, 20)
@@ -44722,6 +44722,8 @@ if (campaignTrail_temp.question_number == 16 && altprimary == true && donJr == f
   campaignTrail_temp.candidate_json[9].fields.color_hex = '#023020'
   campaignTrail_temp.candidate_json[2]["fields"].first_name = "Nikki";
   campaignTrail_temp.candidate_json[2]["fields"].last_name = "Haley";
+  campaignTrail_temp.candidate_json[8]["fields"].first_name = "Robert F.";
+  campaignTrail_temp.candidate_json[8]["fields"].last_name = "Kennedy.Others";
 
 
 opLast = 'Haley';
@@ -45731,6 +45733,8 @@ opLast = 'Haley';
     campaignTrail_temp.candidate_json[9].fields.color_hex = '#023020'
     campaignTrail_temp.candidate_json[2]["fields"].first_name = "Nikki";
     campaignTrail_temp.candidate_json[2]["fields"].last_name = "Haley";
+    campaignTrail_temp.candidate_json[8]["fields"].first_name = "Robert F.";
+    campaignTrail_temp.candidate_json[8]["fields"].last_name = "Kennedy.Others";
     campaignTrail_temp.questions_json[17] = {
       "model": "campaign_trail.question",
       "pk": 83627,
@@ -46859,7 +46863,7 @@ if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[0]["fields"].last_
 ctsAchievement("Finishing the Job");
 }
 if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Harris") {
-ctsAchievement("Not Going Back!");
+ctsAchievement("We're Not Going Back");
 }
 if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Biden" && wins < 1 && (campaignTrail_temp.candidate_json[2]["fields"].last_name == "Trump" || campaignTrail_temp.candidate_json[2]["fields"].last_name == "Trump (POW)")) {
 ctsAchievement("Nah, I'd Win");
@@ -47497,7 +47501,7 @@ else if (quickstats[0] < 270 && campaignTrail_temp.candidate_json[0]["fields"].l
 }
 // Harris
 else if (quickstats[0] >= 270 && vp == 'walz') {
-  e.pages.push(`<h3>To Run or To Not Run | Walz in 2032?</h3><h4>Politico | September 19th, 2030</h4><p>Vice President Tim Walz has, through it all, remained deeply loyal to President Kamala Harris and her agenda. Although the initial selection process was rushed for time, the two have had a good personal rapport and a friendship that has become far too uncommon in modern Presidential administrations. Harris has kept Walz involved and in the loop on practically every major decision she has made - from healthcare to foreign policy, and has taken his feedback into account.</p><p>With Harris bogged down hammering out a multilateral defense treaty in the Pacific - including Japan, South Korea, the Philippines, Australia, and New Zealand - the President has had little time to campaign during the midterms. She’s delegated much of it to Walz, and it appears to be paying off; The Cook Political Report has changed their rating in the open Pennsylvania’s Senate race, with 2024 runner-up Dave McCormick (R) and Congressman Susan Wild (D), from Tossup to Leans Democratic, likely giving Democrats a crucial hold and Pennsylvania’s first female Senator. Incumbents in other swing states - Michigan, Wisconsin, Nevada, and Arizona also appear to be in fairly comfortable positions as well, although many of them had razor-tight races in 2024 after polls showed them leading.</p><p>Still, there is a mutual doubt between the Harris and Walz camp about whether or not Mr. Walz should run in 2032 - although allies of both Harris and Walz have very different reasons for this decision.</p><p>In Kamalaworld, many of the top advisors to the President believe Mr. Walz - who would be almost 70 when he takes the oath of office, would be too old to run for and serve two full terms. The doubts many had over Biden’s age during his sole term has made this aspect especially important for the President. Meanwhile, Walz’s close confidants have doubts about whether or not he would be able to win - him being quite tied to a President with a 44% approval rating means that a 2032 campaign would be a steep climb.</p><p>Of course, Walz hasn’t closed the door completely on a Presidential campaign. Harris herself seems open to the idea, and if she asks him to run - perhaps with a pledge to serve one term, it’s highly likely he would do so.</p>`)
+  e.pages.push(`<h3>To Run or To Not Run | Walz in 2032?</h3><h4>Politico | September 19th, 2030</h4><p>Vice President Tim Walz has, through it all, remained deeply loyal to President Kamala Harris and her agenda. Although the initial selection process was rushed for time, the two have had a good personal rapport and a friendship that has become far too uncommon in modern Presidential administrations. Harris has kept Walz involved and in the loop on practically every major decision she has made - from healthcare to foreign policy, and has taken his feedback into account.</p><p>With Harris bogged down hammering out a multilateral defense treaty in the Pacific - including Japan, South Korea, the Philippines, Australia, and New Zealand - the President has had little time to campaign during the midterms. She’s delegated much of it to Walz, and it appears to be paying off; The Cook Political Report has changed their rating in the open Pennsylvania’s Senate race, with 2024 runner-up Dave McCormick (R) and Congresswoman Susan Wild (D), from Tossup to Leans Democratic, likely giving Democrats a crucial hold and Pennsylvania’s first female Senator. Incumbents in other swing states - Michigan, Wisconsin, Nevada, and Arizona also appear to be in fairly comfortable positions as well, although many of them had razor-tight races in 2024 after polls showed them leading.</p><p>Still, there is a mutual doubt between the Harris and Walz camp about whether or not Mr. Walz should run in 2032 - although allies of both Harris and Walz have very different reasons for this decision.</p><p>In Kamalaworld, many of the top advisors to the President believe Mr. Walz - who would be almost 70 when he takes the oath of office, would be too old to run for and serve two full terms. The doubts many had over Biden’s age during his sole term has made this aspect especially important for the President. Meanwhile, Walz’s close confidants have doubts about whether or not he would be able to win - him being quite tied to a President with a 44% approval rating means that a 2032 campaign would be a steep climb.</p><p>Of course, Walz hasn’t closed the door completely on a Presidential campaign. Harris herself seems open to the idea, and if she asks him to run - perhaps with a pledge to serve one term, it’s highly likely he would do so.</p>`)
   //e.image = ""
   e.executable.push([2, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2024/endings/walzcomic.png'})]) 
 }
