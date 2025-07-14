@@ -43816,7 +43816,7 @@ if (campaignTrail_temp.question_number == 17 && rfkLock == false && trust > 3) {
   campaignTrail_temp.candidate_json[8].fields.color_hex = '#4e3e5c';
 }
 // RFK is the default if trust is under 3 (AKA Harris is on track to be the nominee)
-else if (campaignTrail_temp.question_number == 17 && rfkLock == false && trust < 3 && bobby == false) {
+else if (campaignTrail_temp.question_number == 17 && rfkLock == false && trust < 3 && bobby == 0) {
   campaignTrail_temp.candidate_json[8]["fields"].first_name = "Robert F.";
   campaignTrail_temp.candidate_json[8]["fields"].last_name = "Kennedy/Others";
 }
@@ -44112,7 +44112,7 @@ if (campaignTrail_temp.question_number == 22 && debate == true && campaignTrail_
 
 // Sets normal questions for Biden, regardless of who the nominee is
 
-if ((ans == 21587 || ans == 21590 || ans == 85434 || ans == 85438 || ans == 85441 || ans == 85446 || ans == 85434 || ans == 85438 || ans == 85441 || ans == 85446) && campaignTrail_temp.candidate_last_name == 'Biden' && gaza >= 1 && trust >= 3) {
+if ((ans == 21587 || ans == 21590 || ans == 85434 || ans == 85438 || ans == 85441 || ans == 85446) && campaignTrail_temp.candidate_last_name == 'Biden' && gaza >= 1 && trust >= 3) {
   campaignTrail_temp.questions_json[20] = {
     "model": "campaign_trail.question",
     "pk": 21965,
@@ -45179,7 +45179,7 @@ if (ans == 84099){
 }
 
 // Biden vs RFK Jr.
-if (campaignTrail_temp.question_number == 16 && bobby == true && campaignTrail_temp.candidate_last_name == "Biden") {
+if (campaignTrail_temp.question_number == 16 && bobby == 1 && campaignTrail_temp.candidate_last_name == "Biden") {
   campaignTrail_temp.candidate_json[2]["fields"].first_name = "Robert F.";
   campaignTrail_temp.candidate_json[2]["fields"].last_name = "Kennedy";
   campaignTrail_temp.candidate_json[8]["fields"].first_name = "Chris";
@@ -45201,7 +45201,7 @@ opLast = 'RFK Jr.';
     }
   }
 }
-if ((ans == 21587 || ans == 21590 || ans == 85434 || ans == 85438 || ans == 85441 || ans == 85446) && bobby == true) {
+if ((ans == 21587 || ans == 21590 || ans == 85434 || ans == 85438 || ans == 85441 || ans == 85446) && bobby == 1) {
   campaignTrail_temp.questions_json[23] = {
     "model": "campaign_trail.question",
     "pk": 2002,
