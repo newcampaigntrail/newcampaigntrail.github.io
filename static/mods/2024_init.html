@@ -2045,9 +2045,10 @@ campaignTrail_temp.bunnyhop = true;
               colourCheckbox.addEventListener("change", function() {
                   if (this.checked){
                       campaignTrail_temp.helper = true;
-                  }
-                  else{          
+                      clearInterval(removeCandidateSummaryInterval)
+                  }else{          
                     campaignTrail_temp.helper = false;
+                    clearInterval(removeCandidateSummaryInterval)
                   }
               });
   

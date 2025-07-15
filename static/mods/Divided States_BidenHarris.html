@@ -43105,6 +43105,7 @@ campaignTrail_temp.jet_data = [{
 }
 ]
 
+
 // Opponent Variable
 // This is so a lot of the mid-campaign questions about policy don't need to be regenerated like 10 times
 // {{opLast}} and {{opName}}
@@ -43947,11 +43948,19 @@ if(ans == 21259 || ans == 21262 || ans == 21265 || ans == 21268 || ans == 21636 
   campaignTrail_temp.candidate_image_url = "https://itsastronomical.com/assets/2024/square/bidenold.png";
   updateAdvisor(5002, "Panic", "https://itsastronomical.com/assets/2024/opp/panic.png", "Perhaps America as a whole has the morals of an Alley Cat.");
 }
-// Visits are a bitch with the VP system, amirite?
-if(ans == 21259 || ans == 21262 || ans == 21319 || ans == 21322) {
+
+// FUUUCK the visits system
+if(campaignTrail_temp.question_number == 19){
   campaignTrail_temp.election_json[1]["fields"].has_visits = 0;
   campaignTrail_temp.election_json[1]["fields"].has_visits = 0;
 }
+
+// Reenables them
+if(campaignTrail_temp.question_number == 21){
+  campaignTrail_temp.election_json[1]["fields"].has_visits = 1;
+  campaignTrail_temp.election_json[1]["fields"].has_visits = 1;
+}
+
 // VP Options
 if((ans == 5139 || ans == 5140 || ans == 5141 || ans == 5142) && campaignTrail_temp.candidate_last_name == "Harris") {
     // Set the flag to indicate candidateSwitcher has been loaded
@@ -44368,7 +44377,7 @@ if (campaignTrail_temp.question_number == 21 && campaignTrail_temp.candidate_las
 }
 
 // Harris Intro
-if (ans == 21327 && gaza >= 1 && trust >= 3) {
+if (ans == 21327) {
   changePlaylist(harrisPlaylist);
   updateAdvisor(5002, "Unburdened", "https://itsastronomical.com/assets/2024/opp/unburdened.png", "It's time to imagine what can be, unburdened by what has been.");
   campaignTrail_temp.candidate_image_url = "https://itsastronomical.com/assets/2024/square/harris.png";
