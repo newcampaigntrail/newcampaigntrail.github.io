@@ -1844,8 +1844,9 @@ e.creditsPage = () => {
   
 }
   
-const fixStyle = document.createElement("style");
-fixStyle.innerHTML = `
+e.unlocks = () => {
+
+let credits_html = `<style>
 .unlock-block {
   display: flex;
   align-items: center;
@@ -1871,12 +1872,9 @@ fixStyle.innerHTML = `
   line-height: 48px; /* matches image height for perfect vertical centering */
   font-weight: normal;
   display: inline-block;
-}`;
-document.head.appendChild(fixStyle);
-
-e.unlocks = () => {
-
-let credits_html = `<h2>You have unlocked the following...</h2>`;
+}
+</style>
+<h2>You have unlocked the following...</h2>`;
 
 if (localStorage.getItem("hasDiedWon")) {
     credits_html += `<h4><font color="#ffffffff">Congratulations on winning despite Trump's death in Butler! You can use <u>"Enable Butler Tooltip?"</u> to determine which RNG answer will kill Trump in Butler, Pennsylvania.</font></h4>`;
