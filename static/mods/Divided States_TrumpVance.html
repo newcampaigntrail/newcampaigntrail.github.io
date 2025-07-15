@@ -43891,6 +43891,11 @@ function openAdvisorPanel(type) {
     header.style.textAlign = 'center';
     container.appendChild(header);
 
+    let desc = document.createElement('h4');
+    desc.innerText = type === "rnc" ? "RNC Chairs greatly increase the importance of certain issues across the campaign, along with certain bonuses on your answers." : "Campaign Managers increase the importance of certain issues across the campaign, along with certain bonuses on your answers.";    
+    desc.style.textAlign = 'center';
+    container.appendChild(desc);
+
     advisors[type].forEach((adv) => {
         if (!adv.unlocked) return;
         let card = document.createElement('div');
