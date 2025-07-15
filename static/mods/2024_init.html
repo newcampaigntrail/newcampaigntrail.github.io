@@ -1,7 +1,11 @@
 e = campaignTrail_temp;
-campaignTrail_temp.credits = "<button onclick='e.creditsPage()'>Astro, Martha, and...</button>"
+campaignTrail_temp.credits = "<button onclick='e.creditsPage()'>Astro, Martha, and...</button><br><br><button onclick='e.unlocks()'>Click Here to View Unlocked Content!</button>"
 var c = 20;
 var storedChar = 0;
+var done = false;
+var can = 300;
+var storedCan = 0;
+
 const startScreenUpdater = setInterval(function() {
     const initialButton = document.getElementById("election_id_button");
     const runningMateButton = document.getElementById("running_mate_id_button");
@@ -88,11 +92,11 @@ storedChar = c;
         console.log("divided states")
         storedChar = c;
 $("#game_window")[0].style.backgroundImage = "url(https://itsastronomical.com/assets/2024/trumpbiden.png)" 
-
+campaignTrail_temp.bunnyhop = false;
 corrr = `
 <div style="font-size: 11px; font-family: monospace; color: white;">
   <h2 style="font-style: normal;">
-    <img src="https://itsastronomical.com/assets/2024/dividedlogo.png" alt="DIVIDED STATES" style="margin-top: 0px; margin-bottom: -4px;">
+    <img src="https://itsastronomical.com/assets/2024/dividedlogo.png" alt="DIVIDED STATES" style="margin-top: 0px; padding: .2em; margin-bottom: -4px;">
   </h2>
 </div>
 `;
@@ -111,7 +115,38 @@ $(".game_header")[0].style.height="65px";
 
       }
     }
-}, 1);
+    if(candidateButton) { // change theme on candidate viewing
+      can = document.getElementById("candidate_id").value;
+      console.log(can + "   " + storedCan);
+      if(can == 300 && storedCan != 300) {
+        console.log("biden")
+        setTimeout(() => {
+          storedCan = can;
+        }, 15);
+
+      }
+      else if(can == 301 && storedCan != 301) {
+        console.log("trump")
+        setTimeout(() => {
+          storedCan = can;
+        }, 15);
+      }
+    
+      if(can == 200 && storedCan != 201) {
+        console.log("bryanesque trump")
+        setTimeout(() => {
+          storedCan = can;
+        }, 15);
+
+      }
+      else if(can == 201 && storedCan != 201) {
+        console.log("bryanesque kamala")
+        setTimeout(() => {
+          storedCan = can;
+        }, 15);
+      }
+    }
+  }, 1);
 
 RecReading=true;
 HistHexcolour = ["#b31200", "#052e71", "#ffc677", "#669c35"];
@@ -1097,7 +1132,7 @@ campaignTrail_temp.candidate_json = [
         "last_name": "Ramaswamy",
         "election": 20,
         "party": "Republican",
-        "state": "Texas",
+        "state": "Ohio",
         "priority": 15,
         "description": "<p>NULL</p>",
         "color_hex": "#00C100",
@@ -1727,6 +1762,7 @@ burgum
 haley
 desantis
 rfk
+hasDiedWon
 */
 var changeGameDisp = (hide) => {
     disp = "";
@@ -1762,6 +1798,7 @@ e.creditsPage = () => {
     <h4><font color="#569c7d">DecstarG - Credits, Midgame VP Switcher</font></h4>
     <h4><font color="#789b90">Nina - Base for HQ Menus, Pre-Game options for <i>2024</i></font></h4>
     <h4><font color="#8936B9">Thatchmaster - Music Player</font></h4>
+    <h4><font color="#d4d391ff">StrawberryMaster - Highlighter for Butler Addon</font></h4>
     <h2>Playtesters/Other Advice</h2>
     <h4>MassachusettsForStockdale</h4>
     <h4>Obummer</h4>
@@ -1807,5 +1844,244 @@ e.creditsPage = () => {
   
 }
   
+const fixStyle = document.createElement("style");
+fixStyle.innerHTML = `
+.unlock-block {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  justify-content: center;
+  margin: 12px 0 12px 0;
+  min-height: 48px; /* ensures all blocks are at least as tall as the image */
+}
+.unlock-block img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px #0004;
+  display: block;
+}
+.unlock-block h4 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: bold;
+  line-height: 48px; /* matches image height for perfect vertical centering */
+  font-weight: normal;
+  display: inline-block;
+}`;
+document.head.appendChild(fixStyle);
+
+e.unlocks = () => {
+
+let credits_html = `<h2>You have unlocked the following...</h2>`;
+
+if (localStorage.getItem("hasDiedWon")) {
+    credits_html += `<h4><font color="#ffffffff">Congratulations on winning despite Trump's death in Butler! You can use <u>"Enable Butler Tooltip?"</u> to determine which RNG answer will kill Trump in Butler, Pennsylvania.</font></h4>`;
+}
+
+credits_html += `<h3><font color="#ffffffff">The following can now be played on the Trump side in the event that Donald Trump is killed in Butler:</font></h3>`;
+
+if (localStorage.getItem("haley")) {
+    credits_html += `<div class="unlock-block"><img src="https://itsastronomical.com/assets/2024/square/haley.png" alt="Nikki Haley"><h4><font color="#ffffffff"><u>Nikki Haley</u></font></h4></div>`;
+}
+if (localStorage.getItem("desantis")) {
+    credits_html += `<div class="unlock-block"><img src="https://itsastronomical.com/assets/2024/square/desantis.png" alt="Ron DeSantis"><h4><font color="#ffffffff"><u>Ron DeSantis</u></font></h4></div>`;
+}
+if (localStorage.getItem("vance")) {
+    credits_html += `<div class="unlock-block"><img src="https://itsastronomical.com/assets/2024/square/vance.png" alt="JD Vance"><h4><font color="#ffffffff"><u>JD Vance</u></font></h4></div>`;
+}
+if (localStorage.getItem("burgum")) {
+    credits_html += `<div class="unlock-block"><img src="https://itsastronomical.com/assets/2024/square/burgum.png" alt="Doug Burgum"><h4><font color="#ffffffff"><u>Doug Burgum</u></font></h4></div>`;
+}
+
+if((!(localStorage.getItem("haley"))) || (!(localStorage.getItem("desantis"))) || (!(localStorage.getItem("vance"))) || (!(localStorage.getItem("burgum")))   ){
+    credits_html += `<h4><font color="#ffffffff"><u>It appears that you haven't unlocked any alternate Republicans. Thus,you can only play as Donald Trump Jr. right now.<br>To unlock them, find them on the Democratic side and then win the election against them!</u></font></h4>`;
+}
+
+if (localStorage.getItem("rfk")) {
+    credits_html += `<h3 style="text-align:center;"><font color="#ffffffff">You can face off against a certain figure on the Democratic side...</font></h3>
+    <div class="unlock-block" style="justify-content:center;"><img src="https://itsastronomical.com/assets/2024/square/rfk.png" alt="Robert F. Kennedy Jr."><h4><font color="#ffffffff"><u>Robert F. Kennedy Jr.</u></font></h4></div>`;
+}
+
+    credits_html += `</div>`;
+
+    changeGameDisp(true);
+    var spacer = document.createElement("amongusspacerthisisntarealelement");
+    spacer.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+    document
+      .getElementsByClassName("inner_window_w_desc")[0]
+      .children[1].appendChild(spacer);
+      changeGameDisp(true);
+      var menuHeader = document.createElement("div");
+      menuHeader.classList.add("inner_window_front");
+      menuHeader.innerHTML = `<h1><font color='#ffffffff'>Divided States of America: Unlocked Content</font></h1>`;
+      menuHeader.id = "SOTUheader";
+      menuHeader.style = "height: 50px;background-color:#000000ff";
+      var newMenu = document.createElement("div");
+      newMenu.classList.add("inner_window_front");
+      newMenu.id = "SOTUmenu";
+      newMenu.style = `height:320px; background-image: url("https://itsastronomical.com/assets/2024/trumpdark.png"); color:white;overflow-y: scroll;`;  
+      newMenu.innerHTML = credits_html;
+      let z = document.getElementById("game_window");
+      var backButton = document.createElement("button");
+      backButton.style =
+        "position: relative; bottom: -13px; left: -380px; width: 120px; height: 50px; font-size: 20px; padding-top: 5px; padding-left: 8px;";
+      backButton.id = "backSOTUBtn";
+      backButton.innerHTML = `<b>BACK</b>`;
+      backButton.onclick = function () {
+        document.getElementById("SOTUheader").remove();
+        document.getElementById("SOTUmenu").remove();
+        document.getElementById("backSOTUBtn").remove();
+        changeGameDisp(false);
+      };
+      z.appendChild(menuHeader);
+      z.appendChild(newMenu);
+      z.appendChild(backButton);
+  
+}
+
 styling = document.createElement("style");
 document.head.appendChild(styling);
+
+campaignTrail_temp.bunnyhop = true;
+  function addColor() {
+    var difficultyDiv = document.getElementById("difficulty_level");
+    if (storedChar != 21 && difficultyDiv && !document.getElementById("bunnyhopDropdown")) {
+            console.log("test")
+              var questionCounter = ["25 (Randomized Questions)", "25 (Static Question Set)", "30 (Expanded)", "35 (Full)"];
+              var questions = [25, 25, 30, 35];
+              var dropdown = document.createElement("select");
+              dropdown.id = "bunnyhopDropdown";
+  
+              for (var i = 0; i < questions.length; i++) {
+                  var opt = document.createElement("option");
+                  opt.text = questionCounter[i];
+                  if (questionCounter[i] === "25 (Randomized Questions)") {
+                      opt.selected = true;
+                  }
+                  opt.value = questionCounter[i]; // Use the text as the value
+                  dropdown.options.add(opt);
+              }
+  
+              var form = document.createElement("form");
+              form.name = "bunnyhopForm";
+              var header = document.createElement("h3");
+              header.textContent = "Select Question Count:";
+              form.appendChild(header);
+              form.appendChild(dropdown);
+              difficultyDiv.appendChild(form);
+  
+              dropdown.addEventListener("change", function() {
+                  if (this.value === "25 (Randomized Questions)") {
+                      campaignTrail_temp.bunnyhop = true;
+                      campaignTrail_temp.staticQuestions = false; // Ensure staticQuestions is false
+                  } else if (this.value === "25 (Static Question Set)") {
+                      campaignTrail_temp.bunnyhop = false;
+                      campaignTrail_temp.staticQuestions = true; // Set staticQuestions to true
+                  } else {
+                      campaignTrail_temp.bunnyhop = false;
+                      campaignTrail_temp.staticQuestions = false; // Ensure staticQuestions is false
+                  }
+                  campaignTrail_temp.global_parameter_json[0].fields.question_count = parseInt(this.value.match(/\d+/)[0]); // Extract the number
+              });
+  
+              var colourForm = document.createElement("form");
+              colourForm.name = "colour_selection";
+              var colourHeader = document.createElement("h3");
+              colourHeader.textContent = "Enable Expanded Styling?";
+              colourForm.appendChild(colourHeader);
+              var colourCheckbox = document.createElement("input");
+              colourCheckbox.type = "checkbox";
+              colourCheckbox.id = "colour";
+              colourCheckbox.checked = false;
+              colourForm.appendChild(colourCheckbox);
+              difficultyDiv.appendChild(colourForm);
+  
+              colourCheckbox.addEventListener("change", function() {
+                  if (this.checked){
+                      campaignTrail_temp.candidate_json[0].fields.color_hex = '#b31200'
+                      campaignTrail_temp.candidate_json[1].fields.color_hex = '#052e71'
+                      campaignTrail_temp.candidate_json[2].fields.color_hex = '#ffc677'
+                      campaignTrail_temp.candidate_json[3].fields.color_hex = '#669c35'
+
+                  }
+                  else{          
+                    campaignTrail_temp.candidate_json[0].fields.color_hex = '#FF0000'
+                    campaignTrail_temp.candidate_json[1].fields.color_hex = '#0000FF'
+                    campaignTrail_temp.candidate_json[2].fields.color_hex = '#FFFF00'
+                    campaignTrail_temp.candidate_json[3].fields.color_hex = '#00C100'
+                  }
+              });
+  
+              var difficultyForm = document.querySelector('form[name="difficulty_level_selection"]');
+              var difficultyHeader = difficultyForm.querySelector('h3');
+              difficultyHeader.textContent = "Select campaign difficulty:";
+  
+              var forms = document.querySelectorAll("#difficulty_level form");
+              for (var i = 0; i < forms.length; i++) {
+                forms[i].style.display = "inline-block";
+                forms[i].style.paddingLeft = "10px"; // adjust the value as needed
+                forms[i].style.paddingRight = "10px"; // adjust the value as needed
+              }
+  
+    }
+
+    if (storedCan == 301 && done == false && (localStorage.getItem("hasDiedWon")) && difficultyDiv && !document.getElementById("bunnyhopDropdown")) {
+              campaignTrail_temp.bunnyhop = false;
+              done = true;
+              var colourForm = document.createElement("form");
+              colourForm.name = "colour_selection";
+              var colourHeader = document.createElement("h3");
+              colourHeader.textContent = "Enable Butler Tooltip?";
+              colourForm.appendChild(colourHeader);
+              var colourCheckbox = document.createElement("input");
+              colourCheckbox.type = "checkbox";
+              colourCheckbox.id = "colour";
+              colourCheckbox.checked = false;
+              colourForm.appendChild(colourCheckbox);
+              difficultyDiv.appendChild(colourForm);
+  
+              colourCheckbox.addEventListener("change", function() {
+                  if (this.checked){
+                      campaignTrail_temp.helper = true;
+                  }
+                  else{          
+                    campaignTrail_temp.helper = false;
+                  }
+              });
+  
+              var difficultyForm = document.querySelector('form[name="difficulty_level_selection"]');
+              var difficultyHeader = difficultyForm.querySelector('h3');
+              difficultyHeader.textContent = "Select campaign difficulty:";
+  
+              var forms = document.querySelectorAll("#difficulty_level form");
+              for (var i = 0; i < forms.length; i++) {
+                forms[i].style.display = "inline-block";
+                forms[i].style.paddingLeft = "10px"; // adjust the value as needed
+                forms[i].style.paddingRight = "10px"; // adjust the value as needed
+              }
+  
+    }
+  }
+
+  // the wrapper here is the same that makes sure your music player doesn't exist twice basically
+  if(!campaignTrail_temp.observer){
+  
+      campaignTrail_temp.observer = true
+  
+      // Define the MutationObserver
+      let masterObserver = new MutationObserver(masterFunction);
+      function masterFunction() {
+          masterObserver.disconnect();
+  
+          addColor();
+  
+          masterObserver.observe(document.body, { childList: true, subtree: true });
+      }
+  
+      // Start observing the document with the master observer
+      masterObserver.observe(document.body, { childList: true, subtree: true });
+  }

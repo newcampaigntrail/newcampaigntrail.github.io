@@ -3185,7 +3185,7 @@ campaignTrail_temp.answers_json = [
         "pk": 20709,
         "fields": {
             "question": 1026,
-            "description": "Uh oh."
+            "description": "Uh oh.\n"
         }
     },
     {
@@ -5001,7 +5001,7 @@ campaignTrail_temp.answers_json = [
         "pk": 21839,
         "fields": {
             "question": 21084,
-            "description": "Thank you very much. Thank you very, very much. Thank you, J. D. Thank you, Susey. Thank you all, thank you very much."
+            "description": "Thank you very much. Thank you very, very much. Thank you, Susie. Thank you all, thank you very much."
         }
     },
     {
@@ -5249,7 +5249,7 @@ campaignTrail_temp.answers_json = [
         "pk": 21964,
         "fields": {
             "question": 21963,
-            "description": "Thank you very much. Thank you very, very much. Thank you, J. D. Thank you, Susey. Thank you all, thank you very much."
+            "description": "Thank you very much. Thank you very, very much. Thank you, Susie. Thank you all, thank you very much."
         }
     },
     {
@@ -5305,7 +5305,7 @@ campaignTrail_temp.answers_json = [
         "pk": 21992,
         "fields": {
             "question": 21991,
-            "description": "Thank you very much. Thank you very, very much. Thank you, J. D. Thank you, Susey. Thank you all, thank you very much."
+            "description": "Thank you very much. Thank you very, very much. Thank you, Susie. Thank you all, thank you very much."
         }
     },
     {
@@ -5513,7 +5513,7 @@ campaignTrail_temp.answers_json = [
         "pk": 22099,
         "fields": {
             "question": 22098,
-            "description": "Carson here has a medical career that he should be proud of. Great stuff, things that many didn't even think were possible were done by him. He was a fantastic doctor who served in my administration as a strong Secretary of Housing and Urban Development. Healthcare and housing, two big issues in this campaign. "
+            "description": "When I think of the important issues of this campaign, housing absolutely comes to mind. Having Mr. Carson, who proudly served as Trump's Housing and Urban Development Secretary, would bring great experience to my administration. I'm proud to share a ticket with Mr. Carson."
         }
     },
     {
@@ -5521,7 +5521,7 @@ campaignTrail_temp.answers_json = [
         "pk": 22104,
         "fields": {
             "question": 22098,
-            "description": "Ben Carson has been by my side through a lot. I remember how badly the media treated him eight years ago, but him and I are going to be a very great team. "
+            "description": "Ben Carson was one of Donald Trump's, and frankly, America's friend. I want him on my team because he knows who and what the President was fighting for - the people."
         }
     },
     {
@@ -6361,7 +6361,7 @@ campaignTrail_temp.answers_json = [
         "pk": 22549,
         "fields": {
             "question": 22548,
-            "description": "Our party will always stand with Israel, and her right to exist, of course. Once we win this election, we will head to the middle east and hammer out a peace deal to resolve this crisis."
+            "description": "Our party will always stand with Israel, and her right to exist, of course. Once we win this election, we will head to the Middle East and hammer out a peace deal to resolve this crisis."
         }
     },
     {
@@ -9927,7 +9927,7 @@ campaignTrail_temp.issues_json = [
         "pk": 100,
         "fields": {
             "name": "Economics",
-            "description": "A wide umbrella of eonomic issues including inflation, unemployment, taxes, and the minimum wage.",
+            "description": "A wide umbrella of economic issues including inflation, unemployment, taxes, and the minimum wage.",
             "stance_1": "Anarcho-Capitalism",
             "stance_desc_1": 0,
             "stance_2": "Mileism",
@@ -9955,7 +9955,7 @@ campaignTrail_temp.issues_json = [
             "stance_desc_1": 0,
             "stance_2": "Bad",
             "stance_desc_2": 0,
-            "stance_3": "Dissatisfied",
+            "stance_3": "Indifferent",
             "stance_desc_3": 0,
             "stance_4": "Indifferent",
             "stance_desc_4": 0,
@@ -10776,7 +10776,7 @@ campaignTrail_temp.state_issue_score_json = [
         "fields": {
             "state": 1014,
             "issue": 103,
-            "state_issue_score": 0.4,
+            "state_issue_score": -0.4,
             "weight": 1
         }
     },
@@ -33362,7 +33362,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 22099,
             "candidate": 301,
-            "answer_feedback": "Many advisors are scratching their head at the selection of Ben Carson."
+            "answer_feedback": "Many advisors are scratching their head at the selection of Ben Carson, but you're right that housing is an important issue."
         }
     },
     {
@@ -33371,7 +33371,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 22104,
             "candidate": 301,
-            "answer_feedback": "Many advisors are scratching their head at the selection of Ben Carson."
+            "answer_feedback": "Many advisors are scratching their head at the selection of Ben Carson, but tying him to Trump might be a smart idea if you're looking to shore up loyalty."
         }
     },
     {
@@ -37527,6 +37527,66 @@ campaignTrail_temp.jet_data = [{
 ]
 
 
+// allows you to see which answer will kill you
+
+function addDynamicCSS() {
+    var css = `
+        .highlight-blue {
+            background-color: #357EC7;
+            color: white;
+            padding: 1px 0;
+            border-radius: 3px;
+        }
+
+        .highlight-gold {
+            background-color: #c73838ff;
+            color: #ffffffff;
+            padding: 1px 2px;
+            border-radius: 3px;
+        }
+
+        .highlight-green {
+            background-color: #4C9A2A;
+            color: white;
+            padding: 1px 0;
+            border-radius: 3px;
+        }
+    `;
+
+    var styleElem = document.createElement('style');
+    styleElem.type = 'text/css';
+    
+    styleElem.appendChild(document.createTextNode(css));
+    
+    document.head.appendChild(styleElem);
+}
+
+addDynamicCSS();
+
+
+const highlightRules = [
+    { pk: 20709, className: 'highlight-gold' }
+]; 
+
+
+if (campaignTrail_temp.helper == true) {
+
+    const pkToClassMap = new Map(
+        highlightRules.map(rule => [rule.pk, rule.className])
+    );
+
+    campaignTrail_temp.answers_json.forEach(answer => {
+        if (pkToClassMap.has(answer.pk)) {
+            const highlightClass = pkToClassMap.get(answer.pk);
+            
+            const originalText = answer.fields.description;
+            
+            const highlightedText = `<span class='${highlightClass}'>${originalText}</span>`;
+            
+            answer.fields.description = highlightedText;
+        }
+    });
+}
 
 // CYOA for Trump's side of 2024: Divided States of America
 // Important stuff
@@ -37565,35 +37625,7 @@ window.His = 'His';
 window.him = 'him';
 window.Him = 'Him';
 
-
-
 // Styles/Visual Stuff
-$("#game_window")[0].style.backgroundImage = "url(https://itsastronomical.com/assets/2024/trumpbiden.png)" 
-
-corrr = `
-<div style="font-size: 11px; font-family: monospace; color: white;">
-  <h2 style="font-style: normal;">
-    <img src="https://itsastronomical.com/assets/2024/divided-biden.png" alt="DIVIDED STATES" style="margin-top: 0px;">
-  </h2>
-</div>
-`;
-nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#292929";
-nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#ffffff";
-document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
-$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
-$(".container")[0].style.backgroundColor = "#131920";
-document.getElementById("header").src = "https://itsastronomical.com/assets/2024/dsabanner.png";
-document.body.background = "https://vastphotos.com/files/uploads/photos/11151/black-and-white-photo-of-us-capitol-building-l.jpg?v=20220712043521";
-document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#ffffff!important;}</style>";
-styling = document.createElement("style");
-document.head.appendChild(styling);          
-styling.innerHTML = `
-body {
-    background-size: cover;
-}
-`
-document.head.innerHTML += "<style>#results_container {color:#000000;}";
-
 const style_overwrite = document.createElement("style");
 style_overwrite.innerHTML = 
 `style.innerHTML = 
@@ -38302,9 +38334,10 @@ campaignTrail_temp.questions_json[34] = {
       "likelihood": 1
   }
 }
+}
 
-// does Biden questions if he *is* on track to be the nominee
-if (biden == true){
+// Adds Biden questions if he is on track to be the nominee
+if (campaignTrail_temp.question_number == 11 && jailed == true && biden == true){
   campaignTrail_temp.questions_json[13] = {
     "model": "campaign_trail.question",
     "pk": 23039,
@@ -38379,7 +38412,6 @@ if (biden == true){
   }
 }
 
-}
 if (campaignTrail_temp.question_number == 13 && jailed == true) {
   campaignTrail_temp.running_mate_json = [
     {
@@ -38757,7 +38789,7 @@ if(ans == 5091){
     "pk": 21078,
     "fields": {
       "priority": 1,
-      "description": "The Democrats just did their convention, and to many, it was considered a unenergetic event. As they got everyone from from John Kasich to Alexandria Ocasio-Cortez in that stage for a message of unity, the party has renominated the Biden/Harris ticket once again. Will you comment in any way about the convention?",
+      "description": "It is now the turn of the Republican Party to hold the Republican National Convention - of course, you are due to be nominated unanimously, and have near sole power over the speaking slots, theme and planks of the convention. With that in mind, what will be your strategy to make the most out of convention?",
       "likelihood": 1
     }
   }
@@ -38824,7 +38856,7 @@ if(ans == 5091){
       "likelihood": 1
     }
   }
-  campaignTrail_temp.questions_json[32] = {
+  campaignTrail_temp.questions_json[31] = {
     "model": "campaign_trail.question",
     "pk": 21083,
     "fields": {
@@ -40895,7 +40927,7 @@ e.vpSwitcher = () => {
         campaignTrail_temp.election_json[1]["fields"].has_visits = 1;
         campaignTrail_temp.election_json[1]["fields"].has_visits = 1;
         campaignTrail_temp.running_mate_image_url = "https://itsastronomical.com/assets/2024/square/vivek.png";
-        campaignTrail_temp.questions_json[21] = {
+        campaignTrail_temp.questions_json[19] = {
           "model": "campaign_trail.question",
           "pk": 22116,
           "fields": {
@@ -41774,6 +41806,7 @@ e.vpSwitcher = () => {
     }
 .is-vertical #volumeSlider {
   width: 16px;
+  height: 100%;
   writing-mode: vertical-rl;
   direction: rtl;
 }
@@ -41904,6 +41937,13 @@ endingPicker = (out, totv, aa, quickstats) => {
   e.executable = []
   ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
 
+
+// If you died and win, you can get the answer that kills you
+if(quickstats[0] >= 270 && dead == true && !(localStorage.getItem("hasDiedWon"))){
+  alert('Congratulations!\n\nYou have managed to win after Trump was slain in Butler. You have unlocked the option to have some help on sealing his fate...');
+  localStorage.setItem("hasDiedWon", "true")
+}
+
 // Achievements
 // Generic "Win as X" achievements
 if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[2]["fields"].last_name == "Trump"){
@@ -42025,7 +42065,7 @@ else if (quickstats[0] >= 350 && campaignTrail_temp.candidate_json[2]["fields"].
   
 }
 else if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[2]["fields"].last_name == "Trump" && quickstats[0] < 350 && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Harris") { // Beat Harris - 270-350
-  e.pages.push(`<h3>A Republic, If You Can Keep It</h3><p>The night had begun with the enthusiasm that many had expected from Trump's camp. Final pushes to vote had been made, and Trump had returned back to his party in West Palm Beach Florida. Even early on, many of his supporters suspected that something was up - states like Florida and Texas were being called from the get-go, while Virginia, New Hampshire, and Minnesota were taking some time. Before the end of the night, FOX had called the race for Trump - with the remaining vote in the swing states not enough for Harris to overtake his lead. As morning in America came, more and more networks would make it official.<br><br>Even Trump himself was... floored. These results - the popular vote? Multiple Senate seats? A trifecta looking likely? This was no 2016, he said to himself. What could Democrats blame this on? Last time he won, the easy scapegoat was the Comey Letter or the Electoral College. They could explain themselves, justify that him winning was an exception, not a rule. But a mandate like this? There was no excuse - people wanted this. The only scapegoat was Biden's decision to not drop out.<br><br>He had remarks prepared, but Trump did not expect to be walking out on Election Night to be giving them. He looks around at his advisors - not like he would listen to them if they told him no - but they give him the green light anyway. Out there is his crowd - his people. This is what he was meant to do - to campaign, and he had done it again. And so, he begins talking. About a lot of things. About the border, about the economy, about his political comeback. In his eyes, he had become not just a President, but a leader.<br><br>America, with a trifecta favorable to him, with a court system favorable to him, and with political and economic elites favorable to him, was his. It was for his remolding, his resculpting, and his readjusting. There was a lot he wanted to change, and he was going to have four long years to do so.</p>`)
+  e.pages.push(`<h3>A Republic, If You Can Keep It</h3><p>The night had begun with the enthusiasm that many had expected from Trump's camp. Final pushes to vote had been made, and Trump had returned back to his party in West Palm Beach, Florida. Even early on, many of his supporters suspected that something was up - states like Florida and Texas were being called from the get-go, while Virginia, New Hampshire, and Minnesota were taking some time. Before the end of the night, FOX had called the race for Trump - with the remaining vote in the swing states not enough for Harris to overtake his lead. As morning in America came, more and more networks would make it official.<br><br>Even Trump himself was... floored. These results - Multiple Senate seats? A trifecta looking likely? Even, god forbid, the popular vote? This was no 2016, he said to himself. What could Democrats blame this on? Last time he won, the easy scapegoat was the Comey Letter or the Electoral College. They could explain themselves, justify that him winning was an exception, not a rule. But a mandate like this? There was no excuse - people wanted this. The only scapegoat was Biden's decision to not drop out.<br><br>He had remarks prepared, but Trump did not expect to be walking out on Election Night to be giving them. He looks around at his advisors - not like he would listen to them if they told him no - but they give him the green light anyway. Out there is his crowd - his people. This is what he was meant to do - to campaign, and he had done it again. And so, he begins talking. About a lot of things. About the border, about the economy, about his political comeback. In his eyes, he had become not just a President, but a leader.<br><br>America, with a trifecta favorable to him, with a court system favorable to him, and with political and economic elites favorable to him, was his. It was for his remolding, his resculpting, and his readjusting. There was a lot he wanted to change, and he was going to have four long years to do so.</p>`)
   e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2024/endings/trumprnc.png'})])
   
   if (used != true) {
@@ -42044,7 +42084,7 @@ else if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[2]["fields"].
   
 }
 else if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[2]["fields"].last_name == "Trump" && quickstats[0] < 350 && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Biden") { // Beat Biden - 270-350
-  e.pages.push(`<h3>'You Will Be My Retribution'</h3><p>Donald Trump had been waiting four years for tonight. All this time in the wilderness, and all the trials, investigations, indictments, and guilty charge for 'falsifying business records' would be worth it for this. He would beat Biden, and take back the White House. Within a few hours, the mood at the election night parties became obvious - the Biden team's slim hopes began to collapse as Trump's party became even more lively and energetic.<br><br> The early signs were there - county shifts in Virginia, Kentucky, and Indiana looking good for Republicans, and Biden underperforming his 2020 margins in key areas like Loudon County, Virginia and Miami-Dade County, Florida. The final signs were those last calls that put him over the top. Trump was going to claim victory on election night - whether he won or lost. The fact that he was going to win made this less concerning.<br><br>The fallout didn't shock Demcrats - it just left them in gloom. The early scapegoat was Biden, and Trump knew this. He received a long call from Biden the day after. Biden starts the call and cogratulates Trump on his win. He says that any political comeback is an impressive feat, and that just like 100 years ago, this will be one for the hisory books. Trump smiles, and continues to smile as he's showered in praise by this loser.<br><br>"But you won through the system, Trump. You have to... respect these institutions going forward. No more... of this stuff about hatred, revenge, and dismantling the system." a weak and defeated Biden says.<br><br>Trump's smile turns into a frown just as quickly as it had appeared. He dismissively acknowledges what Biden said, only saying he was "elected to get things done".<br><br>Biden sighs - perhaps acknowledging, perhaps accepting an answer he already expected. He invites Trump to the White House in the coming days to discuss the Presidential transition. Trump's smile returns again.</p>`)
+  e.pages.push(`<h3>'You Will Be My Retribution'</h3><p>Donald Trump had been waiting four years for tonight. All this time in the wilderness, and all the trials, investigations, indictments, and guilty charge for 'falsifying business records' would be worth it for this. He would beat Biden, and take back the White House. Within a few hours, the mood at the election night parties became obvious - the Biden team's slim hopes began to collapse as Trump's party became even more lively and energetic.<br><br> The early signs were there - county shifts in Virginia, Kentucky, and Indiana looking good for Republicans, and Biden underperforming his 2020 margins in key areas like Loudon County, Virginia and Miami-Dade County, Florida. The final signs were those last calls that put him over the top. Trump was going to claim victory on election night - whether he won or lost. The fact that he was going to win made this less concerning.<br><br>The fallout didn't shock Democrats - it just left them in gloom. The early scapegoat was Biden, and Trump knew this. He received a long call from Biden the day after. Biden starts the call and cogratulates Trump on his win. He says that any political comeback is an impressive feat, and that just like 100 years ago, this will be one for the hisory books. Trump smiles, and continues to smile as he's showered in praise by this loser.<br><br>"But you won through the system, Trump. You have to... respect these institutions going forward. No more... of this stuff about hatred, revenge, and dismantling the system." a weak and defeated Biden says.<br><br>Trump's smile turns into a frown just as quickly as it had appeared. He dismissively acknowledges what Biden said, only saying he was "elected to get things done".<br><br>Biden sighs - perhaps acknowledging, perhaps accepting an answer he already expected. He invites Trump to the White House in the coming days to discuss the Presidential transition. Trump's smile returns again.</p>`)
   e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2024/endings/trump2025.png'})])
   
   if (used != true) {
@@ -42707,7 +42747,7 @@ else {
 
 if (quickstats[0] >= 269 && grokEnd == true) { // Grok Win
   e.pages.push(`<h3>TrumpMobile to partner with Musk's Grok/xAI. Is it Illegal?</h3><h4>CNN Business | January 8th, 2026</h4><p>Hot off Musk’s political victory regarding the cutting of U.S.A.I.D entirely and permanently, the businessman and de-facto advisor to the President has announced that his company will be partnering with Trump Mobile to bring a so-called “Pocket Trump” to the newly introduced line of smartphones released by the company run by the President’s two sons.</p><p>The so-called “Pocket Trump” will be an artificial intelligence with the demeanor and knowledge of the President, with the ability to do complicated tasks and decision makings that “will help users of the phone connect and understand the President in a unique way”. The AI is reportedly so realistic and “Trump-like” that Mr. Musk is pressuring sitting Republicans lawmakers and rising stars to purchase copies of the phone so they can understand how Trump wants them to vote in favor of certain laws.</p><p>"Pocket Trump" will be able to do everything that Grok, the AI found on the 𝕏 app, is able to do, and more. In addition to an expanded ability to retain memories from past conversations, "Pocket Trump" can also pre-emptively take actions such as setting reminders, starting conversations, optimizing power consumption, and send messages to others as needed.</p><p>Of course, ethics groups have already begun to raise concerns - not just at the blatant product placement within the White House, but also the conflict of interest between Mr. Musk and President Trump promoting and selling products that they may financially benefit from together while in the Oval Office. However, it's unknown how far any legal complaints may be able to go.</p><p>Allies of Trump, many of whom have been shafted and isolated from him by Mr. Musk, reportedly are hoping that this scheme brings about Musk's political downfall and a return to their influence. Of course, it remains to be seen how popular such a device will be.</p>`)
- e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2024/endings/phone.png'})])
+ e.executable.push([1, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2024/endings/phone.png'})])
 }
 else if (quickstats[0] >= 269 && (campaignTrail_temp.candidate_json[2]["fields"].last_name == "Trump" || campaignTrail_temp.candidate_json[2]["fields"].last_name == "Trump (POW)") && vance == true) { /* Win with JD Vance as VP */
   ctsAchievement("Avolition");
@@ -42721,7 +42761,7 @@ e.pages.push(`<h3>NBC NEWS, DECISION 2028: Trump "encouraging" Vance to dip toes
 e.executable.push([1, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2024/endings/vancemidloss.png'})])
 }
 else if (quickstats[0] < 190 && (campaignTrail_temp.candidate_json[2]["fields"].last_name == "Trump" || campaignTrail_temp.candidate_json[2]["fields"].last_name == "Trump (POW)") && vance == true) { /* Lose with JD Vance as VP */
-  e.pages.push(`<h3>Scoop: Senator Vance Uncertain About Re-Election</h3><h5>The Columbus Dispatch, December 18th, 2026</h5><p>One-term Ohio Senator JD Vance is reportedly uncertain about whether to run for re-election following the large loss that he and Mr. Donald Trump suffered in the 2024 election. Vance reportedly has felt "depressed" and "disaffected" with Senatorial politics following Trump's losses. A return to Senatorial control by Democrats following the 2026 midterm elections also has made Vance's interest in staying in the chamber vastly decrease.</p><p>With the logistics of a 2028 campaign looking difficult for the now-imprisoned former President, many in Trumpworld are shopping around for a possible successor. One name that has been brought up in recent months has been a Vance candidacy - they believe his youth and loyalty are positive factors. Despite defeat in 2024, Mr. Vance has remained loyal to the former Presiden - through the campaign, through the return to Mar-A-Lago, and through his unprecedented arrest.</p><p>However, Vance's reaction to such offers and talks have been mixed. Vance has not ruled out any campaign for the White House, but has reportedly expressed doubts that he would be able to win on his own, and has even considered retiring from politics altogether and handing his seat off. With talks continuing, the other possible options that Trumpworld is considering include making amends with Ron DeSantis, running Donald Trump Jr. or running Donald Trump from jail, similar to Eugene Debs' 1920 campaign.</p>`)
+  e.pages.push(`<h3>Scoop: Senator Vance Uncertain About Re-Election</h3><h5>The Columbus Dispatch, December 18th, 2026</h5><p>One-term Ohio Senator JD Vance is reportedly uncertain about whether to run for re-election following the large loss that he and Mr. Donald Trump suffered in the 2024 election. Vance reportedly has felt "depressed" and "disaffected" with Senatorial politics following Trump's losses. A return to Senatorial control by Democrats following the 2026 midterm elections also has made Vance's interest in staying in the chamber vastly decrease.</p><p>With the logistics of a 2028 campaign looking difficult for the now-imprisoned former President, many in Trumpworld are shopping around for a possible successor. One name that has been brought up in recent months has been a Vance candidacy - they believe his youth and loyalty are positive factors. Despite defeat in 2024, Mr. Vance has remained loyal to the former President - through the campaign, through the return to Mar-A-Lago, and through his unprecedented arrest.</p><p>However, Vance's reaction to such offers and talks have been mixed. Vance has not ruled out any campaign for the White House, but has reportedly expressed doubts that he would be able to win on his own, and has even considered retiring from politics altogether and handing his seat off. With talks continuing, the other possible options that Trumpworld is considering include making amends with Ron DeSantis, running Donald Trump Jr. or running Donald Trump from jail, similar to Eugene Debs' 1920 campaign.</p>`)
   //e.image = ""
   e.executable.push([1, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2024/endings/vancebigloss.png'})])  
 }
@@ -42769,7 +42809,7 @@ e.pages.push(`<h3>The New York Times: Ben Carson to move into Mar-A-Lago</h3><p>
 e.executable.push([1, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2024/endings/carsonmidloss.png'})])  
 }
 else if (quickstats[0] < 190 && (campaignTrail_temp.candidate_json[2]["fields"].last_name == "Trump" || campaignTrail_temp.candidate_json[2]["fields"].last_name == "Trump (POW)") && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Harris" && carson == true) { /* Lose with Ben Carson as VP */ 
-  e.pages.push(`<h3>NYT: Trump has lost in the biggest Landslide since 2008. What does that mean for America?</h3><h4>His painstaking loss in Texas and performance in Florida mean more than you think.</h4><h4>By <u>Shane Goldmacher</u>, <u>Johnathan Swan</u> and <u>Maggie Haberman</u></h4><p>Many were wondering why the Harris campaign was campaigning on states like Texas and Florida over Michigan, Arizona and Nevada, but it seens that there was some kind of reason for this madness. Texas was called for Vice President Harris by Decision Desk HQ on this Wednesday, on 1:20 A.M, the call was reciprocated by the Associated Press a few hours later, although the election was already called by 10:45 P.M, the chances for Texas to go for Harris were less than 40% according to some betting markets.<br><br>According to the Harris campaign, the idea to focus the campaign on southern states came from Trump's selection of Ben Carson as running mate, it was believed that while he placated Midwestern voters, some of his policies alienated southern voters, something which proved to be true after states such as Ohio and Indiana had much more Republican leanings than expected, compared to the southern swing states.<br><br>The Trump campaign believed that the worrisome economy would be enough to cruise the former President to a win, which showed after he picked Carson and focused on the midwest in his campaign. The election results showed that it was not as simple as that. <br><br>Carson's timid personality, combined with his gaffe-prone behavior seemed to illicit concerns that he would not be up to the task of taking the oath of office in the event that Mr. Trump were to die - something more and more likely given his age.</p>`)
+  e.pages.push(`<h3>NYT: Trump has lost in the biggest Landslide since 2008. What does that mean for America?</h3><h4>His painstaking loss in Texas and performance in Florida mean more than you think.</h4><h4>By <u>Shane Goldmacher</u>, <u>Johnathan Swan</u> and <u>Maggie Haberman</u></h4><p>Many were wondering why the Harris campaign was campaigning on states like Texas and Florida over Michigan, Arizona and Nevada, but it seens that there was some kind of reason for this madness. Although the election was already called by 10:45 P.M, Texas and Florida both remained ''Too Close To Call'' for much of the night, even as the standard swing states broke massively for the Vice President. This is in spite of the fact that the chances for Texas to go for Harris were less than 20%, according to some betting markets.<br><br>According to the Harris campaign, the idea to focus the campaign on southern states came from Trump's selection of Ben Carson as running mate, it was believed that while he placated Midwestern voters, some of his policies alienated southern voters, something which proved to be true after states such as Ohio and Indiana had much more Republican leanings than expected, compared to the southern swing states.<br><br>The Trump campaign believed that the worrisome economy would be enough to cruise the former President to a win, which showed after he picked Carson and focused on the midwest in his campaign. The election results showed that it was not as simple as that. <br><br>Carson's timid personality, combined with his gaffe-prone behavior seemed to illicit concerns that he would not be up to the task of taking the oath of office in the event that Mr. Trump were to die - something more and more likely given his age.</p>`)
   //e.image = ""
   e.executable.push([1, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2024/endings/carsonloss.png'})])  
 }
@@ -42784,7 +42824,7 @@ else if (campaignTrail_temp.candidate_json[2]["fields"].last_name == "Trump Jr."
   e.executable.push([1, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2024/endings/viveksad.png'})])
 }
 else if (campaignTrail_temp.candidate_json[2]["fields"].last_name == "Trump Jr." && vp == 'donalds' && quickstats[0] >= 269) { /* Trump Jr/Donalds Win */ 
-  e.pages.push(`<h3>BREAKING: DeSantis Confirmation Vote Fails, VP Donalds Votes NO</h3><h4>CNN | January 28th, 2024</h4><p>The confirmation vote for Florida Governor Ron DeSantis as Secretary of Defense has ended in defeat for President Donald Trump Jr., with Vice President Byron Donalds choosing to break the tie with a "No" vote.</p><p>This makes DeSantis the first cabinet nominee to be rejected by the United States Senate since John Tower, also nominated for Defense Secretary, was defeated in a 47-53 vote.</p><p>Every single Democratic Senator were joined by Senator Susan Collins of Maine in voting against DeSantis. Collins had said that DeSantis' 'sheer partisanship' made her apprehensive to support such a nomination. </p><p>When asked by reporters, Vice President Donalds made it clear that the White House knew he would vote against DeSantis, and that 'All the President wants me to do is go in there and vote with my conscious. And I did. We can and will respectfully disagree about things, but working together despite those differences is crucial. Democracy can be messy sometimes'. </p><p>Many of DeSantis' allies are reportedly furious at the decision for Donalds to vote against the nomination - with some of them blaming a 'petty rivalry' between the two for the decision.</p><p>The White House has yet to comment on the situation.</p>`)
+  e.pages.push(`<h3>BREAKING: DeSantis Confirmation Vote Fails, VP Donalds Votes NO</h3><h4>CNN | January 28th, 2025</h4><p>The confirmation vote for Florida Governor Ron DeSantis as Secretary of Defense has ended in defeat for President Donald Trump Jr., with Vice President Byron Donalds choosing to break the tie with a "No" vote.</p><p>This makes DeSantis the first cabinet nominee to be rejected by the United States Senate since John Tower, also nominated for Defense Secretary, was defeated in a 47-53 vote.</p><p>Every single Democratic Senator were joined by Senator Susan Collins of Maine in voting against DeSantis. Collins had said that DeSantis' 'sheer partisanship' made her apprehensive to support such a nomination. </p><p>When asked by reporters, Vice President Donalds made it clear that the White House knew he would vote against DeSantis, and that 'All the President wants me to do is go in there and vote with my conscious. And I did. We can and will respectfully disagree about things, but working together despite those differences is crucial. Democracy can be messy sometimes'. </p><p>Many of DeSantis' allies are reportedly furious at the decision for Donalds to vote against the nomination - with some of them blaming a 'petty rivalry' between the two for the decision.</p><p>The White House has yet to comment on the situation.</p>`)
   //e.image = ""
   e.executable.push([1, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2024/endings/veepdonalds.png'})])
 }
@@ -43109,7 +43149,7 @@ else if (campaignTrail_temp.candidate_json[2]["fields"].last_name == "Vance" && 
   e.executable.push([2, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2024/endings/hillbilly.png'})])
 }
 else if (campaignTrail_temp.candidate_json[2]["fields"].last_name == "Burgum" && loyalty >= 0 && quickstats[0] >= 269) { /* Burgum Win, High Loyalty */ 
-  e.pages.push(`<h3>Doug Burgum Really Loves AI... For Some Reason</h3><h4>Politico, June 18th, 2025 | The President reportedly is a huge fan of the Grok app</h4><p>While most of us have only dabbled in AI, some have used tooks such as ChatGPT extensively. Some jobs, perhaps coding, for example, may benefit from it as a tool. But one job we wouldn't expect to be changed by the use of Artificial Intelligence is President of the United States.</p><p>Sources say the President has 'Grok' installed on his phone and he consults it often for everything from what color tie to wear to what foreign policy decisions to make. Opinions in the U.S. intelligence community are divided as to whether this constitutes a leak.</p><p>One firsthand account describes President Burgum, during his meeting last month with President Macron, taking out his phone and asking Grok AI what import duties the European Union levies on imported U.S. automobiles.</p><p>According to this administration insider, Macron seemed "confused" and "surprised," asking Burgum if he could not just ask one of his aides for the information.</p><p>Other administration insiders have painted a vivid picture of Burgum castigating Musk, telling him that his cointinued service in his administration was contingent on "no more talking about the Jews on Twitter." Musk reportedly shouted back, "It's called '𝕏!'"</p><p>Others still described a heated discussion between Burgum and acting Energy Information Agency director Stephen Nalley over mass layoffs, in which Burgum suggested that he could fire every single person within the EIA and replace it with a "super-algorithm." It is unclear what a "super-algorithm" is, although he reportedly later likened it to the Master Control Program from <i>Tron (1982)</i>.</p>`)
+  e.pages.push(`<h3>Doug Burgum Really Loves AI... For Some Reason</h3><h4>Politico, June 18th, 2025 | The President reportedly is a huge fan of the Grok app</h4><p>While most of us have only dabbled in AI, some have used tooks such as ChatGPT extensively. Some jobs, perhaps coding, for example, may benefit from it as a tool. But one job we wouldn't expect to be changed by the use of Artificial Intelligence is President of the United States.</p><p>Sources say the President has 'Grok' installed on his phone and he consults it often for everything from what color tie to wear to what foreign policy decisions to make. Opinions in the U.S. intelligence community are divided as to whether this constitutes a leak.</p><p>One firsthand account describes President Burgum, during his meeting last month with President Macron, taking out his phone and asking Grok AI what import duties the European Union levies on imported U.S. automobiles.</p><p>According to this administration insider, Macron seemed "confused" and "surprised," asking Burgum if he could not just ask one of his aides for the information.</p><p>Other administration insiders have painted a vivid picture of Burgum castigating Musk, telling him that his continued service in his administration was contingent on "no more talking about the Jews on Twitter." Musk reportedly shouted back, "It's called '𝕏!'"</p><p>Others still described a heated discussion between Burgum and acting Energy Information Agency director Stephen Nalley over mass layoffs, in which Burgum suggested that he could fire every single person within the EIA and replace it with a "super-algorithm." It is unclear what a "super-algorithm" is, although he reportedly later likened it to the Master Control Program from <i>Tron (1982)</i>.</p>`)
   //e.image = ""
   e.executable.push([2, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2024/endings/douggrok.png'})])
 }
@@ -43173,7 +43213,7 @@ else if (campaignTrail_temp.candidate_json[2]["fields"].last_name == "Trump" && 
 }
 else if (campaignTrail_temp.candidate_json[2]["fields"].last_name == "Trump Jr." && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Harris") { // Trump Jr./Harris
   e.pages.push(`<h3>American History USA</h3>
-    <p><i><b>THE CAMPAIGN TRAIL</i></b><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2024</option></select><br><img width="210" src="https://itsastronomical.com/assets/2024/code1/harrisdonjr.png">	<br></p><p>The earth-shattering withdrawl of President Joe Biden and the assassination of former President Donald Trump has shaken America to its very core, leaving practically leaderless. A Republican National Convention resembling a funeral has nominated Trump's namesake, Donald Trump Jr. to lead the party and the Presidential ticket.</p><p>Meanwhile, Vice President Kamala Harris has been called upon by her party to lead them out of this crisis. Can she make the case to voters that the era of Trump died with the former President? Can Trump Jr. keep the emotions high into election day?</p><br><button>Continue</button></p>`)
+    <p><i><b>THE CAMPAIGN TRAIL</i></b><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2024</option></select><br><img width="210" src="https://itsastronomical.com/assets/2024/code1/harrisdonjr.png">	<br></p><p>The earth-shattering withdrawl of President Joe Biden and the assassination of former President Donald Trump has shaken America to its very core, leaving her practically leaderless. A Republican National Convention resembling a funeral has nominated Trump's namesake, Donald Trump Jr. to lead the party and the Presidential ticket.</p><p>Meanwhile, Vice President Kamala Harris has been called upon by her party to lead them out of this crisis. Can she make the case to voters that the era of Trump died with the former President? Can Trump Jr. keep the emotions high into election day?</p><br><button>Continue</button></p>`)
     e.executable.push([3, (() => {e.image = e.image = 'https://i.imgur.com/y4eg352.png'})])  
 }
 else if (campaignTrail_temp.candidate_json[2]["fields"].last_name == "Trump Jr." && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Biden") { // Trump Jr./Biden
@@ -43183,7 +43223,7 @@ e.executable.push([3, (() => {e.image = e.image = 'https://i.imgur.com/y4eg352.p
 }
 else if (campaignTrail_temp.candidate_json[2]["fields"].last_name == "Haley" && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Harris") { // Haley/Harris
   e.pages.push(`<h3>American History USA</h3>
-    <p><i><b>THE CAMPAIGN TRAIL</i></b><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2024</option></select><br><img width="210" src="https://itsastronomical.com/assets/2024/code1/harrishaley.png">	<br></p><p>The earth-shattering withdrawl of President Joe Biden and the assassination of former President Donald Trump has shaken America to its very core, leaving practically leaderless. With a surprise blessing from the Trump family, runner-up Nikki Haley was able to secure the Republican nomination. She seeks to keep the Republican Party in a more traditional, Reagan-Bush direction.</p><p>Meanwhile, Vice President Kamala Harris has been called upon by her party to lead them out of this crisis. Can she make the case to voters that Nikki Haley is not the kind of leadership needed? Can Nikki Haley keep MAGA engaged enough to secure victory?</p><br><button>Continue</button></p>`)
+    <p><i><b>THE CAMPAIGN TRAIL</i></b><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2024</option></select><br><img width="210" src="https://itsastronomical.com/assets/2024/code1/harrishaley.png">	<br></p><p>The earth-shattering withdrawl of President Joe Biden and the assassination of former President Donald Trump has shaken America to its very core, leaving her practically leaderless. With a surprise blessing from the Trump family, runner-up Nikki Haley was able to secure the Republican nomination. She seeks to keep the Republican Party in a more traditional, Reagan-Bush direction.</p><p>Meanwhile, Vice President Kamala Harris has been called upon by her party to lead them out of this crisis. Can she make the case to voters that Nikki Haley is not the kind of leadership needed? Can Nikki Haley keep MAGA engaged enough to secure victory?</p><br><button>Continue</button></p>`)
     e.executable.push([3, (() => {e.image = e.image = 'https://i.imgur.com/y4eg352.png'})])  
 }
 else if (campaignTrail_temp.candidate_json[2]["fields"].last_name == "Haley" && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Biden") { // Haley/Biden
@@ -43193,7 +43233,7 @@ else if (campaignTrail_temp.candidate_json[2]["fields"].last_name == "Haley" && 
 }
 else if (campaignTrail_temp.candidate_json[2]["fields"].last_name == "DeSantis" && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Harris") { // DeSantis/Harris
   e.pages.push(`<h3>American History USA</h3>
-    <p><i><b>THE CAMPAIGN TRAIL</i></b><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2024</option></select><br><img width="210" src="https://itsastronomical.com/assets/2024/code1/harrisron.png">	<br></p><p>The earth-shattering withdrawl of President Joe Biden and the assassination of former President Donald Trump has shaken America to its very core, leaving practically leaderless. In the chaos, Florida Governor Ron DeSantis was able to mend enough ties with Trump's family to secure the Republican nomination. He remains largely untested on a national stage.</p><p>Meanwhile, Vice President Kamala Harris has been called upon by her party to lead them out of this crisis. Can she make the case to voters that America should be a lot less like Florida? Can Ron DeSantis convince Americans that the nation needs a culture warrior to put the nation back together?</p><br><button>Continue</button></p>`)
+    <p><i><b>THE CAMPAIGN TRAIL</i></b><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2024</option></select><br><img width="210" src="https://itsastronomical.com/assets/2024/code1/harrisron.png">	<br></p><p>The earth-shattering withdrawl of President Joe Biden and the assassination of former President Donald Trump has shaken America to its very core, leaving her practically leaderless. In the chaos, Florida Governor Ron DeSantis was able to mend enough ties with Trump's family to secure the Republican nomination. He remains largely untested on a national stage.</p><p>Meanwhile, Vice President Kamala Harris has been called upon by her party to lead them out of this crisis. Can she make the case to voters that America should be a lot less like Florida? Can Ron DeSantis convince Americans that the nation needs a culture warrior to put the nation back together?</p><br><button>Continue</button></p>`)
     e.executable.push([3, (() => {e.image = e.image = 'https://i.imgur.com/y4eg352.png'})])  
 }
 else if (campaignTrail_temp.candidate_json[2]["fields"].last_name == "DeSantis" && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Biden") { // DeSantis/Biden
@@ -43203,7 +43243,7 @@ else if (campaignTrail_temp.candidate_json[2]["fields"].last_name == "DeSantis" 
 }
 else if (campaignTrail_temp.candidate_json[2]["fields"].last_name == "Vance" && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Harris") { // Vance/Harris
   e.pages.push(`<h3>American History USA</h3>
-    <p><i><b>THE CAMPAIGN TRAIL</i></b><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2024</option></select><br><img width="210" src="https://itsastronomical.com/assets/2024/code1/harrisvance.png">	<br></p><p>The earth-shattering withdrawl of President Joe Biden and the assassination of former President Donald Trump has shaken America to its very core, leaving practically leaderless. Thanks to a last minute push by Donald Trump Jr., Senator JD Vance of Ohio was able to secure the Republican Nomination, as the youngest Republican candidate ever nominated at 39 years of age.</p><p>Meanwhile, Vice President Kamala Harris has been called upon by her party to lead them out of this crisis. Can she make the case to voters that JD Vance is too extreme and weird? Can JD Vance rebuild the Trump coalition from 2016?</p><br><button>Continue</button></p>`)
+    <p><i><b>THE CAMPAIGN TRAIL</i></b><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2024</option></select><br><img width="210" src="https://itsastronomical.com/assets/2024/code1/harrisvance.png">	<br></p><p>The earth-shattering withdrawl of President Joe Biden and the assassination of former President Donald Trump has shaken America to its very core, leaving her practically leaderless. Thanks to a last minute push by Donald Trump Jr., Senator JD Vance of Ohio was able to secure the Republican Nomination, as the youngest Republican candidate ever nominated at 39 years of age.</p><p>Meanwhile, Vice President Kamala Harris has been called upon by her party to lead them out of this crisis. Can she make the case to voters that JD Vance is too extreme and weird? Can JD Vance rebuild the Trump coalition from 2016?</p><br><button>Continue</button></p>`)
     e.executable.push([3, (() => {e.image = e.image = 'https://i.imgur.com/y4eg352.png'})])  
 }
 else if (campaignTrail_temp.candidate_json[2]["fields"].last_name == "Vance" && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Biden") { // Vance/Biden
@@ -43212,7 +43252,7 @@ else if (campaignTrail_temp.candidate_json[2]["fields"].last_name == "Vance" && 
     e.executable.push([3, (() => {e.image = e.image = 'https://i.imgur.com/y4eg352.png'})])  
 }
 else if (campaignTrail_temp.candidate_json[2]["fields"].last_name == "Burgum" && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Harris") { // Burgum/Harris
-  e.pages.push(`<h3>American History USA</h3><p><i><b>THE CAMPAIGN TRAIL</i></b><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2024</option></select><br><img width="210" src="https://itsastronomical.com/assets/2024/code1/harrisburgum.png">	<br></p><p>The earth-shattering withdrawl of President Joe Biden and the assassination of former President Donald Trump has shaken America to its very core, leaving practically leaderless. In a shocker for the ages, North Dakota Governor Doug Burgum emerged victorious as a dark horse candidate. Although vetted to be Trump's running mate, he remains an enigma to most Republicans and voters at-large.</p><p>Meanwhile, Vice President Kamala Harris has been called upon by her party to lead them out of this crisis. Can she make the case to voters that Burgum is MAGA? Can Burgum forge a new path for his Grand Old Party?</p><br><button>Continue</button></p>`)
+  e.pages.push(`<h3>American History USA</h3><p><i><b>THE CAMPAIGN TRAIL</i></b><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2024</option></select><br><img width="210" src="https://itsastronomical.com/assets/2024/code1/harrisburgum.png">	<br></p><p>The earth-shattering withdrawl of President Joe Biden and the assassination of former President Donald Trump has shaken America to its very core, leaving her practically leaderless. In a shocker for the ages, North Dakota Governor Doug Burgum emerged victorious as a dark horse candidate. Although vetted to be Trump's running mate, he remains an enigma to most Republicans and voters at-large.</p><p>Meanwhile, Vice President Kamala Harris has been called upon by her party to lead them out of this crisis. Can she make the case to voters that Burgum is MAGA? Can Burgum forge a new path for his Grand Old Party?</p><br><button>Continue</button></p>`)
     e.executable.push([3, (() => {e.image = e.image = 'https://i.imgur.com/y4eg352.png'})])  
 }
 else if (campaignTrail_temp.candidate_json[2]["fields"].last_name == "Burgum" && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Biden") { // Burgum/Biden
@@ -43220,7 +43260,7 @@ else if (campaignTrail_temp.candidate_json[2]["fields"].last_name == "Burgum" &&
     e.executable.push([3, (() => {e.image = e.image = 'https://i.imgur.com/y4eg352.png'})])  
 }
 else if (campaignTrail_temp.candidate_json[2]["fields"].last_name == "Kennedy" && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Harris") { // RFK/Harris
-  e.pages.push(`<h3>American History USA</h3><p><i><b>THE CAMPAIGN TRAIL</i></b><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2024</option></select><br><img width="210" src="https://itsastronomical.com/assets/2024/code1/harrisrfk.png">	<br></p><p>The earth-shattering withdrawl of President Joe Biden and the assassination of former President Donald Trump has shaken America to its very core, leaving practically leaderless. By some bizarre series of events, independent candidate Robert Kennedy Jr. secured the GOP mantle after a chaotic convention gone haywire.</p><p>Meanwhile, Vice President Kamala Harris has been called upon by her party to lead them out of this crisis. Can she make the case to voters that RFK is too out of touch and nutty? Can Robert Kennedy Jr. unite the opposition against the Democratic Party?</p><br><button>Continue</button></p>`)
+  e.pages.push(`<h3>American History USA</h3><p><i><b>THE CAMPAIGN TRAIL</i></b><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2024</option></select><br><img width="210" src="https://itsastronomical.com/assets/2024/code1/harrisrfk.png">	<br></p><p>The earth-shattering withdrawl of President Joe Biden and the assassination of former President Donald Trump has shaken America to its very core, leaving her practically leaderless. By some bizarre series of events, independent candidate Robert Kennedy Jr. secured the GOP mantle after a chaotic convention gone haywire.</p><p>Meanwhile, Vice President Kamala Harris has been called upon by her party to lead them out of this crisis. Can she make the case to voters that RFK is too out of touch and nutty? Can Robert Kennedy Jr. unite the opposition against the Democratic Party?</p><br><button>Continue</button></p>`)
     e.executable.push([3, (() => {e.image = e.image = 'https://i.imgur.com/y4eg352.png'})])  
 }
 else if (campaignTrail_temp.candidate_json[2]["fields"].last_name == "Kennedy" && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Biden") { // RFK/Biden
@@ -44043,7 +44083,7 @@ function openHeadquarter() {
     if (sad >= 1 && sad < 3) {
         sadText = 'doubtful and tired'
     }
-    if (sad = 0) {
+    if (sad <= 0) {
         sadText = 'enraged, and eager to get revenge'
     }
 
