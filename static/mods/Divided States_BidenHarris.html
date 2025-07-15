@@ -37580,7 +37580,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 21317,
             "candidate": 300,
-            "answer_feedback": "At the NATO summit, you begin by introducing Zelenskiy as “President Putin!” and refer to Harris as \"Vice-President Trump\". This isn't helping your case at all."
+            "answer_feedback": "At the NATO summit, you begin by introducing Zelensky as “President Putin!” and refer to Harris as \"Vice-President Trump\". This isn't helping your case at all."
         }
     },
     {
@@ -38291,7 +38291,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 21680,
             "candidate": 300,
-            "answer_feedback": "At the NATO summit, you begin by introducing Zelenskiy as “President Putin!” and refer to Harris as \"Vice-President {{opLast}}\". This isn't helping your case at all."
+            "answer_feedback": "At the NATO summit, you begin by introducing Zelensky as “President Putin!” and refer to Harris as \"Vice-President {{opLast}}\". This isn't helping your case at all."
         }
     },
     {
@@ -42998,7 +42998,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 85476,
             "candidate": 300,
-            "answer_feedback": "At the NATO summit, you begin by introducing Zelenskiy as “President Putin!” and refer to Harris as \"Vice-President {{opLast}}\". This isn't helping your case at all."
+            "answer_feedback": "At the NATO summit, you begin by introducing Zelensky as “President Putin!” and refer to Harris as \"Vice-President {{opLast}}\". This isn't helping your case at all."
         }
     },
     {
@@ -43294,6 +43294,7 @@ var regionalWar = false;
 var dropout = false;
 var debate = false;
 var rfkLock = false;
+var pushBibi = false;
 
 // For endings
 var running = true;
@@ -43876,9 +43877,13 @@ if(ans == 21453){
 if(ans == 21281 || ans == 21283 || ans == 21294 || ans == 21296 || ans == 84428 || ans == 84431 || ans == 84441 || ans == 84462 || ans == 84468 || ans == 84470){
   gaza = -2;
 }
-// Regional War - happens if Speaker Chaos + Weak Deal
+// Regional War - Bibi chooses to help the GOP if Speaker Chaos + Weak Deal
 if(ans == 84420 || ans == 84472 || ans == 84443) {
   regionalWar = true;
+}
+// if you're on track for the good deal you get it if Harris Primary
+if(ans == 84388 || ans == 84413 || ans == 84434 || ans == 21287 || ans == 21289) {
+  pushBibi = true;
 }
 // Changes Q15 if you push Israel towards a deal
 // Johnson
@@ -44473,7 +44478,7 @@ campaignTrail_temp.questions_json[13] = {
     "likelihood": 1
   }
 }
-if (gaza >= -1) {
+if (pushBibi == true) {
 gaza = 2;
 campaignTrail_temp.questions_json[14] = {
   "model": "campaign_trail.question",
@@ -44503,7 +44508,7 @@ campaignTrail_temp.questions_json[29] = {
     }
 }
 }
-if (gaza < -1) {
+if (pushBibi == false) {
   campaignTrail_temp.questions_json[14] = {
     "model": "campaign_trail.question",
     "pk": 83561,
@@ -44648,7 +44653,7 @@ document.head.appendChild(customStyling);
 
 
 }
-// Harris RFK Route Activation
+// Harris' RFK Route Activation
 if (running == false && campaignTrail_temp.question_number == 15 && (opponent && (opponent.name === "Nikki Haley" || opponent.name === "Doug Burgum")) && trust < 3 && leftrep < 0) {
   campaignTrail_temp.questions_json[16] = {
     "model": "campaign_trail.question",

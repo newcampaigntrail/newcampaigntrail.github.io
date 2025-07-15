@@ -19,7 +19,7 @@ const startScreenUpdater = setInterval(function() {
     const candbackb = document.getElementById("candidate_id_back");
     var selectElement = document.getElementById('candidate_id');
     var gamemodElem = document.getElementById('game_type_id');
-    if(initialButton) { // reset theme at main menu
+if(initialButton) { // reset theme at main menu
        
       c = document.getElementById("election_id").value;
       console.log(c + "   " + storedChar);
@@ -114,8 +114,8 @@ document.head.innerHTML += "<style>#results_container {color:#000000;}";
 $(".game_header")[0].style.height="65px";
 
       }
-    }
-    if(candidateButton) { // change theme on candidate viewing
+  }
+if(candidateButton) { // checks for which candidate you have selected for the purposes of adding
       can = document.getElementById("candidate_id").value;
       console.log(can + "   " + storedCan);
       if(can == 300 && storedCan != 300) {
@@ -145,13 +145,13 @@ $(".game_header")[0].style.height="65px";
           storedCan = can;
         }, 15);
       }
-    }
-  }, 1);
+  }
+}, 1);
 
 RecReading=true;
 HistHexcolour = ["#b31200", "#052e71", "#ffc677", "#669c35"];
 
-  function removeCandidateSummary() {
+function removeCandidateSummary() {
   try {
     const candidateSummary = document.querySelector("#candidate_summary");
     if (candidateSummary && storedChar == 21) {
@@ -161,8 +161,8 @@ HistHexcolour = ["#b31200", "#052e71", "#ffc677", "#669c35"];
       }
     }
   } catch {}
-  }
-  window.setInterval(removeCandidateSummary,10)
+}
+window.setInterval(removeCandidateSummary,10)
 
 let z = new MutationObserver((mutationsList, observer) => {
     let runningMateSummary = document.querySelector("#running_mate_summary");
@@ -178,7 +178,7 @@ let z = new MutationObserver((mutationsList, observer) => {
         $("#running_mate_id_button").click();
         observer.disconnect()
         }
-    });
+});
 z.observe(document, { subtree: true, childList: true });
 
 document.getElementById("inner_window_1").children[1].innerHTML = `<p>Welcome to the 2024 Presidential Election, a mod for The Campaign Trail. This mod is split into two versions ― <b>2024</b>, and <b>2024: Divided States of America</b>.</p><img src="https://itsastronomical.com/assets/2024/2024introbanner.png" width="800"><li><b>2024</b> plays like your typical scenario, and is intended to emulate an "official" 2024 scenario, with Kamala Harris vs Donald Trump. Just like the original site, many questions are randomized (with an option to answer them all).</li><img src="https://itsastronomical.com/assets/2024/2024introbannerdsa.png" width="800"><li><b>2024: Divided States of America</b> takes the base of <b>2024</b> and uses it to add alternate history elements to allow for a less historical route, where you start as President Biden or Former President Donald Trump. This version also features less vanilla content, such as Choose Your Own Adventure, plenty of endings, and soundtracks for each side. To play <b>2024: Divided States of America</b>, you must select it on the election dropdown screen.</li><br><br>`;
@@ -1764,6 +1764,7 @@ desantis
 rfk
 hasDiedWon
 */
+
 var changeGameDisp = (hide) => {
     disp = "";
     if (hide) {
@@ -1943,9 +1944,15 @@ if (localStorage.getItem("rfk")) {
 
 styling = document.createElement("style");
 document.head.appendChild(styling);
+       
+styling.innerHTML = `
+body {
+    background-size: cover;
+}
+`
 
 campaignTrail_temp.bunnyhop = true;
-  function addColor() {
+function addColor() {
     var difficultyDiv = document.getElementById("difficulty_level");
     if (storedChar != 21 && difficultyDiv && !document.getElementById("bunnyhopDropdown")) {
             console.log("test")
@@ -2000,17 +2007,17 @@ campaignTrail_temp.bunnyhop = true;
   
               colourCheckbox.addEventListener("change", function() {
                   if (this.checked){
-                      campaignTrail_temp.candidate_json[0].fields.color_hex = '#b31200'
-                      campaignTrail_temp.candidate_json[1].fields.color_hex = '#052e71'
-                      campaignTrail_temp.candidate_json[2].fields.color_hex = '#ffc677'
-                      campaignTrail_temp.candidate_json[3].fields.color_hex = '#669c35'
+                      campaignTrail_temp.candidate_json[11].fields.color_hex = '#b31200'
+                      campaignTrail_temp.candidate_json[12].fields.color_hex = '#052e71'
+                      campaignTrail_temp.candidate_json[13].fields.color_hex = '#ffc677'
+                      campaignTrail_temp.candidate_json[14].fields.color_hex = '#669c35'
 
                   }
                   else{          
-                    campaignTrail_temp.candidate_json[0].fields.color_hex = '#FF0000'
-                    campaignTrail_temp.candidate_json[1].fields.color_hex = '#0000FF'
-                    campaignTrail_temp.candidate_json[2].fields.color_hex = '#FFFF00'
-                    campaignTrail_temp.candidate_json[3].fields.color_hex = '#00C100'
+                    campaignTrail_temp.candidate_json[11].fields.color_hex = '#FF0000'
+                    campaignTrail_temp.candidate_json[12].fields.color_hex = '#0000FF'
+                    campaignTrail_temp.candidate_json[13].fields.color_hex = '#FFFF00'
+                    campaignTrail_temp.candidate_json[14].fields.color_hex = '#00C100'
                   }
               });
   
@@ -2064,10 +2071,10 @@ campaignTrail_temp.bunnyhop = true;
               }
   
     }
-  }
+}
 
-  // the wrapper here is the same that makes sure your music player doesn't exist twice basically
-  if(!campaignTrail_temp.observer){
+// the wrapper here is the same that makes sure your music player doesn't exist twice basically
+if(!campaignTrail_temp.observer){
   
       campaignTrail_temp.observer = true
   
@@ -2083,4 +2090,4 @@ campaignTrail_temp.bunnyhop = true;
   
       // Start observing the document with the master observer
       masterObserver.observe(document.body, { childList: true, subtree: true });
-  }
+}
