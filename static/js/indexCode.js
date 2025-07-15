@@ -736,7 +736,7 @@ setInterval(function() {
     }
     gameHeader.style.backgroundColor = selectedTheme.coloring_title;
     updateDynamicStyle();
-
+    corrr=gameHeader.innerHTML;
     //updateGameHeaderContentAndStyling();
 }, 100);
 
