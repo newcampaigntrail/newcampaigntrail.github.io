@@ -1,0 +1,1628 @@
+RecReading=true
+
+document.getElementById("inner_window_1").children[0].innerHTML=`<h3>Do you have what it takes to be President of the United States?</h3>`
+
+document.getElementById("inner_window_1").children[1].innerHTML = `<li>As President-elect Bernie Sanders, try your best to steward the country through four years of chaos and prepare your party for the 2024 election.</li>
+<li>This mod features multiple types of tooltips. It is advised that you pay attention to the <i>dark-colored</i> tooltips: <span class=\'mytooltip\' style="background-color:darkblue;color:white;">feedback<span class=\'mytooltiptext\'><b>You are reading this tooltip because you moused over it</b><br>These tooltips tell you about the results of previous answers.</span></span> and <span class=\'mytooltip\' style="background-color:darkgreen;color:white;">advisor<span class=\'mytooltiptext\'><img src=https://i.imgur.com/3n1glp7.jpeg><br><b>National Security Advisor Matt Duss advises you to pay attention to these.</b><br><i>Tooltips indicating an advisor wants you to <b>pick</b> an option. Advisors may be wrong.</i></span></span> <span class=\'mytooltip\' style="background-color:darkred;color:white;">opinion<span class=\'mytooltiptext\'><img src=https://i.imgur.com/fZW1VB7.jpeg><br><b>Council of Economic Advisors Chair Stephanie Kelton advises you not to ignore these.</b><br><i>Tooltips indicating an advisor wants you to <b>avoid</b> an option. Advisors may be wrong.</i></span></span>.
+<br>You may safely ignore the <i>light-colored</i> <span class=\'mytooltip\'>contextual<span class=\'mytooltiptext\'>Your normal tooltips, about topics identical between this world and the real world. Some of them instead feature real-world quotations.</span></span>, <span class=\'mytooltip\' style="background-color:lightgreen;">worldbuilding<span class=\'mytooltiptext\'>Tooltips regarding alt-history details. None of these details are necessary to play the game.</span></span>, and <span class=\'mytooltip\' style="background-color:silver;">internal narrative<span class=\'mytooltiptext\'>These tooltips provide a fictional internal narrative from the candidate's perspective.</span></span> tooltips.</li>
+<li>Manage inflation rates, the economy, foreign policy crises, downballot races, and how best to spend your limited political capital</li><li>Featuring fourteen different opposing tickets and fifty-one different ending slides, including three different special endings.</li><li><b>Easy/Normal/Hard difficulties only affect the variables</b>. Other difficulty levels give boosts/penalties as usual.</li><li>The <span class=\'mytooltip\' style="background-color:darkgreen;color:white;">music soundtrack<span class=\'mytooltiptext\'><img src=https://i.imgur.com/v8p4Rov.jpeg><br>Hey Bernie - if you get tired of listening to the same old music, I put in an easter egg. Once you've gotten to the questions, just type in 'kamala' anywhere and hit enter. Switch back by typing in 'bernie' and hitting enter. Have fun!</span></span> is intentionally dated to reflect the music Bernie himself likes and listens to</li><li>The mod is heavily issue-based - state partisan leans will depend on your choices.</li><li>Detailed mechanics guide available at the end of the game in the results.</li><li>Good luck with <b><span style="color: royalblue;">Our Revolution.</span></b></li>`; 	
+
+
+campaignTrail_temp.election_json = [
+    {
+        "model": "campaign_trail.election",
+        "pk": 20,
+        "fields": {
+            "year": 2024,
+            "display_year": "2024 - Our Revolution", //dynamic scrollbars in summaries/description: They should only show up if you need them. (Aren't necessary on my computer, but some people report issues.) For some reason this sometimes results in unnecessary horizontal scrollbars too so I specifically hide those. </cargo-cult-programming>
+            "summary": "<div style='overflow-y:auto;height:200px;overflow-x:hidden;'>When you launched your second bid for the presidency, you knew it would be a fight. The pandemic changed everything - Biden's illness gave you the lead, but you couldn't seal the deal until Warren's endorsement put you over the top. Trump threw at you every insult and conspiracy he could muster, reopened the FBI investigation of Jane, and when none of that worked, he threw his supporters into the streets and told them that he had won. What could you do but call your own people out, to guard democracy against a fascist in the making?<br><br>You told them to come in peace, but that peace didn't hold. On January 6, the streets of Washington ran with the blood of dozens - those who died for the lies of a narcissist who couldn't bear to lose, and those who died for <i>you</i>, died to protect America from tyranny. The weight of that day will rest on your shoulders forever. But you also know this: those who bled for democracy won that day, and they deserve more than silence - they deserve for you to fight for the cause you both believed in.</div>",
+            "image_url": "https://i.imgur.com/4lU4iDg.jpeg",
+            "winning_electoral_vote_number": 270,
+            "advisor_url": "https://i.imgur.com/8BsgPGy.jpeg",
+            "recommended_reading": `<div style='overflow-y:scroll;height:370px;margin-bottom:30px;'><p><b>Thanks so much for playing this mod! Here's some details on how the mod mechanics work</b></p>
+			
+			<br><p><b>Issues: </b>This is a heavily issue-based mod. There are five different issues in-game:</p>
+			
+			<br><p><b>Economics:</b> The U.S. is a <i>center-left</i> nation on econ, downright progressive in the Midwest. Notable red states that are economically left of center include Kentucky, Missouri, Montana, and West Virginia. Waving the flag of economic progressivism is often a winning move, especially if you have a suitable foil of a non-populist opponent. At the same time, some economic progressive policy (e.g. rail strike before Christmas) can result in negative economic effects that will hurt you. The Sun Belt states like Texas, GA, FL, and Arizona are center-right on economics.<br><br><i>Sample in-game scores (+1 is most leftist, -1 is the most conservative):</i><br> 0.6: Bernie '20. 0.45: Hawley/Vance. 0.25: U.S. political weighed mean. 0.2: Kamala '24. 0.1: Biden '20. -0.1: Trump/Vance. -0.7: Burgum/Rubio.</p>
+			
+			<br><p><b>Globalism:</b> This represents a mix of foreign policy, trade policy, general trust in the system, and association with the establishment; it's the primary variable that affects Trump-style realignments. While the U.S. as a whole is a bit more globalist than not, the crucial swing states - including Nevada, North Carolina, and especially the Midwest - are anti-globalist. However, the Sun Belt states of Arizona and Georgia are globalist; notable red states that are globalist include Florida, Texas, and Utah. Going globalist couples with a moderate economic strategy to try and win the Sun Belt - however, that will get you the real-world Democratic conundrum of winning the popular vote and flopping in the electoral college and Senate. Furthermore many anti-globalist options (e.g. caution on arming Ukraine, vetoing the NDAA) have popularity costs so you'll want to be judicial about them. Going anti-war is an anti-globalist option that will win over doves.<br><br><i>Sample in-game scores (+1 is most establishment, -1 is most anti-establishment):</i><br> 0.6: Rubio/Trump Jr. 0.4: Kamala or Biden. 0.1: U.S. political weighed mean. -0.2: Bernie '20. -0.5: Trump/Vance. -0.75: Ramaswamy/Lara Trump.</p>
+			
+			<br><p><b>Social issues:</b> The U.S. is <i>center-right</i> on social issues - the Midwest is fairly socially conservative, while the Sun Belt states of Georgia and Arizona are both socially liberal. The only red state left-of-center on social issues is Alaska. Running too far to the left on social issues will not only upset the general populace, but also unions and Latinos as well. However, running to the center on social issues will upset staffers and small-dollar donors - who are predominately weird globalist social-progressive coastal liberals (like yours truly) - represented by a global multiplier hit.<br><br><i> Sample in-game scores (+1 is most socially liberal, -1 is most socially conservative):</i><br> 0.4: Biden or Bernie. 0.3 - Kamala '24. -0.05: U.S. political weighed mean. -0.2: Burgum/Trump Jr. -0.3: Trump/Vance. -0.7: DeSantis/Rubio.</p>
+			
+			<br><p><b>Immigration:</b> The U.S. is <i>center-right</i> on immigration - the Midwest is fairly conservative, and the border states (TX/AZ/NM) are also considerably more right-wing on immigration than you'd expect from their general political leanings. No red states are left-of-center on immigration. Being too permissive on immigration will not only upset the general populace, but also make unions upset that you're depressing wages and Latinos upset that they're cutting the line. But harshness on immigration will also upset small-dollar donors and more liberal-leaning Latinos - especially those Spanish speakers who are first or second-generation - resulting in global multiplier and Latino approval hits. Immigration is also good for the economy.<br><br> Bernie himself was historically immigration-skeptical from a pro-union perspective (voting against comprehensive reform in 2007), but moved to the left over time, especially for the 2020 primary where he ran far to the left of most candidates (the game assumes that he moderated after winning the primary for the general election.) In 2025, he's critiqued Biden's policy as too permissive but has not made it clear what his current stance is other than "between Trump and Biden." <br><br><i>Sample in-game scores (+1 is most pro-immigration, -1 is most anti-immigration):</i><br>0.4: Biden or Bernie '20. 0.3 - Kamala '24. 0 - Bernie '07 and Burgum/Rubio. -0.1: U.S. political weighed mean. -0.75: Trump/Vance.</p>
+			
+			<br><p><b>Inflation:</b> This is a special issue, the only one that changes values. It starts at 1 (no inflation at all) nationwide, and every question, it moves based on the inflation rate, with the issue score itself reflecting the cumulative price increase since the start of your Presidency. Your opponents move with it - you do not, except by picking the right answers (e.g. advocating price controls, looking like you're doing things to worry about inflation) to help neutralize it. It's much more important in the coastal states than the heartland - the mod's theory of politics is that this issue score is the primary reason Ds slid hard in e.g. CA/NY/etc. in 2024.</p>
+			
+			<br><p>Other than inflation, no state issue scores will ever change in this game - but your opponent will have their own issue scores, and the relative importance of issue scores can and will change during the game. Due to limited attention spans, getting attention for one issue will suck attention away from others. If you raise the banner of economic progressivism and de-emphasize everything else, you can get historically working-class Democratic or swing states like Missouri, West Virginia, and Kentucky to consider you against the right opponent. Bernie's campaign questions have the dual purpose of increasing the importance of the issue you're attacking the opponent on, and moving the opponent on that issue. Bernie is much better at attacking opponents on economic policy than other subjects, but that may not always be the best subject for attack.</p>
+			
+			<br><p>Regarding <b>state multipliers:</b> This game tries to avoid most uses of state multipliers, going by issues instead. Your opponents are differentiated almost exclusively by issue scores (minus minor home state effects.) State multipliers are used for several purposes - primarily for demographic effects - E.g. making unions/Latinos happy/unhappy will result in nationwide movement expressed by state multipliers weighed to the percentage of the voter-eligible population that are union members/Latinos. Hitting Hawley for keeping Sweden and Finland from joining NATO will result in movement in states weighed by Swedish or Finnish American population (mostly just Minnesota, a few others too.) Hitting Vance for blaming Irish/Italian/German immigrants for bringing crime a century ago will result in movement in states weighed by those populations (largely the Midwest and Northeast.) <br><br>State multipliers also come into play when you specifically campaign in a state, or when you select a VP for home-state effects. Finally, the last question will result in movement in each state consisting of the difference between the real-world 2024 538 final forecast and the 2024 actual results to reflect the real-world polling miss (whichever state you campaign in last will have that drop reduced.) 
+			
+			</p>
+			<br><p><b>Variable mechanics</b>
+			
+			<br><br><b>Fervor</b> (internally called authenticity) - This goes up when Bernie gives in-character answers and goes down when he gives out-of-character answers; it also naturally decays over time. It's mainly checked on Q30 - you want to keep it at 8+ for that question. You really don't want it -8 or lower for Q30. Having it low can also result in a bad debate later - too many compromises makes Bernie bern out.
+			
+			<br><br><b>Political capital</b> - Affects your deal-making capability. This is limited to what your opposing party is willing to bargain on - no amount of political capital will convince Manchinema to remove the filibuster, or Rs to support things like the PRO Act, immigration reform, or M4A. Its utility usually goes down significantly starting in 2023, because Republicans are less willing to bargain with you - unless you go the full bipartisan route.
+			
+			<br><br><b>Party unity</b> - Primarily affects downballot results - each point gives +/- 0.5% margin-wise for downballot elections in non-presidential years. In 2024, each point will translate into a +/- 0.25% multiplier for you at the start of the campaign, and a +/-0.25% downballot effect at election. Party unity also affects how much support gets leeched from you to a strong Green Party or any third-party centrists, as well as the willingness of the party to support you if you try to get a Republican speaker.
+			
+			<br><br><b>Base support</b> - Doves, workers (really <i>union</i> workers), and Latinos (really Latino <i>citizens</i>) are separately tracked. Your answer in Q1 determines how high their expectations are - the default is +3 happy/-3 unhappy thresholds. If you promised big and raised expectations, it's +5/-1 for workers and Latinos and +4/-2 for doves. If you lowered expectations, it's +1/-5 for workers and Latinos and +2/-4 for doves. Approvals are not only affected by your actions as President and on the campaign trail, but also by who your opponent is. Peace activists will be much more willing to support you against Rubio, while Latinos will be much more likely to defect to him for instance. The relationship between the approvals (which is highest or lowest) determine who your opponent is. Overall, happy groups result in a roughly 2.5% national boost each; unhappy groups result in a roughly -2.5% national boost each.<br><br>
+			Both Latinos and Workers are affected by price increases - every 1% of cumulative inflation sends their approvals down 0.1. ("I know Bernie fought for comprehensive immigration reform... but the price of eggs.") Doves do not care about inflation - they care solely about staying out of war (or appearing to seek peace when you get involved), as well as things like not banning TikTok. In addition to policy, interest group opinions are affected by what happens during your re-election campaign: Workers like it when you call out your opponent as a corporate shill, and dislike it when you call out your opponent for wanting tariffs. Doves like it when you attack someone for being pro-war, and dislike it when you attack someone for being too anti-war. Latinos like it when you call out people successfully on immigration. You also can have the opportunity to affect their opinion via VP selections (if you're playing as Kamala), campaign locations (as Bernie), or generally by pandering to them when a different group's opinion is being checked (e.g. "The peace movement is important, but your focus has to shift to Latinos now.") 
+			
+			<br><br><b>The economy</b> - the nation goes into recession when this is negative. Brief small recessions are very survivable, the country going into a new Great Recession is not. Having a recession followed by strong economic recovery is not too bad - the penalty will rapidly fade as the economy improves (the "Morning in America" effect.) Additionally, there is essentially a floor to how much you can lose here - no matter how awful the economy gets and stays, it won't take away more than around 20% of your initial support. Thanks to the Phillips curve, recessions will tend to lower inflation; an overheated economy (>10, or especially >12) will tend to raise inflation. Rare deflation will meanwhile hurt the economy (Japan-ification.) Beyond legislation and not screwing up, this is heavily determined by the actions of the Chairman of the Federal Reserve, who a President gets to appoint and has no oversight over (unless you're willing to challenge the law, as Trump keeps hinting at in our world.)
+			
+			<br><br><b>Inflation</b> - The rate is how much prices are going up annualized; the cumulative inflation is how much prices have gone up since you were inaugurated, and is what sucks away much of your support. The real-world value is prices up ~19% over 2021-2024; in-game, a range of 13-41% is possible. You can aggressively fight inflation, or you can just wait for the supply chains to get sorted out and the Fed to act. Overall, good politics is different from good policy, and the compromises needed to keep inflation in check and improve the economy are sometimes not worth it. 
+			<br><br>To deal with inflation, options include spending less, raising taxes or cutting spending (austerity), getting others to spend less (e.g. More Medicare for Some), appointing an aggressive Fed chair (Kashkari goes from very dovish to very hawkish at the start of 2022, both in-game and in the real-world), avoiding things that will blow up the supply chain more (e.g. rail strike, letting shipping lanes get subjected to war, losing Taiwan's microchip factories), and doing things that will help sort out the supply chain faster (e.g. removing fossil fuel moratoriums, getting America working again faster by reopening schools early, not-IRA, etc.) The real-world estimate by the SF Federal Reserve is that Biden's stimulus contributed roughly 3 percentage points of the ~10% inflation rate; this mod uses that value (other stimuluses are similarly calibrated to it), and attributes the remainder to transient inflation.
+			
+			<br><br><b>Party Ideology</b> - This mainly affects the endings. Namely, if you get re-elected with a friendly House and Senate, are Ds willing to go for Medicare for All? The criteria is having a trifecta and "Senate seats + econ progressiveness + political capital/2 >=60". Social progressivism is largely cosmetic (if you go too conservative, the party won't be willing to codify Roe or get comprehensive immigration reform though.) If you exactly copy the real-world, this moves the party a lot more to the right than the real world - my excuse is that *Bernie* going full establishment would be much more dramatic party-wise than Biden doing so.</p>
+			
+			<br><p><b>Other mechanics</b>
+			
+			<br><br><b>The assassination</b> is conducted by Thomas Matthew Crooks, who shoots you as long as you show up in the greater Pittsburgh area for him to target (by campaigning in West Mifflin, PA.) Otherwise he shoots your opponent. From what we know of him - looking up public appearances of many prominent figures including both Biden and Trump - it seems clear that he was an equal-opportunity assassin who'd have targeted the first major-party candidate to show up near him. Being the assassination target will create a small backlash in favor of the victim, but this is intentionally small on both sides (up to a 2.5% margin swing) - partly because Trump's real-world one was small and partly because I did not want to incentivize the player to get Bernie killed.
+			<br><br>Surviving an assassination will help you recover from staying in after a bad debate (rally-to-the-flag effect); if you are the target of an assassination and replaced by Kamala, Kamala will get more political benefit from options that double down on supporting Bernie and it will cost her more to throw Bernie under the bus. Dying to an assassination after a bad debate, meanwhile, will fuel conspiracy theories that Kamala or the establishment was behind it, hurting the ticket.
+			
+			<br><br>The overall <b>2021 and 2022 election results</b> are determined by the national popular vote margin and party unity. Important state positions (both crucial governorship positions in 2022, state legislatures in 2022/2023, or each of the Senate races in 2024) are tracked behind the scenes and determined by local margins and party unity. They aren't publicly displayed because I realize that 99% of players do not care about who won the Virginia state legislature in 2023. It is impossible to do better than red ripple in the 2022 midterms - the Doylist explanation is that I did not want to write additional branching. The Watsonian explanation is that Bernie's voter base is akin to Obama's - intermittent and less willing to turn out in midterms.
+			
+			<br><br><b>Third party candidates</b> will see RFK Jr. disproportionately take votes from Republicans (however he will drop out and endorse any MAGA Republican), while centrists and Green Party candidates will predominately take votes from you. A viability mechanic means that third party candidates tend to fade over time (generally, 50% by the time of the election) so long as they are not serious candidates. However, if you do worse than a 3rd-party candidate in one state, they may start taking more votes instead - imagine that local figures see them as viable and begin endorsing them over time. Third-party votes do translate down into downballot votes too. 
+			
+			<br><br><b>Foreign interference</b> always occurs on Q40. The opinion of Russia+China towards the player are tracked over time, and depending on how strongly they feel, they may engage in anything from deepfakes to hacking (a la 2016) to social media interference from most to least impactful. Notably, banning Tiktok by the time foreign interference has happened (either getting it automatically banned via sanctions or war with the PRC, or getting it banned by Labor Day on the TikTok question) will roughly halve the impact of foreign interference. (I don't have any special knowledge about TikTok, but it's very clear that this is something that multiple world governments are very concerned about.)
+			
+			<br><br><b>The Federal Reserve</b> will act starting on Q16 to hike rates to hurt the economy and reduce inflation when inflation is high and lower rates to help the economy and increase inflation when inflation is low and the economy needs help. Their strategy varies by Fed chair. <br><b>Kashkari</b> appears dovish to Bernie at the start, but does a 180 shortly after to push aggressively for rate hikes against inflation. His behavior pattern in-game is "responds aggressively to all crises - recession and inflation - prioritizing the latter. Acts as a mega-dove to improve the economy when inflation is low and there's no recession." Because of his tendency to aggressively respond, he can easily overreact to small changes. <br><b>Powell</b> is hawkish, prioritizing inflation over the economy.<br> <b>Clarida</b> is dovish - he will still prioritize inflation, but he will be more cautious about raising rates in order to try and minimize economic damage. <br><b>Brainard</b> is dovish by default, but also the only person who listens to what you say though she won't do anything do acknowledge that - this is a giant stretch, but I did want to give the player more agency here. If you tell her to raise rates, she acts the same as Powell. If you tell her to keep rates low, she goes mega-dove, being cautious about hiking rates to avoid recession and aggressively acting against all recessions unless inflation is 10+%.
+			
+			<br><br> <b>Speaker Upton</b> is achieved by getting a red ripple in 2022, and going for the option while you have party unity 4+, political capital 3+, and a secret variable bipartisanship 4+. Bipartisanship is increased by going establishment, being solicitous to Rs (whether or not it succeeds), not attacking Rs, and not doing things like abandoning Israel/Ukraine that both parties really hate. The variable also becomes useful for working with a Republican Congress in 2023-2024, though it's intentionally hard to do so. If you keep Congress happy, you can get up to two Grand Bargains with Speaker Upton - getting an achievement. (If you fail, you get a question notifying you that Speaker Upton is in trouble in lieu of the second legislation opportunity.) 
+			<br><br>The other Speakers are largely cosmetic, but they are differentiated by a cooperativeness variable - Upton is +10, Tom Emmer is +2, Mike Johnson is +1, Kevin McCarthy is 0, Austin Scott is -1. This is checked when you push for legislation (i.e. stimulus in a bad economy or changes to a CHIPS bill.)
+			
+			<br><br><b>The prosecution of Trump</b> succeeds only if you push for it and have appointed a domestic progressive cabinet - Vanita Gupta expedites it, Merrick Garland is unwilling to rush things too much.
+			
+			<br><br><b>Your initial cabinet</b> determines a lot of policy at the start of your term. A domestic progressive cabinet can arrest Trump, will aggressively cancel fossil fuel leases on federal lands, will favor unions at the Department of Labor and will have a permissive immigration policy. A progressive foreign policy cabinet will withhold arms from Ukraine until they fully implement Minsk II, from Israel until they stop expanding settlements, from Taiwan until they fully disavow independence rhetoric that provokes China, and from UAE and the Saudis for their brutal war in Yemen and murdering Khashoggi. Establishment versions of both are basically real-world Biden.
+			
+			<br><br><b>Your initial opponents</b> are deterministic. If you did not jail Trump, then Trump is always the nominee with running mates JD Vance (if the constituency with the highest approval still is not happy), Doug Burgum (if workers are happy and the highest approval), Marco Rubio (if doves are happy and the highest approval), or Tim Scott (if Latinos are happy and the highest approval.) Those four were reportedly his VP finalists in real life. If Trump was jailed, the opposing tickets are DeSantis/Burgum (if Latinos have the lowest approval of all three), Hawley/Vance (if workers have the lowest approval), or Trump Jr./Ramaswamy (if doves have the lowest approval.)
+			<br><br> If something happens to your opponent, his VP will lead the ticket. If the opponent was Trump, the new VP candidate will always be Trump Jr. Otherwise the possible replacement tickets are Burgum/Rubio, Vance/Cotton, or Ramaswamy/Lara Trump.
+			
+			<br><br><b>True randomness</b> exists in this mod when you are intentionally gambling with disaster - namely, playing hardball on the debt ceiling (trying to invoke the 14th Amendment), or tickling the dragon's tail by pushing Russia/China to the breaking point. Variable-modified randomness also exists - e.g. the bad debate is guaranteed with fervor -10 or below and guaranteed not to happen if fervor is not negative, but in between it's random with (-fervor*10)% chance. The chance of whistleblower when sitting on serious foreign interference is also randomnized but modified via how much the national security establishment likes/dislikes you. </p>
+			
+			<br><p><b>Ending aspects</b>
+			
+			<br><br><b>Stop the Steal</b> is entirely deterministic. The hidden variable Republican radicalism is tracked throughout the game - doing the logical things like prosecuting Trump or de facto open borders increase it. Winning the election on election night while losing the popular vote by a lot also increases it. How willing Rs are to go for it depends heavily on their ticket (full MAGA tickets like Trump/Vance are the most willing to go for it; full non-MAGA tickets like DeSantis/Burgum are the least willing), which can dramatically reduce the variable. Behind the scenes, key downballot results like control of governorships, state legislatures, and SoS races is tracked in the 2021, 2022, and 2023 elections. Virginia, for instance, will only be vulnerable to Stop the Steal if you've slid enough in Virginia in 2023 for Republicans to take control of the legislature behind the scenes. <br><br>Overall, states are vulnerable to Stop the Steal if your popular vote margin of victory is smaller than 0.5%* Republican Radicalism (where Rs have a trifecta), or 0.2%* Republican Radicalism (if they only have the legislature.) If the collective states that are vulnerable is enough to flip the election or throw it to the House, they go for it. Mechanically, in states where they have full control, you're unable to dispute it and the electors there are awarded to Republicans in the state details (regardless of what it's colored on the map.) In states where they have partial control, both your electors and R electors will be sent, resulting in the electors for that state being zeroed out to reflect the deadlock. <br><br> Afterwards, the military can weigh in on the next slide - it does so if a hidden variable "blob_approval" (only used here and one other place) is at least 5. You increase this variable by doing things that agree with what the foreign policy establishment want (e.g. arming Ukraine and Israel, banning TikTok) and having an opponent repugnant to them (e.g. Vivek Ramaswamy.) 
+			
+			<br><br><b>Faithless electors</b> only affect Kamala, when she's done something to strongly annoy progressives (e.g. throwing Bernie under the bus.) This is a random effect dependent on Left Anger (internally progressive_anger) - the value is reduced by 2 and then halved if you officially won (victory makes up for a lot of sins and they're reluctant to throw the election), and then halved if Bernie is alive (he tries to talk them out of it.) Afterwords, every single elector has a Left Anger% chance of going faithless. This can potentially see the election thrown to a contingent election.
+			
+			<br><br><b>Contingent elections</b> occur when the election is deadlocked (usually because it's a 269-269 tie or Kamala's electors went faithless.) This will inevitably result in a Republican president via the House, which votes en bloc - every state collectively has a vote so California's 52 Representatives get the same number of votes as Wyoming's 1 representative. The Vice Presidency depends on a Senate vote; this can result in unusual VP scenarios - e.g. Trump with AOC as VP if you picked her as running mate and have the Senate (such a split White House with President Trump gives a unique ending slide.)<br><br> Furthermore, a very edge-case scenario is written into the game in which, if the Vice Presidency is empty on Election Night (from Bernie getting assassinated, Rs controlling the Senate, and Mitch McConnell being Mitch McConnell), if the election goes to a contingent vote, and if the 2024 Senate election results give a 50-50 tie, <i>there is no Vice President to break the tie</i> meaning that the tie will continue indefinitely until someone dies, someone crosses party lines, or a new Senate is elected in 2026. I am not certain this is actually possible in-game - I'd guess it isn't due to the sheer impossibility of getting a red wave in 2022, and gaining 2 Senate seats in 2024 while deadlocking the electoral college - but there is a very well-deserved achievement on CTS if you somehow manage it.
+			
+			<br><br>To get a <b>Gaza ceasefire in 2024</b>, you need to never arm Israel and get re-elected. Namely, in 2021 you need to either appoint a foreign policy cabinet, or annoy Sinema enough for her to switch parties and then get a second chance to disarm Israel. Then, refuse to arm them after October 7. If you get re-elected, Netanyahu - who was running short of artillery shells and manpower and desperately hoping you'd lose - caves shortly after the election, giving you a special ending slide and a CTS achievement.
+			
+			<br><br><b>The endings were written</b> by the end of May 2025, and were completed before most of them (excepting MAGA tariffs) reflected real-world events. In the time since, as of late June 2025, two endings (Slide 19 - loss to Hawley resulting in CA National Guard being federalized to crush protesters, and Slide - 22 loss to Rubio resulting in him bombing Iran) have been overtaken by real-world events. Hopefully no additional ones will have joined this list by the time you read this.
+			
+			<br><br>To access a <b>secret ending</b>, you need to exactly follow what I've assessed as the real-world options. These are answers IDs. 1002, 2004, 3001, 4001, 5001, 6001, 7001, 8004, 9004, 10202, 11001, 12002, 13103, 14002, 15001, 16002, 17002, 18002, 19002, 20004, 21002, 22102, 23003, 24101, 25002, 26002, 27202, 28002, 29103, 30101, 31104, 32002, 33003, 34003, 35102, 36102, 37101, 38602, 39502, 40802, 41402, 42901, 43402, 44104. The initial ending slide will be as normal (though the results may look very familiar), the next ending slide is the secret one. This also gives you a CTS achievement. 
+			
+			<br><br>There is another <b>easter egg</b> and associated secret ending in this game: Type in 'biden' while you're at Q1, and hit enter. Both these secret endings are calibrated almost entirely via issue scores. Enjoy. </p><p><br><br><b>Opponent ideologies</b><br><br>The ideologies of each of your possible opponents are as follows, in the format of Econ score/Globalism score/Social score/Immigration score. The two-way map changes are caused almost exclusively by different issue score arrangements.
+			<br>Trump/Vance: -0.1/-0.5/-0.3/-0.75 
+			<br>(Trump/Vance is also the 'default' issue values before the opponent is set.)
+			<br>Kennedy Jr/Shanahan: 0.6/-0.6/0.4/0.2
+			<br>Stein/Ware: 0.9/-0.6/0.75/0.7
+			<br>Oliver/ter Maat: -0.6/-0.2/0.6/0.6
+			
+			<br><br>Trump/Burgum: -0.4/-0.4/-0.3/-0.55
+			<br>Kennedy Jr/Ventura: 0.2/-0.6/0.4/0.6
+			<br>Stein/Benjamin: 0.6/-0.9/0.85/0.5
+			<br>Sinema/Baker: 0/0.4/0.4/0.2
+			
+			<br><br>Trump/Rubio: -0.3/+0.2/-0.5/-0.55
+			<br>Baldwin/Broden: -0.8/-0.8/-0.8/-0.8
+			<br>Peltier/La Rivia: 0.9/-0.9/0.6/0.4
+			<br>Manchin/Rice: 0.2/0/0/0
+			
+			<br><br>Trump/Scott: -0.15/+0.1/-0.5/-0.7
+			<br>Kennedy Jr/Rodgers: 0.6/-0.8/-0.2/-0.2
+			<br>West/Daou: 1/-0.8/1/0.4
+			<br>Yang/Jolly: 0.6/0.2/0.2/0
+			
+			<br><br>Trump Jr./Ramaswamy: 0/-0.7/-0.7/-0.6
+			<br>Kennedy Jr/Gabbard: 0.6/-0.8/0/0.4
+			<br>Sawant/Romman: 0.7/-0.6/0.8/0.3
+			<br>Amash/Riggleman: -0.4/0/0.4/0
+			
+			<br><br>DeSantis/Burgum: -0.4/+0.1/-0.7/-0.2
+			<br>Kennedy Jr/Robbins: 0.6/-0.6/-0.2/-0.6
+			<br>Stein/Barrios: 0.7/-0.6/0.6/0.8
+			<br>Phillips/Chavis: 0.4/0.4/0.4/0.2
+			
+			<br><br>Hawley/Vance: +0.45/-0.6/-0.6/-0.5
+			<br>Kennedy Jr/Rowe: 0.6/-0.6/-0.4/-0.4
+			<br>Hawkins/Walker: 0.8/-0.6/0.6/0.6
+			<br>Sestak/Whitman: 0.2/0.2/0.4/0.2
+			
+			<br><br>Vance/Trump Jr: +0.15/-0.7/-0.5/-0.5
+			<br>Burgum/Trump Jr: -0.6/+0.3/-0.2/-0.2
+			<br>Rubio/Trump Jr: -0.55/+0.4/-0.6/-0.2
+			<br>Scott/Trump Jr: -0.4/+0.3/-0.6/-0.5
+			<br>Ramaswamy/Trump: -0.3/-0.75/-0.7/-0.55
+			<br>Burgum/Rubio: -0.7/+0.4/-0.3/0
+			<br>Vance/Cotton: +0.2/-0.6/-0.4/-0.6
+			
+			<br><br>Vance/Cotton is probably the single hardest opponent. Burgum/Rubio, Burgum/Trump Jr, and Ramaswamy/Trump are probably the easiest opponents.</p> 
+			<p><b>If you are having trouble winning the game and would like help</b>, here is a set to a list of answers that should give you re-election with randomness off, without too many compromises on Bernie's part from his ideals. It is not the best electoral result you can get, but it will likely get you Medicare for All, and is an example in case it helps. Visit Missouri every time.
+			<li>1. People fought tooth and nail to elect you - some of them <i>died</i> for you. That sacrifice will not, <i>must not</i> be in vain. </li>
+			<li>2. You were elected as President of America first and foremost; a domestic cabinet of progressives will push the bold change you promised.</li>
+			<li>3. You swore a sacred oath to defend the Constitution of the United States against all enemies, foreign and domestic</li>
+			<li>4. The pandemic is a global crisis, and we can't end it until everyone, everywhere, has access to vaccines. </li>
+			<li>5. If Congress had the will you'd demand much more, but a true compromise leaves no one happy. </li>
+			<li>6. You can't let these Senators forget that this minimum wage hike is what the American people want.</li>
+			<li>7. The withdrawal must happen as planned, no matter the consequences; the Afghan people deserve the chance to determine their own future.</li>
+			<li>8. The PRO Act isn't just another bill, it'll be the foundation of working-class power in this nation.</li>
+			<li>9. The wealthy elite and their allies are using trans Americans as a scapegoat to distract from the real issues</li>
+			<li>10. These races should not have been this close, and the reason they were is that Democrats failed to fight for bold progressive policies.</li>
+			<li>11. Neel Kashkari may be a Republican, but he's willing to take on Wall Street.</li>
+			<li>12. The world has a right to know what's happening. You will make public what we know about Russia's invasion plans.</li>
+			<li>13. It's an outrage that corporations are exploiting undocumented workers to lower wages and divide workers. </li>
+			<li>14. This is no time for half-measures; the time for action is now. You will send Ukraine as many weapons as possible, until there's a Javelin behind every sunflower stalk.</li>
+			<li>15. You don't want to do it, but the reality is clear: families are suffering.</li>
+			<li>16. Corporate greed is out of control - you can't let them continue to price-gouge while working people suffer.</li>
+			<li>17. As much as it pains you, you know the Woman's Health Protection Act won't pass</li>
+			<li>18. It's an ugly compromise, but an ugly future is better than no future at all.</li>
+			<li>19. The American people have made their voices heard, and let me be very clear - they have rejected the failed Republican agenda.</li>
+			<li>20. You'll veto the compromise bill, but the economic consequences of failing to reach a deal are just too severe. </li>
+			<li>21. You will veto this bloated military budget.</li>
+			<li>22. From the bully pulpit, you'll hammer the message home: the GOP stands for chaos, not workers.</li>
+			<li>23. You refuse to let extremist Republicans hold the economy hostage, and there's a simple solution - you'll mint a trillion-dollar coin, pay America's bills, and move on.</li>
+			<li>24. You'll continue the flow of American aid, to the tune of $12 billion this year. But you'll also push for a negotiated peace that doesn't reward Russian aggression.</li>
+			<li>25. America's workers must stand together, not against one other.</li>
+			<li>26. Let me be clear: Israel must not escalate this cycle of violence! And as President, I will ensure that American weapons are not used to deepen this tragedy!</li>
+			<li>27. You'll take the opportunity to draw a contrast via the bully pulpit: While you push for Medicare for All and fight for Main Street, Republicans flail in dysfunction.</li>
+			<li>28. The Houthi attacks on civilians in the Red Sea are indiscriminate and indefensible war crimes. I am seeking emergency authorization from Congress to launch targeted strikes to protect international shipping.</li>
+			<li>29. This recession is a direct result of unchecked corporate greed</li>
+			<li>30. One choice - Not for me, for us.</li>
+			<li>31. The situation is dire - a majority of state governors are behind Texas; you have to de-escalate but you won't abandon your principles.</li>
+			<li>32. You can't let Netanyahu wage war upon the Palestinian people any longer.</li>
+			<li>33. Banning TikTok doesn't address the root cause of social media's ills - it's a blatant attempt to scapegoat young people for political games. </li>
+			<li>34. Once again when workers unite, the 1% finds issues to divide them - today it's our LGBTQ+ Americans. </li>
+			<li>35. You know who DeSantis is really afraid of - not books or the word <i>gay</i>, but workers. </li>
+			<li>36. Your flight is bound for Charlottesville, Virginia, where you'll be speaking to a crowd of young people fed up with a system that burdens them with debt and locks them out of opportunity.</li>
+			<li>37. Answer ID 37003 (right click next to the answer, hit "inspect" or "inspect element", go to the elements tab, and look for the value next to the answer that corresponds.)</li>
+			<li>38. One answer.</li>
+			<li>39. Now you'll stand with the peace movement side by side, marching towards a future where we make peace, not war!</li>
+			<li>40. You don't have the facts yet, and jumping to conclusions could backfire. </li>
+			<li>41. Labor unions are more than just the leadership - they'll help, but you need to win over the members and their families too.</li>
+			<li>42. Doug Burgum isn't just <i>bought</i> by the corporate billionaires, he's one himself</li>
+			<li>43. You've let them down, and you owe it to them to try and make things right.</li>
+			<li>44. It's freezing in Green Bay, Wisconsin, but the people are warm, glad to see you listen and care.<li>
+			</p>
+			<p><b>If you want to do better than the above</b> and achieve the True Ending - passing Medicare for All on hard difficulty - here is a set of answer IDs that will usually get you that. It requires much more compromises than on normal due to the higher difficulty. Visit Missouri every time, and either turn off randomness or restart if Sinema changes parties or the Supreme Court rules against you on the debt ceiling (both of those are unlikely): 1001, 2002, 3002, 4004, 5002, 6003, 7001, 8004, 9001, 10103, 11003, 12003, 13002, 14002, 15101, 16001, 17002, 18002, 19001, 20001, 21001, 22101, 23002, 24101, 25102, 26001, 27201, 28001, 29301, 30001, 31101, 32001, 33002, 34502, 35301, 36004, 37003, 38401, 39102, 40202, 41002, 42501, 43201, 44003</p>
+			<br><p><b>Author commentary</b>
+			
+			<br><br>Rationale for certain design decisions: 
+			<li>The reason Bernie is able to do very un-Bernie things in this mod is that I assumed that people would want to do things that Bernie was vehemently opposed to IRL like "fill Ukraine with weapons prior to the invasion" or "refuse to arm Israel against Gaza right after October 7"; that implied hence a greater ability for Bernie to do things in-game that he's strongly opposed to in real life (as long as there is some realistic justification that doing so is compatible with his realistic goals and ideals - I let him bend much more on immigration than any other issue due to his historical flexibility there.) This caused the creation of the Fervor mechanic to incentivize the player to actually chose in-character options.</li>
+			<li>With regards to the use of true randomness, my intent as a designer was to <i>make a simulator that puts the player in the shoes of the Presidency</i> over <i>make a game that people have fun playing.</i> In game, there are a number of options which are "ideal" as long as you can control randomness - namely, getting the Supreme Court to support you on the debt ceiling, or filling Ukraine with weapons. However, real-world Presidents were very concerned about doing so due to the catastrophic risk of potential failure - a risk they struggled to estimate and had no control over. Unlike players, a real-world President cannot look up which answer results in their desired result - my intent was to force the same conundrum on the player in the base settings (upon which, if they wished, they could simply turn off all randomness.)</li>
+			<li>With regards to nuclear war in-game: Realistically, almost all nuclear wars would almost certainly be much less abrupt than it currently comes off as in-game. It would generally involve a myriad of pathways - most commonly involving the use of single nuclear weapons (perhaps a tactical nuke) for intimidation, followed by a player escalation, followed by further escalation or so on. Fundamentally however, I wanted to avoid turning the game into Nuclear Response Simulator. Once a tactical nuke has been used, the game would be effectively over anyways.</li>
+			<li>With regards to Manchin and Sinema's presence in the mod. They are actually much more accommodating to the player in-game than they were in reality. For instance, it's quite likely that both would have vehemently opposed a stimulus much larger than IRL or a number of Cabinet choices (incl. SoS Barrbara Lee.) Manchin would almost certainly have also opposed attempts by Bernie to appoint a Fed chair dovish on inflation - he was very vocal on having the Fed focus on controlling inflation - which would likely have caused him to reject everyone but Powell. Furthermore, I allow the player to pass a Medicare expansion 2021 which both Sinema and Manchin were vehemently opposed to IRL despite Biden's best attempts. The Doylist reason for treating them this way is to try and give the player more agency and not leave them feeling completely hopeless; the Watsonian reason is that they're much more worried about what Bernie can do via executive action and are hence more willing to try and keep him working with them and reward him for compromising. </li>
+			<li>Regarding Israel's behavior in the mod: Hamas began planning Al-Aqsa Flood circa 2014 and decided to implement it following the 2021 clashes. It's unlikely that any U.S. decision could have averted it - in fact, U.S. withholding of arms would likely have encouraged an attack (akin to Hamas considering Israeli opposition protests to constitute an opportune time for their own attack.) While it is possible the date of the attack could have changed (e.g. if Iran and Hezbollah were willing in 2022 to join in), I avoided that possibility for simplicity. There are two possible pathways by which Bibi could be pressured to stop the war - namely, direct quid-pro-quo (i.e. you do XYZ - e.g. send arms, and Israel does ABC - e.g. stop attacking Gaza), or the pathway of Israeli munitions shortages leading to greater casualties, leading to political pressure, which eventually forces an end to the war (the Vietnam/Afghanistan pathway.) I concluded that the first was unlikely for the purpose of the mod though others could easily come to different interpretations. The shipments the U.S. sends Israel consists largely of things falling in the category of "nice to have" (e.g. additional munitions, aircraft parts, etc.) rather than "existentially necessary"; Netanyahu has refused pressure from the U.S. in the past (e.g. by the Obama administration over settlement policy), appears to be ideologically convinced that the continuation of Israeli settlement policy is necessary, and appears to strongly dislike the appearance of giving in to external pressure (incl. from the U.S.) for apparent fear of encouraging more in the future. Furthermore, the continuation of the Gaza war is necessary for his political survival and his governing coalition's existence (via Ben-Gvir until Gideon Sa'ar rejoined Likud), which is existentially necessary for him to put off the state inquiry into his own culpability in the attacks and sabotage the prosecution of him for corruption - either of which could result in catastrophic consequences for him. Netanyahu would also have the additional incentive that if Bernie loses re-election, he will almost certainly receive arms from whoever the new President is (and he would likely despise Bernie personally.) For this reason, I concluded that Netanyahu would likely try to continue the war as long as possible - in theory, he could potentially be persuaded at most to accept temporary humanitarian pauses to receive arms, but I did not think that would be a satisfying outcome for the average player and so it is not directly touched upon in-story. As a result, the main pressure point for Bibi to seek peace in-game is via increased casualties causing the war to become politically expensive, which is naturally a slow pathway.</li>
+			
+			<br><br>In so much as this mod has a <b>general message about American political systems</b> as a whole, it's to try and illustrate and explain the structures and incentives at play to explain why American politics is broken in the eyes of the majority. The system is set up to place all the visual responsibility in the person of the President, who has no actual ability to make legislation. Getting legislation requires Congress which they do not necessarily control. The House can be very difficult to win due to gerrymandering (though not in the present political paradigm); the Senate is often very skewed against one party or another in terms of the national margin needed to win it (especially true in the present political paradigm), and the filibuster adds only even greater barriers to achieving legislative change. This is a system that feels like it is meant to make legislative change extremely difficult while blaming everything on the person of the President - who has little power to actually do things - when it fails to happen.<br><br>Any would-be president must run on a legislative agenda, promising to e.g. accomplish Medicare for All (not just "Medicare for All if I get Congress sufficiently" - that's uninspiring.) But they don't actually have any power to do those things themselves - only yell at other people to do them, and stop those other people from doing things the President dislikes. The inevitable result is that they run for office making promises that they do not know if they can fulfill or not, and may of them end up inevitably not being fulfilled - not because they specifically failed as a person but because the system failed to allow them to do it. The increase in political polarization, expectations falling out of pace with what's likely achievable, etc. only further increases this problem. And even though the U.S. hates the existing system, they hate radical change - such as changing the existing system to make change easier - even more. And those activists strongly motivated by passing legislation (e.g. "Medicare for All") are not strongly motivated by the often-complicated pathway (e.g. "we need to moderate on social issues to be able to win Senate seats in socially conservative states to elect enough Senators willing to remove the filibuster and pass Medicare for All") to get said legislation.
+			
+			<br><br>In-so-much as this mod has a <b>commentary on the Biden administration's mistakes</b>, the specific thesis is <i>the Biden administration chose many options that were each individually reasonable in the short term that boiled down to not dramatically changing things or rocking the boat, but failed to fall into a coherent long-term strategy.</i> Part of this, of course, was that the Biden administration did not know what came next (as the player does), but also that the Biden administration made incorrect calculations that - e.g. not disarming Israel, as was in accord with general public opinion, was also the best choice for a Democratic candidate and that war opponents would essentially get over it. The intent of the Biden options available in the mod is that each of them is individually reasonable and defensible but will result in the real-world loss eventually. 
+			
+			<br><br>In-so-much as the mod has a <b>commentary on the office of the Presidency</b> and being an incumbent President, it is that being the President is exhausting, hard, infuriating, tiring, and complicated. This is especially true for anyone President in the age of 2021-2024, in which it seems like most nations have faced a significant anti-incumbent backlash. Frankly, I think Bernie would have done better in-office in 2016 (if he was able to win by enough to take the House and a significant Senate majority via coattails, as appeared possible from polling at the time) than 2020. His policy instincts (larger stimuluses and anti-interventionism) would have been especially suited for the Obama era, if only there existed any chance of him actually being elected President in 2008.</p>`, 
+            "has_visits": 1,
+            "no_electoral_majority_image": "../static/images/2012-no-majority.jpg"
+        }
+    }
+]
+
+campaignTrail_temp.temp_election_list = [
+    {
+        "id": 20,
+        "year": 2024,
+        "is_premium": 0,
+        "display_year": "2024 - Our Revolution"
+    }
+]
+
+ campaignTrail_temp.credits = "<button onclick='credits()'>Elyna</button>";
+
+  window.credits = function() {
+    const creditsList = ["Mod mainly written and coded by Elyna (Seleucus on alternatehistory.com).", "", "Help from:", "TheNorthEast for ending slide #13 and the Left Opposition description.", "Tannenberg for achievement images (TBD).", "Skittie/C0SM0 for the Themes & for other Visual Help.", "Ronnie for advising writing revisions", "Pootmehoot for the Bernie Banner.", "mbierden for the Campaign Signs.", "u/ConsiderationOk3683 (burrito2045) for the candidate images (minus no running mate.)", "StrawberryMaster for visual design adjustments", "", "Various codes made by Mangolith, Thatchmaster, & DecStarG.", "", "Credit to the rest of the TCT community for assistance with the code and building a foundation of others to use."]
+    const text = "THOSE WHO HELPED CREATE OUR REVOLUTION:\n\n" + creditsList.join('\n');
+
+  alert(text);
+}
+
+campaignTrail_temp.global_parameter_json = [
+    {
+        "model": "campaign_trail.global_parameter",
+        "pk": 1,
+        "fields": {
+            "vote_variable": 1.125,
+            "max_swing": 0.12,
+            "start_point": 0.94,
+            "candidate_issue_weight": 10,
+            "running_mate_issue_weight": 3,
+            "issue_stance_1_max": -0.7,
+            "issue_stance_2_max": -0.4, //these are different from standard; it's deliberately changed to make each issue roughly similar in size (~0.3)
+            "issue_stance_3_max": -0.15,
+            "issue_stance_4_max": 0.15,
+            "issue_stance_5_max": 0.4,
+            "issue_stance_6_max": 0.7,
+            "global_variance": 0.01, 
+            "state_variance": 0.005,
+            "question_count": 44,
+            "default_map_color_hex": "#C9C9C9",
+            "no_state_map_color_hex": "#999999"
+        }
+    }
+]
+
+campaignTrail_temp.candidate_json = [
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 300,
+        "fields": {
+            "first_name": "Bernie",
+            "last_name": "Sanders",
+            "election": 20,
+            "party": "Democratic",
+            "state": "Vermont",
+            "priority": 1, //the Bible tooltip is in here solely because if I don't have it, many people shout at me about how Bernie would never swear in on the Bible. 
+            "description": "You stand in front of the Capitol with your <span class=\'mytooltip\'>hand on the Bible<span class=\'mytooltiptext\'><img src=https://i.imgur.com/WiPdNA6.jpeg><br><i>Though you're Jewish, you chose the Holy Bible to swear into Congress. Today is no different.</i></span></span>, the cheers of the crowd ringing in your ears. It's a dream realized, but beneath the joy sits the cold harsh weight of the Senate math. Fifty Senators - that's it; not enough for bold dreams. Your supporters - they want it all: Medicare for All, the Green New Deal, abolishing ICE, wiping student debt, taxing the rich. You want it too, you'll fight like hell for it - but they haven't spent thirty years in Congress watching the sausage get made. They don't understand that the President isn't a dictator who can do anything with executive orders; that without Congress, you're just a figurehead.<br><br>They expect you to lead a revolution, a war with the establishment, when you've played this game long enough to know you're not getting anything done without working with that establishment. You want to give them everything you promised; you'll fight tooth and nail to achieve what you can, accomplish the impossible one step at a time. But you've been in Washington long enough to know: <i>The nation asks the President for miracles, when he's only a man.</i></div>",
+            "color_hex": "#184794",
+            "secondary_color_hex": "#9c5151",
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/DDGyApg.gif",
+            "electoral_victory_message": "Placeholder: Bernie has won!",
+            "electoral_loss_message": "Placeholder: You have lost!",
+            "no_electoral_majority_message": "Placeholder: No majority",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 304,
+        "fields": {
+            "first_name": "Kamala",
+            "last_name": "Harris",
+            "election": 20,
+            "party": "Democratic",
+            "state": "California",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/Biz0pt2.gif",
+            "electoral_victory_message": "Placeholder!",
+            "electoral_loss_message": "Placeholder!",
+            "no_electoral_majority_message": "Placeholder!",
+            "description_as_running_mate": "<div style='overflow-y:auto;height:200px;overflow-x:hidden;'>A former prosecutor, once the \"top cop\" in California, now your Vice President. The choice wasn't easy. But after the bitter primary - the \"Anyone but Bernie\" crowd nearly coronated Warren at a contested convention, only for her to back you at the last second, terrified of going down like Hubert Humphrey - you needed unity. After Warren accused you of doubting a woman could win and the media crucified you over <i>Bernie Bros</i>, you needed a female VP. And after the nation rose in fury over George Floyd, you needed a black running mate. Kamala fit the bill on all three.<br><br>Kamala knew how to play the game in ways that sometimes made you shake your head. But she also gets the need for change in her own way - she backed Medicare for All in the primaries and ran as a progressive, though you wonder how much of that is expediency. Millions are counting on you to end endless wars, tackle climate change, and pass Medicare for All. But you won't achieve any of it without a united party - and that means doing what Trump did and taking it over from the inside. Winning over the base. Winning over people like Kamala.</div>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 301,
+        "fields": {
+            "first_name": "",
+            "last_name": "The 1%",
+            "election": 20,
+            "party": "Republican",
+            "state": "Wall Street",
+            "priority": 2,
+            "description": "<div style='overflow-y:auto;height:200px;overflow-x:hidden;'><i>You knew they wouldn't sit still and let you destroy them.</i><p><p>From the moment you stepped into the White House, the billionaires and corporate interests began sharpening their knives. You don't know who your opponent will be, but you know they'll be everything you've spent your career fighting against - a voice for the wealthiest Americans, for the fossil fuel companies, for the pharmaceutical industry, and for Wall Street greed. They'll wrap themselves in the flag, talk about \"freedom,\" but what they mean is freedom for the rich to get richer while working families fall further behind. They'll spend billions to stop the movement we built, to roll back every gain we've made. But you didn't get here by playing it safe. You got here because millions of Americans demanded change. And as long as they're with you, no amount of money or misinformation will stop us. <b>Context only, not playable</b></div>",
+            "color_hex": "#910c0c",
+            "secondary_color_hex": "#9badc4",
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/jHbVap0.jpeg",
+            "electoral_victory_message": "Placeholder!",
+            "electoral_loss_message": "Placeholder!",
+            "no_electoral_majority_message": "Placeholder!",
+            "description_as_running_mate": null,
+            "candidate_score": 1
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 302,
+        "fields": {
+            "first_name": "",
+            "last_name": "Right Opposition",
+            "election": 20,
+            "party": "Independent",
+            "state": "Outrage",
+            "priority": 3,
+            "description": "<div style='overflow-y:auto;height:200px;overflow-x:hidden;'>You've seen them out there - people who believe the system is broken, but who refuse to trust either side. They're angry, frustrated, and distrustful of anyone who's been part of the halls of power, whether it's the corporate-friendly Republicans or someone like you, who's too \"socialist\" for their taste. These folks see both parties as the same, two sides of the same coin - both more interested in preserving the status quo than in real change.<br><br> They talk about the deep state, the elites who run everything behind closed doors, and they believe the media is part of the problem. For them, you're just another cog in that machine, even if you're trying to tear it down. Some of them say you've been co-opted by the corporate interests you once railed against, and they see your administration as just another part of the rigged system. They believe you and the 1% are in it together, working together behind the scenes to keep the people down. But their anger and disillusionment is real. They've been left behind by both parties, and they're looking for something, anything that gives them the retribution they crave. <b>Context only, not playable</b></div>",
+            "color_hex": "#D3AF41",
+            "secondary_color_hex": "#FFFFC0",
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/72U04Wm.jpeg",
+            "electoral_victory_message": "Placeholder!",
+            "electoral_loss_message": "Placeholder!",
+            "no_electoral_majority_message": "Placeholder!",
+            "description_as_running_mate": null,
+            "candidate_score": 1
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 303,
+        "fields": {
+            "first_name": "",
+            "last_name": "Left Opposition",
+            "election": 20,
+            "party": "Green",
+            "state": "Purity",
+            "priority": 4,
+            "description": "<div style='overflow-y:auto;height:200px;overflow-x:hidden;'><p>When you swore in to be Burlington's first socialist Mayor, you figured that the realities of governance might disappoint the true believers who expected nothing short of perfection. You did not anticipate how vitriolic the backlash would become. Your old friends Michael Parenti and Peter Diamondstone called you a <i>Quisling,</i> and labelled your movement a trap for saps.</p><p>Today, the situation is the same. There are those on the left who regard you as a cruel disappointment, or worse, a deliberate sabotage on the authentic movement for justice. You want to say, <i>I'm still me. I'm still fighting for the same things I've always fought for.</i> But you know that words won't be enough. Only results will convince some. And for others? Nothing will. <b>Context only, not playable</b></p></div>",
+			"color_hex": "#014d4e",
+            "secondary_color_hex": "#41afa2",
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/MQOF55p.jpeg",
+            "electoral_victory_message": "Placeholder!",
+            "electoral_loss_message": "Placeholder!",
+            "no_electoral_majority_message": "Placeholder!",
+            "description_as_running_mate": null,
+            "candidate_score": 1
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 305,
+        "fields": {
+            "first_name": "",
+            "last_name": "Center Opposition",
+            "election": 20,
+            "party": "Davos",
+            "state": "Globalism",
+            "priority": 5,
+            "description": "<div style='overflow-y:auto;height:200px;overflow-x:hidden;'>They never liked you, and they never hid it - the polished centrists in expensive suits, whispering at Davos and MSNBC green rooms about how you're too radical, too disruptive, too willing to challenge the system that's made them rich and powerful. They're the types who talk about justice at cocktail parties, then vote to gut it the next morning. They wear their social progressivism like a badge, but when it comes to wages, housing, healthcare? Suddenly, there's no money. Suddenly, it's all too complicated.<br><br>You talk about Medicare for All, they talk about means testing. You call for taxing billionaires, they clutch their pearls and mutter about the stock markets. They're Democrats in name, but their hearts belong to Wall Street. They say you're too angry, too radical, too old-fashioned - as if demanding dignity for the poor is some outdated concept. They're used to ruling the world - and when regular people stand up, when they organize, when they vote like their lives depend on it - then all of a sudden the champagne stops flowing in those private rooms.<br><b>Context only, not playable</b></div>",
+			"color_hex": "#4EAF41",
+            "secondary_color_hex": "#A1FFA1",
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/KRtTnJM.jpeg",
+            "electoral_victory_message": "Placeholder!",
+            "electoral_loss_message": "Placeholder!",
+            "no_electoral_majority_message": "Placeholder!",
+            "description_as_running_mate": null,
+            "candidate_score": 1
+        }
+    }
+]
+
+campaignTrail_temp.running_mate_json = [
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 109261,
+        "fields": {
+            "candidate": 300,
+            "running_mate": 304
+        }
+    }
+]
+
+campaignTrail_temp.opponents_default_json = [
+    {
+        "election": 20,
+        "candidates": [
+            300,
+            301,
+            302,
+            303,
+            305
+        ]
+    }
+]
+
+campaignTrail_temp.opponents_weighted_json = [
+    {
+        "election": 20,
+        "candidates": [
+            300,
+            301,
+            302,
+            303,
+            305
+        ]
+    }
+]
+
+jet_data = {
+    "headerColor": "#c20000",
+    "windowColor": "#088fff",
+    "containerColor": "#FFFFFF",
+    "innerWindowColor": "#E8FBFF",
+    "bannerImageUrl": "https://i.imgur.com/823hVro.png",
+    "backgroundImageUrl": "https://i.imgur.com/fdDZHOA.jpeg",
+    "endingTextColor": "#000000",
+    "customQuote": "What happens in Congress in the next few months will determine the future of our country – and our planet."
+}
+HistHexcolour=["#184794","#910c0c","#D3AF41","#4EAF41","#014d4e"];
+HistName=["Bernie Sanders","Doug Burgum","Robert F. Kennedy Jr.","Dean Phillips","Jill Stein"];
+HistEV=[315,223,0,0,0];
+HistPV=["73,559,216","69,597,074","21,156,735","3,359,140","1,418,860"];
+HistPVP=["43.5%","41.1%","12.5%","2.0%","0.8%"];
+
+
+//#startcode
+
+
+
+e = campaignTrail_temp
+e.collect_results = true;
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#242d80";
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#4d82e3";
+
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+$(".container")[0].style.backgroundColor = "#0650ac";
+
+$("#game_window")[0].style.backgroundImage = "url(https://i.imgur.com/j72PMtN.jpeg)"
+//$("#game_window")[0].style.backgroundImage = "url(https://i.imgur.com/ZRYmz78.jpeg)"
+$("#game_window")[0].style.borderColor = "#ffffff"
+
+$(".container")[0].style.border = ".2em solid #ffffff"
+document.getElementById("header").src = "https://i.imgur.com/SeTBihh.jpeg";
+
+document.body.background = "https://i.imgur.com/3ZnC71a.jpeg";
+quotes = ["''What happens in Congress in the next few months will determine the future of our country — and our planet.'' ~ Bernie Sanders", ]
+customquote = quotes[Math.floor((Math.random() * quotes.length))]
+corrr=`\n<h2>OUR REVOLUTION</h2><font id='wittyquote' size='3' color='white'><em>`+customquote+`</em></font>`
+campaignTrail_temp.modBoxTheme = { "header_color": "#242d80", "header_image_url": "https://files.catbox.moe/1kkpbb.png", "header_text_color": "#ffffff", "description_text_color": "#000000", "description_background_color": "#4d82e3", "main_color": "#0650ac", "secondary_color": "#242d80", "ui_text_color": "#FFFFFF" }
+$("#dynamic-favicon").attr("href", "https://i.imgur.com/lBOui3k.jpeg");
+
+const customStyling = document.createElement("style");
+customStyling.innerHTML = `#map_container {
+    background-image: url("https://i.imgur.com/AYF9wSo.jpeg");
+    background-size: cover;
+}`;
+customStyling.id=`map_image`
+document.head.appendChild(customStyling);
+//#endcode
+// Select the node that will be observed for mutations
+  const windowsAdvisorTargetNode = document.getElementById("game_window");
+  
+  // Options for the observer (which mutations to observe)
+  const windowsAdvisorConfig = { attributes: true, childList: true, subtree: true };
+  
+  // Callback function to execute when mutations are observed
+  const callback = (mutationList, observer) => {
+      visitWindow = document.getElementsByClassName("overlay_window")[0];
+  
+      if(visitWindow == null || visitWindow.classList.contains("done")) {
+          return;
+      }
+      visitWindow.classList.add("done");
+      visitWindow.classList.add("window");
+      let titleBar = visitWindow.querySelector("h3");
+      titleBar.classList.add("title-bar");
+      titleBar.classList.add("title-bar-text")
+      titleBar.style.paddingLeft = "3px";
+  };
+  
+  class Song {
+    constructor(title, artist, coverLink, audioLink) {
+      this.title = title;
+      this.artist = artist;
+      this.coverLink = coverLink;
+      this.audioLink = audioLink;
+    }
+    getTitle() {
+      return this.title;
+    }
+  
+    getArtist() {
+      return this.artist;
+    }
+  
+    getCoverLink() {
+      return this.coverLink;
+    }
+  
+    getAudioLink() {
+      return this.audioLink;
+    }
+  }
+  
+  class Playlist {
+    constructor() {
+      this.songs = [];
+      this.currentSongIndex = 0;
+    }
+  
+    addSong(song) {
+      this.songs.push(song);
+    }
+  
+    getCurrentSong() {
+      return this.songs[this.currentSongIndex];
+    }
+  
+    playNext() {
+      this.currentSongIndex = (this.currentSongIndex + 1) % this.songs.length;
+    }
+  
+    playPrevious() {
+      this.currentSongIndex = (this.currentSongIndex - 1 + this.songs.length) % this.songs.length;
+    }
+  }
+  window.Playlist=Playlist
+  window.Song=Song
+  
+  function changePlaylist(newPlaylist) {
+    playlist = newPlaylist;
+    playlist.currentSongIndex = 0;
+    updateUI(playlist);
+    const audio = document.getElementById("audio");
+    audio.src = playlist.getCurrentSong().audioLink;
+    audio.play();
+  }
+  window.changePlaylist=changePlaylist
+  
+  function updateUI(playlist) {
+      const currentSong = playlist.getCurrentSong();
+      var player = document.getElementById("player");
+      player.querySelector("#cover").src = currentSong.getCoverLink();
+      player.querySelector("#title").textContent = currentSong.getTitle();
+      player.querySelector("#artist").textContent = currentSong.getArtist();
+  }
+  
+  window.updateUI=updateUI
+  
+  
+  function setupMusicPlayer() {
+    Bplaylist = new Playlist();
+  
+  
+    const song1 = new Song(
+      "Joe Hill",
+      "Joan Baez",
+      "https://i.imgur.com/jJIYGIH.jpeg",
+      "https://audio.jukehost.co.uk/8lqHkH2zo0QL6PM8HNKe49Ooua79xRvP"
+    );
+    
+    const song2 = new Song(
+      "This Land is Your Land",
+      "Bernie Sanders and Vermont Artists",
+      "https://i.imgur.com/lLtJgTE.jpeg",
+      "https://audio.jukehost.co.uk/m578B1oFyTzSjaxiXpbBfZN7I5RHpeBi"
+    );
+  
+    const song3 = new Song(
+      "Bread And Roses",
+      "Judy Collins",
+      "https://i.imgur.com/FFyGJFl.jpeg",
+      "https://files.catbox.moe/glafj6.mp3"
+    );
+  
+    const song4 = new Song(
+      "Song of the United Front",
+      "Jamie O'Reilly & Michael Smith",
+      "https://i.imgur.com/hqmbOsO.jpeg",
+      "https://audio.jukehost.co.uk/zPdGM4qByB1oC1spsM6nYq7F8Bje08CI"
+    );
+	
+    const song5 = new Song(
+      "Talkin' 'bout a Revolution",
+      "Tracy Chapman",
+      "https://i.imgur.com/opwiD4f.jpeg",
+      "https://audio.jukehost.co.uk/SXrxKJmPqw5c29FN8GEcQyKfHh0B3Keh"
+    );
+	
+    const song6 = new Song(
+      "Which Side Are You On",
+      "Pete Seeger",
+      "https://i.imgur.com/SgUAOLx.jpeg",
+      "https://audio.jukehost.co.uk/Rf997sUD8el9ZvLV0S9HYR9hGQCEdXL0"
+    );
+	
+    const song7 = new Song(
+      "The Revolution Will Not Be Televised",
+      "Gil Scott-Heron",
+      "https://i.imgur.com/Wg0fml5.jpeg",
+      "https://audio.jukehost.co.uk/eOuTV1mb4d0t7vhHqSEv7UArns2UKUHO"
+    );
+	
+    const song8 = new Song(
+      "Masters Of War",
+      "Bob Dylan",
+      "https://files.catbox.moe/7zvbve.jpg",
+      "https://audio.jukehost.co.uk/mkr6Ig31F5XQ8i9RgEhSaFMed5P5jyIK"
+    );
+	
+    const song9 = new Song(
+      "Where Have All The Flowers Gone",
+      "Bernie Sanders and Vermont Artists",
+      "https://i.imgur.com/lLtJgTE.jpeg",
+      "https://audio.jukehost.co.uk/gw7Qh5HGJnO80R1RgB6LojMWiZtOgAdi"
+    );
+  
+    const song10 = new Song(
+      "El Quemazon",
+      "Grupo la Meta",
+      "https://i.imgur.com/3HjCx3Q.jpeg",
+      "https://audio.jukehost.co.uk/BS0xqlokE9fZPQfEIdMVOzjmf43QWHEQ"
+    );
+	
+    const song11 = new Song(
+      "Diamonds And Rust",
+      "Joan Baez",
+      "https://i.imgur.com/TiMajND.jpeg",
+      "https://audio.jukehost.co.uk/YZ8150OYHEFp6jmmSX8rFdimeijOf99p"
+    );
+  
+    const song12 = new Song(
+      "Solidarity Forever",
+      "Tom Morello",
+      "https://i.imgur.com/HMzKtUt.jpeg",
+      "https://files.catbox.moe/j41wvd.mp3"
+    );
+	
+  
+    Bplaylist.addSong(song1);
+    Bplaylist.addSong(song2);
+    Bplaylist.addSong(song3);
+    Bplaylist.addSong(song4);
+    Bplaylist.addSong(song5);
+    Bplaylist.addSong(song6);
+    Bplaylist.addSong(song7);
+    Bplaylist.addSong(song8);
+    Bplaylist.addSong(song9);
+    Bplaylist.addSong(song10);
+    Bplaylist.addSong(song11);
+    Bplaylist.addSong(song12);
+	playlist=Bplaylist;
+	
+	//alternate playlist for Kamala but don't load.
+	KPlaylist = new Playlist();
+	const Ksong1 = new Song(
+	  "Work That",
+	  "Mary J. Blige",
+	  "https://i.imgur.com/rgaWpmg.jpeg",
+	  "https://audio.jukehost.co.uk/O7yQjgh2rzhZlORfDmEiF8SbQbgEsXif"
+	);
+	
+	const Ksong2 = new Song(
+	  "Everyone Loves the Sunshine",
+	  "Roy Ayers",
+	  "https://i.imgur.com/Gk1XkJF.jpeg",
+	  "https://audio.jukehost.co.uk/6H0KYyC6mSXRiMWmEqFlZPAiyEDPXhWb"
+	);
+  
+	const Ksong3 = new Song(
+	  "Summertime",
+	  "Fitzgerald and Armstrong (Gershwin/Heyward)",
+	  "https://i.imgur.com/PIOWlyY.jpeg",
+	  "https://audio.jukehost.co.uk/vJLNALQ3cDms8k492312M6jVY84XwPlB"
+	);
+  
+	const Ksong4 = new Song(
+	  "Break My Soul",
+	  "Beyoncé",
+	  "https://i.imgur.com/ATV9Mq4.jpeg",
+	  "https://audio.jukehost.co.uk/MfK4n21okxhZK7m9Nn9VYu8SvvzgFHVO"
+	);
+	const Ksong5 = new Song(
+	  "Von Dutch",
+	  "Charli XCX",
+	  "https://i.imgur.com/jqXerdq.jpeg",
+	  "https://audio.jukehost.co.uk/gd9N3RcYoj1Rr6mjefMaCj1gMDJEyU2l"
+	);
+	const Ksong6 = new Song(
+	  "Mía",
+	  "Bad Bunny ft. Drake",
+	  "https://i.imgur.com/cpHjUsU.jpeg",
+	  "https://audio.jukehost.co.uk/9FoUczBQFZgr0HT6asKch8SMgwaywjae"
+	);
+	
+	const Ksong7 = new Song(
+	  "Femininomenon",
+	  "Chappell Roan",
+	  "https://i.imgur.com/9jXjMLt.jpeg",
+	  "https://audio.jukehost.co.uk/RrWmyZRgRkFCE3ceDd7ym8zCl0g8xXA9"
+	);
+	KPlaylist.addSong(Ksong1);
+	KPlaylist.addSong(Ksong2);
+	KPlaylist.addSong(Ksong3);
+	KPlaylist.addSong(Ksong4);
+	KPlaylist.addSong(Ksong5);
+	KPlaylist.addSong(Ksong6);
+	KPlaylist.addSong(Ksong7);
+  
+    const playerContainer = document.createElement("div");
+    playerContainer.id = "player";
+  
+   const displayBox = document.createElement("div");
+  displayBox.id = "display-box";
+  
+  const coverElement = document.createElement("img");
+  coverElement.id = "cover";
+  displayBox.appendChild(coverElement);
+  
+  const infoContainer = document.createElement("div");
+  infoContainer.id = "info-container";
+  infoContainer.style.backgroundImage = "url('https://i.imgur.com/BB1ejv6.png')";
+  infoContainer.style.backgroundSize = "cover"; // Optional: adjust based on your needs
+  infoContainer.style.color = "white"; // Set text color to white
+  
+  const songInfo = document.createElement("div");
+  songInfo.id = "song-info";
+  
+  const titleElement = document.createElement("h3");
+  titleElement.id = "title";
+  titleElement.style.fontWeight = 'normal'; // Make it normal as per previous request
+  songInfo.appendChild(titleElement);
+  
+  const artistElement = document.createElement("p");
+  artistElement.id = "artist";
+  songInfo.appendChild(artistElement);
+  
+  infoContainer.appendChild(songInfo);
+  displayBox.appendChild(infoContainer);
+  
+  playerContainer.appendChild(displayBox);
+  
+  const controlsContainer = document.createElement("div");
+  controlsContainer.id = "controls-container";
+  
+  const controls = document.createElement("div");
+  controls.id = "controls";
+  
+  const prevButton = document.createElement("img");
+  prevButton.id = "prevButton";
+  prevButton.src = "https://i.imgur.com/imIqTEA.png";
+  prevButton.alt = "Previous";
+  controls.appendChild(prevButton);
+  
+  const playPauseButton = document.createElement("img");
+  playPauseButton.id = "playPauseButton";
+  playPauseButton.src = "https://i.imgur.com/oQbfTxw.png"; // Set the default play image
+  playPauseButton.alt = "Play/Pause";
+  controls.appendChild(playPauseButton);
+  
+  const nextButton = document.createElement("img");
+  nextButton.id = "nextButton";
+  nextButton.src = "https://i.imgur.com/7TtaN04.png";
+  nextButton.alt = "Next";
+  controls.appendChild(nextButton);
+  
+  controlsContainer.appendChild(controls);
+  
+  playPauseButton.addEventListener("click", function () {
+    const audio = document.getElementById("audio");
+    if (audio.paused) {
+      audio.play();
+      playPauseButton.src = "https://i.imgur.com/oQbfTxw.png"; // Set the pause image
+    } else {
+      audio.pause();
+      playPauseButton.src = "https://i.imgur.com/ttdoyfG.png"; // Set the play image
+    }
+  });
+  
+  nextButton.addEventListener("click", function () {
+    playlist.playNext();
+    updateUI(playlist);
+    const audio = document.getElementById("audio");
+    audio.src = playlist.getCurrentSong().audioLink;
+    audio.play();
+  });
+  
+  prevButton.addEventListener("click", function () {
+    playlist.playPrevious();
+    updateUI(playlist);
+    const audio = document.getElementById("audio");
+    audio.src = playlist.getCurrentSong().audioLink;
+    audio.play();
+  });
+  
+    const progressBarContainer = document.createElement("div");
+    progressBarContainer.id = "progress-bar-container";
+  
+    const progressBar = document.createElement("progress");
+    progressBar.type = "range";
+    progressBar.id = "progress-bar";
+    progressBar.value = "0";
+    progressBar.max = "100";
+  
+  
+    progressBarContainer.appendChild(progressBar);
+    controlsContainer.appendChild(progressBarContainer);
+    playerContainer.appendChild(controlsContainer);
+  
+   const volumeContainer = document.createElement("div");
+    volumeContainer.id = "volume-container";
+  
+  const volumeLabel = document.createElement("img");
+  volumeLabel.src = "https://i.imgur.com/0BJYsXt.png";
+  volumeLabel.alt = "Volume";
+  volumeContainer.appendChild(volumeLabel);
+  
+    const volumeSliderContainer = document.createElement("div");
+    volumeSliderContainer.classList.add("is-vertical");
+    volumeSliderContainer.style.marginLeft = "23%";
+    volumeSliderContainer.style.height = "126px";
+  
+    const volumeSlider = document.createElement("input");
+    volumeSlider.type = "range";
+    volumeSlider.id = "volumeSlider";
+    volumeSlider.min = 0;
+    volumeSlider.max = 9;
+    volumeSlider.step = 1;
+    volumeSlider.value = 3; // Initial volume
+  
+    volumeSliderContainer.appendChild(volumeSlider);
+  
+    const volumeDisplay = document.createElement("span");
+    volumeDisplay.id = "volume-display";
+    volumeDisplay.style.fontWeight = 'bold'; 
+    volumeDisplay.style.display = 'none';
+    volumeDisplay.textContent = "1";
+  
+    volumeContainer.appendChild(volumeSliderContainer);
+    volumeContainer.appendChild(volumeDisplay);
+  
+    playerContainer.appendChild(volumeContainer);
+  
+    gameWindow_player.insertAdjacentElement("afterend", playerContainer);
+  
+  
+    function updateProgressBar() {
+      const audio = document.getElementById("audio");
+      const progress = (audio.currentTime / audio.duration) * 100;
+      try{progressBar.value = progress}
+    catch{}
+    }
+  
+   
+    progressBar.addEventListener("input", function () {
+      const audio = document.getElementById("audio");
+      const seekTime = (progressBar.value / 100) * audio.duration;
+      audio.currentTime = seekTime;
+    });
+  
+    const audio = document.createElement("audio");
+    audio.id = "audio";
+    audio.src = playlist.getCurrentSong().audioLink;
+    audio.volume = 1/9;
+  
+    audio.addEventListener("timeupdate", updateProgressBar);
+    audio.addEventListener("ended", function () {
+      // Play the next song when the current song ends
+      playlist.playNext();
+      updateUI(playlist);
+      audio.src = playlist.getCurrentSong().audioLink;
+      audio.play();
+    });
+  
+      let currentVolume = 1; // Initial volume
+  
+    volumeSlider.addEventListener("input", function () {
+      currentVolume = parseInt(volumeSlider.value, 10);
+      updateVolumeDisplay();
+      updateAudioVolume();
+    });
+  
+    function updateVolumeDisplay() {
+      volumeDisplay.textContent = currentVolume;
+    }
+  
+     function updateAudioVolume() {
+      const audio = document.getElementById("audio");
+      audio.volume = currentVolume / 9; // Set volume between 0 and 1
+    }
+  
+    document.body.appendChild(audio);
+    audio.play();
+  
+    // Update the UI when the page loads
+    updateUI(playlist);
+  }
+  
+  const style = document.createElement("style");
+  style.textContent = `
+  #player {
+      border: 3px solid #ffffff; /* Add your desired border style */
+      display: flex;
+      flex-direction: row;
+    height:191px;
+	min-width:600px;
+      background-Image: url("https://i.imgur.com/Ok791w6.png");
+    }
+  
+    #display-box {
+      display: flex;
+      align-items: center;
+      width: 50%;
+    }
+  
+    #cover {
+      width: 176px;
+    height:176px;
+    }
+  
+    #info-container {
+      display: flex;
+      flex-direction: row;
+      height:178px;
+    width:127px;
+    margin-top: 3px;
+    }
+  
+    #song-info {
+      width: 100%;
+    padding:5px;
+    }
+  
+    #controls-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px;
+      width:100%;
+    padding-top:15px;
+  
+    }
+    .is-vertical #volumeSlider {
+    width: 16px;
+	height: 100%;
+    writing-mode: vertical-lr; direction: rtl
+  }
+  
+    #controls {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      width: 80%;
+    }
+  
+    #progress-bar-container {
+      width: 100%;
+    }
+  
+    #progress-bar {
+      width: 80%;
+      margin: auto;
+      display: flex;
+      margin-Top: 20px;
+    }
+    
+  `;
+  
+//doing checkboxes at the difficulty screen.
+e.tooltips_on=true
+e.random_on=true
+
+function injectTooltipStyles() {
+	if (document.getElementById("tooltipStyles")) return;
+
+	const style = document.createElement("style");
+	style.id = "tooltipStyles";
+	style.textContent = `
+		.hover-value {
+			border-bottom: 1px dotted #000;
+			cursor: help;
+			position: relative;
+		}
+
+		.hover-value::after {
+			content: attr(data-tooltip);
+			position: absolute;
+			background-color: white;
+			color: #000;
+			padding: 6px 10px;
+			width: 500px;
+			font-family: 'Courier New', Courier, monospace;
+			font-size: 13px;
+			border: 1px solid #000;
+			border-radius: 5px;
+			box-shadow: 0 0 5px rgba(0,0,0,0.2);
+			white-space: normal;
+			opacity: 0;
+			pointer-events: none;
+			top: 100%;
+			left: 50%;
+			transform: translateX(-75%);
+			z-index: 10001;
+			transition: opacity 0.2s ease-in-out;
+		}
+
+		.hover-value:hover::after {
+			opacity: 1;
+		}
+	`;
+	document.head.appendChild(style);
+}
+	
+injectTooltipStyles();
+const startScreenUpdater = setInterval(function() { //just taking out the continue buttons for invalid candidates.
+	const goBackButton = document.getElementById("candidate_id_back");
+	const candidateButton = document.getElementById("candidate_id_button");
+	const runningMateButton = document.getElementById("running_mate_id_button");
+	const finalScreenBB = document.getElementById("opponent_selection_id_back");
+	const finalScreenID = document.getElementById("opponent_selection_id_button");
+	const difficultySlider = document.getElementById("difficulty_level");
+	const gameType = document.getElementById("game_type_id");
+	const candidateElement = document.getElementById("candidate_id");
+	const ttb = document.getElementById("tooltip_box");
+	if (!candidateElement) {
+		if (!difficultySlider) {
+			return;
+		}
+		else {
+			if (difficultySlider && !ttb ) {
+				tooltip_box_added=true
+				const ToolTipBox = document.createElement('form');
+				ToolTipBox.name="intro_tooltip_box"
+				ToolTipBox.id="tooltip_box"
+				var ToolTipHeader = document.createElement("h3");
+				var ToolTipSpan = document.createElement("span")
+				ToolTipSpan.className='hover-value'
+				ToolTipSpan.setAttribute("data-tooltip", "Unchecking removes all tooltips from the questions, answers, and feedback - regardless of category. Hover text such as this remains for the variable checker.");
+				ToolTipSpan.textContent = "Enable Tooltips?";
+				ToolTipHeader.appendChild(ToolTipSpan)
+				ToolTipBox.appendChild(ToolTipHeader);
+				var ToolTipCheckbox = document.createElement("input");
+				ToolTipCheckbox.type = "checkbox";
+				ToolTipCheckbox.id = "ToolTipCheckbox";
+				ToolTipCheckbox.checked = e.tooltips_on;
+				ToolTipBox.appendChild(ToolTipCheckbox);
+				difficultySlider.appendChild(ToolTipBox);
+				ToolTipBox.addEventListener("change", function() {
+					e.tooltips_on = this.checked;
+				});
+				
+				
+				
+				const RandomForm = document.createElement('form');
+				RandomForm.name="randomness_toggle"
+				RandomForm.id="random.form"
+				var RandomHeader = document.createElement("h3");
+				var RandomSpan = document.createElement("span")
+				RandomSpan.className='hover-value'
+				RandomSpan.setAttribute("data-tooltip", "Unchecking removes all mechanical use of randomness inside the game. This includes the removal of risk of the Supreme Court ruling against you on controversial Constitutional interpretations, and the removal of risk from actions that can escalate foreign conflicts. It also removes the random element from mechanics like who Dan Osborn caucuses with if elected. Unchecking also completely removes all polling variance.");
+				RandomSpan.textContent = "Enable Randomness?";
+				RandomHeader.appendChild(RandomSpan)
+				RandomForm.appendChild(RandomHeader);
+				var RandomCheckbox = document.createElement("input");
+				RandomCheckbox.type = "checkbox";
+				RandomCheckbox.id = "RandomCheckbox";
+				RandomCheckbox.checked = e.random_on;
+				RandomForm.appendChild(RandomCheckbox);
+				difficultySlider.appendChild(RandomForm);
+				RandomCheckbox.addEventListener("change", function() {
+					e.random_on = this.checked;
+				});
+				
+				var difficultyForm = document.querySelector('form[name="difficulty_level_selection"]');
+				var difficultyHeader = difficultyForm.querySelector('h3');
+				difficultyHeader.textContent=``
+				var difficultySpan = document.createElement("span")
+				difficultySpan.className='hover-value'
+				difficultySpan.setAttribute("data-tooltip", "Sets campaign difficulties as usual. Difficulties of Easy and Hard do not feature polling boosts - only variable changes. Difficulties below Easy or above Hard feature polling boosts and penalties in addition to variable changes.");
+				difficultySpan.textContent = "Campaign difficulty level:";
+				difficultyHeader.appendChild(difficultySpan)
+
+				var forms = document.querySelectorAll("#difficulty_level form");
+				for (var i = 0; i < forms.length; i++) {
+					forms[i].style.display = "inline-block";
+					forms[i].style.paddingLeft = "10px"; // adjust the value as needed
+					forms[i].style.paddingRight = "10px"; // adjust the value as needed
+				}
+			}
+			return;
+		}
+	}
+	
+	
+	if((candidateButton || c != 0)&& !runningMateButton){ // change theme on candidate viewing
+    	var c = document.getElementById("candidate_id").value;
+    	if(c == 300 && !(candidateButton) && !(runningMateButton)) {
+        	goBackButton.click();
+        	const initContinue = document.getElementById("election_id_button");
+        	initContinue.click();
+    	}
+    	else if(c == 301 || c == 302 || c == 303 || c==305) {
+        	if(candidateButton) {
+            	candidateButton.remove();
+        	}
+    	}
+	}
+
+	if(finalScreenID) { // delete back button and delete the interval
+    	finalScreenBB.remove();
+    	clearInterval(startScreenUpdater);
+	}
+}, 1);
+
+  
+  
+campaignTrail_temp.difficulty_level_json = JSON.parse("[{\"model\": \"campaign_trail.difficulty_level\", \"pk\": 1, \"fields\": {\"name\": \"Cakewalk\", \"multiplier\": 1.2}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 2, \"fields\": {\"name\": \"Very Easy\", \"multiplier\": 1.1}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 3, \"fields\": {\"name\": \"Easy\", \"multiplier\": 0.97}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 4, \"fields\": {\"name\": \"Normal\", \"multiplier\": 0.97}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 5, \"fields\": {\"name\": \"Hard\", \"multiplier\": 0.97}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 6, \"fields\": {\"name\": \"Impossible\", \"multiplier\": 0.95}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 7, \"fields\": {\"name\": \"Unthinkable\", \"multiplier\": 0.9}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 8, \"fields\": {\"name\": \"Blowout\", \"multiplier\": 0.83}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 9, \"fields\": {\"name\": \"Disaster\", \"multiplier\": 0.75}}]"); 
+//remove difficulty gradients. Difficulty will only affect starting variables.
+
+document.head.appendChild(style);
+
+const gameWindow_player = document.getElementById("game_window");
+//use this function directly or put it in an event listener to start the music on the press of a certain button
+setupMusicPlayer();
+
+function addDynamicCSS() {
+    var css = `
+        .inner_window_question h3 .mytooltip{
+            background-color: lightskyblue;
+        }
+
+        .mytooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            background-color: lightblue;
+        }
+
+        .mytooltip .mytooltiptext {
+            width: 525px;
+            background-color: lightblue;
+            color: black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 99;
+            bottom: 20%;
+            left: 20%;
+            margin-left: -90px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border: 1px solid black;
+            pointer-events: none;
+            font-size: 13px !important;
+            line-height: 1.5em !important;
+            font-weight: normal !important;
+            font-style: normal !important;
+        }
+
+        .mytooltip .mytooltiptext img {
+            max-width: 240px;
+            height: auto;
+        }
+
+        .mytooltip:hover .mytooltiptext {
+			transform: translateX(-25%) scaleY(1);
+            opacity: 1;
+            transition-delay: 0.5s;
+        }
+		#visit_window {
+			height: auto;
+		}
+		#visit_content {
+			height: 79%;
+		}
+		.game_window {
+			height:auto;
+		}
+		.inner_window_question {
+            height: auto;
+		}
+		.inner_window_question .inner_inner_window {
+            height: auto;
+			margin-bottom:-16px; //negative margins so can go into question box space so the answer lengths that I calibrated to fit do so and don't push the pictures/etc. off the box.
+		}
+		.inner_window_question .inner_inner_window .question_form {
+            height: auto;
+		}
+		#overall_result_container {
+			overflow: auto;
+		}
+    `; //deliberately do not put #state_result_container { overflow:auto;} here. If you do, it will prevent issue descriptions from showing up in CTS by preventing them from going out of the box. Instead, add this to the CSS in the last question on the cyoadventure.
+
+    var styleElem = document.createElement('style');
+    styleElem.type = 'text/css';
+    styleElem.id="styleElem"
+    
+    styleElem.appendChild(document.createTextNode(css));
+    document.head.appendChild(styleElem);
+}
+
+
+addDynamicCSS();
+
+tooltipList = [
+	//context that is essentially the same as our world the reader may already know 
+	{searchString: "Kamala Harris", explanationText: "<img src=https://i.imgur.com/ls95Dkr.png><br><i>A fighter, though you don't always agree.</i>", color: "lightblue"},
+	{searchString: "President Trump", explanationText: "<img src=https://i.imgur.com/3Z1ZWGI.jpeg><br><i>A tyrant, who you stopped for working people everywhere.</i>", color: "lightblue"},
+	{searchString: "swore a sacred oath", explanationText: "<img src=https://i.imgur.com/WiPdNA6.jpeg><br><i>A President swears to preserve, protect, and defend the Constitution - no more. It's in Congress that you swore to do so against all enemies, foreign and domestic.</i>", color: "lightblue"},
+	{searchString: "An anti-worker culture warrior", explanationText: "<img src=https://i.imgur.com/RLNtT22.jpeg><br><i>Virginia was so desperate to shove queer kids back in the closet, they elected Glenn Youngkin - a corporate puppet who might help Trump burn democracy to the ground.</i>", color: "lightblue"},
+	{searchString: "Fred Upton", explanationText: "<img src=https://i.imgur.com/IeP1DAY.jpeg><br><i>A retired Republican moderate from Michigan, Upton rejected Trump following January 6 but is willing to stand as a long-shot candidate for Speaker.</i>", color: "lightblue"},
+	{searchString: "storming of Al-Aqsa", explanationText: "<img src=https://i.imgur.com/WnR1Has.jpeg><br><i>Tear gas and stun grenades in a sacred mosque on the Temple Mount, a seven-month-old Israeli baby hospitalized from a thrown stone.</i>", color: "lightblue"},
+	{searchString: "Buffalo or New York", explanationText: "<i>Former cop Eric Adams defeated Maya Wiley in NYC, while in Buffalo, India Walton was undone by a write-in.</i>", color: "lightblue"},
+	//<img src=https://i.imgur.com/ABguBW9.jpeg><img src=https://i.imgur.com/jU1IWnx.jpeg><br> Removed wikiboxes because they would be different from the real world and I just moved these to the real-world section
+	{searchString: "Seattle or Minneapolis", explanationText: "<i>Establishment pick Bruce Harrell beat Lorena Gonzalez despite your endorsement, in Seattle. And in Minneapolis, Jacob Frey defeated Kate Knuth, while police reform went down in flames in Question 2.</i>", color: "lightblue"},
+	//<img src=https://i.imgur.com/5XHQDAJ.jpeg><img src=https://i.imgur.com/ovPODYX.jpeg><br> Removed wikiboxes because they would be different from the real world and I just moved these to the real-world section
+	{searchString: "Putin", explanationText: "<img src=https://i.imgur.com/A3rGP4n.jpeg><br><i>A ruthless tyrant, a corrupt dictator - but also a man, shaped by the same kind of oligarchy that plagues America as well.</i>", color: "lightblue"},
+	{searchString: "Zelensky", explanationText: "<img src=https://i.imgur.com/fiGRQYe.jpeg><br><i>A modern Churchill, who came into power as an outsider against the establishment. A reminder that when the chips are down, leaders have to rise to the occasion.</i>", color: "lightblue"},
+	{searchString: "Netanyahu", explanationText: "<img src=https://i.imgur.com/4pbWvBT.jpeg><br><i>A reactionary racist and disgrace who wages war upon the Palestinian people.</i>", color: "lightblue"},
+	{searchString: "Hamas", explanationText: "<img src=https://i.imgur.com/0zKABwg.jpeg><br><i>No one - Palestinian or Israeli - should have to live in fear from them, or face the brutal attacks they perpetuate.</i>", color: "lightblue"},
+	{searchString: "October 7", explanationText: "<img src=https://i.imgur.com/JNnKZnU.jpeg><br><i>An act of unspeakable violence and horror, an assault on innocent civilians.</i>", color: "lightblue"},
+	{searchString: "Fetterman", explanationText: "<img src=https://i.imgur.com/E9RzykN.jpeg><br><i>The progressive fighter the working class needs.</i>", color: "lightblue"},
+	{searchString: "Conor Lamb", explanationText: "<img src=https://i.imgur.com/sDsFMdo.jpeg><br><i>Cautious and corporate-friendly - the next Manchin if he wins.</i>", color: "lightblue"},
+	{searchString: "Kurt Schrader", explanationText: "<img src=https://i.imgur.com/Mnjx9oc.jpeg><br><i>A 'Blue Dog' more concerned with protecting Big Pharma than his constituents.</i>", color: "lightblue"},
+	{searchString: "Henry Cuellar", explanationText: "<img src=https://i.imgur.com/ZFcZoNf.jpeg><br><i>Pro-oil, anti-worker, anti-choice, under FBI investigation.</i>", color: "lightblue"},
+	{searchString: "Jared Golden", explanationText: "<img src=https://i.imgur.com/ifRhBrT.jpeg><br><i>A disappointment - talks like a populist, votes like a Republican.</i>", color: "lightblue"},
+	{searchString: "Scott Peters", explanationText: "<img src=https://i.imgur.com/1AiZrcj.jpeg><br><i>He doesn't fight for California, he fights for Big Pharma.</i>", color: "lightblue"},
+	{searchString: "David Zuckerman", explanationText: "<img src=https://i.imgur.com/ZsTFL0e.jpeg><br><i>A steadfast ally, the kind of leader Vermont needs.</i>", color: "lightblue"},
+	{searchString: "NBER", explanationText: "<img src=https://i.imgur.com/CCfaPHJ.jpeg><br><i>Eight old white people no working person has heard of, who 'decide' when the country is officially in a recession, long after the rest of us already know it.</i>", color: "lightblue"},
+	{searchString: "Sinema", explanationText: "<img src=https://i.imgur.com/aXsOaMe.jpeg><br><i>Once an outspoken left-wing activist, now a defender of corporate interests. She once agreed with you - now you don't know who she is.</i>", color: "lightblue"},
+	{searchString: "Manchin", explanationText: "<img src=https://i.imgur.com/WutRG40.jpeg><br><i>A Democrat in West Virginia, where they're an endangered species. A survivor, but one all too willing to side with big business and the status quo.</i>", color: "lightblue"},
+	{searchString: "Schumer", explanationText: "<img src=https://i.imgur.com/petCpcH.jpeg><br><i>You need him, even if you don't always agree. You'll work with him - but he's too close to Wall Street to rely on.</i>", color: "lightblue"},
+	{searchString: "Pelosi", explanationText: "<img src=https://i.imgur.com/uLdaH8z.jpeg><br><i>Tough as nails, able to whip anything through the House - but a creature of the establishment.</i>", color: "lightblue"},
+	{searchString: "AOC", explanationText: "<img src=https://i.imgur.com/6tAC4UT.jpeg><br><i>Bold, fearless - the future of the movement. Reminds you of yourself when you were starting out.</i>", color: "lightblue"},
+	{searchString: "Ben & Jerry's", explanationText: "<img src=https://i.imgur.com/oQxe0tW.jpeg><br><i>Two stubborn Vermonters who turned ice cream into progressive activism and never shied away from a fight for justice. Allies and kindred spirits.</i>", color: "lightblue"},
+	{searchString: "CodePink", explanationText: "<img src=https://i.imgur.com/MyhTsYC.jpeg><br><i>Principled allies against endless war and the military-industrial complex - but too willing to believe that power will yield to niceness.</i>", color: "lightblue"},
+	{searchString: "impeached", explanationText: "<img src=https://i.imgur.com/JviM1Xg.jpeg><br><i>Once a check on corruption and abuse of power, now just another partisan battleground.</i>", color: "lightblue"},
+	{searchString: "Parliamentarian", explanationText: "<img src=https://i.imgur.com/5d57mnr.jpeg><br><i>An unelected bureaucrat obsessed with rules and tradition, wielding incredible soft power over laws that shape America.</i>", color: "lightblue"},
+	{searchString: "Byrd Rule", explanationText: "<img src=https://i.imgur.com/fHM1eMx.jpeg><br><i>An arbitrary roadblock, blocking provisions from reconciliation - a special Congressional procedure that cannot be filibustered - for having only an \"incidental\" impact on the budget.</i>", color: "lightblue"},
+	{searchString: "filibuster", explanationText: "<img src=https://i.imgur.com/0nrijIX.jpeg><br><i>An archaic tool of obstruction, once used by segregationists to block civil rights, now wielded to halt progress at every turn.</i>", color: "lightblue"},
+	{searchString: "Green New Deal", explanationText: "<img src=https://i.imgur.com/eHnimPy.jpeg><br>A $16.3 trillion investment for America to transition to 100% renewable electricity and transportation by 2030 and full decarbonization by 2050. It'll create 20 million jobs, ensuring no worker is left behind with unemployment insurance, wage guarantees, job training, housing, healthcare, and pensions. It'll ban fracking, fossil fuel imports and exports, and all fossil fuel extraction on public lands. It'll stop new nuclear construction, stop renewals of existing nuclear plants, and reject other false solutions like geo-engineering and carbon capture. And it'll pay for itself in fifteen years.", color: "lightblue"}, //"everyone knows what the Green New Deal is" - actually I had no clue on a lot of these specific details of Bernie's program.
+	{searchString: "Comprehensive immigration reform", explanationText: "<img src=https://i.imgur.com/Ztz6AWU.jpeg><br>A path to citizenship in five years, with expedited citizenship for undocumented youth. It'll decriminalize border crossings, end detention for migrants without violent convictions and integrate them in local communities, stop turning local police into immigration agents, dismantle ICE, and shift enforcement from punishing undocumented workers to holding exploitative employers accountable.", color: "lightblue"}, //same with Bernie's immigration reform plan. It includes a lot more things than the standard immigration reform. (Bernie has also flip-flopped away from this since as of 2025 - now he thinks Biden - who ran considerably to the right of him on immigration - was too far to the left on immigration.)
+	//I could not find any *left-wing* content with details on the PRO Act, so have right-wing propaganda as the picture instead.
+	{searchString: "PRO Act", explanationText: "<img src=https://i.imgur.com/RQ1AVJN.jpeg><br>It protects workers from being fired for unionizing, overrides right-to-work laws, bans captive audience meetings, and stops employers from using immigration status as a weapon. It also legalizes secondary strikes, intermittent strikes, and allows gig workers to unionize and bargain collectively.", color: "lightblue"}, //did you know the PRO Act repeals a lot of Taft-Hartley? I didn't until I started researching...
+	{searchString: "invoke the 14th", explanationText: "<img src=https://i.imgur.com/kAgvhfA.jpeg><br><i>Declare the debt ceiling unconstitutional and ensure America pays its bills.</i>", color: "lightblue"},
+	{searchString: "invoked the 14th", explanationText: "<img src=https://i.imgur.com/kAgvhfA.jpeg><br><i>Declared the debt ceiling unconstitutional and ensured America pays its bills.</i>", color: "lightblue"},
+	{searchString: "Frances Haugen", explanationText: "<img src=https://i.imgur.com/0Qp5wJU.jpeg><br><i>A hero, who risked everything to tell Congress how Facebook put profits above the well-being of our kids. But she let a PR machine sculpt her every word and appearance; she evaded Bitcoin taxes by fleeing to Puerto Rico.</i>", color: "lightblue"},
+	{searchString: "Sophie Zhang", explanationText: "<img src=https://i.imgur.com/eHERzyb.jpeg><br><i>A whistleblower who told Europe how Facebook let disinformation and manipulation run rampant in the Global South. No polished PR machine or media coaching - she stutters but speaks the truth.</i>", color: "lightblue"},
+	{searchString: "Jerome Powell", explanationText: "<img src=https://i.imgur.com/CPSFCuY.jpeg><br><i>A Wall Street man, more worried about inflation than working Americans struggling to get by.</i>", color: "lightblue"},
+	{searchString: "Lael Brainard", explanationText: "<img src=https://i.imgur.com/72XKSpd.jpeg><br><i>A Democrat who gets that working families matter more than transient inflation.</i>", color: "lightblue"},
+	{searchString: "Neel Kashkari", explanationText: "<img src=https://i.imgur.com/Q9A4cpu.jpeg><br><i>A Republican who gets that too-big-to-fail is dangerous and that interest rates should stay low, though we agree on little else.</i>", color: "lightblue"},
+	{searchString: "Richard Clarida", explanationText: "<img src=https://i.imgur.com/w32k83L.jpeg><br><i>A Wall Street Trumper who gets that inflation isn't a runaway monster we need to smash the economy to fix. But he's got an alleged insider trading scandal going on.</i>", color: "lightblue"},
+	{searchString: "red ripple", explanationText: "<img src=https://i.imgur.com/K3FeF8z.jpeg><br><i>They took the House by the skin of their teeth, you gained a seat to secure the Senate. Some 'wave.'</i>", color: "lightblue"},
+	{searchString: "Federal Reserve", explanationText: "<img src=https://i.imgur.com/V2TeQNE.jpeg><br><i>An incredibly powerful organization that few understand. The Fed controls interest rates - the cost of your mortgage, your car loan, your credit card interest, your student loan. But here's the problem: The Fed has been dominated for almost forever by those more concerned with Wall Street than Main Street. If they think inflation is a real issue, they jack up interest rates. And when they raise rates too fast, that slows down the economy, might cause a recession. Big banks and billionaires - they have plenty of cash to ride out the storm. It's regular people who go underwater.</i>", color: "lightblue"},
+	{searchString: "Donald Trump", explanationText: "<img src=https://i.imgur.com/wNi8Emx.jpeg><br><i>He's come back for more, to take it back no matter the cost. You won't - can't - let him win. Not This Time.</i>", color: "lightblue"},
+	{searchString: "JD Vance", explanationText: "<img src=https://i.imgur.com/JqZ7q9M.jpeg><br><i>A fraud who went in eight years from calling Trump 'America's Hitler' to groveling at his feet.</i>", color: "lightblue"},
+	{searchString: "Doug Burgum", explanationText: "<img src=https://i.imgur.com/SwiyPRG.jpeg><br><i>A billionaire with the backing of big money who knows he's one of them - quite literally</i>", color: "lightblue"},
+	{searchString: "Tim Scott", explanationText: "<img src=https://i.imgur.com/mDMkvHr.jpeg><br><i>A black Republican who talks a good game about unity and opportunity, but keeps the billionaires in charge and the rest of us struggling.</i>", color: "lightblue"},
+	{searchString: "Marco Rubio", explanationText: "<img src=https://i.imgur.com/5sMG4z7.jpeg><br><i>An empty suit, a polished politician - so polished that he went on repeat like a broken record eight years ago.</i>", color: "lightblue"},
+	{searchString: "Don Trump Jr", explanationText: "<img src=https://i.imgur.com/AcTYhgj.jpeg><br><i>The man who somehow stumbled his way to the Republican nomination, riding on nothing but his last name and an endorsement from his corrupt, criminal father - the same father he's now promising to pardon. No real policies, no vision, just a hollow, smug child of nepotism, crying persecution every time his criminal family faces consequences that would have crushed anyone not born with a silver spoon in their mouth.</i>", color: "lightblue"},
+	{searchString: "Lara Trump", explanationText: "<img src=https://i.imgur.com/I9bPnw7.jpeg><br><i>Yet another unqualified power-hungry member of the Trump dynasty, thrust onto the ticket - not for her skills, not for her vision, but because her last name keeps the grift alive. The second woman to have made it onto a Republican ticket, and somehow even more of a joke than the first - who, for all her faults, at least got there on her own.</i>", color: "lightblue"},
+	{searchString: "Vivek Ramaswamy", explanationText: "<img src=https://i.imgur.com/VqexH9Q.jpeg><br><i>Another corporate billionaire trying to buy his way into DC. Like Sinclair Lewis said, fascism has come to America - wrapped in a flag, holding the banner of anti-wokeness, but really just looking to turn back the clock for the benefit of the rich.</i>", color: "lightblue"},
+	{searchString: "Donald Trump Jr", explanationText: "<img src=https://i.imgur.com/AcTYhgj.jpeg><br><i>The man who somehow stumbled his way onto the Republican ticket, riding on nothing but his last name and his father's bloody shirt. To the 1%, he's a dream - a puppet leader better than they ever could have imagined, a man who's spent his entire life following in his father's shadow, a spineless lackey dressed up as a strongman.</i>", color: "silver", color: "lightblue"},
+	{searchString: "Josh Hawley", explanationText: "<img src=https://i.imgur.com/ysb7hwS.jpeg><br><i>An empty suit who brands himself a champion of the working class while voting against every policy that would actually help working families.</i>", color: "lightblue"},
+	{searchString: "Tom Cotton", explanationText: "<img src=https://i.imgur.com/DUo450I.jpeg><br><i>A corporate yes-man in a cheap populist disguise. A pliant pawn, someone who'll decry the elite before doing their bidding.</i>", color: "lightblue"},
+	{searchString: "Ron DeSantis", explanationText: "<img src=https://i.imgur.com/vxEnhWU.jpeg><br><i>A man more concerned with culture wars and punishing the vulnerable than addressing the real issues facing working people.</i>", color: "lightblue"},
+	{searchString: "Title 42", explanationText: "<img src=https://i.imgur.com/rDwdFDo.jpeg><br><i>A Trump-era order for the rapid expulsion of migrants over COVID concerns. Without a better way to restrict the migrant flow, you kept it until the COVID emergency ended in spring 2023.</i>", color: "lightblue"},
+	
+	//quotes, usually from Bernie. Folded into general tooltips in category and color.
+	{searchString: "PRC", explanationText: "<img src=https://i.imgur.com/qqTkmJZ.jpeg><br>Now, instead of extolling the virtues of free trade and openness toward China, the establishment beats the drums for a new Cold War, casting China as an existential threat to the United States.... I believe it is important to challenge this new consensus - just as it was important to challenge the old one. The Chinese government is surely guilty of many policies and practices that I oppose and that all Americans should oppose.... The United States should continue to press these issues in bilateral talks with the Chinese government and in multilateral institutions such as the UN Human Rights Council. That approach would be far more credible and effective if the United States upholds a consistent position on human rights toward its own allies and partners.<br><br>- Bernie Sanders, 2021", color: "lightblue"},
+	{searchString: "ending endless wars", explanationText: "<img src=https://i.imgur.com/7pHrJkm.jpeg><br>The war on terror has turned into an endless war. We will soon have troops fighting in Afghanistan who were not even born on September 11, 2001. We have fathers who completed tours of duty there, only to be followed by their sons and daughters. Withdrawing from Afghanistan is something we must do. My administration will not make critical foreign-policy decisions like this one via tweet, as our current president does. We will work closely with our partners and allies to design a serious diplomatic and political strategy to stabilize the region, promote more effective and accountable governance, and ensure that threats do not re-emerge after we leave.<br><br>- Bernie Sanders, 2019", color: "lightblue"},
+	{searchString: "campaigned against endless wars", explanationText: "<img src=https://i.imgur.com/odjx1NQ.jpeg><br>I mean, I think we have got to make it clear to countries around the world that we will not sit by and allow invasions to take place.<br><br>- Bernie Sanders, 2020", color: "lightblue"},
+	{searchString: "CHIPS Act", explanationText: "<img src=https://i.imgur.com/KGFcSPQ.jpeg><br>There is no debate that the microchip and semiconductor shortage is a dire threat to our nation....The microchip industry helped cause this crisis by, over the last 20 years, shutting down 780 plants here and eliminating 150,000 good-paying jobs. The question before us now is whether these extremely profitable companies will work with the U.S. government on a solution to rebuild the U.S. microchip industry which is fair to the taxpayers of this country, or whether they will continue to demand a $53 billion bribe to stay here...I'm opposed to this legislation in any form until these conditions are met: companies must agree to issue warrants or equity stakes to the federal government; they must commit to not buying back their own stock, outsourcing American jobs overseas or repealing existing collective bargaining agreements; and they must remain neutral in any union organizing efforts.<br><br> - Bernie Sanders, 2022", color: "lightblue"},
+	{searchString: "into the Koch Brothers policy of open borders.", explanationText: "<img src=https://i.imgur.com/FtuoP9x.jpeg><br>Open borders? No, that's a Koch brothers proposal...That's a right wing proposal, which says essentially there is no United States.... What right-wing people in this country would love is an open-border policy. Bring in all kinds of people, work for $2 or $3 an hour, that would be great for them. I don't believe in that... I think from a moral responsibility we've got to work with the rest of the industrialized world to address the problems of international poverty, but you don't do that by making people in this country even poorer.<br> - Bernie Sanders, 2015", color: "lightblue"},
+	{searchString: "throwing your vote against immigration reform from 2007", explanationText: "<img src=https://i.imgur.com/hkWaOvn.jpeg><br>If poverty is increasing and if wages are going down, I don't know why we need millions of people to be coming into this country as guest workers who will work for lower wages than American workers and drive wages down even lower than they are now....this whole immigration guest worker program is the other side of the trade issue. On one hand you have large multinationals trying to shut down plants in the America, move to China and on the other hand you have the service industry bringing in low wage workers from abroad. The result is the same: middle class gets shrunken and wages go down. <br> - Bernie Sanders, 2007", color: "lightblue"},
+	{searchString: "let him give his cheek to him that smiteth him", explanationText: "<img src=https://i.imgur.com/PRSzK4D.jpeg><br>יִתֵּן לְמַכֵּהוּ לֶחִי, יִשְׂבַּע בְּחֶרְפָּה <br> - Lamentations 3:30", color: "lightblue"},
+	{searchString: "If thine enemy be hungry, give him bread to eat; and if he be thirsty, give him water to drink.", explanationText: "<img src=https://i.imgur.com/PRSzK4D.jpeg><br>אִם-רָעֵב שֹׂנַאֲךָ, הַאֲכִלֵהוּ לָחֶם;    וְאִם-צָמֵא, הַשְׁקֵהוּ מָיִם. <br> - Proverbs 25:21", color: "lightblue"},
+	{searchString: "the app TikTok", explanationText: "<img src=https://i.imgur.com/Fk6WOnv.jpeg><br>I think there are very, very legitimate concerns about what social media is doing to the mental health of Americans. It's not just TikTok. It's across the board.<br><br>- Bernie Sanders, 2024", color: "lightblue"},
+	{searchString: "Waiving patent protections", explanationText: "<img src=https://i.imgur.com/rhZpPLQ.jpeg><br>Regardless of our vaccination efforts here in the U.S., we cannot successfully combat COVID-19 without supporting the efforts of other countries in our collective fight against this virus. Unless countries cooperate and share medical technology, there simply will not be sufficient supply of vaccines, diagnostics, and treatments for many countries – particularly developing countries – to effectively manage COVID-19. Our globalized economy cannot recover if only parts of the world are vaccinated.<br><br> - Letter signed by Bernie Sanders, April 16 2021", color: "lightblue"},
+	{searchString: "but it might cost the war", explanationText: "<img src=https://i.imgur.com/7huvSBe.jpeg><br>The truth is that in some conservative states there will be candidates that are popular candidates who may not agree with me on every issue. I understand it. That's what politics is about. If we are going to protect a woman's right to choose, at the end of the day, we're going to need Democratic control over the House and the Senate, and state governments all over this nation. And we have got to appreciate where people come from, and do our best to fight for the pro-choice agenda. But I think you just can't exclude people who disagree with us on one issue<br><br>- Bernie Sanders, 2017", color: "lightblue"},
+	{searchString: "Medicare for All", explanationText: "<img src=https://i.imgur.com/5MlgaJX.jpeg><br>The Medicare-for-all legislation that I wrote, which now has 16 co-sponsors in the Senate, would provide comprehensive health care to every man, woman and child in our country – without out-of-pocket expenses. No more insurance premiums, deductibles or co-payments. Further, it would expand Medicare coverage to include dental and vision care.<br><br>- Bernie Sanders, 2018", color: "lightblue"},
+	{searchString: "NDAA", explanationText: "<img src=https://i.imgur.com/XZ0BeEb.jpeg><br>I voted tonight against the $858 billion Pentagon budget, which is 10% more than last year. At a time when we spend more than the next 11 nations combined on defense, we should invest in health care, jobs, housing and education – not more weapons of destruction.<br><br>-Bernie Sanders, 2022", color: "lightblue"},
+	
+	//behind-the scene details for the readers that is not necessary but provides context for the background of this world
+	{searchString: "2020", explanationText: "<img src=https://i.imgur.com/L7yZKnB.jpeg> <br><i>A razor-thin win. If Greenfield, Cunningham, and Warnock didn't make it, the people's agenda would be dead on arrival.</i>", color: "lightgreen"},
+	{searchString: "January 6", explanationText: "<img src=https://i.imgur.com/Sg7FbrN.jpeg><br><i>Trump called his goons into the streets to destroy democracy, you called your supporters to save it. Thirty one died that day - two from gunshots, eight from bludgeoning, sixteen from being trampled in the resultant panic, and five from so-called natural causes - but the line held. The mob didn't make it to the Capitol; America survived.</i>", color: "lightgreen"},
+	//unlike the other variant, the below is a real-world divergence.
+	{searchString: "Anti-worker culture warriors", explanationText: "<img src=https://i.imgur.com/liXHGUj.jpeg><img src=https://i.imgur.com/jqgIk5Z.jpeg><br><i>Virginia and New Jersey were so desperate to shove queer kids back in the closet, they elected Youngkin and Ciattarelli - corporate puppets who might help Trump burn democracy to the ground.</i>", color: "lightgreen"},
+	{searchString: "Only by the skin of their teeth", explanationText: "<img src=https://i.imgur.com/KG6uJdd.jpeg><img src=https://i.imgur.com/NAaqTDq.jpeg><br><i>Virginia was so desperate to shove queer kids back in the closet, they almost elected Youngkin - a corporate puppet who could have helped Trump burn democracy to the ground.</i>", color: "lightgreen"},
+	{searchString: "your appointments make it through by the skin of your teeth", explanationText: "<img src=https://i.imgur.com/XmvTofq.jpeg> <br><i>For foreign policy, Barbara Lee for Secretary of State, Ro Khanna for Secretary of Defense, Russ Feingold in lieu of Tulsi Gabbard for Director of National Intelligence, and Jared Bernstein as U.S. Trade Representative.<br> At home, Robert Reich for the Treasury, Vanita Gupta as AG, Raúl Grijalva for the Interior, Abdul El-Sayed in lieu of Pramila Jayapal for HHS, David Cole for Homeland Security, and more.</i>", color: "lightgreen"},
+	{searchString: "your appointments make it through with little difficulty,", explanationText: "<img src=https://i.imgur.com/XmvTofq.jpeg> <br><i>For foreign policy, Susan Rice for the State Department, Lloyd Austin for Defense, Avril Haines for Director of National Intelligence, and Katherine Tai as U.S. Trade Representative.<br> At home, Janet Yellen for the Treasury, Merrick Garland as AG, Gina McCarthy for the Interior, Howard Dean for HHS, Alejandro Mayorkas for Homeland Security, and more.</i>", color: "lightgreen"},
+	{searchString: "your other appointments", explanationText: "<img src=https://i.imgur.com/XmvTofq.jpeg> <br><i>For foreign policy, Barbara Lee for Secretary of State, Ro Khanna for Secretary of Defense, Russ Feingold in lieu of Tulsi Gabbard for Director of National Intelligence, and Jared Bernstein as U.S. Trade Representative.<br> At home, Janet Yellen for the Treasury, Merrick Garland as AG, Gina McCarthy for the Interior, Howard Dean for HHS, Alejandro Mayorkas for Homeland Security, and more.</i>", color: "lightgreen"},
+	{searchString: "your remaining appointments", explanationText: "<img src=https://i.imgur.com/XmvTofq.jpeg> <br><i>For foreign policy, Susan Rice for the State Department, Lloyd Austin for Defense, Avril Haines for Director of National Intelligence, and Katherine Tai as U.S. Trade Representative.<br> At home, Robert Reich for the Treasury, Vanita Gupta as AG, Raúl Grijalva for the Interior, Abdul El-Sayed in lieu of Pramila Jayapal for HHS, David Cole for Homeland Security, and more.</i>", color: "lightgreen"},
+	{searchString: "to a bevy of nations", explanationText: "<img src=https://i.imgur.com/Ww2QT8v.jpeg> <br><i>The Foreign Assistance Act is clear - American weapons cannot be used for human rights violations or against American interests, and you will see it enforced. Israel's occupation of the West Bank and expansion of settlements, Ukraine's refusal to fully implement Minsk II while still expecting American arms, Taiwan's dangerous flirtation with independence rhetoric that could spark a catastrophic war, Saudi Arabia's murder of Jamal Khashoggi and the brutal war they wage with the UAE in Yemen - these are lines you will not cross. America cannot keep provoking conflict for the sake of Lockheed Martin's profits.</i>", color: "lightgreen"},
+	{searchString: "red wave", explanationText: "<img src=https://i.imgur.com/hPoLpCB.jpeg> <br><i>Republicans won not only the House, but gained two seats to secure the Senate as well.</i>", color: "lightgreen"},
+	{searchString: "red tsunami", explanationText: "<img src=https://i.imgur.com/pkokgRe.jpeg> <br><i>Republicans took the House of Representatives and gained four seats to secure the Senate, progressives and corporate Democrats alike going down like ninepins.</i>", color: "lightgreen"},
+	{searchString: "as an amphibious flotilla rushes across the straits", explanationText: "<img src=https://i.imgur.com/AoXafy8.jpeg><br><i>Taiwan's fleet and air force lies destroyed by missiles, while PRC ships and paratroopers rush to seize ports and airports.</i>", color: "lightgreen"},
+	{searchString: "Leahy's old seat is open", explanationText: "<img src=https://i.imgur.com/0AiPnUI.jpeg><br><i>Leahy's only a year older than you, and his departure leaves a second Vermont Senate opening, right on the heels of your own - filled by Peter Welch after the special election. For all your differences with Phil Scott, credit where it's due - he kept his word, named a progressive caretaker to replace you when he could have torpedoed your agenda for half a year by appointing a Republican.</i>", color: "lightgreen"},
+	{searchString: "Viral videos have fueled division", explanationText: "<img src=https://i.imgur.com/dcHJOG4.jpeg><br><i>Some show the truth: that organized right-wing militias known as the Proud Boys and Oath Keepers started the violence, smashing into the cordon of protesters, desperate to break through to the Capital. Others, amplified endlessly by right-wing media, twist the truth into something grotesque - misleading videos claiming that black bloc antifa radicals started the violence, suppressing a 'peaceful protest against your stolen election'. That day, they lost - your supporters held firm, defended democracy. But today, the battle isn't for the streets and the Capitol Building. It's for control of the truth.</i>", color: "lightgreen"},
+	{searchString: "East Ukraine", explanationText: "<img src=https://i.imgur.com/1In2psj.jpeg><br><i>A puppet government propped up by Russian oligarchs and their cronies. You'd be hard-pressed to find one Ukrainian in a hundred who supports disgraced President Viktor Yanukovych, no matter how much Russia trots him around on the world stage. His willingness to sell out his own country, to sign off on ceding Crimea and the eastern oblasts to Russia, adds only insult to injury to the Ukrainian people.</i>", color: "lightgreen"},
+	{searchString: "West Ukraine", explanationText: "<img src=https://i.imgur.com/40hqiE9.jpeg><br><i>The free government and people of Ukraine, now reduced to the five oblasts of Lviv, Zakarpattia, Ivano-Frankivsk, Ternopil, and Chernivtsi. Twelve million people - half of them refugees - crammed into what remains of their once-proud nation, defended by Polish bayonets against the grasping avarice of Putin and fellow traveler Orban.</i>", color: "lightgreen"},
+	{searchString: "Zhang's testimony", explanationText: "<img src=https://i.imgur.com/kI49LGO.jpeg><br><i>She took the stand, nervous and stuttering - refusing to speculate on TikTok, insisting she knew only Facebook's rot. Then came the questions: Did Facebook mean harm? \"I don't think so\", she replied. \"I think they would have acted differently if actively malicious.\" But when asked what a Facebook truly malicious to America might have done, she asked to adjourn for secrecy, and behind closed doors let loose visions of horrors so chilling it jolted Congress into action, urgently so. Now the ban is moved early to this Labor Day, before the election. The kids are furious, and Zhang has purged her online presence, supposedly hounded by online mobs.</i>", color: "lightgreen"}, 
+	{searchString: "for abuse of power", explanationText: "<img src=https://i.imgur.com/UmgXauC.jpeg><br><i>The Republicans trot up two so-called whistleblowers. The first one testifies that he overheard a private conversation between you and your Attorney General. \"This is absurd - how is this even still a story while billionaires are robbing the working class blind? It's a witch hunt, a distraction for the 1%, nothing more\", he quotes you saying. The second testifies - with internal Justice Department communications backing - that he was ordered to stop investigating a possible reopening of the case not long after the date of that conversation. While each is true in theory, the overall claim is utterly absurd - that unrelated trivial griping somehow led to shutting down a case that never had legs to begin with! Yet Republicans contend that you created an atmosphere in which your appointees were pressured to intervene on your behalf in your interests, and many Americans believe them!</i>", color: "lightgreen"},
+	{searchString: "an emergency arms sale to Ukraine under the AECA", explanationText: "<img src=https://i.imgur.com/muqOeQb.jpeg><br><i>Under the Arms Export Control Act, you can conduct emergency arms sales if national security demands it and you can explain how. The situation in Ukraine is dire - you'll authorize the immediate sale of a dozen HIMARS systems with M31 rockets, along with Javelin missiles, Stinger SAMs, and training for Ukrainian forces.</i>", color: "lightgreen"},
+	{searchString: "an emergency arms sale under the AECA", explanationText: "<img src=https://i.imgur.com/4n7MpQV.jpeg><br><i>Under the Arms Export Control Act, you're required to notify Congress about major arms sales - but in an emergency, you can bypass that requirement if national security demands it and you can explain how. Taiwan needs the immediate sale and shipment of hundreds of Harpoon anti-ship missile systems and several dozen HIMARS systems against a possible Chinese invasion. You will not hesitate to act when democracy is at risk.</i>", color: "lightgreen"},
+	{searchString: "gave China a slap on the wrist", explanationText: "<img src=https://i.imgur.com/QCgC8yh.jpeg><br><i>Humiliated by peace, he stepped down after - begging forgiveness for a war that should never have happened.</i>", color: "lightgreen"},
+	{searchString: "China signs the deal", explanationText: "<img src=https://i.imgur.com/QCgC8yh.jpeg><br><i>Humiliated by peace, he stepped down after - begging forgiveness for a war that should never have happened.</i>", color: "lightgreen"},
+	{searchString: "Xi Jinping flanked by the Politburo", explanationText: "<img src=https://i.imgur.com/QCgC8yh.jpeg><br><i>Humiliated by peace, he stepped down after - begging forgiveness for a war that should never have happened.</i>", color: "lightgreen"},
+	
+	
+	//behind the scenes context for results of decisions. Only results of early decisions covered.
+	{searchString: "best efforts to assuage Russian concerns", explanationText: "<img src=https://i.imgur.com/7tudZFO.jpeg><br><b>You received this question due to appointing a progressive foreign cabinet in Q2.</b><br><i>Previous administrations promised Russia NATO wouldn't go one step east, then spat on their word. Putin may be a corrupt dictator, but the U.S. can't deny spheres of influence while guarding its own with an iron fist - so you worked to withhold arms to Ukraine until they implemented Minsk. Ukraine hated it of course, refused to comply. But someone had to de-escalate, take the first step.</i>", color: "darkblue"},
+	{searchString: "your withholding of arms", explanationText: "<img src=https://i.imgur.com/sluXANm.jpeg><br><b>You received this question due to appointing a progressive foreign cabinet in Q2.</b><br><i>For half a century, Taiwan has been a flashpoint. To Beijing, it's a rogue province; to America, it's a symbol; to you, it's China's red line. You don't want the PRC to conquer Taiwan, but you also didn't want to provoke them by sending arms and encouraging independence! So you worked to withhold arms until Taipei disavowed its pro-independence voices. The pundits called you weak, Taiwan accused you of betrayal, but you held firm.</i>", color: "darkblue"},
+	{searchString: "accuse your administration of creating chaos at the border", explanationText: "<img src=https://i.imgur.com/fEdD6tX.jpeg><br><b>You received this question due to appointing a progressive domestic cabinet in Q2.</b><br><i>David Cole was your progressive pick for Homeland Security. To address the millions of immigrants excited by the opportunity of 'Tío Bernie' pouring over the border, Cole has instituted a policy of allowing refugees and migrants to stay in the United States while awaiting their day in immigration court. Yet this policy has only encouraged more waves to come.</i>", color: "darkblue"},
+	{searchString: "have been packing them into detainment centers", explanationText: "<img src=https://i.imgur.com/W8cGBLY.jpeg><br><b>You received this question due to appointing an establishment domestic cabinet in Q2</b><br><i>You picked Alejandro Mayorkas for Homeland Security to save political capital and avoid a divisive fight. But with millions of migrants trying to pour into 'Tio Bernie's America', detainment centers have been overwhelmed; pictures of detainees being packed in 'like sardines' have done a number on your approval among Hispanic voters.</i>", color: "darkblue"},
+	{searchString: "your drilling restrictions", explanationText: "<img src=https://i.imgur.com/88HrFX4.jpeg><br><b>You received this question due to appointing a progressive domestic cabinet in Q2.</b><br><i>Secretary of the Interior Raúl Grijalva shared your desire to stop a climate emergency in the making. Together, you not only implemented a new moratorium on oil and gas leases in federal lands, but also began aggressively canceling existing leases and making examples of the worst bad actors. Yet as gas prices climb higher and higher, so comes a backlash and calls for undoing those restrictions.</i>", color: "darkblue"},
+	{searchString: "arms embargos in the Middle East", explanationText: "<img src=http://i.imgur.com/Fp22sya.jpeg><br><b>You received this question due to appointing a progressive foreign cabinet in Q2.</b><br><i>Soon after inauguration, you invoked Section 116 of the Foreign Assistance Act with SoS Barbara Lee to stop all further arms shipments to the Saudis and UAE. Perhaps in response, OPEC has repeatedly cut oil production during your administration - National Security Advisor Matt Duss suspects the use of the oil weapon to punish you for your policy.</i>", color: "darkblue"},
+	{searchString: "Speaker Upton", explanationText: "<img src=https://i.imgur.com/vDJrVba.jpeg><br><b>You received this question due to forming a bipartisan coalition in the House.</b><br><i>A bold move, or abject surrender to centrists? Fred Upton, a moderate and pragmatic Republican, now stands at the Speaker's podium. It's an uneasy alliance, but one that has paid dividends already with measures such as the clean debt ceiling hike.</i>", color: "darkblue"},
+	{searchString: "Sino-American War", explanationText: "<img src=https://i.imgur.com/Fuhh0VK.jpeg><br><b>You received this question due to fighting a war over Taiwan.</b><br><i>Also known as the One Month War, Xi Jinping invaded Taiwan unprovoked in April 2023 only to be turned back by American arms. Yet the war produced more than ten thousand American casualties, and a global economy in ruins.</i>", color: "darkblue"},
+	{searchString: "Sino-Taiwan War", explanationText: "<img src=https://i.imgur.com/V1L4wo6.jpeg><br><b>You received this question due to allowing the PRC to conquer Taiwan.</b><br><i>Also known as the Three Month War, Xi Jinping invaded Taiwan unprovoked in April 2023; Taiwan called for aid, and America declined to answer. The butcher's bill was bloody, but the outcome was never in question - Taiwan fell, and is now the 23rd province of China, leaving a global economy in ruins.</i>", color: "darkblue"},
+	{searchString: "your arms embargo", explanationText: "<img src=https://i.imgur.com/N7JRZhn.jpeg><br><b>You received this question due to disarming Israel early and maintaining the disarmament.</b><br><i> You've stopped offensive arms shipments to Israel for the whole of your Presidency, citing their human rights violations under Section 503 of the Foreign Assistance Act. Yet your advisors believe that Israel has responded only by pausing the air war in favor of home-produced artillery bombardments - dumb bombardments with far more collateral damage than American precision munitions. Bereft of leverage, you've been hard-pressed to convince Israel to let any humanitarian aid in; a mass famine is reportedly undergoing in Gaza with estimates of thousands dead.</i>", color: "darkblue"},
+	{searchString: "Special counsel Jack Smith", explanationText: "<img src=https://i.imgur.com/lUsrkwE.jpeg><br><b>You received this question due to successfully prosecuting Trump.</b><br><i>When you asked Attorney General Vanita Gupta to ensure accountability for the January 6 attacks, it was Jack Smith who saw that translated into action, preventing our nation from falling into the sway of a dictator in the making. It's thanks to him that justice was done, that we proved once and for all that no one is above the law. No One.</i>", color: "darkblue"},
+	{searchString: "will invade Taiwan in April.", explanationText: "<img src=https://i.imgur.com/VNspaiB.jpeg><br><b>You received this question due to allowing Russian conquest of Ukraine and being extremely pro-peace.</b><br><i>The intelligence briefing is as crushing as it is clear: China believes you're so reluctant for war that you won't intervene to protect Taiwan. To Xi Jinping, this is a fleeting opportunity to achieve reunification without American intervention. They claim that China is unprepared and unready, gambling on your unwillingness to fight; that if America fights, she will win.</i>", color: "darkblue"}, 
+	{searchString: "They're saying you're senile", explanationText: "<img src=https://i.imgur.com/5ai9WZS.jpeg><br><b>You received this question due to low Fervor. Fervor increases by picking in-character answers; it decreases slowly over time and rapidly by picking answers very out-of-character. This result is guaranteed with Fervor -10 or less; it will never happen when Fervor i 0 or higher. (If randomness is off, it will always happen when fervor is <-5, and never otherwise.)</b><br><i>You, senile? You're not senile - just tired. Who wouldn't be? You've spent your whole life fighting the same battles, carrying the same dreams. Your mind still works; it's just… slower sometimes. The words, they're still there, even if they stumble on the way out. That doesn't mean you've lost your way. You remember why you're here - what you stand for, even if sometimes you wonder why you've made the sacrifices you've made along the way as President.</i>", color: "darkblue"},
+	{searchString: "The reports from Gaza are heartbreaking", explanationText: "<img src=https://i.imgur.com/uYsUeTl.jpeg><br><b>You received this question due to convincing Sinema to switch parties</b><br><i>Without the Senate, your domestic agenda is dead and buried. So you pivot abroad, because peace and justice doesn't stop at America's borders</i>", color: "darkblue"}, 
+	{searchString: "threatening the full faith and credit of the United States", explanationText: "<img src=https://i.imgur.com/eQF2GTg.jpeg><br><b>You received this question due to convincing Sinema to switch parties</b><br><i>Senate Republicans - Sinema included - demand massive spending cuts for a debt ceiling hike. They say that programs keeping workers afloat are 'unprecedented' and need to be cut to tame inflation. You say that it's a pack of lies, that they're just seeking to do the bidding of the 1%.</i>", color: "darkblue"},
+	{searchString: "a global economy in ruins.", explanationText: "<img src=https://i.imgur.com/QwZpEsR.jpeg><br><b>With the Taiwanese microchip factories damaged, the world - including America - will suffer serious economic damage.</b><br><i>The Taiwanese microchip plants took direct hits from PRC missiles. Some lie in ruins, others barely salvageable, and the shockwaves will ripple for years.</i>", color: "darkblue"},
+	{searchString: "Taiwan's defenders fight bravely", explanationText: "<img src=https://i.imgur.com/QwZpEsR.jpeg><br><b>With the Taiwanese microchip factories gone, the world - including America - will suffer catastrophic economic damage.</b><br><i>As Chinese troops closed in, Taiwan's defenders triggered the self-destruct protocols wired into every chip factory, choosing ashes over surrender. Billions in machinery, years of innovation - gone in minutes.</i>", color: "darkblue"},
+	{searchString: "FSB losing control", explanationText: "<img src=https://i.imgur.com/eH3fCyh.jpeg><br><b>Russian loss of the Donbas has a 25% random chance of causing an escalation. Russian loss of Crimea has a 50% chance. If randomness is off, this will never trigger.</b><br><i>Decades of simmering frustrations, finally boiling over into incadescent rage, past the point repression can stop. The Russian people are no longer silent.</i>", color: "darkblue"},
+	{searchString: "Beijing refuses to yield", explanationText: "<img src=https://i.imgur.com/UUyfVsl.jpeg><br><b>The PRC has a 25% chance to reject peace and escalate if asked to renounce reunification by force; 50% if also asked to return the Penghus. If randomness is off, this will never trigger.</b><br><i>Beaten and bloodied, the PRC refuses to submit to yet another Unequal Treaty - while beneath, the people rise, crying for an end to the madness.</i>", color: "darkblue"},
+	
+	
+	//Information from advisors
+	{searchString: "but you can't support a one-sided resolution", explanationText: "<img src=https://i.imgur.com/3n1glp7.jpeg><br><b>Matt Duss advises against this option.</b><br><i>Mr. President, if we want to pressure Israel on settlements and occupation, we've got to show we're not afraid to let the international community speak - even when it's not perfect.</i>", color: "darkred"},
+	{searchString: "they'll change their tune once we make our stance clear.", explanationText: "<img src=https://i.imgur.com/3n1glp7.jpeg><br><b>Matt Duss advises against this option.</b><br><i>Mr. President, the Taliban have been fighting for twenty years - they waited out Bush, Obama, and Trump. You have to answer to an electorate - they don't. They can outwait you too.</i>", color: "darkred"}, 
+	{searchString: "the withdrawal must wait until Afghanistan is secure.", explanationText: "<img src=https://i.imgur.com/3n1glp7.jpeg><br><b>Matt Duss advises against this option.</b><br><i>Mr. President, we've been in Afghanistan for twenty years, and it still isn't secure. If you want to delay the withdrawal until Afghanistan is secure, you're just going to have troops in there your whole term like every President before you. At some point, someone will have to bite the bullet and end this war.</i>", color: "darkred"}, 
+	{searchString: "you won't escalate things by sending weapons of death", explanationText: "<img src=https://i.imgur.com/3n1glp7.jpeg><br><b>Matt Duss advises strongly against this option.</b><br><i>Sanctions and humanitarian aid won't be enough, Mr. President. If we want peace, Putin <b>must</b> not be allowed to win, or the rest of the world will learn that invasions work. Peace isn't just about pleading and good intentions, it's making sure no tyrant walks away thinking exploitation pays</i>", color: "darkred"}, 
+	{searchString: "no threats of intervention that could become a self-fulfilling prophecy.", explanationText: "<img src=https://i.imgur.com/3n1glp7.jpeg><br><b>Matt Duss advises strongly against this option.</b><br> <i>Mr. President, you've got to act. If you don't stop this, if you don't prove that war brings no reward, these men will keep coming, keep taking, until there's nothing left but blood and rubble. Bullies don't stop from asking nicely - they stop when someone stands up and says 'Enough!'</i>", color: "darkred"}, 
+	{searchString: "you'll push for direct negotiations with Beijing.", explanationText: "<img src=https://i.imgur.com/3n1glp7.jpeg><br><b>Matt Duss advises extremely strongly against this option.</b><br> <i>Mr. President, you've got to act. If you don't stop this, if you don't prove that war brings no reward, these men will keep coming, keep taking, until there's nothing left but blood and rubble. Bullies don't stop from asking nicely - they stop when made to stop!</i>", color: "darkred"}, 
+	{searchString: "provide Taiwan with the arms they need to defend themselves and work with our international allies to impose strong sanctions on the PRC.", explanationText: "<img src=https://i.imgur.com/3n1glp7.jpeg><br><b>Matt Duss advises extremely strongly against this option.</b><br> <i>Mr. President, Taiwan is not Ukraine. Ukraine had overland borders and routes for weapons and aid. Ukraine is a third the size of Russia. Taiwan is a hundredth, and it's an island - easily blockaded. Ukraine had no expectation that we would come to their defense - Taiwan does have that expectation, and the world thinks so too. We can't sanction our way out of this. Aid won't get through. If we don't act, Taiwan falls. And if Taiwan falls, every nuclear-armed dictatorship on Earth will learn the same lesson: America's word of honor is useless against them, and if you're strong and brutal enough, you can get away with it.</i>", color: "darkred"}, 
+	{searchString: "you'll push for peace with urgent diplomatic efforts", explanationText: "<img src=https://i.imgur.com/3n1glp7.jpeg><br><b>Matt Duss advises strongly against this option.</b><br> <i>Mr. President, we're in this mess because you trusted diplomacy too much! You said it yourself in 2020 - that we've got to make it clear that we won't just stand by and allow invasions to take place, that we'd intervene militarily if China invaded Taiwan. Well, here it is! And if you blink now, Bernie... they'll keep going - Taiwan first, then the South China Sea, then Vietnam, until people start surrendering in advance. And every dictator will learn that might does make right!</i>", color: "darkred"},
+	{searchString: "we must be careful not to rush into believing reports of atrocities", explanationText: "<img src=https://i.imgur.com/3n1glp7.jpeg><br><b>Matt Duss advises strongly against this option.</b><br> <i>Mr. President, there's far too much evidence for the atrocities to be fake! I don't want to give Israel a blank check for retaliation either, but questioning the facts just undermines our credibility and moral authority. The October 7 attack was an offensive against our shared humanity. The people who can't state that plainly aren't real progressives - just cosplayers.</i>", color: "darkred"},
+	{searchString: "in times of crisis, we must take reports of atrocities with a grain of salt.", explanationText: "<img src=https://i.imgur.com/3n1glp7.jpeg><br><b>Matt Duss advises strongly against this option.</b><br> <i>Mr. President, there's far too much evidence for the atrocities to be fake! I don't want to give Israel a blank check for retaliation either, but questioning the facts just undermines our credibility and moral authority. The October 7 attack was an offensive against our shared humanity. The people who can't state that plainly aren't real progressives - just cosplayers.</i>", color: "darkred"},
+	
+	//the next one is more of a guess, but based on Bernie's real-world stance, which usually seems to follow Duss pretty strongly.
+	{searchString: "This crisis in the Red Sea is yet another indication", explanationText: "<img src=https://i.imgur.com/3n1glp7.jpeg><br><b>Matt Duss advises strongly against this option.</b><br> <i>Mr. President, I hate what Israel is doing too, but we can't ignore what the Houthis are doing here. They're not just striking Israeli-linked ships - they're striking ships from half of the world. It's indiscriminate violence with a fig leaf of revolutionary liberation. If we let this keep going, we're not just endangering lives and our own supply chains - we're also straining our relationship with Europe, including a swath of nations that don't supply Israel. If we want peace, let's focus on withholding arms from Israel and pressing for a ceasefire - not giving others cover to expand the conflict even further.</i>", color: "darkred"},
+	{searchString: "he's not getting anything, not one more bullet,", explanationText: "<img src=https://i.imgur.com/3n1glp7.jpeg><br><b>Matt Duss advises you to consider this option.</b><br> <i>Mr. President, sending even one more weapon is one too many. We've got to stop the weapons, make it clear to Israel that U.S. support isn't unconditional. There's a moral line, and they've already crossed it.</i>", color: "darkgreen"},
+	{searchString: "A no-fly zone is a serious commitment,", explanationText: "<img src=https://i.imgur.com/3n1glp7.jpeg><br><b>Matt Duss is shouting and begging you not to do this.</b><br> <i>A no-fly zone isn't just a serious commitment, it's insanity. President, you <b>must not</b> do this. Do you know what a no-fly zone means? It means American pilots shooting down Russian jets, targeting Russian bases in Russia, Russia retaliating against our bases in Poland or Germany. That's World War Three, with a nuclear-armed state. You're playing chicken with the entirety of human civilization!</i>", color: "darkred"},
+	{searchString: "Ukraine not crossing the pre-invasion Minsk II", explanationText: "<img src=https://i.imgur.com/3n1glp7.jpeg><br><b>Matt Duss advises extremely strongly for this option and not pressing Russia further.</b><br> <i>Mr. President, I wish we could go further, but it's too risky. You push him further, you go into Donbas, especially into Crimea... if he feels cornered, he might take the whole world down with him.</i>", color: "darkgreen"},
+	{searchString: "renounce the idea of reunification", explanationText: "<img src=https://i.imgur.com/3n1glp7.jpeg><br><b>Matt Duss advises extremely strongly against this option.</b><br> <i>You've won, Bernie, but don't push too much. Don't make them eat dirt on the world stage. You force them to renounce the idea of reunification by force - to them, that's a demand that they kneel, a return to the Century of Humiliation. When Mao declared the People's Republic of China, he declared that China would no longer be subject to insult or humiliation, that China had stood up. If you demand Xi be the General Secretary who forced China to prostrate herself once again... he just might choose the abyss instead. Not because he thinks he can win, but because he can't bear to lose.</i>", color: "darkred"},
+	
+	//some of these are guesses but based on her supply-chain focus. (I would say supply-side, but that has certain connotations.)
+	{searchString: "the priority is getting relief to the working Americans who are suffering.", explanationText: "<img src=https://i.imgur.com/fZW1VB7.jpeg><br><b>Stephanie Kelton thinks you should consider this.</b><br><i>Mr. President, I know it's not ideal, but supply constraints are driving inflation and energy's at the center of it. If we can address the supply shortage domestically, it's worth consideration. We're not abandoning our climate goals - we're stabilizing prices while we scale up clean alternatives. Besides, if Europe gets desperate, they'll restart coal mining - that'd be even worse.</i>", color: "darkgreen"}, 
+	{searchString: "remove the moratorium on drilling on public lands", explanationText: "<img src=https://i.imgur.com/fZW1VB7.jpeg><br><b>Stephanie Kelton thinks you should consider this.</b><br><i>Mr. President, I know it's not where we want to be long-term, but supply constraints are driving inflation and energy's at the center of it. If we can address the supply shortage domestically, it's worth consideration. It's not about abandoning our climate goals - it's about stabilizing prices while we scale up clean alternatives.</i>", color: "darkgreen"}, 
+	//Stephanie Kelton does not like interest rate hikes
+	{searchString: "call for the Federal Reserve to aggressively raise interest rates", explanationText: "<img src=https://i.imgur.com/fZW1VB7.jpeg><br><b>Stephanie Kelton advises against this.</b><br><i>This isn't an overheated economy, it's supply chain problems and the inflation is transient, it'll sort itself out eventually. The Fed is a blunt instrument; we've got to focus on the supply side, not the demand side. If you really want inflation down, let's do targeted fiscal legislation - not blunt-force monetary tightening straight out of the neoliberal playbook. </i>", color: "darkred"},
+	{searchString: "reappointing him may be the pragmatic choice.", explanationText: "<img src=https://i.imgur.com/fZW1VB7.jpeg><br><b>Stephanie Kelton advises against this.</b><br><i>If you keep Powell, you're endorsing the neoliberal playbook of fighting inflation over fighting unemployment. He'll hike rates to tame the current inflation when it's rooted in a broken supply chain, not overheating spending. We need someone at the Fed who understands price stability shouldn't come at the cost of working America.</i>", color: "darkred"},
+	{searchString: "You won't repeat the mistakes of 2009", explanationText: "<img src=https://i.imgur.com/fZW1VB7.jpeg><br><b>Stephanie Kelton advises you to consider this option.</b><br><i>Mr. President, the biggest mistake we made in 2009 was going too small and letting the recovery drag out for years. We can't afford to repeat that. Don't let Larry Summers spook you with warnings that $2.1 trillion is too much - he's the one that pushed a stimulus in 2009 too small by design. Go big now, and if it turns out we've overdone it, we've got the tools - cancel unused funds, hike taxes. But if we underdo it, there might not be a second chance.</i>", color: "darkgreen"},
+	{searchString: "trillion-dollar coin", explanationText: "<img src=https://i.imgur.com/fZW1VB7.jpeg><br><b>Stephanie Kelton advises you to consider this option.</b><br><i>Mr. President, you don't have to play along with these hostage-takers. A 1996 law gave you the authority to mint platinum coins of any denomination - you have the legal authority to direct the Treasury to mint a trillion-dollar coin and deposit it at the Fed to keep paying the bills Congress already authorized. It's the safest legal workaround to a broken process that keeps holding the economy hostage.</i>", color: "darkgreen"},
+	{searchString: "veto this forced contract", explanationText: "<img src=https://i.imgur.com/fZW1VB7.jpeg><br><b>Stephanie Kelton advises you against this option.</b><br><i>Mr. President, I know how deeply you support the labor movement, and these railworkers have a just cause. But supply chains are overwhelmed, and it's driving inflation; a major rail strike now would overwhelm them even further, worsening the very crisis we're in right now. You can back labor in a hundred ways, but right now, if you don't keep goods moving, it's working families who'll take the hit.</i>", color: "darkred"},
+	{searchString: "could allow you to get something done with taxing the wealthy", explanationText: "<img src=https://i.imgur.com/fZW1VB7.jpeg><br><b>Stephanie Kelton advises you against this option.</b><br><i>Mr. President, cutting social spending now would hurt the people getting squeezed the most. And while taxing the wealthy is absolutely the right thing to do, doing it just to cut the deficit plays into the old neoliberal myths of fiscal responsibility and needing to 'pay' for everything. If inflation's the concern, let's target the actual sources - supply chains and corporate markups - without hitting those families that are barely staying afloat.</i>", color: "darkred"},
+	{searchString: "a bill that reduces the deficit more", explanationText: "<img src=https://i.imgur.com/fZW1VB7.jpeg><br><b>Stephanie Kelton advises you against this option.</b><br><i>Mr. President, cutting social spending is the wrong move when people are feeling the pinch. And while I support raising corporate taxes to level the playing field, doing it just to shrink the deficit buys into the old neoliberal myth of fiscal responsibility. The deficit isn't the problem - inflation is, and if you want to target it, target supply chains and profiteering.</i>", color: "darkred"},
+	{searchString: "You despise the thought of standing by while Taiwan suffers", explanationText: "<img src=https://i.imgur.com/fZW1VB7.jpeg><br><b>Stephanie Kelton advises you that China conquering Taiwan would be an economic catastrophe.</b><br><i>Mr. President, foreign policy isn't my area, but the economy is - and if China invades Taiwan that's economic armageddon. Taiwan makes over 90% of the world's most advanced semiconductor types. If that supply is cut off.. well, you thought we had a bad supply chain crisis? That would make this look like child's play. Inflation would spike, production would stall. And working Americans would pay the price.</i>", color: "darkred"},
+	{searchString: "The situation in the Red Sea is dangerous, but starting a war in Yemen will not resolve it.", explanationText: "<img src=https://i.imgur.com/fZW1VB7.jpeg><br><b>Stephanie Kelton advises that trade disruptions will be economically harmful.</b><br> <i>Mr. President, speaking purely from an economic perspective, letting the Houthis continue to target ships in the Red Sea will deepen the supply chain crisis. Rerouting vessels around the Cape of Good Hope adds a week and a half to transit time, burns more fossil fuels, and overtaxes container shipping even more. That kind of economic instability will hit the economy, drive up prices, and risks setting back the progress we've made on inflation. I'm not weighing in on the foreign policy side - but the economic impact is real, and it'll hit working families hardest.</i>", color: "darkred"},
+	
+	//most of these are just conventional wisdom in the party establishment. Some of them are pretty hit-or-miss.
+	{searchString: "and then you'll be honest to your supporters.", explanationText: "<img src=https://i.imgur.com/HvzYSUt.jpeg><img src=https://i.imgur.com/v8p4Rov.jpeg><br><b>Faiz and Kamala don't think this is a good idea.</b><br><i>Mr. President - the public expects leadership, not interparty feuds right out of the gate. We need unity if we want to get anything done - you catch more flies with honey than vinegar.</i>", color: "darkred"}, 
+	{searchString: "you will use every ounce of political capital to see him convicted, never able to hold office again.", explanationText: "<img src=https://i.imgur.com/HvzYSUt.jpeg><img src=https://i.imgur.com/v8p4Rov.jpeg><br><b>Faiz and Kamala don't think this is a good idea.</b><br><i>Mr. President - Trump's actions were outrageous, but if you lean on the Senate, all you're going to do is make Republicans close ranks around him. Worse, it drains your political capital before you've had a chance to spend it on your agenda. You'll beat Trump in the hearts and minds of America if you deliver for working people.</i>", color: "darkred"}, 
+	{searchString: "Sometimes you have to twist arms to get things done.", explanationText: "<img src=https://i.imgur.com/HvzYSUt.jpeg><img src=https://i.imgur.com/v8p4Rov.jpeg><br><b>Faiz and Kamala don't think this is a good idea.</b><br><i>Mr. President - I know it's tempting, but threats will probably just backfire. Take Sinema - she seems to genuinely believe bipartisanship is a virtue, and revels in her importance. If you want her support, you've got to play to that - find excuses to act bipartisan, and you'll probably get her on board. Attacking her just gives her more reason to dig in her heels.</i>", color: "darkred"}, 
+	{searchString: "If working with reasonable Republicans to get something", explanationText: "<img src=https://i.imgur.com/HvzYSUt.jpeg><img src=https://i.imgur.com/v8p4Rov.jpeg><br><b>Faiz and Kamala don't think this is a good idea.</b><br><i>Mr. President - you ran on $15/hr, and people believed you. If you start horse-trading with Republicans, either they'll water it down with poison pills, or drag it down to $10, $9 and expect you to call it a win. Maybe both. Neither's what your supporters fought for. </i>", color: "darkred"}, 
+	{searchString: "Manchin is bluffing on permitting reform; you'll refuse him there.", explanationText: "<img src=https://i.imgur.com/HvzYSUt.jpeg><img src=https://i.imgur.com/v8p4Rov.jpeg><br><b>Faiz and Kamala don't think Manchin is bluffing.</b><br><i>Mr. President - neither of us think Manchin is bluffing. He knows exactly how much leverage he has right now and how much his vote is worth. We need his vote, and frankly, he's got no incentive to fold. We don't like it anymore than you, but if you want the bill, you've got to accept his poison pill.</i>", color: "darkred"}, 
+	{searchString: "We must ensure that irreversible surgeries are limited to adults,", explanationText: "<img src=https://i.imgur.com/HvzYSUt.jpeg><img src=https://i.imgur.com/v8p4Rov.jpeg><br><b>Faiz and Kamala think this is a bad idea.</b><br><i>Mr. President, if you back down on trans rights - even if only for children and in sports - you're not just making a policy shift. You're sending a signal that rights for some are negotiable. That would devastate trust with our base. We won't just lose young people and progressives - we'll lose our moral center.</i>", color: "darkred"}, 
+	{searchString: "the corporate wing of the Democratic Party keeps failing.", explanationText: "<img src=https://i.imgur.com/HvzYSUt.jpeg><img src=https://i.imgur.com/v8p4Rov.jpeg><br><b>Faiz and Kamala don't think this is a good idea.</b><br><i>Mr. President, I know it's tempting to point fingers, but that would look to voters like deflecting responsibility. Moreover, igniting a civil war in the party would just make future elections even harder.</i>", color: "darkred"}, 
+	{searchString: "We must take on the corporate Democratic establishment that has failed working people", explanationText: "<img src=https://i.imgur.com/HvzYSUt.jpeg><img src=https://i.imgur.com/v8p4Rov.jpeg><br><b>Faiz and Kamala don't think this is a good idea.</b><br><i>Mr. President, I know it's tempting to point fingers, but that would look to voters like deflecting responsibility. Moreover, igniting a civil war in the party would just make future elections even harder.</i>", color: "darkred"}, 
+	{searchString: "The Democratic Party has not delivered real solutions", explanationText: "<img src=https://i.imgur.com/HvzYSUt.jpeg><img src=https://i.imgur.com/v8p4Rov.jpeg><br><b>Faiz and Kamala don't think this is a good idea.</b><br><i>Mr. President, I know it's tempting to point fingers, but that would look to voters like deflecting responsibility. Moreover, igniting a civil war in the party would just make future elections even harder.</i>", color: "darkred"}, 
+	{searchString: "You have no choice but to tighten the borders", explanationText: "<img src=https://i.imgur.com/HvzYSUt.jpeg><img src=https://i.imgur.com/v8p4Rov.jpeg><br><b>Faiz and Kamala think this is a bad idea.</b><br><i>Mr. President, you were elected on a platform to end detention of non-violent migrants, abolish ICE and CBP enforcement, and pause all deportations. Doing the complete opposite would devastate trust with the Latino communities who helped put us in the White House.</i>", color: "darkred"}, 
+	{searchString: "You will direct Mayorkas to tighten border enforcement,", explanationText: "<img src=https://i.imgur.com/HvzYSUt.jpeg><img src=https://i.imgur.com/v8p4Rov.jpeg><br><b>Faiz and Kamala think this is a bad idea.</b><br><i>Mr. President, you were elected on a platform to end detention of non-violent migrants, abolish ICE and CBP enforcement, and pause all deportations. Doing the complete opposite would devastate trust with the Latino communities who helped put us in the White House.</i>", color: "darkred"}, 
+	{searchString: "It's time for you to work with Congress to increase funding for clean energy.", explanationText: "<img src=https://i.imgur.com/HvzYSUt.jpeg><img src=https://i.imgur.com/v8p4Rov.jpeg><br><b>Faiz and Kamala don't think Congress would go for it.</b><br><i>Mr. President, I agree with you that clean energy is the future. But we're in the here and now, and Capitol Hill is looking for relief that hits in weeks, not years. We need short-term solutions too.</i>", color: "darkred"},  
+	{searchString: "if Democrats had fought harder for working class issues like healthcare and a living wage,", explanationText: "<img src=https://i.imgur.com/HvzYSUt.jpeg><img src=https://i.imgur.com/v8p4Rov.jpeg><br><b>Faiz and Kamala don't think this is a good idea.</b><br><i>Mr. President, it doesn't matter if it's true - what matters is that saying this would fracture the party when we need unity most. Besides, voter expect leadership from you, not finger-pointing.</i>", color: "darkred"}, 
+	{searchString: "that has failed to stand with working people, and has been abandoned by workers because of that failure!", explanationText: "<img src=https://i.imgur.com/HvzYSUt.jpeg><img src=https://i.imgur.com/v8p4Rov.jpeg><br><b>Faiz and Kamala don't think this is a good idea.</b><br><i>Mr. President, it doesn't matter if it's true - what matters is that saying this would fracture the party when we need unity most. Besides, voter expect leadership from you, not finger-pointing.</i>", color: "darkred"},
+	{searchString: "if we can't hold a billionaire accountable for trying to steal the whole damn nation, there is no rule of law!", explanationText: "<img src=https://i.imgur.com/HvzYSUt.jpeg><img src=https://i.imgur.com/v8p4Rov.jpeg><br><b>Faiz and Kamala advise you strongly against this</b><br><i>Mr. President, I agree with you on Trump's abuses - but saying that aloud risks feeding the narrative of political persecution he's pushing. If there's one moment to be presidential, this is it.</i>", color: "darkred"},
+	{searchString: "President Trump, a billionaire with the blood of dozens of innocents on his hands, will face the consequences of his actions.", explanationText: "<img src=https://i.imgur.com/HvzYSUt.jpeg><img src=https://i.imgur.com/v8p4Rov.jpeg><br><b>Faiz and Kamala think this is a terrible idea</b><br><i>Mr. President, I agree with you on Trump's abuses - but saying that aloud risks feeding the narrative of political persecution he's pushing. If there's one moment to be presidential, this is it.</i>", color: "darkred"},
+	{searchString: "While the Senate exonerates you, you'll take this fight to the American people.", explanationText: "<img src=https://i.imgur.com/HvzYSUt.jpeg><img src=https://i.imgur.com/v8p4Rov.jpeg><br><b>Faiz and Kamala think this is a bad idea</b><br><i>Mr. President, I agree that this impeachment is a travesty. But responding like that just makes you look defensive - even guilty. This is your moment to show leadership under pressure - to stay calm and focused.</i>", color: "darkred"},
+	{searchString: "It's an ugly compromise, but an ugly future is better than no future at all.", explanationText: "<img src=https://i.imgur.com/HvzYSUt.jpeg><img src=https://i.imgur.com/v8p4Rov.jpeg><br><b>Faiz and Kamala think you should consider it.</b><br><i>Mr. President, the base is exhausted, the lack of progress is wearing things down. Manchin's compromise might have issues, but showing that the party can gather together to actually deliver something that the party wants would be a vital shot of energy heading into the midterms. Kamala and I agree - we've got to prove that we don't just fight, but win too where we can.</i>", color: "darkgreen"},
+	{searchString: "you'll soften the message to win over the undecided.", explanationText: "<img src=https://i.imgur.com/3RNSHUL.jpeg><br><b>Julie thinks this is a bad idea</b><br><i>Madam Vice President, with all due respect, the grassroots is already shaky. If they see you chasing some mythical moderate voter while ignoring them, they'll walk.</i>", color: "darkred"},
+	{searchString: "You'll run as an establishment Democrat", explanationText: "<img src=https://i.imgur.com/3RNSHUL.jpeg><br><b>Julie thinks this is a terrible idea</b><br><i>Madam Vice President - Hillary tried that in 2016. Hillary lost. It was Bernie who put together and inspired a movement of millions, enough to sweep Trump out of the White House. You've got to reach your voters, speak directly to them - not run away.</i>", color: "darkred"},
+	{searchString: "She'll fire up progressives like no one else can.", explanationText: "<img src=https://i.imgur.com/3RNSHUL.jpeg><br><b>Julie thinks this is a good idea</b><br><i>Ma'am, we've got to rebuild the populist multiethnic working-class coalition that put Bernie in the White House. Picking AOC as your running mate would definitely secure that. There's no need to chase some mythical white moderates, when we know what strategy works.</i>", color: "darkgreen"},
+	{searchString: "I don't think there's much I would have done differently.", explanationText: "<img src=https://i.imgur.com/3RNSHUL.jpeg><br><b>Julie thinks this is a good idea</b><br><i>You were Bernie's VP - there's no rewriting that. Trying to distance yourself now wouldn't just look phony, it'd start a war with the left on the eve of the election. We can't afford that.</i>", color: "darkgreen"},
+	
+	
+	//Bernie internal narrative
+	
+	{searchString: "full-throated attack on constitutional order", explanationText: "<img src=https://i.imgur.com/en3lhhS.jpeg><br>Little Rock, 1957. You were still in high school, but you still remember the grainy black-and-white photographs of Governor Faubus calling in the Arkansas National Guard to defy federal authority. His targets then were nine black children, justified by a supposed imminent danger of violence and tumult. Today it's Governor Abbott calling in the Texas Federal Guard to defy federal authority - the justification a supposed invasion. Both times the justification rings hollow, but the deeper truth is the same - once again the elite are exploiting fear to block social progress, to deny the fellow humanity of the vulnerable and distract from the class war they wage upon the working class.", color: "silver"},
+	{searchString: "Kibbutz Be'eri", explanationText: "<img src=https://i.imgur.com/H053qlr.jpeg><br>They say it's one of the few kibbutzim that rejected capitalism and retained the old cooperative model. They say that it was founded by Hashomer Hatzair, the socialist secular Jewish youth movement that founded Sha'ar HaAmakim as well - where you spent months living and working in '63. They say that its people were secular leftists, opponents of unchecked capitalism and supporters of peace and reconciliation with Palestine, who would give financial help to Palestinians and drive sick Palestinians to the hospital in Israel. They say that the kibbutz was decimated in the attacks, one person in ten murdered by Hamas with more taken captive. You look at the pictures and think - <i>it could have been you.</i>", color: "silver"},
+	{searchString: "Israel's continued advance into Central Gaza", explanationText: "<img src=https://i.imgur.com/k7ivwCL.jpeg><br>They call it a military necessity to avoid civilian harm. In your gut, you know the truth: Netanyahu's never letting them back if he can help it, if you don't stop him. The worst part of the tragedy is, you understand how people get here, how the brutal alchemy of trauma and fear teaches the abused to become abusers, convinces the scarred that only by inflicting their own horrors can they prevent it from befalling them again. The Germans driven out from Eastern Europe after the horrors of Nazi occupation, the Serbs forced to flee the lands Milošević soaked in blood, and your own people who carried the scars of the Shoah built a nation in Israel by driving another nation to exile in the Nakba. <i>When will it end? When will it ever end?</i>", color: "silver"}, 
+	{searchString: "a U.S. major-party presidential candidate has been gunned down in cold blood", explanationText: "<img src=https://i.imgur.com/DLdVx3A.jpeg><br>You were still in your twenties, living in a maple-sugar shack in Middlesex, when you heard the news of Robert F. Kennedy's assassination. The heartbreak was undescribeable - the feeling that a flaming torch, full of hope and promise, had been snuffed out far too soon, leaving an empty void in the nation's heart. Now here you are, on the opposite side of it, sitting in the Oval Office as another American is taken by the void of politics. You know that there will be countless people left angry, bereft, struggling to make sense of it all. You have to issue a statement, but how do you find the right words?", color: "silver"},
+	{searchString: "but at what cost", explanationText: "<img src=https://i.imgur.com/G66ciD3.jpeg><br>The butcher's bill is as long as it's horrific. Your right ear is gone, and the pain is relentless. When you try to speak, you voice comes out strange - muffled, distant. Some of it is your hearing itself, you know that much, but when you ask Faiz, he tells you that your voice has changed too. Your face feels heavy, half of it numb, unmoving, as if it's someone else's newly stitched upon your skin. The simple act of turning your head, even moving your eyes, sends a wave of vertigo crashing over you as you struggle not to retch. And through it all, the brutal sickening realization hits harder than any physical pain: one of your fellow Americans hated you so much, wanted you dead so desperately, that he sold his own life to try and make it happen.", color: "silver"},
+	{searchString: "gloating about driving up the cost of living", explanationText: `<img src=https://i.imgur.com/8awE7yU.jpeg><br>You listen to the audio for what must be the hundredth time. What sounds like your own voice fills the room, but laced with a triumphant sneer you've never used in your life. "They think they're suffering, but that's the plan. Every time the cost of eggs goes up, every time rent spikes, they get angrier at the oligarchs, at the billionaires, at Wall Street. They're waking up, and when they're ready, we'll break the 1% once and for all." A pause, and then a chuckle - disgusting, arrogant, filled with malice. Your stomach churns. The cadence is perfect, the Brooklyn rasp just right. But everything about the words screams <i>wrong, wrong, wrong</i>. You would never even <i>think</i> this, let alone say it - and yet, across America, it's spreading like wildfire. Your press team has put out denials and statements already, pointed to the signs of manipulation, declared it an obvious fake - but obvious to who? The families struggling to put food on the table don't have time for digital forensics. They hear the words. They feel the gut punch of betrayal. And they believe.`, color: "silver"},
+	{searchString: "handing the reins to Kamala", explanationText: "<img src=https://i.imgur.com/dj5EfJY.jpeg><br>They've opposed you every step of the way. Now they're at it again, whispering in the background, nudging in smoke-filled rooms. 'He doesn't have it anymore', they say. 'He should step aside, for the good of the people.' For Kamala. They say she's sharp, younger, ready. What they don't say out loud is that Kamala - she's more moderate, more... acceptable to the establishment, to the big corporations and the 1%; she's who they'd rather have. Your debate, yes - it wasn't good. Goodness knows it wasn't good. The words didn't land right. But you've fought your whole life for this, for the people, for what's right. Can you just step aside? Just hand it over? After everything, to a woman who you only agree with half the time?", color: "silver"},
+	{searchString: "You'll appeal to the movement you've built", explanationText: "<img src=https://i.imgur.com/626nzGc.jpeg><br>Your supporters... bless them, they're loyal and fierce. They're out there, fighting for you, defending you, even now. They say it's a 'corporate coup', that the establishment is pushing you out, that they'll leave the party if you step down. They'll vote third party they say, or write in your name anyhow... even vote for Trump, some of them say. They see Kamala as the establishment pick, the safe option for the donors and corporations. Maybe they're right. Maybe this was the plan all along. Was the debate really that bad, or did the establishment just say it was, until everyone believed them? If you step down, if you're forced out, will it destroy everything you've fought for? Or are they seeing conspiracies when there are none, removing the last, best chance to save America from fascism wrapped in the flag and carrying the cross? You don't want it to end like this. It was supposed to be different...", color: "silver"},
+
+	
+	//Kamala tooltips start here
+	{searchString: "Bernie's once-fiery voice faltering", explanationText: "<img src=https://i.imgur.com/dj5EfJY.jpeg><br>You never expected this. Bernie, the man who once inspired millions, slowly faded before your eyes; the fire that once used to burn so brightly in his soul dimmed and withered under a mountain of duty to the American people. The pressure of the office, the weight of constant attacks and mud-slinging, the stress of non-stop crises and trying to keep the country whole and sane - all of it caught up to him. You saw him struggle, his words faltering, the once-fiery speeches reduced to tired platitudes at times. You can still catch signs of the man he used to be, but they're few and far between. You hoped and expected to succeed him someday, but not like this. Never like this.", color: "silver"},
+	{searchString: "you're the nominee now", explanationText: "<img src=https://i.imgur.com/Lq2C3KC.jpeg><br>The party coalesced behind you faster than you could possibly have imagined. There's no denying the shift in enthusiasm and momentum; donations are pouring in - corporate checks especially - but even much of the grassroots are excited, filled with hope of victory. Much, but not all. Many grassroots progressives are accusing you of being the establishment choice, Andrew Johnson to Bernie's Lincoln. They're upset about the lack of a primary, the lack of a better option to succeed Bernie - want to draft AOC instead, no matter that she endorsed you as well. You'll need them too - and perhaps more - if you're to win this.", color: "silver"},
+	{searchString: "whispers that you organized a coup, or worse", explanationText: "<img src=https://i.imgur.com/a0nuks7.jpeg><br>Many of those who stood and fought behind Bernie are accusing you of betrayal. Was this the plan from the start, to muscle out Bernie and replace him with someone more palatable, they ask? Of course, it's ridiculous, but it isn't stopping the online whispers - that you twisted arms to orchestrate a coup against him, somehow engineered his deterioration to ensure your rise. The very thought of it disgusts you. It doesn't matter to them that you fought with Bernie, in the trenches closer and harder than many of them ever could. They now view you as the establishment, as the Judas who sold out, regardless of whether it has any basis in reality.", color: "silver"},
+	{searchString: "Hillary", explanationText: "<img src=https://i.imgur.com/pu89D6W.jpeg><br>You didn't always agree with her, but she was brilliant and implacable. She made mistakes, no one can deny that - in 2008, she played it safe when America screamed for boldness and change; in 2016, she ran like it was owed to her, speaking policy while others spoke fire. But can you blame her, when the world can't decide if women are too emotional to lead or too cold to relate? You've tried to learn from her - to de-emphasize your identity, to campaign in those Rust Belt cities, to listen harder and not repeat those same mistakes. But you can't help but wonder - is that enough to break through? Or will you be yet another woman who dents but never quite cracks that highest and hardest glass ceiling?", color: "silver"} 
+]
+
+
+
+e.mod_achievements = true
+
+campaignTrail_temp.achievements = {
+    "The Holy Grail" : {
+        "image" : "https://i.imgur.com/52cwg9k.jpeg",
+        "description" : "Achieve Medicare for All",
+    },
+    "The Holier Grail" : {
+        "image" : "https://i.imgur.com/Zv4Dmoj.png", 
+        "description" : "Achieve Medicare for All with dental and vision coverage",
+    },
+    "The True Ending" : {
+        "image" : "https://i.imgur.com/4MYhl9B.png", 
+        "description" : "Accomplish Medicare for All on Hard or higher difficulty.",
+    },
+    "The White Whale" : {
+        "image" : "https://i.imgur.com/z9j0wMX.jpeg",
+        "description" : "Accomplish a permanent Gaza ceasefire in 2024",
+    },
+    "The World turned upside down" : {
+        "image" : "https://i.imgur.com/GtdTXvC.jpeg",
+        "description" : "Have the election decided by faithless electors",
+    },
+    "Who gets to count the vote?" : {
+        "image" : "https://i.imgur.com/3t1IWR1.jpeg",
+        "description" : "See a stolen 2024 election",
+    },
+    "It Can't Happen Here" : {
+        "image" : "https://i.imgur.com/PidSgDA.jpeg",
+        "description" : "Have the U.S. Military weigh in on the next President",
+    },
+    "Not Worth a Bucket" : {
+        "image" : "https://i.imgur.com/gPfoD2E.jpeg",
+        "description" : "Have the Vice Presidency sit empty for multiple years",
+    },
+    "Wait, What?" : {
+        "image" : "https://i.imgur.com/dILqtUZ.jpeg", //placeholder
+        "description" : "Win the Senate but not the House in 2024",
+    },
+    "罢免独裁国贼习近平" : {
+        "image" : "https://i.imgur.com/4GNYn0W.jpeg",
+        "description" : "Have Xi Jinping resign",
+    },
+    "Ukraine Has Not Yet Perished" : {
+        "image" : "https://i.imgur.com/B4MgrGo.jpeg",
+        "description" : "Ukraine ends the game with Crimea reconquered",
+    },
+    "Good politics, bad strategy" : { //done by making a show of force to intimidate China or get them to fire the first shot, and have that show of force destroyed
+        "image" : "https://i.imgur.com/gja4ZiA.jpeg", //placeholder
+        "description" : "Have a show of force backfire",
+    },
+    "The Riskiest Game of Chicken" : {
+        "image" : "https://i.imgur.com/dzq0zWD.jpeg", //placeholder
+        "description" : "Careen over the debt ceiling",
+    },
+    "Definition of Insanity" : {
+        "image" : "https://i.imgur.com/p8Dqnis.jpeg", //placeholder
+        "description" : "Try to go over the debt ceiling a second time",
+    },
+    "Soak the Rich" : {
+        "image" : "https://i.imgur.com/I8JXen8.jpeg", //placeholder
+        "description" : "End the game having raised taxes on the wealthy and corporations",
+    },
+    "Eggs for just $12 a dozen" : {
+        "image" : "https://i.imgur.com/3KTIwbP.jpeg",
+        "description" : "End the game with prices up 40% or higher",
+    },
+    "Inflation? What inflation?" : {
+        "image" : "https://i.imgur.com/eUsvkxl.jpeg", //placeholder
+        "description" : "End the game with prices up 14% or less",
+    },
+    "Bernienomics" : {
+        "image" : "https://i.imgur.com/EKnS30c.jpeg", //placeholder
+        "description" : "End the game with prices up 14% or less, and the economy in the green",
+    },
+    "Stagflation" : {
+        "image" : "https://i.imgur.com/jz4wcYz.jpeg", //placeholder
+        "description" : "End the game with an inflation rate 6% or higher and the economy in the red.",
+    },
+    "True Populist" : {
+        "image" : "https://i.imgur.com/vr5csIq.jpeg", //placeholder
+        "description" : "Win re-election with prices up 40% or more",
+    },
+    "Why didn't it work?" : {
+        "image" : "https://i.imgur.com/lprE2rm.jpeg", //placeholder
+        "description" : "Lose re-election despite all three constituencies approving",
+    },
+    "Didn't need them" : {
+        "image" : "https://i.imgur.com/4sYedUk.jpeg", //placeholder
+        "description" : "Win re-election despite all three constituencies disapproving",
+    },
+    "No Interest in Banks" : {
+        "image" : "https://i.imgur.com/U7BVTjg.jpeg", //placeholder
+        "description" : "Win the Indiana Senate seat in 2024",
+    },
+    "No More Hawley-days" : {
+        "image" : "https://i.imgur.com/qVPmCAL.jpeg", //placeholder
+        "description" : "Win the Missouri Senate seat in 2024",
+    },
+    "Great Scott, He Lost!" : {
+        "image" : "https://i.imgur.com/oHzxRdh.jpeg", //placeholder
+        "description" : "Win the Florida Senate seat in 2024",
+    },
+    "Cruzin' for a Bruisin'" : {
+        "image" : "https://i.imgur.com/ba5WmRq.jpeg", //placeholder
+        "description" : "Win the Texas Senate seat in 2024",
+    },
+    "Fischer Out of Water" : {
+        "image" : "https://i.imgur.com/MDc6C5b.jpeg", //placeholder
+        "description" : "Win the Nebraska Senate seat in 2024",
+    },
+    "Justice Denied" : {
+        "image" : "https://i.imgur.com/9WAuCQK.jpeg",
+        "description" : "Hold the West Virginia Senate seat in 2024",
+    },
+    "What was the point?" : {
+        "image" : "https://i.imgur.com/mhgle02.jpeg", //placeholder
+        "description" : "Win re-election with a trifecta, but fail to accomplish major legislation in your second term.",
+    },
+    "Red Tsunami" : {
+        "image" : "https://i.imgur.com/xRjJVNh.jpeg", //placeholder
+        "description" : "Lose ten or more Senate seats in 2024",
+    },
+    "Split Tickets" : {
+        "image" : "https://i.imgur.com/1dsv9HZ.jpeg", //placeholder
+        "description" : "Win re-election while Republicans take a 58+ seat Senate majority",
+    },
+    "Déjà Flu" : { //gives a bird flu pandemic ending because typical slide (selling out Taiwan) is invalid - also unusual because you need to go a schizo anti-war first then pro-Israel.
+        "image" : "https://i.imgur.com/Cj53pKQ.jpeg", //placeholder
+        "description" : "Lose to Ramaswamy/Lara Trump while Taiwan has been conquered",
+    },
+    "The Art of the Loss" : {
+        "image" : "https://i.imgur.com/MhXqeBe.jpeg", //placeholder 
+        "description" : "Defeat the Donald Trump/J.D. Vance ticket",
+    },
+    "Boardroom Blues" : {
+        "image" : "https://i.imgur.com/BVCUhcR.jpeg", //placeholder
+        "description" : "Defeat the Donald Trump/Doug Burgum ticket",
+    },
+    "No More War Games" : {
+        "image" : "https://i.imgur.com/TLI4vGE.jpeg", //placeholder
+        "description" : "Defeat the Donald Trump/Marco Rubio ticket",
+    },
+    "Mr. Trump, Tear Down This Wall" : {
+        "image" : "https://i.imgur.com/U8qhFD7.jpeg", //placeholder
+        "description" : "Defeat the Donald Trump/Tim Scott ticket",
+    },
+    "Like Father, Like Son" : {
+        "image" : "https://i.imgur.com/miNieOR.jpeg", //placeholder
+        "description" : "Defeat the Donald Trump Jr./Vivek Ramaswamy ticket",
+    },
+    "DeSanctimonious Defeated" : {
+        "image" : "https://i.imgur.com/BuvBqtd.jpeg", //placeholder
+        "description" : "Defeat the Ron DeSantis/Doug Burgum ticket",
+    },
+    "The Real Populist McCoy" : {
+        "image" : "https://i.imgur.com/JIpwmOv.jpeg", //placeholder
+        "description" : "Defeat the Josh Hawley/J.D. Vance ticket",
+    },
+    "No Chance for Vance" : {
+        "image" : "https://i.imgur.com/zRnIp9d.jpeg", //placeholder
+        "description" : "Defeat the JD Vance/Donald Trump Jr. ticket",
+    },
+    "Burgum on the Rocks" : {
+        "image" : "https://i.imgur.com/y4kbaTb.jpeg", //placeholder
+        "description" : "Defeat the Doug Burgum/Donald Trump Jr. ticket",
+    },
+    "Peace over Power" : {
+        "image" : "https://i.imgur.com/hs9mMhy.jpeg", //placeholder
+        "description" : "Defeat the Marco Rubio/Donald Trump Jr. ticket",
+    },
+    "Got off Scott-free" : {
+        "image" : "https://i.imgur.com/r8UfKMD.jpeg", //placeholder
+        "description" : "Defeat the Tim Scott/Donald Trump Jr. ticket",
+    },
+    "Ramaswamy's Blue Tsunami" : {
+        "image" : "https://i.imgur.com/mVSE82c.jpeg", //placeholder
+        "description" : "Defeat the Vivek Ramaswamy/Lara Trump ticket",
+    },
+    "Wall Street Wipeout" : {
+        "image" : "https://i.imgur.com/vBbs2xz.jpeg", //placeholder
+        "description" : "Defeat the Doug Burgum/Marco Rubio ticket",
+    },
+    "Cotton Not Picked" : {
+        "image" : "https://i.imgur.com/d08rxS0.jpeg", //placeholder
+        "description" : "Defeat the JD Vance/Tom Cotton ticket",
+    },
+    "The Truest Ending?" : { //exactly repeat the 2021-2024 choices, resulting in the real-world election map and Kamala waking up to realize that she was dreaming.
+        "image" : "https://i.imgur.com/eczfB9p.jpeg", //placeholder
+        "description" : "Find out that it was all a dream",
+    },
+}
