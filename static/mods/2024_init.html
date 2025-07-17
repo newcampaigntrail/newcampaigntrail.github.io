@@ -1,4 +1,8 @@
 e = campaignTrail_temp;
+
+if (!e.activated_already) {
+e.activated_already = true;
+
 campaignTrail_temp.credits = "<button onclick='e.creditsPage()'>Astro, Martha, and...</button><br><br><button onclick='e.unlocks()'>Click Here to View Unlocked Content!</button>"
 var c = 20;
 var storedChar = 0;
@@ -22,7 +26,6 @@ const startScreenUpdater = setInterval(function() {
 if(initialButton) { // reset theme at main menu
        
       c = document.getElementById("election_id").value;
-      console.log(c + "   " + storedChar);
 
       // Remove existing layout fix if any
       const existingFix = document.getElementById("descriptionLayoutFix");
@@ -68,7 +71,6 @@ styleFix.innerHTML = `
   document.head.appendChild(styleFix);
       }
       if(c == 20 && storedChar != 20) {
-        console.log("dan bryan")
 corrr = '\n              <h2>THE CAMPAIGN TRAIL</h2>\n            '; 
 document.getElementById("header").src = "https://www.newcampaigntrail.com/static/images/banner_classic.png";
 document.body.style.backgroundColor = "#bfe6ff";
@@ -117,7 +119,6 @@ $(".game_header")[0].style.height="65px";
   }
 if(candidateButton) { // checks for which candidate you have selected for the purposes of adding
       can = document.getElementById("candidate_id").value;
-      console.log(can + "   " + storedCan);
       if(can == 300 && storedCan != 300) {
         console.log("biden")
         setTimeout(() => {
@@ -166,7 +167,7 @@ window.setInterval(removeCandidateSummary,10)
 
 let z = new MutationObserver((mutationsList, observer) => {
     let runningMateSummary = document.querySelector("#running_mate_summary");
-    if (runningMateSummary && storedChar == 21) {
+    if (runningMateSummary) {
         styling = document.createElement("style");
         document.head.appendChild(styling);
         
@@ -1955,7 +1956,6 @@ campaignTrail_temp.bunnyhop = true;
 function addColor() {
     var difficultyDiv = document.getElementById("difficulty_level");
     if (storedChar != 21 && difficultyDiv && !document.getElementById("bunnyhopDropdown")) {
-            console.log("test")
               var questionCounter = ["25 (Randomized Questions)", "25 (Static Question Set)", "30 (Expanded)", "35 (Full)"];
               var questions = [25, 25, 30, 35];
               var dropdown = document.createElement("select");
@@ -2090,4 +2090,6 @@ if(!campaignTrail_temp.observer){
   
       // Start observing the document with the master observer
       masterObserver.observe(document.body, { childList: true, subtree: true });
+}
+
 }
