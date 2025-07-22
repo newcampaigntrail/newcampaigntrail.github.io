@@ -5843,7 +5843,7 @@
 				"stance_3": "Right to Work",
 				"stance_desc_3": "People here, unfortunately, they believe in the so-called 'Right to Work' laws. What these laws do is weaken unions, strip workers of their bargaining power, and drive down wages for everyone while the billionaires reap the profits. That's the truth, folks.",
 				"stance_4": "American Dream",
-				"stance_desc_4": "Look, people here still hold on to the remnants of this old idea of the American Dream - the idea that businessmen and workers can somehow work together, that if you work hard enough, you can make it. But let me tell you, folks, the system, as it stands, it's rigged",
+				"stance_desc_4": "Look, people here still hold on to the remnants of this old idea of the American Dream - the idea that businessmen and workers can somehow work together, that if you work hard enough, you can make it. But let me tell you, folks, the system, as it stands, it's rigged.",
 				"stance_5": "Fair Wages Now",
 				"stance_desc_5": "Look, people here are taking a step in the right direction, but let me be clear - it's not nearly enough. Raising wages and improving working conditions for people, that's great, but it's only a start, a band-aid over the real problem.",
 				"stance_6": "Tax the Rich",
@@ -5885,7 +5885,7 @@
 				"stance_1": "Don't Say Gay",
 				"stance_desc_1": "Let me be clear, people: The people in this state would rather bury their heads in the sand and pretend that the last few decades of progress didn't happen! These so-called 'Don't Say Gay' policies - let me tell you - they are rooted in fear and bigotry.",
 				"stance_2": "Stop WOKE",
-				"stance_desc_2": "Let me be clear, folks: whenever real change happens, it's always over the objections of the rich and the powerful. And unfortunately, the people here have bought into those lies about the threat posed by so-called woke ideas,",
+				"stance_desc_2": "Let me be clear, folks: whenever real change happens, it's always over the objections of the rich and the powerful. And unfortunately, the people here have bought into those lies about the threat posed by so-called woke ideas.",
 				"stance_3": "Family Values",
 				"stance_desc_3": "Folks, people here like to talk about family values, but let me tell you something - those values often have nothing to do with protecting families. True family values mean guaranteeing paid maternity leave, sick leave, affordable childcare, and making sure families can live in dignity and security.",
 				"stance_4": "Safe, Legal, and Rare",
@@ -54861,9 +54861,6 @@
 					if (more_medicare_for_some) {
 						ctsAchievement("The Holier Grail")
 					}
-									
-									   
-	  
 				}
 				else if (taiwan_war==1) { //win and PRC defeated via war, regardless of who you're playing as (i.e. Xi Jinping forced to resign. PRC future unspecified.)
 					song_change_resolved=true
@@ -55204,18 +55201,7 @@
 					customquote = quotes[Math.floor((Math.random() * quotes.length))]
 					corrr=`\n<h2>OUR REVOLUTION</h2><font id='wittyquote' size='3' color='white'><em>`+customquote+`</em></font>`
 				}
-	 
-												 
-									   
-																																																																																													  
-								 
-								
 				//no opponent-specific music here.
-																										 
-									   
-																																																																				   
-								 
-								
 				if (ticket_status>=2) { //Kamala lost
 					const EndingSong = new Playlist();
 					const endSong = new Song("Ain't No Way", "Aretha Franklin", "https://i.imgur.com/WMaFd14.jpeg", "https://audio.jukehost.co.uk/7MJsEjk1M8wT6QyEGqHCqA15r8ba1F9I");
@@ -58137,63 +58123,6 @@
 		ans = e.player_answers[e.player_answers.length-1];
 		noCounter += 1;
 		authenticity -=0.5; //Bernie checks out over time if he doesn't stay fired up.
-																														
-												   
-					   
-										   
-	
-		 
-											
-	
-   
-													
-							 
-													   
-	
-		 
-														
-	
-   
-												
-						   
-													
-	
-		 
-													 
-	
-   
-											
-						 
-												
-	
-		 
-												 
-	
-   
-												
-						   
-													
-	
-		 
-													 
-	
-   
-											  
-						  
-												 
-	
-		 
-												  
-	
-   
-														
-							   
-														   
-	
-		 
-															
-	
-						   
 		applyInflation(inflation);
 		let pop_vote = e.current_results[0];
 		let DPolling = (pop_vote.find(p => p.pk === 300)).pvp
@@ -62190,7 +62119,6 @@
 				if (immigration_level==3) { //de facto open borders; Texas takes matters into its own hands with Eagle Pass
 					party_social_progressive+=1
 					worker_approval-=1 //driving down wages
-											
 					//economic boost as the immigration helps alleviate labor shortage happens gradually in background
 					applySalience(113,0.3) //immigration is a big issue thanks to your decisions
 					e.questions_json[campaignTrail_temp.question_number+1] = tunnel(31000)
@@ -62209,7 +62137,6 @@
 				else { //LATAM immigrants protest that you denied asylum.
 					party_social_progressive-=1
 					worker_approval+=1 //wages up
-								  
 					//economy penalty as lack of migration exacerbates labor shortage happens gradually in background
 					if (e.player_answers.includes(13104)) { //Sembrando Vida - i.e. you didn't crack down directly on refugees, you worked with AMLO to do so.
 						if (e.tooltips_on) {
@@ -63502,4 +63429,3 @@
 		}
 		`;
 	document.head.appendChild(customStyling);
-										  
