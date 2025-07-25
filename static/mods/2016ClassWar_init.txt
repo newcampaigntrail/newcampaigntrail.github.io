@@ -1,0 +1,916 @@
+
+document.getElementById("inner_window_1").children[0].innerHTML=`<h3>Do you have what it takes to win a Class War?</h3>`
+
+document.getElementById("inner_window_1").children[1].innerHTML = `<li>Choose between corporatism and progressivism to find out.</li><li>You will answer questions about your platform and positions, and also about your campaign strategy.</li><li>The answers will affect your popularity for better or worse, both nationally and in individual states.</li><li>Walk the fine line between appealing to your base and winning a majority of the votes.</li><li>Additionally, the game includes achievements, diverging paths, and secret endings. (and candidates.)
+</li><li>When you feel prepared, press "I’m Ready for War.".</li><li>Good luck.</li>`;
+
+campaignTrail_temp.global_parameter_json = [
+    {
+        "model": "campaign_trail.global_parameter",
+        "pk": 1,
+        "fields": {
+            "vote_variable": 1.125,
+            "max_swing": 0.12,
+            "start_point": 0.94,
+            "candidate_issue_weight": 10,
+            "running_mate_issue_weight": 3,
+            "issue_stance_1_max": -0.71,
+            "issue_stance_2_max": -0.3,
+            "issue_stance_3_max": -0.125,
+            "issue_stance_4_max": 0.125,
+            "issue_stance_5_max": 0.3,
+            "issue_stance_6_max": 0.71,
+            "global_variance": 0.01,
+            "state_variance": 0.005,
+            "question_count": 25,
+            "default_map_color_hex": "#C9C9C9",
+            "no_state_map_color_hex": "#999999"
+        }
+    }
+]
+
+campaignTrail_temp.election_json = [
+    {
+        "model": "campaign_trail.election",
+        "pk": 20,
+        "fields": {
+            "year": 2016,
+            "display_year": "2016ClassWar",
+            "summary": "<div style='overflow-y:scroll;height:200px;'>Four years ago, Mitt Romney shocked the political world by narrowly ousting Barack Obama from the White House. His presidency has been defined by more tax cuts for the rich and rolling back Obama’s already disappointing healthcare reform bill. With Republicans having held the presidency for 12 of the last 16 years, 8 of those under a president who didn’t even win the popular vote, the American people yearn for change.</p><p>The Democratic Party tried to stifle the people’s cries with the touting of failed establishment candidate Hillary Clinton, but during the primaries, the DNC drowned under the populist wave ushered in by progressive Senator Bernie Sanders. Having snatched the mantle of Democratic nominee, he has the potential to dismantle America’s corporate oligarchy and restore power to the people. Question is, will America <strong>feel the Bern?</strong></p>",
+            "image_url": "https://i.imgur.com/nUVAGaF.gif",
+            "winning_electoral_vote_number": 270,
+            "advisor_url": "https://i.imgur.com/4eG9J69.png",
+            "recommended_reading": "<h4 style=\\\"margin-top: 0.5em;\\\">Meet the Romney Administration</h4><a href=`https://en.wikipedia.org/wiki/Mitt_Romney`>W. Mitt Romney - 45th President of the United States</a><br><a href=`https://en.wikipedia.org/wiki/Tim_Pawlenty`>Timothy J. Pawlenty - 48th Vice President of the United States</a><h4>The Cabinet</h4><p><a href=`https://en.wikipedia.org/wiki/Robert_Zoellick`>Robert B. Zoellick - Secretary of State</a><br><a href=`https://en.wikipedia.org/wiki/Glenn_Hubbard_(economist)`>R. Glenn Hubbard - Secretary of the Treasury</a><br><a href=`https://en.wikipedia.org/wiki/Jon_Kyl`>Jon L. Kyl - Secretary of Defense</a><br><a href=`https://en.wikipedia.org/wiki/Pam_Bondi`>Pamela J. Bondi - Attorney General</a><br><a href=`https://en.wikipedia.org/wiki/Luis_Fortuño`>Luis G. Fortuño Burset - Secretary of the Interior</a><br><a href=`https://en.wikipedia.org/wiki/Sam_Brownback`>Samuel D. Brownback - Secretary of Agriculture</a><br><a href=`https://en.wikipedia.org/wiki/Carly_Fiorina`>C. Carleton Fiorina - Secretary of Commerce</a><br><a href=`https://en.wikipedia.org/wiki/Elaine_Chao`>Elaine L. Chao - Secretary of Labor</a><br><a href=`https://en.wikipedia.org/wiki/Bobby_Jindal`>Piyush “Bobby” Jindal - Secretary of Health and Human Services</a><br><a href=`https://en.wikipedia.org/wiki/Rick_Lazio`>Enrico A. Lazio - Secretary of Housing and Urban Development</a><br><a href=`https://en.wikipedia.org/wiki/Ed_Rendell`>Edward G. Rendell - Secretary of Transportation</a><br><a href=`https://en.wikipedia.org/wiki/Harold_Hamm`>Harold G. Hamm - Secretary of Energy</a><br><a href=`https://en.wikipedia.org/wiki/Jeb_Bush`>John E. Bush - Secretary of Education</a><br><a href=`https://en.wikipedia.org/wiki/Scott_Brown_(politician)`>Scott P. Brown - Secretary of Veteran Affairs</a><br><a href=`https://en.wikipedia.org/wiki/Peter_King_(American_politician)`>Peter T. King - Secretary of Homeland Security</a></p>",
+            "has_visits": 1,
+            "no_electoral_majority_image": "../static/images/2012-no-majority.jpg"
+        }
+    }
+]
+
+campaignTrail_temp.temp_election_list = [
+    {
+        "id": 20,
+        "year": 2016,
+        "is_premium": 0,
+        "display_year": "2016ClassWar"
+    }
+]
+
+campaignTrail_temp.candidate_json = [
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 200,
+        "fields": {
+            "first_name": "Bernie",
+            "last_name": "Sanders",
+            "election": 20,
+            "party": "Democratic/Independent/Vermont Progressive",
+            "state": "Vermont",
+            "priority": 1,
+            "description": "<p><em>”Not me. Us.”</em></p><p> Bernie Sanders is a man who is continuously  underestimated and shafted. He’s treated as a newcomer to the national scene despite serving in Congress since 1991. His bold ideas are dismissed as radical and extreme. In the primaries, the establishment sought to squash him like a bug, but he rose to the occasion and led an upset over neoliberal crony Hillary Clinton.</p><p> As the people’s champion, he now faces the rather daunting task of evicting President Mitt Romney. But it’s not Romney that’s fear-provoking, it’s the corporatocracy he represents. CEOs of the most powerful companies in the world will stop at nothing to continue escaping accountability for their actions. This will be a war, and Bernie is ready to fight. For you.</p>",
+            "color_hex": "#0080CA",
+            "secondary_color_hex": null,
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/Z7Nh7OB.png",
+            "electoral_victory_message": "<h3>A Good Man Went to War… And Won</h3><p>The political revolution has succeeded. People were fed up with the corporatocracy and demanded change. First, it was Hillary and the Democratic establishment that fell in the primaries, and now it’s the end for Mitt Romney and the Republicans. For his part, he was so sure he had it in the bag, but now he has to call you to concede the race.</p><p>The road ahead, however, is not going to be easy. You will have unified opposition from Republicans, certainly more vicious than during Obama’s term. You’re likely to also receive pushback from the remnants of the old guard Democrats. It’ll take time to reshape the country in your image, but if you play things wisely and watch your back, the sky’s the limit. Here’s to you, Mr. President-elect!</p>",
+            "electoral_loss_message": "<h3>A Good Man Went to War… And Lost</h3><p>The political revolution has failed. People were fed up with the corporatocracy and demanded change. First, it was Hillary and the Democratic establishment that fell in the primaries, but Mitt Romney and the Republicans could not be beat. For his part, he ran a good campaign, but now it’s time for you to call him and concede the race.</p><p>What happens next for you is unclear. With Democrats blaming you for the loss, thinking that Hillary Clinton would have beaten Romney easily, it’ll be difficult for you to get nominated again. Even so, you have made your mark in modern political history and started a movement that cannot be ignored. You will no doubt continue to have a voice in the years to come. You’ll need it.</p>",
+            "no_electoral_majority_message": "<h3>A Good Man Went to War… And Was Cheated</h3><p>The political revolution has likely failed. People were fed up with the corporatocracy and demanded change. First, it was Hillary and the Democratic establishment that fell in the primaries, but Mitt Romney and the Republicans have a strong chance at prevailing thanks to our archaic contingent election rules. There’s no point in conceding yet, as you still technically have a chance, but let’s just say there’s greater odds of the Electoral College getting abolished.</p><p>What happens next for you is unclear. With Democrats blaming you for the loss, thinking that Hillary Clinton would have beaten Romney easily, it’ll be difficult for you to get nominated again. Even so, you have made your mark in modern political history and started a movement that cannot be ignored. You will no doubt continue to have a voice in the years to come. You’ll need it.</p>",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 201,
+        "fields": {
+            "first_name": "Mitt",
+            "last_name": "Romney",
+            "election": 20,
+            "party": "Republican",
+            "state": "Massachusetts",
+            "priority": 1,
+            "description": "<p><em>”Corporations are people.”</em></p><p> Willard Mitt Romney has certainly taken a CEO-like approach to the presidency. Meaning he answers to a board of directors—the billionaire class. His only notable domestic achievement is shoveling more and more taxpayer money in their coffers with some vague promise that the wealth will “trickle down” back to the little people. His foreign policy has been strong, such as when he detered Putin from invading Crimea, but being a foreign policy president alone will not win this election.</p><p> The people are angry. That's how Bernie Sanders took over the Democratic Party. The elites always had the insurance policy of controlling both parties, but one has fallen. Romney is the only one standing between them and the fall of their empire. They relay a simple message to the president: Stop Bernie.",
+            "color_hex": "#CD1025",
+            "secondary_color_hex": null,
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/VEnxaqt.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "<p>This is a running mate description it only shows for running mates</p>",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 204,
+        "fields": {
+            "first_name": "",
+            "last_name": "Others",
+            "election": 20,
+            "party": "Various",
+            "state": "Various",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#A356DD",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "<p>This is a running mate description it only shows for running mates</p>",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 202,
+        "fields": {
+            "first_name": "Sanders",
+            "last_name": "Campaign",
+            "election": 20,
+            "party": "Democratic",
+            "state": "Vermont",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#0080CA",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/znjyqVV.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "<p>The primaries were supposed to be a cakewalk for Hillary Clinton. Who knew a deeply progressive senator from Vermont could overthrow the queen of the Democratic elites? Well, you never would have made it as far as you did without the loyal devotion of your base.</p><p>You have a wide variety of options as to who you enlist as your running mate. It’s recommended that you go with someone more moderate, ideally a woman and/or a racial minority to secure the strongest possible coalition to unseat Mitt Romney. Godspeed, sir.</p>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 203,
+        "fields": {
+            "first_name": "Tim",
+            "last_name": "Pawlenty",
+            "election": 20,
+            "party": "Republican",
+            "state": "Minnesota",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#CD1025",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/SdBsHKT.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "<p>If you are the billionaires' puppet, than Tim Pawlenty is the puppet's puppet. A useful idiot that immediately dashes to the nearest camera whenever you put your foot in your mouth. He was key in carrying Wisconsin for you last time though, so you should probably be a little nice to him.</p><p>Still, one can't help but wonder whether a better option is out there. Then again, Bernie Sanders goes around calling himself a democratic <em>socialist</em>. You'd have to be a special kind of fool to lose to a socialist in America.</p>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 205,
+        "fields": {
+            "first_name": "",
+            "last_name": "Various",
+            "election": 20,
+            "party": "Various",
+            "state": "Various",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#A356DD",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    }
+]
+
+campaignTrail_temp.running_mate_json = [
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 122636,
+        "fields": {
+            "candidate": 200,
+            "running_mate": 202
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 129286,
+        "fields": {
+            "candidate": 201,
+            "running_mate": 203
+        }
+    },
+
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 135936,
+        "fields": {
+            "candidate": 204,
+            "running_mate": 205
+        }
+    }
+]
+
+campaignTrail_temp.credits = "<button onclick='credits()'>Credits</button>"
+
+credits = function() {
+  credits = [ "MadCowBro - Team Lead (Writing, Coding & Design)", "AlthoughEnjoyment - Writing", "BradHim - Writing & Design", "Datoggy - Coding", "dutchmapping - Writing", "Loong - Writing", "Mumin - Writing", "nopoasting - Writing", "PingPongProductions - Writing", "Tannenberg - Writing", "Special Thanks to Mango (Variable Headquarters) & Thatchmaster (Credits Function & Music Player (Styling from DSA))", "Shoutout to all who playtested!"]
+  text = "CREDITS:\n\n"
+  for (i in credits) {
+      text += credits[i] + "\n"
+  }
+  alert(text)
+}
+
+campaignTrail_temp.opponents_default_json = [
+    {
+        "election": 20,
+        "candidates": [
+            200,
+            201,
+            204
+        ]
+    }
+]
+
+campaignTrail_temp.opponents_weighted_json = [
+    {
+        "election": 20,
+        "candidates": [
+            200,
+            201,
+            204
+        ]
+    }
+]
+
+jet_data = {
+    "headerColor": "#cd1025",
+    "windowColor": "#006499",
+    "containerColor": "#FFFFFF",
+    "innerWindowColor": "#0080ca",
+    "bannerImageUrl": "https://i.imgur.com/cecGAus.png",
+    "backgroundImageUrl": "https://i.imgur.com/iXSBE1q.png",
+    "endingTextColor": "#000000",
+    "customQuote": "",
+    "gameTitle": "CLASS WAR"
+}
+
+//#startcode
+
+
+corrr = '\n              <h2>CLASS WAR</h2>\n            ';
+
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#cd1025";
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#006499";
+
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+$(".container")[0].style.backgroundColor = "#FFFFFF";
+
+document.getElementById("header").src = "https://i.imgur.com/cecGAus.png";
+
+document.body.background = "https://i.imgur.com/iXSBE1q.png";
+
+document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#0080ca!important;}</style>";
+
+RecReading = true
+
+e.collect_results = true;
+
+campaignTrail_temp.modBoxTheme = {
+     "header_color": "#cd1025",
+    "header_image_url": "https://i.imgur.com/fwOSI1S.png",
+     "header_text_color": "#ffffff",
+     "description_text_color": "#000000",
+     "description_background_color": "#ffffff",
+     "main_color": "#0080ca",
+     "secondary_color": "#006499",
+     "ui_text_color": "#FFFFFF"
+}
+
+    const gameStart = document.getElementById('game_start');
+    const gameWindow = document.getElementById('game_window');
+
+    if (gameStart) {
+        gameStart.innerHTML = '<strong>I’m Ready for War.</strong>';
+        const clearHeight = () => { if (gameWindow) gameWindow.style.removeProperty('height'); };
+        if (window.jQuery) $('#game_start').on('click', clearHeight);
+        else gameStart.addEventListener('click', clearHeight);
+    }
+
+//#endcode
+
+// Music Player
+  // Select the node that will be observed for mutations
+  const windowsAdvisorTargetNode = document.getElementById("game_window");
+  
+  // Options for the observer (which mutations to observe)
+  const windowsAdvisorConfig = { attributes: true, childList: true, subtree: true };
+  
+  // Callback function to execute when mutations are observed
+  const callback = (mutationList, observer) => {
+      visitWindow = document.getElementsByClassName("overlay_window")[0];
+  
+      if(visitWindow == null || visitWindow.classList.contains("done")) {
+          return;
+      }
+      visitWindow.classList.add("done");
+      visitWindow.classList.add("window");
+      let titleBar = visitWindow.querySelector("h3");
+      titleBar.classList.add("title-bar");
+      titleBar.classList.add("title-bar-text")
+      titleBar.style.paddingLeft = "3px";
+  };
+  
+  class Song {
+    constructor(title, artist, coverLink, audioLink) {
+      this.title = title;
+      this.artist = artist;
+      this.coverLink = coverLink;
+      this.audioLink = audioLink;
+    }
+    getTitle() {
+      return this.title;
+    }
+  
+    getArtist() {
+      return this.artist;
+    }
+  
+    getCoverLink() {
+      return this.coverLink;
+    }
+  
+    getAudioLink() {
+      return this.audioLink;
+    }
+  }
+  
+  class Playlist {
+    constructor() {
+      this.songs = [];
+      this.currentSongIndex = 0;
+    }
+  
+    addSong(song) {
+      this.songs.push(song);
+    }
+  
+    getCurrentSong() {
+      return this.songs[this.currentSongIndex];
+    }
+  
+    playNext() {
+      this.currentSongIndex = (this.currentSongIndex + 1) % this.songs.length;
+    }
+  
+    playPrevious() {
+      this.currentSongIndex = (this.currentSongIndex - 1 + this.songs.length) % this.songs.length;
+    }
+  }
+  window.Playlist=Playlist
+  window.Song=Song
+  
+  function changePlaylist(newPlaylist) {
+    playlist = newPlaylist;
+    playlist.currentSongIndex = 0;
+    updateUI(playlist);
+    const audio = document.getElementById("audio");
+    audio.src = playlist.getCurrentSong().audioLink;
+    audio.play();
+  }
+  window.changePlaylist=changePlaylist
+  
+  function updateUI(playlist) {
+      const currentSong = playlist.getCurrentSong();
+      var player = document.getElementById("player");
+      player.querySelector("#cover").src = currentSong.getCoverLink();
+      player.querySelector("#title").textContent = currentSong.getTitle();
+      player.querySelector("#artist").textContent = currentSong.getArtist();
+  }
+  
+  window.updateUI=updateUI
+  
+  
+  function setupMusicPlayer() {
+    playlist = new Playlist();
+  
+  
+    const song1 = new Song(
+      "The Revolution Starts Now",
+      "Steve Earle",
+      "https://i.imgur.com/e7fSh3P.png",
+      "https://file.garden/Z-8vn6l_RynAMnyS/The%20Revolution%20Starts%20Now.mp3"
+    );
+    
+    const song2 = new Song(
+      "Uprising",
+      "Muse",
+      "https://i.imgur.com/yJTZ5yv.png",
+      "https://file.garden/Z-8vn6l_RynAMnyS/Muse%20-%20Uprising%20%5BOfficial%20Video%5D.mp3"
+    );
+  
+    const song3 = new Song(
+      "A New Wave",
+      "Sleater-Kinney",
+      "https://i.imgur.com/pgRJfeJ.png",
+      "https://file.garden/Z-8vn6l_RynAMnyS/Sleater-Kinney%20-%20A%20New%20Wave%20%5BOFFICIAL%20VIDEO%5D.mp3"
+    );
+  
+    const song4 = new Song(
+      "Another Level",
+      "Oh the Larceny",
+      "https://i.imgur.com/lD7FZLG.png",
+      "https://file.garden/Z-8vn6l_RynAMnyS/Oh%20The%20Larceny%20-%20Another%20Level%20(Official%20Audio)%20%5BMusic%20used%20by%20DudePerfect%5D.mp3"
+    );
+  
+    const song5 = new Song(
+      "Make a Change",
+      "Buckwheat Zydeco",
+      "https://i.imgur.com/u2kybud.png",
+      "https://file.garden/Z-8vn6l_RynAMnyS/Make%20A%20Change.mp3"
+    );
+  
+    const song6 = new Song(
+      "Centuries",
+      "Fall Out Boy",
+      "https://i.imgur.com/G1lVFIm.png",
+      "https://file.garden/Z-8vn6l_RynAMnyS/Fall%20Out%20Boy%20-%20Centuries%20(Official%20Video).mp3"
+    );
+
+    const song7 = new Song(
+      "For the Love of Money",
+      "The O’Jays",
+      "https://i.imgur.com/3OT7Q1V.png",
+      "https://file.garden/Z-8vn6l_RynAMnyS/The%20O'Jays%20-%20For%20The%20Love%20of%20Money%20(Official%20Audio).mp3"
+    );
+  
+    const song8 = new Song(
+      "Mitt Romney Style",
+      "CollegeHumor",
+      "https://i.imgur.com/NtShrC6.png",
+      "https://file.garden/Z-8vn6l_RynAMnyS/Mitt%20Romney%20Style%20(Gangnam%20Style%20Parody)%20%5BCollegeHumor%5D.mp3"
+    );
+
+    const song9 = new Song(
+      "Ice Ice Baby",
+      "Vanilla Ice",
+      "https://i.imgur.com/lM1EVnS.png",
+      "https://file.garden/Z-8vn6l_RynAMnyS/Vanilla%20Ice%20-%20Ice%20Ice%20Baby%20(Official%20Music%20Video).mp3"
+    );
+
+    const song10 = new Song(
+      "It’s America",
+      "Rodney Atkins",
+      "https://i.imgur.com/vxHawrW.png",
+      "https://file.garden/Z-8vn6l_RynAMnyS/Rodney%20Atkins%20-%20It's%20America%20(Official%20Music%20Video).mp3"
+    );
+
+    const song11 = new Song(
+      "All These Things That I’ve Done",
+      "The Killers",
+      "https://i.imgur.com/0AxxTHm.png",
+      "https://file.garden/Z-8vn6l_RynAMnyS/The%20Killers%20-%20All%20These%20Things%20That%20I've%20Done%20(Official%20Music%20Video).mp3"
+    );
+
+    const song12 = new Song(
+      "Everybody Wants to Rule the World",
+      "Tears for Fears",
+      "https://i.imgur.com/y9RvzFX.png",
+      "https://file.garden/Z-8vn6l_RynAMnyS/Tears%20For%20Fears%20-%20Everybody%20Wants%20To%20Rule%20The%20World%20-%20ORIGINAL%20VIDEO.mp3"
+    );
+
+    playlist.addSong(song1);
+    playlist.addSong(song2);
+    playlist.addSong(song3);
+    playlist.addSong(song4);
+    playlist.addSong(song5);
+    playlist.addSong(song6);
+    playlist.addSong(song7);
+    playlist.addSong(song8);
+    playlist.addSong(song9);
+    playlist.addSong(song10);
+    playlist.addSong(song11);
+    playlist.addSong(song12);
+  
+    const playerContainer = document.createElement("div");
+    playerContainer.id = "player";
+  
+   const displayBox = document.createElement("div");
+  displayBox.id = "display-box";
+  
+  const coverElement = document.createElement("img");
+  coverElement.id = "cover";
+  displayBox.appendChild(coverElement);
+  
+  const infoContainer = document.createElement("div");
+  infoContainer.id = "info-container";
+  infoContainer.style.backgroundImage = "url('https://i.imgur.com/FlbueNE.png')";
+  infoContainer.style.backgroundSize = "cover"; // Optional: adjust based on your needs
+  infoContainer.style.color = "white"; // Set text color to white
+  
+  const songInfo = document.createElement("div");
+  songInfo.id = "song-info";
+  
+  const titleElement = document.createElement("h3");
+  titleElement.id = "title";
+  titleElement.style.fontWeight = 'large'; // Make it normal as per previous request
+  songInfo.appendChild(titleElement);
+  
+  const artistElement = document.createElement("p");
+  artistElement.id = "artist";
+  songInfo.appendChild(artistElement);
+  
+  infoContainer.appendChild(songInfo);
+  displayBox.appendChild(infoContainer);
+  
+  playerContainer.appendChild(displayBox);
+  
+  const controlsContainer = document.createElement("div");
+  controlsContainer.id = "controls-container";
+  
+  const controls = document.createElement("div");
+  controls.id = "controls";
+  
+  const prevButton = document.createElement("img");
+  prevButton.id = "prevButton";
+  prevButton.src = "https://i.imgur.com/imIqTEA.png";
+  prevButton.alt = "Previous";
+  controls.appendChild(prevButton);
+  
+  const playPauseButton = document.createElement("img");
+  playPauseButton.id = "playPauseButton";
+  playPauseButton.src = "https://i.imgur.com/oQbfTxw.png"; // Set the default play image
+  playPauseButton.alt = "Play/Pause";
+  controls.appendChild(playPauseButton);
+  
+  const nextButton = document.createElement("img");
+  nextButton.id = "nextButton";
+  nextButton.src = "https://i.imgur.com/7TtaN04.png";
+  nextButton.alt = "Next";
+  controls.appendChild(nextButton);
+  
+  controlsContainer.appendChild(controls);
+  
+  playPauseButton.addEventListener("click", function () {
+    const audio = document.getElementById("audio");
+    if (audio.paused) {
+      audio.play();
+      playPauseButton.src = "https://i.imgur.com/oQbfTxw.png"; // Set the pause image
+    } else {
+      audio.pause();
+      playPauseButton.src = "https://i.imgur.com/ttdoyfG.png"; // Set the play image
+    }
+  });
+  
+  nextButton.addEventListener("click", function () {
+    playlist.playNext();
+    updateUI(playlist);
+    const audio = document.getElementById("audio");
+    audio.src = playlist.getCurrentSong().audioLink;
+    audio.play();
+  });
+  
+  prevButton.addEventListener("click", function () {
+    playlist.playPrevious();
+    updateUI(playlist);
+    const audio = document.getElementById("audio");
+    audio.src = playlist.getCurrentSong().audioLink;
+    audio.play();
+  });
+  
+    const progressBarContainer = document.createElement("div");
+    progressBarContainer.id = "progress-bar-container";
+  
+    const progressBar = document.createElement("progress");
+    progressBar.type = "range";
+    progressBar.id = "progress-bar";
+    progressBar.value = "0";
+    progressBar.max = "100";
+  
+  
+    progressBarContainer.appendChild(progressBar);
+    controlsContainer.appendChild(progressBarContainer);
+    playerContainer.appendChild(controlsContainer);
+  
+   const volumeContainer = document.createElement("div");
+    volumeContainer.id = "volume-container";
+  
+  const volumeLabel = document.createElement("img");
+  volumeLabel.src = "https://i.imgur.com/0BJYsXt.png";
+  volumeLabel.alt = "Volume";
+  volumeContainer.appendChild(volumeLabel);
+  
+    const volumeSliderContainer = document.createElement("div");
+    volumeSliderContainer.classList.add("is-vertical");
+    volumeSliderContainer.style.marginLeft = "23%";
+    volumeSliderContainer.style.height = "126px";
+  
+    const volumeSlider = document.createElement("input");
+    volumeSlider.type = "range";
+    volumeSlider.id = "volumeSlider";
+    volumeSlider.min = 0;
+    volumeSlider.max = 9;
+    volumeSlider.step = 1;
+    volumeSlider.value = 1; // Initial volume
+  
+    volumeSliderContainer.appendChild(volumeSlider);
+  
+    const volumeDisplay = document.createElement("span");
+    volumeDisplay.id = "volume-display";
+    volumeDisplay.style.fontWeight = 'bold'; 
+    volumeDisplay.style.display = 'none';
+    volumeDisplay.textContent = "1";
+  
+    volumeContainer.appendChild(volumeSliderContainer);
+    volumeContainer.appendChild(volumeDisplay);
+  
+    playerContainer.appendChild(volumeContainer);
+  
+    gameWindow_player.insertAdjacentElement("afterend", playerContainer);
+  
+  
+    function updateProgressBar() {
+      const audio = document.getElementById("audio");
+      const progress = (audio.currentTime / audio.duration) * 100;
+      try{progressBar.value = progress}
+    catch{}
+    }
+  
+   
+    progressBar.addEventListener("input", function () {
+      const audio = document.getElementById("audio");
+      const seekTime = (progressBar.value / 100) * audio.duration;
+      audio.currentTime = seekTime;
+    });
+  
+    const audio = document.createElement("audio");
+    audio.id = "audio";
+    audio.src = playlist.getCurrentSong().audioLink;
+    audio.volume = 1/9;
+  
+    audio.addEventListener("timeupdate", updateProgressBar);
+    audio.addEventListener("ended", function () {
+      // Play the next song when the current song ends
+      playlist.playNext();
+      updateUI(playlist);
+      audio.src = playlist.getCurrentSong().audioLink;
+      audio.play();
+    });
+  
+      let currentVolume = 1; // Initial volume
+  
+    volumeSlider.addEventListener("input", function () {
+      currentVolume = parseInt(volumeSlider.value, 10);
+      updateVolumeDisplay();
+      updateAudioVolume();
+    });
+  
+    function updateVolumeDisplay() {
+      volumeDisplay.textContent = currentVolume;
+    }
+  
+     function updateAudioVolume() {
+      const audio = document.getElementById("audio");
+      audio.volume = currentVolume / 9; // Set volume between 0 and 1
+    }
+  
+    document.body.appendChild(audio);
+    audio.play();
+  
+    // Update the UI when the page loads
+    updateUI(playlist);
+  }
+  
+  const style = document.createElement("style");
+  style.textContent = `
+  #player {
+      border: 3px solid #C9C9C9; /* Add your desired border style */
+      display: flex;
+      flex-direction: row;
+    height:191px;
+      background-Image: url("https://itsastronomical.com/assets/music/blackbar.png");
+    }
+  
+    #display-box {
+      display: flex;
+      align-items: center;
+      width: 50%;
+    }
+  
+    #cover {
+      width: 176px;
+    height:176px;
+    }
+  
+    #info-container {
+      display: flex;
+      flex-direction: row;
+      height:178px;
+    width:127px;
+    margin-top: 3px;
+    }
+  
+    #song-info {
+      width: 100%;
+    padding:5px;
+    }
+  
+    #controls-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px;
+      width:100%;
+    padding-top:15px;
+  
+    }
+.is-vertical #volumeSlider {
+  width: 16px;
+  height: 100%;
+  writing-mode: vertical-rl;
+  direction: rtl;
+}
+  
+    #controls {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      width: 80%;
+    }
+  
+    #progress-bar-container {
+      width: 100%;
+    }
+  
+    #progress-bar {
+      width: 80%;
+      margin: auto;
+      display: flex;
+      margin-Top: 20px;
+    }
+    
+  `;
+
+document.head.appendChild(style);
+
+const gameWindow_player = document.getElementById("game_window");
+//use this function directly or put it in an event listener to start the music on the press of a certain button
+setupMusicPlayer();
+
+
+function addDynamicCSS() {
+    var css = `
+		.inner_window_question {
+            height: auto;
+		}
+		.inner_window_question .inner_inner_window {
+            height: auto;
+		}
+		.inner_window_question .inner_inner_window .question_form {
+            height: auto;
+		}
+
+.overlay_window {
+            height: auto;
+		}
+
+.recommended_reading_box {
+            height: auto;
+            }
+
+	
+    `;
+
+    var styleElem = document.createElement('style');
+    styleElem.type = 'text/css';
+    
+    styleElem.appendChild(document.createTextNode(css));
+    
+    document.head.appendChild(styleElem);
+}
+
+addDynamicCSS();
+
+campaignTrail_temp.achievements = {
+  "A Political Revolution         " : {
+    "image" : "https://i.imgur.com/P1ATNlL.png",
+    "description" : "As Bernie, win convincingly.",
+    "cannotBeCheated" : true
+  },
+  "A Corporate Empire         " : {
+    "image" : "https://i.imgur.com/h3rr3ML.png",
+    "description" : "As Romney, keep Sanders under 47%.",
+    "cannotBeCheated" : true
+  },
+  "A Miraculous Vengeance         " : {
+    "image" : "https://i.imgur.com/e2UCemd.png",
+    "description" : "Have an alternate Democrat win.",
+    "cannotBeCheated" : true
+  },
+  "A Surprising Save         " : {
+    "image" : "https://i.imgur.com/zS480Vp.png",
+    "description" : "Have an alternate Republican win.",
+    "cannotBeCheated" : true
+  },
+  "Forever Defeated         " : {
+    "image" : "https://i.imgur.com/F5UGm9F.png",
+    "description" : "As Bernie, prove Hillary right.",
+    "cannotBeCheated" : true
+  },
+  "Forever Destroyed         " : {
+    "image" : "https://i.imgur.com/n9Cy5ZL.png",
+    "description" : "As Romney, doom the party.",
+    "cannotBeCheated" : true
+  },
+  "Bernie Castro         " : {
+    "image" : "https://i.imgur.com/w6fc3hx.png",
+    "description" : "As Bernie, bring socialism to Florida.",
+    "cannotBeCheated" : true
+  },
+  "The Spirit of George         " : {
+    "image" : "https://i.imgur.com/v9yrhBS.png",
+    "description" : "As Romney, win your father’s state.",
+    "cannotBeCheated" : true
+  },
+  "Just Another Politician         " : {
+    "image" : "https://i.imgur.com/c77YnSa.png",
+    "description" : "As Bernie, sell out to win.",
+    "cannotBeCheated" : true
+  },
+  "Loose Principles         " : {
+    "image" : "https://i.imgur.com/6yfBAQ4.png",
+    "description" : "As Romney, cave to the far-right and win.",
+    "cannotBeCheated" : true
+  },
+  "Despite Enemies Aligned         " : {
+    "image" : "https://i.imgur.com/NY1YV3B.png",
+    "description" : "As Bernie, win with everyone against you.",
+    "cannotBeCheated" : true
+  },
+  "Despite Party Fracture         " : {
+    "image" : "https://i.imgur.com/3pR8wtk.png",
+    "description" : "As Romney, overcome the right-wing splinter.",
+    "cannotBeCheated" : true
+  },
+  "Miracle Worker         " : {
+    "image" : "https://i.imgur.com/JuJaAot.png",
+    "description" : "As Bernie, unite the party without compromising your values.",
+    "cannotBeCheated" : true
+  },
+  "Chain Breaker         " : {
+    "image" : "https://i.imgur.com/cwz8CQ9.png",
+    "description" : "As Romney, disavow your corporate overlords.",
+    "cannotBeCheated" : true
+  },
+  "An Enshrined Legacy         " : {
+    "image" : "https://i.imgur.com/DdrXt0J.png",
+    "description" : "As Bernie, flip the Court.",
+    "cannotBeCheated" : true
+  },
+  "Cost of Doing Business         " : {
+    "image" : "https://i.imgur.com/j4DcSv5.png",
+    "description" : "As Romney, eliminate the competition.",
+    "cannotBeCheated" : true
+  },
+  "The Second Civil War         " : {
+    "image" : "https://i.imgur.com/s9MAumU.png",
+    "description" : "As Bernie, go too far.",
+    "cannotBeCheated" : true
+  },
+  "The Third World War         " : {
+    "image" : "https://i.imgur.com/d6Qjj3E.png",
+    "description" : "As Romney, stand against a greater enemy.",
+    "cannotBeCheated" : true
+  },
+  "Comrade Sanders         " : {
+    "image" : "https://i.imgur.com/xnEwOxT.png",
+    "description" : "As Bernie, succumb to a darker force.",
+    "cannotBeCheated" : true
+  },
+  "From Reagan to Nixon         " : {
+    "image" : "https://i.imgur.com/XvBQtE8.png",
+    "description" : "As Romney, fall from great heights.",
+    "cannotBeCheated" : true
+  }
+}
+
