@@ -237,3 +237,41 @@
    opacity: 1;
    z-index: 999999;
 }
+
+
+#bigshotOn {
+   padding: 5px 10px;
+   font-size: 0.8rem;
+   font-weight: bold;
+   color: #fff;
+   background: linear-gradient(135deg, #b65353, #200b0b);
+   border: rgb(66, 0, 0) solid 4px;
+   border-radius: 8px;
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+   cursor: pointer;
+   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#bigshotOn:hover {
+   transform: scale(1.05);
+   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+#bigshotOn:active {
+   transform: scale(0.98);
+   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+#bigshotOn .rainbowText {
+   background: linear-gradient(90deg, red, orange, red);
+   background-size: 300%;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   display: inline-block;
+   animation: rainbowShift 3s linear infinite;
+}
+
+@keyframes rainbowShift {
+   0%   { background-position: 0% }
+   100% { background-position: 150% }
+}
