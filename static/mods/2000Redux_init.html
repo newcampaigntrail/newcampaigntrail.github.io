@@ -1,0 +1,118 @@
+campaignTrail_temp.modBoxTheme = {
+  "header_color": "#BB0017",
+  "header_text_color": "#ffffff",
+  "description_text_color": "#000000",
+  "description_background_color": "#eef1e4",
+  "main_color": "#bfe6ff",
+  "secondary_color": "#124285",
+  "ui_text_color": "#FFFFFF"
+}
+let previousCandidateId = null;
+RecReading=true
+function handleCandidateView() {
+    const candidateButton = document.getElementById("candidate_id_button");
+    const runningMateButton = document.getElementById("running_mate_id_button");
+    const candidateSummary = document.querySelector("#candidate_summary > ul");
+    const candidateIdElement = document.getElementById("candidate_id");
+    const c = Number(candidateIdElement?.value) ?? -1;
+    const candObj = e.candidate_json.find((f) => f.pk === c);
+
+    if (candidateButton) {
+        if (c === 201) {
+            candidateButton.style.display = "";
+        } else {
+            candidateButton.style.display = "none";
+        }
+    }
+
+    previousCandidateId = c;
+}
+
+function startCandidateWatcher() {
+    setInterval(() => {
+        const candidateIdElement = document.getElementById("candidate_id");
+        const currentValue = Number(candidateIdElement?.value) ?? -1;
+
+        if (currentValue !== previousCandidateId) {
+            handleCandidateView();
+        }
+    }, 100);
+}
+
+function waitForCandidateForm() {
+    const targetNode = document.getElementById("candidate_form");
+
+    if (targetNode) {
+        const newObserver = new MutationObserver((mut, obs) => {
+            handleCandidateView();
+        });
+
+        newObserver.observe(targetNode, { childList: true, subtree: true });
+
+        startCandidateWatcher();
+        handleCandidateView();
+    } else {
+        setTimeout(waitForCandidateForm, 100);
+    }
+}
+
+waitForCandidateForm();
+
+campaignTrail_temp.achievements = {
+    "No Jack Kennedy" : {
+        "image" : "https://i.imgur.com/tmjvzrF.png",
+        "description" : "Lose every debate, and win the election.",
+        "cannotBeCheated" : true
+    },
+    "My Own Man" : {
+        "image" : "https://i.imgur.com/SNdyorT.png",
+        "description" : "Never campaign with or defend President Clinton, and win.",
+        "cannotBeCheated" : true
+    },
+        "Dixiecratic Dream" : {
+        "image" : "https://i.imgur.com/GpMmpAV.png",
+        "description" : "Win Arkansas, Tennessee, Missouri, and West Virginia.",
+        "cannotBeCheated" : true
+    },
+    "Third Termer" : {
+        "image" : "https://i.imgur.com/db6TX0j.jpeg",
+        "description" : "Defend President Clinton at every oppourtunity, and win.",
+        "cannotBeCheated" : true
+    },
+        "Equanimity" : {
+        "image" : "https://i.imgur.com/adId7W4.png",
+        "description" : "Come so close, yet so far.",
+        "cannotBeCheated" : true
+    }
+}
+e = campaignTrail_temp;
+
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#c1131e";
+
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#ff6b6b";
+
+            document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+
+            $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+            $(".container")[0].style.backgroundColor = "#930301";
+
+            document.getElementById("header").src = "https://i.imgur.com/UfZag1R.png";
+
+            document.body.background = "https://www.usatoday.com/gcdn/media/USATODAY/USATODAY/2012/11/07/gore-florida-16_9.jpg";
+
+quotes = ["For the sake of our unity and the strength of our democracy, I offer my concession. -Al Gore"]
+customquote = quotes[Math.floor((Math.random() * quotes.length))]
+                                   
+corrr=`\n<h2>NEW CAMPAIGN TRAIL</h2><font id='wittyquote' size='4' color='white'><em>`+customquote+`</em></font>`
+
+
+            e.election_json = [{"model":"campaign_trail.election","pk":20,"fields":{"year":2016,"summary":"<p>As both the twentieth century and the tenure of Bill Clinton comes to an end, the fight to succeed him as President is shaping up to be one of the most contentious in American history. </p><p><ul><li>Al Gore, the incumbent Vice Preisdent, must undo rampant \"Clinton Fatigue\" and thread the needle on divisive social issues to keep the Clinton coalition together for a third election straight.</li><li>George Bush, the Governor of Texas and son of the 41st President, has the duty of undoing a colossal Clinton wave from four years prior and winning a national victory for conservatism.</li></p><p>With third parties clamoring for the left and right, the battle for the center rages stronger than ever. As foreign policy, a budget surplus, and the environment sure to be debated, the 2000 election is sure to be monumental, one way or another.</p>","image_url":"https://i.imgur.com/zV4HzYB.png","winning_electoral_vote_number":270,"advisor_url":"https://i.imgur.com/3JS9ftX.png","recommended_reading": "<div style='overflow-y:scroll;height:370px;'>\<h1><strong>2000 - Goredux</strong></h1>\<h3>by Rubix</h3><br>\<h2><u>Director's Commentary</u></h2>\<p>This has been a looong time coming. I'm glad it's done! I want to do more mods, and there's some good stuff in the pipeline from me. Maybe a redux of my older baddder mods, with a mega-mod or two or a high-quality DM redux being worked on. Alltogether, I don't know. I'm about to go to college, and the TCT phase of my life may very well be winding down. Much love!</p><br>\<p><em>Don't forget, I'm with you in the dark.</em></p>\</div>", "has_visits":1,"no_electoral_majority_image":"../static/images/2012-no-majority.jpg"}}];e.temp_election_list = [{"id":20,"year":2016,"is_premium":0,"display_year":"2000Redux"}];e.credits = "Rubix";e.global_parameter_json = [{"model":"campaign_trail.global_parameter","pk":1,"fields":{"vote_variable":1.125,"max_swing":0.12,"start_point":0.94,"candidate_issue_weight":10,"running_mate_issue_weight":3,"issue_stance_1_max":-0.71,"issue_stance_2_max":-0.3,"issue_stance_3_max":-0.125,"issue_stance_4_max":0.125,"issue_stance_5_max":0.3,"issue_stance_6_max":0.71,"global_variance":0.01,"state_variance":0.005,"question_count":35,"default_map_color_hex":"#C9C9C9","no_state_map_color_hex":"#999999"}}];
+            e.candidate_json = [{"model":"campaign_trail.candidate","pk":201,"fields":{"first_name":"Al","last_name":"Gore","election":20,"party":"Democrat","state":"Tennessee","priority":1,"description":"Al Gore has been viewed as a prospective President for the past thirteen years. From his bid in 1988, where he placed third for the Democrats, to being a prospective front-runner in 1992, and for his last eight years as Vice President, it seems everything in Gore's career has led up to it. <br><br>With Gore's father having served as a Senator, Al Jr. initially shirked the legacy by serving in Vietnam and becoming an investigative journalist before he answered the call of public service. Gore positioned himself as an Atari Democrat in the Senate, fighting for technological developments and solidifying a reputation as a member of the New South, which encouraged Bill Clinton to select him as running mate in '92. Over the years, Gore has also served as a beacon of environmentalism, an issue that has burst onto the scene in recent years. <br><br> Gore will enter the election highly disadvantaged, with the Clinton impeachment hanging low over his head. If he can successfully brand himself as his own man, stand clear on the political issues of the day, and shake away George Bush's dominating lead, Al may just have a chance at a victory.</div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div>","color_hex":"#0000ff","secondary_color_hex":null,"is_active":1,"image_url":"https://i.imgur.com/NVzZ3On.png","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":null,"candidate_score":1,"running_mate":false,"scrollable":true}},{"model":"campaign_trail.candidate","pk":209,"fields":{"first_name":"Joseph","last_name":"Lieberman","election":20,"party":"Democrat","state":"Connecticut ","priority":1,"description":"a","color_hex":"#0000ff","secondary_color_hex":null,"is_active":0,"image_url":"https://i.imgur.com/pv6sEa7.png","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":"Joe Lieberman is a two-term Senator from Connecticut and formerly attorney general of the state during the ‘80s. He is, perhaps most importantly, an avowed moderate, to the degree that he only won his first Senate Election due to an icey endorsement by Conservative party Senator James Buckley and his pundit brother William.<br><br>While in the Senate, Lieberman has been a champion against gratuitous violence in video games and an independently-minded Senator, both of which facts that could potentially sway some Southern morally focused voters. Further, if you are to select Lieberman and win, he would be the first Jewish Vice President in U.S History, which could motivate that key voter block in the northeast and states like Florida.<br><br>The elephant in the room with his selection though, is that he was one of the only Democrats to publicly denounce President Clinton during the Lewinsky scandal. While this has made him somewhat controversial, it could be a boon if you wish to establish independence from the President and shake off his legacy from impacting your election.","candidate_score":1,"running_mate":true,"scrollable":false,"partner":"0"}},{"model":"campaign_trail.candidate","pk":210,"fields":{"first_name":"Evan","last_name":"Bayh","election":20,"party":"Democrat","state":"Indiana ","priority":1,"description":"a","color_hex":"#0000ff","secondary_color_hex":null,"is_active":0,"image_url":"https://i.imgur.com/hSpfxdJ.png","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":"Evan Bayh is a first-term Senator from Indiana, who previously served as Governor for two terms and as the Hoosier Secretary of State. He's a devoted moderate and hails from a conservative midwestern state, which may give your ticket rapport with moderates and could aid you in crucial regions across the Midwest and South. He's only 45, and could be an energetic campaigner to bring life to your ticket.<br><br>However, many women's groups are vehemently against his selection due to his mixed record on abortion rights. Given that these groups have been crucial to supporting your nomination, and that keeping female voters on your side of the aisle will be crucial in the fallout of the Lewinsky scandal, heeding their advice may be worthwhile. It's worth mentioning that the two of you have a good rapport and would make a smooth governing team.<br><br>Finally, with Governor Bush's selection of Tennessee Senator Bill Frist, staying in contention across the south may be of vital importance--and Bayh may be the only running mate option that allows for that.","candidate_score":1,"running_mate":true,"scrollable":false,"partner":"0"}}, {"model":"campaign_trail.candidate","pk":211,"fields":{"first_name":"John","last_name":"Kerry","election":20,"party":"Democrat","state":"Massachussets","priority":1,"description":"a","color_hex":"#0000ff","secondary_color_hex":null,"is_active":0,"image_url":"https://i.imgur.com/MyGFuFb.png","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":"John Kerry is a Senator from Massachusetts and a respected liberal icon. First rising to national prominence when protesting the Vietnam War–where, for his service, he won three Purple Heart medals–Kerry also served several terms in the U.S House and as Lieutenant Governor before rising to his current office.<br><br>Kerry’s respected body of work in the Senate when it comes to cross-party investigations and matters of foreign policy could bolster your ticket in a key area. While some have reservations about picking a northeastern liberal rather than someone who could provide a key advantage in a swing state, you and Kerry have a good rapport and would make a stark image of two honorable veterans against someone accused of dodging the draft. It’s also possible that Kerry could aid in the state of New Hampshire. <br><br>Finally, with Governor Bush’s selection of moderate George Pataki, playing defense with your liberal flank may be nessescary to avoid losing Democratic votes.","candidate_score":1,"running_mate":true,"scrollable":false,"partner":"0"}}, {"model":"campaign_trail.candidate","pk":200,"fields":{"first_name":"George","last_name":"Bush","election":20,"party":"Republican","state":"Texas","priority":1,"description":"George Bush is the incumbent Governor of Texas, having defeated incumbent Ann Richards in the 1994 Republican Revolution. Bush comes from a family ingrained in politics, with his father having preceded Clinton as President, his grandfather having served as a long-term Senator from Connecticut, and his brother serving as Governor of Florida.<br><br>Prior to the '90s, Bush worked in the Texas Air National Guard, made a failed bid for congress, and even became manager of the Texas Rangers baseball franchise. After being elected though, Bush has governed as a mainstream conservative, cutting taxes, reforming education, connecting with Christian organizations, and even increasing Texan wind energy. Coming off of a landslide re-election, he seems a prime candidate for 2000.<br><br>Bush seems poised to coast to his party's nomination, with the establishment and the more conservative wing wholeheartedly backing him. With a commanding lead in the polls, name recognition to match it, and several lifetimes of experience backing him, Bush simply has to hope that Gore doesn't pull off a miracle.","color_hex":"#ff0000","secondary_color_hex":null,"is_active":1,"image_url":"https://i.imgur.com/QKPtWj3.png","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":null,"candidate_score":1,"running_mate":false,"scrollable":false}},{"model":"campaign_trail.candidate","pk":202,"fields":{"first_name":"Ralph","last_name":"Nader","election":20,"party":"Example Party","state":"Hell","priority":1,"description":"Dummy Example is a veteran from Hell. He loves puppies and magic! Dummy Example will unite America!<br><br>New line<br><br>This is <b>bold</b> and this <i>italic</i>!","color_hex":"#00ff04","secondary_color_hex":null,"is_active":0,"image_url":"https://i.imgur.com/J3RgFRe.png","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":null,"candidate_score":1,"running_mate":false,"scrollable":false}},{"model":"campaign_trail.candidate","pk":203,"fields":{"first_name":"Pat","last_name":"Buchanan/Others","election":20,"party":"Example Party","state":"Hell","priority":1,"description":"Dummy Example is a veteran from Hell. He loves puppies and magic! Dummy Example will unite America!<br><br>New line<br><br>This is <b>bold</b> and this <i>italic</i>!","color_hex":"#c700ac","secondary_color_hex":null,"is_active":0,"image_url":"https://i.imgur.com/KPkpiPt.png","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":null,"candidate_score":1,"running_mate":false,"scrollable":false}},{"model":"campaign_trail.candidate","pk":1006,"fields":{"first_name":"Dick","last_name":"Cheney","election":20,"party":"Republican","state":"Wyoming","priority":1,"description":"Dick Cheney would be perhaps the best choice if you wish to keep the election exactly as it is. With a commanding lead and a united party, selecting him would be a solid and reasoned choice to maintain both of those facts.<br><br>Cheney would weave in and out of staff and assistant jobs in the Nixon administration, eventually becoming assistant Chief of Staff under President Ford. He was elected to represent Wyoming in the House for five terms, and would become chairman of the House Republican Conference as a result. With yet more political clout gained, he became secretary of defense under President Bush, directing the Invasion of Panama and Operation Desert Storm.<br><br>This staggering resumé has given Cheney near universal trust in him from the conservative wing of the party, heaps of experience, and an ego to match. Selecting him would handily balance your ticket, if you would be willing to make a few concessions.","color_hex":"#ff0000","secondary_color_hex":null,"is_active":0,"image_url":"https://i.imgur.com/3PX4vG8.png","electoral_victory_message":"<h3>REAL PATRIOT DUMMY EXAMPLE SWEEPS</h3>","electoral_loss_message":"<h3>Fake News?</h3>","no_electoral_majority_message":"<h3>DUMMY EXAMPLE RETURNS TO HELL</h3>","description_as_running_mate":"Dick Cheney would be perhaps the best choice if you wish to keep the election exactly as it is. With a commanding lead and a united party, selecting him would be a solid and reasoned choice to maintain both of those facts.<br><br>Cheney would weave in and out of staff and assistant jobs in the Nixon administration, eventually becoming assistant Chief of Staff under President Ford. He was elected to represent Wyoming in the House for five terms, and would become chairman of the house republican conference as a result. With yet more political clout gained, he became secretary of defense under President Reagan, directing the Invasion of Panama and Operation Desert Storm.<br><br>This staggering resumé has given Cheney near universal trust in him from the conservative wing of the party, heaps of experience, and an ego to match. Selecting him would handily balance your ticket, if you would be willing to make a few concessions.","candidate_score":1,"running_mate":true,"scrollable":false,"partner":"2"}}];e.running_mate_json = [{"model":"campaign_trail.running_mate","pk":2001,"fields":{"candidate":201,"running_mate":209}},{"model":"campaign_trail.running_mate","pk":2001,"fields":{"candidate":201,"running_mate":210}},{"model":"campaign_trail.running_mate","pk":2001,"fields":{"candidate":201,"running_mate":211}}, {"model":"campaign_trail.running_mate","pk":2002,"fields":{"candidate":200,"running_mate":1006}}];
+
+//e.difficulty_level_json = [{"model":"campaign_trail.difficulty_level","pk":4,"fields":{"name":"Historical","multiplier":0.97}}]
+
+HistHexcolour=["#0000ff","#ff0000","#00ff04","#c700ac"]; HistName=[" Al Gore"," George Bush"," Ralph Nader"," Pat Buchanan/Others"]; HistEV=[266,271,0,0]; HistPV=["50,999,897","50,456,002","2,882,955","1,066,246"]; HistPVP=["48.4%","47.9%","2.7%","1.0%"];
+
+$("#game_window")[0].style.borderColor = "#aa0b1c" 
+$(".container")[0].style.backgroundColor = "#003366"
