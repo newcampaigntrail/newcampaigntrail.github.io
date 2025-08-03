@@ -43809,26 +43809,26 @@ if (ans == 21592) {
 }
 // Right-Wing Splinters
 // Forward Party shows up if trust is high enough
-if (campaignTrail_temp.question_number == 17 && rfkLock == false && trust > 3) {
+if (campaignTrail_temp.question_number == 16 && rfkLock == false && trust > 3) {
   campaignTrail_temp.candidate_json[8]["fields"].first_name = "Andrew";
   campaignTrail_temp.candidate_json[8]["fields"].last_name = "Yang/Others";
   campaignTrail_temp.candidate_json[8].fields.color_hex = '#4e3e5c';
 }
 // RFK is the default if trust is under 3 (AKA Harris is on track to be the nominee)
-else if (campaignTrail_temp.question_number == 17 && rfkLock == false && trust < 3 && bobby == 0) {
+else if (campaignTrail_temp.question_number == 16 && rfkLock == false && trust < 3 && bobby == 0) {
   campaignTrail_temp.candidate_json[8]["fields"].first_name = "Robert F.";
   campaignTrail_temp.candidate_json[8]["fields"].last_name = "Kennedy/Others";
 }
 // No Labels shows up if trust is very low
-else if (campaignTrail_temp.question_number == 17 && rfkLock == false && trust < 0) {
+else if (campaignTrail_temp.question_number == 16 && rfkLock == false && trust < 0) {
   campaignTrail_temp.candidate_json[8]["fields"].first_name = "Joe";
   campaignTrail_temp.candidate_json[8]["fields"].last_name = "Cunningham/Others";
   campaignTrail_temp.candidate_json[8].fields.color_hex = '#262626';
 }
 
 // Left Wing Splinters
-// Jill Stein runs regardless canonically (I guess) but the leading "left wing splinter" changes to COrnel West in the event that you secure a good ceasefire
-if (campaignTrail_temp.question_number == 17 && gaza >= 1) {
+// Jill Stein runs regardless canonically (I guess) but the leading "left wing splinter" changes to Cornel West in the event that you secure a good ceasefire
+if (campaignTrail_temp.question_number == 16 && gaza >= 1) {
   campaignTrail_temp.candidate_json[9]["fields"].first_name = "Cornel";
   campaignTrail_temp.candidate_json[9]["fields"].last_name = "West/Others";
   campaignTrail_temp.candidate_json[9].fields.color_hex = '#18542c';
@@ -44902,7 +44902,7 @@ if (campaignTrail_temp.question_number == 16 && altprimary == true && donJr == f
   campaignTrail_temp.candidate_json[2]["fields"].first_name = "Nikki";
   campaignTrail_temp.candidate_json[2]["fields"].last_name = "Haley";
   campaignTrail_temp.candidate_json[8]["fields"].first_name = "Robert F.";
-  campaignTrail_temp.candidate_json[8]["fields"].last_name = "Kennedy.Others";
+  campaignTrail_temp.candidate_json[8]["fields"].last_name = "Kennedy/Others";
 
 
 opLast = 'Haley';
@@ -45914,7 +45914,7 @@ opLast = 'Haley';
     campaignTrail_temp.candidate_json[2]["fields"].first_name = "Nikki";
     campaignTrail_temp.candidate_json[2]["fields"].last_name = "Haley";
     campaignTrail_temp.candidate_json[8]["fields"].first_name = "Robert F.";
-    campaignTrail_temp.candidate_json[8]["fields"].last_name = "Kennedy.Others";
+    campaignTrail_temp.candidate_json[8]["fields"].last_name = "Kennedy/Others";
     campaignTrail_temp.questions_json[17] = {
       "model": "campaign_trail.question",
       "pk": 83627,
@@ -47233,7 +47233,8 @@ e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/a
 // Page 2 - Endings based on Opponent Performance 
 // Most ending songs are decided by who you faced and if they won or lost, save for some bonus ones set up on slide 1
 if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[2]["fields"].last_name == "Trump" && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Biden") {
-  e.pages.push(`<h3>Shapiro Trails Kemp, Both Nationally And In Key Swing States</h3><h4>August 13th, 2028 | The New York Times</h4><p>Brian Kemp may have only narrowly clinched the Republican Party mantle from Ohio Senator JD Vance, but don’t be fooled - even the disunited Republican Party holds a sizable lead against the Democratic Party. The latest <i>New York Times/Siena</i> poll following both conventions places former Georgia Governor Brian Kemp in a commanding position with 48% of the electorate saying they will vote for him, compared to only 42% of voters expressing support for Governor Josh Shapiro of Pennsylvania.</p><p>It's not even good news in Shapiro's home state of Pennsylvanaia - statewide polling also showed Kemp leading in the state with 46% of the vote compared to Shapiro's 41%. Our poll also found that Senator Fetterman's 'Forward' campaign is struggling badly and may only be serving the Democratic campaign in the state - former Representative Conor Lamb leads with 40% of the vote, compared to outgoing Treasurer Stacy Garrity's 33% and Fetterman's 17%.</p><p>Kemp's nomination seems to be a break away from the so-called 'Trump Era', something that many voters appear grateful for. 65% of voters said they were glad the Republicans nominated a 'non-MAGA' candidate, while 32% said they were not glad by the decision.</p><p>The poll also found that the biggest factor for Shapiro's struggles was the sheer unpopularity of President Joe Biden and Acting President Kamala Harris, who has taken the duties of the office since Biden's stroke earlier in February. The current administration has a 36% approval rating and a 59% disapproval rating - one of the widest gaps to ever be recorded in modern history. 52% of voters also say that Biden should be more permanently removed from office and that Harris should become President until next inaguration.</p>`)
+ctsAchievement("America Carnaged");
+  e.pages.push(`<h3>Shapiro Trails Kemp, Both Nationally And In Key Swing States</h3><h4>August 13th, 2028 | The New York Times</h4><p>Brian Kemp may have only narrowly clinched the Republican Party mantle from Ohio Senator JD Vance, but don’t be fooled - even the disunited Republican Party holds a sizable lead against the Democratic Party. The latest <i>New York Times/Siena</i> poll following both conventions places former Georgia Governor Brian Kemp in a commanding position with 48% of the electorate saying they will vote for him, compared to only 42% of voters expressing support for Governor Josh Shapiro of Pennsylvania.</p><p>It's not even good news in Shapiro's home state of Pennsylvanaia - statewide polling also showed Kemp leading in the state with 46% of the vote compared to Shapiro's 41%. Our poll also found that Senator Fetterman's 'Forward' campaign is struggling badly and may only be serving the Democratic campaign in the state - former Representative Conor Lamb leads with 40% of the vote, compared to outgoing Treasurer Stacy Garrity's 33% and Fetterman's 17%.</p><p>Kemp's nomination seems to be a break away from the so-called 'Trump Era', something that many voters appear grateful for. 65% of voters said they were glad the Republicans nominated a 'non-MAGA' candidate, while 32% said they were not glad by the decision.</p><p>The poll also found that the biggest factor for Shapiro's struggles was the sheer unpopularity of President Kamala Harris. The current administration has a 36% approval rating and a 59% disapproval rating - one of the widest gaps to ever be recorded in modern history. 52% of voters also say that Biden should be more permanently removed from office and that Harris should become President until next inaguration.</p>`)
   //e.image = ""
   e.executable.push([1, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2024/endings/shapirobus.png'})]) 
 
@@ -48414,6 +48415,7 @@ function openHeadquarter() {
     // a.style.flexGrow = '0.1';  // Make h3 take up the maximum space available
     a.style.color = 'white'; // Can be used to change the color of the text
     a.style.margin = '5px'; // Can be used to change the space in between the text. Useful if you have a lot of functions.
+    a.style.fontSize  = '15px'; 
     hqDiv.appendChild(a);
 
     let b = document.createElement('p');
