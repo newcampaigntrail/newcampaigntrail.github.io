@@ -19808,7 +19808,7 @@
 			"pk": 49096,
 			"fields": {
 				"answer": 24301,
-				"issue": 110,
+				"issue": 111,
 				"issue_score": 0,
 				"issue_importance": 5
 			}
@@ -24108,7 +24108,7 @@
 			"pk": 50081,
 			"fields": {
 				"answer": 42403,
-				"issue": 110,
+				"issue": 112,
 				"issue_score": 0.4,
 				"issue_importance": 8
 			}
@@ -54910,7 +54910,7 @@
 				else if (ticket_status==1 && opponent==4 && quickstats[0]<=320) { //Bernie defeated Trump/Scott but with 320 EVs or fewer
 					song_change_resolved=true
 					const EndingSong = new Playlist();
-					const endSong = new Song("What's Going On", "Martin Gaye", "https://i.imgur.com/8EQ3zTJ.jpeg", "https://audio.jukehost.co.uk/YdrtvuvnbkyVSWeFpVidibuOjmixbhbJ");
+					const endSong = new Song("What's Going On", "Marvin Gaye", "https://i.imgur.com/8EQ3zTJ.jpeg", "https://audio.jukehost.co.uk/YdrtvuvnbkyVSWeFpVidibuOjmixbhbJ");
 					EndingSong.addSong(endSong);
 					changePlaylist(EndingSong);
 				}
@@ -60035,7 +60035,7 @@
 		else if (ans==31103) {
 			//real-world values if you copy Biden exactly: 6.8 capital, 10 bipartisan, 6 r_radical and it still failed - values of 14.6.
 			//Toned down difficulty and improved this because it was essentially impossible beforehand, and not very rewarding for how absurdly hard it was.
-			if (political_capital+bipartisan*2-r_radical*2>=10 && (e.player_answers.includes(26001) || e.player_answers.includes(26002) || e.player_answers.includes(26101) || e.player_answers.includes(261012))) { //player chose to arm Israel. 
+			if (political_capital+bipartisan*2-r_radical*2>=10 && (e.player_answers.includes(26001) || e.player_answers.includes(26002) || e.player_answers.includes(26101) || e.player_answers.includes(26102))) { //player chose to arm Israel. 
 				r_radical-=1 //less angry
 				political_capital+=2
 				party_unity+=2 //a win.
@@ -61012,7 +61012,7 @@
 			party_unity+=0.15
 		}
 		else if (ans==42304) {
-			e.candidate_issue_score_json[5].fields.issue_score=-0.12 //sort of attacking him for being pro-corporate.
+			e.candidate_issue_score_json[5].fields.issue_score-=0.12 //sort of attacking him for being pro-corporate.
 			applySalience(113,0.18) //America's watching the car crash 
 			party_unity-=2
 		}
@@ -62157,7 +62157,7 @@
 				else if (immigration_level==2) { //Article 42 expiration overwhelms detention facilities and forces humanitarian parole
 					//no economy changes or approval - base situation.
 					applySalience(113,0.15) //immigration importance spikes with migrant surge
-					if (!(e.player_answers.includes(26001) || e.player_answers.includes(26002) || e.player_answers.includes(26101) || e.player_answers.includes(261012))) { //fails over your choice not to arm Israel after October 7.
+					if (!(e.player_answers.includes(26001) || e.player_answers.includes(26002) || e.player_answers.includes(26101) || e.player_answers.includes(26012))) { //fails over your choice not to arm Israel after October 7.
 						ReplaceFeedback(31103,"You watched Chris Murphy bleed for that deal - months negotiating as Sinema and Lankford push further. Then the right blows it up at the last minute with demands for arms for Israel. Now they call you soft on the border, while your base calls you a sellout. You bent over backwards, abandoned your principles - and got nothing but ashes.")
 					}
 					else if (political_capital+bipartisan*2-r_radical*2<15) { //fails due to Trump/etc. blowing it up
