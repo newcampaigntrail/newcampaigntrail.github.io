@@ -53768,6 +53768,41 @@
 	endingPicker = (out, totv, aa, quickstats) => { //I already have 50 ending slides, so not going to bother with impossible ending slides for Green, Centrist, RFK win.
 		if (!election_night_check && NuclearWar==0) {
 			election_night_check=true
+			//due to the existing hardcoded setup, there is no way to properly do EVs by Congressional districts without 1) having a small arbitrary number of votes there, 2) double-counting the state vote giving weird nationwide popular vote numbers, 3) retroactively rewriting the vote counts of the state after election night, which runs into the issue of potentially having the state flip from election night values, 4) retroactively rewriting the vote counts of the congressional district after election night, which makes it more obvious that the vote counts just don't add up because there's literally no way in TCT to have three constituencies in which the first two equals the third (and as long as you have any issue score effects, there's no way to ensure that the state and congressional districts are perfectly in sync.) 
+			//to my knowledge, every single mod that does split congressional districts does 1). Due to repeated player complaints about why this is an urgent problem and bug specifically for OR that must be immediately fixed, I am doing 4) instead.
+			
+			//ME has two congressional districts - ME-01 or ME-02. This is easily solved via linear algebra.
+			candidates=[300,301,302,303,305]
+			
+			if (ending_2020) {
+				me1_turnout=443112
+				me2_turnout=376349
+				ne1_turnout=321886
+				ne2_turnout=339666
+				ne3_turnout=294831
+			}
+			else {
+				me1_turnout=433709+3803*bernie_effect
+				me2_turnout=397666+300*bernie_effect
+				ne1_turnout=320194+2249*bernie_effect
+				ne2_turnout=318646+4297*bernie_effect
+				ne3_turnout=313342+54*bernie_effect
+			}
+			for (let state_id=51; state_id<56; state_id++) {
+				district_turnout= (
+					state_id==51 ? me1_turnout :
+					state_id==52 ? me2_turnout :
+					state_id==53 ? ne1_turnout :
+					state_id==54 ? ne2_turnout :
+					state_id==55 ? ne3_turnout :
+					999
+				)
+				for (let candidate_num=0; candidate_num<5; candidate_num++) {
+					e.final_state_results[state_id].result[candidate_num].votes=Math.floor(district_turnout*e.final_state_results[state_id].result[candidate_num].percent)
+				}
+			}
+			
+			
 			if (quickstats[0]>269) {
 				election_night_win=true
 				if ((e.final_overall_results.find(p=>p.candidate==300).popular_votes -e.final_overall_results.find(p=>p.candidate==301).popular_votes)/168680000>0.1) {
