@@ -68664,8 +68664,9 @@ function switcheroo38() {//left lib coup
 }
 
 var bills = 0
-
+var bannerupdate = false
 cyoAdventure = function(a) {
+    bannerupdate = false
     function tunnel(new_q){
         return e.questions_json[e.questions_json.map(f=>f.pk).indexOf(new_q)];
     }
@@ -69541,12 +69542,10 @@ if (ans == 13463 || ans == 13464 || ans == 13471 || ans == 17769282){
         campaignTrail_temp.candidate_image_url = 'https://i.imgur.com/0twKbcH.png';
         campaignTrail_temp.running_mate_image_url = 'https://i.imgur.com/aGiYdr9.png';
         prevvp = vicepres
-        var vicepres = "demcoup"
-        updateQuestionBanner()
+        vicepres = "demcoup"
     }
     if(ans == 19079 || ans == 19080 || ans == 19081 ){
-        var vicepres = prevvp
-        updateQuestionBanner()
+        vicepres = prevvp
         if(veep == 1){
             campaignTrail_temp.candidate_image_url = 'https://i.imgur.com/XOJkn3m.png';
             campaignTrail_temp.running_mate_image_url="https://i.imgur.com/HZsXYtQ.jpg'"  
@@ -71875,7 +71874,10 @@ var vicepres = "agnew"
 var prevvp = ""
 
 function onGameWindowChanged(mutationList, observer) {
-	updateQuestionBanner();
+    if(!bannerupdate){
+	    updateQuestionBanner();
+        console.log("updated")
+    }
 }
 
 const observer = new MutationObserver(onGameWindowChanged);
@@ -71913,6 +71915,7 @@ function updateQuestionBanner() {
         img.src = 'https://i.imgur.com/MKCHUDp.png';
     }
 	questionBanner.replaceWith(img);
+    bannerupdate = true
 }
 
 function addHeadquarterButton() {
