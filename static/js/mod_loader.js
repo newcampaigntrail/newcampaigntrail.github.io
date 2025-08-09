@@ -242,6 +242,7 @@ $("#customMenu").change(()=>{
     window.localStorage.setItem("mod_loader_cache", JSON.stringify(cached));
 })
 
+
 $("#submitMod").click(function() {
 
     document.body.style.overflow = '';
@@ -271,7 +272,11 @@ $("#submitMod").click(function() {
         var client = new XMLHttpRequest();
         client.open('GET', "../static/mods/" + $("#modSelect")[0].value + "_init.html");
         client.onreadystatechange = function() {
-            evaluate(client.responseText)
+            console.log(client.responseText)
+            if (!e.readyToLoadCode1 && client.responseText.length > 0) {
+                evaluate(client.responseText)
+                e.readyToLoadCode1 = true;
+            }
         }
         client.send();
         diff_mod = true
