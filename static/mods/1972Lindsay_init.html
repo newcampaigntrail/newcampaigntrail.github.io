@@ -1,0 +1,735 @@
+campaignTrail_temp.achievements = {
+    "Dry Land" : {
+        "image" : "https://i.imgur.com/5FhVR4Z.png",
+        "description" : "Win."
+    },
+    "Lost At Sea" : {
+        "image" : "https://i.imgur.com/kvNaEbG.png",
+        "description" : "Lose, narrowly."
+    },
+    "Oh Thank You!" : {
+        "image" : "https://i.imgur.com/ekxctYV.png",
+        "description" : "Get the ending with the hidden reference.",
+        "cannotBeCheated" : true
+    }
+}
+
+musicMode = () => {
+    songsPlayed = 0;
+    // Initialise custom music
+  
+    $("#music_player")[0].children[0].style.display = "none"
+    $("#music_player")[0].children[1].style.display = "none"
+  
+    document.getElementById("modLoadReveal").style.display = "none"
+    document.getElementById("modloaddiv").style.display = "none"
+  
+    musicBox = document.getElementById("music_player")
+    musicBox.style.display = ""
+  
+    var trackSel;
+    e = campaignTrail_temp
+    e.selectedSoundtrack = 0
+  
+    toTime = (seconds) => {
+        var date = new Date(null);
+        date.setSeconds(seconds);
+        return date.toISOString().substr(11, 8);
+    }
+  
+    generateTime = () => {
+        // Get the audio element
+        var audio = document.getElementById("campaigntrailmusic");
+  
+        timeTracker = document.createElement("div");
+        timeTracker.style = `
+  text-align:left;
+  border-style:solid;
+  border-width:3px;
+  height:150px;
+  width:200px;
+  background-color:#FFD8AF;
+  float:right;
+  padding: 10px;
+  `
+        $("#trackSelParent")[0].prepend(timeTracker);
+        $("#trackSelParent")[0].prepend(document.createElement("br"));
+  
+        // Create a new element to display the current position of the audio
+        var positionDisplay = document.createElement("gg");
+        positionDisplay.id = "position-display";
+  
+        // Create a new slider element to change the time
+        var timeSlider = document.createElement("input");
+        timeSlider.type = "range";
+        timeSlider.min = 0;
+        timeSlider.max = 1;
+        timeSlider.step = 0.001;
+        timeSlider.value = 0;
+        timeSlider.style.width = "200px";
+        timeSlider.id = "time-slider";
+  
+        var pausePlay = document.createElement("button");
+        pausePlay.id = "position-display";
+        pausePlay.innerHTML = "<b>Pause</b>"
+        pausePlay.style.width = "100%";
+  
+  
+        pausePlay.addEventListener("click", event => {
+            event.preventDefault();
+            updatePositionDisplay();
+            let audio = document.getElementById("campaigntrailmusic");
+            if (audio.paused) {
+                audio.play();
+                event.target.innerHTML = "<b>Pause</b>";
+                return;
+            }
+            audio.pause();
+            event.target.innerHTML = "<b>Play</b>";
+            return;
+        })
+  
+        var volumeLabel = document.createElement("gg");
+        volumeLabel.id = "volume-label";
+        volumeLabel.innerHTML = "<br><b>Volume: </b>"
+  
+        var volumeSlider = document.createElement("input");
+        volumeSlider.type = "range";
+        volumeSlider.min = 0;
+        volumeSlider.max = 1;
+        volumeSlider.step = 0.001;
+        volumeSlider.value = 0;
+        volumeSlider.style.width = "200px";
+        volumeSlider.id = "volume-slider";
+  
+        volumeSlider.value = audio.volume;
+  
+        timeTracker.appendChild(pausePlay);
+        timeTracker.appendChild(document.createElement("br"));
+        timeTracker.appendChild(document.createElement("br"));
+        timeTracker.appendChild(positionDisplay);
+        timeTracker.appendChild(timeSlider);
+        timeTracker.appendChild(volumeLabel);
+        timeTracker.appendChild(volumeSlider);
+  
+        updatePositionDisplay();
+  
+        //for (let i = 0; i < 10; i++)
+        //timeTracker.append(document.createElement("br"));
+  
+  
+        // Function to update the position display
+        function updatePositionDisplay() {
+            positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+            timeSlider.value = audio.duration ? audio.currentTime / audio.duration : 0;
+        }
+  
+        // Function to change the time of the audio
+        function changeTime() {
+            positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+            audio.currentTime = timeSlider.value * audio.duration;
+        }
+  
+        updateVolume = event => {
+            audio.volume = event.target.value;
+        }
+  
+        // Update the position display and slider every second
+        setInterval(updatePositionDisplay, 1000);
+  
+        // Listen for changes to the time slider and change the time of the audio
+        timeSlider.addEventListener("input", changeTime);
+        volumeSlider.addEventListener("input", updateVolume)
+    }
+  function newMusicPlayer() {
+          trackSel = document.createElement("div");
+          trackSel.id = "trackSelParent"
+          let z = `<br><br><br><br><br><br><br><br><br><br><div id='trackSel' style="text-align:left;border-style:solid;border-width:3px;overflow-y: scroll;overflow-x: hidden;height:200px; width:400px;background-color:#FFD8AF;float:right;">`
+          z += `<b><select id='selectSoundtrack'><option value='` + soundtracks[e.selectedSoundtrack].name + `'>` + soundtracks[e.selectedSoundtrack].name + "</option>"
+          for (i in soundtracks) {
+              if (soundtracks[e.selectedSoundtrack] != soundtracks[i]) {
+                  z += `<option value='` + soundtracks[i].name + `'>` + soundtracks[i].name + `</option>`
+              }
+          }
+          z += `</select></b><br><br>`
+              // <label><input type="radio" name="option" value="option1">Option 1</label><br>
+          for (i in soundtracks[e.selectedSoundtrack].tracklist) {
+              let a = soundtracks[e.selectedSoundtrack].tracklist[i]
+              let b = `<label><input class="trackSelector" type="radio" name="trackSelector" value="` + i + `">` + a.name + `</label><br>`
+              z += b
+          }
+          z += "</div><br><br>"
+          trackSel.innerHTML = z
+    
+          // select correct song
+    
+          musicBox.appendChild(trackSel);
+          Array.from(document.getElementById("trackSel").children).filter(f => {
+              return f.tagName == "LABEL"
+          }).map(f => f.children[0])[0].checked = true
+    
+          // set soundtrack changer
+    
+          soundtrackSelector = document.getElementById("selectSoundtrack")
+          soundtrackSelector.onchange = function() {
+              for (i in soundtracks) {
+                  if (soundtracks[i].name == soundtrackSelector.value) {
+                      e.selectedSoundtrack = i
+                      break
+                  }
+              }
+              document.getElementById("trackSelParent").remove()
+              newMusicPlayer()
+          }
+    
+          var matches = document.querySelectorAll('.trackSelector');
+    
+          for (match in matches) {
+              matches[match].onchange = function() {
+                  audio = $("#campaigntrailmusic")[0];
+                  audio.src = soundtracks[e.selectedSoundtrack].tracklist[this.value].url
+                  audio.currentTime = 0
+              }
+          }
+    
+          musicBox.children[2].loop = false
+          musicBox.children[2].src = soundtracks[e.selectedSoundtrack].tracklist[0].url
+    
+          musicBox.children[2].onended = function() {
+              console.log("next track")
+              let selected = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+              let newSel = clamp(selected + 1, soundtracks[e.selectedSoundtrack].tracklist.length - 1, 0)
+              let buttons = Array.from(document.getElementById("trackSel").children).filter(f => {
+                      return f.tagName == "LABEL"
+                  }).map(f => f.children[0])
+                  //let selectedIndex = buttons.map(f=>f.children[0]).map(f=>f.checked)
+              buttons[newSel].click()
+              songsPlayed++; // Increment the songs played counter
+        
+           
+          }
+            
+          for (w = 0; w < 7; w++) {
+              document.getElementById("trackSelParent").appendChild(document.createElement("br"))
+          }
+    
+          generateTime();
+      }
+    
+      clamp = function(a, max, min, overflow = true) {
+          if (overflow) {
+              return a > max ? min : a < min ? max : a;
+          }
+          return a > max ? max : a < min ? min : a;
+      }
+    
+      
+      // Track list
+    
+      var soundtracks = {
+          0: {
+              name: "John Lindsay's Record Player",
+              tracklist: [
+                {
+               "name": "Seville - Luis Bonfa",
+                "url": "https://audio.jukehost.co.uk/22LCPyoU1No4plDTDe7JwwWzETjlfThw"
+              },
+              {
+                "name": "The Edge - David McCallum",
+                "url": "https://audio.jukehost.co.uk/gf6StrBQwPzlW3fL6392PF1ga3B9ggAU"
+              },
+              {
+                "name": "No More - Manfred Minnich",
+                "url": "https://audio.jukehost.co.uk/aHODWxcNcye2xYCbEsJjGWBVfOQlbgNJ"
+              },
+              {
+                "name": "The Lamp is Low - Laurindo Almeida",
+                "url": "https://audio.jukehost.co.uk/CiAI7oQywJBYqcO9KU7nHHCAEFeRYMCz"
+              },
+              {
+                "name": "A Taste of Honey - Bobby Scott",
+                "url": "https://audio.jukehost.co.uk/rsuR4Xp1UOogtvhrz4gNtG5uiNlc9Z2Z"
+              },
+              {
+                "name": "Accentuate the Positive - Bing Crosby",
+                "url": "https://audio.jukehost.co.uk/yK9XtWMxiVYuCIbYaA06ZxdeZecuoX1i"
+              },
+              {
+                "name": "Time After Time - Chet Baker",
+                "url": "https://audio.jukehost.co.uk/FmNEyR7SSbCguzPljlfq6whxAHw79CmX"
+            },
+            ]
+         },
+  
+          
+          
+      }
+  
+    
+      // Set up new music player
+    
+      newMusicPlayer()
+    
+  
+  }
+  
+    $("#game_start").click((event) => {
+      event.preventDefault();
+      $("#election_id_button").click((event) => {
+          musicMode()
+  
+          setInterval(changeFontColour, 200)
+    
+      })
+    })
+  
+  
+  e = campaignTrail_temp;
+campaignTrail_temp.global_parameter_json = [
+    {
+        "model": "campaign_trail.global_parameter",
+        "pk": 1,
+        "fields": {
+            "vote_variable": 1.125,
+            "max_swing": 0.12,
+            "start_point": 0.94,
+            "candidate_issue_weight": 10,
+            "running_mate_issue_weight": 3,
+            "issue_stance_1_max": -0.71,
+            "issue_stance_2_max": -0.3,
+            "issue_stance_3_max": -0.125,
+            "issue_stance_4_max": 0.125,
+            "issue_stance_5_max": 0.3,
+            "issue_stance_6_max": 0.71,
+            "global_variance": 0.01,
+            "state_variance": 0.005,
+            "question_count": 30,
+            "default_map_color_hex": "#C9C9C9",
+            "no_state_map_color_hex": "#999999"
+        }
+    }
+]
+
+campaignTrail_temp.election_json = [
+    {
+        "model": "campaign_trail.election",
+        "pk": 10,
+        "fields": {
+            "year": 1972,
+            "summary": "<p>As the 1972 election season begins, the national situation remains just as tense as it was in 1968. There are still issues with Vietnam and the economy, but social progress has continued nonetheless.</p> <ul><li>Nixon has remained popular with most Americans and has the upper hand over his opponent.</li><li>Lindsay, a former Republican, won the nomination on a liberal platform, but faces an uphill struggle.</li><p>The two candidates must discuss how to fix the plethora of issues the nation is currently facing.",
+            "image_url": "https://i.imgur.com/jiJ6Hqs.png",
+            "winning_electoral_vote_number": 270,
+            "advisor_url": "https://i.imgur.com/zcSNBf1.png",
+            "recommended_reading": "<h4 style=\"margin-top: 0.5em;\">Links</h4><a href=\"https://www.roosevelthouse.hunter.cuny.edu/events/crisis-accomplishment-rise-fall-john-lindsay//\" target=\"_blank\">Crisis and Accomplishment: The Rise and Fall of John Lindsay</a><br><a href=\"https://www.amazon.com/Ungovernable-City-John-Lindsay-Struggle/dp/0465008437\" target=\"_blank\">The Ungovernable City: John Lindsay and His Struggle to Save New York</a><br><a href=\"https://www.nytimes.com/2000/12/21/nyregion/john-v-lindsay-mayor-and-maverick-dies-at-79.html\" target=\"_blank\">John V. Lindsay, Mayor and Maverick, Dies at 79</a><br>There were a lot more links as well<h4>Lore</h4><p>I don't really know how well Lindsay would do in the general, I know he would do a lot better than McGovern, but he wouldn't really win against Nixon either. I figured somewhere around 100EVs would be realistic enough. Also, the Sid thats in many questions is Sid Davidoff, a senior advisor to Lindsay and his now campaign manager in mod.<br><br>Thank you for playing what I believe to be my 23rd mod now, this has been in production for a long time now, and the original modjam version is still up and available to play if you want to. I decided to go for a more narrative approach, and I hoped that I got the overall vibe of Lindsay correct, even if its exaggerated in some places for thematic effect. Regardless, I hope you had fun!</p>",
+            "has_visits": 1,
+            "no_electoral_majority_image": "https://www.jetsimon.com/public/static/images/2012-no-majority.jpg",
+            "creator": "Dan Bryan",
+            "display_year": "1972Lindsay"
+        }
+    }
+]
+
+campaignTrail_temp.candidate_json = [
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 91,
+        "fields": {
+            "first_name": "John",
+            "last_name": "Lindsay",
+            "election": 10,
+            "party": "Democratic",
+            "state": "New York",
+            "priority": 1,
+            "description": "<p>John Vliet Lindsay did not expect to truly become the nominee this year. A large field of Democratic insiders, anti-war progressives, and representatives of the old ways all procured more support than the New York Mayor, but one by one, they all fell to scandal and sin, leaving Lindsay as the last man standing in the Miami Beach bloodbath.<p>Despite being a Republican no more than a year ago, Lindsay has successfully pivoted into a standard liberal, who supports a majority of the Democratic plank this year. A pullout from Vietnam, higher taxes, federal aid- yada yada yada. He is a relatively young candidate, and his handsome apparatus could swoon some voters on that alone. However, his mayoral record is suspect, as New York City's crime and poverty rates continue to surge despite his leadership, and his recent switch to the Democratic Party continues to raise suspicion. Regardless, though, it's unlikely that Lindsay will win against Nixon, due to the incumbent's numerous successes in governing.",
+            "color_hex": "#e35656",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/uE7pqUv.png",
+            "electoral_victory_message": "<h3>What? You have won the 1972 Presidential Election?</h3><p>This is quite the shock, and this result will probably go down as the most controversial and lopsided upset in American history, taking 1948's crown with it.<p>As President, you have a lot on your plate, as you now have to take over Nixon's movements in China, and fix the economy and urban decay while your at it. Hopefully you can take these issues with grit, and make America a better place.</p>",
+            "electoral_loss_message": "<h3>Sorry, you have lost the 1972 Presidential Election.</h3><p>It seems that Nixon will get his second term, and you'll be relegated to nothing more but second place. If you lost badly, then your time in national politics is most likely over, and you'll retire to New York. However, if you overperformed and brought the election somewhat close? Well, maybe the Democrats won't be done with you just yet.<p>Regardless, the next few years are set to be interesting. What's this whole thing with Watergate?</p>",
+            "no_electoral_majority_message": "<h3>Interesting, the 1972 Presidential Election was a tie.</h3><p>While the Electoral College ended in a tie, the Democrats have a huge advantage in the House of Representatives and are sure to elect you in that manner, despite some dissent in the south. Hopefully the closeness of this election doesn't undermine your presidency in any way, and you can still get America cleaned up.</p>",
+            "description_as_running_mate": "''",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 92,
+        "fields": {
+            "first_name": "Richard",
+            "last_name": "Nixon",
+            "election": 10,
+            "party": "Republican",
+            "state": "California",
+            "priority": 2,
+            "description": "<p>Nixon is the President. Make him not President anymore, okay John?</p>",
+            "color_hex": "#4453db",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/zlqvlYX.png",
+            "electoral_victory_message": "<h3>Congratulations! You have won the 1976 Presidential Election.</h3><p>Hopefully you can continue to help the United States recover from the Watergate Scandal, the recent recession, and the debacle of Vietnam. In either case, this will be your final term as President. Speculation is sure to be intense on who will replace you. Will it be Ronald Reagan? Ted Kennedy? Or someone else entirely?</p>",
+            "electoral_loss_message": "<h3>Sorry, you have lost the 1976 Presidential Election.</h3><p>Hopefully your opponent can make good on his promises to clean up Washington and change the political and moral culture of the country. Perhaps you can still play a role in 1980, or seek your old Congressional leadership positions. In any case, you can still take solace in the fact that you did the right thing by pardoning Nixon and moving the country beyond the Watergate episode.</p>",
+            "no_electoral_majority_message": "<h3>Sorry, you have lost the 1976 Presidential Election.</h3><p>While the Electoral College ended in a tie, the Democrats have a huge advantage in the House of Representatives and are sure to elect your opponent in that manner. Perhaps you can still play a role in 1980, or seek your old Congressional leadership positions. In any case, you can still take solace in the fact that you did the right thing by pardoning Nixon and moving the country beyond the Watergate episode.</p>",
+            "description_as_running_mate": "''",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 93,
+        "fields": {
+            "first_name": "Linda",
+            "last_name": "Jenness/Others",
+            "election": 10,
+            "party": "Socialist Workers",
+            "state": "Georgia",
+            "priority": 3,
+            "description": "''",
+            "color_hex": "#00C100",
+            "secondary_color_hex": "#A1FFA1",
+            "is_active": 0,
+            "image_url": "''",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "''",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 94,
+        "fields": {
+            "first_name": "John",
+            "last_name": "Schmitz",
+            "election": 10,
+            "party": "American Independent",
+            "state": "California",
+            "priority": 4,
+            "description": "''",
+            "color_hex": "#FFFF00",
+            "secondary_color_hex": "#FFFFC0",
+            "is_active": 0,
+            "image_url": "''",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "''",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 95,
+        "fields": {
+            "first_name": "Kevin",
+            "last_name": "White",
+            "election": 10,
+            "party": "Democratic",
+            "state": "Massachusetts",
+            "priority": 5,
+            "description": "''",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/UImE8Ow.png",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "<p>As a candidate, you want someone to understand you, to walk in your shoes. To know how to run the administration's you've run. Kevin White is the man most like that, being the mayor of Boston. First elected in 1968, White has helped Boston open up to busing, although opposition remains high in many parts of the city.</p><p>White would help you with African-Americans, knowledgeable about his record, but also with liberals and Irish voters. It must be said, though, that White gives little geographic balance, and outside of New England, he is virtually unknown, so a large advertising campaign should be created to help educate those unaware of Kevin's record.",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 96,
+        "fields": {
+            "first_name": "Joseph",
+            "last_name": "Alioto",
+            "election": 10,
+            "party": "Democratic",
+            "state": "California",
+            "priority": 6,
+            "description": "''",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/TFMYvqf.png",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "<p>However, if you want someone who has tested the waters of a national campaign before, then you have San Francisco mayor Joseph Alioto. Alioto was lauded as a potential running mate choice in 1968, and his mayoralty has overseen quite a progressive time for the city, as the opening of the Castro district alongside actions against crime has made him a well-liked mayor.</p><p>Alioto would appeal to Italians and voters on the west coast, and although it is highly unlikely you will swipe California, you could certainly embarrass Nixon by cutting it close. Alioto has been subject to numerous investigations and lawsuits, though, so make sure to keep that in mind.",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 97,
+        "fields": {
+            "first_name": "Moon",
+            "last_name": "Landrieu",
+            "election": 10,
+            "party": "Democratic",
+            "state": "Louisiana",
+            "priority": 7,
+            "description": "''",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/STttEYu.png",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "<p>Think you can crack the South? Moon Landrieu is the mayor of New Orleans, and has remained popular over his two years so far. Landrieu has appointed many African-Americans to positions, and has continued to push through desegregation policies within the city. Governing as a populist, he's certainly an attractive figure to have as your running mate.</p><p>Landrieu would help you with Catholics, black voters, and some rural voters. Geographically, Moon would assist you in Louisiana and the greater South, although you most likely won't win any of these states, even with Wallace not running. Landireu also suffers from low name recognition, so you should get on top of that sooner rather than later.",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 99,
+        "fields": {
+            "first_name": "Spiro",
+            "last_name": "Agnew",
+            "election": 10,
+            "party": "Republican",
+            "state": "Maryland",
+            "priority": 9,
+            "description": "''",
+            "color_hex": "#FF0000",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/static/images/bob-dole-1976.jpg",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "<p>The incumbent Vice President, Agnew expects to be re-nominated this year, however he has some skeletons in his closet.</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 103,
+        "fields": {
+            "first_name": "Andrew",
+            "last_name": "Pulley",
+            "election": 10,
+            "party": "Socialist Workers",
+            "state": "Illinois",
+            "priority": 13,
+            "description": "''",
+            "color_hex": "#00C100",
+            "secondary_color_hex": "#A1FFA1",
+            "is_active": 0,
+            "image_url": "''",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "''",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 104,
+        "fields": {
+            "first_name": "Thomas",
+            "last_name": "Anderson",
+            "election": 10,
+            "party": "American Independent",
+            "state": "Tennessee",
+            "priority": 14,
+            "description": "''",
+            "color_hex": "#FFFF00",
+            "secondary_color_hex": "#FFFFC0",
+            "is_active": 0,
+            "image_url": "''",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "''",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 50000,
+        "fields": {
+            "first_name": "Carl",
+            "last_name": "Stokes",
+            "election": 10,
+            "party": "Democratic",
+            "state": "Ohio",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/yKAZBMh.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "<p>But now, Carl Stokes of Cleveland would certainly be a wildcard choice. You've always felt strongly about civil rights, so picking a popular, reformist mayor and the first African-Americn mayor ever elected in his own right would make draw the battle lines clearly for you. Stokes would no doubt electrify African-American support for your campaign, which could additionally help you in urban neighborhoods and many large cities nationwide.</p><p>That being said, Stokes has been out of office for a year now, and unfortunately, Stokes would galvanize Southern support for Nixon, and open your campaign up to a slew of bigoted attacks. It'd probably be best to scrap any plans to reel in the South this year, for both you and your running mate's safety.",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    }
+]
+
+campaignTrail_temp.running_mate_json = [
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 67,
+        "fields": {
+            "candidate": 94,
+            "running_mate": 104
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 66,
+        "fields": {
+            "candidate": 93,
+            "running_mate": 103
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 62,
+        "fields": {
+            "candidate": 92,
+            "running_mate": 99
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 58,
+        "fields": {
+            "candidate": 91,
+            "running_mate": 95
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 59,
+        "fields": {
+            "candidate": 91,
+            "running_mate": 96
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 60,
+        "fields": {
+            "candidate": 91,
+            "running_mate": 97
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 110824,
+        "fields": {
+            "candidate": 91,
+            "running_mate": 50000
+        }
+    }
+]
+
+campaignTrail_temp.credits = "Jimbo (WNDIUA)"
+
+campaignTrail_temp.opponents_default_json = [
+    {
+        "election": 10,
+        "candidates": [
+            91,
+            92,
+            93,
+            94
+        ]
+    }
+]
+
+campaignTrail_temp.opponents_weighted_json = [
+    {
+        "election": 10,
+        "candidates": [
+            91,
+            92,
+            93,
+            94
+        ]
+    }
+]
+
+campaignTrail_temp.temp_election_list = [
+    {
+        "id": 10,
+        "year": 1972,
+        "is_premium": 0,
+        "display_year": "1972Lindsay"
+    }
+]
+
+jet_data = {
+    "headerColor": "#74988f",
+    "windowColor": "#ffd8af",
+    "containerColor": "#eaba3c",
+    "innerWindowColor": "#fff8c4",
+    "bannerImageUrl": "https://i.imgur.com/KjHSo0Y.png",
+    "backgroundImageUrl": "https://static01.nyt.com/images/2010/05/14/arts/14lindsay-2/14lindsay_CA0-popup.jpg?quality=75&auto=webp&disable=upscale",
+    "endingTextColor": "#000000",
+    "customQuote": "",
+    "gameTitle": "The Campaign Trail"
+}
+
+//#startcode
+
+corrr = '\n              <h2>The Campaign Trail</h2>\n            ';
+
+RecReading = true
+
+document.body.style.backgroundSize = "100% auto";
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#74988f";
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#ffd8af";
+
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+$(".container")[0].style.backgroundColor = "#eaba3c";
+
+document.getElementById("header").src = "https://i.imgur.com/KjHSo0Y.png";
+
+document.body.background = "https://static.vecteezy.com/system/resources/previews/046/007/609/large_2x/vast-water-body-under-sky-free-photo.jpeg";
+
+document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#fff8c4!important;}</style>";
+
+campaignTrail_temp.modBoxTheme = {
+    "header_color": "#74988f",
+    "header_text_color": "#000000",
+    "description_text_color": "#000000",
+    "description_background_color": "#ffd8af",
+    "main_color": "#fff8c3",
+    "secondary_color": "#eaba3c",
+    "ui_text_color": "#FFFFFF"
+}
+
+HistHexcolour=["#4453DB","#E35555","#FFFF00","#00C100"];
+HistName=[" Richard Nixon"," John Lindsay"," John Schmitz", " Linda Jenness/Others"];
+        HistEV=[410,128,0,0];
+        HistPV=["41,364,559","34,825,720","1,270,415","762,047"];
+        HistPVP=["52.9%","44.5%","1.6%","1.0%"];
+    
+
+//#endcode
