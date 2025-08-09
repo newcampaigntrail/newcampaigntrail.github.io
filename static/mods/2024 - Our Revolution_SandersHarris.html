@@ -55711,7 +55711,42 @@
 		}
 		
 		if (NuclearWar==0 && !stop_the_steal && !biden_ending && !ending_2020 )  {
-			if (israel_embargo==1 && e.final_overall_results.find(p=>p.candidate==300).electoral_votes>269) { //ceasefire in Gaza shortly after election 
+			if ((e.difficulty_level_multiplier<0.97 && e.final_overall_results.find(p=>p.candidate==300).electoral_votes>269) || (e.difficulty_level_multiplier>0.97 && e.final_overall_results.find(p=>p.candidate==300).electoral_votes<269) ) { //difficulty multiplier not on Normal, and won on harder difficulty or lost on easier difficulty.
+				votes_swapped=Math.round((1-e.difficulty_level_multiplier/0.97)/2*100,2)
+				if (e.difficulty_level_multiplier==1.2 && e.difficulty_level_id==1) {
+					virus_name="Cakewalk"
+				}
+				else if (e.difficulty_level_multiplier==1.1 && e.difficulty_level_id==2) {
+					virus_name="Very Easy"
+				}
+				else if (e.difficulty_level_multiplier==0.95 && e.difficulty_level_id==6) {
+					virus_name="Impossible"
+				}
+				else if (e.difficulty_level_multiplier==0.9 && e.difficulty_level_id==7) {
+					virus_name="Unthinkable"
+				}
+				else if (e.difficulty_level_multiplier==0.83 && e.difficulty_level_id==8) {
+					virus_name="Blowout"
+				}
+				else if (e.difficulty_level_multiplier==0.75 && e.difficulty_level_id==9) {
+					virus_name="Disaster"
+				}
+				else if (campaignTrail_temp.CTS){
+					virus_name="Console" //cheat menu console doesn't adjust difficulty multiplier, just adds multipliers. So this refers to the player opening the developer console.
+				}
+				else { //assume NCT
+					virus_name="Bigshot"
+				}
+				e.pages.push(`<p><b>${e.difficulty_level_multiplier>0.97 ? "Members of PL4Y3R" : "Tech billionaire Elon Musk"} arrested in alleged "${virus_name}" voting machine hacking scandal</b></p><p>In a dramatic raid early this morning, federal agents arrested ${e.difficulty_level_multiplier>0.97 ? "five alleged members of PL4Y3R, a gray-hat American hacktivist collective long known in cybersecurity circles for their leftist political views and exposure of corporate wrongdoing via high-profile breaches of corporate networks." : "Tech billionaire Elon Musk, CEO of Tesla, SpaceX, and xAI, known for his libertarian far-right political views."}</p><p>According to prosecutors, ${e.difficulty_level_multiplier>0.97 ? "PL4Y3R" : "Musk"} is alleged to have ${e.difficulty_level_multiplier>0.97 ? "created and disseminated" : "funded and organized the creation and dissemination of"} <i>${virus_name}</i>, a sophisticated voting machine virus that is alleged to have altered ${Math.abs(votes_swapped)}% of votes from ${e.difficulty_level_multiplier>0.97 ? "Republican to Democratic" : "Democratic to Republican"} candidates during municipal, state, and federal races between 2021 and 2024. "The ${virus_name} virus was designed to be invisible, fast, and devastating", prosecutors declared today at a press conference. "This is the most significant and blatant attack on American elections in history - and our evidence shows ${e.difficulty_level_multiplier>0.97 ? "PL4Y3R" : "Musk"} was clearly behind it."</p><p>Federal cybercrime units say they became alerted to the problem after a 2025 hand recount of paper ballots from the 2024 election showed a clear and persistent mismatch compared to electronical tallies. ${e.difficulty_level_multiplier>0.97 ? "According to prosecutors, PL4Y3R's complicity was only proven after a whistleblower from within the group provided documentation allegedly detailing the virus's development and funding." : "According to prosecutors, Musks's complicity was only proven after a whistleblower under his employment provided documentation allegedly detailing the virus's development and funding."}  Representatives of ${e.difficulty_level_multiplier>0.97 ? "PL4Y3R" : "Musk"} denied all charges, calling the allegations "complete fantasy", while supporters of ${e.difficulty_level_multiplier>0.97 ? "PL4Y3R" : "Musk"} protested outside the White House today, claiming that ${e.difficulty_level_multiplier>0.97 ? "the group" : "the billionaire"} was being scapegoated by the ${e.final_overall_results.find(p=>p.candidate==300).electoral_votes>269 && ticket_status>1 ? "Harris administration" : e.final_overall_results.find(p=>p.candidate==300).electoral_votes>269 ? "Sanders administration" : opponent_last_name+" administration"} to distract from its repudiation in last month's midterm elections.<br>Ending Slide <i>-1</i> of 51.`)
+				if (e.difficulty_level_multiplier<0.97) { 
+					e.executable.push([2, (() => {e.image = e.image = 'https://i.imgur.com/sd0F9Vz.jpeg'})])
+				}
+				else {
+					e.executable.push([2, (() => {e.image = e.image = 'https://i.imgur.com/3Jx3HpQ.jpeg'})])
+				}
+				
+			}
+			else if (israel_embargo==1 && e.final_overall_results.find(p=>p.candidate==300).electoral_votes>269) { //ceasefire in Gaza shortly after election 
 				e.pages.push(`<p><b>Netanyahu agrees to ceasefire - orders full withdrawal from Gaza</b></p><p>In a stunning reversal, Israeli Prime Minister Benjamin Netanyahu has announced a permanent ceasefire agreement with Hamas, including a full withdrawal of Israeli forces from the Gaza Strip and a prisoner exchange to secure the release of the remaining Israeli hostages. The dramatic shift comes less than a month after the historic ${ticket_status<2 ? "re-election of President Bernie Sanders" : "election of President-elect Kamala Harris"} on a platform including the continued halt of U.S. arms transfers to Israel - a halt that began in 2021 and has severely constrained Israeli military capabilities. Without access to American precision munitions, the IDF was forced to rely heavily on indiscriminate artillery bombardment, a tactic that proved both diplomatically costly and logistically unsustainable. Military analysts say that a growing shortage of artillery shells and a growing manpower crisis made the war increasingly untenable.</p><p>Sources close to the Israeli cabinet who spoke on the condition of anonymity indicate that the prospect of conscripting ultra-Orthodox Jews - as ordered by the Israeli Supreme Court in June - constituted a breaking point. Only 5% of eligible Haredi draftees responded to conscription orders, and enforcing the draft risked collapsing Netanyahu's fragile coalition, which relies upon support from Haredi parties Shas and United Torah Judaism to maintain a majority in the Knesset. In Israeli politics, Itamar Ben-Gvir resigned from Netanyahu's cabinet in protest over the Gaza ceasefire deal. Meanwhile, senior Hamas official Khalil al-Hayya released a statement from Doha, Qatar declaring victory and honoring the "heroic martyrs of Gaza." According to al-Hayya, "the liberation of Gaza is only the beginning - Hamas will continue our struggle until the establishment of the Palestinian state on all Palestinian soil, from the river to the sea, with Jerusalem as its capital."</p><br>Ending Slide #30 `)
 				e.executable.push([2, (() => {e.image = e.image = 'https://i.imgur.com/B5dDufK.jpeg'})])
 			}
