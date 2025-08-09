@@ -14127,7 +14127,7 @@
 				"answer": 22001,
 				"candidate": 300,
 				"affected_candidate": 300,
-				"global_multiplier": 0.015
+				"global_multiplier": 0.02
 			}
 		},
 		{
@@ -14137,7 +14137,7 @@
 				"answer": 22002,
 				"candidate": 300,
 				"affected_candidate": 300,
-				"global_multiplier": 0.03
+				"global_multiplier": 0.04
 			}
 		},
 		{
@@ -15727,7 +15727,7 @@
 				"answer": 27301,
 				"candidate": 300,
 				"affected_candidate": 300,
-				"global_multiplier": 0.03
+				"global_multiplier": 0.04
 			}
 		},
 		{
@@ -15737,7 +15737,7 @@
 				"answer": 27302,
 				"candidate": 300,
 				"affected_candidate": 300,
-				"global_multiplier": 0.06
+				"global_multiplier": 0.08
 			}
 		},
 		{
@@ -55168,6 +55168,9 @@
 				else if (opponent==17) {
 					ctsAchievement("Cotton Not Picked")
 				}
+				if (e.difficulty_level_id==9) { //I could check also for the multiplier to make sure that you did this properly, but honestly if someone wants to cheat the difficulty, go ahead.
+					ctsAchievement("The Revolution is Unstoppable")
+				}
 			}
 			if (ticket_status==1) {
 				ending=`<p>You sit in the White House, jaw clenched, eyes fixated on the map as it bleeds red, redder than you'd feared. Every moment feels like a punch to the gut - slippage in state after state. And then the red tide crests short of disaster, the wall cracks and light pours through. It's close, closer than you expected, closer than it should be, but the dam breaks as key states, one after the other, are called for you. You hear the room erupt, Jane's hand in yours, your campaign staff crying with joy and embracing. It's enough. The people came through. Working people. Young people. Communities too long ignored who yet dared to believe. <i>We did it. We won</i>, you declare to the cheers of your staffers, and it feels like justice has bent toward the people.</p>`
@@ -60741,6 +60744,7 @@
 				party_unity+=2
 				worker_approval+=1
 				progressive_anger=-1
+				r_radical*=0.95 //Harris/Walz appears less radical to Rs than Bernie/Kamala
 				if (centrist_boost>0) {
 					applyMinorBoost(305,-0.05*centrist_boost) //centrist votes start going home.
 				}
@@ -60775,6 +60779,7 @@
 			}
 			bernie_effect+=1 
 			applyBernieEffect(1)
+			r_radical*=0.95 //Harris/Walz appears less radical to Rs than Bernie/Kamala
 		}
 		else if (ans==38603) {
 			applyVP(3)
@@ -60796,6 +60801,7 @@
 				bernie_effect-=change_value
 				applyBernieEffect(-change_value)
 			}
+			r_radical*=0.8 //it's hard to radicalize people against Beshear; he's generally inoffensive.
 		}
 		else if (ans==38604) {
 			applyVP(4)
@@ -60818,6 +60824,7 @@
 				bernie_effect-=change_value
 				applyBernieEffect(-change_value)
 			}
+			r_radical*=0.85 //harder to radicalize the right against Shapiro.
 		}
 		else if (ans ==39001 || ans==39101 || ans==39201 || ans==39301 || ans==39401 || ans==39501) {
 			party_social_progressive+=1
@@ -61188,9 +61195,11 @@
 			}
 			if (ans==42902) {
 				fadeSalience(114,0.5) //makes the nation care less about inflation... 50% less to be precise.
+				r_radical-=1 //Kamala is clearly repudiating Bernie and Rs are less worried that inflation is some leftist conspiracy
 			}
 			if (ans==42903) {
 				latino_approval-=1
+				r_radical-=1 //Kamala is clearly repudiating Bernie and Rs are less worried about Great Replacement being the leftist program
 			}
 			if (ans==42904) { //gives Kamala the ability to partly recoup losses from unpopular Bernie foreign policy decisions that could have happened. Only recoups losses from unpopular progressive decisions - losses from unpopular establishment-esque decision (e.g. stay in Afghanistan) are not recouped.
 				if (e.player_answers.includes(7002)) { //let in Afghan refugees
@@ -61209,13 +61218,14 @@
 					}
 					applyMinorBoost(303,0.0025+0.05*green_boost) //D votes go to Greens 
 				}
-				if (e.player_answers.includes(14004)) { //chose not to intervene in Ukraine
+				if (e.player_answers.includes(23203) || e.player_answers.includes(23204)) { //chose not to intervene in Taiwan
 					applyMultiplier(300,0.015)
 					progressive_anger+=1
 					if (centrist_boost>0) {
 						applyMinorBoost(305,-0.05*centrist_boost) //centrist votes start going home.
 					}
 					applyMinorBoost(303,0.0025+0.05*green_boost) //D votes go to Greens 
+					r_radical-=1 //Kamala is clearly repudiating Bernie's program of surrendering to the PRC
 				}
 				if (e.player_answers.includes(24201) || e.player_answers.includes(24202) || e.player_answers.includes(24203) || e.player_answers.includes(24204)) { //Received bad Ukraine variant in which they're split in half
 					applyMultiplier(300,0.015) //recoup most of the penalty
@@ -61286,6 +61296,9 @@
 				applyMinorBoost(305,-0.1*centrist_boost) //centrist votes start going home.
 			}
 			applyMinorBoost(303,0.0025+0.05*green_boost) //D votes go to Greens 
+			if (immigration_level>=2) {
+				r_radical-=1 //from R perspective, Kamala is repudiating Great Replacement
+			}
 		}
 		
 		
