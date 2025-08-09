@@ -25834,19 +25834,22 @@ const nominees = {
       name: 'William G. McAdoo',
       imgURL: 'https://itsastronomical.com/assets/1924/opp/mcadoo.png',
       isActive: true,
-      bioText: '<h5>Former United States Secretary of the Treasury</h5><center><img src="https://itsastronomical.com/assets/1924/opp/mcadoo.png" style="width: 75px; height: 75px; display: block; margin: 0px; cursor: pointer; border: 3px solid white; border-radius: 1px; object-fit: cover;"></center><p>A staunch Wilsonian and prohibitionist, McAdoo is a favorite of Southern Democrats and progressives alike. However, McAdoo has a variety of struggles relating to a retainer he took from Edward Doheny in 1921.</p><p>In that case, it is unlikely he will be able to secure the nomination barring a rapid change in the political climate. With the 2/3rds rule at the Democratic National Convention, he may very well be requires to make moves that would unify the party for a chance at the White House.</p><p>The best bet in order to defeat him in the event of his nomination would be to find ways to break apart any Democratic Unity.</p>'
+      bioText: '<h5>Former United States Secretary of the Treasury</h5><center><img src="https://itsastronomical.com/assets/1924/opp/mcadoo.png" style="width: 75px; height: 75px; display: block; margin: 0px; cursor: pointer; border: 3px solid white; border-radius: 1px; object-fit: cover;"></center><p>A staunch Wilsonian and prohibitionist, McAdoo is a favorite of Southern Democrats and progressives alike. However, McAdoo has a variety of struggles relating to a retainer he took from Edward Doheny in 1921.</p><p>In that case, it is unlikely he will be able to secure the nomination barring a rapid change in the political climate. With the 2/3rds rule at the Democratic National Convention, he may very well be requires to make moves that would unify the party for a chance at the White House.</p><p>The best bet in order to defeat him in the event of his nomination would be to find ways to break apart any Democratic Unity.</p>',
+      allied: 4
     },
     underwood: {
       name: 'Oscar Underwood',
       imgURL: 'https://itsastronomical.com/assets/1924/opp/underwood.png',
       isActive: true,
-      bioText: '<h5>United States Senator from Alabama</h5><center><img src="https://itsastronomical.com/assets/1924/opp/underwood.png" style="width: 75px; height: 75px; display: block; margin: 0px; cursor: pointer; border: 3px solid white; border-radius: 1px; object-fit: cover;"></center> <p>As one of the few anti-Klan candidates from the south, Underwood represents an almost bizarre and paradoxical faction of the Democratic Party. As House Majority Leader in the early 1910s, Underwood was crucial in the passage of tariff reduction and the income tax.</p><p>His nomination is quite unlikely. For starters, there would have to be significant movement of pro-Klan forces away from the Democratic Party, one way or another. Additionally, the Republican Party must not be in the best of shape if the Democratic Party is willing to agree to such a compromise candidate.</p><p>The best bet in order to defeat him in the event of his nomination would be to hammer him on his anti-Prohibition stances, which are out of touch with his coalition.</p>'
+      bioText: '<h5>United States Senator from Alabama</h5><center><img src="https://itsastronomical.com/assets/1924/opp/underwood.png" style="width: 75px; height: 75px; display: block; margin: 0px; cursor: pointer; border: 3px solid white; border-radius: 1px; object-fit: cover;"></center> <p>As one of the few anti-Klan candidates from the south, Underwood represents an almost bizarre and paradoxical faction of the Democratic Party. As House Majority Leader in the early 1910s, Underwood was crucial in the passage of tariff reduction and the income tax.</p><p>His nomination is quite unlikely. For starters, there would have to be significant movement of pro-Klan forces away from the Democratic Party, one way or another. Additionally, the Republican Party must not be in the best of shape if the Democratic Party is willing to agree to such a compromise candidate.</p><p>The best bet in order to defeat him in the event of his nomination would be to hammer him on his anti-Prohibition stances, which are out of touch with his coalition.</p>',
+      allied: 0
     },
     smith: {
       name: 'Al Smith',
       imgURL: 'https://itsastronomical.com/assets/1924/opp/smith.png',
       isActive: true,
-      bioText: '<h5>Governor of New York</h5><center><img src="https://itsastronomical.com/assets/1924/opp/smith.png" style="width: 75px; height: 75px; display: block; margin: 0px; cursor: pointer; border: 3px solid white; border-radius: 1px; object-fit: cover;"></center> <p>Governor Smith of New York seems to represent the natural outcome of ethnic support sweltering up in the Democratic Party. Unlike much of the west and south, he is strongly anti-Klan, anti-Prohibition, and pro-Immigration.</p><p>His nomination is quite unlikely. The simple fact of the matter is that the 2/3rds rule would almost gurantee he is not nominated - tragedy for him, the northeast alone cannot carry him the nomination. There would have to be some kind of unprecedented movement of pro-Klan forces away from the Democratic Party</p><p>In the event of his nomination, victory would be almost assured. Our estimations suggest you could win parts of the south if the Democratic Party chooses to nominate Governor Smith.</p>'
+      bioText: '<h5>Governor of New York</h5><center><img src="https://itsastronomical.com/assets/1924/opp/smith.png" style="width: 75px; height: 75px; display: block; margin: 0px; cursor: pointer; border: 3px solid white; border-radius: 1px; object-fit: cover;"></center> <p>Governor Smith of New York seems to represent the natural outcome of ethnic support sweltering up in the Democratic Party. Unlike much of the west and south, he is strongly anti-Klan, anti-Prohibition, and pro-Immigration.</p><p>His nomination is quite unlikely. The simple fact of the matter is that the 2/3rds rule would almost gurantee he is not nominated - tragedy for him, the northeast alone cannot carry him the nomination. There would have to be some kind of unprecedented movement of pro-Klan forces away from the Democratic Party</p><p>In the event of his nomination, victory would be almost assured. Our estimations suggest you could win parts of the south if the Democratic Party chooses to nominate Governor Smith.</p>',
+      allied: 3
     },
     marshall: {
       name: 'Thomas R. Marshall',
@@ -26273,12 +26276,14 @@ for (const [id, nominee] of Object.entries(nominees)) {
     box.style.display = 'block';
     box.style.margin = '0';
     box.style.cursor = 'pointer';
-    box.style.border = '3px solid white';
+    const color = nominee.allied >= 4 ? '#479a23' : nominee.allied == 3 ? '#f1c232' : nominee.allied == 2 ? '#d57714' : nominee.allied == 1 ? '#cc0000' : nominee.allied == 0 ? '#710404' : '#cc0000';
+    box.style.border = `3px solid ${color}`;
     box.style.borderRadius = '2px';
     box.title = nominee.name;
     box.style.objectFit = 'cover';
     box.onclick = () => {
-      bioViewer.innerHTML = `<h3>${nominee.name}</h3>${nominee.bioText}`;
+      const statement = nominee.allied >= 4 ? 'This party is happily allied to the Popular Front.' : nominee.allied == 3 ? 'This party is begrudgingly in the Popular Front.' : nominee.allied == 2 ? 'This party is in negotiations with the Popular Front.' : nominee.allied == 1 ? 'This party is not a member of the Popular Front.' : nominee.allied == 0 ? 'This party is alienated from the Popular Front.' : `This party is out for the Popular Front's blood.`;
+      bioViewer.innerHTML = `<h3>${nominee.name}</h3><h2 style='color:${color}'>${statement}</h2>${nominee.bioText}`;
     };
   
     nomineeGrid.appendChild(box);
