@@ -14127,7 +14127,7 @@
 				"answer": 22001,
 				"candidate": 300,
 				"affected_candidate": 300,
-				"global_multiplier": 0.005
+				"global_multiplier": 0.02
 			}
 		},
 		{
@@ -14137,7 +14137,7 @@
 				"answer": 22002,
 				"candidate": 300,
 				"affected_candidate": 300,
-				"global_multiplier": 0.01
+				"global_multiplier": 0.04
 			}
 		},
 		{
@@ -15727,7 +15727,7 @@
 				"answer": 27301,
 				"candidate": 300,
 				"affected_candidate": 300,
-				"global_multiplier": 0.01
+				"global_multiplier": 0.04
 			}
 		},
 		{
@@ -15737,7 +15737,7 @@
 				"answer": 27302,
 				"candidate": 300,
 				"affected_candidate": 300,
-				"global_multiplier": 0.02
+				"global_multiplier": 0.08
 			}
 		},
 		{
@@ -53768,6 +53768,41 @@
 	endingPicker = (out, totv, aa, quickstats) => { //I already have 50 ending slides, so not going to bother with impossible ending slides for Green, Centrist, RFK win.
 		if (!election_night_check && NuclearWar==0) {
 			election_night_check=true
+			//due to the existing hardcoded setup, there is no way to my knowledge to properly do EVs by Congressional districts without 1) having a small arbitrary number of votes there, 2) double-counting the state vote giving weird nationwide popular vote numbers, 3) retroactively rewriting the vote counts of the state after election night, which runs into the issue of potentially having the state flip from election night values, 4) retroactively rewriting the vote counts of the congressional district after election night, which makes it more obvious that the vote counts just don't add up because there's currently no way in TCT to have three constituencies in which the third is comprised of the first too (and as long as you have any issue score effects, there's no way to ensure that the state and congressional districts are perfectly in sync. due to the non-linear mechanics of that.) 
+			//to my knowledge, every single mod that does split congressional districts does 1). Due to repeated player complaints about why this is an urgent problem and bug specifically for OR that must be immediately fixed, I am doing 4) instead.
+			
+			//ME has two congressional districts - ME-01 or ME-02. This is easily solved via linear algebra.
+			candidates=[300,301,302,303,305]
+			
+			if (ending_2020) {
+				me1_turnout=443112
+				me2_turnout=376349
+				ne1_turnout=321886
+				ne2_turnout=339666
+				ne3_turnout=294831
+			}
+			else {
+				me1_turnout=433709+3803*bernie_effect
+				me2_turnout=397666+300*bernie_effect
+				ne1_turnout=320194+2249*bernie_effect
+				ne2_turnout=318646+4297*bernie_effect
+				ne3_turnout=313342+54*bernie_effect
+			}
+			for (let state_id=51; state_id<56; state_id++) {
+				district_turnout= (
+					state_id==51 ? me1_turnout :
+					state_id==52 ? me2_turnout :
+					state_id==53 ? ne1_turnout :
+					state_id==54 ? ne2_turnout :
+					state_id==55 ? ne3_turnout :
+					999
+				)
+				for (let candidate_num=0; candidate_num<5; candidate_num++) {
+					e.final_state_results[state_id].result[candidate_num].votes=Math.floor(district_turnout*e.final_state_results[state_id].result[candidate_num].percent)
+				}
+			}
+			
+			
 			if (quickstats[0]>269) {
 				election_night_win=true
 				if ((e.final_overall_results.find(p=>p.candidate==300).popular_votes -e.final_overall_results.find(p=>p.candidate==301).popular_votes)/168680000>0.1) {
@@ -55133,6 +55168,9 @@
 				else if (opponent==17) {
 					ctsAchievement("Cotton Not Picked")
 				}
+				if (e.difficulty_level_id==9) { //I could check also for the multiplier to make sure that you did this properly, but honestly if someone wants to cheat the difficulty, go ahead.
+					ctsAchievement("The Revolution is Unstoppable")
+				}
 			}
 			if (ticket_status==1) {
 				ending=`<p>You sit in the White House, jaw clenched, eyes fixated on the map as it bleeds red, redder than you'd feared. Every moment feels like a punch to the gut - slippage in state after state. And then the red tide crests short of disaster, the wall cracks and light pours through. It's close, closer than you expected, closer than it should be, but the dam breaks as key states, one after the other, are called for you. You hear the room erupt, Jane's hand in yours, your campaign staff crying with joy and embracing. It's enough. The people came through. Working people. Young people. Communities too long ignored who yet dared to believe. <i>We did it. We won</i>, you declare to the cheers of your staffers, and it feels like justice has bent toward the people.</p>`
@@ -55673,7 +55711,42 @@
 		}
 		
 		if (NuclearWar==0 && !stop_the_steal && !biden_ending && !ending_2020 )  {
-			if (israel_embargo==1 && e.final_overall_results.find(p=>p.candidate==300).electoral_votes>269) { //ceasefire in Gaza shortly after election 
+			if ((e.difficulty_level_multiplier<0.97 && e.final_overall_results.find(p=>p.candidate==300).electoral_votes>269) || (e.difficulty_level_multiplier>0.97 && e.final_overall_results.find(p=>p.candidate==300).electoral_votes<269) ) { //difficulty multiplier not on Normal, and won on harder difficulty or lost on easier difficulty.
+				votes_swapped=Math.round((1-e.difficulty_level_multiplier/0.97)/2*100,2)
+				if (e.difficulty_level_multiplier==1.2 && e.difficulty_level_id==1) {
+					virus_name="Cakewalk"
+				}
+				else if (e.difficulty_level_multiplier==1.1 && e.difficulty_level_id==2) {
+					virus_name="Very Easy"
+				}
+				else if (e.difficulty_level_multiplier==0.95 && e.difficulty_level_id==6) {
+					virus_name="Impossible"
+				}
+				else if (e.difficulty_level_multiplier==0.9 && e.difficulty_level_id==7) {
+					virus_name="Unthinkable"
+				}
+				else if (e.difficulty_level_multiplier==0.83 && e.difficulty_level_id==8) {
+					virus_name="Blowout"
+				}
+				else if (e.difficulty_level_multiplier==0.75 && e.difficulty_level_id==9) {
+					virus_name="Disaster"
+				}
+				else if (campaignTrail_temp.CTS){
+					virus_name="Console" //cheat menu console doesn't adjust difficulty multiplier, just adds multipliers. So this refers to the player opening the developer console.
+				}
+				else { //assume NCT
+					virus_name="Bigshot"
+				}
+				e.pages.push(`<p><b>${e.difficulty_level_multiplier>0.97 ? "Members of PL4Y3R" : "Tech billionaire Elon Musk"} arrested in alleged "${virus_name}" voting machine hacking scandal</b></p><p>In a dramatic raid early this morning, federal agents arrested ${e.difficulty_level_multiplier>0.97 ? "five alleged members of PL4Y3R, a gray-hat American hacktivist collective long known in cybersecurity circles for their leftist political views and exposure of corporate wrongdoing via high-profile breaches of corporate networks." : "tech billionaire Elon Musk, CEO of Tesla, SpaceX, and xAI, known for his libertarian far-right political views."}</p><p>According to prosecutors, ${e.difficulty_level_multiplier>0.97 ? "PL4Y3R" : "Musk"} is alleged to have ${e.difficulty_level_multiplier>0.97 ? "created and disseminated" : "funded and organized the creation and dissemination of"} <i>${virus_name}</i>, a sophisticated voting machine virus that is alleged to have altered ${Math.abs(votes_swapped)}% of votes from ${e.difficulty_level_multiplier>0.97 ? "Republican to Democratic" : "Democratic to Republican"} candidates during municipal, state, and federal races between 2021 and 2024. "The ${virus_name} virus was designed to be invisible, fast, and devastating", prosecutors declared today at a press conference. "This is the most significant and blatant attack on American elections in history - and our evidence shows ${e.difficulty_level_multiplier>0.97 ? "PL4Y3R" : "Musk"} was clearly behind it."</p><p>Federal cybercrime units say they became alerted to the problem after a 2025 hand recount of paper ballots from the 2024 election showed a clear and persistent mismatch compared to electronical tallies. ${e.difficulty_level_multiplier>0.97 ? "According to prosecutors, PL4Y3R's complicity was only proven after a whistleblower from within the group provided documentation allegedly detailing the virus's development and funding." : "According to prosecutors, Musks's complicity was only proven after a whistleblower under his employment provided documentation allegedly detailing the virus's development and funding."}  Representatives of ${e.difficulty_level_multiplier>0.97 ? "PL4Y3R" : "Musk"} denied all charges, calling the allegations "complete fantasy", while supporters of ${e.difficulty_level_multiplier>0.97 ? "PL4Y3R" : "Musk"} protested outside the White House today, claiming that ${e.difficulty_level_multiplier>0.97 ? "the group" : "the billionaire"} was being scapegoated by the ${e.final_overall_results.find(p=>p.candidate==300).electoral_votes>269 && ticket_status>1 ? "Harris administration" : e.final_overall_results.find(p=>p.candidate==300).electoral_votes>269 ? "Sanders administration" : opponent_last_name+" administration"} to distract from its repudiation in last month's midterm elections.<br>Ending Slide <i>-1</i> of 51.`)
+				if (e.difficulty_level_multiplier<0.97) { 
+					e.executable.push([2, (() => {e.image = e.image = 'https://i.imgur.com/sd0F9Vz.jpeg'})])
+				}
+				else {
+					e.executable.push([2, (() => {e.image = e.image = 'https://i.imgur.com/3Jx3HpQ.jpeg'})])
+				}
+				
+			}
+			else if (israel_embargo==1 && e.final_overall_results.find(p=>p.candidate==300).electoral_votes>269) { //ceasefire in Gaza shortly after election 
 				e.pages.push(`<p><b>Netanyahu agrees to ceasefire - orders full withdrawal from Gaza</b></p><p>In a stunning reversal, Israeli Prime Minister Benjamin Netanyahu has announced a permanent ceasefire agreement with Hamas, including a full withdrawal of Israeli forces from the Gaza Strip and a prisoner exchange to secure the release of the remaining Israeli hostages. The dramatic shift comes less than a month after the historic ${ticket_status<2 ? "re-election of President Bernie Sanders" : "election of President-elect Kamala Harris"} on a platform including the continued halt of U.S. arms transfers to Israel - a halt that began in 2021 and has severely constrained Israeli military capabilities. Without access to American precision munitions, the IDF was forced to rely heavily on indiscriminate artillery bombardment, a tactic that proved both diplomatically costly and logistically unsustainable. Military analysts say that a growing shortage of artillery shells and a growing manpower crisis made the war increasingly untenable.</p><p>Sources close to the Israeli cabinet who spoke on the condition of anonymity indicate that the prospect of conscripting ultra-Orthodox Jews - as ordered by the Israeli Supreme Court in June - constituted a breaking point. Only 5% of eligible Haredi draftees responded to conscription orders, and enforcing the draft risked collapsing Netanyahu's fragile coalition, which relies upon support from Haredi parties Shas and United Torah Judaism to maintain a majority in the Knesset. In Israeli politics, Itamar Ben-Gvir resigned from Netanyahu's cabinet in protest over the Gaza ceasefire deal. Meanwhile, senior Hamas official Khalil al-Hayya released a statement from Doha, Qatar declaring victory and honoring the "heroic martyrs of Gaza." According to al-Hayya, "the liberation of Gaza is only the beginning - Hamas will continue our struggle until the establishment of the Palestinian state on all Palestinian soil, from the river to the sea, with Jerusalem as its capital."</p><br>Ending Slide #30 `)
 				e.executable.push([2, (() => {e.image = e.image = 'https://i.imgur.com/B5dDufK.jpeg'})])
 			}
@@ -60706,6 +60779,7 @@
 				party_unity+=2
 				worker_approval+=1
 				progressive_anger=-1
+				r_radical*=0.95 //Harris/Walz appears less radical to Rs than Bernie/Kamala
 				if (centrist_boost>0) {
 					applyMinorBoost(305,-0.05*centrist_boost) //centrist votes start going home.
 				}
@@ -60740,6 +60814,7 @@
 			}
 			bernie_effect+=1 
 			applyBernieEffect(1)
+			r_radical*=0.95 //Harris/Walz appears less radical to Rs than Bernie/Kamala
 		}
 		else if (ans==38603) {
 			applyVP(3)
@@ -60761,6 +60836,7 @@
 				bernie_effect-=change_value
 				applyBernieEffect(-change_value)
 			}
+			r_radical*=0.8 //it's hard to radicalize people against Beshear; he's generally inoffensive.
 		}
 		else if (ans==38604) {
 			applyVP(4)
@@ -60783,6 +60859,7 @@
 				bernie_effect-=change_value
 				applyBernieEffect(-change_value)
 			}
+			r_radical*=0.85 //harder to radicalize the right against Shapiro.
 		}
 		else if (ans ==39001 || ans==39101 || ans==39201 || ans==39301 || ans==39401 || ans==39501) {
 			party_social_progressive+=1
@@ -61153,9 +61230,11 @@
 			}
 			if (ans==42902) {
 				fadeSalience(114,0.5) //makes the nation care less about inflation... 50% less to be precise.
+				r_radical-=1 //Kamala is clearly repudiating Bernie and Rs are less worried that inflation is some leftist conspiracy
 			}
 			if (ans==42903) {
 				latino_approval-=1
+				r_radical-=1 //Kamala is clearly repudiating Bernie and Rs are less worried about Great Replacement being the leftist program
 			}
 			if (ans==42904) { //gives Kamala the ability to partly recoup losses from unpopular Bernie foreign policy decisions that could have happened. Only recoups losses from unpopular progressive decisions - losses from unpopular establishment-esque decision (e.g. stay in Afghanistan) are not recouped.
 				if (e.player_answers.includes(7002)) { //let in Afghan refugees
@@ -61174,13 +61253,14 @@
 					}
 					applyMinorBoost(303,0.0025+0.05*green_boost) //D votes go to Greens 
 				}
-				if (e.player_answers.includes(14004)) { //chose not to intervene in Ukraine
+				if (e.player_answers.includes(23203) || e.player_answers.includes(23204)) { //chose not to intervene in Taiwan
 					applyMultiplier(300,0.015)
 					progressive_anger+=1
 					if (centrist_boost>0) {
 						applyMinorBoost(305,-0.05*centrist_boost) //centrist votes start going home.
 					}
 					applyMinorBoost(303,0.0025+0.05*green_boost) //D votes go to Greens 
+					r_radical-=1 //Kamala is clearly repudiating Bernie's program of surrendering to the PRC
 				}
 				if (e.player_answers.includes(24201) || e.player_answers.includes(24202) || e.player_answers.includes(24203) || e.player_answers.includes(24204)) { //Received bad Ukraine variant in which they're split in half
 					applyMultiplier(300,0.015) //recoup most of the penalty
@@ -61251,6 +61331,9 @@
 				applyMinorBoost(305,-0.1*centrist_boost) //centrist votes start going home.
 			}
 			applyMinorBoost(303,0.0025+0.05*green_boost) //D votes go to Greens 
+			if (immigration_level>=2) {
+				r_radical-=1 //from R perspective, Kamala is repudiating Great Replacement
+			}
 		}
 		
 		
@@ -62997,6 +63080,11 @@
 			e.states_json.forEach((item) => {
 				item.fields.popular_votes=Math.round(item.fields.popular_votes*0.1)
 			});
+			e.states_json[51].fields.popular_votes=Math.round(e.states_json[18].fields.popular_votes/2) //rationalize Maine districts
+			e.states_json[52].fields.popular_votes=Math.round(e.states_json[18].fields.popular_votes/2) //rationalize Maine districts
+			e.states_json[53].fields.popular_votes=Math.round(e.states_json[26].fields.popular_votes/3) //rationalize Nebraska districts
+			e.states_json[54].fields.popular_votes=Math.round(e.states_json[26].fields.popular_votes/3) //rationalize Nebraska districts
+			e.states_json[55].fields.popular_votes=Math.round(e.states_json[26].fields.popular_votes/3) //rationalize Nebraska districts
 		}
 		
 		//Go to NUCLEAR WAR; do not pass go.
