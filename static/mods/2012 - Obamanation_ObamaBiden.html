@@ -13997,7 +13997,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 9406,
             "candidate": 77,
             "affected_candidate": 77,
-            "global_multiplier": 0.009
+            "global_multiplier": 0.003
         }
     },
     {
@@ -14007,7 +14007,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 9406,
             "candidate": 77,
             "affected_candidate": 78,
-            "global_multiplier": -0.008
+            "global_multiplier": -0.005
         }
     },
     {
@@ -14898,6 +14898,46 @@ campaignTrail_temp.answer_score_global_json = [
             "candidate": 77,
             "affected_candidate": 77,
             "global_multiplier": -0.009
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 12316,
+        "fields": {
+            "answer": 9131,
+            "candidate": 77,
+            "affected_candidate": 77,
+            "global_multiplier": -0.004
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 12317,
+        "fields": {
+            "answer": 9132,
+            "candidate": 77,
+            "affected_candidate": 77,
+            "global_multiplier": -0.004
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 12318,
+        "fields": {
+            "answer": 9133,
+            "candidate": 77,
+            "affected_candidate": 77,
+            "global_multiplier": -0.004
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 12319,
+        "fields": {
+            "answer": 9134,
+            "candidate": 77,
+            "affected_candidate": 77,
+            "global_multiplier": -0.004
         }
     }
 ]
@@ -36292,6 +36332,12 @@ const ads = [
                 menuItemsA.push(SantorumFake);
             }
 		}
+        else if (e.noCounter == 26 && Cred < 2){
+		    index = menuItemsA.findIndex(item => item.id === 'SCHWARZENEGGER_A');
+            if (index == -1) {
+                menuItemsA.push(SchwarzeneggerFake);
+            }
+		}
 		if((e.noCounter <= 21 && e.noCounter >= 16 && Cred < 1) || (e.noCounter <= 28 && e.noCounter >= 22 && Cred < 3)){
             let index = menuItemsA.findIndex(item => item.id === 'ROMNEY_A');
             if (index !== -1) {
@@ -36607,6 +36653,10 @@ const ads = [
             if (index !== -1) {
                 menuItemsA.splice(index, 1);
             }
+            index = menuItemsA.findIndex(item => item.id === 'SCHWARZENEGGER_A');
+            if (index !== -1) {
+                menuItemsA.splice(index, 1);
+            }
 			
             index = menuItemsA.findIndex(item => item.id === 'CHENEY_A');
             if(Rep == 6){
@@ -36731,8 +36781,8 @@ let BachmannCand = { photo: 'https://imgur.com/NWD5Got.png', name: 'Michele Bach
 let TrumpCand = { photo: 'https://imgur.com/rnjfBX6.png', name: 'Donald Trump', text: 'The media-estate mogul has flirted with a presidential run many times before, but always backed down from it. However, this time, with your failure to save the working class, it seems a wave of populism may carry Trump to the nomination.', button: 'Defer', id: 'TRUMP_A'}
 let PaulCand = { photo: 'https://imgur.com/Ku6HQf0.png', name: 'Ron Paul', text: 'With your administration\'s aggressive neoliberal and globalist rhetoric, Ron Paul has gained enormous momentum among Tea Party conservatives and online social media. If there\'s no one else to oppose you, Paul will surely get the nomination.', button: 'Defer', id: 'PAUL_B'}
 let PaulCan = { photo: 'https://imgur.com/Ku6HQf0.png', name: 'Ron Paul', text: 'With your administration\'s aggressive neoliberal and globalist rhetoric, Ron Paul has gained enormous momentum among Tea Party conservatives and online social media. If there\'s no one else to oppose you, Paul will surely get the nomination.', button: 'Defer', id: 'PAUL_C'}
-let McChrytalCand = { photo: 'https://imgur.com/oWWMhHL.png', name: 'Stanley McChrystal', text: 'Fuming from your decision to terminate him, Stanley McChrystal is looking to take revenge on you this November.', button: 'Defer', id: 'MCCHRYSTAL_A'}
-let BloombergCand = { photo: 'https://imgur.com/nxlFCha.png', name: 'Mike Bloomberg', text: 'Alarmed by your administration\'s radical anti-police agenda, Mayor Bloomberg offers himself up as a bipartisan voice who\'ll bring stability back to America like he brought to New York.', button: 'Defer', id: 'BLOOMBERG_A'}
+let McChrytalCand = { photo: 'https://imgur.com/oWWMhHL.png', name: 'Stanley McChrystal', text: 'Bush's former Iraq military governor, General Stanley McChrystal fumes after your decision to terminate him. Rumor is he may seek revenge on you this November.', button: 'Defer', id: 'MCCHRYSTAL_A'}
+let BloombergCand = { photo: 'https://imgur.com/nxlFCha.png', name: 'Michael Bloomberg', text: 'Alarmed by your administration\'s radical anti-police agenda, Mayor Bloomberg offers himself up as a bipartisan voice who\'ll bring stability back to America like he brought to New York.', button: 'Defer', id: 'BLOOMBERG_A'}
 let RiceCand = { photo: 'https://imgur.com/ZdVGNjU.png', name: 'Condoleezza Rice', text: 'The neoconservatives have returned following your administration\'s failure to intervene in the Middle East. If a rift were to form in the Democratic Party, they may just take advantage.', button: 'Defer', id: 'RICE_A'}
 
 let SandersPrim = { photo: 'https://imgur.com/xgmjud1.png', name: 'Bernie Sanders', text: 'With your progressive base despondent, Bernie Sanders has had his name floated as a potential primary challenger, fueled by the hope of pushing you further left on certain issues.', button: 'Defer', id: 'SANDERS_A'}
@@ -36743,12 +36793,13 @@ let HuntsmanFake = { photo: 'https://imgur.com/9p4BJvO.png', name: 'Jon Huntsman
 let CainFake = { photo: 'https://imgur.com/YZa9mc9.png', name: 'Herman Cain', text: 'The author of the \'9-9-9\' tax plan has been gaining momentum lately thanks to your overspending budget. But without money, support and other factors, it\'s clear he won\'t get the nomination directly.', button: 'Defer', id: 'CAIN_A'}
 let SantorumFake = { photo: 'https://imgur.com/7brK5IX.png', name: 'Rick Santorum', text: 'The conservative \'carousel\' turns to Rick Santorum as the latest fad. With such unstable support, it\'s unlikely he will reach the nomination.', button: 'Defer', id: 'SANTORUM_A'}
 let PerryFake = { photo: 'https://imgur.com/MsKWVvM.png', name: 'Rick Perry', text: 'The former Republican front-runner finds himself struggling for support after many gaffes and poor debate performances. It would take a miracle for him to even reach the Republican ticket.', button: 'Defer', id: 'PERRY_A'}
+let SchwarzeneggerFake = { photo: 'https://imgur.com/RSl1t1L.png', name: 'Arnold Schwarzenegger', text: 'Disgraced ex-\'Governator\' Arnold Schwarzenegger would surely be chomping at the bit to run if only he were born here. You\'d never have that issue.', button: 'Defer', id: 'SCHWARZENEGGER_A'}
 
 const menuItemsA = [
-    { photo: 'https://imgur.com/ThvCNpw.png', name: 'Jon Huntsman', text: 'Governor Huntsman, the popular moderate governor of Utah, poses one of the biggest threats to your re-election campaign. The sooner he is dealt with, the better.', button: 'Defer', id: 'HUNTSMAN_A'},
+    { photo: 'https://imgur.com/ThvCNpw.png', name: 'Jon Huntsman', text: 'A remarkably liberal mormon, the former Governor of Utah presents a unique threat - both in that he could become one of the biggest, yet also one of the easiest to take out. Attempting to sabotage him could further his resolve to win, however.', button: 'Defer', id: 'HUNTSMAN_A'},
     { photo: 'https://imgur.com/pLJzf7f.png', name: 'David Petraeus', text: 'The popular General Petraeus could be coaxed into staging a run against you if your administration grows unpopular at home and abroad.', button: 'Defer', id: 'PETRAEUS_A'},
     { photo: 'https://imgur.com/SDY67Tf.png', name: 'Mitt Romney', text: 'Despite a failed bid in 2008, Romney plans to run again. If your administration makes an enemy out of big business, Romney will certainly be the one to face you in November.', button: 'Defer', id: 'ROMNEY_A'},
-    { photo: 'https://imgur.com/V3FjFMn.png', name: 'Joe Arpaio', text: 'Arpaio is not running for the presidency, he\'s running for the fame, only hoping to inherit the nativist mantle Pat Buchanan once held. If a coalition is to unite behind him, the party must be in a sorry state.', button: 'Defer', id: 'ARPAIO_A'},
+    { photo: 'https://imgur.com/V3FjFMn.png', name: 'Joe Arpaio', text: 'Arpaio hopes to inherit the nativist mantle Pat Buchanan once held in his role as the chaotic and controversial sheriff of Tent City. Only a directionless and fearful GOP would ever see the likes of him nominated.', button: 'Defer', id: 'ARPAIO_A'},
     { photo: 'https://imgur.com/K4Nk7qU.png', name: 'Ron Paul', text: 'After a successful grassroots campaign in 2008, Ron Paul remains more popular than ever in the eyes of young conservatives. However, his dire reputation among the party elite ensures he\'ll never get the nomination.', button: 'Defer', id: 'PAUL_A'}
 ]
 
@@ -36982,7 +37033,7 @@ function openSurrogates() {
             const menuItem = document.createElement('div');
             menuItem.style.display = 'flex';
             menuItem.style.alignItems = 'flex-start';
-            if (item.id == "CAIN_A" || item.id == "PERRY_A" || item.id == "PAUL_A" || item.id == "HUNTSMAN_C" || item.id == "SANTORUM_A" || item.id == "SANDERS_A" || item.id == "BECK_A") { // fake candidate
+            if (item.id == "CAIN_A" || item.id == "PERRY_A" || item.id == "SCHWARZENEGGER_A" || item.id == "PAUL_A" || item.id == "HUNTSMAN_C" || item.id == "SANTORUM_A" || item.id == "SANDERS_A" || item.id == "BECK_A") { // fake candidate
                 menuItem.style.backgroundImage = 'url("https://imgur.com/wSoKPnk.png")';
             } else {
                 menuItem.style.backgroundImage = 'url("https://imgur.com/jCEes4C.png")';
@@ -37004,7 +37055,7 @@ function openSurrogates() {
 
             const name = document.createElement('p');
             name.style.fontSize = "15px"; 
-			if (item.id == "CAIN_A" || item.id == "PERRY_A" || item.id == "PAUL_A" || item.id == "HUNTSMAN_C" || item.id == "SANTORUM_A" || item.id == "SANDERS_A" || item.id == "SANDERS_B" || item.id == "BECK_A") { // fake candidate
+			if (item.id == "CAIN_A" || item.id == "PERRY_A" || item.id == "SCHWARZENEGGER_A" || item.id == "PAUL_A" || item.id == "HUNTSMAN_C" || item.id == "SANTORUM_A" || item.id == "SANDERS_A" || item.id == "SANDERS_B" || item.id == "BECK_A") { // fake candidate
                 name.style.color = "#15A600"; 
             } else {
                 name.style.color = "#0045AC"; 
@@ -37622,11 +37673,11 @@ changePlaylist(romneyWin);
            songChange = 1
            const trumpLose = new Playlist();
   const trumpLoseSong = new Song(
-    "Your Graduation",
-    "Modern Baseball",
-    "Alternative",
-    "https://i.imgur.com/i7XfIPi.jpeg",
-    "https://file.garden/ZqopcqhJuCvIIvBk/Your%20Graduation.mp3"
+    "FDT",
+    "YG (ft. Nipsey Hussle)",
+    "Rap",
+    "https://i.imgur.com/T8TaqDH.jpeg",
+    "https://file.garden/aGMtX3HRbS8W-RJ6/YG%20-%20FDT%20ft.%20Nipsey%20Hussle%20(Official%20Audio).mp3"
   );
 trumpLose.addSong(trumpLoseSong);
 changePlaylist(trumpLose);
@@ -37816,7 +37867,7 @@ e.executable.push([0, (() => {e.image = e.image = "https://i.imgur.com/ueE7QVf.p
 
 if (quickstats[0] == 538 && Rep == 6 && (Socdem == 1) && (Farrakhan == 0) && (e.player_answers.includes(9184)||e.player_answers.includes(9185)||e.player_answers.includes(9186)) && (e.player_answers.includes(9366)||e.player_answers.includes(9367)||e.player_answers.includes(9368)||e.player_answers.includes(9369)))  { // 538 Loyal Win
 e.pages.push(`<h3>A Promised Land</h3>
-          <p>538.</p><p>538 electoral votes. 50 states. The District of Columbia. All blue.</p><p>Fireworks shot across the sky like bursts of lightning, cheers echoed throughout the streets of cities with blocks packed from building to building with celebratory parades. Parents lifted their children high above their shoulders to see the television screens broadcasting the victory of the first Black president. The first Black president, who like the first white man in the office that he occupied, won everything. It was more than a landslide, they were seeing history in the making. This was no mere man, this was a legend.</p><p>You only needed one word for them, the great men of history: Caesar. Napoleon. Washington. Gandhi. Obama.</p><p>This country, a racist country, built on the backs of men and women with the skin color of him, he held it in his fist. Puddy. He was a god now. They have paid recognition to the majesty he bestowed upon them, with his mere presence. He didn't need feats nor accomplishments that would define him or hog the limelight. He just existed. He was that great. He was Barack Hussein Obama and he had just become the first president in the history of the United States to truly win an election through unanimous consent. No meddling needed. Far beyond that of the votes of the white landed gentry. This was real. He had ascended and the country below him was enveloped beneath his feet, in the shadow of a giant.</p><p>Obama had his feet propped up on the Resolute Desk, ahead of him Biden and Clinton cowered at his immense legend. His word would be bond. They were only peasants in his godly presence. Obama was picking the lobster out from his teeth. Enjoying the celebration as he was justly owed on the way back from Chicago, sampling Michelin Guide-worthy meals, popping confetti and laughing it up with the respectable company of Rahm and Axelrod, the plane ride was enough to intoxicate the president in the atmosphere, but far be it for him to prove susceptible to the adoration of others. He only required that of his own. It was all he had left.</p><p>“I believe you two know why I've assembled the two of you today,” Obama started. “2016. Who I'd grant the, uh. Pleasure. The pleasure of becoming my successor in this office.”</p><p>If he had it his way, he'd serve another term. He could serve as president for life. There proved no need to delegate the duties of the office to others as he was forced to do, but really, he didn't mind. Sure. He would like to have some say in the governing, but this truly bored him. The governing. It was all too dirty. Rather than that, he was owed the title of king and the ability to rule by decree. It was only then he could see continuing to spare the prime of his life to the nation, more so than he already had. Rather than that, he didn't mind it a whole lot.</p><p>“Joseph,” Obama suddenly uttered. Biden rose to his feet. Obama gestured for him to sit. “Down. Joseph. Sit.” Biden slowly backed down and giddily sat himself down in his chair. Clinton looked like she would when they'll open her casket for viewing. “I've been, uh, honored, to have you by my side these past four years,” Obama tried not to corpse, “and truly, without you I doubt I'd have managed to get where I am today,” alright, he was pushing it now, let's wrap this up.</p><p>“I would love it if you could serve after me, and, um, uh, be my choice come 2016.”</p><p>Biden simply got up. Obama was partially shocked at the sudden burst of action the decrepit old man was managing, but was simply too enamored with himself to conjure that ability right now. He just blankly stared at him, every move of Biden's he kept thinking of only himself and his future, or of the crowds and mass gatherings of applause he'd receive, the awards and titles, the statues and the places and buildings that would be graced with the privilege of adorning his name. Where was he? Or, yes, Biden was coming around the desk towards him.</p><p>Biden got on his knees and began kissing Obama's shoes. “Thank you, sir,” he kissed the rubbery tips again, “thank you.” Obama reflexively lifted his arm and head. “That'll do, Joseph.” Biden once again kowtowed before arising and scurrying back to his chair. Clinton was a puddle. This was the end of her road, and she needed to reflect on that. Glancing wistfully at the the desk she held aspirations of chairing over, the only solace was the comfort she could try once more when she was 80.</p><p>“Oh, and Hillary,” Obama broke her masturbatory train of thought, “don't gather any ideas of going against me, now.” He laughed.</p><p>Clinton followed suit, croaking out a mild, forced chuckle. “Never, Mr. President.” She'd've preferred Obama telling her to go fuck herself over this charade of faux pleasantries. If she could go back in time, and alter this course of history, she would do it in an instant. Damn him. Damn him to hell.</p><p>Obama rose up as Biden continued kissing his feet. “Alright, Joseph, stop the groveling now, get up,” Obama picked him up from the back of his collar and stood him up. Biden adjusted himself and combed back his hairplugs to look more presentable. “Of course, Mr. President.” The two marched onward out of the office and into the hallowed halls of the White House. Blessed to have had within it the Obama family. Meanwhile, Clinton continued to stare onward, in the darkness of the night sky, which had begun to seep out from the Washington atmosphere and into the Oval Office, enveloping her whole.</p>`)
+          <p>538.</p><p>538 electoral votes. 50 states. The District of Columbia. All blue.</p><p>Fireworks shot across the sky like bursts of lightning, cheers echoed throughout the streets of cities with blocks packed from building to building with celebratory parades. Parents lifted their children high above their shoulders to see the television screens broadcasting the victory of the first Black president. The first Black president, who like the first white man in the office that he occupied, won everything. It was more than a landslide, they were seeing history in the making. This was no mere man, this was a legend.</p><p>You only needed one word for them, the great men of history: Caesar. Napoleon. Washington. Gandhi. Obama.</p><p>This country, a racist country, built on the backs of men and women with the skin color of him, he held it in his fist. Puddy. He was a god now. They have paid recognition to the majesty he bestowed upon them, with his mere presence. He didn't need feats nor accomplishments that would define him or hog the limelight. He just existed. He was that great. He was Barack Hussein Obama and he had just become the first president in the history of the United States to truly win an election through unanimous consent. No meddling needed. Far beyond that of the votes of the white landed gentry. This was real. He had ascended and the country below him was enveloped beneath his feet, in the shadow of a giant.</p><p>Obama had his feet propped up on the Resolute Desk, ahead of him Biden and Clinton cowered at his immense legend. His word would be bond. They were only peasants in his godly presence. Obama was picking the lobster out from his teeth. Enjoying the celebration as he was justly owed on the way back from Chicago, sampling Michelin Guide-worthy meals, popping confetti and laughing it up with the respectable company of Rahm and Axelrod, the plane ride was enough to intoxicate the president in the atmosphere, but far be it for him to prove susceptible to the adoration of others. He only required that of his own. It was all he had left.</p><p>“I believe you two know why I've assembled the two of you today,” Obama started. “2016. Who I'd grant the, uh. Pleasure. The pleasure of becoming my successor in this office.”</p><p>If he had it his way, he'd serve another term. He could serve as president for life. There proved no need to delegate the duties of the office to others as he was forced to do, but really, he didn't mind. Sure. He would like to have some say in the governing, but this truly bored him. The governing. It was all too dirty. Rather than that, he was owed the title of king and the ability to rule by decree. It was only then he could see continuing to spare the prime of his life to the nation, more so than he already had. Rather than that, he didn't mind it a whole lot.</p><p>“Joseph,” Obama suddenly uttered. Biden rose to his feet. Obama gestured for him to sit. “Down. Joseph. Sit.” Biden slowly backed down and giddily sat himself down in his chair. Clinton looked like she would when they'll open her casket for viewing. “I've been, uh, honored, to have you by my side these past four years,” Obama tried not to corpse, “and truly, without you I doubt I'd have managed to get where I am today,” alright, he was pushing it now, let's wrap this up.</p><p>“I would love it if you could serve after me, and, um, uh, be my choice come 2016.”</p><p>Biden simply got up. Obama was partially shocked at the sudden burst of action the decrepit old man was managing, but was simply too enamored with himself to conjure that ability right now. He just blankly stared at him, every move of Biden's he kept thinking of only himself and his future, or of the crowds and mass gatherings of applause he'd receive, the awards and titles, the statues and the places and buildings that would be graced with the privilege of adorning his name. Where was he? Or, yes, Biden was coming around the desk towards him.</p><p>Biden got on his knees and began kissing Obama's shoes. “Thank you, sir,” he kissed the rubbery tips again, “thank you.” Obama reflexively lifted his arm and head. “That'll do, Joseph.” Biden once again kowtowed before arising and scurrying back to his chair. Clinton was a puddle. This was the end of her road, and she needed to reflect on that. Glancing wistfully at the desk she held aspirations of chairing over, the only solace was the comfort she could try once more when she was 80.</p><p>“Oh, and Hillary,” Obama broke her masturbatory train of thought, “don't gather any ideas of going against me, now.” He laughed.</p><p>Clinton followed suit, croaking out a mild, forced chuckle. “Never, Mr. President.” She'd've preferred Obama telling her to go fuck herself over this charade of faux pleasantries. If she could go back in time, and alter this course of history, she would do it in an instant. Damn him. Damn him to hell.</p><p>Obama rose up as Biden continued kissing his feet. “Alright, Joseph, stop the groveling now, get up,” Obama picked him up from the back of his collar and stood him up. Biden adjusted himself and combed back his hairplugs to look more presentable. “Of course, Mr. President.” The two marched onward out of the office and into the hallowed halls of the White House. Blessed to have had within it the Obama family. Meanwhile, Clinton continued to stare onward, in the darkness of the night sky, which had begun to seep out from the Washington atmosphere and into the Oval Office, enveloping her whole.</p>`)
           // idk how to add playlists but to do that you create a new playlist in code1 with just that song and put changePlaylist(nameOfYourEndingPlaylist) right here
 //e.image = ""
 e.executable.push([0, (() => {e.image = e.image = "https://i.imgur.com/aVdf9kc.png"})])
