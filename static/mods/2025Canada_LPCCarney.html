@@ -1,7 +1,7 @@
 /*
  * Mod Title: 2025 Canada
  * Mod Author: rbaldwin
- * Mod Version: 1.0
+ * Mod Version: 1.0.1
  * Mod Description: Canadian Federal Election of 2025
  * 
  * Coding License: Apache License 2.0
