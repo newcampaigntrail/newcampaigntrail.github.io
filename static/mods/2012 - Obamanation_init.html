@@ -518,6 +518,12 @@ campaignTrail_temp.candidate_json = [
 	
 	
 	addDynamicCSS();
+
+	(function() {
+	  const hasPageScrollbar = document.documentElement.scrollHeight > document.documentElement.clientHeight;
+	  document.body.classList.toggle('has-scrollbar', hasPageScrollbar);
+	  }
+	)();
   
 	tooltipList = [
   {searchString: "Bush", explanationText: "<img src=https://i.imgur.com/U86BSCC.jpeg> Don't know what you got until it's gone."},
