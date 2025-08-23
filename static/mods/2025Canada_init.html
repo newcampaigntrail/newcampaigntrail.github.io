@@ -1,7 +1,7 @@
 /*
  * Mod Title: 2025 Canada
  * Mod Author: rbaldwin
- * Mod Version: 1.0.1
+ * Mod Version: 1.0.2
  * Mod Description: Canadian Federal Election of 2025
  * 
  * Coding License: Apache License 2.0
@@ -19,6 +19,16 @@
 document.getElementById("inner_window_1").children[0].innerHTML = `<h3>Do you have what it takes to win a Canadian parliamentary election?</h3>`
 
 document.getElementById("inner_window_1").children[1].innerHTML = `<li>Select a party and a leader to find out.</li><li>You will answer questions about your platform and positions, and also about your campaign strategy.</li><li>The answers will affect your popularity for better or worse, both nationally and in individual ridings.</li><li>Walk the fine line between appealing to your base and winning a majority of the votes.</li><li>Context details are included for <span class='mytooltip'>highlighted<span class='mytooltiptext'>This is a context detail.</span></span> text.</li>`;
+
+campaignTrail_temp.modBoxTheme = {
+     "header_color": "#d62718",
+     "header_text_color": "#ffffff",
+     "description_text_color": "#ffffff",
+     "description_background_color": "#d62718",
+     "main_color": "#fafafa",
+     "secondary_color": "#d62718",
+     "ui_text_color": "#ffffff" 
+}
 
 campaignTrail_temp.global_parameter_json = [
     {
@@ -53,7 +63,7 @@ campaignTrail_temp.election_json = [
             "year": 2025,
             "display_year": "2025Canada",
             "summary": "<p>As the 2025 election approaches, the situation appears dire for the Liberal Party of Canada. After 9 years of governance, Prime Minister Justin Trudeau's popularity has waned. Dissatisfaction with the economic condition of the country and Trudeau's scandals has left the Liberal Party polling at half the support of the rival Conservative Party, barely above the left-wing New Democratic Party. Pierre Poilievre, the Conservative leader, appears poised to become the next Prime Minister of Canada.</p><p>However, the winds are changing. Donald Trump's shock election win, combined with his trade policy, puts him on a collision course with the Canadian government. There are rumblings within the Liberal Party to push Trudeau out and seek out a new leader. Will Poilievre and the Conservatives cruise to victory? Or will the Liberals succeed in making a comeback for the ages?</p>",
-            "image_url": "https://i.imgur.com/QenEQDJ.jpeg",
+            "image_url": "https://i.imgur.com/qoub9JQ.jpeg",
             "winning_electoral_vote_number": 172,
             "advisor_url": "https://i.imgur.com/q9n37oj.jpeg",
             "recommended_reading": "",
@@ -101,7 +111,7 @@ campaignTrail_temp.candidate_json = [
             "color_hex": "#EA6D6A",
             "secondary_color_hex": null,
             "is_active": 1,
-            "image_url": "https://i.imgur.com/mtNuqWt.jpeg",
+            "image_url": "https://i.imgur.com/ly0e79f.jpeg",
             "electoral_victory_message": "",
             "electoral_loss_message": "",
             "no_electoral_majority_message": "",
@@ -144,7 +154,7 @@ campaignTrail_temp.candidate_json = [
             "color_hex": "#6495ED",
             "secondary_color_hex": null,
             "is_active": 1,
-            "image_url": "https://i.imgur.com/L8xdBOW.jpeg",
+            "image_url": "https://i.imgur.com/VnVwBEi.jpeg",
             "electoral_victory_message": "",
             "electoral_loss_message": "",
             "no_electoral_majority_message": "",
@@ -187,7 +197,7 @@ campaignTrail_temp.candidate_json = [
             "color_hex": "#F4A460",
             "secondary_color_hex": null,
             "is_active": 1,
-            "image_url": "https://i.imgur.com/lMpw2va.jpeg",
+            "image_url": "https://i.imgur.com/GjvuZxS.jpeg",
             "electoral_victory_message": "",
             "electoral_loss_message": "",
             "no_electoral_majority_message": "",
@@ -612,7 +622,8 @@ tooltipList = [
     { searchString: "right-to-work", "explanationText": "Bans agreements between unions and employers that compel new employees to join the union." },
     { searchString: "World Economic Forum", "explanationText": "An international advocacy organization founded by Klaus Schwab and funded by its members, including a thousand multinational corporations." },
     { searchString: "Century Initiative", "explanationText": "A Canadian lobby group aiming to make Canada a more prominent world power by increasing its population to 100 million by 2100." },
-    { searchString: "Premier Eby", "explanationText": "The BC NDP premier of British Columbia." }
+    { searchString: "Premier Eby", "explanationText": "The BC NDP premier of British Columbia." },
+    { searchString: "RCMP", "explanationText": "The Royal Canadian Mounted Police. The national Canadian police service which, contrary to its name, is no longer mounted." }
 ]
 
 document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
