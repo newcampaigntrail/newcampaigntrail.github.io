@@ -26,6 +26,7 @@ const startScreenUpdater = setInterval(function() {
 if(initialButton) { // reset theme at main menu
        
       c = document.getElementById("election_id").value;
+      console.log(c + "   " + storedChar);
 
       // Remove existing layout fix if any
       const existingFix = document.getElementById("descriptionLayoutFix");
@@ -71,6 +72,7 @@ styleFix.innerHTML = `
   document.head.appendChild(styleFix);
       }
       if(c == 20 && storedChar != 20) {
+        console.log("dan bryan")
 corrr = '\n              <h2>THE CAMPAIGN TRAIL</h2>\n            '; 
 document.getElementById("header").src = "https://www.newcampaigntrail.com/static/images/banner_classic.png";
 document.body.style.backgroundColor = "#bfe6ff";
@@ -119,6 +121,7 @@ $(".game_header")[0].style.height="65px";
   }
 if(candidateButton) { // checks for which candidate you have selected for the purposes of adding
       can = document.getElementById("candidate_id").value;
+      console.log(can + "   " + storedCan);
       if(can == 300 && storedCan != 300) {
         console.log("biden")
         setTimeout(() => {
@@ -167,7 +170,7 @@ window.setInterval(removeCandidateSummary,10)
 
 let z = new MutationObserver((mutationsList, observer) => {
     let runningMateSummary = document.querySelector("#running_mate_summary");
-    if (runningMateSummary) {
+    if (runningMateSummary && storedChar == 21) {
         styling = document.createElement("style");
         document.head.appendChild(styling);
         
@@ -182,7 +185,7 @@ let z = new MutationObserver((mutationsList, observer) => {
 });
 z.observe(document, { subtree: true, childList: true });
 
-document.getElementById("inner_window_1").children[1].innerHTML = `<p>Welcome to the 2024 Presidential Election, a mod for The Campaign Trail. This mod is split into two versions ― <b>2024</b>, and <b>2024: Divided States of America</b>.</p><img src="https://itsastronomical.com/assets/2024/2024introbanner.png" width="800"><li><b>2024</b> plays like your typical scenario, and is intended to emulate an "official" 2024 scenario, with Kamala Harris vs Donald Trump. Just like the original site, many questions are randomized (with an option to answer them all).</li><img src="https://itsastronomical.com/assets/2024/2024introbannerdsa.png" width="800"><li><b>2024: Divided States of America</b> takes the base of <b>2024</b> and uses it to add alternate history elements to allow for a less historical route, where you start as President Biden or Former President Donald Trump. This version also features less vanilla content, such as Choose Your Own Adventure, plenty of endings, and soundtracks for each side. To play <b>2024: Divided States of America</b>, you must select it on the election dropdown screen.</li><br><br>`;
+document.getElementById("inner_window_1").children[1].innerHTML = `<p>Welcome to the 2024 Presidential Election, a mod for The Campaign Trail. This mod is split into two versions ― <b>2024</b>, and <b>2024: Divided States of America</b>.</p><img src="https://itsastronomical.com/assets/2024/2024introbanner.png" width="800"><li><b>2024</b> plays like your typical scenario, and is intended to emulate an "official" 2024 scenario, with Kamala Harris vs Donald Trump. Just like the original site, many questions are randomized (with an option to answer them all).</li><img src="https://itsastronomical.com/assets/2024/2024introbannerdsa.png" width="800"><li><b>2024: Divided States of America</b> takes the base of <b>2024</b> and uses it to add alternate history elements to allow for a less historical route, where you start as President Biden or Former President Donald Trump. This version also features less vanilla content, such as Choose Your Own Adventure, plenty of endings, and soundtracks for each side. To play <b>2024: Divided States of America</b>, you must select it on the election dropdown screen.</li>`;
 document.styleSheets[0].insertRule(".inner_window_w_desc{ margin:1em 0 0 0.5em;padding-top: 0.5em;}", 0);
 document.styleSheets[0].insertRule(".inner_window_question{ margin:1em 0 .7em 0.5em !important;padding-top: 0.3em !important;}", 0);
 document.styleSheets[0].insertRule("#main_content_area { height:82% !important;}", 0);
@@ -513,6 +516,29 @@ campaignTrail_temp.candidate_json = [
             "secondary_color_hex": null,
             "is_active": 0,
             "image_url": "https://www.jetsimon.com/public/candidateexample.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 401,
+        "fields": {
+            "first_name": "",
+            "last_name": "Alternate Electors",
+            "election": 21,
+            "party": "Republican",
+            "state": "Multiple",
+            "priority": 1,
+            "description": "null",
+            "color_hex": "#9b336c",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://itsastronomical.com/assets/2024/guiltyaf.png",
             "electoral_victory_message": "This guy wins!",
             "electoral_loss_message": "This guy loses!",
             "no_electoral_majority_message": "We all win?",
@@ -1571,6 +1597,7 @@ campaignTrail_temp.opponents_default_json = [
         "candidates": [
             300,
             301,
+            // 401,
             302,
             303
         ]
@@ -1592,8 +1619,9 @@ campaignTrail_temp.opponents_weighted_json = [
         "candidates": [
             300,
             301,
-            303,
-            304
+            // 401,
+            302,
+            303
         ]
     },
     {
@@ -1953,9 +1981,12 @@ body {
 `
 
 campaignTrail_temp.bunnyhop = true;
+const windowCheck = localStorage.getItem('astroWindow');
+
 function addColor() {
     var difficultyDiv = document.getElementById("difficulty_level");
     if (storedChar != 21 && difficultyDiv && !document.getElementById("bunnyhopDropdown")) {
+            console.log("test")
               var questionCounter = ["25 (Randomized Questions)", "25 (Static Question Set)", "30 (Expanded)", "35 (Full)"];
               var questions = [25, 25, 30, 35];
               var dropdown = document.createElement("select");
@@ -2033,8 +2064,8 @@ function addColor() {
               }
   
     }
-
     if (storedCan == 301 && done == false && (localStorage.getItem("hasDiedWon")) && difficultyDiv && !document.getElementById("bunnyhopDropdown")) {
+              console.log("Butler Button")
               campaignTrail_temp.bunnyhop = false;
               done = true;
               var colourForm = document.createElement("form");
@@ -2055,6 +2086,51 @@ function addColor() {
                       clearInterval(removeCandidateSummaryInterval)
                   }else{          
                     campaignTrail_temp.helper = false;
+                    clearInterval(removeCandidateSummaryInterval)
+                  }
+              });
+  
+              var difficultyForm = document.querySelector('form[name="difficulty_level_selection"]');
+              var difficultyHeader = difficultyForm.querySelector('h3');
+              difficultyHeader.textContent = "Select campaign difficulty:";
+  
+              var forms = document.querySelectorAll("#difficulty_level form");
+              for (var i = 0; i < forms.length; i++) {
+                forms[i].style.display = "inline-block";
+                forms[i].style.paddingLeft = "10px"; // adjust the value as needed
+                forms[i].style.paddingRight = "10px"; // adjust the value as needed
+              }
+  
+    }
+    if ((storedCan == 301 || storedCan == 300) && done2 == false && difficultyDiv) {
+              console.log("HQ button")
+              campaignTrail_temp.bunnyhop = false;
+              done2 = true;
+              var newForm = document.createElement("form");
+              newForm.name = "new_selection";
+              var newHeader = document.createElement("h3");
+              newHeader.textContent = "Enable Draggable Campaign HQ?";
+              newForm.appendChild(newHeader);
+              var newCheckbox = document.createElement("input");
+              newCheckbox.type = "checkbox";
+              newCheckbox.id = "new";
+              if (windowCheck == "true") {
+                newCheckbox.checked = true;
+              }
+              else {
+                newCheckbox.checked = false;
+              }
+              newForm.appendChild(newCheckbox);
+              difficultyDiv.appendChild(newForm);
+
+              newCheckbox.addEventListener("change", function() {
+                  if (this.checked){
+                      campaignTrail_temp.window = true;
+                      localStorage.setItem("astroWindow", "true")
+                      clearInterval(removeCandidateSummaryInterval)
+                  }else{          
+                    campaignTrail_temp.window = false;
+                    localStorage.setItem("astroWindow", "false")
                     clearInterval(removeCandidateSummaryInterval)
                   }
               });
