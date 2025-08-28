@@ -12572,7 +12572,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 300,
             "state": 1014,
-            "state_multiplier": 0.875
+            "state_multiplier": 0.975
         }
     },
     {
@@ -44215,6 +44215,8 @@ campaignTrail_temp.jet_data = [{
 }
 ]
 
+
+
 // Opponent Variable
 // This is so a lot of the mid-campaign questions about policy don't need to be regenerated like 10 times
 // {{opLast}} and {{opName}}
@@ -44567,6 +44569,7 @@ function varText() {
         loyaltyText = 'disloyal'
     }
 }
+
 cyoAdventure = function (a) {
 
 ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
@@ -45187,6 +45190,30 @@ if (campaignTrail_temp.question_number == 16 && gaza >= 1) {
 }
 else if (campaignTrail_temp.question_number == 16 && gaza < 1) {
   insertAt(menuItemsA, 7, steinCard);
+}
+
+if (campaignTrail_temp.question_number == 18) {
+ if (campaignTrail_temp.candidate_json[9]["fields"].last_name != "West/Others") {
+  removeById(menuItemsA, 'WEST_third');
+ }
+ if (campaignTrail_temp.candidate_json[9]["fields"].last_name != "Stein/Others") {
+  removeById(menuItemsA, 'STEIN_third');
+ }
+ if (campaignTrail_temp.candidate_json[8]["fields"].last_name != "Kennedy/Others") {
+  removeById(menuItemsA, 'RFK_third');
+ }
+ if (campaignTrail_temp.candidate_json[8]["fields"].last_name != "Christie") {
+  removeById(menuItemsA, 'CHRISTIE_third');
+ }
+ if (campaignTrail_temp.candidate_json[8]["fields"].last_name != "Cunningham/Others") {
+  removeById(menuItemsA, 'JOE_third');
+ }
+ if (campaignTrail_temp.candidate_json[8]["fields"].last_name != "Yang/Others") {
+  removeById(menuItemsA, 'YANG_third');
+ }
+ if (campaignTrail_temp.candidate_json[8]["fields"].last_name != "Oliver/Others") {
+  removeById(menuItemsA, 'OLIVER_third');
+ }
 }
 
 // Removing GOP Candidates from the HQ list
@@ -47278,6 +47305,7 @@ removeById(menuItemsA, 'BURGUM');
 removeById(menuItemsA, 'HALEY');
 removeById(menuItemsA, 'VANCE');
 
+removeById(menuItemsA, 'rfkthirdCard');
 insertAt(menuItemsA, 6, christieCard);
 
   campaignTrail_temp.questions_json[17] = {
@@ -47333,7 +47361,8 @@ removeById(menuItemsA, 'DESANTIS');
 removeById(menuItemsA, 'BURGUM');
 removeById(menuItemsA, 'VANCE');
 
-insertAt(menuItemsA, 6, rfkthirdCard);
+removeById(menuItemsA, 'rfkthirdCard');
+insertAt(menuItemsA, 6, rfkhaleyCard);
 
     campaignTrail_temp.questions_json[17] = {
       "model": "campaign_trail.question",
@@ -47382,7 +47411,7 @@ opName = 'JD Vance';
   campaignTrail_temp.candidate_json[8].fields.color_hex = '#7d8c03'
   campaignTrail_temp.candidate_json[9].fields.color_hex = '#038c0e'
 
-  removeById(menuItemsA, 'DESANTIS');
+removeById(menuItemsA, 'DESANTIS');
 removeById(menuItemsA, 'BURGUM');
 removeById(menuItemsA, 'HALEY');
 
@@ -49254,30 +49283,30 @@ e.executable.push([4, (() => {e.image = e.image = 'https://i.imgur.com/y4eg352.p
 }
 else if (running == false && campaignTrail_temp.candidate_json[2]["fields"].last_name == "Trump Jr." && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Harris") { // Trump Jr./Harris (Clean Exit)
   e.pages.push(`<h3>American History USA</h3>
-    <p><i><b>THE CAMPAIGN TRAIL</i></b><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2024</option></select><br><img width="210" src="https://itsastronomical.com/assets/2024/code1/harrisdonjr.png"><br></p><p>Biden's decision to forgo a re-election bid, and the arrest of former President Donald Trump has left both parties largely leaderless. The Republican National Convention has nominated Trump's namesake, Donald Trump Jr. to lead the party and the Presidential ticket.</p><p>meanwhile, Vice President Kamala Harris secured her party's nomination after clean sweep of the Democratic Primaries. Can she make the case to voters that the era of Trump is over? Can Trump Jr. keep the emotions high into election day?</p><br><button>Continue</button></p>`)
+    <p><i><b>THE CAMPAIGN TRAIL</i></b><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2024</option></select><br><img width="210" src="https://itsastronomical.com/assets/2024/code1/harrisdonjr.png"><br></p><p>Biden's decision to forgo a re-election bid, and the arrest of former President Donald Trump has left both parties largely leaderless. The Republican National Convention has nominated Trump's namesake, Donald Trump Jr. to lead the party and the Presidential ticket.</p><p>Meanwhile, Vice President Kamala Harris secured her party's nomination after clean sweep of the Democratic Primaries. Can she make the case to voters that the era of Trump is over? Can Trump Jr. keep the emotions high into election day?</p><br><button>Continue</button></p>`)
     e.executable.push([4, (() => {e.image = e.image = 'https://i.imgur.com/y4eg352.png'})])  
 }
 else if (running == false && campaignTrail_temp.candidate_json[2]["fields"].last_name == "Haley" && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Harris") { // Haley/Harris (Clean Exit)
   e.pages.push(`<h3>American History USA</h3>
-    <p><i><b>THE CAMPAIGN TRAIL</i></b><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2024</option></select><br><img width="210" src="https://itsastronomical.com/assets/2024/code1/harrishaley.png">	<br></p><p>Biden's decision to forgo a re-election bid, and the arrest of former President Donald Trump has left both parties largely leaderless. With a surprise blessing from the Trump family, runner-up Nikki Haley was able to secure the Republican nomination. She seeks to keep the Republican Party in a more traditional, Reagan-Bush direction.</p><p>meanwhile, Vice President Kamala Harris secured her party's nomination after clean sweep of the Democratic Primaries. Can she make the case to voters that Nikki Haley is not the kind of leadership needed? Can Nikki Haley keep Trump loyalists engaged enough to secure victory?</p><br><button>Continue</button></p>`)
+    <p><i><b>THE CAMPAIGN TRAIL</i></b><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2024</option></select><br><img width="210" src="https://itsastronomical.com/assets/2024/code1/harrishaley.png">	<br></p><p>Biden's decision to forgo a re-election bid, and the arrest of former President Donald Trump has left both parties largely leaderless. With a surprise blessing from the Trump family, runner-up Nikki Haley was able to secure the Republican nomination. She seeks to keep the Republican Party in a more traditional, Reagan-Bush direction.</p><p>Meanwhile, Vice President Kamala Harris secured her party's nomination after clean sweep of the Democratic Primaries. Can she make the case to voters that Nikki Haley is not the kind of leadership needed? Can Nikki Haley keep Trump loyalists engaged enough to secure victory?</p><br><button>Continue</button></p>`)
     e.executable.push([4, (() => {e.image = e.image = 'https://i.imgur.com/y4eg352.png'})])  
 }
 else if (running == false && campaignTrail_temp.candidate_json[2]["fields"].last_name == "DeSantis" && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Harris") { // DeSantis/Harris (Clean Exit)
   e.pages.push(`<h3>American History USA</h3>
-    <p><i><b>THE CAMPAIGN TRAIL</i></b><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2024</option></select><br><img width="210" src="https://itsastronomical.com/assets/2024/code1/harrisron.png">	<br></p><p>Biden's decision to forgo a re-election bid, and the arrest of former President Donald Trump has left both parties largely leaderless. In the chaos, Florida Governor Ron DeSantis was able to mend enough ties with Trump's family to secure the Republican nomination. He remains largely untested on a national stage.</p><p>meanwhile, Vice President Kamala Harris secured her party's nomination after clean sweep of the Democratic Primaries. Can she make the case to voters that America should be a lot less like Florida? Can Ron DeSantis convince Americans that the nation needs a culture warrior to put the nation back together?</p><br><button>Continue</button></p>`)
+    <p><i><b>THE CAMPAIGN TRAIL</i></b><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2024</option></select><br><img width="210" src="https://itsastronomical.com/assets/2024/code1/harrisron.png">	<br></p><p>Biden's decision to forgo a re-election bid, and the arrest of former President Donald Trump has left both parties largely leaderless. In the chaos, Florida Governor Ron DeSantis was able to mend enough ties with Trump's family to secure the Republican nomination. He remains largely untested on a national stage.</p><p>Meanwhile, Vice President Kamala Harris secured her party's nomination after clean sweep of the Democratic Primaries. Can she make the case to voters that America should be a lot less like Florida? Can Ron DeSantis convince Americans that the nation needs a culture warrior to put the nation back together?</p><br><button>Continue</button></p>`)
     e.executable.push([4, (() => {e.image = e.image = 'https://i.imgur.com/y4eg352.png'})])  
 }
 else if (running == false && campaignTrail_temp.candidate_json[2]["fields"].last_name == "Vance" && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Harris") { // Vance/Harris (Clean Exit)
   e.pages.push(`<h3>American History USA</h3>
-    <p><i><b>THE CAMPAIGN TRAIL</i></b><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2024</option></select><br><img width="210" src="https://itsastronomical.com/assets/2024/code1/harrisvance.png">	<br></p><p>Biden's decision to forgo a re-election bid, and the arrest of former President Donald Trump has left both parties largely leaderless. Thanks to a last minute push by Donald Trump Jr., Senator JD Vance of Ohio was able to secure the Republican Nomination, as the youngest Republican candidate ever nominated at 39 years of age.</p><p>meanwhile, Vice President Kamala Harris secured her party's nomination after clean sweep of the Democratic Primaries. Can she make the case to voters that JD Vance is too extreme and weird? Can JD Vance rebuild the Trump coalition from 2016, or perhaps even expand upon it?</p><br><button>Continue</button></p>`)
+    <p><i><b>THE CAMPAIGN TRAIL</i></b><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2024</option></select><br><img width="210" src="https://itsastronomical.com/assets/2024/code1/harrisvance.png">	<br></p><p>Biden's decision to forgo a re-election bid, and the arrest of former President Donald Trump has left both parties largely leaderless. Thanks to a last minute push by Donald Trump Jr., Senator JD Vance of Ohio was able to secure the Republican Nomination, as the youngest Republican candidate ever nominated at 39 years of age.</p><p>Meanwhile, Vice President Kamala Harris secured her party's nomination after clean sweep of the Democratic Primaries. Can she make the case to voters that JD Vance is too extreme and weird? Can JD Vance rebuild the Trump coalition from 2016, or perhaps even expand upon it?</p><br><button>Continue</button></p>`)
     e.executable.push([4, (() => {e.image = e.image = 'https://i.imgur.com/y4eg352.png'})])  
 }
 else if (running == false && campaignTrail_temp.candidate_json[2]["fields"].last_name == "Burgum" && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Harris") { // Burgum/Harris (Clean Exit)
-  e.pages.push(`<h3>American History USA</h3><p><i><b>THE CAMPAIGN TRAIL</i></b><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2024</option></select><br><img width="210" src="https://itsastronomical.com/assets/2024/code1/harrisburgum.png">	<br></p><p>Biden's decision to forgo a re-election bid, and the arrest of former President Donald Trump has left both parties largely leaderless. In a shocker for the ages, North Dakota Governor Doug Burgum emerged victorious as a dark horse candidate after assembling a unique coalition during the primaries.</p><p>meanwhile, Vice President Kamala Harris secured her party's nomination after clean sweep of the Democratic Primaries. Can she make the case to voters that Burgum is too conservative? Can Burgum forge a new path for his Grand Old Party?</p><br><button>Continue</button></p>`)
+  e.pages.push(`<h3>American History USA</h3><p><i><b>THE CAMPAIGN TRAIL</i></b><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2024</option></select><br><img width="210" src="https://itsastronomical.com/assets/2024/code1/harrisburgum.png">	<br></p><p>Biden's decision to forgo a re-election bid, and the arrest of former President Donald Trump has left both parties largely leaderless. In a shocker for the ages, North Dakota Governor Doug Burgum emerged victorious as a dark horse candidate after assembling a unique coalition during the primaries.</p><p>Meanwhile, Vice President Kamala Harris secured her party's nomination after clean sweep of the Democratic Primaries. Can she make the case to voters that Burgum is too conservative? Can Burgum forge a new path for his Grand Old Party?</p><br><button>Continue</button></p>`)
     e.executable.push([4, (() => {e.image = e.image = 'https://i.imgur.com/y4eg352.png'})])  
 }
 else if (running == false && campaignTrail_temp.candidate_json[2]["fields"].last_name == "Kennedy" && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Harris") { // RFK/Harris (Clean Exit)
-  e.pages.push(`<h3>American History USA</h3><p><i><b>THE CAMPAIGN TRAIL</i></b><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2024</option></select><br><img width="210" src="https://itsastronomical.com/assets/2024/code1/harrisrfk.png">	<br></p><p>Biden's decision to forgo a re-election bid, and the arrest of former President Donald Trump has shaken America to its very core, leaving her practically leaderless. By some bizarre series of events, independent candidate Robert Kennedy Jr. secured the GOP mantle after a chaotic convention gone haywire.</p><p>meanwhile, Vice President Kamala Harris secured her party's nomination after clean sweep of the Democratic Primaries. Can she make the case to voters that RFK is too out of touch and nutty? Can Robert Kennedy Jr. unite the opposition against the Democratic Party?</p><br><button>Continue</button></p>`)
+  e.pages.push(`<h3>American History USA</h3><p><i><b>THE CAMPAIGN TRAIL</i></b><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2024</option></select><br><img width="210" src="https://itsastronomical.com/assets/2024/code1/harrisrfk.png">	<br></p><p>Biden's decision to forgo a re-election bid, and the arrest of former President Donald Trump has shaken America to its very core, leaving her practically leaderless. By some bizarre series of events, independent candidate Robert Kennedy Jr. secured the GOP mantle after a chaotic convention gone haywire.</p><p>Meanwhile, Vice President Kamala Harris secured her party's nomination after clean sweep of the Democratic Primaries. Can she make the case to voters that RFK is too out of touch and nutty? Can Robert Kennedy Jr. unite the opposition against the Democratic Party?</p><br><button>Continue</button></p>`)
     e.executable.push([4, (() => {e.image = e.image = 'https://i.imgur.com/y4eg352.png'})])  
 }
 else if (running == false && campaignTrail_temp.candidate_json[2]["fields"].last_name == "Trump (POW)" && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Harris") { // Trump/Harris (Clean Exit)
