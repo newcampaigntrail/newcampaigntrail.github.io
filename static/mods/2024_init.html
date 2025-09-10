@@ -186,7 +186,7 @@ let z = new MutationObserver((mutationsList, observer) => {
 });
 z.observe(document, { subtree: true, childList: true });
 
-document.getElementById("inner_window_1").children[1].innerHTML = `<p>Welcome to the 2024 Presidential Election, a mod for The Campaign Trail. This mod is split into two versions ― <b>2024</b>, and <b>2024: Divided States of America</b>.</p><img src="https://itsastronomical.com/assets/2024/2024introbanner.png" width="800"><li><b>2024</b> plays like your typical scenario, and is intended to emulate an "official" 2024 scenario, with Kamala Harris vs Donald Trump. Just like the original site, many questions are randomized (with an option to answer them all).</li><img src="https://itsastronomical.com/assets/2024/2024introbannerdsa.png" width="800"><li><b>2024: Divided States of America</b> takes the base of <b>2024</b> and uses it to add alternate history elements to allow for a less historical route, where you start as President Biden or Former President Donald Trump. This version also features less vanilla content, such as Choose Your Own Adventure, plenty of endings, and soundtracks for each side. To play <b>2024: Divided States of America</b>, you must select it on the election dropdown screen.</li>`;
+document.getElementById("inner_window_1").children[1].innerHTML = `<p>Welcome to the 2024 Presidential Election, a mod for The Campaign Trail. This mod is split into two versions ― <b>2024</b>, and <b>2024: Divided States of America</b>.</p><img src="https://itsastronomical.com/assets/2024/2024introbanner.png" width="800"><li><b>2024</b> plays like your typical scenario, and is intended to emulate an "official" 2024 scenario, with Kamala Harris vs Donald Trump. Just like the original site, many questions are randomized (with an option to answer them all).</li><img src="https://itsastronomical.com/assets/2024/2024introbannerdsa.png" width="800"><li><b>2024: Divided States of America</b> takes the base of <b>2024</b> and uses it to add alternate history elements to allow for a less historical route, where you start as President Biden or Former President Donald Trump. This version also features less vanilla content, such as Choose Your Own Adventure, plenty of endings, and soundtracks for each side. To play <b>2024: Divided States of America</b>, you must select it on the election dropdown screen.</li><br><br>`;
 document.styleSheets[0].insertRule(".inner_window_w_desc{ margin:1em 0 0 0.5em;padding-top: 0.5em;}", 0);
 document.styleSheets[0].insertRule(".inner_window_question{ margin:1em 0 .7em 0.5em !important;padding-top: 0.3em !important;}", 0);
 document.styleSheets[0].insertRule("#main_content_area { height:82% !important;}", 0);
@@ -1987,6 +1987,7 @@ const windowCheck = localStorage.getItem('astroWindow');
 function addColor() {
     var difficultyDiv = document.getElementById("difficulty_level");
     if (storedChar != 21 && difficultyDiv && !document.getElementById("bunnyhopDropdown")) {
+        campaignTrail_temp.global_parameter_json [0]["fields"].question_count = "25"
             console.log("test")
               var questionCounter = ["25 (Randomized Questions)", "25 (Static Question Set)", "30 (Expanded)", "35 (Full)"];
               var questions = [25, 25, 30, 35];
@@ -2039,17 +2040,17 @@ function addColor() {
   
               colourCheckbox.addEventListener("change", function() {
                   if (this.checked){
-                      campaignTrail_temp.candidate_json[11].fields.color_hex = '#b31200'
-                      campaignTrail_temp.candidate_json[12].fields.color_hex = '#052e71'
-                      campaignTrail_temp.candidate_json[13].fields.color_hex = '#ffc677'
-                      campaignTrail_temp.candidate_json[14].fields.color_hex = '#669c35'
+                      campaignTrail_temp.candidate_json[12].fields.color_hex = '#b31200'
+                      campaignTrail_temp.candidate_json[13].fields.color_hex = '#052e71'
+                      campaignTrail_temp.candidate_json[14].fields.color_hex = '#ffc677'
+                      campaignTrail_temp.candidate_json[15].fields.color_hex = '#669c35'
 
                   }
                   else{          
-                    campaignTrail_temp.candidate_json[11].fields.color_hex = '#FF0000'
-                    campaignTrail_temp.candidate_json[12].fields.color_hex = '#0000FF'
-                    campaignTrail_temp.candidate_json[13].fields.color_hex = '#FFFF00'
-                    campaignTrail_temp.candidate_json[14].fields.color_hex = '#00C100'
+                    campaignTrail_temp.candidate_json[12].fields.color_hex = '#FF0000'
+                    campaignTrail_temp.candidate_json[13].fields.color_hex = '#0000FF'
+                    campaignTrail_temp.candidate_json[14].fields.color_hex = '#FFFF00'
+                    campaignTrail_temp.candidate_json[15].fields.color_hex = '#00C100'
                   }
               });
   
@@ -2066,6 +2067,7 @@ function addColor() {
   
     }
     if (storedCan == 301 && done == false && (localStorage.getItem("hasDiedWon")) && difficultyDiv && !document.getElementById("bunnyhopDropdown")) {
+    campaignTrail_temp.global_parameter_json [0]["fields"].question_count = "35";
               console.log("Butler Button")
               campaignTrail_temp.bunnyhop = false;
               done = true;
@@ -2104,6 +2106,7 @@ function addColor() {
   
     }
     if ((storedCan == 301 || storedCan == 300) && done2 == false && difficultyDiv) {
+    campaignTrail_temp.global_parameter_json [0]["fields"].question_count = "35";
               console.log("HQ button")
               campaignTrail_temp.bunnyhop = false;
               done2 = true;

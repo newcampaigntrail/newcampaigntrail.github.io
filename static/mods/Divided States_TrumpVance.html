@@ -13121,7 +13121,7 @@ campaignTrail_temp.candidate_issue_score_json = [
         "fields": {
             "candidate": 401,
             "issue": 100,
-            "issue_score": 0
+            "issue_score": -0.4
         }
     },
     {
@@ -13130,7 +13130,7 @@ campaignTrail_temp.candidate_issue_score_json = [
         "fields": {
             "candidate": 401,
             "issue": 101,
-            "issue_score": 0
+            "issue_score": -0.5
         }
     },
     {
@@ -13139,7 +13139,7 @@ campaignTrail_temp.candidate_issue_score_json = [
         "fields": {
             "candidate": 401,
             "issue": 102,
-            "issue_score": 0
+            "issue_score": 0.1
         }
     },
     {
@@ -13148,7 +13148,7 @@ campaignTrail_temp.candidate_issue_score_json = [
         "fields": {
             "candidate": 401,
             "issue": 103,
-            "issue_score": 0
+            "issue_score": -0.5
         }
     },
     {
@@ -13157,7 +13157,7 @@ campaignTrail_temp.candidate_issue_score_json = [
         "fields": {
             "candidate": 401,
             "issue": 104,
-            "issue_score": 0
+            "issue_score": -0.6
         }
     }
 ]
@@ -39213,6 +39213,7 @@ else {
 }    
 }
 }
+
 if (campaignTrail_temp.question_number == 20 && jailed == true){
   campaignTrail_temp.questions_json[21] = {
     "model": "campaign_trail.question",
@@ -39224,7 +39225,7 @@ if (campaignTrail_temp.question_number == 20 && jailed == true){
     }
 }
 }
-if (campaignTrail_temp.question_number == 20 && (campaignTrail_temp.candidate_last_name == "Trump") && doj < 2){
+else if (campaignTrail_temp.question_number == 20 && campaignTrail_temp.candidate_last_name == "Trump" && doj < 2){
   campaignTrail_temp.questions_json[22] = {
     "model": "campaign_trail.question",
     "pk": 24146,
