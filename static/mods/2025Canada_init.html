@@ -1,7 +1,7 @@
 /*
  * Mod Title: 2025 Canada
  * Mod Author: rbaldwin
- * Mod Version: 1.0.2
+ * Mod Version: 1.1.0
  * Mod Description: Canadian Federal Election of 2025
  * 
  * Coding License: Apache License 2.0
@@ -20,6 +20,10 @@ document.getElementById("inner_window_1").children[0].innerHTML = `<h3>Do you ha
 
 document.getElementById("inner_window_1").children[1].innerHTML = `<li>Select a party and a leader to find out.</li><li>You will answer questions about your platform and positions, and also about your campaign strategy.</li><li>The answers will affect your popularity for better or worse, both nationally and in individual ridings.</li><li>Walk the fine line between appealing to your base and winning a majority of the votes.</li><li>Context details are included for <span class='mytooltip'>highlighted<span class='mytooltiptext'>This is a context detail.</span></span> text.</li>`;
 
+campaignTrail_temp.CandidText = "Please select your party:"
+campaignTrail_temp.VpText = "Please select your leader:"
+campaignTrail_temp.HomeStateText = "Leader's Riding:"
+
 campaignTrail_temp.modBoxTheme = {
      "header_color": "#d62718",
      "header_text_color": "#ffffff",
@@ -27,7 +31,7 @@ campaignTrail_temp.modBoxTheme = {
      "description_background_color": "#d62718",
      "main_color": "#fafafa",
      "secondary_color": "#d62718",
-     "ui_text_color": "#ffffff" 
+     "ui_text_color": "#ffffff"
 }
 
 campaignTrail_temp.global_parameter_json = [
@@ -63,7 +67,7 @@ campaignTrail_temp.election_json = [
             "year": 2025,
             "display_year": "2025Canada",
             "summary": "<p>As the 2025 election approaches, the situation appears dire for the Liberal Party of Canada. After 9 years of governance, Prime Minister Justin Trudeau's popularity has waned. Dissatisfaction with the economic condition of the country and Trudeau's scandals has left the Liberal Party polling at half the support of the rival Conservative Party, barely above the left-wing New Democratic Party. Pierre Poilievre, the Conservative leader, appears poised to become the next Prime Minister of Canada.</p><p>However, the winds are changing. Donald Trump's shock election win, combined with his trade policy, puts him on a collision course with the Canadian government. There are rumblings within the Liberal Party to push Trudeau out and seek out a new leader. Will Poilievre and the Conservatives cruise to victory? Or will the Liberals succeed in making a comeback for the ages?</p>",
-            "image_url": "https://i.imgur.com/qoub9JQ.jpeg",
+            "image_url": "https://i.imgur.com/XY0opQO.jpeg",
             "winning_electoral_vote_number": 172,
             "advisor_url": "https://i.imgur.com/q9n37oj.jpeg",
             "recommended_reading": "",
@@ -85,7 +89,7 @@ campaignTrail_temp.temp_election_list = [
 campaignTrail_temp.credits = "<button onclick='funcredits()'>rbaldwin</button>";
 
 funcredits = function() {
-    credits = ["Created by rbaldwin#4567 aka u/Ok_Frosting4780", "", "Inspired by Diefenbaker '57", "", "Map adapted from Wikipedia user Eric0892", "", "Tooltips adapted from 2023 Netherlands", "", "Music player adapted from 2024: Arnold Amendment and Germany 2021 - Between Decades"]
+    credits = ["Created by rbaldwin#4567 aka u/Ok_Frosting4780", "", "Inspired by Diefenbaker '57", "", "Map adapted from Wikipedia user Eric0892", "", "Tooltips and election charts adapted from 2023 Netherlands", "", "Music player adapted from 2024: Arnold Amendment and Germany 2021 - Between Decades"]
     text = "CREDITS:\n\n"
     for (i in credits) {
         text += credits[i] + "\n"
@@ -107,7 +111,7 @@ campaignTrail_temp.candidate_json = [
             "party": "Liberal",
             "state": "Canada",
             "priority": 1,
-            "description": "<p>The Liberal Party of Canada is the oldest Canadian political party, founded in 1867. A big tent, centrist party, it is referred to as the \"natural governing\" party of Canada, having held power for the majority of the country's history.</p><p>The Liberal Party has held power for the last 9 years under the leadership of Justin Trudeau. During this time, the party has been responsible for responses to the trade disputes during Trump's first term, the COVID-19 pandemic, and the cost-of-living crisis. Furthermore, it has enacted progressive policies: the legalization of cannabis and medically assisted death, climate action, the expansion of subsidized childcare, and the establishment of national dental and pharmaceutical programs. However, the party has seen a precipitous decline in support over the last few years, coinciding with the rapid increase in the cost of living. Will the Liberal Party be able to regain the trust of Canadians?</p>",
+            "description": "<g><ul><li>Abbreviation: LPC</li><li>Name: Liberal Party of Canada</li></ul><p>The Liberal Party of Canada is the oldest Canadian political party, founded in 1867. A big tent, centrist party, it is referred to as the \"natural governing\" party of Canada, having held power for the majority of the country's history.</p><p>The Liberal Party has held power for the last 9 years under the leadership of Justin Trudeau. During this time, the party has been responsible for responses to the trade disputes during Trump's first term, the COVID-19 pandemic, and the cost-of-living crisis. Furthermore, it has enacted progressive policies: the legalization of cannabis and medically assisted death, climate action, the expansion of subsidized childcare, and the establishment of national dental and pharmaceutical programs.</p><p>However, the party has seen a precipitous decline in support over the last few years, coinciding with the rapid increase in the cost of living. Will the Liberal Party be able to regain the trust of Canadians?</p></g>",
             "color_hex": "#EA6D6A",
             "secondary_color_hex": null,
             "is_active": 1,
@@ -150,11 +154,11 @@ campaignTrail_temp.candidate_json = [
             "party": "Conservative",
             "state": "Canada",
             "priority": 1,
-            "description": "<p>Formed as a merger between the Progressive Conservative Party and the Reform Party in 2003, the Conservative Party is the main party occupying the right wing of the Canadian political spectrum.</p><p>After holding power for 9 years under the leadership of Stephen Harper, the Conservative Party has been relegated to the Official Opposition for the last 9 years, the last two of which were under the leadership of Pierre Poilievre.</p><p>As the 2025 election approaches, the Conservative Party holds a commanding lead in the polls. Can the party maintain its advantage on election day?</p>",
+            "description": "<g><ul><li>Abbreviation: CPC</li><li>Name: Conservative Party of Canada</li></ul><p>Formed as a merger between the Progressive Conservative Party and the Reform Party in 2003, the Conservative Party is the main party occupying the right wing of the Canadian political spectrum.</p><p>After holding power for 9 years under the leadership of Stephen Harper, the Conservative Party has been relegated to the Official Opposition for the last 9 years, the last two of which were under the leadership of Pierre Poilievre.</p><p>As the 2025 election approaches, the Conservative Party holds a commanding lead in the polls. Can the party maintain its advantage on election day?</p></g>",
             "color_hex": "#6495ED",
             "secondary_color_hex": null,
             "is_active": 1,
-            "image_url": "https://i.imgur.com/VnVwBEi.jpeg",
+            "image_url": "https://i.imgur.com/7sUgs7N.jpeg",
             "electoral_victory_message": "",
             "electoral_loss_message": "",
             "no_electoral_majority_message": "",
@@ -193,11 +197,11 @@ campaignTrail_temp.candidate_json = [
             "party": "New Democratic Party",
             "state": "Canada",
             "priority": 1,
-            "description": "<p>[NOT CURRENTLY PLAYABLE]</p><p>The New Democratic Party is the heir to the democratic socialist Cooperative Commonwealth Federation and the federation of organized labour, the Canadian Labour Congress. Founded in 1961, the party is known as Canada's \"conscience\", pushing for the interests of the poor and marginalized.</p><p>Over the last two years, the NDP has supported the minority Liberal government in a supply-and-confidence agreement, before backing out of it.</p><p>As 2025 approaches, the NDP is polling near second place, benefitting from the faltering Liberal Party. If the current trajectory continues, it could even become the Official Opposition party for only the second time in history.</p>",
+            "description": "<g><ul><li>Abbreviation: NDP</li><li>Name: New Democratic Party</li></ul><p>The New Democratic Party is the heir to the democratic socialist Cooperative Commonwealth Federation and the federation of organized labour, the Canadian Labour Congress. Founded in 1961, the party is known as Canada's \"conscience\", pushing for the interests of the poor and marginalized.</p><p>Over the last two years, the NDP has supported the minority Liberal government in a supply-and-confidence agreement, before backing out of it.</p><p>As 2025 approaches, the NDP is polling near second place, benefitting from the faltering Liberal Party. If the current trajectory continues, it could even become the Official Opposition party for only the second time in history.</p></g>",
             "color_hex": "#F4A460",
             "secondary_color_hex": null,
             "is_active": 1,
-            "image_url": "https://i.imgur.com/GjvuZxS.jpeg",
+            "image_url": "https://i.imgur.com/rHeMJfm.jpeg",
             "electoral_victory_message": "",
             "electoral_loss_message": "",
             "no_electoral_majority_message": "",
@@ -221,7 +225,7 @@ campaignTrail_temp.candidate_json = [
             "secondary_color_hex": null,
             "is_active": 0,
             "image_url": "https://i.imgur.com/E2vgW9A.png",
-            "description_as_running_mate": "<p>[NOT CURRENTLY PLAYABLE]</p><p>A criminal defence lawyer, Jagmeet Singh entered politics in the 2011 election with the federal NDP under Jack Layton. Despite losing his race, he stepped into provincial politics and was elected as a Member of the Legislative Assembly in the same year. After federal NDP leader Thomas Mulcair was ousted in 2017, Singh seized the opportunity and won the leadership of the party. He has since led the party for the last 7 years through the 2019 and 2021 elections where the party has remained stable but failed to break through to become a main contender for government.</p><p>As the 2025 election approaches, Jagmeet Singh's personal appeal has been losing its lustre. Nevertheless, with the party polling near second place, it appears possible for Singh to lead the party into Official Opposition.</p>",
+            "description_as_running_mate": "<p>A criminal defence lawyer, Jagmeet Singh entered politics in the 2011 election with the federal NDP under Jack Layton. Despite losing his race, he stepped into provincial politics and was elected as a Member of the Legislative Assembly in the same year. After federal NDP leader Thomas Mulcair was ousted in 2017, Singh seized the opportunity and won the leadership of the party. He has since led the party for the last 7 years through the 2019 and 2021 elections where the party has remained stable but failed to break through to become a main contender for government.</p><p>As the 2025 election approaches, Jagmeet Singh's personal appeal has been losing its lustre. Nevertheless, with the party polling near second place, it appears possible for Singh to lead the party into Official Opposition.</p>",
             "candidate_score": 1,
             "running_mate": true
         }
@@ -236,11 +240,11 @@ campaignTrail_temp.candidate_json = [
             "party": "Green",
             "state": "Canada",
             "priority": 1,
-            "description": "<p>[NOT PLAYABLE]</p><p>Founded in 1983 amidst the international Green movement, the Green Party was initially politically irrelevant. However, under the leadership of Jim Harris, they managed to win almost 5% of the vote in the 2004 and 2006 elections, but no seats. Under his successor, Elizabeth May, the party finally made a breakthrough and won its first seats in Parliament. What was once a single issue party now maintains a full platform that remains centred on environmentalism.</p><p>However, after May retired from leadership, the party suffered from infighting and instability, collapsing the party's popular support. This prompted her to return to the party and introduce a co-leadership model to prevent such party squabbles from reoccurring. Nevertheless, the Green Party is struggling from the political headwinds as the environment and climate change no longer hold as much importance to voters as previously.</p>",
+            "description": "<g><ul><li>Abbreviation: GPC</li><li>Name: Green Party of Canada</li></ul><p>[NOT PLAYABLE]</p><p>Founded in 1983 amidst the international Green movement, the Green Party was initially politically irrelevant. However, under the leadership of Jim Harris, they managed to win almost 5% of the vote in the 2004 and 2006 elections, but no seats. Under his successor, Elizabeth May, the party finally made a breakthrough and won its first seats in Parliament. What was once a single issue party now maintains a full platform that remains centred on environmentalism.</p><p>However, after May retired from leadership, the party suffered from infighting and instability, collapsing the party's popular support. This prompted her to return to the party and introduce a co-leadership model to prevent such party squabbles from reoccurring. Nevertheless, the Green Party is struggling from the political headwinds as the environment and climate change no longer hold as much importance to voters as previously.</p></g>",
             "color_hex": "#99C955",
             "secondary_color_hex": null,
             "is_active": 1,
-            "image_url": "https://i.imgur.com/QgK4VRF.jpeg",
+            "image_url": "https://i.imgur.com/15MwupH.jpeg",
             "electoral_victory_message": "",
             "electoral_loss_message": "",
             "no_electoral_majority_message": "",
@@ -259,7 +263,7 @@ campaignTrail_temp.candidate_json = [
             "party": "Bloc Québécois",
             "state": "Québec",
             "priority": 1,
-            "description": "<p>[NOT PLAYABLE]</p><p>Initially a coalition of sovereignty-oriented Progressive Conservative and Liberal Members of Parliament from Québec, the Bloc Québécois was founded as a sovereigntist political party in 1990. The party sought to push for Québec independence from Canada, campaigning for it in the 1995 referendum. It has also defended the actions of the Québec government on issues of language and culture. On other issues, the party is a big tent but leans progressive, fighting for environmental action, supporting social spending, and defending women's rights such as abortion.</p><p>As the 2025 election approaches and tensions with the United States mount, the party's electoral fortunes are in trouble. With rising Canadian nationalism, the Québec nationalism upon which the Bloc Québécois depends is under threat.</p>",
+            "description": "<g><ul><li>Abbreviation: BQ</li><li>Name: Bloc Québécois</li></ul><p>[NOT PLAYABLE]</p><p>Initially a coalition of sovereignty-oriented Progressive Conservative and Liberal Members of Parliament from Québec, the Bloc Québécois was founded as a sovereigntist political party in 1990. The party sought to push for Québec independence from Canada, campaigning for it in the 1995 referendum. It has also defended the actions of the Québec government on issues of language and culture. On other issues, the party is a big tent but leans progressive, fighting for environmental action, supporting social spending, and defending women's rights such as abortion.</p><p>As the 2025 election approaches and tensions with the United States mount, the party's electoral fortunes are in trouble. With rising Canadian nationalism, the Québec nationalism upon which the Bloc Québécois depends is under threat. The Bloc will hope for a minority parliament in which it can hold the balance of power and extract concessions for Québec.</p></g>",
             "color_hex": "#87CEFA",
             "secondary_color_hex": null,
             "is_active": 1,
@@ -305,11 +309,11 @@ campaignTrail_temp.candidate_json = [
             "party": "People's Party of Canada",
             "state": "Canada",
             "priority": 1,
-            "description": "<p>[NOT PLAYABLE]</p><p>The People's Party of Canada was formed in 2018 by Maxime Bernier who quit the Conservative Party after losing the 2017 Conservative leadership election. He accused the party of abandoning its conservative values, giving purpose to the People's Party as a truly conservative alternative.</p><p>The party gained traction in the 2021 election, railing against pandemic restrictions and vaccine mandates. They won 5% of the vote but were unable to win any seats. However, the issues that propelled them then have now receded into the background. Will the People's party find a new angle to drive a political breakthrough?</p>",
+            "description": "<g><ul><li>Abbreviation: PPC</li><li>Name: People's Party of Canada</li></ul><p>[NOT PLAYABLE]</p><p>The People's Party of Canada was formed in 2018 by Maxime Bernier who quit the Conservative Party after losing the 2017 Conservative leadership election. He accused the party of abandoning its conservative values, giving purpose to the People's Party as a truly conservative alternative.</p><p>The party gained traction in the 2021 election, railing against pandemic restrictions and vaccine mandates. They won 5% of the vote but were unable to win any seats. However, the issues that propelled them then have now receded into the background. Will the People's party find a new angle to drive a political breakthrough?</p></g>",
             "color_hex": "#6F5D9A",
             "secondary_color_hex": null,
             "is_active": 1,
-            "image_url": "https://i.imgur.com/ycjGf2U.jpeg",
+            "image_url": "https://i.imgur.com/Y4T9Byf.jpeg",
             "electoral_victory_message": "",
             "electoral_loss_message": "",
             "no_electoral_majority_message": "",
@@ -353,7 +357,7 @@ campaignTrail_temp.candidate_json = [
             "secondary_color_hex": null,
             "is_active": 0,
             "image_url": "https://i.imgur.com/BN9ie3p.jpeg",
-            "description_as_running_mate": "<p>[NOT PLAYABLE]</p><p>Before becoming leader of the Bloc Québécois, Yves-François Blanchet was a teacher, a business founder for supporting independent artists, a columnist for a regional newspaper, and Minister of Sustainable Development in Québec under the Parti Québécois.</p>",
+            "description_as_running_mate": "<p>[NOT PLAYABLE]</p><p>Before becoming leader of the Bloc Québécois, Yves-François Blanchet was a teacher, a business founder for supporting independent artists, a columnist for a regional newspaper, and Minister of Sustainable Development in Québec under the Parti Québécois.</p><p>Blanchet is the third Bloc leader to lead the party into an election, after Lucien Bouchard and Gilles Duceppe. Becoming leader in 2019, his leadership put an end to the Bloc's instability that had lasted since 2011. As Bloc leader, Blanchet has fought for the interests of Québec as the province's voice in Parliament and portrayed himself as a non-ideological voice of reason.</p>",
             "candidate_score": 1,
             "running_mate": true
         }
@@ -542,7 +546,7 @@ function addDynamicCSS() {
 addDynamicCSS();
 
 tooltipList = [
-    { searchString: "Chrystia Freeland", explanationText: "The Liberal Finance Minister and Deputy Prime Minister. She was also responsible for US trade negotiations during Trump's first term and was dubbed \"Minister of Everything\" by the media." },
+    { searchString: "Chrystia Freeland", explanationText: "<img src=\"https://i.imgur.com/XHwq6ee.jpeg\">The Liberal Finance Minister and Deputy Prime Minister. She was also responsible for US trade negotiations during Trump's first term and was dubbed \"Minister of Everything\" by the media." },
     { searchString: "CBC", explanationText: "The Canadian Broadcasting Corporation. It is the English branch of the Canadian national broadcaster which receives federal funding to support independent journalism. Generally considered to be liberal-leaning." },
     { searchString: "Radio-Canada", explanationText: "The French branch of the Canadian national broadcaster which receives federal funding to support independent journalism." },
     { searchString: "Daily Show", explanationText: "An American late-night comedy show running on Comedy Central." },
@@ -560,49 +564,49 @@ tooltipList = [
     { searchString: "First Nations", explanationText: "The largest of the three groupings of Indigenous people in Canada. Along with the Metis and Inuit, they represent 5% of the country's population. Due to history and treaties, they have some collective rights pertaining to land use." },
     { searchString: "Trans Mountain", explanationText: "Major oil pipeline built from Edmonton to the Pacific Coast, owned and operated by the federal government. A recent expansion that tripled the system's capacity cost the government $53 billion." },
     { searchString: "Brookfield", "explanationText": "A Canadian multinational alternative asset management company with over $1 trillion in managed assets, making it one of the largest investment companies in the world. Its board was chaired by Mark Carney until he stepped down to run for the Liberal leadership." },
-    { searchString: "Jack Layton", "explanationText": "The late leader of the NDP who led the party to Official Opposition for the first time in 2011. He succumbed to cancer shortly thereafter." },
+    { searchString: "Jack Layton", "explanationText": "<img src=\"https://i.imgur.com/MXZlm1B.jpeg\">The late leader of the NDP who led the party to Official Opposition for the first time in 2011. He succumbed to cancer shortly thereafter." },
     { searchString: "Fleetwood-Port Kells", "explanationText": "A marginal LPC-CPC riding situated in the suburbs of Vancouver, covering parts of Surrey." },
-    { searchString: "Surrey", "explanationText": "The second largest municipality (by population) in Metro Vancouver." },
-    { searchString: "Vancouver", "explanationText": "The third largest metropolitan region in Canada, situated on the West Coast. Composed of 23 local authorities, including the City of Vancouver." },
-    { searchString: "Ottawa", "explanationText": "The national capital of Canada, situated on the border between Ontario and Québec." },
-    { searchString: "Montreal", "explanationText": "The largest city in Québec." },
+    { searchString: "Surrey", "explanationText": "<img src=\"https://i.imgur.com/KX7F4dr.jpeg\">The second largest municipality (by population) in Metro Vancouver." },
+    { searchString: "Vancouver", "explanationText": "<img src=\"https://i.imgur.com/MDs7Jp0.jpeg\">The third largest metropolitan region in Canada, situated on the West Coast. Composed of 23 local authorities, including the City of Vancouver." },
+    { searchString: "Ottawa", "explanationText": "<img src=\"https://i.imgur.com/zKTMlID.jpeg\">The national capital of Canada, situated on the border between Ontario and Québec." },
+    { searchString: "Montreal", "explanationText": "<img src=\"https://i.imgur.com/WTpjpXL.jpeg\">The largest city in Québec." },
     { searchString: "Maritimes", "explanationText": "The provinces of Nova Scotia, New Brunswick, and Prince Edward Island, located on the East Coast." },
     { searchString: "Alberta", "explanationText": "The second Western-most province. Its economy is highly dependent on oil and gas exports." },
-    { searchString: "Victoria", "explanationText": "The capital of British Columbia, located on Vancouver Island off the West Coast." },
+    { searchString: "Victoria", "explanationText": "<img src=\"https://i.imgur.com/KxznrSS.jpeg\">The capital of British Columbia, located on Vancouver Island off the West Coast." },
     { searchString: "British Columbia", "explanationText": "The Western-most province located on the West Coast. This is the province in which the federal NDP is strongest, with almost half of their caucus representing the province." },
-    { searchString: "Hamilton", "explanationText": "A city in Ontario known for manufacturing, being dubbed the Steel Capital of Canada." },
-    { searchString: "Niagara Falls", "explanationText": "A city in Ontario known for tourism, but also possessing a significant manufacturing base." },
-    { searchString: "Québec City", "explanationText": "The capital of Québec." },
-    { searchString: "Brampton", "explanationText": "A suburban city in the Greater Toronto Area." },
-    { searchString: "Scarborough", "explanationText": "A suburban district of the City of Toronto." },
+    { searchString: "Hamilton", "explanationText": "<img src=\"https://i.imgur.com/LhpGsZh.jpeg\">A city in Ontario known for manufacturing, being dubbed the Steel Capital of Canada." },
+    { searchString: "Niagara Falls", "explanationText": "<img src=\"https://i.imgur.com/u3SNXsW.jpeg\">A city in Ontario known for tourism, but also possessing a significant manufacturing base." },
+    { searchString: "Québec City", "explanationText": "<img src=\"https://i.imgur.com/afHuIPL.jpeg\">The capital of Québec." },
+    { searchString: "Brampton", "explanationText": "<img src=\"https://i.imgur.com/qNCWBvI.jpeg\">A suburban city in the Greater Toronto Area." },
+    { searchString: "Scarborough", "explanationText": "<img src=\"https://i.imgur.com/gsvoUWJ.jpeg\">A suburban district of the City of Toronto." },
     { searchString: "Saskatchewan", "explanationText": "The third Western-most province with an economy based around agriculture and resource extraction, known as the Bread Basket of Canada." },
     { searchString: "Nova Scotia", "explanationText": "The most populous of the Maritime provinces, located on the East Coast." },
     { searchString: "Greater Toronto Area", "explanationText": "Located in Ontario, it includes the City of Toronto and surrounding suburbs, it is home to nearly 20% of Canadians." },
     { searchString: "Ontario", "explanationText": "Situated on the Great Lakes, it is the most populous province." },
-    { searchString: "Edmonton", "explanationText": "The capital and second-largest city in Alberta." },
-    { searchString: "Saskatoon", "explanationText": "The largest city in Saskatchewan." },
-    { searchString: "Calgary", "explanationText": "The largest city in Alberta, it is home to the headquarters of many oil companies. Of the major cities in Canada, it is the most supportive of the Conservative Party." },
-    { searchString: "Kitchener", "explanationText": "A city in Ontario, it remains a highly industrial city." },
-    { searchString: "Windsor", "explanationText": "A city in Southwestern Ontario, Windsor is located across from Detroit with which it shares the busiest commercial crossing between the US and Canada." },
-    { searchString: "London", "explanationText": "A city on the Thames in Southwestern Ontario, it is situated between the Great Lakes within roughly equal distances of Toronto, Detroit, and Buffalo." },
-    { searchString: "Richmond", "explanationText": "A city in Metro Vancouver, Richmond is home to many successful malls and significant farmland which is protected from development." },
-    { searchString: "Coquitlam", "explanationText": "A bedroom community in Metro Vancouver." },
-    { searchString: "Mississauga", "explanationText": "The second largest city in the Greater Toronto Area, Mississauga is home to the head offices of many large corporations." },
+    { searchString: "Edmonton", "explanationText": "<img src=\"https://i.imgur.com/7Fj7T0k.jpeg\">The capital and second-largest city in Alberta." },
+    { searchString: "Saskatoon", "explanationText": "<img src=\"https://i.imgur.com/PhqZ9RV.jpeg\">The largest city in Saskatchewan." },
+    { searchString: "Calgary", "explanationText": "<img src=\"https://i.imgur.com/a9Dzs74.jpeg\">The largest city in Alberta, it is home to the headquarters of many oil companies. Of the major cities in Canada, it is the most supportive of the Conservative Party." },
+    { searchString: "Kitchener", "explanationText": "<img src=\"https://i.imgur.com/eO0L6OU.jpeg\">A city in Ontario, it remains a highly industrial city." },
+    { searchString: "Windsor", "explanationText": "<img src=\"https://i.imgur.com/R69KSYc.jpeg\">A city in Southwestern Ontario, Windsor is located across from Detroit with which it shares the busiest commercial crossing between the US and Canada." },
+    { searchString: "London", "explanationText": "<img src=\"https://i.imgur.com/12hsfLI.jpeg\">A city on the Thames in Southwestern Ontario, it is situated between the Great Lakes within roughly equal distances of Toronto, Detroit, and Buffalo." },
+    { searchString: "Richmond", "explanationText": "<img src=\"https://i.imgur.com/I3jShQg.jpeg\">A city in Metro Vancouver, Richmond is home to many successful malls and significant farmland which is protected from development." },
+    { searchString: "Coquitlam", "explanationText": "<img src=\"https://i.imgur.com/v4gGuS7.jpeg\">A bedroom community in Metro Vancouver." },
+    { searchString: "Mississauga", "explanationText": "<img src=\"https://i.imgur.com/dAOsHs2.jpeg\">The second largest city in the Greater Toronto Area, Mississauga is home to the head offices of many large corporations." },
     { searchString: "Liberal leadership contenders", "explanationText": "Includes former Minister of Finance Chrystia Freeland, Government House Leader Karina Gould, and businessman Frank Baylis." },
     { searchString: "three word slogans", "explanationText": "Axe the Tax, Build the Homes, Fix the Budget, Stop the Crime, Bring it Home, etc. Poilievre's campaign has an affinity for verb-the-noun slogans." },
     { searchString: "prorogued", "explanationText": "Termination of parliamentary session and all parliamentary business. As a result, it can be used by the government to delay a vote of no-confidence." },
-    { searchString: "Danielle Smith", "explanationText": "Premier of Alberta and leader of the United Conservative Party of Alberta, formed out of the 2017 merger of the Progressive Conservative Pary and the Wildrose Party." },
-    { searchString: "Scott Moe", "explanationText": "Premier of Saskatchewan and leader of the conservative Saskatchewan Party." },
-    { searchString: "Doug Ford", "explanationText": "Premier of Ontario and leader of the Ontario Progressive Conservative Party. He is considered by many conservatives to be insufficiently conservative." },
-    { searchString: "Tim Houston", "explanationText": "Premier of Nova Scotia and leader of the Nova Scotia Progressive Conservative Party. Considered to be a Red Tory with a more left-leaning policy platform than most conservative parties." },
+    { searchString: "Danielle Smith", "explanationText": "<img src=\"https://i.imgur.com/anQnIGD.jpeg\">Premier of Alberta and leader of the United Conservative Party of Alberta, formed out of the 2017 merger of the Progressive Conservative Pary and the Wildrose Party." },
+    { searchString: "Scott Moe", "explanationText": "<img src=\"https://i.imgur.com/vw600kb.jpeg\">Premier of Saskatchewan and leader of the conservative Saskatchewan Party." },
+    { searchString: "Doug Ford", "explanationText": "<img src=\"https://i.imgur.com/KWxK5oT.jpeg\">Premier of Ontario and leader of the Ontario Progressive Conservative Party. He is considered by many conservatives to be insufficiently conservative." },
+    { searchString: "Tim Houston", "explanationText": "<img src=\"https://i.imgur.com/DRalVGe.jpeg\">Premier of Nova Scotia and leader of the Nova Scotia Progressive Conservative Party. Considered to be a Red Tory with a more left-leaning policy platform than most conservative parties." },
     { searchString: "EI", "explanationText": "Employment insurance. A program providing temporary income of unemployed workers." },
     { searchString: "Housing Accelerator Fund", "explanationText": "A $4.4 billion initiative used to negotiate zoning reforms with municipalities with the aim of spurring more housing construction." },
     { searchString: "Goldman Sachs", "explanationText": "The second largest investment bank in the world. It is based out of New York City." },
     { searchString: "Bill C-69", "explanationText": "Dubbed the \"No New Pipelines\" bill by opponents, it requires that resource projects be assessed for environmental, health, social and economic impacts and respect the rights of Indigenous Peoples." },
     { searchString: "Campaign Life Coalition", "explanationText": "A pro-life organization that aims to pressure Conservative MPs into passing laws against abortion" },
     { searchString: "Abortion Rights Coalition", "explanationText": "A pro-choice group aiming to defend abortion rights and expand access." },
-    { searchString: "Stephen Harper", "explanationText": "The Conservative Prime Minister of Canada from 2006 to 2015." },
-    { searchString: "John A. Macdonald", "explanationText": "The first Canadian Prime Minister, and a driving figure of Canadian Confederation." },
+    { searchString: "Stephen Harper", "explanationText": "<img src=\"https://i.imgur.com/pwRg4be.jpeg\">The Conservative Prime Minister of Canada from 2006 to 2015." },
+    { searchString: "John A. Macdonald", "explanationText": "<img src=\"https://i.imgur.com/CxfLNZ9.jpeg\">The first Canadian Prime Minister, and a driving figure of Canadian Confederation." },
     { searchString: "Bank of Canada", "explanationText": "The central bank of Canada, responsible for managing monetary policy with the aim of keeping inflation and unemployment low." },
     { searchString: "UNRWA", "explanationText": "The United Nations Relief and Works Agency for Palestine Refugees in the Near East, responsible for delivering humanitarian relief to people in Palestine." },
     { searchString: "notwithstanding clause", "explanationText": "Section 33 of the Canadian Charter of Rights and Freedoms that allows the federal and provincial governments to override fundamental rights, legal rights, and equality rights. It has never been invoked by the federal government." },
@@ -618,25 +622,30 @@ tooltipList = [
     { searchString: "dentalcare", "explanationText": "The Canadian Dental Care Plan which provides dental insurance to qualifying Canadians." },
     { searchString: "pharmacare", "explanationText": "The National Pharmacare program which seeks to expand pharmaceutial coverage in Canada. The program is currently limited to certain provinces that have signed agreements and only covers some diabetes medications and contraception." },
     { searchString: "CSIS", "explanationText": "The Canadian Security Intelligence Service, the agency responsible for national security intelligence." },
-    { searchString: "Nanaimo", "explanationText": "A city situated on Vancouver Island in British Columbia, with transit connections to Vancouver serviced by ferry." },
+    { searchString: "Nanaimo", "explanationText": "<img src=\"https://i.imgur.com/w19f1SC.jpeg\">A city situated on Vancouver Island in British Columbia, with transit connections to Vancouver serviced by ferry." },
     { searchString: "right-to-work", "explanationText": "Bans agreements between unions and employers that compel new employees to join the union." },
     { searchString: "World Economic Forum", "explanationText": "An international advocacy organization founded by Klaus Schwab and funded by its members, including a thousand multinational corporations." },
     { searchString: "Century Initiative", "explanationText": "A Canadian lobby group aiming to make Canada a more prominent world power by increasing its population to 100 million by 2100." },
-    { searchString: "Premier Eby", "explanationText": "The BC NDP premier of British Columbia." },
-    { searchString: "RCMP", "explanationText": "The Royal Canadian Mounted Police. The national Canadian police service which, contrary to its name, is no longer mounted." }
+    { searchString: "Premier Eby", "explanationText": "<img src=\"https://i.imgur.com/Upw1uiO.jpeg\">The BC NDP premier of British Columbia." },
+    { searchString: "RCMP", "explanationText": "The Royal Canadian Mounted Police. The national Canadian police service which, contrary to its name, is no longer mounted." },
+    { searchString: "federally-regulated industries", "explanationText": "The federal government only has the power to regulate certain industries, with the rest being the responsibility of the provinces. Federally-regulated industries include banking, telecommunications, and air transportation." },
+    { searchString: "sectoral bargaining", "explanationText": "As opposed to enterprise bargaining where unions negotiate with individual businesses, sectoral collective bargaining occurs across an entire industry." },
+    { searchString: "non-market housing", "explanationText": "Non-market housing is an umbrella term for housing that is rented out at below-market rates. This includes social housing, supportive housing, and co-op housing." },
+    { searchString: "right-to-work", "explanationText": "Law to allow workers in unionized workplaces to refuse to pay union dues while still benefiting from collective bargaining." },
+    { searchString: "back-to-work", "explanationText": "Government order declaring a strike illegal and requiring striking workers to return to work without a contract." },
+    { searchString: "Indian act", "explanationText": "The law that governs Canada’s relationship with the First Nations, including governance, land use, public services, and reserves." },
+    { searchString: "PBO", "explanationText": "The Parliamentary Budget Officer who is responsible for producing non-partisan cost estimates for policy proposals." },
+    { searchString: "Manitoba", "explanationText": "A province in Western Canada, most of its population lives in its capital city of Winnipeg, the Slurpee capital of the world." },
+    { searchString: "Wab Kinew", "explanationText": "<img src=\"https://i.imgur.com/dI4ZiOA.jpeg\">The premier of Manitoba and leader of the Manitoba NDP." }
 ]
 
-document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
-
-$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
-
-$(".container")[0].style.backgroundColor = "#FFFFFF";
-
-document.getElementById("header").src = "https://i.imgur.com/HSKf6bQ.jpeg";
-
-document.body.background = "https://i.imgur.com/vAMuvqw.jpeg";
-
-document.head.innerHTML += "<style>#results_container {color:#000000;}</style>";
+document.getElementById("header").src = "https://i.imgur.com/StrY22v.jpeg";
+$("#game_window")[0].style.backgroundImage = "url(https://i.imgur.com/EPkdtPN.jpeg)";
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#EA6D6A"
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#FFFFFF"
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+$(".container")[0].style.backgroundColor = "#FFFFFF"
+document.body.background = "https://i.imgur.com/vAMuvqw.jpeg"
 
 HistHexcolour = ["#EA6D6A", "#6495ED", "#87CEFA", "#F4A460", "#99C955", "#6F5D9A", "#808080"];
 HistName = [" LPC", " CPC", " BQ", " NDP", " GPC", " PPC", " Others"];
@@ -657,20 +666,59 @@ customquote = quotes[Math.floor((Math.random() * quotes.length))]
 corrr = "\n<h2>THE CAMPAIGN TRAIL</h2><font id='wittyquote' size='4' color='white'><em>" + customquote + "</em></font>"
 
 function updateElements() {
+    mutationObserver.disconnect()
+
     var gameHeader = document.getElementsByClassName("game_header")[0];
 
     if (gameHeader.getAttribute("id") !== "modifiedHeader") {
         gameHeader.innerHTML = corrr;
-        gameHeader.style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
         gameHeader.setAttribute("id", "modifiedHeader");
     }
 
     // Remove "continue" buttons for non-playable characters
     const running_mate_id = document.getElementById("running_mate_id")
     const continue_button = document.getElementById("running_mate_id_button")
-    if (running_mate_id && continue_button && running_mate_id.value != 310 && running_mate_id.value != 311) {
+    if (running_mate_id && continue_button && running_mate_id.value != 310 && running_mate_id.value != 311 && running_mate_id.value != 312) {
         continue_button.parentElement.removeChild(continue_button)
     }
+
+    // Remove default summary list
+    const candidate_summary = document.getElementById("candidate_summary")
+    if (candidate_summary && candidate_summary.childElementCount > 1) {
+        candidate_summary.removeChild(candidate_summary.firstElementChild)
+    }
+
+    // Replace electoral system options
+    const form = document.querySelector('form[name="game_type_selection"]');
+    if (form) {
+        const select = form.querySelector('select[name="game_type_id"]');
+        const h3 = form.querySelector('h3');
+        const option = select.querySelector('option[value="1"]');
+
+        const voting_system = "Default (First-Past-the-Post)"
+        const seat_allocation = "How would you like the seats to be allocated?"
+
+        if (option && option.textContent !== voting_system) {
+            option.textContent = voting_system;
+        }
+        if (select && select.querySelector('option[value="2"]')) {
+            const queryTwo = select.querySelector('option[value="2"]');
+            if (queryTwo) {
+                queryTwo.remove();
+            }
+        }
+        if (h3 && h3.textContent !== seat_allocation) {
+            h3.textContent = seat_allocation;
+        }
+    }
+
+    // Replace electoral system description
+    const opponentSelectionDescription = document.getElementById("opponent_selection_description_window");
+    if (opponentSelectionDescription) {
+        opponentSelectionDescription.innerHTML = `<p><strong>Use the default method of allocating seats in the Canadian House of Commons.</strong></p><p>Canada uses a first-past-the-post voting system where the local candidate with the most votes in each riding is elected to the House of Commons to become a Member of Parliament (MP).</p><p>The party that wins the most seats usually forms government with its leader becoming Prime Minister. However, the incumbent Prime Minister can attempt to stay in power even if their party does not win the most seats as long as they can maintain the confidence of Parliament (as occurred after the 1925 election).</p><p>The first-past-the-post voting system means that large parties usually have better vote efficiency, winning more seats per vote. However, small parties can still do well if their vote is concentrated.</p>`;
+    }
+    
+    mutationObserver.observe(document.documentElement, { childList: true, subtree: true });
 }
 
 var mutationObserver = new MutationObserver(updateElements);
@@ -705,6 +753,21 @@ campaignTrail_temp.achievements = {
     "Deal with the Devil": {
         "image": "https://i.imgur.com/GctLzed.jpeg",
         "description": "As Poilievre, become Prime Minister with support from the Bloc Québécois.",
+        "cannotBeCheated": true
+    },
+    "Still Fighting": {
+        "image": "https://i.imgur.com/8zAv9ru.png",
+        "description": "As Singh, preserve the NDP’s official party status by winning at least 12 seats",
+        "cannotBeCheated": true
+    },
+    "Financially Responsible": {
+        "image": "https://i.imgur.com/QA4s683.png",
+        "description": "As Singh, leave the NDP in excellent financial shape.",
+        "cannotBeCheated": true
+    },
+    "You Can’t Get Rid of Me": {
+        "image": "https://i.imgur.com/6eeIouY.png",
+        "description": "As Singh, hold on to your seat in Burnaby Central.",
         "cannotBeCheated": true
     }
 }
