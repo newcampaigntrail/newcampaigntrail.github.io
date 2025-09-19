@@ -518,6 +518,12 @@ campaignTrail_temp.candidate_json = [
 	
 	
 	addDynamicCSS();
+
+	(function() {
+	  const hasPageScrollbar = document.documentElement.scrollHeight > document.documentElement.clientHeight;
+	  document.body.classList.toggle('has-scrollbar', hasPageScrollbar);
+	  }
+	)();
   
 	tooltipList = [
   {searchString: "Bush", explanationText: "<img src=https://i.imgur.com/U86BSCC.jpeg> Don't know what you got until it's gone."},
@@ -764,11 +770,11 @@ campaignTrail_temp.candidate_json = [
 	  );
   
 	  const song5 = new Song(
-		"Obama",
-		"Chief Keef",
+		"Headlines",
+		"Drake",
 		"Rap",
-		"https://i.imgur.com/6pDRCmx.jpeg",
-		"https://file.garden/ZuJzv3DBzXuI1CZx/Obama.mp3"
+		"https://i.imgur.com/NNMiAp3.jpeg",
+		"https://file.garden/aGMtX3HRbS8W-RJ6/Drake%20%20%20Headlines%20Explicit%20HD.mp3"
 	  );
   
 	  const song6 = new Song(
@@ -1108,7 +1114,7 @@ campaignTrail_temp.candidate_json = [
 	},
 	"Telestial" : {
 	  "image" : "https://i.imgur.com/ON3RJ8K.png",
-	  "description" : "Defeat the Seasame Street Slasher.",
+	  "description" : "Defeat the Sesame Street Slasher.",
 	  "cannotBeCheated" : true
 	},
 	"Big Apple, Little Worm" : {
@@ -1252,3 +1258,13 @@ campaignTrail_temp.candidate_json = [
 	  "cannotBeCheated" : true
 	}
 	}
+
+campaignTrail_temp.modBoxTheme = {
+         "header_color": "#0045AC",
+         "header_text_color": "#FBFBFB",
+         "description_text_color": "#000000",
+         "description_background_color": "#FBFBFB",
+         "main_color": "#31CECE",
+         "secondary_color": "#0045AC",
+         "ui_text_color": "#FFFFFF"
+    }
