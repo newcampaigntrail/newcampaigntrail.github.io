@@ -59172,7 +59172,7 @@
 			party_unity -=2
 			fed_call="Low"
 			worker_approval+=0.5
-			adversary_approval+=1 
+			//adversary_approval+=1 //fear of loss of Fed independence -> possible capital flight from U.S. to EU/China -> China happy. But if there was enough to do this, there would be economic consequences too and I don't want to add the economic consequences.
 			party_econ_progressive+=2
 			bipartisan-=2 //look like an ideologue
 		}
@@ -59197,7 +59197,7 @@
 			political_capital-=1
 			party_unity-=1
 			fed_call="Low" 
-			adversary_approval+=1
+			//adversary_approval+=1
 			party_econ_progressive+=1
 			bipartisan-=1 //look like an ideologue
 		}
@@ -60278,7 +60278,7 @@
 			stimulus+=2
 			inflation-=1
 			blob_approval+=1
-			adversary_approval+=1
+			adversary_approval-=1 //PRC dislikes you doing industrial policy
 		}
 		else if (ans==33203 || ans==33303) {
 			applySalience(110,0.06) //you push for an economic thing
@@ -62711,7 +62711,7 @@
 					else if (adversary_approval>=-5) {
 						e.questions_json[campaignTrail_temp.question_number+1] = tunnel(40300)
 					}
-					else if (adversary_approval>=-10) {
+					else if (adversary_approval>-10) { //due to soft-cap at -10, it's functionally impossible for the value to be more/less than +/-10.
 						e.questions_json[campaignTrail_temp.question_number+1] = tunnel(40400)
 					}
 					else {
@@ -63016,7 +63016,6 @@
 			else {
 				adversary_approval=Math.min(adversary_approval*0.95,-10)
 			}
-			adversary_approval*=0.95
 		}
 		
 		
@@ -63112,7 +63111,6 @@
 		}
 		
 		updateSimplePopup();
-		
 		
 	}
 
