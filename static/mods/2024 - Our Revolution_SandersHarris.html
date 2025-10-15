@@ -53758,6 +53758,7 @@
 	stop_the_steal_states=[]
 	faithless=false
 	left_angry=false //only for an ending song.
+	left_very_angry=false //for an achievement
 	faithless_num=0
 	faithless_loc=0
 	faithless_states=[]
@@ -53829,6 +53830,9 @@
 				}
 				if (progressive_anger>=6) {
 					left_angry=true //setting here because left anger gets adjusted if you win by Bernie trying to talk them out of it, them being reluctant to throw a win.
+					if (progressive_anger>=10) {
+						left_very_angry=true //setting here because left anger gets adjusted if you win by Bernie trying to talk them out of it, them being reluctant to throw a win.
+					}
 				}
 			}
 			else { //you lost, let's see if you should get blamed by someone for it.
@@ -54423,7 +54427,9 @@
 				}
 				else if (!split_wh && senate_seats==50) { 
 					vacant_vp=true
-					ctsAchievement("Not Worth a Bucket")
+				}
+				if ((split_wh || vacant_vp) && opponent<=4) {
+					ctsAchievement("Actually worth a Bucket")
 				}
 			}
 			if (!won_house && senate_seats>=51) {
@@ -54601,7 +54607,9 @@
 					}
 					else if (!split_wh && senate_seats==50) { //Senate is tied 50-50, there is no VP to break the tie. There's no VP forever (winner can nominate someone but Senate will still reject probably...)
 						vacant_vp=true
-						ctsAchievement("Not Worth a Bucket")
+					}
+				if ((split_wh || vacant_vp) && opponent<=4) {
+						ctsAchievement("Actually worth a Bucket")
 					}
 				}
 				
@@ -54896,6 +54904,9 @@
 					if (more_medicare_for_some) {
 						ctsAchievement("The Holier Grail")
 					}
+					if (left_very_angry) {
+						ctsAchievement("Let her Cook!")
+					}
 				}
 				else if (taiwan_war==1 && taiwan_conquered==0) { //win and PRC defeated via war, regardless of who you're playing as (i.e. Xi Jinping forced to resign. PRC future unspecified.)
 					song_change_resolved=true
@@ -55125,6 +55136,9 @@
 				}
 				if (won_house && senate_seats>=50 && senate_seats+party_econ_progressive+political_capital*0.5<52 && senate_seats+party_social_progressive+political_capital*0.5<52) {
 					ctsAchievement("What was the point?")
+				}
+				if (was_down_by_double_digits) {
+					ctsAchievement("Never Count Me Out!")
 				}
 				if (opponent==1) {
 					ctsAchievement("The Art of the Loss")
@@ -55737,7 +55751,7 @@
 				else { //assume NCT
 					virus_name="Bigshot"
 				}
-				e.pages.push(`<p><b>${e.difficulty_level_multiplier>0.97 ? "Members of PL4Y3R" : "Tech billionaire Elon Musk"} arrested in alleged "${virus_name}" voting machine hacking scandal</b></p><p>In a dramatic raid early this morning, federal agents arrested ${e.difficulty_level_multiplier>0.97 ? "five alleged members of PL4Y3R, a gray-hat American hacktivist collective long known in cybersecurity circles for their leftist political views and exposure of corporate wrongdoing via high-profile breaches of corporate networks." : "tech billionaire Elon Musk, CEO of Tesla, SpaceX, and xAI, known for his libertarian far-right political views."}</p><p>According to prosecutors, ${e.difficulty_level_multiplier>0.97 ? "PL4Y3R" : "Musk"} is alleged to have ${e.difficulty_level_multiplier>0.97 ? "created and disseminated" : "funded and organized the creation and dissemination of"} <i>${virus_name}</i>, a sophisticated voting machine virus that is alleged to have altered ${Math.abs(votes_swapped)}% of votes from ${e.difficulty_level_multiplier>0.97 ? "Republican to Democratic" : "Democratic to Republican"} candidates during municipal, state, and federal races between 2021 and 2024. "The ${virus_name} virus was designed to be invisible, fast, and devastating", prosecutors declared today at a press conference. "This is the most significant and blatant attack on American elections in history - and our evidence shows ${e.difficulty_level_multiplier>0.97 ? "PL4Y3R" : "Musk"} was clearly behind it."</p><p>Federal cybercrime units say they became alerted to the problem after a 2025 hand recount of paper ballots from the 2024 election showed a clear and persistent mismatch compared to electronical tallies. ${e.difficulty_level_multiplier>0.97 ? "According to prosecutors, PL4Y3R's complicity was only proven after a whistleblower from within the group provided documentation allegedly detailing the virus's development and funding." : "According to prosecutors, Musks's complicity was only proven after a whistleblower under his employment provided documentation allegedly detailing the virus's development and funding."}  Representatives of ${e.difficulty_level_multiplier>0.97 ? "PL4Y3R" : "Musk"} denied all charges, calling the allegations "complete fantasy", while supporters of ${e.difficulty_level_multiplier>0.97 ? "PL4Y3R" : "Musk"} protested outside the White House today, claiming that ${e.difficulty_level_multiplier>0.97 ? "the group" : "the billionaire"} was being scapegoated by the ${e.final_overall_results.find(p=>p.candidate==300).electoral_votes>269 && ticket_status>1 ? "Harris administration" : e.final_overall_results.find(p=>p.candidate==300).electoral_votes>269 ? "Sanders administration" : opponent_last_name+" administration"} to distract from its repudiation in last month's midterm elections.<br>Ending Slide <i>-1</i> of 51.`)
+				e.pages.push(`<p><b>${e.difficulty_level_multiplier>0.97 ? "Members of PL4Y3R" : "Tech billionaire Elon Musk"} arrested in alleged "${virus_name}" voting machine hacking scandal</b></p><p>In a dramatic raid early this morning, federal agents arrested ${e.difficulty_level_multiplier>0.97 ? "five alleged members of PL4Y3R, a gray-hat American hacktivist collective long known in cybersecurity circles for their leftist political views and exposure of corporate wrongdoing via high-profile breaches of corporate networks." : "tech billionaire Elon Musk, the CEO of Tesla, SpaceX, and xAI who is known for his libertarian far-right political views."}</p><p>According to prosecutors, ${e.difficulty_level_multiplier>0.97 ? "PL4Y3R" : "Musk"} is alleged to have ${e.difficulty_level_multiplier>0.97 ? "created and disseminated" : "funded and organized the creation and dissemination of"} <i>${virus_name}</i>, a sophisticated voting machine virus that is alleged to have altered ${Math.abs(votes_swapped)}% of votes from ${e.difficulty_level_multiplier>0.97 ? "Republican to Democratic" : "Democratic to Republican"} candidates during municipal, state, and federal races between 2021 and 2024. "The ${virus_name} virus was designed to be invisible, fast, and devastating", prosecutors declared today at a press conference. "This is the most significant and blatant attack on American elections in history - and our evidence shows ${e.difficulty_level_multiplier>0.97 ? "PL4Y3R" : "Musk"} was clearly behind it."</p><p>Federal cybercrime units say they became alerted to the problem after a 2025 hand recount of paper ballots from the 2024 election showed a clear and persistent mismatch compared to electronical tallies. ${e.difficulty_level_multiplier>0.97 ? "According to prosecutors, PL4Y3R's complicity was only proven after a whistleblower from within the group provided documentation allegedly detailing the virus's development and funding." : "According to prosecutors, Musks's complicity was only proven after a whistleblower under his employment provided documentation allegedly detailing the virus's development and funding."}  Representatives of ${e.difficulty_level_multiplier>0.97 ? "PL4Y3R" : "Musk"} denied all charges, calling the allegations "complete fantasy", while supporters of ${e.difficulty_level_multiplier>0.97 ? "PL4Y3R" : "Musk"} protested outside the White House today, claiming that ${e.difficulty_level_multiplier>0.97 ? "the group" : "the billionaire"} was being scapegoated by the ${e.final_overall_results.find(p=>p.candidate==300).electoral_votes>269 && ticket_status>1 ? "Harris administration" : e.final_overall_results.find(p=>p.candidate==300).electoral_votes>269 ? "Sanders administration" : opponent_last_name+" administration"} to distract from its repudiation in last month's midterm elections.<br>Ending Slide <i>-1</i> of 51.`)
 				if (e.difficulty_level_multiplier<0.97) { 
 					e.executable.push([2, (() => {e.image = e.image = 'https://i.imgur.com/sd0F9Vz.jpeg'})])
 				}
@@ -55925,6 +55939,7 @@
 	var kmusic_seen=false
 	var ending_2020=false
 	var styles_set=false
+	var was_down_by_double_digits=false //for an achievement
 
 	if (e.difficulty_level_id<=3) { //easy and less difficulty levels get a variableboost
 		political_capital+=5
@@ -55957,6 +55972,13 @@
 	else {
 		e.global_parameter_json[0].fields.global_variance=0 //remove all variance retroactively.
 		e.global_parameter_json[0].fields.state_variance=0
+	}
+	
+	if (e.hard_midterms) {
+		midterm_modifier=-0.08
+	}
+	else {
+		midterm_modifier=0
 	}
 
 
@@ -61418,7 +61440,7 @@
 				e.questions_json[campaignTrail_temp.question_number+1] = tunnel(9000) //trans policy question
 			}
 			else if (e.question_number==8) { 
-				if (DPolling-RPolling+0.005*party_unity>=0.035) {
+				if (DPolling-RPolling+0.005*party_unity + midterm_modifier>=0.035) {
 					e.questions_json[campaignTrail_temp.question_number+1] = tunnel(10200) //good 2021
 					party_unity+=1
 					result_2021=1
@@ -61426,7 +61448,7 @@
 						ReplaceFeedback(10202,"Your supporters are horrified as you reach across the aisle, clinging to what feels like a paper-thin excuse for bipartisanship. \"We didn't elect Bernie for this,\" they say, \"we elected him to fight!\" The tweet goes viral, and Congress validates it when efforts for a bipartisan infrastructure bill fall apart. Still, Manchin seems happier with you for the attempt.")
 					}
 				}
-				else if (DPolling-RPolling+0.005*party_unity>=-0.035) { //Biden had a small lead but not much over Trump in polling at this point.
+				else if (DPolling-RPolling+0.005*party_unity + midterm_modifier>=-0.035) { //Biden had a small lead but not much over Trump in polling at this point.
 					e.questions_json[campaignTrail_temp.question_number+1] = tunnel(10100) //real-world 2021.
 					political_capital-=1
 					result_2021=2
@@ -61560,47 +61582,47 @@
 				}
 			}
 			else if (e.question_number==17) {
-				if (e.current_results[1][1].result.find(p=>p.candidate==300).percent-e.current_results[1][1].result.find(p=>p.candidate==301).percent+0.005*party_unity<-0.15) { //down 15% or more in Alaska
+				if (e.current_results[1][1].result.find(p=>p.candidate==300).percent-e.current_results[1][1].result.find(p=>p.candidate==301).percent+0.005*party_unity + midterm_modifier<-0.15) { //down 15% or more in Alaska
 					maga_trifecta.push(1101)
 				}
-				if (e.current_results[1][2].result.find(p=>p.candidate==300).percent-e.current_results[1][2].result.find(p=>p.candidate==301).percent+0.005*party_unity<-0.05) { //down 5% or more in Arizona for Mark Finchem to win.
+				if (e.current_results[1][2].result.find(p=>p.candidate==300).percent-e.current_results[1][2].result.find(p=>p.candidate==301).percent+0.005*party_unity + midterm_modifier<-0.05) { //down 5% or more in Arizona for Mark Finchem to win.
 					maga_trifecta.push(1102)
 				}
-				else if (e.current_results[1][2].result.find(p=>p.candidate==300).percent-e.current_results[1][2].result.find(p=>p.candidate==301).percent+0.005*party_unity<0.01) {
+				else if (e.current_results[1][2].result.find(p=>p.candidate==300).percent-e.current_results[1][2].result.find(p=>p.candidate==301).percent+0.005*party_unity + midterm_modifier<0.01) {
 					maga_legislature.push(1102)
 				}
-				if (e.current_results[1][15].result.find(p=>p.candidate==300).percent-e.current_results[1][15].result.find(p=>p.candidate==301).percent+0.005*party_unity<-0.16) { //down 16% or more in KS
+				if (e.current_results[1][15].result.find(p=>p.candidate==300).percent-e.current_results[1][15].result.find(p=>p.candidate==301).percent+0.005*party_unity + midterm_modifier<-0.16) { //down 16% or more in KS
 					maga_trifecta.push(1115)
 				}
-				if (e.current_results[1][21].result.find(p=>p.candidate==300).percent-e.current_results[1][21].result.find(p=>p.candidate==301).percent+0.005*party_unity<-0.10) { //down 10% or more in MI
+				if (e.current_results[1][21].result.find(p=>p.candidate==300).percent-e.current_results[1][21].result.find(p=>p.candidate==301).percent+0.005*party_unity + midterm_modifier<-0.10) { //down 10% or more in MI
 					maga_trifecta.push(1121)
 				}
-				else if (e.current_results[1][21].result.find(p=>p.candidate==300).percent-e.current_results[1][21].result.find(p=>p.candidate==301).percent+0.005*party_unity<-0.05) { //MI Senate #11,12 flip, giving them the legislature
+				else if (e.current_results[1][21].result.find(p=>p.candidate==300).percent-e.current_results[1][21].result.find(p=>p.candidate==301).percent+0.005*party_unity + midterm_modifier<-0.05) { //MI Senate #11,12 flip, giving them the legislature
 					maga_legislature.push(1121)
 				}
-				if (e.current_results[1][22].result.find(p=>p.candidate==300).percent-e.current_results[1][22].result.find(p=>p.candidate==301).percent+0.005*party_unity<0) { //down in MN
+				if (e.current_results[1][22].result.find(p=>p.candidate==300).percent-e.current_results[1][22].result.find(p=>p.candidate==301).percent+0.005*party_unity + midterm_modifier<0) { //down in MN
 					maga_legislature.push(1122)
 				}
-				if (e.current_results[1][27].result.find(p=>p.candidate==300).percent-e.current_results[1][27].result.find(p=>p.candidate==301).percent+0.005*party_unity<-0.06) { //down 6% or more in NV
+				if (e.current_results[1][27].result.find(p=>p.candidate==300).percent-e.current_results[1][27].result.find(p=>p.candidate==301).percent+0.005*party_unity + midterm_modifier<-0.06) { //down 6% or more in NV
 					maga_trifecta.push(1127)
 				}
-				if (e.current_results[1][28].result.find(p=>p.candidate==300).percent-e.current_results[1][28].result.find(p=>p.candidate==301).percent+0.005*party_unity<0.05) { //not up 5% or more in NH
+				if (e.current_results[1][28].result.find(p=>p.candidate==300).percent-e.current_results[1][28].result.find(p=>p.candidate==301).percent+0.005*party_unity + midterm_modifier<0.05) { //not up 5% or more in NH
 					maga_legislature.push(1128)
 				}
-				if (e.current_results[1][37].result.find(p=>p.candidate==300).percent-e.current_results[1][37].result.find(p=>p.candidate==301).percent+0.005*party_unity<0) { //not up in PA (pretty 50/50 race for the House.)
+				if (e.current_results[1][37].result.find(p=>p.candidate==300).percent-e.current_results[1][37].result.find(p=>p.candidate==301).percent+0.005*party_unity + midterm_modifier<0) { //not up in PA (pretty 50/50 race for the House.)
 					maga_legislature.push(1137)
 				}
 				
-				if (e.current_results[1][49].result.find(p=>p.candidate==300).percent-e.current_results[1][49].result.find(p=>p.candidate==301).percent+0.005*party_unity<-0.03) { //down 3% or more in WI, and Evers is toast
+				if (e.current_results[1][49].result.find(p=>p.candidate==300).percent-e.current_results[1][49].result.find(p=>p.candidate==301).percent+0.005*party_unity + midterm_modifier<-0.03) { //down 3% or more in WI, and Evers is toast
 					maga_trifecta.push(1149)
 				}
-				if (DPolling-RPolling+0.005*party_unity>=0.02) { //Biden was probably just ahead of Trump in polling at this point, but Bernie's support base is more personality-driven and less "crawl to vote over broken glass"
+				if (DPolling-RPolling+0.005*party_unity + midterm_modifier>=0.02) { //Biden was probably just ahead of Trump in polling at this point, but Bernie's support base is more personality-driven and less "crawl to vote over broken glass"
 					e.questions_json[campaignTrail_temp.question_number+1] = tunnel(19000) //red ripple
 					red_wave=1 //matters for Congress status, epilogues.
 					political_capital+=2 //looks like you won
 					party_unity+=2
 				}
-				else if (DPolling-RPolling+0.005*party_unity>=-0.06) {
+				else if (DPolling-RPolling+0.005*party_unity + midterm_modifier>=-0.06) {
 					e.questions_json[campaignTrail_temp.question_number+1] = tunnel(19100) //red wave
 					red_wave=2
 					political_capital-=1
@@ -62076,7 +62098,7 @@
 			}
 			else if (e.question_number==27) {
 				//before anything happens, Virginia elections in background. Guesstimate Ds up 8% in Virginia at this point IRL. Rs need to flip 2 seats in the House - 21 & 97 - and Senate - 30&31 - so flipped if Ds up 2% or less.
-				if (e.current_results[1][45].result.find(p=>p.candidate==300).percent-e.current_results[1][45].result.find(p=>p.candidate==301).percent+0.005*party_unity<0.01) { //up 2% or less in VA can give Rs the legislature via 2023 elections, a dangerous situation potentially for the general election.
+				if (e.current_results[1][45].result.find(p=>p.candidate==300).percent-e.current_results[1][45].result.find(p=>p.candidate==301).percent+0.005*party_unity + midterm_modifier<0.01) { //up 2% or less in VA can give Rs the legislature via 2023 elections, a dangerous situation potentially for the general election.
 					if (result_2021>1) {
 						maga_trifecta.push(1145)
 					}
@@ -62088,7 +62110,7 @@
 				//I guesstimate Ds were maybe down 21.3% in MS on election time, interpolating 2020-2024 and assuming constant movement over time.
 				//Brandon Presley lost by 3.2%, so he outran the ticket by 18.1%. So if you're down 18.1% or less in MS he wins.
 				
-				if (e.current_results[1][23].result.find(p=>p.candidate==300).percent-e.current_results[1][23].result.find(p=>p.candidate==301).percent+0.005*party_unity>-0.0181) { 
+				if (e.current_results[1][23].result.find(p=>p.candidate==300).percent-e.current_results[1][23].result.find(p=>p.candidate==301).percent+0.005*party_unity + midterm_modifier>-0.0181) { 
 					//yay, Brandon Presley wins
 				}
 				else {
@@ -62956,6 +62978,9 @@
 		}
 		else {
 			e.election_json[0].fields.has_visits = 1 //if regain fervor or switch to Kamala, you can start campaigning again.
+		}
+		if (DPolling-RPolling<=-0.099) { //slightly smaller band than 0.1 because due to rounding it's possible that e.g. the numbers are D - 42.849% rounds to 42.8% and R -52.751% rounds to 52.8% and the player believes he should win this achievement.)
+			was_down_by_double_digits=true
 		}
 		
 		if (opponent>0 && e.question_number>32) { //opponents have been selected
