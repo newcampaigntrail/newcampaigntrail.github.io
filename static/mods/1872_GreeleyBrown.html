@@ -1,5 +1,20 @@
 campaignTrail_temp.cyoa = true
 
+
+const style_overwrite = document.createElement("style");
+style_overwrite.innerHTML = 
+`#campaign_sign {
+  background-color:rgba(156, 27, 128, 1);
+  border-color:rgba(168, 64, 147, 1);
+}`
+;
+document.head.appendChild(style_overwrite);
+
+
+let style = document.createElement('style');
+style.type = 'text/css';
+style.id = 'dynamic-style';
+
 function ctsAchievement(achievement, difficultyChecker = true){
 	if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
 		if(campaignTrail_temp.CTS){
