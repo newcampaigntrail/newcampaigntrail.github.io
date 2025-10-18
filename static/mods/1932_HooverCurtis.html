@@ -6788,7 +6788,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 3058096,
             "candidate": 200,
             "affected_candidate": 200,
-            "global_multiplier": 0.01
+            "global_multiplier": 0.0275
         }
     },
     {
@@ -6828,7 +6828,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 3058097,
             "candidate": 200,
             "affected_candidate": 200,
-            "global_multiplier": 0.0125
+            "global_multiplier": -0.0125
         }
     },
     {
@@ -7008,7 +7008,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 3058157,
             "candidate": 200,
             "affected_candidate": 200,
-            "global_multiplier": 0.0125
+            "global_multiplier": 0.0325
         }
     },
     {
@@ -7028,7 +7028,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 3058164,
             "candidate": 200,
             "affected_candidate": 200,
-            "global_multiplier": 0.0085
+            "global_multiplier": 0.0285
         }
     },
     {
@@ -7259,6 +7259,46 @@ campaignTrail_temp.answer_score_global_json = [
             "candidate": 200,
             "affected_candidate": 201,
             "global_multiplier": -0.01
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 3058402,
+        "fields": {
+            "answer": 3058241,
+            "candidate": 200,
+            "affected_candidate": 200,
+            "global_multiplier": 0.015
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 3058403,
+        "fields": {
+            "answer": 3058246,
+            "candidate": 200,
+            "affected_candidate": 200,
+            "global_multiplier": -0.02
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 3058404,
+        "fields": {
+            "answer": 5121,
+            "candidate": 200,
+            "affected_candidate": 200,
+            "global_multiplier": -0.04
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 3058405,
+        "fields": {
+            "answer": 3058096,
+            "candidate": 200,
+            "affected_candidate": 201,
+            "global_multiplier": -0.02
         }
     }
 ]
@@ -10252,6 +10292,8 @@ campaignTrail_temp.jet_data = [{
 }
 ]
 
+
+
 e = campaignTrail_temp;
 campaignTrail_temp.cyoa = true
 e.multiple_endings = true;
@@ -10294,6 +10336,7 @@ var used = false;
 // Tracker variable
 
 var fpScore = 0;
+var strat = 100;
 
 cyoAdventure = function (a) {
   ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
@@ -10420,6 +10463,16 @@ cyoAdventure = function (a) {
       } 
     }
 
+    if (ans == 5025) {
+      strat = 0;
+    }
+    if (ans == 5024) {
+      strat = 1;
+    }
+    if (ans == 5026) {
+      strat = 2;
+    }
+
     // GOP Bolting
     // Few Desertions
     if (economic >= 6) {
@@ -10447,8 +10500,20 @@ cyoAdventure = function (a) {
     }
 
     // Bonus Army
+    // Violence (if you choose it)
+    if (strat == 0) {
+      campaignTrail_temp.questions_json[14] = { 
+        "model": "campaign_trail.question",
+        "pk": 1022,
+        "fields": {
+          "priority": 1,
+          "description": "After a period of negotiations and a shootout with Washington police, it is time for you to give the order for the Bonus Army encampment to be dispersed. The military believes they can resolve this peacefully.",
+          "likelihood": 1
+        }
+      } 
+    }
     // Bonus Army Peacefully Leaves
-    if (economic >= 6) {
+    else if (economic >= 6) {
       campaignTrail_temp.questions_json[14] = { 
         "model": "campaign_trail.question",
         "pk": 3058068,
@@ -10459,7 +10524,7 @@ cyoAdventure = function (a) {
         }
       } 
     }
-    if (economic >= 4 && ans == 5024) {
+    else if (economic >= 4 && strat == 1) {
       campaignTrail_temp.questions_json[14] = { 
         "model": "campaign_trail.question",
         "pk": 3058068,
@@ -10471,7 +10536,7 @@ cyoAdventure = function (a) {
       } 
     }
     // Bonus Army Sticks Around
-    if (economic < 6 && ans == 5026) {
+    else if (economic < 6 && strat == 2) {
       campaignTrail_temp.questions_json[14] = { 
         "model": "campaign_trail.question",
         "pk": 3058091,
@@ -10482,7 +10547,7 @@ cyoAdventure = function (a) {
         }
       } 
     }
-    if (economic < 4 && ans == 5024) {
+    else if (economic < 4 && strat == 1) {
       campaignTrail_temp.questions_json[14] = { 
         "model": "campaign_trail.question",
         "pk": 3058091,
@@ -10494,7 +10559,7 @@ cyoAdventure = function (a) {
       } 
     }
     // Bonus Army Violence
-    if (economic <= 2) {
+    else if (economic <= 2) {
       campaignTrail_temp.questions_json[14] = { 
         "model": "campaign_trail.question",
         "pk": 1022,
@@ -10505,8 +10570,7 @@ cyoAdventure = function (a) {
         }
       } 
     }
-
-    if (ans == 5025) {
+    else {
       campaignTrail_temp.questions_json[14] = { 
         "model": "campaign_trail.question",
         "pk": 1022,
@@ -10730,7 +10794,7 @@ endingPicker = (out, totv, aa, quickstats) => {
   if (ans == 5071 && quickstats[0] >= 266) {
   ctsAchievement("Civil War");
   }
-  if (quickstats[0] == 0) {
+  if (quickstats[0] <= 8) {
   ctsAchievement("Fifth Party System");
   }
 
