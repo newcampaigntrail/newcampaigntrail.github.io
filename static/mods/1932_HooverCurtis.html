@@ -10791,10 +10791,10 @@ endingPicker = (out, totv, aa, quickstats) => {
   if (quickstats[0] >= 150 && campaignTrail_temp.candidate_json[0]["fields"].last_name == "Roosevelt") {
   ctsAchievement("Turning The Tides");
   }
-  if (ans != 5016 && quickstats[0] >= 170) {
+  if (!e.player_answers.includes(5016) && quickstats[0] >= 170) {
   ctsAchievement("Go For Gold");
   }
-  if (ans == 5071 && quickstats[0] >= 266) {
+  if (e.player_answers.includes(5071) && quickstats[0] >= 266) {
   ctsAchievement("Civil War");
   }
   if (quickstats[0] <= 8) {
