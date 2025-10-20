@@ -10334,11 +10334,62 @@ campaignTrail_temp.answer_feedback_json = [
     }
 ]
 
-campaignTrail_temp.candidate_image_url = "https://i.imgur.com/hNENeOK.png";
-campaignTrail_temp.running_mate_image_url = "https://i.imgur.com/4ng18VG.png";
+campaignTrail_temp.candidate_image_url = "https://i.postimg.cc/SxdNQpp8/2012-Obama.png";
+campaignTrail_temp.running_mate_image_url = "https://i.postimg.cc/3ryJFpC9/2012-Clinton.png";
 campaignTrail_temp.candidate_last_name = "Obama";
 campaignTrail_temp.running_mate_last_name = "Clinton";
 
+let newAd = true;
+
+function getRandomItem(items) {
+  return items[Math.floor(Math.random()*items.length)];
+}
+
+const ads = [
+
+"https://i.postimg.cc/nrVkJbwQ/IMG-2818.jpg",
+"https://i.postimg.cc/90Xph5NR/IMG-2820.jpg",
+"https://i.postimg.cc/QCNb3GnF/IMG-2821.jpg",
+"https://i.postimg.cc/4y45gkFy/IMG-2822.jpg",
+"https://i.postimg.cc/C5MNgT6L/IMG-2823.png",
+"https://i.postimg.cc/XqN8bSDY/IMG-2824.jpg",
+"https://i.postimg.cc/fyWKNngL/IMG-2825.jpg",
+"https://i.postimg.cc/gjcDWFBY/IMG-2826.jpg",
+"https://i.postimg.cc/brYThcFq/IMG-2827.jpg",
+"https://i.postimg.cc/x8jR2DFn/IMG-2828.jpg",
+"https://i.postimg.cc/prVZHb1x/IMG-2829.jpg",
+"https://i.postimg.cc/FzFZ45nt/IMG-2830.jpg",
+"https://i.postimg.cc/L54TpKQ7/IMG-2833.jpg",
+"https://i.postimg.cc/tJR5jQvL/IMG-2834.png",
+"https://i.postimg.cc/D0fgTkp9/IMG-2836.jpg",
+"https://i.postimg.cc/qqBLTVDZ/IMG-2837.png",
+"https://i.postimg.cc/Gmq7MdPc/IMG-2979.jpg",
+"https://i.postimg.cc/LX3Tw6vM/IMG-2839.jpg",
+"https://i.postimg.cc/B6BgkQpy/IMG-2840.jpg",
+"https://i.postimg.cc/9MYpKFbv/IMG-2841.jpg",
+"https://i.postimg.cc/8ztKyNdk/IMG-2980.jpg",
+"https://i.postimg.cc/fLfKpTCP/IMG-2843.jpg",
+"https://i.postimg.cc/2S2cHrdk/IMG-2978.png",
+"https://i.postimg.cc/rmNJ3FjZ/IMG-2847.jpg"
+]
+
+    e.cyoa = true
+	e = campaignTrail_temp
+
+	cyoAdventure = function(a) {
+        ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length-1];
+		if(newAd) {
+		  newAd = false;
+		  campaignTrail_temp.banner1.src = getRandomItem(ads);
+		  campaignTrail_temp.banner1.parentNode.style.visibility = "visible";
+
+		  campaignTrail_temp.banner2.src = getRandomItem(ads);
+		  campaignTrail_temp.banner2.parentNode.style.visibility = "visible";
+		} else {
+		  newAd = true;
+		}
+}
+	
 campaignTrail_temp.multiple_endings = true;
 endingPicker = (out, totv, aa, quickstats) => {
 
