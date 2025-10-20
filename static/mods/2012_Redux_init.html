@@ -1,3 +1,28 @@
+function appendStyle() {
+    if (!document.querySelector('meta[name="viewport"]')) {
+        const metaTag = document.createElement('meta');
+        metaTag.name = "viewport";
+        metaTag.content = "width=device-width, initial-scale=1";
+        document.head.appendChild(metaTag);
+    }
+
+    if (!document.querySelector('#radio-option-style')) {
+        const style = document.createElement('style');
+        style.id = 'radio-option-style';
+        style.textContent = `
+          body {
+               background-image: url(https://i.postimg.cc/5t2mtvXd/IMG-2867.webp);
+               background-position: center;
+               background-size: cover;
+               display: flex !important;
+          }
+        `;
+        document.head.appendChild(style);
+    }
+}
+
+appendStyle();
+
 campaignTrail_temp.global_parameter_json = [
     {
         "model": "campaign_trail.global_parameter",
@@ -30,9 +55,9 @@ campaignTrail_temp.election_json = [
         "fields": {
             "year": 2012,
             "summary": "<p>As the 2012 campaign heats up, the economy is slow to recover from the Great Recession. Candidates must debate how to grow the economy, the effects of the Affordable Care Act and more to win this election.</p> <ul><li>President Barack Obama needs to combat sluggish approval ratings and address the economic situation to secure a second term.</li><li>Mitt Romney must utilize his business acumen and governing expertise to provide a favorable contrast to the president.</li></ul>",
-            "image_url": "https://i.imgur.com/835AoeN.png",
+            "image_url": "https://i.postimg.cc/52b2M2Df/2012-Election-Image.png",
             "winning_electoral_vote_number": 270,
-            "advisor_url": "https://i.imgur.com/ZCgRTQE.png",
+            "advisor_url": "https://i.postimg.cc/CMZLsDH7/2012-Advisor-Image.png",
             "recommended_reading": "<h4 style=\"margin-top: 0.5em;\">Books by the Candidates</h4>Barack Obama - <a href=\"http://www.amazon.com/exec/obidos/ASIN/1400082773/amhius20-20\" target=\"_blank\">Dreams from My Father: A Story of Race and Inheritance</a><br>Barack Obama - <a href=\"http://www.amazon.com/exec/obidos/ASIN/0307455874/amhius20-20\" target=\"_blank\">The Audacity of Hope: Thoughts on Reclaiming the American Dream (Vintage)</a><br> Mitt Romney - <a href=\"http://www.amazon.com/exec/obidos/ASIN/0312671733/amhius20-20\" target=\"_blank\">No Apology: Believe in America</a><br> Gary Johnson - <a href=\"http://www.amazon.com/exec/obidos/ASIN/B008PXW0C0/amhius20-20\" target=\"_blank\">Seven Principles of Good Government</a><h4>Politics in 2012</h4> Mark Halperin & John Heilemann - <a href=\"http://www.amazon.com/exec/obidos/ASIN/0143126008/amhius20-20\" target=\"_blank\">Double Down: Game Change 2012</a><br>Edward Klein - <a href=\"http://www.amazon.com/exec/obidos/ASIN/1596987855/amhius20-20\" target=\"_blank\">The Amateur</a><br>Michael Kranish & Scott Helman - <a href=\"http://www.amazon.com/exec/obidos/ASIN/0062123289/amhius20-20\" target=\"_blank\">The Real Romney</a><br>Lawrence Lessig - <a href=\"http://www.amazon.com/exec/obidos/ASIN/0446576433/amhius20-20\" target=\"_blank\">Republic, Lost: How Money Corrupts Congress--and a Plan to Stop It</a><br>Ron Suskind - <a href=\"http://www.amazon.com/exec/obidos/ASIN/0061429252/amhius20-20\" target=\"_blank\">Confidence Men: Wall Street, Washington, and the Education of a President</a><h4>The Financial Crisis</h4> Johan Norberg - <a href=\"http://www.amazon.com/exec/obidos/ASIN/1935308130/amhius20-20\" target=\"_blank\">Financial Fiasco: How America's Infatuation with Home Ownership and Easy Money Created the Economic Crisis</a><br>John Bellamy Foster & Fred Magdoff - <a href=\"http://www.amazon.com/exec/obidos/ASIN/1583671846/amhius20-20\" target=\"_blank\">The Great Financial Crisis: Causes and Consequences</a>",
             "has_visits": 1,
             "no_electoral_majority_image": "https://www.jetsimon.com/public/static/images/2012-no-majority.jpg",
@@ -88,7 +113,7 @@ campaignTrail_temp.candidate_json = [
             "color_hex": "#0048E2",
             "secondary_color_hex": "#90C0FF",
             "is_active": 1,
-            "image_url": "https://i.imgur.com/hNENeOK.png",
+            "image_url": "https://i.postimg.cc/SxdNQpp8/2012-Obama.png",
             "electoral_victory_message": "<h3>Congratulations! You have won the 2012 election.</h3><p>In spite of a hard-fought challenge from Mitt Romney, you have held on to the Presidency.</p><p>On the political front, it appears that your health care legislation that was passed in early 2010 will survive and go into effect. While the economy has not yet recovered as strongly as you hoped and promised, you will now have four more years to leave a strong legacy to your Democratic successor.</p>",
             "electoral_loss_message": "<h3>Sorry! You have lost the 2012 election.</h3><p>In spite of your spirited defense, Mitt Romney has won the Presidency. Nearly two centuries after the ill-fated campaign of Joseph Smith, Romney will become America's first Mormon president.</p><p>On the political front, it appears that Romney will make a push for more tax cuts to revive the economy. He will also try to repeal your health care law. If your defeat was narrow enough, you may be able to attempt a comeback in 2016.</p>",
             "no_electoral_majority_message": "<h3>The House decides the 2012 election.</h3><p>No candidate achieved a majority of the electoral votes, marking the first time this has happened since 1824. Unfortunately for you, the majority of U.S. states have Republican controlled congressional delegations, and they will cast their votes for Mitt Romney.</p><p>Given the incredibly close nature of the election, you can probably set your sights on a political comeback in 2016, if that is what you desire.</p>",
@@ -111,7 +136,7 @@ campaignTrail_temp.candidate_json = [
             "color_hex": "#E60813",
             "secondary_color_hex": "#FFA0A0",
             "is_active": 1,
-            "image_url": "https://i.imgur.com/hphXtYo.png",
+            "image_url": "https://i.postimg.cc/66D6j3MJ/2012-Romney.png",
             "electoral_victory_message": "<h3>Congratulations! You have won the 2012 election.</h3><p>In spite of a hard-fought campaign from Barack Obama, you have won the Presidency. Nearly two centuries after the ill-fated campaign of Joseph Smith, you will become America's first Mormon president. Your next steps are to select a cabinet and prepare a rousing inauguration speech.</p><p>On the political front, you may have the support needed to overturn Obamacare. Or you could focus on tax cuts, or other policies entirely. If you can recover the economy and not make any major mistakes, you should be able to win re-election in 2016.</p>",
             "electoral_loss_message": "<h3>Sorry! You have lost the 2012 election.</h3><p>In spite of your best efforts, Barack Obama has been reelected to a second term as President.</p><p>On the political front, it appears that Obamacare will survive and go into effect. While the economy has not recovered as strongly as Obama hoped and promised, he will now have four more years to leave a strong legacy to his Democratic successor. No doubt the Republicans will learn from your failure and come back stronger in 2016.</p>",
             "no_electoral_majority_message": "<h3>The House decides the 2012 election.</h3><p>No candidate achieved a majority of the electoral votes, marking the first time this has happened since 1824. Fortunately for you, the majority of U.S. states have Republican controlled congressional delegations, and they will cast their votes for you accordingly.</p><p>The important thing is that you won. Go about implementing your agenda accordingly, and pay no attention to Democrats and pundits who call for 'compromise' and 'conciliation'.</p>",
@@ -134,7 +159,7 @@ campaignTrail_temp.candidate_json = [
             "color_hex": "#0000FF",
             "secondary_color_hex": "#90C0FF",
             "is_active": 0,
-            "image_url": "https://i.imgur.com/yPGIHzC.png",
+            "image_url": "https://i.postimg.cc/8kqkK5Zp/2012-Biden.png",
             "electoral_victory_message": "n/a",
             "electoral_loss_message": "n/a",
             "no_electoral_majority_message": "n/a",
@@ -157,7 +182,7 @@ campaignTrail_temp.candidate_json = [
             "color_hex": "#FF0000",
             "secondary_color_hex": "#FFA0A0",
             "is_active": 0,
-            "image_url": "https://i.imgur.com/A3J5zod.png",
+            "image_url": "https://i.postimg.cc/y8s8z82P/2012-Ryan.png",
             "electoral_victory_message": "n/a",
             "electoral_loss_message": "n/a",
             "no_electoral_majority_message": "n/a",
@@ -180,7 +205,7 @@ campaignTrail_temp.candidate_json = [
             "color_hex": "#FF0000",
             "secondary_color_hex": "#FFA0A0",
             "is_active": 0,
-            "image_url": "https://i.imgur.com/p5P4KBg.png",
+            "image_url": "https://i.postimg.cc/qv4vdvWc/2012-Portman.png",
             "electoral_victory_message": "n/a",
             "electoral_loss_message": "n/a",
             "no_electoral_majority_message": "n/a",
@@ -203,7 +228,7 @@ campaignTrail_temp.candidate_json = [
             "color_hex": "#FF0000",
             "secondary_color_hex": "#FFA0A0",
             "is_active": 0,
-            "image_url": "https://i.imgur.com/qolzdCp.png",
+            "image_url": "https://i.postimg.cc/k5wLk196/2012-Rubio.png",
             "electoral_victory_message": "n/a",
             "electoral_loss_message": "n/a",
             "no_electoral_majority_message": "n/a",
@@ -226,7 +251,7 @@ campaignTrail_temp.candidate_json = [
             "color_hex": "#0000FF",
             "secondary_color_hex": "#90C0FF",
             "is_active": 0,
-            "image_url": "https://i.imgur.com/4ng18VG.png",
+            "image_url": "https://i.postimg.cc/3ryJFpC9/2012-Clinton.png",
             "electoral_victory_message": "n/a",
             "electoral_loss_message": "n/a",
             "no_electoral_majority_message": "n/a",
@@ -249,7 +274,7 @@ campaignTrail_temp.candidate_json = [
             "color_hex": "#FF0000",
             "secondary_color_hex": "#FFA0A0",
             "is_active": 0,
-            "image_url": "https://i.imgur.com/LacuFsH.png",
+            "image_url": "https://i.postimg.cc/zD9DtBxD/2012-Pawlenty.png",
             "electoral_victory_message": "n/a",
             "electoral_loss_message": "n/a",
             "no_electoral_majority_message": "n/a",
@@ -272,7 +297,7 @@ campaignTrail_temp.candidate_json = [
             "color_hex": "#FF0000",
             "secondary_color_hex": "#FFA0A0",
             "is_active": 0,
-            "image_url": "https://i.imgur.com/FQaplZT.png",
+            "image_url": "https://i.postimg.cc/RC3VLfQX/2012-Christie.png",
             "electoral_victory_message": "n/a",
             "electoral_loss_message": "n/a",
             "no_electoral_majority_message": "n/a",
@@ -391,7 +416,7 @@ campaignTrail_temp.running_mate_json = [
 campaignTrail_temp.credits = "<button onclick='credits()'>MadCowBro</button>"
 
 credits = function() {
-  credits = [ "Special Thanks to:", "Liquidastro - Bunnyhop", "Astro - Shuffle Questions On/Off Toggle", "DecstarG - Credits page", "Dan Bryan - Original 2012 scenario, and TCT in general"]
+  credits = [ "Special Thanks to:", "Liquidastro - Bunnyhop", "Astro - Shuffle Questions On/Off Toggle", "W. Team - Ads", "DecstarG - Credits page", "Dan Bryan - Original 2012 scenario, and TCT in general"]
   text = "CREDITS:\n\n"
   for (i in credits) {
       text += credits[i] + "\n"
@@ -435,6 +460,41 @@ jet_data = {
     "gameTitle": "THE REDUX TRAIL"
 }
 
+  let contentBox = document.getElementsByClassName("content_box")[0];
+  let contentSingle = document.getElementsByClassName("content_single")[0];
+  
+  let containerRef = document.getElementsByClassName("container")[0];
+
+  function createBanner(url, sibling, isLeft) {
+      let div = document.createElement("DIV");
+      let img = document.createElement("IMG");
+      div.style.position = "relative";
+      div.style.margin = "auto";
+      img.src = url;
+      
+  
+      let x = document.createElement("DIV");
+      x.innerText = "_";
+      x.style.position = "absolute";
+      x.style.padding = "2px";
+      x.style.fontSize = "2pt";
+      x.style.cursor = "pointer";
+  
+      div.appendChild(x);
+  
+      div.appendChild(img);
+  
+      if(isLeft) {
+          sibling.parentNode.insertBefore(div, sibling);
+      }
+      else {
+          sibling.parentNode.appendChild(div);
+      }
+      x.onclick = () => div.style.visibility = "hidden";
+      x.onclick = () => img.style.visibility = "hidden";
+      return img;
+  }
+
 //#startcode
 
 
@@ -453,11 +513,14 @@ $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selected
 
 $(".container")[0].style.backgroundColor = "#FFFFFF";
 
-document.getElementById("header").src = "https://i.imgur.com/bm6gylh.png";
+document.getElementById("header").src = "https://i.postimg.cc/RVKSjBYQ/2012-Banner.png";
 
-document.body.background = "https://i.imgur.com/Axdllkz.png";
+document.body.background = "https://i.postimg.cc/5t2mtvXd/IMG-2867.webp";
 
 document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#0E77A1!important;}</style>";
+
+  campaignTrail_temp.banner1 = createBanner("https://i.postimg.cc/K8Jq9x72/IMG-2977.jpg", containerRef, true);
+  campaignTrail_temp.banner2 = createBanner("https://i.postimg.cc/6q60XJ14/IMG-2819.jpg", containerRef, false);
 
 HistHexcolour=["#0048E2","#E60813","#E8CA1D","#00B232"]; HistName=[" Barack Obama"," Mitt Romney"," Gary Johnson"," Jill Stein/Others"]; HistEV=[332,206,0,0]; HistPV=["65,915,795","60,933,504","1,275,971","960,140"]; HistPVP=["51.1%","47.2%","1.0%","0.7%"];
 
@@ -477,37 +540,37 @@ campaignTrail_temp.modBoxTheme = {
 
 campaignTrail_temp.achievements = {
   "Nothing Ever Happens         " : {
-    "image" : "https://i.imgur.com/VyA6o97.png",
+    "image" : "https://i.postimg.cc/8PMpqSYS/Nothing-Ever-Happens-Achievement.png",
     "description" : "As anyone, achieve the historical results.",
     "cannotBeCheated" : true
   },
   "Obama’s Nation         " : {
-    "image" : "https://i.imgur.com/y0zmOWI.png",
+    "image" : "https://i.postimg.cc/Qx18R3zc/Obama-Nation-Achievment.png",
     "description" : "As Obama, exceed your 2008 margins.",
     "cannotBeCheated" : true
   },
   "No Apology         " : {
-    "image" : "https://i.imgur.com/ehHu49b.png",
+    "image" : "https://i.postimg.cc/bNkyKh5D/No-Apology-Achievement.png",
     "description" : "As Romney, win with more than 332 EVs.",
     "cannotBeCheated" : true
   },
   "Darker Vision         " : {
-    "image" : "https://i.imgur.com/k5bSu6W.png",
+    "image" : "https://i.postimg.cc/28hkPDt6/Darker-Vision-Achievement.png",
     "description" : "As Obama, revive liberalism and win.",
     "cannotBeCheated" : true
   },
   "Mitt “Joe Biden” Romney         " : {
-    "image" : "https://i.imgur.com/u0pHiY5.png",
+    "image" : "https://i.postimg.cc/v81Ht9L0/Mitt-Joe-Biden-Romney-Achievement.png",
     "description" : "As Romney, be gaffe-prone and win.",
     "cannotBeCheated" : true
   },
   "Malarkey         " : {
-    "image" : "https://i.imgur.com/REx6LEh.png",
+    "image" : "https://i.postimg.cc/52b2M2DN/Malarky-Achievement.png",
     "description" : "As Obama, only win DC.",
     "cannotBeCheated" : true
   },
   "Mormon Country         " : {
-    "image" : "https://i.imgur.com/oLpHC4O.png",
+    "image" : "https://i.postimg.cc/T2yYJmqZ/Mormon-Country-Achievement.png",
     "description" : "As Romney, only win Utah.",
     "cannotBeCheated" : true
   }
@@ -515,58 +578,45 @@ campaignTrail_temp.achievements = {
 
   campaignTrail_temp.bunnyhop = true;
   function addColor() {
-          var difficultyDiv = document.getElementById("difficulty_level");
-          if (difficultyDiv && !document.getElementById("bunnyhopDropdown")) {
-              var questionCounter = ["On", "Off"];
-              var questions = [25, 25];
-              var dropdown = document.createElement("select");
-              dropdown.id = "bunnyhopDropdown";
-  
-              for (var i = 0; i < questions.length; i++) {
-                  var opt = document.createElement("option");
-                  opt.text = questionCounter[i];
-                  if (questionCounter[i] === "On") {
-                      opt.selected = true;
-                  }
-                  opt.value = questionCounter[i]; // Use the text as the value
-                  dropdown.options.add(opt);
-              }
-  
-              var form = document.createElement("form");
-              form.name = "bunnyhopForm";
-              var header = document.createElement("h3");
-              header.textContent = "Shuffle Questions?";
-              form.appendChild(header);
-              form.appendChild(dropdown);
-              difficultyDiv.appendChild(form);
-  
-              dropdown.addEventListener("change", function() {
-                  if (this.value === "On") {
-                      campaignTrail_temp.bunnyhop = true;
-                      campaignTrail_temp.staticQuestions = false; // Ensure staticQuestions is false
-                  } else if (this.value === "Off") {
-                      campaignTrail_temp.bunnyhop = false;
-                      campaignTrail_temp.staticQuestions = true; // Set staticQuestions to true
-                  } else {
-                      campaignTrail_temp.bunnyhop = false;
-                      campaignTrail_temp.staticQuestions = false; // Ensure staticQuestions is false
-                  }
-                  campaignTrail_temp.global_parameter_json[0].fields.question_count = parseInt(this.value.match(/\d+/)[0]); // Extract the number
-              });
+    var difficultyDiv = document.getElementById("difficulty_level");
 
-              var difficultyForm = document.querySelector('form[name="difficulty_level_selection"]');
-              var difficultyHeader = difficultyForm.querySelector('h3');
-              difficultyHeader.textContent = "Select campaign difficulty:";
-  
-              var forms = document.querySelectorAll("#difficulty_level form");
-              for (var i = 0; i < forms.length; i++) {
-                forms[i].style.display = "inline-block";
-                forms[i].style.paddingLeft = "10px"; // adjust the value as needed
-                forms[i].style.paddingRight = "10px"; // adjust the value as needed
-              }
-  
-          }
-  }
+    if (difficultyDiv && !document.getElementById("bunnyhopCheckbox")) {
+        // Create form and label
+        var form = document.createElement("form");
+        form.name = "bunnyhopForm";
+
+        var header = document.createElement("h3");
+        header.textContent = "Shuffle Questions?";
+        form.appendChild(header);
+
+        // Create the checkbox
+        var checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.id = "bunnyhopCheckbox";
+        checkbox.checked = campaignTrail_temp.bunnyhop === true;
+
+        form.appendChild(checkbox);
+        difficultyDiv.appendChild(form);
+
+        // Handle checkbox state change
+        checkbox.addEventListener("change", function () {
+            campaignTrail_temp.bunnyhop = this.checked;
+            campaignTrail_temp.staticQuestions = !this.checked;
+        });
+
+        // Style the forms next to each other
+        var difficultyForm = document.querySelector('form[name="difficulty_level_selection"]');
+        var difficultyHeader = difficultyForm.querySelector('h3');
+        difficultyHeader.textContent = "Select campaign difficulty:";
+
+        var forms = document.querySelectorAll("#difficulty_level form");
+        for (var i = 0; i < forms.length; i++) {
+            forms[i].style.display = "inline-block";
+            forms[i].style.paddingLeft = "10px";
+            forms[i].style.paddingRight = "10px";
+        }
+    }
+}
   // the wrapper here is the same that makes sure your music player doesn't exist twice basically
   if(!campaignTrail_temp.observer){
   
