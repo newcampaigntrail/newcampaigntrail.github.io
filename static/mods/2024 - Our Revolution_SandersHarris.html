@@ -54171,7 +54171,24 @@
 			else{
 				senate_losses["MN"]=senate_results["MN"]
 			}
-			//ok you're not winning MS
+			//ok you're not winning MS in a normal election, but maybe you cheated, or maybe you're playing on Cakewalk, or maybe you just have incredible RNG luck.
+			
+			senate_results["MS"]=e.final_state_results[23].result.find(p=>p.candidate==300).percent
+				+e.final_state_results[23].result.find(p=>p.candidate==303).percent * green_factor
+				+e.final_state_results[23].result.find(p=>p.candidate==305).percent * centrist_factor
+				-e.final_state_results[23].result.find(p=>p.candidate==302).percent * rfk_factor
+				-e.final_state_results[23].result.find(p=>p.candidate==301).percent
+				+0.0025*party_unity-0.0398 //MS: Pinkers runs behind, but not that much since MS is super racially polarized
+			
+			if (senate_results["MS"]>0) { 
+				senate_seats+=1
+				senate_gains["MS"]=senate_results["MS"]
+			}
+			else if (senate_results["MS"]>-0.05) {
+				senate_close["MS"]=senate_results["MS"]
+			}
+			
+			
 			senate_results["MO"]=e.final_state_results[24].result.find(p=>p.candidate==300).percent
 				+e.final_state_results[24].result.find(p=>p.candidate==303).percent * green_factor
 				+e.final_state_results[24].result.find(p=>p.candidate==305).percent * centrist_factor
@@ -54229,7 +54246,22 @@
 			else if (senate_results["NE"]>-0.05) {
 				senate_close["NE"]=senate_results["NE"]
 			}
-			//you're also not winning NE-special (vs Pete Ricketts)
+			//you're also not winning NE-special (vs Pete Ricketts) but maybe you're playing on Cakewalk
+			senate_results["NE-Special"]=e.final_state_results[26].result.find(p=>p.candidate==300).percent
+				+e.final_state_results[26].result.find(p=>p.candidate==303).percent * green_factor
+				+e.final_state_results[26].result.find(p=>p.candidate==305).percent * centrist_factor
+				-e.final_state_results[26].result.find(p=>p.candidate==302).percent * rfk_factor
+				-e.final_state_results[26].result.find(p=>p.candidate==301).percent
+				+0.0025*party_unity-0.06 //NE: Love underperforms
+			if (senate_results["NE-Special"]>0) { 
+				senate_seats+=1
+				senate_gains["NE-Special"]=senate_results["NE-Special"]
+			}
+			else if (senate_results["NE-Special"]>-0.05) {
+				senate_close["NE-Special"]=senate_results["NE-Special"]
+			}
+			
+			
 			senate_results["NV"]=e.final_state_results[27].result.find(p=>p.candidate==300).percent
 				+e.final_state_results[27].result.find(p=>p.candidate==303).percent * green_factor
 				+e.final_state_results[27].result.find(p=>p.candidate==305).percent * centrist_factor
@@ -54292,7 +54324,23 @@
 			else{
 				senate_losses["NY"]=senate_results["NY"]
 			}
-			//you're also not winning ND
+			//you're also not winning ND but maybe you cheated or something
+			senate_results["ND"]=e.final_state_results[33].result.find(p=>p.candidate==300).percent
+				+e.final_state_results[33].result.find(p=>p.candidate==303).percent * green_factor
+				+e.final_state_results[33].result.find(p=>p.candidate==305).percent * centrist_factor
+				-e.final_state_results[33].result.find(p=>p.candidate==302).percent * rfk_factor
+				-e.final_state_results[33].result.find(p=>p.candidate==301).percent
+				+0.0025*party_unity+0.021 //ND: Christiansen overperforms
+			
+			if (senate_results["ND"]>0) { 
+				senate_seats+=1
+				senate_gains["ND"]=senate_results["ND"]
+			}
+			else if (senate_results["ND"]>-0.05) {
+				senate_close["ND"]=senate_results["ND"]
+			}
+			
+			
 			senate_results["OH"]=e.final_state_results[34].result.find(p=>p.candidate==300).percent
 				+e.final_state_results[34].result.find(p=>p.candidate==303).percent * green_factor
 				+e.final_state_results[34].result.find(p=>p.candidate==305).percent * centrist_factor
@@ -54338,7 +54386,24 @@
 			else{
 				senate_losses["RI"]=senate_results["RI"]
 			}
-			//you're also not winning Tennessee
+			//you're also not winning Tennessee but maybe you got super lucky with RNG or are playing on Cakewalk or something like that 
+			
+			
+			senate_results["TN"]=e.final_state_results[42].result.find(p=>p.candidate==300).percent
+				+e.final_state_results[41].result.find(p=>p.candidate==303).percent * green_factor
+				+e.final_state_results[41].result.find(p=>p.candidate==305).percent * centrist_factor
+				-e.final_state_results[41].result.find(p=>p.candidate==302).percent * rfk_factor
+				-e.final_state_results[41].result.find(p=>p.candidate==301).percent
+				+0.0025*party_unity-0.004 //TN: Johnson runs basically even
+			
+			if (senate_results["TN"]>0) { 
+				senate_seats+=1
+				senate_gains["TN"]=senate_results["TN"]
+			}
+			else if (senate_results["TN"]>-0.05) {
+				senate_close["TN"]=senate_results["TN"]
+			}
+			
 			senate_results["TX"]=e.final_state_results[42].result.find(p=>p.candidate==300).percent
 				+e.final_state_results[42].result.find(p=>p.candidate==303).percent * green_factor
 				+e.final_state_results[42].result.find(p=>p.candidate==305).percent * centrist_factor
@@ -54355,8 +54420,42 @@
 				senate_close["TX"]=senate_results["TX"]
 			}
 			
-			//also not winning Utah
-			senate_seats+=1 //lets be real, you're not losing Vermont
+			//one of the many changes seems to have made it that UT-Sen is now winnable against Trump Jr being Trump Jr. I won't make an achievement for it though.
+			senate_results["UT"]=e.final_state_results[43].result.find(p=>p.candidate==300).percent
+				+e.final_state_results[43].result.find(p=>p.candidate==303).percent * green_factor
+				+e.final_state_results[43].result.find(p=>p.candidate==305).percent * centrist_factor
+				-e.final_state_results[43].result.find(p=>p.candidate==302).percent * rfk_factor
+				-e.final_state_results[43].result.find(p=>p.candidate==301).percent
+				+0.0025*party_unity-0.1075 //UT: The Republican runs heavily ahead by virtue of being a Normie Republican Dude who Isn't Trump.
+			
+			if (senate_results["UT"]>0) { 
+				senate_seats+=1
+				senate_gains["UT"]=senate_results["UT"]
+				ctsAchievement("The White Horse")
+			}
+			else if (senate_results["UT"]>-0.05) {
+				senate_close["UT"]=senate_results["UT"]
+			}
+			
+			//lets be real, you're not losing Vermont. But maybe you're playing on Disaster and doing your best to self-sabotage or cheated to lose it or something like that, so for completeness.
+			senate_results["VT"]=e.final_state_results[44].result.find(p=>p.candidate==300).percent
+				+e.final_state_results[44].result.find(p=>p.candidate==303).percent * green_factor
+				+e.final_state_results[44].result.find(p=>p.candidate==305).percent * centrist_factor
+				-e.final_state_results[44].result.find(p=>p.candidate==302).percent * rfk_factor
+				-e.final_state_results[44].result.find(p=>p.candidate==301).percent
+				+0.0025*party_unity //VT: Let's assume that Zuckerman - replacing Bernie - does not run any better or worse than the top of the ticket for simplicity. Realistically he might run somewhat behind just because Bernie does especially well in Vermont from home state effects (compare to UT Republicans running better than Trump), but in practice that should depend on the D candidate (e.g. if Kamala runs aggressively away from martyr Bernie, Zuckerman would likely outperform her) and will get complicated for a mechanic that almost no one will ever see.
+			
+			if (senate_results["VT"]>0) { 
+				senate_seats+=1
+				if (senate_results["VT"]<0.05) {
+					senate_close["VT"]=senate_results["VT"]
+				}
+			}
+			else {
+				senate_losses["VT"]=senate_results["VT"]
+			}
+			
+			
 			senate_results["VA"]=e.final_state_results[45].result.find(p=>p.candidate==300).percent
 				+e.final_state_results[45].result.find(p=>p.candidate==303).percent * green_factor
 				+e.final_state_results[45].result.find(p=>p.candidate==305).percent * centrist_factor
@@ -54420,7 +54519,24 @@
 				senate_losses["WI"]=senate_results["WI"]
 			}
 			
-			//also not winning Wyoming
+			//let's be real you're not winning WY, but just for completeness for cheating players.
+			senate_results["WY"]=e.final_state_results[50].result.find(p=>p.candidate==300).percent
+				+e.final_state_results[50].result.find(p=>p.candidate==303).percent * green_factor
+				+e.final_state_results[50].result.find(p=>p.candidate==305).percent * centrist_factor
+				-e.final_state_results[50].result.find(p=>p.candidate==302).percent * rfk_factor
+				-e.final_state_results[50].result.find(p=>p.candidate==301).percent
+				+0.0025*party_unity-0.0862 //you're not winning this without cheating.
+			
+			if (senate_results["WY"]>0) { 
+				senate_seats+=1
+				senate_gains["WY"]=senate_results["WY"]
+			}
+			else if (senate_results["WY"]>-0.05) {
+				senate_close["WY"]=senate_results["WY"]
+			}
+			
+			
+			
 			if (!election_night_win && e.final_overall_results.find(p=>p.candidate==301).electoral_votes<270) { //hung electoral college
 				if ((senate_seats>=51) || (senate_seats==50 && (ticket_status<3 || red_wave==1))) { //your VP breaks a tie if you have 50, most of the time. Exception - Bernie died, Kamala is President, VP is empty because Republican Senate refused to fill it.
 					split_wh=true
@@ -55128,6 +55244,9 @@
 				if (cumulative_inflation>=40) {
 					ctsAchievement("True Populist")
 				}
+				if (economy<=-9.95) { //giving a bit of buffer for what if it rounds to -10 and player thinks they should get the achievement (even if it doesn't have the correct mouseover.)
+					ctsAchievement("The Vibes Election")
+				}
 				if ((e.player_answers.includes(39201) || e.player_answers.includes(39202) || e.player_answers.includes(39203) || e.player_answers.includes(39204) || e.player_answers.includes(39501) || e.player_answers.includes(39502) || e.player_answers.includes(39503) || e.player_answers.includes(39504)) && (e.player_answers.includes(41201) || e.player_answers.includes(41202) || e.player_answers.includes(41203) || e.player_answers.includes(41501) || e.player_answers.includes(41502) || e.player_answers.includes(41503) || e.player_answers.includes(41504)) && (e.player_answers.includes(43201) || e.player_answers.includes(43202) || e.player_answers.includes(43501) || e.player_answers.includes(43502)) ) {
 					ctsAchievement("Didn't need them") 
 				}
@@ -55773,7 +55892,7 @@
 				e.executable.push([2, (() => {e.image = e.image = 'https://i.imgur.com/VxJ3upZ.jpeg'})])
 			}
 			else if (e.final_overall_results.find(p=>p.candidate==300).electoral_votes>269) { 
-				e.pages.push(`<p><b>Netanyahu declares "Mission Accomplished", agrees to Gaza withdrawal in hostage deal</b></p><p>Israeli Prime Minister declared "Mission Accomplished" today, as he announced the complete dismantling of Hamas' military infrastructure and leadership in the Gaza Strip, hailing what he characterized as "a decisive victory over terror." In a televised address, Netanyahu confirmed that Israel would begin a full withdrawal from Gaza and allow Palestinian refugees to return to their Gaza homes - many reduced to rubble - in exchange for the release of the last Israeli refugees. The agreement, brokered through Egyptian and Qatari mediators, marks an end to a brutal one and a half year campaign that devastated Gaza and drew international condemnation.</p><p>While Netanyahu portrayed the withdrawal as a voluntary decision following total victory, analysts suggest it was a strategic retreat forced by geopolitical realities. "If Bibi had his way, Gaza would be emptied and annexed", one senior diplomat stated under condition of anonymity. "But with President ${ticket_status<2 ?"Sanders" : "Harris"} in office and international patience exhausted, the risk of permanent occupation or ethnic cleansing became too high for him to consider." Israeli National Security minister Itamar Ben-Gvir resigned from the Cabinet in protest over the agreement, while many in Israel celebrated at the return of the hostages. Hundreds of thousands of displaced Palestinians are expected to begin returning to their homes in northern Gaza in the coming weeks, though reconstruction efforts remain uncertain amid a near-total infrastructure collapse in Gaza.</p><br> Ending Slide #32 `)
+				e.pages.push(`<p><b>Netanyahu declares "Mission Accomplished", agrees to Gaza withdrawal in hostage deal</b></p><p>Israeli Prime Minister declared "Mission Accomplished" today, as he announced the complete dismantling of Hamas' military infrastructure and leadership in the Gaza Strip, hailing what he characterized as "a decisive victory over terror." In a televised address, Netanyahu confirmed that Israel would begin a full withdrawal from Gaza and allow Palestinian refugees to return to their Gaza homes - many reduced to rubble - in exchange for the release of the last Israeli hostages. The agreement, brokered through Egyptian and Qatari mediators, marks an end to a brutal one and a half year campaign that devastated Gaza and drew international condemnation.</p><p>While Netanyahu portrayed the withdrawal as a voluntary decision following total victory, analysts suggest it was a strategic retreat forced by geopolitical realities. "If Bibi had his way, Gaza would be emptied and annexed", one senior diplomat stated under condition of anonymity. "But with President ${ticket_status<2 ?"Sanders" : "Harris"} in office and international patience exhausted, the risk of permanent occupation or ethnic cleansing became too high for him to consider." Israeli National Security minister Itamar Ben-Gvir resigned from the Cabinet in protest over the agreement, while many in Israel celebrated at the return of the hostages. Hundreds of thousands of displaced Palestinians are expected to begin returning to their homes in northern Gaza in the coming weeks, though reconstruction efforts remain uncertain amid a near-total infrastructure collapse in Gaza.</p><br> Ending Slide #32 `)
 				e.executable.push([2, (() => {e.image = e.image = 'https://i.imgur.com/TBxFSPV.jpeg'})])
 			}
 			else if (party_social_progressive>=10) {
@@ -57086,12 +57205,30 @@
 				else if (item=="MO"){
 					ending+=` Lucas Kunce shockingly ${opponent !=7 && opponent !=17 ? "unseated Josh Hawley" : "defeated Andrew Bailey for Hawley's former seat"} by ${roundToDecimals(senate_gains["MO"]*100,2)}% in Missouri`
 				}
+				else if(item=="MS"){
+					ending+=` Roger Wicker confused and shocked pundits nationwide via somehow losing re-election by ${roundToDecimals(senate_gains["MS"]*100,2)}% in Mississippi`
+				}
 				else if (item=="NE") {
 					ending+=` Dan Osborn managed to upset Deb Fischer by ${roundToDecimals(senate_gains["NE"]*100,2)}% in Nebraska and indicates that he will caucus with Democrats`
+				}
+				else if (item=="NE-Special") {
+					ending+=` you're not sure how it happened - Republicans are blaming voting machine hacking - but Pete Ricketts somehow lost Nebraska's Class 2 Senate seat in the special election by ${roundToDecimals(senate_gains["NE-Special"]*100,2)}%`
+				}
+				else if (item=="ND") {
+					ending+=` Katrina Christiansen enjoyed divine intervention to unseat Kevin Cramer by ${roundToDecimals(senate_gains["ND"]*100,2)}% in North Dakota`
+				} //you're not winning this without divine intervention
+				else if (item=="TN") {
+					ending+=` Gloria Johnson shocked the nation through somehow unseating Marsha Blackburn by ${roundToDecimals(senate_gains["TN"]*100,2)}% in Tennessee`
 				}
 				else if (item=="TX") {
 					ending+=` Colin Allred defeated Ted Cruz by ${roundToDecimals(senate_gains["TX"]*100,2)}% in Texas`
 				}
+				else if (item=="UT") {
+					ending+=` ${opponent_last_name} was so utterly unpopular that Caroline Gleich somehow upset John Curtis by ${roundToDecimals(senate_gains["UT"]*100,2)}% for Utah's open seat`
+				}
+				else if (item=="WY") {
+					ending+=` divine intervention unseated John Barrasso by ${roundToDecimals(senate_gains["WY"]*100,2)}% in Wyoming`
+				} //you're not winning this without divine intervention
 				if(Object.keys(senate_gains).length>=3 && index<Object.keys(senate_gains).length-1) {
 					ending+=`,`
 				}
@@ -57188,6 +57325,9 @@
 					else if (item=="VA") {
 						ending+=` Hung Cao defeated Tim Kaine by ${roundToDecimals(-1*senate_losses["VA"]*100,2)}% in Virginia`
 					}
+					else if (item=="VT") {
+						ending+=` David Zuckerman was shockingly upset by ${roundToDecimals(-1*senate_losses["VT"]*100,2)}% in ${ticket_status==1 ? "your" : "Bernie's"} old Vermont seat`
+					}
 					else if (item=="WA") {
 						ending+=` Maria Cantwell shockingly failed by ${roundToDecimals(-1*senate_losses["WA"]*100,2)}% to win a fifth term in Washington state`
 					}
@@ -57270,6 +57410,9 @@
 				else if (item=="MN") {
 					ending+=` Amy Klobuchar won re-election by only ${roundToDecimals(senate_close["MN"]*100,2)}% in Minnesota`
 				}
+				else if(item=="MS"){
+					ending+=` Roger Wicker was narrowly re-elected by ${roundToDecimals(-1*senate_close["MS"]*100,2)}% in Mississippi`
+				}
 				else if (item=="MO") {
 					ending+=` Josh Hawley was narrowly re-elected by ${roundToDecimals(-1*senate_close["MO"]*100,2)}% in Missouri`
 				}
@@ -57278,6 +57421,9 @@
 				}
 				else if (item=="NE") {
 					ending+=` Deb Fischer saw re-election by only ${roundToDecimals(-1*senate_close["NE"]*100,2)}% in Nebraska`
+				}
+				else if (item=="NE-Special") {
+					ending+=` Pete Ricketts faced a shockingly close race for Nebraska's Class 2 Senate seat in the special election and won by only ${roundToDecimals(-1*senate_close["NE-Special"]*100,2)}%`
 				}
 				else if (item=="NV") {
 					ending+=` Jacky Rosen won re-election in Nevada by only ${roundToDecimals(senate_close["NV"]*100,2)}%`
@@ -57291,6 +57437,9 @@
 				else if (item=="NY") {
 					ending+=` Kirsten Gillibrand was re-elected by only ${roundToDecimals(senate_close["NY"]*100,2)}% in New York`
 				}
+				else if (item=="ND") {
+					ending+=` Kevin Cranmer fought through divine intervention to win re-election by ${roundToDecimals(-1*senate_close["ND"]*100,2)}% in North Dakota`
+				} //this can't even be close without cheating 
 				else if (item=="OH") {
 					ending+=` Sherrod Brown narrowly hung on by ${roundToDecimals(senate_close["OH"]*100,2)}% in Ohio`
 				}
@@ -57300,12 +57449,21 @@
 				else if (item=="RI") {
 					ending+=` Sheldon Whitehouse faced a shockingly close race to win re-election by only ${roundToDecimals(senate_close["RI"]*100,2)}% in Rhode Island`
 				}
+				else if (item=="TN") {
+					ending+=` Marsha Blackburn faced a shockingly close race and was re-elected by only ${roundToDecimals(-1*senate_close["TN"]*100,2)}% in Tennessee`
+				}
 				else if (item=="TX") {
 					ending+=` Ted Cruz was re-elected by only ${roundToDecimals(-1*senate_close["TX"]*100,2)}% in Texas`
+				}
+				else if (item=="UT") {
+					ending+=` ${opponent_last_name} was so utterly unpopular that John Curtis only won Utah's open seat by ${roundToDecimals(-1*senate_close["UT"]*100,2)}%`
 				}
 				else if (item=="VA") {
 					ending+=` Tim Kaine was re-elected by only ${roundToDecimals(senate_close["VA"]*100,2)}% in Virginia`
 				}
+				else if (item=="VT") {
+					ending+=` David Zuckerman barely survived the red tsunami by ${roundToDecimals(senate_close["VT"]*100,2)}% in ${ticket_status==1 ? "your" : "Bernie's"} old Vermont seat`
+				} //maybe it's possible for this to be close in a Disaster self-sabotaging run, so I won't mention divine intervention.
 				else if (item=="WA") {
 					ending+=` Maria Cantwell was narrowly re-elected by ${roundToDecimals(senate_close["WA"]*100,2)}% in Washington state`
 				}
@@ -57315,6 +57473,9 @@
 				else if (item=="WI") {
 					ending+=` Tammy Baldwin barely held on by ${roundToDecimals(senate_close["WI"]*100,2)}% in Wisconsin`
 				}
+				else if (item=="WY") {
+					ending+=` John Barrasso fought through divine intervention to win re-election by ${roundToDecimals(-1*senate_close["WY"]*100,2)}% in Wyoming`
+				} //this can't even be close without cheating 
 				if(Object.keys(senate_close).length>=3 && index<Object.keys(senate_close).length-1) {
 					ending+=`,`
 				}
@@ -62399,7 +62560,7 @@
 				}
 				else {
 					e.questions_json[campaignTrail_temp.question_number+1] = tunnel(35000) //Trump debate
-					if (e.candidate_issue_score_json[5].fields.issue_score<=-0.34) { //Trump is vulnerable on economics
+					if (e.candidate_issue_score_json[5].fields.issue_score<=-0.3) { //Trump is vulnerable on economics. Text was not firing properly for Trump/Rubio due to rounding issues so lowered the threshold.
 						ReplaceFeedback(35001,`You tore into Trump on stage, laying bare every giveaway to the 1%. He blusters back about prices and ending taxes on tips and overtime - but then you strike: If you care about workers, why'd you pick a ${opponent==2 ? "billionaire McKinsey man" : "neocon privatizer"} as your VP? For a moment, he struggles to respond - and America sees it. For once, the myth starts to crack.`) //effect still works the same, it just gives feedback that the attack was effective.
 					}
 					if (e.candidate_issue_score_json[6].fields.issue_score>0) { //Trump is running with positive globalism. Therefore this attack's result is less effective.
