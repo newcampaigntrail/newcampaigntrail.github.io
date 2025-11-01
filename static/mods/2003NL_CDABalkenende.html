@@ -456,8 +456,8 @@ function addCoalitions() {
       });
   }
 
-// Define a list of possible coalitions
-const coalitions = [
+  // Define a list of possible coalitions
+  const coalitions = [
     { id: 1, name: 'CDA and VVD', weight: 6.0, parties: [105, 23], impossibleCoalitions: [2, 3, 4, 5, 6, 9, 20] },
     { id: 2, name: 'CDA, VVD and LPF', weight: 0.5, parties: [105, 23, 106], impossibleCoalitions: [] },
     { id: 3, name: 'CDA, VVD and SGP', weight: 0.8, parties: [105, 23, 117], impossibleCoalitions: [5] },
@@ -466,17 +466,18 @@ const coalitions = [
     { id: 6, name: 'CDA, VVD and D66', weight: 1.5, parties: [105, 23, 16], impossibleCoalitions: [] },
     { id: 7, name: 'PvdA and VVD', weight: 1.0, parties: [17, 23], impossibleCoalitions: [8, 9] },
     { id: 8, name: 'PvdA, VVD and D66', weight: 0.5, parties: [17, 23, 16], impossibleCoalitions: [] },
-    { id: 9, name: 'CDA, PvdA and VVD', weight: 0.1, parties: [17, 23, 105], impossibleCoalitions: [] },
+    { id: 9, name: 'PvdA, VVD and CDA', weight: 0.1, parties: [17, 23, 105], impossibleCoalitions: [] },
     { id: 10, name: 'CDA and PvdA', weight: 1.5, parties: [105, 17], impossibleCoalitions: [9, 11, 12, 13, 14, 16, 17] },
     { id: 11, name: 'CDA, PvdA and SP', weight: 0.2, parties: [105, 17, 67], impossibleCoalitions: [17] },
     { id: 12, name: 'CDA, PvdA and GL', weight: 0.2, parties: [105, 17, 21], impossibleCoalitions: [16, 17] },
     { id: 13, name: 'CDA, PvdA and CU', weight: 0.5, parties: [105, 17, 78], impossibleCoalitions: [] },
     { id: 14, name: 'CDA, PvdA and D66', weight: 0.4, parties: [105, 17, 16], impossibleCoalitions: [16] },
-    { id: 15, name: 'PvdA, SP, GL and D66', weight: 1.5, parties: [17, 67, 21, 16], impossibleCoalitions: [] },
     { id: 16, name: 'CDA, PvdA, GL and D66', weight: 0.1, parties: [105, 17, 21, 16], impossibleCoalitions: [] },
     { id: 17, name: 'CDA, PvdA, SP and GL', weight: 0.1, parties: [105, 17, 21, 67], impossibleCoalitions: [] },
     { id: 18, name: 'CDA and SP', weight: 0.6, parties: [105, 67], impossibleCoalitions: [11, 17, 19] },
     { id: 19, name: 'CDA, SP and GL', weight: 0.6, parties: [105, 67, 21], impossibleCoalitions: [17] },
+    { id: 22, name: 'PvdA, SP and GL', weight: 2.5, parties: [17, 67, 21], impossibleCoalitions: [15, 17] },
+    { id: 15, name: 'PvdA, SP, GL and D66', weight: 1.5, parties: [17, 67, 21, 16], impossibleCoalitions: [] },
     { id: 20, name: 'CDA and VVD (minority)', weight: 1.0, parties: [105, 23, 106], impossibleCoalitions: [] },
     { id: 21, name: 'Deadlock', weight: 0.02, parties: [105, 106, 16, 17, 21, 23, 67, 78, 512, 117], impossibleCoalitions: [] }
   ];
@@ -1075,6 +1076,13 @@ function findLeader(coalition){
       if(selectedCoalition.id === 14){ //PvdA-CDA-D66
         e.header="<h2>“Samen vernieuwen, samen vooruit”</h2>"
         e.pages=[`<p>${negotiationLength} Your hope had been for a construction with the VVD, but with a rather strong enough performance of the PvdA it seemed unavoidable that you at least talk with them. Lacking a majority, you needed to invite D66 along, which leaves this cabinet comparable to the infamous cabinet Van Agt II that already fell apart after one year, which is still a better performance than the cabinet this one replaces. Let's hope that this one is more stable. We've come to an agreement called "Renewing together, forwards together" and is definitely a step backwards from the previous one. But alas, the LPF is to be blamed for that, not you. At least it's with steady hands now.</p><p>You three already had a majority in the Eerste Kamer before the provincial elections and that has been renewed with an expanded one, so the cabinet won't need any wheeling and dealing with the opposition the coming four years. ${playerFate}</p>`]
+        e.image = leader.image
+        return construct(0);
+      }
+      if(selectedCoalition.id === 22){ //PvdA-SP-GL
+        leader = findLeader(selectedCoalition);
+        e.header="<h2>“Mensen boven markten”</h2>"
+        e.pages=[`<p>${negotiationLength} When the election results came in you already instantly noticed it: for the first time in history, the combined left had a majority of its own. As the dust settled and the negotiations started, there had been some hope within you that cooler heads would prevail. That moderates in the PvdA such as Frans Timmermans would force Bos to come to you. You knew it was remote, and here we are: a cabinet so left-wing that it makes Den Uyl look like a moderate, under the motto "Men above Markets".</p><p>In addition, despite a right-wing turnout surge, the provincial election that was held during the formation also yielded a good result for the cabinet in the Eerste Kamer. They only need D66 for a majority. This will reduce your leverage over the cabinet. These are going to be a long four years. ${playerFate}</p>`]
         e.image = leader.image
         return construct(0);
       }

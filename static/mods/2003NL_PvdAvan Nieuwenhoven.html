@@ -577,7 +577,7 @@ const coalitions = [
     { id: 17, name: 'CDA, PvdA, SP and GL', weight: 0.1, parties: [105, 17, 21, 67], impossibleCoalitions: [] },
     { id: 18, name: 'CDA and SP', weight: 0.6, parties: [105, 67], impossibleCoalitions: [11, 17, 19] },
     { id: 19, name: 'CDA, SP and GL', weight: 0.6, parties: [105, 67, 21], impossibleCoalitions: [17] },
-    { id: 22, name: 'PvdA, SP and GL', weight: 2.5, parties: [17, 67, 21], impossibleCoalitions: [] },
+    { id: 22, name: 'PvdA, SP and GL', weight: 2.5, parties: [17, 67, 21], impossibleCoalitions: [15, 17] },
     { id: 15, name: 'PvdA, SP, GL and D66', weight: 1.5, parties: [17, 67, 21, 16], impossibleCoalitions: [] },
     { id: 20, name: 'CDA and VVD (minority)', weight: 1.0, parties: [105, 23, 106], impossibleCoalitions: [] },
     { id: 21, name: 'Deadlock', weight: 0.02, parties: [105, 106, 16, 17, 21, 23, 67, 78, 512, 117], impossibleCoalitions: [] }
@@ -1275,7 +1275,7 @@ function findLeader(coalition){
         leader = findLeader(selectedCoalition);
         unlockAchievementSafe("Sui generis");
         e.header="<h2>“Mensen boven markten”</h2>"
-        e.pages=[`<p>${negotiationLength} When the election results came in and it became clear that there would be, for the first time, a left-wing majority in the Tweede Kamer, it became your mission to make it happen too. It did not take long to come to an agreement at all, although there was a bit of pressure from inside the PvdA's parliamentary faction, most notably from Frans Timmermans, not to do this and to talk with the CDA instead. Eventually they signed onto it, but let's hope they don't provide too much trouble in the comin years</p><p>In addition, despite a right-wing turnout surge, the provincial election that was held during the formation also yielded a majority for the left in the Eerste Kamer. This means we only need to compromise with D66, which should be doable. The next four years should be productive. ${playerFate}</p>`]
+        e.pages=[`<p>${negotiationLength} When the election results came in and it became clear that there would be, for the first time, a left-wing majority in the Tweede Kamer, it became your mission to make it happen too. It did not take long to come to an agreement at all, although there was a bit of pressure from inside the PvdA's parliamentary faction, most notably from Frans Timmermans, not to do this and to talk with the CDA instead. Eventually they signed onto it, but let's hope they don't provide too much trouble in the coming years</p><p>In addition, despite a right-wing turnout surge, the provincial election that was held during the formation also yielded a majority for the left in the Eerste Kamer. This means we only need to compromise with D66, which should be doable. The next four years should be productive. ${playerFate}</p>`]
         e.image = leader.image
         return construct(0);
       }
