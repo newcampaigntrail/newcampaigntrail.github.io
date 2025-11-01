@@ -457,6 +457,9 @@ if(answer == 2126){
   splitOff = true;
   shiftQuestion = true;
   leefbaarNederland = false;
+  coalitions.forEach(coalition => {
+    coalition.name = coalition.name.replace(/LN/g, 'LPF');
+  });
   e.questions_json.splice(16, 0 , getQuestionFromPk(1041))
   let pop_vote = e.current_results[0];
   let playerPolling = (pop_vote.find(p => p.pk === 106)).pvp

@@ -485,11 +485,12 @@ const coalitions = [
     { id: 12, name: 'CDA, PvdA and GL', weight: 0.2, parties: [105, 17, 21], impossibleCoalitions: [16, 17] },
     { id: 13, name: 'CDA, PvdA and CU', weight: 0.5, parties: [105, 17, 78], impossibleCoalitions: [] },
     { id: 14, name: 'CDA, PvdA and D66', weight: 0.4, parties: [105, 17, 16], impossibleCoalitions: [16] },
-    { id: 15, name: 'PvdA, SP, GL and D66', weight: 1.5, parties: [17, 67, 21, 16], impossibleCoalitions: [] },
     { id: 16, name: 'CDA, PvdA, GL and D66', weight: 0.1, parties: [105, 17, 21, 16], impossibleCoalitions: [] },
     { id: 17, name: 'CDA, PvdA, SP and GL', weight: 0.1, parties: [105, 17, 21, 67], impossibleCoalitions: [] },
     { id: 18, name: 'CDA and SP', weight: 0.6, parties: [105, 67], impossibleCoalitions: [11, 17, 19] },
     { id: 19, name: 'CDA, SP and GL', weight: 0.6, parties: [105, 67, 21], impossibleCoalitions: [17] },
+    { id: 22, name: 'PvdA, SP and GL', weight: 2.5, parties: [17, 67, 21], impossibleCoalitions: [15, 17] },
+    { id: 15, name: 'PvdA, SP, GL and D66', weight: 1.5, parties: [17, 67, 21, 16], impossibleCoalitions: [] },
     { id: 20, name: 'CDA and VVD (minority)', weight: 1.0, parties: [105, 23, 106], impossibleCoalitions: [] },
     { id: 21, name: 'Deadlock', weight: 0.02, parties: [105, 106, 16, 17, 21, 23, 67, 78, 512, 117], impossibleCoalitions: [] }
   ];
@@ -1096,6 +1097,13 @@ function findLeader(coalition){
         e.image = leader.image
         return construct(0);
       }
+      if(selectedCoalition.id === 15){ //PvdA-SP-GL
+        leader = findLeader(selectedCoalition);
+        e.header="<h2>“Mensen boven markten”</h2>"
+        e.pages=[`<p>${negotiationLength} When the election results came in and it became clear that there would be, for the first time, a left-wing majority in the Tweede Kamer, it became your mission to make it a coalition too. It was fairly easy, GroenLinks was enthusiastic, the only hiccup were a handful of right-wing PvdAers who would really have preferred a callback to the Purple years. Wouter Bos eventually got a handle on them.</p><p>In addition, despite a right-wing turnout surge, the provincial election that was held during the formation almost yielded a majority for the left in the Eerste Kamer. This unfortunately means we'll have to deal with the privatizers in D66. PvdA and GroenLinks are optimistic about this, but you see more opportunities for cooperation with the CDA. ${playerFate}</p>`]
+        e.image = leader.image
+        return construct(0);
+      }
       if(selectedCoalition.id === 15){ //PvdA-SP-GL-D66
         leader = findLeader(selectedCoalition);
         if(coalitionSeats >= 85) {
@@ -1109,7 +1117,7 @@ function findLeader(coalition){
         else {
           eersteKamerResult = "The only damper is that the provincial elections, which took place during the formation, saw a turnout surge that provided a slight edge to the right. As a result, the new cabinet will remain short of a majority in the Eerste Kamer, although we did get closer. We will thus have to deal with the CDA the coming four years. And for D66's wishlist likely also with the VVD."
         }
-        e.header="<h2>“Mensen boven markten”</h2>"
+        e.header="<h2>“Verbindingen die veranderen”</h2>"
         e.pages=[`<p>${negotiationLength} When the election results came in and it became clear that there would be, for the first time, a left-wing majority in the Tweede Kamer, it became your mission to make it a coalition too. It was not easy, GroenLinks and PvdA were fairly easy, but D66 was resistant. You knew that would be the case, whatever their history with the PvdA and Den Uyl, since you entered the Tweede Kamer in 1994, they have always been VVD stooges. In the end, though, the possibility to truly make progress on elected mayors and straight up legalizing drugs was enough to get them on board.</p><p>${eersteKamerResult} ${playerFate}</p>`]
         e.image = leader.image
         return construct(0);
