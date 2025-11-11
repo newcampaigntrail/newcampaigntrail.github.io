@@ -10856,8 +10856,9 @@ cyoAdventure = function (a) {
 // Q1 - 6, 7, 7
 // Q2 - 14, 15, 18
 
-if(campaignTrail_temp.difficulty_level_multiplier >= 1.25){
+if (campaignTrail_temp.difficulty_level_multiplier >= 1.22){
     cakewalk = true;
+    console.log("cakewalk is set to true");
 }
 
 if (campaignTrail_temp.candidate_json[12].fields.color_hex == '#052e71') {
@@ -11035,7 +11036,8 @@ if (out=="win" && stcount(demStates, 201) && stcount(trumpStates, 200)) {
    ctsAchievement("Posted It Again Award");
 }  
 
-if(out=="lose" && cakewalk == true){
+if(quickstats[0] < 269 && cakewalk == true){
+    console.log("you should get the cakewalk achievement now");
     cheatAchievement("Teflon Don? More like Tesla Don.");
 }
 
