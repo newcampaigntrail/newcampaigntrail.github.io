@@ -1696,7 +1696,7 @@ campaignTrail_temp.issues_json = [
             "description": "Some have suggested that the judiciary, on both a state and federal level, should be elected.",
             "stance_1": "Judicial Elections",
             "stance_desc_1": "Supports all judges being elected on nonpartisan ballots, and judicial recall.",
-            "stance_2": "Local Judicial Elections",
+            "stance_2": "Local Elections",
             "stance_desc_2": "Supports local judges being elected on nonpartisan ballots, and judicial recall.",
             "stance_3": "Court Reform",
             "stance_desc_3": "Believes in the ability to recall judges, or perhaps override their rulings via popular vote.",
@@ -8409,6 +8409,12 @@ function ctsAchievement(achievement, difficultyChecker = true){
 	}
 }
 
+function cheatAchievement(achievement){
+		if(campaignTrail_temp.CTS){
+		unlockAchievement(achievement);
+	}
+}
+
 campaignTrail_temp.candidate_json[0]["fields"].first_name = "The";
 campaignTrail_temp.candidate_json[0]["fields"].last_name = "Democrats";
 
@@ -8670,7 +8676,7 @@ if (quickstats[0] >= 266) {
 }
 // Third Place
 else if (aa[2].candidate == 91) {
-  ctsAchievement("The Internationale")
+  cheatAchievement("The Internationale")
   e.pages.push(`<h3>“The crisis consists precisely in the fact that the old is dying and the new cannot be born; in this interregnum a great variety of morbid symptoms appear."</h3><p>A beast stalks the halls of power in America, where the capitalist class dwells and plays kingmaker for the Presidency. The beast is named socialism. A fear, greater than any nightmare or beast of Abaddon could instill in the candidates has possessed them. Roosevelt and Wilson are horrified by the sight. The Socialist Party of America, led by Gene Debs, has overtaken the Grand Old Party in this year's election results.</p><p>Every member of the this movement, including yourself, is taken aback by the results. This performance is beyond the wildest dreams of any socialist in the world over. A leviathan political entity of a great power, has been conquered by the spectre of socialism. Taft and his ilk cannot bear the idea, they hide in the dark, plotting there next move to destroy the proletarian party with violence and fear. They cannot face the new world they inhabit. Inevitably, the other major parties may very well adopt more socialist policies to halt your movement and preserve their power.</p><p>The party has become fanatic about you. They will listen to your every word and request. The socialist republic is within sight, and you have brought them this close. As much as you despise it, you are once more King Debs. The I.W.W. and the radical elements of the party will surely return at your direction, the A.F.L. now fearing irrelevance in the face of the One Big Union.</p>`)
   e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1912/endings/taftmaid.png'})])
 }
@@ -8690,17 +8696,17 @@ else if (quickstats[1] >= 7) {
   e.pages.push(`<h3>"War unleashes – at the same time as the reactionary forces of the capitalist world – the generating forces of social revolution which ferment in its depths."</h3><p>There is a spectre now haunting the United States. While the trustified servants of capital fight one another for who can be the primary puppet of capital, a movement is growing. Gene Debs and his gang of socialists have taken advantage of capitalist infighting and have broken there previous record of votes.</p><p>While this may disappoint your most fanatic comrades, you have still gone leaps and bounds above what the bourgeois are comfortable with. They cannot remove this performance from the history books, children will know your name for the performance on this November night.</p><p>The future is bright as the party is united around you. While the conservatives wanted you gone, they cannot help but support your next move as you have brought the party more electoral strength than they ever would. With some luck, you may even be able to pull your I.W.W. comrades back into the fold.</p>`)
   e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1912/endings/train.png'})])
 }
-// Between 3 and 7%
-else if (quickstats[1] >= 3) {
+// Between 5 and 7%
+else if (quickstats[1] >= 5) {
   e.pages.push(`<h3>"The worm turns at last, and so does the worker." </h3><p>While the capitalist class clamored over one another for the vote of the working man, it seems as though one movement has taken its queue and grown further. No matter how "progressive" they claim to be, they cannot replicate the authenticity with which you campaign.</p><p>The results are not what was promised by some, however let it be known that the workers' party has still grown despite capitalist opposition. The children, barring a catastrophic event, may look to the future with a bright, red light at the end of the tunnel.</p><p>The work for you, Gene, is not over. In Terre Haute the congressional seat appears weak, and it may be prudent to attempt a run for the seat. However, be careful, the opportunism of the capitalists knows no ends, and a catastrophic event for socialism could be used by the government to behead your movement.</p>`)
   e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1912/endings/portrait.png'})])
 }
-// Below 3%
-else if (quickstats[1] > 1) {
+// Below 5%
+else if (quickstats[1] >= 4) {
   e.pages.push(`<h3>"Men do not wage the great class struggle in the study, nor in the editorial rooms....The workers are the fighters and the thinkers of the revolutionary movements."</h3><p>A great eclipse has set upon the world. The light of socialism, once so bright, has been nigh snuffed from existence. The child laborer in the mine, the man on the factory floor and the woman in the textile manufacture all look to the sky, the light drained from Earth as darkness descends upon there future.</p><p>For the first time in the history of the Socialist Party of America, the party has reversed course and shrunk. Once a shining light in the world of political reform and revolution, the party seems to have grown to its largest extent, and will be contained.</p><p>The capitalists drink to your destruction as the candidates they bought each clamor for their seat of imperial power. While it is not enough to soil your legacy, this is undoubtedly your darkest hour. The left and I.W.W. have concluded you too moderate, while the conservatives claim you too revolutionary. Now they struggle for the remaining fraction of socialist power in America, meaning the future of American socialism is entirely unknown. Let it be know however, the capitalist order is built upon sand.</p>`)
   e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1912/endings/party.png'})])
 }
-// Below 1%
+// Below 4%
 else {
   ctsAchievement("Hoosier Loser")
   e.pages.push(`<h3>June 16, 1913</h3><p>My dear Aldona,</p><p>I received your letter a month ago and I thank you very much. Although I have not written for a long time I often think of you. Believe me this is not because of forgetfulness. It is in prison that the memory of those one loves is especially fresh, it flies to them and recalls the far-off years when we were together; how many smiles and how much love surrounded our childhood and early years.</p><p>The smiles and the delights and the tears and the sorrows which we once shared together live in the recesses of the heart, bringing gladness even when one is unconscious of it.</p><p>The human soul, like a flower, unconsciously absorbs the sunlight and eternally longs for it; the soul wilts and withers when evil casts its shadow on the light. On this striving of the human spirit towards the light of the sun depends our optimism and our faith in a better future, and for this reason there must never be any feeling of hopelessness…Hypocrisy is man’s evil genius—in words love, and in practice a merciless struggle for existence, for a so-called happiness, for pelf and place… To be a bright torch for others, to be able to shed light—that is the supreme happiness which man can achieve. He who achieves this, fears neither suffering, pain, sorrow nor need. Death no longer holds terrors for him, although it is only then that he learns really to love life. Only in this way will man be able to make his way through the world with open eyes and see and hear everything, only in this way will he emerge from his own narrow shell into the light and be able to feel both the joys and the sorrows of humanity, only in this way will he become a real man.</p><p>Your brother,</p><p>Felix</p>`)

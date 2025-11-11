@@ -22718,6 +22718,12 @@ function ctsAchievement(achievement, difficultyChecker = true){
 	}
 }
 
+function cheatAchievement(achievement){
+		if(campaignTrail_temp.CTS){
+		unlockAchievement(achievement);
+	}
+}
+
 campaignTrail_temp.election_json[0]["fields"].advisor_url = "https://itsastronomical.com/assets/1924/advice/bobadvice.png";
 
 // Sets the Republicans as "Warren Harding" before he dies, likewise with the Democrats being named after their party before the 1924 DNC
@@ -23584,7 +23590,7 @@ if (aa[0].electoral_votes < 266 && quickstats[0] >= 70) {
 }
 
 if (quickstats[0] >= 266) {
-   ctsAchievement("Fighting Bob");
+   cheatAchievement("Fighting Bob");
 }
 
 // Page 1
@@ -24121,7 +24127,6 @@ for (const [id, nominee] of Object.entries(nominees)) {
   
 }
 
-
 function handleMutations(mutationsList, observer) {
   if (observerRunning) return;
   observerRunning = true;
@@ -24132,7 +24137,6 @@ function handleMutations(mutationsList, observer) {
   observer.observe(document.documentElement, { childList: true, subtree: true });
   observerRunning = false;
 }
-
 
 let observerRunning = false;
 

@@ -10396,6 +10396,12 @@ function ctsAchievement(achievement, difficultyChecker = true){
 	}
 }
 
+function cheatAchievement(achievement){
+		if(campaignTrail_temp.CTS){
+		unlockAchievement(achievement);
+	}
+}
+
 const gameThemes = {
   "AmericanHistoryUSA" : function() {
       corrr = '\n              <h2>THE CAMPAIGN TRAIL</h2>\n            '; 
@@ -11030,7 +11036,7 @@ if (out=="win" && stcount(demStates, 201) && stcount(trumpStates, 200)) {
 }  
 
 if(out=="lose" && cakewalk == true){
-    ctsAchievement("Teflon Don? More like Tesla Don.");
+    cheatAchievement("Teflon Don? More like Tesla Don.");
 }
 
 if (quickstats[0] < 3) {
