@@ -1834,7 +1834,7 @@ function divideElectoralVotesProp(e, t) {
                                 year = e.temp_election_list[eArr].display_year
                                 cand = e.candidate_json[e.candidate_json.map(a=>a.pk).indexOf(e.candidate_id)].fields.last_name
                                 run = e.candidate_json[e.candidate_json.map(a=>a.pk).indexOf(e.running_mate_id)].fields.last_name
-                                theorId = year+"_"+cand+run
+								const theorId = `${e.code2_id || year}_${cand}${run}`;
                                 //theorId = $("#modSelect")[0].value
 
                                 var client = new XMLHttpRequest();
