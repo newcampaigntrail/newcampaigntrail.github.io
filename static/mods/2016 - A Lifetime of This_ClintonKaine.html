@@ -16817,7 +16817,8 @@ function generateCabinetTimeline(victoryType, playerEV, runningMateID, scores) {
 		},
 		attorneyGeneral: {
 			progressive: { name: "Xavier Becerra", img: "https://upload.wikimedia.org/wikipedia/commons/6/61/Xavier_Becerra%2C_Official_Portrait.JPG", formerRole: "U.S. Representative", state: "California" },
-			establishment: { name: "Tom Perez", img: "https://cwa-union.org/sites/default/files/migrated/cwafiles.org/national/issues/PolicyIssues/NLRB/Perez_photo2.jpg", formerRole: "Secretary of Labor", state: "Maryland" },
+			loyalist: { name: "Jennifer Granholm", img: "https://upload.wikimedia.org/wikipedia/commons/4/42/Secretary_Jennifer_Granholm_%28June_2021%29.jpg", formerRole: "Former Governor", state: "Michigan" },
+			incumbent: { name: "Loretta Lynch", img: "https://www.justice.gov/usao/biographies/images/spotlight-lynch-full.jpg", formerRole: "Attorney General", state: "New York" },
 			prosecutor: { name: "Preet Bharara", img: "https://static01.nyt.com/images/2013/06/10/world/asia/10-preet-interview-IndiaInk/10-preet-interview-IndiaInk-articleInline.jpg", formerRole: "U.S. Attorney, SDNY", state: "New York" },
 			biden_vp_loyalist: { name: "Sally Yates", img: "https://upload.wikimedia.org/wikipedia/commons/4/49/Sally_Yates.jpg", formerRole: "Deputy Attorney General", state: "Georgia" },
 			unity: { name: "Brian Sandoval", img: "https://www.ontheissues.org/Governor/Brian_Sandoval.jpg", formerRole: "Governor of Nevada (R)", state: "Nevada" }
@@ -16844,7 +16845,8 @@ function generateCabinetTimeline(victoryType, playerEV, runningMateID, scores) {
 			union: { name: "Richard Trumka", img: "https://aflcio.org/sites/default/files/migrate/files/Trumka-Bad-Trade-Deals-Kill-American-Jobs.jpg", formerRole: "President, AFL-CIO", state: "Pennsylvania" },
 			progressive_unity: { name: "Bernie Sanders", img: "https://cdn.mos.cms.futurecdn.net/ZMoRE73eiomr8gfjR2PPv5.jpg", formerRole: "U.S. Senator", state: "Vermont" },
 			establishment: { name: "Tom Perez", img: "https://cwa-union.org/sites/default/files/migrated/cwafiles.org/national/issues/PolicyIssues/NLRB/Perez_photo2.jpg", formerRole: "Secretary of Labor", state: "Maryland" },
-			biden_vp_loyalist: { name: "Seth Harris", img: "https://upload.wikimedia.org/wikipedia/commons/9/94/Seth_Harris_DOL.jpg", formerRole: "Deputy Secretary of Labor", state: "New York" }
+			biden_vp_loyalist: { name: "Seth Harris", img: "https://upload.wikimedia.org/wikipedia/commons/9/94/Seth_Harris_DOL.jpg", formerRole: "Deputy Secretary of Labor", state: "New York" },
+			corporate: { name: "Howard Schultz", img: "https://images.ctfassets.net/dkn3vuwtp1le/58JROkU1mUq4lNEWl8UDXP/3dd2e6e7b743004e5a1836bf2bd2c97d/howardschultz.jpg", formerRole: "CEO of Starbucks", state: "Washington" }
 		},
 		hhs: {
 			loyalist: { name: "Neera Tanden", img: "https://static.wikia.nocookie.net/althistory/images/b/b2/Tanden_neera.jpg", formerRole: "President, Center for American Progress", state: "Massachusetts" },
@@ -17024,11 +17026,12 @@ function generateCabinetTimeline(victoryType, playerEV, runningMateID, scores) {
 
         // Tier 2 appointments
 		const agPicks = [
-			(runningMateID === 212 && candidates.attorneyGeneral.establishment),
-			(playerEV < 290 && candidates.attorneyGeneral.unity),
-			(wallStreetScore >= 2 && candidates.attorneyGeneral.prosecutor),
-			(sandersRelations >= 3 && candidates.attorneyGeneral.progressive),
-			candidates.attorneyGeneral.biden_vp_loyalist
+			(runningMateID === 212 && candidates.attorneyGeneral.incumbent),
+            (runningMateID === 213 && candidates.attorneyGeneral.biden_vp_loyalist),
+            (playerEV < 290 && candidates.attorneyGeneral.unity),
+            (wallStreetScore >= 2 && candidates.attorneyGeneral.prosecutor),
+            (sandersRelations >= 3 && candidates.attorneyGeneral.progressive),
+            candidates.attorneyGeneral.loyalist
         ].filter(Boolean);
         pickAndAssign("Attorney General", agPicks, seals.attorneyGeneral, 2);
 
@@ -17043,8 +17046,8 @@ function generateCabinetTimeline(victoryType, playerEV, runningMateID, scores) {
         const transportPicks = [
 			(runningMateID === 215 && candidates.transportation.technocrat),
 			(playerEV < 290 && candidates.transportation.unity),
-			(obamaLoyalty >= 3 && candidates.transportation.infrastructure),
-			candidates.transportation.establishment
+			(obamaLoyalty >= 3 && candidates.transportation.establishment),
+			candidates.transportation.infrastructure
         ].filter(Boolean);
         pickAndAssign("Secretary of Transportation", transportPicks, seals.transportation, 2);
 
@@ -17083,9 +17086,10 @@ function generateCabinetTimeline(victoryType, playerEV, runningMateID, scores) {
         
         const laborPicks = [
 			(sandersRelations >= 5 && playerEV > 330 && candidates.labor.progressive_unity),
-			(sandersRelations >= 3 && candidates.labor.union),
-			(runningMateID === 213 && candidates.labor.biden_vp_loyalist),
-			candidates.labor.establishment
+            (sandersRelations >= 3 && candidates.labor.union),
+            (runningMateID === 213 && candidates.labor.biden_vp_loyalist),
+            (wallStreetScore >= 1 && candidates.labor.corporate),
+            candidates.labor.establishment
         ].filter(Boolean);
         pickAndAssign("Secretary of Labor", laborPicks, seals.labor, 3);
 
@@ -21037,16 +21041,21 @@ cyoAdventure = function (a) {
         }
     }
 
-    const observerConfig = {
-        childList: true,
-        subtree: true
-    };
+    function initObserver() {
+        const gameWindow = document.getElementById("game_window");
+        
+        if (gameWindow) {
+            const observer = new MutationObserver(() => {
+                handleAdvisorUpdate();
+            });
 
-    const observer = new MutationObserver(() => {
-        handleAdvisorUpdate();
-    });
+            observer.observe(gameWindow, { childList: true, subtree: true });
+        } else {
+            setTimeout(initObserver, 200);
+        }
+    }
 
-    observer.observe(document.body, observerConfig);
+    initObserver();
 
 })();
 
