@@ -1,7 +1,7 @@
  /*
  * @title: 2016: A Lifetime of This / 2016b / The Hillary Trail
  * @author: StrawberryMaster & Friends
- * @version: 1.1.5
+ * @version: 1.1.7
  * @description: The 2016 election in the eyes of Hillary Clinton (and a couple of others, too)
  * 
  * Coding license: Apache License 2.0
@@ -325,8 +325,6 @@ campaignTrail_temp.temp_election_list = [
 ]
 
 campaignTrail_temp.difficulty_level_json = JSON.parse("[{\"model\": \"campaign_trail.difficulty_level\", \"pk\": 0.5, \"fields\": {\"name\": \"Easy-Peasy\", \"multiplier\": 1.2}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 1, \"fields\": {\"name\": \"Quite Easy\", \"multiplier\": 1.1}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 3, \"fields\": {\"name\": \"Normal\", \"multiplier\": 0.97}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 4, \"fields\": {\"name\": \"Challenging\", \"multiplier\": 0.95}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 5, \"fields\": {\"name\": \"Hard-Boiled\", \"multiplier\": 0.93}}]");
-
-//#startcode
 
 // Actual code here
 corrr = "<h2>A Lifetime of This…</h2>";
@@ -1488,7 +1486,7 @@ tooltipList = [
 	{ searchString: "Gore", explanationText: "<img src=https://i.guim.co.uk/img/media/84cd552284531d1c355b8bcce619002bc6d7ea80/0_0_1543_2000/master/1543.jpg?width=445&dpr=1&s=none&crop=none> Albert." },
     { searchString: "George Bush", explanationText: "<img src=https://harrysboots.com/wp-content/uploads/2018/02/Harrys_Boots_Presidents_Blog_Bush-1024x667.jpg> Dubya! The 43rd President of the United States." },
 	{ searchString: "Dubya", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/f/f0/2002_Olympic_Torch_Relay_George_W_Bush.jpg> <big>W</big>orst ever." },
-	{ searchString: "Dubya", explanationText: "<img src=https://static.wikia.nocookie.net/simpsons/images/0/01/Dubya_garfo_bebida_18x14.jpg/revision/latest/scale-to-width-down/250?cb=20170709012358&path-prefix=pt> Wrong Dubya, pal." },
+	{ searchString: "Dubya", explanationText: "<img src=https://static.wikia.nocookie.net/simpsons/images/0/01/Dubya_garfo_bebida_18x14.jpg/revision/latest?cb=20170709012358&format=original&path-prefix=pt> Wrong Dubya, pal." },
 	{ searchString: "Bush Sr", explanationText: "<img src=https://media.gettyimages.com/id/904154434/pt/foto/us-president-george-hw-bush-speaks-during-one-of-his-inaugural-balls-washington-dc-january-20.jpg?s=612x612&w=0&k=20&c=g_gxUwSs21b28FaJ9lsLM0BSAOd1x5Y-Xx5fBdhv6oI=> George H. W. Bush; the 41st President of the United States, and also Dubya’s father." },
     { searchString: "Cheney", explanationText: "<img src=https://media.cnn.com/api/v1/images/stellar/prod/130616155130-dick-cheney.jpg?q=x_0,y_0,h_1080,w_1920,c_fill/w_1280> Dick Cheney; the 46th Vice President of the United States." },
     { searchString: "Jeb", explanationText: "<img src=https://media.gettyimages.com/id/465495612/pt/foto/jeb-bush-former-governor-of-florida-walks-backstage-prior-to-speaking-at-the-iowa-ag-summit-at.jpg?s=612x612&w=0&k=20&c=B9kKPXrVUwv28PlB5551cba8Y5Q7ZQKe0Mbtzu_7hXY=> Jeb! Dubya’s brother and former Governor of Florida." },
@@ -2600,52 +2598,20 @@ automateStartSequence();
         autoStartValue: 'othernlmod',
         startButtonId: 'game_start',
         electionSelectQuery: 'select[name="election_id"]',
-        backButtonId: 'candidate_id_back',
+        containerId: 'game_window', 
         baseUrl: 'https://campaigntrailshowcase.com/campaign-trail/',
         modsToAdd: [
             { value: '2012', text: '2012 - Little Big Man', modName: '2012 - Little Big Man' },
         ],
     };
 
-    function waitForElement(selector) {
-        return new Promise(resolve => {
-            const existingElement = document.querySelector(selector);
-            if (existingElement) {
-                return resolve(existingElement);
-            }
-
-            const observer = new MutationObserver(() => {
-                const element = document.querySelector(selector);
-                if (element) {
-                    observer.disconnect();
-                    resolve(element);
-                }
-            });
-
-            observer.observe(document.documentElement, {
-                childList: true,
-                subtree: true
-            });
-        });
-    }
-
-    function handleAutoStart() {
-        if (window.campaignTrailEnhanced) return;
-
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get(CONFIG.autoStartParam) === CONFIG.autoStartValue) {
-            window.campaignTrailEnhanced = true;
-            waitForElement(`#${CONFIG.startButtonId}`).then(startButton => {
-                startButton.click();
-            });
-        }
-    }
+    // state tracking to ensure we don't spam the auto-start click
+    let hasAutoStarted = false;
 
     function modifyElectionSelect(selectEl) {
-        // check if our work is already done to prevent re-adding options/listeners
         if (selectEl.dataset.modifiedByScript) return;
 
-        // add options from config in reverse to prepend them in the correct order
+        // reverse to prepend
         [...CONFIG.modsToAdd].reverse().forEach(mod => {
             const option = document.createElement('option');
             option.value = mod.value;
@@ -2653,7 +2619,6 @@ automateStartSequence();
             selectEl.prepend(option);
         });
 
-        // add a single change handler for redirection
         selectEl.addEventListener('change', (event) => {
             const selectedValue = event.target.value;
             const targetMod = CONFIG.modsToAdd.find(mod => mod.value === selectedValue);
@@ -2666,19 +2631,53 @@ automateStartSequence();
             }
         });
 
-        selectEl.dataset.modifiedByScript = 'true'; // mark as modified
+        selectEl.dataset.modifiedByScript = 'true';
     }
 
-    handleAutoStart();
-    waitForElement(CONFIG.electionSelectQuery).then(modifyElectionSelect);
+    function attemptAutoStart() {
+        if (hasAutoStarted || window.campaignTrailEnhanced) return;
 
-    document.addEventListener('click', (event) => {
-        if (event.target && event.target.id === CONFIG.backButtonId) {
-            // after clicking back, the select element might be re-rendered
-            // wait for it to appear again and ensure it's modified
-            waitForElement(CONFIG.electionSelectQuery).then(modifyElectionSelect);
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get(CONFIG.autoStartParam) === CONFIG.autoStartValue) {
+            const startButton = document.getElementById(CONFIG.startButtonId);
+            if (startButton) {
+                window.campaignTrailEnhanced = true;
+                hasAutoStarted = true;
+                startButton.click();
+            }
         }
-    });
+    }
+
+    function onDomChange() {
+        // try to modify the select box
+        const selectEl = document.querySelector(CONFIG.electionSelectQuery);
+        if (selectEl) {
+            modifyElectionSelect(selectEl);
+        }
+
+        attemptAutoStart();
+    }
+
+    function initObserver() {
+        const targetNode = document.getElementById(CONFIG.containerId) || document.body;
+
+        onDomChange();
+
+        const observer = new MutationObserver((mutations) => {
+            onDomChange();
+        });
+
+        observer.observe(targetNode, {
+            childList: true,
+            subtree: true
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initObserver);
+    } else {
+        initObserver();
+    }
 
 })();
 
@@ -2810,5 +2809,3 @@ campaignTrail_temp.achievements = {
         "cannotBeCheated": true
     }
 }
-
-//#endcode
