@@ -511,6 +511,15 @@ campaignTrail_temp.questions_json = [
             "description": "As the campaign continues, it is important to remember that you are still the Governor of Ohio, and there is business to attend to at home. Some of your advisors believe that passing a few policies might give your campaign a further boost and a record to run on. Is there anything you wish to focus on today?",
             "likelihood": 1
         }
+    },
+    {
+        "model": "campaign_trail.question",
+        "pk": 9496,
+        "fields": {
+            "priority": 0,
+            "description": "Over the past few years, Theodore Roosevelt has proposed a series of policies and programs that he calls 'New Nationalism'. What are your thoughts on these plans?",
+            "likelihood": 1
+        }
     }
 ]
 
@@ -1913,6 +1922,30 @@ campaignTrail_temp.answers_json = [
         "fields": {
             "question": 9485,
             "description": "The Ohio legislature is not in session, and I worry such a move would come off as a cynical and untested campaign stunt. I will not call the legislature into inter-session, especially while I am campaigning. My progressive record speaks for itself."
+        }
+    },
+    {
+        "model": "campaign_trail.answer",
+        "pk": 9497,
+        "fields": {
+            "question": 9496,
+            "description": "Roosevelt may believe he has the best intentions, but it is clear that plans such as a 'expert tariff commission' are pointless in this day and age. You must cast one's lot with a side on the issue."
+        }
+    },
+    {
+        "model": "campaign_trail.answer",
+        "pk": 9498,
+        "fields": {
+            "question": 9496,
+            "description": "The 'New Nationalism' is not the progressivism that Roosevelt claims it is. Rather, it is conservatism under the cover of common sense progressivism."
+        }
+    },
+    {
+        "model": "campaign_trail.answer",
+        "pk": 9499,
+        "fields": {
+            "question": 9496,
+            "description": "We face a clear choice in this election - common sense adjustments to the rules, or brash radicalism of Roosevelt's proposals."
         }
     }
 ]
@@ -8077,6 +8110,36 @@ campaignTrail_temp.answer_score_global_json = [
             "affected_candidate": 24,
             "global_multiplier": 0.004
         }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 9503,
+        "fields": {
+            "answer": 9499,
+            "candidate": 24,
+            "affected_candidate": 23,
+            "global_multiplier": -0.02
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 9505,
+        "fields": {
+            "answer": 9498,
+            "candidate": 24,
+            "affected_candidate": 25,
+            "global_multiplier": -0.01
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 9507,
+        "fields": {
+            "answer": 9497,
+            "candidate": 24,
+            "affected_candidate": 25,
+            "global_multiplier": -0.005
+        }
     }
 ]
 
@@ -8818,6 +8881,26 @@ campaignTrail_temp.answer_score_issue_json = [
             "answer": 9488,
             "issue": 11,
             "issue_score": -0.4,
+            "issue_importance": 8
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_issue",
+        "pk": 9504,
+        "fields": {
+            "answer": 9499,
+            "issue": "11",
+            "issue_score": -0.4,
+            "issue_importance": 8
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_issue",
+        "pk": 9506,
+        "fields": {
+            "answer": 9497,
+            "issue": 12,
+            "issue_score": 0.6,
             "issue_importance": 8
         }
     }
@@ -12700,6 +12783,33 @@ campaignTrail_temp.answer_feedback_json = [
             "candidate": 24,
             "answer_feedback": "There’s no harm in not calling them in, assuming you have a decent lead. However, many are skeptical of your progressive credentials, and this would have been a good opportunity to show people what a Harmon administration will be like."
         }
+    },
+    {
+        "model": "campaign_trail.answer_feedback",
+        "pk": 9500,
+        "fields": {
+            "answer": 9499,
+            "candidate": 24,
+            "answer_feedback": "Portraying Roosevelt as radical is a smart move to appeal to Taft's limited support, but you run the risk of alienating progressive support that you will likely need."
+        }
+    },
+    {
+        "model": "campaign_trail.answer_feedback",
+        "pk": 9501,
+        "fields": {
+            "answer": 9498,
+            "candidate": 24,
+            "answer_feedback": "This is a good way to tackle Roosevelt's progressive credentials, especially compared to your own mixed record."
+        }
+    },
+    {
+        "model": "campaign_trail.answer_feedback",
+        "pk": 9502,
+        "fields": {
+            "answer": 9497,
+            "candidate": 24,
+            "answer_feedback": "The tariff policy is a winning issue for Democrats, even if many of your allies believe you are going soft on the Bull Moose."
+        }
     }
 ]
 
@@ -12730,6 +12840,8 @@ campaignTrail_temp.jet_data = [{
     "cyoa_variables": {}
 }
 ]
+
+
 
 
 e = campaignTrail_temp;
@@ -16778,7 +16890,7 @@ else if(ans == 1677 && marshall == true && (wilson + underwood + other) >= 726){
   }
   campaignTrail_temp.questions_json[23] = {
     "model": "campaign_trail.question",
-    "pk": 336,
+    "pk": 9496,
     "fields": {
       "priority": 1,
       "description": "Over the past few years, Theodore Roosevelt has proposed a series of policies and programs that he calls 'New Nationalism'. What are your thoughts on these plans?",
@@ -18570,7 +18682,7 @@ else if(ans == 1677 && burke == true && (wilson + underwood + other) >= 726){
 
   campaignTrail_temp.questions_json[16] = {
     "model": "campaign_trail.question",
-    "pk": 336,
+    "pk": 9496,
     "fields": {
       "priority": 1,
       "description": "Over the past few years, Theodore Roosevelt has proposed a series of policies and programs that he calls 'New Nationalism'. What are your thoughts on these plans?",
@@ -20454,7 +20566,7 @@ else if(ans == 1677 && Chamberlain == true && (wilson + underwood + other) >= 72
   }
   campaignTrail_temp.questions_json[19] = {
     "model": "campaign_trail.question",
-    "pk": 336,
+    "pk": 9496,
     "fields": {
       "priority": 1,
       "description": "Over the past few years, Theodore Roosevelt has proposed a series of policies and programs that he calls 'New Nationalism'. What are your thoughts on these plans?",
@@ -22284,7 +22396,7 @@ else if(ans == 1677 && harmon == true && (wilson + underwood + other) >= 726){
 
   campaignTrail_temp.questions_json[16] = {
     "model": "campaign_trail.question",
-    "pk": 336,
+    "pk": 9496,
     "fields": {
       "priority": 1,
       "description": "Over the past few years, Theodore Roosevelt has proposed a series of policies and programs that he calls 'New Nationalism'. What are your thoughts on these plans?",
@@ -24146,7 +24258,7 @@ else if(ans == 1677 && clark >= 362){
   }
   campaignTrail_temp.questions_json[16] = {
     "model": "campaign_trail.question",
-    "pk": 336,
+    "pk": 9496,
     "fields": {
       "priority": 1,
       "description": "Over the past few years, Theodore Roosevelt has proposed a series of policies and programs that he calls 'New Nationalism'. What are your thoughts on these plans?",
