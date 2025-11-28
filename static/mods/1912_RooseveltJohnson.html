@@ -8802,7 +8802,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 1706,
             "candidate": 25,
             "affected_candidate": 24,
-            "global_multiplier": -0.02
+            "global_multiplier": -0.01
         }
     },
     {
@@ -8812,7 +8812,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 1707,
             "candidate": 25,
             "affected_candidate": 25,
-            "global_multiplier": 0.01
+            "global_multiplier": 0.0075
         }
     },
     {
@@ -9012,7 +9012,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 1783,
             "candidate": 25,
             "affected_candidate": 24,
-            "global_multiplier": -0.02
+            "global_multiplier": -0.01
         }
     },
     {
@@ -9022,7 +9022,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 1783,
             "candidate": 25,
             "affected_candidate": 23,
-            "global_multiplier": 0.02
+            "global_multiplier": 0.0075
         }
     },
     {
@@ -9032,7 +9032,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 3284,
             "candidate": 25,
             "affected_candidate": 24,
-            "global_multiplier": -0.025
+            "global_multiplier": -0.01005
         }
     },
     {
@@ -9072,7 +9072,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 9024,
             "candidate": 25,
             "affected_candidate": 25,
-            "global_multiplier": 0.0175
+            "global_multiplier": 0.01
         }
     },
     {
@@ -9372,7 +9372,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 1712,
             "candidate": 25,
             "affected_candidate": 24,
-            "global_multiplier": -0.02
+            "global_multiplier": -0.01
         }
     },
     {
@@ -9492,7 +9492,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 9040,
             "candidate": 25,
             "affected_candidate": 24,
-            "global_multiplier": -0.02
+            "global_multiplier": -0.01
         }
     },
     {
@@ -10572,7 +10572,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 1747,
             "candidate": 25,
             "affected_candidate": 24,
-            "global_multiplier": -0.125
+            "global_multiplier": -0.00725
         }
     },
     {
@@ -10630,7 +10630,7 @@ campaignTrail_temp.answer_score_global_json = [
         "pk": 10419,
         "fields": {
             "answer": 10416,
-            "candidate": 23,
+            "candidate": 25,
             "affected_candidate": 23,
             "global_multiplier": 0.045
         }
@@ -10640,7 +10640,7 @@ campaignTrail_temp.answer_score_global_json = [
         "pk": 10420,
         "fields": {
             "answer": 10416,
-            "candidate": 91,
+            "candidate": 25,
             "affected_candidate": 91,
             "global_multiplier": 0.06
         }
@@ -10650,7 +10650,7 @@ campaignTrail_temp.answer_score_global_json = [
         "pk": 10421,
         "fields": {
             "answer": 10416,
-            "candidate": 24,
+            "candidate": 25,
             "affected_candidate": 24,
             "global_multiplier": -0.04
         }
@@ -10663,16 +10663,6 @@ campaignTrail_temp.answer_score_global_json = [
             "candidate": 25,
             "affected_candidate": 25,
             "global_multiplier": -0.005
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_global",
-        "pk": 10434,
-        "fields": {
-            "answer": 3282,
-            "candidate": 23,
-            "affected_candidate": 23,
-            "global_multiplier": 0
         }
     },
     {
@@ -11233,6 +11223,26 @@ campaignTrail_temp.answer_score_global_json = [
             "candidate": 25,
             "affected_candidate": 24,
             "global_multiplier": 0.01
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 10765,
+        "fields": {
+            "answer": 1748,
+            "candidate": 25,
+            "affected_candidate": 25,
+            "global_multiplier": -0.02
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 10766,
+        "fields": {
+            "answer": 1677,
+            "candidate": 25,
+            "affected_candidate": 23,
+            "global_multiplier": -0.01
         }
     }
 ]
@@ -20711,6 +20721,8 @@ campaignTrail_temp.jet_data = [{
 }
 ]
 
+
+
 // CYOA for Taft's side to 1912 - The Men in the Arena
 // Usual Stuff
 e = campaignTrail_temp;
@@ -26360,32 +26372,32 @@ function openHQTracker() {
     if (rad >= 3) {
         radText = 'high'
     }
-    if (rad >= 1) {
+    else if (rad >= 1) {
         radText = 'growing day by day'
     }
-    if (rad == 0) {
+    else if (rad == 0) {
         radText = 'low'
     }
-    if (rad <= -1) {
+    else if (rad <= -1) {
         radText = 'quite low'
     }
-    if (rad <= -3) {
+    else if (rad <= -3) {
         radText = 'nonexistent'
     }
 
     if (con >= 3) {
         conText = 'on board'
     }
-    if (con >= 1) {
+    else if (con >= 1) {
         conText = 'apprehensive'
     }
-    if (con == 0) {
+    else if (con == 0) {
         conText = 'unconvinced'
     }
-    if (con <= -1) {
+    else if (con <= -1) {
         conText = 'frustrated at you'
     }
-    if (con <= -3) {
+    else if (con <= -3) {
         conText = 'up in arms'
     }
 
