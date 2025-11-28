@@ -17315,7 +17315,7 @@ cyoAdventure = function (a) {
     }
   }
   // If no candidate has a majority, you get a special question to determine the nominee
-  if ((ans == 1771 || ans == 1772) && taft < 540 && roosevelt < 540 && bob < 540 && other < 540) {
+  if ((ans == 1771 || ans == 1772) && taft < 538 && roosevelt < 538 && bob < 538 && other < 538) {
     ctsAchievement("Just Getting Started");
       campaignTrail_temp.questions_json[14] = {
         "model": "campaign_trail.question",
@@ -21079,7 +21079,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
     ctsAchievement("Taft-Teddy Truce");
     campaignTrail_temp.candidate_image_url = "https://itsastronomical.com/assets/1912/hadley.png";
     campaignTrail_temp.running_mate_image_url = "https://itsastronomical.com/assets/1912/trpuck.png";
-    campaignTrail_temp.candidate_last_name = "Haldey";
+    campaignTrail_temp.candidate_last_name = "Hadley";
     campaignTrail_temp.running_mate_last_name = "for President";
     campaignTrail_temp.election_json[0]["fields"].has_visits = 1;
     campaignTrail_temp.candidate_json[0]["fields"].color_hex = "#0F4D92";
@@ -21597,7 +21597,7 @@ e.executable = []
 if (quickstats[0] >= 266 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Taft") {
   ctsAchievement("Keep in the Chair");
 }
-if (third == true && quickstats[0] >= 70) {
+if (third == true && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Taft" && quickstats[0] >= 70) {
  ctsAchievement("Still In The Arena");
 }
 
@@ -21833,7 +21833,7 @@ else if (prog >= 3 && quickstats[0] >= 266 && campaignTrail_temp.candidate_json[
   e.executable.push([2, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1912/endings/scotus.png'})])
 }
 else if (third == false && quickstats[0] >= 266 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Taft"){
-  e.pages.push(`<h3><i>Theodore Roosevelt, An Autobiography</i> by Theodore Roosevelt</h3><h4>Chapter 16, <i>The Men in the Arena</i></h4><p>By the time I had met Mr. Taft, it had been a few years after that fateful 1912 campaign. Bitter I was over the razor-thin defeat, I had retreated to Oyster Bay and had largely sat out of the campaign. Many of my advisors had confided in me that there was a real argument for me to claim that there were errors in the awarding of delegates in the south, and that it could have secured me the nomination. Despite this, Taft was still able to defeat {{opName}}, and I did indeed vote for him. </p><p>The meeting was at a hotel in Chicago. It was not an intentional one, and in fact, it was Mr. Taft who had made my contact again, to my surprise. We had spent several minutes discussing the politics of the day - Taft was on his way out as President, I was still considering whether to allow myself to be drafted in 1916 the same way I had been drafted in 1912. The conversation was both about politics and of personal life - Taft asked about the convention, and my family. By the end, it had felt like Taft was not just a politician - he had become an elder statesmen.</p><p>My regrets about the 1912 campaign still linger, and for reasons I cannot explain, they lingered more after this conversation. Many asked why I did not contest the 1920 campaign, one that many have written to tell me that I could very well in. In many ways, I believe it was this conversation that had convinced me not to. Taft had shown me the way I could lead despite not being in the arena - part of me had wondered if I should have considered this in 1912.</p>`)
+  e.pages.push(`<h3><i>Theodore Roosevelt, An Autobiography</i> by Theodore Roosevelt</h3><h4>Chapter 16, <i>The Men in the Arena</i></h4><p>By the time I had met Mr. Taft, it had been a few years after that fateful 1912 campaign. Bitter I was over the razor-thin defeat, I had retreated to Oyster Bay and had largely sat out of the campaign. Many of my advisors had confided in me that there was a real argument for me to claim that there were errors in the awarding of delegates in the south, and that it could have secured me the nomination. Despite this, Taft was still able to defeat `+opName+`, and I did indeed vote for him. </p><p>The meeting was at a hotel in Chicago. It was not an intentional one, and in fact, it was Mr. Taft who had made my contact again, to my surprise. We had spent several minutes discussing the politics of the day - Taft was on his way out as President, I was still considering whether to allow myself to be drafted in 1916 the same way I had been drafted in 1912. The conversation was both about politics and of personal life - Taft asked about the convention, and my family. By the end, it had felt like Taft was not just a politician - he had become an elder statesmen.</p><p>My regrets about the 1912 campaign still linger, and for reasons I cannot explain, they lingered more after this conversation. Many asked why I did not contest the 1920 campaign, one that many have written to tell me that I could very well in. In many ways, I believe it was this conversation that had convinced me not to. Taft had shown me the way I could lead despite not being in the arena - part of me had wondered if I should have considered this in 1912.</p>`)
   //e.image = ""
   e.executable.push([2, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1912/endings/tr1920.png'})])
 }
