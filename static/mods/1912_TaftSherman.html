@@ -16976,7 +16976,7 @@ cyoAdventure = function (a) {
   }
 
   // Progressive 
-  if (ans == 3279 || ans == 1654 || ans == 1671 || ans == 1667 || ans == 1663 || ans == 2 || ans == 2 || ans == 2 || ans == 2 || ans == 2 || ans == 2 || ans == 2 ){
+  if (ans == 3279 || ans == 1654 || ans == 1671 || ans == 1667 || ans == 1663 || ans == 1659 || ans == 2 || ans == 2 || ans == 2 || ans == 2 || ans == 2 || ans == 2 ){
     prog += 1;
   }
   if (ans == 3278 || ans == 1653 || ans == 1670 || ans == 3292 || ans == 3293 || ans == 1661 || ans == 1662 || ans == 2 || ans == 2 || ans == 2 || ans == 2 || ans == 2 ){
@@ -17046,7 +17046,7 @@ cyoAdventure = function (a) {
 
   // Q7, Calculated based on general popularity [160 DELEGATES TOTAL]
   // Best Taft Result
-  if (campaignTrail_temp.question_number == 6 && (prog >= 5) && tariff == -1 && trade == 1) {
+  if (campaignTrail_temp.question_number == 6 && (prog >= 4) && tariff < 1 && trade == 1) {
     taft += 107;
     roosevelt += 52;
     bob += 0;
@@ -17075,21 +17075,20 @@ cyoAdventure = function (a) {
     bob += 0;
     other += 7;
   }
-  // Woo with good governance
-  if (ans == 1732) {
-    taft += 94;
-    roosevelt += 71;
-    bob += 0;
-    other += 7;
-  }
   // Woo with good governance (but it actually works!)
-  else if (ans == 1732 && trade >=1 && tariff >= 1) {
+  if (ans == 1732 && trade >=1 && tariff >= 1) {
     taft += 114;
     roosevelt += 51;
     bob += 0;
     other += 7;
   }
-
+  // Woo with good governance
+  else if (ans == 1732) {
+    taft += 94;
+    roosevelt += 71;
+    bob += 0;
+    other += 7;
+  }
   // Attack Roosevelt
   if (ans == 1733) {
     taft += 84;
@@ -21716,6 +21715,11 @@ else if (quickstats[0] >= 400 && campaignTrail_temp.candidate_json[1]["fields"].
   e.pages.push(`<h3>"The restored King was at this time more loved by the people than any of his predecessors had ever been."</h3><p>Returns have quickly indicated that Herbert Hadley has defeated `+ opName +` in the Presidential election. Despite his dark horse status, Hadley was able to secure a large majority of the Electoral College and benefits from gains by the Republicans in Congress. Though progressives dominate many of the debates of the day, it seems possible that Hadley shall be able to work on an issue-by-issue basis with both parties to push forward a progressive, but modest agenda.</p><p>You, Mr. Taft, may take much solace in the fact that Roosevelt shall not be sworn in as President, and instead of tearing the party apart, you two were able to reach a compromise that ensured continued Republican control of the executive. While it is doubtful you shall ever seriously run for elected office ever again, the cooling of tensions within the Republican Party has prevented the erosion of the Constitution by matters of judicial election and other populist pushes. You are more than welcome to give speeches nationally, but it is likely you will retire from public life - unless, of course, you are called up to serve in the Supreme Court.</p>`)
   //e.image = ""
   e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1912/endings/tafthadley.png'})])
+}
+else if (quickstats[0] >= 322 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Hadley") {
+  e.pages.push(`<h3>"Recalled by the voice of both the contending factions, he was in a position which enabled him to arbitrate between them; and in some respects he was well qualified for the task."</h3><p>After many months of campaigning, it appears that Missouri Governor Herbert Hadley has won this year's Presidential election, defeating `+ opName +`, the Democratic nominee. Many Republicans find joy in the fact that Hadley performed better than Taft did four years prior. Though a progressive, Hadley may still find trouble dealing with a Democratic House and Senate when the remaining votes are tallied up.</p><p>But of course, you - Mr. Taft, are pleased with this. While you would have preferred to gain the confidence of the people for four more years, the fact neither Roosevelt nor `+ opLast +` shall be sworn in is certainly fantastic news for the Constitution. Hadley, as a compromise between you and Roosevelt, will enter office with both of your goodwill, and hopefully he may ensure that this goodwill remains and that the party does not divorce herself over petty squabbles. Perhaps you'll be appointed to the Supreme Court by Hadley?</p>`)
+  //e.image = ""
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/1912/endings/hadley2.png'})])
 }
 else if (quickstats[0] >= 300 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Hadley") {
   e.pages.push(`<h3>"Recalled by the voice of both the contending factions, he was in a position which enabled him to arbitrate between them; and in some respects he was well qualified for the task."</h3><p>After many months of campaigning, it appears that Missouri Governor Herbert Hadley has won this year's Presidential election, defeating `+ opName +`, the Democratic nominee. While disappointing to many Democrats, just as many shall take solace in the fact that the margin was significantly reduced from four years prior, when Taft defeated Bryan by a wide margin. Though a progressive, Hadley may still find trouble dealing with a Democratic House and Senate when the remaining votes are tallied up.</p><p>But of course, you - Mr. Taft, are pleased with this. While you would have preferred to gain the confidence of the people for four more years, the fact neither Roosevelt nor `+ opLast +` shall be sworn in is certainly fantastic news for the Constitution. Hadley, as a compromise between you and Roosevelt, will enter office with both of your goodwill, and hopefully he may ensure that this goodwill remains and that the party does not divorce herself over petty squabbles. Perhaps you'll be appointed to the Supreme Court by Hadley?</p>`)
