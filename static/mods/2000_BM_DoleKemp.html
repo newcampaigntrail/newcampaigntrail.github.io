@@ -1,109 +1,3 @@
-$("#game_window")[0].style.backgroundColor = "#D4D0C8"
-const customStyling = document.createElement("style");
-customStyling.innerHTML = `
-
-
-
-#campaign_sign {
-    background-image: url("https://i.imgur.com/GFHETuW.png");
-    background-size: cover;
-    border-color: #c9c9c9;    
-    border-width: .01em;
-    margin: 0 auto;
-    background-position: center;
-    width: 100%; 
-    height: 104px; 
-    margin-left: -0.07em;
-  }
-#campaign_sign p {
-    color: rgb(0 0 0 / 0%);
-}
-.inner_window_sign_display {
-  margin: 0;
-    margin-right: 0px;
-    margin-left: 0px;
-  height: 25%;
-  position: relative;
-  width: 34%;
-  height: 28%;
-  background-color: #D4D0C8;
-  margin-left: auto;
-  margin-right: auto;
-  border-style: double;
-  border-color: #C9C9C9;
-}
-#answer_list {
-  height: 25%;
-}
-#state_info {
-  margin: 5% 0 0;
-  height: 132%;
-  background-color: #F8F8F8;
-  border-style: double;
-  border-color: #C9C9C9;
-}
-.inner_window_question {
-  background-color: #F8F8F8;
-  margin: 0
-  padding-top: .3em;
-  border-style: double;
-  border-color: #C9C9C9;
-  text-align: center;
-  height: 50%;
-  position: relative;
-  clear: both;
-}
-#menu_container {
-  background-color: #D4D0C8;
-}
-#overall_result_container {
-  background-color: #D4D0C8;
-}
-#state_info h3 {
-  background-color: #7C9CCC;
-}
-#overall_result h3 {
-  background-color: #7C9CCC;
-}
-#state_result h3 {
-  background-color: #7C9CCC;
-}`
-document.head.appendChild(customStyling);
-
-let style = document.createElement('style');
-style.type = 'text/css';
-style.id = 'dynamic-style';
-
-style.innerHTML = `
-  .inner_window_question h3 {
-    background-color: #E9E7E3;
-  }
-  .overlay_window h3 {
-    background-color: #7C9CCC;
-  }
-`;
-
-document.head.appendChild(style);
-
-// Function to inject custom font and apply it to <p> elements
-function applyCustomFont(fontName, fontUrl) {
-    // Inject @font-face rule into the document
-    const style = document.createElement("style");
-    style.innerHTML = `
-        @font-face {
-            font-family: '${fontName}';
-            src: url('${fontUrl}') format('opentype');
-        }
-        b {
-            font-family: '${fontName}', sans-serif !important;
-        }
-    `;
-    document.head.appendChild(style);
-}
-
-// Apply custom font from an OTF file URL
-applyCustomFont("CustomOTFFont", "https://files.catbox.moe/at34sp.otf"); // Replace with actual OTF URL
-
 // Questions oooh
 
 
@@ -160,7 +54,7 @@ campaignTrail_temp.questions_json = [
         "pk": 348,
         "fields": {
             "priority": 2,
-            "description": "<b>Timothy McVeigh has just been convicted for the 1995 Oklahoma City bombing, a horrific act of domestic terrorism that claimed the lives of at least 167 innocent people and left nearly 800 others wounded. His actions, driven by a deep distrust of the federal government and fueled by his anger over events like the Waco Siege and the Ruby Ridge standoff, have left a permanent scar on the nation. As prosecutors seek the death penalty for McVeigh, a journalist from CNN asks you what measures you’ll take to prevent future tragedies like this.</b>",
+            "description": "<b>Timothy McVeigh has just been convicted for the 1995 Oklahoma City bombing, a horrific act of domestic terrorism that claimed the lives of at least 167 innocent people and left nearly 800 others wounded. His actions, driven by a deep distrust of the federal government and fueled by his anger over events like the Waco Siege and the Ruby Ridge standoff, have left a permanent scar on the nation. Soon after Attorney General John Danforth announced he directed the Justice Department to seek the death penalty for McVeigh, a journalist from CNN asks you what measures you’ll take to prevent future tragedies like this.</b>",
             "likelihood": 1
         }
     },
@@ -223,7 +117,7 @@ campaignTrail_temp.questions_json = [
         "pk": 362,
         "fields": {
             "priority": 3,
-            "description": "<b>It’s January 1999, and the political landscape has shifted dramatically. After a disastrous midterm performance, Gingrich has resigned in disgrace, making way for Dennis Hastert to take over as Minority Leader. Meanwhile, Dick Gephardt has ascended to the Speakership. While the House is now under Democratic control, there’s still possibilities. With your majority in the Senate, you can still push through certain legislation. The key now is finding common ground. By cooperating more closely with the Blue Dogs, you can bridge the divide and garner enough support to pass another balanced budget. It may need a delicate balance of negotiation, persuasion, and strategy—however it's still very possible.</b>",
+            "description": "<b>It’s January 1999, and the political landscape has shifted dramatically. After a disastrous midterm performance, Gingrich has resigned in disgrace, making way for Dick Armey to take over as Minority Leader. Meanwhile, Dick Gephardt has ascended to the Speakership. While the House is now under Democratic control, there’s still possibilities. With your majority in the Senate, you can still push through certain legislation. The key now is finding common ground. By cooperating more closely with the Blue Dogs, you can bridge the divide and garner enough support to pass another balanced budget. It may need a delicate balance of negotiation, persuasion, and strategy—however it's still very possible.</b>",
             "likelihood": 1
         }
     },
@@ -671,7 +565,7 @@ campaignTrail_temp.answers_json = [
         "pk": 3357,
         "fields": {
             "question": 355,
-            "description": "<b>The House of Representatives under Dick Gephardt's oversight has been one of liberal grandstanding, the type that I fiercely oppose. That's why it's crucial that I am re-elected and that Dennis Hastert is made Speaker in January, so that the House can be back under decent control and outside of obstructionism.</b>"
+            "description": "<b>The House of Representatives under Dick Gephardt's oversight has been one of liberal grandstanding, the type that I fiercely oppose. That's why it's crucial that I am re-elected and that Dick Armey is made Speaker in January, so that the House can be back under decent control and outside of obstructionism.</b>"
         }
     },
     {
@@ -703,7 +597,7 @@ campaignTrail_temp.answers_json = [
         "pk": 3381,
         "fields": {
             "question": 362,
-            "description": "<b>Let's dangle some meat in front of the Blue Dogs. Get Denny to express openness to talking to them about specific funding in the budget. We know they're already mostly supportive of a balanced budget, but their main concerns lay in how funds are distributed. Let's hear them out.</b>"
+            "description": "<b>Let's dangle some meat in front of the Blue Dogs. Get Armey to express openness to talking to them about specific funding in the budget. We know they're already mostly supportive of a balanced budget, but their main concerns lay in how funds are distributed. Let's hear them out.</b>"
         }
     },
     {
@@ -887,7 +781,7 @@ campaignTrail_temp.answers_json = [
         "pk": 3465,
         "fields": {
             "question": 384,
-            "description": "<b>Not a lot of people are proposing this, but what about ramping up foreign aid funds to the post-Soviet republics?  It's only been 9 years since most have been sovereign, and Bob Dole knows that they still need help establishing themselves. This money can help align them towards our global cause of defending and spreading democracy.</b>"
+            "description": "<b>Not a lot of people are proposing this, but what about ramping up foreign aid funds to the post-Soviet republics?  It's only been 9 years since most have been sovereign, and Bob Dole knows that they still need help establishing themselves. This money can help align them towards our global cause of defending and spreading democracy.</b>"
         }
     },
     {
@@ -4895,7 +4789,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 77,
             "state": 185,
-            "state_multiplier": 0.47
+            "state_multiplier": 0.57
         }
     },
     {
@@ -4922,7 +4816,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 77,
             "state": 188,
-            "state_multiplier": 0.54
+            "state_multiplier": 0.57
         }
     },
     {
@@ -4958,7 +4852,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 77,
             "state": 192,
-            "state_multiplier": 0.75
+            "state_multiplier": 0.87
         }
     },
     {
@@ -4967,7 +4861,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 77,
             "state": 193,
-            "state_multiplier": 0.56
+            "state_multiplier": 0.6
         }
     },
     {
@@ -4976,7 +4870,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 77,
             "state": 194,
-            "state_multiplier": 0.75
+            "state_multiplier": 0.7
         }
     },
     {
@@ -5003,7 +4897,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 77,
             "state": 197,
-            "state_multiplier": 0.6
+            "state_multiplier": 0.57
         }
     },
     {
@@ -5057,7 +4951,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 77,
             "state": 203,
-            "state_multiplier": 0.45
+            "state_multiplier": 0.47
         }
     },
     {
@@ -5075,7 +4969,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 77,
             "state": 205,
-            "state_multiplier": 0.47
+            "state_multiplier": 0.5
         }
     },
     {
@@ -5093,7 +4987,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 77,
             "state": 207,
-            "state_multiplier": 0.5
+            "state_multiplier": 0.65
         }
     },
     {
@@ -5102,7 +4996,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 77,
             "state": 208,
-            "state_multiplier": 0.5
+            "state_multiplier": 0.49
         }
     },
     {
@@ -5147,7 +5041,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 77,
             "state": 213,
-            "state_multiplier": 0.5
+            "state_multiplier": 0.515
         }
     },
     {
@@ -5156,7 +5050,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 77,
             "state": 214,
-            "state_multiplier": 0.75
+            "state_multiplier": 0.77
         }
     },
     {
@@ -5174,7 +5068,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 77,
             "state": 216,
-            "state_multiplier": 0.75
+            "state_multiplier": 0.7
         }
     },
     {
@@ -5219,7 +5113,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 77,
             "state": 221,
-            "state_multiplier": 0.5
+            "state_multiplier": 0.47
         }
     },
     {
@@ -5273,7 +5167,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 77,
             "state": 227,
-            "state_multiplier": 0.61
+            "state_multiplier": 0.67
         }
     },
     {
@@ -5813,7 +5707,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 79,
             "state": 185,
-            "state_multiplier": 0.045
+            "state_multiplier": 0.05
         }
     },
     {
@@ -5822,7 +5716,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 79,
             "state": 186,
-            "state_multiplier": 0.04
+            "state_multiplier": 0.06
         }
     },
     {
@@ -5831,7 +5725,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 79,
             "state": 187,
-            "state_multiplier": 0
+            "state_multiplier": 0.055
         }
     },
     {
@@ -5867,7 +5761,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 79,
             "state": 191,
-            "state_multiplier": 0.03
+            "state_multiplier": 0.075
         }
     },
     {
@@ -5939,7 +5833,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 79,
             "state": 199,
-            "state_multiplier": 0
+            "state_multiplier": 0.07
         }
     },
     {
@@ -5957,7 +5851,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 79,
             "state": 201,
-            "state_multiplier": 0.05
+            "state_multiplier": 0.1
         }
     },
     {
@@ -5975,7 +5869,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 79,
             "state": 203,
-            "state_multiplier": 0.025
+            "state_multiplier": 0.055
         }
     },
     {
@@ -6002,7 +5896,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 79,
             "state": 206,
-            "state_multiplier": 0.035
+            "state_multiplier": 0.07
         }
     },
     {
@@ -6029,7 +5923,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 79,
             "state": 209,
-            "state_multiplier": 0
+            "state_multiplier": 0.05
         }
     },
     {
@@ -6047,7 +5941,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 79,
             "state": 211,
-            "state_multiplier": 0
+            "state_multiplier": 0.05
         }
     },
     {
@@ -6056,7 +5950,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 79,
             "state": 212,
-            "state_multiplier": 0.03
+            "state_multiplier": 0.055
         }
     },
     {
@@ -6101,7 +5995,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 79,
             "state": 217,
-            "state_multiplier": 0.045
+            "state_multiplier": 0.055
         }
     },
     {
@@ -6119,7 +6013,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 79,
             "state": 219,
-            "state_multiplier": 0.025
+            "state_multiplier": 0.1
         }
     },
     {
@@ -6164,7 +6058,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 79,
             "state": 224,
-            "state_multiplier": 0
+            "state_multiplier": 0.05
         }
     },
     {
@@ -6173,7 +6067,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 79,
             "state": 225,
-            "state_multiplier": 0.065
+            "state_multiplier": 0.1
         }
     },
     {
@@ -6218,7 +6112,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 79,
             "state": 230,
-            "state_multiplier": 0
+            "state_multiplier": 0.05
         }
     },
     {
@@ -13146,7 +13040,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 3314,
             "candidate": 77,
-            "answer_feedback": "At the end of the night, you're happy with the Senate results. Feingold and Reid are packing their bags, unfortunately, D'Amato is too, though by a thinner margin than anticipated. The House results, though, aren't the nicest. The Democrats won enough races to take the House, thus ending our trifecta."
+            "answer_feedback": "At the end of the night, you're happy with the Senate results. Feingold and Reid are packing their bags, unfortunately, D'Amato is too, though by a thinner margin than anticipated. The House results, though, aren't the nicest. The Democrats won enough races to take the House, thus ending our trifecta. Among those elected is one young lawyer by the name of John Edwards..."
         }
     },
     {
@@ -13407,7 +13301,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 3384,
             "candidate": 77,
-            "answer_feedback": "Your party doesn't like how you just surrendered to them so quickly. In particular, Rush Limbaugh is heavily criticizing you for it. Your support begins to drop in the usual conservative regions of the country, and swing voters see you as weak. Denny thinks we could've came to an understanding with them instead of outright surrendering."
+            "answer_feedback": "Your party doesn't like how you just surrendered to them so quickly. In particular, Rush Limbaugh is heavily criticizing you for it. Your support begins to drop in the usual conservative regions of the country, and swing voters see you as weak. Armey thinks we could've came to an understanding with them instead of outright surrendering."
         }
     },
     {
@@ -13416,7 +13310,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 3393,
             "candidate": 77,
-            "answer_feedback": "Gingrich urges Kasich to get started, and Kasich quickly drafts an amendment. Gingrich pushes it forward, and despite Gephardt's efforts to rally Blue Dogs and Moderate Republicans, the amendment passes. It clears the Senate as well but falls short of ratification by just three states. You and Kasich resolve to balance the budget independently."
+            "answer_feedback": "Gingrich urges Kasich to get started, and Kasich quickly drafts an amendment. Gingrich pushes it forward, and despite Gephardt's efforts to rally Blue Dogs and Moderate Republicans, the amendment passes. It clears the Senate as well and is now onto the states for ratification. Until then, John Kasich resolves to balance the budget each year on his own."
         }
     },
     {
@@ -13434,7 +13328,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 3395,
             "candidate": 77,
-            "answer_feedback": "Gingrich looks at you and says, \"Mr. President, are you out of your mind? That won't pass, and after serving five terms in the Senate yourself, it won’t look good.\" In the end, you both manage to pass a minor education bill. You're lucky the amendment never made it to the floor, and you know it."
+            "answer_feedback": "Gingrich re-proposes a modified version of the 1995 Amendment which lived to see a floor vote. Unfortunately, it's killed in the floor vote, as while 244 representatives, a clear majority, aye it, since it's an amendment, 290, a 2/3rds majority is required for passage. Gingrich however gets an education package through as a consolation prize."
         }
     },
     {
@@ -13704,7 +13598,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 3382,
             "candidate": 77,
-            "answer_feedback": "This is too partisan for most, and the budget isn't floored. A budget isn't floored quick enough, so a government shutdown becomes increasingly likely. However, last second, Hastert accepted the Blue Dog balanced budget plan. You've gotten a budget, but at the cost of popular support."
+            "answer_feedback": "This is too partisan for most, and the budget isn't floored. A budget isn't floored quick enough, so a government shutdown becomes increasingly likely. However, last second, Armey accepted the Blue Dog balanced budget plan. You've gotten a budget, but at the cost of popular support."
         }
     },
     {
@@ -14096,67 +13990,6 @@ campaignTrail_temp.answer_feedback_json = [
     }
 ]
 
-campaignTrail_temp.multiple_endings = true;
-endingPicker = (out, totv, aa, quickstats) => {
-
-    function setImage(url) {
-        if(url == '' || url == null) return;
-        let interval = setInterval(function () {
-            img = document.getElementsByClassName("person_image")[0];
-            if (img != null) {
-                img.src = url;
-                clearInterval(interval);
-            }
-        }, 50);
-    }
-
-    if(quickstats[0] == 538) {
-        setImage("https://i.imgur.com/2MBz1pL.png");
-        return `<h4>I know you cheated. Did you really think you could get away with it?</h4>
-
-get a life bozo`;
-    }
-    if(quickstats[0] > 270) {
-        setImage("https://i.imgur.com/1ho7ZxE.png");
-        return `<div style='overflow-y:scroll;height:310px;'>
-<h4>PRESIDENT DOLE RE-ELECTED BY CLOSE MARGIN; MULTIPLE STATES YET TO BE CALLED. GEPHARDT CONCEDES.</h4>
-
-President Robert J. Dole of Kansas, at the age of 77 years old, has been re-elected, winning his party a second term in the Oval Office, in a close election against the Speaker of the House, Richard Gephardt. In a stark comparison to four years ago, Dole is expected to win the popular vote against his challenger; however, due to the election being close, this can shift; however, his lead is unlikely to change.<br><br>
-According to sources within the Gephardt campaign, they calculated around an hour ago that it was mathematically impossible for them to defeat the President. That is when he began to prepare his concession speech, which he is set to deliver in under a half hour from now. He also gave a concession phone call to President Dole about 5 minutes ago. Dole reportedly received the call with grace and even cracked a few jokes with him.<br><br>It seems the House of Representatives will stay in control of the Democratic Party for at least two more years. The Senate meanwhile, has been projected to remain in GOP control, therefore retaining the divided government which was established in the 1998 midterms.<br><br>This election marks the beginning of the end of an era as Dole, a decorated World War II veteran, is almost certainly going to be the final president from the Greatest Generation. He is expected to give his victory speech shortly after Gephardt gives his concession speech. He will be sworn in for his second term on January 20th, 2001, and will serve until January 20th, 2005, as he is term limited. CNN will cover his second inauguration and any potential cabinet changes in the coming days, so please stay tuned.</div>`;
-    }
-    if(quickstats[0] > 320) {
-        setImage("https://i.imgur.com/1ho7ZxE.png");
-        return `<div style='overflow-y:scroll;height:310px;'>
-<h4>DOLE RE-ELECTED DECISIVELY; THE PRESIDENT SWEEPS THROUGHOUT MOST SWING STATES. A HUMILIATED GEPHARDT CONCEDES.</h4>
-
-President Robert J. Dole of Kansas, at the age of 77 years old, has been re-elected, winning his party a second term in the Oval Office, in a close election against the Speaker of the House, Richard Gephardt. In a stark comparison to four years ago, Dole is expected to win the popular vote against his challenger; this is not expected to shift at all, as Dole has won decisively in the electoral college vote.<br><br>According to sources within the Gephardt campaign, they calculated around two hours ago that it was mathematically impossible for them to defeat the President. That is when he began to prepare his concession speech, which he is set to deliver in under a half hour from now. They also knew things were going wrong fairly early in the night after obtaining exit poll results in multiple swing states. He gave a concession phone call to President Dole about 5 minutes ago. Dole reportedly received the call with grace and even cracked a few jokes with him. However, Gephardt understandably entered the call with a terrible mood.<br><br>It seems the House of Representatives will stay in control of the Democratic Party for at least two more years; however, their majority has been whittled down considerably. The Senate meanwhile, has been projected to remain in GOP control, therefore retaining the divided government which was established in the 1998 midterms.<br><br>This election marks the beginning of the end of an era as Dole, a decorated World War II veteran, is almost certainly going to be the final president from the Greatest Generation. He is expected to give his victory speech shortly after Gephardt gives his concession speech. He will be sworn in for his second term on January 20th, 2001, and will serve until January 20th, 2005, as he is term limited. CNN will cover his second inauguration and any potential cabinet changes in the coming days, so please stay tuned.</div>`;
-    }
-    if(quickstats[0] < 270) {
-        setImage("https://i.imgur.com/fl2edqb.png");
-        return `<div style='overflow-y:scroll;height:310px;'>
-<h4>SPEAKER GEPHARDT BEATS DOLE; MULTIPLE STATES YET TO BE CALLED. THE PRESIDENT CONCEDES.</h4>
-
-Speaker Richard Andrew Gephardt of Missouri, at the age of 59 years old, has been elected President of the United States, winning his party a term in the Oval Office, in a close election against the incumbent President, Bob Dole. In a stark comparison to four years ago, unlike Dole, he is expected to win both the popular vote and electoral vote against Dole; however, due to the election being close, this lead in the popular vote can shift; however, it is unlikely to change.<br><br>According to sources within the Dole campaign, they calculated around an hour ago that it was mathematically impossible for them to defeat the Speaker. That is when he began to prepare his concession speech, which he is set to deliver in under a half hour from now. He also gave a concession phone call to President-elect Gephardt about 5 minutes ago. Gephardt reportedly received the call with grace, treating the defeated President with dignity.<br><br>It seems the House of Representatives will stay in control of the Democratic Party for at least two more years. The Senate meanwhile, has been projected to remain in GOP control, therefore retaining the divided government which was established in the 1998 midterms.<br><br>This election marks the end of an era as Dole, a decorated World War II veteran, is almost certainly going to be the final president from the Greatest Generation. The President-elect is expected to give his victory speech shortly after Dole gives his concession speech. He will be sworn in for his first term on January 20th, 2001, and will serve that term until January 20th, 2005, upon which he is eligible for a second term. CNN will cover his inauguration and his cabinet nominations in the coming days, so please stay tuned.</div>`;
-    }
-    if(quickstats[0] < 202) {
-        setImage("https://i.imgur.com/fl2edqb.png");
-        return `<div style='overflow-y:scroll;height:310px;'>
-<h4>GEPHARDT HANDILY BEATS DOLE; THE SPEAKER SWEEPS THROUGHOUT MOST SWING STATES. A HUMILIATED PRESIDENT DOLE CONCEDES.</h4>
-
-Speaker Richard Andrew Gephardt of Missouri, at the age of 59 years old, has been elected President of the United States, winning his party a term in the Oval Office with a decisive victory against the incumbent President, Bob Dole. In a stark comparison to four years ago, unlike Dole, he is expected to win both the popular vote and electoral vote against Dole. This lead in the popular vote is unlikely to change due to how decisive the victory is in the electoral vote.<br><br>
-According to sources within the Dole campaign, they calculated around two hours ago that it was mathematically impossible for them to defeat the Speaker. That is when he began to prepare his concession speech, which he is set to deliver in under a half hour from now. They also knew things were going wrong fairly early in the night after obtaining exit poll results in multiple swing states. He gave a concession phone call to President-elect Gephardt about 5 minutes ago. Gephardt reportedly received the call with grace, treating the defeated President with dignity. However, Dole understandably entered the call with a terrible mood.<br><br>
-It seems the House of Representatives will stay in control of the Democratic Party for at least two more years, with their lead expanding respectably. The Senate meanwhile, has been projected to remain in GOP control, albeit with a slimmer majority, therefore retaining the divided government which was established in the 1998 midterms.<br><br>This election marks the end of an era as Dole, a decorated World War II veteran, is almost certainly going to be the final president from the Greatest Generation. The President-elect is expected to give his victory speech shortly after Dole gives his concession speech. He will be sworn in for his first term on January 20th, 2001, and will serve that term until January 20th, 2005, upon which he is eligible for a second term. CNN will cover his inauguration and his cabinet nominations in the coming days, so please stay tuned.</div>`;
-    }
-    if(quickstats[0] == 269) {
-        setImage("https://i.imgur.com/huDqniy.png");
-        return `<div style='overflow-y:scroll;height:310px;'>
-<h4>CONGRESS CLEARS WAY FOR GEPHARDT TO BE SWORN IN AS PRESIDENT IN THE AFTERMATH OF LAST NOVEMBER'S ELECTION DEADLOCKED. SENATE ELECTS KEMP FOR A SECOND TERM AS VICE PRESIDENT. FIRST BIPARTISAN ADMINISTRATION SINCE 1797.</h4>
-
-The once-in-a-lifetime electoral college deadlock of last November has finally been settled. The Democratic Party's nominee for president, the Speaker of the House, Richard Andrew Gephardt of Missouri, has been elevated to the presidency despite energetic efforts from Minority Leader Dennis Hastert to convince Blue Dogs to vote for Dole.<br><br>In stark contrast, however, it seems the Senate has decided to re-elect incumbent Vice President Jack Kemp over former Senator Dianne Feinstein of California, who was Gephardt's running mate in the election. This effectively promotes Kemp as the GOP's forefront leader, giving him a lofty position if he decides to run for president in 2004.<br><br>A mixed administration has not been seen since the days of John Adams and Thomas Jefferson, so the situation could become feral easily; however, President-elect Gephardt and Vice President Kemp are already in discussions about how a Gephardt-Kemp administration will look. Sources on Capitol Hill allege that Gephardt has expressed openness to retaining some of the Dole Administration's secretaries, such as Secretary of State Colin Powell.<br><br>This election marks the end of an era as Dole, a decorated World War II veteran, is almost certainly going to be the final president from the Greatest Generation. The President-elect is expected to give a speech to the nation at the Capitol shortly. He will be sworn in for his first term on January 20th, 2001, and will serve that term until January 20th, 2005, upon which he is eligible for a second term. CNN will cover his inauguration and his cabinet nominations in the coming days, so please stay tuned.</div>`;
-    }
-}
-
-
 campaignTrail_temp.jet_data = [{
     "mapping_enabled": false,
     "mapping_data": {
@@ -14219,7 +14052,7 @@ campaignTrail_temp.jet_data = [{
             "operator": "==",
             "value": 0,
             "endingImage": "https://i.imgur.com/huDqniy.png",
-            "endingText": "<div style='overflow-y:scroll;height:310px;'>\n<h4>CONGRESS CLEARS WAY FOR GEPHARDT TO BE SWORN IN AS PRESIDENT IN THE AFTERMATH OF LAST NOVEMBER'S ELECTION DEADLOCKED. SENATE ELECTS KEMP FOR A SECOND TERM AS VICE PRESIDENT. FIRST BIPARTISAN ADMINISTRATION SINCE 1797.</h4>\n\nThe once-in-a-lifetime electoral college deadlock of last November has finally been settled. The Democratic Party's nominee for president, the Speaker of the House, Richard Andrew Gephardt of Missouri, has been elevated to the presidency despite energetic efforts from Minority Leader Dennis Hastert to convince Blue Dogs to vote for Dole.<br><br>In stark contrast, however, it seems the Senate has decided to re-elect incumbent Vice President Jack Kemp over former Senator Dianne Feinstein of California, who was Gephardt's running mate in the election. This effectively promotes Kemp as the GOP's forefront leader, giving him a lofty position if he decides to run for president in 2004.<br><br>A mixed administration has not been seen since the days of John Adams and Thomas Jefferson, so the situation could become feral easily; however, President-elect Gephardt and Vice President Kemp are already in discussions about how a Gephardt-Kemp administration will look. Sources on Capitol Hill allege that Gephardt has expressed openness to retaining some of the Dole Administration's secretaries, such as Secretary of State Colin Powell.<br><br>This election marks the end of an era as Dole, a decorated World War II veteran, is almost certainly going to be the final president from the Greatest Generation. The President-elect is expected to give a speech to the nation at the Capitol shortly. He will be sworn in for his first term on January 20th, 2001, and will serve that term until January 20th, 2005, upon which he is eligible for a second term. CNN will cover his inauguration and his cabinet nominations in the coming days, so please stay tuned.</div>",
+            "endingText": "<div style='overflow-y:scroll;height:310px;'>\n<h4>CONGRESS CLEARS WAY FOR GEPHARDT TO BE SWORN IN AS PRESIDENT IN THE AFTERMATH OF LAST NOVEMBER'S ELECTION DEADLOCKED. SENATE ELECTS KEMP FOR A SECOND TERM AS VICE PRESIDENT. FIRST BIPARTISAN ADMINISTRATION SINCE 1797.</h4>\n\nThe once-in-a-lifetime electoral college deadlock of last November has finally been settled. The Democratic Party's nominee for president, the Speaker of the House, Richard Andrew Gephardt of Missouri, has been elevated to the presidency despite energetic efforts from Minority Leader Dick Armey to convince Blue Dogs to vote for Dole.<br><br>In stark contrast, however, it seems the Senate has decided to re-elect incumbent Vice President Jack Kemp over former Senator Dianne Feinstein of California, who was Gephardt's running mate in the election. This effectively promotes Kemp as the GOP's forefront leader, giving him a lofty position if he decides to run for president in 2004.<br><br>A mixed administration has not been seen since the days of John Adams and Thomas Jefferson, so the situation could become feral easily; however, President-elect Gephardt and Vice President Kemp are already in discussions about how a Gephardt-Kemp administration will look. Sources on Capitol Hill allege that Gephardt has expressed openness to retaining some of the Dole Administration's secretaries, such as Secretary of State Colin Powell.<br><br>This election marks the end of an era as Dole, a decorated World War II veteran, is almost certainly going to be the final president from the Greatest Generation. The President-elect is expected to give a speech to the nation at the Capitol shortly. He will be sworn in for his first term on January 20th, 2001, and will serve that term until January 20th, 2005, upon which he is eligible for a second term. CNN will cover his inauguration and his cabinet nominations in the coming days, so please stay tuned.</div>",
             "amount": "269"
         }
     }
@@ -14228,20 +14061,10 @@ campaignTrail_temp.jet_data = [{
 
 //Other stuff oooh
 
-campaignTrail_temp.candidate_image_url = "https://i.imgur.com/vEy5oZ3.png";
-campaignTrail_temp.running_mate_image_url = "https://i.imgur.com/OAZRwlO.png";
+campaignTrail_temp.candidate_image_url = "https://files.catbox.moe/up6z3w.png";
+campaignTrail_temp.running_mate_image_url = "https://files.catbox.moe/lb800n.png";
 campaignTrail_temp.candidate_last_name = ''; //Robert J. Dole
 campaignTrail_temp.running_mate_last_name = ''; //Jack F. Kemp
-
-function checkIfCanAddMap() {
-    map = document.getElementById("map_container");
-    
-    if(map) {
-        map.style.backgroundImage = "url('https://i.imgur.com/6gdQsnH.png')"; 
-    }
-}
-
-setInterval(checkIfCanAddMap, 250);
 
 vpTableHistorical = {
     "Robert J. Dole" : "Jack F. Kemp",
@@ -14249,7 +14072,7 @@ vpTableHistorical = {
     "Ralph Nader" : "Winona LaDuke",
     "John S. Hagelin" : "Robert M. Bowman",
 }
-HistHexcolour=["#bf1d29","#1c408c","#148a14","#580e6c"];
+HistHexcolour=["#A94440","#415783","#4B8449","#5F3F68"];
 HistName=["Robert J. Dole","Richard A. Gephardt","Ralph Nader","John S. Hagelin"];
 HistEV=[280,258,0,0];
 HistPV=["51,972,761","49,653,490","2,213,849","1,265,057"];
@@ -14373,7 +14196,7 @@ function KempVP() {
     const customStyling = document.createElement("style");
     customStyling.innerHTML = `
         #campaign_sign {
-            background-image: url("https://i.imgur.com/1LTiZ1i.png");
+            background-image: url("https://files.catbox.moe/bxk0um.png");
             background-size: cover;
             border-color: #c9c9c9;    
             border-width: .01em;
@@ -14394,84 +14217,116 @@ cyoAdventure = function (a) {
     }
 }
 
+$("#game_window")[0].style.backgroundColor = "#D4D0C8"
+const customStyling = document.createElement("style");
+customStyling.innerHTML = `
+
+#map_container {
+  background-image: url("https://files.catbox.moe/5cz2nf.png");
+}
+
+#campaign_sign {
+    background-image: url("https://files.catbox.moe/sd918s.png");
+    background-size: cover;
+    border-color: #c9c9c9;    
+    border-width: .01em;
+    margin: 0 auto;
+    background-position: center;
+    width: 100%; 
+    height: 104px; 
+    margin-left: -0.07em;
+  }
+#campaign_sign p {
+    color: rgb(0 0 0 / 0%);
+}
+.inner_window_sign_display {
+  margin: 0;
+    margin-right: 0px;
+    margin-left: 0px;
+  height: 25%;
+  position: relative;
+  width: 34%;
+  height: 28%;
+  background-color: #D4D0C8;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: double;
+  border-color: #C9C9C9;
+}
+#answer_list {
+  height: 25%;
+}
+#state_info {
+  margin: 5% 0 0;
+  height: auto;
+  background-color: #F8F8F8;
+  border-style: double;
+  border-color: #C9C9C9;
+}
+.inner_window_question {
+  background-color: #F8F8F8;
+  margin: 0
+  padding-top: .3em;
+  border-style: double;
+  border-color: #C9C9C9;
+  text-align: center;
+  height: 50%;
+  position: relative;
+  clear: both;
+}
+#menu_container {
+  background-color: #D4D0C8;
+}
+#overall_result_container {
+  background-color: #D4D0C8;
+}
+#state_info h3 {
+  background-color: #7C9CCC;
+}
+#overall_result h3 {
+  background-color: #7C9CCC;
+}
+#state_result h3 {
+  background-color: #7C9CCC;
+}`
+document.head.appendChild(customStyling);
+
+let style = document.createElement('style');
+style.type = 'text/css';
+style.id = 'dynamic-style';
+
+style.innerHTML = `
+  .inner_window_question h3 {
+    background-color: #E9E7E3;
+  }
+  .overlay_window h3 {
+    background-color: #7C9CCC;
+  }
+`;
+
+document.head.appendChild(style);
+
+// Function to inject custom font and apply it to <p> elements
+function applyCustomFont(fontName, fontUrl) {
+    // Inject @font-face rule into the document
+    const style = document.createElement("style");
+    style.innerHTML = `
+        @font-face {
+            font-family: '${fontName}';
+            src: url('${fontUrl}') format('opentype');
+        }
+        b {
+            font-family: '${fontName}', sans-serif !important;
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Apply custom font from an OTF file URL
+applyCustomFont("CustomOTFFont", "https://files.catbox.moe/at34sp.otf"); // Replace with actual OTF URL
+
+
 //ENDINGS
-
-
-// Campaign Trail configuration
-campaignTrail_temp.multiple_endings = true;
-construct = (a = 1) => {
-	
-    e.page = e.page + a < e.pages.length ? e.page + a : 0
-    let html = e.header;
-    html += e.pages[e.page] + "<br>";
-    if (e.page > 0) {
-    
-    html += `<button onclick='endingConstructor(a = -1)'>Back</button>`
-    }
-    if (e.page < e.pages.length - 1) {
-    
-    html += `<button onclick='endingConstructor(a = 1)'>Next</button>`
-    }
-    
-    for (i in e.executable) {
-    if (e.executable[i][0] == e.page) {
-        e.executable[i][1]();
-        
-    }
-    }
-    
-    if (e.image == true)
-    setTimeout(()=>{
-      candImg = $(".person_image")[0]
-      if (candImg) {
-        candImg.remove()
-        console.log("TRYING");
-        $("#final_results_description")[0].style = `
-          text-align:right;
-          width: 10%;
-          height:10%;
-          display: block;
-          margin-left: auto;
-          margin-right: auto;
-          overflow: auto;
-          color: #000000
-        `
-         console.log("RESULTS UPDATED");
-      }
-    }, 10)
-    else if (e.image)
-    setTimeout(()=>{
-      candImg = $(".person_image")[0];
-      if (candImg) {
-        candImg.src = e.image;
-        console.log("TRYING");
-        $("#final_results_description")[0].style = `
-          text-align:right;
-          width: 50%;
-          height:75%;
-          display: block;
-          margin-left: auto;
-          margin-right: auto;
-          overflow: auto;
-          color: #000000
-        `
-         console.log("RESULTS UPDATED");
-      }		
-    }, 10)
-    
-    return html;
-    }
-    
-    endingConstructor = (a = 1) => {
-    $("#final_results_description")[0].innerHTML = construct(a);
-    }
-    
-  // ENDINGS -- this is slightly more reliable than the ending code method
-
-
-
-
-  e.multiple_endings = true;
 
 //This is the only part of the notes that is actually me Onkel Danny - this shit is all chatgpt. Chatgpt is a useful tool. We also used chatgpt for the writing. Halligan Elysium would also like to credit Chatgpt
   function autoHalveVolumeOnce() {
@@ -14514,13 +14369,102 @@ construct = (a = 1) => {
     });
 }
 
+// Campaign Trail configuration
+campaignTrail_temp.multiple_endings = true;
 
-  e.header = "<h1> something went wonjg</h1>";
-  e.pages = ["<p>huh.</p>"];
-  e.page = 0;
+// constructs endings based on header and pages
+construct = (a = 1) => {
+    e.page = e.page + a < e.pages.length ? e.page + a : 0;
 
-  endingPicker = (out, totv, aa, quickstats) => {
-    e.final_overall_results.sort((a, b) => b.popular_votes - a.popular_votes);
+    const parts = [e.header, e.pages[e.page], "<br>"];
+
+    if (e.page > 0) {
+        parts.push(`<button onclick='endingConstructor(-1)'>Back</button>`);
+    }
+    if (e.page < e.pages.length - 1) {
+        parts.push(`<button onclick='endingConstructor(1)'>Next</button>`);
+    }
+
+    for (let i = 0; i < e.executable.length; i++) {
+        if (e.executable[i][0] === e.page) {
+            e.executable[i][1]();
+        }
+    }
+
+    if (e.image !== false) {
+        handleImageUpdate();
+    }
+
+    return parts.join('');
+};
+
+// to handle ending images
+const handleImageUpdate = () => {
+    const updateImage = () => {
+        const candImg = $(".person_image")[0];
+        const resultsDesc = $("#final_results_description")[0];
+
+        if (candImg && resultsDesc) {
+            if (e.image === true) {
+                candImg.remove();
+            } else {
+                candImg.src = e.image;
+                resultsDesc.classList.add("has-scrollbar");
+            }
+
+            resultsDesc.style.cssText = `
+                text-align: left;
+                width: 72%;
+                height: 71%;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                overflow: auto;
+            `;
+
+            return true;
+        }
+        return false;
+    };
+
+    if (updateImage()) return;
+
+    const resultsDesc = $("#final_results_description")[0];
+    if (!resultsDesc) {
+        setTimeout(updateImage, 10);
+        return;
+    }
+
+    const observer = new MutationObserver((mutations, obs) => {
+        if (updateImage()) {
+            obs.disconnect();
+        }
+    });
+
+    observer.observe(resultsDesc, {
+        childList: true,
+        subtree: true
+    });
+
+    setTimeout(() => observer.disconnect(), 1000);
+};
+
+endingConstructor = (a = 1) => {
+    const resultsDesc = $("#final_results_description")[0];
+    if (resultsDesc) {
+        resultsDesc.innerHTML = construct(a);
+    }
+};
+
+// ENDINGS -- this is slightly more reliable than the ending code method
+
+e.multiple_endings = true;
+
+e.header = "<h1> something went wonjg</h1>";
+e.pages = ["<p>huh.</p>"];
+e.page = 0;
+
+endingPicker = (out, totv, aa, quickstats) => {
     //out = "win", "loss", or "tie" for your candidate
     //totv = total votes in entire election
     //aa = all final overall results data
@@ -14534,20 +14478,20 @@ construct = (a = 1) => {
     e.pages = []
     e.header = "";
     e.executable = []
-
-    if ((quickstats[0] >= 320) && (e.player_answers.includes(3374))) { // Landslide Dole win 2
+	
+    if ((quickstats[0] >= 350) && (e.player_answers.includes(3374))) { // Landslide Dole win 2
     e.pages.push(`
-    <h4>DOLE RE-ELECTED DECISIVELY; THE PRESIDENT SWEEPS THROUGHOUT MOST SWING STATES. A HUMILIATED GEPHARDT CONCEDES.</h4>
-    <p>President Robert J. Dole of Kansas, at the age of 77 years old, has been re-elected, winning his party a second term in the Oval Office, in a close election against the Speaker of the House, Richard Gephardt. In a stark comparison to four years ago, Dole is expected to win the popular vote against his challenger; this is not expected to shift at all, as Dole has won decisively in the electoral college vote.</p>
-                <p>According to sources within the Gephardt campaign, they calculated around two hours ago that it was mathematically impossible for them to defeat the President. That is when he began to prepare his concession speech, which he is set to deliver in under a half hour from now. They also knew things were going wrong fairly early in the night after obtaining exit poll results in multiple swing states. He gave a concession phone call to President Dole about 5 minutes ago. Dole reportedly received the call with grace and even cracked a few jokes with him. However, Gephardt understandably entered the call with a terrible mood.</p>
-                <p>It seems the House of Representatives will stay in control of the Democratic Party for at least two more years; however, their majority has been whittled down considerably. The Senate meanwhile, has been projected to remain in GOP control, therefore retaining the divided government which was established in the 1998 midterms.</p>
+    <h4>DOLE RE-ELECTED IN A LANDSLIDE; THE PRESIDENT COMPETITIVE IN TRADITIONAL DEMOCRATIC STATES. A HUMILIATED GEPHARDT CONCEDES.</h4>
+    <p>President Robert J. Dole of Kansas, at the age of 77 years old, has been re-elected, winning his party a second term in the Oval Office, in the greatest electoral landslide since 1992, against the Speaker of the House, Richard Gephardt. In a stark comparison to four years ago, Dole is expected to win the popular vote against his challenger decisively; this is not expected to shift at all, as Dole has won overwhelmingly in the electoral college vote.</p>
+                <p>According to sources within the Gephardt campaign, they knew everything was going to go wrong once CNN exit polls were revealed to be very much in President Dole's favor. That is when he began to prepare his concession speech, which he is set to deliver in under a half hour from now. They also knew things were going wrong fairly early in the night once usual solid Democratic states were not immediately called to the Speaker's tally. He gave a concession phone call to President Dole about 5 minutes ago. Dole reportedly received the call with grace and even cracked a few jokes with him. However, Gephardt understandably entered the call with a sour mood.</p>
+                <p>It seems the House of Representatives will come back under control of the GOP. The Senate is likewise projected to remain in GOP control, with popular candidates like Governor Mel Carnahan of Missouri falling short by five points than expected, no doubt carried by the President's strong performance in these states.</p>
                 <p>This election marks the beginning of the end of an era as Dole, a decorated World War II veteran, is almost certainly going to be the final president from the Greatest Generation. He is expected to give his victory speech shortly after Gephardt gives his concession speech. He will be sworn in for his second term on January 20th, 2001, and will serve until January 20th, 2005, as he is term limited. CNN will cover his second inauguration and any potential cabinet changes in the coming days, so please stay tuned.</p>			
                 `)
                 e.pages.push 
                 (`
-                <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://i.imgur.com/PWvQfQW.png>	<br>With the Dole Administration coming to an end after nearly 8 years, highly popular Vice President Jack Kemp wins the Republican nomination with ease, facing up against Senator Paul Wellstone, who first came to national attention for his 2000 Presidential campaign, and his survival of the plane crash during his 2002 re-election campaign. Kemp will have to tout the successes of President Bob Dole's governance over the past eight years, including the War on Terror, whilst Senator Wellstone must make an argument for liberalism, while also navigating his dovish foreign policies, which is largely against the current public opinion, as well as his stance on NAFTA.</p>`)
+                <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://files.catbox.moe/y8ulig.png>	<br>With the Dole Administration coming to an end after nearly 8 years, highly popular Vice President Jack Kemp wins the Republican nomination with ease, shockingly facing up against Representative Dennis Kucinich, who first came to national attention for his constant, yet unpopular proposals to impeach both President Dole and Vice President Kemp over the War on Terror. Kemp will have to tout the successes of President Bob Dole's governance over the past eight years, and paint Kucinich as a radical, whilst Representative Kucinich must make an argument for his brand of progressivism, while also navigating his controversial nature. Kemp begins with a 6 to 8 point lead in most polls.</p>`)
     //e.image = ""
-    e.executable.push([0, (() => {e.image = e.image = 'https://i.imgur.com/1ho7ZxE.png'})])
+    e.executable.push([0, (() => {e.image = e.image = 'https://files.catbox.moe/7nyfdw.png'})])
     e.executable.push([1, (() => {
         nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#D4D0C8";
         document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
@@ -14557,28 +14501,74 @@ construct = (a = 1) => {
         document.body.style.backgroundSize="cover"
 
         e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'})])
+    } else if ((quickstats[0] >= 350) && (e.player_answers.includes(12353))) { // Landslide Dole win 2
+    e.pages.push(`
+    <h4>DOLE RE-ELECTED IN A LANDSLIDE; THE PRESIDENT COMPETITIVE IN TRADITIONAL DEMOCRATIC STATES. A HUMILIATED GEPHARDT CONCEDES.</h4>
+    <p>President Robert J. Dole of Kansas, at the age of 77 years old, has been re-elected, winning his party a second term in the Oval Office, in the greatest electoral landslide since 1992, against the Speaker of the House, Richard Gephardt. In a stark comparison to four years ago, Dole is expected to win the popular vote against his challenger decisively; this is not expected to shift at all, as Dole has won overwhelmingly in the electoral college vote.</p>
+                <p>According to sources within the Gephardt campaign, they knew everything was going to go wrong once CNN exit polls were revealed to be very much in President Dole's favor. That is when he began to prepare his concession speech, which he is set to deliver in under a half hour from now. They also knew things were going wrong fairly early in the night once usual solid Democratic states were not immediately called to the Speaker's tally. He gave a concession phone call to President Dole about 5 minutes ago. Dole reportedly received the call with grace and even cracked a few jokes with him. However, Gephardt understandably entered the call with a sour mood.</p>
+                <p>It seems the House of Representatives will come back under control of the GOP. The Senate is likewise projected to remain in GOP control, with popular candidates like Governor Mel Carnahan of Missouri falling short by five points than expected, no doubt carried by the President's strong performance in these states.</p>
+                <p>This election marks the beginning of the end of an era as Dole, a decorated World War II veteran, is almost certainly going to be the final president from the Greatest Generation. He is expected to give his victory speech shortly after Gephardt gives his concession speech. He will be sworn in for his second term on January 20th, 2001, and will serve until January 20th, 2005, as he is term limited. CNN will cover his second inauguration and any potential cabinet changes in the coming days, so please stay tuned.</p>			
+                `)
+                e.pages.push 
+                (`
+            <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://files.catbox.moe/8ild51.png>	<br>With the Dole Administration coming to an end after nearly 8 years, Vice President John Danforth wins the Republican nomination with ease, facing up against the Vice President pro tempore of the Senate, Walter Mondale of Minnesota, who was Vice President from 1977 to 1981 under Jimmy Carter, and was previously the party's 1984 nominee, only winning Minnesota, who snatched the Democratic nomination for a second time due to a lack of willing strong candidates to run. Danforth will have to highlight his competence as both Attorney General and Vice President, while Mondale will ironically have to face the same dilemma Reagan had to in 1984: his age, whilst marketing old iconic liberalism to a younger electorate.</p>`)
+    //e.image = ""
+    e.executable.push([0, (() => {e.image = e.image = 'https://files.catbox.moe/7nyfdw.png'})])
+    e.executable.push([1, (() => {
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#D4D0C8";
+        document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+        $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+        
+        document.body.style.backgroundSize="cover"
+
+        e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'})])
+    } else if ((quickstats[0] >= 320) && (e.player_answers.includes(3374))) { // Landslide Dole win 2
+        e.pages.push(`
+    <h4>DOLE RE-ELECTED DECISIVELY; THE PRESIDENT SWEEPS THROUGHOUT MOST SWING STATES. A HUMILIATED GEPHARDT CONCEDES.</h4>
+    <p>President Robert J. Dole of Kansas, at the age of 77 years old, has been re-elected, winning his party a second term in the Oval Office, in a close election against the Speaker of the House, Richard Gephardt. In a stark comparison to four years ago, Dole is expected to win the popular vote against his challenger; this is not expected to shift at all, as Dole has won decisively in the electoral college vote.</p>
+                <p>According to sources within the Gephardt campaign, they calculated around two hours ago that it was mathematically impossible for them to defeat the President. That is when he began to prepare his concession speech, which he is set to deliver in under a half hour from now. They also knew things were going wrong fairly early in the night after obtaining exit poll results in multiple swing states. He gave a concession phone call to President Dole about 5 minutes ago. Dole reportedly received the call with grace and even cracked a few jokes with him. However, Gephardt understandably entered the call with a terrible mood.</p>
+                <p>It seems the House of Representatives will stay in control of the Democratic Party for at least two more years; however, their majority has been whittled down considerably. The Senate meanwhile, has been projected to remain in GOP control, therefore retaining the divided government which was established in the 1998 midterms.</p>
+                <p>This election marks the beginning of the end of an era as Dole, a decorated World War II veteran, is almost certainly going to be the final president from the Greatest Generation. He is expected to give his victory speech shortly after Gephardt gives his concession speech. He will be sworn in for his second term on January 20th, 2001, and will serve until January 20th, 2005, as he is term limited. CNN will cover his second inauguration and any potential cabinet changes in the coming days, so please stay tuned.</p>			
+                `)
+        e.pages.push
+            (`
+                <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://files.catbox.moe/0x94rb.png>	<br>With the Dole Administration coming to an end after nearly 8 years, highly popular Vice President Jack Kemp wins the Republican nomination with ease, facing up against Senator Paul Wellstone, who first came to national attention for his 2000 Presidential campaign, and his survival of the plane crash during his 2002 re-election campaign. Kemp will have to tout the successes of President Bob Dole's governance over the past eight years, including the War on Terror, whilst Senator Wellstone must make an argument for liberalism, while also navigating his dovish foreign policies, which is largely against the current public opinion, as well as his stance on NAFTA.</p>`)
+        //e.image = ""
+        e.executable.push([0, (() => { e.image = e.image = 'https://files.catbox.moe/7nyfdw.png' })])
+        e.executable.push([1, (() => {
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#D4D0C8";
+            document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+            $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+
+            document.body.style.backgroundSize = "cover"
+
+            e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'
+        })])
     } else if ((quickstats[0] >= 320) && (e.player_answers.includes(3375))) { // Landslide Dole win 2
-    e.pages.push(`
+        e.pages.push(`
     <h4>DOLE RE-ELECTED DECISIVELY; THE PRESIDENT SWEEPS THROUGHOUT MOST SWING STATES. A HUMILIATED GEPHARDT CONCEDES.</h4>
     <p>President Robert J. Dole of Kansas, at the age of 77 years old, has been re-elected, winning his party a second term in the Oval Office, in a close election against the Speaker of the House, Richard Gephardt. In a stark comparison to four years ago, Dole is expected to win the popular vote against his challenger; this is not expected to shift at all, as Dole has won decisively in the electoral college vote.</p>
                 <p>According to sources within the Gephardt campaign, they calculated around two hours ago that it was mathematically impossible for them to defeat the President. That is when he began to prepare his concession speech, which he is set to deliver in under a half hour from now. They also knew things were going wrong fairly early in the night after obtaining exit poll results in multiple swing states. He gave a concession phone call to President Dole about 5 minutes ago. Dole reportedly received the call with grace and even cracked a few jokes with him. However, Gephardt understandably entered the call with a terrible mood.</p>
                 <p>It seems the House of Representatives will stay in control of the Democratic Party for at least two more years; however, their majority has been whittled down considerably. The Senate meanwhile, has been projected to remain in GOP control, therefore retaining the divided government which was established in the 1998 midterms.</p>
                 <p>This election marks the beginning of the end of an era as Dole, a decorated World War II veteran, is almost certainly going to be the final president from the Greatest Generation. He is expected to give his victory speech shortly after Gephardt gives his concession speech. He will be sworn in for his second term on January 20th, 2001, and will serve until January 20th, 2005, as he is term limited. CNN will cover his second inauguration and any potential cabinet changes in the coming days, so please stay tuned.</p>			
                 `)
-                e.pages.push 
-                (`
-                <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://i.imgur.com/ENH0bBV.png>	<br>With the Dole Administration coming to an end after nearly 8 years, Vice President John Kasich wins the Republican nomination with ease, facing up against Governor Howard Dean of Vermont who seized the Democratic nomination after demand for a staunch liberal with executive experience. Kasich will have to tout the successes of President Bob Dole's governance over the past eight years, including the War on Terror, whilst Governor Dean must make an argument for New English liberalism, while also navigating his dovish foreign policies, as well as his ambitious healthcare plans.</p>`)
-    //e.image = ""
-    e.executable.push([0, (() => {e.image = e.image = 'https://i.imgur.com/1ho7ZxE.png'})])
-    e.executable.push([1, (() => {
-        nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#700016";
-        nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#D4D0C8";
-        document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
-        $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
-        
-        document.body.style.backgroundSize="cover"
+        e.pages.push
+            (`
+                <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://files.catbox.moe/foq0ir.png>	<br>With the Dole Administration coming to an end after nearly 8 years, Vice President John Kasich wins the Republican nomination with ease, facing up against Governor Howard Dean of Vermont who seized the Democratic nomination after demand for a staunch liberal with executive experience. Kasich will have to tout the successes of President Bob Dole's governance over the past eight years, including the War on Terror, whilst Governor Dean must make an argument for New English liberalism, while also navigating his dovish foreign policies, as well as his ambitious healthcare plans.</p>`)
+        //e.image = ""
+        e.executable.push([0, (() => { e.image = e.image = 'https://files.catbox.moe/7nyfdw.png' })])
+        e.executable.push([1, (() => {
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#700016";
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#D4D0C8";
+            document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+            $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
 
-        e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'})])
+            document.body.style.backgroundSize = "cover"
+
+            e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'
+        })])
     } else if ((quickstats[0] >= 320) && (e.player_answers.includes(12353))) { // Landslide Dole win 2
         e.pages.push(`
         <h4>DOLE RE-ELECTED DECISIVELY; THE PRESIDENT SWEEPS THROUGHOUT MOST SWING STATES. A HUMILIATED GEPHARDT CONCEDES.</h4>
@@ -14587,62 +14577,65 @@ construct = (a = 1) => {
                     <p>It seems the House of Representatives will stay in control of the Democratic Party for at least two more years; however, their majority has been whittled down considerably. The Senate meanwhile, has been projected to remain in GOP control, therefore retaining the divided government which was established in the 1998 midterms.</p>
                     <p>This election marks the beginning of the end of an era as Dole, a decorated World War II veteran, is almost certainly going to be the final president from the Greatest Generation. He is expected to give his victory speech shortly after Gephardt gives his concession speech. He will be sworn in for his second term on January 20th, 2001, and will serve until January 20th, 2005, as he is term limited. CNN will cover his second inauguration and any potential cabinet changes in the coming days, so please stay tuned.</p>			
                     `)
-                    e.pages.push 
-                    (`
-            <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://i.imgur.com/6RL4ZmJ.png>	<br>With the Dole Administration coming to an end after nearly 8 years, Vice President John Danforth wins the Republican nomination with ease, facing up against Senator Carol Moseley Braun of Illinois, who snatched the Democratic nomination without warning. Danforth will have to highlight his extensive experience, especially in regards to foreign policy, whilst Moseley Braun must prevent moderate members of the Demcoratic Party from staying home, whilst advocating for mass change in the political arena of the United States. If elected, Moseley Braun would be the first African-American and the first woman to be ekected President.</p>`)
-            //e.image = ""
-        e.executable.push([0, (() => {e.image = e.image = 'https://i.imgur.com/1ho7ZxE.png'})])
+        e.pages.push
+            (`
+            <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://files.catbox.moe/gb7i3u.png>	<br>With the Dole Administration coming to an end after nearly 8 years, Vice President John Danforth wins the Republican nomination with ease, facing up against Senator Carol Moseley Braun of Illinois, who snatched the Democratic nomination without warning. Danforth will have to highlight his extensive experience, especially in regards to foreign policy, whilst Moseley Braun must prevent moderate members of the Demcoratic Party from staying home, whilst advocating for mass change in the political arena of the United States. If elected, Moseley Braun would be the first African-American and the first woman to be elected President.</p>`)
+        //e.image = ""
+        e.executable.push([0, (() => { e.image = e.image = 'https://files.catbox.moe/7nyfdw.png' })])
         e.executable.push([1, (() => {
             nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#D4D0C8";
 
 
 
-            
-            document.body.style.backgroundSize="cover"
 
-            e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'})])
-        } else if(quickstats[0] >= 270 && quickstats[0] < 320 && (e.player_answers.includes(3374))) { // close win
+            document.body.style.backgroundSize = "cover"
+
+            e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'
+        })])
+    } else if (quickstats[0] >= 270 && quickstats[0] < 320 && (e.player_answers.includes(3374))) { // close win
         e.pages.push(`
         <h4>PRESIDENT DOLE RE-ELECTED BY CLOSE MARGIN; MULTIPLE STATES YET TO BE CALLED. GEPHARDT CONCEDES.</h4>
         <p>President Robert J. Dole of Kansas, at the age of 77 years old, has been re-elected, winning his party a second term in the Oval Office, in a close election against the Speaker of the House, Richard Gephardt. In a stark comparison to four years ago, Dole is expected to win the popular vote against his challenger; however, due to the election being close, this can shift; however, his lead is unlikely to change.</p>
         <p>According to sources within the Gephardt campaign, they calculated around an hour ago that it was mathematically impossible for them to defeat the President. That is when he began to prepare his concession speech, which he is set to deliver in under a half hour from now. He also gave a concession phone call to President Dole about 5 minutes ago. Dole reportedly received the call with grace and even cracked a few jokes with him.</p>
         <p>It seems the House of Representatives will stay in control of the Democratic Party for at least two more years. The Senate meanwhile, has been projected to remain in GOP control, therefore retaining the divided government which was established in the 1998 midterms.</p>
         <p>This election marks the beginning of the end of an era as Dole, a decorated World War II veteran, is almost certainly going to be the final president from the Greatest Generation. He is expected to give his victory speech shortly after Gephardt gives his concession speech. He will be sworn in for his second term on January 20th, 2001, and will serve until January 20th, 2005, as he is term limited. CNN will cover his second inauguration and any potential cabinet changes in the coming days, so please stay tuned.</p>`)
-                e.pages.push 
-                (`
-                <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://i.imgur.com/tehuCPn.png>	<br>With the Dole Administration coming to an end after nearly 8 years, in a comparable situation to 1960, two relatively young nominees face each other off for the Presidency. Senator John Edwards of North Carolina came from political obscurity to clinching the Democratic Party's nomination, and Representative John Kasich of Ohio, the author of the yet to be ratified 28th Amendment, and the Dole era balanced budgets, wins the Republican nomination in the face of more established figures, such as John McCain. Kasich will have to tout the successes of President Bob Dole's governance over the past eight years, including the economy, whilst Senator Edwards must make an argument for his vision for America, while also navigating his ambitious education proposals. This election, similar to 1960 and 2000 respectively, is expected to be extremely close.</p><p>Also congrats, this is the canonical ending. Here's your <a href="https://github.com/army1234567/Only-in-America-Public-Code-1-Reveal">reward</a></p>`)
-    e.executable.push([0, (() => {e.image = e.image = 'https://i.imgur.com/1ho7ZxE.png'})])
-    e.executable.push([1, (() => {
-        nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#D4D0C8";
-        document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
-        $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
-        
-        document.body.style.backgroundSize="cover"
+        e.pages.push
+            (`
+                <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://files.catbox.moe/qc6cw3.png>	<br>With the Dole Administration coming to an end after nearly 8 years, in a comparable situation to 1960, two relatively young nominees face each other off for the Presidency. Senator John Edwards of North Carolina came from political obscurity to clinching the Democratic Party's nomination, and House Majority Whip John Kasich of Ohio, the author of the 28th Amendment, and the Dole era balanced budgets, wins the Republican nomination in the face of more established figures, such as John McCain. Kasich will have to tout the successes of President Bob Dole's governance over the past eight years, including the economy, whilst Senator Edwards must make an argument for his vision for America, while also navigating his ambitious education proposals. This election, similar to 1960 and 2000 respectively, is expected to be extremely close.</p>`)
+        e.executable.push([0, (() => { e.image = e.image = 'https://files.catbox.moe/ypqc6v.png' })])
+        e.executable.push([1, (() => {
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#D4D0C8";
+            document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+            $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
 
-        e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'})])
+            document.body.style.backgroundSize = "cover"
+
+            e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'
+        })])
     } else if (aa[0].electoral_votes < 270 && aa[3].electoral_votes < 270 && aa[2].electoral_votes < 270 && quickstats[0] < 270) { // Deadlock
-    e.pages.push(`
+        e.pages.push(`
     <h4>CONGRESS CLEARS WAY FOR GEPHARDT TO BE SWORN IN AS PRESIDENT IN THE AFTERMATH OF LAST NOVEMBER'S ELECTION DEADLOCK. SENATE ELECTS KEMP FOR A SECOND TERM AS VICE PRESIDENT. FIRST BIPARTISAN ADMINISTRATION SINCE 1797.</h4>
-    <p>The once-in-a-lifetime electoral college deadlock of last November has finally been settled. The Democratic Party's nominee for president, the Speaker of the House, Richard Andrew Gephardt of Missouri, has been elevated to the presidency despite energetic efforts from Minority Leader Dennis Hastert to convince Blue Dogs to vote for Dole.</p>
+    <p>The once-in-a-lifetime electoral college deadlock of last November has finally been settled. The Democratic Party's nominee for president, the Speaker of the House, Richard Andrew Gephardt of Missouri, has been elevated to the presidency despite energetic efforts from Minority Leader Dick Armey to convince Blue Dogs to vote for Dole.</p>
     <p>In stark contrast, however, it seems the Senate has decided to re-elect incumbent Vice President Jack Kemp over former Senator Dianne Feinstein of California, who was Gephardt's running mate in the election. This effectively promotes Kemp as the GOP's forefront leader, giving him a lofty position if he decides to run for president in 2004.</p>
     <p>A mixed administration has not been seen since the days of John Adams and Thomas Jefferson, so the situation could become feral easily; however, President-elect Gephardt and Vice President Kemp are already in discussions about how a Gephardt-Kemp administration will look. Sources on Capitol Hill allege that Gephardt has expressed openness to retaining some of the Dole Administration's secretaries, such as Secretary of State Colin Powell.</p>
     <p>This election marks the end of an era as Dole, a decorated World War II veteran, is almost certainly going to be the final president from the Greatest Generation. The President-elect is expected to give a speech to the nation at the Capitol shortly. He will be sworn in for his first term on January 20th, 2001, and will serve that term until January 20th, 2005, upon which he is eligible for a second term. CNN will cover his inauguration and his cabinet nominations in the coming days, so please stay tuned.</p>
 
      `)
-e.pages.push(`
-                <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://i.imgur.com/IatviNw.png><br>In one of the most heated elections in recent history, in the aftermath of the brokered 2000 election, for the first time since 1800, an incumbent President and Vice President are running against each other. The GOP has rallied around Vice President Jack Kemp, who has pulled no punches against the Democratic nominee, incumbent President Dick Gephardt. Vice President Kemp must chart his own path seperate from that of Dole and Gephardt, while President Gephardy must advocate for four more years of liberalism, while also explaining questionable foreign policy decisions in the aftermath of the September 11th Attacks.</p>`)
-    //e.image = ""
-    e.executable.push([0, (() => {e.image = e.image = 'https://i.imgur.com/huDqniy.png'})])
-    e.executable.push([1, (() => {
-        nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#D4D0C8";
-        document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
-        $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+        e.pages.push(`
+                <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://files.catbox.moe/s7n2q8.png><br>In one of the most heated elections in recent history, in the aftermath of the brokered 2000 election, for the first time since 1800, an incumbent President and Vice President are running against each other. The GOP has rallied around Vice President Jack Kemp, who has pulled no punches against the Democratic nominee, incumbent President Dick Gephardt. Vice President Kemp must chart his own path seperate from that of Dole and Gephardt, while President Gephardy must advocate for four more years of liberalism, while also explaining questionable foreign policy decisions in the aftermath of the September 11th Attacks.</p>`)
+        //e.image = ""
+        e.executable.push([0, (() => { e.image = e.image = 'https://files.catbox.moe/oeyypu.png' })])
+        e.executable.push([1, (() => {
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#D4D0C8";
+            document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+            $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
 
-        
-        document.body.style.backgroundSize="cover"
 
-        e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'})])
-    } 
+            document.body.style.backgroundSize = "cover"
+
+            e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'
+        })])
+    }
     else if (aa[0].electoral_votes >= 270 && aa[0].electoral_votes < 320 && e.player_answers.includes(3374)) { //Dole close loss
         e.pages.push(`
         <h4>SPEAKER GEPHARDT BEATS DOLE; MULTIPLE STATES YET TO BE CALLED. THE PRESIDENT CONCEDES.</h4>
@@ -14653,20 +14646,21 @@ e.pages.push(`
 		
         `)
         e.pages.push
-          (`
-          <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://i.imgur.com/6Pj9441.png>	<br>With President Dick Gephardt's first term nearly coming to an end, the former Mayor of New York City, Rudy Giuliani, famous for his handling of the September 11th Attacks, rises to head the Republican ticket. Meanwhile, President Gephardt wins his party's nomination for a second term easily. President Gephardt must empthasize his legislative accomplishments and his handling of the War on Terror, while former Mayor Giuliani must explain how he'll be a more effective leader of the War on Terror, attack some of his opponent's questionable foreign policy decisions, while navigating the skeletons in his past, which are sometimes outright hypocritical to his platform.</p>`)
+            (`
+          <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://files.catbox.moe/dqf30k.png>	<br>With President Dick Gephardt's first term nearly coming to an end, the former Mayor of New York City, Rudy Giuliani, famous for his handling of the September 11th Attacks, rises to head the Republican ticket. Meanwhile, President Gephardt wins his party's nomination for a second term easily. President Gephardt must empthasize his legislative accomplishments and his handling of the War on Terror, while former Mayor Giuliani must explain how he'll be a more effective leader of the War on Terror, attack some of his opponent's questionable foreign policy decisions, while navigating the skeletons in his past, which are sometimes outright hypocritical to his platform.</p>`)
         //e.image = ""
-        e.executable.push([0, (() => {e.image = e.image = 'https://i.imgur.com/fl2edqb.png'})])
+        e.executable.push([0, (() => { e.image = e.image = 'https://files.catbox.moe/43jiu9.png' })])
         e.executable.push([1, (() => {
             nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#D4D0C8";
 
 
-            
-            document.body.style.backgroundSize="cover"
 
-            e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'})])
-        } else if (aa[0].electoral_votes >= 270 && aa[0].electoral_votes < 320 && (e.player_answers.includes(3375))) { //Dole close loss
-            e.pages.push(`
+            document.body.style.backgroundSize = "cover"
+
+            e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'
+        })])
+    } else if (aa[0].electoral_votes >= 270 && aa[0].electoral_votes < 320 && (e.player_answers.includes(3375))) { //Dole close loss
+        e.pages.push(`
             <h4>SPEAKER GEPHARDT BEATS DOLE; MULTIPLE STATES YET TO BE CALLED. THE PRESIDENT CONCEDES.</h4>
             <p>Speaker Richard Andrew Gephardt of Missouri, at the age of 59 years old, has been elected President of the United States, winning his party a term in the Oval Office, in a close election against the incumbent President, Bob Dole. In a stark comparison to four years ago, unlike Dole, he is expected to win both the popular vote and electoral vote against Dole; however, due to the election being close, this lead in the popular vote can shift; however, it is unlikely to change.</p>
             <p>According to sources within the Dole campaign, they calculated around an hour ago that it was mathematically impossible for them to defeat the Speaker. That is when he began to prepare his concession speech, which he is set to deliver in under a half hour from now. He also gave a concession phone call to President-elect Gephardt about 5 minutes ago. Gephardt reportedly received the call with grace, treating the defeated President with dignity.</p>
@@ -14674,14 +14668,14 @@ e.pages.push(`
             <p>This election marks the end of an era as Dole, a decorated World War II veteran, is almost certainly going to be the final president from the Greatest Generation. The President-elect is expected to give his victory speech shortly after Dole gives his concession speech. He will be sworn in for his first term on January 20th, 2001, and will serve that term until January 20th, 2005, upon which he is eligible for a second term. CNN will cover his inauguration and his cabinet nominations in the coming days, so please stay tuned.</p>
             
             `)
-            e.pages.push
-              (`
-              <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://i.imgur.com/eNyfQxu.png>	<br>With President Dick Gephardt's first term nearly coming to an end, the Governor of Florida, Jeb Bush, the son of former President George H.W. Bush, rises to head the Republican ticket. Meanwhile, President Gephardt wins his party's nomination for a second term easily. President Gephardt must empthasize his legislative accomplishments and his handling of the War on Terror, while Governor Bush must explain how the President's liberal policies could set the nation for failure, including some of his opponent's questionable foreign policy deciions, while making the case for his aggressive conservative agenda he implemented in Florida.</p>`)
-            //e.image = ""
-            e.executable.push([0, (() => {e.image = e.image = 'https://i.imgur.com/fl2edqb.png'})])
-            } 
-            else if (aa[0].electoral_votes >= 270 && aa[0].electoral_votes < 320 && (e.player_answers.includes(12353))) { //Dole close loss
-                e.pages.push(`
+        e.pages.push
+            (`
+              <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://files.catbox.moe/jwhp11.png>	<br>With President Dick Gephardt's first term nearly coming to an end, the Governor of Florida, Jeb Bush, the son of former President George H.W. Bush, rises to head the Republican ticket. Meanwhile, President Gephardt wins his party's nomination for a second term easily. President Gephardt must empthasize his legislative accomplishments and his handling of the War on Terror, while Governor Bush must explain how the President's liberal policies could set the nation for failure, including some of his opponent's questionable foreign policy deciions, while making the case for his aggressive conservative agenda he implemented in Florida.</p>`)
+        //e.image = ""
+        e.executable.push([0, (() => { e.image = e.image = 'https://files.catbox.moe/43jiu9.png' })])
+    }
+    else if (aa[0].electoral_votes >= 270 && aa[0].electoral_votes < 320 && (e.player_answers.includes(12353))) { //Dole close loss
+        e.pages.push(`
                 <h4>SPEAKER GEPHARDT BEATS DOLE; MULTIPLE STATES YET TO BE CALLED. THE PRESIDENT CONCEDES.</h4>
                 <p>Speaker Richard Andrew Gephardt of Missouri, at the age of 59 years old, has been elected President of the United States, winning his party a term in the Oval Office, in a close election against the incumbent President, Bob Dole. In a stark comparison to four years ago, unlike Dole, he is expected to win both the popular vote and electoral vote against Dole; however, due to the election being close, this lead in the popular vote can shift; however, it is unlikely to change.</p>
                 <p>According to sources within the Dole campaign, they calculated around an hour ago that it was mathematically impossible for them to defeat the Speaker. That is when he began to prepare his concession speech, which he is set to deliver in under a half hour from now. He also gave a concession phone call to President-elect Gephardt about 5 minutes ago. Gephardt reportedly received the call with grace, treating the defeated President with dignity.</p>
@@ -14689,38 +14683,60 @@ e.pages.push(`
                 <p>This election marks the end of an era as Dole, a decorated World War II veteran, is almost certainly going to be the final president from the Greatest Generation. The President-elect is expected to give his victory speech shortly after Dole gives his concession speech. He will be sworn in for his first term on January 20th, 2001, and will serve that term until January 20th, 2005, upon which he is eligible for a second term. CNN will cover his inauguration and his cabinet nominations in the coming days, so please stay tuned.</p>
                 
                 `)
-                e.pages.push
-                  (`
-                  <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://i.imgur.com/yCdGLGC.png>	<br>With President Dick Gephardt's first term nearly coming to an end, the infamous maverick and Vietnam War hero, Senator John McCain of Arizona, accept the call to duty to head the Republican ticket. Meanwhile, President Gephardt wins his party's nomination for a second term easily. President Gephardt must empthasize his legislative accomplishments and his handling of the War on Terror, while former McCain must explain how he'll be a more effective leader of the War on Terror, attack some of his opponent's questionable foreign policy decisions, while painting himself as a nonpartisan leader who will advance a pragmatic agenda to make peoples' lives better.</p>`)
-                //e.image = ""
-                e.executable.push([0, (() => {e.image = e.image = 'https://i.imgur.com/fl2edqb.png'})])
-                e.executable.push([1, (() => {
-                    nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#D4D0C8";
-        
-        
-                    
-                    document.body.style.backgroundSize="cover"
+        e.pages.push
+            (`
+                  <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://files.catbox.moe/6t3dyp.png>	<br>With President Dick Gephardt's first term nearly coming to an end, the infamous maverick and Vietnam War hero, Senator John McCain of Arizona, accept the call to duty to head the Republican ticket. Meanwhile, President Gephardt wins his party's nomination for a second term easily. President Gephardt must empthasize his legislative accomplishments and his handling of the War on Terror, while former McCain must explain how he'll be a more effective leader of the War on Terror, attack some of his opponent's questionable foreign policy decisions, while painting himself as a nonpartisan leader who will advance a pragmatic agenda to make peoples' lives better.</p>`)
+        //e.image = ""
+        e.executable.push([0, (() => { e.image = e.image = 'https://files.catbox.moe/43jiu9.png' })])
+        e.executable.push([1, (() => {
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#D4D0C8";
 
-                    e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'})])
-                } 
-    
-  //Dean Prog Endings  
-    
-    
-  else if (quickstats[0] <= 218 && (e.player_answers.includes(3374))) {
+
+
+            document.body.style.backgroundSize = "cover"
+
+            e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'
+        })])
+    }
+
+    //Dean Prog Endings
+
+    else if (quickstats[0] <= 188 && (e.player_answers.includes(3374))) {
     e.pages.push(`
-            <h4>GEPHARDT HANDILY BEATS DOLE; THE SPEAKER SWEEPS THROUGHOUT MOST SWING STATES. A HUMILIATED PRESIDENT DOLE CONCEDES.</h4>
-            <p>Speaker Richard Andrew Gephardt of Missouri, at the age of 59 years old, has been elected President of the United States, winning his party a term in the Oval Office with a decisive victory against the incumbent President, Bob Dole. In a stark comparison to four years ago, unlike Dole, he is expected to win both the popular vote and electoral vote against Dole. This lead in the popular vote is unlikely to change due to how decisive the victory is in the electoral vote.</p>
-            <p>According to sources within the Dole campaign, they calculated around two hours ago that it was mathematically impossible for them to defeat the Speaker. That is when he began to prepare his concession speech, which he is set to deliver in under a half hour from now. They also knew things were going wrong fairly early in the night after obtaining exit poll results in multiple swing states. He gave a concession phone call to President-elect Gephardt about 5 minutes ago. Gephardt reportedly received the call with grace, treating the defeated President with dignity. However, Dole understandably entered the call with a terrible mood.</p>
-            <p>It seems the House of Representatives will stay in control of the Democratic Party for at least two more years, with their lead expanding respectably. The Senate meanwhile, has been projected to remain in GOP control, albeit with a slimmer majority, therefore retaining the divided government which was established in the 1998 midterms.</p>
+            <h4>GEPHARDT BEATS DOLE; THE SPEAKER COMPETITIVE IN TRADITIONAL REPUBLICAN STATES. A HUMILIATED PRESIDENT DOLE CONCEDES.</h4>
+            <p>Speaker Richard Andrew Gephardt of Missouri, at the age of 59 years old, has been elected President of the United States, winning his party a term in the Oval Office with a landside not seen since 1992, against the incumbent President, Bob Dole. In a stark comparison to four years ago, unlike Dole, he is expected to win both the popular vote and electoral vote against Dole. This lead in the popular vote is unlikely to change due to how wide the victory is in the electoral vote.</p>
+            <p>According to sources within the Dole campaign, they knew everything was going to go wrong once CNN exit polls were revealed to be very much in Speaker Gephardt's favor. That is when he began to prepare his concession speech, which he is set to deliver in under a half hour from now. They also knew things were going wrong fairly early in the night once usual solid Republican states were not immediately called to the President's tally. He gave a concession phone call to Speaker Gephardt about 5 minutes ago. Gephardt reportedly received the call with grace and even cracked a few jokes with him. However, Dole understandably entered the call with a sour mood.</p>
+            <p>It seems the House of Representatives will stay in control of the Democratic Party for at least two more years, with their lead expanding widely. The Senate meanwhile, has nearly flipped to Democratic control, with popular incumbents such as Senator John Ashcroft losing to Governor Mel Carnahan by five points, no doubt carried by the Speaker's strong performance in these states.</p>
             <p>This election marks the end of an era as Dole, a decorated World War II veteran, is almost certainly going to be the final president from the Greatest Generation. The President-elect is expected to give his victory speech shortly after Dole gives his concession speech. He will be sworn in for his first term on January 20th, 2001, and will serve that term until January 20th, 2005, upon which he is eligible for a second term. CNN will cover his inauguration and his cabinet nominations in the coming days, so please stay tuned.</p>
             
             `)
             {e.pages.push
              (`
-            <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://i.imgur.com/KBKbKdj.png>	<br>With President Dick Gephardt's first term nearly coming to an end, former Governor Jim Gilmore of Virginia, narrowly wins the Republican nomination. Meanwhile, President Gephardt wins his party's nomination for a second term easily. President Gephardt must empthasize his legislative accomplishments, his handling of the War on Terror, and general popularity, while former Governor Gilmore must emphasize the handling of the September 11th Attacks' affects on Virginia's economy, while finding some way to narrow the President's respectible lead in the polls.</p>`)}
+            <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://files.catbox.moe/a6iibd.png>	<br>With President Dick Gephardt's first term nearly coming to an end, former Governor Lamar Alexander of Tennessee, in his second bid for the Presidency, captures the Republican nomination. Meanwhile, President Gephardt wins his party's nomination for a second term easily. President Gephardt must empthasize his legislative accomplishments, his handling of the War on Terror, and general popularity, while former Governor Alexander must emphasize his brand of conservatism which the media has dubbed 'New Republicanism', whilst exploiting divisions in the Democratic Party.</p>`)}
     
-            e.executable.push([0, (() => {e.image = e.image = 'https://i.imgur.com/fl2edqb.png'})])
+            e.executable.push([0, (() => {e.image = e.image = 'https://files.catbox.moe/kxul6r.png'})])
+            e.executable.push([1, (() => {
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#D4D0C8";
+
+
+            
+            document.body.style.backgroundSize="cover"
+
+            e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'})])
+    } else if (quickstats[0] <= 188 && (e.player_answers.includes(12353))) {
+    e.pages.push(`
+            <h4>GEPHARDT BEATS DOLE; THE SPEAKER COMPETITIVE IN TRADITIONAL REPUBLICAN STATES. A HUMILIATED PRESIDENT DOLE CONCEDES.</h4>
+            <p>Speaker Richard Andrew Gephardt of Missouri, at the age of 59 years old, has been elected President of the United States, winning his party a term in the Oval Office with a landside not seen since 1992, against the incumbent President, Bob Dole. In a stark comparison to four years ago, unlike Dole, he is expected to win both the popular vote and electoral vote against Dole. This lead in the popular vote is unlikely to change due to how wide the victory is in the electoral vote.</p>
+            <p>According to sources within the Dole campaign, they knew everything was going to go wrong once CNN exit polls were revealed to be very much in Speaker Gephardt's favor. That is when he began to prepare his concession speech, which he is set to deliver in under a half hour from now. They also knew things were going wrong fairly early in the night once usual solid Republican states were not immediately called to the President's tally. He gave a concession phone call to Speaker Gephardt about 5 minutes ago. Gephardt reportedly received the call with grace and even cracked a few jokes with him. However, Dole understandably entered the call with a sour mood.</p>
+            <p>It seems the House of Representatives will stay in control of the Democratic Party for at least two more years, with their lead expanding widely. The Senate meanwhile, has nearly flipped to Democratic control, with popular incumbents such as Senator John Ashcroft losing to Governor Mel Carnahan by five points, no doubt carried by the Speaker's strong performance in these states.</p>
+            <p>This election marks the end of an era as Dole, a decorated World War II veteran, is almost certainly going to be the final president from the Greatest Generation. The President-elect is expected to give his victory speech shortly after Dole gives his concession speech. He will be sworn in for his first term on January 20th, 2001, and will serve that term until January 20th, 2005, upon which he is eligible for a second term. CNN will cover his inauguration and his cabinet nominations in the coming days, so please stay tuned.</p>
+            
+            `)
+            {e.pages.push
+             (`
+            <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://files.catbox.moe/yg4i42.png>	<br>With President Dick Gephardt's first term nearly coming to an end, orthodox conservative Representative Tom Tancredo of Colorado, narrowly wins the Republican nomination, riding on discontent with the moderate path advocated by Dole and Danforth in 2000 which many argue lead to their landslide defeat. Meanwhile, President Gephardt wins his party's nomination for a second term easily. President Gephardt must empthasize his legislative accomplishments, his handling of the War on Terror, and general popularity, while Representative Tancredo must lean into culture war policies to futher excite the newly dubbed 'Tea Party' movement, while finding a way to get moderate Republicans on board with him.</p>`)}
+    
+            e.executable.push([0, (() => {e.image = e.image = 'https://files.catbox.moe/kxul6r.png'})])
             e.executable.push([1, (() => {
             nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#D4D0C8";
 
@@ -14730,8 +14746,36 @@ e.pages.push(`
 
             e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'})])
             }
-else if (quickstats[0] <= 218 && (e.player_answers.includes(3375))) {
-            e.pages.push(`
+
+
+    else if (quickstats[0] <= 218 && (e.player_answers.includes(3374))) {
+        e.pages.push(`
+            <h4>GEPHARDT HANDILY BEATS DOLE; THE SPEAKER SWEEPS THROUGHOUT MOST SWING STATES. A HUMILIATED PRESIDENT DOLE CONCEDES.</h4>
+            <p>Speaker Richard Andrew Gephardt of Missouri, at the age of 59 years old, has been elected President of the United States, winning his party a term in the Oval Office with a decisive victory against the incumbent President, Bob Dole. In a stark comparison to four years ago, unlike Dole, he is expected to win both the popular vote and electoral vote against Dole. This lead in the popular vote is unlikely to change due to how decisive the victory is in the electoral vote.</p>
+            <p>According to sources within the Dole campaign, they calculated around two hours ago that it was mathematically impossible for them to defeat the Speaker. That is when he began to prepare his concession speech, which he is set to deliver in under a half hour from now. They also knew things were going wrong fairly early in the night after obtaining exit poll results in multiple swing states. He gave a concession phone call to President-elect Gephardt about 5 minutes ago. Gephardt reportedly received the call with grace, treating the defeated President with dignity. However, Dole understandably entered the call with a terrible mood.</p>
+            <p>It seems the House of Representatives will stay in control of the Democratic Party for at least two more years, with their lead expanding respectably. The Senate meanwhile, has been projected to remain in GOP control, albeit with a slimmer majority, therefore retaining the divided government which was established in the 1998 midterms.</p>
+            <p>This election marks the end of an era as Dole, a decorated World War II veteran, is almost certainly going to be the final president from the Greatest Generation. The President-elect is expected to give his victory speech shortly after Dole gives his concession speech. He will be sworn in for his first term on January 20th, 2001, and will serve that term until January 20th, 2005, upon which he is eligible for a second term. CNN will cover his inauguration and his cabinet nominations in the coming days, so please stay tuned.</p>
+            
+            `)
+        {
+            e.pages.push
+            (`
+            <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://files.catbox.moe/kafven.png>	<br>With President Dick Gephardt's first term nearly coming to an end, former Governor Jim Gilmore of Virginia, narrowly wins the Republican nomination. Meanwhile, President Gephardt wins his party's nomination for a second term easily. President Gephardt must empthasize his legislative accomplishments, his handling of the War on Terror, and general popularity, while former Governor Gilmore must emphasize the handling of the September 11th Attacks' affects on Virginia's economy, while finding some way to narrow the President's respectible lead in the polls.</p>`)
+        }
+
+        e.executable.push([0, (() => { e.image = e.image = 'https://files.catbox.moe/kxul6r.png' })])
+        e.executable.push([1, (() => {
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#D4D0C8";
+
+
+
+            document.body.style.backgroundSize = "cover"
+
+            e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'
+        })])
+    }
+    else if (quickstats[0] <= 218 && (e.player_answers.includes(3375))) {
+        e.pages.push(`
                     <h4>GEPHARDT HANDILY BEATS DOLE; THE SPEAKER SWEEPS THROUGHOUT MOST SWING STATES. A HUMILIATED PRESIDENT DOLE CONCEDES.</h4>
                     <p>Speaker Richard Andrew Gephardt of Missouri, at the age of 59 years old, has been elected President of the United States, winning his party a term in the Oval Office with a decisive victory against the incumbent President, Bob Dole. In a stark comparison to four years ago, unlike Dole, he is expected to win both the popular vote and electoral vote against Dole. This lead in the popular vote is unlikely to change due to how decisive the victory is in the electoral vote.</p>
                     <p>According to sources within the Dole campaign, they calculated around two hours ago that it was mathematically impossible for them to defeat the Speaker. That is when he began to prepare his concession speech, which he is set to deliver in under a half hour from now. They also knew things were going wrong fairly early in the night after obtaining exit poll results in multiple swing states. He gave a concession phone call to President-elect Gephardt about 5 minutes ago. Gephardt reportedly received the call with grace, treating the defeated President with dignity. However, Dole understandably entered the call with a terrible mood.</p>
@@ -14739,21 +14783,24 @@ else if (quickstats[0] <= 218 && (e.player_answers.includes(3375))) {
                     <p>This election marks the end of an era as Dole, a decorated World War II veteran, is almost certainly going to be the final president from the Greatest Generation. The President-elect is expected to give his victory speech shortly after Dole gives his concession speech. He will be sworn in for his first term on January 20th, 2001, and will serve that term until January 20th, 2005, upon which he is eligible for a second term. CNN will cover his inauguration and his cabinet nominations in the coming days, so please stay tuned.</p>
                     
                     `)
-                    {e.pages.push
-                     (`
-                     <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://i.imgur.com/QigJkws.png>	<br>With President Dick Gephardt's first term nearly coming to an end, Governor Paul Cellucci of Massachusetts, in an upset wins the Republican nomination. Meanwhile, President Gephardt wins his party's nomination for a second term easily. President Gephardt must empthasize his legislative accomplishments, his handling of the War on Terror, and general popularity, while Governor Cellucci must emphasize his ambitious conservative economic plans for America, while finding some way to narrow the President's respectible lead in the polls, especially given his moderate governance in Massachusetts.</p>`)}
-            
-                    e.executable.push([0, (() => {e.image = e.image = 'https://i.imgur.com/fl2edqb.png'})])
-                    e.executable.push([1, (() => {
-                    nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#D4D0C8";
-        
-        
-                    
-                    document.body.style.backgroundSize="cover"
+        {
+            e.pages.push
+            (`
+                     <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://files.catbox.moe/froanm.png>	<br>With President Dick Gephardt's first term nearly coming to an end, Governor Paul Cellucci of Massachusetts, in an upset wins the Republican nomination. Meanwhile, President Gephardt wins his party's nomination for a second term easily. President Gephardt must empthasize his legislative accomplishments, his handling of the War on Terror, and general popularity, while Governor Cellucci must emphasize his ambitious conservative economic plans for America, while finding some way to narrow the President's respectible lead in the polls, especially given his moderate governance in Massachusetts.</p>`)
+        }
 
-                    e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'})])
-                    } else if (quickstats[0] <= 218  && (e.player_answers.includes(12353))) {
-                    e.pages.push(`
+        e.executable.push([0, (() => { e.image = e.image = 'https://files.catbox.moe/kxul6r.png' })])
+        e.executable.push([1, (() => {
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#D4D0C8";
+
+
+
+            document.body.style.backgroundSize = "cover"
+
+            e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'
+        })])
+    } else if (quickstats[0] <= 218 && (e.player_answers.includes(12353))) {
+        e.pages.push(`
                             <h4>GEPHARDT HANDILY BEATS DOLE; THE SPEAKER SWEEPS THROUGHOUT MOST SWING STATES. A HUMILIATED PRESIDENT DOLE CONCEDES.</h4>
                             <p>Speaker Richard Andrew Gephardt of Missouri, at the age of 59 years old, has been elected President of the United States, winning his party a term in the Oval Office with a decisive victory against the incumbent President, Bob Dole. In a stark comparison to four years ago, unlike Dole, he is expected to win both the popular vote and electoral vote against Dole. This lead in the popular vote is unlikely to change due to how decisive the victory is in the electoral vote.</p>
                             <p>According to sources within the Dole campaign, they calculated around two hours ago that it was mathematically impossible for them to defeat the Speaker. That is when he began to prepare his concession speech, which he is set to deliver in under a half hour from now. They also knew things were going wrong fairly early in the night after obtaining exit poll results in multiple swing states. He gave a concession phone call to President-elect Gephardt about 5 minutes ago. Gephardt reportedly received the call with grace, treating the defeated President with dignity. However, Dole understandably entered the call with a terrible mood.</p>
@@ -14761,21 +14808,600 @@ else if (quickstats[0] <= 218 && (e.player_answers.includes(3375))) {
                             <p>This election marks the end of an era as Dole, a decorated World War II veteran, is almost certainly going to be the final president from the Greatest Generation. The President-elect is expected to give his victory speech shortly after Dole gives his concession speech. He will be sworn in for his first term on January 20th, 2001, and will serve that term until January 20th, 2005, upon which he is eligible for a second term. CNN will cover his inauguration and his cabinet nominations in the coming days, so please stay tuned.</p>
                             
                             `)
-                            {e.pages.push
-                             (`
-                             <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://i.imgur.com/TPPYHXH.png>	<br>With President Dick Gephardt's first term nearly coming to an end, Senator Sam Brownback of Kansas, who was just a couple years ago little known, narrowly wins the Republican nomination. Meanwhile, President Gephardt wins his party's nomination for a second term easily. President Gephardt must empthasize his legislative accomplishments, his handling of the War on Terror, and general popularity, while Senator Brownback must emphasize his conservative policies riding on the growing nostolgia for the Reagan era, after his recent death, while finding some way to narrow the President's respectible lead in the polls.</p>`)}
-                    
-                            e.executable.push([0, (() => {e.image = e.image = 'https://i.imgur.com/fl2edqb.png'})])
-                            e.executable.push([1, (() => {
-                            nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#D4D0C8";
-                
-                
-                            
+        {
+            e.pages.push
+            (`
+                             <p>Please select the election you will run in: <br><select name="2004" id="2004"><option value="0">2004</option></select><br><img src=https://files.catbox.moe/em002q.png>	<br>With President Dick Gephardt's first term nearly coming to an end, Governor Sam Brownback of Kansas, who was just a couple years ago little known, narrowly wins the Republican nomination. Meanwhile, President Gephardt wins his party's nomination for a second term easily. President Gephardt must empthasize his legislative accomplishments, his handling of the War on Terror, and general popularity, while Senator Brownback must emphasize his conservative policies riding on the growing nostolgia for the Reagan era, after his recent death, while finding some way to narrow the President's respectible lead in the polls.</p>`)
+        }
 
-        
-                            e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'})])
-                            }
-    
+        e.executable.push([0, (() => { e.image = e.image = 'https://files.catbox.moe/kxul6r.png' })])
+        e.executable.push([1, (() => {
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#D4D0C8";
+
+
+
+
+
+            e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'
+        })])
+    }
+	
+
     return construct(0);
-                        }                   
+}
 
+// ArmyTwoPointOh's Advisor HQ Window
+// This is essentially a combination of W.'s variables tracker and Nina's Advisor Tab from awhile back.
+// Feel free to use with credit! Have fun :)
+
+e.initDC = false;
+
+let savedX = null;
+let savedY = null;
+
+var pictureDict2 = pictureDict2 || { 0: "https://files.catbox.moe/fswvy9.png" }; // [!] If this somehow appears while testing, some shit's wrong with what you're coding [!]
+
+// The PK you assign to each doesn't really matter as long as they're unique to each, and you match everything that requires advisor PKs with their respective advisors
+
+// FYI: Everything is bolded with <b></b> tags because that's a part of the method I used in BM's Code 2 to get the Window 98 font. You'll probably want to take that out unless if you want everything to appear bolded.
+
+var advisors = [
+    { pk: 20001, name: "<b><strong>Scott Reed</strong></b>", picture: "https://files.catbox.moe/vduikg.png" },
+    { pk: 20002, name: "<b><strong>Elizabeth Dole</strong></b>", picture: "https://files.catbox.moe/zszmb5.png" },
+    { pk: 20003, name: "<b><strong>Trent Lott</strong></b>", picture: "https://files.catbox.moe/ggr767.png" },
+    { pk: 20004, name: "<b><strong>Dick Armey</strong></b>", picture: "https://files.catbox.moe/9kwout.png" },
+];
+
+// Advice List order: Advisor PK / Question PK / Advice text
+
+var adviceList = [
+    // --- Question 343 ---
+    {advisor_pk:20001, question_pk:343, advice:"<b>Obviously you should meet Blair, but really, with all due respect, who gives a damn about Chechnya over here? It's not worth our attention.</b>"},
+    {advisor_pk:20002, question_pk:343, advice:"<b>Do what you think is right, but I can't possibly ignore the inhumane conditions innocent people are living in down in Grozny.</b>"},
+    {advisor_pk:20003, question_pk:343, advice:"<b>We could use this occasion to tighten our relationship with Boris Yeltsin. He was very buddy-buddy with Clinton, so perhaps we could show him you have common interests with him? Anyways, where on god's earth is my paycheck from Boris?</b>"},
+    {advisor_pk:20004, question_pk:343, advice:"<b>Most people don't even know where Chechnya is located on a map. It's insignificant. We have more pressing matters to worry about.</b>"},
+
+    // --- Question 344 ---
+    {advisor_pk:20001, question_pk:344, advice:"<b>Let's see...</b>"},
+    {advisor_pk:20002, question_pk:344, advice:"<b>No matter what happens, I believe in you.</b>"},
+    {advisor_pk:20003, question_pk:344, advice:"<b>Our prospects in the Senate seem quite good.</b>"},
+    {advisor_pk:20004, question_pk:344, advice:"<b>I don't have a good feeling about this.</b>"},
+
+    // --- Question 345 ---
+    {advisor_pk:20001, question_pk:345, advice:"<b>The Vice President could get in our way with the budget. Sadly, it's probably best we leave him off the loop.</b>"},
+    {advisor_pk:20002, question_pk:345, advice:"<b>Bob, remember, Jack wrote the Reagan tax cuts. I know you probably don't want him directly involved, but he is still of use to the team.</b>"},
+    {advisor_pk:20003, question_pk:345, advice:"<b>Look, as I'm involved in the budget drafting process myself, I won't be able to pay attention to our Senators. Vice President Kemp could lend me a hand with that.</b>"},
+    {advisor_pk:20004, question_pk:345, advice:"<b>There's not much I can add to this. I'm holding things together on Newt's end. Do what you think is right.</b>"},
+
+    // --- Question 346 ---
+    {advisor_pk:20001, question_pk:346, advice:"<b>We need to moderate on social policies, and fast. If we don't, we're going to be rammed by a massive train. The Vice President concurs with me, if that's worth anything.</b>"},
+    {advisor_pk:20002, question_pk:346, advice:"<b>I remember during your many speeches on the Senate floor over the years, you spoke so passionately about what's going on abroad. Why not talk about the good fight abroad?</b>"},
+    {advisor_pk:20003, question_pk:346, advice:"<b>Talk about the Kasich Amendment. That's the most popular thing we have done so far.</b>"},
+    {advisor_pk:20004, question_pk:346, advice:"<b>Newt told me he thinks you should go full in on culture war stuff in your speech. I personally don't agree, but that's what he told me to tell you.</b>"},
+
+    // --- Question 347 ---
+    {advisor_pk:20001, question_pk:347, advice:"<b>Obviously the Rust Belt! That's where elections are decided.</b>"},
+    {advisor_pk:20002, question_pk:347, advice:"<b>The plains are your people, Bob. If anyone can convince them, it's you.</b>"},
+    {advisor_pk:20003, question_pk:347, advice:"<b>I'm too busy focusing on my end of the campaign to provide adequate advice here.</b>"},
+    {advisor_pk:20004, question_pk:347, advice:"<b>Down here in Texas there's quite a few seats Gephardt is eyeing, I'm feeling very uncomfortable about this...</b>"},
+
+    // --- Question 348 ---
+    {advisor_pk:20001, question_pk:348, advice:"<b>It probably isn't worth opening a can of worms with McVeigh's type of crowd, so be careful about how you go about this one.</b>"},
+    {advisor_pk:20002, question_pk:348, advice:"<b>Make people feel safe, Bob. You are their President.</b>"},
+    {advisor_pk:20003, question_pk:348, advice:"<b>Perhaps we could lean into the growing media censorship movement many parents are joining? It could be worth looking into.</b>"},
+    {advisor_pk:20004, question_pk:348, advice:"<b>Libby is right, Mr. President. Show people you are a leader who can look a threat to this country directly in the eyes without fear.</b>"},
+
+    // --- Question 350 ---
+    {advisor_pk:20001, question_pk:350, advice:"<b>Listen to Secretary Powell. He knows what he's doing.</b>"},
+    {advisor_pk:20002, question_pk:350, advice:"<b>We should be careful about civilian casualties, as that can backfire on you.</b>"},
+    {advisor_pk:20003, question_pk:350, advice:"<b>Let's bomb bomb bomb, bomb bomb bomb Baghdad!</b>"},
+    {advisor_pk:20004, question_pk:350, advice:"<b>Show Saddam what happens when he goes against the entire world.</b>"},
+
+    // --- Question 351 ---
+    {advisor_pk:20001, question_pk:351, advice:"<b>Kentucky and Illinois would be fairly easy to manage due to their close proximity.</b>"},
+    {advisor_pk:20002, question_pk:351, advice:"<b>We won Wisconsin two years ago, honey. We can win it again.</b>"},
+    {advisor_pk:20003, question_pk:351, advice:"<b>Take Reid out. Him being defeated would mean the beheading of a future snake.</b>"},
+    {advisor_pk:20004, question_pk:351, advice:"<b>Too busy organizing with Speaker Gingrich, sorry Mr. President.</b>"},
+
+    // --- Question 353 ---
+    {advisor_pk:20001, question_pk:353, advice:"<b>Show Milošević we aren't playing games. Put him in his place.</b>"},
+    {advisor_pk:20002, question_pk:353, advice:"<b>Bob, you need to act decisively, or the Kosovars will end up like the Armenians in 1915 or Jews in 1942.</b>"},
+    {advisor_pk:20003, question_pk:353, advice:"<b>Christ, Joe Biden keeps on talking about him wanting to bomb Belgrade personally.</b>"},
+    {advisor_pk:20004, question_pk:353, advice:"<b>Some of my guys want us to go to war with Milošević. Absolutely mental. Wait... you really wouldn't... would you...?</b>"},
+
+    // --- Question 355 ---
+    {advisor_pk:20001, question_pk:355, advice:"<b>Show him the traditional common courtesy. Nothing else.</b>"},
+    {advisor_pk:20002, question_pk:355, advice:"<b>Be good to him, but insert a bit of your classic cynicism into it. People will love it.</b>"},
+    {advisor_pk:20003, question_pk:355, advice:"<b>Gephardt is inconsistent on the key issues. Show voters who he really is early on to gain the initiative.</b>"},
+    {advisor_pk:20004, question_pk:355, advice:"<b>Gephardt's been a pain in my ass. Please do me a favor and go after him on my behalf.</b>"},
+
+    // --- Question 357 ---
+    {advisor_pk:20001, question_pk:357, advice:"<b>Don't worry, we prepped him real good. He should be all set.</b>"},
+    {advisor_pk:20002, question_pk:357, advice:"<b>I think he'll do great.</b>"},
+    {advisor_pk:20003, question_pk:357, advice:"<b>Let's see how he does.</b>"},
+    {advisor_pk:20004, question_pk:357, advice:"<b>I hope there's some real memorable quotes in it.</b>"},
+
+    // --- Question 360 ---
+    {advisor_pk:20001, question_pk:360, advice:"<b>Good call. I've noticed you two have stopped bickering as much as you used to.</b>"},
+    {advisor_pk:20002, question_pk:360, advice:"<b>I always believed in Jack.</b>"},
+    {advisor_pk:20003, question_pk:360, advice:"<b>Good to see him stay with us. His experience is useful.</b>"},
+    {advisor_pk:20004, question_pk:360, advice:"<b>Thank the lord, a ticket shakeup would be a nightmare for us.</b>"},
+
+    // --- Question 362 ---
+    {advisor_pk:20001, question_pk:362, advice:"<b>Well, all I can say is, don't cause a government shutdown, for Christ's sake. We'd be crucified for it.</b>"},
+    {advisor_pk:20002, question_pk:362, advice:"<b>Talk to Gephardt. I'm sure if you offer to let some of his bills pass the Senate, he'll be happy to play ball with you.</b>"},
+    {advisor_pk:20003, question_pk:362, advice:"<b>Hold our ground. Force them to compromise with us.</b>"},
+    {advisor_pk:20004, question_pk:362, advice:"<b>I can talk to the Blue Dogs. They know me. Just give me the word, and I'll whip everyone into voting in a good budget.</b>"},
+
+    // --- Question 364 ---
+    {advisor_pk:20001, question_pk:364, advice:"<b>How about you talk about your service? People respect your service. You will likely be the last President from the Greatest Generation.</b>"},
+    {advisor_pk:20002, question_pk:364, advice:"<b>Just be yourself. Don't pretend to be anyone you're not.</b>"},
+    {advisor_pk:20003, question_pk:364, advice:"<b>Talk about your agenda primarily. That's what will win you the election.</b>"},
+    {advisor_pk:20004, question_pk:364, advice:"<b>Lott is correct. Your agenda is key to victory.</b>"},
+
+    // --- Question 366 ---
+    {advisor_pk:20001, question_pk:366, advice:"<b>You had plenty of popular policy proposals. Any of these should do the Dole Administration favors.</b>"},
+    {advisor_pk:20002, question_pk:366, advice:"<b>Remember the kindness Dr. K did for you years ago… You can finally show your appreciation.</b>"},
+    {advisor_pk:20003, question_pk:366, advice:"<b>It's time. We can finally pass a Balanced Budget Amendment.</b>"},
+    {advisor_pk:20004, question_pk:366, advice:"<b>End the Balanced Budget debate once and for all.</b>"},
+
+    // --- Question 369 ---
+    {advisor_pk:20001, question_pk:369, advice:"<b>You need to handle this carefully. Remember, we didn't win the popular vote.</b>"},
+    {advisor_pk:20002, question_pk:369, advice:"<b>Just be yourself, hon.</b>"},
+    {advisor_pk:20003, question_pk:369, advice:"<b>Perhaps you should focus on your agenda?</b>"},
+    {advisor_pk:20004, question_pk:369, advice:"<b>I concur with Leader Lott.</b>"},
+
+    // --- Question 372 ---
+    {advisor_pk:20001, question_pk:372, advice:"<b>Just ignore Keyes. We need time to research our potential opponents.</b>"},
+    {advisor_pk:20002, question_pk:372, advice:"<b>Iowans are like us. Visits from you could do some good.</b>"},
+    {advisor_pk:20003, question_pk:372, advice:"<b>Might not hurt to visit the state at least a couple of times.</b>"},
+    {advisor_pk:20004, question_pk:372, advice:"<b>Governor Huckabee could help keep the right flank secure.</b>"},
+
+    // --- Question 374 ---
+    {advisor_pk:20001, question_pk:374, advice:"<b>Sometimes, the best thing to say is the most basic option.</b>"},
+    {advisor_pk:20002, question_pk:374, advice:"<b>These are your people. Speak from the heart.</b>"},
+    {advisor_pk:20003, question_pk:374, advice:"<b>I do find their field a bit mediocre.</b>"},
+    {advisor_pk:20004, question_pk:374, advice:"<b>Take the fight to them. Remember, one candidate is the Speaker himself.</b>"},
+
+    // --- Question 381 ---
+    {advisor_pk:20001, question_pk:381, advice:"<b>Keep to our campaign's core message. Don't get distracted.</b>"},
+    {advisor_pk:20002, question_pk:381, advice:"<b>Scott's right. Don't try anything extreme.</b>"},
+    {advisor_pk:20003, question_pk:381, advice:"<b>Voters sure don't like flip-floppers.</b>"},
+    {advisor_pk:20004, question_pk:381, advice:"<b>My surrogates could run marathons around their campaign.</b>"},
+
+    // --- Question 384 ---
+    {advisor_pk:20001, question_pk:384, advice:"<b>Isn't it obvious?</b>"},
+    {advisor_pk:20002, question_pk:384, advice:"<b>The Red Cross could use more money to help the former Soviet Union.</b>"},
+    {advisor_pk:20003, question_pk:384, advice:"<b>Slash the tax burden.</b>"},
+    {advisor_pk:20004, question_pk:384, advice:"<b>Shut your wife up.</b>"},
+
+    // --- Question 387 ---
+    {advisor_pk:20001, question_pk:387, advice:"<b>For the love of God, shut Keyes the HELL UP.</b>"},
+    {advisor_pk:20002, question_pk:387, advice:"<b>I'm willing to do anything for you, and you know it.</b>"},
+    {advisor_pk:20003, question_pk:387, advice:"<b>Go with McCain's speech.</b>"},
+    {advisor_pk:20004, question_pk:387, advice:"<b>I’m biased toward Ridge, but I’ll support your choice.</b>"},
+
+    // --- Question 388 ---
+    {advisor_pk:20001, question_pk:388, advice:"<b>Are we even sure this is a genuine issue?</b>"},
+    {advisor_pk:20002, question_pk:388, advice:"<b>You are the President. Keep America safe.</b>"},
+    {advisor_pk:20003, question_pk:388, advice:"<b>Let's see what Silicon Valley offers for solutions.</b>"},
+    {advisor_pk:20004, question_pk:388, advice:"<b>Form a commission to get the country ready for January 1st.</b>"},
+
+    // --- Question 389 ---
+    {advisor_pk:20001, question_pk:389, advice:"<b>My people say Clint Eastwood is willing to help.</b>"},
+    {advisor_pk:20002, question_pk:389, advice:"<b>Think about how you and Jerry Ford ran in 1976.</b>"},
+    {advisor_pk:20003, question_pk:389, advice:"<b>This is a nonissue. A simple response will do.</b>"},
+    {advisor_pk:20004, question_pk:389, advice:"<b>Your age will be used against you. Don’t act rash.</b>"},
+
+    // --- Question 393 ---
+    {advisor_pk:20001, question_pk:393, advice:"<b>All of our hard work has come to this.</b>"},
+    {advisor_pk:20002, question_pk:393, advice:"<b>This is the moment we've been preparing for ever since 1980.</b>"},
+    {advisor_pk:20003, question_pk:393, advice:"<b>All of us in the Senate are glad you're here.</b>"},
+    {advisor_pk:20004, question_pk:393, advice:"<b>Go and take that oath so we can get the work done.</b>"},
+
+    // --- Question 12240 (Elián González) ---
+    {advisor_pk:20001, question_pk:12240, advice:"<b>Do anything possible to keep him on US soil.</b>"},
+    {advisor_pk:20002, question_pk:12240, advice:"<b>The poor boy has already suffered enough.</b>"},
+    {advisor_pk:20003, question_pk:12240, advice:"<b>Armey's onto something here.</b>"},
+    {advisor_pk:20004, question_pk:12240, advice:"<b>Use this to rally Cuban support.</b>"},
+
+    // --- Question 12241 ---
+    {advisor_pk:20001, question_pk:12241, advice:"<b>Use his trade stances to divide his base.</b>"},
+    {advisor_pk:20002, question_pk:12241, advice:"<b>Please don't counter the Express too hard.</b>"},
+    {advisor_pk:20003, question_pk:12241, advice:"<b>He's not socially aligned with the region.</b>"},
+    {advisor_pk:20004, question_pk:12241, advice:"<b>I'd have to agree with Reed.</b>"},
+
+    // --- Question 12242 ---
+    {advisor_pk:20001, question_pk:12242, advice:"<b>A balanced approach is always best.</b>"},
+    {advisor_pk:20002, question_pk:12242, advice:"<b>I'd be really happy if you talked about No Child Behind.</b>"},
+    {advisor_pk:20003, question_pk:12242, advice:"<b>Reed's right — play it safe.</b>"},
+    {advisor_pk:20004, question_pk:12242, advice:"<b>Throw in a couple of zingers.</b>"},
+
+    // --- Question 12243 ---
+    {advisor_pk:20001, question_pk:12243, advice:"<b>Do what you feel is right, but remember resources are limited.</b>"},
+    {advisor_pk:20002, question_pk:12243, advice:"<b>Host some town halls. Farmers will love you.</b>"},
+    {advisor_pk:20003, question_pk:12243, advice:"<b>Help Conrad Burns out in Montana.</b>"},
+    {advisor_pk:20004, question_pk:12243, advice:"<b>Send the VP while you focus on the Midwest.</b>"},
+
+    // --- Question 12244 ---
+    {advisor_pk:20001, question_pk:12244, advice:"<b>He’ll be fine. Portman prepped him well.</b>"},
+    {advisor_pk:20002, question_pk:12244, advice:"<b>I believe in him, though he looks tired.</b>"},
+    {advisor_pk:20003, question_pk:12244, advice:"<b>He'll do good. Let him on stage.</b>"},
+    {advisor_pk:20004, question_pk:12244, advice:"<b>He seems ready.</b>"},
+
+    // --- Question 12251 (Attack) ---
+    {advisor_pk:20001, question_pk:12251, advice:"<b>Act presidential. Promise revenge.</b>"},
+    {advisor_pk:20002, question_pk:12251, advice:"<b>You swore an oath to defend the United States.</b>"},
+    {advisor_pk:20003, question_pk:12251, advice:"<b>I can get you a war powers bill fast.</b>"},
+    {advisor_pk:20004, question_pk:12251, advice:"<b>Oh come on, what an October surprise!</b>"},
+
+    // --- Question 12311 ---
+    {advisor_pk:20001, question_pk:12311, advice:"<b>Lay it out plainly. Ask voters important questions.</b>"},
+    {advisor_pk:20002, question_pk:12311, advice:"<b>Let's end this positively, honey.</b>"},
+    {advisor_pk:20003, question_pk:12311, advice:"<b>Use the USS Cole attack to show strength.</b>"},
+    {advisor_pk:20004, question_pk:12311, advice:"<b>Talk about Reagan.</b>"},
+
+    // --- Question 12312 ---
+    {advisor_pk:20001, question_pk:12312, advice:"<b>Take a final trip across the Midwest.</b>"},
+    {advisor_pk:20002, question_pk:12312, advice:"<b>I want to go home, Bob.</b>"},
+    {advisor_pk:20003, question_pk:12312, advice:"<b>Spend more time out West.</b>"},
+    {advisor_pk:20004, question_pk:12312, advice:"<b>Florida is massive. Spend the day there.</b>"},
+];
+
+// The number preceding the image links should be the PK of the accompanying question
+
+campaignTrail_temp.newsImages = campaignTrail_temp.newsImages || {
+    393: "https://files.catbox.moe/a4jhh4.png",
+    369: "https://files.catbox.moe/8cs7qc.png",
+    366: "https://files.catbox.moe/0ez1wt.png",
+    343: "https://files.catbox.moe/96h3np.png",
+    348: "https://files.catbox.moe/ysro8u.png",
+    345: "https://files.catbox.moe/smh3z8.png",
+    346: "https://files.catbox.moe/kk2h9m.png",
+    347: "https://files.catbox.moe/aad8w1.png",
+    351: "https://files.catbox.moe/88x4j0.png",
+    344: "https://files.catbox.moe/xlbtvi.png",
+    350: "https://files.catbox.moe/rbmrsq.png",
+    362: "https://files.catbox.moe/fwyzlx.png",
+    353: "https://files.catbox.moe/f4u1m8.png",
+    388: "https://files.catbox.moe/jocwy8.png",
+    374: "https://files.catbox.moe/s7q35o.png",
+    360: "https://files.catbox.moe/b50m0e.png",
+    372: "https://files.catbox.moe/yf3n00.png",
+    355: "https://files.catbox.moe/u621mk.png",
+    387: "https://files.catbox.moe/ezufs3.png",
+    357: "https://files.catbox.moe/uzpgog.png",
+    364: "https://files.catbox.moe/aqhqcu.png",
+    389: "https://files.catbox.moe/67hk8t.png",
+    384: "https://files.catbox.moe/c2l98c.png",
+    381: "https://files.catbox.moe/qmkcb5.png",
+    12240: "https://files.catbox.moe/4bvdey.png",
+    12241: "https://files.catbox.moe/v64m60.png",
+    12242: "https://files.catbox.moe/8yfyjh.png",
+    12243: "https://files.catbox.moe/pmn3qj.png",
+    12244: "https://files.catbox.moe/6o5td5.png",
+    12251: "https://files.catbox.moe/r7t41a.png",
+    12311: "https://files.catbox.moe/1ctvj3.png",
+    12312: "https://files.catbox.moe/yo3hn3.png",
+
+};
+
+// Just like the images, the number preceding the captions should be the PK of the accompanying question
+
+campaignTrail_temp.newsCaptions = campaignTrail_temp.newsCaptions || {
+    393: "<b>President-elect Dole prepares to take the oath.</b>",
+    369: "<b>Robert J. Dole is sworn in as the 43rd President of the United States.</b>",
+    366: "<b>Dole Administration & Republican leaders confer over legislative agenda.</b>",
+    343: "<b>President Dole showing Boris Yeltsin around a farm in Kansas.</b>",
+    348: "<b>Timothy McVeigh being escorted to court during his trial.</b>",
+    345: "<b>Representative John Kasich holding a press conference with Speaker Gingrich.</b>",
+    346: "<b>President Bob Dole speaks before congress during his first State of the Union.</b>",
+    347: "<b>The President speaking on the steps of the US Capitol building.</b>",
+    351: "<b>Bob Dole speaks on behalf of Congressman Mark Neumann's Senate campaign.</b>",
+    344: "<b>Dole at an election night rally in Las Vegas, Nevada.</b>",
+    350: "<b>President Dole on a call with British PM Tony Blair regarding Iraqi WMDs.</b>",
+    362: "<b>Speaker Dick Gephardt after being handed the gavel for the first time.</b>",
+    353: "<b>President Dole viewing an unearthed mass grave of civilians killed in Kosova.</b>",
+    388: "<b>American consumers prepare for the incoming potential Y2K disaster.</b>",
+    374: "<b>Bob Dole, wearing a slick jacket, announces he is running for a second term.</b>",
+    360: "<b>President Dole & Vice President Kemp pose for a campaign studio photo together.</b>",
+    372: "<b>Alan Keyes describing Bob Dole & Jack Kemp as actors of the 'Deep State' in Iowa.</b>",
+    355: "<b>Gephardt after recieving word that he won the required amount of delegates.</b>",
+    387: "<b>The keynote speech at the 2000 Republican National Convention kicks off.</b>",
+    357: "<b>VP Jack Kemp speaks before delegates during the 2000 RNC.</b>",
+    364: "<b>President Bob Dole accepts his party's nomination for a second term.</b>",
+    389: "<b>¡Ay, Macarena!</b>",
+    384: "<b>Dole discusses the budget surplus during a campaign stop in Missouri.</b>",
+    381: "<b>The President critcizes the Gephardt/Feinstein healthcare plan.</b>",
+    12240: "<b>A federal agent during a raid on the González home in Florida.</b>",
+    12241: "<b>Dick Gephardt campaigning with a Teamsters Union in Ohio.</b>",
+    12242: "<b>Bob Dole at the first 2000 US Presidential Debate.</b>",
+    12243: "<b>President Dole at a Bozeman, MT rally for his re-election campaign.</b>",
+    12244: "<b>Senator Dianne Feinstein campaigning before the Vice Presidential Debate.</b>",
+    12251: "<b>The hole in the hull of the USS Cole sustained during the suicide bombing.</b>",
+    12311: "<b>Bob Dole during a campaign stop in Philadelphia, PA.</b>",
+    12312: "<b>Bob and Liz Dole cast their votes on election day in their hometown of Russell, Kansas.</b>",
+
+};
+
+function openSurrogates(event) {
+    let questionPK = null;
+
+    try {
+        const ans = document.querySelector('#question_form .game_answers');
+        if (ans?.value) {
+            const answerPK = ans.value;
+            const source = e?.answers_json || campaignTrail_temp.answers_json;
+            const found = source.find(a => String(a.pk) === String(answerPK));
+            if (found?.fields?.question) questionPK = found.fields.question;
+        }
+    } catch {}
+
+    let pop = document.getElementById("popOutMenu");
+    if (!pop) {
+        pop = document.createElement("div");
+        pop.id = "popOutMenu";
+        pop.style.position = "absolute";
+        pop.style.width = "464px";
+        pop.style.height = "514px";
+        pop.style.backgroundColor = "#fff";
+        pop.style.backgroundImage = 'url("https://files.catbox.moe/ys348d.png")'; // This is where you can access the background image I created for BM and use it as a template for your mod's own window, matching it with it's own theme.
+        pop.style.backgroundSize = "cover";
+        pop.style.borderRadius = "0";
+        pop.style.overflow = "hidden";
+        pop.style.zIndex = 99999;
+        pop.style.display = "flex";
+        pop.style.flexDirection = "column";
+
+// The title bar is something that I added due to BM being a mod whose theme is based on Windows 98. You'll likely not need this, so you can modify and remove it as you wish. But do keep in mind the close button is here, so be careful or remove the bar with something like ChatGPT.
+
+        const titleBar = document.createElement("div");
+        titleBar.className = "title-bar";
+        titleBar.style.cursor = "move";
+        titleBar.style.zIndex = "5";
+
+        const titleText = document.createElement("div");
+        titleText.className = "title-bar-text";
+        titleText.innerText = "Dole Kemp '00 - Microsoft Internet Explorer"; // You can change the title of the page here
+
+        const controls = document.createElement("div");
+        controls.className = "title-bar-controls";
+
+        const closeBtn = document.createElement("button");
+        closeBtn.setAttribute("aria-label", "Close");
+        closeBtn.onclick = closeSurrogates;
+
+        controls.appendChild(closeBtn);
+        titleBar.appendChild(titleText);
+        titleBar.appendChild(controls);
+        pop.appendChild(titleBar);
+
+        const body = document.createElement("div");
+        body.style.position = "relative";
+        body.style.flex = "1";
+        body.style.zIndex = "1";
+        pop.appendChild(body);
+
+        const advisorTitle = document.createElement("div");
+        advisorTitle.innerHTML = "<b><strong>Campaign Advisors</strong></b>"; // You can change the campaign advisors headline to your liking here
+        advisorTitle.style.position = "absolute";
+        advisorTitle.style.left = "10px";
+        advisorTitle.style.top = "44px";
+        advisorTitle.style.fontSize = "13px";
+        advisorTitle.style.color = "#002b36";
+        advisorTitle.style.zIndex = "2";
+        body.appendChild(advisorTitle);
+
+        const advisorsBox = document.createElement("div");
+		advisorsBox.id = "advisors_box";
+		advisorsBox.style.position = "absolute";
+		advisorsBox.style.left = "10px";
+		advisorsBox.style.top = (44 + 20) + "px";
+		advisorsBox.style.width = "245px";
+		advisorsBox.style.height = "377px";
+		advisorsBox.style.padding = "6px";
+		advisorsBox.style.boxSizing = "border-box";
+		advisorsBox.style.overflowY = "auto";   // ← scrollbar restored
+		advisorsBox.style.background = "rgba(255,255,255,0.0)";
+		body.appendChild(advisorsBox);
+
+
+        advisors.forEach(ad => {
+            const row = document.createElement("div");
+            row.style.display = "flex";
+            row.style.flexDirection = "row";
+            row.style.gap = "8px";
+            row.style.marginBottom = "8px";
+            row.style.background = "rgba(255,255,255,0.94)";
+            row.style.border = "1px solid rgba(0,0,0,0.08)";
+            row.style.padding = "6px";
+
+            const imgWrap = document.createElement("div");
+            imgWrap.style.width = "70px";
+            imgWrap.style.height = "70px";
+            imgWrap.style.flex = "0 0 70px";
+
+            const img = document.createElement("img");
+            img.src = ad.picture;
+            img.style.imageRendering = "pixelated";
+            img.style.objectFit = "cover";
+            img.onload = () => {
+                const nw = img.naturalWidth;
+                const nh = img.naturalHeight;
+                if (nw < 70 || nh < 70) {
+                    img.style.width = nw + "px";
+                    img.style.height = nh + "px";
+                } else {
+                    img.style.width = "70px";
+                    img.style.height = "70px";
+                }
+            };
+
+            imgWrap.appendChild(img);
+
+            const text = document.createElement("div");
+            text.style.flex = "1";
+            text.style.minWidth = "0";
+            text.style.maxWidth = "500px";
+
+            const nm = document.createElement("div");
+            nm.innerHTML = ad.name;
+            nm.style.fontSize = "13px";
+            nm.style.marginBottom = "4px";
+
+            const adviceBox = document.createElement("div");
+            const found = adviceList.find(a => a.advisor_pk === ad.pk && String(a.question_pk) === String(questionPK));
+            adviceBox.innerHTML = found ? found.advice : "<i>uh oh some shit's broke lmfao</i>"; // [!] If this somehow appears while testing, some shit's wrong with what you're coding [!]
+            adviceBox.style.fontSize = "12px";
+            adviceBox.style.lineHeight = "1.15";
+            adviceBox.style.maxWidth = "500px";
+
+            text.appendChild(nm);
+            text.appendChild(adviceBox);
+
+            row.appendChild(imgWrap);
+            row.appendChild(text);
+            advisorsBox.appendChild(row);
+        });
+
+        const newsHeader = document.createElement("div");
+        newsHeader.innerHTML = "<b><strong>Today's Headlines</strong></b>"; // You can change the news section headline to your liking here
+        newsHeader.style.position = "absolute";
+        newsHeader.style.left = "270px";
+        newsHeader.style.top = "44px";
+        newsHeader.style.fontSize = "13px";
+        newsHeader.style.color = "#002b36";
+        newsHeader.style.zIndex = "2";
+        body.appendChild(newsHeader);
+
+        const newsImg = document.createElement("img");
+        newsImg.id = "advisor_news_image";
+        newsImg.style.position = "absolute";
+        newsImg.style.top = "66px";
+        newsImg.style.left = "270px";
+        newsImg.style.width = "135px";
+        newsImg.style.height = "152px";
+        newsImg.style.objectFit = "cover";
+        newsImg.style.border = "1px solid rgba(0,0,0,0.1)";
+        body.appendChild(newsImg);
+
+        const cap = document.createElement("div");
+        cap.id = "advisor_news_caption";
+        cap.style.position = "absolute";
+        cap.style.left = "270px";
+        cap.style.top = "222px";
+        cap.style.width = "135px";
+        cap.style.textAlign = "center";
+        cap.style.fontSize = "12px";
+        body.appendChild(cap);
+
+        document.body.appendChild(pop);
+        makeDraggableByHandle(pop, titleBar);
+    }
+
+    updateWindowContent(questionPK);
+}
+
+function updateWindowContent(questionPK) {
+    const newsImgEl = document.getElementById("advisor_news_image");
+    const capEl = document.getElementById("advisor_news_caption");
+
+    let chosen = pictureDict2[questionPK] ||
+                 campaignTrail_temp.newsImages[questionPK] ||
+                 pictureDict2[0];
+
+    if (newsImgEl) newsImgEl.src = chosen;
+    if (capEl) capEl.innerHTML = campaignTrail_temp.newsCaptions[questionPK] || campaignTrail_temp.newsCaptions[0];
+
+    const advisorsBox = document.getElementById("advisors_box");
+    if (!advisorsBox) return;
+
+    let idx = 0;
+    advisors.forEach(ad => {
+        const row = advisorsBox.children[idx];
+        const text = row?.children[1];
+        const adviceBox = text?.children[1];
+        const found = adviceList.find(a => a.advisor_pk === ad.pk && String(a.question_pk) === String(questionPK));
+        if (adviceBox)
+            adviceBox.innerHTML = found ? found.advice : "<i>uh oh some shit's broke lmfao</i>"; // [!] If this somehow appears while testing, some shit's wrong with what you're coding [!]
+        idx++;
+    });
+}
+
+let lastQuestionPK = null;
+
+setInterval(() => {
+    const pop = document.getElementById("popOutMenu");
+    if (!pop) return;
+
+    let questionPK = null;
+
+    try {
+        const ans = document.querySelector('#question_form .game_answers');
+        if (ans?.value) {
+            const answerPK = ans.value;
+            const source = e?.answers_json || campaignTrail_temp.answers_json;
+            const found = source.find(a => String(a.pk) === String(answerPK));
+            if (found?.fields?.question) questionPK = found.fields.question;
+        }
+    } catch {}
+
+    if (questionPK === null) return;
+    if (String(questionPK) === String(lastQuestionPK)) return;
+
+    lastQuestionPK = questionPK;
+
+    updateWindowContent(questionPK);
+}, 200);
+
+function closeSurrogates() {
+    const pop = document.getElementById("popOutMenu");
+    if (pop) {
+        const rect = pop.getBoundingClientRect();
+        savedX = rect.left;
+        savedY = rect.top;
+        pop.remove();
+    }
+}
+
+function makeDraggableByHandle(win, handle) {
+    let dragging = false, ox = 0, oy = 0;
+    handle.addEventListener("mousedown", e => {
+        dragging = true;
+        ox = e.clientX - win.offsetLeft;
+        oy = e.clientY - win.offsetTop;
+        document.onmousemove = ev => {
+            if (!dragging) return;
+            win.style.left = ev.clientX - ox + "px";
+            win.style.top = ev.clientY - oy + "px";
+            savedX = parseInt(win.style.left);
+            savedY = parseInt(win.style.top);
+        };
+        document.onmouseup = () => dragging = false;
+    });
+}
+
+function addHeadquarterButton() {
+    if (document.getElementById("headquarter_button")) return;
+    const ref = document.getElementById("view_electoral_map");
+    if (!ref) return;
+
+    const btn = document.createElement("button");
+    btn.id = "headquarter_button";
+    btn.innerText = "dolekemp.com"; // Here you can change the text of the button on the questions page which opens the window
+    btn.style.marginLeft = "1.5em";
+    btn.onclick = openSurrogates;
+
+    ref.insertAdjacentElement("afterend", btn);
+}
+
+let observerRunning = false;
+let obs = new MutationObserver(muts => {
+    if (observerRunning) return;
+    observerRunning = true;
+    obs.disconnect();
+    addHeadquarterButton();
+    obs.observe(document.documentElement, { childList: true, subtree: true });
+    observerRunning = false;
+});
+obs.observe(document.documentElement, { childList: true, subtree: true });
