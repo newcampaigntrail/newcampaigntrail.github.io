@@ -11948,6 +11948,7 @@ var veep = 0;
 var econ = 0;
 var hawk = 0;
 var joementum = 0;
+var songChange = 0;
 
 e.noCounter = 0
 
@@ -11979,6 +11980,9 @@ function updateQuestions(mutationList, observer) {
         answer.disabled = !(eval(answerObject.fields.condition));
     }
 }
+
+const targetNode = document.getElementById("game_window");
+const config = { attributes: true, childList: true, subtree: true };
 
 const observer = new MutationObserver(onGameWindowChanged);
 	observer.observe(targetNode, config);
@@ -12048,14 +12052,8 @@ cyoAdventure = function(a) {
 	if(ans == 12602) {
 		joementum += 1;
 	}
-	if(ans == 12607) {
-		hawk += 1;
-	}
 	if(ans == 12643) {
 		joementum += 1;
-	}
-	if(ans == 12644) {
-		hawk += 1;
 	}
 	if(ans == 12692) {
 		con += 1;
@@ -12084,7 +12082,6 @@ cyoAdventure = function(a) {
 		econ += 1;
 	}
 	if(ans == 12732) {
-		hawk -= 1;
 		joementum += 1;
 	}
 	if(ans == 12746) {
@@ -12216,11 +12213,11 @@ cyoAdventure = function(a) {
 	}
 	if(ans == 12780) {
 		con += 1;
-		hawk += 1;
+		hawk += 2;
 	}
 	if(ans == 12781) {
-		con += 2;
-		hawk += 2;
+		con += 1;
+		hawk += 1;
 	}
 	if(ans == 13043) {
 		joementum += 1;
@@ -12431,27 +12428,33 @@ endingPicker = (out, totv, aa, quickstats) => {
 	if(aa[0].electoral_votes >= 270 && aa[0].candidate == 4000) {
 		e.pages.push(`<h3>Protect Our Constitution</h3><p>The president's thoughts didn't matter. Not anymore.<br><br>It was time for real change to come to Washington. The dream of the founders had been corroded over the years, but it was finally time to retake America. The days of big government were finally over, and the individual would finally fourish.<br><br>After President-elect Ruwart delivered her victory speech–a call to arms for all believers in true freedom and a celebration of the triumph of individualism and liberty over the forces of evil–she basked in the cheers of her supporters, ignoring the frantic calls from her opponents.<br><br>In this moment, only she mattered. Mary Ruwart. <i>President</i> Ruwart. The first female president. The first of many libertarian presidents. She would bring in a new era–an era where the individual comes first, where government is reduced to an absolute minimum.<br><br>The night continued, the first of many to come in this new age.</p>`);
 		e.executable.push([0, (() => {e.image = e.image = 'https://file.garden/aNxawo8jlVkymd8s/joe%2008/endings/slide%201/xpAet5Q%20-%20Imgur.png'})])
-		const liberty = new Playlist(); 
-		const libertySong = new Song(
-			"Freewill",
-			"Rush",
-			"https://file.garden/aNxawo8jlVkymd8s/joe%2008/mucsci/1MSOq5j%20-%20Imgur.jpg",
-			"https://audio.jukehost.co.uk/AhxBfRLG4kisIpuLArIITHlqFwyYErXx"
-		);
-		liberty.addSong(libertySong);
-		changePlaylist(liberty);
+		if(songChange != 1) {
+			songChange = 1;
+			const liberty = new Playlist(); 
+			const libertySong = new Song(
+				"Freewill",
+				"Rush",
+				"https://file.garden/aNxawo8jlVkymd8s/joe%2008/mucsci/1MSOq5j%20-%20Imgur.jpg",
+				"https://audio.jukehost.co.uk/AhxBfRLG4kisIpuLArIITHlqFwyYErXx"
+			);
+			liberty.addSong(libertySong);
+			changePlaylist(liberty);
+		}
 	} else if(quickstats[0] >= 535) { // all hail god-emperor lieberman
 		e.pages.push(`<h3>Breaking Through</h3><p>The president was speechless.<br><br>Nobody expected Joe’s last-minute third-party campaign to make it far. Naturally, he of all people was shocked to find that he had won every state in the union. Everybody was against him–the world, the party, the voters, even the system itself–but that meant nothing. Oftentimes, during the campaign, he found himself wondering why he even bothered running in the first place. He supposed that, now, he had his answer.<br><br>The president ad-libbed his victory speech. He didn’t remember any of it afterward. His opponents attempted to reach out. It was customary to congratulate the victor, after all.<br><br>Lieberman didn’t even pick up. He let it ring. Joe’s reasoning made sense; did they even matter anymore? Did people care about them or what they represented? Was America finally freed from this partisan nightmare?<br><br>President Lieberman allowed the night to continue. It all felt like a blur to him.</p>`);
 		e.executable.push([0, (() => {e.image = e.image = 'https://file.garden/aNxawo8jlVkymd8s/joe%2008/endings/slide%201/DPhjE1D%20-%20Imgur.png'})])
-		const ultimateWin = new Playlist(); 
-		const ultimateWinSong = new Song(
-			"Paper Planes",
-			"M.I.A.",
-			"https://file.garden/aNxawo8jlVkymd8s/joe%2008/mucsci/UpR7YUN%20-%20Imgur.jpg",
-			"https://audio.jukehost.co.uk/WzRsDueQI1TypfvOgtCNJEhw9Fk0c5Kq"
-		);
-		ultimateWin.addSong(ultimateWinSong);
-		changePlaylist(ultimateWin);
+		if(songChange != 1) {
+			songChange = 1;
+			const ultimateWin = new Playlist(); 
+			const ultimateWinSong = new Song(
+				"Paper Planes",
+				"M.I.A.",
+				"https://file.garden/aNxawo8jlVkymd8s/joe%2008/mucsci/UpR7YUN%20-%20Imgur.jpg",
+				"https://audio.jukehost.co.uk/WzRsDueQI1TypfvOgtCNJEhw9Fk0c5Kq"
+			);
+			ultimateWin.addSong(ultimateWinSong);
+			changePlaylist(ultimateWin);
+		}
 		ctsAchievement("50 Shades of Grey");
 		if (veep == "Bloomberg"){
 			ctsAchievement("No Labels");
@@ -12465,7 +12468,8 @@ endingPicker = (out, totv, aa, quickstats) => {
 	} else if(quickstats[0] >= 350) { // bigwin
 		e.pages.push(`<h3>Independence and Accomplishment</h3><p>“This wasn't supposed to happen,” the president thought.<br><br>Because it wasn’t supposed to happen. At one point, it seemed like everybody was against him–the world, the party, the voters, the system itself–but, despite it all, he had persevered. Indeed, Joe had not simply won the election. He had just won in a landslide.<br><br>After the president delivered his victory speech–a triumphant address, touching on the importance of moderation and bipartisanship–he waited and waited for either of his opponents to give him a call and congratulate him.<br><br>No one bothered to call.<br><br>But Joe didn’t need them. He didn’t need their spiteful approval. After all, he was the president, and they were nothing. The night continued, and he basked in the cheers, the lights–all for him. All for America.</p>`);
 		e.executable.push([0, (() => {e.image = e.image = 'https://file.garden/aNxawo8jlVkymd8s/joe%2008/endings/slide%201/S6HwCZ0%20-%20Imgur.png'})])
-		if(hawk == 8) { //superhawk
+		if(hawk == 6 && songChange != 1) { //superhawk
+			songChange = 1;
 			const hawkWin = new Playlist(); 
 			const hawkWinSong = new Song(
 				"Bomb Iran",
@@ -12476,7 +12480,8 @@ endingPicker = (out, totv, aa, quickstats) => {
 			hawkWin.addSong(hawkWinSong);
 			changePlaylist(hawkWin);
 			ctsAchievement("Power of the Dark Side");
-		} else if(hawk == -5) { //superdove
+		} else if(hawk ==  -4 && songChange != 1) { //superdove
+			songChange = 1;
 			const doveWin = new Playlist(); 
 			const doveWinSong = new Song(
 				"Imagine",
@@ -12487,7 +12492,8 @@ endingPicker = (out, totv, aa, quickstats) => {
 			doveWin.addSong(doveWinSong);
 			changePlaylist(doveWin);
 			ctsAchievement("Iraq and a Hard Place");
-		} else if(aa[2].candidate == 2000 || aa[3].candidate == 2000) { //tancredo loses
+		} else if((aa[2].candidate == 2000 || aa[3].candidate == 2000) && songChange != 1) { //tancredo loses
+			songChange = 1;
 			const bigWinT = new Playlist(); 
 			const bigWinTSong = new Song(
 				"Immigrant Song",
@@ -12497,7 +12503,8 @@ endingPicker = (out, totv, aa, quickstats) => {
 			);
 			bigWinT.addSong(bigWinTSong);
 			changePlaylist(bigWinT);
-		} else if(aa[2].candidate == 3000 || aa[3].candidate == 3000) { //kucinich loses
+		} else if((aa[2].candidate == 3000 || aa[3].candidate == 3000) && songChange != 1) { //kucinich loses
+			songChange = 1;
 			const bigWinK = new Playlist(); 
 			const bigWinKSong = new Song(
 				"Still Alive",
@@ -12520,7 +12527,8 @@ endingPicker = (out, totv, aa, quickstats) => {
 	} else if(quickstats[0] < 350 && quickstats[0] >= 270) { //win
 		e.pages.push(`<h3>Courage and Capability</h3><p>The president truly had a sight to behold.<br><br>After all that had gone against him, every setback, he still won. It wasn’t a huge victory, by any means, but he won. He pulled off the greatest third-party performance in history and secured a second term. That’s what mattered.<br><br>After the president delivered his victory speech–a heartfelt address about unity in America–he waited and waited for either of his opponents to give him a call and congratulate him. All he got was dry, unenthusiastic congratulations from Kucinich and empty, bitter praise from Tancredo. No advice, no words of wisdom, just thinly veiled anger.<br><br>As the night continued, Joe couldn’t help but think about what happened to politics. Weren’t your opponents supposed to concede gracefully? He tried to say something, but his voice was drowned out by the crowd.</p>`);
 		e.executable.push([0, (() => {e.image = e.image = 'https://file.garden/aNxawo8jlVkymd8s/joe%2008/endings/slide%201/VsJ2k2F%20-%20Imgur.png'})])
-		if(hawk == 8) { //superhawk
+		if(hawk == 6 && songChange != 1) { //superhawk	
+			songChange = 1;
 			const hawkWin = new Playlist(); 
 			const hawkWinSong = new Song(
 				"Bomb Iran",
@@ -12531,7 +12539,8 @@ endingPicker = (out, totv, aa, quickstats) => {
 			hawkWin.addSong(hawkWinSong);
 			changePlaylist(hawkWin);
 			ctsAchievement("Power of the Dark Side");
-		} else if(hawk == -5) { //superdove
+		} else if(hawk ==  -4 && songChange != 1) { //superdove
+			songChange = 1;
 			const doveWin = new Playlist(); 
 			const doveWinSong = new Song(
 				"Imagine",
@@ -12542,7 +12551,8 @@ endingPicker = (out, totv, aa, quickstats) => {
 			doveWin.addSong(doveWinSong);
 			changePlaylist(doveWin);
 			ctsAchievement("Iraq and a Hard Place");
-		} else if(aa[2].candidate == 2000 || aa[3].candidate == 2000) { //tancredo loses
+		} else if((aa[2].candidate == 2000 || aa[3].candidate == 2000) && songChange != 1) { //tancredo loses
+			songChange = 1;
 			const winT = new Playlist(); 
 			const winTSong = new Song(
 				"H949",
@@ -12552,7 +12562,8 @@ endingPicker = (out, totv, aa, quickstats) => {
 			);
 			winT.addSong(winTSong);
 			changePlaylist(winT);
-		} else if(aa[2].candidate == 3000 || aa[3].candidate == 3000) { //kucinich loses
+		} else if((aa[2].candidate == 3000 || aa[3].candidate == 3000) && songChange != 1) { //kucinich loses
+			songChange = 1;
 			const winK = new Playlist(); 
 			const winKSong = new Song(
 				"Pickled!",
@@ -12566,46 +12577,56 @@ endingPicker = (out, totv, aa, quickstats) => {
 	} else if(aa[0].electoral_votes < 270 && (aa[2].candidate == 1000 || aa[3].candidate == 1000)) { //deadlock 3rd
 		e.pages.push(`<h3>All That Divides Us</h3><p>The president’s eyes remained glued on the map.<br><br>Things were at a standstill. An impasse. Nobody had secured a majority in the Electoral College, and a contingent election was set to be held by the House in January. And yet, he still came in third. He had failed; it was unlikely that the House would elect him, and downright impossible for his running mate to win.<br><br>Immediately, Joe scrambled his staff. He prepared them to make calls, to reach out to as many congressmen as they could name. He told them to promise anything they could, anything to sway the state delegations away from his opponents.<br><br>This was going to be a long, long three months.<br><br>The night went on and on and on. The election was far from over, and even if he couldn’t win, Joe needed to make sure that his opponents would lose.</p>`);
 		e.executable.push([0, (() => {e.image = e.image = 'https://file.garden/aNxawo8jlVkymd8s/joe%2008/endings/slide%201/8LRSENG%20-%20Imgur.png'})])
-		const deadlockL = new Playlist(); 
-		const deadlockLSong = new Song(
-			"Acting",
-			"Sweet Trip",
-			"https://file.garden/aNxawo8jlVkymd8s/joe%2008/mucsci/MhpJQxg%20-%20Imgur.jpg",
-			"https://audio.jukehost.co.uk/CK6ns7pmmvigVnuI3tX6WuziD4mlZNf7"
-		);
-		deadlockL.addSong(deadlockLSong);
-		changePlaylist(deadlockL);
+		if(songChange != 1) {
+			songChange = 1;
+			const deadlockL = new Playlist(); 
+			const deadlockLSong = new Song(
+				"Acting",
+				"Sweet Trip",
+				"https://file.garden/aNxawo8jlVkymd8s/joe%2008/mucsci/MhpJQxg%20-%20Imgur.jpg",
+				"https://audio.jukehost.co.uk/CK6ns7pmmvigVnuI3tX6WuziD4mlZNf7"
+			);
+			deadlockL.addSong(deadlockLSong);
+			changePlaylist(deadlockL);
+		}
 		ctsAchievement("Spoiler Alert");
 	} else if(aa[0].electoral_votes < 270 && (aa[2].candidate == 2000 || aa[3].candidate == 2000)) { //deadlock, tancredo 3rd
 		e.pages.push(`<h3>All That Divides Us</h3><p>The president’s eyes remained glued on the map.<br><br>Things were at a standstill. An impasse. Nobody had secured a majority in the Electoral College, and a contingent election was set to be held by the House in January. And yet, he still had a respectable showing. He hadn’t failed; while it was unlikely that the House would elect him, his running mate had a solid chance of winning over the Senate, especially with Pence out of the running.<br><br>Immediately, Joe scrambled his staff. He prepared them to make calls, to reach out to as many congressmen as they could name. He told them to promise anything they could, anything to sway the state delegations away from his opponents.<br><br>This was going to be a long, long three months.<br><br>The night went on and on and on. The election was far from over, and even if he couldn’t win, Joe needed to make sure that his opponents would lose.</p>`);
 		e.executable.push([0, (() => {e.image = e.image = 'https://file.garden/aNxawo8jlVkymd8s/joe%2008/endings/slide%201/8LRSENG%20-%20Imgur.png'})])
-		const deadlockT = new Playlist(); 
-		const deadlockTSong = new Song(
-			"Every Day Is Exactly The Same",
-			"Nine Inch Nails",
-			"https://file.garden/aNxawo8jlVkymd8s/joe%2008/mucsci/s5T7KBx%20-%20Imgur.jpg",
-			"https://audio.jukehost.co.uk/G51hqYazeENCe1XCYrE9XDs7542Qw53A"
-		);
-		deadlockT.addSong(deadlockTSong);
-		changePlaylist(deadlockT);
+		if(songChange != 1) {
+			songChange = 1;
+			const deadlockT = new Playlist(); 
+			const deadlockTSong = new Song(
+				"Every Day Is Exactly The Same",
+				"Nine Inch Nails",
+				"https://file.garden/aNxawo8jlVkymd8s/joe%2008/mucsci/s5T7KBx%20-%20Imgur.jpg",
+				"https://audio.jukehost.co.uk/G51hqYazeENCe1XCYrE9XDs7542Qw53A"
+			);
+			deadlockT.addSong(deadlockTSong);
+			changePlaylist(deadlockT);
+		}
 		ctsAchievement("Spoiler Alert");
 	} else if(aa[0].electoral_votes < 270 && (aa[2].candidate == 3000 || aa[3].candidate == 3000)) { //deadlock, kucinich 3rd
 		e.pages.push(`<h3>All That Divides Us</h3><p>The president’s eyes remained glued on the map.<br><br>Things were at a standstill. An impasse. Nobody had secured a majority in the Electoral College, and a contingent election was set to be held by the House in January. And yet, he still had a respectable showing. He hadn’t failed; while it was unlikely that the House would elect him, his running mate had a solid chance of winning over the Senate, especially with Lamont out of the running.<br><br>Immediately, Joe scrambled his staff. He prepared them to make calls, to reach out to as many congressmen as they could name. He told them to promise anything they could, anything to sway the state delegations away from his opponents.<br><br>This was going to be a long, long three months.<br><br>The night went on and on and on. The election was far from over, and even if he couldn’t win, Joe needed to make sure that his opponents would lose.</p>`);
 		e.executable.push([0, (() => {e.image = e.image = 'https://file.garden/aNxawo8jlVkymd8s/joe%2008/endings/slide%201/8LRSENG%20-%20Imgur.png'})])
-		const deadlockK = new Playlist(); 
-		const deadlockKSong = new Song(
-			"Soopertrack",
-			"Extrawelt",
-			"https://file.garden/aNxawo8jlVkymd8s/joe%2008/mucsci/a2FFOCm%20-%20Imgur.jpg",
-			"https://audio.jukehost.co.uk/hccT8TGFwsr7Mkz0ywSqmMVuAnEfMYyT"
-		);
-		deadlockK.addSong(deadlockKSong);
-		changePlaylist(deadlockK);
+		if(songChange != 1) {
+			songChange = 1;
+			const deadlockK = new Playlist(); 
+			const deadlockKSong = new Song(
+				"Soopertrack",
+				"Extrawelt",
+				"https://file.garden/aNxawo8jlVkymd8s/joe%2008/mucsci/a2FFOCm%20-%20Imgur.jpg",
+				"https://audio.jukehost.co.uk/hccT8TGFwsr7Mkz0ywSqmMVuAnEfMYyT"
+			);
+			deadlockK.addSong(deadlockKSong);
+			changePlaylist(deadlockK);
+		}
 		ctsAchievement("Spoiler Alert");
 	} else if(aa[0].electoral_votes >= 270 && aa[0].candidate == 2000 && quickstats[0] > 0) { //loss, tancredo
 		e.pages.push(`<h3>Our Partisan Blinders</h3><p>The president expected this outcome.<br><br>After everything that was thrown at him, every setback, he hadn't expected anything but failure. It wasn’t a crushing defeat, by any means, but it was still a loss. At the very least, he was the first third-party candidate to carry a state since 1968. That had to be worth something.<br><br>After President-elect Tancredo delivered his victory speech–a laundry list of patriotic declarations about restoring morality and strength to America–Joe supposed it was only right to give him a concession call. Tancredo humored him, and they conversed briefly about foreign policy. Tancredo had to hang up just as they were going to talk about immigration. Joe found solace in the fact that he could at least concede gracefully.<br><br>As the night continued, the president quietly kept to himself, thinking about what could have been. By the next morning, everybody had moved on.</p>`);
 		e.executable.push([0, (() => {e.image = e.image = 'https://file.garden/aNxawo8jlVkymd8s/joe%2008/endings/slide%201/QysXk3W%20-%20Imgur.png'})])
-		if(aa[1].candidate == 1000) { //2nd
+		if(aa[1].candidate == 1000 && songChange != 1) { //2nd
+			songChange = 1;
 			const loseTSecond = new Playlist(); 
 			const loseTSecondSong = new Song(
 				"Peace Sells",
@@ -12615,7 +12636,8 @@ endingPicker = (out, totv, aa, quickstats) => {
 			);
 			loseTSecond.addSong(loseTSecondSong);
 			changePlaylist(loseTSecond);
-		} else if(aa[2].candidate == 1000 || aa[3].candidate == 1000) { //3rd
+		} else if((aa[2].candidate == 1000 || aa[3].candidate == 1000) && songChange != 1) { //3rd
+			songChange = 1;
 			const loseTThird = new Playlist(); 
 			const loseTThirdSong = new Song(
 				"America, Fuck Yeah",
@@ -12629,7 +12651,8 @@ endingPicker = (out, totv, aa, quickstats) => {
 	} else if(aa[0].electoral_votes >= 270 && aa[0].candidate == 3000 && quickstats[0] > 0) { //loss, kucinich
 		e.pages.push(`<h3>Our Partisan Blinders</h3><p>The president expected this outcome.<br><br>After everything that was thrown at him, every setback, he hadn't expected anything but failure. It wasn’t a crushing defeat, by any means, but it was still a loss. At the very least, he was the first third-party candidate to carry a state since 1968. That had to be worth something.<br><br>After President-elect Kucinich delivered his victory speech–a series of idealistic remarks about peace and justice for all–Joe supposed it was only right to give him a concession call. Dennis humored him, and they spoke briefly about preserving liberal values domestically. Kucinich had to hang up just as they were going to talk about foreign affairs. Joe found solace in the fact that he could at least concede gracefully.<br><br>As the night continued, the president quietly kept to himself, thinking about what could have been. By the next morning, everybody had moved on.</p>`);
 		e.executable.push([0, (() => {e.image = e.image = 'https://file.garden/aNxawo8jlVkymd8s/joe%2008/endings/slide%201/QysXk3W%20-%20Imgur.png'})])
-		if(aa[1].candidate == 1000) { //2nd
+		if(aa[1].candidate == 1000 && songChange != 1) { //2nd
+			songChange = 1;
 			const loseKSecond = new Playlist(); 
 			const loseKSecondSong = new Song(
 				"Chromakey Dreamcoat",
@@ -12639,7 +12662,8 @@ endingPicker = (out, totv, aa, quickstats) => {
 			);
 			loseKSecond.addSong(loseKSecondSong);
 			changePlaylist(loseKSecond);
-		} else if(aa[2].candidate == 1000 || aa[3].candidate == 1000) { //3rd
+		} else if((aa[2].candidate == 1000 || aa[3].candidate == 1000) && songChange != 1) { //3rd
+			songChange = 1;
 			const loseKThird = new Playlist(); 
 			const loseKThirdSong = new Song(
 				"My Way",
@@ -12653,28 +12677,34 @@ endingPicker = (out, totv, aa, quickstats) => {
 	} else if(aa[0].electoral_votes >= 270 && aa[0].candidate == 2000 && quickstats[0] == 0) { //bigloss, tancredo
 		e.pages.push(`<h3>The Smallness of Our Politics</h3><p>The president was speechless.<br><br>Sure, nobody expected Joe’s last-minute third-party campaign to make it far, but he wasn’t even able to win a single state. Then again, everybody was against him–the world, the party, the voters, even the system itself. Oftentimes, during the campaign, he found himself wondering why he even bothered running in the first place. Even now, he didn’t have an answer.<br><br>After President-elect Tancredo delivered his victory speech–some nationalistic drivel about putting America first again–Lieberman supposed it was only right to give him a concession call.<br><br>Tancredo didn’t even pick up. It made sense to Joe; after all, did he even matter anymore? Did people care about him or what he represented? Was America forever doomed to suffer through this partisan nightmare?<br><br>The night continued without President Lieberman, swallowing him up into the darkness.</p>`);
 		e.executable.push([0, (() => {e.image = e.image = 'https://file.garden/aNxawo8jlVkymd8s/joe%2008/endings/slide%201/rjzS9bs%20-%20Imgur.png'})])
-		const bigLoss = new Playlist(); 
-		const bigLossSong = new Song(
-			"A Quick One Before the Eternal Worm Devours Connecticut",
-			"Have a Nice Life",
-			"https://file.garden/aNxawo8jlVkymd8s/joe%2008/mucsci/jMQLZqr%20-%20Imgur.png",
-			"https://audio.jukehost.co.uk/VfLHNcyZxu3t7ACI7pzslmyifZeFn5Ey"
-		);
-		bigLoss.addSong(bigLossSong);
-		changePlaylist(bigLoss);
+		if(songChange != 1) {
+			songChange = 1;
+			const bigLoss = new Playlist(); 
+			const bigLossSong = new Song(
+				"A Quick One Before the Eternal Worm Devours Connecticut",
+				"Have a Nice Life",
+				"https://file.garden/aNxawo8jlVkymd8s/joe%2008/mucsci/jMQLZqr%20-%20Imgur.png",
+				"https://audio.jukehost.co.uk/VfLHNcyZxu3t7ACI7pzslmyifZeFn5Ey"
+			);
+			bigLoss.addSong(bigLossSong);
+			changePlaylist(bigLoss);
+		}
 		ctsAchievement("Center Squeezed");
 	} else if(aa[0].electoral_votes >= 270 && aa[0].candidate == 3000 && quickstats[0] == 0) { //bigloss, kucinich
 		e.pages.push(`<h3>The Smallness of Our Politics</h3><p>The president was speechless.<br><br>Sure, nobody expected Joe’s last-minute third-party campaign to make it far, but he wasn’t even able to win a single state. Then again, everybody was against him–the world, the party, the voters, even the system itself. Oftentimes, during the campaign, he found himself wondering why he even bothered running in the first place. Even now, he didn’t have an answer.<br><br>After President-elect Kucinich delivered his victory speech–some socialistic nonsense about making the world fairer for everybody–Lieberman supposed it was only right to give him a concession call.<br><br>Kucinich didn’t even pick up. It made sense to Joe; after all, did he even matter anymore? Did people care about him or what he represented? Was America forever doomed to suffer through this partisan nightmare?<br><br>The night continued without President Lieberman, swallowing him up into the darkness.</p>`);
 		e.executable.push([0, (() => {e.image = e.image = 'https://file.garden/aNxawo8jlVkymd8s/joe%2008/endings/slide%201/rjzS9bs%20-%20Imgur.png'})])
-		const bigLoss = new Playlist(); 
-		const bigLossSong = new Song(
-			"A Quick One Before the Eternal Worm Devours Connecticut",
-			"Have a Nice Life",
-			"https://file.garden/aNxawo8jlVkymd8s/joe%2008/mucsci/jMQLZqr%20-%20Imgur.png",
-			"https://audio.jukehost.co.uk/VfLHNcyZxu3t7ACI7pzslmyifZeFn5Ey"
-		);
-		bigLoss.addSong(bigLossSong);
-		changePlaylist(bigLoss);
+		if(songChange != 1) {
+			songChange = 1;
+			const bigLoss = new Playlist(); 
+			const bigLossSong = new Song(
+				"A Quick One Before the Eternal Worm Devours Connecticut",
+				"Have a Nice Life",
+				"https://file.garden/aNxawo8jlVkymd8s/joe%2008/mucsci/jMQLZqr%20-%20Imgur.png",
+				"https://audio.jukehost.co.uk/VfLHNcyZxu3t7ACI7pzslmyifZeFn5Ey"
+			);
+			bigLoss.addSong(bigLossSong);
+			changePlaylist(bigLoss);
+		}
 		ctsAchievement("Center Squeezed");
 	} else {
 		e.pages.push(`<h3>oops</h3>`);
@@ -12685,10 +12715,10 @@ endingPicker = (out, totv, aa, quickstats) => {
 	} else if(quickstats[0] >= 535) { //50 shades
 		e.pages.push(`<h3>50 SHADES OF GREY - How Lieberman Conquered America, And A Racist Conquered My Heart</h3><p>By James Carhardt<br><br>Most people remember where they were when it happened. Like 9/11, the JFK Assasnation, and Pearl Harbor before it, it was a moment so shocking, so altogether horrifying, that it is forever carved into the public psyche.<br><br>Joe Lieberman winning all 50 states.<br><br>I, for one, was in a bar, drowning my sorrows in a non-alcoholic beer, talking to a fellow campaign strategist, one from the Tancredo campaign. It wasn’t typical at all, especially not for our two campaigns, so diametrically opposed to each other in values and goals. Yet here we were, a pansexual Democratic Socialist twink from the Bronx, and a muscular ex-corporate lobbyist with a confederate flag in his man cave, sharing a drink. It was only the most bizarre national circumstances that brought us together, and it was only the most dull feeling of total and utter defeat that forged our bond.<br><br>The idea seemed ridiculous - Joe Lieberman, perhaps the least interesting president in history, had revived Washington’s mandate. A man cast out by pundits only months prior, seen as a lame duck, a bureaucrat, scrambling and clinging to power he was doomed to lose, had conquered the world. Other men, of greater and more terrifying stature, had come close. Nixon, the scheming bastard, came within a few thousand votes, and the more grandiose presence of Reagan came even closer, yet the one to seal the deal was a moderate Jewish senator running a third party bid.<br><br>In that way, he was similar to Washington. Not in that he was Jewish, but in that he ran as an independent. It was unheard of. But so was the intense relationship that quickly formed between me and Jerry, the Republican I met at the bar. Nobody expected Lieberman to win Nebraska, and nobody expected me and Jerry to be anything more than a one-night stand, a blink in the eye of our lives. He would go back into the closet, back to his self-hatred, and I to mine, back to the shell of my career, picking up the pieces of my reputation burned to the ground by Kucinich’s grand failure.<br><br>But the flame burned on. Lieberman began passing legislation at a rate not seen since the days of LBJ, and yet little seemed to change. Some healthcare reform here, a minor bombing campaign there. It was managerial, boring, and yet we loved each other. That was what mattered. Even when he told his parents, and they disowned him, even when I told my friends, and they told me I was insane to date a Tancredo staffer, we loved each other.<br><br>Lieberman passed a housing bill in 2010, and it was difficult adjusting to life living with someone who had spent so long diametrically opposed to my ideals. He was still conservative, still shaking off biases, still passionately against welfare. I had to get him to swallow his pride when the bills were tight, and he made me reconsider that extra expense. America was in an era of unprecedented bipartisanship.<br><br>Four years later, Lieberman’s number two again found independent success, winning in an (albeit less impressive) landslide. Our wedding went well, even though his side was mostly empty. Friends came along to compensate, and a major spending bill passed by the thinnest of margins.<br><br>The president suffered a major scandal within his administration, and that began to break down a lot of the “independent, non-partisan” attitude the Lieberman years had created.  It’s now 2020. We both changed our party registration to independent last year, and picked her up from the hospital yesterday. Our lesbian friend was the surrogate.<br><br>We are naming her Liela Berman Carhardt.</p>`);
 		e.executable.push([1, (() => {e.image = e.image = 'https://file.garden/aNxawo8jlVkymd8s/joe%2008/endings/slide%202/c9PmsGq%20-%20Imgur.png'})])
-	} else if(quickstats[0] >= 270 && hawk == -5) { // superdove
+	} else if(quickstats[0] >= 270 && hawk ==  -4) { // superdove
 		e.pages.push(`<h3>Lieberman finally endorses Dean–albeit tepidly - CNN</h3><p>Tue April 24, 2012<br><br>President Lieberman announced his support for Howard Dean earlier today, an important move as the president has been holding his breath on an official endorsement ever since primary season began.<br><br>The president has stated that Dean, now the presumptive Democratic nominee, is the best candidate in the race. Lieberman has expressed agreement with his 2004 opponent on some of his fiscal policies, going so far as to praise him for his work as Governor of Vermont.<br><br>The key area where the president and Dean disagree, however, is foreign policy. Eight years ago, Dean ran a strongly anti-war presidential campaign, though he was defeated for the nomination by Lieberman, who, up until his second term, had taken hawkish stances on foreign affairs.<br><br>Despite Lieberman achieving full withdrawals from Iraq and Afghanistan during his second term, he is still an icon among hawkish Democrats and has expressed reservations about Dean’s candidacy. Regardless, with the president’s backing, Dean may be able to unify the party and avoid another 2008.</p>`);
 		e.executable.push([1, (() => {e.image = e.image = 'https://file.garden/aNxawo8jlVkymd8s/joe%2008/endings/slide%202/V3L2fOy%20-%20Imgur.png'})])
-	} else if(quickstats[0] >= 270 && hawk == 8) { // superhawk
+	} else if(quickstats[0] >= 270 && hawk ==  6) { // superhawk
 		e.pages.push(`<h3>Threat of World War III: Escalation in Syria - The Schiller Institute</h3><p>by Lyndon H. LaRouche, Jr.<br><br>June 21, 2011<br><br>In the opinion of certain higher placed circles in the trans-Atlantic region, America’s extraordinary intervention in the Syrian Civil War on behalf of the British puppet known as U.S. President Joe Lieberman signals a potential for an early outbreak of more general warfare within Europe, the Middle-Eastern region, and beyond: potentially a new general state of warfare throughout much of this planet.<br><br>The war in Syria is merely a part of an ongoing trend of increasing British influence over the United States and its political-parties system, which was set into motion by the postwar agreement between Truman and Churchill following Franklin Roosevelt’s death. With the assassination of President John F. Kennedy, the grip of British imperial power became strategically critical in its grip on the destiny of the U.S.A. The Indo-China war was a war which was conducted for the purpose of overcoming President Kennedy’s and General Douglas MacArthur’s shared intention in Kennedy’s policy of forbidding any pending actions and blocking any U.S. participation in an unnecessary, British-demanded war in Southeast Asia.<br><br>That decade of warfare by the U.S.A. in Southeast Asia, as followed by the “long wars” of the luring of Soviet forces into a similarly foolish war in Southwest Asia, and by, more recently, the luring of a foolish U.S.A. Presidency into exemplary long wars in Iraq, Afghanistan, and now Syria under George W. Bush and Joe Lieberman: wars which have largely wrecked the morals and the economy of both the U.S.A. and the Soviet Union, and others.<br><br>In this presently global strategic crisis-situation, it is urgent that I take advantage of my position as a private authority in economic and related strategic scientific matters, to examine some of the crucial features of the threat of general warfare, and worse, which is now hanging above us all. The safety of the U.S.A. and the wider world can only be ensured by a leader willing to act outside of the two-party duopoly that has become corrupted by the interests of the trans-Atlantic monetary system and the British elite that it represents. It is for this reason that I am announcing my independent candidacy for President of these United States.</p>`);
 		e.executable.push([1, (() => {e.image = e.image = 'https://file.garden/aNxawo8jlVkymd8s/joe%2008/endings/slide%202/5y7NgtH%20-%20Imgur.png'})])
 	} else if(aa[0].electoral_votes >= 270 && aa[0].candidate == 2000 && aa[1].candidate == 1000 && e.player_answers.includes(12707)) { //fnaf
@@ -12857,4 +12887,3 @@ endingPicker = (out, totv, aa, quickstats) => {
 	}
 	return construct(0);
 }
-
