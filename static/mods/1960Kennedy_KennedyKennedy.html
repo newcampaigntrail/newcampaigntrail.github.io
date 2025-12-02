@@ -1,101 +1,4 @@
-
-function addDynamicCSS() { //This stuff isn't new. It's on Nina's modding column as well, and you will find it in any mod with tooltips (probably). 
-    var css = `
-  
-  
-    .inner_window_question h3 .mytooltip{
-        background-color: lightskyblue;
-    }
-  
-    .mytooltip {
-        position: relative;
-        display: inline-block;
-        cursor:  pointer;
-        background-color: lightblue;
-    }
-  
-    .mytooltip .mytooltiptext {
-        width: 240px;
-        background-color: lightgray;
-        color: black;
-        text-align: center;
-        border-radius: 6px;
-        padding: 10px;
-        position: absolute;
-        z-index: 99;
-        bottom: 20%;
-        left: 20%;
-        margin-left: -90px;
-        opacity: 0;
-        transition: opacity 0.3s;
-        border: 1px solid black;
-        pointer-events: none;
-        font-size: 13px !important;
-        line-height: 1.5em !important;
-        font-weight: normal !important;
-        font-style: normal !important;
-    }
-  
-    .mytooltip .mytooltiptext img {
-        max-width: 240px;
-        height: auto;
-    }
-  
-    .mytooltip:hover .mytooltiptext {
-        opacity: 1;
-        transition-delay: 0.5s;
-    }
-  
-  
-  .mytooltip:hover .bubble {
-  opacity: 1;
-  transition-delay: 0.5s;
-  }
-  .bubble {
-    width: 240px;
-    background-color: lightgray;
-    color: black;
-    text-align: center;
-    border-radius: 6px;
-    padding: 10px;
-    position: absolute;
-    z-index: 99;
-    bottom: 20%;
-    left: 20%;
-    margin-left: -90px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    border: 1px solid black;
-    pointer-events: none;
-    font-size: 13px !important;
-    line-height: 1.5em !important;
-    font-weight: normal !important;
-    font-style: normal !important;
-  }
-  
-  .mytooltip:hover .bubble-bottom-left:before,
-  .mytooltip:hover .bubble-bottom-left:after {
-  opacity: 1;
-  }
-    `;
-  
-    var styleElem = document.createElement('style');
-    styleElem.type = 'text/css';
-    
-    styleElem.appendChild(document.createTextNode(css));
-    
-    document.head.appendChild(styleElem);
-  }
-  
-  addDynamicCSS();
-
-
-
-
-    
-
-
-            campaignTrail_temp.questions_json = [
+campaignTrail_temp.questions_json = [
 {
     "model": "campaign_trail.question",
     "pk": 448,
@@ -14767,7 +14670,95 @@ campaignTrail_temp.answer_feedback_json = [
     },
 ]
 
-
+function addDynamicCSS() { //This stuff isn't new. It's on Nina's modding column as well, and you will find it in any mod with tooltips (probably). 
+    var css = `
+  
+  
+    .inner_window_question h3 .mytooltip{
+        background-color: lightskyblue;
+    }
+  
+    .mytooltip {
+        position: relative;
+        display: inline-block;
+        cursor:  pointer;
+        background-color: lightblue;
+    }
+  
+    .mytooltip .mytooltiptext {
+        width: 240px;
+        background-color: lightgray;
+        color: black;
+        text-align: center;
+        border-radius: 6px;
+        padding: 10px;
+        position: absolute;
+        z-index: 99;
+        bottom: 20%;
+        left: 20%;
+        margin-left: -90px;
+        opacity: 0;
+        transition: opacity 0.3s;
+        border: 1px solid black;
+        pointer-events: none;
+        font-size: 13px !important;
+        line-height: 1.5em !important;
+        font-weight: normal !important;
+        font-style: normal !important;
+    }
+  
+    .mytooltip .mytooltiptext img {
+        max-width: 240px;
+        height: auto;
+    }
+  
+    .mytooltip:hover .mytooltiptext {
+        opacity: 1;
+        transition-delay: 0.5s;
+    }
+  
+  
+  .mytooltip:hover .bubble {
+  opacity: 1;
+  transition-delay: 0.5s;
+  }
+  .bubble {
+    width: 240px;
+    background-color: lightgray;
+    color: black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 99;
+    bottom: 20%;
+    left: 20%;
+    margin-left: -90px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border: 1px solid black;
+    pointer-events: none;
+    font-size: 13px !important;
+    line-height: 1.5em !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+  }
+  
+  .mytooltip:hover .bubble-bottom-left:before,
+  .mytooltip:hover .bubble-bottom-left:after {
+  opacity: 1;
+  }
+    `;
+  
+    var styleElem = document.createElement('style');
+    styleElem.type = 'text/css';
+    
+    styleElem.appendChild(document.createTextNode(css));
+    
+    document.head.appendChild(styleElem);
+  }
+  
+addDynamicCSS();
 
 const targetNode = document.getElementById("game_window");
 const config = { attributes: true, childList: true, subtree: true };
