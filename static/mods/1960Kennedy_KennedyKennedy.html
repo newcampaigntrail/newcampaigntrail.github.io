@@ -1,10 +1,107 @@
-campaignTrail_temp.questions_json = [
+
+function addDynamicCSS() { //This stuff isn't new. It's on Nina's modding column as well, and you will find it in any mod with tooltips (probably). 
+    var css = `
+  
+  
+    .inner_window_question h3 .mytooltip{
+        background-color: lightskyblue;
+    }
+  
+    .mytooltip {
+        position: relative;
+        display: inline-block;
+        cursor:  pointer;
+        background-color: lightblue;
+    }
+  
+    .mytooltip .mytooltiptext {
+        width: 240px;
+        background-color: lightgray;
+        color: black;
+        text-align: center;
+        border-radius: 6px;
+        padding: 10px;
+        position: absolute;
+        z-index: 99;
+        bottom: 20%;
+        left: 20%;
+        margin-left: -90px;
+        opacity: 0;
+        transition: opacity 0.3s;
+        border: 1px solid black;
+        pointer-events: none;
+        font-size: 13px !important;
+        line-height: 1.5em !important;
+        font-weight: normal !important;
+        font-style: normal !important;
+    }
+  
+    .mytooltip .mytooltiptext img {
+        max-width: 240px;
+        height: auto;
+    }
+  
+    .mytooltip:hover .mytooltiptext {
+        opacity: 1;
+        transition-delay: 0.5s;
+    }
+  
+  
+  .mytooltip:hover .bubble {
+  opacity: 1;
+  transition-delay: 0.5s;
+  }
+  .bubble {
+    width: 240px;
+    background-color: lightgray;
+    color: black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 99;
+    bottom: 20%;
+    left: 20%;
+    margin-left: -90px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border: 1px solid black;
+    pointer-events: none;
+    font-size: 13px !important;
+    line-height: 1.5em !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+  }
+  
+  .mytooltip:hover .bubble-bottom-left:before,
+  .mytooltip:hover .bubble-bottom-left:after {
+  opacity: 1;
+  }
+    `;
+  
+    var styleElem = document.createElement('style');
+    styleElem.type = 'text/css';
+    
+    styleElem.appendChild(document.createTextNode(css));
+    
+    document.head.appendChild(styleElem);
+  }
+  
+  addDynamicCSS();
+
+
+
+
+    
+
+
+            campaignTrail_temp.questions_json = [
 {
     "model": "campaign_trail.question",
     "pk": 448,
     "fields": {
         "priority": 1,
-        "description": "First, Jack narrowly lost the VP vote to <span class='mytooltip'>Kefauver<span class='mytooltiptext'>The senior senator from Florida, known for his fight against organised crime. An old rival of ours, we had an intense fight against him to become Stevenson's running mate. We don't hold a grudge however - he got to lose in a landslide with Stevenson instead of us.</span></span>. Then he won the Pulitzer prize for his <span class='mytooltip'>book<span class='mytooltiptext'><i>Profiles In Courage</i>, a highlight of eight courageous Senators that put the right thing over being popular or party pressure. Remind you of someone?</span></span>. Finally, he won re-election by more than 70%. It’s clear Jack is on the precipice of becoming a national icon. Jack’s not interested in settling for scraps this time. He’s named you as his campaign manager, and you’re eager to help. The date for his announcement has been “leaked”, and he’s preparing for his announcement speech. What themes should Jack hit?\n",
+        "description": "First, Jack narrowly lost the VP vote to <span class='mytooltip'>Kefauver<span class='mytooltiptext'>The senior senator from Tennessee, known for his fight against organised crime. An old rival of ours, we had an intense fight against him to become Stevenson's running mate. We don't hold a grudge however - he got to lose in a landslide with Stevenson instead of us.</span></span>. Then he won the Pulitzer prize for his <span class='mytooltip'>book<span class='mytooltiptext'><i>Profiles In Courage</i>, a highlight of eight courageous Senators that put the right thing over being popular or party pressure. Remind you of someone?</span></span>. Finally, he won re-election by more than 70%. It’s clear Jack is on the precipice of becoming a national icon. Jack’s not interested in settling for scraps this time. He’s named you as his campaign manager, and you’re eager to help. The date for his announcement has been “leaked”, and he’s preparing for his announcement speech. What themes should Jack hit?\n",
         "likelihood": 1
     }
 },
@@ -475,7 +572,7 @@ campaignTrail_temp.answers_json = [
     "pk": 3747,
     "fields": {
         "question": 478,
-        "description": "If anyone says we’ve pandered too much to labor, fire them. We can never appeal to labor too much. Highlight our support for Unions and intent on repealing <span class='mytooltip'>Taft-HArtley<span class='mytooltiptext'>AKA the Labor Management Relations. This act criminalises various forms of Union protests and allows states to prohibit mandotory union membership. In the House, Jack was one of the 102 to vote against the bill.</span></span>\n"
+        "description": "If anyone says we’ve pandered too much to labor, fire them. We can never appeal to labor too much. Highlight our support for Unions and intent on repealing <span class='mytooltip'>Taft-Hartley<span class='mytooltiptext'>AKA the Labor Management Relations. This act criminalises various forms of Union protests and allows states to prohibit mandotory union membership. In the House, Jack was one of the 102 to vote against the bill.</span></span>\n"
     }
 },
 {
@@ -11536,7 +11633,7 @@ campaignTrail_temp.answer_score_state_json = [
             "state": 318,
             "candidate": 105,
             "affected_candidate": 105,
-            "state_multiplier": 0.04
+            "state_multiplier": 0.08
         }
     },
     {
@@ -13512,7 +13609,7 @@ campaignTrail_temp.answer_feedback_json = [
     "fields": {
         "answer": 3676,
         "candidate": 105,
-        "answer_feedback": "Johnson’s grin drops, and he glares. He’s dropped out in the hour, and Jack is furious. The emergency running mate <span class='mytooltip'>Henry Jackson<span class='mytooltiptext'>The Junior Senator from Washington, a moderate pro-civil rights libearl known for his spats with McCarthy and against Eisenhower's defense cuts.</span></span> of Washington is chosen, offering absolutely nothing to the South opposed to Catholicism, Civil Rights, or both. Hopefully they back a third party instead of Nixon…\n"
+        "answer_feedback": "Johnson’s grin drops, and he glares. He’s dropped out in the hour, and Jack is furious. The emergency running mate <span class='mytooltip'>Henry Jackson<span class='mytooltiptext'>The Junior Senator from Washington, a moderate pro-civil rights liberal known for his spats with McCarthy and against Eisenhower's defense cuts.</span></span> of Washington is chosen, offering absolutely nothing to the South opposed to Catholicism, Civil Rights, or both. Hopefully they back a third party instead of Nixon…\n"
     }
 },
 {
@@ -13728,7 +13825,7 @@ campaignTrail_temp.answer_feedback_json = [
     "fields": {
         "answer": 3767,
         "candidate": 105,
-        "answer_feedback": "A lot of voters, as it turns out. Humphrey won’t make this an issue in the primary, but Nixon certainly will.\n"
+        "answer_feedback": "A lot of voters, as it turns out. Humphrey won’t make this an issue, but Nixon certainly will.\n"
     }
 },
 {
@@ -14530,7 +14627,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 13636,
             "candidate": 105,
-            "answer_feedback": "Lyndon sits on a rocking chair at the lawn of Johnson Ranch, clutching <span class='mytooltip'>Little Beagle Johnson<span class='mytooltiptext'><img src='https://cdn.imgchest.com/files/bfc0bd9ea731.png' style='width:100%;height:100%;'>32nd. The Greatest since Lincoln.</span></span>, and uses colorful southern metaphors to criticize tight fiscal policy and unambitious plans. His leering grin makes for a marked contrast for Nixon’s awkward line reads."
+            "answer_feedback": "Lyndon sits on a rocking chair at the lawn of Johnson Ranch, clutching <span class='mytooltip'>Little Beagle Johnson<span class='mytooltiptext'><img src='https://cdn.imgchest.com/files/bfc0bd9ea731.png' style='width:100%;height:100%;'</span></span></span>, and uses colorful southern metaphors to criticize tight fiscal policy and unambitious plans. His leering grin makes for a marked contrast for Nixon’s awkward line reads."
         }
     },
     {
@@ -14670,95 +14767,7 @@ campaignTrail_temp.answer_feedback_json = [
     },
 ]
 
-function addDynamicCSS() { //This stuff isn't new. It's on Nina's modding column as well, and you will find it in any mod with tooltips (probably). 
-    var css = `
-  
-  
-    .inner_window_question h3 .mytooltip{
-        background-color: lightskyblue;
-    }
-  
-    .mytooltip {
-        position: relative;
-        display: inline-block;
-        cursor:  pointer;
-        background-color: lightblue;
-    }
-  
-    .mytooltip .mytooltiptext {
-        width: 240px;
-        background-color: lightgray;
-        color: black;
-        text-align: center;
-        border-radius: 6px;
-        padding: 10px;
-        position: absolute;
-        z-index: 99;
-        bottom: 20%;
-        left: 20%;
-        margin-left: -90px;
-        opacity: 0;
-        transition: opacity 0.3s;
-        border: 1px solid black;
-        pointer-events: none;
-        font-size: 13px !important;
-        line-height: 1.5em !important;
-        font-weight: normal !important;
-        font-style: normal !important;
-    }
-  
-    .mytooltip .mytooltiptext img {
-        max-width: 240px;
-        height: auto;
-    }
-  
-    .mytooltip:hover .mytooltiptext {
-        opacity: 1;
-        transition-delay: 0.5s;
-    }
-  
-  
-  .mytooltip:hover .bubble {
-  opacity: 1;
-  transition-delay: 0.5s;
-  }
-  .bubble {
-    width: 240px;
-    background-color: lightgray;
-    color: black;
-    text-align: center;
-    border-radius: 6px;
-    padding: 10px;
-    position: absolute;
-    z-index: 99;
-    bottom: 20%;
-    left: 20%;
-    margin-left: -90px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    border: 1px solid black;
-    pointer-events: none;
-    font-size: 13px !important;
-    line-height: 1.5em !important;
-    font-weight: normal !important;
-    font-style: normal !important;
-  }
-  
-  .mytooltip:hover .bubble-bottom-left:before,
-  .mytooltip:hover .bubble-bottom-left:after {
-  opacity: 1;
-  }
-    `;
-  
-    var styleElem = document.createElement('style');
-    styleElem.type = 'text/css';
-    
-    styleElem.appendChild(document.createTextNode(css));
-    
-    document.head.appendChild(styleElem);
-  }
-  
-addDynamicCSS();
+
 
 const targetNode = document.getElementById("game_window");
 const config = { attributes: true, childList: true, subtree: true };
@@ -15063,7 +15072,7 @@ e.global_parameter_json[0].fields.question_count = 25
         "pk": 13362,
         "fields": {
             "priority": 0,
-            "description": "<span class='mytooltip'>…and on ballot 3<span class='mytooltiptext'> The concern was Symington. This really was his moment, a deadlocked convention and a conservative and liberal fight. Luckily, he didn't have the panache to try and steal it; Kennedy offered him VP, we offered him Defense. Our deal was better, since it was real power and no obligation to travel across the country campaigning.</span></span>. You really doubted your odds for a while there, but at the last minute you managed to snatch it for Johnson. Looks like <span class='mytooltip'>Joe Kennedy<span class='mytooltiptext'>A rich, fascist sympathizing ethnic type that cries about segregation then buys his own golf course. In other words, a pretty typical urban Democrat.</span></span> couldn’t buy his invalid son the Presidency. With a coup like this, you need to get everything done at once. Firstly, what themes should Lyndon hit in his acceptance speech?",
+            "description": "<span class='mytooltip'>…and on ballot 3<span class='mytooltiptext'>The concern was Symington. This really was his moment, a deadlocked convention and a conservative and liberal fight. Luckily, he didn't have the panache to try and steal it; Kennedy offered him VP, we offered him Defense. Our deal was better, since it was real power and no obligation to travel across the country campaigning.</span></span>, the good guys pulled through. You really doubted your odds for a while there, but at the last minute you managed to snatch it for Johnson. Looks like <span class='mytooltip'>Joe Kennedy<span class='mytooltiptext'>A rich, fascist sympathizing ethnic type that cries about segregation then buys his own golf course. In other words, a pretty typical urban Democrat.</span></span> couldn’t buy his invalid son the Presidency. With a coup like this, you need to get everything done at once. Firstly, what themes should Lyndon hit in his acceptance speech?",
             "likelihood": 1
         }
     }
@@ -15417,7 +15426,7 @@ function setupMusicPlayer() {
 
     const infoContainer = document.createElement("div");
     infoContainer.id = "info-container";
-    infoContainer.style.backgroundImage = "url('https://i.imgur.com/HTUJApX.png')";
+    infoContainer.style.backgroundImage = "url('https://cdn.imgchest.com/files/ac286a16b980.png')";
     infoContainer.style.backgroundSize = "cover";
     infoContainer.style.color = "#6e441b";
 
@@ -15446,31 +15455,31 @@ function setupMusicPlayer() {
 
     const volumeDownButton = document.createElement("img");
     volumeDownButton.id = "volumeDownButton";
-    volumeDownButton.src = "https://i.imgur.com/VQfvYev.png";
+    volumeDownButton.src = "https://cdn.imgchest.com/files/2976cb4b63bd.png";
     volumeDownButton.alt = "Volume Down";
     controls.appendChild(volumeDownButton);
 
     const prevButton = document.createElement("img");
     prevButton.id = "prevButton";
-    prevButton.src = "https://i.imgur.com/LAojana.png";
+    prevButton.src = "https://cdn.imgchest.com/files/c2b39ad242c1.png";
     prevButton.alt = "Previous";
     controls.appendChild(prevButton);
 
     const playPauseButton = document.createElement("img");
     playPauseButton.id = "playPauseButton";
-    playPauseButton.src = "https://i.imgur.com/JdndnqR.png";
+    playPauseButton.src = "https://cdn.imgchest.com/files/4254a55454f0.png";
     playPauseButton.alt = "Play/Pause";
     controls.appendChild(playPauseButton);
 
     const nextButton = document.createElement("img");
     nextButton.id = "nextButton";
-    nextButton.src = "https://i.imgur.com/VpjQN97.png";
+    nextButton.src = "https://cdn.imgchest.com/files/4a13513cdb15.png";
     nextButton.alt = "Next";
     controls.appendChild(nextButton);
 
     const volumeUpButton = document.createElement("img");
     volumeUpButton.id = "volumeUpButton";
-    volumeUpButton.src = "https://i.imgur.com/AWjSTLv.png";
+    volumeUpButton.src = "https://cdn.imgchest.com/files/28846eb5eb4f.png";
     volumeUpButton.alt = "Volume Up";
     controls.appendChild(volumeUpButton);
 
@@ -15480,10 +15489,10 @@ function setupMusicPlayer() {
         const audio = document.getElementById("audio");
         if (audio.paused) {
             audio.play();
-            playPauseButton.src = "https://i.imgur.com/JdndnqR.png";
+            playPauseButton.src = "https://cdn.imgchest.com/files/7c7f43bd5c00.png";
         } else {
             audio.pause();
-            playPauseButton.src = "https://i.imgur.com/nzG7asd.png";
+            playPauseButton.src = "https://cdn.imgchest.com/files/8e2a17c10aee.png";
         }
     });
 
@@ -15594,7 +15603,7 @@ style.textContent = `
     display: flex;
     flex-direction: row;
     height: 191px;
-    background-image: url("https://i.imgur.com/XvHX0fc.png");
+    background-image: url("https://cdn.imgchest.com/files/ec298594b15d.png");
     transition: transform 0.2s ease;
 }
 
@@ -15606,7 +15615,7 @@ style.textContent = `
     height: 100%; /* Same height as the #player */
     z-index: 2; /* Brings it to the foreground */
     pointer-events: none; /* Prevent interference with user interactions */
-    background-image: url('https://i.imgur.com/4vt4JNH.png');
+    background-image: url('https://cdn.imgchest.com/files/146d68d3a80c.png');
     background-size: cover; /* Ensures the image fills the container */
 }
 
@@ -15760,7 +15769,7 @@ function LBJTunes() {
 
     const infoContainer = document.createElement("div");
     infoContainer.id = "info-container-lbj";
-    infoContainer.style.backgroundImage = "url('https://i.imgur.com/HTUJApX.png')";
+    infoContainer.style.backgroundImage = "url('https://cdn.imgchest.com/files/ac286a16b980.png')";
     infoContainer.style.backgroundSize = "cover";
     infoContainer.style.color = "#6e441b";
 
@@ -15788,27 +15797,27 @@ function LBJTunes() {
 
     const volumeDownButton = document.createElement("img");
     volumeDownButton.id = "volumeDownButton-lbj";
-    volumeDownButton.src = "https://i.imgur.com/VQfvYev.png";
+    volumeDownButton.src = "https://cdn.imgchest.com/files/2976cb4b63bd.png";
     controls.appendChild(volumeDownButton);
 
     const prevButton = document.createElement("img");
     prevButton.id = "prevButton-lbj";
-    prevButton.src = "https://i.imgur.com/LAojana.png";
+    prevButton.src = "https://cdn.imgchest.com/files/c2b39ad242c1.png";
     controls.appendChild(prevButton);
 
     const playPauseButton = document.createElement("img");
     playPauseButton.id = "playPauseButton-lbj";
-    playPauseButton.src = "https://i.imgur.com/JdndnqR.png";
+    playPauseButton.src = "https://cdn.imgchest.com/files/4254a55454f0.png";
     controls.appendChild(playPauseButton);
 
     const nextButton = document.createElement("img");
     nextButton.id = "nextButton-lbj";
-    nextButton.src = "https://i.imgur.com/VpjQN97.png";
+    nextButton.src = "https://cdn.imgchest.com/files/4a13513cdb15.png";
     controls.appendChild(nextButton);
 
     const volumeUpButton = document.createElement("img");
     volumeUpButton.id = "volumeUpButton-lbj";
-    volumeUpButton.src = "https://i.imgur.com/AWjSTLv.png";
+    volumeUpButton.src = "https://cdn.imgchest.com/files/28846eb5eb4f.png";
     controls.appendChild(volumeUpButton);
 
     controlsContainer.appendChild(controls);
@@ -15820,10 +15829,10 @@ function LBJTunes() {
         const audio = document.getElementById("audio-lbj");
         if (audio.paused) {
             audio.play();
-            playPauseButton.src = "https://i.imgur.com/JdndnqR.png";
+            playPauseButton.src = "https://cdn.imgchest.com/files/7c7f43bd5c00.png";
         } else {
             audio.pause();
-            playPauseButton.src = "https://i.imgur.com/nzG7asd.png";
+            playPauseButton.src = "https://cdn.imgchest.com/files/8e2a17c10aee.png";
         }
     });
 
@@ -15922,7 +15931,7 @@ styleLBJ.textContent = `
     display: flex;
     flex-direction: row;
     height: 191px;
-    background-image: url("https://i.imgur.com/XvHX0fc.png");
+    background-image: url("https://cdn.imgchest.com/files/ec298594b15d.png");
 }
 
 /* Everything below matches your original but with -lbj IDs */
@@ -15931,7 +15940,7 @@ styleLBJ.textContent = `
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background-image: url('https://i.imgur.com/4vt4JNH.png');
+    background-image: url('https://cdn.imgchest.com/files/146d68d3a80c.png');
     background-size: cover;
     pointer-events: none;
 }
