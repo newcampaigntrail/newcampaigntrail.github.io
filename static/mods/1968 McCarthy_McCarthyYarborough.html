@@ -472,7 +472,7 @@ campaignTrail_temp.answers_json = [
         "pk": 8947,
         "fields": {
             "question": 8820,
-            "description": "The electorate already knows what my ideas are on the Great Society. What they don't know is that my opponent would prefer to see these programs abolished in the name of fiscal conservatism."
+            "description": "The electorate already knows what my ideas are on the Great Society. What they don't know is that my opponent would prefer to see these programs abolished in the name of fiscal responsibility."
         }
     },
     {
@@ -752,7 +752,7 @@ campaignTrail_temp.answers_json = [
         "pk": 9216,
         "fields": {
             "question": 8823,
-            "description": "Every day, America's moral core withers yet more in the jungles of Vietnam. Soon, it will no longer be able to stand the senseless loss and destruction. Peace is my top priority, and I will continue to emphasise my position on it on the campaign trail. here"
+            "description": "Every day, America's moral core withers yet more in the jungles of Vietnam. Soon, it will no longer be able to stand the senseless loss and destruction. Peace is my top priority, and I will continue to emphasise my position on it on the campaign trail."
         }
     },
     {
@@ -8940,8 +8940,8 @@ campaignTrail_temp.answer_feedback_json = [
     }
 ]
 
-campaignTrail_temp.candidate_image_url = "https://i.imgur.com/VRrccqY.png";
-campaignTrail_temp.running_mate_image_url = "https://i.imgur.com/3yPHCTQ.jpeg";
+campaignTrail_temp.candidate_image_url = "https://u.cubeupload.com/palenortherner/EugeneMcCarthyImage.png";
+campaignTrail_temp.running_mate_image_url = "https://u.cubeupload.com/palenortherner/RalphYarboroughImage.jpg";
 campaignTrail_temp.candidate_last_name = "McCarthy";
 campaignTrail_temp.running_mate_last_name = "Yarborough";
 
@@ -8964,19 +8964,19 @@ if(aa[0].electoral_votes < 270 && aa[1].electoral_votes < 270 && aa[2].electoral
         return `<h3>Wow! No candidate achieved a majority in the electoral college.</h3><p>Fortunately for you the Democrats have won a majority of the nation's Congressional delegations. Unfortunately, you also have to deal with George Wallace. He will not allow the Southern states to support any candidate who advocates desegregation. Your best chance, sadly, is to try to broker a deal with Nixon or with other moderate Republicans. You are the likely winner, but who knows where this all ends?</p>`;
     }
     if(quickstats[0] >= 350) {
-        setImage("https://i.imgur.com/VRrccqY.png");
+        setImage("https://u.cubeupload.com/palenortherner/EugeneMcCarthyImage.png");
         return `<h3>Congratulations! You have won the 1968 election!</h3><p>It looked like a hopeless case as you accepted the nomination, but you have run an outstanding campaign in the interval, defeating Nixon in a landslide.</p><p>Democrats have made gains in both Houses of Congress, which will ease the passing of your agenda. This will undoubtedly include the reconstruction of the Vietnam peace talks alongside an expansion of federal civil rights legislation and the Great Society.</p>`;
     }
     if(quickstats[0] >= 270 && quickstats[0] < 350) {
-        setImage("https://i.imgur.com/VRrccqY.png");
+        setImage("https://u.cubeupload.com/palenortherner/EugeneMcCarthyImage.png");
         return `<h3>Congratulations! You have won the 1968 election!</h3><p>It looked like a hopeless case as you accepted the nomination, but you have run an outstanding campaign in the interval.</p><p>Republicans have made small gains in Congress, but Democrats still maintain overall control. It is therefore up to you to end the war in Vietnam once and for all, along with a possible expansion of the War on Poverty and civil rights initiative.</p>`;
     }
     if(quickstats[0] < 270 && quickstats[0] >= 150) {
-        setImage("https://i.imgur.com/DcI8cBo.jpeg");
+        setImage("https://u.cubeupload.com/palenortherner/RichardNixonPortrait.jpg");
         return `<h3>Sorry, you have lost the 1968 election.</h3><p>Your only consolation is that Nixon himself is a former loser. Even so, this is a horrendous turn of events for Democrats after the landslide of 1964.</p><p>Republicans have made moderate gains in both Houses of Congress, so the best you can do now is to plot a comeback to the Senate or as a candidate for president in 1972 so that you may continue to spearhead the antiwar movement under Nixon's administration.</p>`;
     }
     if(quickstats[0] < 150) {
-        setImage("https://i.imgur.com/DcI8cBo.jpeg");
+        setImage("https://u.cubeupload.com/palenortherner/RichardNixonPortrait.jpg");
         return `<h3>Sorry, you have lost the 1968 election.</h3><p>Your only consolation is that Nixon himself is a former loser. Even so, this is a horrendous turn of events for Democrats after the landslide of 1964, as you have been crushed.</p><p>It appears the country has grown fatigued of the Democratic Party, as Republicans have made significant gains in Congress. You are unlikely to be chosen as the Democratic candidate in 1972, but you could choose to make a comeback in the Senate if you so wished.</p>`;
     }
 }

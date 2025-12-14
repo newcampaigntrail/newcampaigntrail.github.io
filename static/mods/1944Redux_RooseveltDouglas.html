@@ -35,65 +35,84 @@ campaignTrail_temp.game_start_logging_id = '4076762';
 vpName = "William O. Douglas";
 
 vpTable = {
-    "Franklin D. Roosevelt" : vpName,
-    "Thomas E. Dewey" : "John W. Bricker",
-    "Unpledged Electors" : "N/A",
-    "Others" : "various"
+    "franklin roosevelt" : vpName,
+    "thomas dewey" : "John W. Bricker",
+    "unpledged electors" : "N/A",
+    "others" : "various",
+    "undecided" : "N/A"
 }
 
 vpTableHistorical = {
-   "Franklin D. Roosevelt" : "Harry S. Truman",
-    "Thomas E. Dewey" : "John W. Bricker",
-    "Unpledged Electors" : "N/A",
-    "Others" : "various"
-  } 
+    "franklin d roosevelt" : "Harry S. Truman",
+    "thomas dewey" : "John W. Bricker",
+    "unpledged electors" : "N/A",
+    "others" : "various",
+    "undecided" : "N/A"
+}
+
+
+
+// Helper: normalize names for matching
+function normalizeName(name) {
+  if (!name) return "";
+  return name
+    .toLowerCase()
+    .replaceAll(".", "")      // remove periods
+    .replaceAll("-", "")      // remove dashes
+    .replace(/\s+/g, " ")     // collapse spaces
+    .trim();
+}
+
+// Helper: safely get VP name or fallback
+function getVP(name, table) {
+  const clean = normalizeName(name);
+  console.log(`Candidate raw: "${name}" → normalized: "${clean}"`);
+  if (table.hasOwnProperty(clean)) {
+    return table[clean];
+  } else {
+    console.warn(`No VP match found for "${clean}"`);
+    return "N/A";
+  }
+}
 
 function onGameWindowChangeCandidates() {
-        const resultsTableHolder = document.getElementById("overall_details_container");
+  const resultsTableHolder = document.getElementById("overall_details_container");
 
-        if(!resultsTableHolder || resultsTableHolder.classList.contains("done")) {
-            return;
-        }
+  if (!resultsTableHolder || resultsTableHolder.classList.contains("done")) {
+    return;
+  }
 
-        resultsTableHolder.classList.add("done");
+  resultsTableHolder.classList.add("done");
 
-        const resultsTable = resultsTableHolder.childNodes[3].childNodes[3].children[0];
-        
-        for(let i = 0; i < resultsTable.children.length; i++) {
-            const row = resultsTable.children[i];
-            let name = row.firstChild.innerText;
-            row.insertCell(1);
-            if(name) {
-                name = name.replaceAll("-", "").trim();
-                console.log("name is:" + name)
-            }
+  // --- LIVE RESULTS TABLE ---
+  const resultsTable = resultsTableHolder.childNodes[3].childNodes[3].children[0];
 
-            if(i == 0) {
-                row.children[1].innerHTML = `<span style="font-weight:bold">Running Mate<span>`;
-            }
-            else {
-                row.children[1].innerHTML = vpTable[name];
-            }
-        }
+  for (let i = 0; i < resultsTable.children.length; i++) {
+    const row = resultsTable.children[i];
+    const name = row.firstChild.innerText;
+    row.insertCell(1);
 
-        
-        const resultsTableHistorical = resultsTableHolder.childNodes[5].childNodes[3].children[0];
-        
-        for(let i = 0; i < resultsTableHistorical.children.length; i++) {
-            const row = resultsTableHistorical.children[i];
-            let name = row.childNodes[1].innerText;
-            row.insertCell(1);
-            if(name) {
-                name = name.replaceAll("-", "").trim();
-            }
+    if (i === 0) {
+      row.children[1].innerHTML = `<span style="font-weight:bold">Running Mate<span>`;
+    } else {
+      row.children[1].innerHTML = getVP(name, vpTable);
+    }
+  }
 
-            if(i == 0) {
-                row.children[1].innerHTML = `<span style="font-weight:bold">Running Mate<span>`;
-            }
-            else {
-                row.children[1].innerHTML = vpTableHistorical[name];
-            }
-        }
+  // --- HISTORICAL RESULTS TABLE ---
+  const resultsTableHistorical = resultsTableHolder.childNodes[5].childNodes[3].children[0];
+
+  for (let i = 0; i < resultsTableHistorical.children.length; i++) {
+    const row = resultsTableHistorical.children[i];
+    const name = row.childNodes[1].innerText;
+    row.insertCell(1);
+
+    if (i === 0) {
+      row.children[1].innerHTML = `<span style="font-weight:bold">Running Mate<span>`;
+    } else {
+      row.children[1].innerHTML = getVP(name, vpTableHistorical);
+    }
+  }
 }
 
 const gameWindowNode = document.getElementById("game_window");
@@ -101,3 +120,35 @@ const candidateWatcherConfig = { attributes: true, childList: true, subtree: tru
 
 const candidateObserver = new MutationObserver(onGameWindowChangeCandidates);
 candidateObserver.observe(gameWindowNode, candidateWatcherConfig);
+
+const style = document.createElement('style');
+style.innerHTML = `
+#campaign_sign {
+    background-color: #7382b4;
+    border-style: solid;
+    border-width: .33em;
+    border-color: #d2d2d2;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.inner_window_question > p {
+    margin-top: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    min-height: 25px;
+}
+
+#game_window {
+    background-color: var(--primary-bg);
+    margin: .5em;
+    border-style: solid;
+    border-color: var(--border-color);
+    border-width: 3px;
+    height: 45em;
+    text-align: center;
+    position: relative;
+}
+`;
+document.head.appendChild(style);

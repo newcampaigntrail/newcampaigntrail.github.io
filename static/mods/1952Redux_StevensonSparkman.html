@@ -73,6 +73,125 @@ return "<h3>'EISENHOWER LANDSLIDE LEAVES DEMS REELING, IVES CHALKS UP FIRST VICT
 return  "<h3>Error</h3><p>Contact Yupperdoo if you get this message.</p>"
 }
 }
+// --------------------------------------------
+// NAME NORMALIZATION
+// --------------------------------------------
+function normalizeName(name) {
+  if (!name) return "";
+  return name
+    .toLowerCase()
+    .replaceAll(".", "")
+    .replaceAll("-", "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+// --------------------------------------------
+// BUILD *LIVE* VP TABLE — depends on selection
+// --------------------------------------------
+function buildVpTableLive() {
+  const chosenVP = normalizeName(campaignTrail_temp.running_mate_last_name);
+
+  // ---------------------------
+  // STEVENSON dynamic VP
+  // ---------------------------
+  let stevensonVP = "John Sparkman"; // default
+  if (chosenVP === "kefauver") stevensonVP = "Estes Kefauver";
+  else if (chosenVP === "monroney") stevensonVP = "Mike Monroney";
+  else if (chosenVP === "russell") stevensonVP = "Richard Russell";
+  else if (chosenVP === "barkley") stevensonVP = "Alben Barkley";
+  else if (chosenVP === "humphrey") stevensonVP = "Hubert Humphrey";
+
+  // ---------------------------
+  // EISENHOWER (fixed)
+  // ---------------------------
+  let eisenhowerVP = "Richard Nixon";
+
+  // ---------------------------
+  // BYRD special rule
+  // ---------------------------
+  let byrdVP = "Various";
+  if (chosenVP === "humphrey") {
+    byrdVP = "Herman Talmadge";
+  }
+
+  return {
+    "adlai stevenson": stevensonVP,
+    "dwight eisenhower": eisenhowerVP,
+    "harry byrd": byrdVP,
+
+    "other candidates": "Various",                  // LIVE table: other candidates - various
+    "unpledged electors": "N/A",          // LIVE table: unpledged - N/A
+
+    "undecided": "N/A"
+  };
+}
+
+// --------------------------------------------
+// BUILD HISTORICAL VP TABLE
+// --------------------------------------------
+function buildVpTableHistorical() {
+  return {
+    "adlai stevenson": "John Sparkman",
+    "dwight eisenhower": "Richard Nixon",
+    "harry byrd": "Various",
+
+    "other candidates": "Various",   // HISTORICAL table: other candidates - various
+    "unpledged electors": "N/A",     // HISTORICAL table: unpledged - N/A
+    "undecided": "N/A"
+  };
+}
+
+// --------------------------------------------
+// VP LOOKUP
+// --------------------------------------------
+function getVP(name, table) {
+  const clean = normalizeName(name);
+  if (table.hasOwnProperty(clean)) {
+    return table[clean];
+  }
+  return "N/A";
+}
+
+// --------------------------------------------
+// Inject VP column into results tables
+// --------------------------------------------
+function onGameWindowChangeCandidates() {
+  const holder = document.getElementById("overall_details_container");
+  if (!holder || holder.classList.contains("done")) return;
+  holder.classList.add("done");
+
+  const vpLive = buildVpTableLive();
+  const vpHist = buildVpTableHistorical();
+
+  // ========== LIVE RESULTS ==========
+  const liveTable = holder.childNodes[3].childNodes[3].children[0];
+  for (let i = 0; i < liveTable.children.length; i++) {
+    const row = liveTable.children[i];
+    const name = row.firstChild.innerText;
+    row.insertCell(1);
+    row.children[1].innerHTML = i === 0 ? "<b>Running Mate</b>" : getVP(name, vpLive);
+  }
+
+  // ======== HISTORICAL RESULTS ========
+  const histTable = holder.childNodes[5].childNodes[3].children[0];
+  for (let i = 0; i < histTable.children.length; i++) {
+    const row = histTable.children[i];
+    const name = row.childNodes[1].innerText;
+    row.insertCell(1);
+    row.children[1].innerHTML = i === 0 ? "<b>Running Mate</b>" : getVP(name, vpHist);
+  }
+}
+
+// --------------------------------------------
+// OBSERVER
+// --------------------------------------------
+const node = document.getElementById("game_window");
+const config = { attributes: true, childList: true, subtree: true };
+const observer = new MutationObserver(onGameWindowChangeCandidates);
+observer.observe(node, config);
+
+
 campaignTrail_temp.cyoa = true
 e.multiple_endings = true;
 e.answer_count = 5;
@@ -80,6 +199,31 @@ function tunnel(new_q){
     e = campaignTrail_temp;
     return e.questions_json[e.questions_json.map(f=>f.pk).indexOf(new_q)];
 }
+const style_overwrite = document.createElement("style");
+style_overwrite.innerHTML = `
+#campaign_sign {
+  background-color:rgb(97, 112, 125);
+  border-color:rgb(200, 202, 212);
+}
+#game_window {
+    background-color: var(--primary-bg);
+    margin: .5em;
+    border-style: solid;
+    border-color: var(--border-color);
+    border-width: 3px;
+    height: 47.5em;
+    text-align: center;
+    position: relative;
+}
+}`
+;
+document.head.appendChild(style_overwrite);
+
+
+let style = document.createElement('style');
+style.type = 'text/css';
+style.id = 'dynamic-style';
+
 cyoAdventure = function (a) {
     ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
     if(ans == 2074){
