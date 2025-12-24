@@ -16817,7 +16817,7 @@ function generateCabinetTimeline(victoryType, playerEV, runningMateID, scores) {
 		},
 		attorneyGeneral: {
 			progressive: { name: "Xavier Becerra", img: "https://upload.wikimedia.org/wikipedia/commons/6/61/Xavier_Becerra%2C_Official_Portrait.JPG", formerRole: "U.S. Representative", state: "California" },
-			loyalist: { name: "Jennifer Granholm", img: "https://upload.wikimedia.org/wikipedia/commons/4/42/Secretary_Jennifer_Granholm_%28June_2021%29.jpg", formerRole: "Former Governor", state: "Michigan" },
+			loyalist: { name: "Jennifer Granholm", img: "https://www.mackinac.org/media/images/2018/Granholm.jpg", formerRole: "Former Governor", state: "Michigan" },
 			incumbent: { name: "Loretta Lynch", img: "https://www.justice.gov/usao/biographies/images/spotlight-lynch-full.jpg", formerRole: "Attorney General", state: "New York" },
 			prosecutor: { name: "Preet Bharara", img: "https://static01.nyt.com/images/2013/06/10/world/asia/10-preet-interview-IndiaInk/10-preet-interview-IndiaInk-articleInline.jpg", formerRole: "U.S. Attorney, SDNY", state: "New York" },
 			biden_vp_loyalist: { name: "Sally Yates", img: "https://upload.wikimedia.org/wikipedia/commons/4/49/Sally_Yates.jpg", formerRole: "Deputy Attorney General", state: "Georgia" },
@@ -16885,7 +16885,7 @@ function generateCabinetTimeline(victoryType, playerEV, runningMateID, scores) {
 			progressive: { name: "Patty Murray", img: "https://upload.wikimedia.org/wikipedia/commons/f/fd/Patty_Murray_official_portrait.jpg", formerRole: "U.S. Senator", state: "Washington" }
 		},
 		homeland: {
-			establishment: { name: "Jeh Johnson", img: "https://www.aero-news.net/images/content/general/2013/Jeh-Johnson-Official-Photo-1213a.jpg", formerRole: "Secretary of Homeland Security", state: "New Jersey" },
+			establishment: { name: "Jeh Johnson", img: "https://s3.amazonaws.com/ballotpedia-api4/files/thumbs/200/300/Jeh_Johnson_official_portrait.jpg", formerRole: "Secretary of Homeland Security", state: "New Jersey" },
 			centrist: { name: "Alejandro Mayorkas", img: "https://i.dailymail.co.uk/i/pix/2013/07/23/article-2375290-1AF571D6000005DC-143_306x423.jpg", formerRole: "Deputy Secretary of DHS", state: "California" },
 			counter_terror: { name: "Lisa Monaco", img: "https://images.axios.com/V43dgt0tHYh2gvGY9Mx0zOZqeMk=/723x0:4191x3468/1024x1024/2021/04/20/1618924706388.jpg", formerRole: "Homeland Security Advisor", state: "Massachusetts" },
 			unity: { name: "Michael Chertoff", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Michael_Chertoff%2C_official_DHS_photo_portrait%2C_2007.jpg/250px-Michael_Chertoff%2C_official_DHS_photo_portrait%2C_2007.jpg", formerRole: "Former Secretary of DHS (R)", state: "New Jersey" }
@@ -17605,136 +17605,81 @@ endingPicker = (out, totv, aa, quickstats) => {
 // that was in W. I'm not sure who were the original authors. For the styling, apparently
 // it was taken from the 2021DE scenario, albeit I'm not sure. I should elaborate more in
 // the further reading section instead of rambling here.
+// Rewritten in 2012LBM and reused here
 
 function createTooltipProcessor(tooltipList) {
     function escapeRegex(s) {
         return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
     }
 
-    function memoize(fn) {
-        const cache = new Map();
-        return function(arg) {
-            if (cache.has(arg)) {
-                return cache.get(arg);
-            }
-            const result = fn.call(this, arg);
-            cache.set(arg, result);
-            return result;
-        };
-    }
+    // pre-process data
+    // we use lower-case keys for case-insensitive matching logic
+    const tooltipMap = new Map();
+    const sortedKeys = [];
 
-    // process tooltips: group duplicates
-    const tooltipGroups = new Map();
-    for (const tooltip of tooltipList) {
-        if (tooltip && tooltip.searchString) {
-            if (!tooltipGroups.has(tooltip.searchString)) {
-                tooltipGroups.set(tooltip.searchString, []);
-            }
-            tooltipGroups.get(tooltip.searchString).push(tooltip);
-        }
-    }
-
-    // for each searchString, randomly pick one tooltip
-    const processedTooltips = Array.from(tooltipGroups.entries()).map(([searchString, tooltips]) => {
-        return tooltips[Math.floor(Math.random() * tooltips.length)];
-    });
-
-    // sort for longest strings first
-    processedTooltips.sort((a, b) => b.searchString.length - a.searchString.length);
-
-    // build
-    const groupIndexToTooltipData = new Map();
-    const searchPatterns = processedTooltips.map((tooltip, index) => {
-        const groupNum = index + 1;
-        groupIndexToTooltipData.set(groupNum, tooltip);
-        return `(${escapeRegex(tooltip.searchString)})`;
-    });
+    // deduplicate and prep sorting
+    // we filter unique keys to prevent redundant regex processing
+    const seenKeys = new Set();
     
-    // only create a regex if there are patterns to search for
-    const TOOLTIP_REGEX = searchPatterns.length > 0
-        ? new RegExp(
-            `(?<=\\b|\\s|^|“)(?:${searchPatterns.join('|')})(?=[.,;!?]?\\b|\\s|”|$)`,
-            'gi'
-          )
+    // sort by length (descending) so, e.g. "Joe Biden" is matched before "Biden"
+    // we do this sort BEFORE creating the regex string
+    const sortedList = [...tooltipList].sort((a, b) => b.searchString.length - a.searchString.length);
+
+    for (const item of sortedList) {
+        if (!item.searchString || seenKeys.has(item.searchString)) continue;
+        
+        seenKeys.add(item.searchString);
+        sortedKeys.push(escapeRegex(item.searchString));
+        
+        // store mapping - since regex is case insensitive ('i'), 
+        // we map the lowercase match to the object
+        tooltipMap.set(item.searchString.toLowerCase(), item);
+    }
+
+    // create one regex with no capturing groups for individual items.
+    // \b ensures we don't match, e.g., "Barack" inside "BarackObama"
+    const pattern = sortedKeys.join('|');
+    
+    // don't create empty regex
+    const TOOLTIP_REGEX = pattern.length > 0 ? 
+        new RegExp(`(?<=\\b|\\s|^|“|")(${pattern})(?=[.,;!?]?\\b|\\s|”|"|$)`, 'gi') 
         : null;
 
+    // cache
+    const cache = new Map();
+
     function _applyTooltipsToString(str) {
-        if (!TOOLTIP_REGEX || !str) {
-            return str;
-        }
-
-        let matches = [];
-        let match;
-        TOOLTIP_REGEX.lastIndex = 0;
-
-        while ((match = TOOLTIP_REGEX.exec(str)) !== null) {
-            // find which capturing group matched
-            const matchedGroupNum = match.slice(1).findIndex(group => group != null) + 1;
-
-            if (matchedGroupNum > 0) {
-                matches.push({
-                    start: match.index,
-                    end: match.index + match[0].length,
-                    matchedString: match[0],
-                    tooltipData: groupIndexToTooltipData.get(matchedGroupNum)
-                });
-            }
-        }
+        if (!TOOLTIP_REGEX || !str || typeof str !== 'string') return str;
         
-        if (matches.length === 0) {
-            return str;
-        }
+        // return cached result if exists
+        if (cache.has(str)) return cache.get(str);
 
-        // sort by start position, then by length (longest first) to prepare for overlap removal
-        matches.sort((a, b) => a.start - b.start || b.end - a.end);
-
-        // filter out overlapping matches, keeping the first (and longest) one
-        const filteredMatches = [];
-        let lastMatchEnd = -1;
-        for (const currentMatch of matches) {
-            if (currentMatch.start >= lastMatchEnd) {
-                filteredMatches.push(currentMatch);
-                lastMatchEnd = currentMatch.end;
+        const processed = str.replace(TOOLTIP_REGEX, (match) => {
+            const data = tooltipMap.get(match.toLowerCase());
+            if (data) {
+                return `<span class='mytooltip'>${match}<span class='mytooltiptext'>${data.explanationText}</span></span>`;
             }
-        }
-
-        // build the final string with injected HTML
-        let result = [];
-        let lastIndex = 0;
-        filteredMatches.forEach(m => {
-            result.push(str.slice(lastIndex, m.start));
-            result.push(
-                `<span class='mytooltip'>${m.matchedString}<span class='mytooltiptext'>${m.tooltipData.explanationText}</span></span>`
-            );
-            lastIndex = m.end;
+            return match;
         });
 
-        // add any remaining text after the last match
-        if (lastIndex < str.length) {
-            result.push(str.slice(lastIndex));
-        }
-
-        return result.join('');
+        cache.set(str, processed);
+        return processed;
     }
 
     return {
         applyToObject(obj) {
-            // create a memoized version of our core function for this run
-            const memoizedApply = memoize(_applyTooltipsToString);
-
             function recurse(currentObj) {
                 for (let key in currentObj) {
                     if (!Object.prototype.hasOwnProperty.call(currentObj, key)) continue;
 
                     const value = currentObj[key];
                     if (typeof value === 'string') {
-                        currentObj[key] = memoizedApply(value);
+                        currentObj[key] = _applyTooltipsToString(value);
                     } else if (value !== null && typeof value === 'object') {
                         recurse(value);
                     }
                 }
             }
-            
             recurse(obj);
         }
     };
@@ -18782,7 +18727,7 @@ tooltipProcessor.applyToObject(campaignTrail_temp.answer_feedback_json);
             #${INFO_CONTAINER_ID} { display: flex; flex-direction: column; justify-content: center; overflow: hidden; flex-grow: 1; min-width: 0; padding: var(--spacing-xs) 0; }
             #${SONG_INFO_ID} { display: flex; flex-direction: column; overflow: hidden; justify-content: center; }
             .${TITLE_LINE_WRAPPER_CLASS} { display: flex; align-items: baseline; margin-bottom: var(--spacing-xs); gap: var(--spacing-xs); }
-            #${TITLE_ID} { font-size: var(--title-font-size); font-weight: 500; margin: 0; white-space: normal; overflow-wrap: break-word; line-height: 1.3; color: var(--text-primary); flex-grow: 1; cursor: default; }
+            #${TITLE_ID} { font-size: var(--title-font-size); font-weight: 600; margin: 0; white-space: normal; overflow-wrap: break-word; line-height: 1.3; color: var(--text-primary); flex-grow: 1; cursor: default; }
             #${YOUTUBE_LINK_ID} { flex-shrink: 0; line-height: 1; opacity: 0.7; transition: opacity var(--transition-speed) var(--transition-func); margin-left: 2px; }
             #${YOUTUBE_LINK_ID}:hover, #${YOUTUBE_LINK_ID}:focus { opacity: 1; }
             #${YOUTUBE_LINK_ID} img { width: 18px; height: auto; display: block; }
@@ -18867,7 +18812,7 @@ tooltipProcessor.applyToObject(campaignTrail_temp.answer_feedback_json);
                 text-overflow: ellipsis;
             }
             .${PLAYER_QUEUE_ITEM_CLASS}:hover { background-color: var(--queue-item-hover-bg); }
-            .player-queue-item-title { font-weight: 500; color: var(--text-primary); }
+            .player-queue-item-title { font-weight: 600; color: var(--text-primary); }
             .player-queue-item-artist { color: var(--text-secondary); font-size: 12px; }
             .player-queue-empty { color: var(--text-secondary); font-style: italic; cursor: default; padding: var(--spacing-xs) var(--spacing-sm); }
             #${QUEUE_CONTAINER_ID}.queue-collapsed {
@@ -20544,222 +20489,124 @@ tooltipProcessor.applyToObject(campaignTrail_temp.answer_feedback_json);
 
 // This is for the recommended reading box. Specifically, it sets up
 // the styling for the tab system we have here.
+// Taken from 2004Sundance, rewritten for this mod and rewritten
+// again for 2012LBM 
 (function() {
     'use strict';
 
+    const CSS_STYLES = `
+            #recommended_reading_box { border-style: double none; margin-inline: auto; width: 95%; background: linear-gradient(rgb(247, 247, 247), rgb(241, 241, 241)); height: 30em;}
+			#recommended_reading_box #tab-select {width:100%;height:32px;display:flex;justify-content:center;margin-bottom:1em;border-bottom:5px solid #1b146c;border-image:linear-gradient(#3c3ff6,#9f0c0c) 40}
+            #recommended_reading_box .ftab, #recommended_reading_box .ftab-active {font-family: Trebuchet MS, sans-serif;width: 98px;height: 32px;margin-top: 0px;padding-top: 7px;box-sizing: border-box; cursor: pointer; user-select:none; -webkit-user-select: none; background: linear-gradient(to bottom, #f7f7f7, #e0e0e0); border: 1px solid #ccc; border-radius: 10px 10px 0 0; }
+			#recommended_reading_box .ftab:hover { background: linear-gradient(to bottom, #fff, #ddd);}
+            #recommended_reading_box .ftab-active { background: #ffeded; border-color: #aa2525; cursor: default; }
+            #recommended_reading_box #start.ftab {width: 100px;}
+            #recommended_reading_box #start.ftab-active {width: 100px;}
+        `;
+
     let stylesAdded = false;
-    let tabSystemInitializedForCurrentBox = false;
 
     function addStyles() {
-        if (stylesAdded) return;
-
+        if (stylesAdded || document.getElementById('recommended_reading_styles')) return;
         const styleElement = document.createElement('style');
+        styleElement.id = 'recommended_reading_styles';
+        styleElement.textContent = CSS_STYLES;
         document.head.appendChild(styleElement);
-        const sheet = styleElement.sheet;
-
-        const styles = [
-            "#recommended_reading_box { border-style: double none; margin-inline: auto; width: 95%; background: linear-gradient(rgb(247, 247, 247), rgb(241, 241, 241)); height: 30em;}",
-			"#recommended_reading_box #tab-select {width:100%;height:32px;display:flex;justify-content:center;margin-bottom:1em;border-bottom:5px solid #1b146c;border-image:linear-gradient(#3c3ff6,#9f0c0c) 40}",
-            "#recommended_reading_box .ftab, #recommended_reading_box .ftab-active {font-family: Trebuchet MS, sans-serif;width: 98px;height: 32px;margin-top: 0px;padding-top: 7px;box-sizing: border-box; cursor: pointer; user-select:none; -webkit-user-select: none; background: linear-gradient(to bottom, #f7f7f7, #e0e0e0); border: 1px solid #ccc; border-radius: 10px 10px 0 0; }",
-			"#recommended_reading_box .ftab:hover { background: linear-gradient(to bottom, #fff, #ddd);}",
-            "#recommended_reading_box .ftab-active { background: #ffeded; border-color: #aa2525; cursor: default; }",
-            "#recommended_reading_box #start.ftab {width: 100px;}",
-            "#recommended_reading_box #start.ftab-active {width: 100px;}",
-        ];
-
-        styles.forEach(rule => {
-            try {
-                sheet.insertRule(rule, sheet.cssRules.length);
-            } catch (e) {
-                console.warn('Could not insert CSS rule:', rule, e);
-            }
-        });
         stylesAdded = true;
-        //console.log('Styles for recommended reading added.');
     }
 
-    function initializeTabs() {
-        const recommendedReadingBox = document.getElementById('recommended_reading_box');
-        if (!recommendedReadingBox) {
-            tabSystemInitializedForCurrentBox = false;
-            return;
-        }
+    function initializeTabs(box) {
+        // if already initialized, skip
+        if (box._tabsInitialized) return;
 
-        if (recommendedReadingBox._tabsInitialized) {
-            const tabContainer = recommendedReadingBox.querySelector('#tab-select');
-            const contentContainer = tabContainer ? tabContainer.nextElementSibling : null;
-            if(tabContainer && contentContainer) {
-                 const tabs = Array.from(tabContainer.children).filter(child => child.tagName === 'P');
-                 const activeTabElement = tabs.find(tab => tab.classList.contains('ftab-active'));
-                 if (activeTabElement) {
-                    const activeIndex = tabs.indexOf(activeTabElement);
-                    const contentPanes = [];
-                    tabs.forEach((_t, idx) => {
-                        const pane = contentContainer.querySelector(`#rpage${idx}`);
-                        if(pane) contentPanes.push(pane);
-                    });
-                    contentPanes.forEach((pane, index) => {
-                        if(pane) pane.style.display = (index === activeIndex) ? 'inline-block' : 'none';
-                    });
-                 }
-            }
-            return;
-        }
-
-        const tabContainer = recommendedReadingBox.querySelector('#tab-select');
-        if (!tabContainer) {
-            console.error('Element with ID "tab-select" not found within "recommended_reading_box".');
-            return;
-        }
+        const tabContainer = box.querySelector('#tab-select');
+        if (!tabContainer) return;
 
         const contentContainer = tabContainer.nextElementSibling;
-        if (!contentContainer) {
-            console.error('Content container not found. Expected as next sibling of "tab-select".');
-            return;
-        }
+        if (!contentContainer) return;
 
-        // get all tab elements (p tags) and content panes
+        // cache tabs and panes
         const tabs = Array.from(tabContainer.children).filter(child => child.tagName === 'P');
-        const contentPanes = [];
-        tabs.forEach((tab, index) => {
-            const paneId = `rpage${index}`;
-            const pane = contentContainer.querySelector(`#${paneId}`);
-            if (pane) {
-                contentPanes.push(pane);
-            } else {
-                console.warn(`Content pane #${paneId} not found.`);
-            }
-        });
+        const contentPanes = tabs.map((_, index) => contentContainer.querySelector(`#rpage${index}`));
 
-        if (tabs.length === 0) {
-            console.error('No tab elements found in #tab-select.');
-            return;
-        }
-        if (contentPanes.length === 0 && tabs.length > 0) {
-            console.warn('No content panes found. Tabs will not function correctly.');
+        // event handler
+        function onTabClick(event) {
+            const clickedTab = event.target.closest('p.ftab, p.ftab-active');
+            if (!clickedTab || !tabContainer.contains(clickedTab)) return;
+
+            const index = tabs.indexOf(clickedTab);
+            if (index === -1) return;
+
+            updateState(index);
         }
 
-        function setActiveTab(activeIndex) {
-            tabs.forEach((tab, index) => {
-                if (!tab) return;
-                tab.classList.toggle('ftab-active', index === activeIndex);
-                tab.classList.toggle('ftab', index !== activeIndex);
+        // state updater
+        function updateState(activeIndex) {
+            tabs.forEach((tab, idx) => {
+                const isActive = (idx === activeIndex);
+                tab.className = isActive ? 'ftab-active' : 'ftab';
+                if (tab.id === 'start') tab.id = 'start'; 
             });
 
-            contentPanes.forEach((pane, index) => {
-                if (!pane) return;
-                pane.style.display = (index === activeIndex) ? 'inline-block' : 'none';
+            contentPanes.forEach((pane, idx) => {
+                if (pane) pane.style.display = (idx === activeIndex) ? 'inline-block' : 'none';
             });
         }
 
-        if (tabContainer._delegatedTabClickHandler) {
-            tabContainer.removeEventListener('click', tabContainer._delegatedTabClickHandler);
+        // cleanup old listeners if re-initializing on same node
+        if (tabContainer._clickHandler) {
+            tabContainer.removeEventListener('click', tabContainer._clickHandler);
         }
+        tabContainer._clickHandler = onTabClick;
+        tabContainer.addEventListener('click', onTabClick);
 
-        tabContainer._delegatedTabClickHandler = function(event) {
-            // find the <p> element that was clicked, or its <p> ancestor if a child inside p was clicked
-            const clickedTabElement = event.target.closest('p.ftab, p.ftab-active');
+        // remove inline onclicks
+        tabs.forEach(t => t.removeAttribute('onclick'));
 
-            // ensure the clicked element is one of our direct tab children
-            if (clickedTabElement && tabContainer.contains(clickedTabElement) && tabs.includes(clickedTabElement)) {
-                const clickedIndex = tabs.indexOf(clickedTabElement);
-                if (clickedIndex !== -1) {
-                    if (clickedIndex < contentPanes.length && contentPanes[clickedIndex]) {
-                        setActiveTab(clickedIndex);
-                    } else if (clickedIndex >= contentPanes.length) {
-                        console.warn(`Tab at index ${clickedIndex} clicked, but no content pane found. Tab made active visually.`);
-                    }
-                }
-            }
-        };
-        tabContainer.addEventListener('click', tabContainer._delegatedTabClickHandler);
+        // initial State
+        let initialIndex = tabs.findIndex(t => t.classList.contains('ftab-active'));
+        if (initialIndex === -1 && tabs.length > 0) initialIndex = 0;
+        updateState(initialIndex);
 
-        // remove inline onclick attributes from HTML if they exist
-        tabs.forEach(tab => {
-            if (tab.hasAttribute('onclick')) {
-                tab.removeAttribute('onclick');
-            }
-        });
-
-        // determine and set the initial active tab
-        let initialActiveIndex = tabs.findIndex(tab => tab && tab.classList.contains('ftab-active'));
-        if (initialActiveIndex === -1 && tabs.length > 0) {
-            initialActiveIndex = 0;
-        }
-
-        if (initialActiveIndex !== -1) {
-            if (initialActiveIndex < contentPanes.length && contentPanes[initialActiveIndex]) {
-                setActiveTab(initialActiveIndex);
-            } else {
-                tabs.forEach((tab, index) => {
-                    if (!tab) return;
-                    tab.classList.toggle('ftab-active', index === initialActiveIndex);
-                    tab.classList.toggle('ftab', index !== initialActiveIndex);
-                });
-                contentPanes.forEach(pane => { if (pane) pane.style.display = 'none'; });
-                if (tabs.length > 0 && contentPanes.length === 0) {
-                     //console.log(`Initial tab set to index ${initialActiveIndex} visually, but no content panes available.`);
-                } else if (tabs.length > 0) {
-                     //console.log(`Initial tab set to index ${initialActiveIndex} visually, corresponding content pane missing.`);
-                }
-            }
-        } else if (tabs.length > 0) {
-            contentPanes.forEach(pane => { if (pane) pane.style.display = 'none'; });
-        }
-
-        recommendedReadingBox._tabsInitialized = true;
-        tabSystemInitializedForCurrentBox = true;
+        box._tabsInitialized = true;
         console.log('Recommended reading tabs initialized.');
     }
 
     function setupObserver() {
-        const targetNode = document.body;
-        if (!targetNode) {
-            console.error("Cannot set up MutationObserver: document.body not found.");
-            return;
-        }
-
-        const config = { childList: true, subtree: true };
-
-        const callback = function(mutationsList, observer) {
-            const recommendedReadingBox = document.getElementById('recommended_reading_box');
-
-            if (recommendedReadingBox) {
-                if (!stylesAdded) {
-                    addStyles();
-                }
-                if (!recommendedReadingBox._tabsInitialized) {
-                    initializeTabs();
-                }
-            } else {
-                if (tabSystemInitializedForCurrentBox) {
-                    //console.log('Recommended reading box removed from DOM.');
-                    tabSystemInitializedForCurrentBox = false;
+        const targetNode = document.getElementById('game_window') || document.body;
+        
+        const observer = new MutationObserver((mutations) => {
+            let shouldCheck = false;
+            
+            // only proceed if nodes were added
+            for (const m of mutations) {
+                if (m.addedNodes.length > 0) {
+                    shouldCheck = true;
+                    break;
                 }
             }
-        };
+            if (!shouldCheck) return;
 
-        const observer = new MutationObserver(callback);
-        observer.observe(targetNode, config);
-        //console.log('MutationObserver set up to watch for recommended_reading_box appearance/disappearance.');
+            const box = document.getElementById('recommended_reading_box');
+            if (box) {
+                if (!stylesAdded) addStyles();
+                if (!box._tabsInitialized) initializeTabs(box);
+            }
+        });
 
+        observer.observe(targetNode, { childList: true, subtree: true });
+
+        // immediate check in case script loads after content
         const existingBox = document.getElementById('recommended_reading_box');
         if (existingBox) {
-            //console.log('recommended_reading_box already in DOM. Initializing immediately.');
-            if (!stylesAdded) {
-                addStyles();
-            }
-            if (!existingBox._tabsInitialized) {
-                initializeTabs();
-            }
+            addStyles();
+            initializeTabs(existingBox);
         }
     }
 
-    // start the process
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', setupObserver);
     } else {
-        // DOMContentLoaded has already fired
         setupObserver();
     }
 })();
@@ -21061,7 +20908,7 @@ cyoAdventure = function (a) {
 
 // For changing running mates at the ending screens.
 // historical running mates
-const vpTableHistorical2016 = {
+const vpTableHistorical = {
     "Donald Trump": "Mike Pence",
     "Hillary Clinton": "Tim Kaine",
     "Gary Johnson/Others": "Bill Weld",
@@ -21142,29 +20989,38 @@ function addVPColumn(table, vpLookup) {
     }
 }
 
+// This adds the VPs to the final results table.
 function onGameWindowChangeCandidates() {
-    const resultsTableHolder = document.getElementById("overall_details_container");
+    const detailsContainer = document.getElementById("overall_details_container");
+    const statsContainer = document.getElementById("overall_vote_statistics");
 
-    if (!resultsTableHolder || resultsTableHolder.classList.contains("done-vp")) {
-        return;
-    }
-    resultsTableHolder.classList.add("done-vp"); // mark as processed
+    const processDetails = detailsContainer && !detailsContainer.classList.contains("done-vp");
+    const processStats = statsContainer && !statsContainer.classList.contains("done-vp");
+    if (!processDetails && !processStats) return;
 
-    const dynamicVPs = {
+ 	const dynamicVPs = {
         "Donald Trump": getTrumpVP(window.populistScore, window.aggressiveScore, window.embracedSanders, window.tookResponsibilityForEmails),
         "Hillary Clinton": getClintonVP(),
         "Gary Johnson/Others": getJohnsonVP(window.populistScore, window.aggressiveScore),
         "Jill Stein": getSteinVP(window.populistScore, window.aggressiveScore)
     };
 
-    const tables = resultsTableHolder.querySelectorAll('table');
-    if (tables.length < 2) {
-        console.warn("Could not find one or both results tables.");
-        return;
+    // details container
+    if (processDetails) {
+        const tables = detailsContainer.querySelectorAll('table');
+        if (tables.length > 0) addVPColumn(tables[0], dynamicVPs);        // the main results table 
+        if (tables.length > 1) addVPColumn(tables[1], vpTableHistorical); // the historical comparison table
+        detailsContainer.classList.add("done-vp"); // mark as processed
     }
 
-    addVPColumn(tables[0], dynamicVPs);            // the main results table
-    addVPColumn(tables[1], vpTableHistorical2016); // the historical comparison table
+    // stats container (only the first table)
+    if (processStats) {
+        const firstTable = statsContainer.querySelector('table'); 
+        if (firstTable) {
+            addVPColumn(firstTable, dynamicVPs);
+        }
+        statsContainer.classList.add("done-vp");
+    }
 }
 
 const gameWindowNode = document.getElementById("game_window");

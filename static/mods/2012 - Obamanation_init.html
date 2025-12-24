@@ -312,7 +312,7 @@ const creditsItemsA = [
 
 const specialThanks = [
     "Jet", "Thatchmaster", "TheBigCheese87", "Massachusetts4Stockdale",
-    "Ettingermentum", "velvet", "Datoggy"
+    "Ettingermentum", "velvet", "Datoggy", "Ohas"
 ];
 
 let savedX = null;
@@ -958,7 +958,7 @@ const css = `
 			  appearance: checkbox;
 			  opacity: 1;
 			}
-			
+
 			/* NCT fixes */
 			.inner_window_question p:last-of-type {
 				margin-bottom: .4em;
@@ -970,7 +970,7 @@ const css = `
 			 /* necessary to ensure the music player stays in position */
 			  #game_window {
 				flex: 1 1 auto;
-				min-height: clamp(360px, 40vh, 587px);
+				min-height: clamp(400px, 45vh, 600px);
 				height: auto;
 				align-self: stretch;
 				overflow: visible;
@@ -1821,6 +1821,7 @@ function createBanner(url, sibling, isLeft) {
                 font-size: 12px;
                 border-style: none;
                 border-width: 5px;
+				box-shadow: none;
                 background: transparent;
                 padding: 0;
                 margin: 1em .3em 1em 1em;
@@ -2491,6 +2492,7 @@ const musicPlayer = `
 			border-radius: 2px;
 			opacity: 0.8;
 			transition: opacity .2s;
+			margin: 0 .25em 0 0; 
 		}
 		
 		#volumeSlider:hover {
@@ -2507,6 +2509,8 @@ const musicPlayer = `
 			border-radius: 50%;
 			border: 1px solid #777;
 			margin-top: 2px;
+			position: relative;
+			z-index: 2;
 		}
 
 		#volumeSlider::-moz-range-thumb {
@@ -2516,6 +2520,13 @@ const musicPlayer = `
 			cursor: pointer;
 			border-radius: 50%;
 			border: 1px solid #777;
+		}
+
+		/* fix for Firefox track height to match webkit */
+		#volumeSlider::-moz-range-track {
+			height: 4px;
+			background: #ffffff;
+			border-radius: 2px;
 		}
 	`;
 
