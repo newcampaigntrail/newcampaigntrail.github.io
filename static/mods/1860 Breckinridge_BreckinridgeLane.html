@@ -11880,7 +11880,6 @@ fusionHandler = () => {
 		GAresult.sort((a, b) => a.candidate-b.candidate);
 		GAresult[2].electoral_votes = 10;
 		GAresult.sort((a, b) => b.percent-a.percent);
-		GAresult.sort((a, b) => b.electoral_votes-a.electoral_votes);
 		GA_leg_vote = true;
 	}
 
@@ -11974,6 +11973,8 @@ fusionHandler = () => {
 			e.final_state_results[25].result_time = getCallTime(0, PAresult[0].votes, PAresult[1].votes);
 		}
 	}
+
+	if (GA_leg_vote) { GAresult.sort((a, b) => b.electoral_votes-a.electoral_votes); }
 }
 
 //ENDINGS
