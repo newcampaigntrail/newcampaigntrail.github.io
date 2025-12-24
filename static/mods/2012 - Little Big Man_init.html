@@ -1,0 +1,4036 @@
+ /*
+ * @title: 2012: Little Big Man / Little Big Man / 2012a
+ * @author: StrawberryMaster & Friends
+ * @version: 1.0.0
+ * @description: The 2012 election in the eyes of Barack Obama (and a couple of others, too)
+ * 
+ * Coding license: Apache License 2.0
+ * Writing license: Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
+ * 
+ * For the coding in this mod, I hereby release the code under the terms and conditions of the Apache License 2.0. The full text of the license can be found at:
+ * https://choosealicense.com/licenses/apache-2.0/
+ * 
+ * For the writing in this mod, including documentation, text files, and other non-software written works, I hereby release the content under the terms and conditions of the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license. The full text of the license can be found at:
+ * https://creativecommons.org/licenses/by-nc/4.0/legalcode
+ * 
+ * By using, distributing, or modifying this mod, you agree to abide by the terms and conditions of both the Apache License 2.0 and the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license.
+*/
+
+RecReading = true
+
+campaignTrail_temp.global_parameter_json = [
+    {
+        "model": "campaign_trail.global_parameter",
+        "pk": 1,
+        "fields": {
+            "vote_variable": 1.125,
+            "max_swing": 0.12,
+            "start_point": 0.94,
+            "candidate_issue_weight": 10,
+            "running_mate_issue_weight": 3,
+            "issue_stance_1_max": -0.71,
+            "issue_stance_2_max": -0.3,
+            "issue_stance_3_max": -0.125,
+            "issue_stance_4_max": 0.125,
+            "issue_stance_5_max": 0.3,
+            "issue_stance_6_max": 0.71,
+            "global_variance": 0.01,
+            "state_variance": 0.005,
+            "question_count": 25,
+            "default_map_color_hex": "#C9C9C9",
+            "no_state_map_color_hex": "#999999"
+        }
+    }
+]
+
+const recommendedReadingContent = `
+<div id="tab-select">
+    <p class="ftab-active" id="start">Overview</p>
+    <p class="ftab">Sources</p>
+    <p class="ftab">Credits</p>
+    <p class="ftab" id="end">Fun facts</p>
+</div>
+<div style="text-align: left;margin: auto 5em;">
+	<span id="rpage0" class="tab-pane overview-content">
+        <div class="overview-header">
+            <h2>Living in a World of Barack (or close to it)</h2>
+            <h3>by StrawberryMaster</h3>
+        </div>
+        
+        <div class="overview-body">
+            <div class="overview-text">
+                <p><b>Fun fact:</b> this mod started out as a sandbox for another mod.</p>
+                <p>When working on <i>2016: A Lifetime of This</i>, I ended up doing some snooping and was able to
+                    recover most of the original chunk of questions for the 2012 mod; for those unaware, the original
+                    2012 Dan Bryan scenario had about ~80 or so questions, and in the early stages of the game you could
+                    have an option to answer those 80 questions if you wanted (or a smaller number, like 40 or 60
+                    questions). I tested these out in the original 2012 mod and it worked fairly well, though I ended up
+                    making my own adjustments to it for easier loading. A few changes here and there, and I realized I
+                    got too carried away. But by then, I already had a lot of stuff that I just couldn’t slap on top of
+                    2016ALOT, and I decided to work on what eventually became “Little Big Man”.</p>
+				<p>Honestly, working on this was very fun, especially when curating this mod’s soundtrack. Hopefully, you have enjoyed
+					some of the music choices here (or the volume slider at 0%, which also works out well). I never thought I
+					would make a mod so soon after 2016ALOT, and so I’m happy that I was able to dedicate myself at least more
+					than a bit to this funny mod. I especially appreciate the warm welcome that I received from the communit
+					during my stay here. You guys rock!</p>
+                <p class="overview-note">I do need to disclose that this is, probably, my last standalone scenario. It has been quite a ride,
+                    but it’s also been very stressful at times, particularly because most of this was the work of a
+                    one-person team. You might see me work with someone on a future mod, but this may be my last
+                    standalone mod for a while. Regardless, I do hope I’ve been able to live up to your expectations of
+                    this mod, as low as they might’ve been.</p>
+            </div>
+            <div class="overview-media"> 
+                <div class="img-wrapper">
+                    <img src="https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/XBiCnJX.jpeg" alt="2012LBM">
+                    <span class="img-caption">They were so little, now they’re so big. Man…</span>
+                </div>
+            </div>
+        </div>
+    </span>
+    <span id="rpage1" class="sources-content" style="display: none;">
+        <h4>Recommended readings</h4>
+        <ul class="reading-list">
+            <li>
+                <p class="reading-title">
+                    John Sides and Lynn Vavreck - <a
+                        href="https://press.princeton.edu/books/paperback/9780691163635/the-gamble" target="_blank">The
+                        Gamble: Choice and Chance in the 2012 Presidential Election (Updated Edition)</a>
+                </p>
+                <p class="reading-description">
+                    An excellent analysis of the 2012 campaign. It argues that despite the daily drama of the campaign
+                    trail, the election's outcome was largely determined by political and economic fundamentals, like
+                    the state of the economy and presidential approval, and not by the so-called "game changers"
+                    mentioned throughout the campaign. Here is a snippet:
+                </p>
+                <blockquote class="reading-quote">
+                    As the 2012 campaign got under way, there were at least three bets being made. One was by Democrats,
+                    who were betting on an incumbent who, while arguably the favorite, was still facing challenging
+                    economic times and a pessimistic public. One was by Republicans, who were betting on which of their
+                    many candidates could do something rare: defeat a sitting incumbent president. And one was by
+                    voters, who were betting on which candidate would best help the country recover from the worst
+                    economic recession in over seventy years.
+                </blockquote>
+            </li>
+            <li>
+                <p class="reading-title">
+                    Dan Balz - <a href="https://www.penguinrandomhouse.com/books/311130/collision-2012-by-dan-balz/"
+                        target="_blank">Collision 2012: Obama vs. Romney and the Future of Elections in America</a>
+                </p>
+                <p class="reading-description">
+                    Another quite useful read, this books talk about how the 2012 election changed the course of
+                    American politics, and also the impacts it had on America’s electoral process. Here is a snippet:
+                </p>
+                <blockquote class="reading-quote">
+                    It was not an uplifting campaign by any stretch of the imagination. At times the plain nuttiness of
+                    it all cried out for Hunter S. Thompson to chronicle it. But both as political theater and as a
+                    window into the struggle between where America has been and where it may be going, it was as
+                    engaging as it was instructive about the state of our politics.
+                </blockquote>
+            </li>
+            <li>
+                <p class="reading-title">
+                    John Heilemann and Mark Halperin - <a
+                        href="https://www.amazon.com/dp/0143126008" target="_blank">
+						Double Down: Game Change 2012</a>
+                </p>
+                <p class="reading-description">
+                    The sequel to the <a href="https://www.amazon.com/Game-Change-Clintons-McCain-Lifetime/dp/0061733644 target=_blank">
+					bestselling book on the 2008 election</a>, this provides a behind-the-scenes
+                    account of the Obama and Romney campaigns. It details the strategic decisions, internal conflicts,
+                    and critical moments that shaped the race. Here is a snippet:
+                </p>
+                <blockquote class="reading-quote">
+                    OBAMA LAUGHED WHEN HE heard that Romney had described him as Santa Claus in chief, doling out presents to the
+					freeloaders gathered around the White House Christmas tree. “He must have really meant that 47 percent thing,”
+					the president remarked to his aides.
+                </blockquote>
+            </li>
+            <li>
+                <p class="reading-title">
+                    Michael Kranish and Scott Helman - <a
+                        href="https://www.harpercollins.com/products/the-real-romney-michael-kranishscott-helman"
+                        target="_blank">The Real Romney</a>
+                </p>
+                <p class="reading-description">
+                    An in-depth biography of Mitt Romney, tracing his life through his Mormon faith, his family, his
+                    successful career at Bain Capital, and his political evolution. It offers a fairly comprehensive
+                    portrait of the real life Republican nominee. Here is a snippet:
+                </p>
+                <blockquote class="reading-quote">
+                    Something else stood out to Mitt’s peers: his bond with his father, who remained his hero and confidant
+					notwithstanding the friction over Mitt’s home visits. Classmates could see the closeness between them.
+					“It was especially interesting,” Romney’s classmate Mike Roake said, “because we were freshmen and therefore
+					in the process of divorcing ourselves from our parents.”
+                </blockquote>
+            </li>
+            <li>
+                <p class="reading-title">
+                    The Washington Post Staff - <a
+                        href="https://www.amazon.com/Obamas-Last-Stand-POLITICO-Playbook-ebook/dp/B008QLT0ZG"
+                        target="_blank">Obama's Last Stand: POLITICO Playbook 2012</a>
+                </p>
+                <p class="reading-description">
+                    A collection of reporting from The Washington Post that provides a account of the
+                    campaign as it unfolded, focusing on the key challenges facing the Obama campaign. Though not as long
+					as the others, it's one of the most fascinating. Here is a snippet:
+                </p>
+                <blockquote class="reading-quote">
+                    Obama had always expressed a gnawing fear of political defeat in sports terms, comparing the shame to that
+					of a high school basketball player blowing last-second free throws in front of his friends and family.
+					Getting beat was to have the word “loser” “flashing through people’s minds,” he wrote in the 2004 edition
+					of <i>Dreams from My Father</i>.
+                </blockquote>
+            </li>
+            <li>
+                <p class="reading-title">
+                    Barack Obama - <a href="https://www.amazon.com/Promised-Land-Barack-Obama/dp/1524763160"
+                        target="_blank">A Promised Land</a>
+                </p>
+                <p class="reading-description">
+                    Although published after his presidency, the first volume of Obama's memoirs covers his first term
+                    in detail, including the legislative battles over the economic stimulus and the Affordable Care Act,
+                    which were central issues in the 2012 campaign. Not only that, but it's an essential book for anyone
+					who wants to know more about Barack himself. Here is a snippet:
+                </p>
+                <blockquote class="reading-quote">
+                    Michelle bore the brunt of all this, shuttling between mothering and work, unconvinced that she was doing either job well. At the end of each night, after feeding and bath time and story time and cleaning up the apartment and trying to keep track of whether she’d picked up the dry cleaning and making a note to herself to schedule an appointment with the pediatrician, she would often fall into an empty bed, knowing the whole cycle would start all over again in a few short hours while her husband was off doing “important things.”<br/><br/>We began arguing more, usually late at night when the two of us were thoroughly drained. “This isn’t what I signed up for, Barack,” Michelle said at one point. “I feel like I’m doing it all by myself.”
+                </blockquote>
+            </li>
+            <li>
+                <p class="reading-title">
+                    Mitt Romney - <a href="https://www.amazon.com/No-Apology-Case-American-Greatness/dp/0312609809"
+                        target="_blank">No Apology: The Case for American Greatness</a>
+                </p>
+                <p class="reading-description">
+                    Romney's book, published before his 2012 run, lays out his worldview on American exceptionalism,
+                    economic policy, and foreign affairs. It is essential reading for understanding the philosophical
+                    underpinnings of his campaign. Here is a snippet:
+                </p>
+                <blockquote class="reading-quote">
+					Today we find ourselves at a very different moment in history, and I fear that if we remain on our current track,
+					history will come to know us as this nation’s worst generation—because we will force our children and their children
+					to bear the brunt of our recklessness and the willful neglect of the problems we created.
+                </blockquote>
+            </li>
+			<li>
+                <p class="reading-title">
+                    Kenneth W. Mack and Jim Chen - <a href="https://www.jstor.org/stable/4133628"
+                        target="_blank">Barack Obama Before He Was a Rising Political Star</a>
+                </p>
+			</li>
+			<li>
+                <p class="reading-title">
+					Thomas Edge - <a href="https://www.jstor.org/stable/40648600"
+                        target="_blank">Southern Strategy 2.0: Conservatives, White Voters, and the Election of Barack Obama</a>
+                </p>
+			</li>
+			<li>
+                <p class="reading-title">
+                    Pearl K. Ford, Tekla A. Johnson and Angie Maxwell - <a href="https://www.jstor.org/stable/40648602"
+                        target="_blank">"Yes We Can" or " Yes We Did"?: Prospective and Retrospective Change in the Obama Presidency</a>
+                </p>
+			</li>
+			<li>
+                <p class="reading-title">
+					Theda Skocpol and Lawrence R. Jacobs - <a href="https://www.jstor.org/stable/41502505"
+                        target="_blank">Accomplished and Embattled: Understanding Obama's Presidency</a>
+                </p>
+			</li>
+			<li>
+                <p class="reading-title">
+					Lawrence J. McAndrews - <a href="https://doi.org/10.2307/j.ctt18z4hr9"
+                        target="_blank">“Barack Obama: 2009–2013.” in Refuge in the Lord (pp. 151-193)</a>
+                </p>
+			</li>
+        </ul>
+
+        <h4>Issue recommendations</h4>
+        <p>While playing this mod, you might've stumbled upon several issues, people, or events of interest that were
+            brought up during the 2012 campaign or during the first Obama administration (2009-2013). This is not a
+            comprehensive list, but below is a list of articles/interactive graphics that I visited or revisited for the
+            making of this mod, and you might find them useful.</p>
+        <dl class="issue-list">
+            <dt>Budget/Debt:</dt>
+            <dd>
+                <ul>
+                    <li><a href="https://web.archive.org/web/20110218025258if_/https://www.nytimes.com/packages/html/newsgraphics/2011/0119-budget"
+                            target="_blank">"Obama's 2012 Budget Proposal: How $3.7 Trillion is Spent"</a></li>
+                    <li><a href="https://archive.nytimes.com/www.nytimes.com/interactive/2010/11/13/weekinreview/deficits-graphic.html"
+                            target="_blank">"Budget Puzzle: You Fix the Budget"</a></li>
+                    <li><a href="https://archive.nytimes.com/www.nytimes.com/interactive/2011/04/06/us/politics/06budget-doc.html"
+                            target="_blank">"Paul Ryan Presents: The House Republicans' 2012 Budget Proposal"</a></li>
+                    <li><a href="https://web.archive.org/web/20121116233528if_/http://www.nytimes.com/2012/11/16/us/politics/the-fiscal-cliff-explained.html"
+                            target="_blank">"The 'Fiscal Cliff', Explained"</a></li>
+                </ul>
+            </dd>
+            <dt>Economy:</dt>
+            <dd>
+                <ul>
+                    <li><a href="https://web.archive.org/web/20120127175513if_/http://www.nytimes.com/2012/01/28/business/economy/us-economy-grows-at-modest-2-8-percent-rate.html"
+                            target="_blank">"Growth Accelerates, but U.S. Has Lots of Ground to Make Up"</a></li>
+                    <li><a href="https://archive.nytimes.com/www.nytimes.com/interactive/2012/05/04/business/economy/off-the-charts-shrinking-government.html"
+                            target="_blank">"Off the Charts: Shrinking Government"</a></li>
+                </ul>
+            </dd>
+            <dt>Healthcare:</dt>
+            <dd>
+                <ul>
+                    <li><a href="https://archive.nytimes.com/well.blogs.nytimes.com/2012/08/09/life-interrupted-medical-bills-insurance-and-uncertainty/"
+                            target="_blank">"Life, Interrupted: Medical Bills, Insurance and Uncertainty"</a></li>
+                    <li><a href="https://web.archive.org/web/20120630022201if_/http://www.nytimes.com/2012/06/30/us/politics/parsing-a-romney-alternative-to-obamas-health-care-law.html"
+                            target="_blank">"Parsing a Romney Alternative to Obama's Health Care Law"</a></li>
+                </ul>
+            </dd>
+            <dt>Foreign Policy:</dt>
+            <dd>
+                <ul>
+                    <li><a href="https://web.archive.org/web/20121023071857if_/http://www.nytimes.com/2012/10/23/us/politics/looking-closely-at-the-candidates-statements-on-foreign-policy.html"
+                            target="_blank">"Looking Closely at Statements From Candidates on Foreign Policy"</a></li>
+                    <li><a href="https://www.nytimes.com/interactive/2012/02/10/world/middleeast/the-evolution-of-syrias-deadly-conflict.html"
+                            target="_blank">"The Evolution of Syria's Conflict"</a></li>
+                    <li><a href="https://archive.nytimes.com/www.nytimes.com/interactive/2012/09/20/world/africa/the-attack-on-the-american-mission-in-benghazi-libya.html"
+                            target="_blank">"The Attack on the American Mission in Benghazi, Libya"</a></li>
+                </ul>
+            </dd>
+            <dt>Campaign Coverage:</dt>
+            <dd>
+                <ul>
+                    <li><a href="https://web.archive.org/web/20110623220113if_/http://elections.nytimes.com/2012/primaries/candidates"
+                            target="_blank">"Republican Presidential Candidates"</a></li>
+                    <li><a href="https://web.archive.org/web/20110409105341/http://fivethirtyeight.blogs.nytimes.com/2011/03/29/in-coverage-of-2012-candidates-the-blogs-and-the-beltway-divide/"
+                            target="_blank">"In Coverage of 2012 Candidates, the Blogs and the Beltway Divide"</a></li>
+                    <li><a href="https://archive.nytimes.com/www.nytimes.com/interactive/2012/11/02/us/politics/paths-to-the-white-house.html"
+                            target="_blank">"512 Paths to the White House"</a></li>
+                    <li><a href="https://www.nytimes.com/elections/2012/ratings/electoral-map.html" target="_blank">"The
+                            Electoral Map: Building a Path to Victory"</a></li>
+                </ul>
+            </dd>
+        </dl>
+
+        <h4>Candidate biographies</h4>
+        <ul>
+            <li>Barack Obama - <a href="https://www.amazon.com/Audacity-Hope-Thoughts-Reclaiming-American/dp/0307237708"
+                    target="_blank">The Audacity of Hope</a></li>
+            <li>Mitt Romney - <a href="https://www.amazon.com/No-Apology-Case-American-Greatness/dp/0312609809"
+                    target="_blank">No Apology: The Case for American Greatness</a></li>
+            <li>Gary Johnson - <a
+                    href="https://www.amazon.com/Seven-Principles-Good-Government-Libertarian/dp/156343913"
+                    target="_blank">Seven Principles of Good Government</a></li>
+        </ul>
+
+        <h4>Research & Analysis</h4>
+        <ul>
+            <li>FiveThirtyEight - <a
+                    href="https://archive.nytimes.com/www.nytimes.com/interactive/2011/11/03/magazine/538-gdp-election-calculator.html"
+                    target="_blank">What Are the Chances for Republicans?</a></li>
+            <li>FiveThirtyEight - <a
+                    href="https://fivethirtyeight.com/features/the-2012-election-in-a-relative-sense/"
+                    target="_blank">The 2012 Election, in a Relative Sense</a></li>
+            <li>FiveThirtyEight - <a href="https://archive.nytimes.com/fivethirtyeight.blogs.nytimes.com/2012/11/08/as-nation-and-parties-change-republicans-are-at-an-electoral-college-disadvantage/"
+                    target="_blank">As Nation and Parties Change, Republicans Are at an Electoral College Disadvantage</a></li>
+        </ul>
+    </span>
+    <span id="rpage2" style="display: none;">
+        <h4>Notes on the in-game code</h4>
+        <ul>
+            <li>A couple of the features here (e.g. the tooltip system, the start screen menu, etc.) were taken from
+                <i>2016: A Lifetime of This</i>. I do provide more explanation on the post-credits section there on what
+                was rewritten for this mod and what was created from scratch.</li>
+            <li>The Dossier system mechanic (that was also present in 2016ALOT) was inspired by the 1991 DOS game
+                <i>Floor 13</i> (which can be played <a href="https://www.myabandonware.com/game/floor-13-1eo/play-1eo"
+                    target="_blank">here</a>), which allowed you to do a variety of tools, from interrogating subjects
+                to abducting them to ransacking places to discrediting their reputation. It was a game I especially
+                played a lot, so I’m happy with how it turned out here. (A more family-friendly version of it was
+                implemented on this mod.) This time, though, the layout for the Dossier was loosely inspired by that of
+                <i>Divided States of America</i>, and also hit mod <i>Unburdened By What Has Been</i>. It was meant to look
+				similar to Astro’s Campaign Headquarters feature (which is used in both mods), and many thanks to him for it!
+            </li>
+			<li>The data visualizer you see here was actually made for this mod! I should point out though that a good chunk
+			of the tabs added to it were added by routevenus, and used for testing both <i>1972: More Than Ever</i> and <i>
+			Projec 2024</i>, and eventually I decided to use an adapted version of the data visualizer used there for better
+			ease of use. Thank you!</li>
+            <li>The tabs system you’re seeing here was taken from <i>2004 Sundance</i>, used in 2016ALOT, and eventually
+				reused for this mod. The question randomizer here, although technically using the same function as
+                <i>bunnyhop</i>, is used in a different way because, just like in 2016ALOT, rewriting most of the mod for it was
+				not a feasible idea. Finally, the checkbox styling you see here was partially taken from the one on that mod
+                and changed for this one.</li>
+            <li>Many of the images here were listed on sites such as Getty Images. This mod is primarily a
+                humorous/educational mod, and we want to note these are being labeled as fair use of the respective
+                material under United States copyright law.</li>
+        </ul>
+        <h4>Special thanks to…</h4>
+        <ul>
+			<li>The estate of <i>Aaliyah</i>, for refreshing the songs from the self-titled album Aaliyah (2001) only once, preventing me from having to update one of the songs used in this mod from time to time;</li>
+			<li><i>Wyatt Mason</i>, for his excellent translation of Rimbaud's <i>A Season in Hell</i> (cited here);</li>
+            <li><i>astrohuncho</i> — for the Further Reading Wizard, which I’m using to write this message as we speak;</li>
+            <li><i>Jet</i> — for his excellent mod tool and for being fine with my fork of it;</li>
+            <li>The man himself, <i>Dan Bryan</i> — for creating this neat educational game;</li>
+            <li><i>Everyone who playtested this mod</i> — for, well, trying out this mod and sharing their feedback;
+            </li>
+        </ul>
+        <p>And of course, thanks to <b>you</b>, for taking the time to read all of this. :D I appreciate it!</p>
+        <hr style="border:solid 1px lightgray">
+        <blockquote>“A green hole where a river sings;<br/>Silver tatters tangling in the grass;<br/>Sun shining down from a proud mountain:<br/>A little valley bubbling with light.<br/><br/>A young soldier sleeps, lips apart, head bare,<br/>Neck bathing in cool blue watercress,<br/>Reclined in the grass beneath the clouds,<br/>Pale in his green bed showered with light.<br/><br/>He sleeps with his feet in the gladiolas.<br/>Smiling like a sick child, he naps:<br/>Nature, cradle him in warmth: he’s cold.<br/><br/>Sweet scents don’t tickle his nose;<br/>He sleeps in the sun, a hand on his motionless chest,<br/>Two red holes on his right side.”</blockquote>
+    </span>
+    <span id="rpage3" style="display: none;">
+        <h4>Fun facts</h4>
+        <p> Did you know? </p>
+		<ul>
+			<li>Prior to working on this mod, I was tapped to work on a Biden '08 mod, which didn't really go anywhere because the three people on the team Were
+			busy with other things. I did consider it for a couple of months but dropped it entirely when <a href="https://www.reddit.com/r/thecampaigntrail/comments/1m8ihet/mod_announcement_biden_08/" target="_blank">the same idea</a> was taken by another person.</li>
+			<li>A very alpha version of Little Big Man, way before I was fully set on making it an actual mod, was posted on June 29, 2025, just six days after the release of A Lifetime of This. It had some similarities to the final design. <img src="https://file.garden/aNtAfG887DiA_7lO/2012LBM/lbm_alpha.png" width="75%" /></li>
+			<li>The music player was based off a scrapped, buggy music player I considered for 2016ALOT. It was so broken that it looked like this. Curiously, some of the sample songs in here were re-used this for mod, although not all of them. Amen to that! I think the other unlisted songs here were The Greatest Romance Ever Been Gold, I Wanna Sex You Up (confirming this mod was initially made on freaky principles) and C'Est La Vie. <img src="https://file.garden/aNtAfG887DiA_7lO/2012LBM/lbm_alpha2.png" width="75%" /></li>
+            </li>
+        </ul>
+		
+    </span>
+</div>
+`;
+
+campaignTrail_temp.election_json = [
+    {
+        "model": "campaign_trail.election",
+        "pk": 3,
+        "fields": {
+            "year": 2012,
+			"site_description": "<p> <span style=\"font-size: 3.5em; float: left; font-weight: bold; line-height: 0.7em; margin-right: 0.05em; margin-top: 0.1em; color: #b30000\">F</span><b>rench poet Arthur Rimbaud</b>, almost seven score ago, once wrote that he became opera, that he saw all living things were doomed to bliss — but that wasn’t living, just a way to waste what we have. He argued with countless men using examples drawn from their other lives, sought voyages to disperse enchantments that had colonized his mind, and watched a consoling cross rise above a sea he came to love as if it were rinsing him of stain. <i>Bliss was my undoing, my remorse, my worm</i>, he said. <i>My life would always be too ungovernable to devote to strength and beauty</i>. <br/><br/> At times, Barack feels the very same way. Once the brightest light in the room, he now walks through it like a man half-remembering why he turned it on in the first place. <br/><br/> The dream of the campaign trail ended the second he stepped into the Oval Office. It was like he was trapped in a nightmare, and one specifically designed to break him. Obama’s evil double was on the cable news every night; it was a caricature built from soundbites and a lot of suspicion, primarily conservative. He was the devil incarnate, a fallen angel; his enemies were feasting on his flesh. Were they the same? In a country like this, it seemed like every choice was a wrong one; just some were less wrong than others. He would wake up at night, afraid the man from ’08 was a dream he was starting to forget. The world was a blur; the things that were clear in his dreams suddenly didn’t make sense anymore. <br/><br/> Now, in 2012, the landscape has shifted. The President is no longer a symbol of what could be (or what has been), but the custodian of a rather complicated and, at times, controversial record. There’s a kill list, there are drone strikes, there’s a healthcare bill whose promise has outpaced its rollout. Guantánamo is still open, and of course, there stand Mitch McConnell and John Boehner, looming over every vote like gargoyles. The writing is on the wall, and he read it. It’s a mad world. <br/><br/> The campaign trail feels different this time. His old lines don’t quite land with the same force. There seems to be a dissonance between the man who must now defend his compromises and the movement he once inspired. Obama finds himself in a strange middle ground; he’s no longer the fresh-faced outsider the American public met in 2008, but also not yet a universally accepted leader. His campaign is, essentially, running on muscle memory, and not many are sure whether he is searching for a new narrative — or, rather, for a way to reignite the old one. <br/><br/> Perhaps his task is no longer to inspire a dream, but to defend a complicated reality. That question hangs in the air at every rally, in every strategy meeting: what is the story this time? How do you convince a tired and divided nation to give you four more years? <br/><br/> Barack? Hey, are you still with me? </p>",
+            "summary": "<p> Three years after the media crowned him in 2008, things have not felt as exciting for little Barry. He has spent the last year watching the economic recovery elude him, seeing it turn a long slow drowning in jobs reports and foreclosures. He has also seen his efforts to be a transformational, post-partisan leader fall apart, as his agenda based on “redistributive justice” has crashed and burned in gridlocked Congress. </p> <p> Not knowing whether he will face Mitt Romney or one of the more beatable conservatives emerging from the GOP primary chaos, his future is wide open. Aside from his usual opponents, he must also contend with Congressional Democrats who are petrified at the prospect of defending his record. He must do all he can to ensure that he does not cede what little American credibility remains to an emboldened Putin and an ascendant China, and pray that the newly-registered Millennial phonekids can help him find the Chaos Emeralds one last time. </p>",
+            "image_url": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/XBiCnJX.jpeg",
+            "winning_electoral_vote_number": 270,
+            "advisor_url": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/kyyyII1.jpeg",
+            "has_visits": 1,
+            "no_electoral_majority_image": "https://www.jetsimon.com/public/static/images/2012-no-majority.jpg",
+            "display_year": "2012 - Little Big Man"
+        }
+    }
+]
+campaignTrail_temp.election_json[0].fields.recommended_reading = recommendedReadingContent;
+
+campaignTrail_temp.temp_election_list = [
+    {
+        "id": 3,
+        "year": 2012,
+        "is_premium": 0,
+        "display_year": "2012 - Little Big Man"
+    }
+]
+
+campaignTrail_temp.difficulty_level_json = [
+	{
+        "model": "campaign_trail.difficulty_level",
+        "pk": 0.25,
+        "fields": {
+            "name": "A Walk in the Park",
+            "multiplier": 1.225
+        }
+    },
+    {
+        "model": "campaign_trail.difficulty_level",
+        "pk": 0.5,
+        "fields": {
+            "name": "Easy-Peasy",
+            "multiplier": 1.15
+        }
+    },
+    {
+        "model": "campaign_trail.difficulty_level",
+        "pk": 1,
+        "fields": {
+            "name": "Quite Easy",
+            "multiplier": 1.05
+        }
+    },
+    {
+        "model": "campaign_trail.difficulty_level",
+        "pk": 3,
+        "fields": {
+            "name": "Normal",
+            "multiplier": 0.97
+        }
+    },
+    {
+        "model": "campaign_trail.difficulty_level",
+        "pk": 4,
+        "fields": {
+            "name": "Challenging",
+            "multiplier": 0.95
+        }
+    },
+    {
+        "model": "campaign_trail.difficulty_level",
+        "pk": 5,
+        "fields": {
+            "name": "Hard-Boiled",
+            "multiplier": 0.93
+        }
+    },
+	{
+        "model": "campaign_trail.difficulty_level",
+        "pk": 6,
+        "fields": {
+            "name": "Dead on Arrival",
+            "multiplier": 0.915
+        }
+    }
+];
+
+campaignTrail_temp.candidate_json = [
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 16,
+        "fields": {
+            "first_name": "Barack",
+            "last_name": "Obama",
+            "election": 3,
+            "party": "Democratic",
+            "state": "Illinois",
+            "priority": 1,
+            "description": "<p><b>Few figures in</b> modern politics have had a more meteoric rise than Barack Obama, who ascended from state senator to President of the United States in just four years. His 2008 campaign was a cultural phenomenon, but upon entering the Oval Office, he was immediately forced to grapple with the worst economic crisis since the Great Depression. In response, his administration enacted major financial reforms, passed the landmark Affordable Care Act, and oversaw the successful raid that killed Osama bin Laden, a major foreign policy victory.</p><p>As he seeks a second term, the rhetoric of his first campaign has met the harsh reality of a sluggish recovery and a Republican congress. The president’s challenge is to defend a record of difficult choices while attempting to reignite the coalition that first carried him to the White House.</p>",
+            "color_hex": "#194A9F",
+            "secondary_color_hex": "#8ABDFF",
+            "is_active": 1,
+            "image_url": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/9irtfnq.jpeg",
+            "electoral_victory_message": "<h3>Congratulations! You have won the 2012 election.</h3><p>In spite of a hard-fought challenge from Mitt Romney, you have held on to the Presidency.</p><p>On the political front, it appears that your health care legislation that was passed in early 2010 will survive and go into effect. While the economy has not yet recovered as strongly as you hoped and promised, you will now have four more years to leave a strong legacy to your Democratic successor.</p>",
+            "electoral_loss_message": "<h3>Sorry! You have lost the 2012 election.</h3><p>In spite of your spirited defense, Mitt Romney has won the Presidency. Nearly two centuries after the ill-fated campaign of Joseph Smith, Romney will become America’s first Mormon president.</p><p>On the political front, it appears that Romney will make a push for more tax cuts to revive the economy. He will also try to repeal your health care law. If your defeat was narrow enough, you may be able to attempt a comeback in 2016.</p>",
+            "no_electoral_majority_message": "<h3>The House decides the 2012 election.</h3><p>No candidate achieved a majority of the electoral votes, marking the first time this has happened since 1824. Unfortunately for you, the majority of U.S. states have Republican controlled congressional delegations, and they will cast their votes for Mitt Romney.</p><p>Given the incredibly close nature of the election, you can probably set your sights on a political comeback in 2016, if that is what you desire.</p>",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 17,
+        "fields": {
+            "first_name": "Mitt",
+            "last_name": "Romney",
+            "election": 3,
+            "party": "Republican",
+            "state": "Massachusetts",
+            "priority": 2,
+            "description": "<p><b>There is no one in the</b> the Republican Party that has had a more persistent pursuit of the presidency than Mitt Romney, who has transformed from a moderate Massachusetts governor to standard-bearer of a party that has shifted dramatically rightward. His 2012 campaign represents a second attempt at the nomination after falling short in 2008, but his path has been far from smooth.</p><p>As he approaches the general election, Romney faces the twin challenges of consolidating skeptical Tea Party Republicans while appealing to independents in a tight race. His substantial fundraising advantage and Obama’s vulnerability on the economy give him a genuine path to victory, but much depends on whether voters prioritize the handling of the economy over concerns about his consistency and connection to ordinary Americans.</p> ",
+            "color_hex": "#f20d0d",
+            "secondary_color_hex": "#FD9B9B",
+            "is_active": 1,
+            "image_url": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/romney2.webp",
+            "electoral_victory_message": "<h3>Congratulations! You have won the 2012 election.</h3><p>In spite of a hard-fought campaign from Barack Obama, you have won the Presidency. Nearly two centuries after the ill-fated campaign of Joseph Smith, you will become America’s first Mormon president. Your next steps are to select a cabinet and prepare a rousing inauguration speech.</p><p>On the political front, you may have the support needed to overturn Obamacare. Or you could focus on tax cuts, or other policies entirely. If you can recover the economy and not make any major mistakes, you should be able to win re-election in 2016.</p>",
+            "electoral_loss_message": "<h3>Sorry! You have lost the 2012 election.</h3><p>In spite of your best efforts, Barack Obama has been reelected to a second term as President.</p><p>On the political front, it appears that Obamacare will survive and go into effect. While the economy has not recovered as strongly as Obama hoped and promised, he will now have four more years to leave a strong legacy to his Democratic successor. No doubt the Republicans will learn from your failure and come back stronger in 2016.</p>",
+            "no_electoral_majority_message": "<h3>The House decides the 2012 election.</h3><p>No candidate achieved a majority of the electoral votes, marking the first time this has happened since 1824. Fortunately for you, the majority of U.S. states have Republican controlled congressional delegations, and they will cast their votes for you accordingly.</p><p>The important thing is that you won. Go about implementing your agenda accordingly, and pay no attention to Democrats and pundits who call for ‘compromise’ and ‘conciliation’.</p>",
+            "description_as_running_mate": null,
+            "candidate_score": 0.8,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 30,
+        "fields": {
+            "first_name": "Joe",
+            "last_name": "Biden",
+            "election": 3,
+            "party": "Democratic",
+            "state": "Delaware",
+            "priority": 7,
+            "description": "Vice President",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/biden_alt.png",
+            "electoral_victory_message": "n/a",
+            "electoral_loss_message": "n/a",
+            "no_electoral_majority_message": "n/a",
+            "description_as_running_mate": "<p>The incumbent Vice President, Joe Biden has been your loyal and effective partner for the past four years. With decades of experience in the Senate, particularly as Chairman of the Foreign Relations Committee, he provides a seasoned and respected voice on national security. His working-class Scranton roots and ability to connect with blue-collar voters in states like Pennsylvania and Ohio remain a significant asset to winning an election.</p><p>Keeping Biden is the logical choice, and helps assure voters that the team they elected in 2008 is ready to finish the job. However, some in your team are arguing for a change to re-energize the base or appeal to a new demographic. While his occasional off-the-cuff remarks can generate unwanted headlines, dropping your own Vice President would be, depending on who you pick, quite the move.</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 31,
+        "fields": {
+            "first_name": "Paul",
+            "last_name": "Ryan",
+            "election": 3,
+            "party": "Republican",
+            "state": "Wisconsin",
+            "priority": 8,
+            "description": "Vice President",
+            "color_hex": "#FF0000",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/A3J5zod.png",
+            "electoral_victory_message": "n/a",
+            "electoral_loss_message": "n/a",
+            "no_electoral_majority_message": "n/a",
+            "description_as_running_mate": "<p>Paul Ryan has gained national attention with his work on the federal budget as a Congressman from Wisconsin. His advocacy for deficit reduction appeals to a wide range of moderate conservatives, and his home state of Wisconsin promises to be a close call on election night.</p><p>On the other hand, Ryan has only served as a Congressman and has little experience running in a national or even a statewide election.</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 34,
+        "fields": {
+            "first_name": "Hillary",
+            "last_name": "Clinton",
+            "election": 3,
+            "party": "Democratic",
+            "state": "New York",
+            "priority": 11,
+            "description": "Secretary of State",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/f4Ghttn.jpeg",
+            "electoral_victory_message": "n/a",
+            "electoral_loss_message": "n/a",
+            "no_electoral_majority_message": "n/a",
+            "description_as_running_mate": "<p>As your Secretary of State, Hillary Clinton has been a tireless and effective diplomat, restoring America’s image on the world stage. Her experience as a Senator, First Lady, and a formidable 2008 primary opponent gives her a resume and public profile that is second to none. She remains a hero to a large and influential wing of the Democratic party, and her popularity ratings are even higher than her husband’s, Bill.</p><p>Selecting Clinton would create a “dream ticket” that would electrify your base, in particular women voters, and command media attention. This could be a decisive move, but it is not without risk; her presence could overshadow your own message and would inevitably resurrect the political battles and baggage of the 1990s. But perhaps the immense power she brings to the ticket is worth the potential for what could be a rather high-wattage, high-drama campaign.</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+	{
+		"model": "campaign_trail.candidate",
+		"pk": 35,
+		"fields": {
+			"first_name": "Christine",
+			"last_name": "Gregoire",
+			"election": 3,
+			"party": "Democratic",
+			"state": "Washington",
+			"priority": 9,
+			"description": "<p>Governor</p>",
+			"color_hex": "#0000FF",
+			"secondary_color_hex": "#90C0FF",
+			"is_active": 0,
+			"image_url": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/ExespIT.jpeg",
+			"electoral_victory_message": "n/a",
+			"electoral_loss_message": "n/a",
+			"no_electoral_majority_message": "n/a",
+			"description_as_running_mate": "<p>Christine Gregoire is the two-term Governor of Washington, a former state Attorney General, and was recently the chair of the National Governors Association. She is a pragmatic and experienced executive who has navigated her state through the difficult years of the Great Recession. Her main focus has been on education, technology, and global trade.</p><p>As a fellow executive, she could effectively counter some Republican nominees’ claims of business expertise. However, she has a low national profile and might not bring the excitement, regional appeal, or media attention needed to fundamentally alter the electoral map. On the other hand, she could appeal to suburban women without the controversy that might follow other high-profile picks, and helps you lock down the Pacific Northwest for good.</p>",
+			"candidate_score": 0,
+			"running_mate": true
+		}
+	},
+	{
+		"model": "campaign_trail.candidate",
+		"pk": 36,
+		"fields": {
+			"first_name": "Brian",
+			"last_name": "Schweitzer",
+			"election": 3,
+			"party": "Democratic",
+			"state": "Montana",
+			"priority": 10,
+			"description": "<p>Governor</p>",
+			"color_hex": "#0000FF",
+			"secondary_color_hex": "#90C0FF",
+			"is_active": 0,
+			"image_url": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/lyPBP7K.jpeg",
+			"electoral_victory_message": "n/a",
+			"electoral_loss_message": "n/a",
+			"no_electoral_majority_message": "n/a",
+			"description_as_running_mate": "<p>The bolo-tie-wearing Governor of Montana, Brian Schweitzer is a charismatic populist who has thrived in the deep-red state of Montana. He could broaden your appeal with rural, working-class, and independent voters in the West and Midwest with his authentic, anti-corporate message, especially if the Republican nominee is a private equity titan like Mitt Romney.</p><p>His folksy, off-the-cuff style is a double-edged sword, however. While it’s seen as authentic and refreshing, it could easily lead to gaffes on the national stage that distract from your campaign’s message. Schweitzer also represents a state that, while closer than expected in 2008, is not expected to favor you this year.</p>",
+			"candidate_score": 0,
+			"running_mate": true
+		}
+	},
+	{
+		"model": "campaign_trail.candidate",
+		"pk": 37,
+		"fields": {
+			"first_name": "Chris",
+			"last_name": "Dodd",
+			"election": 3,
+			"party": "Democratic",
+			"state": "Connecticut",
+			"priority": 10,
+			"description": "<p>Former Senator</p>",
+			"color_hex": "#0000FF",
+			"secondary_color_hex": "#90C0FF",
+			"is_active": 0,
+			"image_url": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/2DXhFkb.jpeg",
+			"electoral_victory_message": "n/a",
+			"electoral_loss_message": "n/a",
+			"no_electoral_majority_message": "n/a",
+			"description_as_running_mate": "<p>A creature of the Senate, Chris Dodd served Connecticut for thirty years, capping his career as Chairman of the Banking Committee. In the wake of the 2008 financial crisis, he was a principal author of the Dodd-Frank Wall Street Reform and Consumer Protection Act, a landmark piece of legislation that reshaped American financial regulation. His long tenure also included significant work on foreign policy and family leave legislation.</p><p>Selecting Dodd would help signal a commitment to experienced, inside-the-beltway governance. He is a master legislator who could help you navigate a divided Congress, similarly to Biden. However, his deep ties to Washington and the financial industry, including controversies during the subprime mortgage crisis, could provide ammunition for your opponent and undermine your message of changing Washington.</p>",
+			"candidate_score": 0,
+			"running_mate": true
+		}
+	},
+	{
+		"model": "campaign_trail.candidate",
+		"pk": 38,
+		"fields": {
+			"first_name": "Evan",
+			"last_name": "Bayh",
+			"election": 3,
+			"party": "Democratic",
+			"state": "Indiana",
+			"priority": 10,
+			"description": "<p>Former Senator</p>",
+			"color_hex": "#0000FF",
+			"secondary_color_hex": "#90C0FF",
+			"is_active": 0,
+			"image_url": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/yBOOKej.jpeg",
+			"electoral_victory_message": "n/a",
+			"electoral_loss_message": "n/a",
+			"no_electoral_majority_message": "n/a",
+			"description_as_running_mate": "<p>Evan Bayh has been a dominant figure in Indiana politics for decades, serving as both a popular two-term Governor and a two-term U.S. Senator. He was a leading voice for centrism and fiscal discipline within the Democratic Party, and his appeal in a state that has trended Republican landed him a name on your 2008 shortlist before you chose Biden.</p><p>Although a relatively safe choice, his caution and centrism may be seen as uninspiring by the progressive base of the party. Furthermore, his decision to retire from the Senate in 2010 while decrying partisan gridlock could be cynically framed by your opponent as him quitting the fight, only to want back in at the highest level. Either way, he could help reassure business leaders and independent voters, especially in the Midwest, that maybe you are not so bad after all.</p>",
+			"candidate_score": 0,
+			"running_mate": true
+		}
+	},
+	{
+		"model": "campaign_trail.candidate",
+		"pk": 39,
+		"fields": {
+			"first_name": "Gray",
+			"last_name": "Davis",
+			"election": 3,
+			"party": "Democratic",
+			"state": "California",
+			"priority": 10,
+			"description": "<p>Former Governor</p>",
+			"color_hex": "#0000FF",
+			"secondary_color_hex": "#90C0FF",
+			"is_active": 0,
+			"image_url": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/xq4tILM.jpeg",
+			"electoral_victory_message": "n/a",
+			"electoral_loss_message": "n/a",
+			"no_electoral_majority_message": "n/a",
+			"description_as_running_mate": "<p>Huh, how did we even get here? Jerry Brown’s former Chief of Staff, Gray Davis governed California at the turn of the century. Before his governorship, he built a long resume as State Controller and Lieutenant Governor, earning a reputation as a pragmatic, data-driven moderate. He presided over an economic boom and made significant investments in education and infrastructure, but his tenure ended in 2003 when, in light of the California energy crisis and the dot-com bubble burst, he was recalled and replaced by “The Terminator”, Arnold Schwarzenegger.</p><p>Davis is a strange choice, and your opponents will eagerly exploit his failures to paint a picture of mismanagement. On the other hand, he brings serious fundraising muscle to your campaign, and you can’t help but agree with the media analysis that the two of you, perhaps, are two halves of the same heart. As long as he helps you dissect and deface your opponents, it may be worth a try. Perchance...</p>",
+			"candidate_score": 0,
+			"running_mate": true
+		}
+	},
+	{
+		"model": "campaign_trail.candidate",
+		"pk": 40,
+		"fields": {
+			"first_name": "Kathleen",
+			"last_name": "Sebelius",
+			"election": 3,
+			"party": "Democratic",
+			"state": "Kansas",
+			"priority": 10,
+			"description": "<p>Secretary of Health</p>",
+			"color_hex": "#0000FF",
+			"secondary_color_hex": "#90C0FF",
+			"is_active": 0,
+			"image_url": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/q4wB42y.jpeg",
+			"electoral_victory_message": "n/a",
+			"electoral_loss_message": "n/a",
+			"no_electoral_majority_message": "n/a",
+			"description_as_running_mate": "<p>As your current Secretary of Health and Human Services, Kathleen Sebelius is on the front lines of implementing your administration’s signature legislative achievement, the Affordable Care Act. Before joining your cabinet, she was a popular two-term Democratic Governor in the red state of Kansas, where she was known for her bipartisan work on education and fiscal issues. Her experience as both a state executive and a federal cabinet member is a rare combination.</p><p>Choosing Sebelius means doubling down on healthcare reform, making it the central pillar of your re-election campaign, for better or for worse. She is a loyal and incredibly knowledgeable messenger for the policy, but this would also be her biggest liability, as she would become a lightning rod for every Republican attack against it. While she has proven appeal in conservative territory, Kansas is not likely to be a competitive state this year.</p>",
+			"candidate_score": 0,
+			"running_mate": true
+		}
+	},
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 18,
+        "fields": {
+            "first_name": "Gary",
+            "last_name": "Johnson",
+            "election": 3,
+            "party": "Libertarian",
+            "state": "New Mexico",
+            "priority": 3,
+            "description": "<p><b>For voters who find</b> Mitt Romney too moderate and Barack Obama too statist, former New Mexico Governor Gary Johnson offers a third way. Known as ‘Governor Veto’ during his two terms in office, Johnson champions a platform of radical fiscal discipline combined with civil libertarianism: advocating for slashed spending, the legalization of marijuana, and an immediate end to foreign wars.</p><p>Johnson’s campaign is aggressively courting the so-called ‘Ron Paul Revolution’, the energized coalition of young libertarians and constitutionalists who feel spurned by the GOP establishment. While he lacks the funding of the major parties, Johnson hopes to hit the 5% popular vote threshold to secure federal matching funds for the future, and prove that a ticket dedicated to ‘maximum freedom’ has a permanent place in American politics.</p>",
+            "color_hex": "#f9f91f",
+            "secondary_color_hex": "#fffcc0",
+            "is_active": 1,
+            "image_url": "https://file.garden/aNtAfG887DiA_7lO/2016ALOT/johnson.jpg",
+            "electoral_victory_message": "<h3>You lost.</h3><p>Congratulations.</p><p>You have ignited a nuclear war. And no, there is no animated display of a mushroom cloud with parts of bodies flying through the air. We do not reward failure.",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 19,
+        "fields": {
+            "first_name": "Jill",
+            "last_name": "Stein",
+            "election": 3,
+            "party": "Green",
+            "state": "Massachusetts",
+            "priority": 4,
+            "description": "<p><b>Jill Stein enters the</b> race representing the Green Party and the growing disillusionment on the American Left. With the ‘Occupy Wall Street’ movement still fresh in the public memory, Stein frames her campaign as the only voice for the 99%, attacking the President for bailing out banks while leaving homeowners behind and for continuing the wars he promised to end.</p><p>Running on a platform one can call the ‘Green New Deal,’ Stein proposes a massive jobs program centered on renewable energy and an end to student debt. Her strategy relies on mobilizing progressives who feel the ‘Hope and Change’ of 2008 has curdled into corporate centrism. While victory is nearly impossible, she argues that voting for the ‘lesser of two evils’ only perpetuates a broken system, and has urged voters to finally vote their conscience.</p>",
+            "color_hex": "#0ac21a",
+            "secondary_color_hex": "#A1FFA1",
+            "is_active": 1,
+            "image_url": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/stein.webp",
+            "electoral_victory_message": "<h3>You lost.</h3><p>Congratulations.</p><p>You have ignited a nuclear war. And no, there is no animated display of a mushroom cloud with parts of bodies flying through the air. We do not reward failure.",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    }
+]
+
+// Actual code here
+corrr = "little big man.";
+
+// Custom favicon & page title
+changeFavicon("https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/XOvMKWj.png");
+document.title = "little big man.";
+
+// Election night descs
+e.ElectionPopup = "Election night is here. Hope you have your speeches ready, Mr. President."
+e.WinPopup = "You feel as if there’s a beacon of light shining in on you. You smile."
+e.LosePopup = "No."
+e.SelAnsContText = "You haven’t selected your answer yet, Barack."
+
+HistHexcolour = ["#194A9F", "#f20d0d", "#f9f91f", "#0ac21a"];
+HistName = ["Barack Obama", "Mitt Romney", "Gary Johnson", "Jill Stein" ];
+HistEV = [332, 206, 0, 0];
+HistPV = ["65,915,795", "60,933,504", "1,275,971", "469,627"];
+HistPVP = ["51.1%", "47.2%", "1.0%", "0.4%"];
+
+// This causes some variation between the candidate colors. In other words,
+// in every playthrough, the candidate colors will be different from the rest!
+
+// convert “#RRGGBB” → [R,G,B]
+function hexToRgb(hex) {
+  hex = hex.replace(/^#/, '');
+  if (hex.length === 3) {
+    hex = hex.split('').map(c => c + c).join('');
+  }
+  const num = parseInt(hex, 16);
+  return [(num >> 16) & 0xff, (num >> 8) & 0xff, num & 0xff];
+}
+
+// convert [R,G,B] → “#RRGGBB”
+function rgbToHex(r, g, b) {
+  const pad = x => x.toString(16).padStart(2, '0');
+  return `#${pad(r)}${pad(g)}${pad(b)}`;
+}
+
+// linear interpolate two RGB arrays
+function interpolateColor(c1, c2, factor = 0.5) {
+  return c1.map((v, i) =>
+    Math.round(v + factor * (c2[i] - v))
+  );
+}
+
+// vary a single hex color by up to ±variationFrac (e.g. 0.1 = ±10%)
+function varyHexColor(hex, variationFrac = 0.1) {
+  const rgb = hexToRgb(hex);
+  const newRgb = rgb.map(channel => {
+    // random offset between -variationFrac*255 … +variationFrac*255
+    const delta = (Math.random() * 2 - 1) * variationFrac * 255;
+    return Math.max(0, Math.min(255, Math.round(channel + delta)));
+  });
+  return rgbToHex(...newRgb);
+}
+
+campaignTrail_temp.candidate_json.forEach(candidate => {
+  const f = candidate.fields;
+
+  // simple random tint/shade of the original primary
+  f.color_hex = varyHexColor(f.color_hex, 0.05);
+
+  // or interpolate towards the secondary by a random small factor:
+  const primaryRGB   = hexToRgb(f.color_hex);
+  const secondaryRGB = hexToRgb(f.secondary_color_hex);
+  const randFactor   = 0.4 + Math.random() * 0.2; // between 0.4–0.6
+  const blendedRGB   = interpolateColor(primaryRGB, secondaryRGB, randFactor);
+  f.secondary_color_hex = rgbToHex(...blendedRGB);
+});
+
+HistHexcolour = HistHexcolour.map(hex => 
+  // pass the desired max variation fraction (e.g. 0.05 = +/-5%)
+  varyHexColor(hex, 0.05)
+);
+
+// Mod box theme
+campaignTrail_temp.modBoxTheme = {
+    "header_color": "#531919",
+    "header_image_url": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/iXt0KLJ.jpeg",
+    "header_text_color": "#fff",
+    "description_text_color": "#000000",
+    "description_background_color": "#f5f3f4",
+    "main_color": "#bb3e21",
+    "secondary_color": "#19191E",
+    "ui_text_color": "#FFFFFF"
+}
+
+// Game themes
+const themeData = {
+    "Prussian Blue": {
+        headerSrc: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/lbmbanner.png",
+        coloring_title: "#1e2262",
+        coloring_window: "linear-gradient(#0b4c73 70%, #dda01e)",
+        containerColor: "#352b64",
+        footerColor: "",
+        extraCss: `
+            body {
+                background: url(https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/lbm_background2.webp) !important;
+                background-size: cover !important;
+                background-position: center !important;
+            }
+        `
+    },
+    "Forest Green": {
+        headerSrc: "https://upload.wikimedia.org/wikipedia/commons/8/80/President_Barack_Obama_throws_a_football.jpg",
+        coloring_title: "#1e2262",
+        coloring_window: "linear-gradient(#730b0b 70%, #070553)",
+        containerColor: "#176a17",
+        footerColor: "",
+        extraCss: `
+            body {
+                background: url(https://upload.wikimedia.org/wikipedia/commons/c/cb/White_House%2C_lawn%2C_Washington%2C_DC_2012.JPG) !important;
+                background-position: center !important;
+                background-size: cover !important;
+            }
+            .game_header { background: linear-gradient(to bottom, #7b0f0f, #480909, #621e1e) !important; }
+            #inner_window_2, .inner_window_w_desc { background: linear-gradient(#fffcd3, #ff8b7f) !important; }
+            #menu_container { background: linear-gradient(#070059 50%, transparent) !important; }
+			
+			#state_result_container {
+			  background: linear-gradient(0.2turn, transparent, rgb(230, 194, 0)) !important;
+			}
+			
+        `
+    },
+    "Cerulean": {
+        headerSrc: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/obamabluebanner.webp",
+        coloring_title: "#700016",
+        coloring_window: "linear-gradient(#9dc6df, #889adf)",
+        containerColor: "#317cac",
+        footerColor: "#000",
+        extraCss: `
+            body {
+                background-color: #bfe6ff;
+                background: url(https://file.garden/aNtAfG887DiA_7lO/2012LBM/obamablue.webp) !important;
+                background-position: center !important;
+                background-size: cover !important;
+            }
+            .game_header { background: linear-gradient(to bottom, #0f537b, #092548, #1e2c62) !important; }
+            #inner_window_2, .inner_window_w_desc { background: linear-gradient(#d3deff, #7f81ff) !important; }
+            #header { object-fit: cover; object-position: center top; }
+            .content_single .footer h4, .content-single div#site_credits p, .content-single div#site_credits a { color: #000 !important; }
+            #new_footer { background: linear-gradient(#005FB8, #003566); }
+            #menu_container { background: linear-gradient(#005951 50%, transparent) !important; }
+        `
+    }
+};
+
+const el = {
+    headerImg: document.getElementById("header"),
+    gameHeader: document.querySelector(".game_header"),
+    gameWindow: document.getElementById("game_window"),
+    container: document.querySelector(".container"),
+    footer: document.querySelector(".footer")
+};
+
+function applyTheme(themeName) {
+    const config = themeData[themeName];
+    if (!config) return;
+
+    let styleElement = document.getElementById("custom-theme-styles");
+    if (!styleElement) {
+        styleElement = document.createElement("style");
+        styleElement.id = "custom-theme-styles";
+        document.head.appendChild(styleElement);
+    }
+
+    if (el.headerImg) el.headerImg.src = config.headerSrc;
+
+    if (typeof nct_stuff !== 'undefined' && nct_stuff.themes) {
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = config.coloring_title;
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = config.coloring_window;
+    }
+
+    if (el.gameHeader) el.gameHeader.style.backgroundColor = config.coloring_title;
+    if (el.gameWindow) el.gameWindow.style.background = config.coloring_window;
+    if (el.container) el.container.style.backgroundColor = config.containerColor;
+    if (el.footer) el.footer.style.color = config.footerColor || "";
+
+    const commonCss = `@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');`;
+    styleElement.textContent = commonCss + config.extraCss;
+}
+
+const oldPicker = document.getElementById("themePicker");
+if (oldPicker) {
+    const newPicker = document.createElement("select");
+    newPicker.id = "themePicker";
+    
+    Object.keys(themeData).forEach(key => {
+        const option = document.createElement("option");
+        option.value = key;
+        option.textContent = key;
+        newPicker.appendChild(option);
+    });
+
+    newPicker.addEventListener("change", (e) => applyTheme(e.target.value));
+    oldPicker.replaceWith(newPicker);
+    
+    applyTheme(newPicker.value);
+}
+
+// Note: this was initially taken from the Things That Never Were scenario,
+// and lightly adapted to work here. I'm not sure who actually wrote this, and
+// this probably *wasn't* made for that scenario only, so this is embarrassing.
+// Regardless, all attributions go to the respective authors of the respective
+// mods who coined this rather useful feature.
+
+function ensureMetaViewport() {
+    if (!document.querySelector('meta[name="viewport"]')) {
+        const m = document.createElement('meta');
+        m.name = 'viewport';
+        m.content = 'width=device-width, initial-scale=1';
+        document.head.appendChild(m);
+    }
+}
+
+function applyGlobalStyles(css, id = 'app-theme') {
+    if ('adoptedStyleSheets' in document && 'replaceSync' in CSSStyleSheet.prototype) {
+        if (!applyGlobalStyles.sheet) {
+            applyGlobalStyles.sheet = new CSSStyleSheet();
+            document.adoptedStyleSheets = [...document.adoptedStyleSheets, applyGlobalStyles.sheet];
+        }
+        applyGlobalStyles.sheet.replaceSync(css);
+        return;
+    }
+
+    let el = document.getElementById(id);
+    if (!el) {
+        el = document.createElement('style');
+        el.id = id;
+        document.head.appendChild(el);
+    }
+    el.textContent = css;
+}
+
+const css = `
+			/* Candidate/running mate images */
+            #candidate_image, #running_mate_image {
+                border: none;
+                height: auto;
+                margin: 15px 5px;
+                width: 250px;
+            }
+            #candidate_image img, #running_mate_image img {
+                height: 284px;
+                width: auto;
+                outline: 8px ridge;
+            }
+            #candidate_image img { outline-color: #E3BB5B; }
+            #running_mate_image img { outline-color: #DB4141; }
+		
+            /* Background & stuff */
+            body {
+                background-image: url(https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/lbm_background2.webp);
+                background-position: center;
+                background-size: cover;
+            }
+			#header {
+				height: 290px;
+				object-fit: cover;
+			}
+			.campaign_trail_start_emphasis {
+			    background: #fbe63e;
+			    outline: 1px solid #ccc;
+			    padding: .8em .5em;
+			}
+            .container {
+				border: .5em solid rgba(0, 0, 0, 0.5);
+				padding: 0;
+			}
+			hr {
+				border: .1em solid #ffffff63;
+			}
+			.content_single, .footer {
+				border-top: .15em solid #ffffff63;
+				padding: 0 .5em 1em;
+			}
+			#election_description_window, .person_description_window, .description_window_small {
+				border: 3px double #1a0b80;
+				border-radius: 0 .5em;
+			}
+            #game_window {
+                background-color: #b9c4ee;
+                border: .1em solid #d23030;
+                border-radius: .2em .2em 0 0;
+				margin: .5em 0 .5em 0;
+            }
+			#inner_window_w_desc {
+				background: linear-gradient(#ffd3d3, #ffe8d3);
+			}
+            #inner_window_1, #inner_window_2, #inner_window_3, #inner_window_4 {
+				border: 3px double #0b1d80;
+				border-radius: .2rem;
+			}
+			#inner_window_1 {
+			    background: linear-gradient(#f8f8f8, #eaeaea);
+				margin: 1em 2em;
+			}
+			#inner_window_2 {
+			    background: linear-gradient(#ffd3d3, #ffb47f);
+			}
+			
+			/* drop-caps */
+			#inner_window_1 p:first-of-type:first-letter, #inner_window_2 p:first-of-type:first-letter,
+			#inner_window_3 p:first-of-type:first-letter, #running_mate_description_window p:first-of-type:first-letter {
+			  float: left; font-weight: bold; line-height: 0.7em; margin-top: 0.1em; color: #b30000;
+			}
+			#inner_window_1 p:first-of-type:first-letter {
+			  font-size: 4.5em; margin-right: 0.05em;
+			}
+			#inner_window_2 p:first-of-type:first-letter, #inner_window_3 p:first-of-type:first-letter,
+			#running_mate_description_window p:first-of-type:first-letter {
+			  font-size: 3.5em; margin-right: 0.15em;
+			}			
+			
+			/* styling for candidate lists */
+			.person_summary ul {
+				display: flex;
+				flex-flow: column;
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+
+			.person_summary li {
+				padding-bottom: .5em;
+				margin: .25em 0 0 0;
+				border-bottom: 1px solid rgba(44, 62, 80, 0.2);
+				color: #072d53;
+			}
+
+			.person_summary li:last-child {
+				border-bottom: none;
+			}
+
+			.person_summary li::before {
+				content: "▸ ";
+				color: #3498db;
+				font-weight: bold;
+			}
+			
+			.inner_window_question {
+				background: url(https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/3KYu7a5.gif);
+				background-blend-mode: overlay;
+				background-color: rgba(255, 255, 255, 0.5);
+			}
+            .game_header {
+                align-items: center;
+                background: linear-gradient(to bottom, #220f7b, #0E0948, #1e2262);
+				border-bottom: transparent;
+                border-radius: 0.05em 0.05em 0 0;
+                box-shadow: inset 0 .25rem .5rem rgba(255, 255, 255, 0.1), 0 .1rem .5rem rgba(0, 0, 0, 0.4);
+                display: flex;
+                justify-content: center;
+                height: 2.75rem;
+                color: #fff;
+                font-family: Instrument Serif, serif;
+                font-size: 25pt;
+            }
+            #election_id, #candidate_id, #running_mate_id, #game_type_selection, #game_type_id, #difficulty_level_id, #question_select {
+                border-width: .1rem; /* on Firefox, button borders are different compared to Chrome & friends */
+                margin-left: .25rem;
+				padding: .2em .4em;
+            }
+            form[name="election_year"], form[name="candidate"], form[name="running mate"], form[name="game_type_selection"] {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+                margin: .5rem 0 0 0;
+            }
+            .description_window_small {
+                margin: 1em;
+				padding: .2em 1em;
+            }
+            .inner_window_question p:last-of-type { /* so this doesn't overlap with the candidate images */
+                margin: .6em auto;
+                background: linear-gradient(to bottom, transparent, #e8e8e8);
+                border-radius: 1em;
+                width: fit-content;
+                display: inline-block;
+            }
+            .inner_window_question h3 {
+                background: linear-gradient(to bottom, #ffebeb, bisque, #ffc8af);
+                border: 2px double #bbb;
+                margin: .1em 1em .2em 1em;
+				padding: .2em .1em;
+                border-radius: 0 .5rem .5rem 0;
+            }
+            @keyframes fadeInScale {
+                0% {
+                    opacity: 0;
+                    transform: scale(0.8);
+                }
+                100% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+            .overlay_window {
+                animation: fadeInScale 0.3s cubic-bezier(0.3, 1.2, 0.2, 1) forwards;
+                background: #fbf8e8f7;
+				background: repeating-linear-gradient(#fff7eaf7, #fbf8e8f7 2px);
+                border-radius: .2rem;
+                box-shadow: 0 0 .5em rgba(226, 224, 255, 0.5), 0 0 .75em rgba(224, 224, 255, 0.3), 0 0 1em rgba(224, 226, 255, 0.1);
+                display: flex;
+                flex-flow: column;
+            }
+            .overlay_window h3 {
+			    background: #bfcfff;
+			    border-bottom: double #aaa;
+			    padding: .25em 0 .25em;
+			    margin: 0;
+			    font-size: 18px;
+				text-transform: lowercase;
+            }
+			.visit_text {
+				background: #eaeaea;
+				border-radius: 1em 2em / 2em 3em;
+				display: inline-flex;
+				width: fit-content;
+				margin-inline: auto;
+				padding: .5rem;
+				/* necessary for NCT compatibility */
+				position: initial;
+				transform: initial;
+			}
+			#map_container {
+				background: repeating-linear-gradient(to left, #f2e8ff, #dfdfdf 3px);
+			    border-radius: .2em 1.5em;
+			    border-style: groove;
+				height: 30.78em; /* necessary for mobile compatibility */
+			}
+            #overall_result h3, #state_info h3, #state_result h3 {
+				background: #ffe3ca;
+                padding: .2rem 0;
+				text-transform: lowercase;
+            }
+			#state_info h3 {
+				background: #2b2668;
+				color: #fff;
+				border-radius: 0 0 .25em .25em;
+            }
+			#state_info ul {
+				padding: .2em 1em .2em 1em;
+			}
+			#overall_result h3, #menu_container {
+			    border-radius: 1em 1em 0 0;
+			}
+			#overall_result h3 {
+			    border-radius: .5em .5em 0 0;
+			}
+			#overall_result, #overall_result_container {
+		        border-radius: .8em .8em 0 0;
+			}
+            #overall_result button:nth-of-type(1) /* pop. vote button */ {
+                margin-bottom: .5rem;
+            }
+			/* other special button fixes */
+			#overall_result {
+			  display: flex;
+			  flex-direction: column;
+			  align-items: center;
+			}
+			#overall_result h3 {
+			  width: 100%;
+			}
+			#overall_result #switchingEst {
+			  width: 88.5%;
+			}
+			
+			#pvswitcher,
+			#ev_est {
+			  background: none;
+			  border: none;
+			  padding: 0;
+			  
+			  color: #750000;
+			  text-decoration: underline;
+			  
+			  font-size: 1em;
+			}
+			#pvswitcher {
+			  margin-top: .25em;
+			}
+
+			#pvswitcher:hover,
+			#ev_est:hover {
+			  color: #950000;
+			}	
+			
+            #recommended_reading_box {
+                margin: 1rem auto;
+                overflow-y: auto;
+            }
+			#menu_container {
+				background: linear-gradient(#070059 50%, transparent);
+				background-color: inherit;
+			}
+			#state_result_container {
+				background: linear-gradient(0.20turn, transparent, #b50000);
+				border-radius: 0 0 .3em .3em;
+			}
+			#election_image img {
+			    border: 5px groove #08952c;
+				border-radius: .2em 0;
+			}
+			/*#election_image {
+			    margin: 1.5em 1em auto 1em;
+			}*/
+			
+			/* Tweaks for a larger election description - I made this for Moonbeam
+			 * but idk if it'll be used there */
+			#election_summary {
+			  display: flex;
+			  flex-flow: column;
+			  margin: 0 1em 0 0;
+			  padding: .5em;
+			}
+			#election_description_window {
+			  display: flex;
+			  height: auto;
+			}
+			#election_image {
+			  display: flex;
+			  flex-flow: column;
+			  justify-content: center;
+			  margin: 1em 0.75em 1em 1.25em;
+			}
+			#election_image img {
+			  height: 90%;
+			  object-fit: cover;
+			  object-position: -36px 0px;
+			}
+			#election_year_form + p:first-of-type {
+			  padding-top: 1em;
+			}
+			/* mobile tweaks for this */
+			@media only screen and (max-width: 768px) {			  
+			  #election_description_window {
+				flex-flow: column;
+			  }
+			  
+			  #election_summary {
+				padding: 0 1em 0 1em;
+				text-align: center;
+			  }
+				
+				#election_summary p {
+				  margin: .5em 0 1em 0;
+				}
+				  
+				#election_image {
+				  flex-flow: row;
+				  margin: inherit;
+				}
+				  
+				#election_year_form+p:first-of-type {
+				  padding-top: 0;
+				}
+				  
+				#election_image img {
+					object-position: center;
+					width: 100%;
+				}
+				
+				.inner_window_w_desc p {
+				  margin: 1em;
+				}
+				
+			}
+
+            /* Candidate image sizes & stuff */
+            img#candidate_pic {
+                border: 4px ridge #970606;
+                height: 37.5%;
+                margin: 0 17px 0 152px;
+                border-radius: 50% 20% / 10% 40%;
+            }
+            img#running_mate_pic {
+                border: 4px ridge #0F3CA6;
+                height: 37.5%;
+                margin: 0 152px 0 17px;
+                border-radius: 10% 40% / 50% 20%;
+            }
+			#candidate_image img, #running_mate_image img {
+				object-fit: cover;
+				object-position: top;
+			}
+            .inner_window_sign_display {
+                align-items: center;
+                background: linear-gradient(150deg, #ece2e2 0%, #f0f4ff 100%);
+                border: 3px ridge #3c2f61;
+                border-radius: 0 0 2em 2em;
+                box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.2);
+                display: flex;
+                flex-direction: column;
+                height: auto;
+                margin: 0 1rem 0rem 1rem;
+                padding: 12px 12px 15px 10px;
+                position: relative;
+                width: auto;
+            }
+
+            #campaign_sign {
+                background: #ffffff;
+                border: .15rem solid #db4141;
+                width: 90%;
+            }
+
+            #campaign_sign p {
+                color: #2f3061;
+                font-family: Georgia, Arial, sans-serif;
+                font-size: 2.25rem;
+                margin: .5rem 0;
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            }
+
+            #campaign_sign p:first-child {
+                color: #d23535;
+                font-size: 2.5rem;
+            }
+			
+			/* Adds the campaign banner on top of our existing custom sign */
+			#campaign_sign {
+				background-image: url(https://upload.wikimedia.org/wikipedia/en/thumb/b/b4/Obama_logomark.svg/1200px-Obama_logomark.svg.png);
+				background-position: center;
+				background-size: contain;
+				border-color: #c9c9c9;
+				margin-inline: auto;
+				margin-left: -0.09em;
+				height: 92px; 
+				width: 100%; 
+			}
+			#campaign_sign p {
+				color: rgba(0, 0, 0, 0) !important;
+				visibility: hidden;
+			}
+
+            #progress_bar {
+                background: #2f3061;
+                border-radius: .1em;
+                color: white;
+                margin: .2rem auto;
+                margin-bottom: .5rem;
+                padding: .5rem;
+            }
+
+            #progress_bar h3 {
+                font-family: Arial, sans-serif;
+                font-size: 1.1rem;
+                margin: 0;
+            }
+
+            /* Readability fixes */
+            div#site_credits p, div#site_credits a {
+                color: #fff !important;
+            }
+            #overall_result_container, #state_info {
+				background: linear-gradient(to bottom, #f7f7f7, #eee);
+                height: auto;
+				min-height: 6em;
+            }
+			#state_result {
+				min-height: 7.5em;
+			}
+            #map_footer {
+                display: flex;
+                justify-content: center;
+                margin-top: 1rem !important; /* necessary for the further reading section */
+            }
+            #ev_est {
+                margin-bottom: .5rem;
+            }
+            .overlay_window {
+                height: auto;
+            }
+			#visit_buttons, #election_night_buttons, #winner_buttons {
+				margin-bottom: 1em;
+			}
+            button#ExportFileButton {
+                display: inline-flex;
+				margin: 0 0 0 -5.5em !important;
+            }
+            /* other, in-game issue tooltips */
+            .tooltip {
+                cursor: help;
+            }
+            .tooltip .tooltiptext {
+                border-radius: .2em;
+                padding: .5em;
+            }
+            /** for default NCT - this is fine on NCTS **/
+            #main_content_area, #main_content_area_reading {
+                color: #fff;
+            }
+			#bottomBar.inner_window_front {
+				display: none;
+			}
+
+            /* Other minor tweaks */
+            button {
+                border: 1px solid #919191;
+                border-radius: 4px;
+				color: black; /* seems redundant, but is actually necessary for Safari */
+				cursor: pointer;
+                padding: .25em 1.25em;
+                background: linear-gradient(#fff, #e7e7e7);
+            }
+            select {
+				background: linear-gradient(#fff, #e7e7e7);
+				border: 1px solid #919191;
+                border-radius: 3px;
+				color: #000;
+                padding: .25em .4em;
+            }
+			button, select {
+				font-family: Trebuchet MS, Arial, "Helvetica Neue", Helvetica, sans-serif;
+			}
+            button:hover, select:hover {
+                background: color-mix(in srgb, #fff 90%, #6c6c6c 15%);
+            }
+			button#dossier_button:hover { /* ugly fix for the Dossier button */
+			    background: color-mix(in srgb, #fff 90%, #b00 15%) !important;
+			}
+			#game_window button:focus {
+			    outline: 1px solid #274690;
+			    outline-offset: 2px;
+			}
+			button:disabled {
+				color: gray;
+			}
+			button:disabled:hover {
+                background: color-mix(in srgb, #fff 70%, #b00 15%);
+            }
+			blockquote {
+				border-left: 4px solid #07076c;
+				font-style: italic;
+				margin: 1em;
+				padding: 0 1em;
+			}
+			#game_type_id option:nth-child(even) {
+				background-color: #e0e0e0;
+			}
+			
+			/* Styling for in-game input buttons */
+			input.game_answers {
+				margin-right: 1.1em;
+			}
+			#game_window input, #theme_picker input {
+				appearance: none;
+				background-image: linear-gradient(hsl(0 0% 100% / 0.85), transparent 5px), radial-gradient(circle at 50% 0px, hsl(0 0% 100% / 0.5) 4px, transparent 5px), linear-gradient(#999, #E9E9E9 45%, #FFFFFF 95%);
+				background-repeat: no-repeat;
+				border: 1px solid #5d5d5d;
+				border-radius: 25%;
+				box-shadow: 0px 1px 1px #00000080;
+				cursor: pointer;
+				height: 13px;
+				left: 0.4em;
+				position: relative;
+				top: 1px;
+				width: 13px;
+			}
+			#game_window input:hover, #theme_picker input:hover {
+				background-image: linear-gradient(hsl(0 0% 100% / 0.85), transparent 5px), radial-gradient(circle at 0% 0px, hsl(0 0% 100% / 0.5) 4px, transparent 5px), linear-gradient(#999, #C9C9C9 45%, #FFF 95%) !important;
+			}
+			#game_window input:checked, #theme_picker input:checked {
+				background-image: radial-gradient(circle at 50% 5px, #000 1px, transparent 2.5px), linear-gradient(hsl(0 0% 100% / 0.85), transparent 5px), radial-gradient(circle at 50% 0px, hsl(0 0% 100% / 0.25) 3px, transparent 4px), linear-gradient(#000280, #3b3dcc 45%, #d7e9ff 95%) !important;
+			}
+			#game_window input:checked:hover, #theme_picker input:checked:hover {
+				background-image: radial-gradient(circle at 50% 5px, #000 1px, transparent 2.5px), linear-gradient(hsl(0 0% 100% / 0.85), transparent 3.5px), radial-gradient(circle at 50% 0px, hsl(0 0% 100% / 0.25) 3px, transparent 4px), linear-gradient(#002080, #3b3dcc 45%, #ffd7d7 95%) !important;
+			}
+			
+			#question_form br { display: none; }
+			#question_form form {
+				display: grid;
+				grid-template-columns: auto 1fr; 
+				align-items: start;         
+				row-gap: 0;
+				max-width: 930px
+			}
+
+			#question_form input[type="radio"] {
+				grid-column: 1;
+				margin: 0 10px 0 0;
+				align-self: center;           
+				transform: translateY(-1px); 
+			}
+
+			#question_form input[type="radio"] + label {
+				grid-column: 2;
+				display: block;                  
+				padding: 3px 6px; 
+				margin: 0;      
+				line-height: 1.32;
+				border: none; 
+				border-bottom: 1px dashed #bbb;
+				transition: background-color .2s, border-color .2s;
+				cursor: pointer;
+				width: min(100%, 930px);
+			}
+
+			#question_form form > input[type="radio"]:last-of-type + label {
+				border-bottom: none;
+			}
+
+			#question_form label {
+				font-size: 14px;
+				font-weight: 400; 
+				margin: 1px; /* prevent any bottom margin */
+				line-height: 1.2;
+			}
+
+			#question_form input[type="radio"]:checked + label {
+				background: #EDF3F7;
+				border-bottom-color: #548EAD;
+				border-bottom: 1px dotted !important;
+				border-radius: 0 1em 1em 0;
+			}
+
+			#question_form input[type="radio"] + label:hover,
+			#question_form input[type="radio"] + label:focus {
+				font-size: 14px;
+				font-weight: 400; 
+				background: #f0f0f0;
+			}
+					
+			#coalitionList input { /* for the contingent tables */
+			    margin: 0 2em;
+			    display: flex;
+			}
+ 
+            /** Game Link button - this never really worked afaik **/
+            #overall_election_details p a {
+                display: none;
+            }
+
+            /* Text tooltips - experimental */
+            /* kindly borrowed from the folks @ campaigntrailshowcase.com
+            and adapted to opapeldetrouxa.neocities.org */
+			.mytooltip {
+				background: linear-gradient(180deg, #a8ccff 0%, #7fb4ff 100%);
+				color: #000;
+				cursor: help;
+				display: inline-flex;
+				padding: 0 .15em;
+				position: relative;
+				border-radius: .2em;
+				box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+			}
+
+			.mytooltip .mytooltiptext {
+				background: linear-gradient(180deg, 
+					#b8d4ff 0%, 
+					#8fc1ff 45%, 
+					#6aadff 50%, 
+					#5a9fff 100%);
+				border: 1px solid rgba(0, 80, 160, 0.5);
+				border-radius: 12px;
+				bottom: calc(100% + 15px);
+				font-size: 13px !important;
+				font-weight: 500;
+				left: 50%;
+				line-height: 1.5em !important;
+				margin-left: -120px;
+				opacity: 0;
+				padding: 10px 12px;
+				pointer-events: none;
+				position: absolute;
+				text-align: center;
+				transition: opacity 0.3s;
+				width: 240px;
+				z-index: 1;
+				
+				box-shadow: 
+					inset 0 1px 0 rgba(255,255,255,0.5),
+					inset 0 -1px 0 rgba(0,0,0,0.1),
+					0 1px 4px rgba(0,0,0,0.2),
+					0 0 0 1px rgba(0,80,160,0.2);
+			}
+			.mytooltip .mytooltiptext::before {
+				content: "";
+				position: absolute;
+				top: 100%;
+				left: 50%;
+				margin-left: -8px;
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-width: 8px 8px 0 8px;
+				border-color: #5a9fff transparent transparent transparent;
+				filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
+			}
+			.mytooltip .mytooltiptext img {
+				border: 1px solid rgba(0,0,0,0.2);
+				border-radius: .2em;
+				display: block;
+				height: auto;
+				margin: 0 auto 8px auto;
+				max-width: 240px;
+				box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+			}
+			.mytooltip:hover .mytooltiptext {
+				opacity: 1;
+				transition-delay: 0.2s;
+			}
+			/* this is specifically for tooltips inside the advisor feedback module */
+			#visit_window .mytooltiptext {
+			  padding: .8em 1em; /*.1em 1.1em .75em .75em;*/
+			}
+
+            /* New styling for the results table */
+            #state_result_data_summary table,
+			#overall_details_container table,
+			.final_results_table {
+				border-collapse: separate;
+				border-spacing: 0;
+				border: 1px solid #c6c6c6;
+				border-radius: 6px;
+				box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+				font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				font-size: 0.95em;
+				background: #fff;
+			}
+
+			#state_result_data_summary table th,
+			#overall_details_container table th,
+			.final_results_table th {
+				background: linear-gradient(to bottom, #f7f7f7 0%, #e8e8e8 100%);
+				border-bottom: 1px solid #b9b9b9;
+				color: #333;
+				font-weight: 600;
+				padding: .5rem .75rem;
+				text-shadow: 0 1px 0 #fff;
+				text-align: left;
+			}
+
+			#state_result_data_summary table th:first-child,
+			#overall_details_container table th:first-child,
+			.final_results_table th:first-child {
+				border-top-left-radius: 6px;
+			}
+
+			#state_result_data_summary table th:last-child,
+			#overall_details_container table th:last-child,
+			.final_results_table th:last-child {
+				border-top-right-radius: 6px;
+			}
+
+			#state_result_data_summary table td,
+			#overall_details_container table td {
+				border-top: 1px solid #e0e0e0;
+			}
+			
+			#state_result_data_summary table td {
+				padding: .5em 1em;
+			}
+			
+			#overall_details_container table td {
+				padding: .2em 1em;
+			}
+
+			.final_results_table td {
+				padding: .4rem .8rem;
+				border-top: 1px solid #e0e0e0;
+				/*text-align: right;*/
+			}
+
+			#state_result_data_summary table td:not(:first-child),
+			#overall_details_container table td:not(:first-child),
+			.final_results_table td:not(:first-child) {
+				border-left: 1px solid #e0e0e0;
+			}
+
+
+			#state_result_data_summary table td:first-child,
+			#overall_details_container table td:first-child,
+			.final_results_table td:first-child {
+				text-align: left;
+			}
+
+			#state_result_data_summary table td span,
+			#overall_details_container table td span,
+			.final_results_table td span {
+				border: 1px solid rgba(0, 0, 0, 0.2);
+				border-radius: 3px;
+				display: inline-flex;
+				height: 0.9em;
+				margin-right: .5em;
+				text-indent: -9999px;
+				vertical-align: text-top;
+				width: 0.9em;
+				box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+			}
+
+			#state_result_data_summary table tbody tr:nth-child(even),
+			#overall_details_container table tbody tr:nth-child(even),
+			.final_results_table tbody tr:nth-child(even) {
+				background-color: #f5f5f5;
+			}
+
+			#state_result_data_summary table tbody tr:hover,
+			#overall_details_container table tbody tr:hover,
+			.final_results_table tbody tr:hover {
+				background-color: #d8e6f4;
+				color: #222;
+			}
+			#overall_vote_statistics table {
+				width: 75%;
+			}
+			#overall_vote_statistics table:first-of-type {
+				width: 90%;
+			}
+
+			/* Ending screens tweaks */			
+			#final_results_description {
+				display: flex !important; // remove this tag once debugging is finished
+			}
+			#results_container > .person_image {
+				border-color: #9d0000;
+				border-style: ridge;
+				height: 300px;
+				max-width: 210px;
+			}
+			.person_image {
+				object-fit: cover;
+				object-position: center;
+			}
+			#endingtxt h3 {
+				letter-spacing: 1px;
+				text-align: center;
+			}
+			#ending-stats-container > div#difficulty_mult, #ending-stats-container > div#map_footer {
+				text-align: center;
+			}
+			.button_container {
+			    display: flex;
+			    gap: 20px;
+			    left: 13px;
+			    top: 365px;
+			    position: absolute;
+			}
+			/* fade-in - inspired by the ATW fade-in */
+			@keyframes broadcastFade {
+				0% {
+					opacity: 0;
+					filter: brightness(1.4) blur(2px);
+				}
+				30% {
+					opacity: 0.4;
+					blur: 1px;
+				}
+				60% {
+					filter: brightness(1.1);
+				}
+				100% {
+					opacity: 1;
+					filter: none;
+				}
+			}
+
+			.fade-in {
+				animation: broadcastFade .65s cubic-bezier(.25,.8,.25,1) forwards;
+				will-change: opacity, transform;
+				backface-visibility: hidden;
+			}
+			
+			/* Election night screen tweaks */
+			#overall_result ul, #state_result ul {
+				list-style: none;
+				padding: 1px 10px 10px 10px;
+				margin: 0;
+			}
+
+			#overall_result li {
+				margin: 5px 0;
+			}
+			#state_result li {
+				margin: 5px 0 px 0;
+			}
+
+			#overall_result span:not(.ce-tooltip-container):not(.ce-tooltip), 
+			#state_result span:not(.ce-tooltip-container):not(.ce-tooltip) {
+				display: inline-block;
+				width: 14px;
+				height: 14px;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				margin-right: 5px;
+				vertical-align: sub;
+			}
+			
+			/* Cheat menus/benefit check window - because people *are* gonna use this, you know? */
+			#benefitwindow {
+				overflow: auto;
+			}
+			#benefitwindowheader, #achwindowheader {
+				background-color: #790303;
+				font-size: 17px;
+			}
+			#benefitcontent {
+				margin: 5px 10px;
+				overflow-x: clip;
+			}			
+			#achwindow {
+				top: 5%;
+				left: 25%;
+			}
+			#achcontent {
+				overflow: auto;
+				overflow-y: scroll;
+			}
+			#achwindowheader { /* sometimes the Achievements header won't load, so this is a lazy fix */
+				display: block;
+			}
+			#cheatMenu, #showBenefitCheckButton {
+				margin-top: 1em;
+			}
+			#achwindow > #achcontent button {
+			  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+			  font-family: 'Microsoft Sans Serif', sans-serif;
+			  color: #fff;
+			  background: linear-gradient(#4a4ba9, #4a6ea9);
+			}
+
+			#achwindow > #achcontent button:focus {
+			  background: linear-gradient(#790303, #4a6ea9);
+			  outline:1px dotted #000;
+			  outline-offset:-4px
+			}
+			.achSubHolder.visible {
+			  display: grid !important;
+			  grid-template-columns: repeat(3, 1fr) !important;
+			  gap: 15px !important;
+			  width: 100% !important;
+			  padding: 10px !important;
+			  box-sizing: border-box !important;
+			  justify-content: normal !important;
+			  
+			  opacity: 1 !important;
+			  max-height: none !important;
+			  visibility: visible !important;
+			}
+
+			.achSubHolder {
+			  padding: 0 !important; 
+			  border: none !important;
+			}
+
+			.achBox {
+			  margin: 0 !important;
+			  width: 100% !important;
+			  max-width: none !important;
+			  height: 350px !important;
+			  display: flex !important;
+			  flex-direction: column !important;
+			  align-items: center !important;
+			  justify-content: flex-start !important;
+			  padding: 15px !important;
+			  box-sizing: border-box !important;
+			}
+
+			.achImageHolder {
+			  width: 90px !important;
+			  height: 90px !important;
+			  margin: 0 0 10px 0 !important;
+			  flex-shrink: 0 !important;
+			}
+
+			.achTitle {
+			  width: 100% !important;
+			  font-size: 13pt !important;
+			  margin: 0 0 10px 0 !important;
+			  min-height: 40px !important;
+			  display: flex !important;
+			  align-items: center;
+			  justify-content: center;
+			  flex-shrink: 0 !important;
+			  line-height: 1.1 !important;
+			}
+
+			.achText {
+			  display: flex !important;
+			  flex-direction: column !important;
+			  justify-content: center !important;
+			  align-items: center !important;
+			  
+			  width: 100% !important;
+			  height: auto !important;
+			  flex-grow: 1 !important;
+			  
+			  margin: 0 !important;
+			  padding: 10px !important;
+			  box-sizing: border-box !important;
+			  overflow-y: auto !important;
+			  text-align: center !important;
+			  white-space: normal !important;
+			}
+			@media (max-width: 768px) {
+			  .achSubHolder.visible {
+				grid-template-columns: repeat(2, 1fr) !important;
+			  }
+			}
+			@media (max-width: 480px) {
+			  .achSubHolder.visible {
+				grid-template-columns: 1fr !important;
+			  }
+			}
+			
+			/* neater terminal theme */
+			.terminal-container {  
+			  /* sizing/positioning */
+			  width: min(560px, 92vw);
+			  height: min(340px, 60vh);
+
+			  /* look */
+			  font: 13.5px/1.35 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+			  color: rgba(255,255,255,.92);
+			  background: rgba(14, 16, 22, .92);
+			  border: 1px solid rgba(255,255,255,.10);
+			  border-radius: 5px 0;
+			  box-shadow: 0 14px 40px rgba(0,0,0,.55);
+
+			  /* layout */
+			  z-index: 9999;
+			  overflow: hidden;
+			  display: flex;
+			  flex-direction: column;
+
+			  /* nice-to-have tbh */
+			  backdrop-filter: blur(6px);
+			  -webkit-backdrop-filter: blur(6px);
+			}
+
+			.terminal-header {
+			  padding: 8px 10px;
+			  cursor: move;
+			  user-select: none;
+
+			  display: flex;
+			  align-items: center;
+			  justify-content: space-between;
+			  gap: 110px;
+
+			  background: linear-gradient(
+				to bottom,
+				rgba(255,255,255,.07),
+				rgba(255,255,255,.03)
+			  );
+			  border-bottom: 1px solid rgba(255,255,255,.08);
+			}
+
+			.toggle-button,
+			.submit-button{
+			  width: 26px;
+			  height: 26px;
+			  border: 0;
+			  border-radius: 6px;
+			  background: transparent;
+			  color: rgba(255,255,255,.85);
+			  font-size: 16px;
+			  line-height: 1;
+			  cursor: pointer;
+
+			  display: flex;
+			  justify-content: center;
+			  place-items: center;
+			}
+
+			.toggle-button:hover,
+			.submit-button:hover{
+			  background: rgba(255,255,255,.08);
+			  color: #fff;
+			}
+
+			.toggle-button:active,
+			.submit-button:active{
+			  background: rgba(255,255,255,.12);
+			}
+
+			.terminal-body{
+			  padding: 10px 12px;
+			  flex: 1 1 auto;
+			  overflow: auto;
+			}
+
+			.terminal-body::-webkit-scrollbar{ width: 10px; }
+			.terminal-body::-webkit-scrollbar-thumb{
+			  background: rgba(255,255,255,.14);
+			  border-radius: 10px;
+			  border: 2px solid rgba(14, 16, 22, .92);
+			}
+			.terminal-body::-webkit-scrollbar-thumb:hover{
+			  background: rgba(255,255,255,.22);
+			}
+
+			.terminal-footer{
+			  padding: 8px;
+			  display: flex;
+			  align-items: center;
+			  gap: 8px;
+
+			  background: rgba(255,255,255,.03);
+			  border-top: 1px solid rgba(255,255,255,.08);
+			}
+
+			.terminal-input{
+			  width: 100%;
+			  box-sizing: border-box;
+
+			  padding: 8px 10px;
+			  border-radius: 8px;
+			  border: 1px solid rgba(255,255,255,.10);
+
+			  background: rgba(0,0,0,.25);
+			  color: #fff;
+			  outline: none;
+			}
+
+			.terminal-input::placeholder{
+			  color: rgba(255,255,255,.45);
+			}
+
+			.terminal-input:focus{
+			  border-color: rgba(120,170,255,.55);
+			  box-shadow: 0 0 0 3px rgba(120,170,255,.18);
+			}
+
+			/* remove the old hover adds a top border behavior */
+			.terminal-input:hover{
+			  border: 1px solid rgba(255,255,255,.18);
+			}
+
+			/* minimized state */
+			.terminal-container.minimized{
+			  height: 44px;
+			}
+
+			.terminal-container.minimized .terminal-body,
+			.terminal-container.minimized .terminal-footer{
+			  display: none;
+			}
+						
+			/* Start new game screen */
+			#new_game_buttons {
+				display: flex;
+				gap: .5rem;
+				justify-content: center;
+				padding-bottom: 1rem;
+			}
+			
+			#final_results_description p {
+				line-height: 1.5;
+			}
+						
+			/* For the Senate tab in the end */
+			#drop_down_area_state p {
+				color: #fff;
+				text-align: left;
+			}
+			
+			/* Achievement popups */
+			.achievement-popup {
+				display: flex;
+				align-items: center;
+				gap: 15px;
+				text-align: left;
+				position: fixed;
+				top: 20px;
+				left: 50%;
+				padding: 15px;
+				background-color: #ece8da;
+				border: 2px groove #03002d;
+				border-top: 5px solid #181079;
+				border-radius: 0 0 1em 1em;
+				box-shadow: rgba(0, 0, 0, 0.5) 0 2px 10px, rgba(224, 255, 255, 0.3) 0 0 10px, rgba(224, 255, 255, 0.1) 0 0 40px, rgba(0, 0, 0, 0.4) 2px 4px 6px;
+				font-family: Arial, sans-serif;
+				z-index: 9999;
+				max-width: 450px;
+				
+				/* initial animation state */
+				opacity: 0;
+				transform: translateX(-50%) scale(0.9);
+				transition: opacity 0.3s ease-in-out, transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+			}
+			.achievement-popup.show {
+				opacity: 1;
+				transform: translateX(-50%) scale(1); /* final state */
+			}
+			.achievement-popup-image {
+				width: 100px;
+				height: 100px;
+				border-radius: .75em .2em;
+				flex-shrink: 0;
+				object-fit: cover;
+			}
+			.achievement-popup-title {
+				margin: 0 0 5px;
+				font-size: 20px;
+				color: #00116c;
+				text-shadow: 0 0 10px #86a8f999;
+				text-transform: lowercase;
+			}
+			.achievement-popup-desc {
+				margin: 0;
+				font-size: 13px;
+				line-height: 1.45;
+				color: #000;
+			}
+			
+			/* cheat menu tweaks */
+			input {
+			  font-family: Trebuchet MS, sans-serif;
+			}
+			button[onclick="addSTSSMoney()"], /* neither are used for this mod */
+			button[onclick="activateVariableTooltip()"] {
+			  display: none;
+			}
+			#autoplayMenu {
+			  flex-direction: column;
+			  gap: 10px;
+			  padding: 1em;
+			  border: 1px solid #d0d7de;
+			  border-radius: 0 0 5px 5px;
+			  background: linear-gradient(#b4b0ec, aliceblue);
+			}
+
+			#autoplayMenu textarea { width: 100%; box-sizing: border-box; }
+			#autoplayMenu button { align-self: flex-end; }
+			#autoplayMenu #autoplayAnswers { display: none; }
+			
+			/* Mobile compatibility fixes - partially inspired by those of TTNW */
+			@media only screen and (max-width: 768px) {
+			
+			 /* necessary to ensure the music player stays in position */
+			  #game_window {
+				flex: 1 1 auto;
+				min-height: clamp(360px, 40vh, 587px);
+				height: auto;
+				align-self: stretch;
+				overflow: visible;
+				box-sizing: border-box;
+				background-position: center bottom;
+				background-repeat: no-repeat;
+				background-size: cover;
+			  }
+			
+			  #question_form button, #inner_window_2 button, #inner_window_3 button, #inner_window_4 button, #game_window button, #headquarter button, #advisorsDiv button, #inner_window_2 select, #inner_window_3 select, #inner_window_4 select {
+				font-size: clamp(16px, 4.2vw, 20px);
+				line-height: 1.2;
+				padding: 10px 16px;
+				min-height: 44px;
+			  }
+			  
+			  #inner_window_2 button, #inner_window_3 button, #inner_window_4 button, #game_window button, #headquarter button, #advisorsDiv button {
+				font-size: 1em;
+				line-height: 2em;
+			  }
+
+			  .inner_window_question button, #visit_window button, #map_footer {
+				line-height: 2.5em;
+			  }
+			  
+			  #map_footer {
+				/*padding-right: 10em;*/
+				padding: 1em 0;
+			  }
+			  .inner_window_question, #results_container, #map_footer, #overall_details_container, #main_content_area_reading, #inner_window_2, #inner_window_3, #inner_window_4, #advisors {
+				font-size: 1.8em;
+			  }
+
+			  .inner_window_question {
+				height: auto !important;
+				min-height: 0 !important;
+				max-height: none !important;
+				position: static !important;
+				top: auto !important;
+				bottom: auto !important;
+				flex: 0 1 auto !important;
+				align-self: auto !important;
+				grid-row: auto !important;
+				grid-column: auto !important;
+				justify-self: auto !important;
+				display: flow-root !important;
+				overflow: visible !important;
+				box-sizing: border-box !important;
+				max-height: 395px;
+			  }
+
+				#question_form input[type="radio"] {
+					width: 1.3em;
+					height: 1.3em;
+					margin: 0 10px 0 0;
+					transform: none;
+					align-self: center;
+				}
+
+				#question_form input[type="radio"] + label {
+					font-size: clamp(16px, 4.2vw, 20px);
+					line-height: 1.3;
+					padding: 10px 12px;
+					min-height: 44px;
+				}
+
+				#question_form button,
+				#inner_window_2 button,
+				#inner_window_3 button,
+				#inner_window_4 button,
+				#game_window button,
+				#headquarter button,
+				#advisorsDiv button {
+					font-size: clamp(16px, 4.2vw, 20px);
+					line-height: 1.2;
+					padding: 10px 16px;
+					min-height: 44px;
+				}
+
+				#question_form input[type="radio"] + label:hover,
+				#question_form input[type="radio"] + label:focus {
+					font-size: clamp(16px, 4.2vw, 20px);
+					line-height: 1.3;
+					padding: 10px 12px;
+					font-weight: 400;
+					background: #f1f1f1; /* only change background */
+				}
+				
+				.overlay_window {
+					font-size: clamp(16px, 4.2vw, 20px);
+					width: 60%;
+					left: 20%;
+				}
+				
+				.overlay_window img {
+				  width: 15em;
+				  height: auto;
+				}
+				
+				.overlay_window h3 {
+				  padding: .5rem x .5rem;
+				  font-size: 24px;
+				}
+				
+				/* further reading tab */
+				#tab-select,
+				#recommended_reading_box #start.ftab,
+				#recommended_reading_box #start.ftab-active,
+				#recommended_reading_box .ftab,
+				#recommended_reading_box .ftab-active {
+				  height: 64px !important;
+				  width: 192px;
+				}
+
+				#recommended_reading_box .ftab,
+				#recommended_reading_box .ftab-active {
+				  padding-top: 14px;
+				}
+				
+				.button_container {
+				  left: 25px;
+				  top: 385px;
+				}
+				
+				.campaign_trail_start_emphasis {
+				  padding: 1.75em .75em !important;
+				}
+				
+			}
+				
+`;
+
+ensureMetaViewport();
+applyGlobalStyles(css);
+
+// Tooltips for the, uh, tooltip creator.
+tooltipList = [
+    // the cabinet & friends
+    { searchString: "Barack Obama", explanationText: "<img src=https://media.cnn.com/api/v1/images/stellar/prod/ap598896397999.jpg?q=w_1110,c_fill> Class president." },
+    { searchString: "Obama", explanationText: "<img src=https://m.media-amazon.com/images/I/41N4V-n6NLL._UF1000,1000_QL80_.jpg> Sexy and you know it." },
+	{ searchString: "Joe Biden", explanationText: "<img src=https://media.gettyimages.com/id/1258584811/it/foto/us-vice-presidential-nominee-senator-joe-biden-and-democratic-presidential-nominee-senator.jpg?s=612x612&w=0&k=20&c=pTe0_yyuOdAlJHq7Uviow3vvC8MrTNkl0jLVAJXnYzU=> Joe Bidenopoulos; your Vice President." },
+	{ searchString: "Joe Biden", explanationText: "<img src=https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/newscms/2019_17/2831211/190421-joe-biden-guns-3-cs-701a.jpg> Joe Bidenopoulos; your Vice President." },
+    { searchString: "Michelle", explanationText: "<img src=https://media.gettyimages.com/id/149334987/pt/foto/london-england-first-lady-michelle-obama-addresses-members-of-the-2012-team-usa-at-the.jpg?s=612x612&w=0&k=20&c=XxyEmcaALe9kg4hL8fOQJSFjqpgQ1mWM7hsbJELuUGg=> Michelle Obama; your loving wife." },
+    { searchString: "Hillary Clinton", explanationText: "<img src=https://media.gettyimages.com/id/126126505/pt/foto/new-york-cityhillary-rodham-clinton-secretary-of-state-speaks-during-the-closing-plenary.jpg?s=612x612&w=0&k=20&c=UhEe4qHtrl1hKYNHfe5z6E18ew3epdrhSJOUkq45Bh8=> Hillary Clinton; your former 2008 rival, and now your loyal Secretary of State. She’s spent the last four years circling the globe as America’s top diplomat, and is quite ambitious." },
+    { searchString: "Eric Holder", explanationText: "<img src=https://media.gettyimages.com/id/131921439/pt/foto/washington-dc-attorney-general-eric-holder-gestures-while-answering-questions-during-a-senate.jpg?s=612x612&w=0&k=20&c=h4kT5QcctOsDXkTdlRPxS8oHqfCR39MVgZ-yKXggEac=> Eric Holder; your Attorney General. He is perhaps the best Eric you know, which is hardly surprising because you don’t know many." },
+	{ searchString: "Rahm", explanationText: "<img src=https://i.guim.co.uk/img/static/sys-images/Users/Help/screenshots/2010/9/28/1285691854527/Barack-Obama-with-Rahm-Em-006.jpg?width=465&dpr=1&s=none&crop=none> Just like you." },
+	{ searchString: "Arne Duncan", explanationText: "<img src=	https://images.sidearmdev.com/convert?url=https%3a%2f%2fdxbhsrqyrr690.cloudfront.net%2fsidearm.nextgen.sites%2fgocrimson.com%2fimages%2f2012%2f5%2f8%2fBKM_Duncan_Arnie2.jpg&type=webp> Jim Carrey’s doppelgänger." },
+	{ searchString: "Kerry", explanationText: "<img src=https://static01.nyt.com/images/2009/01/13/us/13kerry_450.jpg?quality=100&auto=webp&disable=upscale> People are going to die... but not us, Barack. We are going to live." },
+    { searchString: "Ben Bernanke", explanationText: "<img src=https://media.gettyimages.com/id/98698380/pt/foto/washington-federal-reserve-chairman-ben-bernanke-greets-attendees-before-addressing-the.jpg?s=612x612&w=0&k=20&c=bGMzC4QsKaQC2DoXH0sQl-Inecqk_eMT1u5vCXPBoeI=> Ben Bernanke; the Chairman of the Federal Reserve." },
+	{ searchString: "Cuomo", explanationText: "<img src=https://static01.nyt.com/images/2012/09/22/nyregion/CUOMO/CUOMO-jumbo-v2.jpg?quality=75&auto=webp&disable=upscale> In one of 42 possible timelines, your hand-picked succesor." },
+
+    // opponents, et al.
+    { searchString: "Mitt Romney", explanationText: "<img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn7l4BBAsILJb7goqQQX-qrE4xokpZqpTSxg&s> Former Governor of Massachusetts." },
+    { searchString: "Bain Capital", explanationText: "<img src=https://imageio.forbes.com/blogs-images/thumbnails/blog_986/pt_986_6157_o.jpg?format=jpg&height=600&width=1200&fit=bounds> The private equity firm Mitt Romney co-founded. Depending on who you ask, it either created jobs and value, or it specialized in 'vulture capitalism,' asset-stripping companies and firing workers." },
+    { searchString: "Scott Walker", explanationText: "<img src=https://images.csmonitor.com/csm/2012/06/0606-walker-Wisconsin-Recall.jpg?alias=standard_900x600> The Governor of Wisconsin. He became a conservative hero for taking on public sector unions, and survived a recall election over it earlier this year." },
+    { searchString: "Ron Paul", explanationText: "<img src=https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1500w,f_auto,q_auto:best/streams/2012/August/120823/498978-120823_ron-paul_4x3.jpg> Texas Congressman and a libertarian icon." },
+    { searchString: "Newt Gingrich", explanationText: "<img src=https://i.insider.com/6164a4362457a4001982d0d7?width=700> The former Speaker of the House. Kinda like a vampire." },
+    { searchString: "Rick Santorum", explanationText: "<img src=https://media.npr.org/assets/img/2012/01/05/71778228_wide-11f33e9ba3bb66c23d6da86d611f2cef91345c4c.jpg?s=1100&c=50&f=jpeg> Former Senator from Pennsylvania." },
+    { searchString: "Donald Trump", explanationText: "<img src=https://variety.com/wp-content/uploads/2016/07/donald-trump-the-apprentice.jpg> The host of the reality TV show 'The Apprentice.' He spent much of last year loudly promoting 'birther' conspiracy theories about you before deciding not to run for president himself. Amen for that." },
+	{ searchString: "Christie", explanationText: "<img src=https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2013/1/8/1357676359093/Chris-Christie-new-jersey-008.jpg?width=465&dpr=1&s=none&crop=none> Swept away the competition." },
+
+    // former politicians
+	{ searchString: "Bush", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/dubya.webp> Say the word." },
+    { searchString: "Clinton", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/bill.webp> Culture Club - Do You Really Want To Hurt Me" },
+    { searchString: "Gore", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/G58yVEFXoAANcDt.jpg> Praying for <i>hope</i>." },
+    { searchString: "Jimmy Carter", explanationText: "<img src=https://bbforpeace.org/lessonsfrompeacebuilders/wp-content/uploads/2020/08/170414_abc_archive_jimmycarter_nobelprize_speech_16x9_992-1.jpg> God, you hope you don’t end up like him." },
+    { searchString: "Cheney", explanationText: "<img src=https://sites.libraries.uta.edu/ettahulme/sites/ettahulme/files/2020-08/20114219.jpg> <b>B</b>est ever." },
+    { searchString: "FDR", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/fdr.webp> Franklin D. Roosevelt; the 32nd President of the United States." },
+    { searchString: "Johnson", explanationText: "<img src=https://imagez.tmz.com/image/f8/o/2012/10/03/f867d804e9b15b2f9511177d680a4e5c_lg.jpg> Lyndon B. Johnson; the 36th President of the United States." },
+	{ searchString: "Reagan", explanationText: "<img src=https://preview.redd.it/mpc217yg5hp91.jpg?width=640&crop=smart&auto=webp&s=5fbce7c03bc06d3896d6deec934e474e46d9c878> The 40th President of the United States. Gone." },
+    { searchString: "Rumsfeld", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/u9BDoVn.png> Real quiet these days." },
+	{ searchString: "Wilson", explanationText: "<img src=https://encyclopediavirginia.org/wp-content/uploads/2020/11/8443hpr_15598ae1a3f7bb5-scaled.jpg> Has a cool first name." },
+	{ searchString: "Henry Kissinger", explanationText: "<img src=https://media.gettyimages.com/id/92915840/pt/foto/former-secretary-of-state-henry-kissinger-poses-at-a-portrait-session-in-front-of-painting-by.jpg?s=612x612&w=0&k=20&c=EsC63s_NHuLBpXP0pXayQBzr-8og6hnXaAn5NS7MMiY=> Shadow President." },
+
+    // international figures/groups
+    { searchString: "Osama bin Laden", explanationText: "<img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb8HVF-v2kev0nVeHkiJBw9gsFV_mwjW-NUQ&s> The founder of al-Qaeda. Gone." },
+	{ searchString: "bin Laden", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/karaoke.jpg> Better at karaoke than you are." },
+    { searchString: "Bashar Assad", explanationText: "<img src=https://static01.nyt.com/images/2012/08/20/world/middleeast/20syria_1/20syria_1-jumbo.jpg?quality=75&auto=webp&disable=upscale> The President of Syria. Rahm tells you his favorite game is actually Duke Nukem 3D." },
+    { searchString: "Angela Merkel", explanationText: "<img src=https://d3i6fh83elv35t.cloudfront.net/newshour/app/uploads/2015/12/RTS4J82-1024x779.jpg> Chancellor of Germany and Stephen Patel’s twin." },
+    { searchString: "Hosni Mubarak", explanationText: "<img src=https://media.cnn.com/api/v1/images/stellar/prod/120610120655-hosni-mubarak-trial.jpg?q=w_1576,c_fill> A key U.S. ally for decades, he was overthrown during the Arab Spring in 2011. I wonder where he is now." },
+    { searchString: "Fidel Castro", explanationText: "<img src=https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2010/12/16/1292510626129/Fidel-Castro-007.jpg?width=465&dpr=1&s=none&crop=none> The former Communist leader of Cuba. Though he has handed power to his brother Raúl, he remains a symbol of the regime and the reason for the long-standing U.S. embargo." },
+    { searchString: "Putin", explanationText: "<img src=https://www.politico.eu/cdn-cgi/image/width=1160,height=819,fit=crop,quality=80,onerror=redirect,format=auto/wp-content/uploads/2019/12/h_55728735.jpg> Guess who’s back." },
+	{ searchString: "Nico", explanationText: "<img src=https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/MSNBC/Components/Photo/_new/111108-obama-sarko-hmed-330a.jpg> Sarkozy of France. You miss him." },
+    { searchString: "François Hollande", explanationText: "<img src=https://ogimg.infoglobo.com.br/in/11579910-611-165/FT1086A/TOPSHOTS-US-FRANCE-DIPLOMACY-OBAMA-HOLLANDE.jpg> The new Socialist President of France, elected in May of this year." },
+    { searchString: "Taliban", explanationText: "<img src=https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/12D1E/production/_119168077_gettyimages-51342654.jpg> The fundamentalist group that the U.S. and its allies have been fighting in Afghanistan since 2001." },
+    { searchString: "Muslim Brotherhood", explanationText: "<img src=https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2013/4/2/1364923302906/Mohammed-Morsi-010.jpg?width=465&dpr=1&s=none&crop=none> An Islamist political group that has gained significant power in Egypt following the overthrow of Mubarak, with their candidate winning the recent presidential election." },
+	{ searchString: "Big Bird", explanationText: "<img src=https://media.cnn.com/api/v1/images/stellar/prod/121004042128-obeidallah-big-bird.jpg?q=w_1110,c_fill> In shambles." },
+
+    // policies, laws & concepts
+    { searchString: "Affordable Care Act", explanationText: "<img src=https://content.time.com/time/magazine/archive/covers/2009/1101090810_400.jpg> Obamacare! Your very own signature domestic achievement, its goals include expanding health insurance coverage, reducing costs, and protecting people with preexisting conditions." },
+    { searchString: "Bush tax cuts", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/taxcuts.png> The tax cuts on income, capital gains, and dividends passed under your predecessor. You extended most of them in 2010, but now want to let the cuts for the wealthiest expire. Republicans want to make them all permanent." },
+    { searchString: "No Child Left Behind", explanationText: "<img src=https://www.mackinac.org/media/images/2002/mer2002-01p01a.jpg> The Bush-era education law that relies heavily on standardized testing. It had bipartisan support once, but now faces widespread criticism. Your administration has been granting waivers from its requirements." },
+    { searchString: "Citizens United", explanationText: "<img src=https://scpr.brightspotcdn.com/dims4/default/31de428/2147483647/strip/true/crop/3000x2111+0+0/resize/880x619!/quality/90/?url=https%3A%2F%2Fa.scpr.org%2F98863_c2b3b4e75ba6d47d3e1c5edf30bd1a09_original.jpg> The 2010 Supreme Court decision that opened the floodgates for corporate and union spending in elections, giving rise to the 'Super PACs' that are dominating the airwaves." },
+    { searchString: "Dodd-Frank", explanationText: "<img src=https://www.cfr.org/sites/default/files/styles/immersive_image_3_2_desktop_2x/public/image/2023/05/DoddFrank_BG.webp> The landmark financial reform bill passed in 2010. It was designed to prevent another 2008-style crisis by regulating Wall Street." },
+    { searchString: "ARRA", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/arra.png> The American Recovery and Reinvestment Act of 2009. This massive stimulus package passed in your first months in office." },
+    { searchString: "Solyndra", explanationText: "<img src=https://static01.nyt.com/images/2011/09/23/us/SOLAR-2/SOLAR-2-jumbo.jpg?quality=75&auto=webp&disable=upscale> A California-based solar panel company that received a large federal loan guarantee and then went bankrupt. It has become a go-to example for Republicans of your administration’s failed 'crony capitalist' green energy policies." },
+    { searchString: "Fast and Furious", explanationText: "<img src=https://assets.gadgets360cdn.com/pricee/assets/product/202203/0288efa78166dcd46d17d7bc34119909_1647877883.jpg?downsize=400:*> An ATF 'gunwalking' operation that allowed weapons to fall into the hands of Mexican drug cartels. The ensuing scandal has led to calls for Attorney General Eric Holder’s resignation. Unrelated: the less cooler movie Fast Five." },
+    { searchString: "Guantanamo Bay", explanationText: "<img src=https://d1y8sb8igg2f8e.cloudfront.net/images/guantanamo-bay-year-14_image.width-800.jpg> The detention camp in Cuba. You promised to close it in your first year, but it’s still open, thanks to fierce opposition in Congress." },
+    { searchString: "fracking", explanationText: "a.k.a. hydraulic fracturing. A drilling technique that has unlocked a massive boom in U.S. natural gas and oil, but raises serious environmental concerns about its impact on drinking water." },
+    { searchString: "drone strikes", explanationText: "<img src=https://live-production.wcms.abc-cdn.net.au/a90b52dbe1fa107ecd35829b287dcaae?impolicy=wcms_crop_resize&cropH=841&cropW=1495&xPos=8&yPos=150&width=862&height=485> A key and controversial component of your counterterrorism strategy. These unmanned aerial attacks are effective at targeting terrorist leaders, but critics point to civilian casualties and the questionable legality." },
+    { searchString: "Defense of Marriage Act", explanationText: "<img src=https://media.washtimes.com/media/image/2009/01/14/20090113-193822-pic-612014805.jpg> The 1996 law, also known as DOMA, that defines marriage for all federal purposes as between one man and one woman. Your Justice Department has recently stopped defending it in court." },
+    { searchString: "Cap-and-trade", explanationText: "<img src=https://platform.vox.com/wp-content/uploads/sites/2/chorus/assets/4536585/cap-and-trade_large.jpg> A market-based approach to limiting carbon emissions. Your ambitious bill to create such a system passed the House in 2009 but died in the Senate, marking a major legislative defeat." },
+    { searchString: "SB 1070", explanationText: "<img src=https://www.americanprogress.org/wp-content/uploads/sites/2/2012/04/arizona_3reasons_onpage-1.jpg?w=610> Arizona’s controversial 2010 immigration law. The Supreme Court struck down most of it, but upheld the 'show me your papers' provision, which allows police to check the immigration status of people they stop." },
+	{ searchString: "Pell Grants", explanationText: "<img src=https://www.cbpp.org/sites/default/files/atoms/files/7-27-17bud-f1.png> Essentially, a form of federal financial aid provided by the government to help undergraduate students with financial need pay for college or career school. Unlike a student loan, money from a Pell Grant usually does not have to be repaid." },
+
+    // everything else
+	{ searchString: "Axelrod", explanationText: "<img src=https://i.guim.co.uk/img/static/sys-images/Observer/Columnist/Columnists/2012/8/4/1344074361508/David-Axelrod-006.jpg?width=465&dpr=1&s=none&crop=none> Happy." },
+	{ searchString: "Messina", explanationText: "<img src=https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iK47FQ9mImZU/v1/-1x-1.webp> Not happy." },
+	{ searchString: "Nancy Reagan", explanationText: "<img src=https://static01.nyt.com/images/2009/06/02/us/02reagan-480.jpg> Tired of sucking." },
+	{ searchString: "John McCain", explanationText: "<img src=https://www.pajiba.com/assets_c/2019/07/john-mccain-tongue-thumb-700x380-213541.jpg> Feening." },
+    { searchString: "Chewbacca", explanationText: "<img src=https://i.tribune.com.pk/media/images/1028521-asdcaa-1452943877/1028521-asdcaa-1452943877.jpg> Why would a Wookiee, an 8-foot-tall Wookiee, want to live on Endor, with a bunch of 2-foot-tall Ewoks? It does not make sense to you." },
+	{ searchString: "High Times", explanationText: "<img src=https://s.wsj.net/public/resources/images/BN-KN435_cmohig_DV_20150928182602.jpg> Has your seal of approval." },
+	{ searchString: "gallon of PCP guy", explanationText: "<img src=https://m.media-amazon.com/images/M/MV5BZWIyOTFlNTktZjhhNy00ZTdmLTg5YTItMTUzYmNiZTZiMDQxXkEyXkFqcGc@._V1_.jpg> — It’s a <i>felony</i>! Wow, and… here you are… with it anyway! That is… wow! I didn’t even know it… came in liquid form!<br/>— Science." },
+	{ searchString: "Bakken and Marcellus", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/shaleformations.png> Names of major shell formations in America. Bakken (in North Dakota and Montana) is particularly oil-rich and central to the U.S. shale boom, while Marcellus (in Appalachia) is one of the biggest natural gas sources in the U.S." },
+	{ searchString: "timber country", explanationText: "<img src=https://www.resourcewise.com/hubfs/FRA_MemberMap_Regions_FInal.jpg> Over here, defined as U.S. regions (notably the Pacific Northwest and parts of the South) where logging and forestry dominate the landscape and economy." },
+	{ searchString: "blender’s tax credit", explanationText: "The Volumetric Ethanol Excise Tax Credit (VEETC), a federal subsidy (in effect until 2011) that gave fuel blenders tax credits for every gallon of ethanol mixed into gasoline." },
+	{ searchString: "Renewable Fuel Standard", explanationText: "<img src=https://substackcdn.com/image/fetch/$s_!Iori!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6f060d75-6f59-45f8-a8ea-426869072d71_3533x2121.png> A federal program requiring transportation fuels to contain a minimum amount of renewable fuels like ethanol or biodiesel." },
+	{ searchString: "E15", explanationText: "<img src=https://i0.wp.com/agnetwest.com/wp-content/uploads/2017/10/E15-Ethanol-Fuel-Pump.gif?fit=800%2C533&ssl=1> A gasoline blend containing 15% ethanol and 85% conventional gasoline, approved for most cars built after 2001." },
+    { searchString: "Foxconn", explanationText: "<img src=https://www.reuters.com/resizer/v2/https%3A%2F%2Farchive-images.prod.global.a201836.reutersmedia.net%2F2012%2F03%2F19%2FCBRE82I0AOR00.JPG?auth=c474baa54ccc746532fab64fbbc5a972f0509f95f41756074571b9606025fa29&width=1200&quality=80> A massive Taiwanese electronics manufacturer with huge factories in China. It is famous for assembling products for Apple, and infamous for the poor labor conditions and worker suicides at its facilities." },
+	{ searchString: "Sean Combs", explanationText: "<img src=https://s.yimg.com/ny/api/res/1.2/uq2BGINu8xx5aVvj2V3VwQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyNDI7aD04MjY7Y2Y9d2VicA--/https://media.zenfs.com/en/thedailybeast.com/cc43a4eb97d36b14d0fb5bd15819b8da> Whatchu talkin’ ’bout lawyers for?" },
+	{ searchString: "Jimmy Fallon", explanationText: "<img src=https://i.pinimg.com/1200x/c3/7b/ff/c37bff64f09cc04bd9e8f6f9028571ca.jpg> Not as washed up as you once thought." },
+	{ searchString: "Obama or Die", explanationText: "<img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcSMliavfrQSW-Ma5jCtMhAQzjAHbiqUQWoA&s> I would rather not die." },
+	{ searchString: "Ayers", explanationText: "<img src=https://i0.wp.com/chicagoreader.com/wp-content/uploads/2021/08/ayers_mug-2.jpg> Too much of a hipster for you, you think." },
+	{ searchString: "Boris", explanationText: "<img src=https://londongrump.wordpress.com/wp-content/uploads/2014/03/dela-wk31-boris-zip-line-4.jpg> What’s that beeping noise for?" },
+	{ searchString: "Steve Jobs", explanationText: "<img src=https://throughanewlens.wordpress.com/wp-content/uploads/2010/07/steve_jobs.jpg> iDead, and still more alive than you ever feel." },
+	{ searchString: "The Gang", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/jinkies.webp> Your sweethearts." },
+	{ searchString: "Soviets", explanationText: "<img src=https://pyxis.nymag.com/v1/imgs/030/b11/8ca7149383d802da8835cb8dc0267eb591-24-barack-obama-soviet-constitution.2x.h473.w710.jpg> Beware decadent pleasure-seeking, comrade." },
+	{ searchString: "Destroy, Build, Destroy", explanationText: "<img src=https://image.tmdb.org/t/p/w780/eLq1NupfoZLc8VhiMYRdEeMmFAO.jpg> Wrecking stuff, broh." },
+	{ searchString: "bottomless pit", explanationText: "<img src=https://images.wikia.com/gravityfalls/images/1/19/S1e14_Which_you_can_see_here_is_Bottomless.png> Which as you can see here, is bottomless." },
+	{ searchString: "Blackberry", explanationText: "<img src=https://obama.artifacts.archives.gov/internal/media/dispatcher/32529/preview> You call it Bobert. Bobert is getting old, and can't easily compete with all these newfangled smart phones." },
+	{ searchString: "Anthony Bourdain", explanationText: "<img src=https://i.insider.com/5b1aad721ae66235008b55b7?width=700> Your father figure, sort of." },
+	{ searchString: "SpongeBob", explanationText: "<img src=https://preview.redd.it/look-whos-accompanying-obama-on-his-way-to-israel-feedback-v0-icqwc35hh15f1.png?width=640&crop=smart&auto=webp&s=30d0df36a4163b52708056b23f6268ff9869819b> Look who's accompanying Obama on his way to Israel!" },
+	{ searchString: "Obamanation", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/en/5/5f/Obama_Joker_Poster.jpg> An abomination." }
+];
+
+// This is to replace the existing voting system descriptions.
+(function() {
+    'use strict';
+
+    const METHOD_VALUE = {
+        SAINTE_LAGUE: "4",
+        DHONDT: "5",
+        HUNTINGTON_HILL: "6",
+        LR_HARE: "7",
+        APPROVAL_SL: "8",
+        BORDA_SL: "9",
+        COPELAND_SL: "10",
+    };
+
+    const DESCRIPTIONS = {
+        "1": `<p><strong>Use the default method of allocating electoral votes for each state.</strong></p>
+          <p>In the winner-take-all system, the candidate who wins the popular vote in a state receives <em>all</em> of that state’s electoral votes, regardless of the margin of victory. For instance, if Candidate A defeats Candidate B in a state worth 20 electoral votes, Candidate A will win the 20 electoral votes. In the United States, this is how 48 out of 50 states currently operate (Maine and Nebraska use a district method).</p>
+          <p>This system amplifies the importance of swing states while making “safe” states less influential in campaign strategy. It also makes it extremely difficult for third-party candidates to win any electoral votes, and has also resulted in popular vote winners losing the election. A good example of this is the election of 2000, where a razor-thin lead gave George Bush the state of Florida’s 25 electoral votes and the election, even as he lost the popular vote to Al Gore.</p>`,
+        "2": `<p><strong>Allocate each state’s electoral votes proportionally.</strong></p>
+          <p>Under the proportional system, each state’s electoral votes are distributed proportionally based on the popular vote percentage each candidate receives. If a candidate wins 60% of a state’s vote, they receive approximately 60% of that state’s electoral votes.</p>
+          <p>The winner of a state still maintains an advantage due to rounding (in a state with 4 electoral votes, 51% of the vote typically yields 3 electoral votes), but the system much more closely reflects the will of the voters. It also makes every state more competitive, as candidates could gain electoral votes even in states they don’t win outright. This system would have changed the outcomes of several elections, including 1860, 1948, 1968, 1992, and 2000.</p>`,
+        "3": `<p><strong style='color:navy'>From sea to shining sea!</strong> – you know how it is. Do the Bartman.</p>`,
+        [METHOD_VALUE.DHONDT]: `<p><strong>D'Hondt/Jefferson method</strong></p><p>Similar to Sainte-Laguë, the D’Hondt method is a “highest averages” system that allocates seats one by one. However, it uses a different formula: a candidate’s total vote is divided by the number of seats they have already won, plus one (divisors: 1, 2, 3, etc.). The seat goes to the candidate with the highest average in each round.</p><p>This divisor sequence has a notable mathematical property: it tends to slightly favor larger parties and coalitions over smaller, more fragmented ones. This can encourage strategic alliances but may underrepresent minor parties compared to their vote share. It is named after Victor D'Hondt and, in the U.S., Thomas Jefferson.</p>`,
+        [METHOD_VALUE.HUNTINGTON_HILL]: `<p><strong>Huntington-Hill method</strong></p><p>This is the method currently used to apportion the 435 seats of the U.S. House of Representatives among the states. Like other “highest averages” systems, it awards seats one by one to the party with the highest “priority value.”</p><p>Its unique formula (dividing votes by the geometric mean of seats currently held and the next seat) is designed to minimize the relative percentage difference in representation between any two parties. This means if one party gets twice the votes, it should have as close to twice the seats as mathematically possible. It generally produces very proportional results, somewhere between D'Hondt and Sainte-Laguë in its treatment of smaller parties.</p>`,
+        [METHOD_VALUE.LR_HARE]: `<p><strong>Largest remainder method (Hare quota)</strong></p><p>This method works differently from “highest averages.” First, it establishes a “quota” — the price of a single electoral vote (calculated as Total Votes / Total EVs). Each candidate is immediately awarded a number of EVs equal to how many full quotas they achieved.</p><p>After this initial allocation, any remaining EVs are awarded one by one to the candidates with the largest <em>fractional remainder</em> of votes. This system is very intuitive and tends to be highly proportional, often giving smaller parties a better chance to win representation if they can consolidate their support to earn a large remainder.</p>`,		
+        [METHOD_VALUE.SAINTE_LAGUE]: `<p><strong>Sainte-Laguë/Webster method</strong></p><p>This is a “highest averages” method that allocates a state’s electoral votes one by one. In each round, a candidate’s total popular vote is divided by a number (specifically, twice their current number of seats, plus one: 1, 3, 5, etc.). The seat is awarded to the candidate with the highest resulting average.</p><p>The Sainte-Laguë method is renowned for its high degree of proportionality. Unlike some other systems, it does not systematically favor larger or smaller parties, making it one of the most balanced apportionment methods available.</p>`,
+        [METHOD_VALUE.APPROVAL_SL]: `<p><strong>Approval + Sainte-Laguë</strong></p><p>This is an advanced, model-based method that does <em>not</em> use the popular vote directly. Instead, it first calculates a “utility score” for each candidate based on their policy alignment with a state’s profile. A state then “approves” of all candidates whose utility is within a certain threshold of the top-scoring candidate.</p><p>The number of approvals each candidate receives becomes their new score; the Sainte-Laguë method is used to apportion electoral votes based on these approval counts. This system rewards candidates with broad ideological appeal who are considered a “good fit” by the state, not just the single best one.</p>`,
+        [METHOD_VALUE.BORDA_SL]: `<p><strong>Borda count + Sainte-Laguë</strong></p><p>This model-based method first ranks candidates in a state from best to worst based on their policy alignment (creating a utility score for them). Candidates are then awarded Borda points based on their rank: the top-ranked candidate gets the most points, the second-ranked gets fewer, and so on.</p><p>These Borda points — and not popular votes — are then used as the input for the Sainte-Laguë apportionment method. This system heavily favors consensus candidates who are consistently ranked highly and penalizes polarizing figures who may be ranked first by some but last by others. It rewards being broadly acceptable over being a niche favorite.</p>`,
+        [METHOD_VALUE.COPELAND_SL]: `<p><strong>Condorcet/Copeland + Sainte-Laguë</strong></p><p>This advanced method simulates a round-robin tournament in each state. Based on policy utility scores, every candidate is compared head-to-head against every other candidate. A candidate’s “Copeland score” is the total number of these pairwise matchups they win.</p><p>A candidate who can defeat every other opponent in a one-on-one contest is a “Condorcet winner” and will have the highest possible score. The Copeland scores are then used with the Sainte-Laguë method to allocate electoral votes. This system strongly favors candidates with the broadest appeal who are most likely to be preferred over their direct competitors.</p>`,
+    };
+
+    const NEW_OPTIONS = [
+        { val: METHOD_VALUE.DHONDT, text: "D’Hondt/Jefferson" },
+        { val: METHOD_VALUE.HUNTINGTON_HILL, text: "Huntington–Hill" },
+        { val: METHOD_VALUE.LR_HARE, text: "Largest remainder" },
+        { val: METHOD_VALUE.SAINTE_LAGUE, text: "Sainte‑Laguë/Webster" },
+        { val: METHOD_VALUE.APPROVAL_SL, text: "Approval + Sainte‑Laguë" },
+        { val: METHOD_VALUE.BORDA_SL, text: "Borda + Sainte‑Laguë" },
+        { val: METHOD_VALUE.COPELAND_SL, text: "Condorcet/Copeland + Sainte‑Laguë" },
+    ];
+
+    function updateDescription(value) {
+        const descBox = document.getElementById("opponent_selection_description_window");
+        if (descBox) {
+            descBox.innerHTML = DESCRIPTIONS[value] || DESCRIPTIONS["1"];
+        }
+    }
+
+    function modifySelector() {
+        const select = document.getElementById("game_type_id");
+        if (!select || select.dataset.enhanced) return;
+
+        const optionsArr = Array.from(select.options);
+        const propIndex = optionsArr.findIndex(o => o.value === "2");
+        
+        // since we want the array order to be preserved, we should increment the index as we add
+        let insertIndex = propIndex !== -1 ? propIndex + 1 : select.length;
+
+        NEW_OPTIONS.forEach(optData => {
+            if (!select.querySelector(`option[value="${optData.val}"]`)) {
+                const opt = document.createElement("option");
+                opt.value = optData.val;
+                opt.textContent = optData.text;
+                
+                if (insertIndex >= select.length) {
+                    select.add(opt);
+                } else {
+                    select.add(opt, select.options[insertIndex]);
+                }
+                insertIndex++;
+            }
+        });
+
+        // rename existing options
+        const wta = select.querySelector('option[value="1"]');
+        if (wta) wta.textContent = "Winner‑Take‑All (default)";
+        
+        const prop = select.querySelector('option[value="2"]');
+        if (prop) prop.textContent = "Proportional";
+
+        // update header
+        const form = select.closest("form");
+        if (form) {
+            const h3 = form.querySelector("h3");
+            if (h3) h3.textContent = "How would you like electoral votes to be allocated?";
+        }
+
+        select.addEventListener("change", (e) => updateDescription(e.target.value));
+
+        updateDescription(select.value);
+
+        select.dataset.enhanced = "true";
+    }
+	
+	window.modifySelector = modifySelector;
+})();
+
+// Pretty much a banner system. This one was used on
+// 2016 ALOT and reused here.
+(function() {
+    const gameWindow = document.getElementById("game_window");
+    if (!gameWindow) return;
+
+    // configuration object
+    const CONFIG = {
+        bannerHeight: 60,
+        fadeTransition: 250,
+        preloadCount: 4,
+        enablePreloading: true,
+        enableLocalStorage: true,
+        hoverEffect: true,
+        clickCooldown: 150,
+        maxCacheSize: 20,
+        useRequestIdleCallback: true,
+        maxRetries: 2,
+        failedBannerTimeout: 5 * 60 * 1000 
+    };
+
+    // banner list
+    const banners = [{
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/12k_sarah.gif",
+            alt: "Windows 98 banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/banner.gif",
+            alt: "Mitsubichi banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/toon_fyistudent.gif",
+            alt: "CNN fyi.com banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/quiz_cnn_en.gif",
+            alt: "Nokia banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/gk_glittert.gif",
+            alt: "GAP banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/left.gif",
+            alt: "Stealthforce banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/scoobydoo.banner3.gif",
+            alt: "Scooby-Doo! banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/mm03_storymet_t2.gif",
+            alt: "Mamamedia.com banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/pac.banner.gif",
+            alt: "Pac-Man banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/versus.gif",
+            alt: "Pokémon banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/rayman2contest.gif",
+            alt: "Rayman banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/banner1.gif",
+            alt: "Cheetos banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/hbtour.banner.gif",
+            alt: "Hanna-Barbera banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/ed1.gif",
+            alt: "EEnE banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/astroanimbnnr.gif",
+            alt: "Radioshack banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/chills3.gif",
+            alt: "Jack Frost banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/stuart468x60.gif",
+            alt: "Stuart Little banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/468orange.gif",
+            alt: "Cooking.com banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/driven468_10k.gif",
+            alt: "Texas Instruments banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/Purple_11.75.gif",
+            alt: "USMint banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/lexicontest.gif", // lexicon_468x60.png
+            alt: "Lexicon banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/icollector_modernart2.gif",
+            alt: "iCollector banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/flower.gif",
+            alt: "Trane banner",
+            weight: 1
+        },
+		{
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/millennium.epi.7.gif",
+            alt: "CNN millenium banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/strat_tuna468x6013k6loop.gif",
+            alt: "IBM tuna banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/suretrade.gif", // f4_guessing_468x60_3loop.png
+            alt: "suretrade.com banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/painewebber.gif", // banner2_468x60_3loop_12k.gif 
+            alt: "PaineWebber banner",
+            weight: 1
+        },
+        {
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/drinkingwater468x60_3loop.gif",
+            alt: "Catholic Relief Services banner",
+            weight: 1
+        },
+		{
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/ebay.gif", // ebay_vmad_banner_468x60.png
+            alt: "eBay banner",
+            weight: 1
+        },
+		{
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/winxp.gif", // winxp_MS_XP_468x60.gif
+            alt: "Windows XP banner",
+            weight: 1
+        },
+		{
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/ubid_geek.gif", // ubid_comp_12k_468x60_1108_1.gif
+            alt: "uBid banner",
+            weight: 1
+        },
+		{
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/ubid_camera.gif", // ubid_468x60_cameras_12k_051302_slider_1.png,
+            alt: "uBid 2 banner",
+            weight: 1
+        },
+		{
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/wlm.gif", // SGW.468x60.gif
+            alt: "Windows Live Messenger banner",
+            weight: 1
+        },
+		{
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/dell.gif", // dell_35334_flash_backupgif_P4P07137_back2sch_DHS_fy03_SEP_468x60.png
+            alt: "Dell banner",
+            weight: 1
+        },
+		{
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/specials_03112002.png",
+            alt: "Adult Swim banner",
+            weight: 1
+        },
+		{
+            url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/barack.png",
+            alt: "Adult Swim 2 banner",
+            weight: 1
+        },
+    ];
+
+    // caching system
+    class BannerCache {
+        constructor() {
+            this.imageCache = new Map();
+            this.loadedUrls = new Set();
+            this.failedUrls = new Map();
+            this.storageKey = 'vintageBannerCache_v2';
+            this.maxCacheAge = 7 * 24 * 60 * 60 * 1000;
+            this.cacheAccessOrder = [];
+
+            if (CONFIG.enableLocalStorage) {
+                this.loadFromStorage();
+            }
+        }
+
+        saveToStorage() {
+            if (!CONFIG.enableLocalStorage) return;
+
+            try {
+                const cacheData = {
+                    timestamp: Date.now(),
+                    urls: Array.from(this.loadedUrls),
+                    failed: Array.from(this.failedUrls.entries())
+                };
+                localStorage.setItem(this.storageKey, JSON.stringify(cacheData));
+            } catch (e) {
+                console.warn('Banner cache save failed:', e);
+            }
+        }
+
+        loadFromStorage() {
+            try {
+                const cached = localStorage.getItem(this.storageKey);
+                if (!cached) return;
+                
+                const data = JSON.parse(cached);
+                const age = Date.now() - data.timestamp;
+
+                if (age < this.maxCacheAge) {
+                    this.loadedUrls = new Set(data.urls);
+                    if (data.failed) {
+                        this.failedUrls = new Map(data.failed);
+                    }
+                } else {
+                    localStorage.removeItem(this.storageKey);
+                }
+            } catch (e) {
+                console.warn('Banner cache load failed:', e);
+            }
+        }
+
+        isRecentlyFailed(url) {
+            if (!this.failedUrls.has(url)) return false;
+            
+            const failedTime = this.failedUrls.get(url);
+            const timeSinceFailed = Date.now() - failedTime;
+            
+            // allow retry after timeout
+            if (timeSinceFailed > CONFIG.failedBannerTimeout) {
+                this.failedUrls.delete(url);
+                return false;
+            }
+            
+            return true;
+        }
+
+        markAsFailed(url) {
+            this.failedUrls.set(url, Date.now());
+            this.imageCache.delete(url);
+            this.loadedUrls.delete(url);
+            this.saveToStorage();
+        }
+
+        isCachedImageValid(img) {
+            return img && 
+                   img.complete && 
+                   img.naturalHeight !== 0 && 
+                   img.naturalWidth !== 0;
+        }
+
+        preloadImage(url) {
+            if (this.isRecentlyFailed(url)) {
+                return Promise.reject(new Error(`Recently failed: ${url}`));
+            }
+
+            if (this.imageCache.has(url)) {
+                const cachedImg = this.imageCache.get(url);
+                if (this.isCachedImageValid(cachedImg)) {
+                    this.updateCacheOrder(url);
+                    return Promise.resolve(cachedImg);
+                } else {
+                    this.imageCache.delete(url);
+                    this.loadedUrls.delete(url);
+                }
+            }
+
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                let timeoutId;
+                
+                const cleanup = () => {
+                    clearTimeout(timeoutId);
+                    img.onload = img.onerror = null;
+                };
+
+                timeoutId = setTimeout(() => {
+                    cleanup();
+                    this.markAsFailed(url);
+                    reject(new Error(`Timeout: ${url}`));
+                }, 8000);
+
+                img.onload = () => {
+                    cleanup();
+                    if (this.isCachedImageValid(img)) {
+                        this.addToCache(url, img);
+                        resolve(img);
+                    } else {
+                        this.markAsFailed(url);
+                        reject(new Error(`Invalid image: ${url}`));
+                    }
+                };
+
+                img.onerror = () => {
+                    cleanup();
+                    this.markAsFailed(url);
+                    reject(new Error(`Failed: ${url}`));
+                };
+
+                img.fetchPriority = "low";
+                img.src = url;
+            });
+        }
+
+		addToCache(url, img) {
+		  if (!this.isCachedImageValid(img)) return;
+
+		  if (this.imageCache.has(url)) this.imageCache.delete(url); // refresh order
+		  this.imageCache.set(url, img);
+
+		  while (this.imageCache.size > CONFIG.maxCacheSize) {
+			const lruUrl = this.imageCache.keys().next().value;
+			this.imageCache.delete(lruUrl);
+		  }
+
+		  this.saveToStorage();
+		}
+
+        updateCacheOrder(url) {
+            const index = this.cacheAccessOrder.indexOf(url);
+            if (index > -1) {
+                this.cacheAccessOrder.splice(index, 1);
+            }
+            this.cacheAccessOrder.push(url);
+        }
+
+        preloadBatch(urls) {
+            if (!CONFIG.enablePreloading) return Promise.resolve();
+
+            if (CONFIG.useRequestIdleCallback && window.requestIdleCallback) {
+                return new Promise(resolve => {
+                    window.requestIdleCallback(() => {
+                        const promises = urls.map(url => 
+                            this.preloadImage(url).catch(() => null)
+                        );
+                        Promise.allSettled(promises).then(resolve);
+                    }, { timeout: 2000 });
+                });
+            } else {
+                const promises = urls.map(url => 
+                    this.preloadImage(url).catch(() => null)
+                );
+                return Promise.allSettled(promises);
+            }
+        }
+		
+		getCachedImage(url) {
+		  const img = this.imageCache.get(url);
+		  if (!this.isCachedImageValid(img)) {
+			this.imageCache.delete(url);
+			return null;
+		  }
+		  // refresh order
+		  this.imageCache.delete(url);
+		  this.imageCache.set(url, img);
+		  return img;
+		}
+
+        getAvailableBanners(bannerList) {
+            return bannerList.filter(banner => !this.isRecentlyFailed(banner.url));
+        }
+    }
+
+    // weighted random selection
+    const bannerSelector = (() => {
+        let weightSum = null;
+        
+        const getTotalWeight = () => {
+            if (weightSum === null) {
+                weightSum = banners.reduce((sum, banner) => sum + banner.weight, 0);
+            }
+            return weightSum;
+        };
+
+        return {
+            // accept cache to filter failed banners
+            getRandomBanner(excludeRecent = [], cache = null) {
+                let availableBanners = banners.filter(b => !excludeRecent.includes(b.url));
+                
+                // filter out failed banners
+                if (cache) {
+                    availableBanners = availableBanners.filter(b => !cache.isRecentlyFailed(b.url));
+                }
+                
+                if (availableBanners.length === 0) {
+                    // if all banners failed or recent, try any banner not in exclude list
+                    availableBanners = banners.filter(b => !excludeRecent.includes(b.url));
+                    
+                    if (availableBanners.length === 0) {
+                        // last resort: return any banner
+                        return banners[0];
+                    }
+                }
+                
+                const totalWeight = availableBanners.reduce((sum, banner) => sum + banner.weight, 0);
+                let random = Math.random() * totalWeight;
+                
+                for (const banner of availableBanners) {
+                    random -= banner.weight;
+                    if (random <= 0) return banner;
+                }
+                
+                return availableBanners[0];
+            },
+            
+            initializeSelectionTable() {
+                getTotalWeight();
+            }
+        };
+    })();
+
+    // banner system
+    class ClickableBannerSystem {
+        constructor() {
+            this.createElements();
+            
+            this.cache = new BannerCache();
+            this.currentBanner = null;
+            this.recentBanners = [];
+            this.isTransitioning = false;
+            this.lastClickTime = 0;
+            this.rafId = null;
+            this.retryCount = 0; // NEW: track retries
+
+            this.init();
+        }
+
+        init() {
+            this.setupEventListeners();
+            bannerSelector.initializeSelectionTable();
+            
+            Promise.resolve()
+                .then(() => this.preloadInitialBanners())
+                .then(() => this.displayRandomBanner())
+                .catch(() => {
+                    this.displayRandomBanner();
+                });
+
+            window.addEventListener('beforeunload', () => {
+                this.destroy();
+            });
+        }
+
+        createElements() {
+            this.container = document.createElement("div");
+            this.imageElement = document.createElement("img");
+            this.clickIndicator = document.createElement("div");
+
+            this.container.id = "bottomBar";
+            this.container.setAttribute('tabindex', '0');
+            this.container.setAttribute('role', 'button');
+            this.container.setAttribute('aria-label', 'Click to change banner');
+
+            this.container.style.cssText = `
+                height: ${CONFIG.bannerHeight}px;
+                font-size: 12px;
+                border-style: none;
+                border-width: 5px;
+                background-color: transparent;
+                padding: 0;
+                margin: 1em auto 1em auto;
+				margin-inline: auto;
+                position: relative;
+                overflow: hidden;
+                cursor: pointer;
+                transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
+				-webkit-user-select: none;
+                user-select: none;
+                border-radius: 3px;
+            `;
+
+            this.imageElement.style.cssText = `
+                width: 100%; 
+                height: 100%; 
+                object-fit: contain; 
+                display: block;
+                transition: opacity ${CONFIG.fadeTransition}ms ease-in-out;
+                pointer-events: none;
+            `;
+
+            this.imageElement.onerror = () => {
+                console.warn('Banner display failed:', this.imageElement.src);
+                if (this.currentBanner) {
+                    this.cache.markAsFailed(this.currentBanner.url);
+                }
+                // try to load another banner
+                if (this.retryCount < CONFIG.maxRetries) {
+                    this.retryCount++;
+                    setTimeout(() => this.displayRandomBanner(), 100);
+                }
+            };
+
+            // rset retry count on successful load
+            this.imageElement.onload = () => {
+                this.retryCount = 0;
+            };
+
+            this.clickIndicator.style.cssText = `
+                position: absolute;
+                top: 2px;
+                right: 4px;
+                width: 16px;
+                height: 16px;
+                background: rgba(255, 255, 255, 0.8);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 10px;
+                font-weight: bold;
+                color: #333;
+                opacity: 0;
+                transition: opacity 200ms ease-in-out, transform 150ms ease-in-out;
+                pointer-events: none;
+                z-index: 10;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            `;
+            this.clickIndicator.textContent = "↻";
+
+            this.container.appendChild(this.imageElement);
+            this.container.appendChild(this.clickIndicator);
+            gameWindow.insertAdjacentElement("afterend", this.container);
+        }
+
+        setupEventListeners() {
+            this.container.onclick = (e) => {
+                e.preventDefault();
+                const now = Date.now();
+                if (now - this.lastClickTime < CONFIG.clickCooldown || this.isTransitioning) {
+                    return;
+                }
+                this.lastClickTime = now;
+                this.retryCount = 0;
+                this.nextBanner();
+            };
+
+            if (CONFIG.hoverEffect) {
+                this.container.onmouseenter = () => {
+                    if (this.isTransitioning) return;
+                    
+                    cancelAnimationFrame(this.rafId);
+                    this.rafId = requestAnimationFrame(() => {
+                        this.container.style.transform = 'scale(1.02)';
+                        this.container.style.boxShadow = '0 2px 8px rgba(0,0,0,0.2)';
+                        this.clickIndicator.style.opacity = '1';
+                    });
+                };
+
+                this.container.onmouseleave = () => {
+                    cancelAnimationFrame(this.rafId);
+                    this.rafId = requestAnimationFrame(() => {
+                        this.container.style.transform = 'scale(1)';
+                        this.container.style.boxShadow = 'none';
+                        this.clickIndicator.style.opacity = '0';
+                    });
+                };
+            }
+
+            this.container.onkeydown = (e) => {
+                if (e.code === 'Space' || e.code === 'Enter') {
+                    e.preventDefault();
+                    this.retryCount = 0;
+                    this.nextBanner();
+                }
+            };
+        }
+
+        async preloadInitialBanners() {
+            // only preload non-failed banners
+            const sortedBanners = [...banners]
+                .filter(b => !this.cache.isRecentlyFailed(b.url))
+                .sort((a, b) => b.weight - a.weight)
+                .slice(0, CONFIG.preloadCount);
+                
+            const urlsToPreload = sortedBanners.map(b => b.url);
+            return this.cache.preloadBatch(urlsToPreload);
+        }
+
+        async displayBanner(banner, useTransition = false) {
+            if (this.isTransitioning) return;
+
+            const cachedImg = this.cache.getCachedImage(banner.url);
+
+            if (useTransition && CONFIG.fadeTransition > 0) {
+                this.isTransitioning = true;
+                this.imageElement.style.opacity = '0';
+
+                setTimeout(() => {
+                    requestAnimationFrame(() => {
+                        if (cachedImg) {
+                            this.imageElement.src = cachedImg.src;
+                        } else {
+                            this.imageElement.src = banner.url;
+                        }
+                        this.imageElement.alt = banner.alt;
+						
+                        this.imageElement.style.opacity = '1';
+                        this.isTransitioning = false;
+                    });
+                }, CONFIG.fadeTransition / 2);
+            } else {
+                requestAnimationFrame(() => {
+                    if (cachedImg) {
+                        this.imageElement.src = cachedImg.src;
+                    } else {
+                        this.imageElement.src = banner.url;
+                    }
+                    this.imageElement.alt = banner.alt;
+                });
+            }
+
+            this.currentBanner = banner;
+            this.recentBanners.push(banner.url);
+            if (this.recentBanners.length > 3) {
+                this.recentBanners.shift();
+            }
+
+            // preload if not cached
+            if (!cachedImg) {
+                this.cache.preloadImage(banner.url).catch((err) => {
+                    console.warn('Preload failed:', err.message);
+                });
+            }
+
+            // opportunistically preload next banners
+            if (CONFIG.useRequestIdleCallback && window.requestIdleCallback) {
+                window.requestIdleCallback(() => {
+                    const nextBanners = banners
+                        .filter(b => 
+                            !this.recentBanners.includes(b.url) && 
+                            !this.cache.imageCache.has(b.url) &&
+                            !this.cache.isRecentlyFailed(b.url)
+                        )
+                        .sort((a, b) => b.weight - a.weight)
+                        .slice(0, 2);
+                        
+                    this.cache.preloadBatch(nextBanners.map(b => b.url));
+                }, { timeout: 5000 });
+            }
+        }
+
+        displayRandomBanner() {
+            const banner = bannerSelector.getRandomBanner(this.recentBanners, this.cache);
+            this.displayBanner(banner, this.currentBanner !== null);
+        }
+
+        nextBanner() {
+            this.displayRandomBanner();
+
+            requestAnimationFrame(() => {
+                this.clickIndicator.style.transform = 'scale(1.2)';
+                
+                setTimeout(() => {
+                    requestAnimationFrame(() => {
+                        this.clickIndicator.style.transform = 'scale(1)';
+                    });
+                }, 150);
+            });
+        }
+
+        destroy() {
+            cancelAnimationFrame(this.rafId);
+            
+            if (this.container) {
+                this.container.onclick = null;
+                this.container.onmouseenter = null;
+                this.container.onmouseleave = null;
+                this.container.onkeydown = null;
+                
+                if (this.container.parentNode) {
+                    this.container.parentNode.removeChild(this.container);
+                }
+            }
+            
+            if (this.imageElement) {
+                this.imageElement.onload = null;
+                this.imageElement.onerror = null;
+            }
+            
+            this.container = null;
+            this.imageElement = null;
+            this.clickIndicator = null;
+        }
+    }
+
+    const bannerSystem = new ClickableBannerSystem();
+
+    window.vintageBannerSystem = {
+        next: () => bannerSystem.nextBanner(),
+        current: () => bannerSystem.currentBanner?.alt || 'Loading...',
+        clearFailedCache: () => {
+            bannerSystem.cache.failedUrls.clear();
+            bannerSystem.cache.saveToStorage();
+            console.log('Failed banner cache cleared');
+        },
+        getFailedBanners: () => Array.from(bannerSystem.cache.failedUrls.keys())
+    };
+})();
+
+// For the question count selector
+(function() {
+    'use strict';
+
+    const CONFIG = {
+        containerId: 'game_window',
+        targetSectionId: 'difficulty_level',
+        selectorId: 'question_select',
+        options: [
+            { text: "25 (Best)", value: 25 },			
+            { text: "25 (Static)", value: 26 },
+            { text: "40", value: 40 },
+            { text: "55", value: 55 },
+            { text: "75 (Full)", value: 75 }
+        ]
+    };
+
+    const style = document.createElement("style");
+    style.textContent = `
+        #${CONFIG.targetSectionId} {
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: 2.5em;
+            align-items: flex-start;
+        }
+        #${CONFIG.targetSectionId} form {
+            flex: 1 1 auto;
+        }
+        #${CONFIG.targetSectionId} form p {
+            margin: 0;
+        }
+    `;
+    document.head.appendChild(style);
+
+    // update global var safely
+    function setGlobalQuestionCount(val) {
+        if (window.campaignTrail_temp?.global_parameter_json?.[0]) {
+            window.campaignTrail_temp.global_parameter_json[0].fields.question_count = Number(val);
+        }
+    }
+
+    function manageQuestionSelector() {
+        // if "difficulty_level" is missing (which it is while playing), 
+        // this returns null and the function stops instantly
+        const container = document.getElementById(CONFIG.targetSectionId);
+        
+        if (!container) return;
+        if (document.getElementById(CONFIG.selectorId)) return;
+
+        const dropdown = document.createElement("select");
+        dropdown.id = CONFIG.selectorId;
+
+        CONFIG.options.forEach((opt, index) => {
+            const optionElement = document.createElement("option");
+            optionElement.text = opt.text;
+            optionElement.value = opt.value;
+            optionElement.selected = index === 0;
+            dropdown.add(optionElement);
+        });
+
+        const formContainer = document.createElement("form");
+        formContainer.name = "question_select_form";
+        const heading = document.createElement("h3");
+        heading.textContent = "Select the number of questions:";
+        
+        formContainer.appendChild(heading);
+        formContainer.appendChild(dropdown);
+        container.appendChild(formContainer);
+
+        dropdown.addEventListener("change", (e) => setGlobalQuestionCount(e.target.value));
+        
+        setGlobalQuestionCount(dropdown.value);
+    }
+
+    window.manageQuestionSelector = manageQuestionSelector;
+})();
+
+// This is just so that we can prevent the VP observer
+// from running running more than once.
+(function() {
+    'use strict';
+
+    function handleNavigation() {
+        const gameWindow = document.getElementById("game_window");
+        if (!gameWindow) return;
+
+        // detect VP screen
+        const summary = document.getElementById("running_mate_summary");
+        
+        if (summary) {
+            // check if we are moving backwards (triggered by the opponent screen back button)
+            const isGoingBack = window.sessionStorage.getItem("lbm_skip_direction") === "backward";
+
+            if (isGoingBack) {
+                const backBtn = document.getElementById("running_mate_id_back");
+                if (backBtn && !backBtn.dataset.autoClicked) {
+                    console.log("VP selection screen detected. Skipping...");
+                    // clear the flag so forward movement works next time
+                    window.sessionStorage.removeItem("lbm_skip_direction");
+                    backBtn.dataset.autoClicked = "true";
+                    backBtn.click();
+                }
+            } else {
+                // move forward
+                const nextBtn = document.getElementById("running_mate_id_button");
+                // ensure we don't click buttons with custom switchers
+                if (nextBtn && !nextBtn.hasAttribute("data-custom-switcher") && !nextBtn.dataset.autoClicked) {
+                    console.log("VP selection screen detected. Skipping...");
+                    nextBtn.dataset.autoClicked = "true"; 
+                    nextBtn.click();
+                }
+            }
+        }
+
+        // detect opponent selection screen
+        const opponentBack = document.getElementById("opponent_selection_id_back");
+        if (opponentBack && !opponentBack.dataset.skipListener) {
+            // when user clicks Back, set flag to 'backward'
+            opponentBack.addEventListener("click", () => {
+                window.sessionStorage.setItem("lbm_skip_direction", "backward");
+            });
+            opponentBack.dataset.skipListener = "true";
+        }
+    }
+
+    window.handleNavigation = handleNavigation;
+})();
+
+// This is, essentially, for preventing candidates or running mates
+// from being selected. Very useful if you're having a one-candidate
+// mod but still want to list the other candidates
+// A somewhat more optimized version compared to the LBM one
+function automateStartSequence() {
+    const BAD_CANDIDATE_IDS = new Set(['17', '18', '19']);
+    const RESET_CANDIDATE_ID = '16'; 
+
+    const IDS = {
+        gameWindow: "game_window",
+        candidateInput: "candidate_id",
+        candidateButton: "candidate_id_button",
+        backButton: "candidate_id_back",
+        runningMateButton: "running_mate_id_button",
+        finalNext: "opponent_selection_id_button",
+        finalBack: "opponent_selection_id_back",
+        initialContinue: "election_id_button",
+		gameMapHeader: "transport_box"
+    };
+
+    let lastSelectedCandidateId = null;
+	
+	const handleDomChange = (mutationsList, observer) => {
+		// check for the candidate input
+        const candidateInput = document.getElementById(IDS.candidateInput);
+        const finalNext = document.getElementById(IDS.finalNext);
+        const finalBack = document.getElementById(IDS.finalBack);
+        const gameMap = document.getElementById(IDS.gameMapHeader);
+
+        // if the map/transport box is loaded, we are done with setup
+        if (gameMap) {
+            observer.disconnect();
+            return;
+        }
+
+        // if we are on the opponent selection screen, clean up and stop.
+        if (finalNext && finalBack) {
+            // remove back button only if we managed to sneak a bad candidate through
+            if (BAD_CANDIDATE_IDS.has(lastSelectedCandidateId)) {
+                finalBack.remove();
+            }
+            return;
+        }
+		
+        // candidate selection screen check
+        if (candidateInput) {
+            const currentId = candidateInput.value;
+            lastSelectedCandidateId = currentId;
+
+            const candidateButton = document.getElementById(IDS.candidateButton);
+            const backButton = document.getElementById(IDS.backButton);
+
+            // block 'bad' candidates by removing the Continue button
+            if (BAD_CANDIDATE_IDS.has(currentId) && candidateButton) {
+                candidateButton.remove();
+            }
+            
+            // if a specific candidate should force a Back click
+            else if (currentId === RESET_CANDIDATE_ID && backButton && !candidateButton) {
+                backButton.click();
+				
+                // try to click the initial continue button if we got sent back to start
+                const initialContinue = document.getElementById(IDS.initialContinue);
+                if (initialContinue) {
+                     initialContinue.click();
+                }
+            }
+        }
+    };
+	
+    const targetNode = document.getElementById(IDS.gameWindow) || document.body;
+    
+    const observer = new MutationObserver(handleDomChange);
+    observer.observe(targetNode, { childList: true, subtree: true });
+}
+
+automateStartSequence();
+
+// Useful if you have a mod series!
+// Here, it lets you switch easily to 2016ALOT.
+(function() {
+    'use strict';
+
+    const CONFIG = {
+        autoStartParam: 'from',
+        autoStartValue: 'othernlmod',
+        startButtonId: 'game_start',
+        electionSelectQuery: 'select[name="election_id"]',
+        containerId: 'game_window', 
+        baseUrl: 'https://campaigntrailshowcase.com/campaign-trail/',
+        modsToAdd: [
+			{ value: '1992', text: '1992 - Every Brilliant Thing', modName: '1992 - Every Brilliant Thing' },
+            { value: '2016', text: '2016 - A Lifetime of This', modName: '2016 - A Lifetime of This' },
+        ],
+    };
+
+    // state tracking to ensure we don't spam the auto-start click
+    let hasAutoStarted = false;
+
+    function modifyElectionSelect(selectEl) {
+        if (selectEl.dataset.modifiedByScript) return;
+
+        // reverse to prepend
+        [...CONFIG.modsToAdd].reverse().forEach(mod => {
+            const option = document.createElement('option');
+            option.value = mod.value;
+            option.textContent = mod.text;
+            selectEl.prepend(option);
+        });
+
+        selectEl.addEventListener('change', (event) => {
+            const selectedValue = event.target.value;
+            const targetMod = CONFIG.modsToAdd.find(mod => mod.value === selectedValue);
+
+            if (targetMod) {
+                const redirectUrl = new URL(CONFIG.baseUrl);
+                redirectUrl.searchParams.set('modName', targetMod.modName);
+                redirectUrl.searchParams.set(CONFIG.autoStartParam, CONFIG.autoStartValue);
+                window.location.href = redirectUrl.toString();
+            }
+        });
+
+        selectEl.dataset.modifiedByScript = 'true';
+    }
+
+    function attemptAutoStart() {
+        if (hasAutoStarted || window.campaignTrailEnhanced) return;
+
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get(CONFIG.autoStartParam) === CONFIG.autoStartValue) {
+            const startButton = document.getElementById(CONFIG.startButtonId);
+            if (startButton) {
+                window.campaignTrailEnhanced = true;
+                hasAutoStarted = true;
+                startButton.click();
+            }
+        }
+    }
+
+    function onDomChange() {
+        // try to modify the select box
+        const selectEl = document.querySelector(CONFIG.electionSelectQuery);
+        if (selectEl) {
+            modifyElectionSelect(selectEl);
+        }
+
+        attemptAutoStart();
+    }
+
+    window.modifyElectionSelect = modifyElectionSelect;
+})();
+
+// Psst: this is for replacing the site_description with this custom modal.
+(() => {
+    const CONFIG = {
+        titleColor: '#00529B',
+        imageHeight: '125px',
+        imageSrc: 'https://media.gettyimages.com/id/134324334/pt/foto/hilighted-by-the-stage-lighting-illinois-senator-barack-obama-is-lost-in-a-sea-of-darkness-as.jpg?s=2048x2048&w=gi&k=20&c=Kpx0Eh0oclVzWDOocCmOVz-kw0QO4pSbrZpbChI4e8Q=',
+        margin: '-20px',
+        widthCalc: 'calc(100% - 40px)'
+    };
+
+    const inner = document.getElementById('inner_window_1');
+    if (!inner || inner.children.length < 2) return;
+    const [headingEl, contentEl] = inner.children;
+    const gameStart = document.getElementById('game_start');
+    const gameWindow = document.getElementById('game_window');
+
+    // temporary auto resize
+    if (gameWindow) gameWindow.style.height = 'auto';
+
+    headingEl.innerHTML = `<h3 style="color: #15054F; letter-spacing: 2px">Little Big Man</h3>`;
+    Object.assign(contentEl.style, { marginLeft: CONFIG.margin, width: CONFIG.widthCalc });
+    contentEl.innerHTML = generatePrologueHTML(CONFIG);
+
+    if (gameStart) {
+        gameStart.innerHTML = '<strong>I’m here.</strong>';
+		
+		gameStart.addEventListener('click', () => { 
+            if (gameWindow) gameWindow.style.removeProperty('height'); 
+        }, { once: true });
+    }
+
+    function generatePrologueHTML({ titleColor, imageHeight, imageSrc }) {
+        return `
+	  <div style=\"align-items: center; background: linear-gradient(to left, transparent, #020202 15%); border-radius: .3em 0 0 .3em; display: flex; height: ${imageHeight}; justify-content: center; overflow: hidden;\">
+        <img src=\"${imageSrc}\" alt=\"President Obama on the campaign trail\" style=\"object-fit: cover; object-position: center 200px; width: auto; transform: scale(0.3)\" />
+      </div>
+      <p> <b>French poet Arthur Rimbaud</b>, almost seven score ago, <a href="https://fr.wikisource.org/wiki/%C5%92uvres_(Rimbaud)/Une_saison_en_enfer/Vierge_folle,_L%E2%80%99%C3%A9poux_infernal" target="_blank">once wrote</a> that he became opera, that he saw all living things were doomed to bliss — but that wasn’t living, just a way to waste what we have. He argued with countless men using examples drawn from their other lives, sought voyages to disperse enchantments that had colonized his mind, and watched a consoling cross rise above a sea he came to love as if it were rinsing him of stain. <i>Bliss was my undoing, my remorse, my worm</i>, he said. <i>My life would always be too ungovernable to devote to strength and beauty</i>. </p>
+	  <p> At times, Barack feels the very same way. Once the brightest light in the room, he now walks through it like a man half-remembering why he turned it on in the first place. </p>
+	  <p> The dream of the campaign trail ended the second he stepped into the Oval Office. It was like he was trapped in a nightmare, and one specifically designed to break him. Obama’s evil double was on the cable news every night; it was a caricature built from soundbites and a lot of suspicion, primarily conservative. He was the devil incarnate, a fallen angel; his enemies were feasting on his flesh. Were they the same? In a country like this, it seemed like every choice was a wrong one; just some were less wrong than others. He would wake up at night, afraid the man from ’08 was a dream he was starting to forget. The world was a blur; the things that were clear in his dreams suddenly didn’t make sense anymore. </p>
+      <p> Now, in 2012, the landscape has shifted. The President is no longer a symbol of what could be (or what has been), but the custodian of a rather complicated and, at times, controversial record. There’s a kill list, there are drone strikes, there’s a healthcare bill whose promise has outpaced its rollout. Guantánamo is still open, and of course, there stand Mitch McConnell and John Boehner, looming over every vote like gargoyles. The writing is on the wall, and he read it. It’s a mad world. </p>
+      <p> The campaign trail feels different this time. His old lines don’t quite land with the same force. There seems to be a dissonance between the man who must now defend his compromises and the movement he once inspired. Obama finds himself in a strange middle ground; he’s no longer the fresh-faced outsider the American public met in 2008, but also not yet a universally accepted leader. His campaign is, essentially, running on muscle memory, and not many are sure whether he is searching for a new narrative — or, rather, for a way to reignite the old one. </p>
+      <p> Perhaps his task is no longer to inspire a dream, but to defend a complicated reality. That question hangs in the air at every rally, in every strategy meeting: what is the story this time? How do you convince a tired and divided nation to give you four more years? </p>
+	  <p> Barack? Hey, are you still with me? </p>
+    `;
+    }
+})();
+
+// Credits button
+(function() {
+    const creditsList = [
+		{
+            name: "StrawberryMaster",
+            text: "for creating this mod, or whatever it was meant to be",
+            image: "https://file.garden/aNtAfG887DiA_7lO/sm2.png"
+        },
+        {
+            name: "routevenus",
+            text: "for their amazing additions to the data visualizer",
+            image: "https://file.garden/aNtAfG887DiA_7lO/routevenus.png"
+        },
+		{
+            name: "Cannonbollocks",
+            text: "for typo corrections & work on some endings. I'm with stupid ↓",
+            image: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/cb.webp"
+        },
+		{
+            name: "imfakeithink",
+            text: "for eventual work on the Further Reading menu. I'm with stupid ↑",
+            image: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/iamfakeithink.webp"
+        },		
+		"<b>Ahnuld</b>, for suggesting some of the running mates you see here",
+		"<b>Frankotheteaking</b>, for work with the endings",
+		"The people at <b>Deep State</b>, for their much valued feedback on aspects of this mod",
+        "Many others for lending feedback on questions & in-game mechanics",
+        "and many others who shared their feedback along the way!"
+    ];
+
+    if (typeof campaignTrail_temp !== 'undefined') {
+        campaignTrail_temp.credits = "<button class='credits-btn' onclick='window.showCredits()'>StrawberryMaster &…</button>";
+    }
+
+    const injectCSS = () => {
+        const styleElement = document.createElement('style');
+        styleElement.textContent = `
+            .credits-btn {
+				color: #00008e;
+				cursor: pointer;
+				font-weight: normal;
+				padding: .3em .5em;
+				text-decoration: underline;
+			}
+			.credits-btn:hover {
+				color: #004080;
+			}
+
+			/* Modal styling */
+			.credits-modal {
+				display: none;
+				position: fixed;
+				z-index: 1000;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.5);
+				align-items: center;
+                justify-content: center;
+			}
+			.credits-content {
+				background-color: #f9f9f9;
+				padding: 1rem;
+				border: .2rem groove #803612;
+				border-radius: .2rem .4rem;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+				width: 40%;
+				max-width: 500px;
+				position: relative;
+				animation: fadeIn 0.3s;
+				display: flex;
+                flex-direction: column;
+                max-height: 90vh;
+			}
+			@keyframes fadeIn {
+				from { opacity: 0; }
+				to { opacity: 1; }
+			}
+			.credits-content h3 {
+				margin-top: 0;
+				color: #333;
+				font-size: 14px;
+				border-bottom: 1px solid #ddd;
+				padding-bottom: 10px;
+				letter-spacing: 2px;
+				text-transform: lowercase;
+				flex-shrink: 0;
+			}
+
+			.credits-content ul {
+				list-style-type: none;
+				padding: 0;
+				overflow-y: auto; 
+                padding-right: 5px;
+			}
+
+			.credits-content li {
+				padding: .4rem 0;
+				border-bottom: 2px dotted #ddd;
+				font-size: 12px;
+			}
+
+			.credits-content li:last-child {
+				border-bottom: none;
+				padding-bottom: 0;
+			}
+
+			.credit-item-with-image {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+			}
+
+			.credit-avatar {
+				border: 2px groove #0700df;
+				width: 90px;
+				height: 90px;
+				object-fit: cover;
+				flex-shrink: 0;
+			}
+
+			.credit-text {
+				flex: 1;
+			}
+
+			.credit-name {
+				font-weight: bold;
+				color: #970000;
+			}
+
+			.close-credits {
+				position: absolute;
+				right: 12px;
+				top: 4px;
+				color: #aaa;
+				font-size: 30px;
+				font-weight: bold;
+				cursor: pointer;
+				z-index: 10;
+			}
+
+			.close-credits:hover {
+				color: #333;
+			}
+        `;
+        document.head.appendChild(styleElement);
+    };
+
+    const createModal = () => {
+        if (document.getElementById('creditsModal')) {
+            return;
+        }
+
+        const modal = document.createElement('div');
+        modal.id = 'creditsModal';
+        modal.className = 'credits-modal';
+
+        let creditsListHTML = '';
+        creditsList.forEach(credit => {
+            if (typeof credit === 'string') {
+                creditsListHTML += `<li>${credit}</li>`;
+            } else {
+                creditsListHTML += `
+                    <li>
+                        <div class="credit-item-with-image">
+                            <img src="${credit.image}" alt="${credit.name}" class="credit-avatar">
+                            <div class="credit-text">
+                                <span class="credit-name">${credit.name}</span>, ${credit.text}
+                            </div>
+                        </div>
+                    </li>
+                `;
+            }
+        });
+
+        modal.innerHTML = `
+            <div class="credits-content">
+                <span class="close-credits">&times;</span>
+                <h3>CREDITS</h3>
+                <ul>${creditsListHTML}</ul>
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+
+        document.querySelector('.close-credits').addEventListener('click', hideCredits);
+        modal.addEventListener('click', event => {
+            if (event.target === modal) {
+                hideCredits();
+            }
+        });
+    };
+
+    const showCredits = () => {
+        createModal();
+        document.getElementById('creditsModal').style.display = 'flex';
+    };
+
+    const hideCredits = () => {
+        const modal = document.getElementById('creditsModal');
+        if (modal) {
+            modal.style.display = 'none';
+        }
+    };
+
+    const setupKeyListener = () => {
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') {
+                hideCredits();
+            }
+        });
+    };
+
+    const init = () => {
+        injectCSS();
+        setupKeyListener();
+
+        window.showCredits = showCredits;
+    };
+
+    init();
+})();
+
+// This is a catch-all mutation observer so that
+// we keep one having them all run at once
+(function() {
+    'use strict';
+
+    if (window.glorble) {
+        window.glorble.disconnect();
+    }
+	
+	window.glorbleTasks = [];
+	
+	const initialTasks = () => {
+        // voting method selector
+        const gameTypeSelect = document.getElementById("game_type_id");
+		if (gameTypeSelect && !gameTypeSelect.dataset.enhanced && typeof window.modifySelector === 'function') {
+            window.modifySelector(); 
+        }
+        // question count selector
+        if (document.getElementById("difficulty_level") && typeof window.manageQuestionSelector === 'function') {
+            window.manageQuestionSelector();
+        }
+
+        // VP screen skipper
+        if (document.getElementById("game_window") && typeof window.handleNavigation === 'function') {
+            window.handleNavigation();
+        }
+
+        // candidate blocking
+		if (typeof automateStartSequence === 'function') {
+            automateStartSequence(); 
+        }
+
+        // mod switcher
+        const electionSelect = document.querySelector('select[name="election_id"]');
+        if (electionSelect && !electionSelect.dataset.modifiedByScript && typeof window.modifyElectionSelect === 'function') {
+            window.modifyElectionSelect(electionSelect);
+        }
+    };
+	
+	window.glorbleTasks.push(initialTasks);
+	
+	const handleMutations = (mutationsList) => {
+        if (!window.glorbleTasks) return;
+        
+        for (let i = 0; i < window.glorbleTasks.length; i++) {
+            try {
+                window.glorbleTasks[i]();
+            } catch (e) {
+                console.error("Zoinks! Error in glorble task:", e);
+            }
+        }
+    };
+
+    const targetNode = document.getElementById("game_window");
+    const config = { childList: true, subtree: true };
+
+    window.glorble = new MutationObserver(handleMutations);
+    window.glorble.observe(targetNode, config);
+
+    handleMutations();
+    //console.log("glorble...");
+})();
+
+// Achievements?
+campaignTrail_temp.achievements = {
+    "Life After Death": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a1.png",
+        "description": "As Barack Obama, win re-election.",
+        "cannotBeCheated": true
+    },
+    "Burning Sun": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a2.png",
+        "description": "As Barack Obama, lose it all.",
+        "cannotBeCheated": true
+    },
+    "Space Cowboy": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a3_alt.png",
+        "description": "As Barack Obama, tie or improve upon your 2008 margin.",
+        "cannotBeCheated": true
+    },
+    "Strange Time To Be Alive": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a4.png",
+        "description": "As Barack Obama, end up in a deadlocked election.",
+        "cannotBeCheated": true
+    },
+	"The Pleasure Principle": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a5.png",
+        "description": "As Barack Obama, defeat Mitt Romney.",
+        "cannotBeCheated": true
+    },
+	"Advertising Space": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a6.png",
+        "description": "As Barack Obama, defeat Rick Santorum.",
+        "cannotBeCheated": true
+    },
+    "Goodbye Stranger": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a7.png",
+        "description": "As Barack Obama, defeat Newt Gingrich.",
+        "cannotBeCheated": true
+    },
+	"The Element of Surprise": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a8.png",
+        "description": "As Barack Obama, defeat Jon Huntsman.",
+        "cannotBeCheated": true
+    },
+	"Uncommon Man": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a9.png",
+        "description": "As Barack Obama, defeat Rick Perry.",
+        "cannotBeCheated": true
+    },
+    "License To Kill": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a10.png",
+        "description": "As Barack Obama, defeat Ron Paul.",
+        "cannotBeCheated": true
+    },
+	"Strays of the World": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a11.png",
+        "description": "As Barack Obama, defeat Michele Bachmann.",
+        "cannotBeCheated": true
+    },
+	"Blasphemous Rumors": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a12.png",
+        "description": "As Barack Obama, win with Biden by your side.",
+        "cannotBeCheated": true
+    },
+    "Modern Chemistry": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a13.png",
+        "description": "As Barack Obama, win with Hillary Clinton as your running mate.",
+        "cannotBeCheated": true
+    },
+	"Shockadelica": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a14.png",
+        "description": "As Barack Obama, win with Christine Gregoire as your running mate.",
+        "cannotBeCheated": true
+    },
+	"Imaginary Friend": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a15.png",
+        "description": "As Barack Obama, win with Brian Schweitzer as your running mate.",
+        "cannotBeCheated": true
+    },
+	"In My Secret Life": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a16.png",
+        "description": "As Barack Obama, look behind.",
+        "cannotBeCheated": true
+    },
+	"From Here On Out": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a17.png",
+        "description": "As Barack Obama, read the fine print.",
+        "cannotBeCheated": true
+    },
+	"Reasons To Be Beautiful": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a18.png",
+        "description": "As Barack Obama, be with #her.",
+        "cannotBeCheated": true
+    },
+    "Something In The Way": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a19.png",
+        "description": "As Barack Obama, get help from an old friend.",
+        "cannotBeCheated": true
+    },	
+	"Somebody's Somebody": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a20.png",
+        "description": "As Barack Obama, keep Michelle happy and win.",
+        "cannotBeCheated": true
+    },
+    "An Easier Affair": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a21.png",
+        "description": "As Barack Obama, swing both ways and win.",
+        "cannotBeCheated": true
+    },
+	"Love On The Rocks": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a21a.png",
+        "description": "As Barack Obama, think you will never love again.",
+        "cannotBeCheated": true
+    },
+	"Press Play": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a27.png",
+        "description": "As Barack Obama, get the dead to come to you.",
+        "cannotBeCheated": true
+    },
+    "Pour It Up": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a22.png",
+        "description": "As Barack Obama, win on Hard-Boiled difficulty.",
+        "cannotBeCheated": true
+    },
+    "Devil's Advocate": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a23.png",
+        "description": "As Barack Obama, win on Dead Man Walking difficulty.",
+        "cannotBeCheated": true
+    },
+	"Drowned World": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a24.png",
+        "description": "As Barack Obama, win without performing any covert operations.",
+        "cannotBeCheated": true
+    },
+	"I've Been Waiting For You": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/a25.png",
+        "description": "As Barack Obama, listen to the voice inside your head.",
+        "cannotBeCheated": true
+    },
+	"Soul Free": {
+        "image": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ach/thenperish.jpeg",
+        "description": "As Barack Obama, get a lousy T-shirt with your name on it.",
+        "cannotBeCheated": true
+    }
+}
