@@ -32,7 +32,7 @@ campaignTrail_temp.election_json = [
             "summary": "<p>As the presidential election of 1860 approaches, the United States, after decades of growing internal strife and conflict over the issue of slavery, has reached a near breaking point.</p>\n<p>While Republican nominee Abraham Lincoln clearly dominates in the North, the South finds itself far more divided, split in three between rival Democrats Stephen Douglas and John Breckinridge, and Constitutional Union nominee John Bell.</p>\n<p>Should Lincoln prevail, the Union seems doomed to fall into yet deeper conflict, if not outright civil war. With three competing opponents making an outright Southern victory nigh impossible, the only hope, then, is to deny Lincoln the white house through a deadlock in the Electoral College.</p>",
             "image_url": "https://file.garden/aUY9j6Fk7RLHy1A_/5m84abb.png",
             "winning_electoral_vote_number": 152,
-            "advisor_url": "https://www.jetsimon.com/public/static/images/davis-belmont.jpg",
+            "advisor_url": "https://file.garden/aUY9j6Fk7RLHy1A_/breck_advisors.png",
             "site_image": "https://file.garden/aUY9j6Fk7RLHy1A_/ctsthumbnail.png",
             "site_description": "<p>As the presidential election of 1860 approaches, the United States, after decades of growing internal strife and conflict over the issue of slavery, has reached a near breaking point.</p>\n<p>While Republican nominee Abraham Lincoln clearly dominates in the North, the South finds itself far more divided, split in three between rival Democrats Stephen Douglas and John Breckinridge, and Constitutional Union nominee John Bell.</p>\n<p>Should Lincoln prevail, the Union seems doomed to fall into yet deeper conflict, if not outright civil war. With three competing opponents making an outright Southern victory nigh impossible, the only hope, then, is to deny Lincoln the white house through a deadlock in the Electoral College.</p>",
             "recommended_reading": "<h4 style=\"margin-top: 0.5em;\">General Resources</h4>\rDavid Herbert Donald - <a href=\"http://www.amazon.com/exec/obidos/ASIN/068482535X/amhius20-20\">Lincoln</a><br>\rRobert W. Johannsen - <a href=\"http://www.amazon.com/exec/obidos/ASIN/0252066359/amhius20-20\">Stephen A. Douglas</a><br>\rHarriet Jacobs - <a href=http://docsouth.unc.edu/fpn/jacobs/jacobs.html\">Incidents in the Life of a Slave Girl</a><br>\rSolomon Northup - <a href=\"http://docsouth.unc.edu/fpn/northup/northup.html\">Twelve Years a Slave</a><br>\r<a href=\"https://suite.io/michael-streich/3cr92nv\">Abraham Lincoln, Stephen Douglas, and the Election of 1860</a><br>\r<a href=\"http://www.greatamericanhistory.net/nomination.htm\">How Lincoln Won the 1860 Republican Nomination</a><br>\r<a href=\"http://flattopshistorywarpolitics.yuku.com/topic/619/John-Bell-for-president-1860#.U8BmbY1dVZ0\">John Bell for President, 1860</a><br>\r<a href=\"http://faculty.virginia.edu/jajenkins/ES.pdf\">Running to Lose? The Candidacy of John C. Breckinridge</a>",
@@ -277,11 +277,29 @@ var changeGameDisp = (hide) => {
 
 e.creditsPage = () => {
   credits_html = `
+    <h2>Credits</h2>
     <p>Ianwubby – Coding, Writing</p>
     <p>DecstarG – Credits</p>
     <p>ItsAstronomical – Variable HQ (Fusion Ticket Tracker)</p>
     <p>Jet – Jet's Tools</p>
-    <p>munastronaut – Changing Visit Text</p>
+    <p>munastronaut – Changing Visit Text</p><br>
+
+    <hr>
+
+    <h2>Version 1.0.2</h2>
+    <p>Added version tracker</p>
+    <p>Nerfs to Douglas and Bell</p>
+    <p>Nerf to Breckinridge in PA</p>
+    <p>Added Davis "win" ending</p>
+    <p>Minor visual/wording changes</p><br>
+
+    <h2>Version 1.0.1</h2>
+    <p>Image host changed from Imgur to File Garden</p>
+    <p>Small bugfix relating to PA fusion ticket</p>
+    <p>Minor visual/wording changes\n</p><br>
+
+    <h2>Version 1.0.0</h2>
+    <p>Initial release</p>
   `
   changeGameDisp(true);
   var spacer = document.createElement("amongusspacerthisisntarealelement");
@@ -292,7 +310,7 @@ e.creditsPage = () => {
     changeGameDisp(true);
     var menuHeader = document.createElement("div");
     menuHeader.classList.add("inner_window_front");
-    menuHeader.innerHTML = `<h1 style='font-family: "Times New Roman";'><font color='#0496f7'>Credits</font></h1>`;
+    menuHeader.innerHTML = `<h1 style='font-family: "Times New Roman";'><font color='#0496f7'>Credits & Changelog</font></h1>`;
     menuHeader.id = "SOTUheader";
     menuHeader.style = "height: 50px;background-color:#2d2d2d";
     var newMenu = document.createElement("div");
@@ -316,7 +334,6 @@ e.creditsPage = () => {
     z.appendChild(menuHeader);
     z.appendChild(newMenu);
     z.appendChild(backButton);
-
 }
 
 e.credits = "<button onclick='e.creditsPage()'>Ianwubby, with help from others</button>"

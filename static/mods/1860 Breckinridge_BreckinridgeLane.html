@@ -229,7 +229,7 @@ campaignTrail_temp.questions_json = [
         "pk": 14149,
         "fields": {
             "priority": 0,
-            "description": "William Walker, an American filibuster who briefly seized control of the Nicaraguan government in 1856, was recently executed by Honduran forces after another attempted filibustering expedition into Central America.",
+            "description": "William Walker, an American filibuster who briefly seized control of the Nicaraguan government in 1856, was recently executed by Honduran forces after another attempted filibustering expedition into Central America. Is there anything you would like to say about these events?",
             "likelihood": 1
         }
     }
@@ -3744,7 +3744,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 69,
             "state": 173,
-            "state_multiplier": 2.0454
+            "state_multiplier": 1.9001
         }
     },
     {
@@ -4484,7 +4484,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 3973,
             "candidate": 69,
             "affected_candidate": 70,
-            "global_multiplier": -0.02
+            "global_multiplier": -0.03
         }
     },
     {
@@ -4614,7 +4614,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 4028,
             "candidate": 69,
             "affected_candidate": 68,
-            "global_multiplier": -0.05
+            "global_multiplier": -0.025
         }
     },
     {
@@ -4744,7 +4744,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 14130,
             "candidate": 69,
             "affected_candidate": 70,
-            "global_multiplier": -0.02
+            "global_multiplier": -0.03
         }
     },
     {
@@ -4794,7 +4794,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 3985,
             "candidate": 69,
             "affected_candidate": 70,
-            "global_multiplier": -0.02
+            "global_multiplier": -0.03
         }
     },
     {
@@ -5036,7 +5036,37 @@ campaignTrail_temp.answer_score_global_json = [
             "affected_candidate": 69,
             "global_multiplier": -0.1
         }
-    }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 14973,
+        "fields": {
+            "answer": 4010,
+            "candidate": 69,
+            "affected_candidate": 68,
+            "global_multiplier": -0.025
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 14974,
+        "fields": {
+            "answer": 4011,
+            "candidate": 69,
+            "affected_candidate": 68,
+            "global_multiplier": -0.025
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 14975,
+        "fields": {
+            "answer": 14240,
+            "candidate": 69,
+            "affected_candidate": 68,
+            "global_multiplier": -0.025
+        }
+    },
 ]
 
 campaignTrail_temp.answer_score_issue_json = [
@@ -6386,7 +6416,7 @@ campaignTrail_temp.answer_score_state_json = [
             "state": 173,
             "candidate": 69,
             "affected_candidate": 69,
-            "state_multiplier": -0.04
+            "state_multiplier": -0.02
         }
     },
     {
@@ -12009,9 +12039,13 @@ endingPicker = (out, totv, aa, quickstats) => {
 	//aa[3].candidate = 70;
 
 	//Outright Victory (incl. Davis Ending)
-	if (davis) {
+	if (davis && aa[0].electoral_votes >= 152 && aa[0].candidate == 67) {
 		setImage("https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Thomas_Hicks_-_Leopold_Grozelier_-_Presidential_Candidate_Abraham_Lincoln_1860_%28cropped%29.jpg/640px-Thomas_Hicks_-_Leopold_Grozelier_-_Presidential_Candidate_Abraham_Lincoln_1860_%28cropped%29.jpg");
 		return "<h3>LINCOLN WINS ELECTION</h3><p>Despite the efforts of Douglas, Davis, and Bell, Abraham Lincoln has secured enough electoral votes to win outright and avoid a contingent election in the House. As such, he will in the coming months be inaugurated as the 16th president of the United States, the first ever to win no electoral votes from the South.</p><p>In the immediate aftermath of the election, the outlook for the nation appears bleak. Despite an attempt, spearheaded by Kentucky Senator John Crittenden, to push a compromise through Congress to forestall a secession crisis – one that would see slavery permanently protected within the Constitution – South Carolina has already declared its secession from the Union, and much of the South seems poised to follow suit.</p><p>As for you – it would seem pertinent to decide where your loyalties lie, and soon. A peaceful resolution to the encroaching crisis appears less likely with each passing day, and it would be best to choose a side before shots are fired.</p>";
+
+	} else if (davis) {
+		setImage("https://www.nps.gov/rich/learn/historyculture/images/Jeff-Davis-in-Court.jpg");
+		return "<h3>ELECTORAL PLOT UNCOVERED;<br>JEFFERSON DAVIS ARRESTED</h3><p>In a shocking turn of events, Southern Democratic candidate Jefferson Davis has been implicated in a criminal conspiracy to undermine the electoral process and prevent the election of Republican candidate Abraham Lincoln. Though the full extent of the plot is unclear, Davis and several of his co-conspirators have been arrested, and are due to be tried in the coming weeks.</p><p>Lincoln, Douglas, and Bell have all vehemently denounced their fellow candidate in light of these proceedings. Bell in particular appears well-positioned to attract disaffected Davis supporters; more than anyone else, however, Lincoln likely stands to benefit the most from the unfolding of these events. Though the election is still some weeks away, many now view Lincoln's victory as inevitable.</p>";
 
 	} else if (out == "win") {
 		setImage("https://file.garden/aUY9j6Fk7RLHy1A_/psJ9HSh.png");
@@ -12374,6 +12408,7 @@ customStyling.innerHTML = `
     overflow-y: auto;
 }
 #overall_result {
+    min-height: 190px;
     height: auto;
 }
 #state_result_container {
