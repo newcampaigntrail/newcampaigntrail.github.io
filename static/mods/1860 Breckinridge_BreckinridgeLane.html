@@ -211,7 +211,7 @@ campaignTrail_temp.questions_json = [
         "pk": 568,
         "fields": {
             "priority": 5,
-            "description": "Late in the campaign, a letter arrives on your desk from Mayor Cohoon of Elizabeth City, North Carolina. Among its contents, one overarching question stands out, one that you have thus far studiously refused to answer: \"Do you consider the election of Lincoln a just cause for breaking up the Union?\"",
+            "description": "Late in the campaign, a letter arrives on your desk from Mayor Cohoon of Elizabeth City, North Carolina. Among its contents, one overarching question stands out, one that you have thus far studiously avoided answering: \"Do you consider the election of Lincoln a just cause for breaking up the Union?\"",
             "likelihood": 1
         }
     },
@@ -229,7 +229,7 @@ campaignTrail_temp.questions_json = [
         "pk": 14149,
         "fields": {
             "priority": 0,
-            "description": "William Walker, an American filibuster who briefly seized control of the Nicaraguan government in 1856, was recently executed by Honduran forces after another attempted filibustering expedition into Central America.",
+            "description": "William Walker, an American filibuster who briefly seized control of the Nicaraguan government in 1856, was recently executed by Honduran forces after another attempted filibustering expedition into Central America. Is there anything you would like to say about these events?",
             "likelihood": 1
         }
     }
@@ -3744,7 +3744,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 69,
             "state": 173,
-            "state_multiplier": 2.0454
+            "state_multiplier": 1.9001
         }
     },
     {
@@ -4484,7 +4484,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 3973,
             "candidate": 69,
             "affected_candidate": 70,
-            "global_multiplier": -0.02
+            "global_multiplier": -0.03
         }
     },
     {
@@ -4614,7 +4614,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 4028,
             "candidate": 69,
             "affected_candidate": 68,
-            "global_multiplier": -0.05
+            "global_multiplier": -0.025
         }
     },
     {
@@ -4744,7 +4744,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 14130,
             "candidate": 69,
             "affected_candidate": 70,
-            "global_multiplier": -0.02
+            "global_multiplier": -0.03
         }
     },
     {
@@ -4794,7 +4794,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 3985,
             "candidate": 69,
             "affected_candidate": 70,
-            "global_multiplier": -0.02
+            "global_multiplier": -0.03
         }
     },
     {
@@ -5036,7 +5036,37 @@ campaignTrail_temp.answer_score_global_json = [
             "affected_candidate": 69,
             "global_multiplier": -0.1
         }
-    }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 14973,
+        "fields": {
+            "answer": 4010,
+            "candidate": 69,
+            "affected_candidate": 68,
+            "global_multiplier": -0.025
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 14974,
+        "fields": {
+            "answer": 4011,
+            "candidate": 69,
+            "affected_candidate": 68,
+            "global_multiplier": -0.025
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 14975,
+        "fields": {
+            "answer": 14240,
+            "candidate": 69,
+            "affected_candidate": 68,
+            "global_multiplier": -0.025
+        }
+    },
 ]
 
 campaignTrail_temp.answer_score_issue_json = [
@@ -6386,7 +6416,7 @@ campaignTrail_temp.answer_score_state_json = [
             "state": 173,
             "candidate": 69,
             "affected_candidate": 69,
-            "state_multiplier": -0.04
+            "state_multiplier": -0.02
         }
     },
     {
@@ -11487,7 +11517,7 @@ campaignTrail_temp.answer_feedback_json = [
 ]
 
 campaignTrail_temp.candidate_image_url = "https://www.jetsimon.com/public/static/images/john-c-breckenridge-1860.jpg";
-campaignTrail_temp.running_mate_image_url = "https://i.imgur.com/GTjACNF.png";
+campaignTrail_temp.running_mate_image_url = "https://file.garden/aUY9j6Fk7RLHy1A_/GTjACNF.png";
 campaignTrail_temp.candidate_last_name = "Breckinridge";
 campaignTrail_temp.running_mate_last_name = "Lane";
 
@@ -11519,9 +11549,9 @@ cyoAdventure = function (a) {
 		e.candidate_json[2]["fields"].first_name = "Jefferson";
 		e.candidate_json[2]["fields"].last_name = "Davis";
 		e.candidate_json[2]["fields"].color_hex = "#6f6960";
-		e.candidate_json[2]["fields"].image_url = "https://i.imgur.com/8jjhMzx.png";
+		e.candidate_json[2]["fields"].image_url = "https://file.garden/aUY9j6Fk7RLHy1A_/8jjhMzx.png";
 		e.question_number = 24;
-		//campaignTrail_temp.candidate_image_url = "https://i.imgur.com/8jjhMzx.png";
+		//campaignTrail_temp.candidate_image_url = "https://file.garden/aUY9j6Fk7RLHy1A_/8jjhMzx.png";
 		davis = true;
 	}
 
@@ -11717,95 +11747,6 @@ fusionHandler = () => {
 		e.final_state_results[20].result_time = getCallTime(120, NJresult[0].votes, NJresult[1].votes);
 	}
 
-	//Pennsylvania Fusion (complicated, needs to be handled after NY NJ and RI)
-	if(PAfusion){
-		e.final_state_results.sort((a, b) => a.result_time - b.result_time);	//sorts states by result time (for election night simulation)
-		
-		//variables for simulated election night
-		var uncalled = 303;
-		var douglas = 0;
-		var brecken = 0;
-		var douglasWin;
-		var breckenWin;
-		var calltime;
-
-		//simulates election night, ignoring PA
-		for(var state of e.final_state_results){
-			if(state.abbr == "PA"){console.log("this works"); continue;}
-			state.result.sort((a, b) => a.candidate-b.candidate);
-			uncalled -= (state.result[0].electoral_votes + state.result[1].electoral_votes + state.result[2].electoral_votes + state.result[3].electoral_votes);
-
-			//for testing purposes
-			//state.result[1].electoral_votes += 0;
-			//state.result[2].electoral_votes += -1;
-
-			douglas += state.result[1].electoral_votes;
-			brecken += state.result[2].electoral_votes;
-
-			state.result.sort((a, b) => b.electoral_votes-a.electoral_votes);
-			state.result.sort((a, b) => b.percent-a.percent);
-
-			if(douglas>=125){ douglasWin = true; }
-			if(brecken>=125){ breckenWin = true; }
-			if(douglas+uncalled<152){ douglasWin = false; }
-			if(brecken+uncalled<152){ breckenWin = false; }
-			console.log(douglas, brecken, uncalled,";",douglasWin,breckenWin);
-			if(douglasWin==true || (douglasWin==false && breckenWin!=undefined)){ calltime = state.result_time; break; }
-		}
-		e.final_state_results.sort((a, b) => a.state - b.state);	//re-sort states by ID (undoes sort by result time)
-		
-		PAresult.sort((a, b) => a.candidate-b.candidate);
-		PAresult.sort((a, b) => a.candidate-b.candidate);
-		PAresult[4].result = PAresult[1].result + PAresult[2].result;
-		PAresult[1].result = 0;
-		PAresult[2].result = 0;
-		PAresult[4].percent = PAresult[1].percent + PAresult[2].percent;
-		PAresult[1].percent = 0;
-		PAresult[2].percent = 0;
-		PAresult[4].votes = PAresult[1].votes + PAresult[2].votes;
-		PAresult[1].votes = 0;
-		PAresult[2].votes = 0;
-
-		if (dougOnly){
-			dougPercent = .0352 + (Math.random()-0.5) * e.global_parameter_json[0].fields.global_variance;
-			dougResult = dougPercent * (PAresult[4].result + PAresult[0].result);
-			dougVotes = Math.round(dougPercent * (PAresult[4].votes + PAresult[0].votes));
-			PAresult[4].result -= dougResult;
-			PAresult[4].percent -= dougPercent;
-			PAresult[4].votes -= dougVotes;
-			PAresult[1].result = dougResult;
-			PAresult[1].percent = dougPercent;
-			PAresult[1].votes = dougVotes;
-		}
-
-		//EV allocation; if Douglas and Breckinridge could both win the election with PA, Douglas is favored. If neither can, Doug gets 12 and Breck gets 15.
-		fusionWin = (PAresult[4].percent > PAresult[0].percent) && (PAresult[4].percent > PAresult[3].percent);
-
-		if(fusionWin){
-			fusionWin = true;
-			e.final_state_results[25].result_time = calltime; //sets call time to the moment that PA's EVs are decided
-			PAresult[0].electoral_votes = 0;
-			PAresult[3].electoral_votes = 0;
-			if(douglasWin){
-				PAresult[1].electoral_votes = 27;
-				PAresult[2].electoral_votes = 0;
-			}
-			else if(breckenWin){
-				PAresult[1].electoral_votes = 0;
-				PAresult[2].electoral_votes = 27;
-			}
-			else{
-				PAresult[1].electoral_votes = 12;
-				PAresult[2].electoral_votes = 15;
-			}
-		}
-		PAresult.sort((a, b) => b.electoral_votes-a.electoral_votes);
-		PAresult.sort((a, b) => b.percent-a.percent);
-
-		if (!fusionWin) {
-			e.final_state_results[25].result_time = getCallTime(0, PAresult[0].votes, PAresult[1].votes);
-		}
-	}
 
 	//Wisconsin Electors
 	WIresult = e.final_state_results[32].result
@@ -11939,9 +11880,101 @@ fusionHandler = () => {
 		GAresult.sort((a, b) => a.candidate-b.candidate);
 		GAresult[2].electoral_votes = 10;
 		GAresult.sort((a, b) => b.percent-a.percent);
-		GAresult.sort((a, b) => b.electoral_votes-a.electoral_votes);
 		GA_leg_vote = true;
 	}
+
+
+	//Pennsylvania Fusion (complicated, needs to be handled after everything else)
+	if(PAfusion){
+		e.final_state_results.sort((a, b) => a.result_time - b.result_time);	//sorts states by result time (for election night simulation)
+		
+		//variables for simulated election night
+		var uncalled = 303;
+		var douglas = 0;
+		var brecken = 0;
+		var douglasWin;
+		var breckenWin;
+		var calltime;
+
+		//simulates election night, ignoring PA
+		for(var state of e.final_state_results){
+			if(state.abbr == "PA"){console.log("this works"); continue;}
+			state.result.sort((a, b) => a.candidate-b.candidate);
+			uncalled -= (state.result[0].electoral_votes + state.result[1].electoral_votes + state.result[2].electoral_votes + state.result[3].electoral_votes);
+
+			//for testing purposes
+			//state.result[1].electoral_votes += 0;
+			//state.result[2].electoral_votes += -1;
+
+			douglas += state.result[1].electoral_votes;
+			brecken += state.result[2].electoral_votes;
+
+			state.result.sort((a, b) => b.electoral_votes-a.electoral_votes);
+			state.result.sort((a, b) => b.percent-a.percent);
+
+			if(douglas>=125){ douglasWin = true; }
+			if(brecken>=125){ breckenWin = true; }
+			if(douglas+uncalled<152){ douglasWin = false; }
+			if(brecken+uncalled<152){ breckenWin = false; }
+			console.log(douglas, brecken, uncalled,";",douglasWin,breckenWin);
+			if(douglasWin==true || (douglasWin==false && breckenWin!=undefined)){ calltime = state.result_time; break; }
+		}
+		e.final_state_results.sort((a, b) => a.state - b.state);	//re-sort states by ID (undoes sort by result time)
+		
+		PAresult.sort((a, b) => a.candidate-b.candidate);
+		PAresult.sort((a, b) => a.candidate-b.candidate);
+		PAresult[4].result = PAresult[1].result + PAresult[2].result;
+		PAresult[1].result = 0;
+		PAresult[2].result = 0;
+		PAresult[4].percent = PAresult[1].percent + PAresult[2].percent;
+		PAresult[1].percent = 0;
+		PAresult[2].percent = 0;
+		PAresult[4].votes = PAresult[1].votes + PAresult[2].votes;
+		PAresult[1].votes = 0;
+		PAresult[2].votes = 0;
+
+		if (dougOnly){
+			dougPercent = .0352 + (Math.random()-0.5) * e.global_parameter_json[0].fields.global_variance;
+			dougResult = dougPercent * (PAresult[4].result + PAresult[0].result);
+			dougVotes = Math.round(dougPercent * (PAresult[4].votes + PAresult[0].votes));
+			PAresult[4].result -= dougResult;
+			PAresult[4].percent -= dougPercent;
+			PAresult[4].votes -= dougVotes;
+			PAresult[1].result = dougResult;
+			PAresult[1].percent = dougPercent;
+			PAresult[1].votes = dougVotes;
+		}
+
+		//EV allocation; if Douglas and Breckinridge could both win the election with PA, Douglas is favored. If neither can, Doug gets 12 and Breck gets 15.
+		fusionWin = (PAresult[4].percent > PAresult[0].percent) && (PAresult[4].percent > PAresult[3].percent);
+
+		if(fusionWin){
+			fusionWin = true;
+			e.final_state_results[25].result_time = calltime; //sets call time to the moment that PA's EVs are decided
+			PAresult[0].electoral_votes = 0;
+			PAresult[3].electoral_votes = 0;
+			if(douglasWin){
+				PAresult[1].electoral_votes = 27;
+				PAresult[2].electoral_votes = 0;
+			}
+			else if(breckenWin){
+				PAresult[1].electoral_votes = 0;
+				PAresult[2].electoral_votes = 27;
+			}
+			else{
+				PAresult[1].electoral_votes = 12;
+				PAresult[2].electoral_votes = 15;
+			}
+		}
+		PAresult.sort((a, b) => b.electoral_votes-a.electoral_votes);
+		PAresult.sort((a, b) => b.percent-a.percent);
+
+		if (!fusionWin) {
+			e.final_state_results[25].result_time = getCallTime(0, PAresult[0].votes, PAresult[1].votes);
+		}
+	}
+
+	if (GA_leg_vote) { GAresult.sort((a, b) => b.electoral_votes-a.electoral_votes); }
 }
 
 //ENDINGS
@@ -12007,12 +12040,16 @@ endingPicker = (out, totv, aa, quickstats) => {
 	//aa[3].candidate = 70;
 
 	//Outright Victory (incl. Davis Ending)
-	if (davis) {
+	if (davis && aa[0].electoral_votes >= 152 && aa[0].candidate == 67) {
 		setImage("https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Thomas_Hicks_-_Leopold_Grozelier_-_Presidential_Candidate_Abraham_Lincoln_1860_%28cropped%29.jpg/640px-Thomas_Hicks_-_Leopold_Grozelier_-_Presidential_Candidate_Abraham_Lincoln_1860_%28cropped%29.jpg");
 		return "<h3>LINCOLN WINS ELECTION</h3><p>Despite the efforts of Douglas, Davis, and Bell, Abraham Lincoln has secured enough electoral votes to win outright and avoid a contingent election in the House. As such, he will in the coming months be inaugurated as the 16th president of the United States, the first ever to win no electoral votes from the South.</p><p>In the immediate aftermath of the election, the outlook for the nation appears bleak. Despite an attempt, spearheaded by Kentucky Senator John Crittenden, to push a compromise through Congress to forestall a secession crisis – one that would see slavery permanently protected within the Constitution – South Carolina has already declared its secession from the Union, and much of the South seems poised to follow suit.</p><p>As for you – it would seem pertinent to decide where your loyalties lie, and soon. A peaceful resolution to the encroaching crisis appears less likely with each passing day, and it would be best to choose a side before shots are fired.</p>";
 
+	} else if (davis) {
+		setImage("https://www.nps.gov/rich/learn/historyculture/images/Jeff-Davis-in-Court.jpg");
+		return "<h3>ELECTORAL PLOT UNCOVERED;<br>JEFFERSON DAVIS ARRESTED</h3><p>In a shocking turn of events, Southern Democratic candidate Jefferson Davis has been implicated in a criminal conspiracy to undermine the electoral process and prevent the election of Republican candidate Abraham Lincoln. Though the full extent of the plot is unclear, Davis and several of his co-conspirators have been arrested, and are due to be tried in the coming weeks.</p><p>Lincoln, Douglas, and Bell have all vehemently denounced their fellow candidate in light of these proceedings. Bell in particular appears well-positioned to attract disaffected Davis supporters; more than anyone else, however, Lincoln likely stands to benefit the most from the unfolding of these events. Though the election is still some weeks away, many now view Lincoln's victory as inevitable.</p>";
+
 	} else if (out == "win") {
-		setImage("https://i.imgur.com/psJ9HSh.png");
+		setImage("https://file.garden/aUY9j6Fk7RLHy1A_/psJ9HSh.png");
 		return "<h3>BRECKINRIDGE WINS ELECTION</h3><p>Against all odds, you have managed to secure a victory in the Electoral College for yourself, avoiding the confusion and controversy that a contingent election in the House would doubtless have caused. At 39 years of age, you are by far the youngest-ever president-elect, and you will be inaugurated as the 16th president of the United states at only 40.</p><p>The South is triumphant, and the North is up in arms – in spirit, if not in fact. With your election, the future of slavery and its expansion in the United States remains assured for another four years. The South, of course, will expect you to enshrine and enforce further protections on slavery, and the North will do everything in its power to push back against you.</p><p>While there will be no breaking of the Union, the tension in the nation remains all too present, and will only continue to grow. Should you fail to resolve this sectional crisis before your term is up – a monumental, if not impossible task – the election of 1864 is destined to be even more tumultuous, and the results of failure will be catastrophic.</p>";
 
 	} else if (aa[0].electoral_votes>=152 && aa[0].candidate == 67) {
@@ -12020,7 +12057,7 @@ endingPicker = (out, totv, aa, quickstats) => {
 		return "<h3>LINCOLN WINS ELECTION</h3><p>Despite the efforts of Douglas, Bell, and yourself, Abraham Lincoln has secured enough electoral votes to win outright and avoid a contingent election in the House. As such, he will in the coming months be inaugurated as the 16th president of the United States, the first ever to win no electoral votes from the South.</p><p>In the immediate aftermath of the election, the outlook for the nation appears bleak. Despite an attempt, spearheaded by Kentucky Senator John Crittenden, to push a compromise through Congress to forestall a secession crisis – one that would see slavery permanently protected within the Constitution – South Carolina has already declared its secession from the Union, and much of the South seems poised to follow suit.</p><p>As for you – it would seem pertinent to decide where your loyalties lie, and soon. A peaceful resolution to the encroaching crisis appears less likely with each passing day, and it would be best to choose a side before shots are fired.</p>";
 
 	} else if (aa[0].electoral_votes>=152 && aa[0].candidate == 68) {
-		setImage("https://i.imgur.com/Ut6Tgt7.png");
+		setImage("https://file.garden/aUY9j6Fk7RLHy1A_/Ut6Tgt7.png");
 		return "<h3>DOUGLAS WINS ELECTION</h3><p>In a rebuke of the Democratic schism that had once made his candidacy seem hopeless, Stephen Douglas has somehow managed to secure a victory in the Electoral College, avoiding the confusion and controversy that a contingent election in the House would doubtless have caused. As such, he will soon be inaugurated as the 16th president of the United States.</p><p>Douglas will undoubtedly face a difficult presidency. As a moderate Northern Democrat, many of your supporters are incensed at his unlikely victory – though, thankfully, not enough so to bring on a secession crisis. He will, however, need to avoid further alienating the South in the years to come if he is to have any hope of holding the nation together.</p><p>Despite these challenges, if Douglas can reunite the fractured Democratic Party while leveraging his Northern sympathies in Congress, it's possible he is the candidate best-suited to peacefully resolving the nation's sectional conflict. However, if such a path exists, it will be incredibly treacherous to tread, and he may just as easily lead the nation into ruin.</p>";
 
 	} else if (aa[0].electoral_votes>=152 && aa[0].candidate == 70) {
@@ -12032,7 +12069,7 @@ endingPicker = (out, totv, aa, quickstats) => {
 
 	//Contingent Election: Lincoln v. Douglas v. Breckinridge (Bell in 4th)
 	else if (aa[3].candidate == 70){
-		setImage("https://i.imgur.com/Ut6Tgt7.png");
+		setImage("https://file.garden/aUY9j6Fk7RLHy1A_/Ut6Tgt7.png");
 		return "<h3>NO CANDIDATE WINS ELECTORAL COLLEGE;<br>HOUSE ELECTS DOUGLAS TO PRESIDENCY</h3><p>All of your efforts seem to have paid off: Abraham Lincoln, being denied a majority of electoral votes, has failed to win the Electoral College. The victory, however, is not yours: Stephen Douglas ultimately triumphed in the contingent election in the House on the " + doug_ballots + " ballot, winning the Southern delegations only once it became clear you had no path to victory.</p><p>Douglas will undoubtedly face a difficult presidency. As a moderate Northern Democrat, many in the South are incensed at his rise to power – though, thankfully, not enough so to bring on a secession crisis. He will, however, need to avoid further alienating the South in the years to come if he is to have any hope of holding the nation together.</p><p>Despite these challenges, if Douglas can reunite the fractured Democratic Party while leveraging his Northern sympathies in Congress, it's possible he is the candidate best-suited to peacefully resolving the nation's sectional conflict. However, if such a path exists, it will be incredibly treacherous to tread, and he may just as easily lead the nation into ruin.</p>";
 	}
 
@@ -12040,7 +12077,7 @@ endingPicker = (out, totv, aa, quickstats) => {
 
 	//Contingent Election: Lincoln v. Douglas v. Bell (Breckinridge in 4th)
 	else if (aa[3].candidate == 69){
-		setImage("https://i.imgur.com/Ut6Tgt7.png");
+		setImage("https://file.garden/aUY9j6Fk7RLHy1A_/Ut6Tgt7.png");
 		return "<h3>NO CANDIDATE WINS ELECTORAL COLLEGE;<br>HOUSE ELECTS DOUGLAS TO PRESIDENCY</h3><p>All of your efforts seem to have paid off: Abraham Lincoln, being denied a majority of electoral votes, has failed to win the Electoral College. However, as you placed fourth overall, you unfortunately did not qualify to move on to the ensuing contingent election. There, Stephen Douglas narrowly eked out a victory against Lincoln and Bell on the first ballot.<p>Douglas will undoubtedly face a difficult presidency. As a moderate Northern Democrat, many in the South are incensed at his rise to power – though, thankfully, not enough so to bring on a secession crisis. He will, however, need to avoid further alienating the South in the years to come if he is to have any hope of holding the nation together.</p><p>Despite these challenges, if Douglas can reunite the fractured Democratic Party while leveraging his Northern sympathies in Congress, it's possible he is the candidate best-suited to peacefully resolving the nation's sectional conflict. However, if such a path exists, it will be incredibly treacherous to tread, and he may just as easily lead the nation into ruin.</p>";
 	}
 
@@ -12056,7 +12093,7 @@ endingPicker = (out, totv, aa, quickstats) => {
 
 	//Contingent Election: Douglas v. Breckinridge v. Bell (Lincoln in 4th)
 	else if (aa[0].candidate == 68 && aa[3].candidate == 67){
-		setImage("https://i.imgur.com/Ut6Tgt7.png");
+		setImage("https://file.garden/aUY9j6Fk7RLHy1A_/Ut6Tgt7.png");
 		return "<h3>NO CANDIDATE WINS ELECTORAL COLLEGE;<br>HOUSE ELECTS DOUGLAS TO PRESIDENCY</h3><p>Against all odds, not only has Abraham Lincoln been denied a majority of electoral votes, but he has placed fourth overall, thus failing to qualify for the contingent election. Despite the ensuing chaos in the House, Stephen Douglas emerged victorious on the first ballot, carrying Missouri, Oregon, and just enough Northern delegations to eke out a majority.</p><p>Douglas will undoubtedly face a difficult presidency. As a moderate Northern Democrat, many in the South are incensed at his rise to power – though, thankfully, not enough so to bring on a secession crisis. He will, however, need to avoid further alienating the South in the years to come if he is to have any hope of holding the nation together.</p><p>Despite these challenges, if Douglas can reunite the fractured Democratic Party while leveraging his Northern sympathies in Congress, it's possible he is the candidate best-suited to peacefully resolving the nation's sectional conflict. However, if such a path exists, it will be incredibly treacherous to tread, and he may just as easily lead the nation into ruin.</p>";
 	}
 
@@ -12369,6 +12406,11 @@ customStyling.innerHTML = `
 }
 #overall_result_container {
     background-color: #8c816f;
+    overflow-y: auto;
+}
+#overall_result {
+    min-height: 190px;
+    height: auto;
 }
 #state_result_container {
     background-color: #8c816f;
