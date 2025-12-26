@@ -29725,6 +29725,11 @@ function applySwitcheroo(config) {
 // to reflect their strengths and weaknesses compared to the default
 const NOMINEE_MODIFICATIONS = {
     "Newt Gingrich": {
+		issueScores: { 
+            1: -0.1,
+            3: -0.2,
+            4: -0.2  
+        },
         regionMultipliers: {
             "Deep South": 1.065,
             "Appalachia": 1.032,
@@ -29740,6 +29745,10 @@ const NOMINEE_MODIFICATIONS = {
         }
     },
     "Rick Santorum": {
+		issueScores: { 
+            1: -0.15,
+            4: -0.2
+        },
         regionMultipliers: {
             "Rust Belt": 1.03,
             "Appalachia": 1.04,
@@ -29757,6 +29766,12 @@ const NOMINEE_MODIFICATIONS = {
         }
     },
     "Jon Huntsman": {
+		issueScores: { 
+            1: -0.075,
+            3: 0.2,
+            4: 0.1,
+            5: 0.1
+        },
         regionMultipliers: {
             "Northeast": 1.020,
             "West Coast": 1.021,
@@ -29774,6 +29789,12 @@ const NOMINEE_MODIFICATIONS = {
         }
     },
     "Ron Paul": {
+		issueScores: { 
+            1: -0.25,
+            2: -0.2,
+            3: -0.15,
+            4: -0.1
+        },
         regionMultipliers: {
             "Mountain West": 1.085,
             "Plains": 1.065,
@@ -29788,6 +29809,11 @@ const NOMINEE_MODIFICATIONS = {
         }
     },
     "Rick Perry": {
+		issueScores: { 
+            1: -0.1,
+            3: -0.25,
+            5: -0.2
+        },
         regionMultipliers: {
             "Sun Belt": 1.028,
             "Deep South": 1.035,
@@ -29804,6 +29830,11 @@ const NOMINEE_MODIFICATIONS = {
         }
     },
     "Michele Bachmann": {
+		issueScores: { 
+            1: -0.2,
+            3: -0.15,
+            4: -0.25
+        },
         regionMultipliers: {
             "Midwest": 1.038,
             "Plains": 1.043,
@@ -29819,6 +29850,77 @@ const NOMINEE_MODIFICATIONS = {
     }
 };
 
+// for veeps
+const VP_GEOGRAPHY = {
+    "Chris Christie":   { home: "NJ", neighbors: ["NY", "PA", "DE"] },
+    "Marco Rubio":      { home: "FL", neighbors: ["GA", "AL"] },
+    "Rob Portman":      { home: "OH", neighbors: ["MI", "IN", "KY", "WV", "PA"] },
+    "Bob McDonnell":    { home: "VA", neighbors: ["MD", "NC", "TN", "KY", "WV", "DC"] },
+    "Paul Ryan":        { home: "WI", neighbors: ["MN", "IA", "IL", "MI"] },
+    "Mike Huckabee":    { home: "AR", neighbors: ["MO", "TN", "MS", "LA", "TX", "OK"] },
+    "Jim DeMint":       { home: "SC", neighbors: ["NC", "GA"] },
+    "Bobby Jindal":     { home: "LA", neighbors: ["TX", "AR", "MS"] },
+    "Tim Pawlenty":     { home: "MN", neighbors: ["ND", "SD", "IA", "WI"] },
+    "Sarah Palin":      { home: "AK", neighbors: [] },
+    "Herman Cain":      { home: "GA", neighbors: ["FL", "AL", "TN", "NC", "SC"] },
+    "John Bolton":      { home: "MD", neighbors: ["VA", "WV", "PA", "DE", "DC"] },
+    "Rick Perry":       { home: "TX", neighbors: ["NM", "OK", "AR", "LA"] },
+    "Rand Paul":        { home: "KY", neighbors: ["IL", "IN", "OH", "WV", "VA", "TN", "MO"] },
+    "Condoleezza Rice": { home: "CA", neighbors: ["OR", "NV", "AZ"] },
+    "Andrew Napolitano":{ home: "NJ", neighbors: ["NY", "PA", "DE"] },
+    "Justin Amash":     { home: "MI", neighbors: ["WI", "IN", "OH"] },
+    "Lew Rockwell":     { home: "AL", neighbors: ["MS", "TN", "GA", "FL"] },
+    "Allen West":       { home: "FL", neighbors: ["GA", "AL"] },
+    "Nikki Haley":      { home: "SC", neighbors: ["NC", "GA"] },
+    "Steve King":       { home: "IA", neighbors: ["MN", "WI", "IL", "MO", "NE", "SD"] }
+};
+
+const VP_BOOSTS = {
+    HOME: 0.008,
+    NEIGHBOR: 0.005
+};
+
+function calculateConfiguration(nomineeName, vpName) {
+    let baseConfig = NOMINEE_MODIFICATIONS[nomineeName] 
+        ? JSON.parse(JSON.stringify(NOMINEE_MODIFICATIONS[nomineeName])) 
+        : { issueScores: {}, regionMultipliers: {}, stateMultipliers: {} };
+
+    // ensure objects exist
+    if (!baseConfig.stateMultipliers) baseConfig.stateMultipliers = {};
+    if (!baseConfig.regionMultipliers) baseConfig.regionMultipliers = {};
+
+    const vpGeo = VP_GEOGRAPHY[vpName];
+    if (!vpGeo) return baseConfig;
+
+    // helper to add boost
+    const addBoost = (stateAbbr, boostAmount) => {
+        let currentMult = 1.0;
+
+        if (baseConfig.stateMultipliers[stateAbbr]) {
+            currentMult = baseConfig.stateMultipliers[stateAbbr];
+        } 
+        else {
+            // find which region this state belongs to
+            let regionName = Object.keys(REGIONS).find(r => REGIONS[r].includes(stateAbbr));
+            if (regionName && baseConfig.regionMultipliers[regionName]) {
+                currentMult = baseConfig.regionMultipliers[regionName];
+            }
+        }
+
+        baseConfig.stateMultipliers[stateAbbr] = currentMult + boostAmount;
+    };
+
+    addBoost(vpGeo.home, VP_BOOSTS.HOME);
+
+    if (vpGeo.neighbors) {
+        vpGeo.neighbors.forEach(neighbor => {
+            addBoost(neighbor, VP_BOOSTS.NEIGHBOR);
+        });
+    }
+
+    return baseConfig;
+}
+
 // This function determines the opponent(s) and changes the variables to reflect it
 // it also applies the dynamic shifts to the nominee's profile
 function setOpponent() {
@@ -29833,23 +29935,21 @@ function setOpponent() {
         stateMultipliers: _baselineRepublicanData.stateMultipliers
     });
 
-    // determine the nominee based on game scores
+    // determine the nominee/veep based on game scores
     const nominee = getRepublicanOpponent(window.liberalismScore, window.confrontationScore);
     const vp = getRepublicanVP(nominee, window.liberalismScore, window.confrontationScore);
 
     window.opName = nominee;
     window.vpName = vp;
+	
+	const finalConfig = calculateConfiguration(nominee, vp);
     
-    // if the nominee is not the default, apply their specific modifications
-    if (NOMINEE_MODIFICATIONS[nominee]) {
-        console.log(`Applying modifications for nominee: ${nominee}`);
-        applySwitcheroo({
-            candidateId: REPUBLICAN_CANDIDATE_ID,
-            ...NOMINEE_MODIFICATIONS[nominee]
-        });
-    } else {
-        console.log(`No modifications applied.`);
-    }
+    // apply their specific modifications
+	console.log(`Applying modifications for ${nominee} + ${vp}`);
+    applySwitcheroo({
+        candidateId: REPUBLICAN_CANDIDATE_ID,
+        ...finalConfig
+    });
 
     try {
         const nameParts = nominee.split(' ');
@@ -32357,7 +32457,7 @@ const CITY_ISSUE_EFFECTS = {
   }
 };
 
-const MAX_ISSUE_SCORE_MAGNITUDE = 1.0;
+const MAX_ISSUE_SCORE_MAGNITUDE = 0.75;
 
 function applyCityIssueEffects(statePk, cityName) {
   const stateName = getStateNameByPk(statePk);
