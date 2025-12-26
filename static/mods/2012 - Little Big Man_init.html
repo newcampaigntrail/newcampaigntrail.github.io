@@ -1,7 +1,7 @@
  /*
  * @title: 2012: Little Big Man / Little Big Man / 2012a
  * @author: StrawberryMaster & Friends
- * @version: 1.0.0
+ * @version: 1.0.3
  * @description: The 2012 election in the eyes of Barack Obama (and a couple of others, too)
  * 
  * Coding license: Apache License 2.0
@@ -859,7 +859,7 @@ campaignTrail_temp.modBoxTheme = {
     "description_text_color": "#000000",
     "description_background_color": "#f5f3f4",
     "main_color": "#bb3e21",
-    "secondary_color": "#19191E",
+    "secondary_color": "#5d1f10",
     "ui_text_color": "#FFFFFF"
 }
 
@@ -2341,6 +2341,10 @@ const css = `
 				  padding: 1.75em .75em !important;
 				}
 				
+				#drop_down_area_state {
+				  margin-inline: auto;
+				}
+				
 			}
 				
 `;
@@ -2359,6 +2363,7 @@ tooltipList = [
     { searchString: "Hillary Clinton", explanationText: "<img src=https://media.gettyimages.com/id/126126505/pt/foto/new-york-cityhillary-rodham-clinton-secretary-of-state-speaks-during-the-closing-plenary.jpg?s=612x612&w=0&k=20&c=UhEe4qHtrl1hKYNHfe5z6E18ew3epdrhSJOUkq45Bh8=> Hillary Clinton; your former 2008 rival, and now your loyal Secretary of State. She’s spent the last four years circling the globe as America’s top diplomat, and is quite ambitious." },
     { searchString: "Eric Holder", explanationText: "<img src=https://media.gettyimages.com/id/131921439/pt/foto/washington-dc-attorney-general-eric-holder-gestures-while-answering-questions-during-a-senate.jpg?s=612x612&w=0&k=20&c=h4kT5QcctOsDXkTdlRPxS8oHqfCR39MVgZ-yKXggEac=> Eric Holder; your Attorney General. He is perhaps the best Eric you know, which is hardly surprising because you don’t know many." },
 	{ searchString: "Rahm", explanationText: "<img src=https://i.guim.co.uk/img/static/sys-images/Users/Help/screenshots/2010/9/28/1285691854527/Barack-Obama-with-Rahm-Em-006.jpg?width=465&dpr=1&s=none&crop=none> Just like you." },
+	{ searchString: "Geithner", explanationText: "<img src=https://assets.propublica.org/legacy/images/articles/gt_geithner_obama_090114.jpg> The numbers guy, and also your Treasury Secretary." },
 	{ searchString: "Arne Duncan", explanationText: "<img src=	https://images.sidearmdev.com/convert?url=https%3a%2f%2fdxbhsrqyrr690.cloudfront.net%2fsidearm.nextgen.sites%2fgocrimson.com%2fimages%2f2012%2f5%2f8%2fBKM_Duncan_Arnie2.jpg&type=webp> Jim Carrey’s doppelgänger." },
 	{ searchString: "Kerry", explanationText: "<img src=https://static01.nyt.com/images/2009/01/13/us/13kerry_450.jpg?quality=100&auto=webp&disable=upscale> People are going to die... but not us, Barack. We are going to live." },
     { searchString: "Ben Bernanke", explanationText: "<img src=https://media.gettyimages.com/id/98698380/pt/foto/washington-federal-reserve-chairman-ben-bernanke-greets-attendees-before-addressing-the.jpg?s=612x612&w=0&k=20&c=bGMzC4QsKaQC2DoXH0sQl-Inecqk_eMT1u5vCXPBoeI=> Ben Bernanke; the Chairman of the Federal Reserve." },
@@ -2379,7 +2384,7 @@ tooltipList = [
     { searchString: "Clinton", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/bill.webp> Culture Club - Do You Really Want To Hurt Me" },
     { searchString: "Gore", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/G58yVEFXoAANcDt.jpg> Praying for <i>hope</i>." },
     { searchString: "Jimmy Carter", explanationText: "<img src=https://bbforpeace.org/lessonsfrompeacebuilders/wp-content/uploads/2020/08/170414_abc_archive_jimmycarter_nobelprize_speech_16x9_992-1.jpg> God, you hope you don’t end up like him." },
-    { searchString: "Cheney", explanationText: "<img src=https://sites.libraries.uta.edu/ettahulme/sites/ettahulme/files/2020-08/20114219.jpg> <b>B</b>est ever." },
+    { searchString: "Cheney", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/bruce.jpg> <b>B</b>est ever." },
     { searchString: "FDR", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/fdr.webp> Franklin D. Roosevelt; the 32nd President of the United States." },
     { searchString: "Johnson", explanationText: "<img src=https://imagez.tmz.com/image/f8/o/2012/10/03/f867d804e9b15b2f9511177d680a4e5c_lg.jpg> Lyndon B. Johnson; the 36th President of the United States." },
 	{ searchString: "Reagan", explanationText: "<img src=https://preview.redd.it/mpc217yg5hp91.jpg?width=640&crop=smart&auto=webp&s=5fbce7c03bc06d3896d6deec934e474e46d9c878> The 40th President of the United States. Gone." },
@@ -2419,6 +2424,7 @@ tooltipList = [
 	{ searchString: "Pell Grants", explanationText: "<img src=https://www.cbpp.org/sites/default/files/atoms/files/7-27-17bud-f1.png> Essentially, a form of federal financial aid provided by the government to help undergraduate students with financial need pay for college or career school. Unlike a student loan, money from a Pell Grant usually does not have to be repaid." },
 
     // everything else
+	{ searchString: "that photo", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Obama_and_Biden_await_updates_on_bin_Laden.jpg/1024px-Obama_and_Biden_await_updates_on_bin_Laden.jpg>" },
 	{ searchString: "Axelrod", explanationText: "<img src=https://i.guim.co.uk/img/static/sys-images/Observer/Columnist/Columnists/2012/8/4/1344074361508/David-Axelrod-006.jpg?width=465&dpr=1&s=none&crop=none> Happy." },
 	{ searchString: "Messina", explanationText: "<img src=https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iK47FQ9mImZU/v1/-1x-1.webp> Not happy." },
 	{ searchString: "Nancy Reagan", explanationText: "<img src=https://static01.nyt.com/images/2009/06/02/us/02reagan-480.jpg> Tired of sucking." },
@@ -3480,8 +3486,6 @@ function automateStartSequence() {
     const observer = new MutationObserver(handleDomChange);
     observer.observe(targetNode, { childList: true, subtree: true });
 }
-
-automateStartSequence();
 
 // Useful if you have a mod series!
 // Here, it lets you switch easily to 2016ALOT.
