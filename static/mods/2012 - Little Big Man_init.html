@@ -1,7 +1,7 @@
  /*
  * @title: 2012: Little Big Man / Little Big Man / 2012a
  * @author: StrawberryMaster & Friends
- * @version: 1.0.3
+ * @version: 1.0.6
  * @description: The 2012 election in the eyes of Barack Obama (and a couple of others, too)
  * 
  * Coding license: Apache License 2.0
@@ -349,6 +349,8 @@ const recommendedReadingContent = `
 			of the tabs added to it were added by routevenus, and used for testing both <i>1972: More Than Ever</i> and <i>
 			Projec 2024</i>, and eventually I decided to use an adapted version of the data visualizer used there for better
 			ease of use. Thank you!</li>
+			<li>The presidents list slide you see here was taken from <i>Hope</i>, which was taken from <i>All The Way</i>. The
+			original code (for Hope, at least) was over 200kb, and a lot of it had to be trimmed down and adjusted for this mod.</li>
             <li>The tabs system you’re seeing here was taken from <i>2004 Sundance</i>, used in 2016ALOT, and eventually
 				reused for this mod. The question randomizer here, although technically using the same function as
                 <i>bunnyhop</i>, is used in a different way because, just like in 2016ALOT, rewriting most of the mod for it was
@@ -380,6 +382,7 @@ const recommendedReadingContent = `
 			busy with other things. I did consider it for a couple of months but dropped it entirely when <a href="https://www.reddit.com/r/thecampaigntrail/comments/1m8ihet/mod_announcement_biden_08/" target="_blank">the same idea</a> was taken by another person.</li>
 			<li>A very alpha version of Little Big Man, way before I was fully set on making it an actual mod, was posted on June 29, 2025, just six days after the release of A Lifetime of This. It had some similarities to the final design. <img src="https://file.garden/aNtAfG887DiA_7lO/2012LBM/lbm_alpha.png" width="75%" /></li>
 			<li>The music player was based off a scrapped, buggy music player I considered for 2016ALOT. It was so broken that it looked like this. Curiously, some of the sample songs in here were re-used this for mod, although not all of them. Amen to that! I think the other unlisted songs here were The Greatest Romance Ever Been Gold, I Wanna Sex You Up (confirming this mod was initially made on freaky principles) and C'Est La Vie. <img src="https://file.garden/aNtAfG887DiA_7lO/2012LBM/lbm_alpha2.png" width="75%" /></li>
+			<li>You might be wondering why Trevor Moore appears in this mod many, many, many times. This is a good question, one which I don't know the answer to. He was a last-minute addition to A Lifetime of This (and mostly as part of the polar bears gag), but here you can see that, perhaps, he and Obama have more in common than you'd think. A similar rationale was used for adding Gray Davis as a running mod, except this one was based on 'historical' facts; there have been a few reports from 2010-2012 showing that the two had their similarities and, given that I was looking for a Garcetti-esque running mate for this mod, he fit in nicely.			
             </li>
         </ul>
 		
@@ -784,9 +787,9 @@ changeFavicon("https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/XOvMKWj.png");
 document.title = "little big man.";
 
 // Election night descs
-e.ElectionPopup = "Election night is here. Hope you have your speeches ready, Mr. President."
+e.ElectionPopup = "Election night is here. Hope you have your speeches ready, Barry."
 e.WinPopup = "You feel as if there’s a beacon of light shining in on you. You smile."
-e.LosePopup = "No."
+e.LosePopup = "Oh no. Oh no. Oh no."
 e.SelAnsContText = "You haven’t selected your answer yet, Barack."
 
 HistHexcolour = ["#194A9F", "#f20d0d", "#f9f91f", "#0ac21a"];
@@ -921,7 +924,35 @@ const themeData = {
             #new_footer { background: linear-gradient(#005FB8, #003566); }
             #menu_container { background: linear-gradient(#005951 50%, transparent) !important; }
         `
-    }
+    },
+	"Bistre": {
+        headerSrc: "https://assets.vogue.com/photos/58913d34b482c0ea0e4d6f04/master/pass/00-holding-obamacare-barack-obama.jpg",
+        coloring_title: "#1e2262",
+        coloring_window: "linear-gradient(#730b0b 70%, #070553)",
+        containerColor: "#362626",
+        footerColor: "",
+        extraCss: `
+			@import url('https://fonts.googleapis.com/css2?family=Schoolbell&display=swap');			
+            body {
+                background: url(https://upload.wikimedia.org/wikipedia/commons/a/af/Barack_Obama_thinking%2C_first_day_in_the_Oval_Office.jpg) !important;
+                background-position: center !important;
+                background-size: cover !important;
+            }			
+			#header {
+				object-position: 0 -130px;
+			}			
+            .game_header { background: linear-gradient(to bottom, gray, #3d2b1f) !important; font-family: Schoolbell !important; font-size: 22pt !important; }
+			#game_window { background-color: #732b15 !important; background-image: radial-gradient(circle at center, #fff 1px, transparent 0) !important; background-size: 10px 10px !important; }
+			#game_window:has(.inner_window_question:not([style*="display: none"])) { background: linear-gradient(to top, #230505, #B3A004) !important; }
+            #inner_window_2, .inner_window_w_desc { background: linear-gradient(to left, #2b0949 0%, #f0f0f0 50%, #ce653b 100%) !important; }
+            #menu_container { background: linear-gradient(#070059 50%, transparent) !important; }
+			
+			#state_result_container {
+			  background: linear-gradient(0.2turn, transparent, rgb(230, 194, 0)) !important;
+			}
+			
+        `
+    },
 };
 
 const el = {
@@ -1457,7 +1488,6 @@ const css = `
 			}
             button#ExportFileButton {
                 display: inline-flex;
-				margin: 0 0 0 -5.5em !important;
             }
             /* other, in-game issue tooltips */
             .tooltip {
@@ -1607,11 +1637,6 @@ const css = `
 			    display: flex;
 			}
  
-            /** Game Link button - this never really worked afaik **/
-            #overall_election_details p a {
-                display: none;
-            }
-
             /* Text tooltips - experimental */
             /* kindly borrowed from the folks @ campaigntrailshowcase.com
             and adapted to opapeldetrouxa.neocities.org */
@@ -1838,7 +1863,6 @@ const css = `
 
 			.fade-in {
 				animation: broadcastFade .65s cubic-bezier(.25,.8,.25,1) forwards;
-				will-change: opacity, transform;
 				backface-visibility: hidden;
 			}
 			
@@ -2189,8 +2213,7 @@ const css = `
 			input {
 			  font-family: Trebuchet MS, sans-serif;
 			}
-			button[onclick="addSTSSMoney()"], /* neither are used for this mod */
-			button[onclick="activateVariableTooltip()"] {
+			button[onclick="addSTSSMoney()"] /* not used for this mod */ {
 			  display: none;
 			}
 			#autoplayMenu {
@@ -2345,6 +2368,13 @@ const css = `
 				  margin-inline: auto;
 				}
 				
+				#mod_options_container {
+				  width: 300px;
+				}
+				#difficulty_level {
+				  flex-flow: revert;
+				}
+								
 			}
 				
 `;
@@ -2571,6 +2601,62 @@ tooltipList = [
         maxRetries: 2,
         failedBannerTimeout: 5 * 60 * 1000 
     };
+	
+	if(!document.getElementById('banner-system-styles')) {
+        const style = document.createElement('style');
+        style.id = 'banner-system-styles';
+        style.textContent = `
+            #bottomBar {
+                height: ${CONFIG.bannerHeight}px;
+                font-size: 12px;
+                background-color: transparent;
+                margin: 1em auto;
+                position: relative;
+                overflow: hidden;
+                cursor: pointer;
+                transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
+                user-select: none;
+                border-radius: 3px;
+                width: 100%;
+                max-width: 800px; /* Safe default */
+            }
+            #bottomBar:hover {
+                transform: scale(1.02);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            }
+            #bottomBar img {
+                width: 100%; 
+                height: 100%; 
+                object-fit: contain; 
+                display: block;
+                transition: opacity ${CONFIG.fadeTransition}ms ease-in-out;
+                pointer-events: none;
+            }
+            #bannerIndicator {
+                position: absolute;
+                top: 2px; right: 4px;
+                width: 16px; height: 16px;
+                background: rgba(255, 255, 255, 0.8);
+                border-radius: 50%;
+                display: flex;
+                align-items: center; justify-content: center;
+                font-size: 10px; font-weight: bold;
+                color: #333;
+                opacity: 0;
+                transition: opacity 200ms ease-in-out, transform 150ms ease-in-out;
+                pointer-events: none;
+                z-index: 10;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            }
+            #bottomBar:hover #bannerIndicator {
+                opacity: 1;
+            }
+            .indicator-pop {
+                transform: scale(1.2);
+            }
+        `;
+        document.head.appendChild(style);
+    }
 
     // banner list
     const banners = [{
@@ -3026,86 +3112,36 @@ tooltipList = [
                 this.destroy();
             });
         }
-
-        createElements() {
+		
+		createElements() {
             this.container = document.createElement("div");
-            this.imageElement = document.createElement("img");
-            this.clickIndicator = document.createElement("div");
-
             this.container.id = "bottomBar";
             this.container.setAttribute('tabindex', '0');
             this.container.setAttribute('role', 'button');
             this.container.setAttribute('aria-label', 'Click to change banner');
 
-            this.container.style.cssText = `
-                height: ${CONFIG.bannerHeight}px;
-                font-size: 12px;
-                border-style: none;
-                border-width: 5px;
-                background-color: transparent;
-                padding: 0;
-                margin: 1em auto 1em auto;
-				margin-inline: auto;
-                position: relative;
-                overflow: hidden;
-                cursor: pointer;
-                transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
-				-webkit-user-select: none;
-                user-select: none;
-                border-radius: 3px;
-            `;
+            this.imageElement = document.createElement("img");
+            this.clickIndicator = document.createElement("div");
+            this.clickIndicator.id = "bannerIndicator";
+            this.clickIndicator.textContent = "↻";
 
-            this.imageElement.style.cssText = `
-                width: 100%; 
-                height: 100%; 
-                object-fit: contain; 
-                display: block;
-                transition: opacity ${CONFIG.fadeTransition}ms ease-in-out;
-                pointer-events: none;
-            `;
+            const frag = document.createDocumentFragment();
+            frag.appendChild(this.imageElement);
+            frag.appendChild(this.clickIndicator);
+            this.container.appendChild(frag);
+
+            gameWindow.insertAdjacentElement("afterend", this.container);
 
             this.imageElement.onerror = () => {
                 console.warn('Banner display failed:', this.imageElement.src);
-                if (this.currentBanner) {
-                    this.cache.markAsFailed(this.currentBanner.url);
-                }
-                // try to load another banner
+                if (this.currentBanner) this.cache.markAsFailed(this.currentBanner.url);
+				// try to load another banner
                 if (this.retryCount < CONFIG.maxRetries) {
                     this.retryCount++;
                     setTimeout(() => this.displayRandomBanner(), 100);
                 }
             };
-
-            // rset retry count on successful load
-            this.imageElement.onload = () => {
-                this.retryCount = 0;
-            };
-
-            this.clickIndicator.style.cssText = `
-                position: absolute;
-                top: 2px;
-                right: 4px;
-                width: 16px;
-                height: 16px;
-                background: rgba(255, 255, 255, 0.8);
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 10px;
-                font-weight: bold;
-                color: #333;
-                opacity: 0;
-                transition: opacity 200ms ease-in-out, transform 150ms ease-in-out;
-                pointer-events: none;
-                z-index: 10;
-                box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-            `;
-            this.clickIndicator.textContent = "↻";
-
-            this.container.appendChild(this.imageElement);
-            this.container.appendChild(this.clickIndicator);
-            gameWindow.insertAdjacentElement("afterend", this.container);
+            this.imageElement.onload = () => { this.retryCount = 0; }; // reset retry count on successful load
         }
 
         setupEventListeners() {
@@ -3119,30 +3155,8 @@ tooltipList = [
                 this.retryCount = 0;
                 this.nextBanner();
             };
-
-            if (CONFIG.hoverEffect) {
-                this.container.onmouseenter = () => {
-                    if (this.isTransitioning) return;
-                    
-                    cancelAnimationFrame(this.rafId);
-                    this.rafId = requestAnimationFrame(() => {
-                        this.container.style.transform = 'scale(1.02)';
-                        this.container.style.boxShadow = '0 2px 8px rgba(0,0,0,0.2)';
-                        this.clickIndicator.style.opacity = '1';
-                    });
-                };
-
-                this.container.onmouseleave = () => {
-                    cancelAnimationFrame(this.rafId);
-                    this.rafId = requestAnimationFrame(() => {
-                        this.container.style.transform = 'scale(1)';
-                        this.container.style.boxShadow = 'none';
-                        this.clickIndicator.style.opacity = '0';
-                    });
-                };
-            }
-
-            this.container.onkeydown = (e) => {
+			
+			this.container.onkeydown = (e) => {
                 if (e.code === 'Space' || e.code === 'Enter') {
                     e.preventDefault();
                     this.retryCount = 0;
@@ -3232,14 +3246,12 @@ tooltipList = [
 
         nextBanner() {
             this.displayRandomBanner();
-
+			
             requestAnimationFrame(() => {
-                this.clickIndicator.style.transform = 'scale(1.2)';
-                
+                this.clickIndicator.classList.add('indicator-pop');
+				
                 setTimeout(() => {
-                    requestAnimationFrame(() => {
-                        this.clickIndicator.style.transform = 'scale(1)';
-                    });
+                    this.clickIndicator.classList.remove('indicator-pop');
                 }, 150);
             });
         }
@@ -3299,23 +3311,26 @@ tooltipList = [
             { text: "75 (Full)", value: 75 }
         ]
     };
-
-    const style = document.createElement("style");
-    style.textContent = `
-        #${CONFIG.targetSectionId} {
-            display: inline-flex;
-            flex-wrap: wrap;
-            gap: 2.5em;
-            align-items: flex-start;
-        }
-        #${CONFIG.targetSectionId} form {
-            flex: 1 1 auto;
-        }
-        #${CONFIG.targetSectionId} form p {
-            margin: 0;
-        }
-    `;
-    document.head.appendChild(style);
+	
+	if (!document.getElementById("question_select_style")) {
+        const style = document.createElement("style");
+        style.id = "question_select_style";
+        style.textContent = `
+            #${CONFIG.targetSectionId} {
+                display: inline-flex;
+                flex-wrap: wrap;
+                gap: 2.5em;
+                align-items: flex-start;
+            }
+            #${CONFIG.targetSectionId} form {
+                flex: 1 1 auto;
+            }
+            #${CONFIG.targetSectionId} form p {
+                margin: 0;
+            }
+        `;
+        document.head.appendChild(style);
+    }
 
     // update global var safely
     function setGlobalQuestionCount(val) {
@@ -3331,33 +3346,198 @@ tooltipList = [
         
         if (!container) return;
         if (document.getElementById(CONFIG.selectorId)) return;
-
-        const dropdown = document.createElement("select");
-        dropdown.id = CONFIG.selectorId;
-
-        CONFIG.options.forEach((opt, index) => {
-            const optionElement = document.createElement("option");
-            optionElement.text = opt.text;
-            optionElement.value = opt.value;
-            optionElement.selected = index === 0;
-            dropdown.add(optionElement);
-        });
+		
+		const frag = document.createDocumentFragment();
 
         const formContainer = document.createElement("form");
         formContainer.name = "question_select_form";
         const heading = document.createElement("h3");
         heading.textContent = "Select the number of questions:";
-        
-        formContainer.appendChild(heading);
-        formContainer.appendChild(dropdown);
-        container.appendChild(formContainer);
+
+        const dropdown = document.createElement("select");
+        dropdown.id = CONFIG.selectorId;
+
+        CONFIG.options.forEach((opt, index) => {
+            const isSelected = index === 0;
+            dropdown.add(new Option(opt.text, opt.value, isSelected, isSelected));
+        });
 
         dropdown.addEventListener("change", (e) => setGlobalQuestionCount(e.target.value));
-        
+
+        formContainer.appendChild(heading);
+        formContainer.appendChild(dropdown);
+        frag.appendChild(formContainer);
+        container.appendChild(frag);
+
         setGlobalQuestionCount(dropdown.value);
     }
 
     window.manageQuestionSelector = manageQuestionSelector;
+})();
+
+// This is a dropdown for all the opt-in
+// or opt-out features in the mod
+(function() {
+    'use strict';
+
+    const CONFIG = {
+        targetId: 'difficulty_level',
+        containerId: 'mod_options_container',
+		storageKey: 'lbm_custom_preferences', 
+        features: [
+            {
+                id: 'city_visits',
+                text: "City visits",
+                desc: "Visits to a state's cities may gradually shift its issues towards a specific stance.",
+                flag: 'city_visits', 
+                default: true 
+            },
+            {
+                id: 'dynamic_en',
+                text: "Dynamic election night",
+                desc: "Enables a fluid, realistic election night simulation instead of the in-game election night. Similar to that of The Political Process.",
+                flag: 'dynamicEN', 
+                default: false 
+            },
+            {
+                id: 'compact_playlist',
+                text: "Compact playlist",
+                desc: "Replaces the default soundtrack with a curated, more theme-accurate playlist.",
+                flag: 'compact_playlist', 
+                default: false 
+            }
+        ]
+    };
+
+    if (!document.getElementById("mod_option_styles")) {
+        const style = document.createElement("style");
+        style.id = "mod_option_styles";
+        style.textContent = `
+            #${CONFIG.targetId} { display: inline-flex; flex-wrap: wrap; gap: 2.5em; align-items: flex-start; }
+            #${CONFIG.containerId} { display: flex; flex-direction: column; width: 260px; }
+            .mod-desc-box { 
+                margin-top: 10px; padding: 10px; background: rgba(255,255,255,0.1); 
+                border: 1px solid #ccc; border-radius: 4px; min-height: 90px; 
+                font-size: 0.95em; display: flex; flex-direction: column; justify-content: space-between; 
+            }
+            .mod-desc-box p { margin: 0 0 10px 0; line-height: 1.3em; }
+            .mod-toggle-row { display: flex; align-items: center; padding-top: 5px; border-top: 1px solid rgba(0,0,0,0.1); }
+            .switch { position: relative; display: inline-block; width: 40px; height: 20px; margin-right: 10px; }
+            .switch input { opacity: 0; width: 0; height: 0; }
+            .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 20px; }
+            .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+            input:checked + .slider { background-color: #208604; }
+            input:checked + .slider:before { transform: translateX(20px); }
+            .status-label { font-weight: bold; font-size: 0.9em; text-transform: uppercase; }
+            .status-enabled { color: #0d3d00; }
+            .status-disabled { color: #2d2d2d; }
+        `;
+        document.head.appendChild(style);
+    }
+	
+	// storage
+	const getSavedSettings = () => {
+        try {
+            return JSON.parse(localStorage.getItem(CONFIG.storageKey)) || {};
+        } catch (e) { return {}; }
+    };
+
+    const saveSettingToStorage = (flag, value) => {
+        const current = getSavedSettings();
+        current[flag] = value;
+        localStorage.setItem(CONFIG.storageKey, JSON.stringify(current));
+    };
+
+
+    // helpers
+    const getFlag = (key, def) => {
+        window.campaignTrail_temp = window.campaignTrail_temp || {};
+        if (!window.campaignTrail_temp.hasOwnProperty(key)) window.campaignTrail_temp[key] = def;
+        return window.campaignTrail_temp[key];
+    };
+    const setFlag = (key, val) => window.campaignTrail_temp[key] = val;
+
+    const createEl = (tag, props = {}, children = []) => {
+        const el = document.createElement(tag);
+        Object.entries(props).forEach(([key, val]) => {
+            if (key === 'style') Object.assign(el.style, val);
+            else if (key === 'dataset') Object.assign(el.dataset, val);
+            else el[key] = val;
+        });
+        children.forEach(child => el.appendChild(child));
+        return el;
+    };
+
+    function manageModOptions() {
+        const target = document.getElementById(CONFIG.targetId);
+        if (!target || document.getElementById(CONFIG.containerId)) return;
+
+        const frag = document.createDocumentFragment();
+
+        let descText, toggleInput, statusText, dropdown;
+
+        const wrapper = createEl('div', { id: CONFIG.containerId }, [
+            createEl('h3', { textContent: 'Special mod settings:' }),
+            dropdown = createEl('select', { 
+                style: { width: '100%', padding: '5px' } 
+            }),
+            createEl('div', { className: 'mod-desc-box' }, [
+                descText = createEl('p', {}),
+                createEl('div', { className: 'mod-toggle-row' }, [
+                    createEl('label', { className: 'switch' }, [
+                        toggleInput = createEl('input', { type: 'checkbox' }),
+                        createEl('span', { className: 'slider' })
+                    ]),
+                    statusText = createEl('span', { className: 'status-label' })
+                ])
+            ])
+        ]);
+
+        const savedSettings = getSavedSettings();
+
+        CONFIG.features.forEach((f, i) => {
+            dropdown.add(new Option(f.text, i));
+            
+            let initialValue;
+            if (savedSettings.hasOwnProperty(f.flag)) {
+                initialValue = savedSettings[f.flag];
+            } else {
+                initialValue = f.default;
+            }
+            
+            setFlag(f.flag, initialValue);
+        });
+
+        const updateState = () => {
+            const feat = CONFIG.features[dropdown.value];
+            descText.textContent = feat.desc;
+            
+            const isOn = getFlag(feat.flag, feat.default);
+            toggleInput.checked = isOn;
+            toggleInput.dataset.flag = feat.flag;
+            
+            statusText.textContent = isOn ? "Enabled" : "Disabled";
+            statusText.className = `status-label ${isOn ? 'status-enabled' : 'status-disabled'}`;
+        };
+
+        dropdown.addEventListener('change', updateState);
+        
+        toggleInput.addEventListener('change', (e) => {
+            const flag = e.target.dataset.flag;
+            const isChecked = e.target.checked;
+            
+            setFlag(flag, isChecked);
+            saveSettingToStorage(flag, isChecked);
+            
+            updateState();
+        });
+
+        updateState();
+        frag.appendChild(wrapper);
+        target.appendChild(frag);
+    }
+
+    window.manageModOptions = manageModOptions;
 })();
 
 // This is just so that we can prevent the VP observer
@@ -3414,7 +3594,7 @@ tooltipList = [
 // This is, essentially, for preventing candidates or running mates
 // from being selected. Very useful if you're having a one-candidate
 // mod but still want to list the other candidates
-// A somewhat more optimized version compared to the LBM one
+// A somewhat more optimized version compared to the ALOT one
 function automateStartSequence() {
     const BAD_CANDIDATE_IDS = new Set(['17', '18', '19']);
     const RESET_CANDIDATE_ID = '16'; 
@@ -3869,6 +4049,11 @@ function automateStartSequence() {
         if (electionSelect && !electionSelect.dataset.modifiedByScript && typeof window.modifyElectionSelect === 'function') {
             window.modifyElectionSelect(electionSelect);
         }
+		
+		if (typeof manageModOptions === 'function') {
+            manageModOptions(); 
+        }		
+		
     };
 	
 	window.glorbleTasks.push(initialTasks);
