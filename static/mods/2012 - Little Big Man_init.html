@@ -1,7 +1,7 @@
  /*
  * @title: 2012: Little Big Man / Little Big Man / 2012a
  * @author: StrawberryMaster & Friends
- * @version: 1.0.6
+ * @version: 1.0.8
  * @description: The 2012 election in the eyes of Barack Obama (and a couple of others, too)
  * 
  * Coding license: Apache License 2.0
@@ -3424,10 +3424,10 @@ tooltipList = [
             .mod-toggle-row { display: flex; align-items: center; padding-top: 5px; border-top: 1px solid rgba(0,0,0,0.1); }
             .switch { position: relative; display: inline-block; width: 40px; height: 20px; margin-right: 10px; }
             .switch input { opacity: 0; width: 0; height: 0; }
-            .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 20px; }
-            .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
-            input:checked + .slider { background-color: #208604; }
-            input:checked + .slider:before { transform: translateX(20px); }
+            .inner_window_w_desc .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 20px; }
+            .inner_window_w_desc .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+            .inner_window_w_desc input:checked + .slider { background-color: #208604; }
+            .inner_window_w_desc input:checked + .slider:before { transform: translateX(20px); }
             .status-label { font-weight: bold; font-size: 0.9em; text-transform: uppercase; }
             .status-enabled { color: #0d3d00; }
             .status-disabled { color: #2d2d2d; }
@@ -3595,7 +3595,7 @@ tooltipList = [
 // from being selected. Very useful if you're having a one-candidate
 // mod but still want to list the other candidates
 // A somewhat more optimized version compared to the ALOT one
-function automateStartSequence() {
+(function () {	
     const BAD_CANDIDATE_IDS = new Set(['17', '18', '19']);
     const RESET_CANDIDATE_ID = '16'; 
 
@@ -3613,27 +3613,35 @@ function automateStartSequence() {
 
     let lastSelectedCandidateId = null;
 	
-	const handleDomChange = (mutationsList, observer) => {
+	function automateStartSequence() {
 		// check for the candidate input
-        const candidateInput = document.getElementById(IDS.candidateInput);
-        const finalNext = document.getElementById(IDS.finalNext);
-        const finalBack = document.getElementById(IDS.finalBack);
-        const gameMap = document.getElementById(IDS.gameMapHeader);
+		const candidateInput = document.getElementById(IDS.candidateInput);
+		const finalNext = document.getElementById(IDS.finalNext);
+		const finalBack = document.getElementById(IDS.finalBack);
+		const gameMap = document.getElementById(IDS.gameMapHeader);
 
         // if the map/transport box is loaded, we are done with setup
-        if (gameMap) {
-            observer.disconnect();
-            return;
-        }
+		if (gameMap) {
+			finished = true;
+			return;
+		}
+		
+		// if we are on the opponent selection screen, clean up and stop.
+		if (finalNext && finalBack) {
+			let candidateId = lastSelectedCandidateId;
 
-        // if we are on the opponent selection screen, clean up and stop.
-        if (finalNext && finalBack) {
-            // remove back button only if we managed to sneak a bad candidate through
-            if (BAD_CANDIDATE_IDS.has(lastSelectedCandidateId)) {
-                finalBack.remove();
-            }
-            return;
-        }
+			// try to read candidate_id directly if available
+			const candidateInput = document.getElementById(IDS.candidateInput);
+			if (candidateInput?.value) {
+				candidateId = candidateInput.value;
+				lastSelectedCandidateId = candidateId;
+			}
+
+			if (BAD_CANDIDATE_IDS.has(candidateId)) {
+				finalBack.remove();
+			}
+			return;
+		}
 		
         // candidate selection screen check
         if (candidateInput) {
@@ -3659,13 +3667,11 @@ function automateStartSequence() {
                 }
             }
         }
-    };
+	}
 	
-    const targetNode = document.getElementById(IDS.gameWindow) || document.body;
-    
-    const observer = new MutationObserver(handleDomChange);
-    observer.observe(targetNode, { childList: true, subtree: true });
-}
+	window.tctAutoStart = { tick: automateStartSequence };
+	
+})();
 
 // Useful if you have a mod series!
 // Here, it lets you switch easily to 2016ALOT.
@@ -4040,9 +4046,9 @@ function automateStartSequence() {
         }
 
         // candidate blocking
-		if (typeof automateStartSequence === 'function') {
-            automateStartSequence(); 
-        }
+		if (window.tctAutoStart?.tick) {
+			window.tctAutoStart.tick();
+		}
 
         // mod switcher
         const electionSelect = document.querySelector('select[name="election_id"]');
@@ -4050,6 +4056,7 @@ function automateStartSequence() {
             window.modifyElectionSelect(electionSelect);
         }
 		
+		// mod settings
 		if (typeof manageModOptions === 'function') {
             manageModOptions(); 
         }		

@@ -22992,11 +22992,11 @@ function ensureUnlockCSS() {
       position: fixed; left: 50%; right: 20px; bottom: 20px;
       background: #0e3280; color: #fff; padding: 12px 16px;
       border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,.25);
-      opacity: 0; transform: translateY(10px); font-size: 15px;
+      opacity: 0; transform: translateX(-50%) translateY(10px); font-size: 15px;
       transition: opacity .25s ease, transform .25s ease; z-index: 99999;
-      max-width: 300px; line-height: 1.3; text-align: center;
+      max-width: 300px; line-height: 1.3; text-align: center; pointer-events: none;
     }
-    .unlock-notification.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .unlock-notification.show { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
   `;
   document.head.appendChild(style);
 }
@@ -25931,7 +25931,7 @@ const mainEndings = [
     },
 	{
         id: "thekidsarealright",
-		condition: (rightThirdEV, leftThirdEV) => leftThirdEV > 269 && (leftNominee === "Soleil Moon Frye" || leftNominee === "Susan Sarandon"),
+		condition: (rightThirdEV, leftThirdEV, leftNomineeName) => leftThirdEV > 269 && (leftNomineeName === "Soleil Moon Frye" || leftNomineeName === "Susan Sarandon"),
         image: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/soleil-and-justin.jpg",
         html: `<div style="background: linear-gradient(to bottom, #f9f6f0, #f4f0e8); color: #2c2824; font-family: 'Garamond', 'Georgia', serif; padding: 36px 40px; line-height: 1.9; font-size: 0.95em; border: 1px solid #e0d8c8; box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
         
@@ -30294,7 +30294,8 @@ const NOMINEE_MODIFICATIONS = {
         },
         stateMultipliers: { 
             "TX": 1.03, 
-            "NH": 1.06,
+            "NH": 1.025,
+			"ME": 1.01,
             "AK": 1.15,
 			"DC": 0.02
         }
@@ -30484,7 +30485,7 @@ const THIRD_PARTY_MODIFICATIONS = {
 		color: "#A020F0",
         issueScores: { 3: -0.95, 4: -0.8 },
         stateMultipliers: { 
-            "VA": 0.08, 
+            "VA": 0.12, 
             "NC": 0.05, "SC": 0.05, "AL": 0.06, "MS": 0.06, "TN": 0.05
         }
     },
@@ -30512,7 +30513,7 @@ const THIRD_PARTY_MODIFICATIONS = {
 		color: "#FF69B4",
         issueScores: { 1: 0.9, 5: -0.9 },
         stateMultipliers: {
-            "NY": 0.07, "VT": 0.08, "MA": 0.06, "CA": 0.06, "WA": 0.06
+            "NY": 0.09, "VT": 0.08, "MA": 0.06, "CA": 0.06, "WA": 0.06
         }
     },
     "Cynthia Nixon": {
@@ -30768,18 +30769,18 @@ const changeGameDisp = (hide) => {
 e.vpSwitcher = () => {
     const candidateMap = new Map(e.candidate_json.map(c => [c.pk, c]));
 
-    const potentialeftVPs = e.running_mate_json
+    const potentialVPs = e.running_mate_json
         .filter(f => f.fields.candidate == e.candidate_id)
         .map(f => candidateMap.get(f.fields.running_mate))
         .filter(Boolean);
 
-    if (potentialeftVPs.length === 0) {
+    if (potentialVPs.length === 0) {
         console.error("No potential running mates found.");
         return;
     }
 
     // generate dropdown options
-    const runningMateOptions = potentialeftVPs.map(vp => 
+    const runningMateOptions = potentialVPs.map(vp => 
         `<option value="${vp.pk}">${vp.fields.first_name} ${vp.fields.last_name}</option>`
     ).join('');
 
@@ -30822,20 +30823,20 @@ e.vpSwitcher = () => {
     gameWindow.appendChild(vpScreen);
 
     // initialize display with the first option
-    updateVpDisplay(potentialeftVPs[0]);
+    updateVpDisplay(potentialVPs[0]);
 
     const selectElement = vpScreen.querySelector("#running_mate_id");
     const continueButton = vpScreen.querySelector("#running_mate_id_button");
 
     selectElement.addEventListener("change", (event) => {
         const selectedPk = Number(event.target.value);
-        const selectedVP = potentialeftVPs.find(vp => vp.pk === selectedPk);
+        const selectedVP = potentialVPs.find(vp => vp.pk === selectedPk);
         if (selectedVP) updateVpDisplay(selectedVP);
     });
 
     continueButton.addEventListener("click", () => {
         const finalPk = Number(selectElement.value);
-        const chosenVP = potentialeftVPs.find(vp => vp.pk === finalPk);
+        const chosenVP = potentialVPs.find(vp => vp.pk === finalPk);
         
         if (chosenVP) {
             e.running_mate_last_name = chosenVP.fields.last_name;
@@ -32054,42 +32055,23 @@ function handleFooter() {
     if(signDisplay) signDisplay.style.display = "none";
 }
 
-// the observer.
-const persistentObserver = new MutationObserver((mutationsList) => {
-    for (const mutation of mutationsList) {
-        for (const node of mutation.addedNodes) {
-            if (node.nodeType === Node.ELEMENT_NODE && 
-                (node.id === 'candidate_pic' || node.querySelector?.('#candidate_pic'))) {
-                handleFooter();
-                return; // exit early, but don't disconnect
-            }
-        }
-    }
-});
+function ensureFooter() {
+    const candidatePic = document.getElementById('candidate_pic');
+    const runningMatePic = document.getElementById('running_mate_pic');
+    const gameWindow = document.getElementById('game_window');
 
-persistentObserver.observe(document.body, { 
-    childList: true, 
-    subtree: true 
-});
+    if (!candidatePic || !runningMatePic || !gameWindow) return;
 
-function observeBody() {
-    persistentObserver.observe(document.body, { childList: true, subtree: true });
+    handleFooter();
 }
 
 if (!window.hasInitializedNewFooter) {
     window.hasInitializedNewFooter = true;
-    
-    // preload all images
+
     preloadImages(questionImageMap, FALLBACK_QUESTION_IMAGE_URL);
-    
-    // start observing the page for changes
-    observeBody();
-    
-    // run once immediately in case the footer is already present
-    if (document.getElementById('candidate_pic')) {
-        handleFooter();
-    }
+    ensureFooter(); // run once in case it's already there
 }
+window.newFooter = { ensureFooter };
 
 // Observer to fix EV/PV estimate buttons on polling map
 (function() {
@@ -33330,22 +33312,15 @@ function updateVisitOverlayWithCities() {
   }
 }
 
-// the observer.
-(function attachVisitOverlayObserver() {
-  const root = document.getElementById('game_window') || document.body;
-  if (!root) return;
+function ensureVisitOverlayCities() {
+    if (!window.campaignTrail_temp?.city_visits) return;
 
-  const observer = new MutationObserver(() => {
-	if (!window.campaignTrail_temp?.city_visits) return;
-	  
-    // only run when the visit overlay is present
     const visitWindow = document.getElementById('visit_window');
     if (!visitWindow) return;
-    updateVisitOverlayWithCities();
-  });
 
-  observer.observe(root, { childList: true, subtree: true });
-})();
+    updateVisitOverlayWithCities();
+}
+window.tctCityVisits = { ensureVisitOverlayCities };
 
 // This is a bit of a weird implementation, but it allows you
 // to visualize other types of datas for your map. Cheers?
@@ -33420,7 +33395,7 @@ function updateVisitOverlayWithCities() {
 
     const SENATE_INCUMBENT_PARTIES = {
         'AZ': 'R', 'CA': 'D', 'CT': 'I', 'DE': 'D', 'FL': 'D', 'HI': 'D', 'IN': 'R', 'ME': 'R',
-        'MD': 'D', 'MA': 'D', 'MI': 'D', 'MN': 'D', 'MS': 'R', 'MO': 'D', 'MT': 'D', 'NE': 'D',
+        'MD': 'D', 'MA': 'R', 'MI': 'D', 'MN': 'D', 'MS': 'R', 'MO': 'D', 'MT': 'D', 'NE': 'D',
         'NV': 'R', 'NJ': 'D', 'NM': 'D', 'NY': 'D', 'ND': 'D', 'OH': 'D', 'PA': 'D', 'RI': 'D',
         'TN': 'R', 'TX': 'R', 'UT': 'R', 'VT': 'I', 'VA': 'D', 'WA': 'D', 'WV': 'D', 'WI': 'D', 'WY': 'R'
     };
@@ -38356,13 +38331,13 @@ function updateVisitOverlayWithCities() {
 
         const senateMode = window.currentSenateMode || 'solid';
         if (senateMode === 'holds_gains') {
-             const items = [ { color: '#92C5DE', label: 'Democratic Hold' }, { color: '#0671B0', label: 'Democratic Gain' }, { color: '#F48882', label: 'Republican Hold' }, { color: '#CA0120', label: 'Republican Gain' }];
+             const items = [ { color: '#92C5DE', label: 'Democratic hold' }, { color: '#0671B0', label: 'Democratic gain' }, { color: '#F48882', label: 'Republican hold' }, { color: '#CA0120', label: 'Republican gain' }];
              items.forEach(item => { /* ... populate table ... */ });
         } else if (senateMode === 'margins') {
-             const parties = [ { name: 'Democratic Wins', color: '#0487E6' }, { name: 'Republican Wins', color: '#DD2929' }];
+             const parties = [ { name: 'Democratic wins', color: '#0487E6' }, { name: 'Republican wins', color: '#DD2929' }];
              parties.forEach(party => { /* ... populate table ... */ });
         } else {
-            const items = [{ color: '#0487E6', label: 'Democratic Win' }, { color: '#DD2929', label: 'Republican Win' }, { color: '#FFDE3A', label: 'Independent Win' }, { color: '#E0E0E0', label: 'No Election' }];
+            const items = [{ color: '#0487E6', label: 'Democratic win' }, { color: '#DD2929', label: 'Republican win' }, { color: '#FFDE3A', label: 'Independent win' }, { color: '#E0E0E0', label: 'No election' }];
             items.forEach(item => {
                  const row = table.insertRow();
                  const colorCell = row.insertCell();
@@ -39444,6 +39419,11 @@ tooltipProcessor.applyToObject(campaignTrail_temp.answer_feedback_json);
     let repeatButtonElement, shuffleButtonElement;
     let queueContainerElement, queueTitleElement, queueListElement, queueToggleButton;
 	
+	let progressFillElement, progressBufferElement, progressThumbElement;
+	let progressBarContainerElement;
+	let cachedProgressBarWidth = 0;
+	let progressBarObserver = null;
+	
 	function injectResourceHints() {
 		if (document.getElementById('yt-preconnect')) return;
 		
@@ -39938,56 +39918,48 @@ tooltipProcessor.applyToObject(campaignTrail_temp.answer_feedback_json);
 		
 		if (duration && isFinite(duration) && duration > 0) {
 			const targetProgress = (currentTime / duration) * 100;
-			
-			// smoothing logic
-			if (pendingSeekTime !== null) {
-				lastProgress = targetProgress;
-			} else {
-				const smoothingFactor = 0.3;
-				lastProgress += (targetProgress - lastProgress) * smoothingFactor;
-				if (Math.abs(targetProgress - lastProgress) < 0.01) {
-					lastProgress = targetProgress;
-				}
-			}
+            
+            // smoothing logic
+            if (pendingSeekTime !== null) {
+                lastProgress = targetProgress;
+            } else {
+                const smoothingFactor = 0.3;
+                lastProgress += (targetProgress - lastProgress) * smoothingFactor;
+                if (Math.abs(targetProgress - lastProgress) < 0.01) {
+                    lastProgress = targetProgress;
+                }
+            }
+            
+            const p = Math.max(0, Math.min(100, lastProgress));
 
-			// progress bar update
-			const p = Math.max(0, Math.min(100, lastProgress));
-			const roundedProgress = Math.round(p * 10) / 10;
-			
-			if (lastRenderedPercent !== roundedProgress) {
-				if (progressBar) {
-					const preciseValue = p.toFixed(2);
-					progressBar.value = preciseValue;
-					progressBar.style.setProperty('--progress-percent', `${roundedProgress}%`);
-					const isProgressFocused = document.activeElement === progressBar;
-					if (isProgressFocused) progressBar.setAttribute('aria-valuenow', preciseValue);
-				}
-				lastRenderedPercent = roundedProgress;
-			}
-			
-			// buffer update
-			if (timestamp - lastBufferCheckTime > 1000) {
-				const loaded = ytPlayer.getVideoLoadedFraction?.() || 0;
-				const bufferPercent = Math.max(0, Math.min(100, loaded * 100)).toFixed(1);
-				
-				if (lastRenderedBuffer !== bufferPercent) {
-					if (progressBar) {
-						progressBar.style.setProperty('--buffer-percent', `${bufferPercent}%`);
-					}
-					lastRenderedBuffer = bufferPercent;
-				}
-				lastBufferCheckTime = timestamp;
-			}
-			
-			// text update
-			const currentSecond = Math.floor(currentTime);
-			if (lastRenderedSecond !== currentSecond) {
-				if (currentTimeElement) {
-					currentTimeElement.textContent = formatTime(currentTime);
-				}
-				lastRenderedSecond = currentSecond;
-			}
-		}
+            // calculate buffer
+            let bufferPercent = lastRenderedBuffer || 0;
+            if (timestamp - lastBufferCheckTime > 500) {
+                const loaded = ytPlayer.getVideoLoadedFraction?.() || 0;
+                bufferPercent = Math.max(0, Math.min(100, loaded * 100));
+                lastRenderedBuffer = bufferPercent;
+                lastBufferCheckTime = timestamp;
+            }
+
+            updateProgressVisuals(p, bufferPercent); 
+
+            // update invisible input
+            if (progressBar && Math.abs(progressBar.value - p) > 0.1) {
+                progressBar.value = p.toFixed(2);
+                if (document.activeElement === progressBar) {
+                     progressBar.setAttribute('aria-valuenow', p.toFixed(2));
+                }
+            }
+            
+            // text update
+            const currentSecond = Math.floor(currentTime);
+            if (lastRenderedSecond !== currentSecond) {
+                if (currentTimeElement) {
+                    currentTimeElement.textContent = formatTime(currentTime);
+                }
+                lastRenderedSecond = currentSecond;
+            }
+        }
 		
 		if (isUpdaterRunning) {
 			rafId = requestAnimationFrame(rafUpdateProgress);
@@ -40498,6 +40470,21 @@ tooltipProcessor.applyToObject(campaignTrail_temp.answer_feedback_json);
         if (img) { img.src = iconSrc; img.alt = ""; }
         shuffleButtonElement.setAttribute('aria-label', label); shuffleButtonElement.title = label;
     }
+	
+	function updateProgressVisuals(percentage, bufferPercentage = 0) {
+		if (!progressFillElement || !progressThumbElement) return;
+		
+		const ratio = Math.max(0, Math.min(1, percentage / 100));
+		progressFillElement.style.transform = `scaleX(${ratio})`;
+		
+		if (progressBufferElement && bufferPercentage > 0) {
+			const bufferRatio = Math.max(0, Math.min(1, bufferPercentage / 100));
+			progressBufferElement.style.transform = `scaleX(${bufferRatio})`;
+		}
+		
+		const px = cachedProgressBarWidth * ratio;
+		progressThumbElement.style.transform = `translate3d(${px}px, 0, 0)`;
+	}
 
     function createPlayerElements() {
         const fragment = document.createDocumentFragment();
@@ -40517,15 +40504,39 @@ tooltipProcessor.applyToObject(campaignTrail_temp.answer_feedback_json);
         controlsContainer = document.createElement("div"); controlsContainer.id = CONTROLS_CONTAINER_ID;
         const progressBarContainer = document.createElement("div"); progressBarContainer.id = PROGRESS_BAR_CONTAINER_ID;
         currentTimeElement = document.createElement("span"); currentTimeElement.id = CURRENT_TIME_ID; progressBarContainer.appendChild(currentTimeElement);
-        progressBar = document.createElement("input"); progressBar.type = "range"; progressBar.id = PROGRESS_BAR_ID;
-        // fine-grained slider to prevent 1% snapping at the start
-        progressBar.min = 0; progressBar.max = 100; progressBar.step = 0.01;
-        // a11y label + initial aria values
-        progressBar.setAttribute('aria-label', 'Seek');
-        progressBar.setAttribute('aria-valuemin', '0');
-        progressBar.setAttribute('aria-valuemax', '100');
-        progressBar.setAttribute('aria-valuenow', '0');
-        progressBarContainer.appendChild(progressBar);
+
+		const progressWrapper = document.createElement("div");
+		progressWrapper.id = "progress-visual-wrapper";
+
+		const visualTrack = document.createElement("div");
+		visualTrack.className = "progress-visual-track";
+
+		progressBufferElement = document.createElement("div");
+		progressBufferElement.className = "progress-buffer-bar";
+		visualTrack.appendChild(progressBufferElement);
+
+		progressFillElement = document.createElement("div");
+		progressFillElement.className = "progress-fill-bar";
+		visualTrack.appendChild(progressFillElement);
+
+		progressWrapper.appendChild(visualTrack);
+
+		progressThumbElement = document.createElement("div");
+		progressThumbElement.className = "progress-thumb";
+		progressWrapper.appendChild(progressThumbElement);
+
+		progressBar = document.createElement("input"); 
+		progressBar.type = "range"; 
+		progressBar.id = PROGRESS_BAR_ID;
+		progressBar.className = "transparent-seeker";
+		progressBar.min = 0; 
+		progressBar.max = 100; 
+		progressBar.step = 0.01;
+		progressBar.setAttribute('aria-label', 'Seek');
+		progressWrapper.appendChild(progressBar);
+
+		progressBarContainer.appendChild(progressWrapper);
+		
         durationElement = document.createElement("span"); durationElement.id = DURATION_ID; progressBarContainer.appendChild(durationElement);
         controlsContainer.appendChild(progressBarContainer);
         const bottomControls = document.createElement('div'); bottomControls.id = 'player-bottom-controls';
@@ -40762,6 +40773,17 @@ tooltipProcessor.applyToObject(campaignTrail_temp.answer_feedback_json);
             const wasPlaying = playerReady && ytPlayer?.getPlayerState() === YT.PlayerState.PLAYING;
             loadCurrentSong(wasPlaying);
         });
+		
+		const progressWrapper = document.getElementById('progress-visual-wrapper');
+		if (progressWrapper) {
+			progressBarObserver = new ResizeObserver(entries => {
+				for (let entry of entries) {
+					cachedProgressBarWidth = entry.contentRect.width;
+					updateProgressVisuals(parseFloat(progressBar.value) || 0);
+				}
+			});
+			progressBarObserver.observe(progressWrapper);
+		}
 
         // make seeking deterministic on click/drag
         progressBar.addEventListener('mousedown', () => {
@@ -40779,6 +40801,9 @@ tooltipProcessor.applyToObject(campaignTrail_temp.answer_feedback_json);
         progressBar.addEventListener("input", () => {
             if (!isSeeking || !hasUserInitiatedPlayback) return;
             const percentage = progressBar.value;
+			
+			updateProgressVisuals(percentage); 
+			
             // keep CSS fill locked to the thumb value to avoid drift
             progressBar.style.setProperty('--progress-percent', `${percentage}%`);
             if (playerReady && ytPlayer && typeof ytPlayer.getDuration === 'function' && currentTimeElement) {
@@ -41098,7 +41123,7 @@ tooltipProcessor.applyToObject(campaignTrail_temp.answer_feedback_json);
 				letter-spacing: 0.3px;
 			}
 			
-			input[type="range"] { 
+			#nice-music-player input[type="range"] { 
 				-webkit-appearance: none; 
 				appearance: none; 
 				background: transparent; 
@@ -41108,8 +41133,8 @@ tooltipProcessor.applyToObject(campaignTrail_temp.answer_feedback_json);
 				flex-grow: 1
 				flex-shrink: 1;
 			}
-            input[type="range"]::-webkit-slider-runnable-track { height: 5px; background: var(--slider-track-bg); border-radius: 5px; }
-            input[type="range"]::-moz-range-track { height: 5px; background: var(--slider-track-bg); border-radius: 5px; }
+            #nice-music-player input[type="range"]::-webkit-slider-runnable-track { height: 5px; background: var(--slider-track-bg); border-radius: 5px; }
+            #nice-music-player input[type="range"]::-moz-range-track { height: 5px; background: var(--slider-track-bg); border-radius: 5px; }
             #${PROGRESS_BAR_ID}::-webkit-slider-runnable-track { 
                 background: linear-gradient(
                     to right,
@@ -41132,8 +41157,8 @@ tooltipProcessor.applyToObject(campaignTrail_temp.answer_feedback_json);
                     var(--slider-track-bg) 100%
                 );
             }
-            input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; margin-top: -5px; height: 15px; width: 15px; background-color: var(--slider-thumb-bg); border-radius: 50%; border: none; }
-            input[type="range"]::-moz-range-thumb { height: 15px; width: 15px; background-color: var(--slider-thumb-bg); border-radius: 50%; border: none; }
+            #nice-music-player input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; margin-top: -5px; height: 15px; width: 15px; background-color: var(--slider-thumb-bg); border-radius: 50%; border: none; }
+            #nice-music-player input[type="range"]::-moz-range-thumb { height: 15px; width: 15px; background-color: var(--slider-thumb-bg); border-radius: 50%; border: none; }
             #player-bottom-controls { display: flex; align-items: center; justify-content: space-between; width: 100%; order: 2; }
             #player-main-controls-center { flex: 1; display: flex; align-items: center; justify-content: center; gap: 20px; }
             #${VOLUME_CONTAINER_ID} { flex: 1; display: flex; align-items: center; justify-content: flex-start; gap: 8px; }
@@ -41225,6 +41250,37 @@ tooltipProcessor.applyToObject(campaignTrail_temp.answer_feedback_json);
 				animation: pulse 1.5s ease-in-out infinite;
 			}
 			
+			#progress-visual-wrapper {
+				position: relative; flex-grow: 1; height: 20px; 
+				display: flex; align-items: center; cursor: pointer;
+			}
+
+			.progress-visual-track {
+				position: absolute; left: 0; right: 0; height: 5px; 
+				background-color: var(--slider-track-bg); border-radius: 5px; 
+				overflow: hidden; pointer-events: none;
+			}
+
+			.progress-buffer-bar, .progress-fill-bar {
+				position: absolute; top: 0; left: 0; bottom: 0; width: 100%;
+				transform-origin: left center; transform: scaleX(0);
+				will-change: transform; pointer-events: none;
+			}
+			.progress-buffer-bar { background-color: rgba(240,240,240,0.35); }
+			.progress-fill-bar { background-color: var(--progress-fill-bg); }
+
+			.progress-thumb {
+				position: absolute; left: 0; width: 15px; height: 15px; 
+				background-color: var(--slider-thumb-bg); border-radius: 50%; 
+				pointer-events: none; margin-left: -7.5px;
+				will-change: transform;
+			}
+
+			.transparent-seeker {
+				position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+				opacity: 0; cursor: pointer; z-index: 10; margin: 0;
+			}
+			
             /* @media (max-width: 768px) { #${PLAYER_ELEMENT_ID} { margin: 300px 0 10px 0; } } */
         `;
         // small focus ring for accessibility
@@ -41283,15 +41339,15 @@ tooltipProcessor.applyToObject(campaignTrail_temp.answer_feedback_json);
             //    { name: "Alternative Mix #1", songs: PLAYLIST_TWO_DATA }, 
             //    { name: "Alternative Mix #2", songs: PLAYLIST_THREE_DATA } 
             //];
-			const PLAYLISTS_DATA = campaignTrail_temp.compact_playlist
+			PLAYLISTS_DATA = (typeof campaignTrail_temp !== 'undefined' && campaignTrail_temp.compact_playlist)
 			? [
-				{ name: "Obamalings' Favorites", songs: ALT_PLAYLIST }
-			  ]
-			: [
-				{ name: "Main Playlist", songs: SONGS_DATA },
-				{ name: "Alternative Mix #1", songs: PLAYLIST_TWO_DATA },
-				{ name: "Alternative Mix #2", songs: PLAYLIST_THREE_DATA }
-			];
+                { name: "Obamalings' Favorites", songs: ALT_PLAYLIST }
+              ]
+            : [
+                { name: "Main Playlist", songs: SONGS_DATA },
+                { name: "Alternative Mix #1", songs: PLAYLIST_TWO_DATA },
+                { name: "Alternative Mix #2", songs: PLAYLIST_THREE_DATA }
+            ];
 
             updateFavoritesPlaylistEntry();
 
@@ -42105,6 +42161,8 @@ function buildDashboardTab(container, topOpponents, liberalismFeedback, confront
     
     const opponentTitleText = opponentIsLocked ? "Republican nominee" : "The other side";
     opponentContainer.innerHTML = `<h3 style="border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 5px; margin-top:0;">${opponentTitleText}</h3>`;
+	
+	const opponentsFragment = document.createDocumentFragment();
     
     // display top 2 opponents as cards
     topOpponents.slice(0, 2).forEach((opponent, index) => {
@@ -42161,8 +42219,11 @@ function buildDashboardTab(container, topOpponents, liberalismFeedback, confront
         profileRow.appendChild(img);
         profileRow.appendChild(textDiv);
         opponentCard.appendChild(profileRow);
-        opponentContainer.appendChild(opponentCard);
+        
+        opponentsFragment.appendChild(opponentCard);
     });
+
+    opponentContainer.appendChild(opponentsFragment);
 
     // show third contender as smaller mention if available
     if (topOpponents[2]) {
@@ -42207,6 +42268,8 @@ function buildOperationsTab(container) {
     `;
 
     const availableOps = getAvailableOperations();
+    const opsFragment = document.createDocumentFragment();
+
     if (availableOps.length === 0) {
         const emptyCard = document.createElement('div');
         emptyCard.style.cssText = `
@@ -42223,7 +42286,7 @@ function buildOperationsTab(container) {
             <h3 style="margin: 0 0 8px 0;">No active operations</h3>
             <p style="margin: 0; font-size: 0.9em; opacity: 0.8;">Tough luck, buddy. Your team is awaiting new opportunities. Check back after the next question.</p>
         `;
-        operationsListContainer.appendChild(emptyCard);
+        opsFragment.appendChild(emptyCard);
     } else {
         for (const op of availableOps) {
             const opCard = document.createElement('div');
@@ -42242,7 +42305,6 @@ function buildOperationsTab(container) {
                 text-shadow: 0 1px 2px #000;
             `;
             
-            // Add hover effect
             opCard.onmouseenter = () => {
                 opCard.style.background = 'rgba(0, 0, 0, 0.6)';
                 opCard.style.transform = 'translateY(-2px)';
@@ -42327,9 +42389,12 @@ function buildOperationsTab(container) {
 
             opCard.appendChild(opDetails);
             opCard.appendChild(executeBtn);
-            operationsListContainer.appendChild(opCard);
+            
+            opsFragment.appendChild(opCard);
         }
     }
+
+    operationsListContainer.appendChild(opsFragment);
 
     contentRow.appendChild(operationsListContainer);
 
@@ -42380,6 +42445,8 @@ function buildOperationsTab(container) {
     cooldownsCard.appendChild(cooldownTitle);
     
     let hasCooldowns = false;
+    const cooldownsFragment = document.createDocumentFragment(); 
+    
     for (const [key, value] of Object.entries(operationsState.cooldowns)) {
         if (value > 0) {
             hasCooldowns = true;
@@ -42398,7 +42465,7 @@ function buildOperationsTab(container) {
                 <strong style="display: block; margin-bottom: 2px;">${categoryName}</strong>
                 <span style="opacity: 0.8;">${value} turn(s) remaining</span>
             `;
-            cooldownsCard.appendChild(cooldownItem);
+            cooldownsFragment.appendChild(cooldownItem);
         }
     }
     
@@ -42411,9 +42478,10 @@ function buildOperationsTab(container) {
             opacity: 0.7;
         `;
         noCooldownDiv.innerHTML = `All categories ready`;
-        cooldownsCard.appendChild(noCooldownDiv);
+        cooldownsFragment.appendChild(noCooldownDiv);
     }
     
+    cooldownsCard.appendChild(cooldownsFragment);
     statusContainer.appendChild(cooldownsCard);
     contentRow.appendChild(statusContainer);
     container.appendChild(contentRow);
@@ -43637,7 +43705,7 @@ const HOUSE_2012_DATA = {
         // remove inline onclicks
         tabs.forEach(t => t.removeAttribute('onclick'));
 
-        // initial State
+        // initial state
         let initialIndex = tabs.findIndex(t => t.classList.contains('ftab-active'));
         if (initialIndex === -1 && tabs.length > 0) initialIndex = 0;
         updateState(initialIndex);
@@ -43645,44 +43713,16 @@ const HOUSE_2012_DATA = {
         box._tabsInitialized = true;
         console.log('Recommended reading tabs initialized.');
     }
+	
+	function ensureInitialized() {
+		const box = document.getElementById('recommended_reading_box');
+		if (!box) return;
 
-    function setupObserver() {
-        const targetNode = document.getElementById('game_window') || document.body;
-        
-        const observer = new MutationObserver((mutations) => {
-            let shouldCheck = false;
-            
-            // only proceed if nodes were added
-            for (const m of mutations) {
-                if (m.addedNodes.length > 0) {
-                    shouldCheck = true;
-                    break;
-                }
-            }
-            if (!shouldCheck) return;
-
-            const box = document.getElementById('recommended_reading_box');
-            if (box) {
-                if (!stylesAdded) addStyles();
-                if (!box._tabsInitialized) initializeTabs(box);
-            }
-        });
-
-        observer.observe(targetNode, { childList: true, subtree: true });
-
-        // immediate check in case script loads after content
-        const existingBox = document.getElementById('recommended_reading_box');
-        if (existingBox) {
-            addStyles();
-            initializeTabs(existingBox);
-        }
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', setupObserver);
-    } else {
-        setupObserver();
-    }
+		if (!stylesAdded) addStyles();
+		if (!box._tabsInitialized) initializeTabs(box);
+	}
+	
+	window.recommendedReading = { addStyles, initializeTabs, ensureInitialized };
 })();
 
 // For changing running mates at the ending screens.
@@ -43955,15 +43995,7 @@ function onGameWindowChangeCandidates() {
     }
 }
 
-const gameWindowNode = document.getElementById("game_window");
-if (gameWindowNode) {
-    const candidateWatcherConfig = { childList: true, subtree: true };
-    const candidateObserver = new MutationObserver(onGameWindowChangeCandidates);
-    candidateObserver.observe(gameWindowNode, candidateWatcherConfig);
-    onGameWindowChangeCandidates();
-} else {
-    console.error("Game window element not found for VP script.");
-}
+window.dynamicEndingTable = { tick: onGameWindowChangeCandidates };
 
 // This is a catch-all mutation observer so that
 // we keep one having them all run at once
@@ -43981,16 +44013,37 @@ if (gameWindowNode) {
 		if (typeof window.handleAdvisorUpdate === 'function') {
 			window.handleAdvisorUpdate();
 		}
+				
+		// new campaign footer
+		if (window.newFooter?.ensureFooter) {
+			window.newFooter.ensureFooter();
+		}
 		
 		// headquarter/Jeeves function
 		if (typeof window.addHeadquarterButton === 'function') {
             window.addHeadquarterButton();
         }
 		
+		// city visits
+		if (window.tctCityVisits?.ensureVisitOverlayCities) {
+			window.tctCityVisits.ensureVisitOverlayCities();
+		}
+				
 		// attempt at fixing the EV/PV estimate buttons
 		if (typeof window.fixEstimateButtons === 'function') {
             window.fixEstimateButtons();
         }
+		
+		// add VPs & etc to results
+		if (window.dynamicEndingTable?.tick) {
+			window.dynamicEndingTable.tick();
+		}
+		
+		// recommended reading section
+		if (window.recommendedReading?.ensureInitialized) {
+			window.recommendedReading.ensureInitialized();
+		}
+		
     };
 	
 	window.bobertTasks.push(initialTasks);
