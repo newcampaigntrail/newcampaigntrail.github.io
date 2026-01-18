@@ -11,6 +11,12 @@ async function evalFromUrl(url, callback = null) {
 e=campaignTrail_temp
 e.shining_data = {}
 
+// ported from cts
+const targetNode = document.getElementById("game_window");
+const config = { attributes: true, childList: true, subtree: true };
+
+let changeFontColour = () => { };
+
 let baseScenarioDict = {
     "1844":"1844_Clay_Fillmore.html",
     "1860":"1860_Douglas_Guthrie.html",

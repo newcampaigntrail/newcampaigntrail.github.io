@@ -11981,9 +11981,6 @@ function updateQuestions(mutationList, observer) {
     }
 }
 
-const targetNode = document.getElementById("game_window");
-const config = { attributes: true, childList: true, subtree: true };
-
 const observer = new MutationObserver(onGameWindowChanged);
 	observer.observe(targetNode, config);
 
