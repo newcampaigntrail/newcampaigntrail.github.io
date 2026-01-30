@@ -502,6 +502,15 @@ nct_stuff.themes = {
         coloring_container: "#326942",
         coloring_title: "#326942"
     },
+    "Miku": {
+        name: "Hatsune Miku",
+        background: "../static/images/mikuwallpaper.png",
+        banner: "../static/images/miku.png",
+        window_url: "/static/images/mikuother.png",
+        coloring_window: "#ffffff",
+        coloring_container: "#86cecb",
+        coloring_title: "#137a7f"
+    },
     "custom": {
         name: "Custom",
         background: "",
