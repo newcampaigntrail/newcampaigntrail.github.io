@@ -15974,10 +15974,10 @@ function handleOhioFlip(e) {
 
 if (handleOhioFlip(e)) {
   console.log("Ohio flip handled successfully ijbol");
-  // Recalculate quickstats[0] (Kerry's electoral votes) after the flip
+  // Recalculate quickstats[0] after the flip
   const kerry = e.final_overall_results.find(c => c.candidate == 78);
   if (kerry) {
-    quickstats[0] = kerry.electoral_votes;
+    quickstats[0] = gore.electoral_votes;
   }
 }
 
