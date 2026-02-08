@@ -1,7 +1,7 @@
  /*
  * @title: 2016: A Lifetime of This / 2016b / The Hillary Trail
  * @author: StrawberryMaster & Friends
- * @version: 1.1.8
+ * @version: 1.2.2
  * @description: The 2016 election in the eyes of Hillary Clinton (and a couple of others, too)
  * 
  * Coding license: Apache License 2.0
@@ -324,16 +324,74 @@ campaignTrail_temp.temp_election_list = [
     }
 ]
 
-campaignTrail_temp.difficulty_level_json = JSON.parse("[{\"model\": \"campaign_trail.difficulty_level\", \"pk\": 0.5, \"fields\": {\"name\": \"Easy-Peasy\", \"multiplier\": 1.2}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 1, \"fields\": {\"name\": \"Quite Easy\", \"multiplier\": 1.1}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 3, \"fields\": {\"name\": \"Normal\", \"multiplier\": 0.97}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 4, \"fields\": {\"name\": \"Challenging\", \"multiplier\": 0.95}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 5, \"fields\": {\"name\": \"Hard-Boiled\", \"multiplier\": 0.93}}]");
+campaignTrail_temp.difficulty_level_json = [
+	{
+        "model": "campaign_trail.difficulty_level",
+        "pk": 0.25,
+        "fields": {
+            "name": "A Walk in the Park",
+            "multiplier": 1.225
+        }
+    },
+    {
+        "model": "campaign_trail.difficulty_level",
+        "pk": 0.5,
+        "fields": {
+            "name": "Easy-Peasy",
+            "multiplier": 1.15
+        }
+    },
+    {
+        "model": "campaign_trail.difficulty_level",
+        "pk": 1,
+        "fields": {
+            "name": "Quite Easy",
+            "multiplier": 1.05
+        }
+    },
+    {
+        "model": "campaign_trail.difficulty_level",
+        "pk": 3,
+        "fields": {
+            "name": "Normal",
+            "multiplier": 0.97
+        }
+    },
+    {
+        "model": "campaign_trail.difficulty_level",
+        "pk": 4,
+        "fields": {
+            "name": "Challenging",
+            "multiplier": 0.95
+        }
+    },
+    {
+        "model": "campaign_trail.difficulty_level",
+        "pk": 5,
+        "fields": {
+            "name": "Hard-Boiled",
+            "multiplier": 0.93
+        }
+    },
+	{
+        "model": "campaign_trail.difficulty_level",
+        "pk": 6,
+        "fields": {
+            "name": "Dead on Arrival",
+            "multiplier": 0.915
+        }
+    }
+];
 
 // Actual code here
-corrr = "<h2>A Lifetime of This…</h2>";
+corrr = "A Lifetime of This…";
 
 // Header image
 document.getElementById("header").src = "https://file.garden/aNtAfG887DiA_7lO/2016ALOT/2016banner.jpg";
 
-// Custom favicon
-$("#dynamic-favicon").attr("href", "https://file.garden/aNtAfG887DiA_7lO/2016ALOT/favicon.jpg");
+// Custom favicon & page title
+changeFavicon("https://file.garden/aNtAfG887DiA_7lO/2016ALOT/favicon.jpg");
+document.title = "a lifetime of this...";
 
 // Election night descs
 e.ElectionPopup = "Well, election night is here. This is it. Hang in there, Hill."
@@ -341,16 +399,167 @@ e.WinPopup = "You feel as if there’s a beacon of light shining in on you. You 
 e.LosePopup = "Oh no. Oh no. Oh no."
 e.SelAnsContText = "You gotta pick something first, you know."
 
+HistHexcolour = ["#cf1321", "#0e3280", "#f7f70e", "#14bd14"];
+HistName = ["Donald Trump", "Hillary Clinton", "Gary Johnson/Others", "Jill Stein"];
+HistEV = [304, 227, 7, 0];
+HistPV = ["62,985,153", "65,853,677", "4,489,359", "1,457,288"];
+HistPVP = ["45.9%", "48.0%", "4.1%", "1.0%"];
+
+// This causes some variation between the candidate colors. In other words,
+// in every playthrough, the candidate colors will be different from the rest!
+
+// convert “#RRGGBB” → [R,G,B]
+function hexToRgb(hex) {
+  hex = hex.replace(/^#/, '');
+  if (hex.length === 3) {
+    hex = hex.split('').map(c => c + c).join('');
+  }
+  const num = parseInt(hex, 16);
+  return [(num >> 16) & 0xff, (num >> 8) & 0xff, num & 0xff];
+}
+
+// convert [R,G,B] → “#RRGGBB”
+function rgbToHex(r, g, b) {
+  const pad = x => x.toString(16).padStart(2, '0');
+  return `#${pad(r)}${pad(g)}${pad(b)}`;
+}
+
+// linear interpolate two RGB arrays
+function interpolateColor(c1, c2, factor = 0.5) {
+  return c1.map((v, i) =>
+    Math.round(v + factor * (c2[i] - v))
+  );
+}
+
+// vary a single hex color by up to ±variationFrac (e.g. 0.1 = ±10%)
+function varyHexColor(hex, variationFrac = 0.1) {
+  const rgb = hexToRgb(hex);
+  const newRgb = rgb.map(channel => {
+    // random offset between -variationFrac*255 … +variationFrac*255
+    const delta = (Math.random() * 2 - 1) * variationFrac * 255;
+    return Math.max(0, Math.min(255, Math.round(channel + delta)));
+  });
+  return rgbToHex(...newRgb);
+}
+
+campaignTrail_temp.candidate_json.forEach(candidate => {
+  const f = candidate.fields;
+
+  // simple random tint/shade of the original primary
+  f.color_hex = varyHexColor(f.color_hex, 0.05);
+
+  // or interpolate towards the secondary by a random small factor:
+  const primaryRGB   = hexToRgb(f.color_hex);
+  const secondaryRGB = hexToRgb(f.secondary_color_hex);
+  const randFactor   = 0.4 + Math.random() * 0.2; // between 0.4–0.6
+  const blendedRGB   = interpolateColor(primaryRGB, secondaryRGB, randFactor);
+  f.secondary_color_hex = rgbToHex(...blendedRGB);
+});
+
+HistHexcolour = HistHexcolour.map(hex => 
+  // pass the desired max variation fraction (e.g. 0.05 = +/-5%)
+  varyHexColor(hex, 0.05)
+);
+
 // Mod box theme
 campaignTrail_temp.modBoxTheme = {
     "header_color": "#232333",
-    "header_image_url": "https://file.garden/aNtAfG887DiA_7lO/2016ALOT/2016b(1).jpg",
+    "header_image_url": "https://file.garden/aNtAfG887DiA_7lO/2016ALOT/hrc_banner_2.png",
     "header_text_color": "#f5f3f4",
     "description_text_color": "#000000",
     "description_background_color": "#f5f3f4",
     "main_color": "#403b79",
-    "secondary_color": "#19191E",
+    "secondary_color": "#171827",
     "ui_text_color": "#FFFFFF"
+}
+
+// Game themes
+const themeData = {
+    "Midnight Blue": {
+        headerSrc: "https://file.garden/aNtAfG887DiA_7lO/2016ALOT/2016banner.jpg",
+        coloring_title: "#1e2262",
+        coloring_window: "linear-gradient(#386da6, #87a3d1)",
+        containerColor: "#352b64",
+        footerColor: "",
+        extraCss: `
+            body {
+                background: url(https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/lbm_background2.webp) !important;
+                background-size: cover !important;
+                background-position: center !important;
+            }
+        `
+    },
+    "Rust": {
+        headerSrc: "https://media.gettyimages.com/id/672839780/pt/foto/washington-dc-senator-hillary-rodham-clinton-is-reflected-in-her-office-table-on-july-19-2001.jpg?s=612x612&w=0&k=20&c=ea3dB3TXOeF9AzHvt7m_c5-4qO5QQJR7JH__pS-QdYA=",
+        coloring_title: "#1e2262",
+        coloring_window: "linear-gradient(#0b3d73 70%, #530505)",
+        containerColor: "#953202",
+        footerColor: "",
+        extraCss: `
+            body {
+                background: url(https://file.garden/aNtAfG887DiA_7lO/2016ALOT/alotbackground.webp) !important;
+                background-position: center !important;
+                background-size: cover !important;
+            }
+			#header { height: 290px; object-fit: cover; object-position: center 30%; }
+			.container { background-image: initial !important; }
+			.game_header { background: linear-gradient(to bottom, #d48b00, #381811) !important; }
+			#inner_window_2, .inner_window_w_desc { background: linear-gradient(#e7c7ab, #e7cece) !important; }
+			.inner_window_question h3 { background: linear-gradient(#fff8eb, #eebeaf) !important; }
+        `
+    },
+};
+
+const el = {
+    headerImg: document.getElementById("header"),
+    gameHeader: document.querySelector(".game_header"),
+    gameWindow: document.getElementById("game_window"),
+    container: document.querySelector(".container"),
+    footer: document.querySelector(".footer")
+};
+
+function applyTheme(themeName) {
+    const config = themeData[themeName];
+    if (!config) return;
+
+    let styleElement = document.getElementById("custom-theme-styles");
+    if (!styleElement) {
+        styleElement = document.createElement("style");
+        styleElement.id = "custom-theme-styles";
+        document.head.appendChild(styleElement);
+    }
+
+    if (el.headerImg) el.headerImg.src = config.headerSrc;
+
+    if (typeof nct_stuff !== 'undefined' && nct_stuff.themes) {
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = config.coloring_title;
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = config.coloring_window;
+    }
+
+    if (el.gameHeader) el.gameHeader.style.backgroundColor = config.coloring_title;
+    if (el.gameWindow) el.gameWindow.style.background = config.coloring_window;
+    if (el.container) el.container.style.backgroundColor = config.containerColor;
+    if (el.footer) el.footer.style.color = config.footerColor || "";
+
+    styleElement.textContent = config.extraCss;
+}
+
+const oldPicker = document.getElementById("themePicker");
+if (oldPicker) {
+    const newPicker = document.createElement("select");
+    newPicker.id = "themePicker";
+    
+    Object.keys(themeData).forEach(key => {
+        const option = document.createElement("option");
+        option.value = key;
+        option.textContent = key;
+        newPicker.appendChild(option);
+    });
+
+    newPicker.addEventListener("change", (e) => applyTheme(e.target.value));
+    oldPicker.replaceWith(newPicker);
+    
+    applyTheme(newPicker.value);
 }
 
 // Originally, this was the appendStyle() function borrowered from the
@@ -418,9 +627,6 @@ const css = `
 				border-top: .15em solid #ffffff63;
 				padding: 0 .5em 1em;
 			}
-			#theme_picker, .footer h4 {
-				display: none;
-			}
 			#election_description_window, .person_description_window, .description_window_small {
 				border: 3px double #800b0b;
 				border-radius: .5em 0;
@@ -452,13 +658,16 @@ const css = `
                 background: linear-gradient(to bottom, #172d86, #0D0533, #550202);
                 border-radius: .1rem .1rem 0 0;
                 box-shadow: inset 0 .25rem .5rem rgba(255, 255, 255, 0.1), 0 .1rem .5rem rgba(0, 0, 0, 0.4);
+				border-bottom: 2px solid rgba(128, 6, 6, 0.75);
                 display: flex;
                 justify-content: center;
                 height: 2.75rem;
-            }
-            .game_header h2 {
-                font-family: Georgia, Arial, serif;
-                font-size: 22pt;
+				
+				color: #fff;
+			    font-family: Georgia, Arial, sans-serif;
+			    font-size: 2.25em;
+			    font-style: italic;
+			    font-weight: bold;
             }
             #election_id, #candidate_id, #running_mate_id, #game_type_selection, #game_type_id, #difficulty_level_id, #question_select {
                 border-width: .1rem; /* on Firefox, button borders are different compared to Chrome & friends */
@@ -666,7 +875,7 @@ const css = `
             }
             /** for default NCT - this is fine on NCTS **/
             #main_content_area, #main_content_area_reading {
-                color: #000;
+                color: #fff;
             }
 			#bottomBar.inner_window_front {
 				display: none;
@@ -742,11 +951,6 @@ const css = `
 			    display: flex;
 			}
  
-            /** Game Link button - this never really worked afaik **/
-			#overall_details_container a {
-                display: none;
-            }
-
             /* Text tooltips - experimental */
             /* kindly borrowed from the folks @ campaigntrailshowcase.com
             and adapted to opapeldetrouxa.neocities.org */
@@ -812,7 +1016,6 @@ const css = `
             .final_results_table td {
                 padding: .4rem .8rem;
                 border: .1rem solid #dcdcdc;
-                text-align: right;
             }
             #state_result_data_summary table td:first-child span, #overall_details_container table td:first-child span, .final_results_table td:first-child span {
                 border: .1rem solid rgba(0,0,0,0.2);
@@ -838,10 +1041,10 @@ const css = `
 
 			/* Ending screens tweaks */			
 			#final_results_description {
-				display: flex !important; // remove this tag once debugging is finished
+				display: flex !important;
 			}
-			#results_container {
-				color: #000;
+			#results_container, #overall_details_container {
+				color: #fff;
 			}
 			#results_container > .person_image {
 				border-color: #9d0000;
@@ -904,13 +1107,7 @@ const css = `
 				justify-content: center;
 				padding-bottom: 1rem;
 			}
-			
-			/* a fix for the US map - no outline showing up on Edge */
-			[tabindex]:focus:not(:focus-visible) {
-			    outline: none;
-			    box-shadow: none;
-			}
-			
+						
 			/* for the achievement notifications */
 			.unlock-notification {
 				position: fixed;
@@ -979,6 +1176,41 @@ const css = `
 				font-size: 13px;
 				line-height: 1.4;
 				color: #000;
+			}
+			
+			/* drop-caps */
+			#inner_window_3 p:first-of-type:first-letter, #running_mate_description_window p:first-of-type:first-letter {
+			  float: left; font-weight: bold; line-height: 0.7em; margin-top: 0.1em; color: #110d84;
+			}
+			#inner_window_3 p:first-of-type:first-letter,
+			#running_mate_description_window p:first-of-type:first-letter {
+			  font-size: 3.5em; margin-right: 0.15em;
+			}			
+
+			/* styling for candidate lists */
+			.person_summary ul {
+				display: flex;
+				flex-flow: column;
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+
+			.person_summary li {
+				padding-bottom: .5em;
+				margin: .25em 0 0 0;
+				border-bottom: 1px solid rgba(80, 44, 44, 0.2);
+				color: #530707;
+			}
+
+			.person_summary li:last-child {
+				border-bottom: none;
+			}
+
+			.person_summary li::before {
+				content: "▸ ";
+				color: #db3434;
+				font-weight: bold;
 			}
 			
 			@media (max-width: 1250px) {
@@ -1168,6 +1400,66 @@ const css = `
 				font-size: clamp(16px, 5.2vw, 20px);
 				left: 20%;
 				width: 60%;
+			}
+			
+			/* election summary page */
+			@media only screen and (max-width: 768px) {
+  #election_summary {
+			  display: flex;
+			  flex-flow: column;
+			  margin: 0 1em 0 0;
+			  padding: .5em;
+			}
+			#election_description_window {
+			  display: flex;
+			  height: auto;
+			}
+			#election_image {
+			  display: flex;
+			  flex-flow: column;
+			  justify-content: center;
+			  margin: 1em 0.75em 1em 1.25em;
+			}
+			#election_image img {
+			  height: 90%;
+			  object-fit: cover;
+			  object-position: -36px 0px;
+			}
+			#election_year_form + p:first-of-type {
+			  padding-top: 1em;
+			}
+  
+			  #election_description_window {
+				flex-flow: column;
+			  }
+			  
+			  #election_summary {
+				padding: 0 1em 0 1em;
+				text-align: center;
+			  }
+				
+				#election_summary p {
+				  margin: .5em 0 1em 0;
+				}
+				  
+				#election_image {
+				  flex-flow: row;
+				  margin: inherit;
+				}
+				  
+				#election_year_form+p:first-of-type {
+				  padding-top: 0;
+				}
+				  
+				#election_image img {
+					object-position: center;
+					width: 100%;
+				}
+				
+				.inner_window_w_desc p {
+				  margin: 1em;
+				}
+				
 			}
 			
 			}
@@ -1559,109 +1851,104 @@ tooltipList = [
     { searchString: "Madonna", explanationText: "<img src=https://pbs.twimg.com/media/Cut3qCTWYAAxYIU.jpg> Gonna help you snatch that Presidency, so watch out! She’s A GIRL GONE WILD!" }
 ];
 
-HistHexcolour = ["#cf1321", "#0e3280", "#f7f70e", "#14bd14"];
-HistName = ["Donald Trump", "Hillary Clinton", "Gary Johnson/Others", "Jill Stein"];
-HistEV = [304, 227, 7, 0];
-HistPV = ["62,985,153", "65,853,677", "4,489,359", "1,457,288"];
-HistPVP = ["45.9%", "48.0%", "4.1%", "1.0%"];
-
 // This is to replace the existing voting system descriptions.
-(() => {
+(function() {
     'use strict';
+
+    const METHOD_VALUE = {
+        SAINTE_LAGUE: "4",
+        DHONDT: "5",
+        HUNTINGTON_HILL: "6",
+        LR_HARE: "7",
+        APPROVAL_SL: "8",
+        BORDA_SL: "9",
+        COPELAND_SL: "10",
+    };
 
     const DESCRIPTIONS = {
         "1": `<p><strong>Use the default method of allocating electoral votes for each state.</strong></p>
           <p>In the winner-take-all system, the candidate who wins the popular vote in a state receives <em>all</em> of that state’s electoral votes, regardless of the margin of victory. For instance, if Candidate A defeats Candidate B in a state worth 20 electoral votes, Candidate A will win the 20 electoral votes. In the United States, this is how 48 out of 50 states currently operate (Maine and Nebraska use a district method).</p>
           <p>This system amplifies the importance of swing states while making “safe” states less influential in campaign strategy. It also makes it extremely difficult for third-party candidates to win any electoral votes, and has also resulted in popular vote winners losing the election. A good example of this is the election of 2000, where a razor-thin lead gave George Bush the state of Florida’s 25 electoral votes and the election, even as he lost the popular vote to Al Gore.</p>`,
-
         "2": `<p><strong>Allocate each state’s electoral votes proportionally.</strong></p>
           <p>Under the proportional system, each state’s electoral votes are distributed proportionally based on the popular vote percentage each candidate receives. If a candidate wins 60% of a state’s vote, they receive approximately 60% of that state’s electoral votes.</p>
-          <p>The winner of a state still maintains an advantage due to rounding (in a state with 4 electoral votes, 51% of the vote typically yields 3 electoral votes), but the system much more closely reflects the will of the voters. It also makes every state more competitive, as candidates could gain electoral votes even in states they don’t win outright. This system would have changed the outcomes of several elections, including 1860, 1948, 1968, 1992, and 2000.</p>`
+          <p>The winner of a state still maintains an advantage due to rounding (in a state with 4 electoral votes, 51% of the vote typically yields 3 electoral votes), but the system much more closely reflects the will of the voters. It also makes every state more competitive, as candidates could gain electoral votes even in states they don’t win outright. This system would have changed the outcomes of several elections, including 1860, 1948, 1968, 1992, and 2000.</p>`,
+        "3": `<p><strong style='color:navy'>From sea to shining sea!</strong> – you know how it is. Do the Bartman.</p>`,
+        [METHOD_VALUE.DHONDT]: `<p><strong>D'Hondt/Jefferson method</strong></p><p>Similar to Sainte-Laguë, the D’Hondt method is a “highest averages” system that allocates seats one by one. However, it uses a different formula: a candidate’s total vote is divided by the number of seats they have already won, plus one (divisors: 1, 2, 3, etc.). The seat goes to the candidate with the highest average in each round.</p><p>This divisor sequence has a notable mathematical property: it tends to slightly favor larger parties and coalitions over smaller, more fragmented ones. This can encourage strategic alliances but may underrepresent minor parties compared to their vote share. It is named after Victor D'Hondt and, in the U.S., Thomas Jefferson.</p>`,
+        [METHOD_VALUE.HUNTINGTON_HILL]: `<p><strong>Huntington-Hill method</strong></p><p>This is the method currently used to apportion the 435 seats of the U.S. House of Representatives among the states. Like other “highest averages” systems, it awards seats one by one to the party with the highest “priority value.”</p><p>Its unique formula (dividing votes by the geometric mean of seats currently held and the next seat) is designed to minimize the relative percentage difference in representation between any two parties. This means if one party gets twice the votes, it should have as close to twice the seats as mathematically possible. It generally produces very proportional results, somewhere between D'Hondt and Sainte-Laguë in its treatment of smaller parties.</p>`,
+        [METHOD_VALUE.LR_HARE]: `<p><strong>Largest remainder method (Hare quota)</strong></p><p>This method works differently from “highest averages.” First, it establishes a “quota” — the price of a single electoral vote (calculated as Total Votes / Total EVs). Each candidate is immediately awarded a number of EVs equal to how many full quotas they achieved.</p><p>After this initial allocation, any remaining EVs are awarded one by one to the candidates with the largest <em>fractional remainder</em> of votes. This system is very intuitive and tends to be highly proportional, often giving smaller parties a better chance to win representation if they can consolidate their support to earn a large remainder.</p>`,		
+        [METHOD_VALUE.SAINTE_LAGUE]: `<p><strong>Sainte-Laguë/Webster method</strong></p><p>This is a “highest averages” method that allocates a state’s electoral votes one by one. In each round, a candidate’s total popular vote is divided by a number (specifically, twice their current number of seats, plus one: 1, 3, 5, etc.). The seat is awarded to the candidate with the highest resulting average.</p><p>The Sainte-Laguë method is renowned for its high degree of proportionality. Unlike some other systems, it does not systematically favor larger or smaller parties, making it one of the most balanced apportionment methods available.</p>`,
+        [METHOD_VALUE.APPROVAL_SL]: `<p><strong>Approval + Sainte-Laguë</strong></p><p>This is an advanced, model-based method that does <em>not</em> use the popular vote directly. Instead, it first calculates a “utility score” for each candidate based on their policy alignment with a state’s profile. A state then “approves” of all candidates whose utility is within a certain threshold of the top-scoring candidate.</p><p>The number of approvals each candidate receives becomes their new score; the Sainte-Laguë method is used to apportion electoral votes based on these approval counts. This system rewards candidates with broad ideological appeal who are considered a “good fit” by the state, not just the single best one.</p>`,
+        [METHOD_VALUE.BORDA_SL]: `<p><strong>Borda count + Sainte-Laguë</strong></p><p>This model-based method first ranks candidates in a state from best to worst based on their policy alignment (creating a utility score for them). Candidates are then awarded Borda points based on their rank: the top-ranked candidate gets the most points, the second-ranked gets fewer, and so on.</p><p>These Borda points — and not popular votes — are then used as the input for the Sainte-Laguë apportionment method. This system heavily favors consensus candidates who are consistently ranked highly and penalizes polarizing figures who may be ranked first by some but last by others. It rewards being broadly acceptable over being a niche favorite.</p>`,
+        [METHOD_VALUE.COPELAND_SL]: `<p><strong>Condorcet/Copeland + Sainte-Laguë</strong></p><p>This advanced method simulates a round-robin tournament in each state. Based on policy utility scores, every candidate is compared head-to-head against every other candidate. A candidate’s “Copeland score” is the total number of these pairwise matchups they win.</p><p>A candidate who can defeat every other opponent in a one-on-one contest is a “Condorcet winner” and will have the highest possible score. The Copeland scores are then used with the Sainte-Laguë method to allocate electoral votes. This system strongly favors candidates with the broadest appeal who are most likely to be preferred over their direct competitors.</p>`,
     };
 
-    let isInitialized = false;
-    let currentSelect = null;
-	let globalObserver = null;
+    const NEW_OPTIONS = [
+        { val: METHOD_VALUE.DHONDT, text: "D’Hondt/Jefferson" },
+        { val: METHOD_VALUE.HUNTINGTON_HILL, text: "Huntington–Hill" },
+        { val: METHOD_VALUE.LR_HARE, text: "Largest remainder" },
+        { val: METHOD_VALUE.SAINTE_LAGUE, text: "Sainte‑Laguë/Webster" },
+        { val: METHOD_VALUE.APPROVAL_SL, text: "Approval + Sainte‑Laguë" },
+        { val: METHOD_VALUE.BORDA_SL, text: "Borda + Sainte‑Laguë" },
+        { val: METHOD_VALUE.COPELAND_SL, text: "Condorcet/Copeland + Sainte‑Laguë" },
+    ];
 
     function updateDescription(value) {
-        const descriptionEl = document.getElementById("opponent_selection_description_window");
-        if (descriptionEl) {
-            const text = DESCRIPTIONS[value] || DESCRIPTIONS["1"];
-            requestAnimationFrame(() => {
-                descriptionEl.innerHTML = text;
-            });
+        const descBox = document.getElementById("opponent_selection_description_window");
+        if (descBox) {
+            descBox.innerHTML = DESCRIPTIONS[value] || DESCRIPTIONS["1"];
         }
     }
 
-    function handleSelectionChange(event) {
-        updateDescription(event.target.value);
-    }
+    function modifySelector() {
+        const select = document.getElementById("game_type_id");
+        if (!select || select.dataset.enhanced) return;
 
-    function modifyInterface() {
-        const form = document.querySelector('form[name="game_type_selection"]');
-        if (!form) return false;
-
-        const select = form.querySelector('select[name="game_type_id"]');
+        const optionsArr = Array.from(select.options);
+        const propIndex = optionsArr.findIndex(o => o.value === "2");
         
-        if (!select || select.dataset.enhanced === "true") return false;
+        // since we want the array order to be preserved, we should increment the index as we add
+        let insertIndex = propIndex !== -1 ? propIndex + 1 : select.length;
 
-        if (currentSelect && currentSelect !== select) {
-            currentSelect.removeEventListener('change', handleSelectionChange);
-        }
-        currentSelect = select;
+        NEW_OPTIONS.forEach(optData => {
+            if (!select.querySelector(`option[value="${optData.val}"]`)) {
+                const opt = document.createElement("option");
+                opt.value = optData.val;
+                opt.textContent = optData.text;
+                
+                if (insertIndex >= select.length) {
+                    select.add(opt);
+                } else {
+                    select.add(opt, select.options[insertIndex]);
+                }
+                insertIndex++;
+            }
+        });
 
-        // 0 - WTA, 1 - Proportional
-        const wtaOption = select.querySelector('option[value="1"]');
-        if (wtaOption) wtaOption.textContent = 'Winner-Take-All (default)';
-
-        const propOption = select.querySelector('option[value="2"]');
-        if (propOption) propOption.textContent = 'Proportional';
-
-        const h3 = form.querySelector('h3');
-        if (h3) {
-            h3.textContent = 'How would you like electoral votes to be allocated?';
-        }
-
-        select.addEventListener('change', handleSelectionChange, { passive: true });
+        // rename existing options
+        const wta = select.querySelector('option[value="1"]');
+        if (wta) wta.textContent = "Winner‑Take‑All (default)";
         
+        const prop = select.querySelector('option[value="2"]');
+        if (prop) prop.textContent = "Proportional";
+
+        // update header
+        const form = select.closest("form");
+        if (form) {
+            const h3 = form.querySelector("h3");
+            if (h3) h3.textContent = "How would you like electoral votes to be allocated?";
+        }
+
+        select.addEventListener("change", (e) => updateDescription(e.target.value));
+
         updateDescription(select.value);
 
         select.dataset.enhanced = "true";
-
-        return true;
     }
-
-    function initObserver() {
-        const gameWindow = document.getElementById("game_window");
-        
-        if (!gameWindow) {
-            setTimeout(initObserver, 200);
-            return;
-        }
-
-        modifyInterface();
-
-        globalObserver = new MutationObserver((mutations) => {
-            modifyInterface();
-        });
-
-        globalObserver.observe(gameWindow, {
-            childList: true,
-            subtree: true
-        });
-    }
-
-    initObserver();
-
-    window.cleanupElectoralSystemModifier = () => {
-        if (globalObserver) {
-            globalObserver.disconnect();
-            globalObserver = null;
-        }
-    };
+	
+	window.modifySelector = modifySelector;
 })();
 
-// Funny test. Probably won't last long.
+// Pretty much a banner system.
 (function() {
     const gameWindow = document.getElementById("game_window");
     if (!gameWindow) return;
@@ -1676,8 +1963,66 @@ HistPVP = ["45.9%", "48.0%", "4.1%", "1.0%"];
         hoverEffect: true,
         clickCooldown: 150,
         maxCacheSize: 20,
-        useRequestIdleCallback: true
+        useRequestIdleCallback: true,
+        maxRetries: 2,
+        failedBannerTimeout: 5 * 60 * 1000 
     };
+	
+	if(!document.getElementById('banner-system-styles')) {
+        const style = document.createElement('style');
+        style.id = 'banner-system-styles';
+        style.textContent = `
+            #bottomBar {
+                height: ${CONFIG.bannerHeight}px;
+                font-size: 12px;
+                background-color: transparent;
+                margin: 1em auto;
+                position: relative;
+                overflow: hidden;
+                cursor: pointer;
+                transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
+                user-select: none;
+                border-radius: 3px;
+                width: 100%;
+                max-width: 800px; /* Safe default */
+            }
+            #bottomBar:hover {
+                transform: scale(1.02);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            }
+            #bottomBar img {
+                width: 100%; 
+                height: 100%; 
+                object-fit: contain; 
+                display: block;
+                transition: opacity ${CONFIG.fadeTransition}ms ease-in-out;
+                pointer-events: none;
+            }
+            #bannerIndicator {
+                position: absolute;
+                top: 2px; right: 4px;
+                width: 16px; height: 16px;
+                background: rgba(255, 255, 255, 0.8);
+                border-radius: 50%;
+                display: flex;
+                align-items: center; justify-content: center;
+                font-size: 10px; font-weight: bold;
+                color: #333;
+                opacity: 0;
+                transition: opacity 200ms ease-in-out, transform 150ms ease-in-out;
+                pointer-events: none;
+                z-index: 10;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            }
+            #bottomBar:hover #bannerIndicator {
+                opacity: 1;
+            }
+            .indicator-pop {
+                transform: scale(1.2);
+            }
+        `;
+        document.head.appendChild(style);
+    }
 
     // banner list
     const banners = [{
@@ -1822,8 +2167,9 @@ HistPVP = ["45.9%", "48.0%", "4.1%", "1.0%"];
         constructor() {
             this.imageCache = new Map();
             this.loadedUrls = new Set();
+            this.failedUrls = new Map();
             this.storageKey = 'vintageBannerCache_v2';
-            this.maxCacheAge = 7 * 24 * 60 * 60 * 1000; // 7 days
+            this.maxCacheAge = 7 * 24 * 60 * 60 * 1000;
             this.cacheAccessOrder = [];
 
             if (CONFIG.enableLocalStorage) {
@@ -1837,11 +2183,12 @@ HistPVP = ["45.9%", "48.0%", "4.1%", "1.0%"];
             try {
                 const cacheData = {
                     timestamp: Date.now(),
-                    urls: Array.from(this.loadedUrls)
+                    urls: Array.from(this.loadedUrls),
+                    failed: Array.from(this.failedUrls.entries())
                 };
                 localStorage.setItem(this.storageKey, JSON.stringify(cacheData));
             } catch (e) {
-                // silent fail
+                console.warn('Banner cache save failed:', e);
             }
         }
 
@@ -1855,18 +2202,60 @@ HistPVP = ["45.9%", "48.0%", "4.1%", "1.0%"];
 
                 if (age < this.maxCacheAge) {
                     this.loadedUrls = new Set(data.urls);
+                    if (data.failed) {
+                        this.failedUrls = new Map(data.failed);
+                    }
                 } else {
                     localStorage.removeItem(this.storageKey);
                 }
             } catch (e) {
-                // silent fail
+                console.warn('Banner cache load failed:', e);
             }
         }
 
+        isRecentlyFailed(url) {
+            if (!this.failedUrls.has(url)) return false;
+            
+            const failedTime = this.failedUrls.get(url);
+            const timeSinceFailed = Date.now() - failedTime;
+            
+            // allow retry after timeout
+            if (timeSinceFailed > CONFIG.failedBannerTimeout) {
+                this.failedUrls.delete(url);
+                return false;
+            }
+            
+            return true;
+        }
+
+        markAsFailed(url) {
+            this.failedUrls.set(url, Date.now());
+            this.imageCache.delete(url);
+            this.loadedUrls.delete(url);
+            this.saveToStorage();
+        }
+
+        isCachedImageValid(img) {
+            return img && 
+                   img.complete && 
+                   img.naturalHeight !== 0 && 
+                   img.naturalWidth !== 0;
+        }
+
         preloadImage(url) {
+            if (this.isRecentlyFailed(url)) {
+                return Promise.reject(new Error(`Recently failed: ${url}`));
+            }
+
             if (this.imageCache.has(url)) {
-                this.updateCacheOrder(url);
-                return Promise.resolve(this.imageCache.get(url));
+                const cachedImg = this.imageCache.get(url);
+                if (this.isCachedImageValid(cachedImg)) {
+                    this.updateCacheOrder(url);
+                    return Promise.resolve(cachedImg);
+                } else {
+                    this.imageCache.delete(url);
+                    this.loadedUrls.delete(url);
+                }
             }
 
             return new Promise((resolve, reject) => {
@@ -1880,46 +2269,51 @@ HistPVP = ["45.9%", "48.0%", "4.1%", "1.0%"];
 
                 timeoutId = setTimeout(() => {
                     cleanup();
+                    this.markAsFailed(url);
                     reject(new Error(`Timeout: ${url}`));
                 }, 8000);
 
                 img.onload = () => {
                     cleanup();
-                    this.addToCache(url, img);
-                    resolve(img);
+                    if (this.isCachedImageValid(img)) {
+                        this.addToCache(url, img);
+                        resolve(img);
+                    } else {
+                        this.markAsFailed(url);
+                        reject(new Error(`Invalid image: ${url}`));
+                    }
                 };
 
                 img.onerror = () => {
                     cleanup();
+                    this.markAsFailed(url);
                     reject(new Error(`Failed: ${url}`));
                 };
 
-                // set image loading priority to low
                 img.fetchPriority = "low";
                 img.src = url;
             });
         }
 
-        addToCache(url, img) {
-            // LRU cache eviction policy
-            if (this.imageCache.size >= CONFIG.maxCacheSize && !this.imageCache.has(url)) {
-                const lruUrl = this.cacheAccessOrder.shift();
-                this.imageCache.delete(lruUrl);
-            }
-            
-            this.imageCache.set(url, img);
-            this.updateCacheOrder(url);
-            this.loadedUrls.add(url);
-            this.saveToStorage();
-        }
+		addToCache(url, img) {
+		  if (!this.isCachedImageValid(img)) return;
+
+		  if (this.imageCache.has(url)) this.imageCache.delete(url); // refresh order
+		  this.imageCache.set(url, img);
+
+		  while (this.imageCache.size > CONFIG.maxCacheSize) {
+			const lruUrl = this.imageCache.keys().next().value;
+			this.imageCache.delete(lruUrl);
+		  }
+
+		  this.saveToStorage();
+		}
 
         updateCacheOrder(url) {
-            // remove url if it exists in the order array
             const index = this.cacheAccessOrder.indexOf(url);
             if (index > -1) {
                 this.cacheAccessOrder.splice(index, 1);
             }
-            // add to the end (most recently used)
             this.cacheAccessOrder.push(url);
         }
 
@@ -1942,17 +2336,25 @@ HistPVP = ["45.9%", "48.0%", "4.1%", "1.0%"];
                 return Promise.allSettled(promises);
             }
         }
+		
+		getCachedImage(url) {
+		  const img = this.imageCache.get(url);
+		  if (!this.isCachedImageValid(img)) {
+			this.imageCache.delete(url);
+			return null;
+		  }
+		  // refresh order
+		  this.imageCache.delete(url);
+		  this.imageCache.set(url, img);
+		  return img;
+		}
 
-        getCachedImage(url) {
-            const img = this.imageCache.get(url);
-            if (img) {
-                this.updateCacheOrder(url);
-            }
-            return img || null;
+        getAvailableBanners(bannerList) {
+            return bannerList.filter(banner => !this.isRecentlyFailed(banner.url));
         }
     }
 
-    // weighted random selection with memoization
+    // weighted random selection
     const bannerSelector = (() => {
         let weightSum = null;
         
@@ -1964,12 +2366,23 @@ HistPVP = ["45.9%", "48.0%", "4.1%", "1.0%"];
         };
 
         return {
-            getRandomBanner(excludeRecent = []) {
-                const availableBanners = banners.filter(b => !excludeRecent.includes(b.url));
+            // accept cache to filter failed banners
+            getRandomBanner(excludeRecent = [], cache = null) {
+                let availableBanners = banners.filter(b => !excludeRecent.includes(b.url));
+                
+                // filter out failed banners
+                if (cache) {
+                    availableBanners = availableBanners.filter(b => !cache.isRecentlyFailed(b.url));
+                }
                 
                 if (availableBanners.length === 0) {
-                    const currentUrl = excludeRecent[excludeRecent.length - 1];
-                    return banners.find(b => b.url !== currentUrl) || banners[0];
+                    // if all banners failed or recent, try any banner not in exclude list
+                    availableBanners = banners.filter(b => !excludeRecent.includes(b.url));
+                    
+                    if (availableBanners.length === 0) {
+                        // last resort: return any banner
+                        return banners[0];
+                    }
                 }
                 
                 const totalWeight = availableBanners.reduce((sum, banner) => sum + banner.weight, 0);
@@ -1983,7 +2396,6 @@ HistPVP = ["45.9%", "48.0%", "4.1%", "1.0%"];
                 return availableBanners[0];
             },
             
-            // precompute weighted selection table
             initializeSelectionTable() {
                 getTotalWeight();
             }
@@ -2001,6 +2413,7 @@ HistPVP = ["45.9%", "48.0%", "4.1%", "1.0%"];
             this.isTransitioning = false;
             this.lastClickTime = 0;
             this.rafId = null;
+            this.retryCount = 0;
 
             this.init();
         }
@@ -2013,77 +2426,43 @@ HistPVP = ["45.9%", "48.0%", "4.1%", "1.0%"];
                 .then(() => this.preloadInitialBanners())
                 .then(() => this.displayRandomBanner())
                 .catch(() => {
-                    // fallback if preloading fails
                     this.displayRandomBanner();
                 });
 
-            // cleanup on page unload
             window.addEventListener('beforeunload', () => {
                 this.destroy();
             });
         }
-
-        createElements() {
+		
+		createElements() {
             this.container = document.createElement("div");
-            this.imageElement = document.createElement("img");
-            this.clickIndicator = document.createElement("div");
-
             this.container.id = "bottomBar";
             this.container.setAttribute('tabindex', '0');
             this.container.setAttribute('role', 'button');
             this.container.setAttribute('aria-label', 'Click to change banner');
 
-            this.container.style.cssText = `
-                height: ${CONFIG.bannerHeight}px;
-                font-size: 12px;
-                border-style: none;
-                border-width: 5px;
-                background-color: transparent;
-                padding: 0;
-                margin: 0 .3em 1em 2em;
-                position: relative;
-                overflow: hidden;
-                cursor: pointer;
-                transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
-                user-select: none;
-                border-radius: 3px;
-            `;
-
-            this.imageElement.style.cssText = `
-                width: 100%; 
-                height: 100%; 
-                object-fit: contain; 
-                display: block;
-                transition: opacity ${CONFIG.fadeTransition}ms ease-in-out;
-                pointer-events: none;
-            `;
-
-            this.clickIndicator.style.cssText = `
-                position: absolute;
-                top: 2px;
-                right: 4px;
-                width: 16px;
-                height: 16px;
-                background: rgba(255, 255, 255, 0.8);
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 10px;
-                font-weight: bold;
-                color: #333;
-                opacity: 0;
-                transition: opacity 200ms ease-in-out, transform 150ms ease-in-out;
-                pointer-events: none;
-                z-index: 10;
-                box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-            `;
+            this.imageElement = document.createElement("img");
+            this.clickIndicator = document.createElement("div");
+            this.clickIndicator.id = "bannerIndicator";
             this.clickIndicator.textContent = "↻";
 
-            // append elements
-            this.container.appendChild(this.imageElement);
-            this.container.appendChild(this.clickIndicator);
+            const frag = document.createDocumentFragment();
+            frag.appendChild(this.imageElement);
+            frag.appendChild(this.clickIndicator);
+            this.container.appendChild(frag);
+
             gameWindow.insertAdjacentElement("afterend", this.container);
+
+            this.imageElement.onerror = () => {
+                console.warn('Banner display failed:', this.imageElement.src);
+                if (this.currentBanner) this.cache.markAsFailed(this.currentBanner.url);
+				// try to load another banner
+                if (this.retryCount < CONFIG.maxRetries) {
+                    this.retryCount++;
+                    setTimeout(() => this.displayRandomBanner(), 100);
+                }
+            };
+            this.imageElement.onload = () => { this.retryCount = 0; }; // reset retry count on successful load
         }
 
         setupEventListeners() {
@@ -2094,44 +2473,23 @@ HistPVP = ["45.9%", "48.0%", "4.1%", "1.0%"];
                     return;
                 }
                 this.lastClickTime = now;
+                this.retryCount = 0;
                 this.nextBanner();
             };
-
-            // hover effects
-            if (CONFIG.hoverEffect) {
-                this.container.onmouseenter = () => {
-                    if (this.isTransitioning) return;
-                    
-                    cancelAnimationFrame(this.rafId);
-                    this.rafId = requestAnimationFrame(() => {
-                        this.container.style.transform = 'scale(1.02)';
-                        this.container.style.boxShadow = '0 2px 8px rgba(0,0,0,0.2)';
-                        this.clickIndicator.style.opacity = '1';
-                    });
-                };
-
-                this.container.onmouseleave = () => {
-                    cancelAnimationFrame(this.rafId);
-                    this.rafId = requestAnimationFrame(() => {
-                        this.container.style.transform = 'scale(1)';
-                        this.container.style.boxShadow = 'none';
-                        this.clickIndicator.style.opacity = '0';
-                    });
-                };
-            }
-
-            // keyboard accessibility
-            this.container.onkeydown = (e) => {
+			
+			this.container.onkeydown = (e) => {
                 if (e.code === 'Space' || e.code === 'Enter') {
                     e.preventDefault();
+                    this.retryCount = 0;
                     this.nextBanner();
                 }
             };
         }
 
         async preloadInitialBanners() {
-            // prioritize preloading based on banner weights
+            // only preload non-failed banners
             const sortedBanners = [...banners]
+                .filter(b => !this.cache.isRecentlyFailed(b.url))
                 .sort((a, b) => b.weight - a.weight)
                 .slice(0, CONFIG.preloadCount);
                 
@@ -2156,9 +2514,7 @@ HistPVP = ["45.9%", "48.0%", "4.1%", "1.0%"];
                             this.imageElement.src = banner.url;
                         }
                         this.imageElement.alt = banner.alt;
-                        
-                        // force reflow to ensure transition works
-                        void this.imageElement.offsetWidth;
+						
                         this.imageElement.style.opacity = '1';
                         this.isTransitioning = false;
                     });
@@ -2175,25 +2531,27 @@ HistPVP = ["45.9%", "48.0%", "4.1%", "1.0%"];
             }
 
             this.currentBanner = banner;
-
-            // track recent banners
             this.recentBanners.push(banner.url);
             if (this.recentBanners.length > 3) {
                 this.recentBanners.shift();
             }
 
-            // preload next banner if not cached
+            // preload if not cached
             if (!cachedImg) {
-                this.cache.preloadImage(banner.url).catch(() => {
-                    // silent fail
+                this.cache.preloadImage(banner.url).catch((err) => {
+                    console.warn('Preload failed:', err.message);
                 });
             }
 
-            // opportunistically preload next potential banners
+            // opportunistically preload next banners
             if (CONFIG.useRequestIdleCallback && window.requestIdleCallback) {
                 window.requestIdleCallback(() => {
                     const nextBanners = banners
-                        .filter(b => !this.recentBanners.includes(b.url) && !this.cache.imageCache.has(b.url))
+                        .filter(b => 
+                            !this.recentBanners.includes(b.url) && 
+                            !this.cache.imageCache.has(b.url) &&
+                            !this.cache.isRecentlyFailed(b.url)
+                        )
                         .sort((a, b) => b.weight - a.weight)
                         .slice(0, 2);
                         
@@ -2203,20 +2561,18 @@ HistPVP = ["45.9%", "48.0%", "4.1%", "1.0%"];
         }
 
         displayRandomBanner() {
-            const banner = bannerSelector.getRandomBanner(this.recentBanners);
+            const banner = bannerSelector.getRandomBanner(this.recentBanners, this.cache);
             this.displayBanner(banner, this.currentBanner !== null);
         }
 
         nextBanner() {
             this.displayRandomBanner();
-
+			
             requestAnimationFrame(() => {
-                this.clickIndicator.style.transform = 'scale(1.2)';
-                
+                this.clickIndicator.classList.add('indicator-pop');
+				
                 setTimeout(() => {
-                    requestAnimationFrame(() => {
-                        this.clickIndicator.style.transform = 'scale(1)';
-                    });
+                    this.clickIndicator.classList.remove('indicator-pop');
                 }, 150);
             });
         }
@@ -2235,6 +2591,11 @@ HistPVP = ["45.9%", "48.0%", "4.1%", "1.0%"];
                 }
             }
             
+            if (this.imageElement) {
+                this.imageElement.onload = null;
+                this.imageElement.onerror = null;
+            }
+            
             this.container = null;
             this.imageElement = null;
             this.clickIndicator = null;
@@ -2245,7 +2606,13 @@ HistPVP = ["45.9%", "48.0%", "4.1%", "1.0%"];
 
     window.vintageBannerSystem = {
         next: () => bannerSystem.nextBanner(),
-        current: () => bannerSystem.currentBanner?.alt || 'Loading...'
+        current: () => bannerSystem.currentBanner?.alt || 'Loading...',
+        clearFailedCache: () => {
+            bannerSystem.cache.failedUrls.clear();
+            bannerSystem.cache.saveToStorage();
+            console.log('Failed banner cache cleared');
+        },
+        getFailedBanners: () => Array.from(bannerSystem.cache.failedUrls.keys())
     };
 })();
 
@@ -2344,61 +2711,82 @@ HistPVP = ["45.9%", "48.0%", "4.1%", "1.0%"];
 })();
 
 // This is for the question count selector.
-const gameWindowNode = document.getElementById("game_window");
-const createQuestionSelector = function() {
-    if (document.getElementById("difficulty_level") && !document.getElementById("question_select")) {
-        
-        const questionOptions = [
-            ["29 (Best)", 29],
-            ["40 (Full)", 40]
-        ];
+(function() {
+    'use strict';
 
-        let dropdown = document.createElement("select");
-        dropdown.id = "question_select";
-
-        questionOptions.forEach(opt => {
-            let optionElement = document.createElement("option");
-            optionElement.text = opt[0];
-            optionElement.value = opt[1];
-            if (opt[0] === "29 (Best)") {
-                optionElement.selected = true;
+    const CONFIG = {
+        containerId: 'game_window',
+        targetSectionId: 'difficulty_level',
+        selectorId: 'question_select',
+        options: [
+            { text: "29 (Best)", value: 29 },
+            { text: "40 (Full)", value: 40 }
+        ]
+    };
+	
+	if (!document.getElementById("question_select_style")) {
+        const style = document.createElement("style");
+        style.id = "question_select_style";
+        style.textContent = `
+            #${CONFIG.targetSectionId} {
+                flex-wrap: wrap;
+                gap: 2.5em;
+                align-items: flex-start;
             }
-            dropdown.options.add(optionElement);
+            #${CONFIG.targetSectionId} form {
+                flex: 1 1 auto;
+				display: inline-block !important;
+				padding: 0px 1em !important;
+            }
+            #${CONFIG.targetSectionId} form p {
+                margin: 0;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    // update global var safely
+    function setGlobalQuestionCount(val) {
+        if (window.campaignTrail_temp?.global_parameter_json?.[0]) {
+            window.campaignTrail_temp.global_parameter_json[0].fields.question_count = Number(val);
+        }
+    }
+
+    function manageQuestionSelector() {
+        // if "difficulty_level" is missing (which it is while playing), 
+        // this returns null and the function stops instantly
+        const container = document.getElementById(CONFIG.targetSectionId);
+        
+        if (!container) return;
+        if (document.getElementById(CONFIG.selectorId)) return;
+		
+		const frag = document.createDocumentFragment();
+
+        const formContainer = document.createElement("form");
+        formContainer.name = "question_select_form";
+        const heading = document.createElement("h3");
+        heading.textContent = "Select the number of questions:";
+
+        const dropdown = document.createElement("select");
+        dropdown.id = CONFIG.selectorId;
+
+        CONFIG.options.forEach((opt, index) => {
+            const isSelected = index === 0;
+            dropdown.add(new Option(opt.text, opt.value, isSelected, isSelected));
         });
 
-        let formContainer = document.createElement("form");
-        formContainer.name = "question_select_form";
-        let heading = document.createElement("h3");
-        heading.textContent = "Select the number of questions:";
+        dropdown.addEventListener("change", (e) => setGlobalQuestionCount(e.target.value));
+
         formContainer.appendChild(heading);
         formContainer.appendChild(dropdown);
+        frag.appendChild(formContainer);
+        container.appendChild(frag);
 
-        document.getElementById("difficulty_level").appendChild(formContainer);
-
-        const updateQuestionCount = (value) => {
-            if (campaignTrail_temp.global_parameter_json && campaignTrail_temp.global_parameter_json[0]) {
-                campaignTrail_temp.global_parameter_json[0].fields.question_count = value;
-            }
-        };
-
-        dropdown.addEventListener("change", function () {
-            updateQuestionCount(this.value);
-        });
-        
-        updateQuestionCount(dropdown.value);
+        setGlobalQuestionCount(dropdown.value);
     }
-};
 
-const diffWatcherConfig = { attributes: true, childList: true, subtree: true };
-const diffObserver = new MutationObserver(createQuestionSelector);
-diffObserver.observe(gameWindowNode, diffWatcherConfig);
-
-try {
-    document.styleSheets[0].insertRule("#difficulty_level form {display: inline-block !important; padding: 0 1em !important;}", 0);
-    document.styleSheets[0].insertRule("#difficulty_level form p {margin: 0 !important;}", 0);
-} catch (e) {
-    console.error("Could not apply selector styling:", e);
-}
+    window.manageQuestionSelector = manageQuestionSelector;
+})();
 
 // for the No swearing checkbox
 (function () {
@@ -2466,25 +2854,15 @@ try {
 
     difficultyEl.appendChild(wrapper);
   }
-
-  try { createSqueakyCheckbox(); } catch (e) { /* ignore */ }
-
-  const observer = new MutationObserver(() => {
-    try {
-      if (!document.getElementById("squeaky_clean_wrapper") && document.getElementById("difficulty_level")) {
-        createSqueakyCheckbox();
-      }
-    } catch (e) { /* ignore */ }
-  });
-
-  observer.observe(gameWindow, { childList: true, subtree: true });
+  
+  window.createSqueakyCheckbox = createSqueakyCheckbox;
 })();
 
 // This is, essentially, for preventing candidates or running mates
 // from being selected. Very useful if you're having a one-candidate
 // mod but still want to list the other candidates
-// taken from 2012LBM
-function automateStartSequence() {
+// A somewhat more optimized version compared to the ALOT one
+(function () {	
     const BAD_CANDIDATE_IDS = new Set(['200', '202', '203']);
     const RESET_CANDIDATE_ID = '201'; 
 
@@ -2502,27 +2880,35 @@ function automateStartSequence() {
 
     let lastSelectedCandidateId = null;
 	
-	const handleDomChange = (mutationsList, observer) => {
+	function automateStartSequence() {
 		// check for the candidate input
-        const candidateInput = document.getElementById(IDS.candidateInput);
-        const finalNext = document.getElementById(IDS.finalNext);
-        const finalBack = document.getElementById(IDS.finalBack);
-        const gameMap = document.getElementById(IDS.gameMapHeader);
+		const candidateInput = document.getElementById(IDS.candidateInput);
+		const finalNext = document.getElementById(IDS.finalNext);
+		const finalBack = document.getElementById(IDS.finalBack);
+		const gameMap = document.getElementById(IDS.gameMapHeader);
 
         // if the map/transport box is loaded, we are done with setup
-        if (gameMap) {
-            observer.disconnect();
-            return;
-        }
+		if (gameMap) {
+			finished = true;
+			return;
+		}
+		
+		// if we are on the opponent selection screen, clean up and stop.
+		if (finalNext && finalBack) {
+			let candidateId = lastSelectedCandidateId;
 
-        // if we are on the opponent selection screen, clean up and stop.
-        if (finalNext && finalBack) {
-            // remove back button only if we managed to sneak a bad candidate through
-            if (BAD_CANDIDATE_IDS.has(lastSelectedCandidateId)) {
-                finalBack.remove();
-            }
-            return;
-        }
+			// try to read candidate_id directly if available
+			const candidateInput = document.getElementById(IDS.candidateInput);
+			if (candidateInput?.value) {
+				candidateId = candidateInput.value;
+				lastSelectedCandidateId = candidateId;
+			}
+
+			if (BAD_CANDIDATE_IDS.has(candidateId)) {
+				finalBack.remove();
+			}
+			return;
+		}
 		
         // candidate selection screen check
         if (candidateInput) {
@@ -2548,15 +2934,11 @@ function automateStartSequence() {
                 }
             }
         }
-    };
+	}
 	
-    const targetNode = document.getElementById(IDS.gameWindow) || document.body;
-    
-    const observer = new MutationObserver(handleDomChange);
-    observer.observe(targetNode, { childList: true, subtree: true });
-}
-
-automateStartSequence();
+	window.tctAutoStart = { tick: automateStartSequence };
+	
+})();
 
 // Useful if you have a mod series!
 // Here, it lets you switch easily to 2012LBM.
@@ -2571,6 +2953,7 @@ automateStartSequence();
         containerId: 'game_window', 
         baseUrl: 'https://campaigntrailshowcase.com/campaign-trail/',
         modsToAdd: [
+			{ value: '1992', text: '1992 - Every Brilliant Thing', modName: '1992 - Every Brilliant Thing' },
             { value: '2012', text: '2012 - Little Big Man', modName: '2012 - Little Big Man' },
         ],
     };
@@ -2628,27 +3011,71 @@ automateStartSequence();
         attemptAutoStart();
     }
 
-    function initObserver() {
-        const targetNode = document.getElementById(CONFIG.containerId) || document.body;
+    window.modifyElectionSelect = modifyElectionSelect;
+})();
 
-        onDomChange();
+// This is a catch-all mutation observer so that
+// we keep one having them all run at once
+(function() {
+    'use strict';
 
-        const observer = new MutationObserver((mutations) => {
-            onDomChange();
-        });
-
-        observer.observe(targetNode, {
-            childList: true,
-            subtree: true
-        });
+    if (window.glorble) {
+        window.glorble.disconnect();
     }
+	
+	window.glorbleTasks = [];
+	
+	const initialTasks = () => {
+        // voting method selector
+        const gameTypeSelect = document.getElementById("game_type_id");
+		if (gameTypeSelect && !gameTypeSelect.dataset.enhanced && typeof window.modifySelector === 'function') {
+            window.modifySelector(); 
+        }
+		
+		// question count selector
+        if (document.getElementById("difficulty_level") && typeof window.manageQuestionSelector === 'function') {
+            window.manageQuestionSelector();
+        }
+		
+		// squeaky clean checkbox
+		if (!document.getElementById("squeaky_clean_wrapper") && document.getElementById("difficulty_level")) {
+			createSqueakyCheckbox();
+		}
+		
+		// candidate blocking
+		if (window.tctAutoStart?.tick) {
+			window.tctAutoStart.tick();
+		}
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initObserver);
-    } else {
-        initObserver();
-    }
+        // mod switcher
+        const electionSelect = document.querySelector('select[name="election_id"]');
+        if (electionSelect && !electionSelect.dataset.modifiedByScript && typeof window.modifyElectionSelect === 'function') {
+            window.modifyElectionSelect(electionSelect);
+        }
+    };
+	
+	window.glorbleTasks.push(initialTasks);
+	
+	const handleMutations = (mutationsList) => {
+        if (!window.glorbleTasks) return;
+        
+        for (let i = 0; i < window.glorbleTasks.length; i++) {
+            try {
+                window.glorbleTasks[i]();
+            } catch (e) {
+                console.error("Zoinks! Error in glorble task:", e);
+            }
+        }
+    };
 
+    const targetNode = document.getElementById("game_window");
+    const config = { childList: true, subtree: true };
+
+    window.glorble = new MutationObserver(handleMutations);
+    window.glorble.observe(targetNode, config);
+
+    handleMutations();
+    //console.log("glorble...");
 })();
 
 // Achievements?
@@ -2760,7 +3187,7 @@ campaignTrail_temp.achievements = {
     },
     "Spitting Off The Edge of The World": {
         "image": "https://file.garden/aNtAfG887DiA_7lO/2016ALOT/a14.jpg",
-        "description": "As Hillary Clinton, win on Hard-Boiled difficulty.",
+        "description": "As Hillary Clinton, win on Hard-Boiled or Dead on Arrival difficulty.",
         "cannotBeCheated": true
     },
 	"Before My Telephone Rings": {
