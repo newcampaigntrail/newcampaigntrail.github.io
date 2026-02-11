@@ -511,6 +511,14 @@ nct_stuff.themes = {
         coloring_container: "#86cecb",
         coloring_title: "#137a7f"
     },
+    "lgbtqpride": {
+        name: "Pride",
+        background: "https://www.politico.eu/cdn-cgi/image/width=1200,height=675,fit=crop,quality=80,onerror=redirect,format=auto/wp-content/uploads/2021/07/24/h_57063662-scaled.jpg",
+        banner: "/static/images/pride.jpg",
+        coloring_window: "#380069",
+        coloring_container: "#5a00a8",
+        coloring_title: "#9f9f9fff"
+    },
     "custom": {
         name: "Custom",
         background: "",
