@@ -15973,14 +15973,6 @@ function handleOhioFlip(e) {
 }
 
 if (handleOhioFlip(e)) {
-  console.log("Ohio flip handled successfully ijbol");
-  // Recalculate quickstats[0] after the flip
-  const kerry = e.final_overall_results.find(c => c.candidate == 78);
-  if (kerry) {
-    quickstats[0] = gore.electoral_votes;
-  }
-}
-
 // Achievements/Music
 if (quickstats[0] >= 360 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry") {
  ctsAchievement("The Fourth Heart");
@@ -16410,6 +16402,438 @@ else if (quickstats[0] < 270 && campaignTrail_temp.candidate_json[1]["fields"].l
 }
 
 return construct(0);
+}
+else {
+// Achievements/Music
+if (quickstats[0] >= 360 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry") {
+ ctsAchievement("The Fourth Heart");
+    if (used != true) {
+      const playlist = new Playlist();
+        const song = new Song(
+          "DARE",
+          "Gorillaz",
+          "https://upload.wikimedia.org/wikipedia/en/d/df/Gorillaz_Demon_Days.PNG",
+          "https://audio.jukehost.co.uk/hCPMUdLNW5HfDjGgDD9dtuvEtSS7Sbc3"
+        );
+        playlist.addSong(song);
+      changePlaylist(playlist);
+      
+      used = true;
+    }
+}
+if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry") {
+ ctsAchievement("Reporting for Duty!");
+}
+if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Dean") {
+ ctsAchievement("I Dean, You Scream");
+}
+if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry" && mccain == true) {
+ ctsAchievement("No. 624787");
+}
+if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry" && flip == 2 && flop == 2) { 
+ctsAchievement("Voted For The War");
+}
+else if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry" && flip == 1 && flop == 1) { 
+ctsAchievement("Voted Against It");
+}
+else if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry" && ((flip == 2 && flop == 1) || (flip == 1 && flop == 2) )) { 
+ctsAchievement("Windsurfing");
+}
+
+// Page I. Size of Win, Kerry + Dean
+if (quickstats[0] >= 400 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry" && mccain == true) {
+  e.pages.push(`<h3>What a Great Beginning</h3><p>A win is a win. And what a win it is.</p><p>The gamble to run with McCain was one fraught with risk, but you and him both know better than most that no guts means no glory. Any doubters of the plan will swallow their misgivings - the mandate, and tailcoats, you’ve brought are more than enough to silence them. Sure, McCain is no Feingold or Edwards, but George Bush is no more, and many of them will be grateful for it. It's barely past 10PM when Bush gives you a concession call, and by the end of the hour, he's talked to his supporters and told them plainly that they've lost. You and McCain step out to give a victory speech moments later.</p> <p>The roar of the crowd as you give your victory speech is invigorating, but you know this is just the beginning of the hard part - with what Bush has done internationally, the work fixing it will be immense. But with a slim majority in Congress, and Republicans now convinced that your bipartisan pivot is the future of politics, you know you’ll be able to tackle it. Of course, you'll also have to keep your left flank happy. To get McCain on the ticket, you've had to make multiple concessions that have made them unhappy, and so proposals on the environment and healthcare will be important here.</p><p>You and McCain celebrate tonight, and get ready for the work tomorrow with a renewed vigour. The war will be continued, with an improved plan and with the United States' allies brought to the table. Saving the world, one day at a time.</p>`)
+  //e.image = ""
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/twofriends.png'})])
+}
+else if (quickstats[0] >= 340 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry" && mccain == true) {
+  e.pages.push(`<h3>We Are The Captains Of Our Own Fate</h3><p>A win is a win.</p> <p>For as controversial as running with McCain was, you’ve not just beaten George Bush with him, you’ve beaten him relatively decisively. The ability to turn Bush’s command of the war on its head with a defection was a masterstroke, and for all ideological purists on your left will complain, they’ll be damn happy that someone else has his seat. For once over these past few years, it feels like the pain that liberals went through with Florida in 2000 was for something, in the end, even if the end result isn't super satisfying.</p> <p>Bush’s concession call is brief and reserved, likely unwilling to give McCain the satisfaction of revealing anything behind his chirpy cowboy facade. You’re not a sadist,you don’t especially mind that he’s taking defeat with grace, especially as he tells his supporters to stand down and promises to help with the transition. The downballot races aren’t as satisfying, producing a 50/50 Senate and narrow Republican control of the House, but with McCain advising you on how to handle the GOP, you think you’ll be able to handle it, especially as folks like Olympia Snowe and Arlen Specter seem willing to work with you on certain matters.</p><p>You finish your victory speech and let McCain do his speech, content that America will move past the Bush years. Best of luck over the next few years - it'll be tough, but you can definitely do this.</p>`)
+  //e.image = ""
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/mccain.png'})])
+}
+else if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry" && mccain == true) {
+  e.pages.push(`<h3>Thank All You Democrats, Independents, and Independent Thinking Republicans</h3><p>A win is a win. No matter how narrow.</p><p>The states take awhile to come in - it's not until 2am that you feel your victory is confirmed. It looks like with McCain on the ticket, you were just able to defeat Bush. For all the backlash you had gotten from the party faithful, you knew 9/11 had changed the country on a fundamental level. By tapping into McCain’s ability to win over moderates, you were able to beat a wartime incumbent - no easy feat, even by a small margin. Bush gives a somewhat bitter call to you the next morning, well aware that his treatment of McCain four years ago came to bite him in the rear. You can see the disappointment in his face as he thanks his supporters for their support, unsure of his plans after January. You will move into the White House as McCain will head to the naval observatory.</p><p>The downballot results aren’t a happy story either. Republicans still control both Chambers, even if there are some narrow wins that you were able to pull over the finish line, especially Senate Minority Leader Tom Daschle, who eeked out a victory against John Thune. You’re not terribly concerned about this - you know a thing or too about working with Republicans, especially with one set to serve as your tie breaker. Of course, you'll also have to keep your left flank happy. To get McCain on the ticket, you've had to make multiple concessions that have made them unhappy, and so proposals on the environment and healthcare will be important here.</p><p>Enjoy the victory party. You’ve got a lot of work to do afterwards making America stronger at home and respected across the world!</p>`)
+  //e.image = ""
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/kerrymccain.png'})])
+}
+else if (aa[0].electoral_votes < 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry" && mccain == true) {
+  e.pages.push(`<h3>Today I Hope We Can Begin That Healing</h3><p>It takes a few days for it to be finalized, but the worst possible scenario occurs: no candidate has won outright, and instead, the contest will be formally decided in a contingent election in the House of Representatives, where George Bush is expected to win. You sit down with McCain, with an inkling of an idea in your head...</p><p>Bush has won with a narrow trifecta, with a slightly decreased majority in the House and the Senate, but you know full well that the most important part of his victory has limited Congressional Oversight - the ‘’coalition of the willing’’ will continue to shatter American prestige for another four years. Meanwhile, whispers from DC are that Karl Rove is ecstatic by the results, convinced that Bush has been given the mandate he's long deserved to enact a strongly conservative agenda. This country needs someone else than Dick Cheney in the Vice Presidential slot - this nation needs John McCain.</p><p>McCain is taken aback by the proposal. But you're confident that this is what the country wants - no, what it needs. Bush demurs on the offer - a clean start, a reset to his administration, and a lifeline to heal a divided country. Eventually, he gives a speech in which he, standing alongside Dick Cheney and Bill Frist, states that he will ask the Senate for a vote of conscience on the matter, which will work in McCain's favor.</p><p>Regardless of the outcome, you will return to the United States Senate, and hopefully will continue the work you've done.</p>`)
+  //e.image = ""
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/awfulwaytoeatacheesesteakbtw.png'})])
+}
+else if (quickstats[0] >= 180 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry" && mccain == true) {
+  e.pages.push(`<h3>This campaign Was And Will Remain The Great Honor Of My Life</h3><p>In the early hours of the morning, it becomes official. George Bush has won re-election. This is a major disappointment, especially for those wary of McCain but had swallowed their pride anyway and pulled the lever for you. While you want to pledge to fight the results if there’s a chance, you know the odds of that chance are low, and McCain immediately shoots down any attempt to contest the results. McCain is the one to take the phone call from President Bush, and the next morning, you find yourself speaking alongside him in Boston, conceding defeat and thanking your supporters for all they went through.</p><p>Bush has won with a trifecta, with an increased majority in the House and the Senate, but you know full well that the most important part of his victory has limited Congressional Oversight - the ‘’coalition of the willing’’ will continue to shatter American prestige for another four years. Meanwhile, whispers from DC are that Karl Rove is ecstatic by the results, convinced that Bush has been given the mandate he's long deserved to enact a strongly conservative agenda. You and McCain will be needed more than ever in the United States Senate, to fight off these attempts to reshape the nation.</p> <p>Blame is being thrown at your decision to run with McCain, but you’re not ashamed of that. In a difficult situation, you made a risky call. Perhaps it was lose with McCain, or lose with a worse with a traditional running mate. You’ll let the talking heads point blame - you’d rather focus on your Senate seat.</p> `)
+  //e.image = ""
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/kerryathlete.png'})])
+}
+else if (quickstats[0] >= 120 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry" && mccain == true) {
+  e.pages.push(`<h3>The American People Have Spoken, And They Have Spoken Clearly.</h3><p>Halfway in the night, it becomes obvious that there is no path to victory. The south has been solidified by Bush, while the Midwest and West seem in danger as Bush picks off more and more states, adding them to what appears to be a growing sea of red consuming the country. It’s a rather astonishingly poor result, even recognizing Bush’s advantages. With the base regarding Bush as an illegitimate president and the defection from the Republican party, most assumed that Bush would certainly lose, but instead, he's managed to secure a renewed mandate for himself and his agenda - one which folks like Karl Rove are giddy to press forward on.</p><p>The decision to pick McCain was clearly a mistake. It seems as though Bush’s advantage on foreign policy was unassailable, and all the attempt to outflank him did was depress the base and fire up his own at the same time. McCain seems more devastated than you, having lost to Bush before and having lost in a way that was bitter and nasty. McCain is in the other room as you give the call to Bush to concede defeat. By the end of the hour, you see him, confident as ever, given a victory speech to his supporters, thanking them for their support.</p><p>With Bush having expanded his trifecta and the powers of the Presidency, he’s set to continue the last four years of shredding American credibility. At least you have your senate seat to try and do some small damage control, but you've lost much of your credibility with this defeat. Let's hope you can turn things around and end your political career on a high note.</p>`)
+  //e.image = ""
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/poland.png'})])
+}
+else if (quickstats[0] >= 0 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry" && mccain == true) {
+  e.pages.push(`<h3>The Failure Is Mine, Not Yours.</h3><p>When you picked McCain as your running mate, for as many articles penned congratulating you on your ability to appeal to moderate Republicans, there were as many saying you had betrayed what the Democratic party stood for - not just in selecting him, but in the way you had laid the groundwork for him to accept.</p><p>If they’re right, if the ideas of a fair and equitable democracy for all Americans were betrayed for political expediency, then you had betrayed everything and gained nothing. There was no lesson taught, no incremental gain, nothing.</p><p>It appears this has been for nothing.</p><p>George Bush has been given a mandate that surpasses the one his father received in 1988, and is more akin to the one his idol, Ronald Reagan received. Republican gains in the Senate have sweltered to 59 seats, and almost 250 seats in the House of Representatives. There are little need for moderates now when a new tier of conservatives allied to President Bush have seized control of critical swing districts, and the nation as a whole drifts heavily to the right.</p><p>McCain has burned all bridges as a result of this disastrous campaign, and has now lost his seat in the Senate as a result of his retirement. You will return to the United States Senate not as a hero, or as a victim of a stolen election, but as a failure. It's up to you to decide if you will run for re-election in 2008, but this is a tough end to an otherwise respectable career in public service.</p>`)
+  //e.image = ""
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/wonka.png'})])
+}
+else if (quickstats[0] >= 400 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry") {
+  e.pages.push(`<h3>We are here because we love our country.</h3><p>The lights of Faneuil Hall shine bright, and brighter still on a mandate like this.</p> <p>You weren’t afraid to do the right thing, and the country admired you for it. The blue wave has drowned the red breakwaters of resistance in a truly humiliating spectacle for Bush. With the tailcoats your victory has inspired across the country, 2000 will just be a bad memory as the country gets back on a forward step. Bush gives a dejected and defeated concession call, before pulling his chin up and thanking his supporters for their mighty effort. Bush tells you that you'll have his total support as you prepare to transition into the role of President, and already your team is beginning to prepare possible cabinet appointments. Hillary at the State Department, perhaps?</p>  <p>That won’t be easy of course. The damage Bush has done at home and abroad will take a lot of hard work to fix, especially with two wars that you will be inheriting. Will you be able to set a timetable for withdraw, or will the conflicts continue into the next decade? Tith the American people’s clear and obvious faith in you though, and slim majority in Congress through the downballot, you know it can be done. Thanks to the wave you've brought in, Nancy Pelosi will be the first female Speaker of the House ever, and Democrats will control the chamber for the first time in exactly a decade, giving you ample time to press your domestic agenda and (more importantly) your foreign vision.</p><p>Congratulations Senator - and god speed. A lot of people have put their faith in you, and are expecting changes quickly. You’ll have to get to work making America stronger at home and respected across the world.</p> `)
+  //e.image = ""
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/youngkerry.png'})])
+}
+else if (quickstats[0] >= 340 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry") {
+  e.pages.push(`<h3>Reporting for duty.</h3><p>The lights of Faneuil Hall shine bright.</p><p>This kind of victory is far more than a fluke. It’s a real sign of trust from the American people that they’re ready to turn a page from the mismanagement of the Bush years. You take a call from Bush, who’s as amicable as he really can be under the circumstances, and take the stage. The crowd roars, delighted to see sanity refer to governance after four years of Bush. Even as you speak, some states remain uncalled, giving you even more comfort and confidence in your agenda and your mandate</p>  <p>You promised to make America stronger at home and respected abroad, but that’s something a lot easier said than done. Still, you’ve fought and bled for America before, and you defeated a wartime incumbent with some breathing room. You think you’ll be able to handle this. The downballot has been a mostly positive development - a 50/50 split, which with your Vice-President, means that you should be able to work an agenda through Congress... so long as you maintain strong enough party discipline. Some moderates within the Republican Party will help give you some breathing room, such as with judicial nominees, with 2-3 vacancies expected to open on the court during four first four years. The House, meanwhile, will return with a narrower Republican majority than last time, but it's enough where you might be able to make some headway. Perhaps if Texas hadn't been gerrymandered, you might've been dealing with a better margin in the House.</p> <p>All of that is a problem that begins in January. Soon, Bush won’t the President anymore, and that’s because of you. You have a lot to be proud of, and you'll need all the help you can get as you embark on the difficult task of making America stronger at home and respected across the world.</p> `)
+  //e.image = ""
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/kerrysalute.png'})])
+}
+else if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry") {
+  e.pages.push(`<h3>The promise isn't perfected.</h3><p>The lights of Faneuil Hall seem to dim for a moment. But then, it came back, brighter than ever.</p><p>Your victory was no sure thing, as the results in Ohio, Pennsylvania, and Florida swung back and forth there. But, when all is said and done, almost 10 hours after the polls close, it’s yours. And no one can deny that. In the face of a wartime incumbent, you were able to prove America is more than fear. In the early hours of the morning, Bush finally calls to concede, offering help in the transition process as, just like his father, he becomes the latest President to fail to secure a second term. Your victory speech is rather muted, and given during the midday, hoping to avoid a repeat of 2000 - but you know in your heart you’ve managed to win the day. Landslide or not, hell, popular vote or not, you have more of a mandate than Bush did in 2000.</p> <p>Still, there’s not a lot of breathing room. Republicans still enjoy a narrow majority in Congress, so any bold plans will need to be put on the backburner while you try to solve the critical issues affecting America today. At least in the Senate, some moderate Republicans plus Democrats give you a working majority on quite a few proposals, so be prepared to work with Olympia Snowe and Arlen Specter. Tom Daschle will really have his work cut out for him, though, as he will have to juggle plenty of different, often conflicting interests. Perhaps if you do a good enough job keeping the plates spinning, the midterms will go well enough to let you really change the country.</p> <p>Close or not, you won. You’re the President. It may take blood and sweat, but if you weren’t able to handle it, you wouldn’t have gotten this far.</p> 
+`)
+  //e.image = ""
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/kerrywin.png'})])
+}
+else if (aa[0].electoral_votes < 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry") {
+  e.pages.push(`<h3>Just barely missing it.</h3><p>The lights of Faneuil Hall keep flickering.</p><p>It takes a few days for everything to come in, but eventually, the math is solidified - no candidate got 270 electoral votes, sending the contest to the House of Representatives, where Bush is likely to win the contingent election. You talk to your staff about possible paths to victory now, but you seem shut out. The new Congress will be a narrow Republican majority in both chambers, so Bush/Cheney will get four more years on a technicality. Still, Bush is not one to give up easily, and Rove has been telling him even a narrow mandate gives him a lot of room to maneuver.</p><p>The closeness of the race offers you a cold comfort while you call Bush to concede, with the whole affair taking long enough that Bush is forced to give his victory speech the following morning. You endure the continuing humiliation, as you deliver a sincere thank you speech towards your supporters and campaign team. Their hopes have been shattered by the loss, you know that. Worse still is the situation in Congress, where Republicans have picked four open seats held by Democrats in the south. Tom Daschle, leader of the Senate Democrats, did gain four more years, even after Republicans threw the kitchen sink at him.</p><p>If only you could wallow in self-pity forever. A new session of Congress will begin soon, and you still have a seat in the Senate, with four more years on your mandate to legislate and take action on the issues of the day. Bush still needs to be held accountable, and there's plenty of pickup opportunities in the Senate come 2006 and 2008 which could put the Democrats back into the majority. Plus, who knows who the candidates in 2008 will be? The frontrunner, of course, appears to be Hillary Clinton, but you might have a chance to run, and newly elected Senator Barack Obama seems to be making waves. Who knows if he's got a shot, though?</p> `)
+  //e.image = ""
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/flipflops.png'})])
+}
+else if (quickstats[0] >= 180 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry") {
+  e.pages.push(`<h3>A little bit late and a little bit short.</h3><p>The lights of Faneuil Hall are growing dim.</p><p>You took on an incumbent during a war, and you fought with everything you had to try and take him down. And despite the effort, you’ve come up short. Still, this hasn’t been a total defeat. Despite the natural advantages Bush had, and his aggressive negative campaigning against an ‘’east coast elitist’, you managed to keep the election close, or at least closer than it had appeared during the summer. Bush has been sent a firm message - it’s not just partisan anymore. The American people have serious issues with how he’s been governing this country. Still, Bush is not one to give up easily, and Rove has been telling him even a narrow mandate gives him a lot of room to maneuver.</p><p>The closeness of the race offers you a cold comfort while you call Bush to concede, with the whole affair taking long enough that Bush is forced to give his victory speech the following morning. You endure the continuing humiliation, as you deliver a sincere thank you speech towards your supporters and campaign team. Their hopes have been shattered by the loss, you know that. Worse still is the situation in Congress, where Republicans have picked five seats, mostly open seats held by Democrats in the south. The defeat of Democratic Leader Tom Daschle does come as a key prize, though.</p><p>If only you could wallow in self-pity forever. A new session of Congress will begin soon, and you still have a seat in the Senate, with four more years on your mandate to legislate and take action on the issues of the day. Bush still needs to be held accountable, and there's plenty of pickup opportunities in the Senate come 2006 and 2008 which could put the Democrats back into the majority. Plus, who knows who the candidates in 2008 will be? The frontrunner, of course, appears to be Hillary Clinton, but you might have a chance to run, and newly elected Senator Barack Obama seems to be making waves. Who knows if he's got a shot, though?</p> 
+`)
+  //e.image = ""
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/kerrysad.png'})])
+}
+else if (quickstats[0] >= 120 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry") {
+  e.pages.push(`<h3>The march isn’t over.</h3><p>The lights of Faneuil Hall are dimmed.</p><p>Regardless of the advantages that Bush had, his corruption, boorishness and failures meant Democrats were convinced that you were capable of winning this. Not only have you lost, you’ve lost decisively. There’s no suspicious trend to point too or a caveat in Florida to earn you legitimacy, or to give you goodwill amongst Democrats as you mull a 2008 bid. You have lost. George Bush has won. You call Bush to give a concession speech, he cordially responds, but you can't help but suspect a bit of cockiness in his voice as he heads out on stage to thank his supporters only minutes after your own concession speech.</p><p>Before the sun is up again, blame for your loss is being passed around, with most of it being placed onto you. Some say you were too liberal. Others say you weren’t liberal enough. Some say you were too soft on terrorism, others that you hadn’t denounced Bush’s illegal wars enough. If anyone will learn the answer, it will be you - you’ll repeat the campaign in your head over and over, trying to understand where it all went so wrong. Already enjoying a slim majority, the Republicans won 56 seats in the Senate and 238 seats in the House, no doubt further emboldening Bush as he pushes for more tax cuts and further deregulations.</p><p>The work continues despite this. You have a state to serve and a still loyal constituency. You’ve still got a part to play. Though the Republicans feel confident about their victory, who knows what may happen between now and 2008? The frontrunners for the Democrats definitely seems to be Hillary Clinton and Al Gore, but this one newcomer, a Senator from Illinois is also being talked about after a rousing speech at the convention. What was his name again?</p> `)
+  //e.image = ""
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/pancakes.png'})])
+}
+else if (quickstats[0] >= 0 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry") {
+  e.pages.push(`<h3>There is nothing more pessimistic than saying America can't do better.</h3><p>The lights in Faneuil Hall have completely gone out.</p><p>The collapse of your campaign will be studied in the decades to come. In the face of one of the most controversial presidencies in US history, a presidency many believe to be wholly illegitimate, your campaign suffered a humiliating defeat. Your name will be whispered with McGovern and Mondale, who have both called to express their commiserations. It's not even 11PM when George Bush steps out to address his supporters and thank them for such a defining victory. The networks gawk at how state after state falls into the Bush column, and no one even bothers to ask if you'll give a concession speech.</p><p>Your concession speech, delivered before midnight, is brief and clipped, and Bush hasn’t even bothered to take your call. You still have your seat in Massachusetts, but you’ll be in poor company, with the Republicans making massive gains in Congress. Many longtime public servants, from Tom Daschle, to Blanche Lincoln, to Russ Feingold have gone down from the coattails of your defeat. The only saving grace is victory for Barack Obama, who won by a massive margin in Illinois after giving a speech at the 2004 Democratic National Convention. Hopefully, something comes out of his victory, though it's hard to say Americans have a strong appetite for liberalism.</p><p>Hopefully Bush takes this victory as a message of your weakness, rather than a firm affirmation from the American people of his support. But Bush has never been one to doubt himself, and too often his opponents misunderestimate him. Hopefully his legacy will be defined not for his triumph here, but for his handling of the War on Terror.</p> `)
+  //e.image = ""
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/kerrywaffle.png'})])
+}
+else if (quickstats[0] >= 400 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Dean") {
+  e.pages.push(`<h3>"We have to say what we believe... whether it's popular or not."</h3><p>It really, <i>really</i> happened, didn't it? By that wide of a margin?</p><p>The fact you had been doing so well for so long in the campaign was suspicious. Bush was a wartime President, which usually causes the flag to get rallied behind the incumbent. But you kept slowly chipping away at his lead, before you began to build your own. You still weren't sure whether to believe your own polls or not - this stuff can always be off, y'know?</p><p>It's not even 11PM when all of the networks call the race for you. This is no 2000, this is a landslide. You ask your advisors if they can believe what they're seeing. They knew the final polls were good for you... but this good? Something was off. It had to be.</p><p>The concession call from Bush really made it dawn on you that you had been elected President of the United States. It was a short and bittersweet conversation. He invites you to the White House to discuss the transition, but cuts it short because he says he has to make some calls. You see him 10 minutes later conceding to a crowd of supporters.</p><p>Your margin has thankfully given you enough coattails that you'll be dealing with a Democratic Congress. Still, much of this caucus is made up of southern, more conservative Democrats who will be kingmaker on deciding what parts of your agenda can pass or will fail. If you can work with them, you can get a lot done over the next few years. Best of luck, Mr. President!</p>`)
+  //e.image = ""
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/rollingstone.png'})])
+    if (used != true) {
+      const playlist = new Playlist();
+        const song = new Song(
+          "Thank Goodness",
+          "Wicked Broadway Cast",
+          "https://m.media-amazon.com/images/I/61E527uUWzL._UF1000,1000_QL80_.jpg",
+          "https://audio.jukehost.co.uk/Vo7MBwCBokDikxlwntXC1Pjdak4C7CpU"
+        );
+        playlist.addSong(song);
+      changePlaylist(playlist);
+      
+      used = true;
+    }
+}
+else if (quickstats[0] >= 340 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Dean") {
+  e.pages.push(`<h3>"This country was the moral leader of the world until George Bush became president."</h3><p>It really, <i>really</i> happened, didn't it?</p><p>Going into election night, you understood that the campaign was an uphill battle. You felt good about making the race as close as it was - Bush was a wartime President, after all, and the guy had a 90% approval rating at some point. But things were going good - awfully good.</p><p>It's only just after midnight when CNN and NBC make the call: Howard Dean has been elected the 44th President of the United States, defeating President George Bush. It's not a landslide, but it isn't a nail-biter like 2000 was. That gives you comfort, and a sense of legitimacy that Bush lacked after 2000. But the race being called this early into the night still floors you.</p><p>The race is called early enough that you're able to give a speech right at 1AM to your supporters after Bush's gracious concession speech, even though there's still a few races left to call out West and in the South. As you walk out to meet your supporters and speak to the nation, you can't help but be stunned at the crowd. You're not sure if you know what you've gotten yourself into.</p><p>There's a lot you'll need to handle, of course - Iraq and Afghanistan require serious attention if you want a timely withdrawal, and your lack of foreign policy experience means the State Department's going to need to be staffed with the best of the best. A Democratic Senate may help you with your domestic agenda, but you'll need to get used to working with a Republican House for the next two (or, more likely, four) years. Best of luck, Mr. President-elect!</p>`)
+  //e.image = ""
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/deantime.png'})])
+}
+else if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Dean") {
+  e.pages.push(`<h3>"Every day it becomes clearer that this was the wrong war at the wrong time."</h3><p>It really happened, didn't it?</p><p>You went into the night comfortable with a loss. Up against a wartime President while the press had branded you a liberal for the entire campaign, it was understandable to suspect you'd lose this one. But as the night goes on... something happens?</p><p>It might've been the Midwest holding firm. Florida was shaky, but Graham as your VP seemed to help there. As the night went on, the paths to victory became clearer and clearer without the need to squint too much. CNN is the first to call it, at 2:14 in the morning - Howard Dean is President-elect of the United States. He's over the 270 electoral votes needed. You don't even remember what state it was - Ohio, probably. Might've been Pennsylvania, or Florida, or even Colorado that put you over the top.</p><p>Then it dawned upon you - you're going to be the President. A phone call from a defeated and despondent Bush sets in the gravity of the situation. You tell your supporters that you will have more to say in the morning. Bush should get a chance to give his own concession speech first, and that'll wait until tomorrow evening.</p><p>It's not a big win, though. The fact it's closer than either of the Clinton wins means you're expected to tread lightly. You have a big mess to handle - in Iraq, with the education system, healthcare, and the tax system. A Republican Congress is unlikely to play ball with you on some matters, so you'll need whatever advantage you can get. Best of luck!</p>`)
+  //e.image = ""
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/deanscream.png'})])
+}
+else if (aa[0].electoral_votes < 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Dean") {
+  e.pages.push(`<h3>"The status quo helps liberals. We're going to change the country."</h3><p>It really is the close ones that hurt.</p><p>It was a hard fought campaign, and there were both good and bad signs going into the night. CNN calls some states for Bush - much of the South, the Plains, and Texas, of course. You get both coasts, enough to prove you're still in the fight. You've got millions of dollars of lawyers on standby, ready to litigate a razor-thin margin in a state like Ohio, or Florida, or Pennsylvania.</p><p>But as things progress, you wonder - will <i>it</i> really happen? The odds seem low, but possible, at first. Then it starts to increase. And as more states fall evenly into each column, you can't help but feel like you're watching a train crash in real time. A disaster waiting to happen.</p><p>After two days, days that feel like eternity, the news networks call it - neither you or Bush reached the magic number of 270 electoral votes needed to win. As you talk to your advisors about options going forward, the incoming House and Senate margins are just too wide for you to have a shot at winning the contingent election. You lost, on a technicality. You call Bush, give a televised concession speech, and accept that Dubya will win the contingent election.</p><p>Given the nature of your loss, 2008 remains in the cards. It'll be tough to hold onto that level of support for four years, but the way you lost certainly will garner you sympathy in liberal corners across the country. Best of luck with whatever you choose to do next!</p>`)
+  //e.image = ""
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/deandown.png'})])
+}
+else if (quickstats[0] >= 180 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Dean") {
+  e.pages.push(`<h3>"This is a struggle of good and evil. And we're the good."</h3><p>It's the close ones that hurt.</p><p>It was a hard fought campaign, and there were both good and bad signs going into the night. CNN calls some states for Bush - much of the South, the Plains, and Texas, of course. You get both coasts, enough to prove you're still in the fight. You've got millions of dollars of lawyers on standby, ready to litigate a razor-thin margin in a state like Ohio, or Florida, or Pennsylvania.</p><p>Instead, by the time you go to bed, Bush is on the verge of 270 electoral votes. You go to bed knowing that the race is over, and give Bush a concession call right as you wake up. He's a little miffed he has to wait until the afternoon to give his victory speech, but it beats waiting over a month, does it not?</p><p>Bush heads into a second term with a renewed mandate, unless of course, he lost the popular vote - although given his improvement in the south, that seems unlikely. Much of his first term has been defined by foreign policy, so it is likely he will place a greater emphasis on his conservative agenda over the next four years.</p><p>As for you, Dean, your electoral career is likely over. There might be a lane to run in 2008, but you've partially discredited the liberal-progressive wing of the party with your loss. Don't be fooled, however - you still still certainly be involved in politics. Your endorsements would carry plenty of weight, and a return to the Governorship or even Senate doesn't sound bad. Isn't the Democratic National Committee set to choose a chairman soon?</p>`)
+  //e.image = ""
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/deansign.png'})])
+}
+else if (quickstats[0] >= 120 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Dean") {
+  e.pages.push(`<h3>"Real Democrats don't make promises they can't keep."</h3><p>When the night began, there weren't many great signs, but you and your team tried to hold out hope for as long as possible. But the results flood in, and the math becomes impossible - the South has been completely lost, the Midwest has swung red, and Bush was able to hold the west. By midnight, the call to Bush has to be made and you must tell your supporters that the campaign has been lost in a brief but honest concession speech.</p><p>You had hoped that Bush's divisive nature and waning popularity would bring a resurgence to American liberalism. Instead, however, Dubya was able to secure a renewed mandate of compassionate conservatism - minus the compassion. Republican gains in the Senate and in the House, mostly in the South, will allow for his agenda to be pressed further. One positive note is that Democrats were able to flip the Illinois Senate seat.</p><p>It's hard to say where this leaves the nation. The war in Iraq certainly has no clear timetable for withdraw, as Bush will interpret this as a mandate to continue the war on terror. Bush will also try to double down on social security reform and other conservative reforms domestically.</p><p>It's unlikely you'll be able to run for office again. Vermont is generally a blue state, so if you really want to, it could be possible to run for Senate or Governor if you so choose. But it might be best to move to other endeavors instead. Best of luck in whatever you choose to do next.</p>`)
+  //e.image = ""
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/deaneat.png'})])
+}
+else if (quickstats[0] >= 0 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Dean") {
+  e.pages.push(`<h3>"I hate Republicans and everything they stand for."</h3><p>It does not take much time for the results to pour in before you realize what has happened. Just four years after one of the closest Presidential elections in American History, CNN can call this one by the time it's 10PM in Vermont. George Bush has outdone his father and has been re-elected to a second term, and it's not even close.</p><p>Down the ballot, Republicans have expanded their majorities in both chambers of Congress - the sole Senate pickup was in Illinois, where little-known State Senator Barack Obama outran you by a wide margin. The new Senate stands at 57 Republicans to 43 Democrats, and a 250-to-185 Republican House Majority. Many of these gains came within the south, where you performed far worse than Al Gore or even Bill Clinton.</p><p>You call George Bush to concede - a short, formal call - one where he's respectful and humble enough. But you know how good he must feel that he can give a victory speech the night of, and go to bed knowing he's still the President.</p><p>It goes without saying, but this is the end of your political career. Your performance here was poor, but it was impressive that the Governor of such a small state was able to become the Democratic nominee. Perhaps you can continue to run Democracy for America, a political action group you formed for your campaign.</p>`)
+  //e.image = ""
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/deanecon.png'})])
+    if (used != true) {
+      const playlist = new Playlist();
+        const song = new Song(
+          "November Has Come",
+          "Gorillaz",
+          "https://upload.wikimedia.org/wikipedia/en/d/df/Gorillaz_Demon_Days.PNG",
+          "https://audio.jukehost.co.uk/vWltVlukH824W88ItahBxUnD7qAFKCQb"
+        );
+        playlist.addSong(song);
+      changePlaylist(playlist);
+      
+      used = true;
+    }
+}
+
+// Page II. Kerry Flip Flop/Dean 
+
+if (aa[0].electoral_votes < 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry" && mccain == true) { // Bush/McCain Cohabitation Gov
+  e.pages.push(`<h3>McCain To Campaign For Some Democrats | View Full List</h3><h5>cnn.com | June 25th, 2006</h5><p>Ahead of the upcoming midterm elections, Vice President John McCain has indicated that he will be campaigning for certain Democrats, in a move that reports say the Bush Administration is not taking too kindly.</p><p>Most of the Democrats on McCain's endorsement list, including Senator Joe Lieberman, are incumbents, which would not threaten the Bush administration's narrow Senate Majority. However, endorsements for State Treasurer Bob Casey Jr. in Pennsylvania and Navy Secretary Jim Webb, both running against incumbent Senators, is causing issues with trust in the administration.</p><p>These endorsement are, in McCain's words, an attempt to bring the best people from both parties into the Senate. But pundits have described the move as a way of McCain keeping his options open for 2008, as he considers his relationship with the Democratic Party following the results of the previous election.</p><p>View the full endorsement list here:</p><p>(<b>Bolded</b> denotes an incumbent)</p><ul><li>Bob Casey Jr. (Pennsylvania, Democrat)</li><li>Thomas Kean Jr. (New Jersey, Republican)</li><li>Jim Webb (Virginia, Democrat)</li><li>Joe Lieberman <b>(Connecticut, Democrat)</b></li><li>Lincoln Chafee <b>(Rhode Island, Republican)</b></li><li>Richard Lugar <b>(Indiana, Republican)</b></li></ul>`)
+  //e.image = ""
+  e.executable.push([0, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/imgur/mccainpress.png'})])
+}
+else if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry" && mccain == true) { // Kerry/McCain Win
+      e.pages.push(`<h3>Borat: Cultural Learnings of America for Make Benefit Glorious Nation of Kazakhstan</h3><h5>imdb.com | Reviews</h3><p>10/10 - Appalling!</p><p>This film is art. It was gut splitting humor as well, but it was relaying a critical message. It's a piece of work that reflects our culture's place in time politically and socially.</p><p>If you want a mindless laugh, watch an Adam Sandler film. They are always sympathetic to the viewer and never evoke too much thought about ourselves.</p><p>Cohen manages to create genuine laugh out loud moments. Yes they are often at the expense of others but so what?!? No one was harmed during the making of this movie and if they didn't want to be involved they didn't have to sign the release forms. But beyond the laughter Cohen does hit a political nerve whether you like it or not. The footage of a Texan talking about gay arabs is both humorous and extremely alarming. As is the conversation between three frat boys (who clearly have the social intelligence of a two year old combined). It's a stark realisation to see the backwards world we are still living in.</p><p>Wonderful movie. You laugh until you cry. A perfect portrait of American culture.</p><br><br>—----<br><br><p>1/10 - Don’t waste your time or money</p><p>During the movie Borat asks what is appropriate and funny here in America. I think we must ask the same question.</p><p>Is seeing Borat show off a family photo of his teenage son's penis really funny? Or does his advice to the town rapist about "sticking to humans only" really merit a laugh?</p><p>The audience left the theater dismayed. I HIGHLY don't recommend this movie! Don't waste your time, money or energy on this one.</p>`)
+    //e.image = ""
+    e.executable.push([1, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/borat.png'})])
+      if (used != true) {
+      const playlist = new Playlist();
+        const song = new Song(
+          "Never Let Me Down",
+          "Kanye West & Jay-Z",
+          "https://upload.wikimedia.org/wikipedia/en/a/a3/Kanyewest_collegedropout.jpg",
+          "https://audio.jukehost.co.uk/GH5QjUJsizbSk6po2tuE3WHgglyPqBRW"
+        );
+        playlist.addSong(song);
+      changePlaylist(playlist);
+      
+      used = true;
+    }
+}
+else if (quickstats[0] < 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry" && mccain == true) { // Kerry/McCain Loss
+      e.pages.push(`<h3>MavericksForever.com</h3><h5>July 14th, 2008 | (Stickied by Moderator)</h5><p>We ALL saw it coming</p><p>Well well well.</p><p>Barack HUSSEIN Obama has confirmed what we all knew; he was a puppet for the Washington Insiders that John warned us about.</p><p>When Killary Klinton said she wasn’t running, some suckers thought ‘’wow! It’s totally going to be a real outsider!’’. No. That’s not how these reptiles work. Someone was already compromised. We knew it wasn’t John, obviously. And Kucnich wasn’t ‘’politically correct’’ enough for these cowards.</p><p>When McCain humiliated himself in New Hampshire some of us, even us Edwards supporters, thought that the establishment was done for. But I knew better. Someone in this primary was secretly bought and paid for. And it was obvious to me that it was Obama.</p><p>I mean think about - the endless praise from the media? The constant lies and slander from the press on poor John? Obama’s mysterious background? It was screaming at us in the face.</p><p>What Obama running with Hillary proves is that the establishment hate us. They hate men and women that want to SAVE THIS COUNTRY and they are openly laughing at us for thinking we could EVER work with them to stop the wars. Don’t forget, Hillary stayed with Bill Clinton solely so she could order him to bomb Yugoslavia. She’s as evil as Kerry.</p><p>At this stage, we need to accept that America is breaking. Now? We need to break it. And unfortunately, Ron Paul is the only man that’s dedicated to breaking America. When Republican elites hijacked the Republican party and put Mike Huckabee in charge, Ron Paul said that there’s been enough war and stood to run on his own. Ron Paul, honestly speaking, is a little out there. But he’s the ONLY anti-war candidate, no matter what Obama claims he is.</p> `)
+    //e.image = ""
+    e.executable.push([1, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/socialism.png'})])
+}
+else if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry" && flip == 2 && flop == 2) { // Pro-War Kerry
+    e.pages.push(`<h3>Don’t worry Fallout fans - Fallout 3 is still on the way!</h3><h5>IGN.com | Robert 'Apache' Howarth | July 22nd 2007</h5><p>The long awaited Fallout 3 is going to have to be awaited a little longer, Bethesda studio executive Todd Howard says - but it is coming.</p><p>Having purchased the property in 2006, and publishing Oblivion in 2007, many expected the next development of Fallout to be an RPG in the same vein. This made Fallout: Operation Anchorage a bitter disappointment to long term fans of the franchise.</p><p>However, Todd Howard has confirmed that Fallout 3 is on the way, and will be an RPG like Oblivion. ‘’While Vir2L Studios work on this really exciting project, we’re working on our own really exciting project, Fallout 3. We just wanted to make sure that Fallout 3 gets the love and attention it deserves while still putting the IP to good use. And we think this look at pre-war America is going to be really exciting for old Fallout fans and new Fallout fans.’’</p><br><br>—-----<br><br><p>➤ Is Call of Duty Modern Warfare’s depiction of nuclear weapons disrespectful to our troops?</p><p>➤ Assassin’s Creed’s ‘’Holy War’’ mission is ‘’entirely apolitical’’, says Ubisoft</p><p>➤ Naughty Dog apologizes for depiction of Iraq in Uncharted</p>`)
+    //e.image = ""
+    e.executable.push([1, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/fallout.png'})])
+}
+else if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry" && flip == 1 && flop == 1) { // Anti-War Kerry
+    e.pages.push(`<h3>White House ‘’deeply concerned’’ about Gordon Brown as PM</h3><h5><i>BBC</i> | Nicolas Watt | 29 Aug, 2005</h5><p>The White House is rather concerned with the British Prime Minister-designate, Gordon Brown, sources tell the <i>BBC</i>.</p><p>The concerns reportedly emerged following a trip by Secretary of State Gary Hart to Number 10, when the Chancellor of the Exchequer grilled Secretary Hart on not just Middle East policy, but African development policy as well, causing Secretary Hart to send his concerns towards President John Kerry.</p><p>Reportedly, the President has asked if he could do anything to help Prime Minister Blair keep his position, which had been growing increasingly untenable following the President’s surprising victory in November in a rebuke of the former President Bush’s foreign policy - policy the Prime Minister had tied himself to.</p> <p>Labour sources are unsurprised by the report, noting that Brown has been relatively skeptical of the United States, though they had hoped the departure of Mr. Bush would mitigate the gap.</p><p>Mr. Blair has reaffirmed his support for Mr. Brown to succeed him, calling him ‘’..my oldest friend in politics’’ and ‘’I trust Gordon to continue to ensure Britain keeps it’s head held high.’’</p><br><br>—---<br><br><p>➤ Rudy Giuliani apologizes for language in front of the Pope; ‘’I’m a New Yorker, I can’t help it.’’</p><p>➤ Mayor Ken Livingstone reprimanded for comparing Jewish Journalist to SS Guard</p><p>➤ Can things get better? Ken Clarke says No.</p>`)
+    //e.image = ""
+    e.executable.push([1, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/gordonbrown.png'})])
+}
+else if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry" && ((flip == 2 && flop == 1) || (flip == 1 && flop == 2) )) { // Flip-Flop Kerry
+    e.pages.push(`<h3>‘’Treme’’ season 2 cancelled following poor viewership</h3><h5>TIME | Mitch Hurwitz | 5 May, 2011</h5><p>David Simon, lead mind behind the critically acclaimed The Wire, seems to have lost his magic touch.</p><p>Treme, despite critical acclaim, has struggled to resonate with viewers. The series, set in New Orleans following Hurricane Katrina, was a similar gritty look at a black community in crisis, yet struggled to catch on with the viewers.</p><p>Critics of the show said that the drama in the Wire was in Treme, overly repetitive and with dull sub-plots, but had excellent performances and shooting.</p><p>When asked to comment, Simon stated that ‘’I challenged the audience too much, I expect. They want to believe that the government will step in and fix everything after a disaster. But it doesn’t matter how much aid the government offers or how much FEMA is disciplined, you need a community to rebuild.’’</p><p>Can we count Simon out? He says no, although with a but. ‘’I’m not interested in appealing to the ‘’average’’ viewer. I want to keep making television and I want to tell people about what America is and the communities it’s made. But I think I’ll need to focus on different perspectives. Something with a more traditional hero and villain.’’</p><br><br>—----<br><br><p>➤ W. Review: A strange, disjointed mess.</p><p>➤ What does The Sopranos infamous ending say about the Paul Presidency?</p><p>➤ The Avengers Trailer came out, and it’s not looking great. Is the Honeymoon period for Marvel already over?</p>`)
+    //e.image = ""
+    e.executable.push([1, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/treme.png'})])
+}
+else if (quickstats[0] < 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry" && flip == 2 && flop == 2) { // Pro-War Kerry Loss
+    e.pages.push(`<h3>Fireworks during the primary debate; Gingrich and Perry spar over foreign policy</h3><h5>Dec 20, 2011 | cnn.com</h5><p>Republican primary debates have been pugnacious this year, especially between the front runners Rick Perry and Newt Gingrich, and last night was no exception.</p><p>The tone was set at the start when Newt Gingrich responded to the opening question about jobs by denouncing the administration for insufficient strikes on Iraq, and only escalated further with Gingrich’s attacks on nation building - a jibe that Perry was certainly ready to answer.</p><p>Gingrich continued the same broad strikes as always, drawing connections between President Clinton’s policy and Perry's proposed solution in dealing with the Islamic State. Jeb fired back, calling Gingrich proposals “the kind of reckless and immature thinking’’ typical of an ‘’elder statesman that ought to go to an elder’s home.’’ He further defended his nation building policies by calling what President Clinton had done a ‘’bastardization’’ of Republican policies that were in his words, ‘’keeping America safe.’’</p><p>With Vice-President Bayh expected to sweep the primaries, make sure to stay subscribed to CBC news for the Republican primaries.</p><br><br>—--<br><br><p>➤ Economy still top priority for most voters, Gallup says</p><p>➤ Dennis Kunich performance in Iowa surpasses expectations</p><p>➤ Can Kanye West make an impact on the election? Experts say ‘’no’’.</p>`)
+    //e.image = ""
+    e.executable.push([1, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/newt.png'})])
+}
+else if (quickstats[0] < 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry" && flip == 1 && flop == 1) { // Anti War Kerry Loss
+      e.pages.push(`<h3>Xcel Energy Center, 09/01/2008</h3><p>Schmidt: I don’t wanna hear it.</p><p>Rove: I don’t care. I told you so.</p><p>Schmidt: I knew it would be controversial but, you know… a walkout? In the modern day?</p><p>Rove: I did tell you.</p><p>Schmidt: Can it.</p><p>Rove: Look - there’s time to bring this back. It’s just a difficult thing, you know? What was the point of him if you’re gonna spend so much time trying to calm the base?</p><p>Schmidt: Bush is as popular as an STD, and he is the Republican party. We needed some distance. Plus, you know, Lieberman isn’t even a Democrat anymore.</p><p>Rove: He’s still the pro gay, pro abortion, stem cell guy. It doesn’t matter how much he hated Kerry and the party being anti-war.</p><p>Schmidt: Look, we can work with it. Obama still has the socialised healthcare line, probably some stuff with Affirmative Action. We’ll just issue the essentials and try and get the base back in line.</p><p>Rove: We can do a lot to try and win them back. We have the Court, that usually makes them quiet. Maybe some lines on not vetoing some defence of marriage legislation. But that really undercuts picking Lieberman to begin with.</p><p>Schmidt: It’s fine. We send the right messages to the right people, and we’ll win the base back. Then we can focus on independents. I mean, who’s there? Tancredo? Keyes? Lieberman plays up our advantage. So long as the election remains on the war, I think this works out.</p>`)
+    //e.image = ""
+    e.executable.push([1, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/liberalman.png'})])
+}
+else if (quickstats[0] < 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry" && ((flip == 2 && flop == 1) || (flip == 1 && flop == 2) )) { // Lose as Kerry, Flip-Flop
+    e.pages.push(`<h3>Read: President-elect Barack Obama's Victory Speech</h3><h5>msnbc.com | November 4th, 2008</h5><p>"If there is anyone out there who still doubts that America is a place where all things are possible; tonight is your answer.</p><p>It's the answer told by lines that stretched around schools and churches in numbers this nation has never seen; by people who waited three hours and four hours, many for the very first time in their lives, because they believed that this time must be different; that their voice could be that difference.</p><p>It's the answer spoken by young and old, rich and poor, Democrat and Republican, black, white, Latino, Asian, Native American, gay, straight, disabled and not disabled - Americans who sent a message to the world that we have never been a collection of red states and blue states; we are, and always will be, the United States of America.</p><p>It's the answer that led those who have been told for so long by so many to be cynical, and fearful, and doubtful of what we can achieve to put their hands on the arc of history and bend it once more toward the hope of a better day. It's been a long time coming, but tonight, because of what we did on this day, in this election, at this defining moment, change has come to America.</p><p>I just received a very gracious call from Sen. McCain. He fought long and hard in this campaign, and he's fought even longer and harder for the country he loves. He has endured sacrifices for America that most of us cannot begin to imagine, and we are better off for the service rendered by this brave and selfless leader. I congratulate him and Gov. Palin for all they have achieved, and I look forward to working with them to renew this nation's promise in the months ahead."</p>`)
+    //e.image = ""
+    e.executable.push([1, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/obama.png'})])
+}
+else if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Dean" && flip == 1 && flop == 1) { // Win as Dean, Kerry is anti-war and is at State Dept.
+   ctsAchievement("Consolation Prize");
+   e.pages.push(`<h3>Opinion: Mr. President, It Is Time To Make Way For Kerry.</h3><h3>nytimes.com | October 24th, 2007</h3><p>Howard Dean is going to lose the 2008 Presidential election.</p><p>Faced with a sluggish economy and on the back-foot after a successful midterm for the Republican Party, Dean's brand of liberalism is no match for whoever the Grand Old Party nominates - whether it be Brownback, McCain, Cheney, or Jeb Bush. Attempts to turn public opinion in his favor will face a Republican bulwark in the Senate - where Democrats lost the chamber, only picking up a seat in Pennsylvania compared to a staggering 7 from Republicans.</p><p>Still, there is one Democrat who commands the level of respect across the aisle needed to prevent a Republican victory - Secretary of State John Kerry.</p><p>Despite the conservative press decrying him as an extreme liberal, Kerry has held a steady ship at the State Department and voters have repeatedly given their approval to the Secretary of State in polling - with NBC's approval polling showing him at 62% as of earlier in the month. Privately conducted polling unaffiliated with Kerry or Dean's teams shows the Secretary winning against most potential Republicans, while Dean loses to all except Brownback.</p><p>The Dean Presidency has been a failure, and the window on turning it around has been closing rapidly. But if he wants to secure his legacy, he will allow a primary contest to take shape and for someone with bipartisan support to carry the party's banner.</p>`)
+   //e.image = ""
+   e.executable.push([1, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/kerrydean.png'})])
+      if (used != true) {
+      const playlist = new Playlist();
+        const song = new Song(
+          "March of the Witch Hunters",
+          "Wicked Broadway Cast",
+          "https://m.media-amazon.com/images/I/61E527uUWzL._UF1000,1000_QL80_.jpg",
+          "https://audio.jukehost.co.uk/DZamEeKUvi1rMTGc2BzhpJ3Hv6ZbEEwq"
+        );
+        playlist.addSong(song);
+      changePlaylist(playlist);
+      
+      used = true;
+    }
+}
+else if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Dean") { // Win as Dean, Normally
+   e.pages.push(`<h3>HEALTHCARE BILL FAILS IN SENATE, DEAN PROMISES TO ''CONTINUE THE FIGHT''</h3><h3>msnbc.com | January 6th, 2006</h3><p>President Howard Dean's domestic agenda was given a death blow today as the Democratic Senate failed to invoke cloture (end the filibuster) on the Healthy America Act. All 50 Democrats and two Republican Senators - Olympia Snowe of Maine and Arlen Specter of Pennsylvania - voted in favor of moving the bill forward, while the other 48 members of the Republican caucus all voted against the motion.</p><p>It's a major defeat for the President, although the bill already had a tough journey to make it across the House of Representatives. Speaker Dennis Hastert (R-IL) already had promised members of his caucus that he would not allow the bill to pass in its current state without majority support from the caucus (which it did not carry).</p><p>President Dean, for his part, did not seem to concede that the fight was over. In a statement to the press, Dean vowed to "continue the fight" for healthcare reform, and invited Republican to a summit at the White House in the coming days to discuss bringing the bill back to life.</p><p>Senator John McCain, a maverick within his caucus, suggested that Dean reset the proposals and work with Republicans harder than his initial push. He said that he didn't believe healthcare reform was dead yet, but that with both sides gearing up for the 2006 midterms, a smaller package might be the best move for compromise.</p>`)
+   //e.image = ""
+   e.executable.push([1, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/deandoctor.png'})])
+}
+else if (quickstats[0] < 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Dean" && flip == 2 && flop == 2) { // Lose as Dean, Kerry is pro-war and Dean blames this
+    e.pages.push(`<h3>Howard Dean, Unburdened</h3><h3>washingtonpost.com | May 1st, 2017</h3><p>Freed from the burden of having to be involved in party politics, former Vermont Governor and 2004 Democratic nominee Howard Dean is ready to speak up.</p><p>In an interview with <i>The Washington Post</i>, Dean confessed that he believed Senator Kerry's pivot to pro-war messaging against him in the 2004 Democratic Primaries cost him the campaign. "The campaign was meant to be about the economy, about healthcare, and education, all of these failures Bush had. But since Kerry put me on defense after Iowa, it felt like we waged the campaign about Iraq. And I was always going to lose that."</p><p>For his part, Dean also mentions that he does not hold a grudge against Kerry. "I don't think his goal was to sabotage a general election campaign. He was just trying to win the primary, which he had a right to as a candidate and as a Senator. But it still mattered." Kerry, meanwhile, made a point to mend fences with Dean ahead of his failed 2008 campaign, and has been aware of how Dean felt for quite some time.</p><p>"Sometimes, though, you do have to wonder what things might've been like had the election gone differently. Clinton was a transformational President in many ways, but maybe we wouldn't have been able to break the glass ceiling had Bush lost?" Dean pondered. When asked about the 2020 field, Dean suggested that the time for a African-American President might be now, and that several candidates could accomplish that feat - such as Senate Minority Whip Barack Obama, Governor Marcia Fudge, or Senator Harold Ford Jr.</p>`)
+   //e.image = ""
+   e.executable.push([1, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/deanmirror.png'})])
+    if (used != true) {
+      const playlist = new Playlist();
+        const song = new Song(
+          "No One Mourns The Wicked",
+          "Wicked Broadway Cast",
+          "https://m.media-amazon.com/images/I/61E527uUWzL._UF1000,1000_QL80_.jpg",
+          "https://audio.jukehost.co.uk/92OyCr5HCuph3mn86CzM279uvLE70MlE"
+        );
+        playlist.addSong(song);
+      changePlaylist(playlist);
+      
+      used = true;
+    }
+}
+else if (quickstats[0] < 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Dean") { // Lose as Dean, Normally
+    e.pages.push(`<h3>r/Politics - George Bush just got hit with a shoe? (86 Points)</h3><h5>Submitted 5 hours ago (2008-04-16) by <b>YoshiIsAwesome</b></h5><p>Had the Bush/al-Maliki press conference on out of sheer curiosity. Some reporter threw two shoes at Bush. They both hit him. Didn't seem seriously injured, he got up and continued the speech. Anyone have thoughts on this? Did anyone else see this?</p><h5>all 7 comments</h5>[-] <b>ToastMostest</b> [ Kerry '08 ] 3 points - 3 hours ago<br>I wonder if Howard Dean would've dodged it had he been President instead.<br><br><center>[-] <b>AllYourBushAreBelongToUs</b> [ Moderate-Conservative ] -2 Points - 1 hour ago<br>Are we seriously doing this? Our President was just attacked in a foreign country. Have some respect.</center><br><center>[-] <b>ToastMostest </b> [ Kerry '08 ] 3 Points - 1 hour ago<br>Calm down man XD he's fine.</center><br><br>[-] <b>MonsterHunterFan</b> [ Obama for Prez. ] 5 points - 1 hour ago<br>Well that seemed really pointless. Why even bother doing that? For sick kicks? (No pun intended)<br><br>[-] <b>Lol_Interwebs</b> [ Cheney Or Bust ] 1 point - 10 minutes ago<br>Utterly stupid move. I know deep down so many of the Democrats here are cheering this on. When Bush takes these trips abroad he puts himself at risk for our wellbeing.<br><br>[-] <b>Boognish</b> [Proud Moderate and Lost] 2 points - 6 hours ago<br>Gotta be honest, this sort of weakness was why I voted Hillary after giving the President my vote four years ago. How do you fail to dodge both shoes? He's given up at this point.<br><br>[-] <b>Perot_2004</b> [ Reform ] -5 point - 4 hours ago<br>Right, very sad news, but the mods need to stop deleting posts from the Reform Party.<br><b>Edit:</b> Come on guys, don't just downvote me. We need a revolution in the subreddit.<br><br>`)
+   //e.image = ""
+   e.executable.push([1, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/deanloss.png'})])
+}
+
+// Page III. AmericanHistoryUSA
+
+if (quickstats[0] >= 270 && mccain == true) { // Kerry/McCain Win, CTS Mod that I had to edit for being too biased
+  e.pages.push(`<h3>Campaign Trail Showcase</h3><p><i><b>THE CAMPAIGN TRAIL</b></i><br><br>
+    Please select the election you will run in:<br><select name="election_id" id="election_id"><option value="0">2004</option></select><br><img id="menuImg" width="210" src="https://itsastronomical.com/assets/2004/endings/JFKBush.png"><br></p><p>George Bush's narrow victory in 2000 set him up for a troubled and unpopular tenure. The September 11th attacks on the United States rallied popular support around him, with multiple failures abroad, confidence in his leadership has collapsed, and he trails John F. Kerry in the polls.</p><ul><ul></ul><li>John Kerry has the advantage on both domestic and foreign policy. Still, his unorthodox behavior and appeal to Republicans leaves him vulnerable from all sides.</li><li>George Bush begins as the underdog, and must shake things up if he wants a chance to pull off an upset.</li></ul><br><p>This scenario was made by Astronomical#3005. Original codes can be found on my website, which were deemed too biased against Bush.</p><br><button>Continue</button><br>`);
+e.executable.push([2, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/cts.png'})])  
+e.executable.push([2, (() => {
+  setTimeout(() => {
+    const img = document.getElementById("menuImg"); 
+    if (!img) return;
+
+    const normal = img.src;
+    const alt = "https://itsastronomical.com/assets/2004/endings/KennedyWin.png";
+
+    // preload
+    const preload = new Image();
+    preload.src = alt;
+
+    img.addEventListener("mouseenter", () => img.src = alt);
+    img.addEventListener("mouseleave", () => img.src = normal);
+  }, 0);
+})]);
+}
+else if (quickstats[0] < 270 && mccain == true) { // Lose as Kerry/McCain, CTS Mod
+  e.pages.push(`<h3>Campaign Trail Showcase</h3><p><i><b>THE CAMPAIGN TRAIL</b></i><br><br>
+    Please select the election you will run in:<br><select name="election_id" id="election_id"><option value="0">2004</option></select><br><img id="menuImg" width="210" src="https://itsastronomical.com/assets/2004/endings/BushJFK.png"><br></p><p>George Bush's narrow victory in 2000 set him up for a troubled and unpopular tenure. The September 11th attacks on the United States rallied popular support around him, with multiple failures abroad, confidence in his leadership has collapsed, and he trails John F. Kerry in the polls.</p><ul><ul></ul><li>George Bush begins as the underdog, and must shake things up if he wants a chance to pull off an upset.</li><li>John Kerry has the advantage on both domestic and foreign policy. Still, his unorthodox behavior and appeal to Republicans leaves him vulnerable from all sides.</li></ul><br><p>This scenario was made by ItsAstronomical.</p><br><button>Continue</button><br>`);
+e.executable.push([2, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/cts.png'})])  
+e.executable.push([2, (() => {
+  setTimeout(() => {
+    const img = document.getElementById("menuImg"); 
+    if (!img) return;
+
+    const normal = img.src;
+    const alt = "https://itsastronomical.com/assets/2004/endings/KennedyLose.png";
+
+    // preload
+    const preload = new Image();
+    preload.src = alt;
+
+    img.addEventListener("mouseenter", () => img.src = alt);
+    img.addEventListener("mouseleave", () => img.src = normal);
+  }, 0);
+})]);
+}
+else if (quickstats[0] == 272 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry") { // Kerry Wins via the exact L+L map, Liberty and Liberalism
+   ctsAchievement("Liberty and Liberalism");
+  e.pages.push(`<h3>New Campaign Trail</h3>
+    <p><i><b>THE CAMPAIGN TRAIL</b></i><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2008</option></select><br><img width="210" src="https://cdn.imgchest.com/files/715c5980d141.png"> <br></p><p>Since upsetting Bush narrowly in 2004, John Kerry has has a rocky four years, with a hostile Congress and public opinion shifting rapidly against him. The nomination of Ron Paul gives him hope that he can secure another four years, however.</p><ul><li>John Kerry must salvage his first term and persuade the public of the danger President Ron Paul would represent.</li><li>Ron Paul must keep both his core base and the Republican faithful happy with the most radical Republican nominee since Barry Goldwater, and bring the fight to John Kerry.</li></ul><br><p>This scenario was made by <button>The Brave Mujahadeen Warriors of Afghanistan</button>.</p><br><button>Continue</button><br>`)
+e.executable.push([2, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/nct.png'})])  
+}
+else if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry") { // Kerry Wins, Liberty and Liberalism Devs make 2004
+  e.pages.push(`<h3>New Campaign Trail</h3>
+    <p><i><b>THE CAMPAIGN TRAIL</b></i><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2004</option></select><br><img width="210" src="https://itsastronomical.com/assets/2004/endings/KerryBush.png"> <br></p><p>George Bush, elected by a thin margin in 2000, has set out to unite the country following the September 11th attacks. Though he initially held a 90% approval rating, his approval rating has returned to orbit by the time the election rolled around..</p><ul><li>John Kerry must take the attack to Bush while fine-tuning his message on foreign policy.</li><li>George Bush must contend with his unpopular domestic agenda, while swinging undecided voters into his camp through foreign policy matters.</li></ul><br><p>This scenario was made by <button>The Brave Mujahadeen Warriors of Afghanistan</button>. Check out our other mod coming soon: 2008 (Kerry vs Paul).</p><br><button>Continue</button><br>`)
+e.executable.push([2, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/nct.png'})])  
+}
+if (quickstats[0] < 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry") { // Lose as Kerry, NCT Mod
+  e.pages.push(`<h3>NEW CAMPAIGN TRAIL</h3>
+    <p><i><i><b>"In your heart, you know he's right!"</b></i></i><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2004</option></select><br><img width="210" src="https://imgur.com/2limEgl.png"> <br></p><p>After a close win in 2000, President George Bush has pushed out several controversial policies during his first term, including the biggest tax cuts in history and a reform of the education system. On the other hand, the United States is still reeling from 9/11, the first attacks on American soil in decades. All of this means Bush’s reelection will be close, and John Kerry aims to retake the White House.</p><ul><ul></ul><li>George Bush aims to drum up support for the War on Terror, and motivate his evangelical base.</li><li>John Kerry aims to emphasize his popular domestic policy, while finessing the issue of terrorism.</li></ul><br><p>This scenario was made by /u/Retsassin and /u/AMETSFAN.</p><br><button>Continue</button><br>`)
+e.executable.push([2, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/nct.png'})])  
+}
+else if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Dean") { // Dean Wins, Original AmericanHistoryUSA Scenario
+  e.pages.push(`<h3>American History USA</h3>
+    <p><i><b>THE CAMPAIGN TRAIL</b></i><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2004</option></select><br><img width="210" src="https://itsastronomical.com/assets/2004/endings/DeanBush.png"> <br></p><p>George Bush, elected by a thin margin in 2000, has set out to unite the country following the September 11th attacks. Though he initially held a 90% approval rating, his approval rating has returned to orbit by the time the election rolled around. Still, military success abroad has led many Democratic candidates to sit the race out.</p><ul><li>Howard Dean has struggled to unite his party, but hopes his charisma and energy can allow him to take the attack to Bush, whose domestic agenda remains controversial.</li><li>George Bush is the incumbent, and the favorite in the race. He hopes to use his record abroad to ensure re-election, especially with a base as jingoistic as his own. </li></ul><br><button>Continue</button><br>`)
+e.executable.push([2, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/imgur/y4eg352.png'})])  
+}
+else if (quickstats[0] < 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Dean") { // Lose as Dean, Astro goes missing
+  e.pages.push(`<h3>archive.org</h3>
+    <p><i><b>THE CAMPAIGN TRAIL</b></i><br><br>Please select the election you will run in: <br><select name="election_id" id="election_id"><option value="0">2004</option></select><br><img width="210" src="https://itsastronomical.com/assets/2004/endings/BushDean.png"> <br></p><p><b>NOTE: This mod was considered lost for some time. It was originally made by ItsAstronomical, but assets were lost following the takedown of his GitHub and disappearance. I only seek to preserve it.</b></p><p>George Bush's narrow victory in 2000 set him up for a troubled and unpopular tenure. The September 11th attacks on the United States rallied popular support around him, but with the country fully engaged in the War on Terror, confidence in his leadership has begun to slip.</p><ul><li>George Bush must emphasize foreign policy and call upon his evangelical base, all while defending his domestic record.</li><li>Howard Dean must unite his party while also balancing his more liberal views on matters.</li></ul><p>This scenario was made by Astronomical#3005.</p><br><br><button>Continue</button><br>`)
+e.executable.push([2, (() => {e.image = e.image = 'https://itsastronomical.com/assets/2004/endings/archive.png'})])  
+}
+
+// Songs
+
+if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry") {
+    if (used != true) {
+      const playlist = new Playlist();
+        const song = new Song(
+          "We Major",
+          "Kanye West",
+          "https://upload.wikimedia.org/wikipedia/en/f/f4/Late_registration_cd_cover.jpg",
+          "https://audio.jukehost.co.uk/UYkmxZ8tef9QlEEob7AYJKjTqYWZGGWs"
+        );
+        playlist.addSong(song);
+      changePlaylist(playlist);
+      
+      used = true;
+    }
+}
+else if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Dean") {
+    if (used != true) {
+      const playlist = new Playlist();
+        const song = new Song(
+          "Fantasies Come True",
+          "Original Broadway Cast of Avenue Q",
+          "https://m.media-amazon.com/images/I/71K-uPfrFzL._UF1000,1000_QL80_.jpg",
+          "https://audio.jukehost.co.uk/BiVRV8ALAJpxW0wkPsAcWTxcGVG4QbKh"
+        );
+        playlist.addSong(song);
+      changePlaylist(playlist);
+      
+      used = true;
+    }
+}
+else if (aa[0].electoral_votes < 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Dean") {
+    if (used != true) {
+      const playlist = new Playlist();
+        const song = new Song(
+          "The Money Song",
+          "Original Broadway Cast of Avenue Q",
+          "https://m.media-amazon.com/images/I/71K-uPfrFzL._UF1000,1000_QL80_.jpg",
+          "https://audio.jukehost.co.uk/aw9KfNSIGwQahFc4uILjR8Nc8bmAxhkI"
+        );
+        playlist.addSong(song);
+      changePlaylist(playlist);
+      
+      used = true;
+    }
+}
+else if (quickstats[0] < 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Kerry") {
+    if (used != true) {
+      const playlist = new Playlist();
+        const song = new Song(
+          "Gone",
+          "Kanye West",
+          "https://upload.wikimedia.org/wikipedia/en/f/f4/Late_registration_cd_cover.jpg",
+          "https://audio.jukehost.co.uk/ICnCpORdrfJvs2JdxPVvmD6rCAusMEXg"
+        );
+        playlist.addSong(song);
+      changePlaylist(playlist);
+      
+      used = true;
+    }
+}
+else if (quickstats[0] < 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Dean") {
+    if (used != true) {
+      const playlist = new Playlist();
+        const song = new Song(
+          "For Now",
+          "Original Broadway Cast of Avenue Q",
+          "https://m.media-amazon.com/images/I/71K-uPfrFzL._UF1000,1000_QL80_.jpg",
+          "https://audio.jukehost.co.uk/Ry34G9XIgFeB83xqE9y0OdeBDc0AUiS0"
+        );
+        playlist.addSong(song);
+      changePlaylist(playlist);
+      
+      used = true;
+    }
+}
+
+return construct(0);
+}
 
 }
 
