@@ -1,0 +1,78 @@
+
+/*
+* Mod Title: 
+ * Mod Author: ListMan38
+ * Mod Version: 1.0
+ * Mod Description: Depiction of the 1816 US Presidential Election
+ * 
+ * Coding License: Apache License 2.0
+ * Writing License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+ * 
+ * For the coding in this mod, I hereby release the code under the terms and conditions of the Apache License 2.0. The full text of the license can be found at:
+ * https://choosealicense.com/licenses/apache-2.0/
+ * 
+ * For the writing in this mod, including documentation, text files, and other non-software written works, I hereby release the content under the terms and conditions of the Creative Commons Attribution 4.0 International (CC BY 4.0) license. The full text of the license can be found at:
+ * https://creativecommons.org/licenses/by/4.0/legalcode
+ * 
+ * By using, distributing, or modifying this mod, you agree to abide by the terms and conditions of both the Apache License 2.0 and the Creative Commons Attribution 4.0 International (CC BY 4.0) license.
+*/
+e = campaignTrail_temp;
+
+campaignTrail_temp.election_json = JSON.parse("[{\"model\": \"campaign_trail.election\", \"pk\": 5, \"fields\": {\"year\": 1860, \"summary\": \"<p>Virginian Republicans have won the Presidency for four consecutive elections. From Thomas Jefferson's moderate victory over John Adams in 1800, to James Madison's triumph over the Dissident Republican-Federalist faction in 1812, the Republicans seek their fifth in Secretary of State James Monroe.</p><p><li>Some Republican campaigns have sprouted to try and stop the <q>Virginia Dynasty.</q> The Federalists, following an unpopular drive of New England to leave the Republic, are in their worst position yet. Should Monroe press his work correctly, he just might be the man to unify the country.</p>\", \"image_url\": \"https://i.imgur.com/pZKMWtA.png\", \"winning_electoral_vote_number\": 111, \"advisor_url\": \"https://i.imgur.com/OSrbqCr.png\", \"recommended_reading\": \"'\", \"has_visits\": 0, \"no_electoral_majority_image\": \"https://i.imgur.com/FDlsFp3.jpeg\"}}]");
+campaignTrail_temp.candidate_json = JSON.parse("[{\"model\": \"campaign_trail.candidate\", \"pk\": 20, \"fields\": {\"first_name\": \"James\", \"last_name\": \"Monroe\", \"election\": 5, \"party\": \"Democratic-Republican\", \"state\": \"Virginia\", \"priority\": 41, \"description\": \"<p>The heir apparent to President Madison is Secretary of State James Monroe. A friend-turned rival-turned friend of the President and a former Colonel in the Revolution, he has been in American politics since the end of the eighteenth century.</p><p>Monroe's name is something of a double edged sword. He is the third consecutive Virginian Republican Secretary of State to seek the Presidency; a fact that both Federalists and Republicans are wary of. In addition, the moderate streak of President Madison will force Monroe to a choice; moderate and integrate the Federalists, or stay firmly Republican to keep the <q>Old Republicans</q> in accord to keep the peace.</p>\", \"color_hex\": \"#00C100\", \"secondary_color_hex\": \"#A1FFA1\", \"is_active\": 1, \"image_url\": \"https://i.imgur.com/Yxh0BUs.jpeg\", \"electoral_victory_message\": \"<h3>The Happy Republic!</h3><p><q>From the commencement of our Revolution to the present day almost forty years have elapsed, and from the establishment of this Constitution twenty-eight. Through this whole term the Government has been what may emphatically be called self-government. And what has been the effect? To whatever object we turn our attention, whether it relates to our foreign or domestic concerns, we find abundant cause to felicitate ourselves in the excellence of our institutions. During a period fraught with difficulties and marked by very extraordinary events the United States have flourished beyond example. Their citizens individually have been happy and the nation prosperous.</q>-  Inauguration of James Monroe, March 1817</p>\", \"electoral_loss_message\": \"<h3>Impossible</h3><p>Hello Reddit</p>\", \"no_electoral_majority_message\": \"<h3>No candidate captured an Electoral College majority.</h3><p>Looks like the uncommitted electors have narrowly ousted you. Time to negotiate!</p>\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 21, \"fields\": {\"first_name\": \"Rufus\", \"last_name\": \"King\", \"election\": 5, \"party\": \"Federalist (What few remain)\", \"state\": \"New York\", \"priority\": 40, \"description\": \"<p><b><i>Because the Federalists lacked enough electors to win, and it is a point of contention if King even knew if he was nominated, the Federalists will remain unplayable; Present for context.</i></b></p><p>The Federalists are not held to the esteem they once were. In the twenty years since the election of John Adams; unpopular programs, internal division, an elitist image, an attempt to secede from the United States, and consecutive defeats have left the party with little goodwill. For their next attempt at the Presidency, they have nominated one of their few remaining statesmen, in New York's Rufus King.</p><p>Whether by irony or incompetence, King has shown no signs of contesting the election outright. How can they be saved, those who refuse to save themselves?</p>\", \"color_hex\": \"#f0c862\", \"secondary_color_hex\": \"#f4e282\", \"is_active\": 1, \"image_url\": \"https://i.imgur.com/DSjbbLO.jpeg\", \"electoral_victory_message\": \"<h3>Congratulations! You have won the 1816 Election</h3><p>Placeholder</p>\", \"electoral_loss_message\": \"<h3>What a shame, You have lost the 1816 Election</h3><p>Placeholder</p>\", \"no_electoral_majority_message\": \"<h3>How did this happen?</h3><p>Placeholder</p>\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 22, \"fields\": {\"first_name\": \"The\", \"last_name\": \"Uncomitted\", \"election\": 5, \"party\": \"Federalist+Others\", \"state\": \"Pennsylvania\", \"priority\": 43, \"description\": \"<p>-</p>\", \"color_hex\": \"#f0c862\", \"secondary_color_hex\": \"#f4e282\", \"is_active\": 0, \"image_url\": \"https://i.imgur.com/u2qsaVd.jpeg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"'\", \"candidate_score\": 1.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 45, \"fields\": {\"first_name\": \"John\", \"last_name\": \"Howard\", \"election\": 5, \"party\": \"Federalist\", \"state\": \"Pennsylvania\", \"priority\": 44, \"description\": \"'\", \"color_hex\": \"#EF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"https://upload.wikimedia.org/wikipedia/commons/f/fc/Jared_Ingersoll.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Lmao</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 72, \"fields\": {\"first_name\": \"Jeffersonian\", \"last_name\": \"Republicans\", \"election\": 5, \"party\": \"Democratic-Republican\", \"state\": \"Massachusets\", \"priority\": 45, \"description\": \"'\", \"color_hex\": \"#00C100\", \"secondary_color_hex\": \"#A1FFA1\", \"is_active\": 0, \"image_url\": \"https://i.imgur.com/qpVVtrK.jpeg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>In lieu of any clear prominent statesmen who would take the Vice Presidency, such as the late George Clinton and Elbridge Gerry, the Vice Presidency looks to be a position up to whatever deals can be made with opposition. With names brought up for the Republicans including the likes of Daniel Tompkins, Simon Snyder and William Crawford, success in the Republican selection can mean a number of potential routes to success; choose to your liking.</p>\", \"candidate_score\": 0.0}}, {\"model\": \"campaign_trail.candidate\", \"pk\": 47, \"fields\": {\"first_name\": \"John E.\", \"last_name\": \"Howard\", \"election\": 5, \"party\": \"Federalist\", \"state\": \"New York\", \"priority\": 50, \"description\": \"'\", \"color_hex\": \"#FF0000\", \"secondary_color_hex\": \"#FFA0A0\", \"is_active\": 0, \"image_url\": \"https://i.imgur.com/l67O0Te.jpg\", \"electoral_victory_message\": \"'\", \"electoral_loss_message\": \"'\", \"no_electoral_majority_message\": \"'\", \"description_as_running_mate\": \"<p>Lmao</p>\", \"candidate_score\": 0.0}}]");
+campaignTrail_temp.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 22, \"fields\": {\"candidate\": 20, \"running_mate\": 72}}]");
+campaignTrail_temp.opponents_default_json = JSON.parse("[{\"election\": 5, \"candidates\": [22, 20, 21]}]");
+campaignTrail_temp.opponents_weighted_json = JSON.parse("[{\"election\": 5, \"candidates\": [21, 20, 22]}]");     
+campaignTrail_temp.temp_election_list = [{"id": 5, "year": 1860, "is_premium": 0, "display_year": "1816"}];
+campaignTrail_temp.credits = 'ListMan38 (coding)'
+document.getElementById("header").src = "https://i.imgur.com/ZlerokF.jpeg"
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#FF0000"
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#FF0000"
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+$(".container")[0].style.backgroundColor = "#0000FF"
+document.body.background = "https://i.imgur.com/9lQAp4q.png"
+campaignTrail_temp.global_parameter_json = JSON.parse("[{\"model\": \"campaign_trail.global_parameter\", \"pk\": 1, \"fields\": {\"vote_variable\": 1.125, \"max_swing\": 0.0, \"start_point\": 1.00, \"candidate_issue_weight\": 10.0, \"running_mate_issue_weight\": 3.0, \"issue_stance_1_max\": -0.71, \"issue_stance_2_max\": -0.3, \"issue_stance_3_max\": -0.125, \"issue_stance_4_max\": 0.125, \"issue_stance_5_max\": 0.3, \"issue_stance_6_max\": 0.71, \"global_variance\": 0.0, \"state_variance\": 0.0, \"question_count\": 25, \"default_map_color_hex\": \"#C9C9C9\", \"no_state_map_color_hex\": \"#999999\"}}]");
+
+        HistHexcolour=["#00C100","#F0C862","#F0C862"];
+        HistName=["James Monroe","Rufus King","Uncommitted"];
+        HistEV=[183,34,4];
+        HistPV=["93,871","16,983","17,997+"];
+        HistPVP=["72.9%","13.2%","14.0%+"];
+  e = campaignTrail_temp
+  
+  const startScreenUpdater = setInterval(function() {
+      const goBackButton = document.getElementById("candidate_id_back");
+      const candidateButton = document.getElementById("candidate_id_button");
+      const runningMateButton = document.getElementById("running_mate_id_button");
+      const finalScreenBB = document.getElementById("opponent_selection_id_back");
+      const finalScreenID = document.getElementById("opponent_selection_id_button");
+      
+      if(candidateButton || c != 0){ // change theme on candidate viewing
+          var c = document.getElementById("candidate_id")?.value ?? -1;
+          if(c == 20 && !(candidateButton)) {
+              goBackButton.click();
+              const initContinue = document.getElementById("election_id_button");
+              initContinue.click();
+          }
+          else if(c == 21 || c == 22) {
+              if(candidateButton) {
+                  candidateButton.remove();
+              }
+          }
+      }
+      
+      else if(!candidateButton && runningMateButton) { 
+          runningMateButton.click();
+          const finalBack = document.getElementById("opponent_selection_id_back");
+          finalBack.remove();
+          observer.disconnect()
+      }
+  
+      if(finalScreenID && finalScreenBB) { // delete back button and delete the interval
+          finalScreenBB.remove();
+          clearInterval(startScreenUpdater);
+      }
+  }, 1);
+quotes = ["<q>Federalists of our age must be content with the past</q> - Rufus King"]
+customquote = quotes[Math.floor((Math.random() * quotes.length))]
+corrr=`\n<h2>The Happy Republic</h2><font id='wittyquote' size='3' color='white'><em>`+customquote+`</em></font>`

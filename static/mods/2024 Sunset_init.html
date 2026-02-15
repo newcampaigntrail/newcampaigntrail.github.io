@@ -1,0 +1,688 @@
+RecReading=true 
+
+campaignTrail_temp.global_parameter_json = [
+    {
+        "model": "campaign_trail.global_parameter",
+        "pk": 1,
+        "fields": {
+            "vote_variable": 1.125,
+            "max_swing": 0.12,
+            "start_point": 0.94,
+            "candidate_issue_weight": 10,
+            "running_mate_issue_weight": 3,
+            "issue_stance_1_max": -0.71,
+            "issue_stance_2_max": -0.3,
+            "issue_stance_3_max": -0.125,
+            "issue_stance_4_max": 0.125,
+            "issue_stance_5_max": 0.3,
+            "issue_stance_6_max": 0.71,
+            "global_variance": 0.01,
+            "state_variance": 0.005,
+            "question_count": 20,
+            "default_map_color_hex": "#C9C9C9",
+            "no_state_map_color_hex": "#999999"
+        }
+    }
+]
+
+campaignTrail_temp.election_json = [
+    {
+        "model": "campaign_trail.election",
+        "pk": 20,
+        "fields": {
+            "year": 2024,
+            "display_year": "2024 Sunset",
+            "summary": "With a single reluctant decision, President Joe Biden had just gone from being a candidate for president to a lame duck. Although he wanted to say that he couldn’t believe what had just happened, he absolutely could; his dropping out had been a weeks-long effort by his former allies—namely Barack Obama and Nancy Pelosi—to end his political career over a bad debate. Over more than fifty years, he had served as a senator, a vice president, and the 46th president of the United States. But now it was all about to be over. Just like that. </p> But it wasn’t over quite yet. Biden knew that he still had a few months to try to keep the country steady, salvage his legacy, and ensure that—even if he personally thought it was a long shot—Vice President Kamala Harris triumphed over Donald Trump come November. And he wasn’t about to waste what little daylight he had left.\n",
+            "image_url": "https://file.garden/aTTSWyzGbgwzK_M1/Sunset%20Window",
+            "winning_electoral_vote_number": 270,
+            "advisor_url": "https://file.garden/aTTSWyzGbgwzK_M1/Trans%20AM%20Advisor",
+            "recommended_reading": "<p>Credits/Places I Got Things:</p><p>Codes: Jet's Mod Tool<p>Music Player and Campaign Sign Code: 2000 - The New Millenium (Siddhartha)</p><p>CYOA Code: Both Astro and TheMcCain's CYOA tutorials</p><p>Custom Ending Code: Astro's Ending Templates</p><p>Inspiration: The Remains of the Day (Kazuo Ishiguro)</p><p>Sources: Wikipedia, my memory, 107 Days (Kamala Harris)</p><p>Plot: The 2024 Election (Joe Biden, Kamala Harris, Donald Trump)</p>",
+            "has_visits": 1,
+            "no_electoral_majority_image": "https://file.garden/aTTSWyzGbgwzK_M1/Harris%20Tie"
+        }
+    }
+]
+
+campaignTrail_temp.temp_election_list = [
+    {
+        "id": 20,
+        "year": 2024,
+        "is_premium": 0,
+        "display_year": "2024 Sunset"
+    }
+]
+
+campaignTrail_temp.credits = "NeonMoth"
+
+campaignTrail_temp.candidate_json = [
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 302,
+        "fields": {
+            "first_name": "Joe",
+            "last_name": "Biden",
+            "election": 20,
+            "party": "Democratic",
+            "state": "Delaware",
+            "priority": 1,
+            "description": "<p>Joe Biden is a dedicated public servant who has served as the 46th president of the United States since 2021. Biden has had a very successful presidency—the amount of legislation he’s managed to pass has even led some to call him the modern day Lyndon B. Johnson. Aside from that, Biden possesses a folksy charm that allowed him to take the Rust Belt back from the brink of Trumpism back in 2020. But you people don’t care about that, do you? It was one debate, he was sick, Trump barely beat him. He devoted his entire life to this party, and this is how it repays the favor?</p><p> (NOT PLAYABLE — PLEASE SELECT ANOTHER CANDIDATE)</p>",
+            "color_hex": "#4c147b",
+            "secondary_color_hex": null,
+            "is_active": 1,
+            "image_url": "https://file.garden/aTTSWyzGbgwzK_M1/Sunset%20Biden%20Select",
+            "electoral_victory_message": "Error",
+            "electoral_loss_message": "Error",
+            "no_electoral_majority_message": "Error",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 304,
+        "fields": {
+            "first_name": "Tim",
+            "last_name": "Walz",
+            "election": 20,
+            "party": "Democratic (DFL)",
+            "state": "Minnesota",
+            "priority": 1,
+            "description": "<p>Error</p>",
+            "color_hex": "#262c71",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://file.garden/aTTSWyzGbgwzK_M1/Walz%20Select",
+            "electoral_victory_message": "Error",
+            "electoral_loss_message": "Error",
+            "no_electoral_majority_message": "Error",
+            "description_as_running_mate": "<p>A joke. This has to be some kind of sick joke. Obama’s fingerprints are all over this. After all, who better to serve as vice president to the country’s newest “revolutionary inspiration” than a sixty-something-year-old, wisecracking, gaffe-prone, down-to-earth white guy? History sure does seem to repeat itself when the same people are writing it again and again.\n</p>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 300,
+        "fields": {
+            "first_name": "Kamala",
+            "last_name": "Harris",
+            "election": 20,
+            "party": "Democratic",
+            "state": "California",
+            "priority": 1,
+            "description": "<p>Kamala Harris? She’s the vice president, sure, but really, her? The one person who the party’s oh-so-precious polls say is even more unpopular than Biden? She can’t—there’s no way—have they lost their minds? She’s the Humphrey to Biden’s Johnson, the second coming of Hillary, the key to a second Trump term. Do they really think the steelworkers in Detroit will prefer her to Scranton Joe? Just—how? She’s not even particularly young or charismatic or anything! Obviously Biden’s gonna try his hardest to get her elected, but wouldn’t that energy be better spent getting a viable candidate reelected? \n</p>",
+            "color_hex": "#262c71",
+            "secondary_color_hex": null,
+            "is_active": 1,
+            "image_url": "https://file.garden/aTTSWyzGbgwzK_M1/Sunset%20Harris%20Select",
+            "electoral_victory_message": "Error",
+            "electoral_loss_message": "Error",
+            "no_electoral_majority_message": "Error",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 301,
+        "fields": {
+            "first_name": "Donald",
+            "last_name": "Trump",
+            "election": 20,
+            "party": "Republican",
+            "state": "Florida",
+            "priority": 1,
+            "description": "<p>Error</p>",
+            "color_hex": "#982426",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://file.garden/aTTSWyzGbgwzK_M1/Sunset%20Trump%20Select",
+            "electoral_victory_message": "Error",
+            "electoral_loss_message": "Error",
+            "no_electoral_majority_message": "Error",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 303,
+        "fields": {
+            "first_name": "",
+            "last_name": "Spoilers",
+            "election": 20,
+            "party": "Various",
+            "state": "Various",
+            "priority": 1,
+            "description": "<p>Error</p>",
+            "color_hex": "#307516",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://file.garden/aTTSWyzGbgwzK_M1/Sunset%20Spoilers%20Select",
+            "electoral_victory_message": "Error",
+            "electoral_loss_message": "Error",
+            "no_electoral_majority_message": "Error",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    }
+]
+
+campaignTrail_temp.running_mate_json = [
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 125700,
+        "fields": {
+            "candidate": 300,
+            "running_mate": 304
+        }
+    }
+]
+
+campaignTrail_temp.opponents_default_json = [
+    {
+        "election": 20,
+        "candidates": [
+            302,
+            300,
+            301,
+            303
+        ]
+    }
+]
+
+campaignTrail_temp.opponents_weighted_json = [
+    {
+        "election": 20,
+        "candidates": [
+            302,
+            300,
+            301,
+            303
+        ]
+    }
+]
+
+jet_data = {
+    "headerColor": "#4c147a",
+    "windowColor": "#9c39b8",
+    "containerColor": "#442e62",
+    "innerWindowColor": "#d29cf5",
+    "bannerImageUrl": "https://file.garden/aTTSWyzGbgwzK_M1/Sunset%20Banner",
+    "backgroundImageUrl": "https://file.garden/aTTSWyzGbgwzK_M1/Background",
+    "endingTextColor": "#ffffff",
+    "customQuote": "",
+    "gameTitle": "WE ARE NOT GOING BACK!"
+}
+
+// :(
+
+HistHexcolour = ["#2e4687", "#b01c1c", "#b5b32b", "#22822a"];
+HistName = [
+  " Joe Biden",
+  " Donald Trump",  
+  " Gary Johnson/Others",
+  " Jill Stein",
+
+
+];
+HistEV = [375, 168, 0, 0];
+HistPV = ["71,134,562", "58,742,386", "4,549,491", "1,387,195"];
+HistPVP = ["52.4%", "43.3%", "3.3%", "1.0%"];
+
+//#startcode
+
+
+corrr = '\n              <h2>WE ARE NOT GOING BACK!</h2>\n            ';
+
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#4c147a";
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#9c39b8";
+
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+$(".container")[0].style.backgroundColor = "#442e62";
+
+document.getElementById("header").src = "https://file.garden/aTTSWyzGbgwzK_M1/Sunset%20Banner";
+
+document.body.background = "https://file.garden/aTTSWyzGbgwzK_M1/Background";
+
+document.head.innerHTML += "<style>#results_container {color:#ffffff;} .inner_window_w_desc {background-color:#d29cf5!important;}</style>";
+
+$("#music_player")[0].children[0].style.display="none"
+$("#music_player")[0].children[1].style.display="none"
+
+document.getElementById("modLoadReveal").style.display="none"
+document.getElementById("modloaddiv").style.display="none"
+
+musicBox = document.getElementById("music_player")
+musicBox.style.display=""
+
+var trackSel;
+e = campaignTrail_temp
+e.selectedSoundtrack = 0
+e.currentTrackIndex = 0 // Track the current song index
+
+toTime = (seconds) => {
+    var date = new Date(null);
+    date.setSeconds(seconds);
+    return date.toISOString().substr(11, 8);
+}
+
+// Map track index to image URLs
+const trackImages = [
+    "https://file.garden/aTTSWyzGbgwzK_M1/Now%20and%20Then%205", // Now and Then — The Beatles
+    "https://file.garden/aTTSWyzGbgwzK_M1/Last%20Man%20Standing", // Last Man Standing — Bruce Springsteen
+    "https://file.garden/aTTSWyzGbgwzK_M1/Claw%20Hammer", // Claw Hammer — Elton John
+    "https://file.garden/aTTSWyzGbgwzK_M1/Ever%20Present%20Past", // Ever Present Past — Paul McCartney
+    "https://file.garden/aTTSWyzGbgwzK_M1/Little%20Lies", // Little Lies — Fleetwood Mac
+    "https://file.garden/aTTSWyzGbgwzK_M1/Let%20It%20Be", // Let It Be — The Beatles
+];
+
+function getTrackImage(trackIdx) {
+    return trackImages[trackIdx] || "https://i.imgur.com/s2fy6T1.gif";
+}
+
+function changeSong(direction) {
+    let tracklist = soundtracks[e.selectedSoundtrack].tracklist;
+    let newIndex;
+    
+    if (direction === 'next') {
+        newIndex = (e.currentTrackIndex + 1) % tracklist.length;
+    } else {
+        newIndex = (e.currentTrackIndex - 1 + tracklist.length) % tracklist.length;
+    }
+    
+    e.currentTrackIndex = newIndex;
+    
+    let audio = document.getElementById("campaigntrailmusic");
+    audio.src = tracklist[newIndex].url;
+    audio.currentTime = 0;
+    audio.play();
+    
+    // Update image and song name
+    let img = document.getElementById("musicPlayerTrackImage");
+    img.src = getTrackImage(newIndex);
+    
+    let songName = document.getElementById("song-name-display");
+    songName.innerHTML = tracklist[newIndex].name;
+    
+    // Update pause/play button
+    let pausePlayBtn = document.getElementById("music-pauseplay");
+    pausePlayBtn.style.backgroundImage = "url('https://file.garden/aTTSWyzGbgwzK_M1/Play%20Button')";
+}
+
+function newMusicPlayer() {
+    // Remove old player if exists
+    let old = document.getElementById("musicPlayerMerged");
+    if (old) old.remove();
+
+    // Main container
+    let merged = document.createElement("div");
+    merged.id = "musicPlayerMerged";
+    merged.style.fontFamily = "stardom, sans-serif";
+    merged.style.color = "white";
+    merged.style.display = "flex";
+    merged.style.flexDirection = "row";
+    merged.style.background = "#9c39b8";
+    merged.style.border = "3px solid ##ffffff";
+    merged.style.width = "100%";
+    merged.style.margin = "0";
+    merged.style.overflow = "hidden";
+    merged.style.boxSizing = "border-box";
+    merged.style.position = "relative";
+    merged.style.left = "0";
+    merged.style.right = "0";
+
+    // Stretch to footer
+    let footer = document.getElementById("footer");
+    if (footer) {
+        footer.style.position = "relative";
+        footer.style.padding = "0";
+        footer.style.margin = "0";
+    }
+
+    // Left: image
+    let imgDiv = document.createElement("div");
+    imgDiv.style.flex = "0 0 170px";
+    imgDiv.style.display = "flex";
+    imgDiv.style.alignItems = "center";
+    imgDiv.style.justifyContent = "center";
+    imgDiv.style.background = "#200e0e";
+    imgDiv.style.height = "100%";
+    let img = document.createElement("img");
+    img.src = getTrackImage(0);
+    img.id = "musicPlayerTrackImage";
+    img.style.maxHeight = "250px";
+    img.style.maxWidth = "250px";
+    imgDiv.appendChild(img);
+
+    // Right: controls
+    let controlsDiv = document.createElement("div");
+    controlsDiv.style.flex = "1";
+    controlsDiv.style.padding = "10px";
+    controlsDiv.style.overflowY = "auto";
+    controlsDiv.style.height = "100%";
+    controlsDiv.style.boxSizing = "border-box";
+    controlsDiv.style.display = "flex";
+    controlsDiv.style.flexDirection = "column";
+    controlsDiv.style.justifyContent = "space-between";
+
+    // Song name display at the top
+    let songDisplay = document.createElement("div");
+    songDisplay.style = `
+        text-align: left;
+        background-color: #9c39b8;
+        padding: 10px;
+        margin-top: 10px;
+        font-size: 22px;
+        font-weight: 900;
+    `;
+    songDisplay.id = "song-name-display";
+    songDisplay.innerHTML = soundtracks[e.selectedSoundtrack].tracklist[0].name;
+    controlsDiv.appendChild(songDisplay);
+
+    // Middle content area (can be filled with other elements if needed)
+    let middleContent = document.createElement("div");
+    middleContent.style.flex = "1";
+    middleContent.style.margin = "33px";
+    controlsDiv.appendChild(middleContent);
+
+    // Time controls at the bottom
+    let timeTracker = document.createElement("div");
+    timeTracker.style = `
+        text-align: left;
+        background-color: #9c39b8;
+        padding: 6px;
+        margin-bottom: 1px;
+    `;
+
+    // Controls container for buttons
+    let controlsContainer = document.createElement("div");
+    controlsContainer.style = `
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 10px;
+    `;
+
+    // Previous button
+    var prevButton = document.createElement("button");
+    prevButton.id = "music-prev";
+    prevButton.style = `
+        width: 100px;
+        height: 100px;
+        background-image: url('https://file.garden/aTTSWyzGbgwzK_M1/Back');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    `;
+    prevButton.addEventListener("click", event => {
+        event.preventDefault();
+        changeSong('prev');
+    });
+    
+    // Pause/play button
+    var pausePlay = document.createElement("button");
+    pausePlay.id = "music-pauseplay";
+    pausePlay.style = `
+        width: 100px;
+        height: 100px;
+        background-image: url('https://file.garden/aTTSWyzGbgwzK_M1/Play%20Button');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    `;
+    
+    // Next button
+    var nextButton = document.createElement("button");
+    nextButton.id = "music-next";
+    nextButton.style = `
+        width: 100px;
+        height: 100px;
+        background-image: url('https://file.garden/aTTSWyzGbgwzK_M1/Next');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    `;
+    nextButton.addEventListener("click", event => {
+        event.preventDefault();
+        changeSong('next');
+    });
+    
+    // Add buttons to container
+    controlsContainer.appendChild(prevButton);
+    controlsContainer.appendChild(pausePlay);
+    controlsContainer.appendChild(nextButton);
+    timeTracker.appendChild(controlsContainer);
+
+    // Time progress container
+    let timeProgressContainer = document.createElement("div");
+    timeProgressContainer.style = `
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 5px;
+    `;
+
+    // Current time display (left)
+    let currentTimeDisplay = document.createElement("span");
+    currentTimeDisplay.id = "current-time-display";
+    currentTimeDisplay.style = `
+        min-width: 50px;
+        text-align: left;
+    `;
+    currentTimeDisplay.innerHTML = "0:00:00";
+
+    // Total time display (right)
+    let totalTimeDisplay = document.createElement("span");
+    totalTimeDisplay.id = "total-time-display";
+    totalTimeDisplay.style = `
+        min-width: 50px;
+        text-align: right;
+    `;
+    totalTimeDisplay.innerHTML = "0:00:00";
+
+    // Time slider container
+    let sliderContainer = document.createElement("div");
+    sliderContainer.style = `
+        flex: 1;
+        padding: 0 10px;
+    `;
+
+    // Time slider
+    var timeSlider = document.createElement("input");
+    timeSlider.type = "range";
+    timeSlider.min = 0;
+    timeSlider.max = 1;
+    timeSlider.step = 0.001;
+    timeSlider.value = 0;
+    timeSlider.style = `
+        width: 100%;
+        height: 10px;
+        -webkit-appearance: none;
+        appearance: none;
+        background: #e0e0e0;
+        border-radius: 10px;
+        outline: none;
+    `;
+    timeSlider.id = "time-slider";
+    
+    // Add slider styles for track and thumb
+    let sliderStyle = document.createElement("style");
+    sliderStyle.textContent = `
+        #time-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 1);
+            cursor: pointer;
+            transform: translateY(-3px);
+        }
+        #time-slider::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 1);
+            cursor: pointer;
+            border: none;
+            transform: translateY(-3px);
+        }
+        #time-slider::-webkit-slider-runnable-track {
+            height: 10px;
+            border-radius: 10px;
+            background: linear-gradient(to right, white 0%, white var(--progress), gray var(--progress), gray 100%);
+        }
+        #time-slider::-moz-range-track {
+            height: 10px;
+            border-radius: 10px;
+            background: gray;
+        }
+        #time-slider::-moz-range-progress {
+            height: 10px;
+            border-radius: 10px;
+            background: white;
+        }
+    `;
+    document.head.appendChild(sliderStyle);
+
+    sliderContainer.appendChild(timeSlider);
+    
+    // Add time displays and slider to container
+    timeProgressContainer.appendChild(currentTimeDisplay);
+    timeProgressContainer.appendChild(sliderContainer);
+    timeProgressContainer.appendChild(totalTimeDisplay);
+    
+    // Add to time tracker
+    timeTracker.appendChild(timeProgressContainer);
+
+    // Keep the old position display for compatibility but hide it
+    var positionDisplay = document.createElement("span");
+    positionDisplay.id = "position-display";
+    positionDisplay.style.display = "none";
+    timeTracker.appendChild(positionDisplay);
+
+    controlsDiv.appendChild(timeTracker);
+
+    merged.appendChild(imgDiv);
+    merged.appendChild(controlsDiv);
+
+    // Insert merged player
+    musicBox.appendChild(merged);
+
+    // Set up audio element
+    musicBox.children[2].loop = false
+    musicBox.children[2].src = soundtracks[e.selectedSoundtrack].tracklist[0].url
+
+    musicBox.children[2].onended = function() {
+        changeSong('next');
+    }
+
+    // Time logic
+    var audio = document.getElementById("campaigntrailmusic");
+
+    function updatePositionDisplay() {
+        const currentTime = toTime(audio.currentTime);
+        const totalTime = audio.duration ? toTime(audio.duration) : "0:00:00";
+        const progress = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+        
+        // Update the old display for compatibility
+        positionDisplay.innerHTML = "<b>Time:</b> " + currentTime + "<br>";
+        
+        // Update the new displays
+        currentTimeDisplay.innerHTML = currentTime;
+        totalTimeDisplay.innerHTML = totalTime;
+        
+        // Update slider value
+        timeSlider.value = audio.duration ? audio.currentTime / audio.duration : 0;
+        
+        // Update slider colored progress
+        timeSlider.style.setProperty('--progress', `${progress}%`);
+    }
+
+    function changeTime() {
+        audio.currentTime = timeSlider.value * audio.duration;
+        updatePositionDisplay();
+    }
+
+    pausePlay.addEventListener("click", event => {
+        event.preventDefault();
+        updatePositionDisplay();
+        let audio = document.getElementById("campaigntrailmusic");
+        if (audio.paused) {
+            audio.play();
+            pausePlay.style.backgroundImage = "url('https://file.garden/aTTSWyzGbgwzK_M1/Play%20Button')";
+        } else {
+            audio.pause();
+            pausePlay.style.backgroundImage = "url('https://file.garden/aTTSWyzGbgwzK_M1/Play%20Button')";
+        }
+    });
+
+    setInterval(updatePositionDisplay, 1000);
+    timeSlider.addEventListener("input", changeTime);
+
+    updatePositionDisplay();
+}
+
+clamp = function(a, max, min, overflow=true) {
+    if (overflow) {
+        return a > max ? min : a < min ? max : a;
+    }
+    return a > max ? max : a < min ? min : a;
+}
+
+// Track list
+
+var soundtracks = {
+    0: {
+        name: "SunsetMain",
+        tracklist: [
+            {
+                "name": "Now and Then — The Beatles",
+                "url": "https://audio.jukehost.co.uk/18qQLlH3tzj2unTA5ReYA2zg5E7BO6zM"
+            },
+            {
+                "name": "Last Man Standing — Bruce Springsteen",
+                "url": "https://audio.jukehost.co.uk/97JsaWD3mPJeShFZ8q3vIZFgGyz1X4EZ"
+            },
+            {
+                "name": "Claw Hammer — Elton John",
+                "url": "https://audio.jukehost.co.uk/A9I5I5rGqqVW13JPvVkScVPllDo01j3v"
+            },
+            {
+                "name": "Ever Present Past — Paul McCartney",
+                "url": "https://audio.jukehost.co.uk/BDeZOEG7fWWaDu9zqSiKD6MOjOZygALZ"
+            },
+            {
+                "name": "Little Lies — Fleetwood Mac",
+                "url": "https://audio.jukehost.co.uk/02wOb2pWiwXddLbg2vbTUqJLPdS7sWIc"
+            },
+            {
+                "name": "Let It Be — The Beatles",
+                "url": "https://audio.jukehost.co.uk/h6nWtrWZRI1oVGD3wqAhLENDwWLLaNb7"
+            }
+        ]
+    }
+}
+
+newMusicPlayer()

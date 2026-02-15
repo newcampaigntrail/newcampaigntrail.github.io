@@ -1,0 +1,1070 @@
+/*
+ * Mod Title: 2025 Canada
+ * Mod Author: rbaldwin
+ * Mod Version: 1.1.0
+ * Mod Description: Canadian Federal Election of 2025
+ * 
+ * Coding License: Apache License 2.0
+ * Writing License: Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
+ * 
+ * For the coding in this mod, I hereby release the code under the terms and conditions of the Apache License 2.0. The full text of the license can be found at:
+ * https://choosealicense.com/licenses/apache-2.0/
+ * 
+ * For the writing in this mod, including documentation, text files, and other non-software written works, I hereby release the content under the terms and conditions of the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license. The full text of the license can be found at:
+ * https://creativecommons.org/licenses/by-nc/4.0/legalcode
+ * 
+ * By using, distributing, or modifying this mod, you agree to abide by the terms and conditions of both the Apache License 2.0 and the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license.
+*/
+
+document.getElementById("inner_window_1").children[0].innerHTML = `<h3>Do you have what it takes to win a Canadian parliamentary election?</h3>`
+
+document.getElementById("inner_window_1").children[1].innerHTML = `<li>Select a party and a leader to find out.</li><li>You will answer questions about your platform and positions, and also about your campaign strategy.</li><li>The answers will affect your popularity for better or worse, both nationally and in individual ridings.</li><li>Walk the fine line between appealing to your base and winning a majority of the votes.</li><li>Context details are included for <span class='mytooltip'>highlighted<span class='mytooltiptext'>This is a context detail.</span></span> text.</li>`;
+
+campaignTrail_temp.CandidText = "Please select your party:"
+campaignTrail_temp.VpText = "Please select your leader:"
+campaignTrail_temp.HomeStateText = "Leader's Riding:"
+
+campaignTrail_temp.modBoxTheme = {
+     "header_color": "#d62718",
+     "header_text_color": "#ffffff",
+     "description_text_color": "#ffffff",
+     "description_background_color": "#d62718",
+     "main_color": "#fafafa",
+     "secondary_color": "#d62718",
+     "ui_text_color": "#ffffff"
+}
+
+campaignTrail_temp.global_parameter_json = [
+    {
+        "model": "campaign_trail.global_parameter",
+        "pk": 1,
+        "fields": {
+            "vote_variable": 1.125,
+            "max_swing": 0.12,
+            "start_point": 0.94,
+            "candidate_issue_weight": 3,
+            "running_mate_issue_weight": 0,
+            "issue_stance_1_max": -0.71,
+            "issue_stance_2_max": -0.3,
+            "issue_stance_3_max": -0.125,
+            "issue_stance_4_max": 0.125,
+            "issue_stance_5_max": 0.3,
+            "issue_stance_6_max": 0.71,
+            "global_variance": 0.01,
+            "state_variance": 0.005,
+            "question_count": 36,
+            "default_map_color_hex": "#C9C9C9",
+            "no_state_map_color_hex": "#999999"
+        }
+    }
+]
+
+campaignTrail_temp.election_json = [
+    {
+        "model": "campaign_trail.election",
+        "pk": 20,
+        "fields": {
+            "year": 2025,
+            "display_year": "2025Canada",
+            "summary": "<p>As the 2025 election approaches, the situation appears dire for the Liberal Party of Canada. After 9 years of governance, Prime Minister Justin Trudeau's popularity has waned. Dissatisfaction with the economic condition of the country and Trudeau's scandals has left the Liberal Party polling at half the support of the rival Conservative Party, barely above the left-wing New Democratic Party. Pierre Poilievre, the Conservative leader, appears poised to become the next Prime Minister of Canada.</p><p>However, the winds are changing. Donald Trump's shock election win, combined with his trade policy, puts him on a collision course with the Canadian government. There are rumblings within the Liberal Party to push Trudeau out and seek out a new leader. Will Poilievre and the Conservatives cruise to victory? Or will the Liberals succeed in making a comeback for the ages?</p>",
+            "image_url": "https://i.imgur.com/XY0opQO.jpeg",
+            "winning_electoral_vote_number": 172,
+            "advisor_url": "https://i.imgur.com/q9n37oj.jpeg",
+            "recommended_reading": "",
+            "has_visits": 0,
+            "no_electoral_majority_image": ""
+        }
+    }
+]
+
+campaignTrail_temp.temp_election_list = [
+    {
+        "id": 20,
+        "year": 2025,
+        "is_premium": 0,
+        "display_year": "2025Canada"
+    }
+]
+
+campaignTrail_temp.credits = "<button onclick='funcredits()'>rbaldwin</button>";
+
+funcredits = function() {
+    credits = ["Created by rbaldwin#4567 aka u/Ok_Frosting4780", "", "Inspired by Diefenbaker '57", "", "Map adapted from Wikipedia user Eric0892", "", "Tooltips and election charts adapted from 2023 Netherlands", "", "Music player adapted from 2024: Arnold Amendment and Germany 2021 - Between Decades"]
+    text = "CREDITS:\n\n"
+    for (i in credits) {
+        text += credits[i] + "\n"
+    }
+    alert(text)
+}
+
+RecReading = true
+campaignTrail_temp.election_json[0].fields.recommended_reading = "<div style='color: black; overflow: auto'><b>The Canadian parliamentary system</b><br><a href='https://www.ourcommons.ca/procedure/our-procedure/parliamentaryFramework/c_g_parliamentaryframework-e.html' target='_blank'>Our Commons: Canadian Parliamentary System</a><br><br><b>Party Platforms</b><br><a href='https://web.archive.org/web/20250425153842/https://liberal.ca/wp-content/uploads/sites/292/2025/04/Canada-Strong.pdf' target='_blank'>Liberal Platform: Canada Strong</a><br><a href='https://web.archive.org/web/20250428214243/https://canada-first-for-a-change.s3.us-west-2.amazonaws.com/20250418_CPCPlatform_8-5x11_EN_R1-pages.pdf' target='_blank'>Conservative Platform: Canada First — <i>For A Change</i></a><br><a href='https://web.archive.org/web/20250428221305/https://www.ndp.ca/campaign-commitments' target='_blank'>NDP Platform: Made for People. Built for Canada.</a><br><a href='https://web.archive.org/web/20250428160324/https://www.blocquebecois.org/wp-content/uploads/2025/03/blocqcplateforme-2025web.pdf' target='_blank'>Bloc Québécois Platform: Choisis le Québec</a><br><a href='https://web.archive.org/web/20250428060119/https://cdn.greenparty.ca/wp-content/uploads/2025/04/GP_Platform_English_FINAL.pdf' target='_blank'>Green Platform: Change. Vote For It.</a><br><a href='https://web.archive.org/web/20250815051352/https://cdn.prod.website-files.com/61b95f3fa12ab59a52d3ffd4/6881384073f8f49c025cfe2d_ppc-platform-en-2025.pdf' target='_blank'>PPC Platform: Ideas that put People first.</a><br><br><b>The Election in the Media</b><br><a href='https://newsinteractives.cbc.ca/features/2025/federal-party-platforms/#intro' target='_blank'>Compare the election promises (CBC)</a><br><a href='https://www.ctvnews.ca/federal-election-2025/party-platforms/' target='_blank'>Party Platform Tracker (CTV)</a><br><a href='https://votecompass.cbc.ca/' target='_blank'>Vote Compass (CBC)</a><br><a href='https://www.youtube.com/watch?v=7yWno5Zn-uk' target='_blank'>Federal Leaders' Debate 2025</a><br><a href='https://www.youtube.com/watch?v=5psgJFXPpwE' target='_blank'>Vote Canadian: A 22 Minutes Election Special</a><br><br></be><b>Interviews with Nardwuar</b><br><a href='https://www.youtube.com/watch?v=TZmh_PNMImE' target='_blank'>Nardwuar vs. Prime Minister Mark Carney</a><br><a href='https://www.youtube.com/watch?v=stlWcmJSNuk' target='_blank'>Nardwuar vs. Jagmeet Singh (2025)</a><br><a href='https://www.youtube.com/watch?v=Q3yyCjOFDu4' target='_blank'>Nardwuar vs. Elizabeth May</a><br></div>"
+
+campaignTrail_temp.candidate_json = [
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 300,
+        "fields": {
+            "first_name": "",
+            "last_name": "LPC",
+            "election": 20,
+            "party": "Liberal",
+            "state": "Canada",
+            "priority": 1,
+            "description": "<g><ul><li>Abbreviation: LPC</li><li>Name: Liberal Party of Canada</li></ul><p>The Liberal Party of Canada is the oldest Canadian political party, founded in 1867. A big tent, centrist party, it is referred to as the \"natural governing\" party of Canada, having held power for the majority of the country's history.</p><p>The Liberal Party has held power for the last 9 years under the leadership of Justin Trudeau. During this time, the party has been responsible for responses to the trade disputes during Trump's first term, the COVID-19 pandemic, and the cost-of-living crisis. Furthermore, it has enacted progressive policies: the legalization of cannabis and medically assisted death, climate action, the expansion of subsidized childcare, and the establishment of national dental and pharmaceutical programs.</p><p>However, the party has seen a precipitous decline in support over the last few years, coinciding with the rapid increase in the cost of living. Will the Liberal Party be able to regain the trust of Canadians?</p></g>",
+            "color_hex": "#EA6D6A",
+            "secondary_color_hex": null,
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/ly0e79f.jpeg",
+            "electoral_victory_message": "",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 310,
+        "fields": {
+            "first_name": "Mark",
+            "last_name": "Carney",
+            "election": 20,
+            "party": "Liberal",
+            "state": "Nepean",
+            "priority": 1,
+            "description": "",
+            "color_hex": "#EA6D6A",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/MVBYnzH.jpeg",
+            "description_as_running_mate": "<p>Born in Fort Smith, Northwest Territories and raised in Edmonton, Alberta, Mark Carney went on to earn a PhD in economics from the University of Oxford, work for 13 years at Goldman Sachs, then return to the public service in Canada. He served as deputy governor of the Bank of Canada, then as deputy minister of finance, then as Governor of the Bank of Canada where he served during the Great Financial Crisis. He was then recruited as the first non-British Governor of the Bank of England where he managed the aftermath of Brexit.</p><p>Currently, Carney heads the board for Brookfield Asset Management, a company managing over $1 trillion in assets, and is involved in many other companies. However, he has increasingly dipped his toes into Canadian politics, becoming an economic advisor for Prime Minister Trudeau. There are rumours that Trudeau is courting him for a more direct role in government…</p>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 301,
+        "fields": {
+            "first_name": "",
+            "last_name": "CPC",
+            "election": 20,
+            "party": "Conservative",
+            "state": "Canada",
+            "priority": 1,
+            "description": "<g><ul><li>Abbreviation: CPC</li><li>Name: Conservative Party of Canada</li></ul><p>Formed as a merger between the Progressive Conservative Party and the Reform Party in 2003, the Conservative Party is the main party occupying the right wing of the Canadian political spectrum.</p><p>After holding power for 9 years under the leadership of Stephen Harper, the Conservative Party has been relegated to the Official Opposition for the last 9 years, the last two of which were under the leadership of Pierre Poilievre.</p><p>As the 2025 election approaches, the Conservative Party holds a commanding lead in the polls. Can the party maintain its advantage on election day?</p></g>",
+            "color_hex": "#6495ED",
+            "secondary_color_hex": null,
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/7sUgs7N.jpeg",
+            "electoral_victory_message": "",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 311,
+        "fields": {
+            "first_name": "Pierre",
+            "last_name": "Poilievre",
+            "election": 20,
+            "party": "Conservative",
+            "state": "Carleton",
+            "priority": 1,
+            "description": "",
+            "color_hex": "#6495ED",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/jYkYfCa.jpeg",
+            "description_as_running_mate": "<p>Leader of the Conservative Party since 2022, Pierre Poilievre has a long history with the party. He became politically involved in the precursor Reform Party at the young age of 14 years old. His political involvement grew as he did, and he was elected as a Member of Parliament in the 2004 election at only 25 years old. Since then, he has climbed in the party, from backbencher to parliamentary secretary to cabinet minister, and finally to party leadership.</p><p>Under his leadership, the Conservative Party has risen in the polls, gaining from both the Liberal Party on the left and the People's Party on the right. It would appear all but certain that Pierre Poilievre will be the next Prime Minister of Canada.</p>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 302,
+        "fields": {
+            "first_name": "",
+            "last_name": "NDP",
+            "election": 20,
+            "party": "New Democratic Party",
+            "state": "Canada",
+            "priority": 1,
+            "description": "<g><ul><li>Abbreviation: NDP</li><li>Name: New Democratic Party</li></ul><p>The New Democratic Party is the heir to the democratic socialist Cooperative Commonwealth Federation and the federation of organized labour, the Canadian Labour Congress. Founded in 1961, the party is known as Canada's \"conscience\", pushing for the interests of the poor and marginalized.</p><p>Over the last two years, the NDP has supported the minority Liberal government in a supply-and-confidence agreement, before backing out of it.</p><p>As 2025 approaches, the NDP is polling near second place, benefitting from the faltering Liberal Party. If the current trajectory continues, it could even become the Official Opposition party for only the second time in history.</p></g>",
+            "color_hex": "#F4A460",
+            "secondary_color_hex": null,
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/rHeMJfm.jpeg",
+            "electoral_victory_message": "",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 312,
+        "fields": {
+            "first_name": "Jagmeet",
+            "last_name": "Singh",
+            "election": 20,
+            "party": "NDP",
+            "state": "Burnaby Central",
+            "priority": 1,
+            "description": "",
+            "color_hex": "#F4A460",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/E2vgW9A.png",
+            "description_as_running_mate": "<p>A criminal defence lawyer, Jagmeet Singh entered politics in the 2011 election with the federal NDP under Jack Layton. Despite losing his race, he stepped into provincial politics and was elected as a Member of the Legislative Assembly in the same year. After federal NDP leader Thomas Mulcair was ousted in 2017, Singh seized the opportunity and won the leadership of the party. He has since led the party for the last 7 years through the 2019 and 2021 elections where the party has remained stable but failed to break through to become a main contender for government.</p><p>As the 2025 election approaches, Jagmeet Singh's personal appeal has been losing its lustre. Nevertheless, with the party polling near second place, it appears possible for Singh to lead the party into Official Opposition.</p>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 303,
+        "fields": {
+            "first_name": "",
+            "last_name": "GPC",
+            "election": 20,
+            "party": "Green",
+            "state": "Canada",
+            "priority": 1,
+            "description": "<g><ul><li>Abbreviation: GPC</li><li>Name: Green Party of Canada</li></ul><p>[NOT PLAYABLE]</p><p>Founded in 1983 amidst the international Green movement, the Green Party was initially politically irrelevant. However, under the leadership of Jim Harris, they managed to win almost 5% of the vote in the 2004 and 2006 elections, but no seats. Under his successor, Elizabeth May, the party finally made a breakthrough and won its first seats in Parliament. What was once a single issue party now maintains a full platform that remains centred on environmentalism.</p><p>However, after May retired from leadership, the party suffered from infighting and instability, collapsing the party's popular support. This prompted her to return to the party and introduce a co-leadership model to prevent such party squabbles from reoccurring. Nevertheless, the Green Party is struggling from the political headwinds as the environment and climate change no longer hold as much importance to voters as previously.</p></g>",
+            "color_hex": "#99C955",
+            "secondary_color_hex": null,
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/15MwupH.jpeg",
+            "electoral_victory_message": "",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 304,
+        "fields": {
+            "first_name": "",
+            "last_name": "BQ",
+            "election": 20,
+            "party": "Bloc Québécois",
+            "state": "Québec",
+            "priority": 1,
+            "description": "<g><ul><li>Abbreviation: BQ</li><li>Name: Bloc Québécois</li></ul><p>[NOT PLAYABLE]</p><p>Initially a coalition of sovereignty-oriented Progressive Conservative and Liberal Members of Parliament from Québec, the Bloc Québécois was founded as a sovereigntist political party in 1990. The party sought to push for Québec independence from Canada, campaigning for it in the 1995 referendum. It has also defended the actions of the Québec government on issues of language and culture. On other issues, the party is a big tent but leans progressive, fighting for environmental action, supporting social spending, and defending women's rights such as abortion.</p><p>As the 2025 election approaches and tensions with the United States mount, the party's electoral fortunes are in trouble. With rising Canadian nationalism, the Québec nationalism upon which the Bloc Québécois depends is under threat. The Bloc will hope for a minority parliament in which it can hold the balance of power and extract concessions for Québec.</p></g>",
+            "color_hex": "#87CEFA",
+            "secondary_color_hex": null,
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/YwLUKdd.jpeg",
+            "electoral_victory_message": "",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 305,
+        "fields": {
+            "first_name": "",
+            "last_name": "Others",
+            "election": 20,
+            "party": "Others",
+            "state": "Canada",
+            "priority": 1,
+            "description": "",
+            "color_hex": "#808080",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "",
+            "electoral_victory_message": "",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 306,
+        "fields": {
+            "first_name": "",
+            "last_name": "PPC",
+            "election": 20,
+            "party": "People's Party of Canada",
+            "state": "Canada",
+            "priority": 1,
+            "description": "<g><ul><li>Abbreviation: PPC</li><li>Name: People's Party of Canada</li></ul><p>[NOT PLAYABLE]</p><p>The People's Party of Canada was formed in 2018 by Maxime Bernier who quit the Conservative Party after losing the 2017 Conservative leadership election. He accused the party of abandoning its conservative values, giving purpose to the People's Party as a truly conservative alternative.</p><p>The party gained traction in the 2021 election, railing against pandemic restrictions and vaccine mandates. They won 5% of the vote but were unable to win any seats. However, the issues that propelled them then have now receded into the background. Will the People's party find a new angle to drive a political breakthrough?</p></g>",
+            "color_hex": "#6F5D9A",
+            "secondary_color_hex": null,
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/Y4T9Byf.jpeg",
+            "electoral_victory_message": "",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 313,
+        "fields": {
+            "first_name": "Jonathan",
+            "last_name": "Pedneault",
+            "election": 20,
+            "party": "Green",
+            "state": "Outremont",
+            "priority": 1,
+            "description": "",
+            "color_hex": "#99C955",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/D90lpjQ.jpeg",
+            "description_as_running_mate": "<p>[NOT PLAYABLE]</p><p>An activist and journalist, Jonathan Pedneault has travelled around the world to raise awareness for human rights issues. He has reported from Chad, Sudan, Somalia, Egypt, Libya, the Central African Republic, Ukraine, among other countries. His activism started when he was only 15 years old when he co-founded a student organization for raising awareness about genocide. He now co-leads the Green Party along with long-time leader Elizabeth May.</p>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 314,
+        "fields": {
+            "first_name": "Yves-François",
+            "last_name": "Blanchet",
+            "election": 20,
+            "party": "Bloc Québécois",
+            "state": "Beloeil—Chambly",
+            "priority": 1,
+            "description": "",
+            "color_hex": "#87CEFA",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/BN9ie3p.jpeg",
+            "description_as_running_mate": "<p>[NOT PLAYABLE]</p><p>Before becoming leader of the Bloc Québécois, Yves-François Blanchet was a teacher, a business founder for supporting independent artists, a columnist for a regional newspaper, and Minister of Sustainable Development in Québec under the Parti Québécois.</p><p>Blanchet is the third Bloc leader to lead the party into an election, after Lucien Bouchard and Gilles Duceppe. Becoming leader in 2019, his leadership put an end to the Bloc's instability that had lasted since 2011. As Bloc leader, Blanchet has fought for the interests of Québec as the province's voice in Parliament and portrayed himself as a non-ideological voice of reason.</p>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 315,
+        "fields": {
+            "first_name": "Placeholder",
+            "last_name": "Placeholder",
+            "election": 20,
+            "party": "Placeholder",
+            "state": "Placeholder",
+            "priority": 1,
+            "description": "",
+            "color_hex": "#808080",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "",
+            "description_as_running_mate": "",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 316,
+        "fields": {
+            "first_name": "Maxime",
+            "last_name": "Bernier",
+            "election": 20,
+            "party": "People's",
+            "state": "Beauce",
+            "priority": 1,
+            "description": "",
+            "color_hex": "#6F5D9A",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/GL8Ywd9.jpeg",
+            "description_as_running_mate": "<p>[NOT PLAYABLE]</p><p>Before entering politics, Bernier worked for 20 years in the private sector, working in law and finance. Following in the footsteps of his father, he ran for the Conservative Party in Beauce and became a Member of Parliament in 2006. He achieved the highest vote share for a Conservative outside of Alberta. As a prominent representative from Québec, he was immediately appointed Minister of Industry then became Minister of Foreign Affairs. However, he fell out of favour after a security scandal and was relegated to the back benches before returning to cabinet in a minor role as a Minister of State.</p><p>After the resignation of Stephen Harper from Conservative Party leadership, Bernier ran to be his successor on a platform of free markets and rugged individualism. Though he won the first preference ballot, he ultimately lost the contest on the final ballot. He eventually left the party to form the People's Party following a controversy over his criticisms of multiculturalism and diversity.</p>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    }
+]
+
+campaignTrail_temp.running_mate_json = [
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 172512,
+        "fields": {
+            "candidate": 300,
+            "running_mate": 310
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 172513,
+        "fields": {
+            "candidate": 301,
+            "running_mate": 311
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 172514,
+        "fields": {
+            "candidate": 302,
+            "running_mate": 312
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 172515,
+        "fields": {
+            "candidate": 303,
+            "running_mate": 313
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 172516,
+        "fields": {
+            "candidate": 304,
+            "running_mate": 314
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 172517,
+        "fields": {
+            "candidate": 305,
+            "running_mate": 315
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 172518,
+        "fields": {
+            "candidate": 306,
+            "running_mate": 316
+        }
+    }
+]
+
+campaignTrail_temp.opponents_default_json = [
+    {
+        "election": 20,
+        "candidates": [
+            300,
+            301,
+            302,
+            304,
+            303,
+            306,
+            305
+        ]
+    }
+]
+
+function addDynamicCSS() {
+    var css = `
+        .inner_window_question h3 .mytooltip{
+            color: #345beb;
+        }
+
+        .mytooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            color: #345beb;
+        }
+
+        .mytooltip .mytooltiptext {
+            width: 240px;
+            background-color: #E8FBFF;
+            color: black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 99;
+            bottom: 110%;
+            left: 50%;
+            margin-left: -130px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border: 1px solid black;
+            pointer-events: none;
+            font-size: 13px !important;
+            line-height: 1.5em !important;
+            font-weight: normal !important;
+            font-style: normal !important;
+        }
+
+        .mytooltip .mytooltiptext::after {
+            content: " ";
+            position: absolute;
+            top: 100%; /* At the bottom of the tooltip */
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: black transparent transparent transparent;
+        }
+
+        .mytooltip .mytooltiptext img {
+            max-width: 240px;
+            height: auto;
+        }
+
+        .mytooltip:hover .mytooltiptext {
+            opacity: 1;
+            transition-delay: 0.5s;
+        }
+    `;
+
+    var styleElem = document.createElement('style');
+    styleElem.type = 'text/css';
+
+    styleElem.appendChild(document.createTextNode(css));
+
+    document.head.appendChild(styleElem);
+}
+
+addDynamicCSS();
+
+tooltipList = [
+    { searchString: "Chrystia Freeland", explanationText: "<img src=\"https://i.imgur.com/XHwq6ee.jpeg\">The Liberal Finance Minister and Deputy Prime Minister. She was also responsible for US trade negotiations during Trump's first term and was dubbed \"Minister of Everything\" by the media." },
+    { searchString: "CBC", explanationText: "The Canadian Broadcasting Corporation. It is the English branch of the Canadian national broadcaster which receives federal funding to support independent journalism. Generally considered to be liberal-leaning." },
+    { searchString: "Radio-Canada", explanationText: "The French branch of the Canadian national broadcaster which receives federal funding to support independent journalism." },
+    { searchString: "Daily Show", explanationText: "An American late-night comedy show running on Comedy Central." },
+    { searchString: "Juno News", explanationText: "A conservative media outlet that was founded by the same people as True North, they portray themselves as opposing the \"lying\" legacy media and Laurentian elite." },
+    { searchString: "coast to coast to coast", explanationText: "Refers to the Atlantic, Pacific, and Arctic oceans." },
+    { searchString: "capital gains tax", explanationText: "A tax on profits gained from selling assets. The tax was half as much as taxes on regular income but was recently increased to two-thirds for large gains and businesses." },
+    { searchString: "consumer carbon tax", explanationText: "A carbon pricing scheme that introduces an additional cost to activities causing greenhouse gas emissions. The funds raised are used to fund a rebate." },
+    { searchString: "Trudeau’s carbon tax", explanationText: "A carbon pricing scheme that introduces an additional cost to activities causing greenhouse gas emissions. The funds raised are used to fund a rebate." },
+    { searchString: "Elbows up!", explanationText: "A defence mechanism when playing hockey." },
+    { searchString: "TVA", explanationText: "A major Québec-based, French-language television broadcast network." },
+    { searchString: "GST", explanationText: "The Goods and Services Tax, a 5% sales tax levied by the federal government." },
+    { searchString: "basic personal allowance", explanationText: "Threshold beneath which workers pay no federal income tax." },
+    { searchString: "lowest tax bracket", explanationText: "A 15% income tax rate applies on annual incomes below $57,375." },
+    { searchString: "LNG", explanationText: "Liquefied Natural Gas" },
+    { searchString: "First Nations", explanationText: "The largest of the three groupings of Indigenous people in Canada. Along with the Metis and Inuit, they represent 5% of the country's population. Due to history and treaties, they have some collective rights pertaining to land use." },
+    { searchString: "Trans Mountain", explanationText: "Major oil pipeline built from Edmonton to the Pacific Coast, owned and operated by the federal government. A recent expansion that tripled the system's capacity cost the government $53 billion." },
+    { searchString: "Brookfield", "explanationText": "A Canadian multinational alternative asset management company with over $1 trillion in managed assets, making it one of the largest investment companies in the world. Its board was chaired by Mark Carney until he stepped down to run for the Liberal leadership." },
+    { searchString: "Jack Layton", "explanationText": "<img src=\"https://i.imgur.com/MXZlm1B.jpeg\">The late leader of the NDP who led the party to Official Opposition for the first time in 2011. He succumbed to cancer shortly thereafter." },
+    { searchString: "Fleetwood-Port Kells", "explanationText": "A marginal LPC-CPC riding situated in the suburbs of Vancouver, covering parts of Surrey." },
+    { searchString: "Surrey", "explanationText": "<img src=\"https://i.imgur.com/KX7F4dr.jpeg\">The second largest municipality (by population) in Metro Vancouver." },
+    { searchString: "Vancouver", "explanationText": "<img src=\"https://i.imgur.com/MDs7Jp0.jpeg\">The third largest metropolitan region in Canada, situated on the West Coast. Composed of 23 local authorities, including the City of Vancouver." },
+    { searchString: "Ottawa", "explanationText": "<img src=\"https://i.imgur.com/zKTMlID.jpeg\">The national capital of Canada, situated on the border between Ontario and Québec." },
+    { searchString: "Montreal", "explanationText": "<img src=\"https://i.imgur.com/WTpjpXL.jpeg\">The largest city in Québec." },
+    { searchString: "Maritimes", "explanationText": "The provinces of Nova Scotia, New Brunswick, and Prince Edward Island, located on the East Coast." },
+    { searchString: "Alberta", "explanationText": "The second Western-most province. Its economy is highly dependent on oil and gas exports." },
+    { searchString: "Victoria", "explanationText": "<img src=\"https://i.imgur.com/KxznrSS.jpeg\">The capital of British Columbia, located on Vancouver Island off the West Coast." },
+    { searchString: "British Columbia", "explanationText": "The Western-most province located on the West Coast. This is the province in which the federal NDP is strongest, with almost half of their caucus representing the province." },
+    { searchString: "Hamilton", "explanationText": "<img src=\"https://i.imgur.com/LhpGsZh.jpeg\">A city in Ontario known for manufacturing, being dubbed the Steel Capital of Canada." },
+    { searchString: "Niagara Falls", "explanationText": "<img src=\"https://i.imgur.com/u3SNXsW.jpeg\">A city in Ontario known for tourism, but also possessing a significant manufacturing base." },
+    { searchString: "Québec City", "explanationText": "<img src=\"https://i.imgur.com/afHuIPL.jpeg\">The capital of Québec." },
+    { searchString: "Brampton", "explanationText": "<img src=\"https://i.imgur.com/qNCWBvI.jpeg\">A suburban city in the Greater Toronto Area." },
+    { searchString: "Scarborough", "explanationText": "<img src=\"https://i.imgur.com/gsvoUWJ.jpeg\">A suburban district of the City of Toronto." },
+    { searchString: "Saskatchewan", "explanationText": "The third Western-most province with an economy based around agriculture and resource extraction, known as the Bread Basket of Canada." },
+    { searchString: "Nova Scotia", "explanationText": "The most populous of the Maritime provinces, located on the East Coast." },
+    { searchString: "Greater Toronto Area", "explanationText": "Located in Ontario, it includes the City of Toronto and surrounding suburbs, it is home to nearly 20% of Canadians." },
+    { searchString: "Ontario", "explanationText": "Situated on the Great Lakes, it is the most populous province." },
+    { searchString: "Edmonton", "explanationText": "<img src=\"https://i.imgur.com/7Fj7T0k.jpeg\">The capital and second-largest city in Alberta." },
+    { searchString: "Saskatoon", "explanationText": "<img src=\"https://i.imgur.com/PhqZ9RV.jpeg\">The largest city in Saskatchewan." },
+    { searchString: "Calgary", "explanationText": "<img src=\"https://i.imgur.com/a9Dzs74.jpeg\">The largest city in Alberta, it is home to the headquarters of many oil companies. Of the major cities in Canada, it is the most supportive of the Conservative Party." },
+    { searchString: "Kitchener", "explanationText": "<img src=\"https://i.imgur.com/eO0L6OU.jpeg\">A city in Ontario, it remains a highly industrial city." },
+    { searchString: "Windsor", "explanationText": "<img src=\"https://i.imgur.com/R69KSYc.jpeg\">A city in Southwestern Ontario, Windsor is located across from Detroit with which it shares the busiest commercial crossing between the US and Canada." },
+    { searchString: "London", "explanationText": "<img src=\"https://i.imgur.com/12hsfLI.jpeg\">A city on the Thames in Southwestern Ontario, it is situated between the Great Lakes within roughly equal distances of Toronto, Detroit, and Buffalo." },
+    { searchString: "Richmond", "explanationText": "<img src=\"https://i.imgur.com/I3jShQg.jpeg\">A city in Metro Vancouver, Richmond is home to many successful malls and significant farmland which is protected from development." },
+    { searchString: "Coquitlam", "explanationText": "<img src=\"https://i.imgur.com/v4gGuS7.jpeg\">A bedroom community in Metro Vancouver." },
+    { searchString: "Mississauga", "explanationText": "<img src=\"https://i.imgur.com/dAOsHs2.jpeg\">The second largest city in the Greater Toronto Area, Mississauga is home to the head offices of many large corporations." },
+    { searchString: "Liberal leadership contenders", "explanationText": "Includes former Minister of Finance Chrystia Freeland, Government House Leader Karina Gould, and businessman Frank Baylis." },
+    { searchString: "three word slogans", "explanationText": "Axe the Tax, Build the Homes, Fix the Budget, Stop the Crime, Bring it Home, etc. Poilievre's campaign has an affinity for verb-the-noun slogans." },
+    { searchString: "prorogued", "explanationText": "Termination of parliamentary session and all parliamentary business. As a result, it can be used by the government to delay a vote of no-confidence." },
+    { searchString: "Danielle Smith", "explanationText": "<img src=\"https://i.imgur.com/anQnIGD.jpeg\">Premier of Alberta and leader of the United Conservative Party of Alberta, formed out of the 2017 merger of the Progressive Conservative Pary and the Wildrose Party." },
+    { searchString: "Scott Moe", "explanationText": "<img src=\"https://i.imgur.com/vw600kb.jpeg\">Premier of Saskatchewan and leader of the conservative Saskatchewan Party." },
+    { searchString: "Doug Ford", "explanationText": "<img src=\"https://i.imgur.com/KWxK5oT.jpeg\">Premier of Ontario and leader of the Ontario Progressive Conservative Party. He is considered by many conservatives to be insufficiently conservative." },
+    { searchString: "Tim Houston", "explanationText": "<img src=\"https://i.imgur.com/DRalVGe.jpeg\">Premier of Nova Scotia and leader of the Nova Scotia Progressive Conservative Party. Considered to be a Red Tory with a more left-leaning policy platform than most conservative parties." },
+    { searchString: "EI", "explanationText": "Employment insurance. A program providing temporary income of unemployed workers." },
+    { searchString: "Housing Accelerator Fund", "explanationText": "A $4.4 billion initiative used to negotiate zoning reforms with municipalities with the aim of spurring more housing construction." },
+    { searchString: "Goldman Sachs", "explanationText": "The second largest investment bank in the world. It is based out of New York City." },
+    { searchString: "Bill C-69", "explanationText": "Dubbed the \"No New Pipelines\" bill by opponents, it requires that resource projects be assessed for environmental, health, social and economic impacts and respect the rights of Indigenous Peoples." },
+    { searchString: "Campaign Life Coalition", "explanationText": "A pro-life organization that aims to pressure Conservative MPs into passing laws against abortion" },
+    { searchString: "Abortion Rights Coalition", "explanationText": "A pro-choice group aiming to defend abortion rights and expand access." },
+    { searchString: "Stephen Harper", "explanationText": "<img src=\"https://i.imgur.com/pwRg4be.jpeg\">The Conservative Prime Minister of Canada from 2006 to 2015." },
+    { searchString: "John A. Macdonald", "explanationText": "<img src=\"https://i.imgur.com/CxfLNZ9.jpeg\">The first Canadian Prime Minister, and a driving figure of Canadian Confederation." },
+    { searchString: "Bank of Canada", "explanationText": "The central bank of Canada, responsible for managing monetary policy with the aim of keeping inflation and unemployment low." },
+    { searchString: "UNRWA", "explanationText": "The United Nations Relief and Works Agency for Palestine Refugees in the Near East, responsible for delivering humanitarian relief to people in Palestine." },
+    { searchString: "notwithstanding clause", "explanationText": "Section 33 of the Canadian Charter of Rights and Freedoms that allows the federal and provincial governments to override fundamental rights, legal rights, and equality rights. It has never been invoked by the federal government." },
+    { searchString: "equalization payments", "explanationText": "Payments made by the federal government to provinces that have less fiscal capacity than the others. In the last decade, the three Western-most provinces of British Columbia, Alberta, and Saskatchewan have not received any payments while Québec and the Maritimes are the main recipients." },
+    { searchString: "Laurentian elite", "explanationText": "The political, academic, cultural, media, and business elites located along the St. Lawrence River such as in Toronto, Ottawa, and Montreal." },
+    { searchString: "provincial competencies", "explanationText": "The areas in which constitutional authority rests primarily with the provincial governments, such as health and education." },
+    { searchString: "health transfers", "explanationText": "Payments made by the federal government to the provinces to be used for public healthcare. Currently covers 21.5% of public health expenditure." },
+    { searchString: "energy cap", "explanationText": "A cap on greenhouse gas emissions that may be emitted by the oil and gas sector. Instituted to reduce the emissions intensity of the oil and gas sector." },
+    { searchString: "industrial carbon tax", "explanationText": "A price on carbon pollution where facilities that are less efficient than the standard have to pay while facilities that are more efficient than the standard earn credits that they can sell." },
+    { searchString: "in-vitro fertilization", "explanationText": "A popular but expensive fertility treatment." },
+    { searchString: "safe supply", "explanationText": "A drug harm reduction policy where drug users are provided with safer alternative drugs to protect them from the potentially toxic illegal drug supply." },
+    { searchString: "throwing a wrench", "explanationText": "Without your guidance, Danielle Smith would have been tempted to call you \"very much in sync\" with the Trump administration." },
+    { searchString: "dentalcare", "explanationText": "The Canadian Dental Care Plan which provides dental insurance to qualifying Canadians." },
+    { searchString: "pharmacare", "explanationText": "The National Pharmacare program which seeks to expand pharmaceutial coverage in Canada. The program is currently limited to certain provinces that have signed agreements and only covers some diabetes medications and contraception." },
+    { searchString: "CSIS", "explanationText": "The Canadian Security Intelligence Service, the agency responsible for national security intelligence." },
+    { searchString: "Nanaimo", "explanationText": "<img src=\"https://i.imgur.com/w19f1SC.jpeg\">A city situated on Vancouver Island in British Columbia, with transit connections to Vancouver serviced by ferry." },
+    { searchString: "right-to-work", "explanationText": "Bans agreements between unions and employers that compel new employees to join the union." },
+    { searchString: "World Economic Forum", "explanationText": "An international advocacy organization founded by Klaus Schwab and funded by its members, including a thousand multinational corporations." },
+    { searchString: "Century Initiative", "explanationText": "A Canadian lobby group aiming to make Canada a more prominent world power by increasing its population to 100 million by 2100." },
+    { searchString: "Premier Eby", "explanationText": "<img src=\"https://i.imgur.com/Upw1uiO.jpeg\">The BC NDP premier of British Columbia." },
+    { searchString: "RCMP", "explanationText": "The Royal Canadian Mounted Police. The national Canadian police service which, contrary to its name, is no longer mounted." },
+    { searchString: "federally-regulated industries", "explanationText": "The federal government only has the power to regulate certain industries, with the rest being the responsibility of the provinces. Federally-regulated industries include banking, telecommunications, and air transportation." },
+    { searchString: "sectoral bargaining", "explanationText": "As opposed to enterprise bargaining where unions negotiate with individual businesses, sectoral collective bargaining occurs across an entire industry." },
+    { searchString: "non-market housing", "explanationText": "Non-market housing is an umbrella term for housing that is rented out at below-market rates. This includes social housing, supportive housing, and co-op housing." },
+    { searchString: "right-to-work", "explanationText": "Law to allow workers in unionized workplaces to refuse to pay union dues while still benefiting from collective bargaining." },
+    { searchString: "back-to-work", "explanationText": "Government order declaring a strike illegal and requiring striking workers to return to work without a contract." },
+    { searchString: "Indian act", "explanationText": "The law that governs Canada’s relationship with the First Nations, including governance, land use, public services, and reserves." },
+    { searchString: "PBO", "explanationText": "The Parliamentary Budget Officer who is responsible for producing non-partisan cost estimates for policy proposals." },
+    { searchString: "Manitoba", "explanationText": "A province in Western Canada, most of its population lives in its capital city of Winnipeg, the Slurpee capital of the world." },
+    { searchString: "Wab Kinew", "explanationText": "<img src=\"https://i.imgur.com/dI4ZiOA.jpeg\">The premier of Manitoba and leader of the Manitoba NDP." }
+]
+
+document.getElementById("header").src = "https://i.imgur.com/StrY22v.jpeg";
+$("#game_window")[0].style.backgroundImage = "url(https://i.imgur.com/EPkdtPN.jpeg)";
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#EA6D6A"
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#FFFFFF"
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+$(".container")[0].style.backgroundColor = "#FFFFFF"
+document.body.background = "https://i.imgur.com/vAMuvqw.jpeg"
+
+HistHexcolour = ["#EA6D6A", "#6495ED", "#87CEFA", "#F4A460", "#99C955", "#6F5D9A", "#808080"];
+HistName = [" LPC", " CPC", " BQ", " NDP", " GPC", " PPC", " Others"];
+HistEV = [169, 144, 22, 7, 1, 0, 0];
+HistPV = ["8,595,488", "8,113,484", "1,236,349", "1,234,673", "238,892", "136,977", "85,800"];
+HistPVP = ["43.8%", "41.3%", "6.3%", "6.3%", "1.2%", "0.7%", "0.4%"];
+
+quotes = [
+    `Skate to where the puck is going, not where it has been — Wayne Gretzky`,
+    `Canada is not a country for the cold of heart or the cold of feet — Pierre Trudeau`,
+    `Keep your head up and your stick on the ice`,
+    `The greatest way to defend democracy is to make it work — Tommy Douglas`,
+    `I've always found that you can control people better if you don't see too much of them — William Lyon Mackenzie King`,
+    `The Americans are our best friends whether we like it or not — Robert N. Thompson`,
+    `Qu'est-ce qu'on fait? On se crache dans les mains et on recommence! — Jacques Parizeau`
+]
+customquote = quotes[Math.floor((Math.random() * quotes.length))]
+corrr = "\n<h2>THE CAMPAIGN TRAIL</h2><font id='wittyquote' size='4' color='white'><em>" + customquote + "</em></font>"
+
+function updateElements() {
+    mutationObserver.disconnect()
+
+    var gameHeader = document.getElementsByClassName("game_header")[0];
+
+    if (gameHeader.getAttribute("id") !== "modifiedHeader") {
+        gameHeader.innerHTML = corrr;
+        gameHeader.setAttribute("id", "modifiedHeader");
+    }
+
+    // Remove "continue" buttons for non-playable characters
+    const running_mate_id = document.getElementById("running_mate_id")
+    const continue_button = document.getElementById("running_mate_id_button")
+    if (running_mate_id && continue_button && running_mate_id.value != 310 && running_mate_id.value != 311 && running_mate_id.value != 312) {
+        continue_button.parentElement.removeChild(continue_button)
+    }
+
+    // Remove default summary list
+    const candidate_summary = document.getElementById("candidate_summary")
+    if (candidate_summary && candidate_summary.childElementCount > 1) {
+        candidate_summary.removeChild(candidate_summary.firstElementChild)
+    }
+
+    // Replace electoral system options
+    const form = document.querySelector('form[name="game_type_selection"]');
+    if (form) {
+        const select = form.querySelector('select[name="game_type_id"]');
+        const h3 = form.querySelector('h3');
+        const option = select.querySelector('option[value="1"]');
+
+        const voting_system = "Default (First-Past-the-Post)"
+        const seat_allocation = "How would you like the seats to be allocated?"
+
+        if (option && option.textContent !== voting_system) {
+            option.textContent = voting_system;
+        }
+        if (select && select.querySelector('option[value="2"]')) {
+            const queryTwo = select.querySelector('option[value="2"]');
+            if (queryTwo) {
+                queryTwo.remove();
+            }
+        }
+        if (h3 && h3.textContent !== seat_allocation) {
+            h3.textContent = seat_allocation;
+        }
+    }
+
+    // Replace electoral system description
+    const opponentSelectionDescription = document.getElementById("opponent_selection_description_window");
+    if (opponentSelectionDescription) {
+        opponentSelectionDescription.innerHTML = `<p><strong>Use the default method of allocating seats in the Canadian House of Commons.</strong></p><p>Canada uses a first-past-the-post voting system where the local candidate with the most votes in each riding is elected to the House of Commons to become a Member of Parliament (MP).</p><p>The party that wins the most seats usually forms government with its leader becoming Prime Minister. However, the incumbent Prime Minister can attempt to stay in power even if their party does not win the most seats as long as they can maintain the confidence of Parliament (as occurred after the 1925 election).</p><p>The first-past-the-post voting system means that large parties usually have better vote efficiency, winning more seats per vote. However, small parties can still do well if their vote is concentrated.</p>`;
+    }
+    
+    mutationObserver.observe(document.documentElement, { childList: true, subtree: true });
+}
+
+var mutationObserver = new MutationObserver(updateElements);
+mutationObserver.observe(document.documentElement, { childList: true, subtree: true });
+
+campaignTrail_temp.achievements = {
+    "Carnegeddon": {
+        "image": "https://i.imgur.com/2oPmT8I.jpeg",
+        "description": "As Carney, win the most seats in Liberal Party history (at least 192).",
+        "cannotBeCheated": true
+    },
+    "Real Change": {
+        "image": "https://i.imgur.com/xDwYWhc.jpeg",
+        "description": "As Carney, criticize Trudeau, purge the civil service, unseat Poilievre, and win a majority.",
+        "cannotBeCheated": true
+    },
+    "Carbon Tax Carney": {
+        "image": "https://i.imgur.com/r7nCfNj.jpeg",
+        "description": "As Carney, keep the carbon tax, oppose pipelines, and win.",
+        "cannotBeCheated": true
+    },
+    "Blue Wave": {
+        "image": "https://i.imgur.com/bpwGkMz.jpeg",
+        "description": "As Poilievre, win a majority government.",
+        "cannotBeCheated": true
+    },
+    "Sniped": {
+        "image": "https://i.imgur.com/kjRF3NJ.jpeg",
+        "description": "As Poilievre, win the most seats but lose your own.",
+        "cannotBeCheated": true
+    },
+    "Deal with the Devil": {
+        "image": "https://i.imgur.com/GctLzed.jpeg",
+        "description": "As Poilievre, become Prime Minister with support from the Bloc Québécois.",
+        "cannotBeCheated": true
+    },
+    "Still Fighting": {
+        "image": "https://i.imgur.com/8zAv9ru.png",
+        "description": "As Singh, preserve the NDP’s official party status by winning at least 12 seats",
+        "cannotBeCheated": true
+    },
+    "Financially Responsible": {
+        "image": "https://i.imgur.com/QA4s683.png",
+        "description": "As Singh, leave the NDP in excellent financial shape.",
+        "cannotBeCheated": true
+    },
+    "You Can’t Get Rid of Me": {
+        "image": "https://i.imgur.com/6eeIouY.png",
+        "description": "As Singh, hold on to your seat in Burnaby Central.",
+        "cannotBeCheated": true
+    }
+}
+
+
+// Initialise custom music
+
+$("#music_player")[0].children[0].style.display = "none"
+$("#music_player")[0].children[1].style.display = "none"
+
+document.getElementById("modLoadReveal").style.display = "none"
+document.getElementById("modloaddiv").style.display = "none"
+
+musicBox = document.getElementById("music_player")
+musicBox.style.display = ""
+
+var trackSel;
+e = campaignTrail_temp
+e.selectedSoundtrack = 0
+
+toTime = (seconds) => {
+    var date = new Date(null);
+    date.setSeconds(seconds);
+    return date.toISOString().substr(11, 8);
+}
+
+function nextTrack() {
+    console.log("next track")
+    e = campaignTrail_temp
+    audio = $("#campaigntrailmusic")[0];
+    tracklist_length = e.soundtracks[e.selectedSoundtrack].tracklist.length;
+    if (tracklist_length == 1) {
+        audio.currentTime = 0
+        audio.play()
+        return
+    }
+    let selected = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+    var newSel;
+    if (audio.shuffle) {
+        newSel = Math.floor(Math.random() * (tracklist_length - 1));
+        if (newSel >= selected) {
+            newSel += 1;
+        }
+    } else {
+        newSel = clamp(selected + 1, tracklist_length - 1, 0);
+    }
+    let buttons = Array.from(document.getElementById("trackSel").children).filter(f => {
+        return f.tagName == "LABEL"
+    }).map(f => f.children[0])
+    buttons[newSel].click()
+}
+
+generateTime = () => {
+    // Get the audio element
+    e = campaignTrail_temp
+    var audio = document.getElementById("campaigntrailmusic");
+
+    timeTracker = document.createElement("div");
+    timeTracker.style = `
+      text-align:left;
+      border-style:solid;
+      border-width:3px;
+      height:180px;
+      width:200px;
+      background-color:#999999;
+      float:right;
+      padding: 10px;
+    `
+    $("#trackSelParent")[0].prepend(timeTracker);
+    $("#trackSelParent")[0].prepend(document.createElement("br"));
+
+    // Create a new element to display the current position of the audio
+    var positionDisplay = document.createElement("gg");
+    positionDisplay.id = "position-display";
+
+    // Create a new slider element to change the time
+    var timeSlider = document.createElement("input");
+    timeSlider.type = "range";
+    timeSlider.min = 0;
+    timeSlider.max = 1;
+    timeSlider.step = 0.001;
+    timeSlider.value = 0;
+    timeSlider.style.width = "200px";
+    timeSlider.id = "time-slider";
+
+    var pausePlay = document.createElement("button");
+    pausePlay.id = "position-display";
+    pausePlay.innerHTML = "<b>Pause</b>"
+    pausePlay.style.width = "100%";
+    pausePlay.style.margin = "2px";
+    pausePlay.addEventListener("click", event => {
+        event.preventDefault();
+        updatePositionDisplay();
+        let audio = document.getElementById("campaigntrailmusic");
+        if (audio.paused) {
+            audio.play();
+            event.target.innerHTML = "<b>Pause</b>";
+            return;
+        }
+        audio.pause();
+        event.target.innerHTML = "<b>Play</b>";
+        return;
+    })
+
+    var shuffle = document.createElement("button");
+    shuffle.id = "shuffle-button";
+    shuffle.innerHTML = audio.shuffle ? "<b>Unshuffle</b>" : "<b>Shuffle</b>";
+    shuffle.style.width = "100%";
+    shuffle.style.margin = "2px";
+    shuffle.addEventListener("click", event => {
+        event.preventDefault();
+        audio = document.getElementById("campaigntrailmusic");
+        if (audio.shuffle) {
+            audio.shuffle = false;
+            event.target.innerHTML = "<b>Shuffle</b>"
+            return;
+        }
+        audio.shuffle = true;
+        event.target.innerHTML = "<b>Unshuffle</b>"
+    })
+
+    var skipButton = document.createElement("button");
+    skipButton.id = "skip-button";
+    skipButton.innerHTML = "<b>Skip</b>"
+    skipButton.style.width = "50%";
+    skipButton.style.margin = "2px"; // Add margin
+    skipButton.addEventListener("click", event => {
+        event.preventDefault();
+        nextTrack();
+    })
+
+    var loopButton = document.createElement("button");
+    loopButton.id = "loop-button";
+    loopButton.innerHTML = audio.loopEnabled ? "<b>Unloop</b>" : "<b>Loop</b>";  // Check the initial loop state
+    loopButton.style.width = "50%";  // Match the width with skipButton
+    loopButton.style.margin = "2px";
+    loopButton.addEventListener("click", event => {
+        event.preventDefault();
+        audio = document.getElementById("campaigntrailmusic");
+        audio.loopEnabled = !audio.loopEnabled;
+        audio.loop = audio.loopEnabled;  // Set the audio's loop property
+        event.target.innerHTML = audio.loopEnabled ? "<b>Unloop</b>" : "<b>Loop</b>";  // Toggle the button text
+    });
+
+    var buttonContainer = document.createElement("div");
+    buttonContainer.style.display = "flex"; // Makes children inline
+    buttonContainer.style.justifyContent = "space-between";
+    skipButton.style.flex = "1"; // Makes it take up equal space
+    skipButton.style.marginRight = "5px"; // Adds some space between the buttons
+
+    loopButton.style.marginRight = "0px";
+
+    buttonContainer.appendChild(skipButton);
+    buttonContainer.appendChild(loopButton);
+
+    var volumeLabel = document.createElement("gg");
+    volumeLabel.id = "volume-label";
+    volumeLabel.innerHTML = "<br><b>Volume: </b>"
+
+    var volumeSlider = document.createElement("input");
+    volumeSlider.type = "range";
+    volumeSlider.min = 0;
+    volumeSlider.max = 1;
+    volumeSlider.step = 0.001;
+    volumeSlider.value = 0;
+    volumeSlider.style.width = "200px";
+    volumeSlider.id = "volume-slider";
+
+    volumeSlider.value = audio.volume;
+
+    timeTracker.appendChild(pausePlay);
+    timeTracker.appendChild(shuffle);
+    timeTracker.appendChild(buttonContainer);
+    timeTracker.appendChild(document.createElement("br"));
+    timeTracker.appendChild(positionDisplay);
+    timeTracker.appendChild(timeSlider);
+    timeTracker.appendChild(volumeLabel);
+    timeTracker.appendChild(volumeSlider);
+
+    updatePositionDisplay();
+
+    //for (let i = 0; i < 10; i++)
+    //timeTracker.append(document.createElement("br"));
+
+
+    // Function to update the position display
+    function updatePositionDisplay() {
+        positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+        timeSlider.value = audio.duration ? audio.currentTime / audio.duration : 0;
+    }
+
+    // Function to change the time of the audio
+    function changeTime() {
+        positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+        audio.currentTime = timeSlider.value * audio.duration;
+    }
+
+    updateVolume = event => {
+        audio.volume = event.target.value;
+    }
+
+    // Update the position display and slider every second
+    setInterval(updatePositionDisplay, 1000);
+
+    // Listen for changes to the time slider and change the time of the audio
+    timeSlider.addEventListener("input", changeTime);
+    volumeSlider.addEventListener("input", updateVolume)
+}
+
+function newMusicPlayer(soundtracks) {
+    campaignTrail_temp.soundtracks = soundtracks;
+    trackSel = document.createElement("div");
+    trackSel.id = "trackSelParent"
+    let z = `<div id='trackSel' style="text-align:left;border-style:solid;border-width:3px;overflow-y: scroll;overflow-x: hidden;height:200px; width:500px;background-color:#999999;float:right;">`
+    z += `<b><select id='selectSoundtrack'><option value='` + soundtracks[e.selectedSoundtrack].name + `'>` + soundtracks[e.selectedSoundtrack].name + "</option>"
+    for (i in soundtracks) {
+        if (soundtracks[e.selectedSoundtrack] != soundtracks[i]) {
+            z += `<option value='` + soundtracks[i].name + `'>` + soundtracks[i].name + `</option>`
+        }
+    }
+    z += `</select></b><br><br>`
+    // <label><input type="radio" name="option" value="option1">Option 1</label><br>
+    for (i in soundtracks[e.selectedSoundtrack].tracklist) {
+        let a = soundtracks[e.selectedSoundtrack].tracklist[i]
+        let b = `<label><input class="trackSelector" type="radio" name="trackSelector" value="` + i + `">` + a.name + `</label><br>`
+        z += b
+    }
+    z += "</div><br><br>"
+    trackSel.innerHTML = z
+
+    // select correct song
+
+    musicBox.appendChild(trackSel);
+    Array.from(document.getElementById("trackSel").children).filter(f => {
+        return f.tagName == "LABEL"
+    }).map(f => f.children[0])[0].checked = true
+
+    // set soundtrack changer
+
+    soundtrackSelector = document.getElementById("selectSoundtrack")
+    soundtrackSelector.onchange = function () {
+        for (i in soundtracks) {
+            if (soundtracks[i].name == soundtrackSelector.value) {
+                e.selectedSoundtrack = i
+                break
+            }
+        }
+        document.getElementById("trackSelParent").remove()
+        newMusicPlayer(soundtracks)
+    }
+
+    var matches = document.querySelectorAll('.trackSelector');
+
+    for (match in matches) {
+        matches[match].onchange = function () {
+            audio = $("#campaigntrailmusic")[0];
+            audio.src = soundtracks[e.selectedSoundtrack].tracklist[this.value].url
+            audio.currentTime = 0
+        }
+    }
+
+    musicBox.children[2].loop = false
+    musicBox.children[2].src = soundtracks[e.selectedSoundtrack].tracklist[0].url
+
+    musicBox.children[2].onended = nextTrack;
+
+    for (w = 0; w < 7; w++) {
+        document.getElementById("trackSelParent").appendChild(document.createElement("br"))
+    }
+
+    generateTime();
+}
+
+clamp = function (a, max, min, overflow = true) {
+    if (overflow) {
+        return a > max ? min : a < min ? max : a;
+    }
+    return a > max ? max : a < min ? min : a;
+}
+
+
+// Track list for start
+var soundtracks_start = {
+    0: {
+        name: "Introduction",
+        tracklist: [
+            {
+                "name": "O Canada — Sunday 7pm Choir",
+                "url": "https://audio.jukehost.co.uk/wDIZq9LM9juuTefsZvuBSthNYNlghG4k"
+            },
+        ]
+    }
+}
+
+// Set up new music player
+var audio = document.getElementById("campaigntrailmusic");
+audio.volume = 0.3;
+audio.shuffle = true;
+audio.loopEnabled = false;
+newMusicPlayer(soundtracks_start);

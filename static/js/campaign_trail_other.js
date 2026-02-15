@@ -3,6 +3,9 @@ var hotkey_handler = (event) => {
         nct_stuff.bigshot_activation = false;
         return;
     }
+    if (nct_stuff.hotkey_override) {
+        return;
+    }
     
     // opening menu selection
     if (document.querySelector("#game_start") && $("#modloaddiv")[0].style.display == "none") {

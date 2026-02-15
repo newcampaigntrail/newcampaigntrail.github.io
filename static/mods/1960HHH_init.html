@@ -1,0 +1,829 @@
+musicMode = () => {
+    songsPlayed = 0;
+    // Initialise custom music
+  
+    $("#music_player")[0].children[0].style.display = "none"
+    $("#music_player")[0].children[1].style.display = "none"
+  
+    document.getElementById("modLoadReveal").style.display = "none"
+    document.getElementById("modloaddiv").style.display = "none"
+  
+    musicBox = document.getElementById("music_player")
+    musicBox.style.display = ""
+  
+    var trackSel;
+    e = campaignTrail_temp
+    e.selectedSoundtrack = 0
+  
+    toTime = (seconds) => {
+        var date = new Date(null);
+        date.setSeconds(seconds);
+        return date.toISOString().substr(11, 8);
+    }
+  
+    generateTime = () => {
+        // Get the audio element
+        var audio = document.getElementById("campaigntrailmusic");
+  
+        timeTracker = document.createElement("div");
+        timeTracker.style = `
+  text-align:left;
+  border-style:solid;
+  border-width:3px;
+  height:150px;
+  width:200px;
+  background-color:#A8B1D9;
+  float:right;
+  padding: 10px;
+  `
+        $("#trackSelParent")[0].prepend(timeTracker);
+        $("#trackSelParent")[0].prepend(document.createElement("br"));
+  
+        // Create a new element to display the current position of the audio
+        var positionDisplay = document.createElement("gg");
+        positionDisplay.id = "position-display";
+  
+        // Create a new slider element to change the time
+        var timeSlider = document.createElement("input");
+        timeSlider.type = "range";
+        timeSlider.min = 0;
+        timeSlider.max = 1;
+        timeSlider.step = 0.001;
+        timeSlider.value = 0;
+        timeSlider.style.width = "200px";
+        timeSlider.id = "time-slider";
+  
+        var pausePlay = document.createElement("button");
+        pausePlay.id = "position-display";
+        pausePlay.innerHTML = "<b>Pause</b>"
+        pausePlay.style.width = "100%";
+  
+  
+        pausePlay.addEventListener("click", event => {
+            event.preventDefault();
+            updatePositionDisplay();
+            let audio = document.getElementById("campaigntrailmusic");
+            if (audio.paused) {
+                audio.play();
+                event.target.innerHTML = "<b>Pause</b>";
+                return;
+            }
+            audio.pause();
+            event.target.innerHTML = "<b>Play</b>";
+            return;
+        })
+  
+        var volumeLabel = document.createElement("gg");
+        volumeLabel.id = "volume-label";
+        volumeLabel.innerHTML = "<br><b>Volume: </b>"
+  
+        var volumeSlider = document.createElement("input");
+        volumeSlider.type = "range";
+        volumeSlider.min = 0;
+        volumeSlider.max = 1;
+        volumeSlider.step = 0.001;
+        volumeSlider.value = 0;
+        volumeSlider.style.width = "200px";
+        volumeSlider.id = "volume-slider";
+  
+        volumeSlider.value = audio.volume;
+  
+        timeTracker.appendChild(pausePlay);
+        timeTracker.appendChild(document.createElement("br"));
+        timeTracker.appendChild(document.createElement("br"));
+        timeTracker.appendChild(positionDisplay);
+        timeTracker.appendChild(timeSlider);
+        timeTracker.appendChild(volumeLabel);
+        timeTracker.appendChild(volumeSlider);
+  
+        updatePositionDisplay();
+  
+        //for (let i = 0; i < 10; i++)
+        //timeTracker.append(document.createElement("br"));
+  
+  
+        // Function to update the position display
+        function updatePositionDisplay() {
+            positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+            timeSlider.value = audio.duration ? audio.currentTime / audio.duration : 0;
+        }
+  
+        // Function to change the time of the audio
+        function changeTime() {
+            positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+            audio.currentTime = timeSlider.value * audio.duration;
+        }
+  
+        updateVolume = event => {
+            audio.volume = event.target.value;
+        }
+  
+        // Update the position display and slider every second
+        setInterval(updatePositionDisplay, 1000);
+  
+        // Listen for changes to the time slider and change the time of the audio
+        timeSlider.addEventListener("input", changeTime);
+        volumeSlider.addEventListener("input", updateVolume)
+    }
+  function newMusicPlayer() {
+          trackSel = document.createElement("div");
+          trackSel.id = "trackSelParent"
+          let z = `<br><br><br><br><br><br><br><br><br><br><div id='trackSel' style="text-align:left;border-style:solid;border-width:3px;overflow-y: scroll;overflow-x: hidden;height:200px; width:400px;background-color:#A8B1D9;float:right;">`
+          z += `<b><select id='selectSoundtrack'><option value='` + soundtracks[e.selectedSoundtrack].name + `'>` + soundtracks[e.selectedSoundtrack].name + "</option>"
+          for (i in soundtracks) {
+              if (soundtracks[e.selectedSoundtrack] != soundtracks[i]) {
+                  z += `<option value='` + soundtracks[i].name + `'>` + soundtracks[i].name + `</option>`
+              }
+          }
+          z += `</select></b><br><br>`
+              // <label><input type="radio" name="option" value="option1">Option 1</label><br>
+          for (i in soundtracks[e.selectedSoundtrack].tracklist) {
+              let a = soundtracks[e.selectedSoundtrack].tracklist[i]
+              let b = `<label><input class="trackSelector" type="radio" name="trackSelector" value="` + i + `">` + a.name + `</label><br>`
+              z += b
+          }
+          z += "</div><br><br>"
+          trackSel.innerHTML = z
+    
+          // select correct song
+    
+          musicBox.appendChild(trackSel);
+          Array.from(document.getElementById("trackSel").children).filter(f => {
+              return f.tagName == "LABEL"
+          }).map(f => f.children[0])[0].checked = true
+    
+          // set soundtrack changer
+    
+          soundtrackSelector = document.getElementById("selectSoundtrack")
+          soundtrackSelector.onchange = function() {
+              for (i in soundtracks) {
+                  if (soundtracks[i].name == soundtrackSelector.value) {
+                      e.selectedSoundtrack = i
+                      break
+                  }
+              }
+              document.getElementById("trackSelParent").remove()
+              newMusicPlayer()
+          }
+    
+          var matches = document.querySelectorAll('.trackSelector');
+    
+          for (match in matches) {
+              matches[match].onchange = function() {
+                  audio = $("#campaigntrailmusic")[0];
+                  audio.src = soundtracks[e.selectedSoundtrack].tracklist[this.value].url
+                  audio.currentTime = 0
+              }
+          }
+    
+          musicBox.children[2].loop = false
+          musicBox.children[2].src = soundtracks[e.selectedSoundtrack].tracklist[0].url
+    
+          musicBox.children[2].onended = function() {
+              console.log("next track")
+              let selected = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+              let newSel = clamp(selected + 1, soundtracks[e.selectedSoundtrack].tracklist.length - 1, 0)
+              let buttons = Array.from(document.getElementById("trackSel").children).filter(f => {
+                      return f.tagName == "LABEL"
+                  }).map(f => f.children[0])
+                  //let selectedIndex = buttons.map(f=>f.children[0]).map(f=>f.checked)
+              buttons[newSel].click()
+              songsPlayed++; // Increment the songs played counter
+        
+           
+          }
+            
+          for (w = 0; w < 7; w++) {
+              document.getElementById("trackSelParent").appendChild(document.createElement("br"))
+          }
+    
+          generateTime();
+      }
+    
+      clamp = function(a, max, min, overflow = true) {
+          if (overflow) {
+              return a > max ? min : a < min ? max : a;
+          }
+          return a > max ? max : a < min ? min : a;
+      }
+    
+      
+      // Track list
+    
+      var soundtracks = {
+          0: {
+              name: "The Local Diner's Jukebox",
+              tracklist: [
+                {
+               "name": "Ain't That a Kick in the Head - Dean Martin",
+                "url": "https://audio.jukehost.co.uk/JueNet2f3PORLFMka8WuhonPQjRUtyFw"
+              },
+              {
+                "name": "Baby (You've Got What It Takes) - Dinah Washington & Brook Benton",
+                "url": "https://audio.jukehost.co.uk/CmdIzNfH41qyunbkZpb3EjAA15ATpmsm"
+              },
+              {
+                "name": "The Twist - Chubby Checker",
+                "url": "https://audio.jukehost.co.uk/ZUgZNrtfkfL00Cid8BMvSjmjuNLGnbYp"
+              },
+              {
+                "name": "It's Now or Never - Elvis Presley",
+                "url": "https://audio.jukehost.co.uk/YJq55TmV0GvTgc6McZp7WFtoBTbo1Ewz"
+              },
+              {
+                "name": "Hubert Humphrey Campaign Song - Unknown",
+                "url": "https://audio.jukehost.co.uk/9lk3QlimH9hN9sCPjmZfY2wQA9MSAaNq"
+            },
+            ]
+         },
+  
+          
+          
+      }
+  
+    
+      // Set up new music player
+    
+      newMusicPlayer()
+    
+  
+  }
+  
+    $("#game_start").click((event) => {
+      event.preventDefault();
+      $("#election_id_button").click((event) => {
+          musicMode()
+  
+          setInterval(changeFontColour, 200)
+    
+      })
+    })
+  
+  
+  e = campaignTrail_temp;
+campaignTrail_temp.global_parameter_json = [
+    {
+        "model": "campaign_trail.global_parameter",
+        "pk": 1,
+        "fields": {
+            "vote_variable": 1.125,
+            "max_swing": 0.12,
+            "start_point": 0.94,
+            "candidate_issue_weight": 10,
+            "running_mate_issue_weight": 3,
+            "issue_stance_1_max": -0.71,
+            "issue_stance_2_max": -0.3,
+            "issue_stance_3_max": -0.125,
+            "issue_stance_4_max": 0.125,
+            "issue_stance_5_max": 0.3,
+            "issue_stance_6_max": 0.71,
+            "global_variance": 0.01,
+            "state_variance": 0.005,
+            "question_count": 25,
+            "default_map_color_hex": "#C9C9C9",
+            "no_state_map_color_hex": "#999999"
+        }
+    }
+]
+
+campaignTrail_temp.election_json = [
+    {
+        "model": "campaign_trail.election",
+        "pk": 11,
+        "fields": {
+            "year": 1960,
+            "summary": "<p><ul>With the door closing on the stable 1950's, America is presented with two options heading into 1960.<p><li>Vice President Richard Nixon has served as Eisenhower's number two for eight years now and, with the party's backing, looks to be dealt an easy hand this year due to his boss's popularity and coattails. That being said, Nixon has likeability problems and a conservative lean on some issues.</p></il><p><li>Senator Hubert Humphrey limped across the finish line at the Democratic Convention to a hall full of cheers and jeers. An avid progressive, he is a leading figure in talk about desegregation, economic intervention, and farm issues. However, he is perceived as too radical by most Americans.</p>",
+            "image_url": "https://i.imgur.com/ry8yJ38.png",
+            "winning_electoral_vote_number": 269,
+            "advisor_url": "https://i.imgur.com/Wc7qPdM.png",
+            "recommended_reading": "<div style='overflow-y:scroll;height:320px;'><h3 style='margin-top:</h3> 1.5em;'><h2>270toWin</h2><p><img src='https://i.imgur.com/tc7toqc.png' width='675px'><p><img src='https://i.imgur.com/jaLLWp7.png' width='250px'><p><img src='https://i.imgur.com/I0k73Or.gif' width='250px'><img src='https://i.imgur.com/8K6e4y1.png' width='250px'><p>Hey guys, Jimbo here, thanks for playing V2 of 1960 Humphrey, or 1960 Some Talk Change. I'm quite pleased with how it came out. That's all.</i></img></div>",
+            "has_visits": 1,
+            "no_electoral_majority_image": "https://www.jetsimon.com/public/static/images/1960-no-majority-photo.jpg",
+            "creator": "Dan Bryan",
+            "display_year": "1960HHH"
+        }
+    }
+]
+
+campaignTrail_temp.candidate_json = [
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 105,
+        "fields": {
+            "first_name": "Hubert",
+            "last_name": "Humphrey",
+            "election": 11,
+            "party": "Democrat",
+            "state": "Minnesota",
+            "priority": 1,
+            "description": "<p>The civil rights crusader, the Minnesota progressive: Hubert Horatio Humphrey stands tall as his party's pall-bearer this election. Emerging onto the national scene as a major player of the chaotic 1948 Democratic Convention, being elected Senator later that year. Humphrey made a long-shot bid for the presidency this year, but wins in Wisconsin and West Virginia gave him the momentum to eke out a majority on the third ballot of the Convention against John F. Kennedy, his main competitor. Holding great admiration among the farmers and progressives of the Democratic Party, Humphrey will chart a new path for the party this election season, he's worked too hard to let it go to waste.<p>Despite the celebrations, the outlook couldn't look more menacing. Humphrey is only popular among progressives; his popularity among moderates and conservatives is six feet under, and Nixon holds a 15% head-start lead in the early polling. To win, Humphrey must prove to Americans that he isn't a dangerous radical and weather its storm.",
+            "color_hex": "#2c41e6",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 1,
+            "image_url": "https://i.imgur.com/WVhwtI4.png",
+            "electoral_victory_message": "<h3>Congratulations! You have won the 1960 Presidential Election.</h3><p>Hopefully you can move the United States in a more modern direction after eight quiet years of Eisenhower, while holding the line against the Soviet Union. With your policies, you have the potential to define the entire decade as President, and perhaps to hand the torch to your Vice President in the future.</p>",
+            "electoral_loss_message": "<h3>Sorry, you have lost the 1960 Presidential Election.</h3><p>It was always going to be tough to defeat the Vice President to someone as popular as Eisenhower. However, you still have your seat in the Senate. You could potentially be a strong contender for President in 1964 or 1968, especially if this election was close, but the backlash from Southerners would most likely be too great. Let's just hope the Democrats don't blame your defeat on your liberalism.</p>",
+            "no_electoral_majority_message": "<h3>No candidate has won a majority in the Electoral College.</h3><p>The Democrats have an advantage in the House of Representatives, so you are probably in good shape. However, a lot depends on how you deal with Faubus. It's possible that some kind of deal will need to be struck with Faubus or Nixon to get a clean majority in the House.</p>",
+            "description_as_running_mate": "'",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 106,
+        "fields": {
+            "first_name": "Richard",
+            "last_name": "Nixon",
+            "election": 11,
+            "party": "Republican",
+            "state": "California",
+            "priority": 2,
+            "description": "<p>Richard Nixon has served as Vice President for eight years, and begins the campaign as the better known of the two candidates. He has long been known as a staunch anti-communist and a Cold Warrior. Nixon faces similar problems as Kennedy, to a lesser extent -- different wings of the party have different demands on civil rights. On the other hand, Nixon might be in a better position than Kennedy to paint himself as strong on defense. Some voters also feel Nixon is cold and unrelatable.</p>",
+            "color_hex": "#a62b35",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Richard_Nixon_official_portrait_as_Vice_President.tiff/lossy-page1-220px-Richard_Nixon_official_portrait_as_Vice_President.tiff.jpg",
+            "electoral_victory_message": "<h3>Congratulations! You have won the 1960 Presidential Election.</h3><p>With luck, you will be able to duplicate the eight years of peace and prosperity under Eisenhower. Unfortunately, the Democrats maintain their majority in both houses of Congress. With luck, they will be good partners in a bipartisan governing coalition. Your first order of business is to mend fences with Lyndon Johnson, who is returning to his role as Senate Majority Leader.</p>",
+            "electoral_loss_message": "<h3>Sorry, you have lost the 1960 Presidential Election.</h3><p>A lot of people think this election was yours to lose, and party operatives are already whispering that Nelson Rockefeller will be the frontrunner in 1964. As such, it appears that your chances of becoming President are over. Perhaps you can return to California and run for Governor, or for the Senate again.</p>",
+            "no_electoral_majority_message": "<h3>No candidate has won a majority in the Electoral College.</h3><p>The Democrats have an advantage in the House of Representatives, so you are probably in bad shape. However, a lot depends on how Kennedy deals with Harry Byrd. It's possible that some kind of deal will need to be struck for any candidate to get a clean majority in the House.</p>",
+            "description_as_running_mate": "'",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 107,
+        "fields": {
+            "first_name": "Orval",
+            "last_name": "Faubus",
+            "election": 11,
+            "party": "National States' Rights",
+            "state": "Arkansas",
+            "priority": 3,
+            "description": "old balding racist from Arkansas",
+            "color_hex": "#f5a742",
+            "secondary_color_hex": "#FFFFC0",
+            "is_active": 0,
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/da/Orval_Faubus.jpg",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "'",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 108,
+        "fields": {
+            "first_name": "Albert",
+            "last_name": "Chandler",
+            "election": 11,
+            "party": "Democrat",
+            "state": "Kentucky",
+            "priority": 4,
+            "description": "'",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/bOgzNOo.png",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "<p>Albert Benjamin Chandler Sr. nicknamed \"Happy\" is an intriguing pick, but a strong one nonetheless. Having been the Governor of Kentucky in the thirties, its Senator in the forties, and Governor again in the fifties, he has an experienced resume and could help combat Nixon's flimsy claims of inexperience. Additionally, he would fight the nickname that you'd be another old New Deal \"tax-and-spend\" liberal, which could be useful if you use it correctly.<p>However, Chandler's most famous actions did not happen while in politics, as in 1947, he famously allowed Jackie Robinson to break the color barrier by approving his contract and threatening disciplinary action against those who would strike against him. This has not been forgotten by those in the old South and would hamper any bold moves into the segregationist South. His unflinching fiscal conservatism would also be a tough pill for you and your liberal base to swallow. Lastly, don't expect him to be a very vigorous campaigner either, preferring to be in the backrooms.",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 109,
+        "fields": {
+            "first_name": "Ralph",
+            "last_name": "Yarborough",
+            "election": 11,
+            "party": "Democrat",
+            "state": "Texas",
+            "priority": 5,
+            "description": "'",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/evaTOeO.png",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "<p>A different kind of Texan Senator, Ralph Webster Yarborough started his career as a capable prosecutor of corrupt oil companies and spent much of his early adulthood battling them. Despite losing the runoff for the Governorship three times, he found success in the Senate, where he was elected in 1956. Yarborough has bucked the tradition in the South, refusing to sign the Southern Manifesto, and has since remained an avid supporter of civil rights. Yarborough would also be just the running mate to salvage Texas and help out in the  Hispanic Southwest.<p>Despite this, his reputation as a social progressive has made him unpopular with conservatives and would still harm you in his home region. As a staunch New Dealer, he doesn't help expand your base more past what you can do yourself. He carries a testy relationship with many Southern congressmen and is not well known on a national scale. Regardless, if you want to secure Texas's electoral votes, then Ralph would be the smart pick for you.",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 110,
+        "fields": {
+            "first_name": "Robert",
+            "last_name": "Kerr",
+            "election": 11,
+            "party": "Democrat",
+            "state": "Oklahoma",
+            "priority": 6,
+            "description": "'",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/1QY2oXK.png",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "<p>An incredibly talented orator, Robert Samuel Kerr started out as an oil entrepreneur, becoming wealthy off of the back of the black gold pouring out of Oklahoma's blightful terrain. Elected to the Governorship in 1942 and becoming Senator in 1949, Kerr always neglected to make himself nationally known, focusing more on helping his small state. He has remained incredibly popular within Oklahoma and would certainly bring it and the lower Rockies within really close for you due to his popularity and relatibility with voters in the region.<p>Kerr's main weaknesses arise from his health, as he is unable to campaign very vigorously, and his reticence to get his name into national headlines have caused him to have low voter recognition. Regardless, his commitment to infrastructure and farm issues should allow you to pierce into traditional Republican territory in the farm states. It's worth mentioning that he never signed the Southern Manifesto, nor did he vote on the CRA, so that's a bonus.",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 111,
+        "fields": {
+            "first_name": "Henry Cabot",
+            "last_name": "Lodge",
+            "election": 11,
+            "party": "Republican",
+            "state": "Massachusetts",
+            "priority": 7,
+            "description": "'",
+            "color_hex": "#FF0000",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://san-luigi.org/wp-content/uploads/2012/08/henry-cabot-lodge.jpg",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "<p>Henry Cabot Lodge Jr. has an impeccable pedigree, a great war record, and a career that has seen him serve as a Senator and an Ambassador to the United Nations. He is a committed internationalist and a moderate in the party. He appeals to a similar wing of the party as Nelson Rockefeller, but is much more willing to be the running mate on a Nixon ticket.</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 114,
+        "fields": {
+            "first_name": "John",
+            "last_name": "Crommellin",
+            "election": 11,
+            "party": "National States' Rights",
+            "state": "Alabama",
+            "priority": 10,
+            "description": "'",
+            "color_hex": "#FFFF00",
+            "secondary_color_hex": "#FFFFC0",
+            "is_active": 0,
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Captain_John_Geraerdt_Crommelin%2C_US_Navy%2C_circa_in_1947.jpg/220px-Captain_John_Geraerdt_Crommelin%2C_US_Navy%2C_circa_in_1947.jpg",
+            "electoral_victory_message": "'",
+            "electoral_loss_message": "'",
+            "no_electoral_majority_message": "'",
+            "description_as_running_mate": "old not-so-much-balding racist from Alabama",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 13247,
+        "fields": {
+            "first_name": "Eric",
+            "last_name": "Hass/Others",
+            "election": 11,
+            "party": "Socialist Labor",
+            "state": "New York",
+            "priority": 1,
+            "description": "socialist guy",
+            "color_hex": "#2bff31",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i0.wp.com/oildale.s3.amazonaws.com/wp-content/uploads/2017/11/22015424/Eric-Hass-1-resize.jpg?quality=89&ssl=1",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": null,
+            "candidate_score": 0,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 49999,
+        "fields": {
+            "first_name": "Georgia",
+            "last_name": "Cozzini",
+            "election": 11,
+            "party": "Socialist Labor",
+            "state": "Wisconsin",
+            "priority": 1,
+            "description": "pinko woman",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Georgia_Cozzini_1974_Gov_of_WI_Candidate_SLP.jpg/220px-Georgia_Cozzini_1974_Gov_of_WI_Candidate_SLP.jpg",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "old commie woman",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 50000,
+        "fields": {
+            "first_name": "Warren",
+            "last_name": "Magnuson",
+            "election": 11,
+            "party": "Democratic",
+            "state": "Washington",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/9F8gFqt.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "<p>A stalwart ally, Warren Grant Magnuson came from humble origins, never knowing his birth parents. He soon found luck in the business of law and passed the bar in 1929, and in 1936, was elected to the House of Representatives. Having served in the Senate since 1944, he would certainly add additional gravitas to the ticket that few others could give, along with being a stalwart ally and supporter of many of your policies, he's a great personal pick for you. Being on the Senate Commerce Committee, combined with Henry Jackson lobbying for him as running mate, he commands great respect among his colleagues, and could certainly help you get bills passed while President.<p>That being said, Maggie - as he's nicknamed - does little to expand your outreach, blocking off the path of moderates, and is certainly no olive branch to the South. By selecting him, you'd be making a risky play in trying to combat Nixon on his own home turf, while trying to retain a thin coalition of moderates and core supporters.",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 50001,
+        "fields": {
+            "first_name": "Lyndon B.",
+            "last_name": "Johnson",
+            "election": 11,
+            "party": "Democrat",
+            "state": "Texas",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/n9vYpP9.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "<p>The so-called \"Master of the Senate\", Lyndon Baines Johnson, came from nothing to become more than just something. The harsh conditions of middle-Texas defined him, his service in World War II helped shape him, and his early years in politics helped cement him as a powerful figure of authority within the Democratic Party. Currently, Johnson is less than interested in taking up the VP spot, but as his protege, and with some concessions, you could get him to accept. Johnson would be a lifeline to Congress, lock down Texas, and stamp out any Southern splinters.</p><p>Despite his obvious benefits, Johnson might be more baggage than he is worth. As a Southern conservative, he is seen with scorn by your base, and would do damage to your numbers in the North, but perhaps winning some states in the South could make up for it? If you're looking to have a powerful ally by your side, Johnson's your guy.",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 50002,
+        "fields": {
+            "first_name": "John",
+            "last_name": "Kennedy",
+            "election": 11,
+            "party": "Democrat",
+            "state": "Massachusetts",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/AWDHwWG.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "<p>The scion of a political elite, John Fitzgerald Kennedy grew up as the second son of a well-off political ambassador. During World War II, he became a hero for surviving a Japanese attack and swimming almost four miles to get his crew to safety, skyrocketing his name recognition and helping him win a seat in the House in 1946. In 1952, he successfully challenged the entrenched incumbent and Nixon's current Vice-Presidential pick Henry Cabot Lodge for his Senate Seat and won. Kennedy ran against you this year, but narrowly lost out due to his religion and early losses in the primaries weighing down his bid. His selection would be a good way to mend fences within the party.</p><p>Unfortunately, Kennedy might be just too much trouble, there is still a large amount of anti-Catholic sentiment within the United States, and although Kennedy possesses youth and vigor, his wartime feats left him with a plethora of hidden health problems. However, if you're truly committed to pushing boundaries, Kennedy is the best pick for you.",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 50003,
+        "fields": {
+            "first_name": "Frank",
+            "last_name": "Lausche",
+            "election": 11,
+            "party": "Democrat",
+            "state": "Ohio",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://i.imgur.com/u1ts2hx.png",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "<p>The newly-minted Senator from Ohio, Frank John Lausche, would be an interesting pick, to say the least. Born to Slovenians, Lausche was a baseball player in his early years and enlisted in World War One in the United States Army. Following a career in law, he was elected the Mayor of Cleveland in 1942, Governor of Ohio in 1944, again in 1948, and finally Senator in 1956. As Senator, Lausche has carved out a personalistic streak for himself, earning himself the nickname \"Frank the Fence\" for his independence from the Democratic Party.</p><p>Despite his perks in potentially appealing to dissatisfied Republicans, his religion would be a detriment to your chances in the South and West, and could cause any major breakaways to flare up even further. Additionally, Lausche might not be the best negotiation, due to his testy relationship with the party apparatus. Still though, he has his perks and if used effectively, could be a reliable, beautiful asset on the campaign for you.",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    }
+]
+
+campaignTrail_temp.running_mate_json = [
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 74,
+        "fields": {
+            "candidate": 107,
+            "running_mate": 114
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 68,
+        "fields": {
+            "candidate": 105,
+            "running_mate": 108
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 71,
+        "fields": {
+            "candidate": 106,
+            "running_mate": 111
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 69,
+        "fields": {
+            "candidate": 105,
+            "running_mate": 109
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 70,
+        "fields": {
+            "candidate": 105,
+            "running_mate": 110
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 136991,
+        "fields": {
+            "candidate": 105,
+            "running_mate": 50000
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 129109,
+        "fields": {
+            "candidate": 105,
+            "running_mate": 50002
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 87393,
+        "fields": {
+            "candidate": 105,
+            "running_mate": 50003
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 132482,
+        "fields": {
+            "candidate": 13247,
+            "running_mate": 49999
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 116857,
+        "fields": {
+            "candidate": 105,
+            "running_mate": 50001
+        }
+    }
+]
+
+campaignTrail_temp.credits = "WNDIUA (Jimbo)"
+
+campaignTrail_temp.opponents_default_json = [
+    {
+        "election": 11,
+        "candidates": [
+            105,
+            106,
+            107,
+            13247
+        ]
+    }
+]
+
+campaignTrail_temp.opponents_weighted_json = [
+    {
+        "election": 11,
+        "candidates": [
+            105,
+            106,
+            107,
+            13247
+        ]
+    }
+]
+
+campaignTrail_temp.temp_election_list = [
+    {
+        "id": 11,
+        "year": 1960,
+        "is_premium": 0,
+        "display_year": "1960HHH"
+    }
+]
+
+jet_data = {
+    "headerColor": "#692c44",
+    "windowColor": "#9daac1",
+    "containerColor": "#60678c",
+    "innerWindowColor": "#d9daf6",
+    "bannerImageUrl": "https://i.imgur.com/XHRg6Y8.png",
+    "backgroundImageUrl": "https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/KHSZTFX34ZNZZ2AXODINODYYXM.jpg",
+    "endingTextColor": "#000000",
+    "customQuote": "\"Others spit on that thang.\"",
+    "gameTitle": "SOME TALK TUAH"
+}
+
+//#startcode
+
+corrr = `
+  <div style="font-size: 8px; font-family: monospace; color: white;">
+    <h2 style="font-style: normal;">
+      <img src="https://i.imgur.com/JG93Rjc.gif" alt="Some talk change" style="margin-top: 11px;">
+    </h2>
+  </div>
+  `;
+
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#692C44";
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#a8b1d9";
+
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+$(".container")[0].style.backgroundColor = "#677c9a";
+
+document.getElementById("header").src = "https://i.imgur.com/fPPjd4d.png";
+
+document.body.background = "https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/KHSZTFX34ZNZZ2AXODINODYYXM.jpg";
+
+document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#d3d6e9!important;}</style>";
+
+RecReading = true
+
+campaignTrail_temp.modBoxTheme = {
+    "header_color": "#692c44",
+    "header_text_color": "#ffffff",
+    "description_text_color": "#000000",
+    "description_background_color": "#a8b1d9",
+    "main_color": "#a8b1d9",
+    "secondary_color": "#677c9a",
+    "ui_text_color": "#FFFFFF"
+}
+
+bannerArr=0
+        
+            bannerlist=["https://i.imgur.com/fPPjd4d.png", "https://i.imgur.com/PcS2OGn.png", "https://i.imgur.com/o57Ju9u.png", "https://i.imgur.com/xLXHqhm.png", "https://i.imgur.com/ELfOxrW.png", "https://i.imgur.com/kRr0i0V.png", "https://i.imgur.com/C2s89Rd.png"]
+            document.getElementById("header").src = bannerlist[Math.floor((Math.random() * bannerlist.length))]
+            var changeBanner = () =>
+            {
+            bannerArr+=1
+            document.getElementById("header").src=bannerlist[bannerArr % bannerlist.length]
+            }
+            document.getElementById("header").src=bannerlist[0]
+            footer = $(".footer")[0]
+            var button = document.createElement("button") // <button onclick="changeBanner()" style="font-weight: bold; height:19.49px; position: static; right: 770px; top: 0px;">Change banner</button>
+            button.style = `font-weight: bold; height:19.49px; position: static; right: 770px; top: 0px;`
+            button.innerHTML = "Change Banner VP"
+            footer.insertBefore(button, footer.firstChild);
+            button.onclick = changeBanner;
+
+HistHexcolour=["#2c41e6","#a62b35","#f5a742","#2bff31"];
+HistName=[" Hubert Humphrey"," Richard Nixon"," Orval Faubus", " Eric Hass/Others"];
+        HistEV=[278,202,57,0];
+        HistPV=["32,278,128 ","32,198,305","3,262,049","155,122"];
+        HistPVP=["47.5%","47.4%","4.8%","0.2%"];
+
+
+
+
+        
+//#endcode

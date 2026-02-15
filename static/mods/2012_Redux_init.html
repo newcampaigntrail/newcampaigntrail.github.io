@@ -1,0 +1,637 @@
+function appendStyle() {
+    if (!document.querySelector('meta[name="viewport"]')) {
+        const metaTag = document.createElement('meta');
+        metaTag.name = "viewport";
+        metaTag.content = "width=device-width, initial-scale=1";
+        document.head.appendChild(metaTag);
+    }
+
+    if (!document.querySelector('#radio-option-style')) {
+        const style = document.createElement('style');
+        style.id = 'radio-option-style';
+        style.textContent = `
+          body {
+               background-image: url(https://i.postimg.cc/5t2mtvXd/IMG-2867.webp);
+               background-position: center;
+               background-size: cover;
+               display: flex !important;
+          }
+        `;
+        document.head.appendChild(style);
+    }
+}
+
+appendStyle();
+
+campaignTrail_temp.global_parameter_json = [
+    {
+        "model": "campaign_trail.global_parameter",
+        "pk": 1,
+        "fields": {
+            "vote_variable": 1.125,
+            "max_swing": 0.12,
+            "start_point": 0.94,
+            "candidate_issue_weight": 10,
+            "running_mate_issue_weight": 3,
+            "issue_stance_1_max": -0.71,
+            "issue_stance_2_max": -0.3,
+            "issue_stance_3_max": -0.125,
+            "issue_stance_4_max": 0.125,
+            "issue_stance_5_max": 0.3,
+            "issue_stance_6_max": 0.71,
+            "global_variance": 0.01,
+            "state_variance": 0.005,
+            "question_count": 25,
+            "default_map_color_hex": "#C9C9C9",
+            "no_state_map_color_hex": "#999999"
+        }
+    }
+]
+
+campaignTrail_temp.election_json = [
+    {
+        "model": "campaign_trail.election",
+        "pk": 3,
+        "fields": {
+            "year": 2012,
+            "summary": "<p>As the 2012 campaign heats up, the economy is slow to recover from the Great Recession. Candidates must debate how to grow the economy, the effects of the Affordable Care Act and more to win this election.</p> <ul><li>President Barack Obama needs to combat sluggish approval ratings and address the economic situation to secure a second term.</li><li>Mitt Romney must utilize his business acumen and governing expertise to provide a favorable contrast to the president.</li></ul>",
+            "image_url": "https://i.postimg.cc/52b2M2Df/2012-Election-Image.png",
+            "winning_electoral_vote_number": 270,
+            "advisor_url": "https://i.postimg.cc/CMZLsDH7/2012-Advisor-Image.png",
+            "recommended_reading": "<h4 style=\"margin-top: 0.5em;\">Books by the Candidates</h4>Barack Obama - <a href=\"http://www.amazon.com/exec/obidos/ASIN/1400082773/amhius20-20\" target=\"_blank\">Dreams from My Father: A Story of Race and Inheritance</a><br>Barack Obama - <a href=\"http://www.amazon.com/exec/obidos/ASIN/0307455874/amhius20-20\" target=\"_blank\">The Audacity of Hope: Thoughts on Reclaiming the American Dream (Vintage)</a><br> Mitt Romney - <a href=\"http://www.amazon.com/exec/obidos/ASIN/0312671733/amhius20-20\" target=\"_blank\">No Apology: Believe in America</a><br> Gary Johnson - <a href=\"http://www.amazon.com/exec/obidos/ASIN/B008PXW0C0/amhius20-20\" target=\"_blank\">Seven Principles of Good Government</a><h4>Politics in 2012</h4> Mark Halperin & John Heilemann - <a href=\"http://www.amazon.com/exec/obidos/ASIN/0143126008/amhius20-20\" target=\"_blank\">Double Down: Game Change 2012</a><br>Edward Klein - <a href=\"http://www.amazon.com/exec/obidos/ASIN/1596987855/amhius20-20\" target=\"_blank\">The Amateur</a><br>Michael Kranish & Scott Helman - <a href=\"http://www.amazon.com/exec/obidos/ASIN/0062123289/amhius20-20\" target=\"_blank\">The Real Romney</a><br>Lawrence Lessig - <a href=\"http://www.amazon.com/exec/obidos/ASIN/0446576433/amhius20-20\" target=\"_blank\">Republic, Lost: How Money Corrupts Congress--and a Plan to Stop It</a><br>Ron Suskind - <a href=\"http://www.amazon.com/exec/obidos/ASIN/0061429252/amhius20-20\" target=\"_blank\">Confidence Men: Wall Street, Washington, and the Education of a President</a><h4>The Financial Crisis</h4> Johan Norberg - <a href=\"http://www.amazon.com/exec/obidos/ASIN/1935308130/amhius20-20\" target=\"_blank\">Financial Fiasco: How America's Infatuation with Home Ownership and Easy Money Created the Economic Crisis</a><br>John Bellamy Foster & Fred Magdoff - <a href=\"http://www.amazon.com/exec/obidos/ASIN/1583671846/amhius20-20\" target=\"_blank\">The Great Financial Crisis: Causes and Consequences</a>",
+            "has_visits": 1,
+            "no_electoral_majority_image": "https://www.jetsimon.com/public/static/images/2012-no-majority.jpg",
+            "creator": "Dan Bryan",
+            "display_year": "2012_Redux"
+        }
+    },
+    {
+        "model": "campaign_trail.election",
+        "pk": 4,
+        "fields": {
+            "year": 2012,
+            "summary": "<p>Hey, you found this before I announced it. Congrats! Please know that it’ll be a <em><b>while</b></em> before I get the ball rolling on this, but this is where <em>2012 Deluxe</em> will live. It’ll feature multiple candidates, including:</p> <ul><li>President Barack Obama, duh. The only Democratic candidate.</li><li>Mitt Romney, canon GOP candidate.</li><li>Rick Santorum, alternate GOP candidate.</li><li>Newt Gingrich, alternate GOP candidate.</li><li>And Ron Paul, independent candidate.</li></ul>",
+            "image_url": "https://i.imgur.com/XaKTSER.png",
+            "winning_electoral_vote_number": 270,
+            "advisor_url": "https://i.imgur.com/ZCgRTQE.png",
+            "recommended_reading": "<h4 style=\"margin-top: 0.5em;\">Books by the Candidates</h4>Barack Obama - <a href=\"http://www.amazon.com/exec/obidos/ASIN/1400082773/amhius20-20\" target=\"_blank\">Dreams from My Father: A Story of Race and Inheritance</a><br>Barack Obama - <a href=\"http://www.amazon.com/exec/obidos/ASIN/0307455874/amhius20-20\" target=\"_blank\">The Audacity of Hope: Thoughts on Reclaiming the American Dream (Vintage)</a><br> Mitt Romney - <a href=\"http://www.amazon.com/exec/obidos/ASIN/0312671733/amhius20-20\" target=\"_blank\">No Apology: Believe in America</a><br> Gary Johnson - <a href=\"http://www.amazon.com/exec/obidos/ASIN/B008PXW0C0/amhius20-20\" target=\"_blank\">Seven Principles of Good Government</a><h4>Politics in 2012</h4> Mark Halperin & John Heilemann - <a href=\"http://www.amazon.com/exec/obidos/ASIN/0143126008/amhius20-20\" target=\"_blank\">Double Down: Game Change 2012</a><br>Edward Klein - <a href=\"http://www.amazon.com/exec/obidos/ASIN/1596987855/amhius20-20\" target=\"_blank\">The Amateur</a><br>Michael Kranish & Scott Helman - <a href=\"http://www.amazon.com/exec/obidos/ASIN/0062123289/amhius20-20\" target=\"_blank\">The Real Romney</a><br>Lawrence Lessig - <a href=\"http://www.amazon.com/exec/obidos/ASIN/0446576433/amhius20-20\" target=\"_blank\">Republic, Lost: How Money Corrupts Congress--and a Plan to Stop It</a><br>Ron Suskind - <a href=\"http://www.amazon.com/exec/obidos/ASIN/0061429252/amhius20-20\" target=\"_blank\">Confidence Men: Wall Street, Washington, and the Education of a President</a><h4>The Financial Crisis</h4> Johan Norberg - <a href=\"http://www.amazon.com/exec/obidos/ASIN/1935308130/amhius20-20\" target=\"_blank\">Financial Fiasco: How America's Infatuation with Home Ownership and Easy Money Created the Economic Crisis</a><br>John Bellamy Foster & Fred Magdoff - <a href=\"http://www.amazon.com/exec/obidos/ASIN/1583671846/amhius20-20\" target=\"_blank\">The Great Financial Crisis: Causes and Consequences</a>",
+            "has_visits": 1,
+            "no_electoral_majority_image": "https://www.jetsimon.com/public/static/images/2012-no-majority.jpg",
+            "creator": "Dan Bryan",
+            "display_year": "2012_Deluxe"
+        }
+    }
+]
+
+campaignTrail_temp.temp_election_list = [
+    {
+        "id": 4,
+        "year": 2012,
+        "is_premium": 0,
+        "display_year": "2012_Deluxe"
+    },
+    {
+        "id": 3,
+        "year": 2012,
+        "is_premium": 0,
+        "display_year": "2012_Redux"
+    }
+]
+
+campaignTrail_temp.candidate_json = [
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 16,
+        "fields": {
+            "first_name": "Barack",
+            "last_name": "Obama",
+            "election": 3,
+            "party": "Democratic",
+            "state": "Illinois",
+            "priority": 1,
+            "description": "<p>Barack Obama is the incumbent President of the United States, having bested Senator John McCain in the 2008 election. During his term in office, he has taken steps to address a recession that began under predecessor George W. Bush, passed major healthcare reform, and has taken a neoliberal approach to foreign policy.</p><p>Obama has many strategies he can employ to fend off Romney. The president can highlight the controversial aspects of his tenure at Bain Capital, prove that the ACA was modeled off of his healthcare plan in Massachusetts, or tie him to the unpopular Republican Congress.</p>",
+            "color_hex": "#0048E2",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 1,
+            "image_url": "https://i.postimg.cc/SxdNQpp8/2012-Obama.png",
+            "electoral_victory_message": "<h3>Congratulations! You have won the 2012 election.</h3><p>In spite of a hard-fought challenge from Mitt Romney, you have held on to the Presidency.</p><p>On the political front, it appears that your health care legislation that was passed in early 2010 will survive and go into effect. While the economy has not yet recovered as strongly as you hoped and promised, you will now have four more years to leave a strong legacy to your Democratic successor.</p>",
+            "electoral_loss_message": "<h3>Sorry! You have lost the 2012 election.</h3><p>In spite of your spirited defense, Mitt Romney has won the Presidency. Nearly two centuries after the ill-fated campaign of Joseph Smith, Romney will become America's first Mormon president.</p><p>On the political front, it appears that Romney will make a push for more tax cuts to revive the economy. He will also try to repeal your health care law. If your defeat was narrow enough, you may be able to attempt a comeback in 2016.</p>",
+            "no_electoral_majority_message": "<h3>The House decides the 2012 election.</h3><p>No candidate achieved a majority of the electoral votes, marking the first time this has happened since 1824. Unfortunately for you, the majority of U.S. states have Republican controlled congressional delegations, and they will cast their votes for Mitt Romney.</p><p>Given the incredibly close nature of the election, you can probably set your sights on a political comeback in 2016, if that is what you desire.</p>",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 17,
+        "fields": {
+            "first_name": "Mitt",
+            "last_name": "Romney",
+            "election": 3,
+            "party": "Republican",
+            "state": "Massachusetts",
+            "priority": 2,
+            "description": "<p>Mitt Romney has secured the Republican nomination, fighting off a host of more conservative rivals. He is best known as the former Governor of Massachusetts and founding private investment firm Bain Capital. He hopes his business-friendly, moderate image will serve as an asset this election.</p><p>However, as no one’s preferred candidate, Romney must unite the many factions of the Republican Party and appeal to enough swing voters to unseat President Obama.",
+            "color_hex": "#E60813",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 1,
+            "image_url": "https://i.postimg.cc/66D6j3MJ/2012-Romney.png",
+            "electoral_victory_message": "<h3>Congratulations! You have won the 2012 election.</h3><p>In spite of a hard-fought campaign from Barack Obama, you have won the Presidency. Nearly two centuries after the ill-fated campaign of Joseph Smith, you will become America's first Mormon president. Your next steps are to select a cabinet and prepare a rousing inauguration speech.</p><p>On the political front, you may have the support needed to overturn Obamacare. Or you could focus on tax cuts, or other policies entirely. If you can recover the economy and not make any major mistakes, you should be able to win re-election in 2016.</p>",
+            "electoral_loss_message": "<h3>Sorry! You have lost the 2012 election.</h3><p>In spite of your best efforts, Barack Obama has been reelected to a second term as President.</p><p>On the political front, it appears that Obamacare will survive and go into effect. While the economy has not recovered as strongly as Obama hoped and promised, he will now have four more years to leave a strong legacy to his Democratic successor. No doubt the Republicans will learn from your failure and come back stronger in 2016.</p>",
+            "no_electoral_majority_message": "<h3>The House decides the 2012 election.</h3><p>No candidate achieved a majority of the electoral votes, marking the first time this has happened since 1824. Fortunately for you, the majority of U.S. states have Republican controlled congressional delegations, and they will cast their votes for you accordingly.</p><p>The important thing is that you won. Go about implementing your agenda accordingly, and pay no attention to Democrats and pundits who call for 'compromise' and 'conciliation'.</p>",
+            "description_as_running_mate": null,
+            "candidate_score": 0.8,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 30,
+        "fields": {
+            "first_name": "Joe",
+            "last_name": "Biden",
+            "election": 3,
+            "party": "Democratic",
+            "state": "Delaware",
+            "priority": 7,
+            "description": "<p>V.P. </p>",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://i.postimg.cc/8kqkK5Zp/2012-Biden.png",
+            "electoral_victory_message": "n/a",
+            "electoral_loss_message": "n/a",
+            "no_electoral_majority_message": "n/a",
+            "description_as_running_mate": "<p><em>The safe choice.</em></p><p>Joe Biden is the current Vice President and Obama's presumptive pick for 2012. He served as a Senator from Delaware for many years.</p><p>Well connected to the mainstream Democratic establishment, there are few complaints about Biden's performance thus far, though he does have a reputation as being gaffe-prone.</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 31,
+        "fields": {
+            "first_name": "Paul",
+            "last_name": "Ryan",
+            "election": 3,
+            "party": "Republican",
+            "state": "Wisconsin",
+            "priority": 8,
+            "description": "<p>V.P.</p>",
+            "color_hex": "#FF0000",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://i.postimg.cc/y8s8z82P/2012-Ryan.png",
+            "electoral_victory_message": "n/a",
+            "electoral_loss_message": "n/a",
+            "no_electoral_majority_message": "n/a",
+            "description_as_running_mate": "<p><em>Code name: Fishconsin</em></p><p>Paul Ryan has gained national attention with his work on the federal budget as a Congressman from Wisconsin. His advocacy for deficit reduction appeals to a wide range of moderate conservatives, and his home state of Wisconsin promises to be a close call on election night.</p><p>On the other hand, Ryan has only served as a Congressman and has little experience running in a national or even a statewide election.</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 32,
+        "fields": {
+            "first_name": "Rob",
+            "last_name": "Portman",
+            "election": 3,
+            "party": "Republican",
+            "state": "Ohio",
+            "priority": 9,
+            "description": "n/a",
+            "color_hex": "#FF0000",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://i.postimg.cc/qv4vdvWc/2012-Portman.png",
+            "electoral_victory_message": "n/a",
+            "electoral_loss_message": "n/a",
+            "no_electoral_majority_message": "n/a",
+            "description_as_running_mate": "<p><em>Code name: Filet o Fish</em></p><p>As a Senator from Ohio and former cabinet member for George W. Bush, Rob Portman would bring insider experience to a Republican Administration. He has worked with a particular focus on fiscal and economic issues, where he has advocated for much conservative legislation.</p><p>Ohio is a must-win state for both candidates, and Portman's presence could be crucial to a Republican victory there.</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 33,
+        "fields": {
+            "first_name": "Marco",
+            "last_name": "Rubio",
+            "election": 3,
+            "party": "Republican",
+            "state": "Florida",
+            "priority": 10,
+            "description": "n/a",
+            "color_hex": "#FF0000",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://i.postimg.cc/k5wLk196/2012-Rubio.png",
+            "electoral_victory_message": "n/a",
+            "electoral_loss_message": "n/a",
+            "no_electoral_majority_message": "n/a",
+            "description_as_running_mate": "<p><em>Code name: Pescado</em></p><p>A recently elected Senator from Florida, Marco Rubio brings strong political connections from that state. As a member of the Cuban-American community, he could help blunt the charge that Romney is indifferent to the rapidly-growing Hispanic community.</p><p>Rubio is also considered more conservative than some of Romney's other options, and is on good terms with the Tea Party movement. Florida is another must-win state for the Republicans in 2012.</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 34,
+        "fields": {
+            "first_name": "Hillary",
+            "last_name": "Clinton",
+            "election": 3,
+            "party": "Democratic",
+            "state": "New York",
+            "priority": 11,
+            "description": "n/a",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://i.postimg.cc/3ryJFpC9/2012-Clinton.png",
+            "electoral_victory_message": "n/a",
+            "electoral_loss_message": "n/a",
+            "no_electoral_majority_message": "n/a",
+            "description_as_running_mate": "<p><em>The bold choice.</em></p><p>Hillary Clinton would be a change for Obama if he chose her as his running mate. Her current home state is New York, though she lived in Arkansas for many years. Her husband is former President Bill Clinton.</p><p>Clinton has served as Secretary of State since 2009 and won high praise for her performance, and she would bring added star power to Obama's reelection bid. The risks include offending Joe Biden as well as making Obama appear indecisive to some voters.</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 37,
+        "fields": {
+            "first_name": "Tim",
+            "last_name": "Pawlenty",
+            "election": 3,
+            "party": "Republican",
+            "state": "Minnesota",
+            "priority": 12,
+            "description": "n/a",
+            "color_hex": "#FF0000",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://i.postimg.cc/zD9DtBxD/2012-Pawlenty.png",
+            "electoral_victory_message": "n/a",
+            "electoral_loss_message": "n/a",
+            "no_electoral_majority_message": "n/a",
+            "description_as_running_mate": "<p><em>Code name: Lakefish</em></p><p>Tim Pawlenty served as the Governor of Minnesota for eight years and briefly sought the Republican nomination in 2011. He brings a reputation as a moderate and a strong manager, and could help burnish Romney's credentials in the upper Midwest.</p><p>However, if Romney wants to unite the conservative base of his party, Pawlenty may not be the best choice.</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 40,
+        "fields": {
+            "first_name": "Chris",
+            "last_name": "Christie",
+            "election": 3,
+            "party": "Republican",
+            "state": "New Jersey",
+            "priority": 15,
+            "description": "n/a",
+            "color_hex": "#FF0000",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://i.postimg.cc/RC3VLfQX/2012-Christie.png",
+            "electoral_victory_message": "n/a",
+            "electoral_loss_message": "n/a",
+            "no_electoral_majority_message": "n/a",
+            "description_as_running_mate": "<p><em>Code name: Pufferfish</em></p><p> Chris Christie is the Governor of New Jersey, having been elected in 2010. He was widely speculated to run in 2012 due to his broad support among both parties in his home state and his favorable polling against Barack Obama.</p><p> Christie’s feisty persona would mesh well with the base, but having a fellow blue state governor on the ticket could backfire.</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 18,
+        "fields": {
+            "first_name": "Gary",
+            "last_name": "Johnson",
+            "election": 3,
+            "party": "Libertarian",
+            "state": "New Mexico",
+            "priority": 1,
+            "description": "",
+            "color_hex": "#E8CA1D",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "",
+            "electoral_victory_message": "<h3>You cheated</h3><p>You wanna win for real as Gary Johnson? Play Johnson 2016 and pick Vermin Supreme as your running mate.</p>",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 19,
+        "fields": {
+            "first_name": "Jill",
+            "last_name": "Stein/Others",
+            "election": 3,
+            "party": "Green",
+            "state": "Massachusetts",
+            "priority": 1,
+            "description": "",
+            "color_hex": "#00B232",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "",
+            "electoral_victory_message": "<h3>You cheated</h3><p>Stein is a Russian asset and the other people are irrelevant. That is all.</p>",
+            "electoral_loss_message": "",
+            "no_electoral_majority_message": "",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    }
+]
+
+campaignTrail_temp.running_mate_json = [
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 174003,
+        "fields": {
+            "candidate": 16,
+            "running_mate": 30
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 162484,
+        "fields": {
+            "candidate": 16,
+            "running_mate": 34
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 141678,
+        "fields": {
+            "candidate": 17,
+            "running_mate": 31
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 99880,
+        "fields": {
+            "candidate": 17,
+            "running_mate": 32
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 137086,
+        "fields": {
+            "candidate": 17,
+            "running_mate": 33
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 130189,
+        "fields": {
+            "candidate": 17,
+            "running_mate": 37
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 163133,
+        "fields": {
+            "candidate": 17,
+            "running_mate": 40
+        }
+    }
+]
+
+campaignTrail_temp.credits = "<button onclick='credits()'>MadCowBro</button>"
+
+credits = function() {
+  credits = [ "Special Thanks to:", "Liquidastro - Bunnyhop", "Astro - Shuffle Questions On/Off Toggle", "W. Team - Ads", "DecstarG - Credits page", "Dan Bryan - Original 2012 scenario, and TCT in general"]
+  text = "CREDITS:\n\n"
+  for (i in credits) {
+      text += credits[i] + "\n"
+  }
+  alert(text)
+}
+
+campaignTrail_temp.opponents_default_json = [
+    {
+        "election": 3,
+        "candidates": [
+            16,
+            17,
+            18,
+            19
+        ]
+    }
+]
+
+campaignTrail_temp.opponents_weighted_json = [
+    {
+        "election": 3,
+        "candidates": [
+            16,
+            17,
+            18,
+            19
+        ]
+    }
+]
+
+jet_data = {
+    "headerColor": "#912923",
+    "windowColor": "#0D2261",
+    "containerColor": "#FFFFFF",
+    "innerWindowColor": "#0E77A1",
+    "bannerImageUrl": "https://i.imgur.com/bm6gylh.png",
+    "backgroundImageUrl": "https://i.imgur.com/Axdllkz.png",
+    "endingTextColor": "#000000",
+    "customQuote": " - Mitt Romney",
+    "gameTitle": "THE REDUX TRAIL"
+}
+
+  let contentBox = document.getElementsByClassName("content_box")[0];
+  let contentSingle = document.getElementsByClassName("content_single")[0];
+  
+  let containerRef = document.getElementsByClassName("container")[0];
+
+  function createBanner(url, sibling, isLeft) {
+      let div = document.createElement("DIV");
+      let img = document.createElement("IMG");
+      div.style.position = "relative";
+      div.style.margin = "auto";
+      img.src = url;
+      
+  
+      let x = document.createElement("DIV");
+      x.innerText = "_";
+      x.style.position = "absolute";
+      x.style.padding = "2px";
+      x.style.fontSize = "2pt";
+      x.style.cursor = "pointer";
+  
+      div.appendChild(x);
+  
+      div.appendChild(img);
+  
+      if(isLeft) {
+          sibling.parentNode.insertBefore(div, sibling);
+      }
+      else {
+          sibling.parentNode.appendChild(div);
+      }
+      x.onclick = () => div.style.visibility = "hidden";
+      x.onclick = () => img.style.visibility = "hidden";
+      return img;
+  }
+
+//#startcode
+
+
+quotes = ["'If you’ve got a business, you didn’t build that.' - Barack Obama", "'Well, governor, we also have fewer horses and bayonets.' - Barack Obama", "'The 1980s are now calling to ask for their foreign policy back.' - Barack Obama", "'I was a severely conservative Republican governor.' - Mitt Romney", "'There are 47 percent of the people who will vote for the president no matter what.' - Mitt Romney", "'And they brought us whole binders full of women.' - Mitt Romney"]
+customquote = quotes[Math.floor((Math.random() * quotes.length))]
+corrr = `\n<h2>THE REDUX TRAIL</h2><font id='wittyquote' size='4' color='FFFFFF'><em>` + customquote + `</em></font>`;
+
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#912923";
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#0D2261";
+
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+$(".container")[0].style.backgroundColor = "#FFFFFF";
+
+document.getElementById("header").src = "https://i.postimg.cc/RVKSjBYQ/2012-Banner.png";
+
+document.body.background = "https://i.postimg.cc/5t2mtvXd/IMG-2867.webp";
+
+document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#0E77A1!important;}</style>";
+
+  campaignTrail_temp.banner1 = createBanner("https://i.postimg.cc/K8Jq9x72/IMG-2977.jpg", containerRef, true);
+  campaignTrail_temp.banner2 = createBanner("https://i.postimg.cc/6q60XJ14/IMG-2819.jpg", containerRef, false);
+
+HistHexcolour=["#0048E2","#E60813","#E8CA1D","#00B232"]; HistName=[" Barack Obama"," Mitt Romney"," Gary Johnson"," Jill Stein/Others"]; HistEV=[332,206,0,0]; HistPV=["65,915,795","60,933,504","1,275,971","960,140"]; HistPVP=["51.1%","47.2%","1.0%","0.7%"];
+
+RecReading = true
+
+campaignTrail_temp.modBoxTheme = {
+     "header_color": "#912923",
+     "header_text_color": "#ffffff",
+     "description_text_color": "#000000",
+     "description_background_color": "#ffffff",
+     "main_color": "#0D2261",
+     "secondary_color": "#0E77A1",
+     "ui_text_color": "#000000"
+}
+
+//#endcode
+
+campaignTrail_temp.achievements = {
+  "Nothing Ever Happens         " : {
+    "image" : "https://i.postimg.cc/8PMpqSYS/Nothing-Ever-Happens-Achievement.png",
+    "description" : "As anyone, achieve the historical results.",
+    "cannotBeCheated" : true
+  },
+  "Obama’s Nation         " : {
+    "image" : "https://i.postimg.cc/Qx18R3zc/Obama-Nation-Achievment.png",
+    "description" : "As Obama, exceed your 2008 margins.",
+    "cannotBeCheated" : true
+  },
+  "No Apology         " : {
+    "image" : "https://i.postimg.cc/bNkyKh5D/No-Apology-Achievement.png",
+    "description" : "As Romney, win with more than 332 EVs.",
+    "cannotBeCheated" : true
+  },
+  "Darker Vision         " : {
+    "image" : "https://i.postimg.cc/28hkPDt6/Darker-Vision-Achievement.png",
+    "description" : "As Obama, revive liberalism and win.",
+    "cannotBeCheated" : true
+  },
+  "Mitt “Joe Biden” Romney         " : {
+    "image" : "https://i.postimg.cc/v81Ht9L0/Mitt-Joe-Biden-Romney-Achievement.png",
+    "description" : "As Romney, be gaffe-prone and win.",
+    "cannotBeCheated" : true
+  },
+  "Malarkey         " : {
+    "image" : "https://i.postimg.cc/52b2M2DN/Malarky-Achievement.png",
+    "description" : "As Obama, only win DC.",
+    "cannotBeCheated" : true
+  },
+  "Mormon Country         " : {
+    "image" : "https://i.postimg.cc/T2yYJmqZ/Mormon-Country-Achievement.png",
+    "description" : "As Romney, only win Utah.",
+    "cannotBeCheated" : true
+  }
+}
+
+  campaignTrail_temp.bunnyhop = true;
+  function addColor() {
+    var difficultyDiv = document.getElementById("difficulty_level");
+
+    if (difficultyDiv && !document.getElementById("bunnyhopCheckbox")) {
+        // Create form and label
+        var form = document.createElement("form");
+        form.name = "bunnyhopForm";
+
+        var header = document.createElement("h3");
+        header.textContent = "Shuffle Questions?";
+        form.appendChild(header);
+
+        // Create the checkbox
+        var checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.id = "bunnyhopCheckbox";
+        checkbox.checked = campaignTrail_temp.bunnyhop === true;
+
+        form.appendChild(checkbox);
+        difficultyDiv.appendChild(form);
+
+        // Handle checkbox state change
+        checkbox.addEventListener("change", function () {
+            campaignTrail_temp.bunnyhop = this.checked;
+            campaignTrail_temp.staticQuestions = !this.checked;
+        });
+
+        // Style the forms next to each other
+        var difficultyForm = document.querySelector('form[name="difficulty_level_selection"]');
+        var difficultyHeader = difficultyForm.querySelector('h3');
+        difficultyHeader.textContent = "Select campaign difficulty:";
+
+        var forms = document.querySelectorAll("#difficulty_level form");
+        for (var i = 0; i < forms.length; i++) {
+            forms[i].style.display = "inline-block";
+            forms[i].style.paddingLeft = "10px";
+            forms[i].style.paddingRight = "10px";
+        }
+    }
+}
+  // the wrapper here is the same that makes sure your music player doesn't exist twice basically
+  if(!campaignTrail_temp.observer){
+  
+      campaignTrail_temp.observer = true
+  
+      // Define the MutationObserver
+      let masterObserver = new MutationObserver(masterFunction);
+      function masterFunction() {
+          masterObserver.disconnect();
+  
+          addColor();
+  
+          masterObserver.observe(document.body, { childList: true, subtree: true });
+      }
+  
+      // Start observing the document with the master observer
+      masterObserver.observe(document.body, { childList: true, subtree: true });
+  }

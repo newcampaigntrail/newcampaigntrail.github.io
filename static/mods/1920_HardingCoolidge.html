@@ -1,10 +1,3 @@
-function ctsAchievement(achievement, difficultyChecker = true){
-	if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
-		if(campaignTrail_temp.CTS){
-		unlockAchievement(achievement);
-	}
-}
-
 campaignTrail_temp.questions_json = [
     {
         "model": "campaign_trail.question",
@@ -137,7 +130,7 @@ campaignTrail_temp.questions_json = [
         "pk": 678,
         "fields": {
             "priority": 4,
-            "description": "Given the walloping of Democrats that is expected at the ballot box in November, there appear to be a somewhat significant third-party presence. Is there anything you wish to do to take advantage of this, or perhaps bring them into the Republican fold? ",
+            "description": "Given the walloping defat of {{op}} that is expected at the ballot box in November, there appear to be a somewhat significant third-party presence. Is there anything you wish to do to take advantage of this, or perhaps bring them into the Republican fold? ",
             "likelihood": 1
         }
     },
@@ -263,7 +256,7 @@ campaignTrail_temp.questions_json = [
         "pk": 15241,
         "fields": {
             "priority": 0,
-            "description": "Although the headwinds nationally benefit you, some polls suggest you may not carry the Bluegrass State of Kentucky - specifically thanks to central Kentucky political boss Billy Kair. Are you willing to invest extra into the state to prevent a Democratic victory in the state?",
+            "description": "Although the headwinds nationally benefit you, some polls suggest you may not carry the Bluegrass State of Kentucky - specifically thanks to central Kentucky political boss Billy Kair. Are you willing to invest extra into the state to prevent {{opLast}} from winning the state?",
             "likelihood": 1
         }
     },
@@ -475,7 +468,7 @@ campaignTrail_temp.answers_json = [
         "pk": 4279,
         "fields": {
             "question": 668,
-            "description": "Wilson is far more lucrative to attack compared to any Democrat running. What we call for is not heroics, but healing. not nostrums, but normalcy. Not revolution, but restoration."
+            "description": "Wilson is far more lucrative to attack compared to attacking {{op}}, or any Democrat running. What we call for is not heroics, but healing. not nostrums, but normalcy. Not revolution, but restoration."
         }
     },
     {
@@ -651,7 +644,7 @@ campaignTrail_temp.answers_json = [
         "pk": 4302,
         "fields": {
             "question": 676,
-            "description": "The Appalachian region is deeply isolationist, and gives us a clear shot of winning Tennessee. I believe the Republican Party would do good in investing in the state. "
+            "description": "The Appalachian region is deeply isolationist, and gives us a clear shot of winning Tennessee over {{op}}. I believe the Republican Party would do good in investing in the state. "
         }
     },
     {
@@ -675,7 +668,7 @@ campaignTrail_temp.answers_json = [
         "pk": 4305,
         "fields": {
             "question": 678,
-            "description": "We may not be able to win Texas - but perhaps by withdrawing our name off the ballot, the opposition could outpoll whatever Democrat is running and lay the groundwork for Republican success in the state."
+            "description": "We may not be able to win Texas - but perhaps by withdrawing our name off the ballot, the opposition could outpoll {{op}}, and lay the groundwork for Republican success in the state."
         }
     },
     {
@@ -707,7 +700,7 @@ campaignTrail_temp.answers_json = [
         "pk": 4314,
         "fields": {
             "question": 681,
-            "description": "Wilson's administration has seen a sharp reduction in wages. I would support policies to bring our wages back up, such as a new tariff to strengthen American industries. "
+            "description": "Wilson's administration has seen a sharp reduction in wages, and {{op}} would continue those policies. I would support policies to bring our wages back up, such as a new tariff to strengthen American industries. "
         }
     },
     {
@@ -787,7 +780,7 @@ campaignTrail_temp.answers_json = [
         "pk": 4327,
         "fields": {
             "question": 686,
-            "description": "We must make haste in preventing a massive woman's voting bloc from forming. We will support extended maternal leave and other policies to gain the female vote."
+            "description": "We must make haste in preventing a massive woman's voting bloc from forming, one that may support {{op}}'s campaign. Therefore, we shall support extended maternal leave, and other policies to gain the female vote."
         }
     },
     {
@@ -1011,7 +1004,7 @@ campaignTrail_temp.answers_json = [
         "pk": 4365,
         "fields": {
             "question": 697,
-            "description": "We should pour our final resources into the Tar Heel state of North Carolina. We are in a prime position to win it with the repeal of their poll tax."
+            "description": "We should pour our final resources into the Tar Heel state of North Carolina. We are in a prime position to win it over {{op}} with the repeal of their poll tax."
         }
     },
     {
@@ -1115,7 +1108,7 @@ campaignTrail_temp.answers_json = [
         "pk": 15355,
         "fields": {
             "question": 15241,
-            "description": "I believe we can win Kentucky, and that our efforts are best suited nationally and in other swing states."
+            "description": "I believe we can win Kentucky from {{op}} regardless, and that our efforts are best suited nationally and in other swing states."
         }
     },
     {
@@ -9048,7 +9041,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "pk": 15665,
         "fields": {
             "answer": 15660,
-            "issue": "52",
+            "issue": 52,
             "issue_score": 0.3,
             "issue_importance": 8
         }
@@ -9069,7 +9062,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "fields": {
             "answer": 15690,
             "issue": 54,
-            "issue_score": "0.0",
+            "issue_score": 0,
             "issue_importance": 8
         }
     },
@@ -13624,8 +13617,8 @@ campaignTrail_temp.answer_score_state_json = [
         "fields": {
             "answer": 15643,
             "state": 408,
-            "candidate": "143",
-            "affected_candidate": "143",
+            "candidate": 143,
+            "affected_candidate": 143,
             "state_multiplier": 0.07
         }
     },
@@ -13635,8 +13628,8 @@ campaignTrail_temp.answer_score_state_json = [
         "fields": {
             "answer": 15643,
             "state": 410,
-            "candidate": "143",
-            "affected_candidate": "143",
+            "candidate": 143,
+            "affected_candidate": 143,
             "state_multiplier": 0.07
         }
     },
@@ -13646,8 +13639,8 @@ campaignTrail_temp.answer_score_state_json = [
         "fields": {
             "answer": 15643,
             "state": 415,
-            "candidate": "143",
-            "affected_candidate": "143",
+            "candidate": 143,
+            "affected_candidate": 143,
             "state_multiplier": 0.07
         }
     },
@@ -13657,8 +13650,8 @@ campaignTrail_temp.answer_score_state_json = [
         "fields": {
             "answer": 15643,
             "state": 416,
-            "candidate": "143",
-            "affected_candidate": "143",
+            "candidate": 143,
+            "affected_candidate": 143,
             "state_multiplier": 0.07
         }
     },
@@ -13668,8 +13661,8 @@ campaignTrail_temp.answer_score_state_json = [
         "fields": {
             "answer": 15643,
             "state": 423,
-            "candidate": "143",
-            "affected_candidate": "143",
+            "candidate": 143,
+            "affected_candidate": 143,
             "state_multiplier": 0.07
         }
     },
@@ -13679,8 +13672,8 @@ campaignTrail_temp.answer_score_state_json = [
         "fields": {
             "answer": 15643,
             "state": 429,
-            "candidate": "143",
-            "affected_candidate": "143",
+            "candidate": 143,
+            "affected_candidate": 143,
             "state_multiplier": 0.07
         }
     },
@@ -13690,8 +13683,8 @@ campaignTrail_temp.answer_score_state_json = [
         "fields": {
             "answer": 15643,
             "state": 438,
-            "candidate": "143",
-            "affected_candidate": "143",
+            "candidate": 143,
+            "affected_candidate": 143,
             "state_multiplier": 0.07
         }
     },
@@ -13701,8 +13694,8 @@ campaignTrail_temp.answer_score_state_json = [
         "fields": {
             "answer": 15643,
             "state": 445,
-            "candidate": "143",
-            "affected_candidate": "143",
+            "candidate": 143,
+            "affected_candidate": 143,
             "state_multiplier": 0.07
         }
     },
@@ -13712,8 +13705,8 @@ campaignTrail_temp.answer_score_state_json = [
         "fields": {
             "answer": 15643,
             "state": 447,
-            "candidate": "143",
-            "affected_candidate": "143",
+            "candidate": 143,
+            "affected_candidate": 143,
             "state_multiplier": 0
         }
     },
@@ -13723,8 +13716,8 @@ campaignTrail_temp.answer_score_state_json = [
         "fields": {
             "answer": 15643,
             "state": 448,
-            "candidate": "143",
-            "affected_candidate": "143",
+            "candidate": 143,
+            "affected_candidate": 143,
             "state_multiplier": 0.07
         }
     },
@@ -13734,8 +13727,8 @@ campaignTrail_temp.answer_score_state_json = [
         "fields": {
             "answer": 15643,
             "state": 451,
-            "candidate": "143",
-            "affected_candidate": "143",
+            "candidate": 143,
+            "affected_candidate": 143,
             "state_multiplier": 0.07
         }
     },
@@ -13745,8 +13738,8 @@ campaignTrail_temp.answer_score_state_json = [
         "fields": {
             "answer": 15661,
             "state": 408,
-            "candidate": "143",
-            "affected_candidate": "143",
+            "candidate": 143,
+            "affected_candidate": 143,
             "state_multiplier": 0.07
         }
     },
@@ -13756,8 +13749,8 @@ campaignTrail_temp.answer_score_state_json = [
         "fields": {
             "answer": 15661,
             "state": 410,
-            "candidate": "143",
-            "affected_candidate": "143",
+            "candidate": 143,
+            "affected_candidate": 143,
             "state_multiplier": 0.07
         }
     },
@@ -13767,8 +13760,8 @@ campaignTrail_temp.answer_score_state_json = [
         "fields": {
             "answer": 15661,
             "state": 416,
-            "candidate": "143",
-            "affected_candidate": "143",
+            "candidate": 143,
+            "affected_candidate": 143,
             "state_multiplier": 0.07
         }
     },
@@ -13778,8 +13771,8 @@ campaignTrail_temp.answer_score_state_json = [
         "fields": {
             "answer": 15661,
             "state": 423,
-            "candidate": "143",
-            "affected_candidate": "143",
+            "candidate": 143,
+            "affected_candidate": 143,
             "state_multiplier": 0.07
         }
     },
@@ -13789,8 +13782,8 @@ campaignTrail_temp.answer_score_state_json = [
         "fields": {
             "answer": 15661,
             "state": 429,
-            "candidate": "143",
-            "affected_candidate": "143",
+            "candidate": 143,
+            "affected_candidate": 143,
             "state_multiplier": 0.07
         }
     },
@@ -13800,8 +13793,8 @@ campaignTrail_temp.answer_score_state_json = [
         "fields": {
             "answer": 15661,
             "state": 438,
-            "candidate": "143",
-            "affected_candidate": "143",
+            "candidate": 143,
+            "affected_candidate": 143,
             "state_multiplier": 0.07
         }
     },
@@ -13811,8 +13804,8 @@ campaignTrail_temp.answer_score_state_json = [
         "fields": {
             "answer": 15661,
             "state": 445,
-            "candidate": "143",
-            "affected_candidate": "143",
+            "candidate": 143,
+            "affected_candidate": 143,
             "state_multiplier": 0.07
         }
     },
@@ -13822,8 +13815,8 @@ campaignTrail_temp.answer_score_state_json = [
         "fields": {
             "answer": 15661,
             "state": 447,
-            "candidate": "143",
-            "affected_candidate": "143",
+            "candidate": 143,
+            "affected_candidate": 143,
             "state_multiplier": 0.07
         }
     },
@@ -13833,8 +13826,8 @@ campaignTrail_temp.answer_score_state_json = [
         "fields": {
             "answer": 15661,
             "state": 448,
-            "candidate": "143",
-            "affected_candidate": "143",
+            "candidate": 143,
+            "affected_candidate": 143,
             "state_multiplier": 0.07
         }
     },
@@ -13844,8 +13837,8 @@ campaignTrail_temp.answer_score_state_json = [
         "fields": {
             "answer": 15661,
             "state": 451,
-            "candidate": "143",
-            "affected_candidate": "143",
+            "candidate": 143,
+            "affected_candidate": 143,
             "state_multiplier": 0.07
         }
     },
@@ -14149,7 +14142,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 4290,
             "candidate": 143,
-            "answer_feedback": "This is a respectable answer, and many have reservations about the League in general."
+            "answer_feedback": "This is a respectable answer, and many have reservations about the League in general, which has been a detriment to {{op}}'s campaign."
         }
     },
     {
@@ -14158,7 +14151,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 4292,
             "candidate": 143,
-            "answer_feedback": "Irreconcilables like Hiram Johnson are not happy with this type of messaging. "
+            "answer_feedback": "Irreconcilables like Hiram Johnson are not happy with this type of messaging, and it's not that far different from {{opLast}}'s stance."
         }
     },
     {
@@ -14257,7 +14250,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 4315,
             "candidate": 143,
-            "answer_feedback": "This is broadly popular, but you may have shut yourself out of the inroads you wished to make in the 'solid south'."
+            "answer_feedback": "This is broadly popular, but you may have shut yourself out of the inroads you wished to make in the 'solid south' over {{op}}."
         }
     },
     {
@@ -14338,7 +14331,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 4333,
             "candidate": 143,
-            "answer_feedback": "This is a controversial stance, and it is probably aligned with the minority within your party."
+            "answer_feedback": "This is a controversial stance, and it is probably aligned with the minority within your party. Expect this to hurt you against {{op}}."
         }
     },
     {
@@ -14392,7 +14385,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 4340,
             "candidate": 143,
-            "answer_feedback": "A progressive answer, and one that may very well deflate Republican turnout."
+            "answer_feedback": "A progressive answer, and one that may very well deflate Republican turnout and assist {{op}}'s campaign."
         }
     },
     {
@@ -14590,7 +14583,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 4280,
             "candidate": 143,
-            "answer_feedback": "Good choice. If you want Irish-German support, this is the way to go."
+            "answer_feedback": "Good choice. If you want Irish-German support, this is the way to go. {{op}} and the Democrats are imploding with Irish-German Americans."
         }
     },
     {
@@ -14617,7 +14610,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 4306,
             "candidate": 143,
-            "answer_feedback": "This will likely further solidify your support in the north, where disaffected progressives will vote for Debs. "
+            "answer_feedback": "This will likely further solidify your support in the north, where disaffected progressives will vote for Debs over {{op}}. "
         }
     },
     {
@@ -14662,7 +14655,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 15329,
             "candidate": 143,
-            "answer_feedback": "Although a minor issue, few Americans have sympathy for Hungary."
+            "answer_feedback": "Although a minor issue, few Americans have sympathy for Hungary. Still, this should change little in the polls between you and {{op}}."
         }
     },
     {
@@ -14671,7 +14664,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 15263,
             "candidate": 143,
-            "answer_feedback": "This is certainly a weak spot for the Democrats, given how visible Roosevelt was at the convention."
+            "answer_feedback": "This is certainly a weak spot for {{op}}, given how visible Roosevelt was at the convention."
         }
     },
     {
@@ -14761,7 +14754,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 15366,
             "candidate": 143,
-            "answer_feedback": "Many of Debs' supporters are happy to hear you say this, although it's unknown how many Americans would support such a move."
+            "answer_feedback": "Many of Debs' supporters are happy to hear you say this, although it's unknown how many Americans would support such a move. {{op}} denounces you for proposing this."
         }
     },
     {
@@ -14824,7 +14817,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 15422,
             "candidate": 143,
-            "answer_feedback": "An expected route of attack."
+            "answer_feedback": "This is an expected route of attack against {{op}}."
         }
     },
     {
@@ -14887,7 +14880,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 15460,
             "candidate": 143,
-            "answer_feedback": "Attacking the Democratic ticket for the League of Nations is an expected route of attack."
+            "answer_feedback": "Attacking {{op}} and the Democrats for the League of Nations is an expected route of attack."
         }
     },
     {
@@ -14914,7 +14907,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 15478,
             "candidate": 143,
-            "answer_feedback": "Attacking the Democratic ticket for the League of Nations is an expected route of attack."
+            "answer_feedback": "Attacking {{op}} and the Democrats for the League of Nations is an expected route of attack."
         }
     },
     {
@@ -14932,7 +14925,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 15486,
             "candidate": 143,
-            "answer_feedback": "This is the expected route."
+            "answer_feedback": "This is the expected route to take with a topic such as this one."
         }
     },
     {
@@ -14959,7 +14952,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 15551,
             "candidate": 143,
-            "answer_feedback": "This won't really help or hurt you."
+            "answer_feedback": "This won't really help or hurt you against {{op}}, all things considered."
         }
     },
     {
@@ -15004,7 +14997,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 15571,
             "candidate": 143,
-            "answer_feedback": "Fair enough. "
+            "answer_feedback": "Fair enough. It's not like there's much to say here against {{op}} anyway."
         }
     },
     {
@@ -15067,7 +15060,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 15643,
             "candidate": 143,
-            "answer_feedback": "You'll face some backlash in the North, but some say you may be able to win a state like North Carolina with this."
+            "answer_feedback": "You'll face some backlash in the North, but some say you may be able to win a state like North Carolina against {{op}} with a move like this."
         }
     },
     {
@@ -15112,7 +15105,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 15679,
             "candidate": 143,
-            "answer_feedback": "Thompson senses weakness, and the cogs in his machine begin turning faster."
+            "answer_feedback": "Thompson senses weakness, and the cogs in his machine begin turning faster - and in favor of {{op}}."
         }
     },
     {
@@ -15130,7 +15123,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 15690,
             "candidate": 143,
-            "answer_feedback": "Labor was disappointed by many of the actions members of the State Police took."
+            "answer_feedback": "Labor was disappointed by many of the actions members of the State Police took, so something like this does little to help you."
         }
     },
     {
@@ -15148,7 +15141,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 15692,
             "candidate": 143,
-            "answer_feedback": "Labor is not happy with this sort of rhetoric."
+            "answer_feedback": "Labor is not happy with this sort of rhetoric. Expect them to support Debs, or even consider voting for {{op}}"
         }
     }
 ]
@@ -15165,6 +15158,14 @@ campaignTrail_temp.jet_data = [{
     }
 }
 ]
+
+function ctsAchievement(achievement, difficultyChecker = true){
+	if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
+		if(campaignTrail_temp.CTS){
+		unlockAchievement(achievement);
+	}
+}
+
 campaignTrail_temp.candidate_image_url = 'https://itsastronomical.com/assets/1920/harding.png';
 campaignTrail_temp.running_mate_image_url = 'https://itsastronomical.com/assets/1920/dougherty.png';
 campaignTrail_temp.candidate_last_name = 'Harding';
@@ -15175,10 +15176,26 @@ campaignTrail_temp.player_visits = [];
 campaignTrail_temp.answer_feedback_flg = 1;
 campaignTrail_temp.game_start_logging_id = '3843333';
 
+
+// Variables
+window.can = "Senator Harding"
+window.canLast = "Harding"
+window.op = "Governor Cox";
+window.opLast = "Cox"
+
+const style_overwrite = document.createElement("style");
+style_overwrite.innerHTML = 
+`#campaign_sign {
+  background-color:rgb(187, 61, 39);
+  border-color:rgb(203, 112, 98);
+}`
+;
+document.head.appendChild(style_overwrite);
+
 e = campaignTrail_temp
 used=false
 
- q_list0 = [[686, "Thanks to the passage of the Nineteenth Amendment, women now have access to the polls in all 48 states. Will your campaign make any major effort to push for increased female turnout for the Republican ticket?"], [688, "What do you have to say about the Keating–Owen Act, the Revenue Act of 1919, and other acts written in an attempt to curb child labor in the United States?"], [668, "How much will your campaign attack incumbent President Woodrow Wilson, and specifically - what policies of his would you most like to focus on attacking?"], [672, "Although the Republican Platform opposes entry into the League in it's current state, what is your exact position on the League of Nations?"], [678, "Given the walloping of Democrats that is expected at the ballot box in November, there appear to be a somewhat significant third-party presence. Is there anything you wish to do to take advantage of this, or perhaps bring them into the Republican fold?"], [676, "With your growing lead, many straw polls predict you have the ability to make a breakthrough in the so-called 'solid south' - a group of around a dozen states that have consistently voted for the Democratic ticket on the Presidential level since 1880. Is there any southern state you would like to focus on?"], [674, "After the Bolsheviks seizes power in Russia, there was a serious uptick in fear over both real and fictional scares of a communist takeover in America, known as the 'Red Scare'. What is your opinion on these events, and will your campaign take any advantage of these?"], [689, "Due to the chaos in Europe, among other things, immigration remains an important issue this election. What is the Republican position on immigration? Would you support new limits on European immigrants?"], [681, "Is there any specific policy you can name of President Wilson's that you would support modifying or overturning?"], [683, "Do you support the 18th Amendment, which outlawed alcohol in the United States?  Do you think the logistics of enforcing it are worth it?"], [682, "Broadly speaking, what do you think of the current situation in post-war Europe? What do you think is most likely to bring peace to the continent?"], [691, "Over the last few years, the United States has been deep within a post-war recession. The industrial demand of a war-time economy has caused wages to go down and economic uncertainty. What do you see as the cause for the depression, and what would you do as President to get the United States back on track?"], [694, "In the aftermath of the Spanish Flu, do you believe the federal government has a role to play in protecting America from epidemics and other spreading of diseases?"], [15238, "Given the instability of Hungary in recent years - from the Hungary Soviet Republic to their attempts to claim Czech and Yugoslav lands, what do you believe should happen to the nation?"], [15239, "Do you believe the United States should continue the military occupation of Haiti, which has persisted since 1915?"], [15240, "Do you believe the Ottoman Empire should be broken up and partitioned as established within the Treaty of Sèvres? What is your general belief for the security of Anatolia?"], [15241, "Although the headwinds nationally benefit you, some polls suggest you may not carry the Bluegrass State of Kentucky - specifically thanks to central Kentucky political boss Billy Kair. Are you willing to invest extra into the state to prevent a Democratic victory in the state?"], [15242, "Do you think it was the right decision to arrest Eugene Debs, who is now running as the Socialist nominee in this election? Would you pardon or commute his sentence as President?"]]
+ q_list0 = [[686, "Thanks to the passage of the Nineteenth Amendment, women now have access to the polls in all 48 states. Will your campaign make any major effort to push for increased female turnout for the Republican ticket?"], [688, "What do you have to say about the Keating–Owen Act, the Revenue Act of 1919, and other acts written in an attempt to curb child labor in the United States?"], [668, "How much will your campaign attack incumbent President Woodrow Wilson, and specifically - what policies of his would you most like to focus on attacking?"], [672, "Although the Republican Platform opposes entry into the League in it's current state, what is your exact position on the League of Nations?"], [678, "Given the walloping defeat of {{op}} that is expected at the ballot box in November, there appear to be a somewhat significant third-party presence. Is there anything you wish to do to take advantage of this, or perhaps bring them into the Republican fold? "], [676, "With your growing lead, many straw polls predict you have the ability to make a breakthrough in the so-called 'solid south' - a group of around a dozen states that have consistently voted for the Democratic ticket on the Presidential level since 1880. Is there any southern state you would like to focus on?"], [674, "After the Bolsheviks seizes power in Russia, there was a serious uptick in fear over both real and fictional scares of a communist takeover in America, known as the 'Red Scare'. What is your opinion on these events, and will your campaign take any advantage of these?"], [689, "Due to the chaos in Europe, among other things, immigration remains an important issue this election. What is the Republican position on immigration? Would you support new limits on European immigrants?"], [681, "Is there any specific policy you can name of President Wilson's that you would support modifying or overturning?"], [683, "Do you support the 18th Amendment, which outlawed alcohol in the United States?  Do you think the logistics of enforcing it are worth it?"], [682, "Broadly speaking, what do you think of the current situation in post-war Europe? What do you think is most likely to bring peace to the continent?"], [691, "Over the last few years, the United States has been deep within a post-war recession. The industrial demand of a war-time economy has caused wages to go down and economic uncertainty. What do you see as the cause for the depression, and what would you do as President to get the United States back on track?"], [694, "In the aftermath of the Spanish Flu, do you believe the federal government has a role to play in protecting America from epidemics and other spreading of diseases?"], [15238, "Given the instability of Hungary in recent years - from the Hungary Soviet Republic to their attempts to claim Czech and Yugoslav lands, what do you believe should happen to the nation?"], [15239, "Do you believe the United States should continue the military occupation of Haiti, which has persisted since 1915?"], [15240, "Do you believe the Ottoman Empire should be broken up and partitioned as established within the Treaty of Sèvres? What is your general belief for the security of Anatolia?"], [15241, "Although the headwinds nationally benefit you, some polls suggest you may not carry the Bluegrass State of Kentucky - specifically thanks to central Kentucky political boss Billy Kair. Are you willing to invest extra into the state to prevent {{opLast}} from winning the state?"], [15242, "Do you think it was the right decision to arrest Eugene Debs, who is now running as the Socialist nominee in this election? Would you pardon or commute his sentence as President?"]]
  function shuffle(ar) { for (let i = ar.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[ar[i], ar[j]] = [ar[j], ar[i]]; } return ar; };
  shuffle(q_list0);
  for(let i = 0; i < 13; i++) { campaignTrail_temp.questions_json[i+10].pk = q_list0[i][0]; campaignTrail_temp.questions_json[i+10].fields["description"] = q_list0[i][1]; }
@@ -15242,6 +15259,10 @@ cyoAdventure = function (a) {
 
     if(ans == 4321){
         ctsAchievement("The Judge");
+        window.can = "Mr. Pritchard"
+        window.canLast = "Pritchard"
+        window.op = "Governor Smith";
+        window.opLast = "Smith"
         campaignTrail_temp.candidate_json[0]["fields"].first_name = "Jeter C. ";
         campaignTrail_temp.candidate_json[0]["fields"].last_name = "Pritchard";
         campaignTrail_temp.candidate_json[0]["fields"].color_hex = "#cc0000";
@@ -15289,6 +15310,10 @@ cyoAdventure = function (a) {
     }
     if(ans == 4272){
         ctsAchievement("The Oaks");
+        window.can = "Governor Lowden"
+        window.canLast = "Lowden"
+        window.op = "Secretary McAdoo";
+        window.opLast = "McAdoo"
         campaignTrail_temp.candidate_json[0]["fields"].first_name = "Frank O.";
         campaignTrail_temp.candidate_json[0]["fields"].last_name = "Lowden";
         campaignTrail_temp.candidate_json[0]["fields"].color_hex = "#B06A6A";
@@ -15335,6 +15360,10 @@ cyoAdventure = function (a) {
     }
     if(ans == 4282){
         ctsAchievement("The General");
+        window.can = "General Wood"
+        window.canLast = "Wood"
+        window.op = "Attorney General Palmer";
+        window.opLast = "Palmer"
         campaignTrail_temp.candidate_json[0]["fields"].first_name = "Leonard";
         campaignTrail_temp.candidate_json[0]["fields"].last_name = "Wood";
         campaignTrail_temp.candidate_json[0]["fields"].color_hex = "#F88379";
@@ -15381,6 +15410,10 @@ cyoAdventure = function (a) {
     }
     if(ans == 4277){
         ctsAchievement("The Preservationist");
+        window.can = "Governor Sproul"
+        window.canLast = "Sproul"
+        window.op = "Senator Glass";
+        window.opLast = "Glass"
         campaignTrail_temp.candidate_json[0]["fields"].first_name = "William C.";
         campaignTrail_temp.candidate_json[0]["fields"].last_name = "Sproul";
         campaignTrail_temp.candidate_json[0]["fields"].color_hex = "#EE4B2B";

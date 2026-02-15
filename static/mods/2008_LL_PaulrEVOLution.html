@@ -1,5 +1,5 @@
 function ctsAchievement(achievement, difficultyChecker = true){
-    if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
+    if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1.1)||!difficultyChecker)
         if(campaignTrail_temp.CTS){
         unlockAchievement(achievement);
     }
@@ -45,28 +45,29 @@ e.global_parameter_json[0].fields.question_count = 29
         }
 
     if((ans == 3336)){
-        campaignTrail_temp.running_mate_image_url = "https://imgur.com/CWEBwKy.png"
+        campaignTrail_temp.running_mate_image_url = "https://cdn.imgchest.com/files/993deef63cd0.png"
         campaignTrail_temp.running_mate_last_name = 'Allard'
         campaignTrail_temp.running_mate_state_id = 186
-        campaignTrail_temp.candidate_image_url = 'https://imgur.com/QDzxntJ.png';
+        campaignTrail_temp.candidate_image_url = 'https://cdn.imgchest.com/files/ca8c3e85cc41.png';
         campaignTrail_temp.candidate_last_name = 'Paul';
         vpTable["Ron E. Paul"] = "A. Wayne Allard"; 
             campaignTrail_temp.answers_json.find(item => item.pk === 3369).fields.question = '';
             campaignTrail_temp.answers_json.find(item => item.pk === 12466).fields.question = '';
             campaignTrail_temp.answers_json.find(item => item.pk === 3330).fields.question = '';
             campaignTrail_temp.answers_json.find(item => item.pk === 7014).fields.question = '';
+            campaignTrail_temp.answers_json.find(item => item.pk === 9999).fields.question = '';
+            campaignTrail_temp.answers_json.find(item => item.pk === 6666).fields.question = '';
 
             e.candidate_json[1].fields.color_hex = "#d2562d"
             e.candidate_json[2].fields.color_hex = "#660066"
             applyDrift(80,-0.0015);
 
     }
-    
     if((ans == 3333)){
-    campaignTrail_temp.running_mate_image_url = "https://imgur.com/HNsB5wy.png"
+    campaignTrail_temp.running_mate_image_url = "https://cdn.imgchest.com/files/304eac8123f7.png"
     campaignTrail_temp.running_mate_last_name = 'Stossel'
     campaignTrail_temp.running_mate_state_id = 193  
-    campaignTrail_temp.candidate_image_url = 'https://imgur.com/QDzxntJ.png';
+    campaignTrail_temp.candidate_image_url = 'https://cdn.imgchest.com/files/ca8c3e85cc41.png';
     campaignTrail_temp.candidate_last_name = 'Paul';
     vpTable["Ron E. Paul"] = "John F. Stossel"; 
     campaignTrail_temp.questions_json[22] = {
@@ -91,17 +92,20 @@ e.global_parameter_json[0].fields.question_count = 29
     campaignTrail_temp.answers_json.find(item => item.pk === 3470).fields.question = '';
     campaignTrail_temp.answers_json.find(item => item.pk === 3331).fields.question = '';
     campaignTrail_temp.answers_json.find(item => item.pk === 7013).fields.question = '';
+    campaignTrail_temp.answers_json.find(item => item.pk === 12500).fields.question = '';
+    campaignTrail_temp.answers_json.find(item => item.pk === 12434).fields.question = '';
+
     e.candidate_json[2].fields.color_hex = "#993333"
 
 
-    }
+    }            
 
 
     if((ans == 3411|| ans == 3409 || ans == 3398 || ans == 3397 || ans == 3315)){
-        campaignTrail_temp.running_mate_image_url = "https://imgur.com/wPWfxx1.png"
+        campaignTrail_temp.running_mate_image_url = "https://cdn.imgchest.com/files/786a4d830add.png"
         campaignTrail_temp.running_mate_last_name = 'Rice'
         campaignTrail_temp.running_mate_state_id = 185  
-        campaignTrail_temp.candidate_image_url = 'https://imgur.com/wxQPPnW.png';
+        campaignTrail_temp.candidate_image_url = 'https://cdn.imgchest.com/files/7f41faf28e23.png';
         campaignTrail_temp.candidate_last_name = 'Romney';
         vpTable["W. Mitt Romney"] = "Condoleezza Rice"; 
         var id = e.candidate_json.map(p=>p.pk).indexOf(77)
@@ -125,10 +129,10 @@ e.global_parameter_json[0].fields.question_count = 29
 
     }
     if((ans == 3316) || ans == 3400 || ans == 3410){
-        campaignTrail_temp.running_mate_image_url = "https://imgur.com/AcITawU.png"
+        campaignTrail_temp.running_mate_image_url = "https://cdn.imgchest.com/files/0bf176e082c1.png"
         campaignTrail_temp.running_mate_last_name = 'Pawlenty'
         campaignTrail_temp.running_mate_state_id = 185  
-        campaignTrail_temp.candidate_image_url = 'https://imgur.com/5wqeeX8.png';
+        campaignTrail_temp.candidate_image_url = 'https://cdn.imgchest.com/files/b43e803b0e05.png';
         campaignTrail_temp.candidate_last_name = 'Huckabee';
         var id = e.candidate_json.map(p=>p.pk).indexOf(77)
         e.candidate_json[id].fields.first_name = "Mike D."
@@ -155,10 +159,10 @@ e.global_parameter_json[0].fields.question_count = 29
 
     }
     if((ans == 3317)){
-        campaignTrail_temp.running_mate_image_url = "https://imgur.com/xTKIeiX.png"
+        campaignTrail_temp.running_mate_image_url = "https://cdn.imgchest.com/files/14eee9eaaa36.png"
         campaignTrail_temp.running_mate_last_name = 'Palin'
         campaignTrail_temp.running_mate_state_id = 185  
-        campaignTrail_temp.candidate_image_url = 'https://imgur.com/uEq6gzz.png';
+        campaignTrail_temp.candidate_image_url = 'https://cdn.imgchest.com/files/14eee9eaaa36.png';
         campaignTrail_temp.candidate_last_name = 'Giuliani';
         var id = e.candidate_json.map(p=>p.pk).indexOf(77)
         e.candidate_json[id].fields.first_name = "Rudy W."
@@ -179,7 +183,6 @@ e.global_parameter_json[0].fields.question_count = 29
     e.candidate_json[2].fields.color_hex = "#996633"
 
     }
-    applyDrift(77,-0.003);
     applyDrift(80,-0.0015);
 
     if((ans == 3368)){
@@ -197,33 +200,35 @@ e.global_parameter_json[0].fields.question_count = 29
 
     }
 
+
+
     function applyDrift(candidateId, driftAmount, stateId) {
         // Loop through each object in the JSON array
         campaignTrail_temp.candidate_state_multiplier_json.forEach((item) => {
-          // Check if the candidate ID matches the given candidate
-          if (item.fields.candidate === candidateId) {
+        // Check if the candidate ID matches the given candidate
+        if (item.fields.candidate === candidateId) {
             // If stateId is undefined or empty, apply drift to all states for that candidate
             if (stateId === undefined || stateId.length === 0) {
-              item.fields.state_multiplier += driftAmount;
-              item.fields.state_multiplier = Math.max(0, item.fields.state_multiplier); // Ensure the multiplier never goes below 0
+            item.fields.state_multiplier += driftAmount;
+            item.fields.state_multiplier = Math.max(0, item.fields.state_multiplier); // Ensure the multiplier never goes below 0
             } else {
-              // If stateId is an array, loop through it
-              if (Array.isArray(stateId)) {
+            // If stateId is an array, loop through it
+            if (Array.isArray(stateId)) {
                 if (stateId.includes(item.fields.state)) {
-                  item.fields.state_multiplier += driftAmount;
-                  item.fields.state_multiplier = Math.max(0, item.fields.state_multiplier); // Ensure the multiplier never goes below 0
+                item.fields.state_multiplier += driftAmount;
+                item.fields.state_multiplier = Math.max(0, item.fields.state_multiplier); // Ensure the multiplier never goes below 0
                 }
-              } else {
+            } else {
                 // If stateId is a single value, just check it
                 if (item.fields.state === stateId) {
-                  item.fields.state_multiplier += driftAmount;
-                  item.fields.state_multiplier = Math.max(0, item.fields.state_multiplier); // Ensure the multiplier never goes below 0
+                item.fields.state_multiplier += driftAmount;
+                item.fields.state_multiplier = Math.max(0, item.fields.state_multiplier); // Ensure the multiplier never goes below 0
                 }
-              }
             }
-          }
+            }
+        }
         });
-      }
+    }
 
 
 
@@ -793,7 +798,7 @@ e.global_parameter_json[0].fields.question_count = 29
             "pk": 3399,
             "fields": {
                 "question": 367,
-                "description": "New Hampshire being targeted just means unique messaging will stick out more. I think we should take a few pages from McCain’s campaign 8 years ago, press our outsider message. Maybe talk about some of his reform ideas."
+                "description": "New Hampshire being targeted just means unique messaging will stick out more. I think we should take a few pages from McCain’s campaign 8 years ago, press our outsider message. I think some of his reformist language could aid us greatly here."
             }
         },
         {
@@ -977,7 +982,7 @@ e.global_parameter_json[0].fields.question_count = 29
             "pk": 12295,
             "fields": {
                 "question": 348,
-                "description": "I won’t meet with Bush, the base would kill me. But we can allude to him, absolutely. Let’s make some headlines praising the idea behind No Child Left Behind and Bush’s tax cuts."
+                "description": "I won’t meet with Bush, the base would kill me. But we can allude to him, absolutely. Let’s make some headlines praising the ideas behind No Child Left Behind and Bush’s tax cuts."
             }
         },
         {
@@ -1038,10 +1043,26 @@ e.global_parameter_json[0].fields.question_count = 29
         },
         {
             "model": "campaign_trail.answer",
+            "pk": 6666,
+            "fields": {
+                "question": 359,
+                "description": "I've been on Fox news enough. Clarifying my positions is why we got John Stossel on board, and he'll do an outstanding job with it. I want him on TV all the time. "
+            }
+        },
+        {
+            "model": "campaign_trail.answer",
             "pk": 12439,
             "fields": {
                 "question": 359,
                 "description": "People are getting the wrong idea about me. They think I’m some kind of demented loon and libertarians are callous and selfish. I’m a libertarian because I care deeply about people, and I always have. Let’s make an ad with some of the mothers and kids I worked with as a doctor, and show people how much I care."
+            }
+        },
+        {
+            "model": "campaign_trail.answer",
+            "pk": 15090,
+            "fields": {
+                "question": 359,
+                "description": "I don't think we'll get Joe Q. Public to really understand my stances. Let's redouble my efforts online - ads on websites, communicating with voters on social media and emails straight to voters. I think it's safe to take the average voter for granted. It's me or President Kerry, and I think I know who I'd vote for!"
             }
         },
         {
@@ -1340,6 +1361,22 @@ e.global_parameter_json[0].fields.question_count = 29
                 "description": "He wants attention. We won't give him any. How <i>dare</i> he?"
             }
         },
+        {
+            "model": "campaign_trail.answer",
+            "pk": 9999,
+            "fields": {
+                "question": 12498,
+                "description": "The pundit class has totally written off our chances there, but with the direction of the campaign - I know we can make vital inroads. Let's visit Washington and Oregon."
+            }
+        },
+        {
+            "model": "campaign_trail.answer",
+            "pk": 10001,
+            "fields": {
+                "question": 362,
+                "description": "Look, if people want justices appointed to repeal Roe V Wade, you're not going to get that by staying home or wasting a vote. I admire your principles, but I believe right now we need think pragmatically. I'm the best bet at fixing this issue."
+            }
+        },     
     ]
     
     
@@ -4359,7 +4396,7 @@ e.global_parameter_json[0].fields.question_count = 29
             "fields": {
                 "candidate": 77,
                 "state": 183,
-                "state_multiplier": 0.85
+                "state_multiplier": 0.9
             }
         },
         {
@@ -4611,7 +4648,7 @@ e.global_parameter_json[0].fields.question_count = 29
             "fields": {
                 "candidate": 77,
                 "state": 211,
-                "state_multiplier": 1.05
+                "state_multiplier": 1.1
             }
         },
         {
@@ -6172,7 +6209,6 @@ e.global_parameter_json[0].fields.question_count = 29
             }
         }
     ]
-
     campaignTrail_temp.answer_score_global_json = [
         {
             "model": "campaign_trail.answer_score_global",
@@ -6301,7 +6337,7 @@ e.global_parameter_json[0].fields.question_count = 29
                 "answer": 3382,
                 "candidate": 77,
                 "affected_candidate": 80,
-                "global_multiplier": 0.08
+                "global_multiplier": -0.08
             }
         },
         {
@@ -6371,7 +6407,7 @@ e.global_parameter_json[0].fields.question_count = 29
                 "answer": 3333,
                 "candidate": 77,
                 "affected_candidate": 77,
-                "global_multiplier": -0.05
+                "global_multiplier": -0.07
             }
         },
         {
@@ -6501,7 +6537,7 @@ e.global_parameter_json[0].fields.question_count = 29
                 "answer": 12299,
                 "candidate": 77,
                 "affected_candidate": 77,
-                "global_multiplier": -0.012
+                "global_multiplier": -0.08
             }
         },
         {
@@ -6681,7 +6717,7 @@ e.global_parameter_json[0].fields.question_count = 29
                 "answer": 12334,
                 "candidate": 77,
                 "affected_candidate": 77,
-                "global_multiplier": -0.035
+                "global_multiplier": -0.08
             }
         },
         {
@@ -7801,7 +7837,7 @@ e.global_parameter_json[0].fields.question_count = 29
                 "answer": 7014,
                 "candidate": 77,
                 "affected_candidate": 78,
-                "global_multiplier": -0.006
+                "global_multiplier": -0.012
             }
         },
         {
@@ -7924,7 +7960,78 @@ e.global_parameter_json[0].fields.question_count = 29
                 "global_multiplier": -0.002
             }
         },
+        {
+            "model": "campaign_trail.answer_score_global",
+            "pk": 7044,
+            "fields": {
+                "answer": 3333,
+                "candidate": 77,
+                "affected_candidate": 80,
+                "global_multiplier": 0.08
+            }
+        },
+        {
+            "model": "campaign_trail.answer_score_global",
+            "pk": 7045,
+            "fields": {
+                "answer": 9999,
+                "candidate": 77,
+                "affected_candidate": 77,
+                "global_multiplier": -0.004
+            }
+        },
+        {
+            "model": "campaign_trail.answer_score_global",
+            "pk": 7046,
+            "fields": {
+                "answer": 10001,
+                "candidate": 77,
+                "affected_candidate": 77,
+                "global_multiplier": -0.004
+            }
+        },
+        {
+            "model": "campaign_trail.answer_score_global",
+            "pk": 7047,
+            "fields": {
+                "answer": 10001,
+                "candidate": 77,
+                "affected_candidate": 80,
+                "global_multiplier": -0.04
+            }
+        },
+        {
+            "model": "campaign_trail.answer_score_global",
+            "pk": 7048,
+            "fields": {
+                "answer": 15090,
+                "candidate": 77,
+                "affected_candidate": 77,
+                "global_multiplier": 0.005
+            }
+        },
+        {
+            "model": "campaign_trail.answer_score_global",
+            "pk": 7049,
+            "fields": {
+                "answer": 15090,
+                "candidate": 77,
+                "affected_candidate": 80,
+                "global_multiplier": 0.008
+            }
+        },
+        {
+            "model": "campaign_trail.answer_score_global",
+            "pk": 7050,
+            "fields": {
+                "answer": 6666,
+                "candidate": 77,
+                "affected_candidate": 77,
+                "global_multiplier": 0.01
+            }
+        },
     ]
+    
 
     campaignTrail_temp.answer_score_issue_json = [
     {
@@ -8113,7 +8220,7 @@ e.global_parameter_json[0].fields.question_count = 29
             "fields": {
                 "answer": 3333,
                 "issue": 29,
-                "issue_score": 0,
+                "issue_score": 0.2,
                 "issue_importance": 1
             }
         },
@@ -8404,7 +8511,7 @@ e.global_parameter_json[0].fields.question_count = 29
                 "answer": 12334,
                 "issue": 27,
                 "issue_score": -1,
-                "issue_importance": 1
+                "issue_importance": 5
             }
         },
         {
@@ -8733,7 +8840,7 @@ e.global_parameter_json[0].fields.question_count = 29
             "fields": {
                 "answer": 7014,
                 "issue": 29,
-                "issue_score": 0.1,
+                "issue_score": 1,
                 "issue_importance": 0.5
             }
         },
@@ -8745,6 +8852,46 @@ e.global_parameter_json[0].fields.question_count = 29
                 "issue": 29,
                 "issue_score": -0.4,
                 "issue_importance": 0.5
+            }
+        },
+        {
+            "model": "campaign_trail.answer_score_issue",
+            "pk": 6005,
+            "fields": {
+                "answer": 10001,
+                "issue": 29,
+                "issue_score": -0.6,
+                "issue_importance": 2
+            }
+        },
+        {
+            "model": "campaign_trail.answer_score_issue",
+            "pk": 6006,
+            "fields": {
+                "answer": 15090,
+                "issue": 29,
+                "issue_score": 0.1,
+                "issue_importance": 1
+            }
+        },
+        {
+            "model": "campaign_trail.answer_score_issue",
+            "pk": 6007,
+            "fields": {
+                "answer": 6666,
+                "issue": 27,
+                "issue_score": -0.7,
+                "issue_importance": 3
+            }
+        },
+        {
+            "model": "campaign_trail.answer_score_issue",
+            "pk": 6008,
+            "fields": {
+                "answer": 6666,
+                "issue": 29,
+                "issue_score": 0.1,
+                "issue_importance": 2
             }
         },
     ]
@@ -10070,8 +10217,107 @@ e.global_parameter_json[0].fields.question_count = 29
                 "state_multiplier": 0.08
             }
         },
+        {
+            "model": "campaign_trail.answer_score_state",
+            "pk": 764,
+            "fields": {
+                "answer": 3333  ,
+                "state": 227,
+                "candidate": 77,
+                "affected_candidate": 77,
+                "state_multiplier": 0.2
+            }
+        },
+        {
+            "model": "campaign_trail.answer_score_state",
+            "pk": 765,
+            "fields": {
+                "answer": 3333  ,
+                "state": 217,
+                "candidate": 77,
+                "affected_candidate": 77,
+                "state_multiplier": 0.2
+            }
+        },
+        {
+            "model": "campaign_trail.answer_score_state",
+            "pk": 766,
+            "fields": {
+                "answer": 3333  ,
+                "state": 199,
+                "candidate": 77,
+                "affected_candidate": 77,
+                "state_multiplier": 0.08
+            }
+        },
+        {
+            "model": "campaign_trail.answer_score_state",
+            "pk": 767,
+            "fields": {
+                "answer": 9999,
+                "state": 227,
+                "candidate": 77,
+                "affected_candidate": 77,
+                "state_multiplier": 0.012
+            }
+        },
+        {
+            "model": "campaign_trail.answer_score_state",
+            "pk": 768,
+            "fields": {
+                "answer": 9999,
+                "state": 217,
+                "candidate": 77,
+                "affected_candidate": 77,
+                "state_multiplier": 0.012
+            }
+        },
+        {
+            "model": "campaign_trail.answer_score_state",
+            "pk": 769,
+            "fields": {
+                "answer": 15090,
+                "state": 185,
+                "candidate": 77,
+                "affected_candidate": 77,
+                "state_multiplier": 0.008
+            }
+        },
+        {
+            "model": "campaign_trail.answer_score_state",
+            "pk": 770,
+            "fields": {
+                "answer": 15090,
+                "state": 193,
+                "candidate": 77,
+                "affected_candidate": 77,
+                "state_multiplier": 0.008
+            }
+        },
+        {
+            "model": "campaign_trail.answer_score_state",
+            "pk": 771,
+            "fields": {
+                "answer": 15090,
+                "state": 201,
+                "candidate": 77,
+                "affected_candidate": 77,
+                "state_multiplier": 0.008
+            }
+        },
+        {
+            "model": "campaign_trail.answer_score_state",
+            "pk": 772,
+            "fields": {
+                "answer": 15090,
+                "state": 212,
+                "candidate": 77,
+                "affected_candidate": 77,
+                "state_multiplier": 0.008
+            }
+        },
     ]
-
+    
     campaignTrail_temp.answer_feedback_json = [
         {
             "model": "campaign_trail.answer_feedback",
@@ -10565,7 +10811,7 @@ e.global_parameter_json[0].fields.question_count = 29
             "fields": {
                 "answer": 12295,
                 "candidate": 77,
-                "answer_feedback": "This is a good middle ground between appealing to the typical Republican base and not alienating your own base. The party bosses aren’t thrilled that you won’t meet with him, but you can’t please anyone."
+                "answer_feedback": "This is a good middle ground between appealing to the typical Republican base and not alienating your own. No time is wasted pointing out your vote against NCLB, but Republican insiders appreciate your willingness to compromise. You feel a bit dirty."
             }
         },
         {
@@ -11000,10 +11246,46 @@ e.global_parameter_json[0].fields.question_count = 29
                 "answer_feedback": "Rush doesn't stop using the line, but he does suffer some negative headlines about the tasteless jokes. And fortunately, most listeners seem to take them as jokes."
             }
         },
+        {
+            "model": "campaign_trail.answer_feedback",
+            "pk": 800,
+            "fields": {
+                "answer": 9999,
+                "candidate": 77,
+                "answer_feedback": "Most view this as a fool's errand, and a waste of time during this crucial period. Perhaps you know something they don't?"
+            }
+        },
+        {
+            "model": "campaign_trail.answer_feedback",
+            "pk": 801,
+            "fields": {
+                "answer": 10001,
+                "candidate": 77,
+                "answer_feedback": "This argument is simple - a lot of Limbaugh supporters should get cold feet thinking about this. The base is split on the issue however - the idea that some people love killing the unborn so much they'll vote to keep killing Iraqis and American soldiers leaves you feeling sick."
+            }
+        },
+        {
+            "model": "campaign_trail.answer_feedback",
+            "pk": 802,
+            "fields": {
+                "answer": 15090,
+                "candidate": 77,
+                "answer_feedback": "You, Kerry or Rush. Don't underestimate him. Still, you have a good time recording videos for  ''Reddit'' AMAs, casually explaining the evils of the Federal Reserve. You're flummoxed by references to cats and ''battletoads'', but you assume it's just what the kids are into. Seeing the young involved in politics warms your heart. "
+            }
+        },
+        {
+            "model": "campaign_trail.answer_feedback",
+            "pk": 803,
+            "fields": {
+                "answer": 6666,
+                "candidate": 77,
+                "answer_feedback": "Stossel manages to make a case that legal protections for pregnant working women hurt women sound reasonable - even Jon Stewart is left struggling to make fun of Stossel's appearances on TV."
+            }
+        },
     ]
-
-    campaignTrail_temp.candidate_image_url = "https://imgur.com/BURMyeT.png";
-    campaignTrail_temp.running_mate_image_url = "https://imgur.com/3aNallm.png";
+    
+    campaignTrail_temp.candidate_image_url = "https://cdn.imgchest.com/files/73f6f5bb0369.png";
+    campaignTrail_temp.running_mate_image_url = "https://cdn.imgchest.com/files/cba8c5ae0fde.png";
     campaignTrail_temp.candidate_last_name = "Ron Paul";
     campaignTrail_temp.running_mate_last_name = "For President!";
 
@@ -11025,7 +11307,7 @@ e.global_parameter_json[0].fields.question_count = 29
     vpTableHistorical = {
         "John F. Kerry" : "Mary L. Landrieu",
         "Ron E. Paul" : "A. Wayne Allard",
-        "Rush H. Limbaugh" : "Chuck O. Baldwin",
+        "Rush H. Limbaugh" : "Various",
         "Ralph Nader" : "Matt E. Gonzalez"
     }
     HistHexcolour=["#5875ca","#d2562d","#660066","#289143"];
@@ -11104,7 +11386,7 @@ e.global_parameter_json[0].fields.question_count = 29
 
 
     construct = (a = 1) => {
-	
+    
         e.page = e.page + a < e.pages.length ? e.page + a : 0
         let html = e.header;
         html += e.pages[e.page] + "<br>";
@@ -11126,41 +11408,41 @@ e.global_parameter_json[0].fields.question_count = 29
         
         if (e.image == true)
         setTimeout(()=>{
-          candImg = $(".person_image")[0]
-          if (candImg) {
+        candImg = $(".person_image")[0]
+        if (candImg) {
             candImg.remove()
             console.log("TRYING");
             $("#final_results_description")[0].style = `
-              text-align:left;
-              width: 72%;
-              height:71%;
-              display: block;
-              margin-left: auto;
-              margin-right: auto;
-              overflow: auto;
-              color: #000000
+            text-align:left;
+            width: 72%;
+            height:71%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            overflow: auto;
+            color: #000000
             `
-             console.log("RESULTS UPDATED");
-          }
+            console.log("RESULTS UPDATED");
+        }
         }, 10)
         else if (e.image)
         setTimeout(()=>{
-          candImg = $(".person_image")[0];
-          if (candImg) {
+        candImg = $(".person_image")[0];
+        if (candImg) {
             candImg.src = e.image;
             console.log("TRYING");
             $("#final_results_description")[0].style = `
-              text-align:left;
-              width: 72%;
-              height:71%;
-              display: block;
-              margin-left: auto;
-              margin-right: auto;
-              overflow: auto;
-              color: #000000
+            text-align:left;
+            width: 72%;
+            height:71%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            overflow: auto;
+            color: #000000
             `
-             console.log("RESULTS UPDATED");
-          }		
+            console.log("RESULTS UPDATED");
+        }		
         }, 10)
         
         return html;
@@ -11170,15 +11452,15 @@ e.global_parameter_json[0].fields.question_count = 29
         $("#final_results_description")[0].innerHTML = construct(a);
         }
         
-      // ENDINGS -- this is slightly more reliable than the ending code method
+    // ENDINGS -- this is slightly more reliable than the ending code method
     
     
     
     
-      e.multiple_endings = true;
+    e.multiple_endings = true;
     
     //This is the only part of the notes that is actually me Onkel Danny - this shit is all chatgpt. Chatgpt is a useful tool. We also used chatgpt for the writing. Halligan Elysium would also like to credit Chatgpt
-      function autoHalveVolumeOnce() {
+    function autoHalveVolumeOnce() {
         // Function to halve the volume
         const halveVolume = (element) => {
             element.volume = element.volume / 5;
@@ -11219,11 +11501,11 @@ e.global_parameter_json[0].fields.question_count = 29
     }
     
     
-      e.header = "<h1> something went wonjg</h1>";
-      e.pages = ["<p>huh.</p>"];
-      e.page = 0;
+    e.header = "<h1> something went wonjg</h1>";
+    e.pages = ["<p>huh.</p>"];
+    e.page = 0;
     
-      endingPicker = (out, totv, aa, quickstats) => {
+    endingPicker = (out, totv, aa, quickstats) => {
         //out = "win", "loss", or "tie" for your candidate
         //totv = total votes in entire election
         //aa = all final overall results data
@@ -11232,7 +11514,7 @@ e.global_parameter_json[0].fields.question_count = 29
         /*
         e.header = "<h2></h2>"
         e.pages = ["<p></p>",
-                  "<p></p>"]
+                "<p></p>"]
         */
         e.pages = []
         e.header = "";
@@ -11253,12 +11535,23 @@ e.global_parameter_json[0].fields.question_count = 29
                     <p>In a joint statement issued by the current members of the party, they claimed ''too many in America are forced into backing positions they do not fully believe in, to ensure that the other side cannot win. This attitude can be found left and right, and is calamitous for America’s health. The Forward party is not dedicated to being left or right, but forwards with a mutual consensus from all.''</p>
                     `)
                     e.pages.push(`<h2>The Campaign Trail</h2>
-                    <p>Please select the election you will run in: <br><select name="2012" id="2012"><option value="0">2012</option></select><br><img src=https://imgur.com/COE446m.png><br>For the first time since 1992, there are three credible contenders to the White House. Former Speaker of the House Newt Gingrich must provide conservative answers for America while appealing to moderates, President Rudy Giulani needs to try and expand his appeal as far as he can and Senator Hillary Clinton must try and keep her base united while offering middle ground solutions.</p>`)
+                    <p>Please select the election you will run in: <br><select name="2012" id="2012"><option value="0">2012</option></select><br><img src=https://cdn.imgchest.com/files/f4f7173b80fa.png><br>For the first time since 1992, there are three credible contenders to the White House. Former Speaker of the House Newt Gingrich must provide conservative answers for America while appealing to moderates, President Rudy Giulani needs to try and expand his appeal as far as he can and Senator Hillary Clinton must try and keep her base united while offering middle ground solutions.</p>`)
                     autoHalveVolumeOnce(setMusic("https://audio.jukehost.co.uk/VMOY1VruWUCSBWXvwRySrNpheGh2wrz2.mp3"));
         //e.image = ""
-        e.executable.push([0, (() => {e.image = e.image = 'https://imgur.com/jSDokll.jpg'})])
-        e.executable.push([1, (() => {e.image = e.image = 'https://imgur.com/RNRWgLI.jpg'})])
-        e.executable.push([2, (() => {e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'})])
+        e.executable.push([0, (() => {e.image = e.image = 'https://cdn.imgchest.com/files/a5a1964707c9.png'})])
+        e.executable.push([1, (() => {e.image = e.image = 'https://cdn.imgchest.com/files/1f799f4e3ea1.png'})])
+        e.executable.push([2, (() => {
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#700016";
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#BFE6FF";
+            document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+            $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+            $(".container")[0].style.backgroundColor = "#FFFFFF";
+            document.getElementById("header").src = "https://cdn.imgchest.com/files/4570b497f254.png";
+            document.body.background = "";
+            document.body.style.backgroundSize="cover"
+            document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#E8FBFF!important;}</style>";    
+
+            e.image = e.image = 'https://cdn.imgchest.com/files/4cde22e0f64c.png'})])
         } else if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Romney") { // Romney win
         e.pages.push(`<h2>''It seems like the polls were dead on the money, John Kerry has been rejected thoroughly.''</h2>
                     <p>Ron Paul sighed, watching as the states were called. Kerry had been rejected. This was good news, obviously. John Kerry had won without popular support and been rightfully pilloried by Republicans winning in nearly every election held. With the new President, there would be no more abuse of the bully pulpit. There would be some fiscal discipline.</p>
@@ -11275,12 +11568,23 @@ e.global_parameter_json[0].fields.question_count = 29
                     <p>''We’re going to continue these steps of helping Americans to help themselves over the course of our administration. We’ll crackdown on illegal immigration, which creates dependents on the welfare system who do not pay back in and creates unfair competition. We will continue to cut through the red tape in healthcare and in environmental regulations to create more jobs. That’s the mandate the American people have given us, and I look forward to fulfilling it.''</p>
                     `)
                     e.pages.push(`<h2>The Campaign Trail</h2>
-                    <p>Please select the election you will run in: <br><select name="2012" id="2012"><option value="0">2012</option></select><br><img src=https://imgur.com/5EwIC1a.png><br>President Mitt Romney seeks re-election while Senator Hillary Clinton seeks to bring a more liberal vision to the White House. Key issues in this election are tax rates, immigration and healthcare.</p>`)
+                    <p>Please select the election you will run in: <br><select name="2012" id="2012"><option value="0">2012</option></select><br><img src=https://cdn.imgchest.com/files/f632440b0c4e.png><br>President Mitt Romney seeks re-election while Senator Hillary Clinton seeks to bring a more liberal vision to the White House. Key issues in this election are tax rates, immigration and healthcare.</p>`)
                     autoHalveVolumeOnce(setMusic("https://audio.jukehost.co.uk/VMOY1VruWUCSBWXvwRySrNpheGh2wrz2.mp3"));
         //e.image = ""
-        e.executable.push([0, (() => {e.image = e.image = 'https://imgur.com/5UXkhZT.jpg'})])
-        e.executable.push([1, (() => {e.image = e.image = 'https://imgur.com/UbGbQ1L.jpg'})])
-        e.executable.push([2, (() => {e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'})])
+        e.executable.push([0, (() => {e.image = e.image = 'https://cdn.imgchest.com/files/c44993f4ebac.png'})])
+        e.executable.push([1, (() => {e.image = e.image = 'https://cdn.imgchest.com/files/23dea3972a17.png'})])
+        e.executable.push([2, (() => {
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#700016";
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#BFE6FF";
+            document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+            $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+            $(".container")[0].style.backgroundColor = "#FFFFFF";
+            document.getElementById("header").src = "https://cdn.imgchest.com/files/4570b497f254.png";
+            document.body.background = "";
+            document.body.style.backgroundSize="cover"
+            document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#E8FBFF!important;}</style>";    
+
+            e.image = e.image = 'https://cdn.imgchest.com/files/4cde22e0f64c.png'})])
         } else if (quickstats[0] >= 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Huckabee") { // Huckabee win
         e.pages.push(`<h2>''It seems like the polls were dead on the money, John Kerry has been rejected thoroughly.''</h2>
                     <p>Ron Paul sighed, watching as the states were called. Kerry had been rejected. This was good news, obviously. John Kerry had won without popular support and been rightfully pilloried by Republicans winning in nearly every election held. With the new President, there would be no more abuse of the bully pulpit. There would be some fiscal discipline.</p>
@@ -11296,12 +11600,23 @@ e.global_parameter_json[0].fields.question_count = 29
                     <p>''I would like to take the time to thank the various legislators in Congress that worked hard to ensure this bill passed. In particular, I commend Senator Robert Byrd who’s bipartisan support for this bill demonstrates an undeniable fact - we are all God’s children first, and Republican or Democrat a distant second.''</p>
                     `)
                     e.pages.push(`<h2>The Campaign Trail</h2>
-                    <p>Please select the election you will run in: <br><select name="2012" id="2012"><option value="0">2012</option></select><br><img src=https://imgur.com/OTqNRzn.png><br>President Huckabee is put up to the test against the dynamic liberal Senator Barack Obama. President Huckabee is controversial and oversees a lagging economy, while Senator Obama is considered to be somewhat inexperienced. Senator Obama is also the first black candidate for President, a fact that could hinder his odds of victory.</p>`)
+                    <p>Please select the election you will run in: <br><select name="2012" id="2012"><option value="0">2012</option></select><br><img src=https://cdn.imgchest.com/files/d436d3ba41b4.png><br>President Huckabee is put up to the test against the dynamic liberal Senator Barack Obama. President Huckabee is controversial and oversees a lagging economy, while Senator Obama is considered to be somewhat inexperienced. Senator Obama is also the first black candidate for President, a fact that could hinder his odds of victory.</p>`)
                     autoHalveVolumeOnce(setMusic("https://audio.jukehost.co.uk/VMOY1VruWUCSBWXvwRySrNpheGh2wrz2.mp3"));
         //e.image = ""
-        e.executable.push([0, (() => {e.image = e.image = 'https://imgur.com/y6lNOub.jpg'})])
-        e.executable.push([1, (() => {e.image = e.image = 'https://imgur.com/lZOmKFD.jpg'})])
-        e.executable.push([2, (() => {e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'})])
+        e.executable.push([0, (() => {e.image = e.image = 'https://cdn.imgchest.com/files/fe5915a7817b.png'})])
+        e.executable.push([1, (() => {e.image = e.image = 'https://cdn.imgchest.com/files/8a6dd4da869c.png'})])
+        e.executable.push([2, (() => {
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#700016";
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#BFE6FF";
+            document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+            $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+            $(".container")[0].style.backgroundColor = "#FFFFFF";
+            document.getElementById("header").src = "https://cdn.imgchest.com/files/4570b497f254.png";
+            document.body.background = "";
+            document.body.style.backgroundSize="cover"
+            document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#E8FBFF!important;}</style>";    
+
+            e.image = e.image = 'https://cdn.imgchest.com/files/fb26a4c330ed.png'})])
         } else if (quickstats[0] < 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Huckabee") { // Huckabee loss
         e.pages.push(`<h2>''It seems like the polls were dead wrong! John Kerry has managed to win!''</h2>
                     <p>Well, that’s a shock. When the President ruined the economy, most people called the election for the Republicans. That made sense - elections were decided by the economy, and Kerry screwed up as bad as Herbert Hoover. It was a done deal!</p>
@@ -11310,7 +11625,7 @@ e.global_parameter_json[0].fields.question_count = 29
                     `)
                     autoHalveVolumeOnce(setMusic("https://audio.jukehost.co.uk/WkRKo3YgZkVKrVBpWPlpzFmkNbeUV6xD.mp3"));
         //e.image = ""
-        e.executable.push([0, (() => {e.image = e.image = 'https://imgur.com/0hiO0Jk.jpg'})])
+        e.executable.push([0, (() => {e.image = e.image = 'https://cdn.imgchest.com/files/26f146f707b5.png'})])
         } else if (quickstats[0] < 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Romney") { // Romney loss
         e.pages.push(`<h2>''It seems like the polls were dead wrong! John Kerry has managed to win!''</h2>
                     <p>Well, that’s a shock. When the President ruined the economy, most people called the election for the Republicans. That made sense - elections were decided by the economy, and Kerry screwed up as bad as Herbert Hoover. It was a done deal!</p>
@@ -11319,7 +11634,7 @@ e.global_parameter_json[0].fields.question_count = 29
                     `)
                     autoHalveVolumeOnce(setMusic("https://audio.jukehost.co.uk/WkRKo3YgZkVKrVBpWPlpzFmkNbeUV6xD.mp3"));
         //e.image = ""
-        e.executable.push([0, (() => {e.image = e.image = 'https://imgur.com/0hiO0Jk.jpg'})])
+        e.executable.push([0, (() => {e.image = e.image = 'https://cdn.imgchest.com/files/26f146f707b5.png'})])
         } else if (quickstats[0] < 270 && campaignTrail_temp.candidate_json[1]["fields"].last_name == "Giuliani") { // Giuliani loss
         e.pages.push(`<h2>''It seems like the polls were dead wrong! John Kerry has managed to win!''</h2>
                     <p>Well, that’s a shock. When the President ruined the economy, most people called the election for the Republicans. That made sense - elections were decided by the economy, and Kerry screwed up as bad as Herbert Hoover. It was a done deal!</p>
@@ -11328,7 +11643,7 @@ e.global_parameter_json[0].fields.question_count = 29
                     `)
                     autoHalveVolumeOnce(setMusic("https://audio.jukehost.co.uk/WkRKo3YgZkVKrVBpWPlpzFmkNbeUV6xD.mp3"));
         //e.image = ""
-        e.executable.push([0, (() => {e.image = e.image = 'https://imgur.com/0hiO0Jk.jpg'})])
+        e.executable.push([0, (() => {e.image = e.image = 'https://cdn.imgchest.com/files/26f146f707b5.png'})])
         } else if (quickstats[0] >= 350 ) { // Paul landslide win
         e.pages.push(`<h2>''IT’S HAPPENING!''</h2>
                     <p>The Staples Center sounded like a riot. Roar after roar, cheer after cheer, scream after scream. After an early start, where the South was called nearly unanimously for Paul and a few coastal states for Kerry, the men on TV called state after state. The apex came when the bellwether states, Nevada, Florida and Ohio were all called comfortably for Paul - while New York was too close to call. The building itself seemed to come alive at the idea that the liberals that had brought destruction to this country had lost even their safest seats.</p>
@@ -11340,12 +11655,34 @@ e.global_parameter_json[0].fields.question_count = 29
                     <p>Following the 20 day government shutdown following Paul’s original budget, Democrats in the House have agreed to pass a more thorough cut to restore the government. We polled the public to see which cuts had the most and least support.</p>
                     <p>Veteran Affairs cut net approval: -67%<br>SNAP/Food stamps cut net approval: -57%<br>Military Funding cuts net approval: -45%<br>Social Security cuts net approval: -52%<br>Medicare cuts net approval: -58%<br>PEPFAR cuts net approval: 1%<br>Military Foreign Aid cuts net approval: 3%<br>Housing Choice Voucher cuts net approval: -36%<br>Unemployment Insurance cuts net approval: -44%<br></p>`)
                     e.pages.push(`<h2>The Campaign Trail</h2>
-                    <p>Please select the election you will run in: <br><select name="2012" id="2012"><option value="0">2012</option></select><br><img src=https://imgur.com/FkwOvhi.png><br>After a difficult four years, President Ron Paul faces a referendum held by controversial businessman Donald Trump, who snatched the nomination from an adrift Democratic leadership. President Paul will have to unite a fractured Republican Party, whilst Donald Trump will have to press the poor economy, unstable international situation, and various other issues.</p>`)
+                    <p>Please select the election you will run in: <br><select name="2012" id="2012"><option value="0">2012</option></select><br><img src=https://cdn.imgchest.com/files/b4f91e80facb.png><br>After a difficult four years, President Ron Paul faces a referendum held by controversial businessman Donald Trump, who snatched the nomination from an adrift Democratic leadership. President Paul will have to unite a fractured Republican Party, whilst Donald Trump will have to press the poor economy, unstable international situation, and various other issues.</p>`)
                     autoHalveVolumeOnce(setMusic("https://audio.jukehost.co.uk/4z5k4jugxfntD57fFGQkhuYOtB1HNxVz.mp3"));
         //e.image = ""
-        e.executable.push([0, (() => {e.image = e.image = 'https://imgur.com/Xv4usEc.jpg'})])
-        e.executable.push([1, (() => {e.image = e.image = 'https://imgur.com/TiNSADu.jpg'})])
-        e.executable.push([2, (() => {e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'})])
+        e.executable.push([0, (() => {e.image = e.image = 'https://cdn.imgchest.com/files/d8891a4236b5.png'})])
+        e.executable.push([1, (() => {
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#d59148";
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#d59148";
+            document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+            $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+            $(".container")[0].style.backgroundColor = "#369091";
+            document.getElementById("header").src = "https://cdn.imgchest.com/files/3ba21a6f574a.png";
+            document.body.background = "https://cdn.imgchest.com/files/395cc14f2997.png";
+            document.body.style.backgroundSize="cover"
+            document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#E8FBFF!important;}</style>";      
+
+            e.image = e.image = 'https://cdn.imgchest.com/files/6e30c47457cd.png'})])
+        e.executable.push([2, (() => {
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#700016";
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#BFE6FF";
+            document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+            $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+            $(".container")[0].style.backgroundColor = "#FFFFFF";
+            document.getElementById("header").src = "https://cdn.imgchest.com/files/cb1bc056b5ab.png";
+            document.body.background = "";
+            document.body.style.backgroundSize="cover"
+            document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#E8FBFF!important;}</style>";    
+
+            e.image = e.image = 'https://cdn.imgchest.com/files/4cde22e0f64c.png'})])
         
         }  else if (quickstats[0] >= 300 && quickstats[0] < 350) { // Paul medium win
         e.pages.push(`<h2>''It was touch and go for a moment, but Ron Paul is now President-elect.''</h2>
@@ -11360,34 +11697,84 @@ e.global_parameter_json[0].fields.question_count = 29
                     <p>Former primary opponents of Ron Paul, Mitt Romney and Mike Huckabee, have condemned the cuts as weakening the military and international prestige as a whole, Huckabee claiming “this is about what we can expect from our President after the disgraceful pull-out.” Minority Leader of the House John Boehner and Senate Majority Leader McConnell have both refused to comment on whether they will support the proposed cuts.</p>    
                     `)
                     e.pages.push(`<h2>The Campaign Trail</h2>
-                    <p>Please select the election you will run in: <br><select name="2012" id="2012"><option value="0">2012</option></select><br><img src=https://imgur.com/PDUl2Pp.png>	<br>Moderate Democrat Evan Bayh controversially faces off against Ron Paul after a tumultuous four years. Bayh must move the Democratic Party past Kerry whilst ensuring liberals turn out, whereas President Paul must bank on limited Democratic turnout and his few successes to secure another four years.</p>`)
+                    <p>Please select the election you will run in: <br><select name="2012" id="2012"><option value="0">2012</option></select><br><img src=https://cdn.imgchest.com/files/fe6082d445d3.png>	<br>Moderate Democrat Evan Bayh controversially faces off against Ron Paul after a tumultuous four years. Bayh must move the Democratic Party past Kerry whilst ensuring liberals turn out, whereas President Paul must bank on limited Democratic turnout and his few successes to secure another four years.</p>`)
                     autoHalveVolumeOnce(setMusic("https://audio.jukehost.co.uk/iHwV7NUqviGubjYYTes3fWo8ps9lAxrH.mp3"));
         //e.image = ""
-        e.executable.push([0, (() => {e.image = e.image = 'https://imgur.com/2O2wAYt.jpg'})])
-        e.executable.push([1, (() => {e.image = e.image = 'https://imgur.com/iTuNPxT.jpg'})])
-        e.executable.push([2, (() => {e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'})])
-      
-      }     else if (quickstats[0] >= 270 && quickstats[0] < 300) { // Paul close win
-      e.pages.push(`<h2>''Our early forecast suggests... Ron Paul has been elected President.''</h2>
-                  <p>Victory.</p>
-                  <p>They could talk about the close states all they want. They can say that Rush won some states, or that Kerry should have been wiped out. They can say that Paul’s victory tonight means nothing. That’s all they can do, talk and talk. Ron Paul had won. He had proved everyone wrong. The naysayers, the liberals - even himself. Even he doubted that a politician who dared to offer people nothing but freedom could hope to win. But he had. And America could finally put an end to the calamitous social experiment it had been running since Woodrow Wilson.</p>
-                  <p>He was informed that John Kerry was calling him, no doubt offering his concession speech. He asked Kerry to wait - he needed to see his people. As he walked out on stage at the Staples Center in Minneapolis, he gazed into the crowd. Thousands of excited patriots stared up to him lovingly, enthralled by his one of a kind campaign. He saw men with ponytails and mullets, others wearing tricorne hats and other colonial clothing. People that would never back one of Limbaugh's candidates had propelled him past the finish line.</p>
-                  <p>He wore a smile that grew a mile wide. He wasn’t going to do anything to them. He wouldn’t control these people. He wouldn’t control the economy. He wasn’t going to rule the world. The constitution wouldn’t let him, and that thought filled his heart with joy.</p>
-                  `)
-                  e.pages.push 
-                  (`<h2>President Ron Paul repeals Don’t Ask, Don’t Tell.</h2>
-                  <p>Issuing executive order number 13530, President Ron Paul has officially brought an end to the policy of Don’t Ask Don’t Tell. In a statement issued to the press, President Paul said ''I won’t say I support the kind of lifestyle homosexuals lead. But I will say, as a man who served in the army, that I don’t consider it something that precludes service. And I certainly don’t consider the nearly $400 million spent on the policy worthwhile to the American taxpayers. To discharge an otherwise well-trained, professional, and highly skilled member of the military for personal reasons is unfortunate and makes no financial sense.''</p>
-                  <p>There has been immediate controversy following the issuing of the order. Ellain Donnally of the Center for Military Readiness has prepared a lawsuit on the legality of the order, while Senator Jeff Sessions called President Paul’s actions ''overreach'', saying ''The civil libertarians among us would rather defend the Constitution than protect our nation’s security.'' Ron Paul’s primary rival Mitt Romney commented on the order: ''I consider this an error. Don’t Ask Don’t Tell has worked for nearly 20 years. The military says it's working and they don't want to change it, and they're the people closest to the front. Even if this order is legal, President Paul has acted very irresponsibly.''</p>
-                  <p>Across the aisle, Democrats have offered muted praise. Senator Joe Biden of Delaware argues that it should have been passed through Congress, but praised the initiative as ''being the most effective path for the military to go down'' while Senator Russ Feingold of Wisconsin called it a ''rare moment where I am in complete and total agreement with President Paul. It is beyond ridiculous that it has taken this long to have been repealed.''</p>
-                  <p>Updates as they come.</p>
-                  `)
-                  e.pages.push(`<h2>The Campaign Trail</h2>
-                  <p>Please select the election you will run in: <br><select name="2012" id="2012"><option value="0">2012</option></select><br><img src=https://imgur.com/QdtxkGC.png>	<br>For the first time since 1992, there are three credible contenders for the Presidency, following Rick Santorum's schocking coup of the Republican Party. Senator Barack Obama must exploit the divide between the various factions while giving himself the strongest possible governing mandate, former Senator Rick Santorum must try and heal the divide in the party while distancing himself from the Paul administration and President Ron Paul must point to his limited successes whilst tying the popular Barack Obama to unpopular prior administrations.</p>`)
-                  autoHalveVolumeOnce(setMusic("https://audio.jukehost.co.uk/BT8cjevl27WhK2Ljy084kGsei5Vfp2Pe.mp3"));
-      //e.image = ""
-      e.executable.push([0, (() => {e.image = e.image = 'https://imgur.com/4Vc4FbA.jpg'})])
-      e.executable.push([1, (() => {e.image = e.image = 'https://imgur.com/STclS20.jpg'})])
-      e.executable.push([2, (() => {e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'})])
+        e.executable.push([0, (() => {e.image = e.image = 'https://cdn.imgchest.com/files/0c44f702e075.png'})])
+        e.executable.push([1, (() => {
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#d59148";
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#d59148";
+            document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+            $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+            $(".container")[0].style.backgroundColor = "#369091";
+            document.getElementById("header").src = "https://cdn.imgchest.com/files/3ba21a6f574a.png";
+            document.body.background = "https://cdn.imgchest.com/files/395cc14f2997.png";
+            document.body.style.backgroundSize="cover"
+            document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#E8FBFF!important;}</style>";      
+            e.image = e.image = 'https://cdn.imgchest.com/files/a6a283cb6060.png'})])
+        e.executable.push([2, (() => {
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#700016";
+            nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#BFE6FF";
+            document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+            $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+            $(".container")[0].style.backgroundColor = "#FFFFFF";
+            document.getElementById("header").src = "https://cdn.imgchest.com/files/4570b497f254.png";
+            document.body.background = "";
+            document.body.style.backgroundSize="cover"
+            document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#E8FBFF!important;}</style>";        
+            e.image = e.image = 'https://cdn.imgchest.com/files/4cde22e0f64c.png'})])
+    
+    }     else if (quickstats[0] >= 270 && quickstats[0] < 300) { // Paul close win
+    e.pages.push(`<h2>''Our early forecast suggests... Ron Paul has been elected President.''</h2>
+                <p>Victory.</p>
+                <p>They could talk about the close states all they want. They can say that Rush won some states, or that Kerry should have been wiped out. They can say that Paul’s victory tonight means nothing. That’s all they can do, talk and talk. Ron Paul had won. He had proved everyone wrong. The naysayers, the liberals - even himself. Even he doubted that a politician who dared to offer people nothing but freedom could hope to win. But he had. And America could finally put an end to the calamitous social experiment it had been running since Woodrow Wilson.</p>
+                <p>He was informed that John Kerry was calling him, no doubt offering his concession speech. He asked Kerry to wait - he needed to see his people. As he walked out on stage at the Staples Center in Minneapolis, he gazed into the crowd. Thousands of excited patriots stared up to him lovingly, enthralled by his one of a kind campaign. He saw men with ponytails and mullets, others wearing tricorne hats and other colonial clothing. People that would never back one of Limbaugh's candidates had propelled him past the finish line.</p>
+                <p>He wore a smile that grew a mile wide. He wasn’t going to do anything to them. He wouldn’t control these people. He wouldn’t control the economy. He wasn’t going to rule the world. The constitution wouldn’t let him, and that thought filled his heart with joy.</p>
+                `)
+                if (e.player_answers.includes(3336)){e.pages.push
+                    (`<h2>What does Ted Steven’s death mean for Congress?</h2>
+                    <p>The United States Congress finds itself in the midst of a constitutional crisis following the death of Alaska Senator Ted Stevens. In April 2009, just 3 months after inauguration, Vice-President Allard resigned from office citing ‘’irreconcilable differences’’ between himself and President Paul - likely emerging from the President’s Executive Order repealing the ‘’Don’t Ask Don’t Tell’’ policy. When former Governor of New Mexico Gary Johnson failed to be confirmed by Congress, procedure dictated that the new President of the Senate would be the President Pro Tempore of the Senate, Senator Ted Steven of Alaska.</p>
+                    <p>With his failing health, discussions regarding restoring the ‘’deputy’’ President Pro Tempore position were passed around, but ultimately failed to pass before Senator Stevens’ sudden death in a car accident. This has left the position of President Pro Tempore open, and the Senate leaderless.</p>
+                    <p>With no Vice-President to preside over the selection of a new President Pro Tempore, it is unclear how Congress will settle the issue. Furthermore, tradition dictates that the most senior Senator in the majority party is voted to become the President Pro Tempore - but Senators Orrin Hatch (Utah) and Richard Lugar (Indiana) both took office on January 3rd, 1977.</p>
+                    <p>When asked for comment on the unusual situation, the White House stated ‘’The President stands by his decision to name Gary Johnson as his Vice-President. If Congress is willing to compromise with the President, then this issue can be solved simply.’’ Senate majority leader Mitch McConnell assured reporters the issue will be handled shortly.
+                    </p>
+                    `)}
+                else {e.pages.push 
+                (`<h2>President Ron Paul repeals Don’t Ask, Don’t Tell.</h2>
+                <p>Issuing executive order number 13530, President Ron Paul has officially brought an end to the policy of Don’t Ask Don’t Tell. In a statement issued to the press, President Paul said ''I won’t say I support the kind of lifestyle homosexuals lead. But I will say, as a man who served in the army, that I don’t consider it something that precludes service. And I certainly don’t consider the nearly $400 million spent on the policy worthwhile to the American taxpayers. To discharge an otherwise well-trained, professional, and highly skilled member of the military for personal reasons is unfortunate and makes no financial sense.''</p>
+                <p>There has been immediate controversy following the issuing of the order. Ellain Donnally of the Center for Military Readiness has prepared a lawsuit on the legality of the order, while Senator Jeff Sessions called President Paul’s actions ''overreach'', saying ''The civil libertarians among us would rather defend the Constitution than protect our nation’s security.'' Ron Paul’s primary rival Mitt Romney commented on the order: ''I consider this an error. Don’t Ask Don’t Tell has worked for nearly 20 years. The military says it's working and they don't want to change it, and they're the people closest to the front. Even if this order is legal, President Paul has acted very irresponsibly.''</p>
+                <p>Across the aisle, Democrats have offered muted praise. Senator Joe Biden of Delaware argues that it should have been passed through Congress, but praised the initiative as ''being the most effective path for the military to go down'' while Senator Russ Feingold of Wisconsin called it a ''rare moment where I am in complete and total agreement with President Paul. It is beyond ridiculous that it has taken this long to have been repealed.''</p>
+                <p>Updates as they come.</p>
+                `)}
+                e.pages.push(`<h2>The Campaign Trail</h2>
+                <p>Please select the election you will run in: <br><select name="2012" id="2012"><option value="0">2012</option></select><br><img src=https://cdn.imgchest.com/files/5630b22c6ce6.png>	<br>For the first time since 1992, there are three credible contenders for the Presidency, following Rick Santorum's shocking coup of the Republican Party. Senator Barack Obama must exploit the divide between the various factions while giving himself the strongest possible governing mandate, former Senator Rick Santorum must try and heal the divide in the party while distancing himself from the Paul administration and President Ron Paul must point to his limited successes whilst tying the popular Barack Obama to unpopular prior administrations.</p>`)
+                autoHalveVolumeOnce(setMusic("https://audio.jukehost.co.uk/BT8cjevl27WhK2Ljy084kGsei5Vfp2Pe.mp3"));
+    //e.image = ""
+    e.executable.push([0, (() => {e.image = e.image = 'https://cdn.imgchest.com/files/06bca9549ca1.png'})])
+    e.executable.push([1, (() => {
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#d59148";
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#d59148";
+        document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+        $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+        $(".container")[0].style.backgroundColor = "#369091";
+        document.getElementById("header").src = "https://cdn.imgchest.com/files/3ba21a6f574a.png";
+        document.body.background = "https://cdn.imgchest.com/files/395cc14f2997.png";
+        document.body.style.backgroundSize="cover"
+        document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#E8FBFF!important;}</style>";  
+        if (e.player_answers.includes(3336)) {
+            e.image = e.image = 'https://cdn.imgchest.com/files/22f681a5a69b.png'}    
+        else {e.image = e.image = 'https://cdn.imgchest.com/files/516e5ec2ddab.png'}})])
+    e.executable.push([2, (() => {
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#700016";
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#BFE6FF";
+        document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+        $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+        $(".container")[0].style.backgroundColor = "#FFFFFF";
+        document.getElementById("header").src = "https://cdn.imgchest.com/files/4570b497f254.png";
+        document.body.background = "";
+        document.body.style.backgroundSize="cover"
+        document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#E8FBFF!important;}</style>";    
+        e.image = e.image = 'https://cdn.imgchest.com/files/4cde22e0f64c.png'})])
     
     } else if (aa[0].electoral_votes < 270 && aa[3].electoral_votes < 270 && aa[2].electoral_votes < 270 && quickstats[0] < 270) { // Deadlock
     e.pages.push(`<h2>''For the first time since 1824, we can predict an electoral deadlock.''</h2>
@@ -11395,7 +11782,7 @@ e.global_parameter_json[0].fields.question_count = 29
                 <p>The Republican House, of which he is a member, will obviously elevate the Republican candidate to the Presidency - and with a trifecta, Paul will be making a massive difference in Washington. The countless supporters, eager for the comfort of victory, accept the explanation, and the good feelings are back.</p>
                 <p>Paul sits down in the homely back office of the center, and dials the Speaker. He doesn't pick up - probably busy celebrating. Paul leaves a message, and joins the victory party. After an hour, he calls the Speaker again, and again receives no answer.</p>
                 <p>It continues, and it becomes a long night indeed.</p>
-                 `)
+                `)
                 e.pages.push 
                 (`<h2>Vice President Allard’s remarks on the death of Osama Bin Laden.</h2>
                 <p>‘’President Kerry has already delivered, earlier today, a statement on the execution of Osama Bin Laden more focused on the details thereof, so I will keep mine shorter and more to the point. Despite the fact that neither of us intended for this unconventional pairing(...) both the President and I are proud of this blow against the enemies of our Republic.’’</p>
@@ -11403,15 +11790,36 @@ e.global_parameter_json[0].fields.question_count = 29
                 <p>‘’It is, also, almost ten years since the fateful September morning where this attack on America began. President George Bush announced the beginning of it and I pray that a President in my lifetime will announce the end of it. Thank you.’’</p>
                 `)
                 e.pages.push(`<h2>The Campaign Trail</h2>
-                <p>Please select the election you will run in: <br><select name="2012" id="2012"><option value="0">2012</option></select><br><img src=https://imgur.com/jPpsCsh.png><br>With the end of the Kerry-Allard Administration, both major party establishments have been put under pressure, leading to the nomination of two anti-establishment activists. Ralph Nader must appeal to disaffected liberals and moderates, while Alan Keyes must re-assure foreign policy minded conservatives and reclaim the coalition that won Ron Paul the Republian nomination four years ago.</p>`)
+                <p>Please select the election you will run in: <br><select name="2012" id="2012"><option value="0">2012</option></select><br><img src=https://cdn.imgchest.com/files/f3b4f67e0e68.png><br>With the end of the Kerry-Allard Administration, both major party establishments have been put under pressure, leading to the nomination of two anti-establishment activists. Ralph Nader must appeal to disaffected liberals and moderates, while Alan Keyes must re-assure foreign policy minded conservatives and reclaim the coalition that won Ron Paul the Republian nomination four years ago.</p>`)
                 autoHalveVolumeOnce(setMusic("https://audio.jukehost.co.uk/lyBFQiNEB5iigEJq0HXXedOkBAUk6de6.mp3"));
     //e.image = ""
-    e.executable.push([0, (() => {e.image = e.image = 'https://imgur.com/UzY4zSi.jpg'})])
-    e.executable.push([1, (() => {e.image = e.image = 'https://imgur.com/6eLmRNT.jpg'})])
-    e.executable.push([2, (() => {e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'})])
+    e.executable.push([0, (() => {e.image = e.image = 'https://cdn.imgchest.com/files/87cb3a9d5484.png'})])
+    e.executable.push([1, (() => {
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#d59148";
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#d59148";
+        document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+        $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+        $(".container")[0].style.backgroundColor = "#369091";
+        document.getElementById("header").src = "https://cdn.imgchest.com/files/3ba21a6f574a.png";
+        document.body.background = "https://cdn.imgchest.com/files/395cc14f2997.png";
+        document.body.style.backgroundSize="cover"
+        document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#E8FBFF!important;}</style>";      
+
+        e.image = e.image = 'https://cdn.imgchest.com/files/6591e8ddec12.png'})])
+    e.executable.push([2, (() => {
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#700016";
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#BFE6FF";
+        document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+        $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+        $(".container")[0].style.backgroundColor = "#FFFFFF";
+        document.getElementById("header").src = "https://cdn.imgchest.com/files/4570b497f254.png";
+        document.body.background = "";
+        document.body.style.backgroundSize="cover"
+        document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#E8FBFF!important;}</style>";    
+        e.image = e.image = 'https://cdn.imgchest.com/files/4cde22e0f64c.png'})])
     
     } else if (aa[0].electoral_votes >= 270 && aa[0].electoral_votes < 300 ) { // Paul close loss
-    e.pages.push(`<h2>''While he gave the President a run for his money, we can as of now predict that John Kerry has been re-elected.''</h2>
+    e.pages.push(`<h2>''While he gave the President a run for his money, we can as of now predict that Ron Paul has been defeated.''</h2>
                 <p>The mood in the Staples Center was tense. People drank and chatted away, but the noise couldn’t hide the tension in the air. Had Paul done it? Had he brought liberty to America after 100 years of federal expansion? Beneath the bravado of the campaign operators, there was a crippling uncertainty. Rush Limbaugh had stolen millions of voters from key regions, and Kerry had proven himself to be a cunning operator. With the election coming down to the wire and as the final states were called, the truth became apparent; tonight, it’s not happening.</p>
                 <p>In a backstage room, Paul was upset but unsurprised. The American public had generally proven itself unwilling to make the tough choices when slimy politicians promised them that big government could make everything better, liberal or “conservative”. This loss, following the crash, was a humiliation - but it wasn’t all his fault. The Neo-Conservatives, those bitter losers, had cost him the election. That much was clear. Had Limbaugh just accepted the will of the Republican primary, Kerry wouldn’t have his 4 more years to ruin the economy. Oh, they’ll try and finger point, blame him for losing - but they know who cost them the election.</p>
                 <p>It’s not happening, not tonight. But the fight is far from over.</p>
@@ -11422,15 +11830,35 @@ e.global_parameter_json[0].fields.question_count = 29
                 <p>''And I do believe I just heard the er, dulcet tones of ''Up, Up and Away'', so it’s time for the condom update. The Log Cabin so-called Republicans, which frankly RINO is far too kind of a word for the kind of pervert these guys are, have officially announced that they are disappointed that ''Don’t Ask Don’t Tell'' failed its repeal despite President Kerry carrying water for that garbage. The leftists and their allies, not happy with infesting schools with its depraved views, are obsessed with making sure the American military is also perverted with that lifestyle.''</p>
                 <p>''It’s not enough that our kids need to be at risk of the paedophiles and sickos, now our troops need to be made vulnerable as well. It’d be funny if it wasn’t so sickening. Fortunately, we’re not standing for it. We have enough patriots in congress to shut down this utter nonsense and humiliate John Kerry again. At this point, even I’m getting depressed! We as Americans have shown time and time again, midterm after midterm, that we are not willing to listen to this pro-abortion, pro-gay, pro-handout nonsense.''</p>
                 <p>''Of course, not everyone got the memo. Ron Paul, what a disgrace. If it took him winning to stop John Kerry, then winning wasn’t worth it. I have said it time and time again, I was not responsible for Kerry winning. Ron Paul’s support for gay marriage and abortion were utterly indefensible and his coup of the Republican party was unacceptable. When we nominate a man again, he needs to be an actual christian. Luckily, there’s a certain man I have in mind - there was this just fantastic speech at the university of Dubuque…''</p>
-                <p>To President Paul - we are eager to help continue your work to shrink the government, and preserve and expand our valuable majority.</p>
                 `)
                 e.pages.push(`<h2>The Campaign Trail</h2>
-                <p>Please select the election you will run in: <br><select name="2012" id="2012"><option value="0">2012</option></select><br><img src=https://imgur.com/8yMPmZR.png>	<br>With the controversial Kerry administration coming to a close, Governor Rick Perry hopes to bring a more conservative vision to the White House, while Governor Bill Richardson hopes to preserve the accomplishments of the prior administrations. Each candidate must present credible answers to issues such as the lagging economy, foreign policy, and social issues, whilst expanding their base to restore optimism to America.</p>`)
+                <p>Please select the election you will run in: <br><select name="2012" id="2012"><option value="0">2012</option></select><br><img src=https://cdn.imgchest.com/files/5835fe20e53a.png>	<br>With the controversial Kerry administration coming to a close, Governor Rick Perry hopes to bring a more conservative vision to the White House, while Governor Bill Richardson hopes to preserve the accomplishments of the prior administrations. Each candidate must present credible answers to issues such as the lagging economy, foreign policy, and social issues, whilst expanding their base to restore optimism to America.</p>`)
                 autoHalveVolumeOnce(setMusic("https://audio.jukehost.co.uk/AZnXp7mTdDlRqJiylPFT6RfkqiXaMagR.mp3"));
     //e.image = ""
-    e.executable.push([0, (() => {e.image = e.image = 'https://imgur.com/gRi765P.jpg'})])
-    e.executable.push([1, (() => {e.image = e.image = 'https://imgur.com/BUXqYkz.jpg'})])
-    e.executable.push([2, (() => {e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'})])
+    e.executable.push([0, (() => {e.image = e.image = 'https://cdn.imgchest.com/files/24c4f637bc4b.png'})])
+    e.executable.push([1, (() => {
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#d59148";
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#d59148";
+        document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+        $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+        $(".container")[0].style.backgroundColor = "#369091";
+        document.getElementById("header").src = "https://cdn.imgchest.com/files/3ba21a6f574a.png";
+        document.body.background = "https://cdn.imgchest.com/files/395cc14f2997.png";
+        document.body.style.backgroundSize="cover"
+        document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#E8FBFF!important;}</style>";      
+
+        e.image = e.image = 'https://cdn.imgchest.com/files/dc46280cf3e8.png'})])
+    e.executable.push([2, (() => {
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#700016";
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#BFE6FF";
+        document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+        $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+        $(".container")[0].style.backgroundColor = "#FFFFFF";
+        document.getElementById("header").src = "https://cdn.imgchest.com/files/4570b497f254.png";
+        document.body.background = "";
+        document.body.style.backgroundSize="cover"
+        document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#E8FBFF!important;}</style>";    
+        e.image = e.image = 'https://cdn.imgchest.com/files/4cde22e0f64c.png'})])
     
     } else if (aa[0].electoral_votes >= 300 && aa[0].electoral_votes < 350 ) { // Paul medium loss
     e.pages.push(`<h2>''He narrowed it a bit, but Dr. Paul has been decisively defeated, and President Kerry re-elected.''</h2>
@@ -11446,34 +11874,85 @@ e.global_parameter_json[0].fields.question_count = 29
                 <p>According to some dubiously reliable leaks, President Kerry is receiving advice to either create a no-fly zone over Libya, or intervene directly, and allegedly leans towards the latter. That a no-fly zone is even being considered is farcical - that won’t do anything to stop Qaddafi’s tanks or chemical weapons. We can only pray that President Kerry intervenes - to protect the civilians at risk, and ensure that democracy can rise from the ashes of the Qaddafi regime.</p>
                 `)
                 e.pages.push(`<h2>The Campaign Trail</h2>
-                <p>Please select the election you will run in: <br><select name="2012" id="2012"><option value="0">2012</option></select><br><img src=https://imgur.com/NxXwy9J.png>	<br>As the controversial Kerry tenure comes to a close, two passionate ideologues battle it out to take control of the White House. Chuck Schumer must maintain and expand the coalition that won President Kerry's re-election, whilst Rick Santorum will provide conservative solutions to the lagging economy and other issues.</p>`)
+                <p>Please select the election you will run in: <br><select name="2012" id="2012"><option value="0">2012</option></select><br><img src=https://cdn.imgchest.com/files/2367156e2af3.png>	<br>As the controversial Kerry tenure comes to a close, two passionate ideologues battle it out to take control of the White House. Chuck Schumer must maintain and expand the coalition that won President Kerry's re-election, whilst Rick Santorum will provide conservative solutions to the lagging economy and other issues.</p>`)
                 autoHalveVolumeOnce(setMusic("https://audio.jukehost.co.uk/c8qzmAa46vkVlkFMFifdvPtKCIhleYDR.mp3"));
     //e.image = ""
-    e.executable.push([0, (() => {e.image = e.image = 'https://imgur.com/1nHQoxu.jpg'})])
-    e.executable.push([1, (() => {e.image = e.image = 'https://imgur.com/4fUf9AB.jpg'})])
-    e.executable.push([2, (() => {e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'})])
+    e.executable.push([0, (() => {e.image = e.image = 'https://cdn.imgchest.com/files/6a7055322e24.png'})])
+    e.executable.push([1, (() => {
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#d59148";
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#d59148";
+        document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+        $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+        $(".container")[0].style.backgroundColor = "#369091";
+        document.getElementById("header").src = "https://cdn.imgchest.com/files/3ba21a6f574a.png";
+        document.body.background = "https://cdn.imgchest.com/files/395cc14f2997.png";
+        document.body.style.backgroundSize="cover"
+        document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#E8FBFF!important;}</style>";      
+
+        e.image = e.image = 'https://cdn.imgchest.com/files/c848fdae2fca.png'})])
+    e.executable.push([2, (() => {
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#700016";
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#BFE6FF";
+        document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+        $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+        $(".container")[0].style.backgroundColor = "#FFFFFF";
+        document.getElementById("header").src = "https://cdn.imgchest.com/files/cb1bc056b5ab.png";
+        document.body.background = "";
+        document.body.style.backgroundSize="cover"
+        document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#E8FBFF!important;}</style>";    
+        e.image = e.image = 'https://cdn.imgchest.com/files/4cde22e0f64c.png'})])
     
     } else if (aa[0].electoral_votes >= 350 ) { // Paul landslide loss
     e.pages.push(`<h2>''The polls were right, and John Kery has won in a landslide.''</h2>
                 <p>At last, the humiliation was over. Paul sank into his couch backstage in the Staples Center, exhausted. Despite the bump he got following the crash that John Kerry caused, it wasn’t meant to last. An assault from all sides destroyed him - the liberals rallied behind Kerry, the big government conservatives spitefully wasted their support on Rush Limbaugh and the fat cats profiting off of an unsustainable status quo used the media to tear him down for everyone else. There was nothing Paul could have done. He had been granted the opportunity of a lifetime to reshape America, and it had been denied to him.</p>
                 <p>On the floor of the Staples Center, there was an outpouring of grief. People tired of the wars, the taxation, the spying - they had done their best. But it wasn’t good enough. The powers that be had taunted them with the idea that America could be saved, dangled Ron Paul in front of them, and snatched him away. There was no hope for America. Things would get so much worse before they were ready for the change the country desperately needed.</p>
                 <p>Paul had failed. The cause of liberty failed. The carnivorous expansion of power would continue to consume individual liberty, destabilising currency and entangling the world in more conflicts - until they were dragged to the abyss, with no hope of rescue.</p>
-    
-    
                 `)
-                e.pages.push 
+                if (quickstats[0] < aa[2].electoral_votes && aa[0].electoral_votes >= 350) {e.pages.push 
+                (`<h2>skibidi limbaugh.</h2>
+                <p>Hosting a press conference, the GOP Doctors Caucus denounced the Healthcare Reform Act as ineffective, marking a break from the Senate Republicans who have attacked the bill primarily from ideological grounds. Representative Cane MMD stated in the conference that ''It is clear to anyone that healthcare needs reform, and the late Kennedy’s efforts to pass healthcare were born from clearly the best of intentions. But the Democrats were so eager to pass Healthcare reform that they have decided to draw battle lines over rushed and ineffective legislation.''</p>
+                <p>Representative Price called the policy ''a costly and misguided encroachment of government that will destroy jobs and drive our nation further toward a fiscal crisis (...) The purpose of health reform should be to advance accessibility, affordability, quality, responsiveness and innovation. None of this is accomplished with the HRA.''</p>
+                <p>When informed by journalists that Presidential Candidate Ron Paul shared in their opposition, there was a silence for a few minutes. ''Dr. Paul is free to oppose the bill for whatever reason he sees fit. Despite being a doctor, he is not in the caucus and distantly related to us and our goals.''</p>
+                `)}
+                else {e.pages.push 
                 (`<h2>GOP Doctors Caucus Denounce the Healthcare Reform Act.</h2>
                 <p>Hosting a press conference, the GOP Doctors Caucus denounced the Healthcare Reform Act as ineffective, marking a break from the Senate Republicans who have attacked the bill primarily from ideological grounds. Representative Cane MMD stated in the conference that ''It is clear to anyone that healthcare needs reform, and the late Kennedy’s efforts to pass healthcare were born from clearly the best of intentions. But the Democrats were so eager to pass Healthcare reform that they have decided to draw battle lines over rushed and ineffective legislation.''</p>
                 <p>Representative Price called the policy ''a costly and misguided encroachment of government that will destroy jobs and drive our nation further toward a fiscal crisis (...) The purpose of health reform should be to advance accessibility, affordability, quality, responsiveness and innovation. None of this is accomplished with the HRA.''</p>
                 <p>When informed by journalists that Presidential Candidate Ron Paul shared in their opposition, there was a silence for a few minutes. ''Dr. Paul is free to oppose the bill for whatever reason he sees fit. Despite being a doctor, he is not in the caucus and distantly related to us and our goals.''</p>
-                `)
-                e.pages.push(`<h2>The Campaign Trail</h2>
-                <p>Please select the election you will run in: <br><select name="2012" id="2012"><option value="0">2012</option></select><br><img src=https://imgur.com/ivSuLJz.png>	<br>With the Kerry administration coming to an end, Senator Chuck Schumer faces off against controversial businessman Donald Trump, who snatched the nomination from an adrift Republican leadership. Trump will have to unite a Republican Party still grappling with the shock nomination of Ron Paul, whilst Senator Schumer must point to the succesful record of President Kerry and adress issues such as foreign policy and social change.</p>`)
+                `)}
+                if (e.player_answers.includes(3331) && e.player_answers.includes(3311) && e.player_answers.includes(12334) && e.player_answers.includes(12344)) {e.pages.push(`<h2>The Campaign Trail</h2>
+                <p>Please select the election you will run in: <br><select name="2012" id="2012"><option value="0">2012</option></select><br><img src=https://cdn.imgchest.com/files/4c1ac1579d9a.png>	<br>With the Kerry administration coming to an end, Vice President Landrieu faces off against controversial businessman Donald Trump, controversially championing the Republican nomination against a sleuth of establishment candidates. Landrieu will have to paint herself as the face of stability, whilst Trump must utilise his outsider persona, the anger of Middle America, and the bubbling populist fervor to topple the Democratic Party.</p>`)
+                ctsAchievement("Outsider Comes Early");    
+            }
+            
+                else {e.pages.push(`<h2>The Campaign Trail</h2>
+                <p>Please select the election you will run in: <br><select name="2012" id="2012"><option value="0">2012</option></select><br><img src=https://cdn.imgchest.com/files/2efc25235857.png>	<br>With the Kerry administration coming to an end, Vice President Mary Landrieu takes up the mantle of pragmatism against businessman Donald Trump who seized the Republican nomination from an adrift Republican leadership. Trump will have to unite a Republican Party still grappling with the shock nomination of Ron Paul, whilst Vice President landrieu must reassure the liberal wing of the Demcoratic Party whilst providing pragmatic solutions to issues such as foreign policy, the lagging economy, and social change.</p>`)}
                 autoHalveVolumeOnce(setMusic("https://audio.jukehost.co.uk/FSGqItDxP4L2KIBWDvnXvJWq2Is9FwDU.mp3"));
     //e.image = ""
-    e.executable.push([0, (() => {e.image = e.image = 'https://imgur.com/ZIgMZgP.jpg'})])
-    e.executable.push([1, (() => {e.image = e.image = 'https://imgur.com/BTgjcjR.jpg'})])
-    e.executable.push([2, (() => {e.image = e.image = 'https://imgur.com/qIqBzyn.jpg'})])
+    e.executable.push([0, (() => {e.image = e.image = 'https://cdn.imgchest.com/files/500e0ff8f76a.png'})])
+    e.executable.push([1, (() => {
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#d59148";
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#d59148";
+        document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+        $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+        $(".container")[0].style.backgroundColor = "#369091";
+        document.getElementById("header").src = "https://cdn.imgchest.com/files/3ba21a6f574a.png";
+        document.body.background = "https://cdn.imgchest.com/files/395cc14f2997.png";
+        document.body.style.backgroundSize="cover"
+        document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#E8FBFF!important;}</style>";      
+
+        e.image = e.image = 'https://cdn.imgchest.com/files/88c49fcbce90.png'})])
+    e.executable.push([2, (() => {
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#700016";
+        nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#BFE6FF";
+        document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+        $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+        $(".container")[0].style.backgroundColor = "#FFFFFF";
+        document.getElementById("header").src = "https://cdn.imgchest.com/files/4570b497f254.png";
+        document.body.background = "";
+        document.body.style.backgroundSize="cover"
+        document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#E8FBFF!important;}</style>";    
+        e.image = e.image = 'https://cdn.imgchest.com/files/4cde22e0f64c.png'})])
     
     }
 
@@ -11496,21 +11975,21 @@ if (quickstats[0] >= 270 && (e.player_answers.includes(3333) && e.player_answers
 ctsAchievement("I Demolish My Bridges Behind Me");  
 }    
         return construct(0);
-      }
+    }
     
-      setMusic = (url, override = false) => {
+    setMusic = (url, override = false) => {
         let aud;
         if ($("#music_player")[0]) {
-          $("#music_player")[0].remove();
+        $("#music_player")[0].remove();
         } 
         if (override && document.getElementById("endingAudio")) {
-          aud = document.getElementById("endingAudio");
-          aud.src = url;
-          aud.play();
-          return 0;
+        aud = document.getElementById("endingAudio");
+        aud.src = url;
+        aud.play();
+        return 0;
         }
         if (document.getElementById("endingAudio")) {
-          return 0;
+        return 0;
         }
         aud = document.createElement("audio");
         aud.id = "endingAudio";
@@ -11520,7 +11999,6 @@ ctsAchievement("I Demolish My Bridges Behind Me");
         document.body.appendChild(aud);
         aud.play();
         return 0;
-      }
-
+    }
 
 

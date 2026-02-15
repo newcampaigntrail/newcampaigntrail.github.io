@@ -1,0 +1,599 @@
+if (!e.runIntro) {
+    var music = new Audio('https://audio.jukehost.co.uk/nZqROSvA68IUJrEo7eBrWZYT9FGUKTPd');
+    music.loop = false;
+    music.volume = 0.5;
+    music.play();
+    e.runIntro = true;
+    }
+    RecReading=true 
+  
+    campaignTrail_temp.modBoxTheme = {
+        "header_color": "#fff76b",
+        "header_text_color": "#000000",
+        "description_text_color": "#000000",
+        "description_background_color": "#81caf4",
+        "main_color": "#81caf4",
+        "secondary_color": "#8d8600",
+        "ui_text_color": "#FFFFFF"
+   }
+
+   campaignTrail_temp.achievements = {
+    "Can't Someone Else Do It?" : {
+        "image" : "https://i.imgur.com/PwFgG7N.png",
+        "description" : "Win as Homer Simpson",
+        "cannotBeCheated" : false
+    },
+    "Electrical College" : {
+        "image" : "https://i.imgur.com/7SNz5ar.png",
+        "description" : "Deadlock the election",
+        "cannotBeCheated" : true
+    },
+    "Eat My Shorts!" : {
+        "image" : "https://i.imgur.com/kTVSWA8.png",
+        "description" : "Outperform Bush",
+        "cannotBeCheated" : true
+    },
+    "The Lesson Is, Never Try" : {
+      "image" : "https://i.imgur.com/tlpCCs0.png",
+      "description" : "Underperform Bush while Clinton wins",
+      "cannotBeCheated" : true
+    },
+    "Mona Leaves-a" : {
+      "image" : "https://i.imgur.com/3TSgJQZ.png",
+      "description" : "Disappoint your mother",
+      "cannotBeCheated" : false
+    }
+  }
+
+    campaignTrail_temp.election_json = [
+      {
+          "model": "campaign_trail.election",
+          "pk": 9,
+          "fields": {
+              "year": 1992,
+              "display_year": "1992 The Simpsons",
+              "summary": "<p>Only some people can be President. Those of a small elite. Who have had years of political experience and are practically married by god to the establishment. This election seals this narrative. A scandal ridden Governor with deep ties to the establishment of his party versus a foreign policy mad President who seems to forget the concept of domestic issues. George Bush's success as President is as hollow as his promises. Rising unemployment, rising healthcare costs and American workers being undermined with NAFTA.</p><p>There seems to be a hole in the political conscience, as if America is longing for a change of the two party monopoly. But the Presidency isn't just for any dumbo that works 9 to 5 at a below average level and is slightly overweight, right? D'oh!</p>",
+              "image_url": "https://i.imgur.com/90fttly.png",
+              "winning_electoral_vote_number": 270,
+              "advisor_url": "https://i.imgur.com/EPPmELt.png",
+              "recommended_reading": "<h4 style='margin-top: 0.5em;'>1992: The Simpsons</h4><p>Thank you to everyone who helped make this possible, I definitely couldn't have done it without them. Its been a struggle making this mod, I thought the project was dead for a while after I broke my leg, but in the summer as you may've seen we managed to rebound development with more people offering to help. And now its here! Almost a year after I first announced it. It's not the best mod so critism is welcome - but keep in mind its my first mod and its meant to be pretty basic anyway.</p><p>Thanks for playing!</p><p><em>Homer will return...</em></p><img src='https://i.imgur.com/ORKkrQr.png' width='120px'></img>",
+              "has_visits": 1,
+              "no_electoral_majority_image": "../static/images/2012-no-majority.jpg"
+          }
+      }
+  ]
+
+  campaignTrail_temp.temp_election_list = [
+      {
+          "id": 9,
+          "year": 1992,
+          "is_premium": 0,
+          "display_year": "1992 The Simpsons"
+      }
+  ]
+  
+  campaignTrail_temp.credits = "<button onclick='credits()'>scottishbozo</button>"
+  
+  credits = function() {
+    credits = [ "Lead: scottishbozo", "Coding Help: oohweeooh, NoAccess", "Writing Help: FireWizard, senz", "Thank you to the Deep State for playtesting", "All credits to Jet for the mod tools, and Decstar for the music player."]
+    text = "CREDITS:\n\n"
+    for (i in credits) {
+        text += credits[i] + "\n"
+    }
+    alert(text)
+  }
+  
+  // Select the node that will be observed for mutations
+const windowsAdvisorTargetNode = document.getElementById("game_window");
+
+// Options for the observer (which mutations to observe)
+const windowsAdvisorConfig = { attributes: true, childList: true, subtree: true };
+
+// Callback function to execute when mutations are observed
+const callback = (mutationList, observer) => {
+    visitWindow = document.getElementsByClassName("overlay_window")[0];
+
+    if(visitWindow == null || visitWindow.classList.contains("done")) {
+        return;
+    }
+    visitWindow.classList.add("done");
+    visitWindow.classList.add("window");
+    let titleBar = visitWindow.querySelector("h3");
+    titleBar.classList.add("title-bar");
+    titleBar.classList.add("title-bar-text")
+    titleBar.style.paddingLeft = "3px";
+};
+
+  campaignTrail_temp.global_parameter_json = [
+      {
+          "model": "campaign_trail.global_parameter",
+          "pk": 1,
+          "fields": {
+              "vote_variable": 1.125,
+              "max_swing": 0.12,
+              "start_point": 0.94,
+              "candidate_issue_weight": 10,
+              "running_mate_issue_weight": 3,
+              "issue_stance_1_max": -0.71,
+              "issue_stance_2_max": -0.3,
+              "issue_stance_3_max": -0.125,
+              "issue_stance_4_max": 0.125,
+              "issue_stance_5_max": 0.3,
+              "issue_stance_6_max": 0.71,
+              "global_variance": 0.01,
+              "state_variance": 0.005,
+              "question_count": 25,
+              "default_map_color_hex": "#C9C9C9",
+              "no_state_map_color_hex": "#999999"
+          }
+      }
+  ]
+  
+  campaignTrail_temp.candidate_json = [
+      {
+    "model": "campaign_trail.candidate",
+    "pk": 79,
+    "fields": {
+        "first_name": "Homer",
+        "last_name": "Simpson",
+        "election": 9,
+        "party": "Independent",
+        "state": "Oregon",
+        "priority": 1,
+        "description": "<div style='max-height: 300px; overflow-y: auto;'>Homer Simpson works at a local nuclear power plant in Springfield, a family man. He never sought the Presidency, but as his nation is in it's hour of need, he has stepped up to the challe- Nah, he's only here because his son, Bart, filled out the paperwork for a Presidential run as a prank. Still, after some convincing from his family and the fact that that old Wimp is trying to get re-elected, Homer has decided that he will stay in the race, and give it his all.</p><p>Homer was born in 1956, and although he doesn't look it, he would become the youngest President in history if elected, which is likely gonna be a theme of his opponents attacks. Not to mention his alcoholism and love of food making him seem unpresidential (which to be fair, he is). Yet, his biggest issues is actually forming a campaign, as of now he'd be lucky to get half of Lyndon LaRouche's PV. Homer needs to use whatever connections he has to unite people from the left and right to finally end the disgrace that is the two party system.</p>",
+        "color_hex": "#f8db27",
+        "secondary_color_hex": null,
+        "is_active": 1,
+        "image_url": "https://i.imgur.com/FBdX3Wu.gif",
+        "electoral_victory_message": "<h3>Congratulations! You have won the 1992 election.</h3><p>This was definitely not supposed to happen. Good luck!</p>",
+        "electoral_loss_message": "<h3>As expected, you have lost the 1992 election.</h3><p>The legacy of this campaign depends on a couple of factors. First of all, did you receive 5% of the popular vote? If so, congratulations! You will enable the Green Party to run a vigorous campaign in 1996 and present a true choice to the American people. Also, the Democrats were a little peeved that you \\\\\\\"stole\\\\\\\" votes from them in this election. Hopefully that doesn't lead to a backlash.</p>",
+        "no_electoral_majority_message": "<h3>Wow! No candidate received 270 electoral votes, but the House will elect George W. Bush as President.</h3><p>Did you receive 5% of the popular vote? If so, congratulations! You will enable the Green Party to run a vigorous campaign in 1996 and present a true choice to the American people. Also, the Democrats were a little peeved that you \\\\\\\"stole\\\\\\\" votes from them in this election. Hopefully that doesn't lead to a backlash, especially since they will lose the vote in the House.</p>",
+        "description_as_running_mate": null,
+        "candidate_score": 1,
+        "running_mate": false
+          }
+      },
+      {
+          "model": "campaign_trail.candidate",
+          "pk": 77,
+          "fields": {
+              "first_name": "George",
+              "last_name": "Bush",
+              "election": 9,
+              "party": "Republican",
+              "state": "Texas",
+              "priority": 2,
+              "description": "<p>George Bush is the incumbent President of the United States. His presidency has had ups and downs with the successful victory in the Gulf War earning him a high approval rating. However, his triumph abroad has been swamped by many Domestic crises swooping America with a high unemployment and low consumer confidence.</p>\n            \n            <p>To win this election, he has to show that he has actually done something about this, instead of thinking he is some unstoppable world king. At the moment he is leading in the polls, but that can all change. Anything can happen in elections!</p>",
+              "color_hex": "#ff4040",
+              "secondary_color_hex": null,
+              "is_active": 1,
+              "image_url": "https://i.imgur.com/W4CTUNO.gif",
+              "electoral_victory_message": "This guy wins!",
+              "electoral_loss_message": "This guy loses!",
+              "no_electoral_majority_message": "We all win?",
+              "description_as_running_mate": null,
+              "candidate_score": 1,
+              "running_mate": false
+          }
+      },
+      {
+          "model": "campaign_trail.candidate",
+          "pk": 303,
+          "fields": {
+              "first_name": "Dan",
+              "last_name": "Quayle",
+              "election": 9,
+              "party": "Republican",
+              "state": "Indiana",
+              "priority": 2,
+              "description": "<p>Put description here</p>",
+              "color_hex": "#ff4040",
+              "secondary_color_hex": null,
+              "is_active": 0,
+              "image_url": "https://i.imgur.com/QsCCcfr.gif",
+              "electoral_victory_message": "This guy wins!",
+              "electoral_loss_message": "This guy loses!",
+              "no_electoral_majority_message": "We all win?",
+              "description_as_running_mate": "<p>Dan Quayle has been serving as Vice President under Bush for the past 4 years and did serve as a senator from Indiana before. Oh god, what an absolute embarrassment this guys been to his Presidency. Let's hope another dumbo like him doesn't ruin his career. Choosing someone else could come over as indecisive, but most campaign staff and Republican operators agree that he should go.</p>\n            \n            <p>It seems the worse of both worlds, if you keep him he'll keep making gaffe after gaffe but if you drop him, you'll get attacked for being indecisive. If you do decide to keep him however, make sure to utilise his youth and take advantage of his conservatism to get some extra right wing support.</p>",
+              "candidate_score": 1,
+              "running_mate": true
+          }
+      },
+      {
+          "model": "campaign_trail.candidate",
+          "pk": 304,
+          "fields": {
+              "first_name": "Charles Montgomery",
+              "last_name": "Burns",
+              "election": 9,
+              "party": "Republican",
+              "state": "Oregon",
+              "priority": 1,
+              "description": "<p>Put description here</p>",
+              "color_hex": "#ff4040",
+              "secondary_color_hex": null,
+              "is_active": 0,
+              "image_url": "https://i.imgur.com/M3EK0AW.gif",
+              "electoral_victory_message": "This guy wins!",
+              "electoral_loss_message": "This guy loses!",
+              "no_electoral_majority_message": "We all win?",
+              "description_as_running_mate": "<p>Charles Montgomery Burns is a well known businessman in the State Oregon. His net worth is upwards of a billion dollars, he owns an entire tycoon of shops and businesses predominantly based in Springfield from Opera Houses and Casinos to his Nuclear Power Station. He has given thousands of people jobs and has been very active in getting Republican politicians elected in the state and rest of America in the past.</p>\n            \n            <p>If Burns is selected, he could massively financially contribute to the Bush campaign. However, Burns is a terrible campaigner and could be open to attacks for his shady financial and womanising past as well as other big skeletons in his million dollar closet. It doesn't help he is also the epitome of an old school draconian capitalist, which could make you campaign even more out of touch than it already is. Aren't we all though?</p>",
+              "candidate_score": 1,
+              "running_mate": true
+          }
+      },
+      {
+          "model": "campaign_trail.candidate",
+          "pk": 78,
+          "fields": {
+              "first_name": "Bill",
+              "last_name": "Clinton",
+              "election": 9,
+              "party": "Democrat",
+              "state": "Arkansas",
+              "priority": 3,
+              "description": "<p>Bill Clinton is the current governor of Arkansas and has been seen as the rising star within the Democratic Party. He is the face a younger generation of politicians with a broad range of new ideas for the future. Well, they're not new, Clinton just copied off Reagan's manual, but actual policy doesn't really matter in elections these days anyway. Clinton has a big opportunity to portray himself as more in touch with the American people and a give a fresher view on the problems of the United States.</p>\n            \n            <p>Clinton does have a few skeletons in his closet however. He has a reputation of being a womaniser as governor, with these scandals having the potential to destroy his whole election campaign and nicely planned career. So the question is, can Clinton slide his way into the White House someway or another and get past these obstacles to be the next lame duck President? Time can only tell...</p>",
+              "color_hex": "#002868",
+              "secondary_color_hex": null,
+              "is_active": 1,
+              "image_url": "https://i.imgur.com/vre5kZg.gif",
+              "electoral_victory_message": "This guy wins!",
+              "electoral_loss_message": "This guy loses!",
+              "no_electoral_majority_message": "We all win?",
+              "description_as_running_mate": null,
+              "candidate_score": 1,
+              "running_mate": false
+          }
+      },
+      {
+          "model": "campaign_trail.candidate",
+          "pk": 305,
+          "fields": {
+              "first_name": "Al",
+              "last_name": "Gore",
+              "election": 9,
+              "party": "Democrat",
+              "state": "Tennessee",
+              "priority": 1,
+              "description": "<p>Put description here</p>",
+              "color_hex": "#0000FF",
+              "secondary_color_hex": null,
+              "is_active": 0,
+              "image_url": "https://i.imgur.com/EqSV4AS.gif",
+              "electoral_victory_message": "This guy wins!",
+              "electoral_loss_message": "This guy loses!",
+              "no_electoral_majority_message": "We all win?",
+              "description_as_running_mate": "<p>Al Gore is a conservative Democratic Senator from Tennessee who has served in the Senate since 1985. He is the carbon copy of every other Neoliberal politician at the time with himself being very established in the business of politics. He and Clinton share practically the same views on everything, including NAFTA, balancing the budget, tax relief, being tough on crime, and welfare reform.</p>\n            \n            The only significant difference is that Clinton practically radiates charisma, while Gore is extremely uncharismatic. This could reinforce the campaign's moderate image but also risk making it seem ideologically and charismatically boring.",
+              "candidate_score": 1,
+              "running_mate": true
+          }
+      },
+      {
+          "model": "campaign_trail.candidate",
+          "pk": 306,
+          "fields": {
+              "first_name": "Horace",
+              "last_name": "Wilcox",
+              "election": 9,
+              "party": "Democrat",
+              "state": "Oregon",
+              "priority": 2,
+              "description": "<p>Horace Wilcox couldn't be a more dedicated public servant, he has served in congress as representative since 1933 and was a historic survivor of the Titanic disaster. He is a traditional New Deal Democrat, additionally he could make Clinton's campaign come over as more experienced.</p>\n            \n            However his age could pose significant issue to the campaign with many people saying he is too old to representative, let alone Vice-President with Wilcox being 94. His big government views could also clash with Clinton's Third Way ideas.",
+              "color_hex": "#0000FF",
+              "secondary_color_hex": null,
+              "is_active": 0,
+              "image_url": "https://i.imgur.com/F2lUfZS.gif",
+              "electoral_victory_message": "This guy wins!",
+              "electoral_loss_message": "This guy loses!",
+              "no_electoral_majority_message": "We all win?",
+              "description_as_running_mate": "<p>Horace Wilcox couldn't be a more dedicated public servant, he has served in congress as representative since 1933 and was a historic survivor of the Titanic disaster. He is a traditional New Deal Democrat, additionally he could make Clinton's campaign come over as more experienced.</p>\n            \n            However his age could pose significant issue to the campaign with many people saying he is too old to representative, let alone Vice-President with Wilcox being 94. His big government views could also clash with Clinton's Third Way ideas.",
+              "candidate_score": 1,
+              "running_mate": true
+          }
+      },
+      {
+          "model": "campaign_trail.candidate",
+          "pk": 307,
+          "fields": {
+              "first_name": "Joe",
+              "last_name": "Quimby",
+              "election": 9,
+              "party": "Democrat",
+              "state": "Oregon",
+              "priority": 1,
+              "description": "<p>Put description here</p>",
+              "color_hex": "#0000FF",
+              "secondary_color_hex": null,
+              "is_active": 0,
+              "image_url": "https://i.imgur.com/rcvVLhk.gif",
+              "electoral_victory_message": "This guy wins!",
+              "electoral_loss_message": "This guy loses!",
+              "no_electoral_majority_message": "We all win?",
+              "description_as_running_mate": "<p>Joe Quimby is the current Mayor of Springfield and is on his sixth term. He is the only politician Homer knows which is unfortunate in itself due to Quimby not being the best example of a competent or clean politician. His experience for shutting down political oppon- sorry, his experience as Mayor could greatly help your ticket. His affiliation with the Democratic party could greatly help taking potential Clinton voters.</p>However, Mayor Quimby has many scandals tucked away which could easily be uncovered with the Bush campaign not being very forgiving. Quimby also lives in the same state as you which could be an issue due to running mates prohibited from being in the same state, but I'm sure he could work something out.",
+              "candidate_score": 1,
+              "running_mate": true
+          }
+      },
+      {
+          "model": "campaign_trail.candidate",
+          "pk": 308,
+          "fields": {
+              "first_name": "Clancy",
+              "last_name": "Wiggum",
+              "election": 9,
+              "party": "Independent",
+              "state": "Indiana",
+              "priority": 2,
+              "description": "<p>Put description here</p>",
+              "color_hex": "#0000FF",
+              "secondary_color_hex": null,
+              "is_active": 0,
+              "image_url": "https://i.imgur.com/LTOfBY5.gif",
+              "electoral_victory_message": "This guy wins!",
+              "electoral_loss_message": "This guy loses!",
+              "no_electoral_majority_message": "We all win?",
+              "description_as_running_mate": "<p>Clancy Wiggum is Springfields Police Chief. After the Los Angeles Riots, many people are wanting Law and Order, this choice of running mate might do just that. Chief Wiggum is a perfect example of how police aren't corrupt or incompetent and really just want the best for the people of America.</p>This running mate choice could get some conservatives and moderates on your side but it could end up alienating the progressive base which could see you candidacy as a way out of the two party duopoly.",
+              "candidate_score": 1,
+              "running_mate": true
+          }
+      }
+  ]
+  
+  campaignTrail_temp.running_mate_json = [
+      {
+          "model": "campaign_trail.running_mate",
+          "pk": 164796,
+          "fields": {
+              "candidate": 77,
+              "running_mate": 303
+          }
+      },
+      {
+          "model": "campaign_trail.running_mate",
+          "pk": 102543,
+          "fields": {
+              "candidate": 77,
+              "running_mate": 304
+          }
+      },
+      {
+          "model": "campaign_trail.running_mate",
+          "pk": 150636,
+          "fields": {
+              "candidate": 78,
+              "running_mate": 305
+          }
+      },
+      {
+          "model": "campaign_trail.running_mate",
+          "pk": 138820,
+          "fields": {
+              "candidate": 78,
+              "running_mate": 306
+          }
+      },
+      {
+          "model": "campaign_trail.running_mate",
+          "pk": 152353,
+          "fields": {
+              "candidate": 79,
+              "running_mate": 307
+          }
+      }
+  ]
+  
+  campaignTrail_temp.opponents_default_json = [
+      {
+          "election": 9,
+          "candidates": [
+              79,
+              77,
+              78
+          ]
+      }
+  ]
+  
+  campaignTrail_temp.opponents_weighted_json = [
+      {
+          "election": 9,
+          "candidates": [
+              79,
+              77,
+              78
+          ]
+      }
+  ]
+  
+  HistHexcolour=["#002868","#f8db27","#ff4040", "#808080"];
+        HistName=["Bill Clinton","Homer Simpson","George Bush", "Others"];
+        HistEV=[405,69,64,0];
+        HistPV=["39,709,809","32,893,139","34,299,753","1,253,087"];
+        HistPVP=["36.7%","30.4%","31.7%","1.2%"];
+
+  jet_data = {
+      "headerColor": "#8d8600",
+      "windowColor": "#fff76b",
+      "containerColor": "#81caf4",
+      "innerWindowColor": "#fff76b",
+      "bannerImageUrl": "https://i.imgur.com/1jBjoZy.png",
+      "backgroundImageUrl": "https://i.imgur.com/dK5dGBO.png",
+      "endingTextColor": "#000000",
+      "customQuote": ""
+  }
+  
+  //#startcode
+  
+  
+  
+  nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#8d8600";
+  
+  nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#fff76b";
+  
+  document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+  
+  $("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+  
+  $(".container")[0].style.backgroundColor = "#81caf4";
+  
+  document.getElementById("header").src = "https://i.imgur.com/1jBjoZy.png";
+  
+  document.body.background = "https://i.imgur.com/dK5dGBO.png";
+  
+  document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#fff76b!important;}</style>";
+  
+  //#endcode
+  corrr = `
+    <div style="font-size: 1px; font-family: monospace; color: white;">
+      <h2 style="font-style: normal;">
+        <img src="https://i.imgur.com/QSaPb9Z.png" alt="The Simpson Trail" style="margin-top: 1px;">
+      </h2>
+    </div>
+    `;
+    styling = document.createElement("style");
+    document.head.appendChild(styling);          
+    styling.innerHTML = `
+    body {
+        background-size: cover;
+    }
+    `
+    bannerArr=0
+  bannerlist=["//i.imgur.com/1jBjoZy.png", "https://i.imgur.com/T0gRbuK.png"]
+  var changeBanner = () =>
+  {
+  bannerArr+=1
+  document.getElementById("header").src=bannerlist[bannerArr % bannerlist.length]
+  }
+  document.getElementById("header").src=bannerlist[0]
+  footer = $(".footer")[0]
+  var button = document.createElement("button") // <button onclick="changeBanner()" style="font-weight: bold; height:19.49px; position: static; right: 770px; top: 0px;">Change banner</button>
+  button.style = `font-weight: bold; height:19.49px; position: static; right: 770px; top: 0px;`
+  button.innerHTML = "Change banner"
+  footer.insertBefore(button, footer.firstChild);
+  button.onclick = changeBanner;
+  
+  e = campaignTrail_temp
+
+const startScreenUpdater = setInterval(function() {
+	const goBackButton = document.getElementById("candidate_id_back");
+	const candidateButton = document.getElementById("candidate_id_button");
+	const runningMateButton = document.getElementById("running_mate_id_button");
+	const finalScreenBB = document.getElementById("opponent_selection_id_back");
+	const finalScreenID = document.getElementById("opponent_selection_id_button");
+    const difficultySlider = document.getElementById("difficulty_level");
+    const gameType = document.getElementById("game_type_id");
+
+    
+    if((candidateButton || c != 0)&& !runningMateButton){ // change theme on candidate viewing
+		var c = document.getElementById("candidate_id").value;
+		if(c == 79 && !(candidateButton) && !(runningMateButton)) {
+            goBackButton.click();
+            const initContinue = document.getElementById("election_id_button");
+            initContinue.click();
+		}
+		else if(c == 78 || c == 77) {
+            if(candidateButton) {
+                candidateButton.remove();
+            }
+		}
+	}
+
+	if(finalScreenID) { // delete back button and delete the interval
+		finalScreenBB.remove();
+		clearInterval(startScreenUpdater);
+	}
+}, 1);
+
+  function addDynamicCSS() {
+    var css = `
+        .inner_window_question h3 .mytooltip{
+            background-color: #81caf4;
+        }
+  
+        .mytooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            background-color: #81caf4;
+        }
+  
+        .mytooltip .mytooltiptext {
+            width: 200px;
+            background-color: #81caf4;
+            color: black;
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 99;
+            bottom: 20%;
+            left: 20%;
+            margin-left: -90px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            border: 1px solid black;
+            pointer-events: none;
+            font-size: 13px !important;
+            line-height: 1.5em !important;
+            font-weight: normal !important;
+            font-style: normal !important;
+        }
+  
+        .mytooltip .mytooltiptext img {
+            max-width: 200px;
+            height: auto;
+        }
+  
+        .mytooltip:hover .mytooltiptext {
+            opacity: 1;
+            transition-delay: 0.5s;
+        }
+    `;
+  
+    var styleElem = document.createElement('style');
+    styleElem.type = 'text/css';
+    
+    styleElem.appendChild(document.createTextNode(css));
+    
+    document.head.appendChild(styleElem);
+  }
+  
+  
+  addDynamicCSS();
+  
+  tooltipList = [
+    {searchString: "Bush", explanationText: "<img src=https://i.imgur.com/ijao8c1.jpeg> Wimp"},
+    {searchString: "Clinton", explanationText: "<img src=https://i.imgur.com/rMY2iTi.png> Degenerate"},
+    {searchString: "Clinton's", explanationText: "<img src=https://i.imgur.com/rMY2iTi.png> Degenerate"},
+    {searchString: "Quayle", explanationText: "<img src=https://i.imgur.com/GGzcYUk.png> POTATOE"},
+    {searchString: "Gore", explanationText: "<img src=https://i.imgur.com/3W9YbaW.png> BORRING"},
+    {searchString: "Perot", explanationText: "<img src=https://i.imgur.com/4HKVhFQ.png> My big eared friend"},
+    {searchString: "Burns", explanationText: "<img src=https://i.imgur.com/uY1e2E3.png> The Boss"},   
+    {searchString: "Bart", explanationText: "<img src=https://i.imgur.com/3F9KgmT.jpg> The Boy"},
+    {searchString: "Lisa", explanationText: "<img src=https://i.imgur.com/7cpDPKL.png> My Little Genius"},
+    {searchString: "Maggie", explanationText: "<img src=https://i.imgur.com/s2eLL3t.png> My only kid that loves me"},
+    {searchString: "Marge", explanationText: "<img src=https://i.imgur.com/f39qW5E.png> The love of my life"},
+    {searchString: "Alcohol", explanationText: "<img src=https://i.imgur.com/uAahyw8.png> GIMME!"},
+    {searchString: "Duff", explanationText: "<img src=https://i.imgur.com/uAahyw8.png> GIMME!"},
+    {searchString: "Springfield", explanationText: "<img src=https://i.imgur.com/H9nvYWW.jpeg> Home"},
+    {searchString: "NAFTA", explanationText: "<img src=https://i.imgur.com/rW0ITDq.png> Load'a letters that Lisa says I shouldn't like"}
+  ];
+  
+  //Swaps from intro to game. No clue why this nesting is necessary.
+    $("#game_start").click((event) => {
+      event.preventDefault();
+      $("#election_id_button").click((event) => {
+      $("#candidate_id_button").click((event) => {
+      $("#running_mate_id_button").click((event) => { 
+      $("#opponent_selection_id_button").click((event) => {
+          music.pause();
+          musicMode();
+  
+          if(audio !== null) {
+              audio.play();
+          }
+  
+      })
+      })
+      })
+      })
+    })

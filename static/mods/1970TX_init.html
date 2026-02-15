@@ -1,0 +1,998 @@
+/*
+* Mod Title: 1970 Texas Senate
+ * Mod Author: Diamondy and Big Tony
+ * Mod Version: 1.0.0
+ * Mod Description: This mod is an election based off of the 1970 United States Senate election in Texas, where former U.S. Representative and future vice presidential candidate Lloyd Bentsen defeated U.S. Representative, future CIA Director, future vice president, and future president George H. W. Bush.
+ * 
+ * Coding License: Apache License 2.0
+ * Writing License: Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
+ * 
+ * For the coding in this mod, I hereby release the code under the terms and conditions of the Apache License 2.0. The full text of the license can be found at:
+ * https://choosealicense.com/licenses/apache-2.0/
+ * 
+ * For the writing in this mod, including documentation, text files, and other non-software written works, I hereby release the content under the terms and conditions of the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license. The full text of the license can be found at:
+ * https://creativecommons.org/licenses/by-nc/4.0/legalcode
+ * 
+ * By using, distributing, or modifying this mod, you agree to abide by the terms and conditions of both the Apache License 2.0 and the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license.
+*/
+
+const customStyling = document.createElement("style");
+customStyling.innerHTML = `
+#main_content_area_reading {
+    color: black;
+  }
+`;
+document.head.appendChild(customStyling);
+e = campaignTrail_temp;
+e.collect_results = true;
+campaignTrail_temp.modBoxTheme = {
+     "header_color": "#252840",
+     "header_text_color": "#ffffff",
+     "description_text_color": "#000000",
+     "description_background_color": "#B1A18A",
+     "main_color": "#953C3A",
+     "secondary_color": "#BE3C3A",
+     "ui_text_color": "#FFFFFF"
+}
+RecReading=true
+
+document.getElementById("header").src = "https://file.garden/ZdjMW5zmo3pLm5z8/1970%20Texas%20Senate.png"
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#685641"
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#B1A18A"
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title
+$(".container")[0].style.backgroundColor = "#514134"
+document.body.background = "https://file.garden/ZdjMW5zmo3pLm5z8/texas%20background.png"
+document.body.style.backgroundRepeat = "no-repeat";
+document.body.style.backgroundSize="cover"
+$("#game_window")[0].style.backgroundImage = "url(https://file.garden/ZdjMW5zmo3pLm5z8/Texas%20Background%20Test1.png)"
+$("#game_window")[0].style.backgroundSize = "cover";
+quotes = ["“A thousand Points of Light.” - George H. W. Bush"]
+customquote = quotes[Math.floor((Math.random() * quotes.length))]
+corrr=`\n<h2>NEW CAMPAIGN TRAIL</h2><font id='wittyquote' size='3' color='white'><em>`+customquote+`</em></font>`
+e=campaignTrail_temp
+
+var changeGameDisp = (hide) => {
+  disp = "";
+  if (hide) {
+	disp = "none";
+  }
+  document.getElementsByClassName("inner_window_w_desc")[0].style.display = disp
+};
+
+HistHexcolour=["#252869","#9E3D29","#","#"];
+  	  HistName=[" Lloyd Bentsen"," George H. W. Bush"," N/A"," N/A"];
+  	  HistPV=["1,194,069","1,035,794","",""];
+  	  HistPVP=["53.55%","46.45%","",""];
+
+const bodyElement = document.body;
+bodyElement.style.backgroundAttachment = 'fixed';      
+
+function updateRunningMateForm() {
+  runformobserver.disconnect();
+  const heading = document.querySelector("#running_mate_form form h3");
+
+  if (heading) {
+    heading.textContent = "Please select your nominee:";
+  }
+  runformobserver.observe(document.documentElement, { childList: true, subtree: true });
+}
+if(!runformobserver){
+var runformobserver = new MutationObserver(updateRunningMateForm);
+runformobserver.observe(document.documentElement, { childList: true, subtree: true });
+}
+
+function removeCandidateSummary() {
+   sumobserver.disconnect();
+  const candidateSummary = document.querySelector("#candidate_summary");
+  if (candidateSummary) {
+    const ulList = candidateSummary.querySelector("ul");
+    if (ulList) {
+      candidateSummary.removeChild(ulList);
+    }
+  }
+  sumobserver.observe(document.body, {childList: true,subtree: true});
+}
+if(!sumobserver){
+var sumobserver = new MutationObserver(removeCandidateSummary);
+sumobserver.observe(document.body, {childList: true,subtree: true});
+}
+
+function removeRunningMateSummary() {
+   sumobserver.disconnect();
+  const runningmateSummary = document.querySelector("#running_mate_form");
+  if (RunningMateSummary) {
+    const ulList = RunningMateSummary.querySelector("ul");
+    if (ulList) {
+      RunningMateSummary.removeChild(ulList);
+    }
+  }
+  sumobserver.observe(document.body, {childList: true,subtree: true});
+}
+if(!sumobserver){
+var sumobserver = new MutationObserver(removeRunningMateSummary);
+sumobserver.observe(document.body, {childList: true,subtree: true});
+}
+
+window.setInterval(updateRunningMateForm,10)
+  function removeVPSummary() {
+  try {
+    const vpSummary = document.querySelector("#running_mate_summary");
+    if (vpSummary) {
+      const ulList = vpSummary.querySelector("ul");
+      if (ulList) {
+        vpSummary.removeChild(ulList);
+      }
+    }
+  } catch {}
+  }
+  window.setInterval(removeVPSummary,10)
+
+e.election_json = [{
+    "model": "campaign_trail.election",
+    "pk": 3,
+    "fields": {
+        "year": 1970,
+        "summary": "The year is 1970. Three candidates, George H. W. Bush, Ralph Yarborough, and Lloyd Bentsen, face off against each other. Yarborough is a die-hard liberal, and he is defending his seat. To many, Bush and Bentsen are indistinguishable conservatives. To more, especially those who are minorities, Bush and Bentsen are not even worth voting for. With the Vietnam War waging and Nixon ruling in Washington, how will you shape Texan politics forever in this Senate election?<br><br><br><p></li></ul><button onclick='next3()'><b>MORE:</b></button></p>",
+        "image_url": "https://file.garden/ZdjMW5zmo3pLm5z8/Bush%20v.%20Bentsen.png",
+        "winning_electoral_vote_number": 0,
+        "advisor_url": "https://file.garden/ZdjMW5zmo3pLm5z8/Hugh%20Scott%20George%20Bush.png",
+        "recommended_reading": "<div style='overflow-y:scroll;height:370px;'> <h2>1970 Texas Senate</h2></h5>Time - <a href='https://time.com/archive/6838217/nation-the-republican-assault-on-the-senate/' target='_blank'>The Republican Assault on the Senate</a><br> The New York Times - <a href='https://www.nytimes.com/1970/11/04/archives/bentsen-defeats-bush-in-texas-despite-massive-effort-by-nixon.html' target='_blank'>Bentsen Defeats Bush in Texas Despite Massive Effort by Nixon</a><br>Washington Post - <a href='https://www.washingtonpost.com/wp-dyn/content/article/2006/05/23/AR2006052300817.html' target='_blank'>Bentsen Cast Bush in 1970 As Too Liberal</a><br>Texas Primer - <a href='https://www.texasmonthly.com/news-politics/texas-primer-bush-vs-bentsen/' target='_blank'>Bush vs. Bentsen</a><br>The New York Times - <a href='https://www.nytimes.com/1970/11/05/archives/2-texas-amendments-drew-enough-voters-for-bentsen-to-win.html' target='_blank'>2 Texas Amendments Drew Enough Voters for Bentsen to Win</a><br>Los Angeles Times - <a href='https://www.latimes.com/archives/la-xpm-1988-07-19-mn-5898-story.html' target='_blank'>Bentsen, Bush: Little Has Changed</a><br>The New York Times - <a href='https://www.nytimes.com/1997/01/02/nyregion/robert-j-morris-is-dead-at-82-crusader-against-communists.html' target='_blank'>Robert J. Morris Is Dead at 82; Crusader Against Communists</a><br>New Jersey Globe - <a href='https://newjerseyglobe.com/fr/bush-texas-rival-was-three-time-nj-u-s-senate-candidate/' target='_blank'>Bush Texas rival was three-time NJ U.S. Senate candidate</a><br>George H. W. Bush - <a href='https://books.google.com.sg/books?id=iMgOCAAAQBAJ&redir_esc=y' target='_blank'>Destiny And Power</a><br>The New York Times - <a href='https://www.nytimes.com/1970/05/03/archives/conservative-beats-yarborough-in-democratic-primary-in-texas.html' target='_blank'>Conservative Beats Yarborough In Democratic Primary in Texas</a><br>The New York Times - <a href='https://www.nytimes.com/1970/05/06/archives/democrats-differ-on-effect-of-yarboroughs-loss.html' target='_blank'>Democrats Differ on Effect of Yarborough's Loss</a><br>The New York Times - <a href='https://www.nytimes.com/1970/10/30/archives/similarities-mark-texas-rivals-bash-appears-ahead-of-bentsen-in-the.html' target='_blank'>Similarities Mark Texas Rivals</a><br>The New York Times - <a href='https://www.nytimes.com/1970/09/11/archives/johnson-campaigns-for-senate-hopeful.html' target='_blank'>JOHNSON CAMPAIGNS FOR SENATE HOPEFUL</a><br>The New York Times - <a href='https://www.nytimes.com/1970/06/02/archives/in-the-nation-what-price-party-loyalty-the-liberals-theory.html' target='_blank'>In The Nation: What Price Party Loyalty?</a><br>The New York Times - <a href='https://www.nytimes.com/1970/04/26/archives/yarboroughs-conservative-rival-in-texas-race-mounts-a-strong.html' target='_blank'>Yarborough's Conservative Rival in Texas Race Mounts a Strong Challenge</a><br>The New York Times - <a href='https://www.nytimes.com/1975/11/05/archives/bush-senate-race-facing-scrutiny-40000-transfer-in-1970-may-be.html' target='_blank'>BUSH SENATE RACE FACING SCRUTINY</a><br>The National Interest - <a href='https://nationalinterest.org/feature/the-bush-restoration-12290' target='_blank'>The Bush Restoration</a><h4>Special Thanks From Diamondy</h4><p>Happy Halloween, everybody! I suppose the real October surprise was me releasing another mod after 2 years, huh?<br>Anyways, I thank everybody who helped work on this project, y'all are awesome, and this project wouldn't be possible without you.<br>Maybe sometime in the future I'll get less lazy and finish SpongeBob 2012, but who knows. That will be a tale for another time.<br><p>- Diamondy <3</p><img src='https://file.garden/ZdjMW5zmo3pLm5z8/4a5d4c1d0596927e4eaf592f978e078d.gif' width='400px'></img><br><br><h4>BEFORE YOU GO, HERE IS A MESSAGE FROM THE ONE, THE ONLY, BIG TONY</h4><p>Hey y'all, I'm Big Tony. Many of you may know me if you're active on tctcord, I am quite active there. I partnered up with Diamondy purely because I wanted there to be more Texas mods, as I am myself from Texas, and I live here. I personally hate living here, but that's besides the point. I hope you had a lot of fun playing this mod, who knows, you may see more of me in the future :)))<br><br>P.S play March on Washington, it's my favorite mod, and it's PEAK<br><br>P.S.S when 1936 Spain comes out, play that too<br><br>P.S.S if this mod releases by Halloween, have fun to anyone who goes trick or treating... Or not, not like I would know.<br>- Big Tony<br><h4>SlockQ’s Message</h4>Hi, I'm just a guy they kidnapped from the street to write this mod. If you can contact the police, that would be greatly appreciated.<br><br>But for real, its an honor to be a part of this project. Me, a random person from Singapore now working with a top 15, maybe 10 Modder. And now I'm mentioned in a mod. Pretty cool. All imma say is, pursue your dreams, you'll go far. Also fun fact, this could be the only mod in history to start production and release all in a shutdown. Pretty neat, eh?<br>- SlockQ<br><br>...anyways, play again if you wish. Or maybe you're interested in playing SpongeBob 2008 or Animal Crossing Mayoral Election? I dunno, have a good day regardless, whatever the choice may be.<br>- Diamondy</p></div>",
+        "site_description": "<p>The year is 1970. Three candidates, George H. W. Bush, Ralph Yarborough, and Lloyd Bentsen, face off against each other. Yarborough is a die-hard liberal, and he is defending his seat. To many, Bush and Bentsen are indistinguishable conservatives. To more, especially those who are minorities, Bush and Bentsen are not even worth voting for. With the Vietnam War waging and Nixon ruling in Washington, how will you shape Texan politics forever in this Senate election?",
+        "has_visits": 0,
+        "no_electoral_majority_image": "/static/images/2012-no-majority.jpg"
+    }
+  }, ]
+
+e.temp_election_list = [{
+    "id": 3,
+    "year": 1970,
+    "is_premium": 0,
+    "display_year": "1970TX"
+}]
+
+e.descs = {}
+e.descs.bushDesc = [
+    `<li><b>Name: George H. W. Bush</b></li><li><b>Party: Republican</b></li><li><b>Home City: Houston</b></li><p>Born in 1924, in Milton, Massachusetts, to a rich family, you are the son of a senator, the current House Representative for the 7th Congressional District, and are about to face off against Lloyd Bentsen. You have titans on your shoulder, with President Nixon and Vice President Agnew’s support, they both have high hopes for your success in winning this Senate seat which has not been in Republican’s hands for nearly a century.<p>Before you entered politics, on your 18th birthday in 1943, you eagerly enlisted in the Navy. You fought valiantly in the Pacific, even getting shot down when bombing an enemy position, narrowly avoiding death, winning a medal in the process. Now, you fight your own battles, up against fellow countrymen. You’re giving up your House seat for a chance to recapture the same Senate seat 6 years ago. Will you succeed? Or will you fail once more? It’s up to you, and you alone to win this battle, and the future isn’t looking bright…</p>`
+]
+
+e.descs.bentsenDesc = [
+    `<div style='overflow-y:scroll;height:300px;padding-right:7px'><li><b>Name: Texas Democratic Party</b></li><li><b>Ideology: Disputed</b></li><li><b>Founded: 1846</b></li><p>To most voters, conservatism and Texan values are one, to liberals, conservatism in Texas is a curse. For most of Texan history, the dominant party has always been the Democratic Party, with of course some exceptions. Hoover, Ike… Conservatives in their own right, but those were the exceptions, and not the rule. However, recently there has been a shift in overton window. In the 1961 Texas Senate special election, John Tower narrowly won the seat, and the Republican party smelled blood in the water. Ever since that election, a Republican has held that seat ever since.<p>Now, it is 1970, and two forces look to get the nomination for the Senate primary. Ralph Yarborough, and Lloyd Bentsen face off. On one side, there is Yarborough, the holy saint of liberalism in Texas. He has held his Senate seat since 1957, and is looking to defend it once more. On the other side, there is Lloyd Bentsen, the conservative that every liberal fears in Texas. He won three consecutive House terms before retiring.<p>These two forces, conservatism and liberalism will do anything it can to win to defeat yet another Republican, but as overton window continues to shift to the right, many liberals are fearing that Lloyd Bentsen, and his feared poker face will get nominated. This is a crucial primary, and whoever wins it will shape Texan politics forever.</p>`
+]
+
+e.descs.test2Desc = [
+    ``
+]
+
+e.descs.test3Desc = [
+    ``
+]
+
+e.descs.bushVPs = [
+    {
+        name: "buh",
+        desc: [
+            ``
+        ]
+    }
+]
+
+e.descs.bentsenVPs = [
+    {
+        name: "Bentsen",
+        desc: [
+            `<li><b>Name: Lloyd Bentsen</b></li><li><b>Party: Democratic</b></li><li><b>Home City: Mission</b></li><p>Born in 1921, in Mission, Texas, your family has only known hardship and strife. But all came to change after you graduated from university. In 1944, you joined the military, and soon after, you were flying missions over Axis nations. During this time, you even became a Major. In total, you flew 35 missions in Europe. For your dedication to your nation, you were awarded the Distinguished Flying Cross. But past military experience does not define a man, what defines a man are his beliefs… What are <i>you</i>? What are your beliefs?<p>Well, you are a conservative Democrat, a black sheep, but not an endangered species. There are many conservative Democrats just like you; you just need to get them to vote for you, along with, of course, the liberal Democrats, who are mad at you for running against their lord and savior, Yarborough, the Texan liberal icon. But no matter how much they shout, remember to use that poker face that you’re known and feared for, and push forward.</p>`
+        ]
+    },
+    {
+        name: "Yarborough",
+        desc: [
+            `<li><b>Name: Ralph Yarborough</b></li><li><b>Party: Democratic</b></li><li><b>Home City: Chandler</b></li><p>As the tide of conservatism washes over Texas, you are the only man who can stop it. Born in 1903, in Chandler, Texas, you are a Southern New Deal Democrat, one of many rapidly dwindling liberals left in the South. You tried to run for governor in 1952, failed, tried again in 1956, failed, but you found success in the 1957 Texas Senate Special election. You have held the seat ever since.<p>Your time in the Senate has been quite eventful. You have voted in favor of the Civil Rights Act since the 1957 one, which has gained you the ire of practically every single conservative Texan, and Southern politician. But all of that was dwarfed when you voted in favor of confirming Thurgood Marshall. The liberals love you, Ralph. But the conservatives are coming for you, and Bentsen is gunning for your seat. It’s gonna be a long, difficult road to victory, but you’ve faced bigger obstacles before, good luck.</p>`
+        ]
+    }
+]
+
+e.candidate_json = [
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 16,
+        "fields": {
+          "first_name": "George H. W.",
+          "last_name": "Bush",
+          "election": 3,
+          "party": "Republican",
+          "state": "Midland",
+          "priority": 0,
+          "description": "<gg id='breaker'>"+e.descs.bushDesc[0]+"</gg>",
+          "color_hex": "#9E3D29",
+          "secondary_color_hex": "#9E3D29",
+          "is_active": 1,
+          "image_url": "https://file.garden/ZdjMW5zmo3pLm5z8/George%20Bush%20portrait.png",
+          "electoral_victory_message": "ngl if you broke the endings code to the point where the actual ending error doesn’t show up, then ur very special",
+          "electoral_loss_message": "ngl if you broke the endings code to the point where the actual ending error doesn’t show up, then ur very special",
+          "no_electoral_majority_message": "ngl if you broke the endings code to the point where the actual ending error doesn’t show up, then ur very special",
+          "description_as_running_mate": null,
+          "candidate_score": 1.0
+        }
+    },
+    {
+      "model": "campaign_trail.candidate",
+      "pk": 17,
+      "fields": {
+        "first_name": "Texas",
+        "last_name": "Democratic Party",
+        "election": 3,
+        "party": "Democratic",
+        "state": "Texas",
+        "priority": 1,
+        "description": "<gg id='breaker'>"+e.descs.bentsenDesc[0]+"</gg>",
+        "color_hex": "#252869",
+        "secondary_color_hex": "#252869",
+        "is_active": 1,
+        "image_url": "https://file.garden/ZdjMW5zmo3pLm5z8/Texas%20Democratic%20Party.png",
+        "electoral_victory_message": "how are you playing as bentsen??????? get out of here!",
+        "electoral_loss_message": "how are you playing as bentsen??????? get out of here!",
+        "no_electoral_majority_message": "how are you playing as bentsen??????? get out of here!",
+        "description_as_running_mate": null,
+        "candidate_score": 1.0
+      }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 30,
+        "fields": {
+            "first_name": "James",
+            "last_name": "Baker",
+            "election": 3,
+            "party": "buh",
+            "state": "buh",
+            "priority": 1,
+            "description": null,
+            "color_hex": "#0457A0",
+            "secondary_color_hex": "#0457A0",
+            "is_active": 0,
+            "image_url": "https://file.garden/ZdjMW5zmo3pLm5z8/have%20fun%20finding%20this%20lolololololololol.png",
+            "electoral_victory_message": null,
+            "electoral_loss_message": null,
+            "no_electoral_majority_message": null,
+            "description_as_running_mate": `<div>${e.descs.bushVPs[0].desc[0]}</div>`,
+            "candidate_score": 1.0        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 101,
+        "fields": {
+            "first_name": "Lloyd",
+        "last_name": "Bentsen",
+        "election": 3,
+        "party": "Democratic",
+        "state": "Mission",
+        "priority": 1,
+        "description": "<gg id='breaker'>"+e.descs.bentsenVPs[0]+"</gg>",
+        "color_hex": "#252869",
+        "secondary_color_hex": "#252869",
+            "is_active": 0,
+            "image_url": "https://file.garden/ZdjMW5zmo3pLm5z8/Bentsen%20portrait.png",
+            "electoral_victory_message": null,
+            "electoral_loss_message": null,
+            "no_electoral_majority_message": null,
+            "description_as_running_mate": `<div>${e.descs.bentsenVPs[0].desc[0]}</div>`,
+            "candidate_score": 1.0        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 102,
+        "fields": {
+            "first_name": "Ralph",
+        "last_name": "Yarborough",
+        "election": 3,
+        "party": "Democratic",
+        "state": "Chandler",
+        "priority": 1,
+        "description": "<gg id='breaker'>"+e.descs.bentsenVPs[1]+"</gg>",
+        "color_hex": "#252869",
+        "secondary_color_hex": "#252869",
+            "is_active": 0,
+            "image_url": "https://file.garden/ZdjMW5zmo3pLm5z8/Yarborough%20portrait.png",
+            "electoral_victory_message": null,
+            "electoral_loss_message": null,
+            "no_electoral_majority_message": null,
+            "description_as_running_mate": `<div>${e.descs.bentsenVPs[1].desc[0]}</div>`,
+            "candidate_score": 1.0        }
+    }
+]
+
+e.running_mate_json = [
+  {
+    "model": "campaign_trail.running_mate",
+    "pk": 100,
+    "fields": {
+      "candidate": 16,
+      "running_mate": 30
+    }
+  },
+  {
+    "model": "campaign_trail.running_mate",
+    "pk": 101,
+    "fields": {
+      "candidate": 17,
+      "running_mate": 101
+    }
+  },
+  {
+    "model": "campaign_trail.running_mate",
+    "pk": 102,
+    "fields": {
+      "candidate": 17,
+      "running_mate": 102
+    }
+  },
+]
+
+e.global_parameter_json = [
+    {
+      "model": "campaign_trail.global_parameter",
+      "pk": 1,
+      "fields": {
+        "vote_variable": 1.125,
+        "max_swing": 0.12,
+        "start_point": 0.94,
+        "candidate_issue_weight": 10,
+        "running_mate_issue_weight": 0,
+        "issue_stance_1_max": -0.71,
+        "issue_stance_2_max": -0.3,
+        "issue_stance_3_max": -0.125,
+        "issue_stance_4_max": 0.125,
+        "issue_stance_5_max": 0.3,
+        "issue_stance_6_max": 0.71,
+        "global_variance": 0.0,
+        "state_variance": 0.0,
+        "question_count": 25,
+        "default_map_color_hex": "#C9C9C9",
+        "no_state_map_color_hex": "#999999"
+      }
+    }
+]
+
+var changeGameDisp = (hide) => {
+  disp = "";
+  if (hide) {
+    disp = "none";
+  }
+  document.getElementsByClassName("inner_window_w_desc")[0].style.display = disp
+};
+
+// prep soundtrack
+
+clamp = function(a, max, min, overflow=true) {
+  if (overflow) {
+    return a > max ? min : a < min ? max : a;
+  }
+  return a > max ? max : a < min ? min : a;
+}
+
+e.difficulty_level_json = [{"model":"campaign_trail.difficulty_level","pk":1,"fields":{"name":"Guaranteed","multiplier":1.5}},{"model":"campaign_trail.difficulty_level","pk":2,"fields":{"name":"Babymode","multiplier":1.4}},{"model":"campaign_trail.difficulty_level","pk":3,"fields":{"name":"Cakewalk","multiplier":1.3}},{"model":"campaign_trail.difficulty_level","pk":4,"fields":{"name":"Very Easy","multiplier":1.2}},{"model":"campaign_trail.difficulty_level","pk":5,"fields":{"name":"Easy","multiplier":1.1}},{"model":"campaign_trail.difficulty_level","pk":6,"fields":{"name":"Quite Easy","multiplier":1.05}},{"model":"campaign_trail.difficulty_level","pk":7,"fields":{"name":"Normal","multiplier":1.00}},{"model":"campaign_trail.difficulty_level","pk":8,"fields":{"name":"Challenging","multiplier":0.95}},{"model":"campaign_trail.difficulty_level","pk":9,"fields":{"name":"Hard","multiplier":0.9}},{"model":"campaign_trail.difficulty_level","pk":10,"fields":{"name":"Very Hard","multiplier":0.85}},{"model":"campaign_trail.difficulty_level","pk":11,"fields":{"name":"Impossible","multiplier":0.8}},{"model":"campaign_trail.difficulty_level","pk":12,"fields":{"name":"Unthinkable","multiplier":0.7}},{"model":"campaign_trail.difficulty_level","pk":13,"fields":{"name":"Blowout","multiplier":0.6}},{"model":"campaign_trail.difficulty_level","pk":14,"fields":{"name":"Disaster","multiplier":0.5}},{"model":"campaign_trail.difficulty_level","pk":15,"fields":{"name":"Calamity","multiplier":0.4}}]
+
+
+e.music = {};
+e.music.shuffleEnabled = false;
+e.music.Volume=0.3;
+e.music.loopEnabled = false;
+var element = document.getElementById('my-invisible-element');
+$("#music_player")[0].children[0].style.display = "none"
+$("#music_player")[0].children[1].style.display = "none"
+document.getElementById("modLoadReveal").style.display = "none"
+document.getElementById("modloaddiv").style.display = "none"
+musicBox = document.getElementById("music_player")
+musicBox.style.display = ""
+var trackSel;
+e = campaignTrail_temp
+e.selectedSoundtrack = 0
+toTime = (seconds) => {
+  var date = new Date(null);
+  date.setSeconds(seconds);
+  return date.toISOString().substr(11, 8);
+}
+
+generateTime = () => {
+            // Get the audio element
+            var audio = document.getElementById("campaigntrailmusic");
+            timeTracker = document.createElement("div");
+            timeTracker.id ='timeTracker'
+            timeTracker.style = `
+      text-align:left;
+      border-style:solid;
+      border-width:3px;
+      height:180px;
+      width:200px;
+      background-color:#999999;
+      float:right;
+      padding: 10px;
+      `
+            $("#trackSelParent")[0].prepend(timeTracker);
+            $("#trackSelParent")[0].prepend(document.createElement("br"));
+            var positionDisplay = document.createElement("gg");
+            positionDisplay.id = "position-display";
+            var timeSlider = document.createElement("input");
+            timeSlider.type = "range";
+            timeSlider.min = 0;
+            timeSlider.max = 1;
+            timeSlider.step = 0.001;
+            timeSlider.value = 0;
+            timeSlider.style.width = "200px";
+            timeSlider.id = "time-slider";
+            var pausePlay = document.createElement("button");
+            pausePlay.id = "position-display";
+            pausePlay.innerHTML = "<b>Pause</b>"
+            pausePlay.style.width = "100%";
+            pausePlay.style.margin = "2px";
+            pausePlay.addEventListener("click", event => {
+                event.preventDefault();
+                updatePositionDisplay();
+                let audio = document.getElementById("campaigntrailmusic");
+                if (audio.paused) {
+                    audio.play();
+                    event.target.innerHTML = "<b>Pause</b>";
+                    return;
+                }
+                audio.pause();
+                event.target.innerHTML = "<b>Play</b>";
+                return;
+            })
+            var shuffleButton = document.createElement("button");
+            shuffleButton.id = "shuffle-button";
+            shuffleButton.innerHTML = "<b>Shuffle</b>"
+            shuffleButton.style.width = "100%"
+            shuffleButton.style.margin = "2px";;
+            shuffleButton.addEventListener("click", event => {
+                event.preventDefault();
+                e.music.shuffleEnabled = !e.music.shuffleEnabled;
+                event.target.innerHTML = e.music.shuffleEnabled ? "<b>Unshuffle</b>" : "<b>Shuffle</b>";
+                if (e.music.shuffleEnabled) {
+                    shuffledIndices = shuffle(trackIndices.slice());
+                    let currentTrackIndex = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+                    shuffledIndices = shuffledIndices.filter(index => index !== currentTrackIndex);
+                    shuffledIndices.unshift(currentTrackIndex);
+                }
+            });
+            var skipButton = document.createElement("button");
+            skipButton.id = "skip-button";
+            skipButton.innerHTML = "<b>Skip</b>"
+            skipButton.style.width = "100%";
+            skipButton.style.margin = "2px"; // Add margin
+            skipButton.addEventListener("click", event => {
+                event.preventDefault();
+                let selected = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+                let newSel;
+                if (e.music.shuffleEnabled) {
+                    if (!shuffledIndices) {
+                        shuffledIndices = shuffle(trackIndices.slice());
+                    }
+                    let currentIndex = shuffledIndices.findIndex(index => index === selected);
+                    if (currentIndex === shuffledIndices.length - 1) {
+                        shuffledIndices = shuffle(trackIndices.slice());
+                        currentIndex = -1;
+                    }
+                    newSel = shuffledIndices[currentIndex + 1];
+                } else {
+                    newSel = selected + 1 === soundtracks[e.selectedSoundtrack].tracklist.length ? 0 : selected + 1;
+                }
+                let buttons = Array.from(document.getElementById("trackSel").children).filter(f => {
+                        return f.tagName == "LABEL"
+                    }).map(f => f.children[0])
+                buttons[newSel].click()
+            });
+            skipButton.style.width = "50%";
+            var loopButton = document.createElement("button");
+            loopButton.id = "loop-button";
+            loopButton.innerHTML = e.music.loopEnabled ? "<b>Unloop</b>" : "<b>Loop Song</b>";  // Check the initial loop state
+            loopButton.style.width = "50%";  // Match the width with skipButton
+            loopButton.style.margin = "2px";
+            loopButton.addEventListener("click", event => {
+                event.preventDefault();
+                e.music.loopEnabled = !e.music.loopEnabled;
+                let audio = document.getElementById("campaigntrailmusic");
+                audio.loop = e.music.loopEnabled;  // Set the audio's loop property
+                event.target.innerHTML = e.music.loopEnabled ? "<b>Unloop</b>" : "<b>Loop Song</b>";  // Toggle the button text
+            });
+            var volumeLabel = document.createElement("gg");
+            volumeLabel.id = "volume-label";
+            volumeLabel.innerHTML = "<br><b>Volume: </b>"
+            var volumeSlider = document.createElement("input");
+            volumeSlider.type = "range";
+            volumeSlider.min = 0;
+            volumeSlider.max = 1;
+            volumeSlider.step = 0.001;
+            volumeSlider.value = 0;
+            volumeSlider.style.width = "200px";
+            volumeSlider.id = "volume-slider";
+            audio.volume= e.music.Volume;
+            volumeSlider.value = audio.volume;
+            timeTracker.appendChild(pausePlay);
+            if (audio.volume === 0) {
+                audio.pause();
+                pausePlay.innerHTML = "<b>Play</b>";  // Update the pause button text to "Play"
+            }
+            timeTracker.appendChild(shuffleButton);
+            var buttonContainer = document.createElement("div");
+            buttonContainer.style.display = "flex"; // Makes children inline
+            buttonContainer.style.justifyContent = "space-between";
+            skipButton.style.flex = "1"; // Makes it take up equal space
+            skipButton.style.marginRight = "5px"; // Adds some space between the buttons
+
+            loopButton.style.marginRight = "0px";
+
+            buttonContainer.appendChild(skipButton);
+            buttonContainer.appendChild(loopButton);
+
+            timeTracker.appendChild(buttonContainer); // Add the container to timeTracker instead of individual buttons
+            timeTracker.appendChild(positionDisplay);
+            timeTracker.appendChild(timeSlider);
+            timeTracker.appendChild(volumeLabel);
+            timeTracker.appendChild(volumeSlider);
+            updatePositionDisplay();
+            function updatePositionDisplay() {
+                positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+                timeSlider.value = audio.duration ? audio.currentTime / audio.duration : 0;
+            }
+            function changeTime() {
+                positionDisplay.innerHTML = "<b>Time:</b> " + toTime(audio.currentTime) + "<br>";
+                audio.currentTime = timeSlider.value * audio.duration;
+            }
+            updateVolume = event => {
+                audio.volume = event.target.value;
+                e.music.Volume=audio.volume;
+            }
+            setInterval(updatePositionDisplay, 1000);
+            timeSlider.addEventListener("input", changeTime);
+            volumeSlider.addEventListener("input", updateVolume)
+        }
+
+    function newMusicPlayer(previousBgImage = null) {
+            trackSel = document.createElement("div");
+            trackSel.id = "trackSelParent";
+            let z = `<div id='trackSel' style="text-align:left;border-style:solid;border-width:3px;overflow-y: scroll;overflow-x: hidden;height:200px; width:400px;background-color:#999999;float:right;">`
+            z += `<b><select id='selectSoundtrack'><option value='` + soundtracks[e.selectedSoundtrack].name + `'>` + soundtracks[e.selectedSoundtrack].name + "</option>"
+            for (i in soundtracks) {
+                if (soundtracks[e.selectedSoundtrack] != soundtracks[i]) {
+                    z += `<option value='` + soundtracks[i].name + `'>` + soundtracks[i].name + `</option>`
+                }
+            }
+            z += `</select></b><br><br>`
+                // <label><input type="radio" name="option" value="option1">Option 1</label><br>
+            for (i in soundtracks[e.selectedSoundtrack].tracklist) {
+                let a = soundtracks[e.selectedSoundtrack].tracklist[i]
+                let b = `<label><input class="trackSelector" type="radio" name="trackSelector" value="` + i + `">` + a.name + `</label><br>`
+                z += b
+            }
+            z += "</div><br><br>"
+            trackSel.innerHTML = z
+            musicBox.appendChild(trackSel);
+            Array.from(document.getElementById("trackSel").children).filter(f => {
+                return f.tagName == "LABEL"
+            }).map(f => f.children[0])[0].checked = true
+            soundtrackSelector = document.getElementById("selectSoundtrack")
+            soundtrackSelector.onchange = function() {
+                let currentBgImage = document.getElementById("trackSel").style.backgroundImage;
+
+                for (i in soundtracks) {
+                    if (soundtracks[i].name == soundtrackSelector.value) {
+                        e.selectedSoundtrack = i;
+                        break;
+                    }
+                }
+                e.music.shuffleEnabled = false;
+                shuffledIndices = null;
+
+                document.getElementById("trackSelParent").remove();
+                newMusicPlayer(currentBgImage);  // Pass the current background image to the next function invocation.
+            };
+            var matches = document.querySelectorAll('.trackSelector');
+            for (match in matches) {
+                matches[match].onchange = function() {
+                    audio = $("#campaigntrailmusic")[0];
+                    audio.src = soundtracks[e.selectedSoundtrack].tracklist[this.value].url
+                    audio.currentTime = 0
+                }
+            }
+            musicBox.children[2].loop = false
+            musicBox.children[2].src = soundtracks[e.selectedSoundtrack].tracklist[0].url
+
+            trackIndices = Array.from({length: soundtracks[e.selectedSoundtrack].tracklist.length}, (_, i) => i);
+
+            musicBox.children[2].onended = function() {
+                if (e.music.loopEnabled) {
+                    this.play();  // If loop is enabled, simply play the same track again
+                } else {
+                let selected = Number(document.querySelector('input[name="trackSelector"]:checked').value);
+                let newSel;
+                if (e.music.shuffleEnabled) {
+                    if (!shuffledIndices) {
+                        shuffledIndices = shuffle(trackIndices.slice());
+                    }
+                    let currentIndex = shuffledIndices.findIndex(index => index === selected);
+                    if (currentIndex === shuffledIndices.length - 1) {
+                        shuffledIndices = shuffle(trackIndices.slice());
+                        currentIndex = -1;
+                    }
+                    newSel = shuffledIndices[currentIndex + 1];
+                } else {
+                    newSel = selected + 1 === soundtracks[e.selectedSoundtrack].tracklist.length ? 0 : selected + 1;
+                }
+                let buttons = Array.from(document.getElementById("trackSel").children).filter(f => {
+                        return f.tagName == "LABEL"
+                    }).map(f => f.children[0])
+                buttons[newSel].click()
+                }
+            }
+
+            for (w = 0; w < 7; w++) {
+              document.getElementById("trackSelParent").appendChild(document.createElement("br"))
+            }
+            generateTime();
+           if (previousBgImage) {
+                document.getElementById("trackSel").style.backgroundImage = previousBgImage;
+                 document.getElementById("timeTracker").style.backgroundImage = previousBgImage;
+            }
+        }
+        clamp = function(a, max, min, overflow = true) {
+            if (overflow) {
+                return a > max ? min : a < min ? max : a;
+            }
+            return a > max ? max : a < min ? min : a;
+        }
+        var soundtracks = {
+  0: { // news coverage wowza
+    name: "Opening",
+    tracklist: [
+    {
+      "name": "1970 Texas NBC News Coverage",
+      "url": "https://file.garden/ZdjMW5zmo3pLm5z8/HW%20Bush%20Texas%20Senate%20Campaign%20NBC%2010_26_70.mp3"
+    }
+  ]
+}, 
+   1: { // actual songs :)
+    name: "Texan Tunes (1960s and 1970s)",
+    tracklist: [
+    {
+      "name": "Glen Campbell - Southern Nights",
+      "url": "https://file.garden/ZdjMW5zmo3pLm5z8/Glen%20Campbell%20-%20Southern%20Nights%20(Official%20Audio)%204.mp3"
+    },
+    {
+      "name": "Gunsmoke - The Outlaws",
+      "url": "https://file.garden/ZdjMW5zmo3pLm5z8/Gunsmoke%20(Digitally%20Remastered%2C%201996)%204.mp3"
+    },
+    {
+      "name": "I Fought The Law - The Bobby Fuller Four",
+      "url": "https://file.garden/ZdjMW5zmo3pLm5z8/I%20Fought%20the%20Law%204.mp3"
+    },
+    {
+      "name": "War Pigs - Black Sabbath",
+      "url": "https://file.garden/ZdjMW5zmo3pLm5z8/Black%20Sabbath%20~%20War%20Pigs%204.mp3"
+    },
+    {
+      "name": "Bad Moon Rising - Creedence Clearwater Revival",
+      "url": "https://file.garden/ZdjMW5zmo3pLm5z8/Creedence%20Clearwater%20Revival%20-%20Bad%20Moon%20Rising%20(Official%20Lyric%20Video)%204.mp3"
+    }
+    ], 
+},
+}
+
+
+newMusicPlayer()
+
+campaignTrail_temp.opponents_default_json = JSON.parse("[{\"election\": 3, \"candidates\": [16, 17]}]"); 
+campaignTrail_temp.opponents_weighted_json = JSON.parse("[{\"election\": 3, \"candidates\": [16, 17]}]");
+
+const startScreenUpdater = setInterval(function() { //just taking out the continue buttons for invalid candidates.
+    const goBackButton = document.getElementById("candidate_id_back");
+    const candidateButton = document.getElementById("candidate_id_button");
+    const runningMateButton = document.getElementById("running_mate_id_button");
+    const finalScreenBB = document.getElementById("opponent_selection_id_back");
+    const finalScreenID = document.getElementById("opponent_selection_id_button");
+    if(runningMateButton){ // change theme on candidate viewing
+        var c = document.getElementById("running_mate_id").value;
+        if(c == 101) {
+            if(runningMateButton) {
+                runningMateButton.remove();
+            }
+        }
+    }
+
+    if(finalScreenID) { // delete back button and delete the interval
+        finalScreenBB.remove();
+        clearInterval(startScreenUpdater);
+    }
+}, 1);
+
+function updatefinal_results_table() {
+  try {
+      if (document.getElementById("overall_vote_statistics")!=null) {
+    overallthing=document.getElementById("overall_vote_statistics").innerHTML;
+    overallthing.toString()
+    overallthing=overallthing.replace("Electoral Votes","Counties Won")
+    document.getElementById("overall_vote_statistics").innerHTML=overallthing
+    }
+    if (document.getElementById("overall_details_container")!=null) {
+    overallthing=document.getElementById("overall_details_container").innerHTML;
+    overallthing.toString()
+    overallthing=overallthing.replace("Electoral Votes","Counties Won")
+    document.getElementById("overall_details_container").innerHTML=overallthing
+    }
+
+  } catch {}
+}
+window.setInterval(updatefinal_results_table,200)
+
+customStyling.innerHTML = `
+.campaign_trail_start_emphasis {
+  background-color: #B1A18A;
+}
+`;
+
+var changeGameDisp = (hide) => {
+    disp = "";
+    if (hide) {
+    disp = "none";
+    }
+    document.getElementsByClassName("inner_window_w_desc")[0].style.display = disp
+  };
+  var changeGameDisp = (hide) => {
+    disp = "";
+    if (hide) {
+        disp = "none";
+    }
+    document.getElementsByClassName("inner_window_w_desc")[0].style.display = disp
+    };
+    e.creditsPage = () => {
+    credits_html = `
+        <h2 style='color: #000000;'>Devs</h2>
+        <h3 style='color: #000000;'>Diamondy</h3>
+        <p style='color: #000000;'>Lead Coder, Assistant Writer, and Creator of 2008SpongeBob and Animal Crossing Mayoral Election.</p>
+        <h3 style='color: #000000;'>Big Tony</h3>
+        <p style='color: #000000;'>Lead Writer, and Assistant Coder.</p>
+        <h3 style='color: #000000;'>SlockQ</h3>
+        <p style='color: #000000;'>Lead Writer, Assistant Coder, and Reseacher.</p>
+        <h3 style='color: #000000;'>Landon!</h3>
+        <p style='color: #000000;'>Assistant Writer.</p>
+        <h3 style='color: #000000;'>TotalRozza</h3>
+        <p style='color: #000000;'>Assistant Writer.</p>
+        <h3 style='color: #000000;'>Autumnite</h3>
+        <p style='color: #000000;'>Assistant Writer.</p>
+        <h3 style='color: #000000;'>Pabsie</h3>
+        <p style='color: #000000;'>Assistant Writer.</p>
+        <h3 style='color: #000000;'>Twinbuz</h3>
+        <p style='color: #000000;'>Assistant Writer.</p>
+        <h3 style='color: #000000;'>Playtesters</h3>
+        <p style='color: #000000;'>Keinna</p>
+        <p style='color: #000000;'>AvGeekboy</p>
+        <p style='color: #000000;'>Franko</p>
+        <p style='color: #000000;'>Army</p>
+        <h3 style='color: #000000;'>Contributors</h3>
+        <p style='color: #000000;'>Soundtrack system from 2000N. Credit to CatBoxXD for creating the Texas map. Credit to StrawberryMaster for the code that extends the election box, and ProbablyUsername for the scrollbar code. Also credit to Wah Guy for helping research for this mod too.</p>
+        <h2 style='color: #000000;'>Thanks for playing!</h2>
+    `
+    changeGameDisp(true);
+    var spacer = document.createElement("amongusspacerthisisntarealelement");
+    spacer.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+    document
+        .getElementsByClassName("inner_window_w_desc")[0]
+        .children[1].appendChild(spacer);
+        changeGameDisp(true);
+        var menuHeader = document.createElement("div");
+        menuHeader.classList.add("inner_window_front");
+        menuHeader.innerHTML = `<h1 style='font-family: "Cinzel";'>Credits</font></h1>`;
+        menuHeader.id = "SOTUheader";
+        menuHeader.style = "height: 50px;background-color:#B1A18A";
+        var newMenu = document.createElement("div");
+        newMenu.classList.add("inner_window_front");
+        newMenu.id = "SOTUmenu";
+        newMenu.style = `height:260px;background-color:#B1A18A;color:white;overflow-y: scroll;`;
+    
+        newMenu.innerHTML = credits_html;
+        let z = document.getElementById("game_window");
+        var backButton = document.createElement("button");
+        backButton.style =
+        "position: relative; bottom: -13px; left: -380px; width: 150px; height: 80px;font-size:40px;padding-top:5px;padding-left:8px";
+        backButton.id = "backSOTUBtn";
+        backButton.innerHTML = `<b>BACK</b>`;
+        backButton.onclick = function () {
+        document.getElementById("SOTUheader").remove();
+        document.getElementById("SOTUmenu").remove();
+        document.getElementById("backSOTUBtn").remove();
+        changeGameDisp(false);
+        };
+        z.appendChild(menuHeader);
+        z.appendChild(newMenu);
+        z.appendChild(backButton);
+    
+  }
+
+e.credits = "<button onclick='e.creditsPage()'>Diamondy, Big Tony, SlockQ + Others</button>"
+
+function addBunnyhopDropdown() {
+        var difficultyDiv = document.getElementById("difficulty_level");
+        if (difficultyDiv && !document.getElementById("bunnyhopDropdown")) {
+            var questionCounter = [];
+            var questions = [];
+            var dropdown = document.createElement("select");
+            dropdown.id = "bunnyhopDropdown";
+            dropdown.style.display = "none";
+
+            for (var i = 0; i < questions.length; i++) {
+                var opt = document.createElement("option");
+                opt.text = questionCounter[i];
+                if (questionCounter[i] === "25 (Randomized Questions)") {
+                    opt.selected = true;
+                }
+                opt.value = questions[i];
+                dropdown.options.add(opt);
+            }
+
+            var form = document.createElement("form");
+            var header = document.createElement("h3");
+            form.appendChild(header);
+            form.appendChild(dropdown);
+            difficultyDiv.appendChild(form);
+
+            dropdown.addEventListener("change", function() {
+
+                if (this.value == 25){
+                    campaignTrail_temp.bunnyhop = true;
+                }
+                else{
+                    campaignTrail_temp.bunnyhop = false;
+                }
+                campaignTrail_temp.global_parameter_json[0].fields.question_count = this.value;
+            });
+
+            var colourForm = document.createElement("form");
+            colourForm.name = "colour_selection";
+            var colourHeader = document.createElement("h3");
+            colourHeader.textContent = "Enable alternate colour scheme?";
+            colourForm.appendChild(colourHeader);
+
+            var checkboxWrapper = document.createElement("div");
+            checkboxWrapper.className = "no-7css"; // Add a class to prevent styling
+
+            var colourCheckbox = document.createElement("input");
+            colourCheckbox.type = "checkbox";
+            colourCheckbox.id = "colour";
+            colourCheckbox.checked = false;
+
+            checkboxWrapper.appendChild(colourCheckbox);
+            colourForm.appendChild(checkboxWrapper);
+            difficultyDiv.appendChild(colourForm);
+
+        document.head.innerHTML += `<style>
+            .no-7css input[type="checkbox"] {
+                all: unset !important;
+                appearance: auto !important;
+                display: inline-block !important;
+                width: auto !important;
+                height: auto !important;
+            }
+        </style>`;
+
+            colourCheckbox.addEventListener("change", function() {
+                if (this.checked){
+                    campaignTrail_temp.candidate_json[0].fields.color_hex = '#252869'
+                    campaignTrail_temp.candidate_json[0].fields.secondary_color_hex = '#252869'
+                    campaignTrail_temp.candidate_json[1].fields.color_hex = '#9E3D29'
+                    campaignTrail_temp.candidate_json[1].fields.secondary_color_hex = '#9E3D29'
+                }
+                else{
+                    
+                campaignTrail_temp.candidate_json[0].fields.color_hex = '#252869'
+                campaignTrail_temp.candidate_json[0].fields.secondary_color_hex = '#252869'
+                campaignTrail_temp.candidate_json[1].fields.color_hex = '#9E3D29'
+                campaignTrail_temp.candidate_json[1].fields.secondary_color_hex = '#9E3D29'
+                }
+            });
+
+            var difficultyForm = document.querySelector('form[name="difficulty_level_selection"]');
+            var difficultyHeader = difficultyForm.querySelector('h3');
+            difficultyHeader.textContent = "Select campaign difficulty:";
+
+            var forms = document.querySelectorAll("#difficulty_level form");
+            for (var i = 0; i < forms.length; i++) {
+              forms[i].style.display = "inline-block";
+              forms[i].style.paddingLeft = "10px"; // adjust the value as needed
+              forms[i].style.paddingRight = "10px"; // adjust the value as needed
+            }
+
+        }
+}
+// the wrapper here is the same that makes sure your music player doesn't exist twice basically
+if(!campaignTrail_temp.observer){
+
+    campaignTrail_temp.observer = true
+
+    // Define the MutationObserver
+    let masterObserver = new MutationObserver(masterFunction);
+    function masterFunction() {
+        masterObserver.disconnect();
+
+        addBunnyhopDropdown();
+
+        masterObserver.observe(document.body, { childList: true, subtree: true });
+    }
+
+    // Start observing the document with the master observer
+    masterObserver.observe(document.body, { childList: true, subtree: true });
+}
+
+styling = document.createElement("style");
+document.head.appendChild(styling);
+
+styling.innerHTML = `
+#opponent_selection_id_back {
+    display: none;
+}
+`;
+
+let bushWasSelected = false;
+
+// Detect when Bush is selected and continue is clicked
+document.addEventListener('click', function(e) {
+    if (e.target.id === 'candidate_id_button') {
+        const candidateSelect = document.querySelector('#candidate_id');
+        if (candidateSelect && candidateSelect.value === '16') {
+            console.log("Bush selected - will skip running mate screen");
+            bushWasSelected = true;
+        }
+    }
+}, true);
+
+// Observer to catch when running mate screen appears
+let observer = new MutationObserver((mutations) => {
+    if (bushWasSelected) {
+        const runningMateScreen = document.querySelector('#running_mate_form');
+        const runningMateButton = document.querySelector('#running_mate_id_button');
+        
+        if (runningMateScreen || runningMateButton) {
+            console.log("Running mate screen detected - skipping...");
+            
+            // Try to click the running mate continue button immediately
+            if (runningMateButton) {
+                setTimeout(() => {
+                    runningMateButton.click();
+                    bushWasSelected = false; // Reset flag
+                }, 100);
+            }
+        }
+    }
+});
+
+observer.observe(document.body, { childList: true, subtree: true });
+
+next3 = function() {
+    text = "<p><b>•</b> George H. W. Bush is doing a risky gambit, he’s giving up his House seat to run for the same Senate seat he ran for 6 years prior. Will this gambit pay off? Only your actions will tell.<p><b>•</b> Lloyd Bentsen is known for his poker face, and he isn’t about to give it up just yet. He is coming back after a few years' absence, and he is aiming for a Senate seat by shifting more rightward of Senator Yarborough to catch him off-guard.<p><b>•</b> Ralph Yarborough is the incumbent and in deep trouble. Two conservatives are coming for his seat that he has held since 1957, one in the primary and one in the general. And he is going to have to fight tooth and nail to defend it, come hell or high water.</li></ul><p><button onclick='back3()'><b>BACK:</b></button></p>"
+    document.getElementById("election_summary").innerHTML = text
+}
+back3 = function() {
+    text = "<p>The year is 1970. Three candidates, George H. W. Bush, Ralph Yarborough, and Lloyd Bentsen, face off against each other. Yarborough is a die-hard liberal, and he is defending his seat. To many, Bush and Bentsen are indistinguishable conservatives. To more, especially those who are minorities, Bush and Bentsen are not even worth voting for. With the Vietnam War waging and Nixon ruling in Washington, how will you shape Texan politics forever in this Senate election?<p></li></ul><button onclick='next3()'><b>MORE:</b></button></p>"
+    document.getElementById("election_summary").innerHTML = text
+}
+
+function appendStyle() {
+    if (!document.querySelector('meta[name="viewport"]')) {
+        const metaTag = document.createElement('meta');
+        metaTag.name = "viewport";
+        metaTag.content = "width=device-width, initial-scale=1";
+        document.head.appendChild(metaTag);
+    }
+
+    // Custom styles here
+    if (!document.querySelector('#radio-option-style')) {
+        const style = document.createElement('style');
+        style.id = 'radio-option-style';
+        style.textContent = `
+          #election_description_window {
+            height: 250px;
+          }
+        `;
+        document.head.appendChild(style);
+    }
+}
+
+appendStyle();

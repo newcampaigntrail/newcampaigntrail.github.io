@@ -1,0 +1,370 @@
+campaignTrail_temp.global_parameter_json = [
+    {
+        "model": "campaign_trail.global_parameter",
+        "pk": 1,
+        "fields": {
+            "vote_variable": 1.125,
+            "max_swing": 0.12,
+            "start_point": 0.94,
+            "candidate_issue_weight": 10,
+            "running_mate_issue_weight": 3,
+            "issue_stance_1_max": -0.714,
+            "issue_stance_2_max": -0.429,
+            "issue_stance_3_max": -0.143,
+            "issue_stance_4_max": 0.143,
+            "issue_stance_5_max": 0.429,
+            "issue_stance_6_max": 0.714,
+            "global_variance": 0.01,
+            "state_variance": 0.005,
+            "question_count": 25,
+            "default_map_color_hex": "#C9C9C9",
+            "no_state_map_color_hex": "#999999"
+        }
+    }
+]
+
+campaignTrail_temp.election_json = [
+    {
+        "model": "campaign_trail.election",
+        "pk": 8,
+        "fields": {
+            "year": 1860,
+            "summary": "<p>As the presidential election of 1860 approaches, the United States, after decades of growing internal strife and conflict over the issue of slavery, has reached a near breaking point.</p>\n<p>While Republican nominee Abraham Lincoln clearly dominates in the North, the South finds itself far more divided, split in three between rival Democrats Stephen Douglas and John Breckinridge, and Constitutional Union nominee John Bell.</p>\n<p>Should Lincoln prevail, the Union seems doomed to fall into yet deeper conflict, if not outright civil war. With three competing opponents making an outright Southern victory nigh impossible, the only hope, then, is to deny Lincoln the white house through a deadlock in the Electoral College.</p>",
+            "image_url": "https://file.garden/aUY9j6Fk7RLHy1A_/5m84abb.png",
+            "winning_electoral_vote_number": 152,
+            "advisor_url": "https://file.garden/aUY9j6Fk7RLHy1A_/breck_advisors.png",
+            "site_image": "https://file.garden/aUY9j6Fk7RLHy1A_/ctsthumbnail.png",
+            "site_description": "<p>As the presidential election of 1860 approaches, the United States, after decades of growing internal strife and conflict over the issue of slavery, has reached a near breaking point.</p>\n<p>While Republican nominee Abraham Lincoln clearly dominates in the North, the South finds itself far more divided, split in three between rival Democrats Stephen Douglas and John Breckinridge, and Constitutional Union nominee John Bell.</p>\n<p>Should Lincoln prevail, the Union seems doomed to fall into yet deeper conflict, if not outright civil war. With three competing opponents making an outright Southern victory nigh impossible, the only hope, then, is to deny Lincoln the white house through a deadlock in the Electoral College.</p>",
+            "recommended_reading": "<h4 style=\"margin-top: 0.5em;\">General Resources</h4>\rDavid Herbert Donald - <a href=\"http://www.amazon.com/exec/obidos/ASIN/068482535X/amhius20-20\">Lincoln</a><br>\rRobert W. Johannsen - <a href=\"http://www.amazon.com/exec/obidos/ASIN/0252066359/amhius20-20\">Stephen A. Douglas</a><br>\rHarriet Jacobs - <a href=http://docsouth.unc.edu/fpn/jacobs/jacobs.html\">Incidents in the Life of a Slave Girl</a><br>\rSolomon Northup - <a href=\"http://docsouth.unc.edu/fpn/northup/northup.html\">Twelve Years a Slave</a><br>\r<a href=\"https://suite.io/michael-streich/3cr92nv\">Abraham Lincoln, Stephen Douglas, and the Election of 1860</a><br>\r<a href=\"http://www.greatamericanhistory.net/nomination.htm\">How Lincoln Won the 1860 Republican Nomination</a><br>\r<a href=\"http://flattopshistorywarpolitics.yuku.com/topic/619/John-Bell-for-president-1860#.U8BmbY1dVZ0\">John Bell for President, 1860</a><br>\r<a href=\"http://faculty.virginia.edu/jajenkins/ES.pdf\">Running to Lose? The Candidacy of John C. Breckinridge</a>",
+            "has_visits": 0,
+            "no_electoral_majority_image": "https://www.jetsimon.com/public/static/images/1896-no-majority.jpg",
+            "creator": "Dan Bryan",
+            "display_year": "1860 Breckinridge"
+        }
+    }
+]
+
+campaignTrail_temp.candidate_json = [
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 67,
+        "fields": {
+            "first_name": "Abraham",
+            "last_name": "Lincoln",
+            "election": 8,
+            "party": "Republican",
+            "state": "Illinois",
+            "priority": 40,
+            "description": "<p>Abraham Lincoln begins the campaign in a strong position. The new Republican Party is largely united, and his advantage in several Northern states is overwhelming. The challenge will be to win the closer states, like Illinois, New York, and Ohio. To do so he must finesse several hot issues of the day, not the least of which is slavery.</p><p>Other Republican issues such as tariffs, homesteads, and a trans-continental railroad also dominate the discussion.</p>",
+            "color_hex": "#bd8888",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/static/images/abraham-lincoln-1860.jpg",
+            "electoral_victory_message": "n/a",
+            "electoral_loss_message": "n/a",
+            "no_electoral_majority_message": "n/a",
+            "description_as_running_mate": "n/a",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 68,
+        "fields": {
+            "first_name": "Stephen A.",
+            "last_name": "Douglas",
+            "election": 8,
+            "party": "Democrat",
+            "state": "Illinois",
+            "priority": 41,
+            "description": "<p>Stephen Douglas, thanks to a Democratic schism, has little hope of winning the election outright. His path to victory involves throwing the election the House, and finishing in the top three in the electoral vote count. In this case, he could win or at least deny the Republicans a victory.</p><p>Douglas has been a proponent of 'popular sovereignty', but this compromise has lost its luster in North and South alike. If he is to deny Lincoln a majority, he must carry some Northern states.</p>",
+            "color_hex": "#9594c5",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/static/images/stephen-a-douglas-1860.jpg",
+            "electoral_victory_message": "n/a",
+            "electoral_loss_message": "n/a",
+            "no_electoral_majority_message": "n/a",
+            "description_as_running_mate": "n/a",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 69,
+        "fields": {
+            "first_name": "John C.",
+            "last_name": "Breckinridge",
+            "election": 8,
+            "party": "Democrat",
+            "state": "Kentucky",
+            "priority": 42,
+            "description": "<p>Despite being the incumbent Vice President under President James Buchanan, Breckinridge is not this year's Democratic nominee. Rather, Breckinridge has been nominated by a Southern and ardently pro-slavery schism of the party, after the Democratic Convention nominated Stephen A. Douglas on an insufficiently pro-slavery platform.</p><p>While Breckinridge has little to no hope of winning the Electoral College outright, he is likely to sweep much of the South, where his only real competition appears to be Constitutional Union nominee John Bell. With luck, if Lincoln can be denied a majority in the Electoral College, Breckinridge may be able to negotiate his way to a victory in the ensuing contingent election in the House of Representatives.</p>",
+            "color_hex": "#899b75",
+            "secondary_color_hex": "#FFFFC0",
+            "is_active": 1,
+            "image_url": "https://www.jetsimon.com/public/static/images/john-c-breckenridge-1860.jpg",
+            "electoral_victory_message": "n/a",
+            "electoral_loss_message": "n/a",
+            "no_electoral_majority_message": "n/a",
+            "description_as_running_mate": "n/a",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 70,
+        "fields": {
+            "first_name": "John",
+            "last_name": "Bell",
+            "election": 8,
+            "party": "Constitutional Union",
+            "state": "Tennessee",
+            "priority": 43,
+            "description": "<p>John Bell is a former Whig who has no stated position on the slavery issue, in spite of himself being a slaveholder. Bell's only position is to fight for the preservation of the Union under any circumstance. The vagueness of this stance is both an asset and a liability.</p><p>Bell's stronghold is the border states. His goal is to be another voice at the table, should Lincoln fail to win the Electoral College, and broker a compromise that would prevent the secession of any Southern states.</p>",
+            "color_hex": "#bea47e",
+            "secondary_color_hex": "#A1FFA1",
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/static/images/john-bell-1860.jpg",
+            "electoral_victory_message": "n/a",
+            "electoral_loss_message": "n/a",
+            "no_electoral_majority_message": "n/a",
+            "description_as_running_mate": "n/a",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 71,
+        "fields": {
+            "first_name": "Joseph",
+            "last_name": "Lane",
+            "election": 8,
+            "party": "Democrat",
+            "state": "Oregon",
+            "priority": 44,
+            "description": "n/a",
+            "color_hex": "#FF0000",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://file.garden/aUY9j6Fk7RLHy1A_/GTjACNF.png",
+            "electoral_victory_message": "n/a",
+            "electoral_loss_message": "n/a",
+            "no_electoral_majority_message": "n/a",
+            "description_as_running_mate": "<p>Joseph Lane is an incumbent Senator from Oregon, the former Governor of Oregon Territory, and a former State Representative and State Senator in the Indiana General Assembly. Prior to his career in Oregon, he also served in the United States Military as a brigadier general during the Mexican War.</p><p>Lane was nominated as Breckinridge's running mate with unanimous support from the Southern Convention. Despite his pro-slavery views, which had been controversial in Oregon, he may hopefully help the ticket on the west coast, as Oregon and California are two of the only states where Breckinridge and Lincoln will likely be directly competing.</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 300,
+        "fields": {
+            "first_name": "",
+            "last_name": "Fusion Tickets",
+            "election": 8,
+            "party": "Democrat",
+            "state": "Oregon",
+            "priority": 44,
+            "description": "n/a",
+            "color_hex": "#9EB1BA",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://file.garden/aUY9j6Fk7RLHy1A_/GTjACNF.png",
+            "electoral_victory_message": "n/a",
+            "electoral_loss_message": "n/a",
+            "no_electoral_majority_message": "n/a",
+            "description_as_running_mate": "n/a",
+            "candidate_score": 0,
+            "running_mate": false
+        }
+    }
+]
+
+//dark purple	"#9B7EA8"
+//dark pink	"#B386B3"
+//pink		"#B894B8"
+//light pink	"#BFA3BF"
+//grey		"#AAAAAA"
+//cyan		"#8F989D"
+//bluegrey	"#9D9AA0"
+
+campaignTrail_temp.running_mate_json = [
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 116801,
+        "fields": {
+            "candidate": 69,
+            "running_mate": 71
+        }
+    }
+]
+
+campaignTrail_temp.credits = "Ianwubby"
+
+campaignTrail_temp.opponents_default_json = [
+    {
+        "election": 8,
+        "candidates": [
+            67,
+            68,
+            69,
+            70,
+            300
+        ]
+    }
+]
+
+campaignTrail_temp.opponents_weighted_json = [
+    {
+        "election": 8,
+        "candidates": [
+            67,
+            68,
+            69,
+            70,
+            300
+        ]
+    }
+]
+
+campaignTrail_temp.temp_election_list = [
+    {
+        "id": 8,
+        "year": 1860,
+        "is_premium": 0,
+        "display_year": "1860 Breckinridge"
+    }
+]
+
+jet_data = {
+    "headerColor": "#3f3932",
+    "windowColor": "#8c816f",
+    "containerColor": "#6c6355",
+    "innerWindowColor": "#cbc6bc",
+    "bannerImageUrl": "https://file.garden/aUY9j6Fk7RLHy1A_/hRFKrUY.png",
+    "backgroundImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/39/%27Shenandoah_Valley%27_by_William_Thompson_Russell_Smith%2C_1846.jpg",
+    "endingTextColor": "#000000",
+    "customQuote": "&quot;I feel profoundly grateful for the cordial welcome you have extended to me.&quot;",
+    "gameTitle": "THE BRECKINRIDGE TRAIL"
+}
+
+//#startcode
+
+//==================================
+e.collect_results = true;
+
+HistHexcolour = ["#bd8888","#899b75","#bea47e","#9594c5","#9EB1BA"];
+HistName = ["Abraham Lincoln", "John C. Breckinridge", "John Bell", "Stephen A. Douglas", "Fusion Tickets"];
+HistEV = [180, 72, 39, 12, "–"];
+HistPV = ["1,855,276", "672,601", "590,980", "1,004,042", "553,570"];
+HistPVP = ["39.7%", "14.4%", "12.6%", "21.5%", "11.8%"];
+
+
+e=campaignTrail_temp
+
+var changeGameDisp = (hide) => {
+  disp = "";
+  if (hide) {
+    disp = "none";
+  }
+  document.getElementsByClassName("inner_window_w_desc")[0].style.display = disp
+};
+
+e.creditsPage = () => {
+  credits_html = `
+    <h2>Credits</h2>
+    <p>Ianwubby – Coding, Writing</p>
+    <p>DecstarG – Credits</p>
+    <p>ItsAstronomical – Variable HQ (Fusion Ticket Tracker)</p>
+    <p>Jet – Jet's Tools</p>
+    <p>munastronaut – Changing Visit Text</p><br>
+
+    <hr>
+
+    <h2>Version 1.0.2</h2>
+    <p>Added version tracker</p>
+    <p>Nerfs to Douglas and Bell</p>
+    <p>Nerf to Breckinridge in PA</p>
+    <p>Added Davis "win" ending</p>
+    <p>Minor visual/wording changes</p><br>
+
+    <h2>Version 1.0.1</h2>
+    <p>Image host changed from Imgur to File Garden</p>
+    <p>Small bugfix relating to PA fusion ticket</p>
+    <p>Minor visual/wording changes\n</p><br>
+
+    <h2>Version 1.0.0</h2>
+    <p>Initial release</p>
+  `
+  changeGameDisp(true);
+  var spacer = document.createElement("amongusspacerthisisntarealelement");
+  spacer.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+  document
+    .getElementsByClassName("inner_window_w_desc")[0]
+    .children[1].appendChild(spacer);
+    changeGameDisp(true);
+    var menuHeader = document.createElement("div");
+    menuHeader.classList.add("inner_window_front");
+    menuHeader.innerHTML = `<h1 style='font-family: "Times New Roman";'><font color='#0496f7'>Credits & Changelog</font></h1>`;
+    menuHeader.id = "SOTUheader";
+    menuHeader.style = "height: 50px;background-color:#2d2d2d";
+    var newMenu = document.createElement("div");
+    newMenu.classList.add("inner_window_front");
+    newMenu.id = "SOTUmenu";
+    newMenu.style = `height:260px;background-color:#2d2d2d;color:white;overflow-y: scroll;`;
+
+    newMenu.innerHTML = credits_html;
+    let z = document.getElementById("game_window");
+    var backButton = document.createElement("button");
+    backButton.style =
+      "position: relative; bottom: -13px; left: -380px; width: 150px; height: 80px;font-size:40px;padding-top:5px;padding-left:8px";
+    backButton.id = "backSOTUBtn";
+    backButton.innerHTML = `<b>BACK</b>`;
+    backButton.onclick = function () {
+      document.getElementById("SOTUheader").remove();
+      document.getElementById("SOTUmenu").remove();
+      document.getElementById("backSOTUBtn").remove();
+      changeGameDisp(false);
+    };
+    z.appendChild(menuHeader);
+    z.appendChild(newMenu);
+    z.appendChild(backButton);
+}
+
+e.credits = "<button onclick='e.creditsPage()'>Ianwubby, with help from others</button>"
+//==================================
+
+quotes = ["&quot;I feel profoundly grateful for the cordial welcome you have extended to me.&quot;", "&quot;John C. Breckinridge, a member of this body from the State of Kentucky, has joined the enemies of his country, and is now in arms against the Government he had sworn to support.&quot;", "&quot;Therefore, Resolved, That the said John C. Breckinridge, the traitor, be, and he is hereby, expelled from the Senate.&quot;", "&quot;The principles of constitutional liberty, guarded by wisdom and virtue, unlike material elements, do not decay.&quot;", "&quot;Friend, I am not in any sense a candidate for the Presidency.&quot;", "&quot;All over the country the charge of Disunion is repeated against me and those who believe with me.&quot;", "&quot;Disunion! Disunion! Their continual cry is that this man and his party are attempting to break up the Union of these States.&quot;", "&quot;Fellow citizens, can you bear with me a little longer?&quot;", "&quot;This has been a magnificent epic. In God's name let it not terminate in a farce.&quot;"]
+
+rarequotes = ["&quot;Open your mouth wider!&quot;", "&quot;Go it, John!&quot;", "&quot;That's so, John C.!&quot;", "&quot;Now you are talking!&quot;", "[The telegraph here failed to make the proper connection.]", "&quot;Tell them that it is a lie!&quot;", "&quot;He couldn't do it!&quot;", "&quot;I cannot enlarge.&quot;", "&quot;Dude was a real winner.&quot;", "&quot;eugh... breckenridge...&quot;"]
+
+customquote = quotes[Math.floor((Math.random() * quotes.length))]
+
+if (Math.random() < 0.01) { customquote = rarequotes[Math.floor((Math.random() * quotes.length))] }
+
+corrr = `\n<h2>THE BRECKINRIDGE TRAIL</h2><font id="wittyquote" size="4" color="white"><em>${customquote}</em></font>\n`
+
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#3f3932";
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#8c816f";
+
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+$(".container")[0].style.backgroundColor = "#6c6355";
+
+document.getElementById("header").src = "https://file.garden/aUY9j6Fk7RLHy1A_/hRFKrUY.png";
+
+document.body.background = "https://upload.wikimedia.org/wikipedia/commons/3/39/%27Shenandoah_Valley%27_by_William_Thompson_Russell_Smith%2C_1846.jpg";
+
+document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#cbc6bc!important;}</style>";
+
+//#endcode
+

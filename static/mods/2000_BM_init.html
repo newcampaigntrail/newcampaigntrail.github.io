@@ -1,0 +1,1839 @@
+e=campaignTrail_temp
+if (!e.done) {
+e.done = true;
+
+campaignTrail_temp.global_parameter_json = [
+    {
+        "model": "campaign_trail.global_parameter",
+        "pk": 1,
+        "fields": {
+            "vote_variable": 1.125,
+            "max_swing": 0.12,
+            "start_point": 0.94,
+            "candidate_issue_weight": 10,
+            "running_mate_issue_weight": 3,
+            "issue_stance_1_max": -0.71,
+            "issue_stance_2_max": -0.3,
+            "issue_stance_3_max": -0.125,
+            "issue_stance_4_max": 0.125,
+            "issue_stance_5_max": 0.3,
+            "issue_stance_6_max": 0.71,
+            "global_variance": 0.01,
+            "state_variance": 0.005,
+            "question_count": 32,
+            "default_map_color_hex": "#C9C9C9",
+            "no_state_map_color_hex": "#999999"
+        }
+    }
+]
+
+e.SelectText = ""
+e.CandidText = "Select your Presidential nominee:"
+e.VpText = "Select your Vice Presidential nominee:"
+document.getElementById("inner_window_1").children[1].innerHTML = `<li>Welcome to <b>𝙱𝚘𝚋'𝚜 𝙼𝚊𝚌𝚊𝚛𝚎𝚗𝚊.</b></li><li>This mod explores a world where Senator Bob Dole of Kansas, against all odds, beat Bill Clinton's bid for re-election in 1996, becoming the 43rd President of the United States.</li><li>You have the option to play as President Dole, or his eventual opponent in 2000, Representative Dick Gephardt of Missouri.</li><li>As Dole, you will have to make decisions which impact the country domestically, especially in regards to economics, and across the world, in regards to combatting foreign terrorism and dictators. Eventually, you will have to run for re-election.</li><li>As Gephardt, you will have to rally the House Democrats in the aftermath of the by all means discouraging results of the 1996 elections, and lead them to striking back against Dole and Gingrich, leading up to running for the Democratic nomination in 2000.</li><li>Your decisions will affect the popularity and electability of the candidate you are playing as.</li><li>Content Warning: At times, vulgar language is present in the mod, however it isn't excessive. But if you do care about that, consider yourself warned.</li><li>Browser Compatibility: This mod's font does not display correctly on Firefox. Almost every other browser should display the font as intended.</li>`;
+e.ElectionPopup = "The deal is done. The game is over. And now, the consequences come."
+e.WinPopup = "The throne is yours, yet the kingdom trembles. Rule wisely."
+e.LosePopup = "You gambled—and lost. The throne belongs to another."
+
+campaignTrail_temp.difficulty_level_json = JSON.parse("[{\"model\": \"campaign_trail.difficulty_level\", \"pk\": 1, \"fields\": {\"name\": \"Beginner\", \"multiplier\": 1.0}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 2, \"fields\": {\"name\": \"Casual\", \"multiplier\": 0.95}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 3, \"fields\": {\"name\": \"Realistic (Default)\", \"multiplier\": 0.90}}, {\"model\": \"campaign_trail.difficulty_level\", \"pk\": 4, \"fields\": {\"name\": \"Uphill Battle\", \"multiplier\": 0.85}}]");
+
+campaignTrail_temp.modBoxTheme = {
+     "header_image_url": "https://files.catbox.moe/d76yne.png",
+     "header_color": "#000885",
+     "header_text_color": "#ffffff",
+     "description_text_color": "#000000",
+     "description_background_color": "#ffffff",
+     "main_color": "#dedede",
+     "secondary_color": "#bebebe",
+     "ui_text_color": "#FFFFFF"
+}
+
+// helper to ensure a stylesheet is appended only once
+function ensureStylesheet(url, id) {
+	// if an id is provided and exists, bail out
+	if (id && document.getElementById(id)) return;
+	// if a link with same href already exists, bail out
+	if (document.querySelector('link[rel="stylesheet"][href="' + url + '"]')) return;
+	const link = document.createElement('link');
+	link.rel = 'stylesheet';
+	link.href = url;
+	if (id) link.id = id;
+	document.head.appendChild(link);
+}
+
+ensureStylesheet('https://unpkg.com/98.css', 'unpkg-98css');
+
+function ensureMetaViewport() {
+    if (!document.querySelector('meta[name="viewport"]')) {
+        const m = document.createElement('meta');
+        m.name = 'viewport';
+        m.content = 'width=device-width, initial-scale=1';
+        document.head.appendChild(m);
+    }
+}
+
+applyGlobalStyles.sheets = {};
+
+function applyGlobalStyles(css, id = 'app-theme') {
+    if ('adoptedStyleSheets' in document && 'replaceSync' in CSSStyleSheet.prototype) {
+        if (!applyGlobalStyles.sheets[id]) {
+            applyGlobalStyles.sheets[id] = new CSSStyleSheet();
+            document.adoptedStyleSheets = [...document.adoptedStyleSheets, applyGlobalStyles.sheets[id]];
+        }
+        applyGlobalStyles.sheets[id].replaceSync(css);
+        return;
+    }
+
+    let el = document.getElementById(id);
+    if (!el) {
+        el = document.createElement('style');
+        el.id = id;
+        document.head.appendChild(el);
+    }
+    el.textContent = css;
+}
+
+const css = `
+  .campaign_trail_start_emphasis {
+    background-color: #7c9ccc;
+  }
+  
+  h3 {
+      font-size:1.17em!important;
+  }
+  
+  label {
+      font-size:1em!important;
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif!important;
+  }
+  body {display:flex!important;}
+  
+  #game_window {max-width:1000px;}
+  
+  #inner_window_1 ul {
+    padding: .25em 2em .5em 2em;
+  }
+  #election_image {
+	margin: 2em 1em 1em 1em;
+  }
+.person_summary p:first-of-type {
+  margin: 0;
+}
+.content_single .footer h4 {
+  color: #000 !important;
+}
+
+.person_image {
+  width: 24%;
+  height: auto;
+}
+  
+`;
+
+ensureMetaViewport();
+applyGlobalStyles(css, 'mod-style');
+
+
+next0 = function() {document.getElementById("screen0").style.display = "none";document.getElementById("screen1").style.display = "initial";}
+back0 = function() {document.getElementById("screen0").style.display = "initial";document.getElementById("screen1").style.display = "none";}
+
+
+RecReading=true
+
+campaignTrail_temp.election_json = [
+    {
+        "model": "campaign_trail.election",
+        "pk": 9,
+        "fields": {
+            "year": 2000,
+            "summary": "<div style='overflow-y:scroll;height:200px;'><p>A new Millennium has come over the horizon and is shining brightly on America's soil. So much has changed in the past century. Two World Wars, America becoming the world's sole superpower, the emergence of nuclear warfare, aircraft, rapid medical advancements, the car, the television, computers, video games, women and minorities winning the right to vote, the Democratic Party losing dominance of the South, the Republicans being tossed aside for Democrats by their old Northern base. All within a century.</p>\n\n<p>The world has never been as wealthy as it is today, and world hunger has never been as low as well. On that note, the Millennium's first ever presidential election is about to kick off. It sees 77-year-old President Bob Dole face off with the Speaker of the House, Dick Gephardt.</p>\n\n<p>Issues around the campaign revolve around foreign affairs, especially in regards to the Balkans, with the last decade's implosion of Yugoslavia, which has ended in disaster for those living there, along with the recent rise in global terrorism, especially in regards to Islamist groups based in the Middle East. In regards to social issues, abortion, healthcare in general, and the recent rise of the gay pride movement are hotly debated on the internet forums and newspapers. One of the most pressing issues is the debate over the roughly $275 billion budget surplus, in particular about how to use the money.</p>\n\n<p>Despite President Dole's personal popularity, the race is expected to be close on election day. Both candidates must tread carefully, as even one mistake can cost them the election.</p></div>",
+            "image_url": "https://files.catbox.moe/sgy1lv.gif",
+            "winning_electoral_vote_number": 270,
+            "advisor_url": "https://file.garden/aBFeR_WWax4tG4dU/ezgif.com-animated-gif-maker%20(3).gif",
+            "recommended_reading": "<div style=\"overflow-y:scroll;height:375px;\"><h4 style=\"\&quot;margin-top:\" 0.5em;\"=\"\">Dole/Kemp '00 Sources</h4><a href=\"http://www.dolekemp96.org/main.htm\" target=\"_blank\">Dole/Kemp '96 Website</a><br><a href=\"https://www.amazon.com/One-Soldiers-Story-Bob-Dole/dp/0060763418\" target=\"_blank\">One Soldier's Story: A Memoir</a><br><a href=\"https://www.amazon.com/Trusting-People-Robert-Dole/dp/0061011533\" target=\"_blank\">Trusting the People</a><br><a href=\"https://www.amazon.com/Unlimited-Partners-Our-American-Story/dp/0684834014\" target=\"_blank\">Unlimited Partners: Our American Story</a><br><a href=\"https://www.amazon.com/Great-Political-Wit-Laughing-Almost/dp/0767906675\" target=\"_blank\">Great Political Wit: Laughing (Almost) All the Way to the White House</a><br><i>Amongst others...</i><br><h4 style=\"margin-top: 0.5em;\">Gephardt/Feinstein '00 Sources</h4><a href=\"https://web.archive.org/web/20040116050101/http://www.dickgephardt2004.com/plugin/template/gephardt/Welcome/*\" target=\"_blank\">Gephardt '04 Website</a><br><a href=\"https://www.amazon.com/Even-Better-Place-America-Century/dp/1891620169\" target=\"_blank\">An Even Better Place: America in the 21st Century</a><br><a href=\"https://www.porchlightbooks.com/products/535-not-1-richard-gephardt-9781667849652\" target=\"_blank\">535 Not 1</a><br><a href=\"http://gephardt.mohistory.org/project/resources.php\">Richard A. Gephardt Collection</a><br><a href=\"https://slate.com/news-and-politics/2003/09/the-flip-flops-of-dick-gephardt.html\">The Flip-Flops of Dick Gephardt</a><br><i>Amongst others...</i><h4>Lore</h4><img src=\"https://files.catbox.moe/ovxw39.png\" width=\"300px\"><br><img src=\"https://files.catbox.moe/ben7yx.png\" width=\"300px\"><br><img src=\"https://files.catbox.moe/4jsr65.png\" width=\"300px\"><br><img src=\"https://files.catbox.moe/jfvpo4.png\" width=\"300px\"><br><img src=\"https://files.catbox.moe/5c29vt.png\" width=\"300px\"><br><img src=\"https://files.catbox.moe/x5cqf8.png\" width=\"300px\"><br><img src=\"https://files.catbox.moe/la54la.png\" width=\"300px\"><br><img src=\"https://files.catbox.moe/qjgdra.png\" width=\"300px\"><br><img src=\"https://files.catbox.moe/3b2lq5.png\" width=\"300px\"><br><img src=\"https://files.catbox.moe/w4axsz.png\" width=\"650px\"><br><img src=\"https://files.catbox.moe/f84jtz.png\" width=\"300px\"><br><img src=\"https://files.catbox.moe/v0knk9.png\" width=\"300px\"><br><img src=\"https://files.catbox.moe/r5tfbe.png\" width=\"300px\"><br><img src=\"https://files.catbox.moe/5e12yw.png\" width=\"300px\"><br><img src=\"https://files.catbox.moe/8egusu.png\" width=\"300px\"><br><img src=\"https://files.catbox.moe/afejmd.png\" width=\"300px\"><br><img src=\"https://files.catbox.moe/of26rw.png\" width=\"300px\"><br><img src=\"https://files.catbox.moe/4xgcom.png\" width=\"300px\"><br><br>Thank you for playing my first ever mod, and stay tuned for Only in America, Bobs' Macarena's sequel, where after 8 years of the Dole Administration, Senator John Edwards and House Majority Whip John Kasich face off to secure their parties' a term in the White House.<p></p><br><p>Now, why don't 'cha play another game while you wait, hmmm?</p></div>",
+            "has_visits": 1,
+            "no_electoral_majority_image": "https://www.jetsimon.com/public/static/images/2012-no-majority.jpg",
+            "creator": "Dan Bryan",
+            "display_year": "2000_BM"
+        }
+    }
+]
+
+campaignTrail_temp.candidate_json = [
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 77,
+        "fields": {
+            "first_name": "Robert J.",
+            "last_name": "Dole",
+            "election": 9,
+            "party": "Republican Party",
+            "state": "Kansas",
+            "priority": 1,
+            "description": "<div style='overflow-y:scroll;height:200px;'><p>No one knows how or why Bob Dole is here right now; not even he knows himself, but he is.</p>\n\n<p>When he won the Republican Party's nomination for president, he knew he probably was not going to defeat President Clinton. All the polls had him trailing Clinton heavily, even though just a year earlier he was polled to defeat Clinton for re-election. When election night came, he watched the results already resigned to the fact that Clinton would be elected to a second term.</p>\n\n<p>But the opposite happened. In the most surprising upset since 1948, he unexpectedly beat Clinton. While he won the Electoral College, Clinton won the day in the popular vote. So, President-elect Dole will find himself in a peculiar situation when he takes the oath on January 20th. When that happens, he's going to need to find a way to win over the hearts of the vast majority of the American people, and quickly before the 1998 midterms. If the midterms prove disastrous, Dole can kiss his chances for re-election goodbye against whichever schmuck the Democrats nominate in 2000.</p></div>",
+            "color_hex": "#A94440",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 1,
+            "image_url": "https://files.catbox.moe/up6z3w.png",
+            "electoral_victory_message": "<h3>Congratulations! You have won the 2000 election.</h3><p>Confounding the predictions of many experts, you were able to turn the tables on Al Gore, in spite of the economy and Clinton's popularity.</p><p>On the political front, you can push for tax cuts to spur the economy and return the budget surplus to the American people. You might also pursue education and immigration reform, individual Social Security accounts, and new laws to defend the family and the sanctity of life.</p>",
+            "electoral_loss_message": "<h3>Sorry! You have lost the 2000 election.</h3><p>Perhaps it was always a long-shot, with the Democrats in such a commanding position after eight years of Bill Clinton. In any case, at least you are still the Governor of Texas.</p><p>Expect Al Gore to unleash a new round of government programs and environmental regulations. You are still youngish, however. If the election was close this time, perhaps you can run again in 2004, or work on behalf your brother Jeb.</p>",
+            "no_electoral_majority_message": "<h3>Wow! You have won in a squeaker.</h3><p>No candidate achieved a majority of the electoral votes, marking the first time this has happened since 1824. Fortunately for you, the majority of U.S. states have Republican controlled congressional delegations, and they will cast their votes accordingly.</p><p>Given the incredibly close nature of the election, you will surely be expected to govern as a moderate, conciliatory President. Right??</p>",
+            "description_as_running_mate": "''",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 78,
+        "fields": {
+            "first_name": "Richard A.",
+            "last_name": "Gephardt",
+            "election": 9,
+            "party": "Democratic Party",
+            "state": "Missouri",
+            "priority": 2,
+            "description": "<div style='overflow-y:scroll;height:200px;'><b>Coming out in 𝙱𝚘𝚋'𝚜 𝙼𝚊𝚌𝚊𝚛𝚎𝚗𝚊 Service Pack 2.</b><br><br>Well, this is not what Dick thought would be happening.</p>\n\n<p>He thought he'd be working with President Clinton for another four years, with a comfortable margin both popularly and electorally. However, that's clearly not what God had intended on that fateful November night.</p>\n\n<p>Once the night was over, it was clear: the Republican Revolution has spread into the White House, despite most people voting against it. The down ballot races weren't much better either. Both the House and Senate remained under Republican control.</p>\n\n<p>Now with Bill gone, it was all up to Dick to lead the opposition against President Dole and his Congressional cronies as the House Minority Leader. The first step to take back the White House from his filthy hands is giving him a black eye in the 1998 midterms; hopefully, though, by then, he won't have done much damage to all of the good work Bill had done as President. If that happens, he's considering his options for 2000.</p></div>",
+            "color_hex": "#415783",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 1,
+            "image_url": "https://files.catbox.moe/vud3s6.png",
+            "electoral_victory_message": "<h3>Congratulations! You have won the 2000 election.</h3><p>Though it was perhaps expected, you could have easily faltered at a number of points. Credit to you for pulling through.</p><p>On the political front, you can continue the Clinton legacy and strengthen Social Security for generations to come. Perhaps you can succeed on health care where Clinton came up short? Or maybe you can create a future of renewable energy for America. Just be wary of a (George or Jeb?) Bush challenge in 2004.</p>",
+            "electoral_loss_message": "<h3>Sorry! You have lost the 2000 election.</h3><p>Surely the second-guessing will be intense, but if things were close you could probably run again in 2004.</p><p>It seems that with George W. Bush and a Republican majority, the United States can expect some conservative policy-making over the next four years. Hopefully Bush comes through on his promise to govern in a bipartisan, conciliatory manner. A lot should depend on the margin of his victory, and whether it was large or small.</p>",
+            "no_electoral_majority_message": "<h3>Sorry! You have lost in a squeaker.</h3><p>No candidate achieved a majority of the electoral votes, for the first time since 1824. Unfortunately for you, a majority of states have Republican controlled congressional delegations.</p><p>It seems that with George W. Bush and a Republican majority, the United States can expect some conservative policy-making over the next four years. Hopefully Bush comes through on his promise to govern in a bipartisan, conciliatory manner.</p>",
+            "description_as_running_mate": "''",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 79,
+        "fields": {
+            "first_name": "Ralph",
+            "last_name": "Nader",
+            "election": 9,
+            "party": "Green",
+            "state": "Connecticut",
+            "priority": 3,
+            "description": "''",
+            "color_hex": "#4B8449",
+            "secondary_color_hex": "#A1FFA1",
+            "is_active": 0,
+            "image_url": "''",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "''",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 80,
+        "fields": {
+            "first_name": "John S.",
+            "last_name": "Hagelin",
+            "election": 9,
+            "party": "Reform",
+            "state": "Iowa",
+            "priority": 4,
+            "description": "''",
+            "color_hex": "#5F3F68",
+            "secondary_color_hex": "#FFFFC0",
+            "is_active": 0,
+            "image_url": "''",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "''",
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 81,
+        "fields": {
+            "first_name": "Jack F.",
+            "last_name": "Kemp",
+            "election": 9,
+            "party": "Republican Party",
+            "state": "New York",
+            "priority": 5,
+            "description": "''",
+            "color_hex": "#FF0000",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://files.catbox.moe/lb800n.png",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "<div style='overflow-y:scroll;height:200px;'><p>Ah yes, Jack Kemp.</p> <p>One of the most nationally popular Republicans, a former football star, a former congressman, a 1988 presidential contender, a Bush Cabinet secretary, and now, Vice President-elect of the United States.</p><p>Despite being partners for at least the next four years, you and he aren't exactly the most friendly towards each other. You both were rivals for de facto party leadership back in the day; also, you both ran against each other for the 1988 presidential nomination.</p><p>However, his sheer popularity, coalitions, and undeniable competence compelled you to choose him to be your running mate in 1996, and also, it wasn't like you were going to win... right...?</p><p>Unfortunately for you, that's exactly what happened. Yeah, being President is nice and all, but that means you have to put up with a man who you reluctantly selected to be your running mate with the understanding that you were likely going to lose, even if you theoretically ran a perfect campaign, yet still won somehow anyways.</p><p>So, you can either keep him on for another four years or drop him. Most of your people think it's a terrible idea, but hey, you might be onto something if you do.</p></div>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 83,
+        "fields": {
+            "first_name": "John C.",
+            "last_name": "Danforth",
+            "election": 9,
+            "party": "Republican Party",
+            "state": "Missouri",
+            "priority": 7,
+            "description": "''",
+            "color_hex": "#FF0000",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://files.catbox.moe/jlx53q.png",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "<div style='overflow-y:scroll;height:200px;'><p>Kemp just wasn't your cup of tea, heh? Well, Lott think's there's a good guy for you to replace him with out there, and he's right under your own nose.</p><p>Before Attorney General John Danforth was managing things at the Department of Justice, he was a US Senator from Missouri, serving 3 terms, succeeding Stuart Symington, whom he ran previously against in his final race, with Symington narrowly prevailing.</p><p>In the Senate, he made his mark as a moderate conservative, quipping he joined the Republian Party because of \"the same reason you sometimes choose which movie to see—it's the one with the shortest line.\"</p><p>With that being said, he's staked out some minor unusual positions for a conservative to take, such as opposing the death penalty. However, his foreign policy expertise, his popularity in his home state, which is ironically the very state Dick Gephardt's from, could really help you out. He's also an Episcopal priest, meaning he really knows how to move a crowd.</p><p>He's a no brainer, Lott says.</p></div>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 85,
+        "fields": {
+            "first_name": "Dianne E.",
+            "last_name": "Feinstein",
+            "election": 9,
+            "party": "Democratic Party",
+            "state": "California",
+            "priority": 9,
+            "description": "''",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://files.catbox.moe/cdw0md.png",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "<div style='overflow-y:scroll;height:200px;'><p>So, it seems the nomination's going to be yours. It's clear with the results of the primary; the base is yearning for history to be made. They're tired of the same old same old. The same old fully white, male ticket.</p><p>And it so happens that Wellstone promised to select a female running mate. While Wellstone didn't win the nomination, it might be a good idea to take that idea and employ it on your own to keep his people happy.</p><p>The team has narrowed down the historic female option to one woman: Dianne Feinstein.</p><p>She's a trailblazer. She's Jewish, the first woman to represent California in the Senate, as well as the first to be Mayor of San Francisco, during which she was ranked as one of America's most effective mayors.</p><p>So, she's got the record, but what about some things she's passionate about? Well, she's an ardent believer in gun control, authoring the Assault Weapons Ban, which may or may not help you, depending on how you run your campaign. She's also firmly in the pro-choice camp of the abortion argument, as well as a strong advocate for national defense, which could help your defectiveness in that regard slightly.</p><p>If you really want to catch headlines, Feinstein's your option; however, you must consider this: she's up for re-election this year. If you select her, she likely can't run for another term. So, you've really got to be sure about your chances at victory if you plan on selecting her, because if you lose, you've sacrificed an experienced Senator for nothing.</p></div>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 86,
+        "fields": {
+            "first_name": "Zell B.",
+            "last_name": "Miller",
+            "election": 9,
+            "party": "Democratic Party",
+            "state": "Georgia",
+            "priority": 10,
+            "description": "''",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://files.catbox.moe/uz0d44.png",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "<div style='overflow-y:scroll;height:200px;'><p>Say, you want yourself a Bill Clinton lite to woo the Southerners? Alright, Dick, I hear you. I present you with Governor Miller of Georgia.</p><p>He's ideologically very similar to Clinton and shares a close relationship with the former president, so that alone could be a deciding factor in selecting him to be your running mate, because he could encourage him to campaign for you throughout the South. Additionally, he was one of the keynote speakers at the 1992 Democratic National Convention.</p><p>He's got a no-nonsense, tough-on-crime approach, which could help you defeat the perception in the South that the national party is weak on crime. However, there are a few things that could really go wrong with him being selected.</p><p>First off, he's a former segregationist. In his earlier campaigns, in the sixties, he endorsed segregation and denounced Lyndon B. Johnson as \"a Southerner who has sold his birthright for a mess of dark porridge.\"</p><p>Yeah uh, that doesn't really pair well when you're facing a man who voted for the '64 Civil Rights Act and '65 Voting Rights Act, does it?</p><p>Secondly, he isn't really nationally known despite his performance at the 1992 DNC, so you'll have to take some time to properly get his name out there.</p><p>And lastly, he's currently making a bid for the open US Senate seat in Georgia, and he's perhaps the only candidate who can hold the seat against a potential Republican surge due to the presidential election. Him being your running mate would leave that seat open to whoever the Republicans run.</p><p>So, choose wisely. Do you want him, or not?</p></div>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 87,
+        "fields": {
+            "first_name": "George J.",
+            "last_name": "Mitchell",
+            "election": 9,
+            "party": "Democratic Party",
+            "state": "Maine",
+            "priority": 11,
+            "description": "''",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://files.catbox.moe/na7ebq.png",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "<div style='overflow-y:scroll;height:200px;'><p>You clearly have a decent chance at beating Dole. However, that begs the question: what happens after?</p><p>You'll surely need someone who'd do you good legislatively in order to get your ambitious agenda through, given the likely Republican Senate majority.</p><p>This is where former US Senator George Mitchell of Maine comes in. He's previously served as Senate Majority Leader and the Deputy President pro tempore of the Senate, as well as the US Special Envoy for Northern Ireland.</p>\n<p>Aside from having the connections you need to get your agenda through the Senate, he does a lot to heal the gap of credibility you are currently suffering in comparison to Dole in terms of foreign policy, especially in regards to counterterrorism.</p><p>His associations with historical great Senate Democrats, such as Hubert Humphrey and Edmund Muskie, to name a few, could also allow you to play a nostalgia card of your own to counter Dole's card in reminiscing about Ronald Reagan.</p><p>So, he's a safe, risk-free, and strong pick if you really want to get a good portion of your agenda done if you win the presidency.</p></div>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 89,
+        "fields": {
+            "first_name": "Winona",
+            "last_name": "LaDuke",
+            "election": 9,
+            "party": "Green",
+            "state": "Minnesota",
+            "priority": 13,
+            "description": "''",
+            "color_hex": "#00C100",
+            "secondary_color_hex": "#A1FFA1",
+            "is_active": 0,
+            "image_url": "''",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "''",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 90,
+        "fields": {
+            "first_name": "Robert",
+            "last_name": "M. Bowman",
+            "election": 9,
+            "party": "Reform",
+            "state": "California",
+            "priority": 14,
+            "description": "''",
+            "color_hex": "#FFFF00",
+            "secondary_color_hex": "#FFFFC0",
+            "is_active": 0,
+            "image_url": "''",
+            "electoral_victory_message": "''",
+            "electoral_loss_message": "''",
+            "no_electoral_majority_message": "''",
+            "description_as_running_mate": "''",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    }
+]
+
+campaignTrail_temp.running_mate_json = [
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 57,
+        "fields": {
+            "candidate": 80,
+            "running_mate": 90
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 56,
+        "fields": {
+            "candidate": 79,
+            "running_mate": 89
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 48,
+        "fields": {
+            "candidate": 77,
+            "running_mate": 81
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 52,
+        "fields": {
+            "candidate": 78,
+            "running_mate": 85
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 53,
+        "fields": {
+            "candidate": 78,
+            "running_mate": 86
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 54,
+        "fields": {
+            "candidate": 78,
+            "running_mate": 87
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 50,
+        "fields": {
+            "candidate": 77,
+            "running_mate": 83
+        }
+    }
+]
+
+var changeGameDisp = (hide) => {
+  disp = "";
+  if (hide) {
+    disp = "none";
+  }
+  document.getElementsByClassName("inner_window_w_desc")[0].style.display = disp
+};
+
+e.creditsPage = () => {
+  credits_html = `
+              <style>\
+                  @keyframes flash {\
+                      0% { color: blue; }\
+                      33% { color: red; }\
+                      66% { color: black; }\
+                      100% { color: blue; }\
+                  }\
+                  .flashing-text {\
+                      font-weight: bold;\
+                      animation: flash 1s infinite;\
+                  }\
+              </style>\
+<style>
+s1 {
+  text-shadow: 2px 2px 4px;
+}
+</style>
+    <h3><font color='#4361B2'><s1>Creator</s1></font></h3>
+    <p><s1><b><font color='#5561F5'>Discord:</font></b> <span class='flashing-text'>army2.0</span></s1></p>
+	<p><s1><b><font color='#FF4500'>Reddit:</font></b> <span class='flashing-text'>u/ArmyTwoPointOh</span></s1></p>
+    <h3><font color='#393647'><s1>Provided Coding Assistance</s1></font></h3>
+	<p><s1><font color='#7FC6A8'>Calgar77 - Helped debug the Code 1</font></p>
+	<p><s1><font color='#b665bc'>_ohas - Coded some endings</font></p>
+	<p><font color='#2D4443'><s1>Mangolith - Fixed the font troubles seen with the initial release version.</s1></font></p>
+	<p><font color='#FA5053'><s1>StrawberryMaster - Helped with some endings, helped manage some CSS.</s1></font></p>
+	<h3><s1><font color='#678C4E'>Playtesters</font></s1></h3>
+	<p><s1><span class='flashing-text'>The Deep State.</s1></font></p>
+	<p><s1><font color='#FF2853'>Roadrunner</font></s1></p>
+	<p><s1><font color='#452853'>Dechinburg</font></s1></p>
+	<p><s1><font color='#9E5E37'>Dking0487</font></s1></p>
+	<p><s1><font color='#CC5289'>Thebigrag</font></s1></p>
+	<p><s1><font color='#CCB026'>Scottishbozo69</font></s1></p>
+	<p><s1><font color='#52A535'>Shockonomics</font></s1></p>
+	<p><s1><font color='#53B2B0'>Beanpole187</font></s1></p>
+	<p><s1><font color='#FFD100'>LibertarianFellow</font></s1></p>
+	<p><s1><font color='#DB9FE5'>SteamedHams7G01</font></s1></p>
+	<p><s1><font color='#06B880'>maskedmalarky</font></s1></p>
+	<p><s1><font color='#E5FF54'>Anyone who isn't listed. Your help is not forgotten.</font></s1></p>
+    <h3><s1><font color='#16484E'>Provided Research & Ideas</font></s1></h3>
+    <p><s1><font color='#FF2853'>Roadrunner (again lol) - Question + Candidate Description Ideas</font></s1></p>
+	<p><s1><font color='#001328'>Script1776 - Suggested Mitchell as a potential VP.</font></s1></p>
+	<p><s1><font color='#60B367'>Diamondy30901 - Consulted with for the VP Danforth path.</font></s1></p>
+    <h3><s1><font color='#A84896'>Special Thanks</font></s1></h3>
+	<p><s1><font color='#063592'>mr.rockefeller - Playtested and also assisted with state political demographics changes.</font></s1></p>
+	<p><s1><font color='#61173C'>Max - Gave coding & general modding advice early on.</font></s1></p>
+	<p><s1><font color='#315A60'>DecstarG - For the credits code.</font></s1></p>
+	<p><s1><font color='#FF4931'>Gardfield - Consulted with on occasion regarding code.</font></s1></p>
+	<p><font color='#0541AD'><s1>ItsAstronomical - Start up sound code, as well as the styling code for the advisor feedback.</s1></font></p>
+	<p><font color='#4d5d53'><s1>Nina_96 - Portions of the advisor window code.</s1></font></p>
+	<p><font color='#FFCC33'><s1>Sundance 2004 Team - Some styling code.</s1></font></p>
+	<p><font color='#541617'><s1>CTA & Obummer - Creating PWH, which is the mod which got me hooked to TCT, therefore making this mod possible.</s1></font></p>
+	<p><font color='#1D2643'><s1>The 𝐖. Team - More portions of the advisor window code, and also showing us all how far TCT's code can be taken, therefore helping inspire me to get into modding.</s1></font></p>
+	<p><font color='#A94440'><s1>Bob Dole - For existing, and his selfless sacrifices in World War II to defeat Nazism.</s1></font></p>
+	<p><font color='#415783'><s1>Dick Gephardt - Also for existing, and his advocacy for American workers.</s1></font></p>
+    </div>
+  `
+  changeGameDisp(true);
+  var spacer = document.createElement("amongusspacerthisisntarealelement");
+  spacer.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+  document
+    .getElementsByClassName("inner_window_w_desc")[0]
+    .children[1].appendChild(spacer);
+    changeGameDisp(true);
+    var menuHeader = document.createElement("div");
+    menuHeader.classList.add("inner_window_front");
+    menuHeader.innerHTML = `<p></p>`;
+    menuHeader.id = "SOTUheader";
+    menuHeader.style = "height: 1px;background-color:#D4D0C8";
+    var newMenu = document.createElement("div");
+    newMenu.classList.add("inner_window_front");
+    newMenu.id = "SOTUmenu";
+    newMenu.style = `height:260px;background-color:#D4D0C8;color:white;overflow-y: scroll;`;
+
+    newMenu.innerHTML = credits_html;
+    let z = document.getElementById("game_window");
+    var backButton = document.createElement("button");
+    backButton.style =
+      "position: relative; bottom: -13px; left: -380px; width: 150px; height: 80px;font-size:40px;padding-top:5px;padding-left:8px";
+    backButton.id = "backSOTUBtn";
+    backButton.innerHTML = `<b>BACK</b>`;
+    backButton.onclick = function () {
+      document.getElementById("SOTUheader").remove();
+      document.getElementById("SOTUmenu").remove();
+      document.getElementById("backSOTUBtn").remove();
+      changeGameDisp(false);
+    };
+    z.appendChild(menuHeader);
+    z.appendChild(newMenu);
+    z.appendChild(backButton);
+
+}
+
+e.credits = "<button onclick='e.creditsPage()'>Credits</button>"
+campaignTrail_temp.opponents_default_json = [
+    {
+        "election": 9,
+        "candidates": [
+            77,
+            78,
+            79,
+            80
+        ]
+    }
+]
+
+campaignTrail_temp.opponents_weighted_json = [
+    {
+        "election": 9,
+        "candidates": [
+            77,
+            78,
+            79,
+            80
+        ]
+    }
+]
+
+campaignTrail_temp.temp_election_list = [
+    {
+        "id": 9,
+        "year": 2000,
+        "is_premium": 0,
+        "display_year": "2000_BM"
+    }
+]
+
+jet_data = {
+    "headerColor": "#7c9ccc",
+    "windowColor": "#ffffff",
+    "containerColor": "#e9e7e3",
+    "innerWindowColor": "#d4d0c8",
+    "bannerImageUrl": "https://files.catbox.moe/82nzow.gif",
+    "backgroundImageUrl": "https://i.imgur.com/n7goidf.png",
+    "endingTextColor": "#000000",
+    "customQuote": "\"Our intent will not be to create gridlock. Oh, except maybe from time to time.\" - President Dole",
+    "gameTitle": "Bob's Macarena."
+}
+
+// Startup chime
+if (!campaignTrail_temp.chime) {
+    var music = new Audio('https://files.catbox.moe/emzz1g.mp3');
+    music.loop = false;
+    music.volume = 0.5;
+    music.play();
+    campaignTrail_temp.chime = true;
+}
+// === Overlay: create once and style it ===
+const OVERLAY_ID = "overlay-image-toggle";
+
+(function ensureOverlayAndStyles() {
+  // Inject style using a <style> tag (safer than innerHTML +=)
+  if (!document.getElementById("overlay-style-block")) {
+    const styleTag = document.createElement("style");
+    styleTag.id = "overlay-style-block";
+    styleTag.textContent = `
+      .overlay-image {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          object-fit: cover;
+          opacity: 0.4; /* Adjust transparency */
+          pointer-events: none; /* Elements below remain interactive */
+          z-index: 999;
+      }
+      .inner_inner_window h3 { font-size: 14px !important; font-weight: normal !important; }
+      form[name="question"] label { font-size: 14px !important; font-weight: normal !important; }
+      b { font-weight: normal !important; }
+    `;
+    document.head.appendChild(styleTag);
+  }
+
+  // Inject overlay image if it doesn't exist
+  if (!document.getElementById(OVERLAY_ID)) {
+    const overlayImage = document.createElement("img");
+    overlayImage.id = OVERLAY_ID;
+    overlayImage.src = "https://file.garden/aBFeR_WWax4tG4dU/crt1.png"; // your image
+    overlayImage.classList.add("overlay-image");
+    document.body.appendChild(overlayImage);
+  }
+})();
+
+// === Button: toggle overlay ON/OFF ===
+function toggleOverlay() {
+  const overlay = document.getElementById(OVERLAY_ID);
+  if (!overlay) return;
+
+  const isHidden = overlay.style.display === "none";
+  overlay.style.display = isHidden ? "block" : "none";
+  button.textContent = `CRT Overlay: ${isHidden ? "ON" : "OFF"}`;
+}
+
+// Reuse your footer location + button styling
+const footer = $(".footer")[0] || document.body; // fallback to body if needed
+var button = document.createElement("button");
+button.style.cssText = "font-weight: bold; height:19.49px; position: static; right: 770px; top: 0px;";
+button.textContent = "CRT Overlay: ON"; // initial state is visible
+footer.insertBefore(button, footer.firstChild);
+button.onclick = toggleOverlay;
+
+
+
+
+//#startcode
+
+  corrr = `
+  <div style="font-size: 11px; font-family: monospace; color: white;">
+    <h2 style="font-style: normal;">
+      <img src="https://i.imgur.com/jDwSgBy.gif" alt="Bob's Macarena" style="margin-top: 15px;">
+    </h2>
+  </div>
+  `;
+
+    // Select the node that will be observed for mutations
+    const windowsAdvisorTargetNode = document.getElementById("game_window");
+    
+    // Options for the observer (which mutations to observe)
+    const windowsAdvisorConfig = { attributes: true, childList: true, subtree: true };
+    
+    // Callback function to execute when mutations are observed
+    const callback = (mutationList, observer) => {
+        visitWindow = document.getElementsByClassName("overlay_window")[0];
+    
+        if(visitWindow == null || visitWindow.classList.contains("done")) {
+            return;
+        }
+        visitWindow.classList.add("done");
+        visitWindow.classList.add("window");
+        let titleBar = visitWindow.querySelector("h3");
+        titleBar.classList.add("title-bar");
+        titleBar.classList.add("title-bar-text")
+        titleBar.style.paddingLeft = "3px";
+    };
+    
+    // Create an observer instance linked to the callback function
+    const windowsAdvisorObserver = new MutationObserver(callback);
+    
+    // Start observing the target node for configured mutations
+    windowsAdvisorObserver.observe(windowsAdvisorTargetNode, windowsAdvisorConfig);
+    
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#7c9ccc";
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#ffffff";
+
+document.getElementById("inner_window_1").children[3].innerHTML = `<img src=\"https://files.catbox.moe/s0ao6l.png\" width=\"65px\">`
+
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+$(".container")[0].style.backgroundColor = "#e9e7e3";
+
+document.getElementById("header").src = "https://i.imgur.com/tMv8RZ0.gif";
+
+document.body.background = "https://i.imgur.com/m9sFFRH.png";
+
+document.body.style.backgroundSize="cover"
+
+document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#d4d0c8!important;}</style>";
+
+//#endcode
+
+//Administration Button
+
+let z = new MutationObserver((mutationsList, observer) => {
+
+        });
+
+
+        z.observe(document, { subtree: true, childList: true });
+    }
+
+document.getElementById("modLoadReveal").style.display = "none";
+document.getElementById("modloaddiv").style.display = "none";
+let gameBox = document.getElementById("game_window");
+gameBox.style.display = "";
+
+const toggleButton = document.createElement("img");
+toggleButton.id = "admin-toggle";
+toggleButton.src = "https://files.catbox.moe/hzjkfg.png"; 
+toggleButton.alt = "Dole Administration Toggle";
+toggleButton.style = `
+    position: fixed;
+    top: 37px;
+    right: 10px;
+    z-index: 10000;
+    cursor: pointer;
+    width: 75px;
+    height: 75px;
+`;
+
+document.body.appendChild(toggleButton);
+
+toggleButton.addEventListener("click", function() {
+    toggleWindow();
+});
+
+
+function toggleWindow() {
+    const container = document.getElementById("custom-window-container");
+    if (container) {
+        container.style.display = container.style.display === "none" ? "block" : "none";
+    } else {
+        loadCustomWindow();
+    }
+}
+
+function loadCustomWindow() {
+    const existingContainer = document.getElementById("custom-window-container");
+    if (existingContainer) {
+        return;
+    }
+
+    let customWindowContainer = document.createElement("div");
+    customWindowContainer.id = "custom-window-container";
+    
+    customWindowContainer.style = `
+        border: 2px outset #c0c0c0;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 450px;
+        height: 450px;
+        background-color: #d3d3d3;
+        display: none;
+        cursor: move;
+        z-index: 9999;
+        font-family: 'MS Sans Serif', Geneva, sans-serif;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    `;
+
+    customWindowContainer.innerHTML = `
+        <div id="drag-handle" style="
+            background: #7C9CCC;
+            color: white;
+            cursor: move;
+            padding: 5px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            border-bottom: 2px solid #7C9CCC;
+        ">The Dole Administration (1997-Present)</div>
+        
+        <div id="sections-container" style="padding: 10px; overflow-y: auto; height: 370px; max-height: 100%; font-size: 14px;">
+            
+            ${createSection("The Executive Branch", "section1", `
+                <img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_144047611.png" alt="President Dole" />
+                <p><strong>Robert Joseph Dole</strong> is the 43rd President of the United States, inaugurated on January 20th, 1997. He is a Republican from Kansas and is the oldest man to hold that office. He previously served as the Senate Majority Leader. He was Gerald Ford's running mate in 1976 and made two previous aborted runs for the presidency in 1980 and 1988, respectively. He is considered a moderate conservative, and his record in the Senate reflects that. He also has a reputation for being overly rude to his political opponents. In recent times, he's been trying to moderate himself in this regard.</p>
+
+                <img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_144129845.png" alt="Liz Dole" />
+                <p><strong>Mary Elizabeth Alexander Dole</strong> is the First Lady of the United States. However, unlike other First Ladies, she's had a political career completely seperate from her husband's. She has served as the Commissioner of the Federal Trade Commission, the Director of the Office of Public Liaison, Secretary of Transportation, and most recently the Secretary of Labor. Due to this, there was widespread speculation that she might actually be given an official cabinet spot in the Dole Administration, however this did not occur, however, she is considered the President's closest confidant and most trusted adcisor. She has focused on education, advocating for standardlized testing.</p>
+
+                <img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_144206099.png" alt="Vice President Kemp" />
+                <p><strong>Jack French Kemp</strong> is the 46th Vice President of the United States and is a proud New Yorker. He was previously a member of the Bush Administration and had a successful tenure in the House. He was a quarterback for the Buffalo Bills after briefly serving in the US Army. He made his own run for the presidency in 1988 and has long been considered a rival to Dole; however, they seemingly put their rivalry aside in order to end the Clinton administration early. Despite Dole's initial unpopularity, Kemp is still very much popular with the public.</p>
+
+                <img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_144233460.png" alt="Joanne Kemp" />
+                <p><strong>Joanne Main Kemp</strong> is the Second Lady of the United States, married to her college sweetheart, Jack Kemp. She has been significant to Jack's political life, as a miscarriage the couple suffered affirmed his own opposition to abortion. Their married life revolves around their two daughters and two sons. Because of this, her main focus as Second Lady has been empowering women at home and at work, as well as the protection and care of young children.</p>
+
+                <img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_144343965.png" alt="Secretary Powell" />
+                <p><strong>Colin Luther Powell</strong> is the 64th United States Secretary of State. He is a trailblazer, a moniker seldom applied to a Republican in recent years, as he's the first African American to hold the post, therefore making him the highest-ranking Black man in US political history. Before that, he served as the 12th Chairman of the Joint Chiefs and the 15th US National Security Advisor, being the first Black man in both posts as well. He is a Vietnam War veteran, and along with General Schwartzkopf, is considered one of the masterminds of the liberation of Kuwait. Declining offers to be made into a 5-star general, a draft campaign for a bid for the presidency as a Republican was established for 1996; however, he graciously refused. His refusal was at the time what the media considered to be the GOP losing any chance of defeating Bill Clinton, but of course time proved them wrong. His record makes him a solid cabinet member, and his unanimous confirmation highlights that.</p>
+                
+				<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_144405540.png" alt="Secretary Roth" />
+                <p><strong>William Victor Roth Jr.</strong> is the 71st United States Secretary of the Treasury, and by all means he's a no-brainer pick to head the Treasury Department. Serving Delaware in the Senate for 26 years, he is the man responsible for the creation of the Roth IRA, which is named after him. Despite his excellent credentials for the office, his nomination was a bit controversial among Gingrichites, as he has on occasion broken with core party policies, such as voting in favor of the Brady Bill while he was in the Senate. However, his wit and credentials won over the Senate, and he was confirmed, though three Republicans voted against him.</p>
+				
+				<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_144434912.png" alt="Secretary Spence" />
+                <p><strong>Floyd Davidson Spence</strong> is a South Carolinian former Democrat turned Republican who finds himself as the 20th United States Secretary of Defense. A former congressman, he spent the final full term he was elected to in the Capitol as chair of the House National Security Committee, and before then, he was the ranking member of the Armed Services Committee, which he renamed to the National Security Committee upon taking up the chairmanship, therefore well equipping himself for his confirmation upon his nomination. Aside from that, he served in the Navy Reserve, reaching the rank of Captain. He is considered a capable defense secretary, despite his age.</p>
+				
+				<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_144500299.png" alt="AG Danforth" />
+                <p><strong>The Reverend John Claggett Danforth</strong> is the man responsible for turning Missouri from a Democratic dominated state, to a bellweather state rapidly approaching Republican dominance. A highly popular US Senator, he was on George Bush's VP shortlist in 1988, and in fact Bush got quite close to settling on him. A Dole loyalist for decades, being a prominent supporter of both his 1988 and 1996 campaigns, Dole nominated him to be the 79th United States Attorney General, and he was unanimously confirmed, being wildly popular with his former colleagues, also being renown for his level headedness and relatively unbiased nature when it comes to the law.</p>
+				
+				<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_144533969.png" alt="Secretary Campbell" />
+                <p><strong>Ben Nighthorse Campbell</strong> was initially tapped to be the 48th United States Secretary of the Interior by President Dole for two very specific reasons, despite being a freshman senator from Colorado. First off, he's a proud Native American. He specifically belongs to the Northern Cheyenne Indian Reservation. Having a Native American head the interior department, in Dole's opinion, could symbolize his administration's good intentions towards the Native tribes of the United States. Secondly, Campbell was first elected as a Democrat; however, he switched parties just three years after being elected to the Senate. So, having a relatively new Republican in the cabinet could symbolize unity between the two parties within his cabinet. He was confirmed unanimously.</p>
+				
+				<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_144553504.png" alt="Secretary Geringer" />
+                <p><strong>James Edward Geringer</strong> was the 30th Governor of Wyoming for a couple of years before he was tapped by President Dole to be the 27th United States Secretary of Agriculture. His father was a Volga German immigrant, and his mother was from Sweden. He served from 1967 to 1991 in the Air Force, the first decade being active duty, the rest in the reserves. He has a mechanical engineering background and ran his own farm, like many in his state. He ran the state as a conservative; however, he broke with the party by supporting efforts to combat climate change and supporting the Equal Rights Amendment. As a result, a few Republican senators opposed his nomination, however not enough to not confirm him.</p>
+				
+				<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_144612164.png" alt="Secretary Engler" />
+                <p><strong>John Mathias Engler</strong> was on Dole's Vice Presidential shortlist back in 1996, so it was hardly a surprise to the public when he was announced to be the President's nominee to be the 32nd United States Secretary of Commerce. At the time of his nomination, he was serving as the 46th Governor of Michigan. He also concurrently served as Chairman of the Republican Governors Association from 1996 to his resignation upon assuming his seat in the Dole Administration. Seen as a relatively uncontroversial pick from a swing state, he had no trouble being confirmed by the Senate.</p>
+				
+				<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_144631690.png" alt="Secretary Ros-Lehtinen" />
+                <p><strong>Ileana Ros-Lehtinen,</strong> the 23rd United States Secretary of Labor was born in Cuba mere years before the dawn of the Castro regime. She succeeded the late former Senator and Chair of the House Rules Committee Claude Pepper in a special election for his seat in 1989, a pick-up for the Republican Party, making her the first Cuban-American elected to Congress and the first woman from Florida to serve as well. She was particularly passionate about dealing with Cuba and defending Israel in Congress. Dole nominated her to head the Labor Department due to her ability to retain an open mind even if she was opinionated towards the issue in question. This ability is what made her nomination sail through the Senate.</p>
+				
+				<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_144649051.png" alt="Secretary Frist" />
+                <p><strong>Thomas Fearn Frist Jr.,</strong> the 19th United States Secretary of Health and Human Services is the brother of freshman US Senator Bill Frist of Tennessee. A surgeon by trade, like his brother and father, he served as a flight surgeon in the Air Force before co-founding the Hospital Corporation of America with his father and a colleague of his, earning a considerable amount of wealth from this venture. Dole nominated him after Senator Frist suggested him for the position during a meeting during the transitional period in December 1996. Due to his relations with his brother and his experience in the medical field, his nomination was approved with relatively little opposition.</p>
+				
+				<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_144714008.png" alt="Secretary Franks" />
+                <p><strong>Gary Alvin Franks,</strong> the 11th United States Secretary of Housing and Urban Development first came to public attention for being the first African American to be elected to Congress from Connecticut in 1990, serving until 1997, after losing re-election. However, he wasn't out of office for long, as Dole was looking for a noncontroversial, diverse pick for the role of HUD Secretary, and it just so happened that Franks was that option. His confirmation went fairly well, given his conservatism swayed the Republicans to his side, while his New England roots put Democrats at ease.</p>
+				
+				<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_144740164.png" alt="Secretary Kean" />
+                <p><strong>Thomas Howard Kean</strong> was nominated by President Dole and confirmed as the 13th United States Secretary of Transportation. He previously served as the 48th Governor of New Jersey from 1982 to 1990. He was first elected over his opponent in 1981 by just a margin of 1,797 votes. However, by the time he was up for re-election in 1985, he had proven his worth and was re-elected with 69.6% of the vote, the largest ever in New Jersey's history. He delivered the keynote speech at the 1988 Republican National Convention as well. President Dole nominated him to be the Transportation Secretary due to his experience managing the vast transportation networks of New Jersey, a large commuter state. He is not controversial, so his confirmation went off without a hitch.</p>
+				
+				<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_144804762.png" alt="Secretary Wallop" />
+                <p><strong>Malcolm Wallop,</strong> a former United States Senator from Wyoming, is the 8th United States Secretary of Energy. An old colleague of the President's, he was selected for his role due to his extensive work in the energy field of legislation, being a key proponent behind the Energy Policy Act of 1992, also serving as the Ranking Member of the Committee on Energy and Natural Resources. Therefore, his credentials were well established, and he was confirmed without much issue.</p>
+				
+				<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_144821485.png" alt="Secretary Sullivan" />
+                <p><strong>Dr. Louis Wade Sullivan</strong> is a throwback to the Bush Administration. He was previously the 17th HSS Secretary. On the other hand, time around though, President Dole decided to take a different direction with Sullivan. He nominated him to be the 7th United States Secretary of Education due to his strong educational and medical credentials. Due to his previous service in the Bush Administration, he was confirmed once again without a hitch.</p>
+				
+				<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_144839355.png" alt="Secretary Rumsfeld" />
+                <p><strong>Donald Henry Rumsfeld</strong> is yet another throwback from previous administrations, this time the Nixon and Ford Administrations, in various capacities, such as Counselor to the President, Chief of Staff, UN Ambassador, and Defense Secretary. He was offered the latter job by Dole, given his efforts in the election, being the national chair of the Dole/Kemp '96 campaign, however Rumsfeld after debating the possibility decided he'd want to take a more low key position for the moment. So, Dole obliged, and nominated him to be the 3rd United States Secretary of Veterans Affairs, which he was confirmed to. Dole also indicated if the Defense Secretary spot opens up again, he'll be his first choice.</p>
+				
+				<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_144926147.png" alt="Administrator Rehberg" />
+                <p><strong>Dennis Ray Rehberg</strong> was the GOP's nominee for the Senate race in Montana in 1996. Despite Dole's victory in the state, he lost the race to incumbent Max Baucus, losing by only 2.7 points, the closest race of Baucus' career. Asides from that, he was Lieutenant Governor of Montana. Dole decided to nominate him to be the 9th Administrator of the Environmental Protection Agency, given his familiarity with overseeing the vast enviornment of Montana. The Senate took up his nomination, and after scrutiny of not so storied career, he was confirmed.</p>
+				
+				<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_144943319.png" alt="Director Rudman" />
+                <p><strong>Warren Bruce Rudman</strong>, a former US Senator, was nominated to be the 18th Director of Central Intelligence due to his strong intelligence credentials, and his previous work in this area being bipartisan, being able to use that to demonstrate the political independence of the CIA. Due to his popularity with his former colleagues, along with his credentials, he was easily confirmed.</p>
+				
+				<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_145016120.png" alt="Trade Representative Chao" />
+                <p><strong>Elaine Lan Chao</strong> is the former Director of the Peace Corps, Deputy Secretary of Transportation, Chair of the Federal Maritime Commission, and most importantly, the wife to rising figure Senator Mitch McConnell of Kentucky, currently the Republican Campaign Committee Chairman. She was nominated to be the 13th United States Trade Representative, and was easily confirmed to the post due to her past experience and her relationship with their colleague, being sworn in by her husband.</p>
+				
+				<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_145040644.png" alt="Ambassador Bolton" />
+                <p><strong>John Robert Bolton</strong> is a noted expert on foreign policy in the Republican Party. Working for the State Department, the Justice Department, and the U.S. Agency for International Development during the Bush and Reagan Administrations, he opposed financial reparations to Japanese-Americans, as well as sheparding Antonin Scalia's nomination through the Senate. He was also involved in the Iran-Contra Crisis, and helped expand the war on drugs. Because of these facts, his confirmation to be the 21st United States Ambassador to the United Nations was a partisan vote. His association with Senator Jesse Helms is a possible olive branch to the orthodox wing of the party.</p>
+				
+				<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_145059951.png" alt="Chief Reed" />
+                <p><strong>Scott Reed</strong> is the man who organized Dole's campaign, leading up to it's suprise victory. He worked hard for the ticket, so Dole decided to reward him by making him his chief advisor, the Chief of Staff. He is considered very loyal to President Dole, and also enjoys a good relationship with Vice President Kemp, as he worked on his 1988 campaign, so oftentimes Reed is the one who coordinates efforts between the two due to their testy relationship.</p>
+
+			`)}
+
+            ${createSection("United States Senate", "section2", `
+                <img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_151854073.png" style="width: 400px; height: 260px;" alt="Legislative Image 1" />
+                <strong>Map Key:</strong><p> Red indicates both of the state's Senators are Republican, blue indicates both of the state's Senators are Democratic, and purple indicates a state with a mixed senatorial delegation.</p>
+
+                <strong>List Key:</strong><p> The first Senator listed is their state's senior Senator, meaning they are the longer serving Senator of their individual state. If any of the Senators are apointees or in leadership roles, this is indicated in italics next to their name.</p>
+<p><strong>Alabama</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_154544718.png" alt="AL" />
+<p>Richard Shelby (R)</p>
+<p>Jeff Sessions (R)</p>
+
+<p><strong>Alaska</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_154610789.png" alt="AK" />
+<p>Ted Stevens (R)</p>
+<p>Frank Murkowski (R)</p>
+
+<p><strong>Arizona</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_154640458.png" alt="AZ" />
+<p>John McCain (R)</p>
+<p>Jon Kyl (R)</p>
+
+<p><strong>Arkansas</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_154659071.png" alt="AR" />
+<p>Dale Bumpers (D)</p>
+<p>Tim Hutchinson (R)</p>
+
+<p><strong>California</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_154758222.png" alt="CA" />
+<p>Dianne Feinstein (D)</p>
+<p>Barbara Boxer (D)</p>
+
+<p><strong>Colorado</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_154825751.png" alt="CO" />
+<p>Wayne Allard (R)</p>
+<p>Pat Schroeder (D) <i>(Appointed to finish Ben Nighthorse Campbell’s term)</i></p>
+
+<p><strong>Connecticut</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_154840871.png" alt="CT" />
+<p>Chris Dodd (D)</p>
+<p>Joe Lieberman (D)</p>
+
+<p><strong>Delaware</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_154902600.png" alt="DE" />
+<p>Joe Biden (D)</p>
+<p>Ruth Ann Minner (D) <i>(Appointed to finish William Roth’s term)</i></p>
+
+<p><strong>Florida</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_155513761.png" alt="FL" />
+<p>Bob Graham (D)</p>
+<p>Connie Mack III (R) <i>(Conference Chairman)</i></p>
+
+<p><strong>Georgia</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_155824149.png" alt="GA" />
+<p>Paul Coverdell (R)</p>
+<p>Johnny Isakson (R)</p>
+
+<p><strong>Hawaii</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_155850498.png" alt="HI" />
+<p>Daniel Inouye (D)</p>
+<p>Daniel Akaka (D)</p>
+
+<p><strong>Idaho</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_160511155.png" alt="ID" />
+<p>Larry Craig (R)</p>
+<p>Dirk Kempthorne (R)</p>
+
+<p><strong>Illinois</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_160532663.png" alt="IL" />
+<p>Carol Moseley Braun (D)</p>
+<p>Dick Durbin (D)</p>
+
+<p><strong>Indiana</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_160559763.png" alt="IN" />
+<p>Richard Lugar (R)</p>
+<p>Dan Coats (R)</p>
+
+<p><strong>Iowa</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_160626761.png" alt="IA" />
+<p>Chuck Grassley (R)</p>
+<p>Tom Harkin (D)</p>
+
+<p><strong>Kansas</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_160655630.png" alt="KS" />
+<p>Sheila Frahm (R)</p>
+<p>Pat Roberts (R)</p>
+
+<p><strong>Kentucky</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_160737813.png" alt="KY" />
+<p>Wendell Ford (D) <i>(Minority Whip)</i></p>
+<p>Mitch McConnell (R)</p>
+
+<p><strong>Louisiana</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_160847147.png" alt="LA" />
+<p>John Breaux (D)</p>
+<p>Mary Landrieu (D)</p>
+
+<p><strong>Maine</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_160923351.png" alt="ME" />
+<p>Olympia Snowe (R)</p>
+<p>Susan Collins (R)</p>
+
+<p><strong>Maryland</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_160956122.png" alt="ME" />
+<p>Paul Sarbanes (D)</p>
+<p>Barbara Mikulski (D) <i>(Conference Secretary)</i></p>
+
+<p><strong>Massachusetts</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_161126339.png" alt="MA" />
+<p>Ted Kennedy (D)</p>
+<p>John Kerry (D)</p>
+
+<p><strong>Michigan</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_161314843.png" alt="MI" />
+<p>Carl Levin (D)</p>
+<p>Spencer Abraham (R)</p>
+
+<p><strong>Minnesota</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_161442371.png" alt="MN" />
+<p>Paul Wellstone (DFL)</p>
+<p>Rod Grams (R)</p>
+
+<p><strong>Mississippi</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_162322206.png" alt="MS" />
+<p>Thad Cochran (R)</p>
+<p>Trent Lott (R) <i>(Majority Leader)</i></p>
+
+<p><strong>Missouri</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_162557271.png" alt="MO" />
+<p>Kit Bond (R)</p>
+<p>John Ashcroft (R)</p>
+
+<p><strong>Montana</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_164615841.png" alt="MT" />
+<p>Max Baucus (D)</p>
+<p>Conrad Burns (R)</p>
+
+<p><strong>Nebraska</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_164759346.png" alt="NE" />
+<p>Bob Kerrey (D)</p>
+<p>Chuck Hagel (R)</p>
+
+<p><strong>Nevada</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_164817724.png" alt="NV" />
+<p>Harry Reid (D)</p>
+<p>Richard Bryan (D)</p>
+
+<p><strong>New Hampshire</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_164836829.png" alt="NH" />
+<p>Bob Smith (R)</p>
+<p>Judd Gregg (R)</p>
+
+<p><strong>New Jersey</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_164925501.png" alt="NJ" />
+<p>Frank Lautenberg (D)</p>
+<p>Robert Torricelli (D)</p>
+
+<p><strong>New Mexico</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_164949360.png" alt="NM" />
+<p>Pete Domenici (R)</p>
+<p>Jeff Bingaman (D)</p>
+
+<p><strong>New York</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_170456504.png" alt="NY" />
+<p>Daniel Patrick Moynihan (D)</p>
+<p>Al D'Amato (R)</p>
+
+<p><strong>North Carolina</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_165422154.png" alt="NC" />
+<p>Jesse Helms (R)</p>
+<p>Lauch Faircloth (R)</p>
+
+<p><strong>North Dakota</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_170829682.png" alt="ND" />
+<p>Kent Conrad (D-NPL)</p>
+<p>Byron Dorgan (D-NPL)</p>
+
+<p><strong>Ohio</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_165445791.png" alt="OH" />
+<p>John Glenn (D)</p>
+<p>Mike DeWine (R)</p>
+
+<p><strong>Oklahoma</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_165507222.png" alt="OK" />
+<p>Don Nickles (R) <i>(Majority Whip)</i></p>
+<p>James Inhofe (R)</p>
+
+<p><strong>Oregon</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_165529111.png" alt="OR" />
+<p>Ron Wyden (D)</p>
+<p>Gordon H. Smith (R)</p>
+
+<p><strong>Pennsylvania</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_165608804.png" alt="PA" />
+<p>Arlen Specter (R)</p>
+<p>Rick Santorum (R)</p>
+
+<p><strong>Rhode Island</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_165628778.png" alt="PA" />
+<p>John Chafee (R)</p>
+<p>Jack Reed (D)</p>
+
+<p><strong>South Carolina</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_165649508.png" alt="SC" />
+<p>Strom Thurmond (R) <i>(President pro tempore)</i</p>
+<p>Fritz Hollings (D)</p>
+
+<p><strong>South Dakota</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_165724168.png" alt="SD" />
+<p>Larry Pressler (R)</p>
+<p>Tom Daschle (D) <i>(Minority Leader)</i></p>
+
+<p><strong>Tennessee</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_165748518.png" alt="TN" />
+<p>Fred Thompson (R)</p>
+<p>Bill Frist (R)</p>
+
+<p><strong>Texas</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_171410697.png" alt="TX" />
+<p>Phil Gramm (R)</p>
+<p>Kay Bailey Hutchison (R)</p>
+
+<p><strong>Utah</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_165807575.png" alt="UT" />
+<p>Orrin Hatch (R)</p>
+<p>Bob Bennett (R)</p>
+
+<p><strong>Vermont</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_165824498.png" alt="VT" />
+<p>Patrick Leahy (D)</p>
+<p>Jim Jeffords (R)</p>
+
+<p><strong>Virginia</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_165843496.png" alt="VA" />
+<p>John Warner (R)</p>
+<p>Chuck Robb (D)</p>
+
+<p><strong>Washington</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_165906387.png" alt="WA" />
+<p>Slade Gorton (R)</p>
+<p>Patty Murray (D)</p>
+
+<p><strong>West Virginia</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_165923575.png" alt="WV" />
+<p>Robert Byrd (D)</p>
+<p>Jay Rockefeller (D)</p>
+
+<p><strong>Wisconsin</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_165939722.png" alt="WI" />
+<p>Herb Kohl (D)</p>
+<p>Russ Feingold (D)</p>
+
+<p><strong>Wyoming</strong></p>
+<img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_165957841.png" alt="WY" />
+<p>Craig L. Thomas (R)</p>
+<p>Mike Enzi (R)</p>
+
+            `)}
+
+            ${createSection("The Supreme Court", "section3", `
+                <img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_145423574.png" alt="Judicial Image 1" />
+                <p><strong>Chief Justice William Rehnquist</strong><br><br><strong>Appointed by:</strong> President Ronald Reagan (R)<br><br><strong>Assumed Office:</strong> September 26, 1986<br><br><strong>Judicial Philosophy:</strong> Originalist Conservative<br><br><strong>Note:</strong> Previously served as an Associate Justice (1972-86), a Nixon appointee.</p>
+
+                <img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_145449498.png" alt="Judicial Image 2" />
+                <p><strong>Associate Justice John Paul Stevens</strong><br><br><strong>Appointed by:</strong> President Gerald Ford (R)<br><br><strong>Assumed Office:</strong> December 19, 1975<br><br><strong>Judicial Philosophy:</strong> Ambiguous Liberal</p>
+
+                <img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_145510008.png" alt="Judicial Image 3" />
+                <p><strong>Associate Justice Sandra Day O'Connor</strong><br><br><strong>Appointed by:</strong> President Ronald Reagan (R)<br><br><strong>Assumed Office:</strong> September 25, 1981<br><br><strong>Judicial Philosophy:</strong> Moderate Conservative</p>
+
+                <img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_145539684.png" alt="Judicial Image 4" />
+                <p><strong>Associate Justice Antonin Scalia</strong><br><br><strong>Appointed by:</strong> President Ronald Reagan (R)<br><br><strong>Assumed Office:</strong> September 26, 1986<br><br><strong>Judicial Philosophy:</strong> Originalist Conservative</p>
+
+                <img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_145558893.png" alt="Judicial Image 5" />
+                <p><strong>Associate Justice Anthony Kennedy</strong><br><br><strong>Appointed by:</strong> President Ronald Reagan (R)<br><br><strong>Assumed Office:</strong> February 18, 1988<br><br><strong>Judicial Philosophy:</strong> Judicial Libertarian</p>
+
+                <img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_145616833.png" alt="Judicial Image 6" />
+                <p><strong>Associate Justice David Souter</strong><br><br><strong>Appointed by:</strong> President George Bush (R)<br><br><strong>Assumed Office:</strong> October 9, 1990<br><br><strong>Judicial Philosophy:</strong> Ambiguous Liberal</p>
+
+                <img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_145634071.png" alt="Judicial Image 7" />
+                <p><strong>Associate Justice Clarence Thomas</strong><br><br><strong>Appointed by:</strong> President George Bush (R)<br><br><strong>Assumed Office:</strong> October 23, 1991<br><br><strong>Judicial Philosophy:</strong> Originalist Conservative</p>
+
+                <img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_145651846.png" alt="Judicial Image 7" />
+                <p><strong>Associate Justice Ruth Bader Ginsburg</strong><br><br><strong>Appointed by:</strong> President Bill Clinton (D)<br><br><strong>Assumed Office:</strong> August 10, 1993<br><br><strong>Judicial Philosophy:</strong> Rational Liberal</p>
+
+                <img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_145707830.png" alt="Judicial Image 7" />
+                <p><strong>Associate Justice Stephen Breyer</strong><br><br><strong>Appointed by:</strong> President Bill Clinton (D)<br><br><strong>Assumed Office:</strong> August 3, 1994<br><br><strong>Judicial Philosophy:</strong> Pragmatic Liberal</p>
+
+            `)}
+
+            ${createSection("1996 United States Elections", "section4", `
+                <img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_145917016.png" style="width: 300px; height: 564px;" alt="Priority Image 1" />
+                
+
+                <img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_145936601.png" style="width: 300px; height: 760px;" alt="Priority Image 2" />
+                
+
+                <img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_145956726.png" style="width: 300px; height: 871px;" alt="Priority Image 4" />
+                
+				
+                <img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_150020256.png" style="width: 300px; height: 545px;" alt="Priority Image 5" />
+                
+            `)}
+			
+             ${createSection("1997 United States Elections", "section5", `
+                <img src="https://file.garden/aBFeR_WWax4tG4dU/image_2025-09-20_150059590.png" style="width: 300px; height: 527px;" alt="Priority Image 1" />
+                
+            `)}
+
+        </div>
+    `;
+
+    document.body.appendChild(customWindowContainer);
+    makeDraggable(customWindowContainer);
+
+    // Attach event listeners for section toggle buttons
+    document.querySelectorAll(".toggle-section").forEach(button => {
+        button.addEventListener("click", function () {
+            const content = document.getElementById(this.dataset.target);
+            content.style.display = content.style.display === "none" ? "block" : "none";
+            this.innerHTML = content.style.display === "none" ? "[ + ]" : "[ - ]";
+        });
+    });
+}
+
+function createSection(title, id, content) {
+    return `
+        <div class="section" style="margin-bottom: 10px; border-bottom: 2px solid #7C9CCC;">
+            <div class="header-box" style="background-color: #7C9CCC; padding: 5px; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="color: white; font-size: 14px; margin: 0;">${title}</h3>
+                <button class="toggle-section" data-target="${id}" style="
+                    background-color: #c0c0c0;
+                    border: 2px outset #808080;
+                    font-family: 'MS Sans Serif';
+                    font-size: 12px;
+                    cursor: pointer;
+                    padding: 2px 5px;
+                ">[ + ]</button>
+            </div>
+            
+            <div id="${id}" class="content-layer" style="background-color: #f0f0f0; padding: 10px; display: none; border: 2px solid #c0c0c0;">
+                ${content}
+            </div>
+        </div>
+    `;
+}
+
+function makeDraggable(element) {
+    let dragHandle = element.querySelector("#drag-handle");
+    dragHandle.addEventListener("mousedown", (e) => {
+        let offsetX = e.clientX - element.offsetLeft;
+        let offsetY = e.clientY - element.offsetTop;
+        
+        function onMouseMove(e) {
+            element.style.left = `${e.clientX - offsetX}px`;
+            element.style.top = `${e.clientY - offsetY}px`;
+        }
+
+        function onMouseUp() {
+            document.removeEventListener("mousemove", onMouseMove);
+            document.removeEventListener("mouseup", onMouseUp);
+        }
+
+        document.addEventListener("mousemove", onMouseMove);
+        document.addEventListener("mouseup", onMouseUp);
+    });
+}
+
+function addDynamicCSS() {
+    var css = `
+@keyframes tooltipFlash {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.mytooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: red;
+    text-decoration-thickness: 2px;
+}
+
+.mytooltip .mytooltiptext {
+    background-color: white;
+    color: black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 99;
+    bottom: 20%;
+    left: 20%;
+    margin-left: -90px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border: 1px solid black;
+    pointer-events: none;
+    font-size: 13px !important;
+    line-height: 1.5em !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    max-width: 600px;
+    transform: scale(0.95);
+}
+
+.mytooltip .mytooltiptext img {
+    max-width: 200px;
+    height: auto;
+}
+
+.mytooltip:hover .mytooltiptext {
+    opacity: 1;
+    animation: tooltipFlash 0.4s ease-in-out forwards;
+    transition-delay: 0.2s;
+    width: calc(1.5 * 200px);
+}
+    `;
+
+    var styleElem = document.createElement('style');
+    styleElem.type = 'text/css';
+    
+    styleElem.appendChild(document.createTextNode(css));
+    
+    document.head.appendChild(styleElem);
+}
+
+addDynamicCSS();
+
+
+tooltipList = [
+    {searchString: "Elizabeth", explanationText: "<img src=https://files.catbox.moe/1bnu90.png> Your heart and soul."},
+    {searchString: "Libby", explanationText: "<img src=https://files.catbox.moe/1bnu90.png> Your heart and soul."},
+    {searchString: "Rehnquist", explanationText: "<img src=https://files.catbox.moe/c5183e.png> Chief Justice of the Supreme Court, first made Associate Justice by Dick Nixon, elevated to Chief Justice by Reagan. Conservative, growing old."},
+    {searchString: "Clinton", explanationText: "<img src=https://files.catbox.moe/8xo8p1.png> 42nd President of the United States (1993-1997)"},
+    {searchString: "Gore", explanationText: "<img src=https://files.catbox.moe/hf3s3j.png> 45th Vice President of the United States (1993-1997), served with Bill Clinton. Media suspects he'll run in 2000, though he has ruled this out, at least at the moment."},
+    {searchString: "Blue Dogs", explanationText: "<img src=https://files.catbox.moe/mhju06.png> Moderate to conservative Democrats mainly based in the South. The noose over the past couple of decades has been slowly tightening around them with the GOP rapidly gaining strength in the region."},
+    {searchString: "Gingrich", explanationText: "<img src=https://files.catbox.moe/cbjnon.png> The controversial Speaker of the House. Was one of the first Republicans to win a House Seat in post-Reconstruction Era Georgia, for better or worse."},
+    {searchString: "Lott", explanationText: "<img src=https://files.catbox.moe/k8b82h.png> Senate Majority Leader, US Senator from Mississippi, generally seen as a competent leader. Though, you may want to watch out for what he says."},
+    {searchString: "severe wounds", explanationText: "<img src=https://files.catbox.moe/twqkrh.png> In April 1945, while fighting near Castel d'Aiano, Italy, you were severely wounded by a German shell, shattering your collarbone and part of the spine. Paralyzed from the neck down and near death from infection and fever, you survived thanks to an early use of streptomycin. Struggling to accept your condition, you were inspired by Dr. K, who performed multiple surgeries free of charge."},
+    {searchString: "Dr. Hampar Kelikian", explanationText: "<img src=https://files.catbox.moe/fgbdrs.png> AKA Dr. K, a survivor of the Armenian Genocide, who performed the fateful surgery which restored partial mobility to your right arm. Because of his story, you've been a relentless advocate for Armenians."},
+    {searchString: "Tony Blair", explanationText: "<img src=https://files.catbox.moe/ds0c3k.png> Bill Clinton with a funny accent."},
+    {searchString: "Boris Yeltsin", explanationText: "<img src=https://files.catbox.moe/rbu0n9.png> A drunkard who stumbled into the Kremlin one day."},
+    {searchString: "Aslan Mashkadov", explanationText: "<img src=https://files.catbox.moe/ofwekw.png> President of Ichkeria, former Soviet Army artillery officer, who got famous for leading the Chechen forces in defending the seperatist Republic against Russian invaders. Due to his fame and prestige for that, he was elected President."},
+    {searchString: "brutal war", explanationText: "<img src=https://files.catbox.moe/lbuw0b.png> Joƶalla ya marşo."},
+    {searchString: "Powell", explanationText: "<img src=https://files.catbox.moe/7y5zwe.png> The true star of the show."},
+    {searchString: "Shamil Basayev", explanationText: "<img src=https://files.catbox.moe/2ka3ul.png> An infamous Chechen general, warlord, accused terrorist, former Presidential candidate. He was also involved in the wars in Abkhazia and Karabakh."},
+    {searchString: "Timothy McVeigh", explanationText: "<img src=https://files.catbox.moe/munhfi.png> Gulf War combat veteran, white supremacist, domestic terrorist, and the physical embodiement of evil."},
+    {searchString: "Waco Siege", explanationText: "<img src=https://files.catbox.moe/upmx44.png> In 1993, Federal law enforcement and National Guardsmen sieged the Mount Carmel Center, in Waco, Texas, which housed 126 members of the Branch Davidians, a christian cult, including 46 children, led by David Koresh. The siege ended with a fire and assault which killed 82 people. The intentions of the fire are up to dispute, however, one of the main motivations of the siege, the storage of illegal firearms, has been turned into an argument against federal power by paleoconservatives and conspiracy theorists alike."},
+    {searchString: "Ruby Ridge standoff", explanationText: "<img src=https://files.catbox.moe/a5g1s7.png> Taking place in 1992 in Idaho, this was a confrontation between the FBI, U.S. Marshals, and Randy Weaver. The conflict began over Weaver’s failure to appear in court on firearms charges and escalated into a violent standoff when his wife, son, and a family friend were killed by the feds. The incident became a rallying cry for paleoconservatives and conspiracy theorists, who viewed it as a symbol of federal overreach. They portrayed it as an example of a tyrannical government using excessive force against law-abiding citizens, serving as a justification for resistance against the state."},
+    {searchString: "Turner Diaries", explanationText: "<img src=https://files.catbox.moe/qix1ci.png> A 1978 alternative history novel authored by William Luther Pierce, the founder of the National Alliance, a white nationalist group. The book documents a white resistance group taking over California, afterwards began publicly hanging 'race traitors' en masse during the so-called 'Day of the Rope', and subsquentally the entire US and the world. Many of McVeigh's actions during the bombing can be directly linked to events that took place within the book, such as the car bombing of an FBI headquaerters by the protagonist."},
+    {searchString: "Saddam Hussein", explanationText: "<img src=https://files.catbox.moe/e16abu.png> One of the world's most infamous dictators of the 20th cenutry, Saddam Hussein and his Ba'ath Party rules Iraq with an iron fist, despite losing the Gulf War in 1991, being exhausted from the Iran-Iraq War, and sporradic uprisings up north by the Kurds."},
+    {searchString: "no fly zone", explanationText: "<img src=https://files.catbox.moe/7r92mp.png> The airspace in Southern Iraq and Iraqi Kurdistan are declared to be no fly zones, meaning any Iraqi Air Force aircraft detected flying there would be intercepted by Coalition fighters."},
+    {searchString: "Peshmerga", explanationText: "<img src=https://files.catbox.moe/xs4t9p.png> The blanket term used to refer to Kurdish militias fighting for sovreignty, mainly against Iraq. They are mainly divided between the conservative Kurdistan Democratic Party, which enjoys US support, and the Kurdistan Workers' Party, which is socialistic and anti-Turkish. Notably, men and women are seen as equals in the Peshmerga, which is highly unusual for military formations in the region."},
+    {searchString: "Dick Armey", explanationText: "<img src=https://files.catbox.moe/rvof6q.png> US Representative from Texas and the House Minority Leader. He replaced Newt Gingrich after he resigned in disgrace after losing the House in '98. Previously served as Majority Leader under Gingrich."},
+    {searchString: "Armey", explanationText: "<img src=https://files.catbox.moe/rvof6q.png> US Representative from Texas and the House Minority Leader. He replaced Newt Gingrich after he resigned in disgrace after losing the House in '98. Previously served as Majority Leader under Gingrich."},
+    {searchString: "Sabo", explanationText: "<img src=https://files.catbox.moe/wlb0yb.png> US Representative from Minnestoa, recently installed as the Chair of the House Budget Committee."},
+    {searchString: "Kosovo Liberation Army", explanationText: "<img src=https://files.catbox.moe/2kmpro.png> An Albanian and NATO backed ethnic Albanian Kosovar militant group which is fighting against the brutally repressive rule of the Yugoslav National Army in the region, which has the symapthy of millions across the globe, including Americans."},
+    {searchString: "UÇK", explanationText: "<img src=https://files.catbox.moe/2kmpro.png> An Albanian and NATO backed ethnic Albanian Kosovar militant group which is fighting against the brutally repressive rule of the Yugoslav National Army in the region, which has the symapthy of millions across the globe, including Americans."},
+    {searchString: "JNA", explanationText: "<img src=https://files.catbox.moe/80se6r.png> The army of the Federal Republic of Yugoslavia. They've became known for the warcrimes them and their allies have committed, including the murder, kidnapping, and rape of civilians, which they have continued."},
+    {searchString: "KFOR", explanationText: "<img src=https://files.catbox.moe/m98rfx.png> The unified command that the troops from the international coalition sent to Kosovo to protect the populace from violence from both sides, though mainly the JNA."},
+    {searchString: "Senator Biden", explanationText: "<img src=https://files.catbox.moe/yjxk5k.png> A US Senator from Delaware, Joseph Biden was first elected as the youngest Senator, however now he's one of the most senior Senators currently in office. He is very vocal in support of the anti-Milošević camp."},
+    {searchString: "Slobodan Milošević", explanationText: "<img src=https://files.catbox.moe/6hgyhj.png> The brutal President of Yugoslavia. He has waged horrific campaigns against the Bosnians, Croats, and Kosovars. He is currently wanted by International Criminal Tribunal for the former Yugoslavia for war crimes."},
+    {searchString: "Fix on Failure", explanationText: "<img src=https://files.catbox.moe/18n6uc.png> An approach to the Y2K crisis which basically includes waiting until any bugs come up and just fixing them right then and there, instead of attempting to prevent them from happening in the first place."},
+    {searchString: "Microsoft", explanationText: "<img src=https://files.catbox.moe/eerxvq.png> Michaelsoft Binbows."},
+    {searchString: "Enron", explanationText: "<img src=https://files.catbox.moe/8zfmac.png> The most legitimate and trustworthy company in America."},
+    {searchString: "Wellstone", explanationText: "<img src=https://files.catbox.moe/fidid4.png> A US Senator from Minnesota, Paul Wellstone is one of the two top grade Democratic Presidential candidates. He is on the progressive end of the American political spectrum. He notably opposes NAFTA."},
+    {searchString: "Kerrey", explanationText: "<img src=https://files.catbox.moe/ovsmxz.png> A Vietnam War combat veteran, former US Navy SEAL, Medal of Honor recipient, and US Senator from Nebraska, Bob Kerrey is one of the second grade candidates in the Democratic primary. While he is leading in Iowa, he isn't expected to do well outside of agricultural states."},
+    {searchString: "Graham", explanationText: "<img src=https://files.catbox.moe/ceg2qt.png> A US Senator from Florida, he is a second tier candidate for the Democratic nomination, despite his record and prime location, due to his boring personality and possible poor cardiovascular health. However, he can still do a number if he wins the nomination."},
+    {searchString: "Alan Keyes", explanationText: "<img src=https://files.catbox.moe/3ndfj9.png> The former Assistant Secretary of State for International Organization Affairs, and a 1996 Republican primary candidate. He has an abysmal electoral record, losing two Senate races, never winning over the 40% threshold. Despite this, he is trying to primary you because he feels you are not conservative enough. He'll be lucky to even win 5% of the vote, however the publicity of his run can hurt you in the general election."},
+    {searchString: "Republican National Convention", explanationText: "<img src=https://files.catbox.moe/e9aswv.png>"},
+    {searchString: "28th Amendment", explanationText: "<img src=https://files.catbox.moe/noqazp.png> The yet to be ratified Balanced Budget Amendment. Unlike ERA, there is no kill date built into the Amendment, so it's still active and can be theoretically ratified at any time."},
+    {searchString: "Barry Goldwater", explanationText: "<img src=https://files.catbox.moe/i2rplq.png> In your heart, you know he was right."},
+    {searchString: "fought the Nazis", explanationText: "<img src=https://files.catbox.moe/3lckaa.png> In 1942, you enlisted into the US Army, eventually earning an officer's commission, as a Second Lieutenant. You were assigned as a platoon commander in the 10th Mountain Division, which saw combat in Italy. You were severely wounded in April 1945, and spent years in recovery. In 1947, you were medically discharged with the rank of Captain, having earned two Purple Hearts, and the Bronze Star with 'V' Device attempting to assist your platoon's wounded radioman in whilst under fire."},
+    {searchString: "Clint Eastwood", explanationText: "<img src=https://files.catbox.moe/wavplx.png> Pure American."},
+    {searchString: "Gerald Ford", explanationText: "<img src=https://files.catbox.moe/06opga.png> The 38th President of the United States (1974-77), the only unelected President, and the man who gave you your very first taste of being a candidate in the general election. He selected you to be his running mate as an ovature to conservatives after Ronald Reagan nearly successfully pushed him off the ticket. You made a number of gaffes which you attribute to the narrow defeat the ticket suffered, such as the infamous 'Democrat wars' comment."},
+    {searchString: "1976", explanationText: "<img src=https://files.catbox.moe/nx2foy.png> Jerry and you came so close, yet it still was not enough. However, you helped pave the way for Reagan to come to pick the Peanut Farmer and Happy Warrior's bastard child apart come 1980."},
+    {searchString: "Reed", explanationText: "<img src=https://files.catbox.moe/58y0rs.png> The little gremlin in your suit pocket."},
+    {searchString: "Richard Ramirez", explanationText: "<img src=https://files.catbox.moe/ulaf51.png> The infamous 'Night Stalker' is a convicted sex offender and serial killer who killed (and often raped) at least 15 people in Los Angeles and San Francisco from 1984 to 85. He was sentenced to death and is currently awaiting execution on California's death row."},
+    {searchString: "Elián González", explanationText: "<img src=https://files.catbox.moe/wjjx0w.png>"},
+    {searchString: "Fidel Castro", explanationText: "<img src=https://files.catbox.moe/rl2x1w.png> Nope. Don't even ask. I know you're going to ask if we can just shoot the bastard. We've already tried that, sir. Around 600 times since the 1950's."},
+    {searchString: "Gephardt Express", explanationText: "<img src=https://files.catbox.moe/mpdaev.png> Nightmare fuel."},
+    {searchString: "Jon Tester", explanationText: "<img src=https://files.catbox.moe/8my8si.png> A nobody."},
+    {searchString: "Al-Qaeda", explanationText: "<img src=https://files.catbox.moe/ajmcwd.png> A bunch of fundamentalist nobodies who won't account for anything. They'll just fade away into the sunset one day, surely."},
+    {searchString: "Osama bin Laden", explanationText: "<img src=https://files.catbox.moe/9e6y83.png> Mildly dangerous, unlikely to pose as an extreme threat to the federal government in the near future. Monitoring necessary."},
+    {searchString: "1998 U.S. embassy bombings", explanationText: "<img src=https://files.catbox.moe/7ps3ag.png>"},
+    {searchString: "George Bush", explanationText: "<img src=https://files.catbox.moe/gudvg8.png> The 41st President of the United States (1989-93)"},
+    {searchString: "Bush", explanationText: "<img src=https://files.catbox.moe/gudvg8.png> The 41st President of the United States (1989-93)"},
+    {searchString: "Ronald Reagan", explanationText: "<img src=https://files.catbox.moe/8regj9.png> The 40th President of the United States (1981-89). It's only been 11 years, and his Presidency is still fondly remembered by most people for it's general prosperity despite some hurdles such as the Farm Crisis (which enabled your 1988 candidacy), and the Iran-Conta Crisis. He is currently battling Alzheimer's, and is unlikely to be alive for much longer."},
+    {searchString: "Governor Bush", explanationText: "<img src=https://files.catbox.moe/0ri221.png> The 43rd Governor of Florida, the Governor of Texas' younger brother, and most importantly, the second son of the former President of the United States."},
+    {searchString: "Bob’s Macarena", explanationText: "<img src=https://files.catbox.moe/c7xm64.png> You're playing this mod right now, doofus."},
+    {searchString: "baby killer", explanationText: "<img src=https://files.catbox.moe/ydhtj4.png> Why?"},
+    {searchString: "gun-grabbing lesbian", explanationText: "<img src=https://files.catbox.moe/5ntgi3.png> WHY?"},
+    {searchString: "John Edwards", explanationText: "<img src=https://files.catbox.moe/61ljx7.png> For such a young man, it oddly seems that there's something Presidential about him..."}
+        
+];
+
+// Core Classes
+class Song {
+  constructor(title, artist, coverLink, audioLink) {
+    this.title = title;
+    this.artist = artist;
+    this.coverLink = coverLink;
+    this.audioLink = audioLink;
+  }
+}
+
+class Playlist {
+  constructor(name) {
+    this.name = name;
+    this.songs = [];
+    this.currentSongIndex = 0;
+  }
+
+  addSong(song) {
+    this.songs.push(song);
+  }
+
+  getCurrentSong() {
+    return this.songs[this.currentSongIndex];
+  }
+
+  playNext() {
+    if (this.currentSongIndex < this.songs.length - 1) {
+      this.currentSongIndex++;
+    } else {
+      this.currentSongIndex = this.songs.length - 1;
+    }
+  }
+
+  playPrevious() {
+    if (this.currentSongIndex > 0) {
+      this.currentSongIndex--;
+    } else {
+      this.currentSongIndex = 0;
+    }
+  }
+}
+
+window.Playlist = Playlist;
+window.Song = Song;
+
+let playlists = [];
+let currentPlaylist = null;
+let loopSong = false;
+
+function changePlaylist(newPlaylist) {
+  currentPlaylist = newPlaylist;
+  currentPlaylist.currentSongIndex = 0;
+  updateUI();
+  const audio = document.getElementById("audio");
+  audio.src = currentPlaylist.getCurrentSong().audioLink;
+  audio.play();
+}
+window.changePlaylist = changePlaylist;
+
+// UI update
+function updateUI() {
+  const currentSong = currentPlaylist.getCurrentSong();
+  document.getElementById("cover").src = currentSong.coverLink;
+  document.getElementById("title").textContent = currentSong.title;
+  document.getElementById("artist").textContent = currentSong.artist;
+}
+
+// Player setup
+function setupMusicPlayer() {
+  const defaultPlaylist = new Playlist("The Senator's Tumble");
+  defaultPlaylist.addSong(new Song(
+    "Macarena", "Los Del Rio ‧ 1993",
+    "https://files.catbox.moe/gfggqq.png",
+    "https://files.catbox.moe/msyl1k.mp3"
+  ));
+
+  const playlist1 = new Playlist("FM 90.1 (Steady Tunes)");
+  playlist1.addSong(new Song(
+    "I Believe I Can Fly", "R. Kelly ‧ 1997",
+    "https://files.catbox.moe/xrwsna.png",
+    "https://files.catbox.moe/0bvsll.mp3"
+  ));
+  playlist1.addSong(new Song(
+    "I Don't Want to Miss a Thing", "Aerosmith ‧ 1998",
+    "https://files.catbox.moe/c30ml3.png",
+    "https://files.catbox.moe/q20nux.mp3"
+  ));
+  playlist1.addSong(new Song(
+    "I Want It That Way", "Backstreet Boys ‧ 1999",
+    "https://files.catbox.moe/dunr4h.png",
+    "https://files.catbox.moe/n60qaj.mp3"
+  ));
+  playlist1.addSong(new Song(
+    "I Want to Know What Love Is", "Foreigner ‧ 1999 (Remastered)",
+    "https://files.catbox.moe/jp9cfh.png",
+    "https://files.catbox.moe/gwsdcz.mp3"
+  ));
+  playlist1.addSong(new Song(
+    "I Knew I Loved You", "Savage Garden ‧ 1999",
+    "https://files.catbox.moe/kdhjpj.png",
+    "https://files.catbox.moe/3tmsv7.mp3"
+  ));
+  playlist1.addSong(new Song(
+    "Music", "Madonna ‧ 2000",
+    "https://files.catbox.moe/v82x55.png",
+    "https://files.catbox.moe/lioj4r.mp3"
+  ));
+  playlist1.addSong(new Song(
+    "Smooth", "Santana (feat. Rob Thomas) ‧ 1999",
+    "https://files.catbox.moe/et28xr.png",
+    "https://files.catbox.moe/zyr4bv.mp3"
+  ));  
+  playlist1.addSong(new Song(
+    "My Heart Will Go On", "Celine Dion ‧ 1997",
+    "https://files.catbox.moe/92u8q0.png",
+    "https://files.catbox.moe/xrwax1.mp3"
+  ));  
+
+  const playlist2 = new Playlist("FM 93.1 (Intense Tunes)");
+  playlist2.addSong(new Song(
+    "Paranoid Android", "Radiohead ‧ 1997",
+    "https://files.catbox.moe/dj4eo9.png",
+    "https://files.catbox.moe/9pn2nn.mp3"
+  ));
+  playlist2.addSong(new Song(
+    "99 Red Balloons", "Goldfinger ‧ 2000",
+    "https://files.catbox.moe/e9shkj.png",
+    "https://files.catbox.moe/v4wxcn.mp3"
+  ));
+  playlist2.addSong(new Song(
+    "Breathe", "The Prodigy ‧ 1996",
+    "https://files.catbox.moe/tncm0b.png",
+    "https://files.catbox.moe/sddnkz.mp3"
+  ));
+  playlist2.addSong(new Song(
+    "Block Rockin' Beats", "The Chemical Brothers ‧ 1997",
+    "https://files.catbox.moe/5zx5rm.png",
+    "https://files.catbox.moe/8s0sbi.mp3"
+  ));
+  playlist2.addSong(new Song(
+    "Firestarter", "The Prodigy ‧ 1997",
+    "https://files.catbox.moe/w8rdc6.png",
+    "https://files.catbox.moe/6roskn.mp3"
+  ));
+  playlist2.addSong(new Song(
+    "Papercut", "Linkin Park ‧ 2000",
+    "https://files.catbox.moe/ebriii.png",
+    "https://files.catbox.moe/bbg3ho.mp3"
+  ));
+  playlist2.addSong(new Song(
+    "Ocean Man", "Ween ‧ 1997",
+    "https://files.catbox.moe/a4xxjh.png",
+    "https://files.catbox.moe/rz74mh.mp3"
+  ));
+
+  // Add playlists to the array
+  playlists.push(defaultPlaylist);
+  playlists.push(playlist1);
+  playlists.push(playlist2);
+
+
+  currentPlaylist = defaultPlaylist;
+
+  const player = document.createElement("div");
+  player.id = "player98";
+
+  const titleBar = document.createElement("div");
+  titleBar.className = "title-bar";
+  titleBar.innerHTML = `<div class="title-bar-text">Windows Media Player</div>
+                        <div class="title-bar-controls"><button aria-label="Minimize"></button><button aria-label="Close"></button></div>`;
+  player.appendChild(titleBar);
+
+  const display = document.createElement("div");
+  display.id = "display";
+  display.innerHTML = `
+    <img id="cover" src="${currentPlaylist.getCurrentSong().coverLink}" />
+    <div id="info">
+      <div id="title">${currentPlaylist.getCurrentSong().title}</div>
+      <div id="artist">${currentPlaylist.getCurrentSong().artist}</div>
+    </div>`;
+  player.appendChild(display);
+
+  const controls = document.createElement("div");
+  controls.id = "controls";
+  controls.innerHTML = `
+    <button id="prev">◄◄</button>
+    <button id="playPause">▶</button>
+    <button id="next">►►</button>
+    <button id="loop">↻</button>
+  `;
+  player.appendChild(controls);
+
+  const progressContainer = document.createElement("div");
+  progressContainer.id = "progressContainer";
+  const progressFill = document.createElement("div");
+  progressFill.id = "progressFill";
+  progressContainer.appendChild(progressFill);
+  player.appendChild(progressContainer);
+
+  const playlistSelector = document.createElement("select");
+  playlistSelector.id = "playlistSelector";
+  playlists.forEach((pl, idx) => {
+    const opt = document.createElement("option");
+    opt.value = idx;
+    opt.textContent = pl.name;
+    playlistSelector.appendChild(opt);
+  });
+  player.appendChild(playlistSelector);
+
+  const volumeLabel = document.createElement("div");
+  volumeLabel.id = "volumeLabel";
+  volumeLabel.textContent = "Volume:";
+  player.appendChild(volumeLabel);
+
+  const volume = document.createElement("input");
+  volume.type = "range";
+  volume.id = "volume";
+  volume.min = 0;
+  volume.max = 1;
+  volume.step = 0.1;
+  volume.value = 1;
+  player.appendChild(volume);
+
+  const audio = document.createElement("audio");
+  audio.id = "audio";
+  audio.src = currentPlaylist.getCurrentSong().audioLink;
+  document.body.appendChild(audio);
+
+  const gameWindow = document.getElementById("game_window");
+  if (gameWindow) {
+    gameWindow.insertAdjacentElement("afterend", player);
+  } else {
+    document.body.appendChild(player);
+  }
+
+  document.getElementById("playPause").addEventListener("click", () => {
+    if (audio.paused) {
+      audio.play();
+      document.getElementById("playPause").textContent = "❚❚";
+    } else {
+      audio.pause();
+      document.getElementById("playPause").textContent = "▶";
+    }
+  });
+
+  document.getElementById("next").addEventListener("click", () => {
+    currentPlaylist.playNext();
+    updateUI();
+    audio.src = currentPlaylist.getCurrentSong().audioLink;
+    audio.play();
+  });
+
+  document.getElementById("prev").addEventListener("click", () => {
+    currentPlaylist.playPrevious();
+    updateUI();
+    audio.src = currentPlaylist.getCurrentSong().audioLink;
+    audio.play();
+  });
+
+  // 🔁 Loop toggle with icons
+  document.getElementById("loop").addEventListener("click", () => {
+    loopSong = !loopSong;
+    audio.loop = loopSong;
+    document.getElementById("loop").textContent = loopSong ? "⇆" : "↻";
+  });
+
+  playlistSelector.addEventListener("change", (e) => {
+    changePlaylist(playlists[e.target.value]);
+  });
+
+  progressContainer.addEventListener("click", (e) => {
+    const rect = progressContainer.getBoundingClientRect();
+    const percent = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = percent * audio.duration;
+  });
+
+  audio.addEventListener("timeupdate", () => {
+    const percent = (audio.currentTime / audio.duration) * 100;
+    progressFill.style.width = percent + "%";
+  });
+
+  volume.addEventListener("input", () => {
+    audio.volume = volume.value;
+  });
+
+  audio.addEventListener("ended", () => {
+    if (!loopSong) {
+      currentPlaylist.playNext();
+      updateUI();
+      audio.src = currentPlaylist.getCurrentSong().audioLink;
+      audio.play();
+    }
+  });
+
+  audio.play().then(() => {
+    document.getElementById("playPause").textContent = "❚❚";
+  }).catch(err => {
+    console.log("Autoplay blocked by browser:", err);
+  });
+}
+
+const style = document.createElement("style");
+style.textContent = `
+:root {
+  --button-width: 60px;
+  --button-height: 24px;
+}
+
+#player98 {
+  font-family: 'Microsoft Sans Serif', Tahoma, sans-serif;
+  background: #C0C0C0;
+  border: 2px solid #808080;
+  width: 350px;
+  padding: 2px;
+  margin-top: 8px;
+}
+.title-bar {
+  background: linear-gradient(to right, #000080, #1084d0);
+  color: white;
+  padding: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 12px;
+}
+.title-bar-controls button {
+  width: 16px; height: 16px;
+  margin-left: 2px;
+}
+#display {
+  display: flex;
+  background: white;
+  border: inset 2px;
+  padding: 4px;
+  margin: 2px 0;
+}
+#cover { width: 64px; height: 64px; margin-right: 5px; }
+#info { font-size: 11px; }
+#controls {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin: 4px 0;
+}
+#controls button {
+  width: var(--button-width);
+  height: var(--button-height);
+  border: outset 2px;
+  background: #E0E0E0;
+  font-size: 11px;
+}
+#volume {
+  width: 90%;
+  margin: 2px auto 6px auto;
+  display: block;
+}
+#volumeLabel {
+  font-size: 11px;
+  margin-left: 5%;
+  margin-top: 4px;
+}
+#playlistSelector {
+  width: 150px;
+  margin: 4px auto;
+  display: block;
+  font-size: 11px;
+  border: inset 2px;
+  background: #E0E0E0;
+}
+#progressContainer {
+  width: 90%;
+  height: 10px;
+  background: #808080;
+  border: inset 2px;
+  margin: 4px auto;
+  cursor: pointer;
+  position: relative;
+}
+#progressFill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to right, #000080, #1084d0);
+}
+`;
+document.head.appendChild(style);
+
+setupMusicPlayer();
+
+  
+const gameThemes = {
+    "A New Millennium" : function() {
+    }
+}
+
+// Replace old theme picker
+const themePicker = document.getElementById("themePicker");
+const newThemePicker = document.createElement("select");
+newThemePicker.id = "themePicker";
+newThemePicker.addEventListener("change", gameThemePicked);
+let newInnerHTML = "";
+for(theme in gameThemes) {
+    newInnerHTML += `<option value="${theme}">${theme}</option>`;
+}
+newThemePicker.innerHTML = newInnerHTML;
+themePicker.replaceWith(newThemePicker);
+
+function gameThemePicked() {
+    gameThemes[newThemePicker.value]();
+}
+
+gameThemePicked();
+
+// Cool banner ads in place of the bottom bar
+document.getElementById("bottomBar").style.display = "";
+document.getElementById("bottomBar").style.backgroundColor = "#fff";
+document.getElementById("bottomBar").style.backgroundSize = "0%";
+document.getElementById("bottomBar").style.borderStyle = "none";
+document.getElementById("bottomBar").style.padding = "0";
+document.getElementById("bottomBar").style.height = "60px";
+banners = ["https://files.catbox.moe/ghx4lx.png","https://files.catbox.moe/fdme8o.png","https://files.catbox.moe/ndppl4.png","https://files.catbox.moe/zpc1my.png","https://files.catbox.moe/jv9ced.png"]
+bannerad = banners[Math.floor((Math.random() * banners.length))]
+document.getElementById("bottomBar").innerHTML = `<img src='`+bannerad+`'/>`

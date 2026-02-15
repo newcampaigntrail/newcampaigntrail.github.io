@@ -1,12 +1,3 @@
-function ctsAchievement(achievement, difficultyChecker = true){
-	if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
-		if(campaignTrail_temp.CTS){
-		unlockAchievement(achievement);
-	}
-}
-
-marsh = 0;
-
 campaignTrail_temp.questions_json = [
     {
         "model": "campaign_trail.question",
@@ -112,7 +103,7 @@ campaignTrail_temp.questions_json = [
         "pk": 688,
         "fields": {
             "priority": 4,
-            "description": "What do you have to say about the Keating–Owen Act, the Revenue Act of 1919, and other acts written in an attempt to curb child labor in the United States?",
+            "description": "What do you have to say about the Keating–Owen Act, the Revenue Act of 1919, and other acts written in an attempt to curb child labor in the United States? What would a {{canLast}} Administration's stance on child labor be?",
             "likelihood": 1
         }
     },
@@ -20029,6 +20020,13 @@ campaignTrail_temp.jet_data = [{
 }
 ]
 
+function ctsAchievement(achievement, difficultyChecker = true){
+	if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
+		if(campaignTrail_temp.CTS){
+		unlockAchievement(achievement);
+	}
+}
+
 campaignTrail_temp.candidate_image_url = 'https://itsastronomical.com/assets/1920/marshall.png';
 campaignTrail_temp.running_mate_image_url = 'https://itsastronomical.com/assets/1920/lansing.png';
 campaignTrail_temp.candidate_last_name = 'Marshall';
@@ -20039,10 +20037,26 @@ campaignTrail_temp.player_visits = [];
 campaignTrail_temp.answer_feedback_flg = 1;
 campaignTrail_temp.game_start_logging_id = '3843333';
 
+// Variables
+window.can = "Governor Cox";
+window.canLast = "Cox"
+window.op = "Senator Harding";
+window.opLast = "Harding"
+
+const style_overwrite = document.createElement("style");
+style_overwrite.innerHTML = 
+`#campaign_sign {
+  background-color:rgb(39, 74, 187);
+  border-color:rgb(98, 144, 203);
+}`
+;
+document.head.appendChild(style_overwrite);
+
 e = campaignTrail_temp
 used=false
+marsh = 0;
 
- q_list0 = [[686, "Thanks to the passage of the Nineteenth Amendment, women now have access to the polls in all 48 states. Will your campaign make any major effort to push for increased female turnout for the Democratic ticket?"], [688, "What do you have to say about the Keating–Owen Act, the Revenue Act of 1919, and other acts written in an attempt to curb child labor in the United States?"], [668, "How much will your campaign align itself with Woodrow Wilson? What policies of his do you wish to defend, or perhaps shy away from?"], [672, "While the Democratic Platform supports the League of Nations in it's current state, what is your exact position on the League of Nations? "], [678, "There appears to be a somewhat significant third-party presence this year. Is there anything you wish to do to take advantage of this, or perhaps bring them into the Democratic fold?"], [676, "Another day, another round of campaigning. Your advisors found an extra slot within the next few weeks to squeeze a visit into one of four states. Which would you like to choose?"], [674, "After the Bolsheviks seizes power in Russia, there was a serious uptick in fear over both real and fictional scares of a communist takeover in America, known as the 'Red Scare'. What is your opinion on these events?"], [689, "Due to the chaos in Europe, among other things, immigration remains an important issue this election. What is the Democratic ticket's position on immigration? Would you support new limits on European immigrants?"], [681, "Enough about Wilson the man, what about the rest of his administration? His cabinet has seen several highly controversial nominations go through Congress, such as Attorney General Palmer, and Secretary of State Bryan. Which of his cabinet officials would you retain next spring, if any?"], [683, "Do you support the 18th Amendment, which outlawed alcohol in the United States? Do you think the logistics of enforcing it are worth it?"], [682, "Broadly speaking, what do you think of the current situation in post-war Europe? What do you think is most likely to bring peace to the continent?"], [691, "Over the last few years, the United States has been deep within a post-war recession. The industrial demand of a war-time economy has caused wages to go down and economic uncertainty. What do you see as the cause for the depression, and what is your plan to get the country's economy back on track?"], [694, "In the aftermath of the Spanish Flu, do you believe the federal government has a role to play in protecting America from epidemics and other spreading of diseases?"], [15238, "Given the instability of Hungary in recent years - from the Hungary Soviet Republic to their attempts to claim Czech and Yugoslav lands, what do you believe should happen to the nation?"], [15239, "Do you believe the United States should continue the military occupation of Haiti, which has persisted since 1915?"], [15240, "Do you believe the Ottoman Empire should be broken up and partitioned as established within the Treaty of Sèvres? What is your general belief for the security of Anatolia?"], [15241, "Although the national polls suggest uncertainty, some polls suggest a competitive race in the Bluegrass State of Kentucky. Are you willing to seek support from central Kentucky political boss Billy Kair to ensure a Democratic victory in the state?"], [15242, "Do you think it was the right decision to arrest Eugene Debs, who is now running as the Socialist nominee in this election? Would you pardon or commute his sentence as President?"]]
+ q_list0 = [[686, "Thanks to the passage of the Nineteenth Amendment, women now have access to the polls in all 48 states. Will your campaign make any major effort to push for increased female turnout for the Democratic ticket?"], [688, "What do you have to say about the Keating–Owen Act, the Revenue Act of 1919, and other acts written in an attempt to curb child labor in the United States? What would a {{canLast}} Administration's stance on child labor be?"], [668, "How much will your campaign align itself with Woodrow Wilson? What policies of his do you wish to defend, or perhaps shy away from?"], [672, "While the Democratic Platform supports the League of Nations in it's current state, what is your exact position on the League of Nations? "], [678, "There appears to be a somewhat significant third-party presence this year. Is there anything you wish to do to take advantage of this, or perhaps bring them into the Democratic fold?"], [676, "Another day, another round of campaigning. Your advisors found an extra slot within the next few weeks to squeeze a visit into one of four states. Which would you like to choose?"], [674, "After the Bolsheviks seizes power in Russia, there was a serious uptick in fear over both real and fictional scares of a communist takeover in America, known as the 'Red Scare'. What is your opinion on these events?"], [689, "Due to the chaos in Europe, among other things, immigration remains an important issue this election. What is the Democratic ticket's position on immigration? Would you support new limits on European immigrants?"], [681, "Enough about Wilson the man, what about the rest of his administration? His cabinet has seen several highly controversial nominations go through Congress, such as Attorney General Palmer, and Secretary of State Bryan. Which of his cabinet officials would you retain next spring, if any?"], [683, "Do you support the 18th Amendment, which outlawed alcohol in the United States? Do you think the logistics of enforcing it are worth it?"], [682, "Broadly speaking, what do you think of the current situation in post-war Europe? What do you think is most likely to bring peace to the continent?"], [691, "Over the last few years, the United States has been deep within a post-war recession. The industrial demand of a war-time economy has caused wages to go down and economic uncertainty. What do you see as the cause for the depression, and what is your plan to get the country's economy back on track?"], [694, "In the aftermath of the Spanish Flu, do you believe the federal government has a role to play in protecting America from epidemics and other spreading of diseases?"], [15238, "Given the instability of Hungary in recent years - from the Hungary Soviet Republic to their attempts to claim Czech and Yugoslav lands, what do you believe should happen to the nation?"], [15239, "Do you believe the United States should continue the military occupation of Haiti, which has persisted since 1915?"], [15240, "Do you believe the Ottoman Empire should be broken up and partitioned as established within the Treaty of Sèvres? What is your general belief for the security of Anatolia?"], [15241, "Although the national polls suggest uncertainty, some polls suggest a competitive race in the Bluegrass State of Kentucky. Are you willing to seek support from central Kentucky political boss Billy Kair to ensure a Democratic victory in the state?"], [15242, "Do you think it was the right decision to arrest Eugene Debs, who is now running as the Socialist nominee in this election? Would you pardon or commute his sentence as President?"]]
  function shuffle(ar) { for (let i = ar.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[ar[i], ar[j]] = [ar[j], ar[i]]; } return ar; };
  shuffle(q_list0);
  for(let i = 0; i < 13; i++) { campaignTrail_temp.questions_json[i+10].pk = q_list0[i][0]; campaignTrail_temp.questions_json[i+10].fields["description"] = q_list0[i][1]; }
@@ -20116,6 +20130,8 @@ cyoAdventure = function (a) {
         campaignTrail_temp.candidate_json[1]["fields"].first_name = "William Jennings";
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Bryan";
         campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#1434A4";
+            window.can = "Mr. Bryan";
+            window.canLast = "Bryan"
         campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://itsastronomical.com/assets/1920/bryan.png";
         campaignTrail_temp.candidate_image_url = 'https://itsastronomical.com/assets/1920/bryan.png';
         campaignTrail_temp.running_mate_image_url = 'https://itsastronomical.com/assets/1920/francis.png';
@@ -20305,6 +20321,8 @@ cyoAdventure = function (a) {
         campaignTrail_temp.candidate_json[1]["fields"].first_name = "A. Mitchell";
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Palmer";
         campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#7393B3";
+            window.can = "Attorney General Palmer";
+            window.canLast = "Palmer"
         campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://itsastronomical.com/assets/1920/palmer.png";
         campaignTrail_temp.candidate_image_url = 'https://itsastronomical.com/assets/1920/palmer.png';
         campaignTrail_temp.running_mate_image_url = 'https://itsastronomical.com/assets/1920/francis.png';
@@ -20349,6 +20367,8 @@ cyoAdventure = function (a) {
     campaignTrail_temp.candidate_json[1]["fields"].first_name = "William Gibbs";
     campaignTrail_temp.candidate_json[1]["fields"].last_name = "McAdoo";
     campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#6067A6";
+            window.can = "Secretary McAdoo";
+            window.canLast = "McAdoo"
     campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://itsastronomical.com/assets/1920/mcadoo.png";
     campaignTrail_temp.candidate_image_url = 'https://itsastronomical.com/assets/1920/mcadoo.png';
     campaignTrail_temp.running_mate_image_url = 'https://itsastronomical.com/assets/1920/davis.png';
@@ -20394,6 +20414,8 @@ cyoAdventure = function (a) {
             campaignTrail_temp.candidate_json[1]["fields"].first_name = "Thomas R.";
             campaignTrail_temp.candidate_json[1]["fields"].last_name = "Marshall";
             campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://itsastronomical.com/assets/1920/marshall.png";
+            window.can = "Acting President Marshall";
+            window.canLast = "Marshall"
 
             campaignTrail_temp.questions_json[1] = {
                 "model": "campaign_trail.question",
@@ -20443,6 +20465,8 @@ cyoAdventure = function (a) {
     }
     if(ans == 15533) {
             // If you stick around as Marshall
+            window.can = "President Marshall";
+            window.canLast = "Marshall"
             campaignTrail_temp.questions_json[7] = {
                 "model": "campaign_trail.question",
                 "pk": 15420,
@@ -20479,6 +20503,8 @@ cyoAdventure = function (a) {
         campaignTrail_temp.running_mate_image_url = 'https://itsastronomical.com/assets/1920/cox_button.png';
         campaignTrail_temp.candidate_last_name = 'Cox';
         campaignTrail_temp.running_mate_last_name = 'for President';
+        window.can = "Governor Cox";
+        window.canLast = "Cox"
         campaignTrail_temp.candidate_json[1]["fields"].first_name = "James M.";
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Cox";
         campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://itsastronomical.com/assets/1920/cox.png";
@@ -20487,39 +20513,13 @@ cyoAdventure = function (a) {
 ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
 
 // Sets image back to Cox if you do not convince Wilson to resign
-if(ans == 4272){
+if(ans == 4272 || ans == 4273 || ans == 4274){
     campaignTrail_temp.candidate_image_url = 'https://itsastronomical.com/assets/1920/cox.png';
     campaignTrail_temp.running_mate_image_url = 'https://itsastronomical.com/assets/1920/cox_button.png';
     campaignTrail_temp.candidate_last_name = 'Cox';
     campaignTrail_temp.running_mate_last_name = 'for President';
-    campaignTrail_temp.running_mate_state_id = '426';
-    campaignTrail_temp.player_answers = [];
-    campaignTrail_temp.player_visits = [];
-    campaignTrail_temp.answer_feedback_flg = 1;
-    campaignTrail_temp.game_start_logging_id = '3843333';
 }
-if(ans == 4273){
-    campaignTrail_temp.candidate_image_url = 'https://itsastronomical.com/assets/1920/cox.png';
-    campaignTrail_temp.running_mate_image_url = 'https://itsastronomical.com/assets/1920/cox_button.png';
-    campaignTrail_temp.candidate_last_name = 'Cox';
-    campaignTrail_temp.running_mate_last_name = 'for President';
-    campaignTrail_temp.running_mate_state_id = '426';
-    campaignTrail_temp.player_answers = [];
-    campaignTrail_temp.player_visits = [];
-    campaignTrail_temp.answer_feedback_flg = 1;
-    campaignTrail_temp.game_start_logging_id = '3843333';
-}
-if(ans == 4274){
-    campaignTrail_temp.candidate_image_url = 'https://itsastronomical.com/assets/1920/cox.png';
-    campaignTrail_temp.running_mate_image_url = 'https://itsastronomical.com/assets/1920/cox_button.png';
-    campaignTrail_temp.candidate_last_name = 'Cox';
-    campaignTrail_temp.running_mate_last_name = 'for President';
-    campaignTrail_temp.running_mate_state_id = '426';
-    campaignTrail_temp.player_answers = [];
-    campaignTrail_temp.player_visits = [];
-    campaignTrail_temp.answer_feedback_flg = 1;
-    campaignTrail_temp.game_start_logging_id = '3843333';
-}
+
 
     // CYOA for VP switcher
 
@@ -20528,14 +20528,14 @@ if(ans == 4274){
         } 
 
     function switcheroo() {
- q_list0 = [[686, "Thanks to the passage of the Nineteenth Amendment, women now have access to the polls in all 48 states. Will your campaign make any major effort to push for increased female turnout for the Democratic ticket?"], [688, "What do you have to say about the Keating–Owen Act, the Revenue Act of 1919, and other acts written in an attempt to curb child labor in the United States?"], [15597, "How much will your campaign align itself with Woodrow Wilson? What policies of his do you wish to defend, or perhaps shy away from?"], [15570, "What is your exact position on the League of Nations? Do you think the compromised passage was the right decision?"], [678, "There appears to be a somewhat significant third-party presence this year. Is there anything you wish to do to take advantage of this, or perhaps bring them into the Democratic fold?"], [676, "Another day, another round of campaigning. Your advisors found an extra slot within the next few weeks to squeeze a visit into one of four states. Which would you like to choose?"], [674, "After the Bolsheviks seizes power in Russia, there was a serious uptick in fear over both real and fictional scares of a communist takeover in America, known as the 'Red Scare'. What is your opinion on these events?"], [689, "Due to the chaos in Europe, among other things, immigration remains an important issue this election. What is the Democratic ticket's position on immigration? Would you support new limits on European immigrants?"], [681, "Enough about Wilson the man, what about the rest of his administration? His cabinet has seen several highly controversial nominations go through Congress, such as Attorney General Palmer, and Secretary of State Bryan. Which of his cabinet officials would you retain next spring, if any?"], [683, "Do you support the 18th Amendment, which outlawed alcohol in the United States? Do you think the logistics of enforcing it are worth it?"], [682, "Broadly speaking, what do you think of the current situation in post-war Europe? What do you think is most likely to bring peace to the continent?"], [691, "Over the last few years, the United States has been deep within a post-war recession. The industrial demand of a war-time economy has caused wages to go down and economic uncertainty. What do you see as the cause for the depression, and what is your plan to get the country's economy back on track?"], [694, "In the aftermath of the Spanish Flu, do you believe the federal government has a role to play in protecting America from epidemics and other spreading of diseases?"], [15238, "Given the instability of Hungary in recent years - from the Hungary Soviet Republic to their attempts to claim Czech and Yugoslav lands, what do you believe should happen to the nation?"], [15239, "Do you believe the United States should continue the military occupation of Haiti, which has persisted since 1915?"], [15240, "Do you believe the Ottoman Empire should be broken up and partitioned as established within the Treaty of Sèvres? What is your general belief for the security of Anatolia?"], [15585, "Are you willing to recruit the help of Tammany Hall to win New York? Boss Murphy has so far been indifferent to your campaign."], [15242, "Do you think it was the right decision to arrest Eugene Debs, who is now running as the Socialist nominee in this election? Would you pardon or commute his sentence as President?"]]
+ q_list0 = [[686, "Thanks to the passage of the Nineteenth Amendment, women now have access to the polls in all 48 states. Will your campaign make any major effort to push for increased female turnout for the Democratic ticket?"], [688, "What do you have to say about the Keating–Owen Act, the Revenue Act of 1919, and other acts written in an attempt to curb child labor in the United States? What would a {{can}} Administration's stance on child labor be?"], [15597, "How much will your campaign align itself with Woodrow Wilson? What policies of his do you wish to defend, or perhaps shy away from?"], [15570, "What is your exact position on the League of Nations? Do you think the compromised passage was the right decision?"], [678, "There appears to be a somewhat significant third-party presence this year. Is there anything you wish to do to take advantage of this, or perhaps bring them into the Democratic fold?"], [676, "Another day, another round of campaigning. Your advisors found an extra slot within the next few weeks to squeeze a visit into one of four states. Which would you like to choose?"], [674, "After the Bolsheviks seizes power in Russia, there was a serious uptick in fear over both real and fictional scares of a communist takeover in America, known as the 'Red Scare'. What is your opinion on these events?"], [689, "Due to the chaos in Europe, among other things, immigration remains an important issue this election. What is the Democratic ticket's position on immigration? Would you support new limits on European immigrants?"], [681, "Enough about Wilson the man, what about the rest of his administration? His cabinet has seen several highly controversial nominations go through Congress, such as Attorney General Palmer, and Secretary of State Bryan. Which of his cabinet officials would you retain next spring, if any?"], [683, "Do you support the 18th Amendment, which outlawed alcohol in the United States? Do you think the logistics of enforcing it are worth it?"], [682, "Broadly speaking, what do you think of the current situation in post-war Europe? What do you think is most likely to bring peace to the continent?"], [691, "Over the last few years, the United States has been deep within a post-war recession. The industrial demand of a war-time economy has caused wages to go down and economic uncertainty. What do you see as the cause for the depression, and what is your plan to get the country's economy back on track?"], [694, "In the aftermath of the Spanish Flu, do you believe the federal government has a role to play in protecting America from epidemics and other spreading of diseases?"], [15238, "Given the instability of Hungary in recent years - from the Hungary Soviet Republic to their attempts to claim Czech and Yugoslav lands, what do you believe should happen to the nation?"], [15239, "Do you believe the United States should continue the military occupation of Haiti, which has persisted since 1915?"], [15240, "Do you believe the Ottoman Empire should be broken up and partitioned as established within the Treaty of Sèvres? What is your general belief for the security of Anatolia?"], [15585, "Are you willing to recruit the help of Tammany Hall to win New York? Boss Murphy has so far been indifferent to your campaign."], [15242, "Do you think it was the right decision to arrest Eugene Debs, who is now running as the Socialist nominee in this election? Would you pardon or commute his sentence as President?"]]
  function shuffle(ar) { for (let i = ar.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[ar[i], ar[j]] = [ar[j], ar[i]]; } return ar; };
  shuffle(q_list0);
  for(let i = 0; i < 13; i++) { campaignTrail_temp.questions_json[i+10].pk = q_list0[i][0]; campaignTrail_temp.questions_json[i+10].fields["description"] = q_list0[i][1]; }
     }
 
  function PalmerSwitch() {
-q_list0 = [[686, "Thanks to the passage of the Nineteenth Amendment, women now have access to the polls in all 48 states. Will your campaign make any major effort to push for increased female turnout for the Democratic ticket?"], [688, "What do you have to say about the Keating–Owen Act, the Revenue Act of 1919, and other acts written in an attempt to curb child labor in the United States?"], [15597, "How much will your campaign align itself with Woodrow Wilson? What policies of his do you wish to defend, or perhaps shy away from?"], [15570, "What is your exact position on the League of Nations? Do you think the compromised passage was the right decision?"], [678, "There appears to be a somewhat significant third-party presence this year. Is there anything you wish to do to take advantage of this, or perhaps bring them into the Democratic fold?"], [676, "Another day, another round of campaigning. Your advisors found an extra slot within the next few weeks to squeeze a visit into one of four states. Which would you like to choose?"], [689, "Due to the chaos in Europe, among other things, immigration remains an important issue this election. What is the Democratic ticket's position on immigration? Would you support new limits on European immigrants?"], [683, "Do you support the 18th Amendment, which outlawed alcohol in the United States? Do you think the logistics of enforcing it are worth it?"], [682, "Broadly speaking, what do you think of the current situation in post-war Europe? What do you think is most likely to bring peace to the continent?"], [691, "Over the last few years, the United States has been deep within a post-war recession. The industrial demand of a war-time economy has caused wages to go down and economic uncertainty. What do you see as the cause for the depression, and what is your plan to get the country's economy back on track?"], [694, "In the aftermath of the Spanish Flu, do you believe the federal government has a role to play in protecting America from epidemics and other spreading of diseases?"], [15238, "Given the instability of Hungary in recent years - from the Hungary Soviet Republic to their attempts to claim Czech and Yugoslav lands, what do you believe should happen to the nation?"], [15239, "Do you believe the United States should continue the military occupation of Haiti, which has persisted since 1915?"], [15240, "Do you believe the Ottoman Empire should be broken up and partitioned as established within the Treaty of Sèvres? What is your general belief for the security of Anatolia?"], [15585, "Are you willing to recruit the help of Tammany Hall to win New York? Boss Murphy has so far been indifferent to your campaign."], [15242, "Do you think it was the right decision to arrest Eugene Debs, who is now running as the Socialist nominee in this election? Would you pardon or commute his sentence as President?"]]
+q_list0 = [[686, "Thanks to the passage of the Nineteenth Amendment, women now have access to the polls in all 48 states. Will your campaign make any major effort to push for increased female turnout for the Democratic ticket?"], [688, "What do you have to say about the Keating–Owen Act, the Revenue Act of 1919, and other acts written in an attempt to curb child labor in the United States? What would a {{can}} Administration's stance on child labor be?"], [15597, "How much will your campaign align itself with Woodrow Wilson? What policies of his do you wish to defend, or perhaps shy away from?"], [15570, "What is your exact position on the League of Nations? Do you think the compromised passage was the right decision?"], [678, "There appears to be a somewhat significant third-party presence this year. Is there anything you wish to do to take advantage of this, or perhaps bring them into the Democratic fold?"], [676, "Another day, another round of campaigning. Your advisors found an extra slot within the next few weeks to squeeze a visit into one of four states. Which would you like to choose?"], [689, "Due to the chaos in Europe, among other things, immigration remains an important issue this election. What is the Democratic ticket's position on immigration? Would you support new limits on European immigrants?"], [683, "Do you support the 18th Amendment, which outlawed alcohol in the United States? Do you think the logistics of enforcing it are worth it?"], [682, "Broadly speaking, what do you think of the current situation in post-war Europe? What do you think is most likely to bring peace to the continent?"], [691, "Over the last few years, the United States has been deep within a post-war recession. The industrial demand of a war-time economy has caused wages to go down and economic uncertainty. What do you see as the cause for the depression, and what is your plan to get the country's economy back on track?"], [694, "In the aftermath of the Spanish Flu, do you believe the federal government has a role to play in protecting America from epidemics and other spreading of diseases?"], [15238, "Given the instability of Hungary in recent years - from the Hungary Soviet Republic to their attempts to claim Czech and Yugoslav lands, what do you believe should happen to the nation?"], [15239, "Do you believe the United States should continue the military occupation of Haiti, which has persisted since 1915?"], [15240, "Do you believe the Ottoman Empire should be broken up and partitioned as established within the Treaty of Sèvres? What is your general belief for the security of Anatolia?"], [15585, "Are you willing to recruit the help of Tammany Hall to win New York? Boss Murphy has so far been indifferent to your campaign."], [15242, "Do you think it was the right decision to arrest Eugene Debs, who is now running as the Socialist nominee in this election? Would you pardon or commute his sentence as President?"]]
 function shuffle(ar) { for (let i = ar.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[ar[i], ar[j]] = [ar[j], ar[i]]; } return ar; };
 shuffle(q_list0);
 for(let i = 0; i < 13; i++) { campaignTrail_temp.questions_json[i+10].pk = q_list0[i][0]; campaignTrail_temp.questions_json[i+10].fields["description"] = q_list0[i][1]; }

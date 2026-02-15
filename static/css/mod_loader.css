@@ -4,28 +4,38 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60%;
-    height: 60%;
-    background-color: rgba(55, 4, 4, 0.7);
+    width: 70%;
+    height: 85%;
+    background: linear-gradient(180deg, rgba(186, 0, 0, 0.543), rgba(0, 0, 0, 0.418));
     z-index: 9999;
     border: solid 3px black;
     text-align: center;
     transition: all 0.3s;
+    border-radius: 25px 25px 0 0;
 }
 
 .tab-container {
     display: flex;
     justify-content: space-between;
     background-color: #b80000;
+    border-radius: 25px 25px 0 0;
 }
 .tab {
     padding: 10px 20px;
     cursor: pointer;
     border: solid 2px black;
-    width: 100%;
+    width: 45%;
     text-align: center;
     font-weight: bolder;
     transition: all 0.2s;
+    border-radius: 20px 20px 0 0;
+    background-color: #300000;
+    color: white;
+}
+
+.tab.active {
+    background-color: #6b0000;
+    box-shadow: inset 0 -2px 0 #ffffff;
 }
 
 .tab:hover, #submitMod:hover {
@@ -55,7 +65,7 @@
     background-color: #190202;
     color: white;
     width:100%;
-    height: 65px;
+    height: 100px;
     border-top: solid 2px white;
     border-bottom: solid 2px white;
     padding-top: 3px;
@@ -72,8 +82,47 @@
     right: 50%;
     top: 57.5%;
     transform: translate(50%, -50%);
-    overflow-y: auto;
+    border-radius: 40px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* restore clipping of children */
+    box-sizing: border-box;
 }
+
+.overlay_tab_inner {
+    flex: 1;
+    overflow-y: auto;
+    border-radius: 36px;
+    margin: 4px;
+    padding: 12px;
+    scrollbar-color: #f70404 #350000;
+    scrollbar-width: thin;
+    box-sizing: border-box;
+}
+
+/* Webkit scrollbar styling */
+.overlay_tab_inner::-webkit-scrollbar {
+  width: 8px;
+}
+
+.overlay_tab_inner::-webkit-scrollbar-track {
+  background: #350000;
+  border-radius: 4px;
+}
+
+.overlay_tab_inner::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #290000, #f72e46);
+  border-radius: 8px;
+  box-shadow: 0 0 4px #f70404;
+  border: 2px solid #350000;
+}
+
+.overlay_tab_inner::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #ef4c4c, #340208);
+  box-shadow: 0 0 6px #f72e46;
+}
+
 
 #widgetsContainer {
     display: grid;
@@ -88,6 +137,12 @@
     border: solid 2px #ffffff;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     color: #ffffff;
+    border-radius: 20px;
+    transition: all 0.4s;
+}
+
+.widget:hover {
+    background-color: #340000;
 }
 
 .widget h3 {
@@ -159,6 +214,108 @@
 .fullscreen {
     width: 100%;
     height: 100%;
+}
+
+#tagContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+#tagContainer label {
+    background: #2a0000;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    background-color: #0e0000;
+    color: white;
+    border: 1px solid #333;
+    padding: 10px;
+    font-family: monospace;
+    resize: vertical;
+}
+
+.overlay_scr textarea {
+    width: 200px;
+    height: 50px;
+    background-color: #0e0000;
+    color: white;
+    border: 1px solid #333;
+    padding: 10px;
+    font-family: monospace;
+    resize: vertical;
+}
+
+#searchInput, #modSelect, #custom_loader_input {
+    background-color: #1a0000;
+    color: white;
+    border: 1px solid #555;
+    padding: 6px 10px;
+    border-radius: 4px;
+}
+
+.widget_url_icon {
+    position: relative;
+    top: -10px;
+    right: -80%;
+    font-size: 14px;
+    cursor: pointer;
+    background: #000;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+    width: 20px;
+}
+
+.widget_url_icon:hover {
+    opacity: 1;
+    background: #3e0404;
+}
+
+.tooltip_wrap {
+    cursor: pointer;
+    font-size: 14px;
+    background: #000;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.tooltip_wrap:hover {
+    opacity: 1;
+    background: #3e0404;
+}
+
+.tooltip_text {
+    visibility: hidden;
+    width: 120px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 8px;
+    position: absolute;
+    z-index: 1;
+    top: -55px;
+    right: 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+    pointer-events: none;
+}
+
+.tooltip_wrap:hover .tooltip_text {
+    visibility: visible;
+    opacity: 1;
 }
 
 /* State issue stuff because it's easier than a new file */

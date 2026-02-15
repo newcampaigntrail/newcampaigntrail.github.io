@@ -25,26 +25,12 @@ let mobile_bigshot_data = {
     state: localStorage.getItem("cheated") == "true" ? 1 : 0
 };
 
-$("#year").click((e) => {
+$("#bigshotOn").click((e) => {
     e.preventDefault();
-    mobile_bigshot_data.clicks++;
-    if (mobile_bigshot_data.clicks != 3) {
-        return;
-    }
-    if (mobile_bigshot_data.state == 1) {
-        alert(`ARE YOU GETTING ALL THIS [Mike]!? I'M FINALLY\nI'M FINALLY GONNA BE A BIG SHOT!!!`);
-        campaignTrail_temp.bigshot_mode = true;
-    } else {
-        let code = prompt("Spamton likes?");
-        if (code.toLowerCase() !== "kromer") {
-            alert("WRONG!!!1")
-            mobile_bigshot_data.clicks = 0;
-        } else {
-            alert("[Heaven], are you WATCHING?");
-            localStorage.setItem("cheated", true);
-            campaignTrail_temp.bigshot_mode = true;
-        }
-    }
+    alert(`ARE YOU GETTING ALL THIS [Mike]!? I'M FINALLY\nI'M FINALLY GONNA BE A BIG SHOT!!!`);
+    localStorage.setItem("cheated", true);
+    campaignTrail_temp.bigshot_mode = true;
+    $("#bigshotOn")[0].style.display="none"
 })
 
 // INITIAL BIGSHOT
@@ -161,6 +147,18 @@ function loadEntries() {
 
                 }
                 window.localStorage.removeItem("hotload") // this should be done whether or not there is an error.
+            }
+
+            //hotload 2!
+            let link_split=window.location.href.split("?");
+            if (link_split.length>1) {
+                ((link_split)=>{
+                    modName = link_split[1].split("modName=");
+                    if (modName.length == 1) return;
+                    e.hotload = decodeURIComponent(modName[1]);
+                    $("#modSelect")[0].value = e.hotload;
+                    $("#submitMod").click();
+                })(link_split)
             }
 
             //clone so we don't reduce the list of mods every time a tag is selected
@@ -496,6 +494,31 @@ nct_stuff.themes = {
         window_url: "../static/images/celesteimgbg.png",
         coloring_title: "#260c55"
     },
+    "carter": {
+        name: "Carter",
+        background: "https://i.imgur.com/pcmPlA7.jpeg",
+        banner: "https://i.imgur.com/lXxBoP4.png",
+        coloring_window: "#ffffff",
+        coloring_container: "#326942",
+        coloring_title: "#326942"
+    },
+    "Miku": {
+        name: "Hatsune Miku",
+        background: "../static/images/mikuwallpaper.png",
+        banner: "../static/images/miku.png",
+        window_url: "/static/images/mikuother.png",
+        coloring_window: "#ffffff",
+        coloring_container: "#86cecb",
+        coloring_title: "#137a7f"
+    },
+    "lgbtqpride": {
+        name: "Pride",
+        background: "https://www.politico.eu/cdn-cgi/image/width=1200,height=675,fit=crop,quality=80,onerror=redirect,format=auto/wp-content/uploads/2021/07/24/h_57063662-scaled.jpg",
+        banner: "/static/images/pride.jpg",
+        coloring_window: "#380069",
+        coloring_container: "#5a00a8",
+        coloring_title: "#9f9f9fff"
+    },
     "custom": {
         name: "Custom",
         background: "",
@@ -716,7 +739,7 @@ setInterval(function() {
     }
     gameHeader.style.backgroundColor = selectedTheme.coloring_title;
     updateDynamicStyle();
-
+    corrr=gameHeader.innerHTML;
     //updateGameHeaderContentAndStyling();
 }, 100);
 

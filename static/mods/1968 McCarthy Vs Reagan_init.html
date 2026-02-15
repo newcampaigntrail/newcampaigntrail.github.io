@@ -1,0 +1,341 @@
+campaignTrail_temp.global_parameter_json = [
+    {
+        "model": "campaign_trail.global_parameter",
+        "pk": 1,
+        "fields": {
+            "vote_variable": 1.125,
+            "max_swing": 0.12,
+            "start_point": 0.94,
+            "candidate_issue_weight": 10,
+            "running_mate_issue_weight": 3,
+            "issue_stance_1_max": -0.71,
+            "issue_stance_2_max": -0.3,
+            "issue_stance_3_max": -0.125,
+            "issue_stance_4_max": 0.125,
+            "issue_stance_5_max": 0.3,
+            "issue_stance_6_max": 0.71,
+            "global_variance": 0.01,
+            "state_variance": 0.005,
+            "question_count": 25,
+            "default_map_color_hex": "#C9C9C9",
+            "no_state_map_color_hex": "#999999"
+        }
+    }
+]
+
+campaignTrail_temp.election_json = [
+    {
+        "model": "campaign_trail.election",
+        "pk": 4,
+        "fields": {
+            "year": 1968,
+            "summary": "The year is 1968 and America is in chaos. From the unpopular Vietnam War under President Johnson to the unrest at home, the nation needs a change.</p> <ul><li>Ronald Reagan, the candidate of the right, has surprisingly won the Republican nomination, running as as a law-and-order candidate with conservative views like Goldwater in 64' along with a hawkish tone on Vietnam.</li><li>Meanwhile, Eugene McCarthy, the Progressive, Anti Vietnam war candidate who has shockingly defeated President Johnson at the DNC, must prove that Progressiveness is needed in a time of great social and racial agitation.</li> <li>Lastly, Independent Candidate Pete McCloskey runs as a 3rd choice for Moderates and Republicans disappointed with Reagan.</ul>",
+            "image_url": "https://cdn.britannica.com/53/91753-050-97BEAF0B/Protesters-Vietnam-War-New-York-City-April-27-1968.jpg",
+            "winning_electoral_vote_number": 270,
+            "advisor_url": "https://media.cnn.com/api/v1/images/stellar/prod/230209154517-lyndon-b-johnson-nixon-split.jpg?c=16x9&q=h_720,w_1280,c_fill",
+            "recommended_reading": "<h4 style=\"margin-top: 0.5em;\">General Resources</h4><a href=\"http://uselectionatlas.org/RESULTS/national.php?year=1968\" target=\"_blank\">Final 1968 Results</a><br>Theodore White - <a href=\"http://www.amazon.com/exec/obidos/ASIN/0061900648/amhius20-20\" target=\"_blank\">The Making of the President 1968 (Landmark Political)</a><br>Rick Perlstein - <a href=\"http://www.amazon.com/exec/obidos/ASIN/B003E7ET0S/amhius20-20\" target=\"_blank\">Nixonland: The Rise of a President and the Fracturing of America</a><br><h4>By the Candidates</h4>Richard Nixon - <a href=\"http://www.amazon.com/exec/obidos/ASIN/0448143747/amhius20-20\" target=\"_blank\">The Memoirs of Richard Nixon</a><br>Hubert Humphrey - <a href=\"http://www.youtube.com/watch?v=8nwIdIUVFm4\" target=\"_blank\">1948 Civil Rights speech</a><br>George Wallace - <a href=\"https://www.youtube.com/watch?v=DcNv4aQI_QQ\" target=\"_blank\">1967 speech on dissent and intellectualism</a><br><h4>The Vietnam War</h4> Stanley Karnow - <a href=\"http://www.amazon.com/exec/obidos/ASIN/0140265473/amhius20-20\" target=\"_blank\" >Vietnam: A History</a><h4>Misceallany</h4><a href=\"http://www.jahrbuch2001.studien-von-zeitfragen.net/Weltmacht/Secret_of__68/secret_of__68.html\" target=\"_blank\">Secret of '68</a><br><a href=\"http://www.propublica.org/article/living-apart-how-the-government-betrayed-a-landmark-civil-rights-law\" target=\"_blank\">Living Apart: How the Government Betrayed a Landmark Civil Rights Law</a><br><a href=\"http://www.nytimes.com/2012/09/05/business/the-gops-journey-from-the-liberal-days-of-nixon.html\" target=\"_blank\">The G.O.P.'s Journey From the Liberal Days of Nixon</a><br><a href=\"http://www.umich.edu/~lawrace/votetour10.htm\" target=\"_blank\">George Wallace and the 1968 Election</a>",
+            "has_visits": 1,
+            "no_electoral_majority_image": "https://www.jetsimon.com/public/static/images/1968-no-majority.jpg",
+            "creator": "Dan Bryan",
+            "display_year": "1968 McCarthy Vs Reagan"
+        }
+    }
+]
+
+campaignTrail_temp.candidate_json = [
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 23,
+        "fields": {
+            "first_name": "Ronald",
+            "last_name": "Reagan",
+            "election": 4,
+            "party": "Republican",
+            "state": "California",
+            "priority": 1,
+            "description": "<p>NOT PLAYABLE YET! MCCARTHY PLAYABLE ONLY! Ronald Reagan is a name that was well known, not in politics, but in Hollywood as and actor. However, as he got older, Reagan grew an interest in politics, jump-starting his new career with a speech in support of Barry Goldwater. Just 2 years later, he ran and won the role of governor of California.</p><p>Despite his political inexperience, Reagan has managed to win the Republican Nomination and is running under a conservative platform similar to Goldwater's failed campaign in 64'. However, if he want to win this important election, Reagan must win over Moderates disappointed with both parties candidates by moderating his hawkish Vietnam war polices among other things.</p>",
+            "color_hex": "#941100",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 1,
+            "image_url": "https://www.jetsimon.com/public/static/images/ronald-reagan-1968.jpg",
+            "electoral_victory_message": "<h3>Congratulations! You have won the 1968 election!</h3><p>In one of the great turnarounds of American politics, you have salvaged your once-wrecked political career and shed your label as a 'loser' once and for all. As it turns out, the press <em>will</em> have Nixon to kick around.</p><p>If you can end the War in Vietnam and roll back the excesses of the Great Society, you may just go down as a truly great President. Good luck working with a Democratic Congress, however...</p>",
+            "electoral_loss_message": "<h3>Sorry, you have lost the 1968 election.</h3><p>Never has a candidate been so far ahead in a Presidential election, only to come up short. After your heartbreaking loss in 1960, it's going to take a long while for you to recover from this new defeat.</p><p>The American public will never know what might have transpired with you in the Oval Office. As it is, you are sure to enjoy a long retirement after this one...</p>",
+            "no_electoral_majority_message": "<h3>Wow! No candidate holds a majority in the electoral college.</h3><p>Wallace's machinations have succeeded. The election will go to the House of Representatives where the Democrats hold a clear majority.</p><p>You do hold some cards however -- Humphrey would certainly rather make concessions to you, rather than deal with George Wallace. Perhaps you could obtain a place in his Administration, or some assurances on a policy issue of your choice.</p>",
+            "description_as_running_mate": null,
+            "candidate_score": 0.666,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 24,
+        "fields": {
+            "first_name": "Eugene",
+            "last_name": "McCarthy",
+            "election": 4,
+            "party": "Democrat",
+            "state": "Minnesota",
+            "priority": 2,
+            "description": "<p>When the Progressive Eugene McCarthy first challenged president Johnson for the Democratic Nomination, it seemed almost impossible that he could win the nomination, but amazingly, McCarthy has done it, he had beaten the establishment and now the Progressive from Minnesota will face Ronald Reagan in the general election.</p><p>In order to win, McCarthy should balance the support of the very dovish, left wing activist wing of the Party while still being able to convince moderates and party insiders to support him. McCarthy must also emphasize Reagan's unpopular Views on the Vietnam War.</p>",
+            "color_hex": "#011892",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 1,
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/1964_Portrait_Eugene_McCarthy_%284x5_cropped%29.jpg",
+            "electoral_victory_message": "<h3>Congratulations! You have won the 1968 election!</h3><p>It looked like a hopeless case as you accepted the nomination, but you have run an outstanding campaign in the interval.</p><p>Now you must press forward with your efforts to defend the Great Society and to end the war in Vietnam. Failure in the latter case could be devastating when you seek reelection in 1972. After all, just look at what happened to the once-lustrous reputation of Lyndon Johnson over the past four years...</p>",
+            "electoral_loss_message": "<h3>Sorry, you have lost the 1968 election.</h3><p>You may have performed admirably under trying circumstances, but it was always a tough sell for you after the chaos at the Democratic Convention in Chicago.</p><p>Your only consolation is that Nixon himself is a former loser. Even so, this is a horrednous turn of events for Democrats after the landslide of 1964. The best you can do now is to plot a comeback to the Senate, or as a candidate for President in 1972.</p>",
+            "no_electoral_majority_message": "<h3>Wow! No candidate achieved a majority in the electoral college.</h3><p>Fortunately for you the Democrats have won a majority of the nation's Congressional delegations. Unfortunately, you also have to deal with George Wallace. He will not allow the Southern states to support any candidate who advocates desegregation.</p><p>Your best chance, sadly, is to try to broker a deal with Nixon or with other moderate Republicans.</p><p>You are the likely winner, but who knows where this all ends?</p>",
+            "description_as_running_mate": null,
+            "candidate_score": 0.7,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 25,
+        "fields": {
+            "first_name": "Pete",
+            "last_name": "McCloskey",
+            "election": 4,
+            "party": "Independent",
+            "state": "California",
+            "priority": 3,
+            "description": "<p>NOT PLAYABLE!</p>",
+            "color_hex": "#935100",
+            "secondary_color_hex": "#FFFFC0",
+            "is_active": 1,
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/77/Pete_McCloskey.jpg",
+            "electoral_victory_message": "<h3>Wow! You have won the 1968 election in a shocker!</h3><p>Dixie forever! Even with the Long Hot Summer of 1967, nobody guessed that you could do well enough in the Northern states to win the election outright. You have instantly become most polarizing President-elect since Abraham Lincoln.</p>",
+            "electoral_loss_message": "<h3>Sorry, you did not prevent an electoral college majority.</h3><p>You put in a good effort, but your dream of brokering an end to desegregation will not come to fruition in 1968. No winning candidate will negotiate that point with you unless they absolutely have no choice.</p><p>The best you can do for now is continue to sound the call for a return to sanity in American politics. Perhaps if the riots and discord continue, you will have a better chance of making your voice heard in 1972.</p>",
+            "no_electoral_majority_message": "<h3>Congratulations! You have deadlocked the electoral college with your votes in the South.</h3><p>In a close election, your electoral votes in the South have prevented either candidate from winning a majority. Get ready to put the squeeze on Humphrey and Nixon.</p><p>Of course, you still have to deal with the possibility that Humphrey and Nixon dislike you so much that they will simply strike a deal with each other. Whatever happens, it's sure to be interesting.</p>",
+            "description_as_running_mate": null,
+            "candidate_score": 1,
+            "running_mate": false
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 55,
+        "fields": {
+            "first_name": "Jim",
+            "last_name": "Rhodes",
+            "election": 4,
+            "party": "Republican",
+            "state": "Ohio",
+            "priority": 29,
+            "description": "n/a",
+            "color_hex": "#FF0000",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/static/images/spiro-agnew-1968.jpg",
+            "electoral_victory_message": "n/a",
+            "electoral_loss_message": "n/a",
+            "no_electoral_majority_message": "n/a",
+            "description_as_running_mate": "<p>NOT PLAYABLE</p><p>YOU CAN'T PLAY AS REAGAN YET!</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 58,
+        "fields": {
+            "first_name": "Terry",
+            "last_name": "Sanford",
+            "election": 4,
+            "party": "Democrat",
+            "state": "North Carolina",
+            "priority": 33,
+            "description": "n/a",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": "#90C0FF",
+            "is_active": 0,
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Terry_Sanford_1961.jpg",
+            "electoral_victory_message": "n/a",
+            "electoral_loss_message": "n/a",
+            "no_electoral_majority_message": "n/a",
+            "description_as_running_mate": "<p>Terry Sanford was the Governor of North Carolina. During his term, he governed as a liberal, pro desegregation Democrat.</p><p>By picking Sanford, McCarthy would be giving an olive branch to the Democratic establishment without betraying his base. However, despite coming from the South, Sanford will only slightly help McCarthy in the South due to McCarthy's unpopularity there.</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 62,
+        "fields": {
+            "first_name": "Curtis",
+            "last_name": "LeMay",
+            "election": 4,
+            "party": "Republican",
+            "state": "Ohio",
+            "priority": 37,
+            "description": "n/a",
+            "color_hex": "#FF0000",
+            "secondary_color_hex": "#FFA0A0",
+            "is_active": 0,
+            "image_url": "https://www.jetsimon.com/public/static/images/curtis-lemay-1968.jpg",
+            "electoral_victory_message": "n/a",
+            "electoral_loss_message": "n/a",
+            "no_electoral_majority_message": "n/a",
+            "description_as_running_mate": "<p>A famous (some say infamous) General in the Army for many years, LeMay is dismayed by the prospect of Richard Nixon accepting nuclear parity with the Soviet Union. He also is drawn to Wallace's message of social order.</p><p>LeMay is prone to make off the cuff remarks about the use of nuclear weapons, however, which could lead to concerns about Wallace's foreign policy vision.</p>",
+            "candidate_score": 0,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 59,
+        "fields": {
+            "first_name": "Russell",
+            "last_name": "Long",
+            "election": 4,
+            "party": "Democrat",
+            "state": "Louisiana",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://www.oldest.org/wp-content/uploads/2021/12/Russell-Long.jpg",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "<p>Russell Long is a current moderate senator from Louisiana. As part of the Long political family, King supports Liberal economic programs while being moderate in the issue of civil rights.<p><p>If chosen as a running mate, Long could help McCarthy win back the South. However picking Long would also disappoint some people on the left.</p>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate",
+        "pk": 60,
+        "fields": {
+            "first_name": "George",
+            "last_name": "McGovern",
+            "election": 4,
+            "party": "Democrat",
+            "state": "South Dakota",
+            "priority": 1,
+            "description": "<p>Put description here</p>",
+            "color_hex": "#0000FF",
+            "secondary_color_hex": null,
+            "is_active": 0,
+            "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/GeorgeStanleyMcGovern.jpg/227px-GeorgeStanleyMcGovern.jpg",
+            "electoral_victory_message": "This guy wins!",
+            "electoral_loss_message": "This guy loses!",
+            "no_electoral_majority_message": "We all win?",
+            "description_as_running_mate": "<p>George McGovern is a progressive, anti-war senator from the plains state of South Dakota who made a brief run for the Democratic Nomination this year.<p><p>If McGovern is chosen as McCarthy's running mate, he will please his base. However, McGovern will do nothing to please moderates or the Democratic Establishment.</p>",
+            "candidate_score": 1,
+            "running_mate": true
+        }
+    }
+]
+
+campaignTrail_temp.running_mate_json = [
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 41,
+        "fields": {
+            "candidate": 25,
+            "running_mate": 62
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 37,
+        "fields": {
+            "candidate": 24,
+            "running_mate": 58
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 33,
+        "fields": {
+            "candidate": 23,
+            "running_mate": 55
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 167707,
+        "fields": {
+            "candidate": 24,
+            "running_mate": 59
+        }
+    },
+    {
+        "model": "campaign_trail.running_mate",
+        "pk": 96720,
+        "fields": {
+            "candidate": 24,
+            "running_mate": 60
+        }
+    }
+]
+
+campaignTrail_temp.credits = "Someone also known as Nintendogamer8484 using the Jet Code 1 and 2 mod tools Also with help from FitAd5739 With the banner made by electoraluk (based on Dan Bryan 1968)"
+
+campaignTrail_temp.opponents_default_json = [
+    {
+        "election": 4,
+        "candidates": [
+            23,
+            24,
+            25
+        ]
+    }
+]
+
+campaignTrail_temp.opponents_weighted_json = [
+    {
+        "election": 4,
+        "candidates": [
+            23,
+            24,
+            25
+        ]
+    }
+]
+
+campaignTrail_temp.temp_election_list = [
+    {
+        "id": 4,
+        "year": 1968,
+        "is_premium": 0,
+        "display_year": "1968 McCarthy Vs Reagan"
+    }
+]
+
+jet_data = {
+    "headerColor": "#700016",
+    "windowColor": "#008e00",
+    "containerColor": "#ff2600",
+    "innerWindowColor": "#935100",
+    "bannerImageUrl": "https://i.imgur.com/Y1btgQL.png",
+    "backgroundImageUrl": "https://assets.sutori.com/user-uploads/image/858139a7-4613-4f48-b8f4-111e4f18f62e/5ab93e1188886.image.jpeg",
+    "endingTextColor": "#000000",
+    "customQuote": "\"An efficient bureaucracy is the greatest threat to liberty.\" ~ Eugene McCarthy"
+}
+
+//#startcode
+
+
+corrr = '\n              <h2>THE CAMPAIGN TRAIL</h2><font id="wittyquote" size="4" color="white"><em>"An efficient bureaucracy is the greatest threat to liberty." ~ Eugene McCarthy</em></font>\n            ';
+
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#700016";
+
+nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#008e00";
+
+document.getElementsByClassName("game_header")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_title;
+
+$("#game_window")[0].style.backgroundColor = nct_stuff.themes[nct_stuff.selectedTheme].coloring_window;
+
+$(".container")[0].style.backgroundColor = "#ff2600";
+
+document.getElementById("header").src = "https://i.imgur.com/Y1btgQL.png";
+
+document.body.background = "https://assets.sutori.com/user-uploads/image/858139a7-4613-4f48-b8f4-111e4f18f62e/5ab93e1188886.image.jpeg";
+
+document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#935100!important;}</style>";
+
+//#endcode

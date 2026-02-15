@@ -9246,8 +9246,8 @@ campaignTrail_temp.candidate_state_multiplier_json = [
 	}
   }
 ]
-campaignTrail_temp.candidate_image_url = 'https://upload.wikimedia.org/wikipedia/commons/9/93/Tucker_Carlson_2020_%28cropped%29.jpg';
-campaignTrail_temp.running_mate_image_url = 'https://upload.wikimedia.org/wikipedia/commons/3/31/Josh_Hawley%2C_official_portrait%2C_116th_congress.jpg';
+campaignTrail_temp.candidate_image_url = 'https://i.imgur.com/MTNhPvD.png';
+campaignTrail_temp.running_mate_image_url = 'https://i.imgur.com/eGlYvT4.png';
 campaignTrail_temp.candidate_last_name = 'Carlson';
 campaignTrail_temp.running_mate_last_name = 'Hawley';
 campaignTrail_temp.running_mate_state_id = '1024';
@@ -9255,3 +9255,49 @@ campaignTrail_temp.player_answers = [];
 campaignTrail_temp.player_visits = [];
 campaignTrail_temp.answer_feedback_flg = 1;
 campaignTrail_temp.game_start_logging_id = '3660535';
+
+ style_overwrite = document.createElement("style");
+style_overwrite.innerHTML = 
+`#campaign_sign {
+  background-color: #67201A;
+  border-color: #280C0A;
+}
+#menu_container {
+  background-color: #305989;
+}
+#overall_result_container {
+  background-color: #CC6666;
+}
+#state_info h3 {
+  background-color: #CC6666;
+}
+#overall_result h3 {
+  background-color: #CC6666;
+}`
+;
+document.head.appendChild(style_overwrite);
+
+let style = document.createElement('style');
+style.type = 'text/css';
+style.id = 'dynamic-style';
+
+style.innerHTML = `
+  .inner_window_question h3 {
+    background-color: #CC6666;
+  }
+  .overlay_window h3 {
+    background-color: #CC6666;
+  }
+`;
+
+document.head.appendChild(style);
+
+const customStyling = document.createElement("style");
+customStyling.innerHTML = `
+#map_container {
+    background-image: url("https://i.imgur.com/eEAhzUt.png");
+    background-size: cover;
+}
+`;
+document.head.appendChild(customStyling);
+

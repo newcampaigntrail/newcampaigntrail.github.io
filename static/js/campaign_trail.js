@@ -1,5 +1,68 @@
+async function evalFromUrl(url, callback = null) {
+    const res = await fetch(url);
+    const code = await res.text();
+    eval(code);
+    if(callback !== null) {
+        callback();
+    }
+}
+
+
 e=campaignTrail_temp
 e.shining_data = {}
+
+// ported from cts
+const targetNode = document.getElementById("game_window");
+const config = { attributes: true, childList: true, subtree: true };
+
+let changeFontColour = () => { };
+
+let baseScenarioDict = {
+    "1844":"1844_Clay_Fillmore.html",
+    "1860":"1860_Douglas_Guthrie.html",
+    "1896":"1896_Bryan_Boies.html",
+    "1916":"1916_Hughes_Burkett.html",
+    "1948":"1948_Dewey_Bricker.html",
+    "1960":"1960_Kennedy_Humphrey.html",
+    "1964":"1964_Goldwater_Miller.html",
+    "1968":"1968_Humphrey_Connally.html",
+    "1976":"1976_Carter_Church.html",
+    "1988":"1988_Bush_Dole.html",
+    "2000":"2000_Bush_Cheney.html",
+    "2012":"2012_Obama_Clinton.html",
+    "2016":"2016_Clinton_Booker.html",
+    "2016a":"2016a_Clinton_Booker.html",
+    "2020":"2020_Biden_Bass.html"
+}
+
+// Global Text Variables
+
+// Code 1 Text
+e.SelectText = "Please select the election you will run in:";
+e.CandidText = "Please select your candidate:";
+e.VpText = "Please select your running mate:";
+e.PartyText = "Party:";
+e.HomeStateText = "Home State:";
+// Ending Popups
+e.ElectionPopup = "Election night has arrived. Settle in and wait for the returns, however                 long it may take. Best of luck!";
+e.WinPopup = "Congratulations! You won this year's election! Click OK to view the                     rest of the returns, or skip straight to the final results. We hope                     you have a nice victory speech prepared for your supporters.";
+e.LosePopup = "Sorry. You have lost the election this time. Click OK to view the                     rest of the returns, or skip straight to the final results. We hope                     you have a nice concession speech prepared.";
+
+e.finalPercentDigits = 1; // for PV % in final results
+e.statePercentDigits = 2;
+e.SelAnsContText = "Please select an answer before continuing!";
+
+function substitutePlaceholders(str) {
+  if (!str || typeof str !== "string") return str;
+  return str.replace(/\{\{(.*?)\}\}/g, (_, varName) => {
+    try {
+      return (window[varName] !== undefined) ? window[varName] : `{{${varName}}}`;
+    } catch {
+      return `{{${varName}}}`;
+    }
+  });
+}
+
 
 evaluate = (code) => {
     eval(code);
@@ -60,7 +123,7 @@ var fileExists = function(url) {
     return req.status === 200;
 };
 
-lastUpdatedDate="2023-08-20"
+lastUpdatedDate="2026-01-30"
 var RecReading;
 
 achList = {
@@ -450,7 +513,7 @@ function openInfoMenu() {
       </ul>
 
       <h3>Recent patch notes:</h3>
-      <p>Added 「Sea to Shining Sea」 mode. Check it out in base 2020 (maybe more when you read this). <b>Thank you to <span style='color:red'>u/Tom1923</span> for his help on this.</b></p>
+      <p>Added <a href="https://www.reddit.com/r/thecampaigntrail/comments/1kqpl9o/nct_and_cts_update_variables_in/" target="_blank">support for variables to be used in Questions/Answers/Advisor Feedback</a>.</p>
     </div>
     `;
 
@@ -1340,14 +1403,16 @@ function divideElectoralVotesProp(e, t) {
         return;
     }
 
+    e.answer_count = 4;
+
     const o = (t, e = campaignTrail_temp) => {
         for (var i = [], a = 0; a < e.answers_json.length && (e.answers_json[a].fields.question != e.questions_json[e.question_number].pk || (i.push({
                 key: a,
                 order: Math.random()
-            }), 4 != i.length)); a++);
+            }), e.answer_count != i.length)); a++);
         P(i, "order");
         var s = "";
-        for (a = 0; a < i.length; a++) s += '<input type="radio" name="game_answers" class="game_answers"             id="game_answers[' + a.toString() + ']" value="' + e.answers_json[i[a].key].pk + '"/>\t\t    <label for="game_answers[' + a.toString() + ']">' + e.answers_json[i[a].key].fields.description + "</label><br>";
+        for (a = 0; a < i.length; a++) s += '<input type="radio" name="game_answers" class="game_answers"             id="game_answers[' + a.toString() + ']" value="' + e.answers_json[i[a].key].pk + '"/>\t\t    <label for="game_answers[' + a.toString() + ']">' + substitutePlaceholders(e.answers_json[i[a].key].fields.description) + "</label><br>";
         var l = '<img id="candidate_pic" src="' + e.candidate_image_url + '">    <img id="running_mate_pic" src="' + e.running_mate_image_url + '">    <div class="inner_window_sign_display">        <div id="progress_bar">\t    <h3>Question ' + (e.question_number + 1) + " of " + e.global_parameter_json[0].fields.question_count + '</h3>        </div>        <div id="campaign_sign">        <p>' + e.candidate_last_name + "</p>        <p>" + e.running_mate_last_name + "</p>        </div>    </div>";
         let game_winArr = Array.from($("#game_window")[0].children)
         let shining_button = e.game_type_id == "3" ? `
@@ -1355,7 +1420,7 @@ function divideElectoralVotesProp(e, t) {
         ` : "";
         let z = `
         <div class="inner_inner_window">
-            <h3>${e.questions_json[e.question_number].fields.description}</h3>
+            <h3>${substitutePlaceholders(e.questions_json[e.question_number].fields.description)}</h3>
             <div id="question_form">
                 <form name="question">${s}</form>
             </div>
@@ -1412,7 +1477,7 @@ function divideElectoralVotesProp(e, t) {
             for (var t = u(), i = "", a = 0; a < t.length; a++) i += '            <li><span style="color:' + t[a].color + "; background-color: " + t[a].color + '">--</span> ' + t[a].last_name + ":  0</li>";
             var s = S(e.election_id),
                 n = e.election_json[s].fields.winning_electoral_vote_number;
-            $("#game_window").html('        <div class="game_header">            ' + corrr + '        </div>        <div id="main_content_area">            <div id="map_container"></div>            <div id="menu_container">                <div id="overall_result_container">                    <div id="overall_result">                        <h3>ELECTORAL VOTES</h3>                        <ul>' + i + "</ul>                        <p>0% complete</br>" + n + ' to win</p>                    </div>                </div>                <div id="state_result_container">                    <div id="state_result">                        <h3>STATE RESULTS</h3>                        <p>Click on a state to view detailed results (once returns for that state arrive).</p>                    </div>                </div>            </div>        </div>        <div id="map_footer">        <button id="final_result_button">Go to Final Results</button>        </div>        <div class="overlay" id="election_night_overlay"></div>        <div class="overlay_window" id="election_night_window">            <div class="overlay_window_content" id="election_night_content">            <h3>Advisor Feedback</h3>            <img src="' + e.election_json[s].fields.advisor_url + '" width="208" height="128"/>            <p>Election night has arrived. Settle in and wait for the returns, however                 long it may take. Best of luck!</p>            </div>            <div class="overlay_buttons" id="election_night_buttons">            <button id="ok_button">OK</button><br>            </div>        </div>');
+            $("#game_window").html('        <div class="game_header">            ' + corrr + '        </div>        <div id="main_content_area">            <div id="map_container"></div>            <div id="menu_container">                <div id="overall_result_container">                    <div id="overall_result">                        <h3>ELECTORAL VOTES</h3>                        <ul>' + i + "</ul>                        <p>0% complete</br>" + n + ' to win</p>                    </div>                </div>                <div id="state_result_container">                    <div id="state_result">                        <h3>STATE RESULTS</h3>                        <p>Click on a state to view detailed results (once returns for that state arrive).</p>                    </div>                </div>            </div>        </div>        <div id="map_footer">        <button id="final_result_button">Go to Final Results</button>        </div>        <div class="overlay" id="election_night_overlay"></div>        <div class="overlay_window" id="election_night_window">            <div class="overlay_window_content" id="election_night_content">            <h3>Advisor Feedback</h3>            <img src="' + e.election_json[s].fields.advisor_url + '" width="208" height="128"/>            <p>' + e.ElectionPopup + '</p>            </div>            <div class="overlay_buttons" id="election_night_buttons">            <button id="ok_button">OK</button><br>            </div>        </div>');
             var lTemp = function() {
                 for (var t = {}, i = 0; i < e.states_json.length; i++) t[e.states_json[i].fields.abbr] = {
                     fill: "#C9C9C9"
@@ -1438,6 +1503,11 @@ function divideElectoralVotesProp(e, t) {
         }();
         e.final_overall_results = [];
         for (var t = 0; t < e.final_state_results[0].result.length; t++) e.final_overall_results.push({
+	    candidate_name: 
+		e.candidate_json.find(({ pk }) => pk === e.final_state_results[0].result[t].candidate)?.fields.first_name +
+		' ' +
+		e.candidate_json.find(({ pk }) => pk === e.final_state_results[0].result[t].candidate)?.fields.last_name,
+	    candidate_color: e.candidate_json.find(({ pk }) => pk === e.final_state_results[0].result[t].candidate)?.fields.color_hex,
             candidate: e.final_state_results[0].result[t].candidate,
             electoral_votes: 0,
             popular_votes: 0
@@ -1491,8 +1561,8 @@ function divideElectoralVotesProp(e, t) {
                     });
                     for (var n = 0; n < e.final_overall_results.length; n++) e.final_overall_results[n].electoral_votes > s[1] && (s[1] = e.final_overall_results[n].electoral_votes);
                     if (s[0] < o && s[1] >= o) {
-                        if (e.final_overall_results[0].candidate == e.candidate_id) var b = "Congratulations! You won this year's election! Click OK to view the                     rest of the returns, or skip straight to the final results. We hope                     you have a nice victory speech prepared for your supporters.";
-                        else if (e.final_overall_results[0].candidate != e.candidate_id) var b = "Sorry. You have lost the election this time. Click OK to view the                     rest of the returns, or skip straight to the final results. We hope                     you have a nice concession speech prepared.";
+                        if (e.final_overall_results[0].candidate == e.candidate_id) var b = '' + e.WinPopup + '';
+                        else if (e.final_overall_results[0].candidate != e.candidate_id) var b = '' + e.LosePopup + '';
                         $("#game_window").append('            <div class="overlay" id="election_night_overlay"></div>            <div class="overlay_window" id="election_night_window">                <div class="overlay_window_content" id="election_night_content">                <h3>Advisor Feedback</h3>                <img src="' + e.election_json[l].fields.advisor_url + '" width="208" height="128"/><p>' + b + '</p></div>                <div class="overlay_buttons" id="winner_buttons">                <button id="ok_button">OK</button><br>                <button id="overlay_result_button">Go to Final Results</button>                </div>            </div>'), $("#ok_button").click(function() {
                             $("#election_night_overlay").remove(), $("#election_night_window").remove(), results_timeout = setTimeout(function() {
                                 t(i, a)
@@ -1518,7 +1588,7 @@ function divideElectoralVotesProp(e, t) {
                 t = i;
                 break
             }
-        $("#candidate_description_window").html('<div class="person_image" id="candidate_image">            <img src="' + e.candidate_json[t].fields.image_url + '" width="210" height="250"/>        </div>        <div class="person_summary" id="candidate_summary">        <ul><li>Name: ' + e.candidate_json[t].fields.first_name + " " + e.candidate_json[t].fields.last_name + "</li>        <li>Party: " + e.candidate_json[t].fields.party + "</li>        <li>Home State: " + e.candidate_json[t].fields.state + "</li>        </ul>" + e.candidate_json[t].fields.description + "</div>")
+        $("#candidate_description_window").html('<div class="person_image" id="candidate_image">            <img src="' + e.candidate_json[t].fields.image_url + '" width="210" height="250"/>        </div>        <div class="person_summary" id="candidate_summary">        <ul><li>Name: ' + e.candidate_json[t].fields.first_name + " " + e.candidate_json[t].fields.last_name + "</li>        <li>" + e.PartyText + " " + e.candidate_json[t].fields.party + "</li>        <li>" + e.HomeStateText + " " + e.candidate_json[t].fields.state + "</li>        </ul>" + e.candidate_json[t].fields.description + "</div>")
     }
 
     function i() {
@@ -1527,7 +1597,7 @@ function divideElectoralVotesProp(e, t) {
                 t = i;
                 break
             }
-        $("#running_mate_description_window").html('<div class="person_image" id="running_mate_image">            <img src="' + e.candidate_json[t].fields.image_url + '" width="210" height="250"/>        </div>        <div class="person_summary" id="running_mate_summary">        <ul><li>Name: ' + e.candidate_json[t].fields.first_name + " " + e.candidate_json[t].fields.last_name + "</li>        <li>Party: " + e.candidate_json[t].fields.party + "</li>        <li>Home State: " + e.candidate_json[t].fields.state + "</li>        </ul>" + e.candidate_json[t].fields.description_as_running_mate + "</div>")
+        $("#running_mate_description_window").html('<div class="person_image" id="running_mate_image">            <img src="' + e.candidate_json[t].fields.image_url + '" width="210" height="250"/>        </div>        <div class="person_summary" id="running_mate_summary">        <ul><li>Name: ' + e.candidate_json[t].fields.first_name + " " + e.candidate_json[t].fields.last_name + "</li>        <li>" + e.PartyText + " " + e.candidate_json[t].fields.party + "</li>        <li>" + e.HomeStateText + " " + e.candidate_json[t].fields.state + "</li>        </ul>" + e.candidate_json[t].fields.description_as_running_mate + "</div>")
     }
 
     function a(e) {
@@ -1584,29 +1654,7 @@ function divideElectoralVotesProp(e, t) {
                 if (real) {
                     return yearbit + "_" + lastnamebit + "_" + veeplastname + ".html"
                 }
-                // corrects pairing if haven't returned yet
-
-                // corrects cand
-                realCandidates = ree.candidate_json.filter(f=>f.fields.is_active>0).map(f=>f.pk)
-                currCandData = copy(e.candidate_json[e.candidate_json.map(f=>f.pk).indexOf(Number(cand))]) // gets current candidate json data
-
-                if (!realCandidates.includes(Number(cand))) {
-                    alert(`Error Loading Code 2: Cannot find candidate with PK ${Number(cand)}! Please make sure your candidate PKs are consistent between Code 1 and Code 2.`)
-                    window.location.reload()
-                } else {
-                    fakeId = cand
-                }
-
-                // ensures correct running mate
-
-                correctPair = ree.running_mate_json[ree.running_mate_json.map(f=>f.fields.candidate).indexOf(Number(fakeId))]
-                correctRunningMate = correctPair.fields.running_mate
-                correctIndex = ree.candidate_json.map(f=>f.pk).indexOf(correctRunningMate)
-                oldRM = e.candidate_json[e.candidate_json.map(f=>f.pk).indexOf(Number(running_mate))]
-                veeplastname = ree.candidate_json[correctIndex].fields.last_name
-                e.candidate_json[correctIndex] = oldRM //sets to new RM (lmao this is such a fucking stupid solution)
-
-                return yearbit + "_" + lastnamebit + "_" + veeplastname + ".html"
+                return baseScenarioDict[yearbit]
             } else {
                 return campaignTrail_temp.election_json[findFromPK(campaignTrail_temp.election_json, id)].fields.year + "_" + campaignTrail_temp.candidate_json[findFromPK(campaignTrail_temp.candidate_json, cand)].fields.last_name + "_" + campaignTrail_temp.candidate_json[findFromPK(campaignTrail_temp.candidate_json, running_mate)].fields.last_name + ".html"
             }
@@ -1787,12 +1835,12 @@ function divideElectoralVotesProp(e, t) {
                         aaa = "../static/questionset/" + aaa
                         try {
                             $("#game_window").load(aaa, function() {
-                                e = campaignTrail_temp
-                                eArr = e.temp_election_list.map(a=>a.id).indexOf(e.election_id)
-                                year = e.temp_election_list[eArr].display_year
-                                cand = e.candidate_json[e.candidate_json.map(a=>a.pk).indexOf(e.candidate_id)].fields.last_name
-                                run = e.candidate_json[e.candidate_json.map(a=>a.pk).indexOf(e.running_mate_id)].fields.last_name
-                                theorId = year+"_"+cand+run
+								e = campaignTrail_temp
+								eArr = e.temp_election_list.map(a=>a.id).indexOf(e.election_id)
+								year = e.temp_election_list[eArr].display_year
+								cand = e.candidate_json[e.candidate_json.map(a=>a.pk).indexOf(e.candidate_id)].fields.last_name
+								run = e.candidate_json[e.candidate_json.map(a=>a.pk).indexOf(e.running_mate_id)].fields.last_name
+								theorId = `${e.code2_id || year}_${cand}${run}`
                                 //theorId = $("#modSelect")[0].value
 
                                 var client = new XMLHttpRequest();
@@ -1974,7 +2022,7 @@ function divideElectoralVotesProp(e, t) {
                     break
                 }
             if (1 == i) {
-                var n = '                    <div class="overlay" id="visit_overlay"></div>                    <div class="overlay_window" id="visit_window">                        <div class="overlay_window_content" id="visit_content">                        <h3>Advisor Feedback</h3>                        <img src="' + e.election_json[a].fields.advisor_url + '" width="208" height="128"/>                        <p>' + e.answer_feedback_json[s].fields.answer_feedback + '</p>                        </div>                        <div class="overlay_buttons" id="visit_buttons">                        <button id="ok_button">OK</button><br><button id="no_feedback_button">Don\'t give me advice</button>                                                </div>                    </div>';
+                var n = '                    <div class="overlay" id="visit_overlay"></div>                    <div class="overlay_window" id="visit_window">                        <div class="overlay_window_content" id="visit_content">                        <h3>Advisor Feedback</h3>                        <img src="' + e.election_json[a].fields.advisor_url + '" width="208" height="128"/>                        <p>' + substitutePlaceholders(e.answer_feedback_json[s].fields.answer_feedback) + '</p>                        </div>                        <div class="overlay_buttons" id="visit_buttons">                        <button id="ok_button">OK</button><br><button id="no_feedback_button">Don\'t give me advice</button>                                                </div>                    </div>';
                 $("#game_window").append(n);
                 $("#ok_button").click(function() {
                     nextQuestion()
@@ -3299,7 +3347,7 @@ _ = '   <div class="game_header"> ' + corrr + ' </div> <div id="main_content_are
         for (i = 0; i < e.final_overall_results.length; i++) {
             var s = E(e.final_overall_results[i].candidate),
                 n = e.candidate_json[s].fields.color_hex;
-            a += '            <tr><td style="text-align: left;">            <span style="background-color: ' + n + "; color: " + n + ';">----</span> ' + (e.candidate_json[s].fields.first_name + " " + e.candidate_json[s].fields.last_name) + "</td><td> " + e.final_overall_results[i].electoral_votes + " </td><td> " + M(e.final_overall_results[i].popular_votes) + " </td><td> " + (e.final_overall_results[i].popular_votes / t * 100).toFixed(1) + "% </td></tr>"
+            a += '            <tr><td style="text-align: left;">            <span style="background-color: ' + n + "; color: " + n + ';">----</span> ' + (e.candidate_json[s].fields.first_name + " " + e.candidate_json[s].fields.last_name) + "</td><td> " + e.final_overall_results[i].electoral_votes + " </td><td> " + M(e.final_overall_results[i].popular_votes) + " </td><td> " + (e.final_overall_results[i].popular_votes / t * 100).toFixed(e.finalPercentDigits) + "% </td></tr>"
         }
         let o;
         if ("None" != e.percentile) var l = "<p>You have done better than approximately <strong>" + e.percentile + "%</strong> of the games that have been played with your candidate and difficulty level.</p>";
@@ -3317,21 +3365,34 @@ _ = '   <div class="game_header"> ' + corrr + ' </div> <div id="main_content_are
            } else {
                 game_url = null
            }
-           histlength=0
-           
-           if (HistEV.length==2) 
-           {
-           var r='<div class="game_header">' + corrr + '</div> <div id="main_content_area"> <div id="overall_details_container"> <h3>Overall Election Details</h3> <div id="overall_election_details"> <h4>Results - This Game</h4> <table> <tbody> <tr> <th>Candidate</th> <th>Electoral Votes</th> <th>Popular Votes</th> <th>Popular Vote %</th> </tr>' + a + '</table>' + l + '</div> <div id="overall_election_details"> <h4>Results - Historical</h4> <table> <tbody> <tr> <th>Candidate</th> <th>Electoral Votes</th> <th>Popular Votes</th> <th>Popular Vote %</th> </tr> <tr> <td style="text-align: left;"><span style="background-color:' + HistHexcolour[0] + '; color:' + HistHexcolour[0] + ';">----</span>' + HistName[0] + '</td> <td>' + HistEV[0] + '</td> <td>' + HistPV[0] + '</td> <td>' + HistPVP[0] + '</td> </tr> <tr> <td style="text-align: left;"><span style="background-color:' + HistHexcolour[1] + '; color:' + HistHexcolour[1] + ';">----</span>' + HistName[1] + '</td> <td>' + HistEV[1] + '</td> <td>' + HistPV[1] + '</td> <td>' + HistPVP[1] + '</td> </tr></tbody> </table><p><b><a style="font-size:15px;" href="'+game_url+'">GAME LINK</a><br> <button id="ExportFileButton" onclick="exportResults()" style="position: absolute; margin-top:10px;margin-left:-70px;">Export Game as File</button></b></p><br><br /> <br /></div></div><div id="map_footer"><button class="final_menu_button" id="overall_results_button">Final Election Results</button><button class="final_menu_button" id="final_election_map_button">Election Map</button><button class="final_menu_button" id="state_results_button">Results by State</button><button class="final_menu_button" id="overall_details_button" disabled="disabled">Overall Results Details</button><button class="final_menu_button" id="recommended_reading_button">Further Reading</button><button class="final_menu_button" id="play_again_button">Play Again!</button></div> </div> </div> </div>' 
-           } 
-           else if (HistEV.length==3) 
-           {
-           var r='<div class="game_header">' + corrr + '</div> <div id="main_content_area"> <div id="overall_details_container"> <h3>Overall Election Details</h3> <div id="overall_election_details"> <h4>Results - This Game</h4> <table> <tbody> <tr> <th>Candidate</th> <th>Electoral Votes</th> <th>Popular Votes</th> <th>Popular Vote %</th> </tr>' + a + '</table>' + l + '</div> <div id="overall_election_details"> <h4>Results - Historical</h4> <table> <tbody> <tr> <th>Candidate</th> <th>Electoral Votes</th> <th>Popular Votes</th> <th>Popular Vote %</th> </tr> <tr> <td style="text-align: left;"><span style="background-color:' + HistHexcolour[0] + '; color:' + HistHexcolour[0] + ';">----</span>' + HistName[0] + '</td> <td>' + HistEV[0] + '</td> <td>' + HistPV[0] + '</td> <td>' + HistPVP[0] + '</td> </tr> <tr> <td style="text-align: left;"><span style="background-color:' + HistHexcolour[1] + '; color:' + HistHexcolour[1] + ';">----</span>' + HistName[1] + '</td> <td>' + HistEV[1] + '</td> <td>' + HistPV[1] + '</td> <td>' + HistPVP[1] + '</td> </tr> <tr> <td style="text-align: left;"><span style="background-color:' + HistHexcolour[2] + '; color:' + HistHexcolour[2] + ';">----</span>' + HistName[2] + '</td> <td>' + HistEV[2] + '</td> <td>' + HistPV[2] + '</td> <td>' + HistPVP[2] + '</td> </tr></tbody> </table><p><b><a style="font-size:15px;" href="'+game_url+'">GAME LINK</a><br> <button id="ExportFileButton" onclick="exportResults()" style="position: absolute; margin-top:10px;margin-left:-70px;">Export Game as File</button></b></p><br><br /> <br /></div></div><div id="map_footer"><button class="final_menu_button" id="overall_results_button">Final Election Results</button><button class="final_menu_button" id="final_election_map_button">Election Map</button><button class="final_menu_button" id="state_results_button">Results by State</button><button class="final_menu_button" id="overall_details_button" disabled="disabled">Overall Results Details</button><button class="final_menu_button" id="recommended_reading_button">Further Reading</button><button class="final_menu_button" id="play_again_button">Play Again!</button></div> </div> </div> </div>' 
-           }
-           else 
-           {
-           var r='<div class="game_header">' + corrr + '</div> <div id="main_content_area"> <div id="overall_details_container"> <h3>Overall Election Details</h3> <div id="overall_election_details"> <h4>Results - This Game</h4> <table> <tbody> <tr> <th>Candidate</th> <th>Electoral Votes</th> <th>Popular Votes</th> <th>Popular Vote %</th> </tr>' + a + '</table>' + l + '</div> <div id="overall_election_details"> <h4>Results - Historical</h4> <table> <tbody> <tr> <th>Candidate</th> <th>Electoral Votes</th> <th>Popular Votes</th> <th>Popular Vote %</th> </tr> <tr> <td style="text-align: left;"><span style="background-color:' + HistHexcolour[0] + '; color:' + HistHexcolour[0] + ';">----</span>' + HistName[0] + '</td> <td>' + HistEV[0] + '</td> <td>' + HistPV[0] + '</td> <td>' + HistPVP[0] + '</td> </tr> <tr> <td style="text-align: left;"><span style="background-color:' + HistHexcolour[1] + '; color:' + HistHexcolour[1] + ';">----</span>' + HistName[1] + '</td> <td>' + HistEV[1] + '</td> <td>' + HistPV[1] + '</td> <td>' + HistPVP[1] + '</td> </tr> <tr> <td style="text-align: left;"><span style="background-color:' + HistHexcolour[2] + '; color:' + HistHexcolour[2] + ';">----</span>' + HistName[2] + '</td> <td>' + HistEV[2] + '</td> <td>' + HistPV[2] + '</td> <td>' + HistPVP[2] + '</td> </tr> <tr> <td style="text-align: left;"><span style="background-color:' + HistHexcolour[3] + '; color:' + HistHexcolour[3] + ';">----</span>' + HistName[3] + '</td> <td>' + HistEV[3] + '</td> <td>' + HistPV[3] + '</td> <td>' + HistPVP[3] + '</td> </tr> </tbody> </table><p><b><a style="font-size:15px;" href="'+game_url+'">GAME LINK</a><br> <button id="ExportFileButton" onclick="exportResults()" style="position: absolute; margin-top:10px;margin-left:-70px;">Export Game as File</button></b></p><br><br /> <br /></div></div><div id="map_footer"><button class="final_menu_button" id="overall_results_button">Final Election Results</button><button class="final_menu_button" id="final_election_map_button">Election Map</button><button class="final_menu_button" id="state_results_button">Results by State</button><button class="final_menu_button" id="overall_details_button" disabled="disabled">Overall Results Details</button><button class="final_menu_button" id="recommended_reading_button">Further Reading</button><button class="final_menu_button" id="play_again_button">Play Again!</button></div> </div> </div> </div>'  
-           }
-           
+            var r =
+            '<div class="game_header">' +
+            corrr +
+            '</div> <div id="main_content_area"> <div id="overall_details_container"> <h3>Overall Election Details</h3> <div id="overall_election_details"> <h4>Results - This Game</h4> <table> <tbody> <tr> <th>Candidate</th> <th>Electoral Votes</th> <th>Popular Votes</th> <th>Popular Vote %</th> </tr>' +
+            a +
+            "</table>" +
+            l +
+            '</div> <div id="overall_election_details"> <h4>Results - Historical</h4> <table> <tbody> <tr> <th>Candidate</th> <th>Electoral Votes</th> <th>Popular Votes</th> <th>Popular Vote %</th> </tr>';
+        
+        for (let i = 0; i < HistName.length; i++) {
+            r += '<tr> <td style="text-align: left;"><span style="background-color:' +
+            HistHexcolour[i] +
+            '; color:' +
+            HistHexcolour[i] +
+            ';">----</span>' +
+            HistName[i] +
+            '</td> <td>' +
+            HistEV[i] +
+            '</td> <td>' +
+            HistPV[i] +
+            '</td> <td>' +
+            HistPVP[i] +
+            '</td> </tr>';
+        }
+
+    r += '</tbody> </table><p><b><a style="font-size:15px;" href="' +
+        game_url +
+        '">GAME LINK</a><br> <button id="ExportFileButton" onclick="exportResults()" style="position: absolute; margin-top:10px;margin-left:-70px;">Export Game as File</button></b></p><br><br /> <br /></div></div><div id="map_footer"><button class="final_menu_button" id="overall_results_button">Final Election Results</button><button class="final_menu_button" id="final_election_map_button">Election Map</button><button class="final_menu_button" id="state_results_button">Results by State</button><button class="final_menu_button" id="overall_details_button" disabled="disabled">Overall Results Details</button><button class="final_menu_button" id="recommended_reading_button">Further Reading</button><button class="final_menu_button" id="play_again_button">Play Again!</button></div> </div> </div> </div>';  
            $("#game_window").html(r), $("#overall_results_button").click(function() {
             p()
         }), $("#final_election_map_button").click(function() {
@@ -3406,7 +3467,7 @@ _ = '   <div class="game_header"> ' + corrr + ' </div> <div id="main_content_are
             if (e.final_state_results[a].state == t)
                 for (var s = 0; s < e.final_state_results[a].result.length; s++) {
                     var n = E(e.final_state_results[a].result[s].candidate);
-                    i += "                    <tr><td>" + (e.candidate_json[n].fields.first_name + " " + e.candidate_json[n].fields.last_name) + "</td><td>" + M(e.final_state_results[a].result[s].votes) + "</td><td>" + (100 * e.final_state_results[a].result[s].percent).toFixed(2) + "</td><td>" + e.final_state_results[a].result[s].electoral_votes + "</td></tr>"
+                    i += "                    <tr><td>" + (e.candidate_json[n].fields.first_name + " " + e.candidate_json[n].fields.last_name) + "</td><td>" + M(e.final_state_results[a].result[s].votes) + "</td><td>" + (100 * e.final_state_results[a].result[s].percent).toFixed(e.statePercentDigits) + "</td><td>" + e.final_state_results[a].result[s].electoral_votes + "</td></tr>"
                 }
         return i += "</table>"
     }
@@ -3641,7 +3702,7 @@ _ = '   <div class="game_header"> ' + corrr + ' </div> <div id="main_content_are
 
     function C(t) {
         var i = S(t),
-            a = '    <div class="overlay" id="feedback_overlay"></div>    <div class="overlay_window" id="feedback_window">        <div class="overlay_window_content" id="feedback_content">        <h3>Advisor Feedback</h3>        <img src="' + e.election_json[i].fields.advisor_url + '" width="208" height="128"/>        <p>Please select an answer before continuing!</p>        </div>        <div id="visit_buttons">        <button id="ok_button">OK</button><br>        </div>    </div>';
+            a = '    <div class="overlay" id="feedback_overlay"></div>    <div class="overlay_window" id="feedback_window">        <div class="overlay_window_content" id="feedback_content">        <h3>Advisor Feedback</h3>        <img src="' + e.election_json[i].fields.advisor_url + '" width="208" height="128"/>        <p>' + e.SelAnsContText + '</p>        </div>        <div id="visit_buttons">        <button id="ok_button">OK</button><br>        </div>    </div>';
         $("#game_window").append(a), $("#ok_button").click(function() {
             $("#feedback_overlay").remove(), $("#feedback_window").remove()
         })
@@ -3676,7 +3737,7 @@ _ = '   <div class="game_header"> ' + corrr + ' </div> <div id="main_content_are
                             }
                         n += "<option value=" + e.candidate_json[_].pk + ">" + e.candidate_json[_].fields.first_name + " " + e.candidate_json[_].fields.last_name + "</option>"
                     }
-                let r = '        <div class="game_header">        ' + corrr + '        </div>        <div class="inner_window_w_desc" id="inner_window_4">            <div id="running_mate_form">            <form name="running mate">            <p><h3>Please select your running mate:</h3>            <select name="running_mate_id" id="running_mate_id">' + n + '</select>            </p>            </form>            </div>            <div class="person_description_window" id="running_mate_description_window">            </div>        <p><button class="person_button" id="running_mate_id_back">Back</button> <button class="person_button" id="running_mate_id_button">Continue</button>        </p>        </div>';
+                let r = '        <div class="game_header">        ' + corrr + '        </div>        <div class="inner_window_w_desc" id="inner_window_4">            <div id="running_mate_form">            <form name="running mate">            <p><h3>' + e.VpText + '</h3>            <select name="running_mate_id" id="running_mate_id">' + n + '</select>            </p>            </form>            </div>            <div class="person_description_window" id="running_mate_description_window">            </div>        <p><button class="person_button" id="running_mate_id_back">Back</button> <button class="person_button" id="running_mate_id_button">Continue</button>        </p>        </div>';
                 $("#game_window").html(r), $("#running_mate_id").ready(function() {
                         i()
                     }), $("#running_mate_id").change(function() {
@@ -3695,7 +3756,7 @@ _ = '   <div class="game_header"> ' + corrr + ' </div> <div id="main_content_are
                     e.shining = e.shining_info.map(f=>f.pk).includes(a);
 
                 for (var n = "", l = 0; l < e.candidate_json.length; l++) e.candidate_json[l].fields.election == a && 1 == e.candidate_json[l].fields.is_active && (n += "<option value=" + e.candidate_json[l].pk + ">" + e.candidate_json[l].fields.first_name + " " + e.candidate_json[l].fields.last_name + "</option>");
-                let o = '<div class="game_header">        ' + corrr + '    </div>    <div class="inner_window_w_desc" id="inner_window_3">        <div id="candidate_form">        <form name="candidate">            <p>            <h3>Please select your candidate:</h3>            <select name="candidate_id" id="candidate_id">' + n + '</select>            </p>        </form>        </div>        <div class="person_description_window" id="candidate_description_window">        </div>        <p><button class="person_button" id="candidate_id_back">Back</button> <button class="person_button" id="candidate_id_button">Continue</button>        </p>    </div>';
+                let o = '<div class="game_header">        ' + corrr + '    </div>    <div class="inner_window_w_desc" id="inner_window_3">        <div id="candidate_form">        <form name="candidate">            <p>            <h3>' + e.CandidText + '</h3>            <select name="candidate_id" id="candidate_id">' + n + '</select>            </p>        </form>        </div>        <div class="person_description_window" id="candidate_description_window">        </div>        <p><button class="person_button" id="candidate_id_back">Back</button> <button class="person_button" id="candidate_id_button">Continue</button>        </p>    </div>';
                 $("#game_window").html(o), $("#candidate_id").ready(function() {
                         t()
                     }), $("#candidate_id").change(function() {
@@ -3711,7 +3772,7 @@ _ = '   <div class="game_header"> ' + corrr + ' </div> <div id="main_content_are
                 for (var a = "", n = 0; n < e.temp_election_list.length; n++) 0 == e.temp_election_list[n].is_premium ? a += "<option value=" + e.temp_election_list[n].id + ">" + e.temp_election_list[n].display_year + "</option>" : 1 == e.show_premium ? a += "<option value=" + e.temp_election_list[n].id + ">" + e.temp_election_list[n].display_year + "</option>" : a += "<option value=" + e.temp_election_list[n].id + " disabled>" + e.temp_election_list[n].display_year + "</option>";
                 e.election_id = e.election_id ? e.election_id : e.election_json[0].pk
                 let inX = S(e.election_id)
-                var l = '<div class="game_header">            ' + corrr + '        </div>        <div class="inner_window_w_desc" id="inner_window_2">            <div id="election_year_form">            <form name="election_year">            <p>                <h3>Please select the election you will run in:</h3>    \t\t    <select name="election_id" id="election_id">' + a + '</select>            </p>            </form>            <div class="election_description_window" id="election_description_window">                <div id="election_image">                    <img src="' + e.election_json[inX].fields.image_url + '" width="300" height="160"/>                </div>                <div id="election_summary">' + e.election_json[inX].fields.summary + '</div>            </div>        </div>        <p><button id="election_id_button">Continue</button></p> <p id="credits">This scenario was made by ' + e.credits + '.</p>';
+                var l = '<div class="game_header">            ' + corrr + '        </div>        <div class="inner_window_w_desc" id="inner_window_2">            <div id="election_year_form">            <form name="election_year">            <p>                <h3>' + e.SelectText + '</h3>    \t\t    <select name="election_id" id="election_id">' + a + '</select>            </p>            </form>            <div class="election_description_window" id="election_description_window">                <div id="election_image">                    <img src="' + e.election_json[inX].fields.image_url + '" width="300" height="160"/>                </div>                <div id="election_summary">' + e.election_json[inX].fields.summary + '</div>            </div>        </div>        <p><button id="election_id_button">Continue</button></p> <p id="credits">This scenario was made by ' + e.credits + '.</p>';
                 $("#game_window").html(l)
                 $("#election_id")[0].value=e.election_id
                 $("#election_id").change(function() {
