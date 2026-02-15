@@ -244,12 +244,12 @@ achList = {
     //1960
     "BCitsHard": [
         "Not Because It Is Easy, But Because It Is Hard",
-        "Win as John Kennedy on impossible.",
+        "Win as John Kennedy on Hard difficulty.",
         "</table><br><b><em>1960</em></b><br><table>"
     ],
     "BCitsEasy": [
         "Not Because It Is Hard, But Because It Is Easy",
-        "Win less then 100 Electoral Votes as John Kennedy on Cakewalk difficulty",
+        "Win less then 100 Electoral Votes as John Kennedy on Cakewalk difficulty.",
     ],
     "Vice": [
         "The Vice With No Vice",
@@ -2982,15 +2982,15 @@ function divideElectoralVotesProp(e, t) {
 
                 // ### 1960 ###
 
-                // Not Because It Is Easy, But Because It Is Hard: Win as JFK in 1960 on impossible.
-                if (!modded && !run.achievements["BCitsHard"] && e.candidate_last_name == "Kennedy" && e.election_id == 11 && campaignTrail_temp.difficulty_level_multiplier <= 0.9 && campaignTrail_temp.final_outcome=="win") {
+                // Not Because It Is Easy, But Because It Is Hard: Win as JFK in 1960 on Hard difficulty.
+                if (!modded && !run.achievements["BCitsHard"] && e.candidate_last_name == "Kennedy" && e.election_id == 11 && campaignTrail_temp.difficulty_level_multiplier <= 0.95 && campaignTrail_temp.final_outcome=="win") {
                     unlockAchievement(among, "BCitsHard", "", "<b>Not because it is easy, but because it is hard.</b>")
                 } else
-                //Not because its hard, but because its easy: Win less then 100 Electoral Votes as John F. Kennedy on Cakewalk difficulty
+                //Not because its hard, but because its easy: Win less then 100 Electoral Votes as John F. Kennedy on Cakewalk difficulty.
                 if (!modded && !run.achievements["BCitsEasy"] && e.candidate_last_name =="Kennedy" &&  campaignTrail_temp.election_id == 11 && campaignTrail_temp.difficulty_level_multiplier == 1.33 && campaignTrail_temp.final_overall_results[n].electoral_votes<100) {
                     unlockAchievement(among, "BCitsEasy", "", "<b>Not because it is hard, but because it is easy.</b>")
                 } else
-                 //The Vice With No Vice: Win as Nixon/Goldwater on normal in 1960
+                 //The Vice With No Vice: Win as Nixon/Goldwater on normal in 1960.
                  if (!modded && !run.achievements["Vice"] && e.election_id == 11 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && campaignTrail_temp.final_outcome=="win" && campaignTrail_temp.running_mate_last_name=="Goldwater") {
                     unlockAchievement(among, "Vice", "", "<b>The Vice With No Vice</b>")
                 } else
@@ -3021,7 +3021,7 @@ function divideElectoralVotesProp(e, t) {
                 // ###### MODS ######
 
         		// ### 2024G ###
-                // You WILL win Oregon - Removed because that mod fucking sucks and deserves nothing
+                // You WILL win Oregon - Removed  that mod fucking sucks and deserves nothing
                 /*
                 if (!run.achievements["youwillwinoregon"] && e.candidate_last_name == "Carlson" && e.election_id == 20 && campaignTrail_temp.difficulty_level_multiplier <= 0.97 && 23 == campaignTrail_temp.final_state_results[36].result[0].candidate==200 && e.final_outcome =="lose") {
                     unlockAchievement(among, "youwillwinoregon", "", "You <b>WILL</b> win Oregon")
