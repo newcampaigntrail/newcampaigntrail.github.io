@@ -2939,7 +2939,7 @@ function divideElectoralVotesProp(e, t) {
                 } else
                 // Death Swap - Win as Al Gore while losing the popular vote.
                 if (!modded && !run.achievements["swap"] && e.election_id == 9 && e.candidate_last_name == "Gore" && e.difficulty_level_multiplier <= 0.97 && e.final_outcome == "win" && e.final_overall_results[0].popular_votes < e.final_overall_results[1].popular_votes) {
-                    unlockAchievement(among, "swap", "", "<b>I'm My Own Master Now</b>")
+                    unlockAchievement(among, "swap", "", "<b>Death Swap</b>")
                 } else
                                 // Art Imitates Life - Get the special ending for this election based on real life occurances.
                 if (campaignTrail_temp.election_id == 9) {
