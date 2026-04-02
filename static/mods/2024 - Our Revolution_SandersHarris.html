@@ -56014,7 +56014,7 @@
 	var biden_ending = false
 	var speaker_cooperativeness=0 //default to Kevin McCarthy if not specified.
 	var surprise_boost = "R" //who benefits from the polling miss at the end
-	var poll_adjust = 0 //for the purpose of adjusting at the end
+	var poll_adjust = 0 //for the purpose of adjusting at the end. For calibration, -0.074 -> no nationwide bias.
 	
 	var boost_list={
 		302: {},
@@ -57528,6 +57528,7 @@
 	function applyOpponent(OpponentValue) {
 	//1 - Trump/Vance. 2 - Trump/Burgum. 3 - Trump/Rubio. 4 - Trump/Scott. 5 - Trump Jr/Ramaswamy. 6 - DeSantis/Burgum. 7 - Hawley/Vance. 11 - Vance/Trump Jr. 12 - Burgum/Trump Jr. 13 - Rubio/Trump Jr. 14 - Scott/Trump Jr. 15 - Ramaswamy/Lara Trump. 16 - Burgum/Rubio. 17 - Vance/Cotton. 
 		if(OpponentValue==1) {
+			//poll bias: base. Roughly +3.5% R margin at end.
 			applySalience(113,0.15) //increases importance of immigration in the election
 			e.candidate_json[2].fields.first_name="Donald"
 			e.candidate_json[2].fields.last_name="Trump" 
@@ -57580,8 +57581,9 @@
 			e.candidate_json[2].fields.color_hex="#910c0c" //Trump color hex (also base hex) - resetting in case player has messed around with setting multiple opponents or something.
 		}
 		else if(OpponentValue==2) {
-			applyDrift(301,0.02) //will be canceled out at end. Partly cancels out polling bias nationally due to less non-college dominance
-			poll_adjust-=0.02 //to be canceled out at end
+			//poll bias: smaller. Roughly +1.5% R margin at end.
+			applyDrift(301,0.04) //will be canceled out at end. Partly cancels out polling bias nationally due to less non-college dominance
+			poll_adjust-=0.04 //to be canceled out at end
 			surprise_boost = "R" //for feedback
 			applySalience(110,0.075) //increases importance of econ in the election
 			applySalience(113,0.075) //increases importance of immigration in the election
@@ -57646,8 +57648,9 @@
 			e.candidate_json[2].fields.color_hex="#910c0c" //Trump color hex (also base hex) - resetting in case player has messed around with setting multiple opponents or something.
 		}
 		else if(OpponentValue==3) {
-			applyDrift(301,0.02) //will be canceled out at end. Partly cancels out polling bias nationally due to less non-college dominance
-			poll_adjust-=0.02 //to be canceled out at end
+			//poll bias: smaller. Roughly +1.5% R margin at end.
+			applyDrift(301,0.04) //will be canceled out at end. Partly cancels out polling bias nationally due to less non-college dominance
+			poll_adjust-=0.04 //to be canceled out at end
 			surprise_boost = "R" //for feedback
 			applySalience(111,0.075) //increases importance of globalism/foreign policy in the election
 			applySalience(113,0.075) //increases importance of immigration in the election
@@ -57711,8 +57714,9 @@
 			e.candidate_json[2].fields.color_hex="#910c0c" //Trump color hex (also base hex) - resetting in case player has messed around with setting multiple opponents or something.
 		}
 		else if(OpponentValue==4) {
-			applyDrift(301,0.02) //will be canceled out at end. Partly cancels out polling bias nationally due to less non-college dominance
-			poll_adjust-=0.02 //to be canceled out at end
+			//poll bias: smaller. Roughly +2% R margin at end.
+			applyDrift(301,0.03) //will be canceled out at end. Partly cancels out polling bias nationally due to less non-college dominance
+			poll_adjust-=0.03 //to be canceled out at end
 			surprise_boost = "R" //for feedback
 			applySalience(112,0.075) //increases importance of social policy in the election
 			applySalience(113,0.075) //increases importance of immigration policy in the election
@@ -57776,8 +57780,9 @@
 			e.candidate_json[2].fields.color_hex="#910c0c" //Trump color hex (also base hex) - resetting in case player has messed around with setting multiple opponents or something.
 		}
 		else if(OpponentValue==5) {
-			applyDrift(301,-0.02) //Trump Jr is extra MAGA, so polling miss favors Rs a little more
-			poll_adjust+=0.02 //to be canceled out at end
+			//poll bias: larger. Roughly +5.5% R margin at end.
+			applyDrift(301,-0.04) //Trump Jr is extra MAGA, so polling miss favors Rs a little more
+			poll_adjust+=0.04 //to be canceled out at end
 			surprise_boost = "R"
 			applySalience(111,0.15) //increases importance of globalism in the election
 			worker_approval-=0.5 //more populist than his dad
@@ -57842,8 +57847,9 @@
 			e.candidate_json[2].fields.color_hex="#730808" //Trump Jr color hex
 		}
 		else if(OpponentValue==6) {
-			applyDrift(301,0.08) //DeSantis is so normie that Ds are favored in polling miss
-			poll_adjust-= 0.08 //to be canceled out at end
+			//poll bias: reversed. Roughly +1.5% D margin at end.
+			applyDrift(301,0.1) //DeSantis is so normie that Ds are favored in polling miss
+			poll_adjust-= 0.1 //to be canceled out at end
 			surprise_boost = "D"
 			applySalience(112,0.15) //increases importance of social issues in the election
 			worker_approval+=1.25 //normie Republican ticket 
@@ -57902,6 +57908,7 @@
 			e.candidate_json[2].fields.color_hex="#951633" //DeSantis color hex. Am told this is meant to reference RFK Jr's color in DSA.
 		}
 		else if(OpponentValue==7) {
+			//poll bias: larger. Roughly +4.5% R margin at end.
 			applyDrift(301,-0.02) //Hawley is also kinda Extra MAGA
 			poll_adjust+= 0.02 //to be canceled out at end
 			surprise_boost = "R"
@@ -57963,6 +57970,7 @@
 			e.candidate_json[2].fields.color_hex="#bf5252" //Josh Hawley color hex
 		}
 		else if(OpponentValue==11) { //for assassination results, don't overwrite issue scores because keep the effect of previous attacks.
+			//poll bias: larger. Roughly +4.5% R margin at end.
 			applyDrift(301,-0.02) //Vance is kinda Extra MAGA
 			poll_adjust+= 0.02
 			surprise_boost = "R"
@@ -57991,8 +57999,9 @@
 			e.candidate_json[2].fields.color_hex="#662828" //JD Vance color hex
 		}
 		else if(OpponentValue==12) {
-			applyDrift(301,0.1) //Polling miss now favors Ds
-			poll_adjust-= 0.1
+			//poll bias: Reversed. Roughly +4.5% D margin at end.
+			applyDrift(301,0.12) //Polling miss now favors Ds
+			poll_adjust-= 0.12
 			surprise_boost = "D"
 			applySalience(110,0.075) //econ more important
 			applySalience(113,-0.075) //immigration less important
@@ -58020,6 +58029,7 @@
 			e.candidate_json[2].fields.color_hex="#a83232" //Burgum color hex
 		}
 		else if(OpponentValue==13) {
+			//poll bias: Reversed. Roughly +3.5% D margin at end.
 			applyDrift(301,0.1) //Polling miss now favors Ds
 			poll_adjust-= 0.1
 			surprise_boost = "D"
@@ -58047,8 +58057,9 @@
 			e.candidate_json[2].fields.color_hex="#bf1526" //Rubio color hex
 		}
 		else if(OpponentValue==14) {
-			applyDrift(301,0.08) //Polling miss now favors Ds
-			poll_adjust-= 0.08
+			//poll bias: Reversed. Roughly +2.5% D margin at end.
+			applyDrift(301,0.09) //Polling miss now favors Ds
+			poll_adjust-= 0.09
 			surprise_boost = "D"
 			worker_approval+=1.25 //ticket moves to right on econ 
 			dove_approval+=1 //ticket moves more globalist
@@ -58074,6 +58085,7 @@
 			e.candidate_json[2].fields.color_hex="#d13838" //Scott color hex
 		}
 		else if(OpponentValue==15) {
+			//poll bias: Larger. Roughly +6.5% R margin at end.
 			applyDrift(301,-0.02) //Vivek is also Extra MAGA
 			poll_adjust+= 0.02
 			surprise_boost = "R"
@@ -58098,6 +58110,7 @@
 			e.candidate_json[2].fields.color_hex="#b21948" //Ramaswamy color hex
 		}
 		else if(OpponentValue==16) {
+			//poll bias: Reversed. Roughly +5.5% D margin at end.
 			applyDrift(301,0.08) //Burgum+Rubio even more normie so Ds more favored by polling miss
 			poll_adjust-= 0.08
 			surprise_boost = "D"
@@ -58128,6 +58141,7 @@
 			e.candidate_json[2].fields.color_hex="#a83232" //Burgum color hex
 		}
 		else if(OpponentValue==17) {
+			//poll bias: Larger. Roughly +5.5% R margin at end.
 			applyDrift(301,-0.02) //Vance is also Extra MAGA
 			poll_adjust+= 0.02
 			surprise_boost = "R"
@@ -62871,12 +62885,12 @@
 				if (surprise_boost == "R") { //base case
 				}
 				else if (surprise_boost == "D") {
-					bernie_feedback = `The numbers crawl in, each update tightening the knot in your stomach; four years all coming down to this one night. And then, all of a sudden, Faiz bursts in, his joyous face filled with excitement: <i>the polls were wrong - in our favor. It's the Michigan primary all over again!</i> And as the map fills with more blue than the 1%'s nightmares, you dare to hope.`
+					bernie_feedback = `The numbers crawl in, each update tightening the knot in your stomach; four years all coming down to this one night. And then, all of a sudden, Faiz bursts in, his joyous face filled with excitement: <i>The polls underestimated us. It's the Michigan primary all over again!</i> And as the map fills with more blue than the 1%'s nightmares, you dare to hope.`
 					ReplaceFeedback(44001,bernie_feedback)
 					ReplaceFeedback(44002,bernie_feedback)
 					ReplaceFeedback(44003,bernie_feedback)
 					ReplaceFeedback(44004,bernie_feedback)
-					kamala_feedback = `You sit nervously, your heart leaping each time a new batch of results trickles in. Four years of relentless fight, of promises made to the people.. and now it all comes down to this, to tonight. Then Julie bursts in, excited: <i>the polls were wrong - but for us!</i> And you watch, heart soaring, as the map fills with more blue than you ever dared to hope.`
+					kamala_feedback = `You sit nervously, your heart leaping each time a new batch of results trickles in. Four years of relentless fight, of promises made to the people.. and now it all comes down to this, to tonight. Then Julie bursts in, excited: <i>The polls underestimated us!</i> And you watch, heart soaring, as the map fills with more blue than you ever dared to hope.`
 					ReplaceFeedback(44101,kamala_feedback)
 					ReplaceFeedback(44102,kamala_feedback)
 					ReplaceFeedback(44103,kamala_feedback)
