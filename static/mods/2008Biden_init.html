@@ -29,7 +29,7 @@ campaignTrail_temp.election_json = [
         "pk": 9,
         "fields": {
             "year": 2000,
-            "summary": "<div style='overflow-y:scroll;height:200px;'><p>8 turbulent years under George W. Bush have left America polarized, as issues such as the Iraq War and the staggering economy ominously loom over the 2008 presidential election while the Democrats seem poised to take back the White House.</p><ul><li>Joseph R. Biden represents the ideological center, and foreign policy conscious of the Democratic Party, and hopes to win by attacking his other opponents in the primaries and offering change from the unpopular Bush.</li><p><li>John S. McCain must differentiate himself from a slate of conservative challengers while making sure his maverick positions seem palatable to most GOP voters and to emphasize that he is different from the current President.</li></ul></p>",
+            "summary": "<div style='overflow-y:auto; height:190px'><p>8 turbulent years under George W. Bush have left America polarized, as issues such as the Iraq War and the staggering economy ominously loom over the 2008 presidential election while the Democrats seem poised to take back the White House.</p><ul><li>Joseph R. Biden represents the ideological center, and foreign policy conscious of the Democratic Party, and hopes to win by attacking his other opponents in the primaries and offering change from the unpopular Bush.</li><p><li>John S. McCain must differentiate himself from a slate of conservative challengers while making sure his maverick positions seem palatable to most GOP voters and to emphasize that he is different from the current President.</li></ul></p></div>",
             "image_url": "https://paul-david-wellstone.neocities.org/bidone.png",
             "winning_electoral_vote_number": 270,
             "advisor_url": "https://i.postimg.cc/DZxB9KTL/gdsgfask-(1).jpg",
@@ -452,13 +452,11 @@ campaignTrail_temp.running_mate_json = [
 
 campaignTrail_temp.credits = "<button onclick='credits()'>Ryker & Others</button>"
 
-credits = function() {
-credits = [ "Lead Developer:", "Ryker", " ", "Coders:", "Paul David Wellstone", "StrawberryMaster", "theanswerisme", " ", "Writers:", "ThatQuayleSimp", "theanswerisme", "PingPongProductions", "Junior", "Person", " ", "Editor:", "TaviTales", " ", "Version:", "Release 1.0",]
-text = "CREDITS AND GAME VERSION:\n\n"
-for (i in credits) {
-    text += credits[i] + "\n"
-}
-alert(text)
+window.credits = function () {
+    const creditsList = ["Lead Developer:", "Ryker", " ", "Writers:", "ThatQuayleSimp", "theanswerisme", "PingPongProductions", " ", "Coders:", "Paul David Wellstone", "StrawberryMaster", "theanswerisme", "Agreeable", " ", "Playtesters:", "Friedrich Oswald", "Junior", "Person", " ", "Editor:", "TaviTales",]
+    const text = "BIDEN '08 CREDITS:\n\n" + creditsList.join('\n');
+
+    alert(text);
 }
 
 campaignTrail_temp.opponents_default_json = [
@@ -528,39 +526,37 @@ document.body.background = "https://paul-david-wellstone.neocities.org/bgbiden.g
 
 nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#FDF8F8";
 
-document.head.innerHTML += `<link
-	rel="stylesheet"
-	href="https://unpkg.com/7.css@0.21.1/dist/7.css"
->`
+// helper to ensure a stylesheet is appended only once
+function ensureStylesheet(url, id) {
+	// if an id is provided and exists, bail out
+	if (id && document.getElementById(id)) return;
+	// if a link with same href already exists, bail out
+	if (document.querySelector('link[rel="stylesheet"][href="' + url + '"]')) return;
+	const link = document.createElement('link');
+	link.rel = 'stylesheet';
+	link.href = url;
+	if (id) link.id = id;
+	document.head.appendChild(link);
+}
 
-document.head.innerHTML += `<style>
-	h3 {
-		font-size:1.17em!important;
-	}
-	body {display:flex!important;}
-	#game_window{max-width:1000px;}
-</style>`
+ensureStylesheet('https://unpkg.com/7.css', 'unpkg-7css');
 
 function addDynamicCSS() {
 	var css = `
-		#final_results_description h3 {
-			color: white;
+		h3 {
+			font-size:1.17em!important;
 		}
-		#overall_details_container h3 {
-			color: white;
-		}
-		#overall_election_details h4 {
+		body {display:flex!important;}
+		#game_window{max-width:1000px;}
+
+
+		#final_results_description h3, #overall_details_container h3, .inner_window_w_desc h3  {
 			color: #000;
 		}
-		#main_content_area_reading p {
-			color: white;
+		#overall_election_details h3, #main_content_area_reading p, #main_content_area_reading h3.results_tab_header {
+			color: #000;
 		}
-		#main_content_area_reading h3.results_tab_header {
-			color: black;
-		}
-		.inner_window_w_desc h3 {
-			color: white;
-		}
+
 * so that answers work for 98/XP/7.css */
 label {
     display: inline-block !important;
@@ -614,7 +610,7 @@ input[type=radio]+label {
   		.campaign_trail_start_emphasis {
     		background-color: #2E3C76;
 	}
-	
+
 	.person_image img {
 		object-fit: cover;
 		object-position: center;
@@ -648,14 +644,33 @@ input[type=radio]+label {
 		blockquote, #game_window h3  {
             font-family: "Trebuchet MS", Arial, "Helvetica Neue", Helvetica, sans-serif;
         }
-				
+
 		blockquote  {
             background: linear-gradient( 140deg, #FFF2F2, #FDF8F8 );
         }
-				
+
+		.inner_window_sign_display {
+			height: auto;
+		    border-radius: 0 0 5px 5px;
+		}
+
+		.inner_window_question {
+			border-radius: 0 0 5px 5px;
+		}
+
+		#game_window {
+			border-color: #8586c0;
+		}
+
+		#candidate_pic, #running_mate_pic {
+			height: 165px;
+			width: 154.5px;
+			object-fit: cover;
+		}
+
         .mytooltip .mytooltiptext {
             width: 240px;
-            background: #c0c4d5; 
+            background: #c0c4d5;
             color: #000000;
             text-align: left;
             padding: 5px;
@@ -705,8 +720,8 @@ addDynamicCSS();
 tooltipList = [
 {searchString: "Hillary Clinton", explanationText: "<img src=https://i.postimg.cc/NGnGTKn3/IMG-9626.jpg> My main challenger. I hope we can prevent the Clinton’s comeback."},
 {searchString: "Hillary", explanationText: "<img src=https://i.postimg.cc/NGnGTKn3/IMG-9626.jpg> My main challenger. I hope we can prevent the Clinton’s comeback."},
-{searchString: "George W. Bush", explanationText: "<img src=https://i.postimg.cc/nLTpLr75/IMG-9627.webp> President Dubya. One of the worst in history."}, 
-{searchString: "Dubya", explanationText: "<img src=https://i.postimg.cc/nLTpLr75/IMG-9627.webp> President George W. Bush. One of the worst in history."}, 
+{searchString: "George W. Bush", explanationText: "<img src=https://i.postimg.cc/nLTpLr75/IMG-9627.webp> President Dubya. One of the worst in history."},
+{searchString: "Dubya", explanationText: "<img src=https://i.postimg.cc/nLTpLr75/IMG-9627.webp> President George W. Bush. One of the worst in history."},
 {searchString: "Dick Cheney", explanationText: "<img src=https://i.postimg.cc/02m6yGQ1/IMG-9628.webp> A war criminal at his very worst."},
 {searchString: "Cheney", explanationText: "<img src=https://i.postimg.cc/02m6yGQ1/IMG-9628.webp> A war criminal at his very worst."},
 {searchString: "John McCain", explanationText: "<img src=https://i.postimg.cc/BZPbm52H/IMG-9629.webp> One of my best friends, and now he’s my rival in the election."},
@@ -809,13 +824,13 @@ function updateUI(playlist) {
 		player.querySelector("#cover").src = currentSong.getCoverLink();
 		player.querySelector("#title").textContent = currentSong.getTitle();
 		player.querySelector("#artist").textContent = currentSong.getArtist();
-	
+
 }
 
 window.updateUI=updateUI
 
 function setupMusicPlayer() {
-	playlist = new Playlist(); 
+	playlist = new Playlist();
 	const song1 = new Song(
 		"I'm Yours",
 		"Jason Mraz",
@@ -876,7 +891,7 @@ function setupMusicPlayer() {
 		"https://file.garden/aOp8cCiQ5ho9r5b1/Biden%20'08%20Assets/Song%20Covers/Viva%20La%20Vida%20Album%20Cover.png",
 		"https://audio.jukehost.co.uk/jcvpE5cplrNeHNdck9TZXSyiFOmiETtB"
 	);
-	
+
 	playlist.addSong(song1);
 	playlist.addSong(song2);
 	playlist.addSong(song3);
@@ -887,66 +902,66 @@ function setupMusicPlayer() {
     playlist.addSong(song8);
     playlist.addSong(song9);
     playlist.addSong(song10);
-	
+
 	const playerContainer = document.createElement("div");
 	playerContainer.id = "player";
-	
+
 	const displayBox = document.createElement("div");
 	displayBox.id = "display-box";
-	
+
 	const coverElement = document.createElement("img");
 	coverElement.id = "cover";
 	displayBox.appendChild(coverElement);
-	
+
 	const infoContainer = document.createElement("div");
 	infoContainer.id = "info-container";
 	infoContainer.style.backgroundImage = "url('')";
 	infoContainer.style.backgroundSize = "cover"; // Optional: adjust based on your needs
-	infoContainer.style.color = "black"; // Set text color to black	
-	
+	infoContainer.style.color = "black"; // Set text color to black
+
 	const songInfo = document.createElement("div");
 	songInfo.id = "song-info";
-	
+
 	const titleElement = document.createElement("h3");
 	titleElement.id = "title";
 	titleElement.style.fontWeight = 'normal'; // Make it normal as per previous request
 	songInfo.appendChild(titleElement);
-	
+
 	const artistElement = document.createElement("p");
 	artistElement.id = "artist";
-	songInfo.appendChild(artistElement); 
-	
+	songInfo.appendChild(artistElement);
+
 	infoContainer.appendChild(songInfo);
 	displayBox.appendChild(infoContainer);
-	
+
 	playerContainer.appendChild(displayBox);
-	
+
 	const controlsContainer = document.createElement("div");
-	controlsContainer.id = "controls-container";  
-	
+	controlsContainer.id = "controls-container";
+
 	const controls = document.createElement("div");
 	controls.id = "controls";
-	
+
 	const prevButton = document.createElement("img");
 	prevButton.id = "prevButton";
 	prevButton.src = "https://file.garden/aNxawo8jlVkymd8s/joe%2008/election%20%2B%20music%20play/emaVVZr%20-%20Imgur.png";
 	prevButton.alt = "Previous";
-	controls.appendChild(prevButton);  
-	
+	controls.appendChild(prevButton);
+
 	const playPauseButton = document.createElement("img");
 	playPauseButton.id = "playPauseButton";
 	playPauseButton.src = "https://file.garden/aNxawo8jlVkymd8s/joe%2008/election%20%2B%20music%20play/CxAJHDS%20-%20Imgur.png"; // Set the default play image
 	playPauseButton.alt = "Play/Pause";
-	controls.appendChild(playPauseButton);	
-	
+	controls.appendChild(playPauseButton);
+
 	const nextButton = document.createElement("img");
 	nextButton.id = "nextButton";
 	nextButton.src = "https://file.garden/aNxawo8jlVkymd8s/joe%2008/election%20%2B%20music%20play/prB8JyH%20-%20Imgur.png";
 	nextButton.alt = "Next";
 	controls.appendChild(nextButton);
-	
+
 	controlsContainer.appendChild(controls);
-	
+
 	playPauseButton.addEventListener("click", function () {
 		const audio = document.getElementById("audio");
 		if (audio.paused) {
@@ -971,34 +986,34 @@ function setupMusicPlayer() {
 		audio.src = playlist.getCurrentSong().audioLink;
 		audio.play();
 	});
-	
+
 	const progressBarContainer = document.createElement("div");
 	progressBarContainer.id = "progress-bar-container";
-	
+
 	const progressBar = document.createElement("progress");
 	progressBar.type = "range";
 	progressBar.id = "progress-bar";
 	progressBar.value = "0";
 	progressBar.max = "100";
-	
+
 	progressBarContainer.appendChild(progressBar);
 	controlsContainer.appendChild(progressBarContainer);
 	playerContainer.appendChild(controlsContainer);
-	
+
 	const volumeContainer = document.createElement("div");
 	volumeContainer.id = "volume-container";
-	
+
 	const volumeLabel = document.createElement("img");
 	volumeLabel.src = "https://file.garden/aNxawo8jlVkymd8s/joe%2008/election%20%2B%20music%20play/fIQkAed%20-%20Imgur.png";
 	volumeLabel.alt = "Volume";
 	volumeLabel.style.marginTop = "20%";
-	volumeContainer.appendChild(volumeLabel);  
-	
+	volumeContainer.appendChild(volumeLabel);
+
 	const volumeSliderContainer = document.createElement("div");
 	volumeSliderContainer.classList.add("is-vertical");
 	volumeSliderContainer.style.marginLeft = "25%";
 	volumeSliderContainer.style.height = "126px";
-	
+
 	const volumeSlider = document.createElement("input");
 	volumeSlider.type = "range";
 	volumeSlider.id = "volumeSlider";
@@ -1006,22 +1021,22 @@ function setupMusicPlayer() {
 	volumeSlider.max = 9;
 	volumeSlider.step = 1;
 	volumeSlider.value = 1; // Initial volume
-	
+
 	volumeSliderContainer.appendChild(volumeSlider);
-	
+
 	const volumeDisplay = document.createElement("span");
 	volumeDisplay.id = "volume-display";
-	volumeDisplay.style.fontWeight = 'bold'; 
+	volumeDisplay.style.fontWeight = 'bold';
 	volumeDisplay.style.display = 'none';
 	volumeDisplay.textContent = "1";
-	
+
 	volumeContainer.appendChild(volumeSliderContainer);
 	volumeContainer.appendChild(volumeDisplay);
-	
+
 	playerContainer.appendChild(volumeContainer);
-	
+
 	gameWindow_player.insertAdjacentElement("afterend", playerContainer);
-	
+
 	function updateProgressBar() {
 		const audio = document.getElementById("audio");
 		const progress = (audio.currentTime / audio.duration) * 100;
@@ -1033,12 +1048,12 @@ function setupMusicPlayer() {
 		const seekTime = (progressBar.value / 100) * audio.duration;
 		audio.currentTime = seekTime;
 	});
-	
+
 	const audio = document.createElement("audio");
 	audio.id = "audio";
 	audio.src = playlist.getCurrentSong().audioLink;
 	audio.volume = 1/9;
-	
+
 	audio.addEventListener("timeupdate", updateProgressBar);
 	audio.addEventListener("ended", function () {
 		// Play the next song when the current song ends
@@ -1140,7 +1155,7 @@ setupMusicPlayer();
 
         // detect VP screen
         const summary = document.getElementById("running_mate_summary");
-        
+
         if (summary) {
             // check if we are moving backwards (triggered by the opponent screen back button)
             const isGoingBack = window.sessionStorage.getItem("skip_direction") === "backward";
@@ -1160,7 +1175,7 @@ setupMusicPlayer();
                 // ensure we don't click buttons with custom switchers
                 if (nextBtn && !nextBtn.hasAttribute("data-custom-switcher") && !nextBtn.dataset.autoClicked) {
                     console.log("VP selection screen detected. Skipping...");
-                    nextBtn.dataset.autoClicked = "true"; 
+                    nextBtn.dataset.autoClicked = "true";
                     nextBtn.click();
                 }
             }
@@ -1184,9 +1199,9 @@ setupMusicPlayer();
 // from being selected. Very useful if you're having a one-candidate
 // mod but still want to list the other candidates
 // Taken from 2012LBM
-(function () {	
+(function () {
     const BAD_CANDIDATE_IDS = new Set(['77', '79', '80']);
-    const RESET_CANDIDATE_ID = '78'; 
+    const RESET_CANDIDATE_ID = '78';
 
     const IDS = {
         gameWindow: "game_window",
@@ -1197,24 +1212,24 @@ setupMusicPlayer();
         finalNext: "opponent_selection_id_button",
         finalBack: "opponent_selection_id_back",
         initialContinue: "election_id_button",
-		gameMapHeader: "transport_box"
+		gameMapHeader: "inner_window_question"
     };
 
     let lastSelectedCandidateId = null;
-	
+
 	function automateStartSequence() {
 		// check for the candidate input
 		const candidateInput = document.getElementById(IDS.candidateInput);
 		const finalNext = document.getElementById(IDS.finalNext);
 		const finalBack = document.getElementById(IDS.finalBack);
-		const gameMap = document.getElementById(IDS.gameMapHeader);
+		const gameMap = document.querySelector(IDS.gameMapHeader);
 
-        // if the map/transport box is loaded, we are done with setup
+		// if the question screen is loaded, we are done with setup
 		if (gameMap) {
 			finished = true;
 			return;
 		}
-		
+
 		// if we are on the opponent selection screen, clean up and stop.
 		if (finalNext && finalBack) {
 			let candidateId = lastSelectedCandidateId;
@@ -1231,7 +1246,7 @@ setupMusicPlayer();
 			}
 			return;
 		}
-		
+
         // candidate selection screen check
         if (candidateInput) {
             const currentId = candidateInput.value;
@@ -1244,11 +1259,11 @@ setupMusicPlayer();
             if (BAD_CANDIDATE_IDS.has(currentId) && candidateButton) {
                 candidateButton.remove();
             }
-            
+
             // if a specific candidate should force a Back click
             else if (currentId === RESET_CANDIDATE_ID && backButton && !candidateButton) {
                 backButton.click();
-				
+
                 // try to click the initial continue button if we got sent back to start
                 const initialContinue = document.getElementById(IDS.initialContinue);
                 if (initialContinue) {
@@ -1257,9 +1272,9 @@ setupMusicPlayer();
             }
         }
 	}
-	
+
 	window.tctAutoStart = { tick: automateStartSequence };
-	
+
 })();
 
 // This is a catch-all mutation observer so that
@@ -1270,9 +1285,9 @@ setupMusicPlayer();
     if (window.glorble) {
         window.glorble.disconnect();
     }
-	
+
 	window.glorbleTasks = [];
-	
+
 	const initialTasks = () => {
         // VP screen skipper
         if (document.getElementById("game_window") && typeof window.handleNavigation === 'function') {
@@ -1284,12 +1299,12 @@ setupMusicPlayer();
 			window.tctAutoStart.tick();
 		}
     };
-	
+
 	window.glorbleTasks.push(initialTasks);
-	
+
 	const handleMutations = (mutationsList) => {
         if (!window.glorbleTasks) return;
-        
+
         for (let i = 0; i < window.glorbleTasks.length; i++) {
             try {
                 window.glorbleTasks[i]();
@@ -1313,7 +1328,7 @@ addDynamicCSS();
 
 tooltipList = [
 {searchString: "no more tooltips", explanationText: "<img src=https://i.postimg.cc/NGnGTKn3/IMG-9626.jpg> My main challenger. I hope we can prevent the Clinton’s comeback."},
-            
+
 ];
 
 RecReading=true

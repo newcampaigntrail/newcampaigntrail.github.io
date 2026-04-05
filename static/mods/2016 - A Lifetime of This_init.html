@@ -1,7 +1,7 @@
  /*
  * @title: 2016: A Lifetime of This / 2016b / The Hillary Trail
  * @author: StrawberryMaster & Friends
- * @version: 1.2.2
+ * @version: 1.2.4
  * @description: The 2016 election in the eyes of Hillary Clinton (and a couple of others, too)
  * 
  * Coding license: Apache License 2.0
@@ -567,31 +567,32 @@ if (oldPicker) {
 // Eventually, this was replaced by a more optimized function.
 
 function ensureMetaViewport() {
-    if (!document.querySelector('meta[name="viewport"]')) {
-        const m = document.createElement('meta');
-        m.name = 'viewport';
-        m.content = 'width=device-width, initial-scale=1';
-        document.head.appendChild(m);
-    }
+  if (!document.querySelector('meta[name="viewport"]')) {
+    const m = document.createElement('meta');
+    m.name = 'viewport';
+    m.content = 'width=device-width, initial-scale=1';
+    document.head.appendChild(m);
+  }
 }
 
 function applyGlobalStyles(css, id = 'app-theme') {
-    if ('adoptedStyleSheets' in document && 'replaceSync' in CSSStyleSheet.prototype) {
-        if (!applyGlobalStyles.sheet) {
-            applyGlobalStyles.sheet = new CSSStyleSheet();
-            document.adoptedStyleSheets = [...document.adoptedStyleSheets, applyGlobalStyles.sheet];
-        }
-        applyGlobalStyles.sheet.replaceSync(css);
-        return;
+  if ('adoptedStyleSheets' in document && 'replaceSync' in CSSStyleSheet.prototype) {
+    if (!applyGlobalStyles.sheets) applyGlobalStyles.sheets = {};
+    if (!applyGlobalStyles.sheets[id]) {
+      applyGlobalStyles.sheets[id] = new CSSStyleSheet();
+      document.adoptedStyleSheets = [...document.adoptedStyleSheets, applyGlobalStyles.sheets[id]];
     }
+    applyGlobalStyles.sheets[id].replaceSync(css);
+    return;
+  }
 
-    let el = document.getElementById(id);
-    if (!el) {
-        el = document.createElement('style');
-        el.id = id;
-        document.head.appendChild(el);
-    }
-    el.textContent = css;
+  let el = document.getElementById(id);
+  if (!el) {
+    el = document.createElement('style');
+    el.id = id;
+    document.head.appendChild(el);
+  }
+  el.textContent = css;
 }
 
 const css = `
@@ -751,7 +752,7 @@ const css = `
 			}
 			#state_result_container {
 				background: linear-gradient(0.20turn, transparent, #0e00b5);
-				border-radius: 0 0 .5rem .5rem;
+				border-radius: 0 0 .35em .35em;
 			}
 			#election_image img {
 			    border: 5px groove #1c0080;
@@ -850,7 +851,7 @@ const css = `
             #map_footer {
                 display: flex;
                 justify-content: center;
-                margin-top: 1rem !important; /* necessary for the further reading section */
+                margin: auto 1em !important; /* necessary for the further reading section */
             }
             #ev_est {
                 margin-bottom: .5rem;
@@ -1004,17 +1005,18 @@ const css = `
                 font-size: 0.95em;
             }
             #state_result_data_summary table th, #overall_details_container table th, .final_results_table th {
-                background-color: #f0f0f0;
+                background: linear-gradient(#e7ecf3, #dbe3ef);
                 border-bottom: .15rem solid #a0a0a0;
                 font-weight: 600;
-                padding: .5rem .75rem;
+                padding: .6em .8em;
+				text-transform: lowercase;
             }
 			#state_result_data_summary table td, #overall_details_container table td {
-                padding: .1rem .4rem;
+                padding: .25em .75em;
                 border: .1rem solid #dcdcdc;
             }
             .final_results_table td {
-                padding: .4rem .8rem;
+                padding: .45em .8em;
                 border: .1rem solid #dcdcdc;
             }
             #state_result_data_summary table td:first-child span, #overall_details_container table td:first-child span, .final_results_table td:first-child span {
@@ -1465,8 +1467,40 @@ const css = `
 			}
 `;
 
+// necessary because NCT deals with a couple of
+// things differently than CTS
+const nctFixes = `
+.game_header {
+  height: 25px !important;
+}
+    .container {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    .content_box {
+        flex: 1;
+    }
+    #game_window {
+        min-height: 600px;
+    }
+	
+`;
+
 ensureMetaViewport();
 applyGlobalStyles(css);
+
+const isLiveSite = window.location.hostname === "www.newcampaigntrail.com" || !!document.querySelector('a[href*="github.com/newcampaigntrail"]');
+if (isLiveSite) {
+    if (typeof applyGlobalStyles === 'function') {
+		applyGlobalStyles(nctFixes, 'nct-fixeroo');
+    } else {
+        const style = document.createElement('style');
+        style.id = 'nct-fixeroo';
+        style.textContent = nctFixes;
+        document.head.appendChild(style);
+    }
+}
 
 // Psst: this is for replacing the site_description with this custom modal.
 (() => {
@@ -2875,7 +2909,7 @@ tooltipList = [
         finalNext: "opponent_selection_id_button",
         finalBack: "opponent_selection_id_back",
         initialContinue: "election_id_button",
-		gameMapHeader: "transport_box"
+		gameMapHeader: "inner_window_question"
     };
 
     let lastSelectedCandidateId = null;
@@ -2885,15 +2919,15 @@ tooltipList = [
 		const candidateInput = document.getElementById(IDS.candidateInput);
 		const finalNext = document.getElementById(IDS.finalNext);
 		const finalBack = document.getElementById(IDS.finalBack);
-		const gameMap = document.getElementById(IDS.gameMapHeader);
+		const gameMap = document.querySelector(IDS.gameMapHeader);
 
-        // if the map/transport box is loaded, we are done with setup
+        // if the question screen is loaded, we are done with setup
 		if (gameMap) {
 			finished = true;
 			return;
 		}
 		
-		// if we are on the opponent selection screen, clean up and stop.
+		// if we are on the opponent selection screen, clean up and stop
 		if (finalNext && finalBack) {
 			let candidateId = lastSelectedCandidateId;
 

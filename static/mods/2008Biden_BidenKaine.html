@@ -403,7 +403,7 @@ campaignTrail_temp.answers_json = [
         "pk": 3374,
         "fields": {
             "question": 360,
-            "description": "I’ll help Kaine prepare for the debate. Surely that’ll make us dominate Pawlenty, right?"
+            "description": "I’ll help Kaine prepare for the debate. Surely that’ll make him dominate Pawlenty, right?"
         }
     },
     {
@@ -5037,7 +5037,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 78,
             "state": 184,
-            "state_multiplier": 0.99
+            "state_multiplier": 0.98
         }
     },
     {
@@ -5163,7 +5163,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 78,
             "state": 198,
-            "state_multiplier": 0.975
+            "state_multiplier": 0.965
         }
     },
     {
@@ -5379,7 +5379,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 78,
             "state": 222,
-            "state_multiplier": 1.0512356356737
+            "state_multiplier": 1.0412356356737
         }
     },
     {
@@ -27837,14 +27837,28 @@ const _patchVPDebateQ360 = (vp) => {
   const last = String(vp.fields.last_name || "").trim();
   const full = `${first} ${last}`.trim();
 
-  const replaceForVP = (s) => {
+  const isFemale = ["Sebelius"].includes(last);
+
+  const replaceForVP = (s, skipPronouns = false) => {
     if (typeof s !== "string" || !s) return s;
 
     let out = s;
 
     out = out.replace(/\bTim Kaine\b/g, full);
-
     out = out.replace(/\bKaine\b/g, last);
+
+    if (isFemale && !skipPronouns) {
+        out = out.replace(/\bhe\b/g, "she");
+        out = out.replace(/\bHe\b/g, "She");
+        
+        out = out.replace(/\bhis\b/g, "her");
+        out = out.replace(/\bHis\b/g, "Her");
+        
+        out = out.replace(/\bhim\b/g, "her");
+        out = out.replace(/\bHim\b/g, "Her");
+        
+        out = out.replace(/\bhimself\b/g, "herself");
+    }
 
     return out;
   };
@@ -27855,10 +27869,14 @@ const _patchVPDebateQ360 = (vp) => {
   }
 
   const debateAnswerPks = new Set();
+  
   if (Array.isArray(e.answers_json)) {
     for (const a of e.answers_json) {
       if (a && a.fields && a.fields.question === 360 && typeof a.fields.description === "string") {
-        a.fields.description = replaceForVP(a.fields.description);
+        
+        const shouldSkipPronouns = (a.pk === 13318);
+
+        a.fields.description = replaceForVP(a.fields.description, shouldSkipPronouns);
         debateAnswerPks.add(a.pk);
       }
     }
@@ -28032,11 +28050,9 @@ cyoAdventure = function(a) {
     			border-width: .01em;
     			margin: 0 auto;
     			background-position: center;
-    			width: 100%; 
+    			width: auto; 
     			height: 128px;
     			margin: 0 auto;
-    			margin-left: -0.033em;
-    			margin-right: -0.033em;
 			  }
 			#campaign_sign p {
 				color: rgb(0 0 0 / 0%);
@@ -28061,11 +28077,9 @@ cyoAdventure = function(a) {
     			border-width: .01em;
     			margin: 0 auto;
     			background-position: center;
-    			width: 100%; 
+    			width: auto; 
     			height: 128px;
     			margin: 0 auto;
-    			margin-left: -0.033em;
-    			margin-right: -0.033em;
 			  }
 			#campaign_sign p {
 				color: rgb(0 0 0 / 0%);
@@ -28090,11 +28104,9 @@ cyoAdventure = function(a) {
     			border-width: .01em;
     			margin: 0 auto;
     			background-position: center;
-    			width: 100%; 
+    			width: auto; 
     			height: 128px;
     			margin: 0 auto;
-    			margin-left: -0.033em;
-    			margin-right: -0.033em;
 			  }
 			#campaign_sign p {
 				color: rgb(0 0 0 / 0%);
@@ -28119,11 +28131,9 @@ cyoAdventure = function(a) {
     			border-width: .01em;
     			margin: 0 auto;
     			background-position: center;
-    			width: 100%; 
+    			width: auto; 
     			height: 128px;
     			margin: 0 auto;
-    			margin-left: -0.033em;
-    			margin-right: -0.033em;
 			  }
 			#campaign_sign p {
 				color: rgb(0 0 0 / 0%);
@@ -28148,11 +28158,9 @@ cyoAdventure = function(a) {
     			border-width: .01em;
     			margin: 0 auto;
     			background-position: center;
-    			width: 100%; 
+    			width: auto; 
     			height: 128px;
     			margin: 0 auto;
-    			margin-left: -0.033em;
-    			margin-right: -0.033em;
 			  }
 			#campaign_sign p {
 				color: rgb(0 0 0 / 0%);
@@ -28177,11 +28185,9 @@ cyoAdventure = function(a) {
     			border-width: .01em;
     			margin: 0 auto;
     			background-position: center;
-    			width: 100%; 
+    			width: auto; 
     			height: 128px;
     			margin: 0 auto;
-    			margin-left: -0.033em;
-    			margin-right: -0.033em;
 			  }
 			#campaign_sign p {
 				color: rgb(0 0 0 / 0%);
@@ -28206,11 +28212,9 @@ cyoAdventure = function(a) {
     			border-width: .01em;
     			margin: 0 auto;
     			background-position: center;
-    			width: 100%; 
+    			width: auto; 
     			height: 128px;
     			margin: 0 auto;
-    			margin-left: -0.033em;
-    			margin-right: -0.033em;
 			  }
 			#campaign_sign p {
 				color: rgb(0 0 0 / 0%);
@@ -28235,11 +28239,9 @@ cyoAdventure = function(a) {
     			border-width: .01em;
     			margin: 0 auto;
     			background-position: center;
-    			width: 100%; 
+    			width: auto; 
     			height: 128px;
     			margin: 0 auto;
-    			margin-left: -0.033em;
-    			margin-right: -0.033em;
 			  }
 			#campaign_sign p {
 				color: rgb(0 0 0 / 0%);
@@ -28321,7 +28323,7 @@ cyoAdventure = function(a) {
 				border-width: .01em;
 				margin: 0 auto;
 				background-position: center;
-				width: 100%; 
+				width: auto; 
 				height: 128px;
 				margin: 0 auto;
 				margin-left: -0.033em;
@@ -28403,7 +28405,7 @@ var used=false
 
 //quickstats[0] is the default, and it tracks your electoral vote count.
 
- if (quickstats[0]<= 148) {
+ if (quickstats[0] < 188) {
 //If you want to enable replacing the image based upon your performance, copy from here....
     if (used != true) {
         setInterval(function () {
@@ -28428,7 +28430,7 @@ changePlaylist(mccainWin);
     }
     // to here!
 return "<div style='overflow-y:scroll;height:200px;'><h3>Fatality</h3><p>As you sit in the back of the headquarters, you feel uneasy. The states in the Northeast are called way later than expected, and you also win them by thinner margins too. But then… The swing states are called within minutes, and before you know it, the election is over.</p><p>You feel paralysed, instead of a landslide for the Democrats, the script has been completely flipped on it's head for the Republicans. You have a dry feeling in your mouth as you look at the electoral map… A sea of red, not a sea of blue.</p><p>When you come to your senses, everyone else is astonished. Advisors with hands in their faces, Jill crying while holding your arm, the kids looking at the screen with sadness on their faces. It feels like a nightmare, one that you wished wasn't real.</p><p>After you give the muted concession speech, you are given a phone by an advisor to speak to McCain. You can hear the utter surprise in his voice, but you're too depressed to say anything meaningful, and when you do say something you feel your childhood stutter coming back. When you're finished, you just sigh. I guess it's back to Delaware then, Joe.</p>"
-} else if (quickstats[0] >= 208 && quickstats[0]<248) {
+} else if (quickstats[0] >= 188 && quickstats[0]<248) {
 //If you want to enable replacing the image based upon your performance, copy from here....
     if (used != true) {
         setInterval(function () {
@@ -28623,7 +28625,7 @@ style.textContent =
     border-width: .01em;
     margin: 0 auto;
     background-position: center;
-    width: 100%; 
+    width: auto; 
     height: 128px;
     margin: 0 auto;
     margin-left: -0.033em;

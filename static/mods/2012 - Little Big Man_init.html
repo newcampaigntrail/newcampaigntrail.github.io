@@ -1,7 +1,7 @@
 /*
 * @title: 2012: Little Big Man / Little Big Man / 2012a
 * @author: StrawberryMaster & Friends
-* @version: 1.1.3
+* @version: 1.2.4
 * @description: The 2012 election in the eyes of Barack Obama (and a couple of others, too)
 *
 * Coding license: Apache License 2.0
@@ -45,292 +45,253 @@ campaignTrail_temp.global_parameter_json = [
 
 const recommendedReadingContent = `
 <div id="tab-select">
-    <p class="ftab-active" id="start">Overview</p>
-    <p class="ftab">Sources</p>
-    <p class="ftab">Credits</p>
-    <p class="ftab" id="end">Fun facts</p>
-</div>
-<div style="text-align: left;margin: auto 5em;">
-	<span id="rpage0" class="tab-pane overview-content">
+      <p class="ftab-active" id="start">Overview</p>
+      <p class="ftab">Sources</p>
+      <p class="ftab">Credits</p>
+      <p class="ftab" id="end">Fun facts</p>
+    </div>
+    <div style="text-align: left; margin: auto 5em;">
+      <span id="rpage0" class="tab-pane overview-content">
         <div class="overview-header">
-            <h2>Living in a World of Barack (or close to it)</h2>
-            <h3>by StrawberryMaster</h3>
+          <h2>Living in a World of Barack (or close to it)</h2>
+          <h3>by StrawberryMaster</h3>
         </div>
-
         <div class="overview-body">
-            <div class="overview-text">
-                <p><b>Fun fact:</b> this mod started out as a sandbox for another mod.</p>
-                <p>When working on <i>2016: A Lifetime of This</i>, I ended up doing some snooping and was able to
-                    recover most of the original chunk of questions for the 2012 mod; for those unaware, the original
-                    2012 Dan Bryan scenario had about ~80 or so questions, and in the early stages of the game you could
-                    have an option to answer those 80 questions if you wanted (or a smaller number, like 40 or 60
-                    questions). I tested these out in the original 2012 mod and it worked fairly well, though I ended up
-                    making my own adjustments to it for easier loading. A few changes here and there, and I realized I
-                    got too carried away. But by then, I already had a lot of stuff that I just couldn’t slap on top of
-                    2016ALOT, and I decided to work on what eventually became “Little Big Man”.</p>
-				<p>Honestly, working on this was very fun, especially when curating this mod’s soundtrack. Hopefully, you have enjoyed
-					some of the music choices here (or the volume slider at 0%, which also works out well). I never thought I
-					would make a mod so soon after 2016ALOT, and so I’m happy that I was able to dedicate myself at least more
-					than a bit to this funny mod. I especially appreciate the warm welcome that I received from the communit
-					during my stay here. You guys rock!</p>
-                <p class="overview-note">I do need to disclose that this is, probably, my last standalone scenario. It has been quite a ride,
-                    but it’s also been very stressful at times, particularly because most of this was the work of a
-                    one-person team. You might see me work with someone on a future mod, but this may be my last
-                    standalone mod for a while. Regardless, I do hope I’ve been able to live up to your expectations of
-                    this mod, as low as they might’ve been.</p>
+          <div class="overview-text">
+            <p><b>Fun fact:</b> this mod started out as a sandbox for another mod.</p>
+            <p>When working on <i>2016: A Lifetime of This</i>, I ended up doing some snooping and was able to
+              recover most of the original chunk of questions for the 2012 mod; for those unaware, the original
+              2012 Dan Bryan scenario had about ~80 or so questions, and in the early stages of the game you could
+              have an option to answer those 80 questions if you wanted (or a smaller number, like 40 or 60
+              questions). I tested these out in the original 2012 mod and it worked fairly well, though I ended up
+              making my own adjustments to it for easier loading. A few changes here and there, and I realized I
+              got too carried away. But by then, I already had a lot of stuff that I just couldn’t slap on top of
+              2016ALOT, and I decided to work on what eventually became “Little Big Man”.</p>
+            <p>Honestly, working on this was very fun, especially when curating this mod’s soundtrack. Hopefully, you have enjoyed
+              some of the music choices here (or the volume slider at 0%, which also works out well). I never thought I
+              would make a mod so soon after 2016ALOT, and so I’m happy that I was able to dedicate myself at least more
+              than a bit to this funny mod. I especially appreciate the warm welcome that I received from the community
+              during my stay here. You guys rock!</p>
+            <p class="overview-note">I do need to disclose that this is, probably, my last standalone scenario. It has been quite a ride,
+              but it’s also been very stressful at times, particularly because most of this was the work of a
+              one-person team. You might see me work with someone on a future mod, but this may be my last
+              standalone mod for a while. Regardless, I do hope I’ve been able to live up to your expectations of
+              this mod, as low as they might’ve been.</p>
+          </div>
+          <div class="overview-media">
+            <div class="img-wrapper">
+              <img src="https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/XBiCnJX.jpeg"
+                   alt="2012LBM" loading="lazy" decoding="async" width="220" height="165">
+              <span class="img-caption">They were so little, now they’re so big. Man…</span>
             </div>
-            <div class="overview-media">
-                <div class="img-wrapper">
-                    <img src="https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/XBiCnJX.jpeg" alt="2012LBM">
-                    <span class="img-caption">They were so little, now they’re so big. Man…</span>
-                </div>
-            </div>
+          </div>
         </div>
-    </span>
-    <span id="rpage1" class="sources-content" style="display: none;">
+      </span>
+
+      <span id="rpage1" class="sources-content" style="display: none;">
         <h4>Recommended readings</h4>
         <ul class="reading-list">
-            <li>
-                <p class="reading-title">
-                    John Sides and Lynn Vavreck — <a
-                        href="https://press.princeton.edu/books/paperback/9780691163635/the-gamble" target="_blank">The
-                        Gamble: Choice and Chance in the 2012 Presidential Election (Updated Edition)</a>
-                </p>
-                <p class="reading-description">
-                    An excellent analysis of the 2012 campaign. It argues that despite the daily drama of the campaign
-                    trail, the election's outcome was largely determined by political and economic fundamentals, like
-                    the state of the economy and presidential approval, and not by the so-called "game changers"
-                    mentioned throughout the campaign. Here is a snippet:
-                </p>
-                <blockquote class="reading-quote">
-                    As the 2012 campaign got under way, there were at least three bets being made. One was by Democrats,
-                    who were betting on an incumbent who, while arguably the favorite, was still facing challenging
-                    economic times and a pessimistic public. One was by Republicans, who were betting on which of their
-                    many candidates could do something rare: defeat a sitting incumbent president. And one was by
-                    voters, who were betting on which candidate would best help the country recover from the worst
-                    economic recession in over seventy years.
-                </blockquote>
-            </li>
-            <li>
-                <p class="reading-title">
-                    Dan Balz — <a href="https://www.penguinrandomhouse.com/books/311130/collision-2012-by-dan-balz/"
-                        target="_blank">Collision 2012: Obama vs. Romney and the Future of Elections in America</a>
-                </p>
-                <p class="reading-description">
-                    Another quite useful read, this books talk about how the 2012 election changed the course of
-                    American politics, and also the impacts it had on America’s electoral process. Here is a snippet:
-                </p>
-                <blockquote class="reading-quote">
-                    It was not an uplifting campaign by any stretch of the imagination. At times the plain nuttiness of
-                    it all cried out for Hunter S. Thompson to chronicle it. But both as political theater and as a
-                    window into the struggle between where America has been and where it may be going, it was as
-                    engaging as it was instructive about the state of our politics.
-                </blockquote>
-            </li>
-            <li>
-                <p class="reading-title">
-                    John Heilemann and Mark Halperin — <a
-                        href="https://www.amazon.com/dp/0143126008" target="_blank">
-						Double Down: Game Change 2012</a>
-                </p>
-                <p class="reading-description">
-                    The sequel to the <a href="https://www.amazon.com/Game-Change-Clintons-McCain-Lifetime/dp/0061733644 target=_blank">
-					bestselling book on the 2008 election</a>, this provides a behind-the-scenes
-                    account of the Obama and Romney campaigns. It details the strategic decisions, internal conflicts,
-                    and critical moments that shaped the race. Here is a snippet:
-                </p>
-                <blockquote class="reading-quote">
-                    OBAMA LAUGHED WHEN HE heard that Romney had described him as Santa Claus in chief, doling out presents to the
-					freeloaders gathered around the White House Christmas tree. “He must have really meant that 47 percent thing,”
-					the president remarked to his aides.
-                </blockquote>
-            </li>
-            <li>
-                <p class="reading-title">
-                    Michael Kranish and Scott Helman — <a
-                        href="https://www.harpercollins.com/products/the-real-romney-michael-kranishscott-helman"
-                        target="_blank">The Real Romney</a>
-                </p>
-                <p class="reading-description">
-                    An in-depth biography of Mitt Romney, tracing his life through his Mormon faith, his family, his
-                    successful career at Bain Capital, and his political evolution. It offers a fairly comprehensive
-                    portrait of the real life Republican nominee. Here is a snippet:
-                </p>
-                <blockquote class="reading-quote">
-                    Something else stood out to Mitt’s peers: his bond with his father, who remained his hero and confidant
-					notwithstanding the friction over Mitt’s home visits. Classmates could see the closeness between them.
-					“It was especially interesting,” Romney’s classmate Mike Roake said, “because we were freshmen and therefore
-					in the process of divorcing ourselves from our parents.”
-                </blockquote>
-            </li>
-            <li>
-                <p class="reading-title">
-                    The Washington Post Staff — <a
-                        href="https://www.amazon.com/Obamas-Last-Stand-POLITICO-Playbook-ebook/dp/B008QLT0ZG"
-                        target="_blank">Obama's Last Stand: POLITICO Playbook 2012</a>
-                </p>
-                <p class="reading-description">
-                    A collection of reporting from The Washington Post that provides a account of the
-                    campaign as it unfolded, focusing on the key challenges facing the Obama campaign. Though not as long
-					as the others, it's one of the most fascinating. Here is a snippet:
-                </p>
-                <blockquote class="reading-quote">
-                    Obama had always expressed a gnawing fear of political defeat in sports terms, comparing the shame to that
-					of a high school basketball player blowing last-second free throws in front of his friends and family.
-					Getting beat was to have the word “loser” “flashing through people’s minds,” he wrote in the 2004 edition
-					of <i>Dreams from My Father</i>.
-                </blockquote>
-            </li>
-            <li>
-                <p class="reading-title">
-                    Barack Obama — <a href="https://www.amazon.com/Promised-Land-Barack-Obama/dp/1524763160"
-                        target="_blank">A Promised Land</a>
-                </p>
-                <p class="reading-description">
-                    Although published after his presidency, the first volume of Obama's memoirs covers his first term
-                    in detail, including the legislative battles over the economic stimulus and the Affordable Care Act,
-                    which were central issues in the 2012 campaign. Not only that, but it's an essential book for anyone
-					who wants to know more about Barack himself. Here is a snippet:
-                </p>
-                <blockquote class="reading-quote">
-                    Michelle bore the brunt of all this, shuttling between mothering and work, unconvinced that she was doing either job well. At the end of each night, after feeding and bath time and story time and cleaning up the apartment and trying to keep track of whether she’d picked up the dry cleaning and making a note to herself to schedule an appointment with the pediatrician, she would often fall into an empty bed, knowing the whole cycle would start all over again in a few short hours while her husband was off doing “important things.”<br/><br/>We began arguing more, usually late at night when the two of us were thoroughly drained. “This isn’t what I signed up for, Barack,” Michelle said at one point. “I feel like I’m doing it all by myself.”
-                </blockquote>
-            </li>
-            <li>
-                <p class="reading-title">
-                    Mitt Romney — <a href="https://www.amazon.com/No-Apology-Case-American-Greatness/dp/0312609809"
-                        target="_blank">No Apology: The Case for American Greatness</a>
-                </p>
-                <p class="reading-description">
-                    Romney's book, published before his 2012 run, lays out his worldview on American exceptionalism,
-                    economic policy, and foreign affairs. It is essential reading for understanding the philosophical
-                    underpinnings of his campaign. Here is a snippet:
-                </p>
-                <blockquote class="reading-quote">
-					Today we find ourselves at a very different moment in history, and I fear that if we remain on our current track,
-					history will come to know us as this nation’s worst generation—because we will force our children and their children
-					to bear the brunt of our recklessness and the willful neglect of the problems we created.
-                </blockquote>
-            </li>
-			<li>
-                <p class="reading-title">
-                    Kenneth W. Mack and Jim Chen — <a href="https://www.jstor.org/stable/4133628"
-                        target="_blank">Barack Obama Before He Was a Rising Political Star</a>
-                </p>
-			</li>
-			<li>
-                <p class="reading-title">
-					Thomas Edge — <a href="https://www.jstor.org/stable/40648600"
-                        target="_blank">Southern Strategy 2.0: Conservatives, White Voters, and the Election of Barack Obama</a>
-                </p>
-			</li>
-			<li>
-                <p class="reading-title">
-                    Pearl K. Ford, Tekla A. Johnson and Angie Maxwell — <a href="https://www.jstor.org/stable/40648602"
-                        target="_blank">"Yes We Can" or "Yes We Did"?: Prospective and Retrospective Change in the Obama Presidency</a>
-                </p>
-			</li>
-			<li>
-                <p class="reading-title">
-					Theda Skocpol and Lawrence R. Jacobs — <a href="https://www.jstor.org/stable/41502505"
-                        target="_blank">Accomplished and Embattled: Understanding Obama's Presidency</a>
-                </p>
-			</li>
-			<li>
-                <p class="reading-title">
-					Lawrence J. McAndrews — <a href="https://doi.org/10.2307/j.ctt18z4hr9"
-                        target="_blank">“Barack Obama: 2009–2013.” in Refuge in the Lord (pp. 151-193)</a>
-                </p>
-			</li>
+          <li>
+            <p class="reading-title">
+              John Sides and Lynn Vavreck — <a href="https://press.princeton.edu/books/paperback/9780691163635/the-gamble" target="_blank" rel="noopener">The Gamble: Choice and Chance in the 2012 Presidential Election (Updated Edition)</a>
+            </p>
+            <p class="reading-description">
+              An excellent analysis of the 2012 campaign. It argues that despite the daily drama of the campaign
+              trail, the election's outcome was largely determined by political and economic fundamentals, like
+              the state of the economy and presidential approval, and not by the so-called "game changers"
+              mentioned throughout the campaign. Here is a snippet:
+            </p>
+            <blockquote class="reading-quote">
+              As the 2012 campaign got under way, there were at least three bets being made. One was by Democrats,
+              who were betting on an incumbent who, while arguably the favorite, was still facing challenging
+              economic times and a pessimistic public. One was by Republicans, who were betting on which of their
+              many candidates could do something rare: defeat a sitting incumbent president. And one was by
+              voters, who were betting on which candidate would best help the country recover from the worst
+              economic recession in over seventy years.
+            </blockquote>
+          </li>
+          <li>
+            <p class="reading-title">
+              Dan Balz — <a href="https://www.penguinrandomhouse.com/books/311130/collision-2012-by-dan-balz/" target="_blank" rel="noopener">Collision 2012: Obama vs. Romney and the Future of Elections in America</a>
+            </p>
+            <p class="reading-description">
+              Another quite useful read, this books talk about how the 2012 election changed the course of
+              American politics, and also the impacts it had on America’s electoral process. Here is a snippet:
+            </p>
+            <blockquote class="reading-quote">
+              It was not an uplifting campaign by any stretch of the imagination. At times the plain nuttiness of
+              it all cried out for Hunter S. Thompson to chronicle it. But both as political theater and as a
+              window into the struggle between where America has been and where it may be going, it was as
+              engaging as it was instructive about the state of our politics.
+            </blockquote>
+          </li>
+          <li>
+            <p class="reading-title">
+              John Heilemann and Mark Halperin — <a href="https://www.amazon.com/dp/0143126008" target="_blank" rel="noopener">Double Down: Game Change 2012</a>
+            </p>
+            <p class="reading-description">
+              The sequel to the <a href="https://www.amazon.com/Game-Change-Clintons-McCain-Lifetime/dp/0061733644" target="_blank" rel="noopener">bestselling book on the 2008 election</a>, this provides a behind-the-scenes
+              account of the Obama and Romney campaigns. It details the strategic decisions, internal conflicts,
+              and critical moments that shaped the race. Here is a snippet:
+            </p>
+            <blockquote class="reading-quote">
+              OBAMA LAUGHED WHEN HE heard that Romney had described him as Santa Claus in chief, doling out presents to the
+              freeloaders gathered around the White House Christmas tree. "He must have really meant that 47 percent thing,"
+              the president remarked to his aides.
+            </blockquote>
+          </li>
+          <li>
+            <p class="reading-title">
+              Michael Kranish and Scott Helman — <a href="https://www.harpercollins.com/products/the-real-romney-michael-kranishscott-helman" target="_blank" rel="noopener">The Real Romney</a>
+            </p>
+            <p class="reading-description">
+              An in-depth biography of Mitt Romney, tracing his life through his Mormon faith, his family, his
+              successful career at Bain Capital, and his political evolution. It offers a fairly comprehensive
+              portrait of the real life Republican nominee. Here is a snippet:
+            </p>
+            <blockquote class="reading-quote">
+              Something else stood out to Mitt's peers: his bond with his father, who remained his hero and confidant
+              notwithstanding the friction over Mitt's home visits. Classmates could see the closeness between them.
+              "It was especially interesting," Romney's classmate Mike Roake said, "because we were freshmen and therefore
+              in the process of divorcing ourselves from our parents."
+            </blockquote>
+          </li>
+          <li>
+            <p class="reading-title">
+              The Washington Post Staff — <a href="https://www.amazon.com/Obamas-Last-Stand-POLITICO-Playbook-ebook/dp/B008QLT0ZG" target="_blank" rel="noopener">Obama's Last Stand: POLITICO Playbook 2012</a>
+            </p>
+            <p class="reading-description">
+              A collection of reporting from The Washington Post that provides a account of the
+              campaign as it unfolded, focusing on the key challenges facing the Obama campaign. Though not as long
+              as the others, it's one of the most fascinating. Here is a snippet:
+            </p>
+            <blockquote class="reading-quote">
+              Obama had always expressed a gnawing fear of political defeat in sports terms, comparing the shame to that
+              of a high school basketball player blowing last-second free throws in front of his friends and family.
+              Getting beat was to have the word "loser" "flashing through people's minds," he wrote in the 2004 edition
+              of <i>Dreams from My Father</i>.
+            </blockquote>
+          </li>
+          <li>
+            <p class="reading-title">
+              Barack Obama — <a href="https://www.amazon.com/Promised-Land-Barack-Obama/dp/1524763160" target="_blank" rel="noopener">A Promised Land</a>
+            </p>
+            <p class="reading-description">
+              Although published after his presidency, the first volume of Obama's memoirs covers his first term
+              in detail, including the legislative battles over the economic stimulus and the Affordable Care Act,
+              which were central issues in the 2012 campaign. Not only that, but it's an essential book for anyone
+              who wants to know more about Barack himself. Here is a snippet:
+            </p>
+            <blockquote class="reading-quote">
+              Michelle bore the brunt of all this, shuttling between mothering and work, unconvinced that she was doing either job well. At the end of each night, after feeding and bath time and story time and cleaning up the apartment and trying to keep track of whether she'd picked up the dry cleaning and making a note to herself to schedule an appointment with the pediatrician, she would often fall into an empty bed, knowing the whole cycle would start all over again in a few short hours while her husband was off doing "important things."<br><br>We began arguing more, usually late at night when the two of us were thoroughly drained. "This isn't what I signed up for, Barack," Michelle said at one point. "I feel like I'm doing it all by myself."
+            </blockquote>
+          </li>
+          <li>
+            <p class="reading-title">
+              Mitt Romney — <a href="https://www.amazon.com/No-Apology-Case-American-Greatness/dp/0312609809" target="_blank" rel="noopener">No Apology: The Case for American Greatness</a>
+            </p>
+            <p class="reading-description">
+              Romney's book, published before his 2012 run, lays out his worldview on American exceptionalism,
+              economic policy, and foreign affairs. It is essential reading for understanding the philosophical
+              underpinnings of his campaign. Here is a snippet:
+            </p>
+            <blockquote class="reading-quote">
+              Today we find ourselves at a very different moment in history, and I fear that if we remain on our current track,
+              history will come to know us as this nation's worst generation—because we will force our children and their children
+              to bear the brunt of our recklessness and the willful neglect of the problems we created.
+            </blockquote>
+          </li>
+          <li>
+            <p class="reading-title">
+              Kenneth W. Mack and Jim Chen — <a href="https://www.jstor.org/stable/4133628" target="_blank" rel="noopener">Barack Obama Before He Was a Rising Political Star</a>
+            </p>
+          </li>
+          <li>
+            <p class="reading-title">
+              Thomas Edge — <a href="https://www.jstor.org/stable/40648600" target="_blank" rel="noopener">Southern Strategy 2.0: Conservatives, White Voters, and the Election of Barack Obama</a>
+            </p>
+          </li>
+          <li>
+            <p class="reading-title">
+              Pearl K. Ford, Tekla A. Johnson and Angie Maxwell — <a href="https://www.jstor.org/stable/40648602" target="_blank" rel="noopener">"Yes We Can" or "Yes We Did"?: Prospective and Retrospective Change in the Obama Presidency</a>
+            </p>
+          </li>
+          <li>
+            <p class="reading-title">
+              Theda Skocpol and Lawrence R. Jacobs — <a href="https://www.jstor.org/stable/41502505" target="_blank" rel="noopener">Accomplished and Embattled: Understanding Obama's Presidency</a>
+            </p>
+          </li>
+          <li>
+            <p class="reading-title">
+              Lawrence J. McAndrews — <a href="https://doi.org/10.2307/j.ctt18z4hr9" target="_blank" rel="noopener">"Barack Obama: 2009–2013." in Refuge in the Lord (pp. 151-193)</a>
+            </p>
+          </li>
         </ul>
 
         <h4>Issue recommendations</h4>
         <p>While playing this mod, you might've stumbled upon several issues, people, or events of interest that were
-            brought up during the 2012 campaign or during the first Obama administration (2009-2013). This is not a
-            comprehensive list, but below is a list of articles/interactive graphics that I visited or revisited for the
-            making of this mod, and you might find them useful.</p>
+          brought up during the 2012 campaign or during the first Obama administration (2009-2013). This is not a
+          comprehensive list, but below is a list of articles/interactive graphics that I visited or revisited for the
+          making of this mod, and you might find them useful.</p>
         <dl class="issue-list">
-            <dt>Budget/Debt:</dt>
-            <dd>
-                <ul>
-                    <li><a href="https://web.archive.org/web/20110218025258if_/https://www.nytimes.com/packages/html/newsgraphics/2011/0119-budget"
-                            target="_blank">"Obama's 2012 Budget Proposal: How $3.7 Trillion is Spent"</a></li>
-                    <li><a href="https://archive.nytimes.com/www.nytimes.com/interactive/2010/11/13/weekinreview/deficits-graphic.html"
-                            target="_blank">"Budget Puzzle: You Fix the Budget"</a></li>
-                    <li><a href="https://archive.nytimes.com/www.nytimes.com/interactive/2011/04/06/us/politics/06budget-doc.html"
-                            target="_blank">"Paul Ryan Presents: The House Republicans' 2012 Budget Proposal"</a></li>
-                    <li><a href="https://web.archive.org/web/20121116233528if_/http://www.nytimes.com/2012/11/16/us/politics/the-fiscal-cliff-explained.html"
-                            target="_blank">"The 'Fiscal Cliff', Explained"</a></li>
-                </ul>
-            </dd>
-            <dt>Economy:</dt>
-            <dd>
-                <ul>
-                    <li><a href="https://web.archive.org/web/20120127175513if_/http://www.nytimes.com/2012/01/28/business/economy/us-economy-grows-at-modest-2-8-percent-rate.html"
-                            target="_blank">"Growth Accelerates, but U.S. Has Lots of Ground to Make Up"</a></li>
-                    <li><a href="https://archive.nytimes.com/www.nytimes.com/interactive/2012/05/04/business/economy/off-the-charts-shrinking-government.html"
-                            target="_blank">"Off the Charts: Shrinking Government"</a></li>
-                </ul>
-            </dd>
-            <dt>Healthcare:</dt>
-            <dd>
-                <ul>
-                    <li><a href="https://archive.nytimes.com/well.blogs.nytimes.com/2012/08/09/life-interrupted-medical-bills-insurance-and-uncertainty/"
-                            target="_blank">"Life, Interrupted: Medical Bills, Insurance and Uncertainty"</a></li>
-                    <li><a href="https://web.archive.org/web/20120630022201if_/http://www.nytimes.com/2012/06/30/us/politics/parsing-a-romney-alternative-to-obamas-health-care-law.html"
-                            target="_blank">"Parsing a Romney Alternative to Obama's Health Care Law"</a></li>
-                </ul>
-            </dd>
-            <dt>Foreign Policy:</dt>
-            <dd>
-                <ul>
-                    <li><a href="https://web.archive.org/web/20121023071857if_/http://www.nytimes.com/2012/10/23/us/politics/looking-closely-at-the-candidates-statements-on-foreign-policy.html"
-                            target="_blank">"Looking Closely at Statements From Candidates on Foreign Policy"</a></li>
-                    <li><a href="https://www.nytimes.com/interactive/2012/02/10/world/middleeast/the-evolution-of-syrias-deadly-conflict.html"
-                            target="_blank">"The Evolution of Syria's Conflict"</a></li>
-                    <li><a href="https://archive.nytimes.com/www.nytimes.com/interactive/2012/09/20/world/africa/the-attack-on-the-american-mission-in-benghazi-libya.html"
-                            target="_blank">"The Attack on the American Mission in Benghazi, Libya"</a></li>
-                </ul>
-            </dd>
-            <dt>Campaign Coverage:</dt>
-            <dd>
-                <ul>
-                    <li><a href="https://web.archive.org/web/20110623220113if_/http://elections.nytimes.com/2012/primaries/candidates"
-                            target="_blank">"Republican Presidential Candidates"</a></li>
-                    <li><a href="https://web.archive.org/web/20110409105341/http://fivethirtyeight.blogs.nytimes.com/2011/03/29/in-coverage-of-2012-candidates-the-blogs-and-the-beltway-divide/"
-                            target="_blank">"In Coverage of 2012 Candidates, the Blogs and the Beltway Divide"</a></li>
-                    <li><a href="https://archive.nytimes.com/www.nytimes.com/interactive/2012/11/02/us/politics/paths-to-the-white-house.html"
-                            target="_blank">"512 Paths to the White House"</a></li>
-                    <li><a href="https://www.nytimes.com/elections/2012/ratings/electoral-map.html" target="_blank">"The
-                            Electoral Map: Building a Path to Victory"</a></li>
-                </ul>
-            </dd>
+          <dt>Budget/Debt:</dt>
+          <dd>
+            <ul>
+              <li><a href="https://web.archive.org/web/20110218025258if_/https://www.nytimes.com/packages/html/newsgraphics/2011/0119-budget" target="_blank" rel="noopener">"Obama's 2012 Budget Proposal: How $3.7 Trillion is Spent"</a></li>
+              <li><a href="https://archive.nytimes.com/www.nytimes.com/interactive/2010/11/13/weekinreview/deficits-graphic.html" target="_blank" rel="noopener">"Budget Puzzle: You Fix the Budget"</a></li>
+              <li><a href="https://archive.nytimes.com/www.nytimes.com/interactive/2011/04/06/us/politics/06budget-doc.html" target="_blank" rel="noopener">"Paul Ryan Presents: The House Republicans' 2012 Budget Proposal"</a></li>
+              <li><a href="https://web.archive.org/web/20121116233528if_/http://www.nytimes.com/2012/11/16/us/politics/the-fiscal-cliff-explained.html" target="_blank" rel="noopener">"The 'Fiscal Cliff', Explained"</a></li>
+            </ul>
+          </dd>
+          <dt>Economy:</dt>
+          <dd>
+            <ul>
+              <li><a href="https://web.archive.org/web/20120127175513if_/http://www.nytimes.com/2012/01/28/business/economy/us-economy-grows-at-modest-2-8-percent-rate.html" target="_blank" rel="noopener">"Growth Accelerates, but U.S. Has Lots of Ground to Make Up"</a></li>
+              <li><a href="https://archive.nytimes.com/www.nytimes.com/interactive/2012/05/04/business/economy/off-the-charts-shrinking-government.html" target="_blank" rel="noopener">"Off the Charts: Shrinking Government"</a></li>
+            </ul>
+          </dd>
+          <dt>Healthcare:</dt>
+          <dd>
+            <ul>
+              <li><a href="https://archive.nytimes.com/well.blogs.nytimes.com/2012/08/09/life-interrupted-medical-bills-insurance-and-uncertainty/" target="_blank" rel="noopener">"Life, Interrupted: Medical Bills, Insurance and Uncertainty"</a></li>
+              <li><a href="https://web.archive.org/web/20120630022201if_/http://www.nytimes.com/2012/06/30/us/politics/parsing-a-romney-alternative-to-obamas-health-care-law.html" target="_blank" rel="noopener">"Parsing a Romney Alternative to Obama's Health Care Law"</a></li>
+            </ul>
+          </dd>
+          <dt>Foreign Policy:</dt>
+          <dd>
+            <ul>
+              <li><a href="https://web.archive.org/web/20121023071857if_/http://www.nytimes.com/2012/10/23/us/politics/looking-closely-at-the-candidates-statements-on-foreign-policy.html" target="_blank" rel="noopener">"Looking Closely at Statements From Candidates on Foreign Policy"</a></li>
+              <li><a href="https://www.nytimes.com/interactive/2012/02/10/world/middleeast/the-evolution-of-syrias-deadly-conflict.html" target="_blank" rel="noopener">"The Evolution of Syria's Conflict"</a></li>
+              <li><a href="https://archive.nytimes.com/www.nytimes.com/interactive/2012/09/20/world/africa/the-attack-on-the-american-mission-in-benghazi-libya.html" target="_blank" rel="noopener">"The Attack on the American Mission in Benghazi, Libya"</a></li>
+            </ul>
+          </dd>
+          <dt>Campaign Coverage:</dt>
+          <dd>
+            <ul>
+              <li><a href="https://web.archive.org/web/20110623220113if_/http://elections.nytimes.com/2012/primaries/candidates" target="_blank" rel="noopener">"Republican Presidential Candidates"</a></li>
+              <li><a href="https://web.archive.org/web/20110409105341/http://fivethirtyeight.blogs.nytimes.com/2011/03/29/in-coverage-of-2012-candidates-the-blogs-and-the-beltway-divide/" target="_blank" rel="noopener">"In Coverage of 2012 Candidates, the Blogs and the Beltway Divide"</a></li>
+              <li><a href="https://archive.nytimes.com/www.nytimes.com/interactive/2012/11/02/us/politics/paths-to-the-white-house.html" target="_blank" rel="noopener">"512 Paths to the White House"</a></li>
+              <li><a href="https://www.nytimes.com/elections/2012/ratings/electoral-map.html" target="_blank" rel="noopener">"The Electoral Map: Building a Path to Victory"</a></li>
+            </ul>
+          </dd>
         </dl>
 
         <h4>Candidate biographies</h4>
         <ul>
-            <li>Barack Obama — <a href="https://www.amazon.com/Audacity-Hope-Thoughts-Reclaiming-American/dp/0307237708"
-                    target="_blank">The Audacity of Hope</a></li>
-            <li>Mitt Romney — <a href="https://www.amazon.com/No-Apology-Case-American-Greatness/dp/0312609809"
-                    target="_blank">No Apology: The Case for American Greatness</a></li>
-            <li>Gary Johnson — <a
-                    href="https://www.amazon.com/Seven-Principles-Good-Government-Libertarian/dp/156343913"
-                    target="_blank">Seven Principles of Good Government</a></li>
+          <li>Barack Obama — <a href="https://www.amazon.com/Audacity-Hope-Thoughts-Reclaiming-American/dp/0307237708" target="_blank" rel="noopener">The Audacity of Hope</a></li>
+          <li>Mitt Romney — <a href="https://www.amazon.com/No-Apology-Case-American-Greatness/dp/0312609809" target="_blank" rel="noopener">No Apology: The Case for American Greatness</a></li>
+          <li>Gary Johnson — <a href="https://www.amazon.com/Seven-Principles-Good-Government-Libertarian/dp/1563439131" target="_blank" rel="noopener">Seven Principles of Good Government</a></li>
         </ul>
 
-        <h4>Research & Analysis</h4>
+        <h4>Research &amp; Analysis</h4>
         <ul>
-            <li>FiveThirtyEight — <a
-                    href="https://archive.nytimes.com/www.nytimes.com/interactive/2011/11/03/magazine/538-gdp-election-calculator.html"
-                    target="_blank">What Are the Chances for Republicans?</a></li>
-            <li>FiveThirtyEight — <a
-                    href="https://fivethirtyeight.com/features/the-2012-election-in-a-relative-sense/"
-                    target="_blank">The 2012 Election, in a Relative Sense</a></li>
-            <li>FiveThirtyEight — <a href="https://archive.nytimes.com/fivethirtyeight.blogs.nytimes.com/2012/11/08/as-nation-and-parties-change-republicans-are-at-an-electoral-college-disadvantage/"
-                    target="_blank">As Nation and Parties Change, Republicans Are at an Electoral College Disadvantage</a></li>
+          <li>FiveThirtyEight — <a href="https://archive.nytimes.com/www.nytimes.com/interactive/2011/11/03/magazine/538-gdp-election-calculator.html" target="_blank" rel="noopener">What Are the Chances for Republicans?</a></li>
+          <li>FiveThirtyEight — <a href="https://fivethirtyeight.com/features/the-2012-election-in-a-relative-sense/" target="_blank" rel="noopener">The 2012 Election, in a Relative Sense</a></li>
+          <li>FiveThirtyEight — <a href="https://archive.nytimes.com/fivethirtyeight.blogs.nytimes.com/2012/11/08/as-nation-and-parties-change-republicans-are-at-an-electoral-college-disadvantage/" target="_blank" rel="noopener">As Nation and Parties Change, Republicans Are at an Electoral College Disadvantage</a></li>
         </ul>
-    </span>
-    <span id="rpage2" style="display: none;">
+      </span>
+
+      <span id="rpage2" class="rec-credits-content" style="display: none;">
         <h4>Notes on the in-game code</h4>
         <ul>
             <li>A couple of the features here (e.g. the tooltip system, the start screen menu, etc.) were taken from
@@ -338,54 +299,52 @@ const recommendedReadingContent = `
                 was rewritten for this mod and what was created from scratch.</li>
             <li>The Dossier system mechanic (that was also present in 2016ALOT) was inspired by the 1991 DOS game
                 <i>Floor 13</i> (which can be played <a href="https://www.myabandonware.com/game/floor-13-1eo/play-1eo"
-                    target="_blank">here</a>), which allowed you to do a variety of tools, from interrogating subjects
+                    target="_blank" rel="noopener">here</a>), which allowed you to do a variety of tools, from interrogating subjects
                 to abducting them to ransacking places to discrediting their reputation. It was a game I especially
                 played a lot, so I’m happy with how it turned out here. (A more family-friendly version of it was
                 implemented on this mod.) This time, though, the layout for the Dossier was loosely inspired by that of
                 <i>Divided States of America</i>, and also hit mod <i>Unburdened By What Has Been</i>. It was meant to look
-				similar to Astro’s Campaign Headquarters feature (which is used in both mods), and many thanks to him for it!
-            </li>
-			<li>The data visualizer you see here was actually made for this mod! I should point out though that a good chunk
-			of the tabs added to it were added by routevenus, and used for testing both <i>1972: More Than Ever</i> and <i>
-			Projec 2024</i>, and eventually I decided to use an adapted version of the data visualizer used there for better
-			ease of use. Thank you!</li>
-			<li>The presidents list slide you see here was taken from <i>Hope</i>, which was taken from <i>All The Way</i>. The
-			original code (for Hope, at least) was over 200kb, and a lot of it had to be trimmed down and adjusted for this mod.</li>
-            <li>The tabs system you’re seeing here was taken from <i>2004 Sundance</i>, used in 2016ALOT, and eventually
-				reused for this mod. The question randomizer here, although technically using the same function as
+                similar to Astro’s Campaign Headquarters feature (which is used in both mods), and many thanks to him for it!</li>
+            <li>The data visualizer you see here was actually made for this mod! I should point out though that a good chunk
+                of the tabs added to it were added by routevenus, and used for testing both <i><a href="https://campaigntrailshowcase.com/campaign-trail/?modName=1972%20-%20More%20Than%20Ever" target="_blank" rel="noopener">1972: More Than Ever</a></i> and
+                <i>Project 2024</i>, and eventually I decided to use an adapted version of the data visualizer used there for
+                better ease of use. Thank you again, routevenus!</li>
+			<li>The presidents list slide you see here was taken from <i><a href="https://campaigntrailshowcase.com/campaign-trail/?modName=1996%20-%20Hope" target="_blank" rel="noopener">Hope</a></i>, which was taken from <i>All The Way</i>. The
+                original code (for Hope, at least) was over 200kb, and a lot of it had to be trimmed down and adjusted for this mod. In fact, there is a good chance you may not even be seeing it in this mod, but because the code is within this game I have to credit both for the existing version.</li>
+			<li>For a similar reason, I must also note the expanded map container code was drawn from <i><a href="https://campaigntrailshowcase.com/campaign-trail/?modName=1976%20-%20Year%20Zero" target="_blank" rel="noopener">Year Zero</a></i>. Well, sort of; the version YZ uses is partially driven by the game window size, and for the sake of compatibility (with our exising code) we had to use a different version here  that affects only the map container SVG.</li>
+            <li>The tabs system you’re seeing here was taken from <i><a href="https://campaigntrailshowcase.com/campaign-trail/?modName=2004Sundance" target="_blank" rel="noopener">2004 Sundance</a></i>, used in 2016ALOT, and eventually
+                reused for this mod. The question randomizer here, although technically using the same function as
                 <i>bunnyhop</i>, is used in a different way because, just like in 2016ALOT, rewriting most of the mod for it was
-				not a feasible idea. Finally, the checkbox styling you see here was partially taken from the one on that mod
+                not a feasible idea. Finally, the checkbox styling you see here was partially taken from the one on that mod
                 and changed for this one.</li>
             <li>Many of the images here were listed on sites such as Getty Images. This mod is primarily a
                 humorous/educational mod, and we want to note these are being labeled as fair use of the respective
                 material under United States copyright law.</li>
         </ul>
         <h4>Special thanks to…</h4>
-        <ul>
-			<li>The estate of <i>Aaliyah</i>, for refreshing the songs from the self-titled album Aaliyah (2001) only once, preventing me from having to update one of the songs used in this mod from time to time;</li>
-			<li><i>Wyatt Mason</i>, for his excellent translation of Rimbaud's <i>A Season in Hell</i> (cited here);</li>
-            <li><i>astrohuncho</i> — for the Further Reading Wizard, which I’m using to write this message as we speak;</li>
-            <li><i>Jet</i> — for his excellent mod tool and for being fine with my fork of it;</li>
-            <li>The man himself, <i>Dan Bryan</i> — for creating this neat educational game;</li>
-            <li><i>Everyone who playtested this mod</i> — for, well, trying out this mod and sharing their feedback;
-            </li>
+        <ul class="thanks-list">
+            <li>The estate of <i>Aaliyah</i>, for not refreshing the songs from the self-titled album Aaliyah (2001) as often. During the development process, I had to replace one of the songs used here (We Need A Resolution) because the version on YouTube simply vanished, and I had to replace it from time to time before using another one</li>
+            <li><i>Wyatt Mason</i>, for his excellent translation of Rimbaud's <i>A Season in Hell</i> (cited here)</li>
+            <li><i>astrohuncho</i> — for his <a href="https://hunchonautilus.github.io/nct-further-reading-wizard/" target="_blank" rel="noopener">Further Reading Wizard</a>, which I have used for testing this mod’s endings, and also this message which you are reading right now</li>
+            <li><i>Decstar</i> — for pointing out the Operations tab was really laggier than it should have been</li>
+            <li><i>Jet</i> — for his excellent mod tool and for being fine with my fork of it, which I used for the making of this mod</li>
+            <li>The man himself, <i>Dan Bryan</i> — for creating this neat educational game</li>
+            <li><i>Everyone who playtested this mod</i> — for, well, trying out this mod and sharing their feedback</li>
         </ul>
-        <p>And of course, thanks to <b>you</b>, for taking the time to read all of this. :D I appreciate it!</p>
-        <hr style="border:solid 1px lightgray">
-        <blockquote>“A green hole where a river sings;<br/>Silver tatters tangling in the grass;<br/>Sun shining down from a proud mountain:<br/>A little valley bubbling with light.<br/><br/>A young soldier sleeps, lips apart, head bare,<br/>Neck bathing in cool blue watercress,<br/>Reclined in the grass beneath the clouds,<br/>Pale in his green bed showered with light.<br/><br/>He sleeps with his feet in the gladiolas.<br/>Smiling like a sick child, he naps:<br/>Nature, cradle him in warmth: he’s cold.<br/><br/>Sweet scents don’t tickle his nose;<br/>He sleeps in the sun, a hand on his motionless chest,<br/>Two red holes on his right side.”</blockquote>
+        <p class="credits-closing">And of course, thanks to <b>you</b>, for taking the time to read all of this. :D I appreciate it!</p>
+        <hr>
+        <blockquote>"A green hole where a river sings;<br>Silver tatters tangling in the grass;<br>Sun shining down from a proud mountain:<br>A little valley bubbling with light.<br><br>A young soldier sleeps, lips apart, head bare,<br>Neck bathing in cool blue watercress,<br>Reclined in the grass beneath the clouds,<br>Pale in his green bed showered with light.<br><br>He sleeps with his feet in the gladiolas.<br>Smiling like a sick child, he naps:<br>Nature, cradle him in warmth: he's cold.<br><br>Sweet scents don't tickle his nose;<br>He sleeps in the sun, a hand on his motionless chest,<br>Two red holes on his right side."</blockquote>
     </span>
-    <span id="rpage3" style="display: none;">
-        <h4>Fun facts</h4>
-        <p> Did you know? </p>
-		<ul>
-			<li>Prior to working on this mod, I was tapped to work on a Biden '08 mod, which didn't really go anywhere because the three people on the team Were
-			busy with other things. I did consider it for a couple of months but dropped it entirely when <a href="https://www.reddit.com/r/thecampaigntrail/comments/1m8ihet/mod_announcement_biden_08/" target="_blank">the same idea</a> was taken by another person.</li>
-			<li>A very alpha version of Little Big Man, way before I was fully set on making it an actual mod, was posted on June 29, 2025, just six days after the release of A Lifetime of This. It had some similarities to the final design. <img src="https://file.garden/aNtAfG887DiA_7lO/2012LBM/lbm_alpha.png" width="75%" /></li>
-			<li>The music player was based off a scrapped, buggy music player I considered for 2016ALOT. It was so broken that it looked like this. Curiously, some of the sample songs in here were re-used this for mod, although not all of them. Amen to that! I think the other unlisted songs here were The Greatest Romance Ever Been Gold, I Wanna Sex You Up (confirming this mod was initially made on freaky principles) and C'Est La Vie. <img src="https://file.garden/aNtAfG887DiA_7lO/2012LBM/lbm_alpha2.png" width="75%" /></li>
-			<li>You might be wondering why Trevor Moore appears in this mod many, many, many times. This is a good question, one which I don't know the answer to. He was a last-minute addition to A Lifetime of This (and mostly as part of the polar bears gag), but here you can see that, perhaps, he and Obama have more in common than you'd think. A similar rationale was used for adding Gray Davis as a running mod, except this one was based on 'historical' facts; there have been a few reports from 2010-2012 showing that the two had their similarities and, given that I was looking for a Garcetti-esque running mate for this mod, he fit in nicely.
-            </li>
-        </ul>
 
+    <span id="rpage3" class="funfacts-content" style="display: none;">
+        <h4>Fun facts</h4>
+        <p>Did you know?</p>
+        <ul class="fact-list">
+            <li>Prior to working on this mod, I was tapped to work on a Biden ‘08 mod, which didn’t really go anywhere because the three people on the team were busy with other things. I did consider it for a couple of months but dropped it entirely when <a href="https://www.reddit.com/r/thecampaigntrail/comments/1m8ihet/mod_announcement_biden_08/" target="_blank" rel="noopener">the same idea</a> was taken by another person. I would later contribute to that project, and you can play the Biden '08 mod <a href="https://campaigntrailshowcase.com/campaign-trail/?modName=2008Biden" target="_blank" rel="noopener">here</a>.</li>
+            <li>A very alpha version of Little Big Man, way before I was fully set on making it an actual mod, was posted on June 29, 2025, just six days after the release of A Lifetime of This. It had some similarities to the final design. <img src="https://file.garden/aNtAfG887DiA_7lO/2012LBM/lbm_alpha.png" width="75%" loading="lazy" decoding="async" alt="LBM alpha screenshot"></li>
+            <li>The music player was based off a scrapped, buggy music player I considered for 2016ALOT. It was so broken that it looked like this. Curiously, you may notice some of sample songs in here were re-used and appeared in the final mod, although not all of them. Amen to that! I think the other unlisted songs here were The Greatest Romance Ever Been Gold, I Wanna Sex You Up (confirming this mod was initially made on freaky principles) and C’Est La Vie. <img src="https://file.garden/aNtAfG887DiA_7lO/2012LBM/lbm_alpha2.png" width="75%" loading="lazy" decoding="async" alt="LBM alpha music player screenshot"></li>
+            <li>You might be wondering why Trevor Moore appears in this mod many, many, many times. This is a good question, one which I don’t know the answer to. He was a last-minute addition to A Lifetime of This (and mostly as part of the polar bears gag), but here you can see that, perhaps, he and Obama have more in common than you’d think. A similar rationale was used for adding Gray Davis as a running mate, except this one was based on ‘historical’ facts; there have been a few reports from 2010-2012 showing that the two had their similarities and, given that I was looking for a Garcetti-esque running mate for this mod, he fit in nicely.</li>
+        </ul>
     </span>
 </div>
 `;
@@ -396,7 +355,7 @@ campaignTrail_temp.election_json = [
     "pk": 3,
     "fields": {
       "year": 2012,
-      "site_description": "<p> <span style=\"font-size: 3.5em; float: left; font-weight: bold; line-height: 0.7em; margin-right: 0.05em; margin-top: 0.1em; color: #b30000\">F</span><b>rench poet Arthur Rimbaud</b>, almost seven score ago, once wrote that he became opera, that he saw all living things were doomed to bliss — but that wasn’t living, just a way to waste what we have. He argued with countless men using examples drawn from their other lives, sought voyages to disperse enchantments that had colonized his mind, and watched a consoling cross rise above a sea he came to love as if it were rinsing him of stain. <i>Bliss was my undoing, my remorse, my worm</i>, he said. <i>My life would always be too ungovernable to devote to strength and beauty</i>. <br/><br/> At times, Barack feels the very same way. Once the brightest light in the room, he now walks through it like a man half-remembering why he turned it on in the first place. <br/><br/> The dream of the campaign trail ended the second he stepped into the Oval Office. It was like he was trapped in a nightmare, and one specifically designed to break him. Obama’s evil double was on the cable news every night; it was a caricature built from soundbites and a lot of suspicion, primarily conservative. He was the devil incarnate, a fallen angel; his enemies were feasting on his flesh. Were they the same? In a country like this, it seemed like every choice was a wrong one; just some were less wrong than others. He would wake up at night, afraid the man from ’08 was a dream he was starting to forget. The world was a blur; the things that were clear in his dreams suddenly didn’t make sense anymore. <br/><br/> Now, in 2012, the landscape has shifted. The President is no longer a symbol of what could be (or what has been), but the custodian of a rather complicated and, at times, controversial record. There’s a kill list, there are drone strikes, there’s a healthcare bill whose promise has outpaced its rollout. Guantánamo is still open, and of course, there stand Mitch McConnell and John Boehner, looming over every vote like gargoyles. The writing is on the wall, and he read it. It’s a mad world. <br/><br/> The campaign trail feels different this time. His old lines don’t quite land with the same force. There seems to be a dissonance between the man who must now defend his compromises and the movement he once inspired. Obama finds himself in a strange middle ground; he’s no longer the fresh-faced outsider the American public met in 2008, but also not yet a universally accepted leader. His campaign is, essentially, running on muscle memory, and not many are sure whether he is searching for a new narrative — or, rather, for a way to reignite the old one. <br/><br/> Perhaps his task is no longer to inspire a dream, but to defend a complicated reality. That question hangs in the air at every rally, in every strategy meeting: what is the story this time? How do you convince a tired and divided nation to give you four more years? <br/><br/> Barack? Hey, are you still with me? </p>",
+      "site_description": "<p> <span style=\"font-size: 3.7em; float: left; font-weight: bold; line-height: 0.8; margin-right: -.2em; margin-left: .4em; margin-top: -0.05em; margin-bottom: -0.1em; color: #b30000;\">F</span><b>rench poet Arthur Rimbaud</b>, almost seven score ago, once wrote that he became opera, that he saw all living things were doomed to bliss — but that wasn’t living, just a way to waste what we have. He argued with countless men using examples drawn from their other lives, sought voyages to disperse enchantments that had colonized his mind, and watched a consoling cross rise above a sea he came to love as if it were rinsing him of stain. <i>Bliss was my undoing, my remorse, my worm</i>, he said. <i>My life would always be too ungovernable to devote to strength and beauty</i>. </p><p> At times, Barack feels the very same way. Once the brightest light in the room, he now walks through it like a man half-remembering why he turned it on in the first place. </p><p> The dream of the campaign trail ended the second he stepped into the Oval Office. It was like he was trapped in a nightmare, and one specifically designed to break him. Obama’s evil double was on the cable news every night; it was a caricature built from soundbites and a lot of suspicion, primarily conservative. He was the devil incarnate, a fallen angel; his enemies were feasting on his flesh. Were they the same? In a country like this, it seemed like every choice was a wrong one; just some were less wrong than others. He would wake up at night, afraid the man from ’08 was a dream he was starting to forget. The world was a blur; the things that were clear in his dreams suddenly didn’t make sense anymore. </p><p> Now, in 2012, the landscape has shifted. The President is no longer a symbol of what could be (or what has been), but the custodian of a rather complicated and, at times, controversial record. There’s a kill list, there are drone strikes, there’s a healthcare bill whose promise has outpaced its rollout. Guantánamo is still open, and of course, there stand Mitch McConnell and John Boehner, looming over every vote like gargoyles. The writing is on the wall, and he read it. It’s a mad world. </p><p> The campaign trail feels different this time. His old lines don’t quite land with the same force. There seems to be a dissonance between the man who must now defend his compromises and the movement he once inspired. Obama finds himself in a strange middle ground; he’s no longer the fresh-faced outsider the American public met in 2008, but also not yet a universally accepted leader. His campaign is, essentially, running on muscle memory, and not many are sure whether he is searching for a new narrative — or, rather, for a way to reignite the old one. </p><p> Perhaps his task is no longer to inspire a dream, but to defend a complicated reality. That question hangs in the air at every rally, in every strategy meeting: what is the story this time? How do you convince a tired and divided nation to give you four more years? </p><p> Barack? Hey, are you still with me? </p>",
       "summary": "<p> Three years after the media crowned him in 2008, things have not felt as exciting for little Barry. He has spent the last year watching the economic recovery elude him, seeing it turn a long slow drowning in jobs reports and foreclosures. He has also seen his efforts to be a transformational, post-partisan leader fall apart, as his agenda based on “redistributive justice” has crashed and burned in gridlocked Congress. </p> <p> Not knowing whether he will face Mitt Romney or one of the more beatable conservatives emerging from the GOP primary chaos, his future is wide open. Aside from his usual opponents, he must also contend with Congressional Democrats who are petrified at the prospect of defending his record. He must do all he can to ensure that he does not cede what little American credibility remains to an emboldened Putin and an ascendant China, and pray that the newly-registered Millennial phonekids can help him find the Chaos Emeralds one last time. </p>",
       "image_url": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/XBiCnJX.jpeg",
       "winning_electoral_vote_number": 270,
@@ -492,7 +451,7 @@ campaignTrail_temp.candidate_json = [
       "color_hex": "#194A9F",
       "secondary_color_hex": "#8ABDFF",
       "is_active": 1,
-      "image_url": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/9irtfnq.jpeg",
+      "image_url": "https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/obama_small_2.webp",
       "electoral_victory_message": "<h3>Congratulations! You have won the 2012 election.</h3><p>In spite of a hard-fought challenge from Mitt Romney, you have held on to the Presidency.</p><p>On the political front, it appears that your health care legislation that was passed in early 2010 will survive and go into effect. While the economy has not yet recovered as strongly as you hoped and promised, you will now have four more years to leave a strong legacy to your Democratic successor.</p>",
       "electoral_loss_message": "<h3>Sorry! You have lost the 2012 election.</h3><p>In spite of your spirited defense, Mitt Romney has won the Presidency. Nearly two centuries after the ill-fated campaign of Joseph Smith, Romney will become America’s first Mormon president.</p><p>On the political front, it appears that Romney will make a push for more tax cuts to revive the economy. He will also try to repeal your health care law. If your defeat was narrow enough, you may be able to attempt a comeback in 2016.</p>",
       "no_electoral_majority_message": "<h3>The House decides the 2012 election.</h3><p>No candidate achieved a majority of the electoral votes, marking the first time this has happened since 1824. Unfortunately for you, the majority of U.S. states have Republican controlled congressional delegations, and they will cast their votes for Mitt Romney.</p><p>Given the incredibly close nature of the election, you can probably set your sights on a political comeback in 2016, if that is what you desire.</p>",
@@ -703,7 +662,7 @@ campaignTrail_temp.candidate_json = [
       "electoral_victory_message": "n/a",
       "electoral_loss_message": "n/a",
       "no_electoral_majority_message": "n/a",
-      "description_as_running_mate": "<p>Huh, how did we even get here? Jerry Brown’s former Chief of Staff, Gray Davis governed California at the turn of the century. Before his governorship, he built a long resume as State Controller and Lieutenant Governor, earning a reputation as a pragmatic, data-driven moderate. He presided over an economic boom and made significant investments in education and infrastructure, but his tenure ended in 2003 when, in light of the California energy crisis and the dot-com bubble burst, he was recalled and replaced by “The Terminator”, Arnold Schwarzenegger.</p><p>Davis is a strange choice, and your opponents will eagerly exploit his failures to paint a picture of mismanagement. On the other hand, he brings serious fundraising muscle to your campaign, and you can’t help but agree with the media analysis that the two of you, perhaps, are two halves of the same heart. As long as he helps you dissect and deface your opponents, it may be worth a try. Perchance...</p>",
+      "description_as_running_mate": "<p>Huh, how did we even get here? Jerry Brown’s former Chief of Staff, Gray Davis governed California at the turn of the century. Before his governorship, he built a long resume as State Controller and Lieutenant Governor, earning a reputation as a pragmatic, data-driven moderate. He presided over an economic boom and made significant investments in education and infrastructure, but his tenure ended in 2003 when, in light of the California energy crisis and the dot-com bubble burst, he was recalled and replaced by “The Terminator”, Arnold Schwarzenegger.</p><p>Davis is a strange choice, and your opponents will eagerly exploit his failures to paint a picture of mismanagement. On the other hand, he brings serious fundraising muscle to your campaign, and you can’t help but agree with the media analysis that the two of you, perhaps, are two halves of the same heart. As long as he helps you dissect and deface your opponents, it may be worth a try. Perchance…</p>",
       "candidate_score": 0,
       "running_mate": true
     }
@@ -885,7 +844,7 @@ const themeData = {
   "Forest Green": {
     headerSrc: "https://upload.wikimedia.org/wikipedia/commons/8/80/President_Barack_Obama_throws_a_football.jpg",
     coloring_title: "#1e2262",
-    coloring_window: "linear-gradient(#730b0b 70%, #070553)",
+    coloring_window: "linear-gradient(to bottom, #8f2b00 60%, #051638)",
     containerColor: "#176a17",
     footerColor: "",
     extraCss: `
@@ -907,7 +866,7 @@ const themeData = {
   "Cerulean": {
     headerSrc: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/obamabluebanner.webp",
     coloring_title: "#700016",
-    coloring_window: "linear-gradient(#9dc6df, #889adf)",
+    coloring_window: "linear-gradient(#82b4dc, #6482c8)",
     containerColor: "#317cac",
     footerColor: "#000",
     extraCss: `
@@ -920,9 +879,13 @@ const themeData = {
             .game_header { background: linear-gradient(to bottom, #0f537b, #092548, #1e2c62) !important; }
             #inner_window_2, .inner_window_w_desc { background: linear-gradient(#d3deff, #7f81ff) !important; }
             #header { object-fit: cover; object-position: center top; }
-            .content_single .footer h4, .content-single div#site_credits p, .content-single div#site_credits a { color: #000 !important; }
+            .container .footer h4, .container #site_credits p, .container #site_credits a { color: #000 !important; }
             #new_footer { background: linear-gradient(#005FB8, #003566); }
             #menu_container { background: linear-gradient(#005951 50%, transparent) !important; }
+			
+			#overall_details_container, #overall_details_container a, #main_content_area, #main_content_area_reading, #drop_down_area_state p {
+			  color: #000 !important;
+			}
         `
   },
   "Bistre": {
@@ -943,8 +906,8 @@ const themeData = {
 			}
             .game_header { background: linear-gradient(to bottom, gray, #3d2b1f) !important; font-family: Schoolbell, sans-serif !important; font-size: 22pt !important; }
 			#game_window { background-color: #732b15 !important; background-image: radial-gradient(circle, rgba(255,255,255,0.05) 2px, transparent 2px) !important; background-size: 24px 24px !important; }
-			#game_window:has(.inner_window_question:not([style*="display: none"])) { background: linear-gradient(to top, #230505, #B3A004) !important; }
-            #inner_window_2, .inner_window_w_desc { background: linear-gradient(to left, #2b0949 0%, #f0f0f0 50%, #ce653b 100%) !important; }
+			#game_window:has(.inner_window_question:not([style*="display: none"])) { background: linear-gradient(to top, #0a0a2a, #2a2a5a 40%, #B3A004) !important; }
+            #inner_window_2, .inner_window_w_desc { background:linear-gradient(to left, #2b0949, #6b3a6e 25%, #d9c5c0 50%, #d48a5c 75%, #ce653b) !important }
             #menu_container { background: linear-gradient(#070059 50%, transparent) !important; }
 
 			#state_result_container {
@@ -952,9 +915,189 @@ const themeData = {
 			}
 
 			#overall_election_details a {
-				color: #ffef00;
+				color: #ffef00 !important;
 			}
 
+        `
+  },
+  "Alabaster": {
+    headerSrc: "https://pyxis.nymag.com/v1/imgs/629/c02/1246bf31b1917705aee3f61ad7550e24c0-09-obama-lede2.jpg",
+    coloring_title: "#003366",
+    coloring_window: "linear-gradient(135deg, #f0f4f8, #d9e2ec)",
+    containerColor: "#ffffff",
+    footerColor: "#333333",
+    extraCss: `
+			body {
+                background: url(https://file.garden/aNtAfG887DiA_7lO/2012LBM/rimbaud.webp) !important;
+                background-position: center !important;
+                background-size: cover !important;
+            }
+			#header {
+                display: block;
+                max-width: 100%;
+                margin: 0 auto;
+                object-fit: cover;
+                object-position: 0 25%;
+                height: 250px;
+                -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+                mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+            }
+            .game_header { 
+                background: linear-gradient(to right, #ffffff, #e6ecf2) !important; 
+                color: #003366 !important;
+                text-shadow: none !important;
+                box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+            }
+            #inner_window_2, .inner_window_w_desc { 
+                background: #ffffff !important; 
+                color: #1a1a1a !important; 
+                box-shadow: inset 0px 0px 10px rgba(0,0,0,0.05);
+            }
+            #menu_container { background: linear-gradient(#ffffff 60%, transparent) !important; }
+            #state_result_container {
+                background: linear-gradient(to right, transparent, #e6ecf2, transparent) !important;
+            }
+			#overall_details_container, #overall_details_container a, #main_content_area, #main_content_area_reading, #drop_down_area_state p {
+			    color: #111 !important;
+			}			
+			
+            .container .footer h4, .container #site_credits p, .container #site_credits a { color: #000 !important; }
+			hr {
+				border: .1em solid #ab602b63 !important;
+			}
+			
+        `
+  },
+  "Sienna": {
+    headerSrc: "https://upload.wikimedia.org/wikipedia/commons/a/af/Barack_Obama_thinking%2C_first_day_in_the_Oval_Office.jpg",
+    coloring_title: "#fce9c5",
+    coloring_window: "linear-gradient(#2b364a, #18202e)",
+    containerColor: "#3d2b1f",
+    footerColor: "#fce9c5",
+    extraCss: `
+            @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
+            body {
+                background-color: #1a110b;
+                background: url(https://chairish-prod.freetls.fastly.net/image/product/master/e05afa3a-278c-4b54-964b-6129a85b1723/white-farm-house-in-a-country-side-landscape-1930s-impressionist-oil-painting-5886) !important;
+                background-position: center !important;
+                background-size: cover !important;
+            }
+            #header {
+                object-fit: cover;
+                object-position: center 20%;
+                -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+            }
+            .game_header { 
+                background: linear-gradient(to bottom, #4a3324, #2b1d14) !important; 
+                font-family: 'Playfair Display', serif !important; 
+                color: #e0ca9e !important;
+				font-size: 22pt !important;
+				padding-bottom: 5px;
+            }
+			#game_window {
+				border: 1px solid #8c6e46 !important;
+			}
+            #inner_window_2, .inner_window_w_desc { 
+                background: linear-gradient(135deg, #f5ecd8, #dccca8) !important;
+                color: #2b1d14 !important;
+            }
+            #menu_container { background: linear-gradient(#2b1d14 70%, transparent) !important; }
+			#state_result_container {
+			    background: linear-gradient(0.2turn, transparent, rgba(140, 110, 70, 0.6)) !important;
+			}
+            #overall_election_details a {
+                color: #fce9c5 !important;
+            }
+        `
+  },
+  "Mapplethorpe": {
+    headerSrc: "https://static.spin.com/files/2016/11/GettyImages-544943118-1478103614.jpg",
+    coloring_title: "#2c3e50",
+    coloring_window: "linear-gradient(135deg, #a22c2c 20%, #8b2e2e 40%, #2c3e50 90%)",
+    containerColor: "#8b2e2e",
+    footerColor: "#2c3e50",
+    extraCss: `
+			body {
+                background: url(https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/MSNBC/Components/Photo/_new/100210-obama-music-hmed-130a.jpg) !important;
+                background-position: center !important;
+                background-size: cover !important;
+            }
+			#header {
+                display: block;
+                max-width: 100%;
+                margin: 0 auto;
+                object-fit: cover;
+                object-position: 0 35%;
+                height: 250px;
+                -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+            }
+            .game_header { 
+                background: #2c3e50 !important; 
+                color: #f4eee1 !important;
+                font-family: 'IBM Courier', 'Courier New', Courier, monospace !important;
+                border-bottom: 3px dashed #8b2e2e;
+            }
+			#inner_window_2, #inner_window_3, #inner_window_4, .inner_window_w_desc { 
+				background: linear-gradient(to bottom right, #d0dbe5 0%, #efede1 35%, #e8d5c4 70%, #d49a9a 100%) !important; 
+				color: #1a1a1a !important; 
+				border: 2px solid #2c3e50 !important;
+			}
+            #menu_container { background: linear-gradient(#fdfbf7 70%, transparent) !important; }
+            #overall_details_container, #overall_details_container a, #main_content_area {
+                color: #1a1a1a !important;
+            }
+        `
+  },
+  "Pewter": {
+    headerSrc: "https://upload.wikimedia.org/wikipedia/commons/1/1f/President_Obama_sits_in_a_rocking_chair_in_the_Blue_Room.jpg",
+    coloring_title: "#000000",
+    coloring_window: "linear-gradient(#e6e6e6, #cdcdcd)", 
+    containerColor: "#435585",
+    footerColor: "#000000",
+    extraCss: `
+            body {
+                background-color: #5d6d7e !important;
+                background-image: 
+                    linear-gradient(45deg, #435585 25%, transparent 25%, transparent 75%, #435585 75%, #435585),
+                    linear-gradient(45deg, #435585 25%, transparent 25%, transparent 75%, #435585 75%, #435585) !important;
+                background-position: 0 0, 2px 2px !important;
+                background-size: 4px 4px !important;
+            }
+            #header {
+                object-fit: cover;
+                object-position: center 20%;
+                box-shadow: 2px 2px 0px #000;
+            }
+            .game_header { 
+                background: repeating-linear-gradient(
+                    to bottom,
+                    #dddddd,
+                    #dddddd 2px,
+                    #999999 3px,
+                    #999999 4px
+                ) !important;
+                background-color: #ccc !important;
+                color: #000 !important;
+                box-shadow: 1px 1px 0px #000;
+            }
+			#inner_window_2, #inner_window_3, #inner_window_4, .inner_window_w_desc { 
+                background: linear-gradient(to bottom, #f0f0f0 0%, #dcdcdc 100%) !important; 
+                color: #000 !important; 
+                border-top: 2px solid #fff !important;
+                border-left: 2px solid #fff !important;
+                border-right: 2px solid #808080 !important;
+                border-bottom: 2px solid #808080 !important;
+                border-radius: 0px !important;
+                box-shadow: inset 1px 1px 0px rgba(255,255,255,0.5),
+                            inset -1px -1px 0px rgba(0,0,0,0.1),
+                            2px 2px 4px rgba(0,0,0,0.25) !important;
+            }
+            #menu_container { 
+                background: linear-gradient(#e6e6e6 60%, transparent) !important; 
+            }
+            #overall_details_container, #overall_details_container a, #main_content_area {
+                color: #000 !important;
+            }
         `
   },
 };
@@ -1029,11 +1172,12 @@ function ensureMetaViewport() {
 
 function applyGlobalStyles(css, id = 'app-theme') {
   if ('adoptedStyleSheets' in document && 'replaceSync' in CSSStyleSheet.prototype) {
-    if (!applyGlobalStyles.sheet) {
-      applyGlobalStyles.sheet = new CSSStyleSheet();
-      document.adoptedStyleSheets = [...document.adoptedStyleSheets, applyGlobalStyles.sheet];
+    if (!applyGlobalStyles.sheets) applyGlobalStyles.sheets = {};
+    if (!applyGlobalStyles.sheets[id]) {
+      applyGlobalStyles.sheets[id] = new CSSStyleSheet();
+      document.adoptedStyleSheets = [...document.adoptedStyleSheets, applyGlobalStyles.sheets[id]];
     }
-    applyGlobalStyles.sheet.replaceSync(css);
+    applyGlobalStyles.sheets[id].replaceSync(css);
     return;
   }
 
@@ -1072,6 +1216,10 @@ const css = `
 				height: 290px;
 				object-fit: cover;
 			}
+			/*#header {
+				-webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+				mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+			}*/
 			.campaign_trail_start_emphasis {
 			    background: #fbe63e;
 			    outline: 1px solid #ccc;
@@ -1109,8 +1257,11 @@ const css = `
 			    background: linear-gradient(#f8f8f8, #eaeaea);
 				margin: 1em 2em;
 			}
-			#inner_window_2 {
+			#inner_window_2, #inner_window_3, #inner_window_4 {
 			    background: linear-gradient(#ffd3d3, #ffb47f);
+			}
+			#overall_details_container a {
+				color: #fffb00;
 			}
 
 			/* drop-caps */
@@ -1153,9 +1304,10 @@ const css = `
 			}
 
 			.inner_window_question {
-				background: url(https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/3KYu7a5.gif);
+				background: url(https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/q_background.png);
 				background-blend-mode: overlay;
 				background-color: rgba(255, 255, 255, 0.5);
+				border: .3em double #2f22d0;
 			}
             .game_header {
                 align-items: center;
@@ -1194,10 +1346,10 @@ const css = `
             }
             .inner_window_question h3 {
                 background: linear-gradient(to bottom, #ffebeb, bisque, #ffc8af);
-                border: 2px double #bbb;
+                border: 2px solid rgba(22, 43, 125, 0.8);
                 margin: .1em 1em .2em 1em;
-				padding: .2em .1em;
-                border-radius: 0 .5rem .5rem 0;
+				padding: .2em;
+                border-radius: 0 .5em .5em 0;
             }
             @keyframes fadeInScale {
                 0% {
@@ -1213,19 +1365,23 @@ const css = `
                 animation: fadeInScale 0.3s cubic-bezier(0.3, 1.2, 0.2, 1) forwards;
                 background: #fbf8e8f7;
 				background: repeating-linear-gradient(#fff7eaf7, #fbf8e8f7 2px);
-                border-radius: .2rem;
+				border: .3em double #6886db;
+                border-radius: .3em;
                 box-shadow: 0 0 .5em rgba(226, 224, 255, 0.5), 0 0 .75em rgba(224, 224, 255, 0.3), 0 0 1em rgba(224, 226, 255, 0.1);
                 display: flex;
                 flex-flow: column;
             }
             .overlay_window h3 {
 			    background: #bfcfff;
-			    border-bottom: double #aaa;
+			    border-bottom: double #918af3;
 			    padding: .25em 0 .25em;
 			    margin: 0;
 			    font-size: 18px;
 				text-transform: lowercase;
             }
+			.overlay_window img {
+				border: .3em double #7693e3;
+			}
 			.visit_text {
 				background: #eaeaea;
 				border-radius: 1em 2em / 2em 3em;
@@ -1240,12 +1396,30 @@ const css = `
 			#map_container {
 				background: repeating-linear-gradient(to left, #f2e8ff, #dfdfdf 3px);
 			    border-radius: .2em 1.5em;
-			    border-style: groove;
-				height: 30.78em; /* necessary for mobile compatibility */
+			    border: 3px groove rgb(155, 150, 225);
+				height: 33.48em; /* 30.78em */ /* necessary for mobile compatibility */
 			}
+			
+			/* basically a lazy fix to increase the SVG map size without
+			 * changing the actual SVG or resort to more aggressive tactics,
+			 * as Year Zero does something kinda similar */
+			#map_container svg {
+				height: 100%;
+			}
+			#map_container svg {
+				transform: translate(10px, 0);
+			}
+			#map_container svg rect, #map_container svg text {
+				transform: translate(-100px, 0px);
+			}			
+			#main_content_area + #map_footer {
+				margin: 3em auto !important;
+			}
+			
+			
             #overall_result h3, #state_info h3, #state_result h3 {
 				background: #ffe3ca;
-                padding: .2rem 0;
+                padding: .25em 0;
 				text-transform: lowercase;
             }
 			#state_info h3 {
@@ -1255,7 +1429,53 @@ const css = `
             }
 			#state_info ul {
 				padding: .2em 1em .2em 1em;
+			}			
+			#state_info > p:first-of-type {
+			  margin: .5em 0 0.4em 0;
+			  font-weight: 600;
 			}
+
+			#state_info ul {
+			  font-size: .85em;
+			  list-style: none;
+			  padding: 0;
+			  margin: 0.3em 0 0.4em 0;
+			}
+
+			#state_info li {
+			  display: grid;
+			  grid-template-columns: 1fr auto 1fr;
+			  gap: 0.35em;
+			  padding: 0.2em 0;
+			  border-bottom: 1px dotted #9aaacd;
+			}
+
+			#state_info li:last-child {
+			  border-bottom: none;
+			}
+
+			#state_info li span:first-child {
+			  font-weight: 500;
+			  text-align: right;
+			  color: #243f63;
+			}
+
+			#state_info li span:nth-child(2) {
+			  opacity: 0.55;
+			}
+
+			#state_info li span:last-child {
+			  font-weight: 600;
+			  text-align: left;
+			}
+
+			#state_info p:last-of-type,
+			#state_info p:nth-last-of-type(2) {
+			  margin: .3em 0 .4em 0;
+			  color: #1a0e59;
+			}
+			
+			
 			#overall_result h3, #menu_container {
 			    border-radius: 1em 1em 0 0;
 			}
@@ -1273,6 +1493,7 @@ const css = `
 			  display: flex;
 			  flex-direction: column;
 			  align-items: center;
+			  min-height: 10.3em;
 			}
 			#overall_result h3 {
 			  width: 100%;
@@ -1381,7 +1602,7 @@ const css = `
 				}
 
 			}
-
+			
             /* Candidate image sizes & stuff */
             img#candidate_pic {
                 border: 4px ridge #970606;
@@ -1479,7 +1700,7 @@ const css = `
             #map_footer {
                 display: flex;
                 justify-content: center;
-                margin-top: 1rem !important; /* necessary for the further reading section */
+                margin: 1rem !important; /* necessary for the further reading section */
             }
             #ev_est {
                 margin-bottom: .5rem;
@@ -1496,7 +1717,14 @@ const css = `
             /* other, in-game issue tooltips */
             .tooltip {
                 cursor: help;
+				padding: 2px 6px;
+				background-color: #e4ecf7;
+				transition: background 0.2s ease;
+				border: 1px solid #d0cbe0;
             }
+			.tooltip:hover {
+				background-color: #cdddf2;
+			}
             .tooltip .tooltiptext {
                 border-radius: .2em;
                 padding: .5em;
@@ -1513,9 +1741,9 @@ const css = `
             button {
                 border: 1px solid #919191;
                 border-radius: 4px;
-				color: black; /* seems redundant, but is actually necessary for Safari */
+				color: #000; /* seems redundant, but is actually necessary for Safari */
 				cursor: pointer;
-                padding: .25em 1.25em;
+                padding: .25em 1.2em;
                 background: linear-gradient(#fff, #e7e7e7);
             }
             select {
@@ -1817,6 +2045,9 @@ const css = `
 			#overall_vote_statistics table:first-of-type {
 				width: 90%;
 			}
+			#overall_vote_statistics #gov_results_table {
+				width: 60%;
+			}
 
 			/* Ending screens tweaks */
 			#final_results_description {
@@ -1871,10 +2102,18 @@ const css = `
 			}
 
 			/* Election night screen tweaks */
+			#overall_result, #state_result, #state_info {
+				border-color: #9b96e1;
+			}
 			#overall_result ul, #state_result ul {
 				list-style: none;
-				padding: 1px 10px 10px 10px;
 				margin: 0;
+			}
+			#overall_result ul {				
+				padding: 0 0 5px 0;
+			}
+			#state_result ul {
+				padding: 0 0 0 10px;
 			}
 
 			#overall_result li {
@@ -1897,7 +2136,7 @@ const css = `
 
 			/* Cheat menus/benefit check window - because people *are* gonna use this, you know? */
 			#benefitwindow {
-				overflow: auto;
+				overflow: hidden;
 			}
 			#benefitwindowheader, #achwindowheader {
 				background-color: #790303;
@@ -1907,6 +2146,52 @@ const css = `
 				margin: 5px 10px;
 				overflow-x: clip;
 			}
+			
+			#benefitwindow {
+			  position: absolute;
+			  width: 420px;
+			  background: #d4d0c8;
+			  border: 1px solid #828282;
+			  font-family: "Bahnschrift", "Claremont", sans-serif;
+			}
+			#benefitwindowheader {
+			  padding: 3px 6px;
+			  letter-spacing: 0.05em;
+			  display: flex;
+			  justify-content: center;
+			  align-items: center;
+			  border-bottom: 2px solid #868686;
+			}
+			#benefitclose {
+			  width: 18px;
+			  height: 18px;
+			  padding: 0;
+			  font-size: 12px;
+			  background: #d4d0c8;
+			  border: 2px solid;
+			  border-color: #fff #000 #000 #fff;
+			  cursor: pointer;
+			}
+			#benefitcontent {
+			  background: #fff;
+			  padding: 8px 10px;
+			  border-top: 2px solid #808080;
+			  font-size: 0.9em;
+			  line-height: 1.35;
+			}
+			#benefitcontent p {
+			  font-size: 1.4em;
+			  margin: 0 0 0.8em 0;
+			}
+
+			#benefitcontent em {
+			  font-style: normal;
+			  font-weight: 600;
+			  color: #730e0e;
+			}
+			
+			
+			
 			#achwindow {
 				top: 5%;
 				left: 25%;
@@ -2226,7 +2511,7 @@ const css = `
 			  padding: 1em;
 			  border: 1px solid #d0d7de;
 			  border-radius: 0 0 5px 5px;
-			  background: linear-gradient(#b4b0ec, aliceblue);
+			  background: #b4b0ec73;
 			}
 
 			#autoplayMenu textarea { width: 100%; box-sizing: border-box; }
@@ -2268,6 +2553,7 @@ const css = `
 			  #map_footer {
 				/*padding-right: 10em;*/
 				padding: 1em 0;
+				margin: 1em !important; /* for the Further Reading section */
 			  }
 			  .inner_window_question, #results_container, #map_footer, #overall_details_container, #main_content_area_reading, #inner_window_2, #inner_window_3, #inner_window_4, #advisors {
 				font-size: 1.8em;
@@ -2378,6 +2664,11 @@ const css = `
 				#difficulty_level {
 				  flex-flow: revert;
 				}
+								
+				#main_content_area + #map_footer {
+					margin: auto !important;
+				}
+
 
 			}
 
@@ -2441,18 +2732,19 @@ tooltipList = [
   { searchString: "Rahm", explanationText: "<img src=https://i.guim.co.uk/img/static/sys-images/Users/Help/screenshots/2010/9/28/1285691854527/Barack-Obama-with-Rahm-Em-006.jpg?width=465&dpr=1&s=none&crop=none> Just like you." },
   { searchString: "Geithner", explanationText: "<img src=https://assets.propublica.org/legacy/images/articles/gt_geithner_obama_090114.jpg> The numbers guy, and also your Treasury Secretary." },
   { searchString: "Arne Duncan", explanationText: "<img src=	https://images.sidearmdev.com/convert?url=https%3a%2f%2fdxbhsrqyrr690.cloudfront.net%2fsidearm.nextgen.sites%2fgocrimson.com%2fimages%2f2012%2f5%2f8%2fBKM_Duncan_Arnie2.jpg&type=webp> Jim Carrey’s doppelgänger." },
-  { searchString: "Kerry", explanationText: "<img src=https://static01.nyt.com/images/2009/01/13/us/13kerry_450.jpg?quality=100&auto=webp&disable=upscale> People are going to die... but not us, Barack. We are going to live." },
+  { searchString: "Kerry", explanationText: "<img src=https://static01.nyt.com/images/2009/01/13/us/13kerry_450.jpg?quality=100&auto=webp&disable=upscale> People are going to die… but not us, Barack. We are going to live." },
   { searchString: "Ben Bernanke", explanationText: "<img src=https://media.gettyimages.com/id/98698380/pt/foto/washington-federal-reserve-chairman-ben-bernanke-greets-attendees-before-addressing-the.jpg?s=612x612&w=0&k=20&c=bGMzC4QsKaQC2DoXH0sQl-Inecqk_eMT1u5vCXPBoeI=> Ben Bernanke; the Chairman of the Federal Reserve." },
-  { searchString: "Cuomo", explanationText: "<img src=https://static01.nyt.com/images/2012/09/22/nyregion/CUOMO/CUOMO-jumbo-v2.jpg?quality=75&auto=webp&disable=upscale> In one of 42 possible timelines, your hand-picked succesor." },
+  { searchString: "Daffy Duck", explanationText: "<img src=https://media.cnn.com/api/v1/images/stellar/prod/151222130808-daffy-duck-president-restricted.jpg?q=w_3000,h_2109,x_0,y_0,c_fill> Your so-called ‘mentor’, and in one of 68 possible timelines, your hand-picked succesor." },  
+  { searchString: "Cuomo", explanationText: "<img src=https://static01.nyt.com/images/2012/10/19/nyregion/19cuomo/19cuomo-superJumbo.jpg> Andrew Cuomo; current Governor of New York, and, in one of 13 possible timelines, your presidential successor." },
 
   // opponents, et al.
   { searchString: "Mitt Romney", explanationText: "<img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn7l4BBAsILJb7goqQQX-qrE4xokpZqpTSxg&s> Former Governor of Massachusetts." },
-  { searchString: "Bain Capital", explanationText: "<img src=https://imageio.forbes.com/blogs-images/thumbnails/blog_986/pt_986_6157_o.jpg?format=jpg&height=600&width=1200&fit=bounds> The private equity firm Mitt Romney co-founded. Depending on who you ask, it either created jobs and value, or it specialized in 'vulture capitalism,' asset-stripping companies and firing workers." },
+  { searchString: "Bain Capital", explanationText: "<img src=https://imageio.forbes.com/blogs-images/thumbnails/blog_986/pt_986_6157_o.jpg?format=jpg&height=600&width=1200&fit=bounds> The private equity firm Mitt Romney co-founded. Depending on who you ask, it either created jobs and value, or it specialized in ‘vulture capitalism,’ asset-stripping companies and firing workers." },
   { searchString: "Scott Walker", explanationText: "<img src=https://images.csmonitor.com/csm/2012/06/0606-walker-Wisconsin-Recall.jpg?alias=standard_900x600> The Governor of Wisconsin. He became a conservative hero for taking on public sector unions, and survived a recall election over it earlier this year." },
   { searchString: "Ron Paul", explanationText: "<img src=https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1500w,f_auto,q_auto:best/streams/2012/August/120823/498978-120823_ron-paul_4x3.jpg> Texas Congressman and a libertarian icon." },
   { searchString: "Newt Gingrich", explanationText: "<img src=https://i.insider.com/6164a4362457a4001982d0d7?width=700> The former Speaker of the House. Kinda like a vampire." },
   { searchString: "Rick Santorum", explanationText: "<img src=https://media.npr.org/assets/img/2012/01/05/71778228_wide-11f33e9ba3bb66c23d6da86d611f2cef91345c4c.jpg?s=1100&c=50&f=jpeg> Former Senator from Pennsylvania." },
-  { searchString: "Donald Trump", explanationText: "<img src=https://variety.com/wp-content/uploads/2016/07/donald-trump-the-apprentice.jpg> The host of the reality TV show 'The Apprentice.' He spent much of last year loudly promoting 'birther' conspiracy theories about you before deciding not to run for president himself. Amen for that." },
+  { searchString: "Donald Trump", explanationText: "<img src=https://variety.com/wp-content/uploads/2016/07/donald-trump-the-apprentice.jpg> The host of the reality TV show ‘The Apprentice.’ He spent much of last year loudly promoting 'birther' conspiracy theories about you before deciding not to run for president himself. Amen for that." },
   { searchString: "Christie", explanationText: "<img src=https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2013/1/8/1357676359093/Chris-Christie-new-jersey-008.jpg?width=465&dpr=1&s=none&crop=none> Swept away the competition." },
 
   // former politicians
@@ -2461,7 +2753,7 @@ tooltipList = [
   { searchString: "Gore", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/G58yVEFXoAANcDt.jpg> Praying for <i>hope</i>." },
   { searchString: "Jimmy Carter", explanationText: "<img src=https://bbforpeace.org/lessonsfrompeacebuilders/wp-content/uploads/2020/08/170414_abc_archive_jimmycarter_nobelprize_speech_16x9_992-1.jpg> God, you hope you don’t end up like him." },
   { searchString: "Cheney", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/bruce.jpg> <b>B</b>est ever." },
-  { searchString: "FDR", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/fdr.webp> Franklin D. Roosevelt; the 32nd President of the United States." },
+  { searchString: "Roosevelt", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/fdr.webp> Franklin D. Roosevelt; the 32nd President of the United States." },
   { searchString: "Johnson", explanationText: "<img src=https://imagez.tmz.com/image/f8/o/2012/10/03/f867d804e9b15b2f9511177d680a4e5c_lg.jpg> Lyndon B. Johnson; the 36th President of the United States." },
   { searchString: "Reagan", explanationText: "<img src=https://preview.redd.it/mpc217yg5hp91.jpg?width=640&crop=smart&auto=webp&s=5fbce7c03bc06d3896d6deec934e474e46d9c878> The 40th President of the United States. Gone." },
   { searchString: "Rumsfeld", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/u9BDoVn.png> Real quiet these days." },
@@ -2471,7 +2763,7 @@ tooltipList = [
   // international figures/groups
   { searchString: "Osama bin Laden", explanationText: "<img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb8HVF-v2kev0nVeHkiJBw9gsFV_mwjW-NUQ&s> The founder of al-Qaeda. Gone." },
   { searchString: "bin Laden", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/karaoke.jpg> Better at karaoke than you are." },
-  { searchString: "Bashar Assad", explanationText: "<img src=https://static01.nyt.com/images/2012/08/20/world/middleeast/20syria_1/20syria_1-jumbo.jpg?quality=75&auto=webp&disable=upscale> The President of Syria. Rahm tells you his favorite game is actually Duke Nukem 3D." },
+  { searchString: "Assad", explanationText: "<img src=https://static01.nyt.com/images/2012/08/20/world/middleeast/20syria_1/20syria_1-jumbo.jpg?quality=75&auto=webp&disable=upscale> The President of Syria. Rahm tells you his favorite game is actually Duke Nukem 3D." },
   { searchString: "Angela Merkel", explanationText: "<img src=https://d3i6fh83elv35t.cloudfront.net/newshour/app/uploads/2015/12/RTS4J82-1024x779.jpg> Chancellor of Germany and Stephen Patel’s twin." },
   { searchString: "Hosni Mubarak", explanationText: "<img src=https://media.cnn.com/api/v1/images/stellar/prod/120610120655-hosni-mubarak-trial.jpg?q=w_1576,c_fill> A key U.S. ally for decades, he was overthrown during the Arab Spring in 2011. I wonder where he is now." },
   { searchString: "Fidel Castro", explanationText: "<img src=https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2010/12/16/1292510626129/Fidel-Castro-007.jpg?width=465&dpr=1&s=none&crop=none> The former Communist leader of Cuba. Though he has handed power to his brother Raúl, he remains a symbol of the regime and the reason for the long-standing U.S. embargo." },
@@ -2489,23 +2781,24 @@ tooltipList = [
   { searchString: "Citizens United", explanationText: "<img src=https://scpr.brightspotcdn.com/dims4/default/31de428/2147483647/strip/true/crop/3000x2111+0+0/resize/880x619!/quality/90/?url=https%3A%2F%2Fa.scpr.org%2F98863_c2b3b4e75ba6d47d3e1c5edf30bd1a09_original.jpg> The 2010 Supreme Court decision that opened the floodgates for corporate and union spending in elections, giving rise to the 'Super PACs' that are dominating the airwaves." },
   { searchString: "Dodd-Frank", explanationText: "<img src=https://www.cfr.org/sites/default/files/styles/immersive_image_3_2_desktop_2x/public/image/2023/05/DoddFrank_BG.webp> The landmark financial reform bill passed in 2010. It was designed to prevent another 2008-style crisis by regulating Wall Street." },
   { searchString: "ARRA", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/arra.png> The American Recovery and Reinvestment Act of 2009. This massive stimulus package passed in your first months in office." },
-  { searchString: "Solyndra", explanationText: "<img src=https://static01.nyt.com/images/2011/09/23/us/SOLAR-2/SOLAR-2-jumbo.jpg?quality=75&auto=webp&disable=upscale> A California-based solar panel company that received a large federal loan guarantee and then went bankrupt. It has become a go-to example for Republicans of your administration’s failed 'crony capitalist' green energy policies." },
-  { searchString: "Fast and Furious", explanationText: "<img src=https://assets.gadgets360cdn.com/pricee/assets/product/202203/0288efa78166dcd46d17d7bc34119909_1647877883.jpg?downsize=400:*> An ATF 'gunwalking' operation that allowed weapons to fall into the hands of Mexican drug cartels. The ensuing scandal has led to calls for Attorney General Eric Holder’s resignation. Unrelated: the less cooler movie Fast Five." },
+  { searchString: "Solyndra", explanationText: "<img src=https://static01.nyt.com/images/2011/09/23/us/SOLAR-2/SOLAR-2-jumbo.jpg?quality=75&auto=webp&disable=upscale> A California-based solar panel company that received a large federal loan guarantee and then went bankrupt. It has become a go-to example for Republicans of your administration’s failed ‘crony capitalist’ green energy policies." },
+  { searchString: "Fast and Furious", explanationText: "<img src=https://assets.gadgets360cdn.com/pricee/assets/product/202203/0288efa78166dcd46d17d7bc34119909_1647877883.jpg?downsize=400:*> An ATF ‘gunwalking’ operation that allowed weapons to fall into the hands of Mexican drug cartels. The ensuing scandal has led to calls for Attorney General Eric Holder’s resignation. Unrelated: the less cooler movie Fast Five." },
   { searchString: "Guantanamo Bay", explanationText: "<img src=https://d1y8sb8igg2f8e.cloudfront.net/images/guantanamo-bay-year-14_image.width-800.jpg> The detention camp in Cuba. You promised to close it in your first year, but it’s still open, thanks to fierce opposition in Congress." },
   { searchString: "fracking", explanationText: "a.k.a. hydraulic fracturing. A drilling technique that has unlocked a massive boom in U.S. natural gas and oil, but raises serious environmental concerns about its impact on drinking water." },
   { searchString: "drone strikes", explanationText: "<img src=https://live-production.wcms.abc-cdn.net.au/a90b52dbe1fa107ecd35829b287dcaae?impolicy=wcms_crop_resize&cropH=841&cropW=1495&xPos=8&yPos=150&width=862&height=485> A key and controversial component of your counterterrorism strategy. These unmanned aerial attacks are effective at targeting terrorist leaders, but critics point to civilian casualties and the questionable legality." },
   { searchString: "Defense of Marriage Act", explanationText: "<img src=https://media.washtimes.com/media/image/2009/01/14/20090113-193822-pic-612014805.jpg> The 1996 law, also known as DOMA, that defines marriage for all federal purposes as between one man and one woman. Your Justice Department has recently stopped defending it in court." },
   { searchString: "Cap-and-trade", explanationText: "<img src=https://platform.vox.com/wp-content/uploads/sites/2/chorus/assets/4536585/cap-and-trade_large.jpg> A market-based approach to limiting carbon emissions. Your ambitious bill to create such a system passed the House in 2009 but died in the Senate, marking a major legislative defeat." },
-  { searchString: "SB 1070", explanationText: "<img src=https://www.americanprogress.org/wp-content/uploads/sites/2/2012/04/arizona_3reasons_onpage-1.jpg?w=610> Arizona’s controversial 2010 immigration law. The Supreme Court struck down most of it, but upheld the 'show me your papers' provision, which allows police to check the immigration status of people they stop." },
+  { searchString: "SB 1070", explanationText: "<img src=https://www.americanprogress.org/wp-content/uploads/sites/2/2012/04/arizona_3reasons_onpage-1.jpg?w=610> Arizona’s controversial 2010 immigration law. The Supreme Court struck down most of it, but upheld the ‘show me your papers’ provision, which allows police to check the immigration status of people they stop." },
   { searchString: "Pell Grants", explanationText: "<img src=https://www.cbpp.org/sites/default/files/atoms/files/7-27-17bud-f1.png> Essentially, a form of federal financial aid provided by the government to help undergraduate students with financial need pay for college or career school. Unlike a student loan, money from a Pell Grant usually does not have to be repaid." },
 
   // everything else
   { searchString: "that photo", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Obama_and_Biden_await_updates_on_bin_Laden.jpg/1024px-Obama_and_Biden_await_updates_on_bin_Laden.jpg>" },
+  { searchString: "Plouffe", explanationText: "<img src=https://static01.nyt.com/images/2012/02/20/us/PLOUFFE/PLOUFFE-jumbo.jpg?quality=100&auto=webp> Nyarlathotep, and also your campaign manager last election." },
   { searchString: "Axelrod", explanationText: "<img src=https://i.guim.co.uk/img/static/sys-images/Observer/Columnist/Columnists/2012/8/4/1344074361508/David-Axelrod-006.jpg?width=465&dpr=1&s=none&crop=none> Happy." },
   { searchString: "Messina", explanationText: "<img src=https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iK47FQ9mImZU/v1/-1x-1.webp> Not happy." },
   { searchString: "Nancy Reagan", explanationText: "<img src=https://static01.nyt.com/images/2009/06/02/us/02reagan-480.jpg> Tired of sucking." },
-  { searchString: "John McCain", explanationText: "<img src=https://www.pajiba.com/assets_c/2019/07/john-mccain-tongue-thumb-700x380-213541.jpg> Feening." },
-  { searchString: "Chewbacca", explanationText: "<img src=https://i.tribune.com.pk/media/images/1028521-asdcaa-1452943877/1028521-asdcaa-1452943877.jpg> Why would a Wookiee, an 8-foot-tall Wookiee, want to live on Endor, with a bunch of 2-foot-tall Ewoks? It does not make sense to you." },
+  { searchString: "McCain", explanationText: "<img src=https://www.pajiba.com/assets_c/2019/07/john-mccain-tongue-thumb-700x380-213541.jpg> Feening." },
+  { searchString: "Chewbacca", explanationText: "<img src=https://i.tribune.com.pk/media/images/1028521-asdcaa-1452943877/1028521-asdcaa-1452943877.jpg> Why would a Wookiee, an 8-foot-tall Wookiee, want to live on Endor, with a bunch of 2-foot-tall Ewoks? It does not make sense." },
   { searchString: "High Times", explanationText: "<img src=https://s.wsj.net/public/resources/images/BN-KN435_cmohig_DV_20150928182602.jpg> Has your seal of approval." },
   { searchString: "gallon of PCP guy", explanationText: "<img src=https://m.media-amazon.com/images/M/MV5BZWIyOTFlNTktZjhhNy00ZTdmLTg5YTItMTUzYmNiZTZiMDQxXkEyXkFqcGc@._V1_.jpg> — It’s a <i>felony</i>! Wow, and… here you are… with it anyway! That is… wow! I didn’t even know it… came in liquid form!<br/>— Science." },
   { searchString: "Bakken and Marcellus", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/shaleformations.png> Names of major shell formations in America. Bakken (in North Dakota and Montana) is particularly oil-rich and central to the U.S. shale boom, while Marcellus (in Appalachia) is one of the biggest natural gas sources in the U.S." },
@@ -2524,9 +2817,12 @@ tooltipList = [
   { searchString: "Soviets", explanationText: "<img src=https://pyxis.nymag.com/v1/imgs/030/b11/8ca7149383d802da8835cb8dc0267eb591-24-barack-obama-soviet-constitution.2x.h473.w710.jpg> Beware decadent pleasure-seeking, comrade." },
   { searchString: "Destroy, Build, Destroy", explanationText: "<img src=https://image.tmdb.org/t/p/w780/eLq1NupfoZLc8VhiMYRdEeMmFAO.jpg> Wrecking stuff, broh." },
   { searchString: "bottomless pit", explanationText: "<img src=https://images.wikia.com/gravityfalls/images/1/19/S1e14_Which_you_can_see_here_is_Bottomless.png> Which as you can see here, is bottomless." },
-  { searchString: "Blackberry", explanationText: "<img src=https://obama.artifacts.archives.gov/internal/media/dispatcher/32529/preview> You call it glorble. glorble is getting old, and can't easily compete with all these newfangled smart phones." },
+  { searchString: "Blackberry", explanationText: "<img src=https://obama.artifacts.archives.gov/internal/media/dispatcher/32529/preview> You call it glorble. glorble is getting old, and can’t easily compete with all these newfangled smart phones." },
   { searchString: "Anthony Bourdain", explanationText: "<img src=https://i.insider.com/5b1aad721ae66235008b55b7?width=700> Your father figure, sort of." },
-  { searchString: "SpongeBob", explanationText: "<img src=https://preview.redd.it/look-whos-accompanying-obama-on-his-way-to-israel-feedback-v0-icqwc35hh15f1.png?width=640&crop=smart&auto=webp&s=30d0df36a4163b52708056b23f6268ff9869819b> Look who's accompanying Obama on his way to Israel!" },
+  { searchString: "SpongeBob", explanationText: "<img src=https://preview.redd.it/look-whos-accompanying-obama-on-his-way-to-israel-feedback-v0-icqwc35hh15f1.png?width=640&crop=smart&auto=webp&s=30d0df36a4163b52708056b23f6268ff9869819b> Look who’s accompanying Obama on his way to Israel!" },
+  { searchString: "the recession", explanationText: "<img src=https://danieljmitchell.wordpress.com/wp-content/uploads/2012/07/obama-build-that.jpg> You didn’t build that." },  
+  { searchString: "Puerto Vallarta Squeeze", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/pvs.png> More known for its cast than for its story." },  
+  { searchString: "super cool drawings", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/Bully_SLUS-21269_20240901102847.png> I think I have finally caught the essence of what it means to be… a banana." },  
   { searchString: "Obamanation", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/en/5/5f/Obama_Joker_Poster.jpg> An abomination." }
 ];
 
@@ -2577,31 +2873,27 @@ tooltipList = [
       descBox.innerHTML = DESCRIPTIONS[value] || DESCRIPTIONS["1"];
     }
   }
-
+  
   function modifySelector() {
     const select = document.getElementById("game_type_id");
     if (!select || select.dataset.enhanced) return;
 
     const optionsArr = Array.from(select.options);
     const propIndex = optionsArr.findIndex(o => o.value === "2");
-
     // since we want the array order to be preserved, we should increment the index as we add
-    let insertIndex = propIndex !== -1 ? propIndex + 1 : select.length;
+    const insertIndex = propIndex !== -1 ? propIndex + 1 : select.length;
+
+    const fragment = document.createDocumentFragment();
 
     NEW_OPTIONS.forEach(optData => {
-      if (!select.querySelector(`option[value="${optData.val}"]`)) {
-        const opt = document.createElement("option");
-        opt.value = optData.val;
-        opt.textContent = optData.text;
-
-        if (insertIndex >= select.length) {
-          select.add(opt);
-        } else {
-          select.add(opt, select.options[insertIndex]);
-        }
-        insertIndex++;
-      }
+      const opt = document.createElement("option");
+      opt.value = optData.val;
+      opt.textContent = optData.text;
+      fragment.appendChild(opt);
     });
+
+    const referenceNode = select.options[insertIndex] || null;
+    select.insertBefore(fragment, referenceNode);
 
     // rename existing options
     const wta = select.querySelector('option[value="1"]');
@@ -2611,14 +2903,12 @@ tooltipList = [
     if (prop) prop.textContent = "Proportional";
 
     // update header
-    const form = select.closest("form");
-    if (form) {
-      const h3 = form.querySelector("h3");
+    if (select.form) {
+      const h3 = select.form.querySelector("h3");
       if (h3) h3.textContent = "How would you like electoral votes to be allocated?";
     }
 
     select.addEventListener("change", (e) => updateDescription(e.target.value));
-
     updateDescription(select.value);
 
     select.dataset.enhanced = "true";
@@ -2885,37 +3175,45 @@ tooltipList = [
     alt: "Adult Swim 2 banner",
     weight: 1
   },
+  {
+    url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/computer.gif",
+    alt: "computers.com banner",
+    weight: 1
+  },
+  {
+    url: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/ads/microsoftlearn.gif",
+    alt: "Microsoft banner",
+    weight: 1
+  },
   ];
 
   // caching system
   class BannerCache {
     constructor() {
       this.imageCache = new Map();
-      this.loadedUrls = new Set();
       this.failedUrls = new Map();
       this.storageKey = 'vintageBannerCache_v2';
       this.maxCacheAge = 7 * 24 * 60 * 60 * 1000;
-      this.cacheAccessOrder = [];
 
       if (CONFIG.enableLocalStorage) {
         this.loadFromStorage();
       }
     }
-
-    saveToStorage() {
-      if (!CONFIG.enableLocalStorage) return;
-
-      try {
-        const cacheData = {
-          timestamp: Date.now(),
-          urls: Array.from(this.loadedUrls),
-          failed: Array.from(this.failedUrls.entries())
-        };
-        localStorage.setItem(this.storageKey, JSON.stringify(cacheData));
-      } catch (e) {
-        console.warn('Banner cache save failed:', e);
-      }
-    }
+	
+	saveToStorage() {
+	  if (this._saveTimer) clearTimeout(this._saveTimer);
+	  this._saveTimer = setTimeout(() => {
+		try {
+		  const cacheData = {
+			timestamp: Date.now(),
+			failed: Array.from(this.failedUrls.entries())
+		  };
+		  localStorage.setItem(this.storageKey, JSON.stringify(cacheData));
+		} catch (e) {
+          console.warn('Banner cache save failed:', e);
+		}
+	  }, 1000);
+	}
 
     loadFromStorage() {
       try {
@@ -2926,7 +3224,6 @@ tooltipList = [
         const age = Date.now() - data.timestamp;
 
         if (age < this.maxCacheAge) {
-          this.loadedUrls = new Set(data.urls);
           if (data.failed) {
             this.failedUrls = new Map(data.failed);
           }
@@ -2956,7 +3253,6 @@ tooltipList = [
     markAsFailed(url) {
       this.failedUrls.set(url, Date.now());
       this.imageCache.delete(url);
-      this.loadedUrls.delete(url);
       this.saveToStorage();
     }
 
@@ -2975,11 +3271,9 @@ tooltipList = [
       if (this.imageCache.has(url)) {
         const cachedImg = this.imageCache.get(url);
         if (this.isCachedImageValid(cachedImg)) {
-          this.updateCacheOrder(url);
           return Promise.resolve(cachedImg);
         } else {
           this.imageCache.delete(url);
-          this.loadedUrls.delete(url);
         }
       }
 
@@ -3032,14 +3326,6 @@ tooltipList = [
       }
 
       this.saveToStorage();
-    }
-
-    updateCacheOrder(url) {
-      const index = this.cacheAccessOrder.indexOf(url);
-      if (index > -1) {
-        this.cacheAccessOrder.splice(index, 1);
-      }
-      this.cacheAccessOrder.push(url);
     }
 
     preloadBatch(urls) {
@@ -3454,15 +3740,13 @@ tooltipList = [
       }
     ]
   };
-
-  if (!document.getElementById("mod_option_styles")) {
-    const style = document.createElement("style");
-    style.id = "mod_option_styles";
-    style.textContent = `
+  
+  const modMenuStyles = new CSSStyleSheet();
+	 modMenuStyles.replaceSync(`
             #${CONFIG.targetId} { display: inline-flex; flex-wrap: wrap; gap: 2.5em; align-items: flex-start; }
             #${CONFIG.containerId} { display: flex; flex-direction: column; width: 260px; }
             .mod-desc-box {
-                margin-top: 10px; padding: 10px; background: rgba(255,255,255,0.1);
+                margin-top: 10px; padding: 10px; background: rgba(255,255,255,0.35);
                 border: 1px solid #ccc; border-radius: 4px; min-height: 90px;
                 font-size: 0.95em; display: flex; flex-direction: column; justify-content: space-between;
             }
@@ -3477,10 +3761,12 @@ tooltipList = [
             .status-label { font-weight: bold; font-size: 0.9em; text-transform: uppercase; }
             .status-enabled { color: #0d3d00; }
             .status-disabled { color: #2d2d2d; }
-        `;
-    document.head.appendChild(style);
-  }
+    `);
 
+  if (!document.getElementById("mod_option_styles")) {
+	document.adoptedStyleSheets = [...document.adoptedStyleSheets, modMenuStyles];
+  }
+  
   // storage
   const getSavedSettings = () => {
     try {
@@ -3654,7 +3940,7 @@ tooltipList = [
     finalNext: "opponent_selection_id_button",
     finalBack: "opponent_selection_id_back",
     initialContinue: "election_id_button",
-    gameMapHeader: "transport_box"
+    gameMapHeader: "inner_window_question"
   };
 
   let lastSelectedCandidateId = null;
@@ -3664,20 +3950,19 @@ tooltipList = [
     const candidateInput = document.getElementById(IDS.candidateInput);
     const finalNext = document.getElementById(IDS.finalNext);
     const finalBack = document.getElementById(IDS.finalBack);
-    const gameMap = document.getElementById(IDS.gameMapHeader);
+    const gameMap = document.querySelector(IDS.gameMapHeader);
 
-    // if the map/transport box is loaded, we are done with setup
+    // if the question screen is loaded, we are done with setup
     if (gameMap) {
       finished = true;
       return;
     }
 
-    // if we are on the opponent selection screen, clean up and stop.
+    // if we are on the opponent selection screen, clean up and stop
     if (finalNext && finalBack) {
       let candidateId = lastSelectedCandidateId;
 
       // try to read candidate_id directly if available
-      const candidateInput = document.getElementById(IDS.candidateInput);
       if (candidateInput?.value) {
         candidateId = candidateInput.value;
         lastSelectedCandidateId = candidateId;
@@ -3795,8 +4080,10 @@ tooltipList = [
 
 // Psst: this is for replacing the site_description with this custom modal.
 (() => {
+  'use strict';
+ 
   const CONFIG = {
-    titleColor: '#00529B',
+    titleColor: '#15054F',
     imageHeight: '125px',
     imageSrc: 'https://media.gettyimages.com/id/134324334/pt/foto/hilighted-by-the-stage-lighting-illinois-senator-barack-obama-is-lost-in-a-sea-of-darkness-as.jpg?s=2048x2048&w=gi&k=20&c=Kpx0Eh0oclVzWDOocCmOVz-kw0QO4pSbrZpbChI4e8Q=',
     margin: '-20px',
@@ -3812,7 +4099,7 @@ tooltipList = [
   // temporary auto resize
   if (gameWindow) gameWindow.style.height = 'auto';
 
-  headingEl.innerHTML = `<h3 style="color: #15054F; letter-spacing: 2px">Little Big Man</h3>`;
+  headingEl.innerHTML = `<h3 style="color: ${CONFIG.titleColor}; letter-spacing: 2px">Little Big Man</h3>`;  
   Object.assign(contentEl.style, { marginLeft: CONFIG.margin, width: CONFIG.widthCalc });
   contentEl.innerHTML = generatePrologueHTML(CONFIG);
 
@@ -3826,8 +4113,8 @@ tooltipList = [
 
   function generatePrologueHTML({ titleColor, imageHeight, imageSrc }) {
     return `
-	  <div style=\"align-items: center; background: linear-gradient(to left, transparent, #020202 15%); border-radius: .3em 0 0 .3em; display: flex; height: ${imageHeight}; justify-content: center; overflow: hidden;\">
-        <img src=\"${imageSrc}\" alt=\"President Obama on the campaign trail\" style=\"object-fit: cover; object-position: center 200px; width: auto; transform: scale(0.3)\" />
+	  <div style="align-items: center; background: linear-gradient(to left, transparent, #020202 15%); border-radius: .3em 0 0 .3em; display: flex; height: ${imageHeight}; justify-content: center; overflow: hidden">
+        <img src="${imageSrc}" alt="President Obama on the campaign trail" style="object-fit: cover; object-position: center 200px; width: auto; transform: scale(0.3)" />
       </div>
       <p> <b>French poet Arthur Rimbaud</b>, almost seven score ago, <a href="https://fr.wikisource.org/wiki/%C5%92uvres_(Rimbaud)/Une_saison_en_enfer/Vierge_folle,_L%E2%80%99%C3%A9poux_infernal" target="_blank">once wrote</a> that he became opera, that he saw all living things were doomed to bliss — but that wasn’t living, just a way to waste what we have. He argued with countless men using examples drawn from their other lives, sought voyages to disperse enchantments that had colonized his mind, and watched a consoling cross rise above a sea he came to love as if it were rinsing him of stain. <i>Bliss was my undoing, my remorse, my worm</i>, he said. <i>My life would always be too ungovernable to devote to strength and beauty</i>. </p>
 	  <p> At times, Barack feels the very same way. Once the brightest light in the room, he now walks through it like a man half-remembering why he turned it on in the first place. </p>
@@ -4077,13 +4364,14 @@ tooltipList = [
 
   const initialTasks = () => {
     // voting method selector
-    const gameTypeSelect = document.getElementById("game_type_id");
-    if (gameTypeSelect && !gameTypeSelect.dataset.enhanced && typeof window.modifySelector === 'function') {
-      window.modifySelector();
+	const gameTypeSelect = document.getElementById("game_type_id");
+    if (gameTypeSelect?.dataset.enhanced !== "true" && typeof window.modifySelector === 'function') {
+        window.modifySelector();
     }
-    // question count selector
-    if (document.getElementById("difficulty_level") && typeof window.manageQuestionSelector === 'function') {
-      window.manageQuestionSelector();
+	
+	if (document.getElementById("difficulty_level")) {
+        if (typeof window.manageQuestionSelector === 'function') window.manageQuestionSelector(); // question count selector
+        if (typeof window.manageModOptions === 'function') window.manageModOptions();             // mod settings
     }
 
     // VP screen skipper
@@ -4101,80 +4389,56 @@ tooltipList = [
     if (electionSelect && !electionSelect.dataset.modifiedByScript && typeof window.modifyElectionSelect === 'function') {
       window.modifyElectionSelect(electionSelect);
     }
-
-    // mod settings
-    if (typeof manageModOptions === 'function') {
-      manageModOptions();
+	
+	if (document.querySelector(".inner_window_question")) {
+        return true; // removes this task from the list
     }
-
+    return false;
+	
   };
-
+  
   window.glorbleTasks.push(initialTasks);
 
-  let scheduled = false;
+    let scheduled = false;
 
-  const runTasks = () => {
-    scheduled = false;
+    const runTasks = () => {
+        scheduled = false;
+        const tasks = window.glorbleTasks;
 
-    const start = performance.now();
-
-    for (let i = window.glorbleTasks.length - 1; i >= 0; i--) {
-      const task = window.glorbleTasks[i];
-
-      try {
-        const finished = task();
-        if (finished === true) {
-          window.glorbleTasks.splice(i, 1);
+        if (tasks.length === 0) {
+            if (window.glorble) window.glorble.disconnect();
+            return;
         }
-      } catch (e) {
-        console.error("glorble task failed:", e);
-      }
 
-      if (performance.now() - start > 4) {
-        if (!scheduled) {
-          scheduled = true;
-          requestAnimationFrame(runTasks);
+        for (let i = tasks.length - 1; i >= 0; i--) {
+            try {
+                if (tasks[i]() === true) tasks.splice(i, 1);
+            } catch (e) {
+                console.error("glorble task failed:", e);
+            }
         }
-        break;
-      }
-    }
-  };
 
-  const handleMutations = (mutationsList) => {
-    if (scheduled) return;
+        if (tasks.length === 0 && window.glorble) {
+            window.glorble.disconnect();
+        }
+    };
 
-    let meaningfulChange = false;
+    const handleMutations = () => {
+        if (scheduled || window.glorbleTasks.length === 0) return;
+        scheduled = true;
+        requestAnimationFrame(runTasks);
+    };
 
-    if (!mutationsList) {
-      meaningfulChange = true;
+    const targetNode = document.getElementById("game_window");
+
+    if (targetNode) {
+        window.glorble = new MutationObserver(handleMutations);
+        window.glorble.observe(targetNode, { childList: true, subtree: true });
+        handleMutations();
+		//console.log("glorble...");
     } else {
-      for (const mutation of mutationsList) {
-        if (mutation.type === 'childList') {
-          meaningfulChange = true;
-          break;
-        }
-      }
-    }
-
-    if (meaningfulChange) {
-      scheduled = true;
-      requestAnimationFrame(runTasks);
-    }
-  };
-
-  const targetNode = document.getElementById("game_window");
-
-
-  const config = { childList: true, subtree: true };
-
-  if (targetNode) {
-    window.glorble = new MutationObserver(handleMutations);
-    window.glorble.observe(targetNode, config);
-    handleMutations();
-    //console.log("glorble...");
-  } else {
     console.warn("Zoinks! Glorble could not find game_window.");
-  }
+    }
 })();
 
 // Achievements?
