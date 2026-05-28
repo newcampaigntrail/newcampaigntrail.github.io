@@ -43,6 +43,8 @@ e.CandidText = "Please select your candidate:";
 e.VpText = "Please select your running mate:";
 e.PartyText = "Party:";
 e.HomeStateText = "Home State:";
+e.VisitText = "You have chosen to visit ";
+e.VisitText2 = " -- is this correct?";
 // Ending Popups
 e.ElectionPopup = "Election night has arrived. Settle in and wait for the returns, however                 long it may take. Best of luck!";
 e.WinPopup = "Congratulations! You won this year's election! Click OK to view the                     rest of the returns, or skip straight to the final results. We hope                     you have a nice victory speech prepared for your supporters.";
@@ -2520,7 +2522,7 @@ function divideElectoralVotesProp(e, t) {
             click: function(i, a) {
                 for (var s = 0; s < e.states_json.length; s++)
                     if (e.states_json[s].fields.abbr == a.name) {
-                        var n = '                    <div class="overlay" id="visit_overlay"></div>    \t            <div class="overlay_window" id="visit_window">                    \t<div class="overlay_window_content" id="visit_content">                    \t<h3>Advisor Feedback</h3>                    \t<img src="' + e.election_json[u].fields.advisor_url + '" width="208" height="128"/>                    \t<p>You have chosen to visit ' + e.states_json[s].fields.name + ' -- is this correct?</p>                \t    </div>                    \t<div class="overlay_buttons" id="visit_buttons">                    \t<button id="confirm_visit_button">YES</button><br>                    \t<button id="no_visit_button">NO</button>                    \t</div>                \t</div>';
+                        var n = '                    <div class="overlay" id="visit_overlay"></div>    \t            <div class="overlay_window" id="visit_window">                    \t<div class="overlay_window_content" id="visit_content">                    \t<h3>Advisor Feedback</h3>                    \t<img src="' + e.election_json[u].fields.advisor_url + '" width="208" height="128"/>                    \t<p>' + e.VisitText + ' ' + e.states_json[s].fields.name + ' ' + e.VisitText + '</p>                \t    </div>                    \t<div class="overlay_buttons" id="visit_buttons">                    \t<button id="confirm_visit_button">YES</button><br>                    \t<button id="no_visit_button">NO</button>                    \t</div>                \t</div>';
                         $("#game_window").append(n), $("#confirm_visit_button").click(function() {
                             setTimeout(() => mapCache(skip = true), 0) // cache the correct map and prevent visit glitch
                             e.player_visits.push(e.states_json[s].pk), o(t)
