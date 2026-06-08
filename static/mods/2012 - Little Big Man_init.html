@@ -1,7 +1,7 @@
 /*
 * @title: 2012: Little Big Man / Little Big Man / 2012a
 * @author: StrawberryMaster & Friends
-* @version: 1.2.4
+* @version: 1.3.0
 * @description: The 2012 election in the eyes of Barack Obama (and a couple of others, too)
 *
 * Coding license: Apache License 2.0
@@ -1100,6 +1100,79 @@ const themeData = {
             }
         `
   },
+  "Obamorock": {
+    headerSrc: "https://live.staticflickr.com/8291/7705389304_2c2a075780_b.jpg",
+    coloring_title: "#6d1c44",
+    coloring_window: "linear-gradient(135deg, #fffcf9 30%, #f7f1fb 70%, #edf7f6)",
+    containerColor: "#785168",
+    footerColor: "#785168",
+    extraCss: `
+            @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,500&display=swap');
+            
+            body {
+                background-color: #faf6ee !important;
+                background-image: 
+                    linear-gradient(135deg, rgba(255, 107, 107, 0.1) 15%, transparent 55%),
+                    linear-gradient(135deg, transparent 30%, rgba(78, 205, 196, 0.08) 50%, transparent 70%),
+                    linear-gradient(315deg, rgba(255, 230, 109, 0.12) 20%, transparent 60%),
+                    
+                    radial-gradient(circle at 15% 25%, rgba(255, 107, 107, 0.22) 0%, rgba(255, 107, 107, 0) 12%),
+                    radial-gradient(circle at 85% 20%, rgba(78, 205, 196, 0.2) 0%, rgba(78, 205, 196, 0) 15%),
+                    radial-gradient(circle at 50% 65%, rgba(255, 230, 109, 0.25) 0%, rgba(255, 230, 109, 0) 18%),
+                    radial-gradient(circle at 25% 85%, rgba(149, 117, 205, 0.18) 0%, rgba(149, 117, 205, 0) 14%),
+                    radial-gradient(circle at 75% 75%, rgba(244, 143, 177, 0.2) 0%, rgba(244, 143, 177, 0) 16%),
+
+                    repeating-radial-gradient(rgba(0,0,0,0.015) 0 1px, transparent 1px 4px) !important;
+                background-position: center !important;
+                background-size: cover !important;
+                background-attachment: fixed !important;
+				background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Claude_Monet_-_The_Rue_Montorgueil_in_Paris._Celebration_of_June_30%2C_1878_-_Google_Art_Project.jpg/960px-Claude_Monet_-_The_Rue_Montorgueil_in_Paris._Celebration_of_June_30%2C_1878_-_Google_Art_Project.jpg);
+            }
+
+            #header {
+                object-fit: cover;
+                object-position: center 30%;
+                -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+                mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+            }
+
+            .game_header { 
+                background: linear-gradient(135deg, #785168, #9e6382) !important; 
+                color: #fdfaf6 !important;
+                font-family: 'Playfair Display', serif !important; 
+                font-weight: 500 !important;
+                text-shadow: 1px 1px 2px rgba(0,0,0,0.15) !important;
+                border-bottom: 2px dashed rgba(255, 255, 255, 0.25) !important;
+            }
+
+            #inner_window_2, #inner_window_3, #inner_window_4, .inner_window_w_desc { 
+                background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(253, 246, 240, 0.95) 60%, rgba(243, 249, 248, 0.95)) !important; 
+                color: #2b2528 !important; 
+                border: 1px solid rgba(120, 81, 104, 0.2) !important;
+                border-radius: 12px 8px 14px 10px !important;
+                box-shadow: inset 0px 0px 15px rgba(255, 107, 107, 0.03), 
+                            3px 3px 12px rgba(120, 81, 104, 0.08) !important;
+            }
+
+            #menu_container { 
+                background: linear-gradient(#785168 70%, transparent) !important; 
+            }
+
+            #state_result_container {
+                background: linear-gradient(to right, transparent, rgba(255, 230, 109, 0.35), transparent) !important;
+                border-top: 1px dashed rgba(120, 81, 104, 0.2);
+                border-bottom: 1px dashed rgba(120, 81, 104, 0.2);
+            }
+
+            #overall_details_container, #overall_details_container a, #main_content_area {
+                color: #2b2528 !important;
+            }
+
+            #overall_election_details a {
+                color: #ffd3b6 !important;
+            }
+        `
+  },
 };
 
 const el = {
@@ -1381,6 +1454,8 @@ const css = `
             }
 			.overlay_window img {
 				border: .3em double #7693e3;
+				height: auto;
+				width: 230px;
 			}
 			.visit_text {
 				background: #eaeaea;
@@ -1870,17 +1945,23 @@ const css = `
 			}
 
             /* Text tooltips - experimental */
-            /* kindly borrowed from the folks @ campaigntrailshowcase.com
-            and adapted to opapeldetrouxa.neocities.org */
+			/* kindly borrowed from the folks @ campaigntrailshowcase.com
+			and adapted to opapeldetrouxa.neocities.org */
 			.mytooltip {
-				background: linear-gradient(180deg, #a8ccff 0%, #7fb4ff 100%);
-				color: #000;
 				cursor: help;
 				display: inline-flex;
-				padding: 0 .15em;
 				position: relative;
+
+				background: linear-gradient(180deg, #a8ccff 0%, #7fb4ff 100%);
+				color: #000;
+				padding: 0 .15em;
 				border-radius: .2em;
 				box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+				transition: background 0.2s ease;
+			}
+
+			.mytooltip:hover {
+				background: #7fb4ffcc;
 			}
 
 			.mytooltip .mytooltiptext {
@@ -1889,58 +1970,89 @@ const css = `
 					#8fc1ff 45%,
 					#6aadff 50%,
 					#5a9fff 100%);
+
 				border: 1px solid rgba(0, 80, 160, 0.5);
 				border-radius: 12px;
-				bottom: calc(100% + 15px);
+
+				bottom: calc(100% + 14px);
+				left: 50%;
+				transform: translateX(-50%) translateY(4px);
+
 				font-size: 13px !important;
 				font-weight: 500;
-				left: 50%;
 				line-height: 1.5em !important;
-				margin-left: -120px;
-				opacity: 0;
+
 				padding: 10px 12px;
+				width: 240px;
+				text-align: center;
+
+				opacity: 0;
 				pointer-events: none;
 				position: absolute;
-				text-align: center;
-				transition: opacity 0.3s;
-				width: 240px;
-				z-index: 1;
+				z-index: 500;
+
+				transition:
+					opacity 0.35s ease,
+					transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 
 				box-shadow:
 					inset 0 1px 0 rgba(255,255,255,0.5),
 					inset 0 -1px 0 rgba(0,0,0,0.1),
-					0 1px 4px rgba(0,0,0,0.2),
+					0 6px 14px rgba(0,0,0,0.25),
 					0 0 0 1px rgba(0,80,160,0.2);
 			}
+
 			.mytooltip .mytooltiptext::before {
 				content: "";
 				position: absolute;
 				top: 100%;
 				left: 50%;
-				margin-left: -8px;
-				width: 0;
-				height: 0;
+				transform: translateX(-50%);
+
 				border-style: solid;
 				border-width: 8px 8px 0 8px;
 				border-color: #5a9fff transparent transparent transparent;
+
 				filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
 			}
+
 			.mytooltip .mytooltiptext img {
 				border: 1px solid rgba(0,0,0,0.2);
 				border-radius: .2em;
 				display: block;
-				height: auto;
 				margin: 0 auto 8px auto;
-				max-width: 240px;
+				max-width: 100%;
 				box-shadow: 0 1px 3px rgba(0,0,0,0.3);
 			}
+
 			.mytooltip:hover .mytooltiptext {
 				opacity: 1;
-				transition-delay: 0.2s;
+				transform: translateX(-50%) translateY(0);
+				transition-delay: 0.15s;
 			}
+
 			/* this is specifically for tooltips inside the advisor feedback module */
 			#visit_window .mytooltiptext {
-			  padding: .8em 1em; /*.1em 1.1em .75em .75em;*/
+			  padding: .8em 1em;
+			}
+
+			/* tooltip extras */
+			.mytooltip .mytooltiptext.flip-bottom {
+				bottom: auto;
+				top: calc(100% + 14px);
+				transform: translateX(-50%) translateY(-4px);
+			}
+
+			.mytooltip:hover .mytooltiptext.flip-bottom {
+				transform: translateX(-50%) translateY(0);
+			}
+
+			.mytooltip .mytooltiptext.flip-bottom::before {
+				top: auto;
+				bottom: 100%;
+				border-width: 0 8px 8px 8px;
+				border-color: transparent transparent #b8d4ff transparent;
+				filter: drop-shadow(0 -1px 2px rgba(0,0,0,0.25));
 			}
 
             /* New styling for the results table */
@@ -2720,111 +2832,270 @@ if (isLiveSite) {
 }
 
 // Tooltips for the, uh, tooltip creator.
-tooltipList = [
+const tooltipList = [
   // the cabinet & friends
-  { searchString: "Barack Obama", explanationText: "<img src=https://media.cnn.com/api/v1/images/stellar/prod/ap598896397999.jpg?q=w_1110,c_fill> Class president." },
-  { searchString: "Obama", explanationText: "<img src=https://m.media-amazon.com/images/I/41N4V-n6NLL._UF1000,1000_QL80_.jpg> Sexy and you know it." },
-  { searchString: "Joe Biden", explanationText: "<img src=https://media.gettyimages.com/id/1258584811/it/foto/us-vice-presidential-nominee-senator-joe-biden-and-democratic-presidential-nominee-senator.jpg?s=612x612&w=0&k=20&c=pTe0_yyuOdAlJHq7Uviow3vvC8MrTNkl0jLVAJXnYzU=> Joe Bidenopoulos; your Vice President." },
-  { searchString: "Joe Biden", explanationText: "<img src=https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/newscms/2019_17/2831211/190421-joe-biden-guns-3-cs-701a.jpg> Joe Bidenopoulos; your Vice President." },
-  { searchString: "Michelle", explanationText: "<img src=https://media.gettyimages.com/id/149334987/pt/foto/london-england-first-lady-michelle-obama-addresses-members-of-the-2012-team-usa-at-the.jpg?s=612x612&w=0&k=20&c=XxyEmcaALe9kg4hL8fOQJSFjqpgQ1mWM7hsbJELuUGg=> Michelle Obama; your loving wife." },
-  { searchString: "Hillary Clinton", explanationText: "<img src=https://media.gettyimages.com/id/126126505/pt/foto/new-york-cityhillary-rodham-clinton-secretary-of-state-speaks-during-the-closing-plenary.jpg?s=612x612&w=0&k=20&c=UhEe4qHtrl1hKYNHfe5z6E18ew3epdrhSJOUkq45Bh8=> Hillary Clinton; your former 2008 rival, and now your loyal Secretary of State. She’s spent the last four years circling the globe as America’s top diplomat, and is quite ambitious." },
-  { searchString: "Eric Holder", explanationText: "<img src=https://media.gettyimages.com/id/131921439/pt/foto/washington-dc-attorney-general-eric-holder-gestures-while-answering-questions-during-a-senate.jpg?s=612x612&w=0&k=20&c=h4kT5QcctOsDXkTdlRPxS8oHqfCR39MVgZ-yKXggEac=> Eric Holder; your Attorney General. He is perhaps the best Eric you know, which is hardly surprising because you don’t know many." },
-  { searchString: "Rahm", explanationText: "<img src=https://i.guim.co.uk/img/static/sys-images/Users/Help/screenshots/2010/9/28/1285691854527/Barack-Obama-with-Rahm-Em-006.jpg?width=465&dpr=1&s=none&crop=none> Just like you." },
-  { searchString: "Geithner", explanationText: "<img src=https://assets.propublica.org/legacy/images/articles/gt_geithner_obama_090114.jpg> The numbers guy, and also your Treasury Secretary." },
-  { searchString: "Arne Duncan", explanationText: "<img src=	https://images.sidearmdev.com/convert?url=https%3a%2f%2fdxbhsrqyrr690.cloudfront.net%2fsidearm.nextgen.sites%2fgocrimson.com%2fimages%2f2012%2f5%2f8%2fBKM_Duncan_Arnie2.jpg&type=webp> Jim Carrey’s doppelgänger." },
-  { searchString: "Kerry", explanationText: "<img src=https://static01.nyt.com/images/2009/01/13/us/13kerry_450.jpg?quality=100&auto=webp&disable=upscale> People are going to die… but not us, Barack. We are going to live." },
-  { searchString: "Ben Bernanke", explanationText: "<img src=https://media.gettyimages.com/id/98698380/pt/foto/washington-federal-reserve-chairman-ben-bernanke-greets-attendees-before-addressing-the.jpg?s=612x612&w=0&k=20&c=bGMzC4QsKaQC2DoXH0sQl-Inecqk_eMT1u5vCXPBoeI=> Ben Bernanke; the Chairman of the Federal Reserve." },
-  { searchString: "Daffy Duck", explanationText: "<img src=https://media.cnn.com/api/v1/images/stellar/prod/151222130808-daffy-duck-president-restricted.jpg?q=w_3000,h_2109,x_0,y_0,c_fill> Your so-called ‘mentor’, and in one of 68 possible timelines, your hand-picked succesor." },  
-  { searchString: "Cuomo", explanationText: "<img src=https://static01.nyt.com/images/2012/10/19/nyregion/19cuomo/19cuomo-superJumbo.jpg> Andrew Cuomo; current Governor of New York, and, in one of 13 possible timelines, your presidential successor." },
+  { searchString: "Barack Obama", image: "https://media.cnn.com/api/v1/images/stellar/prod/ap598896397999.jpg?q=w_1110,c_fill", text: "Class president." },
+  { searchString: "Obama", image: "https://m.media-amazon.com/images/I/41N4V-n6NLL._UF1000,1000_QL80_.jpg", text: "Sexy and you know it." },
+  { searchString: "Joe Biden", image: "https://media.gettyimages.com/id/1258584811/it/foto/us-vice-presidential-nominee-senator-joe-biden-and-democratic-presidential-nominee-senator.jpg?s=612x612&w=0&k=20&c=pTe0_yyuOdAlJHq7Uviow3vvC8MrTNkl0jLVAJXnYzU=", text: "Joe Bidenopoulos; your Vice President." },
+  { searchString: "Joe Biden", image: "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/newscms/2019_17/2831211/190421-joe-biden-guns-3-cs-701a.jpg", text: "Joe Bidenopoulos; your Vice President." },
+  { searchString: "Michelle", image: "https://media.gettyimages.com/id/149334987/pt/foto/london-england-first-lady-michelle-obama-addresses-members-of-the-2012-team-usa-at-the.jpg?s=612x612&w=0&k=20&c=XxyEmcaALe9kg4hL8fOQJSFjqpgQ1mWM7hsbJELuUGg=", text: "Michelle Obama; your loving wife." },
+  { searchString: "Hillary Clinton", image: "https://media.gettyimages.com/id/126126505/pt/foto/new-york-cityhillary-rodham-clinton-secretary-of-state-speaks-during-the-closing-plenary.jpg?s=612x612&w=0&k=20&c=UhEe4qHtrl1hKYNHfe5z6E18ew3epdrhSJOUkq45Bh8=", text: "Hillary Clinton; your former 2008 rival, and now your loyal Secretary of State. She’s spent the last four years circling the globe as America’s top diplomat, and is quite ambitious." },
+  { searchString: "Eric Holder", image: "https://media.gettyimages.com/id/131921439/pt/foto/washington-dc-attorney-general-eric-holder-gestures-while-answering-questions-during-a-senate.jpg?s=612x612&w=0&k=20&c=h4kT5QcctOsDXkTdlRPxS8oHqfCR39MVgZ-yKXggEac=", text: "Eric Holder; your Attorney General. He is perhaps the best Eric you know, which is hardly surprising because you don’t know many." },
+  { searchString: "Rahm", image: "https://i.guim.co.uk/img/static/sys-images/Users/Help/screenshots/2010/9/28/1285691854527/Barack-Obama-with-Rahm-Em-006.jpg?width=465&dpr=1&s=none&crop=none", text: "Just like you." },
+  { searchString: "Geithner", image: "https://assets.propublica.org/legacy/images/articles/gt_geithner_obama_090114.jpg", text: "The numbers guy, and also your Treasury Secretary." },
+  { searchString: "Arne Duncan", image: "https://images.sidearmdev.com/convert?url=https%3a%2f%2fdxbhsrqyrr690.cloudfront.net%2fsidearm.nextgen.sites%2fgocrimson.com%2fimages%2f2012%2f5%2f8%2fBKM_Duncan_Arnie2.jpg&type=webp", text: "Jim Carrey’s doppelgänger." },
+  { searchString: "Kerry", image: "https://static01.nyt.com/images/2009/01/13/us/13kerry_450.jpg?quality=100&auto=webp&disable=upscale", text: "People are going to die… but not us, Barack. We are going to live." },
+  { searchString: "Ben Bernanke", image: "https://media.gettyimages.com/id/98698380/pt/foto/washington-federal-reserve-chairman-ben-bernanke-greets-attendees-before-addressing-the.jpg?s=612x612&w=0&k=20&c=bGMzC4QsKaQC2DoXH0sQl-Inecqk_eMT1u5vCXPBoeI=", text: "Ben Bernanke; the Chairman of the Federal Reserve." },
+  { searchString: "Daffy Duck", image: "https://media.cnn.com/api/v1/images/stellar/prod/151222130808-daffy-duck-president-restricted.jpg?q=w_3000,h_2109,x_0,y_0,c_fill", text: "Your so-called ‘mentor’, and in one of 68 possible timelines, your hand-picked succesor." },  
+  { searchString: "Cuomo", image: "https://static01.nyt.com/images/2012/10/19/nyregion/19cuomo/19cuomo-superJumbo.jpg", text: "Andrew Cuomo; current Governor of New York, and, in one of 13 possible timelines, your presidential successor." },
 
   // opponents, et al.
-  { searchString: "Mitt Romney", explanationText: "<img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn7l4BBAsILJb7goqQQX-qrE4xokpZqpTSxg&s> Former Governor of Massachusetts." },
-  { searchString: "Bain Capital", explanationText: "<img src=https://imageio.forbes.com/blogs-images/thumbnails/blog_986/pt_986_6157_o.jpg?format=jpg&height=600&width=1200&fit=bounds> The private equity firm Mitt Romney co-founded. Depending on who you ask, it either created jobs and value, or it specialized in ‘vulture capitalism,’ asset-stripping companies and firing workers." },
-  { searchString: "Scott Walker", explanationText: "<img src=https://images.csmonitor.com/csm/2012/06/0606-walker-Wisconsin-Recall.jpg?alias=standard_900x600> The Governor of Wisconsin. He became a conservative hero for taking on public sector unions, and survived a recall election over it earlier this year." },
-  { searchString: "Ron Paul", explanationText: "<img src=https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1500w,f_auto,q_auto:best/streams/2012/August/120823/498978-120823_ron-paul_4x3.jpg> Texas Congressman and a libertarian icon." },
-  { searchString: "Newt Gingrich", explanationText: "<img src=https://i.insider.com/6164a4362457a4001982d0d7?width=700> The former Speaker of the House. Kinda like a vampire." },
-  { searchString: "Rick Santorum", explanationText: "<img src=https://media.npr.org/assets/img/2012/01/05/71778228_wide-11f33e9ba3bb66c23d6da86d611f2cef91345c4c.jpg?s=1100&c=50&f=jpeg> Former Senator from Pennsylvania." },
-  { searchString: "Donald Trump", explanationText: "<img src=https://variety.com/wp-content/uploads/2016/07/donald-trump-the-apprentice.jpg> The host of the reality TV show ‘The Apprentice.’ He spent much of last year loudly promoting 'birther' conspiracy theories about you before deciding not to run for president himself. Amen for that." },
-  { searchString: "Christie", explanationText: "<img src=https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2013/1/8/1357676359093/Chris-Christie-new-jersey-008.jpg?width=465&dpr=1&s=none&crop=none> Swept away the competition." },
+  { searchString: "Mitt Romney", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn7l4BBAsILJb7goqQQX-qrE4xokpZqpTSxg&s", text: "Former Governor of Massachusetts." },
+  { searchString: "Bain Capital", image: "https://imageio.forbes.com/blogs-images/thumbnails/blog_986/pt_986_6157_o.jpg?format=jpg&height=600&width=1200&fit=bounds", text: "The private equity firm Mitt Romney co-founded. Depending on who you ask, it either created jobs and value, or it specialized in ‘vulture capitalism,’ asset-stripping companies and firing workers." },
+  { searchString: "Scott Walker", image: "https://images.csmonitor.com/csm/2012/06/0606-walker-Wisconsin-Recall.jpg?alias=standard_900x600", text: "The Governor of Wisconsin. He became a conservative hero for taking on public sector unions, and survived a recall election over it earlier this year." },
+  { searchString: "Ron Paul", image: "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1500w,f_auto,q_auto:best/streams/2012/August/120823/498978-120823_ron-paul_4x3.jpg", text: "Texas Congressman and a libertarian icon." },
+  { searchString: "Newt Gingrich", image: "https://i.insider.com/6164a4362457a4001982d0d7?width=700", text: "The former Speaker of the House. Kinda like a vampire." },
+  { searchString: "Rick Santorum", image: "https://media.npr.org/assets/img/2012/01/05/71778228_wide-11f33e9ba3bb66c23d6da86d611f2cef91345c4c.jpg?s=1100&c=50&f=jpeg", text: "Former Senator from Pennsylvania." },
+  { searchString: "Donald Trump", image: "https://variety.com/wp-content/uploads/2016/07/donald-trump-the-apprentice.jpg", text: "The host of the reality TV show ‘The Apprentice.’ He spent much of last year loudly promoting 'birther' conspiracy theories about you before deciding not to run for president himself. Amen for that." },
+  { searchString: "Christie", image: "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2013/1/8/1357676359093/Chris-Christie-new-jersey-008.jpg?width=465&dpr=1&s=none&crop=none", text: "Swept away the competition." },
 
   // former politicians
-  { searchString: "Bush", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/dubya.webp> Say the word." },
-  { searchString: "Clinton", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/bill.webp> Culture Club - Do You Really Want To Hurt Me" },
-  { searchString: "Gore", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/G58yVEFXoAANcDt.jpg> Praying for <i>hope</i>." },
-  { searchString: "Jimmy Carter", explanationText: "<img src=https://bbforpeace.org/lessonsfrompeacebuilders/wp-content/uploads/2020/08/170414_abc_archive_jimmycarter_nobelprize_speech_16x9_992-1.jpg> God, you hope you don’t end up like him." },
-  { searchString: "Cheney", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/bruce.jpg> <b>B</b>est ever." },
-  { searchString: "Roosevelt", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/fdr.webp> Franklin D. Roosevelt; the 32nd President of the United States." },
-  { searchString: "Johnson", explanationText: "<img src=https://imagez.tmz.com/image/f8/o/2012/10/03/f867d804e9b15b2f9511177d680a4e5c_lg.jpg> Lyndon B. Johnson; the 36th President of the United States." },
-  { searchString: "Reagan", explanationText: "<img src=https://preview.redd.it/mpc217yg5hp91.jpg?width=640&crop=smart&auto=webp&s=5fbce7c03bc06d3896d6deec934e474e46d9c878> The 40th President of the United States. Gone." },
-  { searchString: "Rumsfeld", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/u9BDoVn.png> Real quiet these days." },
-  { searchString: "Wilson", explanationText: "<img src=https://encyclopediavirginia.org/wp-content/uploads/2020/11/8443hpr_15598ae1a3f7bb5-scaled.jpg> Has a cool first name." },
-  { searchString: "Henry Kissinger", explanationText: "<img src=https://media.gettyimages.com/id/92915840/pt/foto/former-secretary-of-state-henry-kissinger-poses-at-a-portrait-session-in-front-of-painting-by.jpg?s=612x612&w=0&k=20&c=EsC63s_NHuLBpXP0pXayQBzr-8og6hnXaAn5NS7MMiY=> Shadow President." },
+  { searchString: "Bush", image: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/dubya.webp", text: "Say the word." },
+  { searchString: "Clinton", image: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/bill.webp", text: "Culture Club - Do You Really Want To Hurt Me" },
+  { searchString: "Gore", image: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/G58yVEFXoAANcDt.jpg", text: "Praying for <i>hope</i>." },
+  { searchString: "Jimmy Carter", image: "https://bbforpeace.org/lessonsfrompeacebuilders/wp-content/uploads/2020/08/170414_abc_archive_jimmycarter_nobelprize_speech_16x9_992-1.jpg", text: "God, you hope you don’t end up like him." },
+  { searchString: "Cheney", image: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/bruce.jpg", text: "<b>B</b>est ever." },
+  { searchString: "Roosevelt", image: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/fdr.webp", text: "Franklin D. Roosevelt; the 32nd President of the United States." },
+  { searchString: "Johnson", image: "https://imagez.tmz.com/image/f8/o/2012/10/03/f867d804e9b15b2f9511177d680a4e5c_lg.jpg", text: "Lyndon B. Johnson; the 36th President of the United States." },
+  { searchString: "Reagan", image: "https://preview.redd.it/mpc217yg5hp91.jpg?width=640&crop=smart&auto=webp&s=5fbce7c03bc06d3896d6deec934e474e46d9c878", text: "The 40th President of the United States. Gone." },
+  { searchString: "Rumsfeld", image: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/Code1/u9BDoVn.png", text: "Real quiet these days." },
+  { searchString: "Wilson", image: "https://encyclopediavirginia.org/wp-content/uploads/2020/11/8443hpr_15598ae1a3f7bb5-scaled.jpg", text: "Has a cool first name." },
+  { searchString: "Henry Kissinger", image: "https://media.gettyimages.com/id/92915840/pt/foto/former-secretary-of-state-henry-kissinger-poses-at-a-portrait-session-in-front-of-painting-by.jpg?s=612x612&w=0&k=20&c=EsC63s_NHuLBpXP0pXayQBzr-8og6hnXaAn5NS7MMiY=", text: "Shadow President." },
 
   // international figures/groups
-  { searchString: "Osama bin Laden", explanationText: "<img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb8HVF-v2kev0nVeHkiJBw9gsFV_mwjW-NUQ&s> The founder of al-Qaeda. Gone." },
-  { searchString: "bin Laden", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/karaoke.jpg> Better at karaoke than you are." },
-  { searchString: "Assad", explanationText: "<img src=https://static01.nyt.com/images/2012/08/20/world/middleeast/20syria_1/20syria_1-jumbo.jpg?quality=75&auto=webp&disable=upscale> The President of Syria. Rahm tells you his favorite game is actually Duke Nukem 3D." },
-  { searchString: "Angela Merkel", explanationText: "<img src=https://d3i6fh83elv35t.cloudfront.net/newshour/app/uploads/2015/12/RTS4J82-1024x779.jpg> Chancellor of Germany and Stephen Patel’s twin." },
-  { searchString: "Hosni Mubarak", explanationText: "<img src=https://media.cnn.com/api/v1/images/stellar/prod/120610120655-hosni-mubarak-trial.jpg?q=w_1576,c_fill> A key U.S. ally for decades, he was overthrown during the Arab Spring in 2011. I wonder where he is now." },
-  { searchString: "Fidel Castro", explanationText: "<img src=https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2010/12/16/1292510626129/Fidel-Castro-007.jpg?width=465&dpr=1&s=none&crop=none> The former Communist leader of Cuba. Though he has handed power to his brother Raúl, he remains a symbol of the regime and the reason for the long-standing U.S. embargo." },
-  { searchString: "Putin", explanationText: "<img src=https://www.politico.eu/cdn-cgi/image/width=1160,height=819,fit=crop,quality=80,onerror=redirect,format=auto/wp-content/uploads/2019/12/h_55728735.jpg> Guess who’s back." },
-  { searchString: "Nico", explanationText: "<img src=https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/MSNBC/Components/Photo/_new/111108-obama-sarko-hmed-330a.jpg> Sarkozy of France. You miss him." },
-  { searchString: "François Hollande", explanationText: "<img src=https://ogimg.infoglobo.com.br/in/11579910-611-165/FT1086A/TOPSHOTS-US-FRANCE-DIPLOMACY-OBAMA-HOLLANDE.jpg> The new Socialist President of France, elected in May of this year." },
-  { searchString: "Taliban", explanationText: "<img src=https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/12D1E/production/_119168077_gettyimages-51342654.jpg> The fundamentalist group that the U.S. and its allies have been fighting in Afghanistan since 2001." },
-  { searchString: "Muslim Brotherhood", explanationText: "<img src=https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2013/4/2/1364923302906/Mohammed-Morsi-010.jpg?width=465&dpr=1&s=none&crop=none> An Islamist political group that has gained significant power in Egypt following the overthrow of Mubarak, with their candidate winning the recent presidential election." },
-  { searchString: "Big Bird", explanationText: "<img src=https://media.cnn.com/api/v1/images/stellar/prod/121004042128-obeidallah-big-bird.jpg?q=w_1110,c_fill> In shambles." },
+  { searchString: "Osama bin Laden", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb8HVF-v2kev0nVeHkiJBw9gsFV_mwjW-NUQ&s", text: "The founder of al-Qaeda. Gone." },
+  { searchString: "bin Laden", image: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/karaoke.jpg", text: "Better at karaoke than you are." },
+  { searchString: "Assad", image: "https://static01.nyt.com/images/2012/08/20/world/middleeast/20syria_1/20syria_1-jumbo.jpg?quality=75&auto=webp&disable=upscale", text: "The President of Syria. Rahm tells you his favorite game is actually Duke Nukem 3D." },
+  { searchString: "Angela Merkel", image: "https://d3i6fh83elv35t.cloudfront.net/newshour/app/uploads/2015/12/RTS4J82-1024x779.jpg", text: "Chancellor of Germany and Stephen Patel’s twin." },
+  { searchString: "Hosni Mubarak", image: "https://media.cnn.com/api/v1/images/stellar/prod/120610120655-hosni-mubarak-trial.jpg?q=w_1576,c_fill", text: "A key U.S. ally for decades, he was overthrown during the Arab Spring in 2011. I wonder where he is now." },
+  { searchString: "Fidel Castro", image: "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2010/12/16/1292510626129/Fidel-Castro-007.jpg?width=465&dpr=1&s=none&crop=none", text: "The former Communist leader of Cuba. Though he has handed power to his brother Raúl, he remains a symbol of the regime and the reason for the long-standing U.S. embargo." },
+  { searchString: "Putin", image: "https://www.politico.eu/cdn-cgi/image/width=1160,height=819,fit=crop,quality=80,onerror=redirect,format=auto/wp-content/uploads/2019/12/h_55728735.jpg", text: "Guess who’s back." },
+  { searchString: "Nico", image: "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/MSNBC/Components/Photo/_new/111108-obama-sarko-hmed-330a.jpg", text: "Sarkozy of France. You miss him." },
+  { searchString: "François Hollande", image: "https://ogimg.infoglobo.com.br/in/11579910-611-165/FT1086A/TOPSHOTS-US-FRANCE-DIPLOMACY-OBAMA-HOLLANDE.jpg", text: "The new Socialist President of France, elected in May of this year." },
+  { searchString: "Taliban", image: "https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/12D1E/production/_119168077_gettyimages-51342654.jpg", text: "The fundamentalist group that the U.S. and its allies have been fighting in Afghanistan since 2001." },
+  { searchString: "Muslim Brotherhood", image: "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2013/4/2/1364923302906/Mohammed-Morsi-010.jpg?width=465&dpr=1&s=none&crop=none", text: "An Islamist political group that has gained significant power in Egypt following the overthrow of Mubarak, with their candidate winning the recent presidential election." },
+  { searchString: "Big Bird", image: "https://media.cnn.com/api/v1/images/stellar/prod/121004042128-obeidallah-big-bird.jpg?q=w_1110,c_fill", text: "In shambles." },
 
   // policies, laws & concepts
-  { searchString: "Affordable Care Act", explanationText: "<img src=https://content.time.com/time/magazine/archive/covers/2009/1101090810_400.jpg> Obamacare! Your very own signature domestic achievement, its goals include expanding health insurance coverage, reducing costs, and protecting people with preexisting conditions." },
-  { searchString: "Bush tax cuts", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/taxcuts.png> The tax cuts on income, capital gains, and dividends passed under your predecessor. You extended most of them in 2010, but now want to let the cuts for the wealthiest expire. Republicans want to make them all permanent." },
-  { searchString: "No Child Left Behind", explanationText: "<img src=https://www.mackinac.org/media/images/2002/mer2002-01p01a.jpg> The Bush-era education law that relies heavily on standardized testing. It had bipartisan support once, but now faces widespread criticism. Your administration has been granting waivers from its requirements." },
-  { searchString: "Citizens United", explanationText: "<img src=https://scpr.brightspotcdn.com/dims4/default/31de428/2147483647/strip/true/crop/3000x2111+0+0/resize/880x619!/quality/90/?url=https%3A%2F%2Fa.scpr.org%2F98863_c2b3b4e75ba6d47d3e1c5edf30bd1a09_original.jpg> The 2010 Supreme Court decision that opened the floodgates for corporate and union spending in elections, giving rise to the 'Super PACs' that are dominating the airwaves." },
-  { searchString: "Dodd-Frank", explanationText: "<img src=https://www.cfr.org/sites/default/files/styles/immersive_image_3_2_desktop_2x/public/image/2023/05/DoddFrank_BG.webp> The landmark financial reform bill passed in 2010. It was designed to prevent another 2008-style crisis by regulating Wall Street." },
-  { searchString: "ARRA", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/arra.png> The American Recovery and Reinvestment Act of 2009. This massive stimulus package passed in your first months in office." },
-  { searchString: "Solyndra", explanationText: "<img src=https://static01.nyt.com/images/2011/09/23/us/SOLAR-2/SOLAR-2-jumbo.jpg?quality=75&auto=webp&disable=upscale> A California-based solar panel company that received a large federal loan guarantee and then went bankrupt. It has become a go-to example for Republicans of your administration’s failed ‘crony capitalist’ green energy policies." },
-  { searchString: "Fast and Furious", explanationText: "<img src=https://assets.gadgets360cdn.com/pricee/assets/product/202203/0288efa78166dcd46d17d7bc34119909_1647877883.jpg?downsize=400:*> An ATF ‘gunwalking’ operation that allowed weapons to fall into the hands of Mexican drug cartels. The ensuing scandal has led to calls for Attorney General Eric Holder’s resignation. Unrelated: the less cooler movie Fast Five." },
-  { searchString: "Guantanamo Bay", explanationText: "<img src=https://d1y8sb8igg2f8e.cloudfront.net/images/guantanamo-bay-year-14_image.width-800.jpg> The detention camp in Cuba. You promised to close it in your first year, but it’s still open, thanks to fierce opposition in Congress." },
-  { searchString: "fracking", explanationText: "a.k.a. hydraulic fracturing. A drilling technique that has unlocked a massive boom in U.S. natural gas and oil, but raises serious environmental concerns about its impact on drinking water." },
-  { searchString: "drone strikes", explanationText: "<img src=https://live-production.wcms.abc-cdn.net.au/a90b52dbe1fa107ecd35829b287dcaae?impolicy=wcms_crop_resize&cropH=841&cropW=1495&xPos=8&yPos=150&width=862&height=485> A key and controversial component of your counterterrorism strategy. These unmanned aerial attacks are effective at targeting terrorist leaders, but critics point to civilian casualties and the questionable legality." },
-  { searchString: "Defense of Marriage Act", explanationText: "<img src=https://media.washtimes.com/media/image/2009/01/14/20090113-193822-pic-612014805.jpg> The 1996 law, also known as DOMA, that defines marriage for all federal purposes as between one man and one woman. Your Justice Department has recently stopped defending it in court." },
-  { searchString: "Cap-and-trade", explanationText: "<img src=https://platform.vox.com/wp-content/uploads/sites/2/chorus/assets/4536585/cap-and-trade_large.jpg> A market-based approach to limiting carbon emissions. Your ambitious bill to create such a system passed the House in 2009 but died in the Senate, marking a major legislative defeat." },
-  { searchString: "SB 1070", explanationText: "<img src=https://www.americanprogress.org/wp-content/uploads/sites/2/2012/04/arizona_3reasons_onpage-1.jpg?w=610> Arizona’s controversial 2010 immigration law. The Supreme Court struck down most of it, but upheld the ‘show me your papers’ provision, which allows police to check the immigration status of people they stop." },
-  { searchString: "Pell Grants", explanationText: "<img src=https://www.cbpp.org/sites/default/files/atoms/files/7-27-17bud-f1.png> Essentially, a form of federal financial aid provided by the government to help undergraduate students with financial need pay for college or career school. Unlike a student loan, money from a Pell Grant usually does not have to be repaid." },
+  { searchString: "Affordable Care Act", image: "https://content.time.com/time/magazine/archive/covers/2009/1101090810_400.jpg", text: "Obamacare! Your very own signature domestic achievement, its goals include expanding health insurance coverage, reducing costs, and protecting people with preexisting conditions." },
+  { searchString: "Bush tax cuts", image: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/taxcuts.png", text: "The tax cuts on income, capital gains, and dividends passed under your predecessor. You extended most of them in 2010, but now want to let the cuts for the wealthiest expire. Republicans want to make them all permanent." },
+  { searchString: "No Child Left Behind", image: "https://www.mackinac.org/media/images/2002/mer2002-01p01a.jpg", text: "The Bush-era education law that relies heavily on standardized testing. It had bipartisan support once, but now faces widespread criticism. Your administration has been granting waivers from its requirements." },
+  { searchString: "Citizens United", image: "https://scpr.brightspotcdn.com/dims4/default/31de428/2147483647/strip/true/crop/3000x2111+0+0/resize/880x619!/quality/90/?url=https%3A%2F%2Fa.scpr.org%2F98863_c2b3b4e75ba6d47d3e1c5edf30bd1a09_original.jpg", text: "The 2010 Supreme Court decision that opened the floodgates for corporate and union spending in elections, giving rise to the 'Super PACs' that are dominating the airwaves." },
+  { searchString: "Dodd-Frank", image: "https://www.cfr.org/sites/default/files/styles/immersive_image_3_2_desktop_2x/public/image/2023/05/DoddFrank_BG.webp", text: "The landmark financial reform bill passed in 2010. It was designed to prevent another 2008-style crisis by regulating Wall Street." },
+  { searchString: "ARRA", image: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/arra.png", text: "The American Recovery and Reinvestment Act of 2009. This massive stimulus package passed in your first months in office." },
+  { searchString: "Solyndra", image: "https://static01.nyt.com/images/2011/09/23/us/SOLAR-2/SOLAR-2-jumbo.jpg?quality=75&auto=webp&disable=upscale", text: "A California-based solar panel company that received a large federal loan guarantee and then went bankrupt. It has become a go-to example for Republicans of your administration’s failed ‘crony capitalist’ green energy policies." },
+  { searchString: "Fast and Furious", image: "https://assets.gadgets360cdn.com/pricee/assets/product/202203/0288efa78166dcd46d17d7bc34119909_1647877883.jpg?downsize=400:*", text: "An ATF ‘gunwalking’ operation that allowed weapons to fall into the hands of Mexican drug cartels. The ensuing scandal has led to calls for Attorney General Eric Holder’s resignation. Unrelated: the less cooler movie Fast Five." },
+  { searchString: "Guantanamo Bay", image: "https://d1y8sb8igg2f8e.cloudfront.net/images/guantanamo-bay-year-14_image.width-800.jpg", text: "The detention camp in Cuba. You promised to close it in your first year, but it’s still open, thanks to fierce opposition in Congress." },
+  { searchString: "fracking", image: null, text: "a.k.a. hydraulic fracturing. A drilling technique that has unlocked a massive boom in U.S. natural gas and oil, but raises serious environmental concerns about its impact on drinking water." },
+  { searchString: "drone strikes", image: "https://live-production.wcms.abc-cdn.net.au/a90b52dbe1fa107ecd35829b287dcaae?impolicy=wcms_crop_resize&cropH=841&cropW=1495&xPos=8&yPos=150&width=862&height=485", text: "A key and controversial component of your counterterrorism strategy. These unmanned aerial attacks are effective at targeting terrorist leaders, but critics point to civilian casualties and the questionable legality." },
+  { searchString: "Defense of Marriage Act", image: "https://media.washtimes.com/media/image/2009/01/14/20090113-193822-pic-612014805.jpg", text: "The 1996 law, also known as DOMA, that defines marriage for all federal purposes as between one man and one woman. Your Justice Department has recently stopped defending it in court." },
+  { searchString: "Cap-and-trade", image: "https://platform.vox.com/wp-content/uploads/sites/2/chorus/assets/4536585/cap-and-trade_large.jpg", text: "A market-based approach to limiting carbon emissions. Your ambitious bill to create such a system passed the House in 2009 but died in the Senate, marking a major legislative defeat." },
+  { searchString: "SB 1070", image: "https://www.americanprogress.org/wp-content/uploads/sites/2/2012/04/arizona_3reasons_onpage-1.jpg?w=610", text: "Arizona’s controversial 2010 immigration law. The Supreme Court struck down most of it, but upheld the ‘show me your papers’ provision, which allows police to check the immigration status of people they stop." },
+  { searchString: "Pell Grants", image: "https://www.cbpp.org/sites/default/files/atoms/files/7-27-17bud-f1.png", text: "Essentially, a form of federal financial aid provided by the government to help undergraduate students with financial need pay for college or career school. Unlike a student loan, money from a Pell Grant usually does not have to be repaid." },
 
   // everything else
-  { searchString: "that photo", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Obama_and_Biden_await_updates_on_bin_Laden.jpg/1024px-Obama_and_Biden_await_updates_on_bin_Laden.jpg>" },
-  { searchString: "Plouffe", explanationText: "<img src=https://static01.nyt.com/images/2012/02/20/us/PLOUFFE/PLOUFFE-jumbo.jpg?quality=100&auto=webp> Nyarlathotep, and also your campaign manager last election." },
-  { searchString: "Axelrod", explanationText: "<img src=https://i.guim.co.uk/img/static/sys-images/Observer/Columnist/Columnists/2012/8/4/1344074361508/David-Axelrod-006.jpg?width=465&dpr=1&s=none&crop=none> Happy." },
-  { searchString: "Messina", explanationText: "<img src=https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iK47FQ9mImZU/v1/-1x-1.webp> Not happy." },
-  { searchString: "Nancy Reagan", explanationText: "<img src=https://static01.nyt.com/images/2009/06/02/us/02reagan-480.jpg> Tired of sucking." },
-  { searchString: "McCain", explanationText: "<img src=https://www.pajiba.com/assets_c/2019/07/john-mccain-tongue-thumb-700x380-213541.jpg> Feening." },
-  { searchString: "Chewbacca", explanationText: "<img src=https://i.tribune.com.pk/media/images/1028521-asdcaa-1452943877/1028521-asdcaa-1452943877.jpg> Why would a Wookiee, an 8-foot-tall Wookiee, want to live on Endor, with a bunch of 2-foot-tall Ewoks? It does not make sense." },
-  { searchString: "High Times", explanationText: "<img src=https://s.wsj.net/public/resources/images/BN-KN435_cmohig_DV_20150928182602.jpg> Has your seal of approval." },
-  { searchString: "gallon of PCP guy", explanationText: "<img src=https://m.media-amazon.com/images/M/MV5BZWIyOTFlNTktZjhhNy00ZTdmLTg5YTItMTUzYmNiZTZiMDQxXkEyXkFqcGc@._V1_.jpg> — It’s a <i>felony</i>! Wow, and… here you are… with it anyway! That is… wow! I didn’t even know it… came in liquid form!<br/>— Science." },
-  { searchString: "Bakken and Marcellus", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/shaleformations.png> Names of major shell formations in America. Bakken (in North Dakota and Montana) is particularly oil-rich and central to the U.S. shale boom, while Marcellus (in Appalachia) is one of the biggest natural gas sources in the U.S." },
-  { searchString: "timber country", explanationText: "<img src=https://www.resourcewise.com/hubfs/FRA_MemberMap_Regions_FInal.jpg> Over here, defined as U.S. regions (notably the Pacific Northwest and parts of the South) where logging and forestry dominate the landscape and economy." },
-  { searchString: "blender’s tax credit", explanationText: "The Volumetric Ethanol Excise Tax Credit (VEETC), a federal subsidy (in effect until 2011) that gave fuel blenders tax credits for every gallon of ethanol mixed into gasoline." },
-  { searchString: "Renewable Fuel Standard", explanationText: "<img src=https://substackcdn.com/image/fetch/$s_!Iori!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6f060d75-6f59-45f8-a8ea-426869072d71_3533x2121.png> A federal program requiring transportation fuels to contain a minimum amount of renewable fuels like ethanol or biodiesel." },
-  { searchString: "E15", explanationText: "<img src=https://i0.wp.com/agnetwest.com/wp-content/uploads/2017/10/E15-Ethanol-Fuel-Pump.gif?fit=800%2C533&ssl=1> A gasoline blend containing 15% ethanol and 85% conventional gasoline, approved for most cars built after 2001." },
-  { searchString: "Foxconn", explanationText: "<img src=https://www.reuters.com/resizer/v2/https%3A%2F%2Farchive-images.prod.global.a201836.reutersmedia.net%2F2012%2F03%2F19%2FCBRE82I0AOR00.JPG?auth=c474baa54ccc746532fab64fbbc5a972f0509f95f41756074571b9606025fa29&width=1200&quality=80> A massive Taiwanese electronics manufacturer with huge factories in China. It is famous for assembling products for Apple, and infamous for the poor labor conditions and worker suicides at its facilities." },
-  { searchString: "Sean Combs", explanationText: "<img src=https://s.yimg.com/ny/api/res/1.2/uq2BGINu8xx5aVvj2V3VwQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyNDI7aD04MjY7Y2Y9d2VicA--/https://media.zenfs.com/en/thedailybeast.com/cc43a4eb97d36b14d0fb5bd15819b8da> Whatchu talkin’ ’bout lawyers for?" },
-  { searchString: "Jimmy Fallon", explanationText: "<img src=https://i.pinimg.com/1200x/c3/7b/ff/c37bff64f09cc04bd9e8f6f9028571ca.jpg> Not as washed up as you once thought." },
-  { searchString: "Obama or Die", explanationText: "<img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcSMliavfrQSW-Ma5jCtMhAQzjAHbiqUQWoA&s> I would rather not die." },
-  { searchString: "Ayers", explanationText: "<img src=https://i0.wp.com/chicagoreader.com/wp-content/uploads/2021/08/ayers_mug-2.jpg> Too much of a hipster for you, you think." },
-  { searchString: "Boris", explanationText: "<img src=https://londongrump.wordpress.com/wp-content/uploads/2014/03/dela-wk31-boris-zip-line-4.jpg> What’s that beeping noise for?" },
-  { searchString: "Steve Jobs", explanationText: "<img src=https://throughanewlens.wordpress.com/wp-content/uploads/2010/07/steve_jobs.jpg> iDead, and still more alive than you ever feel." },
-  { searchString: "The Gang", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/jinkies.webp> Your sweethearts." },
-  { searchString: "Soviets", explanationText: "<img src=https://pyxis.nymag.com/v1/imgs/030/b11/8ca7149383d802da8835cb8dc0267eb591-24-barack-obama-soviet-constitution.2x.h473.w710.jpg> Beware decadent pleasure-seeking, comrade." },
-  { searchString: "Destroy, Build, Destroy", explanationText: "<img src=https://image.tmdb.org/t/p/w780/eLq1NupfoZLc8VhiMYRdEeMmFAO.jpg> Wrecking stuff, broh." },
-  { searchString: "bottomless pit", explanationText: "<img src=https://images.wikia.com/gravityfalls/images/1/19/S1e14_Which_you_can_see_here_is_Bottomless.png> Which as you can see here, is bottomless." },
-  { searchString: "Blackberry", explanationText: "<img src=https://obama.artifacts.archives.gov/internal/media/dispatcher/32529/preview> You call it glorble. glorble is getting old, and can’t easily compete with all these newfangled smart phones." },
-  { searchString: "Anthony Bourdain", explanationText: "<img src=https://i.insider.com/5b1aad721ae66235008b55b7?width=700> Your father figure, sort of." },
-  { searchString: "SpongeBob", explanationText: "<img src=https://preview.redd.it/look-whos-accompanying-obama-on-his-way-to-israel-feedback-v0-icqwc35hh15f1.png?width=640&crop=smart&auto=webp&s=30d0df36a4163b52708056b23f6268ff9869819b> Look who’s accompanying Obama on his way to Israel!" },
-  { searchString: "the recession", explanationText: "<img src=https://danieljmitchell.wordpress.com/wp-content/uploads/2012/07/obama-build-that.jpg> You didn’t build that." },  
-  { searchString: "Puerto Vallarta Squeeze", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/pvs.png> More known for its cast than for its story." },  
-  { searchString: "super cool drawings", explanationText: "<img src=https://file.garden/aNtAfG887DiA_7lO/2012LBM/Bully_SLUS-21269_20240901102847.png> I think I have finally caught the essence of what it means to be… a banana." },  
-  { searchString: "Obamanation", explanationText: "<img src=https://upload.wikimedia.org/wikipedia/en/5/5f/Obama_Joker_Poster.jpg> An abomination." }
+  { searchString: "that photo", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Obama_and_Biden_await_updates_on_bin_Laden.jpg/1280px-Obama_and_Biden_await_updates_on_bin_Laden.jpg" },
+  { searchString: "Plouffe", image: "https://static01.nyt.com/images/2012/02/20/us/PLOUFFE/PLOUFFE-jumbo.jpg?quality=100&auto=webp", text: "Nyarlathotep, and also your campaign manager last election." },
+  { searchString: "Axelrod", image: "https://i.guim.co.uk/img/static/sys-images/Observer/Columnist/Columnists/2012/8/4/1344074361508/David-Axelrod-006.jpg?width=465&dpr=1&s=none&crop=none", text: "Happy." },
+  { searchString: "Messina", image: "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iK47FQ9mImZU/v1/-1x-1.webp", text: "Not happy." },
+  { searchString: "Nancy Reagan", image: "https://static01.nyt.com/images/2009/06/02/us/02reagan-480.jpg", text: "Tired of sucking." },
+  { searchString: "McCain", image: "https://www.pajiba.com/assets_c/2019/07/john-mccain-tongue-thumb-700x380-213541.jpg", text: "Feening." },
+  { searchString: "Chewbacca", image: "https://i.tribune.com.pk/media/images/1028521-asdcaa-1452943877/1028521-asdcaa-1452943877.jpg", text: "Why would a Wookiee, an 8-foot-tall Wookiee, want to live on Endor, with a bunch of 2-foot-tall Ewoks? It does not make sense." },
+  { searchString: "High Times", image: "https://s.wsj.net/public/resources/images/BN-KN435_cmohig_DV_20150928182602.jpg", text: "Has your seal of approval." },
+  { searchString: "gallon of PCP guy", image: "https://m.media-amazon.com/images/M/MV5BZWIyOTFlNTktZjhhNy00ZTdmLTg5YTItMTUzYmNiZTZiMDQxXkEyXkFqcGc@._V1_.jpg", text: "— It’s a <i>felony</i>! Wow, and… here you are… with it anyway! That is… wow! I didn’t even know it… came in liquid form!<br/>— Science." },
+  { searchString: "Bakken and Marcellus", image: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/shaleformations.png", text: "Names of major shell formations in America. Bakken (in North Dakota and Montana) is particularly oil-rich and central to the U.S. shale boom, while Marcellus (in Appalachia) is one of the biggest natural gas sources in the U.S." },
+  { searchString: "timber country", image: "https://www.resourcewise.com/hubfs/FRA_MemberMap_Regions_FInal.jpg", text: "Over here, defined as U.S. regions (notably the Pacific Northwest and parts of the South) where logging and forestry dominate the landscape and economy." },
+  { searchString: "blender’s tax credit", image: null, text: "The Volumetric Ethanol Excise Tax Credit (VEETC), a federal subsidy (in effect until 2011) that gave fuel blenders tax credits for every gallon of ethanol mixed into gasoline." },
+  { searchString: "Renewable Fuel Standard", image: "https://substackcdn.com/image/fetch/$s_!Iori!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6f060d75-6f59-45f8-a8ea-426869072d71_3533x2121.png", text: "A federal program requiring transportation fuels to contain a minimum amount of renewable fuels like ethanol or biodiesel." },
+  { searchString: "E15", image: "https://i0.wp.com/agnetwest.com/wp-content/uploads/2017/10/E15-Ethanol-Fuel-Pump.gif", text: "A gasoline blend containing 15% ethanol and 85% conventional gasoline, approved for most cars built after 2001." },
+  { searchString: "Foxconn", image: "https://www.reuters.com/resizer/v2/https%3A%2F%2Farchive-images.prod.global.a201836.reutersmedia.net%2F2012%2F03%2F19%2FCBRE82I0AOR00.JPG?auth=c474baa54ccc746532fab64fbbc5a972f0509f95f41756074571b9606025fa29&width=1200&quality=80", text: "A massive Taiwanese electronics manufacturer with huge factories in China. It is famous for assembling products for Apple, and infamous for the poor labor conditions and worker suicides at its facilities." },
+  { searchString: "Sean Combs", image: "https://s.yimg.com/ny/api/res/1.2/uq2BGINu8xx5aVvj2V3VwQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyNDI7aD04MjY7Y2Y9d2VicA--/https://media.zenfs.com/en/thedailybeast.com/cc43a4eb97d36b14d0fb5bd15819b8da", text: "Whatchu talkin’ ’bout lawyers for?" },
+  { searchString: "Jimmy Fallon", image: "https://i.pinimg.com/1200x/c3/7b/ff/c37bff64f09cc04bd9e8f6f9028571ca.jpg", text: "Not as washed up as you once thought." },
+  { searchString: "Obama or Die", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcSMliavfrQSW-Ma5jCtMhAQzjAHbiqUQWoA&s", text: "I would rather not die." },
+  { searchString: "Ayers", image: "https://i0.wp.com/chicagoreader.com/wp-content/uploads/2021/08/ayers_mug-2.jpg", text: "Too much of a hipster for you, you think." },
+  { searchString: "Boris", image: "https://londongrump.wordpress.com/wp-content/uploads/2014/03/dela-wk31-boris-zip-line-4.jpg", text: "What’s that beeping noise for?" },
+  { searchString: "Steve Jobs", image: "https://throughanewlens.wordpress.com/wp-content/uploads/2010/07/steve_jobs.jpg", text: "iDead, and still more alive than you ever feel." },
+  { searchString: "The Gang", image: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/jinkies.webp", text: "Your sweethearts." },
+  { searchString: "Soviets", image: "https://pyxis.nymag.com/v1/imgs/030/b11/8ca7149383d802da8835cb8dc0267eb591-24-barack-obama-soviet-constitution.2x.h473.w710.jpg", text: "Beware decadent pleasure-seeking, comrade." },
+  { searchString: "Destroy, Build, Destroy", image: "https://image.tmdb.org/t/p/w780/eLq1NupfoZLc8VhiMYRdEeMmFAO.jpg", text: "Wrecking stuff, broh." },
+  { searchString: "bottomless pit", image: "https://images.wikia.com/gravityfalls/images/1/19/S1e14_Which_you_can_see_here_is_Bottomless.png", text: "Which as you can see here, is bottomless." },
+  { searchString: "Blackberry", image: "https://obama.artifacts.archives.gov/internal/media/dispatcher/32529/preview", text: "You call it glorble. glorble is getting old, and can’t easily compete with all these newfangled smart phones." },
+  { searchString: "Anthony Bourdain", image: "https://i.insider.com/5b1aad721ae66235008b55b7?width=700", text: "Your father figure, sort of." },
+  { searchString: "SpongeBob", image: "https://preview.redd.it/look-whos-accompanying-obama-on-his-way-to-israel-feedback-v0-icqwc35hh15f1.png?width=640&crop=smart&auto=webp&s=30d0df36a4163b52708056b23f6268ff9869819b", text: "Look who’s accompanying Obama on his way to Israel!" },
+  { searchString: "the recession", image: "https://danieljmitchell.wordpress.com/wp-content/uploads/2012/07/obama-build-that.jpg", text: "You didn’t build that." },
+  { searchString: "Puerto Vallarta Squeeze", image: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/pvs.png", text: "More known for its cast than for its story." },
+  { searchString: "super cool drawings", image: "https://file.garden/aNtAfG887DiA_7lO/2012LBM/Bully_SLUS-21269_20240901102847.png", text: "I think I have finally caught the essence of what it means to be… a banana." },
+  { searchString: "Obamanation", image: "https://upload.wikimedia.org/wikipedia/en/5/5f/Obama_Joker_Poster.jpg", text: "An abomination." }
 ];
+
+function escapeRegExp(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+const compiledTooltips = tooltipList.map((tooltip, index) => ({
+    index,
+    regex: new RegExp(
+        `(?<=\\b|\\s|^|")${escapeRegExp(tooltip.searchString)}(?=[.,;!?]?\\b|\\s|"|$)`,
+        'g'
+    ),
+}));
+
+function getTooltips(str) {
+    const matches = [];
+
+    for (const { index, regex } of compiledTooltips) {
+        regex.lastIndex = 0;
+        let match;
+        while ((match = regex.exec(str)) !== null) {
+            matches.push({ start: match.index, end: match.index + match[0].length, tooltipIndex: index });
+        }
+    }
+
+    matches.sort((a, b) => a.start - b.start || (b.end - b.start) - (a.end - a.start));
+
+    for (let i = 0; i < matches.length - 1;) {
+        if (matches[i + 1].start < matches[i].end) matches.splice(i + 1, 1);
+        else i++;
+    }
+
+    return matches;
+}
+
+function applyTooltips(htmlStr) {
+    if (!htmlStr || typeof htmlStr !== 'string') return htmlStr;
+
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(`<div>${htmlStr}</div>`, 'text/html');
+    const container = doc.body.firstChild;
+
+    if (!container) return htmlStr;
+
+    const walk = (node) => {
+        if (node.nodeType === 1 && node.classList.contains('mytooltip')) {
+            return;
+        }
+
+        if (node.nodeType === 3) {
+            const text = node.nodeValue;
+            const matches = getTooltips(text);
+
+            if (matches.length > 0) {
+                const fragment = document.createDocumentFragment();
+                let lastIndex = 0;
+
+                for (const match of matches) {
+                    const { image, text: tooltipText, searchString } = tooltipList[match.tooltipIndex];
+
+                    if (match.start > lastIndex) {
+                        fragment.appendChild(document.createTextNode(text.slice(lastIndex, match.start)));
+                    }
+
+                    const tooltipSpan = document.createElement('span');
+                    tooltipSpan.className = 'mytooltip';
+                    tooltipSpan.textContent = searchString;
+
+                    const tooltipTextSpan = document.createElement('span');
+                    tooltipTextSpan.className = 'mytooltiptext';
+
+                    if (image) {
+                        const img = document.createElement('img');
+                        img.src = image;
+                        tooltipTextSpan.appendChild(img);
+                    }
+
+                    if (tooltipText) {
+                        const annotationSpan = document.createElement('span');
+                        annotationSpan.className = 'annotation';
+                        annotationSpan.innerHTML = tooltipText; 
+                        tooltipTextSpan.appendChild(annotationSpan);
+                    }
+
+                    tooltipSpan.appendChild(tooltipTextSpan);
+                    fragment.appendChild(tooltipSpan);
+
+                    lastIndex = match.end;
+                }
+
+                if (lastIndex < text.length) {
+                    fragment.appendChild(document.createTextNode(text.slice(lastIndex)));
+                }
+
+                node.parentNode.replaceChild(fragment, node);
+            }
+        } else {
+            const children = Array.from(node.childNodes);
+            for (const child of children) {
+                walk(child);
+            }
+        }
+    };
+
+    walk(container);
+    return container.innerHTML;
+}
+
+function applyTooltipsToObject(obj) {
+    for (const key of Object.keys(obj)) {
+        const val = obj[key];
+        if (typeof val === 'string') {
+            // pre-process the initial string
+            let stored = applyTooltips(val);
+
+            // hijack the property so future assignments are automatically processed
+            Object.defineProperty(obj, key, {
+                get: () => stored,
+                set: (newVal) => { stored = typeof newVal === 'string' ? applyTooltips(newVal) : newVal; },
+                configurable: true,
+                enumerable: true,
+            });
+        } else if (val && typeof val === 'object') {
+            // recursively travel down the object tree
+            applyTooltipsToObject(val);
+        }
+    }
+}
+
+// intercept the properties being set by Code 2 so we can apply tooltips instantly
+for (const prop of ['questions_json', 'answers_json', 'answer_feedback_json']) {
+    let stored = campaignTrail_temp[prop];
+    Object.defineProperty(campaignTrail_temp, prop, {
+        get: () => stored,
+        set: (newVal) => {
+            if (newVal) applyTooltipsToObject(newVal);
+            stored = newVal;
+        },
+        configurable: true,
+        enumerable: true,
+    });
+}
+
+// check tooltip position on hover
+document.addEventListener('mouseover', function(e) {
+    const tooltip = e.target.closest('.mytooltip');
+    if (!tooltip) return;
+
+    if (tooltip.contains(e.relatedTarget)) return;
+
+    const tooltipText = tooltip.querySelector('.mytooltiptext');
+    if (!tooltipText) return;
+
+    const parentRect = tooltip.getBoundingClientRect();
+    const textRect = tooltipText.getBoundingClientRect();
+
+    const shouldFlip = parentRect.top - textRect.height - 15 < 0;
+
+    tooltipText.classList.toggle('flip-bottom', shouldFlip);
+});
 
 // This is to replace the existing voting system descriptions.
 (function () {
@@ -2954,7 +3225,7 @@ tooltipList = [
                 user-select: none;
                 border-radius: 3px;
                 width: 100%;
-                max-width: 800px; /* Safe default */
+                max-width: 800px;
             }
             #bottomBar:hover {
                 transform: scale(1.02);
@@ -3716,62 +3987,79 @@ tooltipList = [
     targetId: 'difficulty_level',
     containerId: 'mod_options_container',
     storageKey: 'lbm_custom_preferences',
-    features: [
-      {
+	features: [
+	  {
         id: 'city_visits',
         text: "City visits",
         desc: "Visits to a state's cities may gradually shift its issues towards a specific stance.",
         flag: 'city_visits',
+		type: 'toggle',
         default: true
       },
-      {
-        id: 'dynamic_en',
-        text: "Dynamic election night",
-        desc: "Enables a fluid, realistic election night simulation instead of the in-game election night. Similar to that of The Political Process.",
-        flag: 'dynamicEN',
-        default: false
-      },
-      {
+	  {
         id: 'compact_playlist',
         text: "Compact playlist",
         desc: "Replaces the default soundtrack with a curated, more theme-accurate playlist.",
         flag: 'compact_playlist',
+		type: 'toggle',
         default: false
-      }
+      },
+	  {
+        id: 'countymap_position',
+        text: "County map position",
+        desc: "Controls whether the county map feature should be in a separate tab or within the Election Results tab.",
+        flag: 'countyZoom',
+        type: 'select',
+		options: [
+			{ value: 'separate', text: 'In a separate tab' },
+			{ value: 'together', text: 'Within the Election Results map' },
+			{ value: 'seamless', text: 'Just seamlessly zoom in' }
+		],
+        default: 'separate'
+      },
+      {
+        id: 'dynamic_en',
+        text: "Dynamic election night",
+        desc: "Enables a fluid, realistic election night simulation instead of the in-game election night.",
+        flag: 'dynamicEN',
+        type: 'toggle',
+        default: true
+      },
     ]
   };
   
   const modMenuStyles = new CSSStyleSheet();
-	 modMenuStyles.replaceSync(`
-            #${CONFIG.targetId} { display: inline-flex; flex-wrap: wrap; gap: 2.5em; align-items: flex-start; }
-            #${CONFIG.containerId} { display: flex; flex-direction: column; width: 260px; }
-            .mod-desc-box {
-                margin-top: 10px; padding: 10px; background: rgba(255,255,255,0.35);
-                border: 1px solid #ccc; border-radius: 4px; min-height: 90px;
-                font-size: 0.95em; display: flex; flex-direction: column; justify-content: space-between;
-            }
-            .mod-desc-box p { margin: 0 0 10px 0; line-height: 1.3em; }
-            .mod-toggle-row { display: flex; align-items: center; padding-top: 5px; border-top: 1px solid rgba(0,0,0,0.1); }
-            .switch { position: relative; display: inline-block; width: 40px; height: 20px; margin-right: 10px; }
-            .switch input { opacity: 0; width: 0; height: 0; }
-            .inner_window_w_desc .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 20px; }
-            .inner_window_w_desc .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
-            .inner_window_w_desc input:checked + .slider { background-color: #208604; }
-            .inner_window_w_desc input:checked + .slider:before { transform: translateX(20px); }
-            .status-label { font-weight: bold; font-size: 0.9em; text-transform: uppercase; }
-            .status-enabled { color: #0d3d00; }
-            .status-disabled { color: #2d2d2d; }
-    `);
+  modMenuStyles.replaceSync(`
+    #${CONFIG.targetId} { display: inline-flex; flex-wrap: wrap; gap: 2.5em; align-items: flex-start; }
+    #${CONFIG.containerId} { display: flex; flex-direction: column; width: 260px; }
+    .mod-desc-box {
+        margin-top: 10px; padding: 10px; background: rgba(255,255,255,0.35);
+        border: 1px solid #ccc; border-radius: 4px; min-height: 90px;
+        font-size: 0.95em; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .mod-desc-box p { margin: 0 0 10px 0; line-height: 1.3em; }
+    .mod-ctrl-row { display: flex; align-items: center; padding-top: 5px; border-top: 1px solid rgba(0,0,0,0.1); }
+    .switch { position: relative; display: inline-block; width: 40px; height: 20px; margin-right: 10px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .menu-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 20px; }
+    .menu-slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+    input:checked + .menu-slider { background-color: #208604; }
+    input:checked + .menu-slider:before { transform: translateX(20px); }
+    .status-label { font-weight: bold; font-size: 0.9em; text-transform: uppercase; }
+    .status-enabled { color: #0d3d00; }
+    .status-disabled { color: #2d2d2d; }
+    .mod-select { width: 100%; padding: 4px; font-size: 0.95em; border: 1px solid #ccc; border-radius: 3px; background: white; }
+  `);
 
   if (!document.getElementById("mod_option_styles")) {
+    const styleMarker = document.createElement("style");
+    styleMarker.id = "mod_option_styles";
+    document.head.appendChild(styleMarker);
 	document.adoptedStyleSheets = [...document.adoptedStyleSheets, modMenuStyles];
   }
-  
-  // storage
+
   const getSavedSettings = () => {
-    try {
-      return JSON.parse(localStorage.getItem(CONFIG.storageKey)) || {};
-    } catch (e) { return {}; }
+    try { return JSON.parse(localStorage.getItem(CONFIG.storageKey)) || {}; } catch (e) { return {}; }
   };
 
   const saveSettingToStorage = (flag, value) => {
@@ -3780,13 +4068,12 @@ tooltipList = [
     localStorage.setItem(CONFIG.storageKey, JSON.stringify(current));
   };
 
-
-  // helpers
   const getFlag = (key, def) => {
     window.campaignTrail_temp = window.campaignTrail_temp || {};
     if (!window.campaignTrail_temp.hasOwnProperty(key)) window.campaignTrail_temp[key] = def;
     return window.campaignTrail_temp[key];
   };
+
   const setFlag = (key, val) => window.campaignTrail_temp[key] = val;
 
   const createEl = (tag, props = {}, children = []) => {
@@ -3805,22 +4092,24 @@ tooltipList = [
     if (!target || document.getElementById(CONFIG.containerId)) return;
 
     const frag = document.createDocumentFragment();
-
-    let descText, toggleInput, statusText, dropdown;
+    let descText, toggleWrapper, toggleInput, statusText, selectWrapper, selectInput, dropdown;
 
     const wrapper = createEl('div', { id: CONFIG.containerId }, [
-      createEl('h3', { textContent: 'Special mod settings:' }),
-      dropdown = createEl('select', {
-        style: { width: '100%', padding: '5px' }
-      }),
+      createEl('h3', { textContent: 'Special mod settings:', style: { marginBottom: '8px' } }),
+      dropdown = createEl('select', { style: { width: '100%', padding: '5px' } }),
       createEl('div', { className: 'mod-desc-box' }, [
         descText = createEl('p', {}),
-        createEl('div', { className: 'mod-toggle-row' }, [
+
+        toggleWrapper = createEl('div', { className: 'mod-ctrl-row', style: { display: 'none' } }, [
           createEl('label', { className: 'switch' }, [
             toggleInput = createEl('input', { type: 'checkbox' }),
-            createEl('span', { className: 'slider' })
+            createEl('span', { className: 'menu-slider' })
           ]),
           statusText = createEl('span', { className: 'status-label' })
+        ]),
+
+        selectWrapper = createEl('div', { className: 'mod-ctrl-row', style: { display: 'none' } }, [
+          selectInput = createEl('select', { className: 'mod-select' })
         ])
       ])
     ]);
@@ -3829,14 +4118,7 @@ tooltipList = [
 
     CONFIG.features.forEach((f, i) => {
       dropdown.add(new Option(f.text, i));
-
-      let initialValue;
-      if (savedSettings.hasOwnProperty(f.flag)) {
-        initialValue = savedSettings[f.flag];
-      } else {
-        initialValue = f.default;
-      }
-
+      let initialValue = savedSettings.hasOwnProperty(f.flag) ? savedSettings[f.flag] : f.default;
       setFlag(f.flag, initialValue);
     });
 
@@ -3844,12 +4126,27 @@ tooltipList = [
       const feat = CONFIG.features[dropdown.value];
       descText.textContent = feat.desc;
 
-      const isOn = getFlag(feat.flag, feat.default);
-      toggleInput.checked = isOn;
-      toggleInput.dataset.flag = feat.flag;
+      if (feat.type === 'toggle') {
+          toggleWrapper.style.display = 'flex';
+          selectWrapper.style.display = 'none';
 
-      statusText.textContent = isOn ? "Enabled" : "Disabled";
-      statusText.className = `status-label ${isOn ? 'status-enabled' : 'status-disabled'}`;
+          const isOn = getFlag(feat.flag, feat.default);
+          toggleInput.checked = isOn;
+          toggleInput.dataset.flag = feat.flag;
+
+          statusText.textContent = isOn ? "Enabled" : "Disabled";
+          statusText.className = `status-label ${isOn ? 'status-enabled' : 'status-disabled'}`;
+      } else if (feat.type === 'select') {
+          toggleWrapper.style.display = 'none';
+          selectWrapper.style.display = 'flex';
+
+          selectInput.innerHTML = '';
+          feat.options.forEach(opt => selectInput.add(new Option(opt.text, opt.value)));
+
+          const currentVal = getFlag(feat.flag, feat.default);
+          selectInput.value = currentVal;
+          selectInput.dataset.flag = feat.flag;
+      }
     };
 
     dropdown.addEventListener('change', updateState);
@@ -3857,11 +4154,16 @@ tooltipList = [
     toggleInput.addEventListener('change', (e) => {
       const flag = e.target.dataset.flag;
       const isChecked = e.target.checked;
-
       setFlag(flag, isChecked);
       saveSettingToStorage(flag, isChecked);
-
       updateState();
+    });
+
+    selectInput.addEventListener('change', (e) => {
+      const flag = e.target.dataset.flag;
+      const val = e.target.value;
+      setFlag(flag, val);
+      saveSettingToStorage(flag, val);
     });
 
     updateState();
@@ -3873,7 +4175,7 @@ tooltipList = [
 })();
 
 // This is just so that we can prevent the VP observer
-// from running running more than once.
+// from running more than once.
 (function () {
   'use strict';
 
@@ -4018,6 +4320,7 @@ tooltipList = [
     baseUrl: 'https://campaigntrailshowcase.com/campaign-trail/',
     modsToAdd: [
       { value: '1992', text: '1992 - Every Brilliant Thing', modName: '1992 - Every Brilliant Thing' },
+	  { value: '2000', text: '2000 - The Major Leagues', modName: '2000 - The Major Leagues' },
       { value: '2016', text: '2016 - A Lifetime of This', modName: '2016 - A Lifetime of This' },
     ],
   };

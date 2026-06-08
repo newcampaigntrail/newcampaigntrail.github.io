@@ -1,7 +1,7 @@
  /*
  * @title: 2016: A Lifetime of This / 2016b / The Hillary Trail
  * @author: StrawberryMaster & Friends
- * @version: 1.2.4
+ * @version: 1.2.5
  * @description: The 2016 election in the eyes of Hillary Clinton (and a couple of others, too)
  * 
  * Coding license: Apache License 2.0
@@ -2988,6 +2988,7 @@ tooltipList = [
         baseUrl: 'https://campaigntrailshowcase.com/campaign-trail/',
         modsToAdd: [
 			{ value: '1992', text: '1992 - Every Brilliant Thing', modName: '1992 - Every Brilliant Thing' },
+			{ value: '2000', text: '2000 - The Major Leagues', modName: '2000 - The Major Leagues' },
             { value: '2012', text: '2012 - Little Big Man', modName: '2012 - Little Big Man' },
         ],
     };
@@ -3240,3 +3241,31 @@ campaignTrail_temp.achievements = {
         "cannotBeCheated": true
     }
 }
+
+// This is so we can use only one code 2
+// instead of several for the veeps.
+;(function() {
+    const TARGET_ELECTION_ID = 20;
+    const UNIFIED_VP_SUFFIX = "Kaine";
+
+    if (typeof window.XMLHttpRequest !== "undefined") {
+        const originalOpen = window.XMLHttpRequest.prototype.open;
+
+        window.XMLHttpRequest.prototype.open = function(method, url, ...args) {
+            if (typeof url === "string") {
+                if (url.includes("questionset/2016_Clinton_") && url.endsWith(".html")) {
+                    url = url.replace(/2016_Clinton_[a-zA-Z0-9]+\.html/, "2016_Clinton_Booker.html");
+                }
+
+                if (url.includes("A Lifetime of This") && url.endsWith(".html")) {
+                    if (url.includes("_ending.html")) {
+                        url = `../static/mods/2016 - A Lifetime of This_Clinton${UNIFIED_VP_SUFFIX}_ending.html`;
+                    } else {
+                        url = `../static/mods/2016 - A Lifetime of This_Clinton${UNIFIED_VP_SUFFIX}.html`;
+                    }
+                }
+            }
+            return originalOpen.apply(this, [method, url, ...args]);
+        };
+    }
+})();
