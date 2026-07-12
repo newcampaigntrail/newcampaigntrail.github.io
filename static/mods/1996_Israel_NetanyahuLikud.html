@@ -2146,31 +2146,13 @@ var terms = [
     }
   }, true);
 
-  document.addEventListener("mouseover", function (evt) {
-    var termNode = evt.target && evt.target.closest ? evt.target.closest(".israel96-term") : null;
-    var tip = document.getElementById("israel96_glossary_tip");
-    if (!tip) return;
-    if (!termNode) return;
-    var term = getTerm(termNode.getAttribute("data-term"));
-    if (!term) return;
-
-    tip.textContent = term.body;
-    tip.style.display = "block";
-
-    var rect = termNode.getBoundingClientRect();
-    var left = rect.left;
-    var top = rect.bottom + 8;
-    if (left + 440 > window.innerWidth) left = Math.max(8, window.innerWidth - 440);
-    if (top + 240 > window.innerHeight) top = Math.max(8, rect.top - 220);
-    tip.style.left = left + "px";
-    tip.style.top = top + "px";
+  // Hover tips are disabled so glossary entries only appear on click.
+  document.addEventListener("mouseover", function () {
+    return;
   }, true);
 
-  document.addEventListener("mouseout", function (evt) {
-    var node = evt.target && evt.target.closest ? evt.target.closest(".israel96-term") : null;
-    if (!node) return;
-    var tip = document.getElementById("israel96_glossary_tip");
-    if (tip) tip.style.display = "none";
+  document.addEventListener("mouseout", function () {
+    return;
   }, true);
 
   setInterval(function () { ensureStyles(); ensureTip(); var root = document.getElementById("game_window"); if (!root) return; var targets = root.querySelectorAll(".inner_inner_window h3, .inner_inner_window label, #candidate_summary, #running_mate_summary"); for (var i = 0; i < targets.length; i++) linkifyContainer(targets[i]); }, 500);
