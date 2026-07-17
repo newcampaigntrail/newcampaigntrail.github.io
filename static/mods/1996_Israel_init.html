@@ -1,0 +1,364 @@
+
+window.RecReading = true;
+e = campaignTrail_temp;
+
+// --- CRITICAL FIX: Initialize ALL required arrays ---
+
+// --- ELECTION DATA ---
+campaignTrail_temp.election_json = JSON.parse("[{\"model\": \"campaign_trail.election\", \"pk\": 99, \"fields\": {\"year\": \"1996_Israel\", \"display_year\": \"1996_Israel\", \"summary\": \"<h2><b>1996 Israel - PM only</b></h2><p>Divided like never before, Israel itches for its very first direct election for prime minister. The already explosive social fabric of Israeli society is now further strained by a dramatic development: a gradual peace process with the Palestinians.<br>Collecting himself for a handshake with Yasser Arafat, a man whom he still despises, Prime Minister Rabin knows his political future and legacy are at a knife's edge. Relentless opposition gathers, in the Knesset and in the streets alike. Who will gain the confidence of an anxious public,  the negotiators or the alarmists?</p>\", \"image_url\": \"https://i.imgur.com/ygIM0R3.jpeg\", \"winning_electoral_vote_number\": 5, \"advisor_url\": \"https://i.imgur.com/rE6X6Ro.jpeg\", \"recommended_reading\": \"\", \"has_visits\": 0}}]");
+e.election_json = campaignTrail_temp.election_json;
+
+e.temp_election_list = [{ "id": 99, "year": "1996_Israel", "is_premium": 0, "display_year": "1996_Israel" }];
+window.yearbit = "1996_Israel";
+var yearbit = "1996_Israel";
+campaignTrail_temp.code2_id = "1996_Israel";
+e.code2_id = "1996_Israel";
+
+e.global_parameter_json = [
+    {
+        "model": "campaign_trail.global_parameter",
+        "pk": 1,
+        "fields": {
+            "vote_variable": 1.125,
+            "max_swing": 0.12,
+            "start_point": 0.94,
+            "candidate_issue_weight": 10,
+            "running_mate_issue_weight": 3,
+            "issue_stance_1_max": -0.71,
+            "issue_stance_2_max": -0.3,
+            "issue_stance_3_max": -0.125,
+            "issue_stance_4_max": 0.125,
+            "issue_stance_5_max": 0.3,
+            "issue_stance_6_max": 0.71,
+            "global_variance": 0.01,
+            "state_variance": 0.005,
+            "question_count": 13,
+            "default_map_color_hex": "#C9C9C9",
+            "no_state_map_color_hex": "#999999"
+        }
+    }
+];
+campaignTrail_temp.credits = "Kuni Lemel";
+
+// --- CANDIDATES ---
+e.candidate_json = [
+    {
+        "model": "campaign_trail.candidate", "pk": 1001, "fields": {
+            "first_name": "Benjamin (Bibi)", "last_name": "Netanyahu", "election": 99, "party": "Likud", "state": "Kingdom of Judea", "priority": 1,
+            "description": "<div style='overflow-y:scroll;height:200px;'><b>\"You are not afraid, but we are afraid of your courage. The courage of the champion of capitulations, the hero of surrender, the man who is incapable of saying the word \"no\" to Arafat.\"</b><br><i>Netanyahu on Rabin, 1995</i><br><br>With Yitzhak Shamir's resignation after the loss in 1992, the first for the Likud party in over a decade, the stage is set for new leadership. And who seemed more fit for the role than the young outsider Benjamin Netanyahu?<br><br>Raised on Revisionist Zionism by his father, Netanyahu absorbed a hardline opposition to territorial concessions and a deep distrust of Mapai, Labor's political ancestor. His father's frustrated struggle within Israel's academic establishment, which he accused of ideological bias, coincided with professional opportunities in the United States and led the family to Pennsylvania, where Netanyahu was introduced to Reagan-era conservatism.<br><br>The death of his brother Yonatan, commander of the Entebbe raid, pushed him toward the study of terrorism. Through this work, he came into the orbit of Moshe Arens, whom he later replaced as Israel's ambassador to the UN. After his successful stint, he catapulted himself to the front row of the Likud party, stunning his colleagues, who still view him as an untested and overly Americanized upstart.<br><br>Netanyahu has a lot to prove to the party old guard and to the general public if he wants to reside in Balfour. Time will tell if the son of a history scholar is about to shape it.</div>","color_hex": "#0000ff", "secondary_color_hex": null, "is_active": 1, "image_url": "https://i.imgur.com/TarOS6X.jpeg",
+            "electoral_victory_message": "<h3>King Bibi</h3>", "electoral_loss_message": "<h3>You have lost the election.</h3>", "no_electoral_majority_message": "<h3>No candidate achieved a majority.</h3>", "candidate_score": 1, "scrollable": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate", "pk": 1002, "fields": {
+            "first_name": "Yitzhak", "last_name": "Rabin", "election": 99, "party": "Labor", "state": "Kingdom of Israel", "priority": 1,
+            "description": "<div style='overflow-y:scroll;height:200px;'><b>\"I, Military I.D. No. 30743, a retired general in the Israeli Defense Forces, consider myself to be a soldier in the army of peace today.\"</b><br><i>Rabin's congressional address, 1994</i><br><br>The former Chief of the General Staff during the victorious Six-Day War now finds himself in a strange position. Not many years have passed since he was defense minister, trying to crack down on the First Intifada with an iron fist, but a political career is like a dog's life: it goes by much faster than that of a mere human being.<br><br>The first sabra (slang for native-born Jews) prime minister, Rabin served from 1974 to 1977, resigning just before the election over the Dollar Account affair. He was elected to a second term in the 1992 elections, with an optimistic dual promise of keeping Israel safe from terror and achieving a diplomatic breakthrough in the bitter and seemingly hopeless Israeli-Palestinian conflict. True to his word, he dared to deliver the second, by greenlighting Yossi Beilin's secret negotiations with Mahmoud Abbas and the Palestine Liberation Organization, setting in motion a process that culminated in the Oslo Accords.<br><br>Now, his chief mission is to reassure the wavering electorate that he has not abandoned the first half of his promise, amid various accusations from the opposition that his new course endangers the country's long-term security.<br><br>Staying in power would prove harder than winning it. However, one thing is clear: in Israeli elections, the sky is the limit for a reputable general, as long as he weighs his decisions carefully, of course.</div>",
+            "color_hex": "#ff3300", "secondary_color_hex": null, "is_active": 1, "image_url": "https://i.imgur.com/feYKhyh.jpeg",
+            "electoral_victory_message": "<h3>Rabin wins re-election.</h3>", "electoral_loss_message": "<h3>Rabin is defeated.</h3>", "no_electoral_majority_message": "<h3>No majority achieved.</h3>", "candidate_score": 1, "scrollable": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate", "pk": 1003, "fields": {
+            "first_name": "Rafael (Raful)", "last_name": "Eitan", "election": 99, "party": "Tzomet", "state": "The city-state of Jewarta", "priority": 1,
+            "description": "<div style='overflow-y:scroll;height:200px;'><b>\"Each of them needs to look at themselves in the mirror. I don't need to be ashamed on their behalf.\"</b><br><i>Raful on his own party members</i><br><br>In an era of cautious and carefully rehearsed statements, behold the only leader who speaks your language.<br><br>Taking a break from his great calling of milking cows, he joined the elite Palmach unit at 17 and advanced through the ranks all the way to the top spot as the IDF's Chief of Staff in 1978. Widely associated with the (still ongoing as of 1992) in-and-out, 20-minute adventure of Israel in Lebanon, his term also included turning Iraq's nuclear reactor to rubble, almost assassinating Arafat 2000 times, and establishing a new army program to assist soldiers from challenging backgrounds (later dubbed Raful's Boys), because you are not a real man without a soft spot for the less well-off.<br><br>Returning to civilian life in 1983, the living legend was ready to save Israel once again, this time as a politician. In a surprisingly strong showing, he captured 8 seats in the 1992 election as leader of the Tzomet (Junction) party. Not the feminized fancy version, okay? We are talking about the real deal, no traffic lights and no signs, just you and your intimidation skills to scare off drivers from the other seven directions, as nature intended! Where was I? Oh right, the party. Entirely dominated by his awesome personality, the group was given the nickname \"Raful and the Seven Dwarves\". Sadly enough, while the party is proudly right wing, its clearly anti-clerical sentiment and open admiration for the labor settlement movement (cooperative agricultural communities), make it something of an odd bird in that camp. They just want these bookish lazy bums to put the Torah away and grub a sickle/rifle, what is so strange here?<br><br>Now Raful is ready to capture the golden crown with a simple three-point program:<br><br>1. Agriculture is great<br><br>2. Not an inch of territory to the bad guys<br><br>3. Watching your tongue is for virgins<br><br>Now stop being a fool and vote Raful. We are about 80% sure he is not insane.<br><br><b>Note: </b>Not playable because you don't deserve him!</div>",
+            "color_hex": "#800080", "secondary_color_hex": null, "is_active": 1, "image_url": "https://i.imgur.com/IER2iyd.jpeg",
+            "electoral_victory_message": "<h3>Rafael Eitan wins.</h3>", "electoral_loss_message": "<h3>Rafael Eitan is defeated.</h3>", "no_electoral_majority_message": "<h3>No majority achieved.</h3>", "candidate_score": 1, "scrollable": true
+        }
+    },
+    {
+        "model": "campaign_trail.candidate", "pk": 1004, "fields": {
+            "first_name": "Shimon", "last_name": "Peres", "election": 99, "party": "Labor", "state": "Altnayland- The Old New Land", "priority": 1,
+            "description": "<div style='overflow-y:scroll;height:200px;'><b>\"Polls are like perfume, nice to smell, dangerous to swallow.\"</b><br><i>Shimon Peres, after his unexpected narrow loss to Begin in 1981</i><br><br><span style='font-weight:normal;'>Born in what is now Belarus, the Henry Clay of Israeli politics emigrated to Israel at a young age and became an active member of HaNoar HaOved (\"Working Youth\"), a Labor Zionist youth movement. From there, he began working in the Haganah, the main predecessor of the IDF, and quickly caught the eye of Ben Gurion. \"The Elder,\" as he was also called, put him in charge of personnel and military procurement in the newly created Defense Ministry. While he clearly showed talent, the appointment meant that he never properly served in the IDF, a Mark of Cain in Israeli society and politics that would follow him throughout his life.<br><br>In 1953, he was appointed Director General of the Ministry of Defense on Ben Gurion's last day in office, as a tiny little surprise to his successor, and later predecessor, Moshe Sharett. The relationship between Israel and France blossomed during those days, and Peres was at the forefront of it, purchasing equipment and schmoozing with the elites along the way. The peak of this partnership, and Shimon's personal pride, was undoubtedly the nuc... sorry, totally legitimate textile factory in an unspecified location.<br><br>Another, less flashy part of his legacy there was the Suez War debacle, as Peres, together with IDF Chief of Staff Moshe Dayan, was crucial in convincing the frighteningly practical Ben Gurion to go along with the plot they developed with the French and British.<br><br>Unsurprisingly, Peres entered politics three years later, following Ben Gurion into opposition when he lost favor with Mapai and founded Rafi (Israeli Workers List). In the end, he broke with \"The Elder\" during the waiting period of the Six-Day War, when the quarrelsome former prime minister demanded that his successor and newly created nemesis, Levi Eshkol, resign the prime ministership as a condition for joining the coalition. The Peres camp prevailed, and in the same year, Rafi merged with Mapai.<br><br>Some time later, Peres entered government, and when Golda \"Only Man in the cabinet\" Meir resigned, he joined the 1974 Labor leadership race. He narrowly lost the nomination to Rabin, ushering in a heated rivalry between the two, which nonetheless did not stop the new prime minister from handing him the defense portfolio. At that time, Peres was an adherent of \"functional compromise\" regarding the 1967 territories (devolving certain civilian responsibilities to the Jordanians or local authorities), as opposed to the \"territorial compromise\" approach of figures like Rabin and Foreign Minister Alon. This came to a head when a group of Jews established the Elon Moreh settlement on their own initiative. Peres opposed Rabin's intention to expel them, and eventually a compromise was reached, allowing them to live nearby.<br><br>In 1977, he lost another leadership challenge against Rabin, but after the prime minister resigned as party leader over a personal scandal, Peres replaced him, just in time to lose decisively to Likud and witness the first right-wing government in the country's history.<br><br>In opposition, he left his functionalist past behind and embraced the Jordanian solution for the West Bank. After a narrow loss in 1981, he managed to make Labor the largest party in 1984, only to find out he still had no governing majority. This resulted in a unity government between Labor and Likud, with Peres and his rival Shamir each serving as prime minister for half the term. The early years went well, with the 1985 Israeli economic stabilization plan bringing the curse of hyperinflation under control, but on the international front, Peres was bitter at Shamir for torpedoing his agreement to hand the West Bank to Jordan. Following the First Intifada, the Jordanian king renounced any territorial claims to the troubled territory, and Peres shifted to supporting the Palestinian option, along with his party.<br><br>However, after 1988, he was still in a unity government with Likud and its obstinate leader Shamir. Not the kind of person to miss a window for creating \"The New Middle East\", as he called it, the foreign minister secretly opened negotiations with the ultra-Orthodox parties to topple Shamir and form a left-Haredi government without elections. Characteristically for Peres, the move failed, earning the nickname \"the dirty trick\" (Thanks for the name Rabin, your help is always appreciated!). Defeated and humiliated, he was sent into opposition, and Labor Party members, yearning to win the 1992 election, cast him aside in favor of the more electable Rabin, who made him foreign minister after his victory.<br><br>Now, with his rival's death, Peres is the one left to raise the infant peace process that clumsily brought them together and prove once and for all that HE IS NOT A LOSER!!!</span></div>",
+            "color_hex": "#ff3300", "secondary_color_hex": null, "is_active": 0, "image_url": "https://i.imgur.com/omR9JPT.jpeg",
+            "electoral_victory_message": "<h3>Peres wins the election.</h3>", "electoral_loss_message": "<h3>Peres is defeated.</h3>", "no_electoral_majority_message": "<h3>No majority achieved.</h3>", "candidate_score": 1, "scrollable": true
+        }
+    },
+        { "model": "campaign_trail.candidate", "pk": 99001, "fields": { "first_name": "", "last_name": "Likud", "election": 99, "party": "Likud National Liberal Movement", "state": "The Second Israel", "priority": 1,
+    "description_as_running_mate": "<div style='overflow-y:scroll;height:320px;'>Named after the word \"consolidation\" in Hebrew, the right-of-center party was founded in 1973 with the hope of finally unseating the seemingly invincible Labor Party from power. Following the disastrous initial days of the Yom Kippur War, the timing could hardly have been more opportune in retrospect. The stark contrast between the leadership's pre-war hubris, resulting from the victory of 1967, and the gloomy face of Defense Minister Moshe Dayan after the surprise attack, going so far as to warn of \"the destruction of the Third Temple\", shocked the Israeli public to the core, leading to a colossal crisis of confidence.<br><br>The four years following the war further escalated the situation, with an economic slowdown, constant corruption scandals, and even a shameful attempt to deflect responsibility for the poor war record away from the political leadership, placing the blame almost entirely on the IDF and its chief of staff, David (\"Dado\") Elazar. Judgment Day finally came in the 1977 election, when Likud, under the leadership of Menachem Begin, swept the vote for the first time, with television anchor Haim Yavin famously declaring: \"Ladies and gentlemen, an upheaval!\". After eight failed leadership bids, a scrawny man with large glasses announced with radiant happiness that a momentous event had taken place in Jewish history.<br><br>As a disciple of Ze'ev Jabotinsky and leader of the Irgun, the young Begin was a sworn enemy not only of the British administration in Palestine, which regarded him as a terrorist even before the infamous King David Hotel bombing, but also of Israel's founder, David Ben Gurion. The first prime minister ultimately succeeded in absorbing Begin's recalcitrant paramilitary organization into the emerging IDF after the traumatic Altalena Affair, and for years to come refused to even address him by name. Transitioning to politics as leader of the Herut (Freedom) party, Begin began an arduous process of expanding his appeal beyond his former comrades.<br><br>First came the Mizrahi Jews, a traditionalist community that grew massively following the Jewish exodus from the Muslim world. While Jabotinsky himself had been an avowed secularist and free-market liberal, his political movement gradually developed a much warmer relationship with Jewish religion and economic redistribution. This shift, coupled with growing frustration over neglect and racism from the ruling establishment, led many Mizrahi voters to join the party in droves after incidents such as the Wadi Salib riots, making them a crucial component of Likud's electoral base. At the peak of their frustration young Mizrahi activists even formed a local Black Panters movement, only to be rebuffed in the climax of this crossover episode, by prime minister Golda \"They’re not nice people\" Meir.<br><br>Then came the Israeli Liberal Party, successor to the (not-so) General Zionists, who set aside their foreign policy differences and joined Begin in 1965 after repeated failures to defeat Mapai and an increasing desire to bring an end to its statist economic policies.<br><br>A third element in Likud's future dominance was the National Religious Party, or Mafdal in Hebrew. Traditionally a moderating force in Mapai-led governments, seeing itself as a bridge between secular Labor Zionism and non-Zionist Haredim, the party was led for years by Haim-Moshe Shapira, who frequently outmaneuvered his colleagues to the left on foreign relations. However, after the country more than doubled its territory in 1967, the party's youth, led by Zevulun Hammer, moved Mafdal in a more hardline direction. This made them eager participants in the new coalition after the Likud victory, becoming leading champions of the government's settlement expansion.<br><br>Likud's previously unseen alliance produced an equally controversial record in other areas. The implementation of sweeping liberalization measures by Finance Minister Simha Erlich, alongside increased social spending on education and initiatives such as Project Renewal (Rehabilitation of poor, hastily built neighborhoods through improved housing and social services), driven in part by pro social justice elements within the new coalition (including Begin himself), contributed to a severe hyperinflation crisis. High defense expenditures in the second term also hurt, as the invasion of Lebanon to expel the PLO got Israel bogged down in a maddening quagmire.<br><br>A major component of Begin's legacy was the historic Egypt-Israeli Peace Treaty of 1979, the first agreement of its kind between Israel and an Arab neighbor, for which he received the Nobel Peace Prize. However, the return of the Sinai Peninsula to Egypt as part of the agreement, which, to add insult to injury, required the dismantling of Jewish settlements by what had long been Israel's chief hawkish political force, together with Begin's continued refusal to formally annex the West Bank and Gaza (unlike the other 1967 territories: the Golan Heights and East Jerusalem), led to the emergence of several smaller right-wing alternatives to Likud.<br><br>Another aspect of Likud's rule was the strengthening of Israel's ultra-Orthodox sector through expanded state support for yeshivot, welfare allowances, and the removal of limits on military service deferments for yeshiva students, developments that would come to shape Israeli politics for decades.<br><br>While Begin resigned unexpectedly in 1983, admiration for him and his party persisted among large sections of the Israeli public, allowing Likud to remain in power until a wave of 90's optimism surrounding peace efforts, combined with a higher electoral threshold (ironically promoted by Likud itself), created a left-Arab firewall of 61 Knesset members out of 120 against Likud. With the ever-practical, Sephardic Orthodox Shas party, willing to provide political backing in exchange for power and a couple of monetary incentives, the road to a governing arrangement of 62 MPs was paved. Likud now faces the challenge of finding a path back to power and proving to a growing number of skeptics that it is the new natural ruling party of this naturally unruly land.</div>",
+    "color_hex": "#0038B8", "secondary_color_hex": null, "is_active": 0, "running_mate": true, "image_url": "https://i.imgur.com/uoXVxru.jpeg", "electoral_victory_message": "<h3>Rabin wins re-election.</h3>", "electoral_loss_message": "<h3>Rabin is defeated.</h3>", "no_electoral_majority_message": "<h3>No majority achieved.</h3>", "candidate_score": 1, "scrollable": true } },
+    { "model": "campaign_trail.candidate", "pk": 99002, "fields": { "first_name": "", "last_name": "Labor", "election": 99, "party": "Israeli Labor Party", "state": "Tel Aviv", "priority": 1, 
+    "description_as_running_mate": "<div style='overflow-y:scroll;height:320px;'>People say Mapai (Workers' Party of the Land of Israel) created Israel. They are wrong, \"improvised\" is the better word here.<br><br>The party, founded to represent workers, both industrial and agricultural, in the would-be state, became that state. Its paramilitary (the \"Haganah\") was the main pillar of the IDF, and its labor union (the \"Histadrut\") became the juggernaut of the Israeli economy, owning the largest healthcare provider, one of the largest banks, the largest construction company, and numerous other wonders that you could enjoy with a simple red booklet available to all the \"right people\".<br><br>In foreign policy, the party enjoyed a wide range of views, but Ben Gurion did set it on one definitive direction: supporting the Western bloc in the Cold War, which led to close Israeli-French and later Israeli-American partnerships.<br><br>While nominally socialist, as the governing party, Mapai didn't hesitate to tame worker demands through a variety of means when it felt they were excessive (like the 1951 seamen's strike, dispersed by force), or to selectively turn to private investors to promote \"national endeavors\". Thus, the Israeli economy was, in practice, a protectionist and highly regulated form of (who on earth thought that was a good and informative name?) state capitalism.<br><br>As the undisputed ruling party, Mapai also defined the Overton Window for years. From the very first election, it set out a clear red line: \"No to the far-left communists and no to the far-right Herut\". An (unheard-of anywhere else in the globe) leftist infighting with the pro-Soviet Mapam (United Workers Party), which split the kibbutzim (closed agricultural socialist communities) in half, left the secular Spinozian Ben Gurion with no choice but to turn to the ultra-Orthodox parties for support, resulting in a religious monopoly on marriage and divorce, restrictions on non-kosher food in public institutions, and allowing the Haredi to maintain a separate education system. This decision would further exacerbate the secular-religious divide in Israeli politics to this very day.<br><br>The mentality of Mapai also left a lasting legacy in the Israeli psyche.<br><br>On the one hand, an awe-inspiring \"can-do\" attitude when dealing with urgent crises:<br>Swampy land? We will drain it!<br>Enemy invasion from 3 directions? Hold my beer.<br>Shortage of water? Say hello to the National Water Carrier.<br>Need some money? Our representative is already on his way to American Jewry, and West Germany starts feeling a little guilty.<br>Jewish refugees? Of course there is room, we are the Jewish state after all. Come on down to our \"development towns\".<br><br>On the other hand, a mind-boggling aversion to long-term planning (Or as Rabin once remarked: The culture of \"It will be fine\"):<br>Remember the \"drain the swamp\" thing? Turns out the environment is not always thrilled.<br>The money gathering? Not a very sustainable solution to structural weaknesses in the economy.<br>The \"development towns\"? A hotbed of crime and poverty that will turn their residents against the party.<br>And I will be damned if I don't mention the missing Israeli constitution, under construction since 1949.<br><br>But by far the most striking example of phenomenal decision-making was the Palestinian issue. During the war of independence, when faced with the prospect of either expeling this (understandably) far-from-Zionist population or beginning a process of integration, the Mapai-dominated leadership responded with a resounding: \"Yes!\". The result was a mess, giving the boot to the residents of one village while granting citizenship to those of another, only to place most of the remainers under a military regime shortly thereafter. In 1966, with Ben Gurion out of the picture and a bipartisan backing (Yes, including Herut), prime minister Levi Eshkol put this regime to rest. After a hiatus of almost a year, the policy was resurrected in the newly conquered territories of The Six Day War. But don't worry, this time, the party obviously learned its lesson and pursued an entirely different policy, consistently seeking to trade those regions for peace agree... What's that? The Arabs said no in Khartoum? A triple no? Fine, their loss. How about we reduce the problem by paying Palestinians to leave and... No? They don't want to leave the land? Well, we aren't leaving either. What are we suckers? Let's build our own towns there according to the Allon Plan, which we can't officially adopt because God created a world beyond this oil barren paradise. Take that Palestinians! We are in charge here and you will take our security concerns serio... What do you mean Jews try to settle outside the Allon Plan area? It's a military zone, not The Wild West, get them ou...Sorry what? You relented and allowed those faith-driven knuckleheads to determine your borders for you? Nooooooooo...<br><br>For a while, the great party, as you\’ve already seen, was second to none. Even when Ben Gurion himself split from the party and ran on his own, the well-oiled apparatus crushed him, receiving 45 seats to Ben Gurion's 10. The emergence of the union of the Liberals with Herut finally led the party to unite with its proletarian rivals, the \"Our bad, Ben Gurion officially lost it\" guys and the \"Stalin is not cool anymore\" party, to form a united leftist bloc called \"HaMa'arakh\" (The Alignment), which would later adopt the name Labor in 1992. The non-cooperation with Herut was completely broken by the party itself during the Six-Day War, when Begin and his fellow members joined the unity government. A decade later, with their previously invincible defense record tarnished after the surprise attack in the Yom Kippur War, Labor would decisively lose to Begin's Likud.<br><br>With the economic crisis of the 1980s hitting the party's darlings, the \"Histadrut\" and the kibbutzim, Labor, in a unity government with Likud, decided to part with the past and, like many of its Western counterparts, adopt a more market-oriented stance, as its leader, Prime Minister Peres, pushed for the pivotal 1985 Israel Economic Stabilization Plan.<br><br>While Likud remained adamantly against negotiations with the PLO, Labor became the main political vehicle for the pro-diplomacy electorate. Mapam, which left the alliance following Labor's agreement to the unity government, formed its own bloc with other socially liberal parties, named Meretz (Vigor, didn't age too well to be honest). The party would become the leftmost Zionist force in the Knesset and win a whopping 12 seats in the 1992 elections.<br><br>Despite their anti-Haredi sentiments, Shulamit Aloni, the leader of Meretz, joined Labor's new government together with the Sephardic Shas party, declaring at one point that: \"For the sake of peace, I'm even willing to wear a shtreimel.\"<br><br>For the first time since 1977, Labor got the votes to govern without Likud, and now they had to prove that they still had it in them while trying to preserve their uneasy coalition.</div>",    "color_hex": "#D80000", "secondary_color_hex": null, "is_active": 0, "running_mate": true, "image_url": "https://i.imgur.com/KgIKfpv.png", "electoral_victory_message": "<h3>Rabin wins re-election.</h3>", "electoral_loss_message": "<h3>Rabin is defeated.</h3>", "no_electoral_majority_message": "<h3>No majority achieved.</h3>", "candidate_score": 1, "scrollable": true } }
+];
+
+e.running_mate_json = [
+    { "model": "campaign_trail.running_mate", "pk": 9901, "fields": { "candidate": 1001, "running_mate": 99001 } },
+    { "model": "campaign_trail.running_mate", "pk": 9902, "fields": { "candidate": 1002, "running_mate": 99002 } }
+];
+
+e.opponents_default_json = [{ "election": 99, "candidates": [1001, 1002] }];
+e.opponents_weighted_json = [{ "election": 99, "candidates": [1001, 1002] }];
+
+// No-visits setup: keep these arrays defined so visit-related engine loops no-op safely.
+e.player_answers = [];
+e.player_visits = [];
+e.candidate_state_multiplier_json = [];
+e.running_mate_state_multiplier_json = [
+  // Likud running mate
+  { "model": "campaign_trail.running_mate_state_multiplier", "pk": 29001, "fields": { "running_mate": 99001, "state": 6661, "state_multiplier": 0.3 } },
+  { "model": "campaign_trail.running_mate_state_multiplier", "pk": 29002, "fields": { "running_mate": 99001, "state": 6662, "state_multiplier": 0.25 } },
+  { "model": "campaign_trail.running_mate_state_multiplier", "pk": 29003, "fields": { "running_mate": 99001, "state": 6663, "state_multiplier": 0.2 } },
+  { "model": "campaign_trail.running_mate_state_multiplier", "pk": 29004, "fields": { "running_mate": 99001, "state": 6664, "state_multiplier": 1.1 } },
+  { "model": "campaign_trail.running_mate_state_multiplier", "pk": 29005, "fields": { "running_mate": 99001, "state": 6665, "state_multiplier": 0.15 } },
+  { "model": "campaign_trail.running_mate_state_multiplier", "pk": 29006, "fields": { "running_mate": 99001, "state": 6666, "state_multiplier": 1.6 } },
+  { "model": "campaign_trail.running_mate_state_multiplier", "pk": 29007, "fields": { "running_mate": 99001, "state": 6667, "state_multiplier": 1.2 } },
+  { "model": "campaign_trail.running_mate_state_multiplier", "pk": 29008, "fields": { "running_mate": 99001, "state": 6668, "state_multiplier": 2 } },
+
+  // Labor running mate
+  { "model": "campaign_trail.running_mate_state_multiplier", "pk": 29009, "fields": { "running_mate": 99002, "state": 6661, "state_multiplier": 1.0 } },
+  { "model": "campaign_trail.running_mate_state_multiplier", "pk": 29010, "fields": { "running_mate": 99002, "state": 6662, "state_multiplier": 1.0 } },
+  { "model": "campaign_trail.running_mate_state_multiplier", "pk": 29011, "fields": { "running_mate": 99002, "state": 6663, "state_multiplier": 1.0 } },
+  { "model": "campaign_trail.running_mate_state_multiplier", "pk": 29012, "fields": { "running_mate": 99002, "state": 6664, "state_multiplier": 1.0 } },
+  { "model": "campaign_trail.running_mate_state_multiplier", "pk": 29013, "fields": { "running_mate": 99002, "state": 6665, "state_multiplier": 1.0 } },
+  { "model": "campaign_trail.running_mate_state_multiplier", "pk": 29014, "fields": { "running_mate": 99002, "state": 6666, "state_multiplier": 1.0 } },
+  { "model": "campaign_trail.running_mate_state_multiplier", "pk": 29015, "fields": { "running_mate": 99002, "state": 6667, "state_multiplier": 1.0 } },
+  { "model": "campaign_trail.running_mate_state_multiplier", "pk": 29016, "fields": { "running_mate": 99002, "state": 6668, "state_multiplier": 1.0 } }
+];
+campaignTrail_temp.running_mate_state_multiplier_json = campaignTrail_temp.running_mate_state_multiplier_json || e.running_mate_state_multiplier_json;
+e.running_mate_state_multiplier_json = campaignTrail_temp.running_mate_state_multiplier_json;
+e.answer_feedback_flg = 1;
+e.answer_feedback_json = [];
+e.answer_score_global_json = [];
+e.answer_score_issue_json = [];
+e.answer_score_state_json = [];
+
+e.questions_json = [];
+e.answers_json = [];
+campaignTrail_temp.__activeCode2 = null;
+if (window.israel96NetLoop) { clearInterval(window.israel96NetLoop); window.israel96NetLoop = null; }
+//Not strictly needed but for reference
+e.candidate_issue_score_json = [
+  // Bibi Netanyahu
+  { "model": "campaign_trail.candidate_issue_score", "pk": 1202, "fields": { "candidate": 1001, "issue": 601, "issue_score": 0.35 } },
+  { "model": "campaign_trail.candidate_issue_score", "pk": 1203, "fields": { "candidate": 1001, "issue": 602, "issue_score": 0.6 } },
+  { "model": "campaign_trail.candidate_issue_score", "pk": 1204, "fields": { "candidate": 1001, "issue": 603, "issue_score": -0.9 } },
+  { "model": "campaign_trail.candidate_issue_score", "pk": 1205, "fields": { "candidate": 1001, "issue": 604, "issue_score": 0.1 } },
+
+  // Rabin
+  { "model": "campaign_trail.candidate_issue_score", "pk": 1302, "fields": { "candidate": 1002, "issue": 601, "issue_score": -0.25 } },
+  { "model": "campaign_trail.candidate_issue_score", "pk": 1303, "fields": { "candidate": 1002, "issue": 602, "issue_score": 0.35 } },
+  { "model": "campaign_trail.candidate_issue_score", "pk": 1304, "fields": { "candidate": 1002, "issue": 603, "issue_score": 0.4 } },
+  { "model": "campaign_trail.candidate_issue_score", "pk": 1305, "fields": { "candidate": 1002, "issue": 604, "issue_score": -0.4 } },
+
+  // Raful
+  { "model": "campaign_trail.candidate_issue_score", "pk": 1392, "fields": { "candidate": 1003, "issue": 601, "issue_score": 0.7 } },
+  { "model": "campaign_trail.candidate_issue_score", "pk": 1393, "fields": { "candidate": 1003, "issue": 602, "issue_score": 0 } },
+  { "model": "campaign_trail.candidate_issue_score", "pk": 1394, "fields": { "candidate": 1003, "issue": 603, "issue_score": -1 } },
+  { "model": "campaign_trail.candidate_issue_score", "pk": 1395, "fields": { "candidate": 1003, "issue": 604, "issue_score": -0.2 } },
+
+  // Peres
+  { "model": "campaign_trail.candidate_issue_score", "pk": 1402, "fields": { "candidate": 1004, "issue": 601, "issue_score": -0.65 } },
+  { "model": "campaign_trail.candidate_issue_score", "pk": 1403, "fields": { "candidate": 1004, "issue": 602, "issue_score": 0.45 } },
+  { "model": "campaign_trail.candidate_issue_score", "pk": 1404, "fields": { "candidate": 1004, "issue": 603, "issue_score": 0.8 } },
+  { "model": "campaign_trail.candidate_issue_score", "pk": 1405, "fields": { "candidate": 1004, "issue": 604, "issue_score": -0.9 } },
+];
+
+campaignTrail_temp.running_mate_issue_score_json = [
+  // Likud
+  { "model": "campaign_trail.running_mate_issue_score", "pk": 2502, "fields": { "running_mate": 99001, "issue": 601, "issue_score": 0.4 } },
+  { "model": "campaign_trail.running_mate_issue_score", "pk": 2503, "fields": { "running_mate": 99001, "issue": 602, "issue_score": 0.1 } },
+  { "model": "campaign_trail.running_mate_issue_score", "pk": 2504, "fields": { "running_mate": 99001, "issue": 603, "issue_score": -0.9 } },
+  { "model": "campaign_trail.running_mate_issue_score", "pk": 2505, "fields": { "running_mate": 99001, "issue": 604, "issue_score": 0.2 } },
+
+  // Labor
+  { "model": "campaign_trail.running_mate_issue_score", "pk": 2507, "fields": { "running_mate": 99002, "issue": 601, "issue_score": -0.45 } },
+  { "model": "campaign_trail.running_mate_issue_score", "pk": 2508, "fields": { "running_mate": 99002, "issue": 602, "issue_score": 0.2 } },
+  { "model": "campaign_trail.running_mate_issue_score", "pk": 2509, "fields": { "running_mate": 99002, "issue": 603, "issue_score": 0.7 } },
+  { "model": "campaign_trail.running_mate_issue_score", "pk": 2510, "fields": { "running_mate": 99002, "issue": 604, "issue_score": -0.9 } }
+];
+
+e.running_mate_issue_score_json = campaignTrail_temp.running_mate_issue_score_json;
+
+// Theme/CSS
+var israel1996_theme = setInterval(function() {
+  var h = document.getElementById("header");
+  if (!h) return;
+  clearInterval(israel1996_theme);
+  h.src = "https://i.imgur.com/qH4KWlq.jpeg";
+  if (document.body) {
+    document.body.style.backgroundImage = "url('https://i.imgur.com/169sqJ3.jpeg')";
+    document.body.style.backgroundRepeat = "repeat";
+    document.body.style.backgroundPosition = "top left";
+    document.body.style.backgroundSize = "auto";
+    document.body.style.backgroundAttachment = "fixed";
+  }
+  var c = document.querySelector(".container"); if (c) c.style.backgroundColor = "#ffffff";
+  var gw = document.getElementById("game_window"); if (gw) gw.style.backgroundColor = "#1565e5";
+  var gh  = document.getElementsByClassName("game_header")[0]; if (gh) gh.style.backgroundColor = "#1565e5";
+  if (typeof nct_stuff !== "undefined" && nct_stuff.themes && nct_stuff.selectedTheme != null) {
+    nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#1565e5";
+    nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#1565e5";
+  }
+}, 100);
+
+// Custom YouTube soundtrack box (example embed)
+campaignTrail_temp.musicOn = false;
+
+var israel96YouTubeAlbums = {
+  jingles: {
+    name: "Campaign Jingles",
+    tracks: [
+{ name: "Israel is waiting for Rabin- 1992 Labor song", yt: "NQheNDOeOYg" },
+      { name: "The Likud Party anthem", yt: "nOwqfDi1970" },
+      { name: "Israel is strong with Peres- 1996 Labor song", yt: "RAIKwRJKs6I" }
+    ]
+  },
+  peace: {
+    name: "Peace Songs",
+    tracks: [
+      { name: "A Song for Peace (Shir LaShalom) - \"The Nahal Band", yt: "d4JyiXsta10" },
+      { name: "I was born for peace - Uzi Hitman", yt: "3ivSCrzPYd4" },
+      { name: "Winter 73 - Roni Dalumi with Education and Youth Corps", yt: "mYpwP-kz8FE" },
+      { name: "Flowers in the barrel - Artillery Corps Band", yt: "EwvAywMw93M" },
+      { name: "Who knew It would be like this? - Uzi Hitman and Boaz Sharabi", yt: "TzvSuT7QHjk" },
+      { name: "I wanted you to know - Uzi Hitman", yt: "O_E9cjwpIk4" }
+    ]
+  },
+  nineties: {
+    name: "Israel in the 90's",
+    tracks: [
+      { name: "Cry to You- Aviv Gefen", yt: "sOds6FTz_5A" },
+      { name: "The flower in my garden - Zohar Argov", yt: "vcpgpEUlKfk" },
+      { name: "You and I - Arik Einstein", yt: "gP6PS-poyMg" },
+      { name: "It's cloudy now - Aviv Geffen", yt: "W7ChJBESzf4" },
+      { name: "A man without eternity - The Friends of Natasha", yt: "3LQnw6kyvZY" },
+      { name: "A drop of luck - Zehava Ben", yt: "eFVYLqZMXpc" },
+      { name: "Blow the horn - Shabak Samech", yt: "fQug2Rw7i7M" },
+      { name: "Rebbe Nachman Meuman", yt: "QXjCE-8FT1A" },
+      { name: "Come to me - Rita", yt: "RrYmegnmRXo" }
+    ]
+  }
+};
+
+function israel96BuildYouTubeMusicBox() {
+  var box = document.getElementById("music_player");
+  if (!box) return;
+  if (
+    box.dataset.israel96YtReady === "1" &&
+    box.querySelector("#israel96_yt_album")
+  ) return;
+
+  box.dataset.israel96YtReady = "1";
+  box.innerHTML = ""
+    + "<iframe id='israel96_yt_frame' width='100%' height='110' src='' title='YouTube player' frameborder='0' allow='autoplay; encrypted-media; picture-in-picture' style='margin-bottom:6px;display:block;background:#111;border-radius:4px;'></iframe>"
+    + "<div style='font-size:12px;margin-bottom:4px;'><b>Soundtrack</b></div>"
+    + "<div id='israel96_yt_hint' style='font-size:11px;margin-bottom:6px;color:#333;'>Use the YouTube bar above, or open the track on YouTube.</div>"
+    + "<div style='font-size:11px;margin-bottom:6px;'><a id='israel96_yt_link' href='' target='_blank' rel='noopener noreferrer'>Open on YouTube</a></div>"
+    + "<div style='font-size:11px;margin-bottom:3px;'><b>Album</b></div>"
+    + "<select id='israel96_yt_album' style='width:100%;margin-bottom:6px;'></select>"
+    + "<div style='font-size:11px;margin-bottom:3px;'><b>Tracks</b></div>"
+    + "<select id='israel96_yt_track' size='3' style='width:100%;margin-bottom:4px;'></select>";
+
+  var albumSel = document.getElementById("israel96_yt_album");
+  var trackSel = document.getElementById("israel96_yt_track");
+  var hint = document.getElementById("israel96_yt_hint");
+  var frame = document.getElementById("israel96_yt_frame");
+  var ytLink = document.getElementById("israel96_yt_link");
+
+  Object.keys(israel96YouTubeAlbums).forEach(function(key) {
+    var opt = document.createElement("option");
+    opt.value = key;
+    opt.textContent = israel96YouTubeAlbums[key].name;
+    albumSel.appendChild(opt);
+  });
+
+  function loadTracks() {
+    var album = israel96YouTubeAlbums[albumSel.value];
+    trackSel.innerHTML = "";
+    album.tracks.forEach(function(track, idx) {
+      var opt = document.createElement("option");
+      opt.value = String(idx);
+      opt.textContent = track.name;
+      trackSel.appendChild(opt);
+    });
+    trackSel.size = Math.min(Math.max(album.tracks.length, 2), 12);
+    loadVideo();
+  }
+
+  function currentTrack() {
+    var album = israel96YouTubeAlbums[albumSel.value];
+    return album && album.tracks[Number(trackSel.value) || 0];
+  }
+
+  function loadVideo() {
+    var track = currentTrack();
+    if (!track || !track.yt) {
+      frame.src = "";
+      hint.textContent = "No YouTube video set for this track yet.";
+      if (ytLink) ytLink.href = "";
+      return;
+    }
+    hint.textContent = "Use the YouTube bar above, or open the track on YouTube.";
+    frame.src = "https://www.youtube.com/embed/" + track.yt + "?controls=1&modestbranding=1&rel=0&fs=0";
+    if (ytLink) ytLink.href = "https://www.youtube.com/watch?v=" + track.yt;
+  }
+
+  albumSel.onchange = loadTracks;
+  trackSel.onchange = loadVideo;
+  albumSel.value = "jingles";
+  loadTracks();
+}
+
+var israel96YtMusicInit = setInterval(function() {
+  if (!document.getElementById("music_player")) return;
+  clearInterval(israel96YtMusicInit);
+  israel96BuildYouTubeMusicBox();
+}, 100);
+
+
+var israel96RecommendedReading = "<p>Like many site users, I have had a passion for politics for quite a while and finally got the nerve to make a mod about this extremely close race, taking place at an extremely sensitive time. This is a story from the Israeli side, written by an Israeli, for anyone who may be curious.</p><p>I also wanted to use this section to clarify a few things.</p><p>The choice to use the entire West Bank and Gaza as a voting area was made purely out of convenience and was not meant to constitute any implicit political statement regarding the future of these territories.</p><p>The population statistics were based on the actual voter rolls, but due to double-envelope ballots, mostly cast by soldiers voting away from home, there are certainly some discrepancies in the distribution across districts.</p><p>The assignment of issue scores was quite generalized and focused on making the race balanced and competitive, as the political divide in Israel has much more to do with culture and ethnicity than with geography. There are numerous strongholds across the country that I can't fully account for on the map. I specifically looked at voters, so all the Palestinians in the 1967 territories are obviously out of the equation. Those inside The Green Line received less score than their actual population, since they tend to vote less than their Jewish counterparts.</p><p>There is also the difficulty that I have no way of knowing how many Arab Israelis actually abstained due to Operation Grapes of Wrath, so in the game you simply lose votes to Netanyahu in the Rabin/Peres gameplay instead. I also didn't include the dilemma over whether or not to call an early election after Rabin's death in the Peres gameplay, because it would have made the run easier, and you can't have nice things!</p><p>I wish I could end on a positive note about peace, but I lost my optimism in high school and opened my heart to Israeli cynicism. The only thing I am sure of now is how tired I am of everyone's bullshit. On the flip side, I have also found out that nothing can break you if you are already broken.</p><p>Anyway, I hope you find the game interesting, and always remember: This too shall pass.</p><p><b>P.S. Am Yisrael Chai &#x2721;</b></p>";
+campaignTrail_temp.election_json[0].fields.recommended_reading = israel96RecommendedReading;
+if (typeof e !== "undefined" && e && Array.isArray(e.election_json) && e.election_json[0] && e.election_json[0].fields) {
+  e.election_json[0].fields.recommended_reading = israel96RecommendedReading;
+}
+
+(function () {
+  function fillReadingBox() {
+    var box = document.getElementById("recommended_reading_box");
+    if (!box) return;
+    box.style.textAlign = "left";
+    box.style.padding = "0 14px";
+    var desired = campaignTrail_temp.election_json[0].fields.recommended_reading;
+    var html = String(box.innerHTML || "").trim();
+    if (html === "undefined" || html === "") {
+      box.innerHTML = desired;
+      return;
+    }
+    if (html.indexOf('alt="star"') === -1 && html.indexOf('Am Yisrael Chai') !== -1) {
+      box.innerHTML = desired;
+    }
+  }
+
+  setInterval(fillReadingBox, 100);
+})();
+
+(function() {
+  function updateState() {
+    var sel = document.getElementById("candidate_id");
+    var btn = document.getElementById("candidate_id_button");
+    if (!sel || !btn) return;
+    if (String(sel.value) === "1003") {
+      btn.disabled = true;
+      btn.title = "Rafael Eitan is not playable in this mod.";
+    } else {
+      btn.disabled = false;
+      btn.title = "";
+    }
+  }
+
+  document.addEventListener("change", function (evt) {
+    if (evt.target && evt.target.id === "candidate_id") updateState();
+  }, true);
+
+  document.addEventListener("click", function (evt) {
+    if (!evt.target || evt.target.id !== "candidate_id_button") return;
+    var sel = document.getElementById("candidate_id");
+    if (sel && String(sel.value) === "1003") {
+      evt.preventDefault();
+      evt.stopImmediatePropagation();
+      alert("Rafael Eitan is visible for reference but is not playable.");
+      updateState();
+    }
+  }, true);
+
+  setInterval(updateState, 100);
+})();
