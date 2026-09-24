@@ -1129,6 +1129,7 @@ function divideElectoralVotesProp(e, t) {
         $("#add_ad_spending").click(() => {
             let currval = $("#ad_spending_amount").val();
             currval = currval.replaceAll(",", "");
+			currval = currval.replaceAll(" ", "");
             currval = Math.abs(Number(currval))
             currval = isNaN(currval) ? 0 : Math.floor(currval);
             currval = Math.min(e.shining_data.balance / inflation_factor, currval);
